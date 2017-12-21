@@ -1,0 +1,184 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+
+    <RelativeLayout
+        android:id="@+id/containerTitlebar1"
+        android:layout_width="match_parent"
+        android:layout_height="?android:attr/actionBarSize"
+        android:layout_alignParentTop="true"
+        android:background="@color/base_color"
+        android:gravity="center_vertical"
+        android:paddingLeft="@dimen/x8dp"
+        android:paddingRight="@dimen/x8dp">
+
+
+        <com.ctrlplusz.anytextview.AnyTextView
+        android:id="@+id/txtTitle"
+        android:layout_width="@dimen/x170dp"
+        android:layout_height="match_parent"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:gravity="center"
+        android:maxLength="21"
+        android:text="Title"
+        android:singleLine="true"
+        android:ellipsize="end"
+        android:textColor="#fff"
+        android:textSize="18sp"
+        app:typeface="@string/font_bold" />
+
+
+        <ImageView
+            android:id="@+id/imgTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:src="@drawable/imglogoname"
+            android:gravity="center"
+            />
+
+
+        <ImageButton
+            android:id="@+id/btnLeft1"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:background="@color/base_color"
+            android:padding="@dimen/x5dp"
+            android:src="@drawable/imgback" />
+
+        <ImageButton
+            android:id="@+id/btnRight1"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginLeft="@dimen/x8dp"
+            android:background="@color/base_color"
+            android:padding="@dimen/x5dp"
+            android:src="@drawable/imgcart" />
+
+        <TextView
+            android:id="@+id/txtCircle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_marginTop="@dimen/x9dp"
+            android:background="@drawable/cart_circle"
+            android:gravity="center"
+            android:textSize="8sp"
+            android:clickable="false"
+            android:textColor="#f00"
+            android:text="00" />
+
+
+        <ImageButton
+            android:id="@+id/btnRight2"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/x10dp"
+            android:layout_toLeftOf="@id/btnRight1"
+            android:background="@color/base_color"
+            android:padding="@dimen/x5dp"
+            android:src="@drawable/imgsearch" />
+
+
+
+        <ImageButton
+            android:id="@+id/btnRight3"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/x10dp"
+            android:layout_toLeftOf="@id/btnRight2"
+            android:background="@color/base_color"
+            android:padding="@dimen/x5dp"
+            android:src="@drawable/imgsearch" />
+
+
+
+
+
+
+        <TextView
+            android:id="@+id/txtClearAll"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:background="@color/base_color"
+            android:gravity="center"
+            android:padding="@dimen/x5dp"
+            android:text="Clear All"
+            android:textColor="#E8F4FA"
+            android:visibility="gone" />
+    </RelativeLayout>
+
+
+    <RelativeLayout
+        android:id="@+id/containerTitlebar2"
+        android:layout_width="match_parent"
+        android:layout_height="?android:attr/actionBarSize"
+        android:background="@color/base_color"
+        android:gravity="bottom"
+        android:paddingLeft="@dimen/x8dp"
+        android:paddingRight="@dimen/x8dp">
+
+
+        <com.ctrlplusz.anytextview.AnyEditTextView
+            android:id="@+id/edtSearchField"
+            android:layout_width="match_parent"
+            android:paddingRight="@dimen/x30dp"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:background="@drawable/imgninepatch2"
+            android:gravity="center_vertical"
+            android:hint="@string/type_here"
+            android:imeOptions="actionSearch"
+            android:inputType="text"
+            android:maxLength="21"
+            android:paddingLeft="@dimen/x30dp"
+            android:singleLine="true"
+            android:textColor="@color/white"
+            android:textColorHint="@color/white"
+            android:textSize="18sp"
+            app:typeface="@string/font_bold" />
+
+
+
+        <ImageButton
+            android:id="@+id/btnLeftSearchField"
+            android:layout_width="@dimen/x30dp"
+            android:layout_height="match_parent"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:background="@color/base_color"
+            android:padding="@dimen/x5dp"
+            android:src="@drawable/imgsearch" />
+
+        <ImageButton
+            android:id="@+id/btnRightSearchField"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginLeft="@dimen/x25dp"
+            android:background="@color/base_color"
+            android:padding="@dimen/x5dp"
+            android:src="@drawable/imgcancel" />
+
+    </RelativeLayout>
+
+</LinearLayout>

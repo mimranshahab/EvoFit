@@ -1,0 +1,199 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:descendantFocusability="blocksDescendants"
+    android:orientation="vertical">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+
+        <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+            android:id="@+id/layoutItem"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="#000">
+
+
+            <ImageView
+                android:id="@+id/placeHolder"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/imgimg_placeholder_fav"
+                android:visibility="invisible" />
+
+
+            <ImageView
+                android:id="@+id/imgItemImage"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBottom="@id/placeHolder"
+                android:layout_alignLeft="@id/placeHolder"
+                android:layout_alignRight="@id/placeHolder"
+                android:layout_alignTop="@id/placeHolder"
+                android:scaleType="centerCrop"
+                android:src="@drawable/imgimg_placeholder_fav" />
+
+        </RelativeLayout>
+
+
+        <LinearLayout
+
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center_vertical"
+            android:orientation="vertical"
+            android:paddingLeft="@dimen/x10dp">
+
+            <com.ctrlplusz.anytextview.AnyTextView
+                android:id="@+id/txtItemTitle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ellipsize="end"
+                android:lines="1"
+                android:text="Cheetos"
+                android:textColor="@color/font_bold_black"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                app:typeface="@string/font_bold" />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/x5dp">
+
+
+                <com.ctrlplusz.anytextview.AnyTextView
+                    android:id="@+id/txtDescription"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="@dimen/x5dp"
+                    android:ellipsize="end"
+                    android:lines="1"
+                    android:text="185"
+                    android:textSize="12sp"
+                    android:visibility="gone"
+                    app:typeface="@string/font_normal" />
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:visibility="gone">
+
+                <com.ctrlplusz.anytextview.AnyTextView
+                    android:id="@+id/txtItemCurrencyType"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:paddingRight="@dimen/x5dp"
+                    android:text="BD"
+                    android:textColor="#515252"
+                    android:textSize="12sp"
+                    app:typeface="@string/font_normal" />
+
+                <com.ctrlplusz.anytextview.AnyTextView
+                    android:id="@+id/txtItemOfferPrice"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:ellipsize="end"
+                    android:gravity="center"
+                    android:lines="1"
+                    android:text="0.500"
+                    android:textColor="@color/base_blue"
+                    android:textSize="15sp"
+                    android:textStyle="bold"
+                    app:typeface="@string/font_bold" />
+
+            </LinearLayout>
+
+
+        </LinearLayout>
+
+
+        <LinearLayout
+
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:gravity="right"
+            android:orientation="vertical"
+            android:padding="@dimen/x5dp">
+
+            <LinearLayout
+
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:layout_weight="1">
+
+                <com.ctrlplusz.anytextview.AnyTextView
+                    android:id="@+id/txtOutOfStock"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="OUT OF STOCK"
+                    android:textColor="#D35757"
+                    android:textSize="12sp"
+                    android:visibility="gone"
+                    app:typeface="@string/font_bold" />
+
+                <ImageView
+                    android:id="@+id/imgItemLike"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:padding="@dimen/x5dp"
+                    android:src="@drawable/imgheart" />
+
+
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="right"
+                android:visibility="gone">
+
+                <ImageButton
+                    android:id="@+id/btnDecrement"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/imgminus" />
+
+                <com.ctrlplusz.anytextview.AnyTextView
+                    android:id="@+id/txtItemQuantity"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/imgquantity"
+                    android:gravity="center"
+                    android:text="1"
+                    app:typeface="@string/font_normal" />
+
+                <ImageButton
+                    android:id="@+id/btnIncrement"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/imgplus" />
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="1px"
+        android:background="#BABCBC" />
+
+</LinearLayout>
+
+

@@ -1,0 +1,194 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#fff"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+
+        <ImageView
+            android:id="@+id/imgBanner"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/x220dp"
+            android:background="#fff"
+            android:scaleType="fitCenter"
+            android:src="#fff" />
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/x10dp">
+
+                <LinearLayout
+
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:orientation="vertical"
+                    android:padding="@dimen/x10dp">
+
+                    <com.ctrlplusz.anytextview.AnyTextView
+                        android:id="@+id/txtItemTitle"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:ellipsize="end"
+                        android:lines="1"
+                        android:text="Cheetos"
+                        android:textColor="@color/font_bold_black"
+                        android:textSize="18sp"
+                        android:textStyle="bold"
+                        app:typeface="@string/font_bold" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="@dimen/x5dp">
+
+
+                        <com.ctrlplusz.anytextview.AnyTextView
+                            android:id="@+id/txtMiniDescription"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:ellipsize="end"
+                            android:singleLine="true"
+                            android:text="mini detail"
+                            android:textSize="12sp"
+                            app:typeface="@string/font_normal" />
+
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
+
+                        <com.ctrlplusz.anytextview.AnyTextView
+                            android:id="@+id/txtItemCurrencyType"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:paddingRight="@dimen/x5dp"
+                            android:text="AED"
+                            android:textColor="@color/base_color"
+                            android:textSize="12sp"
+                            app:typeface="@string/font_normal" />
+
+                        <com.ctrlplusz.anytextview.AnyTextView
+                            android:id="@+id/txtItemOfferPrice"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:ellipsize="end"
+                            android:lines="1"
+                            android:text="0.500"
+                            android:textColor="@color/base_color"
+                            android:textSize="14sp"
+                            android:textStyle="bold"
+                            app:typeface="@string/font_bold" />
+
+                    </LinearLayout>
+
+
+                </LinearLayout>
+
+
+                <LinearLayout
+
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:gravity="right"
+                    android:orientation="vertical"
+                    android:padding="@dimen/x12dp">
+
+                    <LinearLayout
+
+                        android:layout_width="wrap_content"
+                        android:layout_height="0dp"
+                        android:layout_weight="1"
+                        android:paddingBottom="@dimen/x15dp">
+
+                        <com.ctrlplusz.anytextview.AnyTextView
+                            android:id="@+id/txtOutOfStock"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="OUT OF STOCK"
+                            android:textColor="#D35757"
+                            android:textSize="12sp"
+                            android:visibility="gone"
+                            app:typeface="@string/font_bold" />
+
+                        <ImageView
+                            android:id="@+id/imgItemLike"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
+                            android:padding="@dimen/x5dp"
+                            android:src="@drawable/imgheart_empty" />
+
+
+                    </LinearLayout>
+
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="right">
+
+                        <ImageButton
+                            android:id="@+id/btnDecrement"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:background="@drawable/imgminus" />
+
+                        <com.ctrlplusz.anytextview.AnyTextView
+                            android:id="@+id/txtItemQuantity"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:background="@drawable/imgquantity"
+                            android:gravity="center"
+                            android:text="1"
+                            app:typeface="@string/font_normal" />
+
+                        <ImageButton
+                            android:id="@+id/btnIncrement"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:background="@drawable/imgplus" />
+                    </LinearLayout>
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="3px"
+                android:background="#DAE1E4" />
+
+        </LinearLayout>
+
+        <com.ctrlplusz.anytextview.AnyTextView
+            android:id="@+id/txtDescription"
+            android:layout_width="match_parent"
+            android:layout_height="fill_parent"
+            android:ellipsize="end"
+            android:padding="@dimen/x15dp"
+            android:text="No Description"
+            android:textColor="@color/text_grey"
+            app:typeface="@string/font_normal" />
+
+
+    </LinearLayout>
+</ScrollView>

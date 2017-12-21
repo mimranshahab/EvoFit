@@ -1,0 +1,425 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true"
+    android:focusableInTouchMode="true">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#EDEDED"
+        android:orientation="vertical"
+        android:paddingTop="@dimen/x25dp">
+
+        <com.ctrlplusz.anytextview.AnyTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingLeft="@dimen/x20dp"
+            android:text="@string/select_slot_to_recieve_your_order"
+            android:textColor="@color/base_color"
+            android:textSize="15sp" />
+
+        <HorizontalScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/x5dp"
+            android:paddingLeft="@dimen/x15dp"
+            android:paddingRight="@dimen/x15dp"
+            android:scrollbars="none">
+
+            <RadioGroup
+                android:id="@+id/rgTimeSelection"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:paddingTop="@dimen/x10dp">
+
+                <RadioButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/x5dp"
+                    android:background="@drawable/radiobutton_custom_state_selection_am"
+                    android:button="@null"
+                    android:gravity="center"
+                    android:paddingBottom="@dimen/x5dp"
+                    android:text="12-1"
+                    android:textColor="@color/base_color"
+                    android:visibility="gone" />
+
+
+                <RadioButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/x5dp"
+                    android:background="@drawable/radiobutton_custom_state_selection_am"
+                    android:button="@null"
+                    android:gravity="center"
+                    android:paddingBottom="@dimen/x5dp"
+                    android:text="1-2"
+                    android:textColor="@color/base_color"
+                    android:visibility="gone" />
+
+                <RadioButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/x5dp"
+                    android:background="@drawable/radiobutton_custom_state_selection_am"
+                    android:button="@null"
+                    android:gravity="center"
+                    android:paddingBottom="@dimen/x5dp"
+                    android:text="2-3"
+                    android:textColor="@color/base_color"
+                    android:visibility="gone" />
+
+                <RadioButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/x5dp"
+                    android:background="@drawable/radiobutton_custom_state_selection_am"
+                    android:button="@null"
+                    android:gravity="center"
+                    android:paddingBottom="@dimen/x5dp"
+                    android:text="3-4"
+                    android:textColor="@color/base_color"
+                    android:visibility="gone" />
+
+                <RadioButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/x5dp"
+                    android:background="@drawable/radiobutton_custom_state_selection_am"
+                    android:button="@null"
+                    android:gravity="center"
+                    android:paddingBottom="@dimen/x5dp"
+                    android:text="4-5"
+                    android:textColor="@color/base_color"
+                    android:visibility="gone" />
+
+                <RadioButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/x5dp"
+                    android:background="@drawable/radiobutton_custom_state_selection_am"
+                    android:button="@null"
+                    android:gravity="center"
+                    android:paddingBottom="@dimen/x5dp"
+                    android:text="5-6"
+                    android:textColor="@color/base_color"
+                    android:visibility="gone" />
+
+                <RadioButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/x5dp"
+                    android:background="@drawable/radiobutton_custom_state_selection_am"
+                    android:button="@null"
+                    android:gravity="center"
+                    android:paddingBottom="@dimen/x5dp"
+                    android:text="6-7"
+                    android:textColor="@color/base_color"
+                    android:visibility="gone" />
+
+                <RadioButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/x5dp"
+                    android:background="@drawable/radiobutton_custom_state_selection_am"
+                    android:button="@null"
+                    android:gravity="center"
+                    android:paddingBottom="@dimen/x5dp"
+                    android:text="7-8"
+                    android:textColor="@color/base_color"
+                    android:visibility="gone" />
+
+                <RadioButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/x5dp"
+                    android:background="@drawable/radiobutton_custom_state_selection_am"
+                    android:button="@null"
+                    android:gravity="center"
+                    android:paddingBottom="@dimen/x5dp"
+                    android:text="8-9"
+                    android:textColor="@color/base_color"
+                    android:visibility="gone" />
+
+                <RadioButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/x5dp"
+                    android:background="@drawable/radiobutton_custom_state_selection_am"
+                    android:button="@null"
+                    android:gravity="center"
+                    android:paddingBottom="@dimen/x5dp"
+                    android:text="9-10"
+                    android:textColor="@color/base_color"
+                    android:visibility="gone" />
+
+                <RadioButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/x5dp"
+                    android:background="@drawable/radiobutton_custom_state_selection_am"
+                    android:button="@null"
+                    android:gravity="center"
+                    android:paddingBottom="@dimen/x5dp"
+                    android:text="10-11"
+                    android:textColor="@color/base_color"
+                    android:visibility="gone" />
+
+
+                <RadioButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/x5dp"
+                    android:background="@drawable/radiobutton_custom_state_selection_am"
+                    android:button="@null"
+                    android:gravity="center"
+                    android:paddingBottom="@dimen/x5dp"
+                    android:text="11-12"
+                    android:textColor="@color/base_color"
+                    android:visibility="gone" />
+
+
+                <!--12 onwards -->
+
+                <RadioButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/x5dp"
+                    android:background="@drawable/radiobutton_custom_state_selection_pm"
+                    android:button="@null"
+                    android:gravity="center"
+                    android:paddingBottom="@dimen/x5dp"
+                    android:text="12-1"
+                    android:textColor="@color/base_color"
+                    android:visibility="gone" />
+
+                <RadioButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/x5dp"
+                    android:background="@drawable/radiobutton_custom_state_selection_pm"
+                    android:button="@null"
+                    android:gravity="center"
+                    android:paddingBottom="@dimen/x5dp"
+                    android:text="1-2"
+                    android:textColor="@color/base_color"
+                    android:visibility="gone" />
+
+                <RadioButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/x5dp"
+                    android:background="@drawable/radiobutton_custom_state_selection_pm"
+                    android:button="@null"
+                    android:gravity="center"
+                    android:paddingBottom="@dimen/x5dp"
+                    android:text="2-3"
+                    android:textColor="@color/base_color"
+                    android:visibility="gone" />
+
+                <RadioButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/x5dp"
+                    android:background="@drawable/radiobutton_custom_state_selection_pm"
+                    android:button="@null"
+                    android:gravity="center"
+                    android:paddingBottom="@dimen/x5dp"
+                    android:text="3-4"
+                    android:textColor="@color/base_color"
+                    android:visibility="gone" />
+
+                <RadioButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/x5dp"
+                    android:background="@drawable/radiobutton_custom_state_selection_pm"
+                    android:button="@null"
+                    android:gravity="center"
+                    android:paddingBottom="@dimen/x5dp"
+                    android:text="4-5"
+                    android:textColor="@color/base_color"
+                    android:visibility="gone" />
+
+                <RadioButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/x5dp"
+                    android:background="@drawable/radiobutton_custom_state_selection_pm"
+                    android:button="@null"
+                    android:gravity="center"
+                    android:paddingBottom="@dimen/x5dp"
+                    android:text="5-6"
+                    android:textColor="@color/base_color"
+                    android:visibility="gone" />
+
+                <RadioButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/x5dp"
+                    android:background="@drawable/radiobutton_custom_state_selection_pm"
+                    android:button="@null"
+                    android:gravity="center"
+                    android:paddingBottom="@dimen/x5dp"
+                    android:text="6-7"
+                    android:textColor="@color/base_color"
+                    android:visibility="gone" />
+
+                <RadioButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/x5dp"
+                    android:background="@drawable/radiobutton_custom_state_selection_pm"
+                    android:button="@null"
+                    android:gravity="center"
+                    android:paddingBottom="@dimen/x5dp"
+                    android:text="7-8"
+                    android:textColor="@color/base_color"
+                    android:visibility="gone" />
+
+                <RadioButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/x5dp"
+                    android:background="@drawable/radiobutton_custom_state_selection_pm"
+                    android:button="@null"
+                    android:gravity="center"
+                    android:paddingBottom="@dimen/x5dp"
+                    android:text="8-9"
+                    android:textColor="@color/base_color"
+                    android:visibility="gone" />
+
+                <RadioButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/x5dp"
+                    android:background="@drawable/radiobutton_custom_state_selection_pm"
+                    android:button="@null"
+                    android:gravity="center"
+                    android:paddingBottom="@dimen/x5dp"
+                    android:text="9-10"
+                    android:textColor="@color/base_color"
+                    android:visibility="gone" />
+
+
+                <RadioButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/x5dp"
+                    android:background="@drawable/radiobutton_custom_state_selection_pm"
+                    android:button="@null"
+                    android:gravity="center"
+                    android:paddingBottom="@dimen/x5dp"
+                    android:text="10-11"
+                    android:textColor="@color/base_color"
+                    android:visibility="gone" />
+
+
+                <RadioButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/x5dp"
+                    android:background="@drawable/radiobutton_custom_state_selection_pm"
+                    android:button="@null"
+                    android:gravity="center"
+                    android:paddingBottom="@dimen/x5dp"
+                    android:text="11-12"
+                    android:textColor="@color/base_color"
+                    android:visibility="gone" />
+
+            </RadioGroup>
+        </HorizontalScrollView>
+
+        <com.ctrlplusz.anytextview.AnyTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/x10dp"
+            android:layout_marginTop="@dimen/x10dp"
+            android:paddingLeft="@dimen/x20dp"
+            android:text="@string/set_frequency"
+            android:textColor="@color/base_color" />
+
+        <RadioGroup
+            android:id="@+id/rgFrequencySelection"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/x5dp"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <RadioButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@android:color/transparent"
+                android:button="@drawable/radiobutton_one_time_state_selection"
+                android:textColor="@color/base_color" />
+
+            <RadioButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@android:color/transparent"
+                android:button="@drawable/radiobutton_weekly_state_selection"
+                android:textColor="@color/base_color" />
+
+            <RadioButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@android:color/transparent"
+                android:button="@drawable/radiobutton_monthly_state_selection"
+                android:textColor="@color/base_color" />
+        </RadioGroup>
+
+        <com.ctrlplusz.anytextview.AnyTextView
+            android:id="@+id/anyTextView4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/x5dp"
+            android:layout_marginTop="@dimen/x5dp"
+            android:paddingLeft="@dimen/x22dp"
+            android:text="@string/additional_notes"
+            android:textColor="@color/base_color" />
+
+        <com.andreabaccega.widget.FormEditText
+            android:id="@+id/edtAdditionalNotes"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/x20dp"
+            android:layout_marginLeft="@dimen/x16dp"
+            android:layout_marginRight="@dimen/x16dp"
+            android:layout_marginTop="@dimen/x5dp"
+            android:background="@drawable/imgtext_box"
+            android:ellipsize="end"
+            android:gravity="top"
+            android:hint="@string/add_a_note_to_your_order"
+            android:maxLength="350"
+            android:maxLines="10"
+            android:padding="@dimen/x10dp"
+            android:textColorHint="@color/base_grey"
+            android:textSize="12sp" />
+
+        <!--<ImageButton-->
+        <!--android:id="@+id/btnDone"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:background="#0000"-->
+        <!--android:src="@drawable/imgdone_bttn" />-->
+
+        <com.ctrlplusz.anytextview.AnyTextView
+            android:id="@+id/btnDone"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:background="@drawable/img_yes"
+            android:gravity="center"
+            android:text="@string/done"
+            android:textColor="@color/white"
+            android:textSize="17sp"
+            app:typeface="@string/font_normal" />
+
+
+    </LinearLayout>
+</ScrollView>

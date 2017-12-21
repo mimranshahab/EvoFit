@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#fff"
+    android:gravity="center_horizontal"
+    android:orientation="vertical"
+    android:paddingTop="@dimen/x20dp">
+
+    <com.ctrlplusz.anytextview.AnyTextView
+        android:id="@+id/anyTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/please_feel_free_to_contact_us_for"
+        android:textColor="@color/text_dark"
+        android:textSize="18sp"
+        app:typeface="@string/font_bold" />
+
+    <com.ctrlplusz.anytextview.AnyTextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/x20dp"
+        android:text="@string/any_enquiries_on_the_option_below"
+        android:textColor="@color/text_dark"
+        android:textSize="18sp"
+        app:typeface="@string/font_bold" />
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="2px"
+        android:background="@color/text_light_grey" />
+
+
+    <LinearLayout
+        android:id="@+id/layoutCall"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:padding="@dimen/x10dp">
+
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingLeft="@dimen/x20dp"
+            android:paddingRight="@dimen/x10dp"
+            android:src="@drawable/imgcall" />
+
+        <com.ctrlplusz.anytextview.AnyTextView
+            android:id="@+id/txtPhoneNumber"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text=""
+            android:textColor="@color/text_dark"
+            android:textSize="18sp"
+
+            app:typeface="@string/font_normal" />
+
+
+    </LinearLayout>
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="2px"
+        android:background="@color/text_light_grey" />
+
+
+    <LinearLayout
+        android:id="@+id/layoutFeedback"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:padding="@dimen/x10dp">
+
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingLeft="@dimen/x20dp"
+            android:paddingRight="@dimen/x10dp"
+            android:src="@drawable/imgfeedback" />
+
+        <com.ctrlplusz.anytextview.AnyTextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:drawablePadding="@dimen/x10dp"
+            android:drawableRight="@drawable/imgnext"
+            android:paddingRight="@dimen/x10dp"
+            android:text="@string/feedback_and_suggestions"
+            android:textColor="@color/text_dark"
+            android:textSize="18sp"
+            app:typeface="@string/font_normal" />
+
+
+    </LinearLayout>
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="2px"
+        android:background="@color/text_light_grey" />
+
+
+    <LinearLayout
+        android:id="@+id/contReportAnIssue"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:padding="@dimen/x10dp">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingLeft="@dimen/x20dp"
+            android:paddingRight="@dimen/x10dp"
+            android:src="@drawable/imgreport" />
+
+        <com.ctrlplusz.anytextview.AnyTextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:drawablePadding="@dimen/x10dp"
+            android:drawableRight="@drawable/imgnext"
+            android:paddingRight="@dimen/x10dp"
+            android:text="@string/report_an_issue"
+            android:textColor="@color/text_dark"
+            android:textSize="18sp"
+            app:typeface="@string/font_normal" />
+    </LinearLayout>
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="2px"
+        android:background="@color/text_light_grey" />
+
+</LinearLayout>

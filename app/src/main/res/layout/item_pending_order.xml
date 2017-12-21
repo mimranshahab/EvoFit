@@ -1,0 +1,240 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="#fff"
+    android:orientation="vertical">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:padding="@dimen/x15dp">
+
+
+        <com.ctrlplusz.anytextview.AnyTextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:paddingLeft="@dimen/x15dp"
+            android:text="Order ID "
+            android:textSize="18sp"
+            app:typeface="@string/font_normal" />
+
+
+        <com.ctrlplusz.anytextview.AnyTextView
+            android:id="@+id/txtOrderNo"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:ellipsize="end"
+            android:singleLine="true"
+            android:text="0000"
+            android:textColor="@color/text_dark"
+            android:textSize="18sp"
+            app:typeface="@string/font_bold" />
+
+        <ImageButton
+            android:id="@+id/btnOptions"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginRight="@dimen/x8dp"
+            android:background="#0000"
+            android:padding="@dimen/x8dp"
+            android:src="@drawable/imgdot_nav" />
+
+        <ImageButton
+            android:id="@+id/btnExpand"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:background="#0000"
+            android:padding="@dimen/x5dp"
+            android:src="@drawable/imgarrow" />
+
+
+    </LinearLayout>
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="2px"
+        android:background="@color/base_grey"/>
+
+    <LinearLayout
+        android:id="@+id/contOrderExpandable"
+        android:layout_width="match_parent"
+        android:visibility="gone"
+        android:layout_height="wrap_content">
+
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="@dimen/x45dp"
+            android:src="@drawable/imgvertical_seperator" />
+
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1">
+
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center_vertical"
+                android:orientation="vertical">
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+
+                    <com.ctrlplusz.anytextview.AnyTextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0.8"
+                        android:ellipsize="end"
+                        android:padding="@dimen/x5dp"
+                        android:singleLine="true"
+                        android:text="Order Date"
+                        android:textColor="@color/text_dark"
+                        android:textSize="14sp"
+                        app:typeface="@string/font_bold" />
+
+                    <com.ctrlplusz.anytextview.AnyTextView
+                        android:id="@+id/txtOrderDate"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:ellipsize="end"
+                        android:padding="@dimen/x5dp"
+                        android:singleLine="true"
+                        android:text="10 March, 2017"
+                        android:textColor="@color/text_grey"
+                        android:textSize="14sp"
+                        app:typeface="@string/font_normal" />
+
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+
+                    <com.ctrlplusz.anytextview.AnyTextView
+                        android:id="@+id/anyTextView2"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0.8"
+                        android:ellipsize="end"
+                        android:padding="@dimen/x5dp"
+                        android:singleLine="true"
+                        android:text="Delivery Time"
+                        android:textColor="@color/text_dark"
+                        android:textSize="14sp"
+                        app:typeface="@string/font_bold" />
+
+                    <com.ctrlplusz.anytextview.AnyTextView
+                        android:id="@+id/txtDeliveryTime"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:ellipsize="end"
+                        android:padding="@dimen/x5dp"
+                        android:singleLine="true"
+                        android:text="7:30pm - 9:30pm"
+                        android:textColor="@color/text_grey"
+                        android:textSize="14sp"
+                        app:typeface="@string/font_normal" />
+
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+
+                    <com.ctrlplusz.anytextview.AnyTextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0.8"
+                        android:ellipsize="end"
+                        android:padding="@dimen/x5dp"
+                        android:singleLine="true"
+                        android:text="Total"
+                        android:textColor="@color/text_dark"
+                        android:textSize="14sp"
+                        app:typeface="@string/font_bold" />
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1">
+
+                        <com.ctrlplusz.anytextview.AnyTextView
+                            android:id="@id/txtCurrencyType"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:ellipsize="end"
+                            android:padding="@dimen/x5dp"
+                            android:singleLine="true"
+                            android:text="AED"
+                            android:textColor="@color/text_dark"
+                            android:textSize="14sp"
+                            app:typeface="@string/font_bold" />
+
+
+                        <com.ctrlplusz.anytextview.AnyTextView
+                            android:id="@+id/txtPrice"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:ellipsize="end"
+                            android:padding="@dimen/x5dp"
+                            android:singleLine="true"
+                            android:text="000"
+                            android:textColor="@color/base_color"
+                            android:textSize="14sp"
+                            app:typeface="@string/font_bold" />
+
+                    </LinearLayout>
+
+
+                </LinearLayout>
+
+
+            </LinearLayout>
+
+
+            <ImageButton
+                android:id="@+id/btnOrderDetail"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="#0000"
+                android:padding="@dimen/x10dp"
+                android:src="@drawable/imgeye" />
+
+
+            <ImageButton
+                android:id="@+id/btnOrderCancel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="#0000"
+                android:padding="@dimen/x10dp"
+                android:src="@drawable/imgdelete" />
+
+
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+
+
+</LinearLayout>

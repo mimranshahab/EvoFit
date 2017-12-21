@@ -1,0 +1,141 @@
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true"
+    android:focusableInTouchMode="true">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#EDEDED">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#FFFFFF"
+            android:orientation="vertical"
+            android:paddingTop="@dimen/x20dp">
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginBottom="@dimen/x10dp"
+                android:layout_marginTop="@dimen/x20dp">
+
+                <de.hdodenhof.circleimageview.CircleImageView
+                    android:id="@+id/btnUploadImage"
+                    android:layout_width="@dimen/x80dp"
+                    android:layout_height="@dimen/x80dp"
+                    android:layout_gravity="center_horizontal"
+                    android:background="#0000"
+                    android:contentDescription="@string/camera_image"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/user_image"
+                    android:layout_alignParentTop="true"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentStart="true" />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignBottom="@+id/btnUploadImage"
+                    android:layout_alignRight="@+id/btnUploadImage"
+                    android:paddingBottom="@dimen/x3dp"
+                    android:paddingRight="@dimen/x3dp"
+                    android:src="@drawable/imgcamera" />
+
+            </RelativeLayout>
+
+            <com.ctrlplusz.anytextview.AnyTextView
+                android:id="@+id/txtFullName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/x5dp"
+                android:layout_marginLeft="@dimen/x20dp"
+                android:layout_marginTop="@dimen/x5dp"
+                android:text="@string/full_name"
+                android:textColor="@color/base_color"
+                app:typeface="@string/font_normal" />
+
+            <com.andreabaccega.widget.FormEditText
+                android:id="@+id/edFullName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/x5dp"
+                android:background="@drawable/imgninepatch"
+                android:gravity="bottom"
+                android:inputType="textPersonName"
+                android:text="John Doe"
+                android:maxLength="30"
+                android:maxLines="1"
+                android:paddingLeft="@dimen/x20dp"
+                android:textColor="@color/text_grey"
+                app:testType="personFullName" />
+
+            <com.ctrlplusz.anytextview.AnyTextView
+                android:id="@+id/txtEmailAddress"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/x7dp"
+                android:layout_marginBottom="@dimen/x5dp"
+                android:paddingLeft="@dimen/x20dp"
+                android:text="@string/email_address"
+                android:textColor="@color/base_color"
+                app:typeface="@string/font_normal" />
+
+            <com.andreabaccega.widget.FormEditText
+                android:id="@+id/edEmailAddress"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/x5dp"
+                android:background="@drawable/imgninepatch"
+                android:gravity="bottom"
+                android:text="abc@email.com"
+                android:focusable="false"
+                android:editable="false"
+                android:inputType="textEmailAddress"
+                android:maxLength="30"
+                android:maxLines="1"
+                android:paddingLeft="@dimen/x20dp"
+                android:textColor="@color/text_grey"
+                app:testType="email" />
+
+            <com.ctrlplusz.anytextview.AnyTextView
+                android:id="@+id/txtMobileNumber"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/x5dp"
+                android:layout_marginTop="@dimen/x7dp"
+                android:paddingLeft="@dimen/x20dp"
+                android:text="@string/mobile_number"
+                android:textColor="@color/base_color"
+                android:textSize="13sp"
+                app:typeface="@string/font_normal" />
+
+            <com.andreabaccega.widget.FormEditText
+                android:id="@+id/edMobileNumber"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/x5dp"
+                android:background="@android:color/transparent"
+                android:inputType="number"
+                android:maxLength="16"
+                android:maxLines="1"
+                android:paddingBottom="@dimen/x3dp"
+                android:paddingLeft="@dimen/x20dp"
+                android:paddingTop="@dimen/x5dp"
+                android:text="123456789"
+                android:textColor="@color/text_grey"
+                app:testType="phone" />
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="3px"
+                android:layout_marginTop="@dimen/x7dp"
+                android:background="#D8D7D6" />
+        </LinearLayout>
+
+    </LinearLayout>
+</ScrollView>

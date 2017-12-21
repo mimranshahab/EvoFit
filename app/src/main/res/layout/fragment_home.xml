@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#FFF">
+
+<LinearLayout
+    android:id="@+id/contAddress"
+    android:layout_width="match_parent"
+    android:paddingLeft="@dimen/x15dp"
+    android:paddingRight="@dimen/x15dp"
+    android:paddingTop="@dimen/x5dp"
+    android:paddingBottom="@dimen/x5dp"
+    android:background="@drawable/search_bg"
+    android:gravity="center"
+    android:layout_height="wrap_content">
+
+    <com.ctrlplusz.anytextview.AnyTextView
+        android:id="@+id/txtAddress"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/search"
+        android:padding="@dimen/x8dp"
+        android:drawablePadding="@dimen/x8dp"
+        android:gravity="center_vertical"
+        android:textColor="@color/text_dark"
+        android:textSize="11sp"
+        android:singleLine="true"
+        android:ellipsize="end"
+        android:drawableLeft="@drawable/search_pin"/>
+
+</LinearLayout>
+
+    <GridView
+        android:layout_below="@id/contAddress"
+        android:id="@+id/gvHome"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:background="#FFF"
+        android:gravity="center"
+        android:numColumns="2"
+        android:padding="@dimen/x5dp">
+
+    </GridView>
+
+
+    <TextView
+        android:id="@+id/txtEmpty"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:layout_centerInParent="true"
+        android:text="No Items"
+        android:textSize="18sp"
+        android:visibility="gone" />
+
+</RelativeLayout>

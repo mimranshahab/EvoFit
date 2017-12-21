@@ -1,0 +1,664 @@
+<resources>
+    <string name="app_name">Grosta</string>
+    <string name="google_maps_key">AIzaSyBsP8jCqqrTckRDPcfaefKutSDo3NBENok</string>
+
+    <!--FONTS-->
+    <string name="font_normal">Roboto-Light_D.ttf</string>
+    <string name="font_bold">Roboto-Regular_1B.ttf</string>
+    <string name="next_build">This feature will be implemented in next build</string>
+    <string name="guest_msg">Please login to use this feature.</string>
+    <string name="pick_image_intent_text">Choose an image</string>
+
+    <!--Side Bar-->
+    <string name="notifications">Notifications</string>
+    <string name="orderHistory">Order History</string>
+    <string name="home">Home</string>
+    <string name="favorites">Favorites</string>
+    <string name="settings">Settings</string>
+    <string name="contactUs">Contact Us</string>
+    <string name="myAddresses">My Addresses</string>
+    <string name="aboutApp">About App</string>
+    <string name="logout">Logout</string>
+    <!--Checkout Bar-->
+
+    <!--login-->
+    <string name="forgot_password">Forgot Password?</string>
+    <string name="not_a_member_create_an_account">Not a member? Create an Account</string>
+    <string name="new_user">New User?</string>
+    <!--login-->
+
+    <!--SignUp/Edit Profile-->
+    <string name="full_name">Full Name</string>
+    <!--SignUp/Edit Profile-->
+
+    <!--Login/SignUP-->
+    <string name="password">Password</string>
+    <string name="email_address">Email Address</string>
+    <!--Common in Login/SignUP-->
+
+    <!--Forget password -->
+    <string name="tvEmailAdress">Enter E-mail Address</string>
+    <string name="submit_button_image">submit Button Image</string>
+    <!--Forget password-->
+
+    <!--verify Number-->
+    <string name="country">Country</string>
+    <string name="we_ll_text_you_code_to_confirm_your_number">We\'ll text you a code to confirm your number</string>
+    <!--verify Number-->
+
+    <!--common in Signup / verify Number/Edit Profile-->
+    <string name="mobile_number">Mobile Number</string>
+    <!--common in Signup / verify Number-->
+
+    <!--verification code  -->
+    <string name="enter_verification_code">Enter Verification Code</string>
+    <string name="a_verification_code_has_been_sent_to_your_mobile_phone">A verification code has been sent to your mobile phone</string>
+    <string name="didn_t_get_a_code_yet_wait_for_3_43_seconds">Didn\'t get a code yet? Wait for</string>
+    <string name="resend_code">Resend Code</string>
+    <!--verification code-->
+
+    <string name="address">Address</string>
+    <!--verification code-->
+
+    <!--settings-->
+    <string name="notification">Notifications</string>
+    <string name="change_password">Change Password</string>
+    <!--settings-->
+
+    <!--common in change password/forget password-->
+    <string name="confirm_password">Confirm Password</string>
+    <!---->
+    <!--About us -->
+    <string name="overview">Overview</string>
+    <!--About us-->
+
+    <!--Report an issue -->
+    <string name="provide_valid_email_address">You have to provide a valid email address so we can get back to you</string>
+    <string name="missing_products">Missing Products</string>
+    <string name="in_accurate_product_description">Inaccurate product description</string>
+    <string name="payment_issues">Payment issues</string>
+    <string name="something_else">Something else....</string>
+    <string name="please_type_your_issue_here">Please type your issue here</string>
+    <!--Report an issue-->
+
+    <!--common in Signup/Edit Profile/Change Password -->
+    <string name="camera_image">Camera Image</string>
+    <!--Signup/Edit Profile/Change Password-->
+
+    <!--Instant_order detail-->
+    <string name="submitted">Submitted</string>
+    <string name="assigned">Assigned</string>
+    <string name="in_progress">In Progress</string>
+    <string name="out_for_delivery">Out for Delivery</string>
+    <string name="add_remove_product">Add/Remove Product</string>
+    <string name="estimated_delivery_time">Estimated delivery time</string>
+    <!--Instant order detail-->
+
+    <!--change password-->
+    <string name="enter_current_password">Enter Current Password</string>
+    <string name="new_password">New Password</string>
+    <!--change password-->
+
+    <!--Line-->
+    <string name="line">Line</string>
+    <!--Line-->
+
+    <!--Frequency Selection -->
+    <string name="select_slot_to_recieve_your_order">Select Slot to Receive your Order</string>
+    <string name="add_a_note_to_your_order">Add a note to your order....</string>
+    <string name="add_a_color_to_your_order">Add a color to your order</string>
+    <string name="additional_notes">Additional Notes</string>
+    <string name="set_frequency">Set Frequency</string>
+    <!--Frequency Selection -->
+
+    <!--Order Summary -->
+    <string name="order_summary">Order Summary</string>
+    <string name="thank_you">Thank You</string>
+    <string name="your_order_has_been_confirmed">Your order has been confirmed and will be  dispatched soon. Meanwhile you can \n check status of your order.</string>
+    <string name="your_order_summary">Your Order Summary</string>
+    <string name="order_id">Order ID</string>
+    <string name="order_date">Order Date</string>
+    <string name="delivery_time">Delivery Time</string>
+    <string name="cash_on_delivery">Cash on Delivery</string>
+    <string name="frequency">Frequency</string>
+    <string name="once">Once</string>
+    <string name="additional_note">Additional Notes</string>
+    <string name="Address">Address</string>
+    <string name="total">Total</string>
+    <string name="payment">Payment</string>
+    <!--Order Summary-->
+
+    <!--Add Address-->
+    <string name="title_address">Address</string>
+    <string name="selection_delivery_location">Select Delivery Location From Google Map</string>
+    <string name="country_name">Country Name</string>
+    <string name="city_name">City Name</string>
+    <string name="building_name">Building Name</string>
+    <string name="floor_optional">Floor (optional)</string>
+    <string name="apartment_optional">Apartment (optional)</string>
+    <string name="nearest_landmark_optional">Nearest Landmark (optional)</string>
+    <string name="location_type">Location Type</string>
+    <string name="street_name">Street Name</string>
+    <!--Add Address-->
+
+    <!--contact us -->
+    <string name="please_feel_free_to_contact_us_for">Please feel free to Contact Us for</string>
+    <string name="any_enquiries_on_the_option_below">any enquiries on the option below:</string>
+    <!--contact us -->
+
+    <!--empty cart -->
+    <string name="start_shopping_to_enjoy">Start shopping to enjoy shopping experiences with us.</string>
+    <!--empty cart-->
+
+    <!--fragment Favorite -->
+    <string name="no_items">No Items</string>
+    <!--fragment Favorite-->
+
+    <!--fragment feedback-->
+    <string name="enter_your_detail_here">Enter your detail here...</string>
+    <!--fragment feedback-->
+
+    <!--order detail -->
+    <string name="date">Date:</string>
+    <string name="order_id2">Order ID:</string>
+    <string name="frequency2">Frequency:</string>
+    <string name="delivery_time2">Delivery Time:</string>
+    <string name="address2">Address:</string>
+    <string name="additional_notes2">Additional Notes:</string>
+    <string name="total2">Total:</string>
+    <!--order detail-->
+
+    <!--product detail-->
+    <string name="detail">detail</string>
+    <!--product detail-->
+
+    <!--product listing -->
+    <string name="continueCheckout">Continue Checkout</string>
+    <!--product listing-->
+
+    <!--fragment pending option-->
+    <string name="add_remove_products">Add/remove products</string>
+    <string name="edit_scheduling">Edit Scheduling</string>
+    <string name="delete_from_order_history">Delete from Order History</string>
+    <string name="close">Close</string>
+    <!--fragment pending option-->
+
+    <!--shopping cart-->
+    <string name="needed_to_reach_minimum_order">needed to reach minimum order.</string>
+    <!--shopping cart-->
+
+    <string name="title_activity_maps">Map</string>
+    <string name="please_type_issue_here">please type issue here</string>
+    <string name="late_order">Late Order</string>
+    <string name="john_gmail_com">john@gmail.com</string>
+    <string name="background_image">background Image</string>
+
+
+    <!--sortby-->
+    <string name="sort_by">Sort by</string>
+    <string name="my_recent">My Recent</string>
+    <string name="popular">Most Popular</string>
+    <string name="ordered">Most Ordered</string>
+    <!--sortby-->
+
+    <!--success popup-->
+    <string name="title">Title</string>
+    <string name="you_are_all_signed_up">You are all signed up</string>
+    <string name="we_re_glad_you_re_here">We\'re glad you\'re here!</string>
+    <string name="ok">Ok</string>
+    <!--success popup-->
+
+
+    <!--popup Rating -->
+    <string name="do_you_want_to_rate_your_last_nshopping_experience">Do you want to rate your last  shopping experience?</string>
+    <string name="delivery_speed">Delivery Speed</string>
+    <string name="product_accuracy">Product accuracy</string>
+    <string name="yes">YES</string>
+    <string name="no">NO</string>
+    <!--popup Rating-->
+
+
+    <!--title bar-->
+    <string name="type_here">Type here..</string>
+    <!--tittle bar-->
+
+    <!--item my address-->
+    <string name="ship_to_my_delivery_address">Ship to my delivery address</string>
+    <!--item my address-->
+
+    <!--item notification -->
+    <string name="order_no">Order No.</string>
+    <string name="processing">processing.</string>
+    <!--item notification-->
+
+
+    <!--Title bar all layout here-->
+
+    <!--Title bar all layout here-->
+
+    <string name="about">About App</string>
+    <string name="edit_order">Edit Order</string>
+    <string name="generic">Lorem ipsum dolor sit amet, rutrum tempus nascetur parturient ipsum lobortis, vel iaculis posuere leo odio, cum velit amet at vestibulum non, ac eiusmod ornare dictum, in praesent sed. Tincidunt pellentesque. Tellus earum a, wisi tempus suspendisse quam dui adipiscing. Sapien morbi scelerisque vitae sit, molestie suscipit quis cras parturient ipsum, sodales turpis, fusce ultrices quam vestibulum nec sit malesuada. Nonummy ultricies placerat integer vel similique, eu vestibulum volutpat quisque eget, porttitor vulputate morbi quam eros augue, amet turpis, et elit mauris vehicula. Malesuada donec erat, ut penatibus rutrum, amet lectus arcu. Dis suspendisse itaque dis dolor semper, justo amet condimentum nunc nibh quis etiam, luctus diam in enim donec id nam, ante dolor ultrices nam consequat aliquam. Tincidunt aliquam metus nulla eu quam integer, at sem in pellentesque ipsum, libero diam eos iaculis aliquam libero, a per vestibulum felis arcu. Et eros nullam est hymenaeos, libero leo, consequat a vehicula, vitae massa dictumst.
+Ut leo duis, lacus rerum integer in lobortis cursus, montes sodales amet nunc nec nunc justo. Pulvinar turpis lectus et nunc consectetuer, ultrices viverra. Elit adipiscing metus id wisi. Mi nibh sociosqu, odio dignissim fames nisl wisi. Aenean lectus, luctus sit ullamcorper tincidunt, sed pellentesque feugiat in. Fusce aliquam vitae justo risus, ullamcorper donec. Proin amet donec at tristique, diam et justo ipsum nascetur. Lacinia nisl faucibus tempus aliquam ante eu, sit id montes varius. Ligula non, pretium mauris, orci lacus ac fringilla. Sed at.
+Aliquam vitae, eu elit, in luctus nulla nunc ornare sodales tincidunt, libero laoreet accumsan netus, amet nec eros venenatis justo dis sit. Pede pulvinar leo dui eros, habitant erat nunc lectus. Suscipit ligula in cras et, etiam parturient accumsan erat orci neque, phasellus nullam mauris wisi convallis in. Lacinia dapibus sociis aspernatur nibh, sodales pretium arcu, consectetuer ornare metus eros, est accumsan et lorem duis adipiscing, vehicula fusce elementum. Natoque cursus ultricies semper nostra dignissim, eget duis viverra vestibulum, elit eros quis quisque elementum semper massa.
+Enim vitae euismod eu velit pede eu, sodales malesuada sit fermentum ut dictum dictum, justo dui sapien vitae. Justo quisque, commodo potenti nascetur ultrices tellus consequat ut, ligula tristique aliquam dapibus et in quis. Donec nibh arcu vel nonummy. Eget felis. In tellus orci donec, felis porta et dis nibh, tellus dictumst fermentum enim sit nulla praesent. Dolor sed tempor maecenas, vitae auctor tellus bibendum venenatis, mauris turpis blandit, pede risus a elit pulvinar eu proin, eleifend augue anim. Varius posuere pharetra tincidunt, aliquam aliquam luctus voluptatibus dignissim, eu quis. Suspendisse hac imperdiet donec cras id mauris, et sit tempor lobortis, etiam nec volutpat vel eu vitae eros, aliquam at suscipit molestie, platea in wisi feugiat egestas nulla.
+</string>
+    <string name="done">Done</string>
+    <string name="report_an_issue">Report an Issue</string>
+    <string name="feedback_and_suggestions">Feedback and Suggestions</string>
+    <string name="submit">Submit</string>
+    <string name="login">Login</string>
+    <string name="continue_shopping">Continue Shopping</string>
+    <string name="report">Report</string>
+    <string name="schedule">Schedule</string>
+    <string name="start_shopping">Start Shopping</string>
+    <string name="sign_up">Sign Up</string>
+    <string name="confirm">Confirm</string>
+    <string name="cancel">Cancel</string>
+    <string name="language">Language</string>
+    <string name="select_language">Select your Language</string>
+    <string name="changePassword">Change Password</string>
+    <string name="editProfile">Edit Profile</string>
+    <string name="myFavorites">My Favourites</string>
+    <string name="create_an_account">Create an Account</string>
+    <string name="orderDetails">Order Details</string>
+    <string name="search">Search</string>
+    <string name="myCart">My Cart</string>
+    <string name="Ok">OK</string>
+    <string name="selectImage">Select Image</string>
+    <string name="pleaseSelectImageFrom">Please Select Image from</string>
+    <string name="camera">Camera</string>
+    <string name="gallery">Gallery</string>
+    <string name="sortBy">Sort by</string>
+    <string name="verificationCode">Verification Code</string>
+    <string name="verifyYourNumber">Verify Your Number</string>
+    <string name="removerOrder">Remove Order</string>
+    <string name="doYouWantToRemove">Do you want to remove this order?</string>
+    <string name="reset">Reset</string>
+    <string name="anEmailHasBeenSent">An email has been sent to your account with password reset link</string>
+    <string name="areYouSureToLogout">Are you sure to Logout?</string>
+    <string name="delete">Delete</string>
+    <string name="warning">Warning</string>
+    <string name="yourCartWillBeReset">Your cart will be reset if you change your Address, Do you Agree?</string>
+    <string name="agree">Agree</string>
+    <string name="areYouSureToDeleteThisItemFromCart">Are you sure you want to delete this item from Cart?</string>
+    <string name="place_order">Place Order</string>
+    <string name="_123_456_789">123 456 789</string>
+
+
+    <string name="country_code">Country Code</string>
+    <string name="proceed">Proceed</string>
+    <string name="edit_order_message">Your current cart will be lost if proceed and if you close your app then edit order feature will be closed automatically.</string>
+    <string name="cant_edit_order">Sorry you can\'t edit this order now.</string>
+
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="title_activity_chat">ChatActivity</string>
+    <string name="media_links_n_docs">Media , Links and Docs</string>
+    <string name="starred_messages">Starred Messages</string>
+    <string name="none">None</string>
+    <string name="custom_notifications">Custom Notifications</string>
+    <string name="mute">Mute</string>
+    <string name="save_incoming_media">Save Incoming Media</string>
+    <string name="_default">Default</string>
+    <string name="encryption">Encryption</string>
+    <string name="encryption_detail">Messages you send to this chat and calls are secured with end-to-end encryption. Tap to verify</string>
+    <string name="mobile">Mobile</string>
+    <string name="status">Status</string>
+    <string name="send_message">Send Message</string>
+    <string name="share_contact">Share Contact</string>
+    <string name="export_chat">Export Chat</string>
+    <string name="clear_chat">Clear Chat</string>
+    <string name="edit">Edit</string>
+    <string name="back">Back</string>
+    <string name="contact_info">Contact Info</string>
+    <string name="your_chat_has_been_cleared">Your chats have been cleared</string>
+    <string name="chats_other_than_starred_msg_have_been_cleared">Chats other than starred messages have been cleared</string>
+    <string name="unable_to_clear_chats">Unable to clear chat</string>
+    <string name="are_you_sure_want_to_clear_chat">Are you sure you want to clear messages in this chat?</string>
+    <string name="attaching_media_will_generate_a_larger_email_message">Attaching media will generate a larger email message.</string>
+    <string name="without_media">WITHOUT MEDIA</string>
+    <string name="attach_media">ATTACH MEDIA</string>
+    <string name="error_sending_conversation">Error sending conversation</string>
+    <string name="aaloo_chat_with">Aaloo chat with</string>
+    <string name="no_conversation_to_send">No conversation to send</string>
+    <string name="block">Block</string>
+    <string name="Unblock">Unblock</string>
+    <string name="something_went_wrong">Something went wrong</string>
+    <string name="blocked_dialog_detail_text">\? Blocked contacts will no longer be able to call you or send you messages.</string>
+    <string name="report_and_block">Report and block</string>
+    <string name="last_seen">Last Seen</string>
+    <string name="profile_photo">Profile Photo</string>
+    <string name="blocked">Blocked</string>
+    <string name="list_of_contacts_you_have_blocked">List of contacts you have blocked.</string>
+    <string name="read_receipts">Read Receipts</string>
+    <string name="read_receipts_description">If you turn off read receipts, you won\'t be able to see read receipts from other people. Read receipts are alwas sent for group chats.</string>
+    <string name="unblock">Unblock</string>
+    <string name="use_custom_notifications">Use custom notifications</string>
+    <string name="message_notifications">Message notifications</string>
+    <string name="notification_tone">Notification tone</string>
+    <string name="vibrate">Vibrate</string>
+    <string name="popup_notification">Popup notification</string>
+    <string name="light">Light</string>
+    <string name="call_notifications">Call notifications</string>
+    <string name="ringtone">Ringtone</string>
+    <string name="default_ringtone">Default Ringtone</string>
+    <string name="reset_notification_settings">Reset notification settings</string>
+    <string name="could_not_block">Couldn\'t block. Check your phone\'s Internet connection and try again.</string>
+    <string name="could_not_unblock">Couldn\'t unblock. Check your phone\'s Internet connection and try again.</string>
+    <string name="cancelled">Cancelled</string>
+    <string name="incoming_voice_call">Incoming voice call</string>
+    <string name="outgoing_voice_call">Outgoing voice call</string>
+    <string name="missed_voice_call">Missed voice call</string>
+    <string name="incoming_video_call">Incoming video call</string>
+    <string name="outgoing_video_call">Outgoing video call</string>
+    <string name="missed_video_call">Missed video call</string>
+    <string name="call_info">Call Info</string>
+    <string name="remove_from_call_log">Remove from call log</string>
+    <string name="your_call_logs_has_been_cleared">Your current call log has been cleared</string>
+
+
+    <string-array name="privacy_selection_array">
+        <item>Everyone</item>
+        <item>My Contacts</item>
+        <item>Nobody</item>
+    </string-array>
+
+    <string-array name="chat_vibration">
+        <item>Off</item>
+        <item>Default</item>
+        <item>Short</item>
+        <item>Long</item>
+    </string-array>
+
+    <string-array name="chat_notification">
+        <item>No popup</item>
+        <item>Only when screen \"on\"</item>
+        <item>Only when screen \"off\"</item>
+        <item>Always show popup</item>
+    </string-array>
+
+    <string-array name="chat_lights">
+        <item>None</item>
+        <item>White</item>
+        <item>Red</item>
+        <item>Yellow</item>
+        <item>Green</item>
+        <item>Cyan</item>
+        <item>Blue</item>
+        <item>Purple</item>
+    </string-array>
+
+    <string-array name="chat_long_press">
+        <item>Create Shortcut</item>
+    </string-array>
+
+    <string name="search_">Search</string>
+    <string name="no_sim_detected">No sim card detected.</string>
+    <string name="new_broadcast">New Broadcast</string>
+    <string name="at_least_d_contacts_must_be_selected">At least %d contacts must be selected</string>
+    <string name="you_created_a_broadcast_list_with_2_receipients">You created a broadcast list with 2 receipients</string>
+    <string name="d_recipients">%d recipients</string>
+    <string name="tap_here_for_broadcast_list_info">Tap here for broadcast list info</string>
+    <string name="broadcast_list_info">Broadcast list info</string>
+    <string name="_s_list_info">%s list info</string>
+    <string name="broadcast_list_media">Broadcast list media</string>
+    <string name="wallpaper">Wallpaper</string>
+    <string name="more">More</string>
+    <string name="email_chat">Email chat</string>
+    <string name="add_shortcut">Add shortcut</string>
+    <string name="recent_location">Recent Locations</string>
+    <string name="exit_group">Exit Group</string>
+    <string name="group_info">Group Info</string>
+    <string name="broadcast_info">Broadcast info</string>
+    <string name="participants_count">Participants : %d of 256</string>
+    <string name="count_recipients">%d recipients</string>
+    <string name="count_participants">%d participants</string>
+    <string name="delete_broadcast_list">Delete broadcast list</string>
+    <string name="add__s">Add %s...</string>
+    <string name="already_added">Already added</string>
+    <string name="will_be_implemented_soon">Will be implemented soon</string>
+    <string name="chat_history_is_attached_as_s_file_to_this_email">Chat history is attached as \"%s\" file to this email.</string>
+    <string name="initializing_">Initializing...</string>
+    <string name="please_wait_a_moment">Please wait a minute</string>
+    <string name="_s_name_cannot_be_empty">%s name cannot be empty</string>
+    <string name="broadcast">Broadcast</string>
+    <string name="group">Group</string>
+    <string name="creating__s">Creating %s</string>
+    <string name="sharing_contacts">Sharing Contacts</string>
+    <string name="new_group">New Group</string>
+    <string name="add_subject">Add Subject</string>
+    <string name="type__s_subject_here">Type %s subject here</string>
+    <string name="participants__d">Participants %d</string>
+    <string name="you_created_group_with__s">You created group with \"%s\"</string>
+    <string name="you_created_group__s">You created group \"%s\"</string>
+    <string name="you_created_a_broadcast_list_with__s_recipients">You created a broadcast list with %s recipients</string>
+    <!--<string name="_s_created_group__s" formatted="false"> %s created group with \"%s\"</string>-->
+    <string name="_s_added_you" formatted="false"> %s added you</string>
+    <string name="_s_added_in__s" formatted="false"> %s added in \"%s\"</string>
+    <string name="_s_added__s" formatted="false"> %s added %s</string>
+    <string name="__s_becomes_admin_of__s" formatted="false"> %s becomes admin of \"%s\"</string>
+    <string name="_s_leave_from__s" formatted="false"> %s leave from \"%s\"</string>
+    <string name="_s_created_group" formatted="false"> %s created group</string>
+    <string name="_s_removed___s" formatted="false"> %s Removed \"%s\"</string>
+    <string name="group_created">Group created</string>
+    <string name="recipients">recipients</string>
+    <string name="participants">participants</string>
+    <string name="delete__s_broadcast_list">Delete \"%s\" broadcast list?</string>
+    <string name="delete__s_group">Delete \"%s\" group?</string>
+    <string name="exit__s_group">Exit \"%s\" group?</string>
+    <string name="exit">EXIT</string>
+    <string name="mute_instead">MUTE INSTEAD</string>
+    <string name="mute_for">Mute for...</string>
+    <string name="show_notifications">Show notifications</string>
+    <string name="eight_hours">8 Hours</string>
+    <string name="one_week">1 Week</string>
+    <string name="one_year">1 Year</string>
+    <string name="until__s">Until %s</string>
+    <string name="keep_starred_messages">Keep starred messages</string>
+    <string name="delete_media_from_my_phone">Delete media from my phone</string>
+    <string name="delete_chat_with">Delete chat with </string>
+    <string name="clear_">CLEAR</string>
+
+    <string name="swipe_right">Swipe right to see more colors.</string>
+    <string name="swipe_left">Swipe left to see more colors.</string>
+    <string name="set">SET</string>
+    <string name="select_your_color">Select your color</string>
+    <string name="solid_colors">Solid colors</string>
+    <string name="msg_wallpaper_changed">Wallpaper changed successfully</string>
+    <string name="message__s">Message %s</string>
+    <string name="voice_call__s">Voice call %s</string>
+    <string name="video_call__s">Video call %s</string>
+    <string name="view__s">View %s</string>
+    <string name="make_group_admin__s">Make Group Admin %s</string>
+    <string name="remove__s">Remove %s</string>
+    <string name="remove__s_from_broadcast_list">Remove %s from broadcast list</string>
+    <string name="group_admin">Group Admin</string>
+    <string name="unable_to_create_group">Unable to create group</string>
+    <string name="read_by">Read by</string>
+    <string name="deliever_to">Delivered to</string>
+    <string name="_d_remaining">%d remaining</string>
+    <string name="search_hint">Search...</string>
+    <string name="primaryColor">#E11E2E</string>
+    <string name="chats">Chats</string>
+    <string name="add_status">Add Status</string>
+    <string name="add">Add</string>
+    <string name="_s_seprator__s" formatted="false"><![CDATA[%s > %s]]></string>
+    <string name="you">You</string>
+    <string name="photo">Photo</string>
+    <string name="video">Video</string>
+    <string name="hi_there_im_on_aaloo">Hi there i\'m on Aaloo</string>
+    <string name="about_and_phone_number">About and phone number</string>
+    <string name="about_and_help">About and Help</string>
+    <string name="account">Account</string>
+    <string name="chat_settings">Chat Settings</string>
+    <string name="selectWallpaper">Select Wallpaper</string>
+    <string name="newGroup">New Group</string>
+    <string name="dataUsage">Data Usage</string>
+    <string name="media">MEDIA</string>
+    <string name="documents">DOCUMENTS</string>
+    <string name="links">LINKS</string>
+    <string name="activity_gallery_no_images">No images.</string>
+
+    <array name="chat_room_admin_options">
+        <item>@string/message__s</item>
+        <item>@string/view__s</item>
+        <item>@string/make_group_admin__s</item>
+        <item>@string/remove__s</item>
+    </array>
+
+    <array name="chat_room_user_already_admin_options">
+        <item>@string/message__s</item>
+        <item>@string/view__s</item>
+        <item>@string/remove__s</item>
+    </array>
+
+    <array name="chat_room_participants_options">
+        <item>@string/message__s</item>
+        <item>@string/view__s</item>
+    </array>
+
+    <array name="chat_room_broadcast_options">
+        <item>@string/message__s</item>
+        <item>@string/view__s</item>
+        <item>@string/remove__s_from_broadcast_list</item>
+    </array>
+
+    <array name="chat_room_users_options">
+        <item>@string/message__s</item>
+        <item>@string/voice_call__s</item>
+        <item>@string/video_call__s</item>
+    </array>
+
+    <array name="document_types">
+        <item>.doc</item>
+        <item>.docx</item>
+        <item>.ppt</item>
+        <item>.pptx</item>
+        <item>.xls</item>
+        <item>.xlsx</item>
+        <item>.txt</item>
+        <item>.pdf</item>
+    </array>
+
+
+    <string name="activity_gallery_image_transition" translatable="false">%s[image]</string>
+    <string name="activity_gallery_checkbox_transition" translatable="false">%s[checkbox]</string>
+    <string name="no_documents">No documents</string>
+    <string name="no_links">No links</string>
+    <string name="call_me">Call me</string>
+    <string name="document">Document</string>
+    <string name="audio">Audio</string>
+    <string name="location">Location</string>
+    <string name="who_can_see_my_personal_info">WHO CAN SEE MY PERSONAL INFO</string>
+    <string name="messaging">MESSAGING</string>
+    <string name="blocked_contacts">Blocked contacts</string>
+    <string name="if_you_don_t_share_your_last_seen_you_won_t_be_able_to_see_other_people_s_last_seen">If you don\'t share your Last Seen, you won\'t be able to see other people\'s Last Seen</string>
+    <string name="privacy">Privacy</string>
+    <string name="your_messages_and_calls_are_secured_with_end_to_end_encryption_which_means_whatsapp_and_third_parties_can_t_read_or_listen_to_them">Your messages and calls are secured with end-to-end encryption, which means Aaloo and third parties can\'t read or listen to them.</string>
+    <string name="learn_more_about_aaloo_security">Learn more about Aaloo security.</string>
+    <string name="show_security_notifications">Show security notifications</string>
+    <string name="security">Security</string>
+    <string name="changing_your_phone_number">Changing your phone number will migrate your account info, groups and settings.</string>
+    <string name="before_proceeding">Before proceeding, please confirm that you are able to receive SMS or calls at your new number.</string>
+    <string name="if_you_have_both">If you have both a new phone and a new number, first change your number on your old phone.</string>
+    <string name="change_number">Change Number</string>
+    <string name="next">Next</string>
+    <string name="deleting_your_account_will">DELETING YOUR ACCOUNT WILL:</string>
+    <string name="delete_your_account_from_whatsapp">- Delete your account from Aaloo</string>
+    <string name="erase_your_message_history">- Erase your message history</string>
+    <string name="delete_you_from_all_of_your_whatsapp_groups">- Delete you from all of your Aaloo groups</string>
+    <string name="delete_your_google_drive_backup">- Delete your Google Drive backup</string>
+    <string name="to_delete_your_account_confirm_your_country_code_and_enter_your_phone_number">To delete your account, confirm your country code and enter your phone number.</string>
+    <string name="phone_number">phone number</string>
+    <string name="delete_my_account">Delete my account</string>
+    <string name="please_enter_your_old_country_code_and_phone_number">Please enter your old country code and phone number:</string>
+    <string name="please_enter_your_new_country_code_and_phone_number">Please enter your new country code and phone number:</string>
+    <string name="old_phone_number">old phone number</string>
+    <string name="new_phone_number">new phone number</string>
+    <string name="chat_settings_caps">CHAT SETTINGS</string>
+    <string name="enter_key_will_add_a_new_line">Enter key will add a new line</string>
+    <string name="font_size">Font Size:</string>
+    <string name="chat_backup">Chat Backup</string>
+    <string name="chat_history">Chat History</string>
+    <string name="conversation_tones">Conversation Tones</string>
+    <string name="play_sounds_for_incoming_and_outgoing_messages">Play sounds for incoming and outgoing messages</string>
+    <string name="msg_notifications_caps">MESSAGE NOTIFICATIONS</string>
+    <string name="contacts_to_send">Contacts to send</string>
+    <string name="send_contact">Send contact</string>
+    <string name="message">Message</string>
+    <string name="default_ringtone_bongo">Default Ringtone (Bongo)</string>
+    <string name="no_popup">No Popup</string>
+    <string name="red">Red</string>
+    <string name="call_notification">CALL NOTIFICATION</string>
+    <string name="group_notifications">GROUP NOTIFICATIONS</string>
+    <string name="contact_ringtone">Contact Ringtone</string>
+    <string name="no_longer_available_set_custom_notifications_by_tapping_the_name_at_the_top_of_a_chat">No longer available. Set Custom notifications by tapping the name at the top of a chat.</string>
+    <string name="no_longer_available_set_custom_notifications_by_tapping_nthe_name_at_the_top_of_a_chat">No longer available. Set Custom notifications by tapping the name at the top of a chat.</string>
+    <string name="contact">contact</string>
+    <string name="no_search">No search</string>
+    <string name="view_contact">View Contact</string>
+    <string name="create_a_new_contact_or_add_to_an_existing_contact">Create a new contact or add to an existing contact?</string>
+    <string name="existing">Existing</string>
+    <string name="new_">New</string>
+    <string name="archived_chats">Archived chats </string>
+    <string name="to_start_messaging_on_aaloo_please_press_contact_button">To start messaging on Aaloo, please press contact button.</string>
+    <string name="no_chats">No Chats</string>
+    <string name="verification_code_has_been_sent_on_your_number">Verification code has been sent on your number.</string>
+    <string name="share_contact_format" formatted="false">Name : %s \nNumber : %s</string>
+    <string name="no_call_logs">No Call logs</string>
+    <!--<string name="next_build">This feature will be implemented in next build.</string>-->
+    <string name="typing">typing...</string>
+    <string name="not_found">Not found.</string>
+    <string name="please_write_text">Please write text to search.</string>
+    <string name="name_cannot_be_empty">Name cannot be empty</string>
+    <string name="unable_to_exit_group">Unable to exit group</string>
+    <string name="you_left">You left</string>
+    <string name="you_cant_send_messages_to_this_group_because_youre_no_longer_a_participant">You can\'t send messages to this group because you\'re no longer a participant.</string>
+    <string name="unable_to__s_because_you_arent_a_participant">Unable to %s because you aren\'t a participant.</string>
+    <string name="change_the_subject">change the subject</string>
+    <string name="delete_group">Delete group</string>
+    <string name="youre_no_longer_a_participant_in_this_group">You\'re no longer a participant in this group</string>
+    <string name="youre_now_an_admin">You\'re now an admin</string>
+    <string name="please_wait">Please wait...</string>
+    <string name="_s_changes_the_subject_from__s_to__s" formatted="false">%s changed the subject from \"%s\" to \"%s\"</string>
+    <string name="admins_updated">Admins updated</string>
+    <string name="exit_group_successfully">Exit group successfully</string>
+    <string name="unable_to_add_participant__s" formatted="false">Unable to add participant %s</string>
+    <string name="group_name">Group name</string>
+    <string name="_s_removed_from_the_list">%s removed from the list</string>
+    <string name="already_on_call">Can\'t place a new call while you\'re already in a call.</string>
+    <string name="unmute">Unmute</string>
+    <string name="add_to_contacts">Add to contacts</string>
+    <string name="add_members">Add members</string>
+    <string name="groups_in_common">Groups in common</string>
+    <string name="forward_to">Forward to...</string>
+    <string name="send_to">Send to...</string>
+    <string name="provide_a_group_subject_and_oprional_group_icon">Provide a group subject and optional group icon.</string>
+    <string name="two_step_verification">Two-step verification</string>
+    <string name="for_added_security_enable_tow_step_verification_which_will_require_a_pin_when_registering_your_phone_number_with_aaloo_again">For added security, enable tow-step verification, which will require a PIN when registering your phone number with Aaloo again.</string>
+    <string name="enable">Enable</string>
+    <string name="enter_a_6_digit_pin_which_you_ll_be_asked_for_when_you_register_your_phone_number_with_whatsapp">Enter a 6-digit PIN which you\'ll be asked for when you register your phone number with WhatsApp:</string>
+    <string name="confirm_your_pin_">Confirm your PIN:</string>
+    <string name="pins_don_t_match_try_again">PINs don\'t match. Try again.</string>
+    <string name="add_an_email_address_to_your_account_which_will_be_used_to_reset_your_pin_if_you_forget_it_and_safeguard_your_account_skip">Add an email address to your account which will be used to reset your PIN if you forget it and safeguard your account.</string>
+
+    <string name="skip">Skip</string>
+    <string name="if_you_dont_add_an_email_address">If you don\'t add an email address and you forget your PIN, you won\'t be able to re-register your phone number with WhatsApp.</string>
+    <string name="invalid_email_address">Invalid email address</string>
+    <string name="confirm_your_email_address">Confirm your email address:</string>
+    <string name="save">Save</string>
+    <string name="email_adresses_dont_match_try_again">Email addresses don\'t match. Try again.</string>
+    <string name="two_step_verification_is_enabled">Two-step verification is enabled.</string>
+    <string name="two_step_verification_is_enabled_you_ll_need_to_enter_your_pin_when_registering_your_phone_number_with_aaloo_again">Two-step verification is enabled. You\'ll need to enter your PIN when registering your phone number with Aaloo again.</string>
+    <string name="disable">Disable</string>
+    <string name="change_email_address">Change email address</string>
+    <string name="change_pin">Change PIN</string>
+    <string name="disable_two_step_verification">Disable two-step verification?</string>
+    <string name="remove_profile_picture">Remove Profile Picture</string>
+    <string name="two_step_verification_has_been_disabled">Two step verification has been disabled</string>
+    <string name="recording_going_on">Unable to go back as Recording going on.</string>
+    <string name="recorded_call">Recorded Call</string>
+
+</resources>

@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#fff"
+    android:orientation="vertical">
+
+    <GridView
+        android:id="@+id/gvProductDetail"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:background="#F1F1F1"
+        android:gravity="center"
+        android:numColumns="2"
+        android:paddingBottom="@dimen/x5dp"
+        android:paddingLeft="@dimen/x5dp"
+        android:paddingRight="@dimen/x5dp"
+        android:paddingTop="@dimen/x5dp"
+        android:verticalSpacing="@dimen/x5dp" />
+
+    <TextView
+        android:id="@+id/txtEmpty"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:gravity="center"
+        android:padding="@dimen/x20dp"
+        android:layout_weight="1"
+        android:text="No Items"
+        android:textSize="18sp"
+        android:visibility="gone" />
+
+    <LinearLayout
+        android:id="@+id/contCheckout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/base_color"
+        android:gravity="center_vertical"
+        android:visibility="visible">
+
+
+        <com.ctrlplusz.anytextview.AnyTextView
+            android:id="@+id/txtItemInCart"
+            android:layout_width="@dimen/x50dp"
+            android:layout_height="match_parent"
+            android:background="#A31944"
+            android:gravity="center"
+            android:text="00"
+            android:textColor="@color/white"
+            android:textSize="18sp"
+            app:typeface="@string/font_bold" />
+
+        <com.ctrlplusz.anytextview.AnyTextView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="@dimen/x10dp"
+            android:layout_weight="1"
+            android:gravity="center_vertical"
+            android:padding="@dimen/x15dp"
+            android:text="@string/continueCheckout"
+            android:textColor="@color/offwhite" />
+
+
+        <com.ctrlplusz.anytextview.AnyTextView
+            android:id="@+id/txtCurrencyType"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:clickable="false"
+            android:gravity="center_vertical"
+            android:padding="@dimen/x5dp"
+            android:text="AED"
+            android:textColor="@color/offwhite"
+            app:typeface="@string/font_bold" />
+
+        <com.ctrlplusz.anytextview.AnyTextView
+            android:id="@+id/txtPrice"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginRight="@dimen/x25dp"
+            android:clickable="false"
+            android:drawablePadding="@dimen/x10dp"
+            android:gravity="center_vertical"
+            android:paddingRight="@dimen/x10dp"
+            android:text="0.00"
+            android:textColor="@color/offwhite"
+            app:typeface="@string/font_bold" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/imgcheckout_arrow" />
+
+
+    </LinearLayout>
+
+
+</LinearLayout>

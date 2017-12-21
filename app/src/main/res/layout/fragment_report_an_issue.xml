@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true"
+    android:focusableInTouchMode="true">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#EDEDED"
+        android:orientation="vertical"
+        android:padding="@dimen/x20dp">
+
+        <com.andreabaccega.widget.FormEditText
+            android:id="@+id/edEmail"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/x5dp"
+            android:background="@drawable/imgbox1"
+            android:drawablePadding="@dimen/x15dp"
+            android:hint="@string/email_address"
+            android:inputType="textEmailAddress"
+            android:maxLength="30"
+            android:maxLines="1"
+            android:paddingLeft="@dimen/x10dp"
+            android:paddingRight="@dimen/x15dp"
+            android:textColor="@color/base_color"
+            android:textColorHint="@color/text_grey"
+            android:textSize="12sp"
+            app:testType="email" />
+
+        <com.ctrlplusz.anytextview.AnyTextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/x5dp"
+            android:background="@drawable/imgninepatch"
+            android:fontFamily="@string/font_normal"
+            android:text="@string/provide_valid_email_address"
+            android:textSize="10sp" />
+
+        <RadioGroup
+            android:id="@+id/radioGroup"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/x8dp">
+
+
+            <RadioButton
+                android:id="@+id/rbMissingProducts"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/x10dp"
+                android:button="@drawable/radiobutton_state_selection"
+                android:paddingLeft="@dimen/x5dp"
+                android:text="@string/missing_products"
+                android:textColor="@color/base_color" />
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/imgninepatch"
+                android:contentDescription="@string/line" />
+
+            <RadioButton
+                android:id="@+id/rbInAccurateProduct"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/x8dp"
+                android:button="@drawable/radiobutton_state_selection"
+                android:paddingLeft="@dimen/x5dp"
+                android:text="@string/in_accurate_product_description"
+                android:textColor="@color/base_color" />
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/imgninepatch"
+                android:contentDescription="@string/line" />
+
+            <RadioButton
+                android:id="@+id/rbLateOrder"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/x8dp"
+                android:button="@drawable/radiobutton_state_selection"
+                android:paddingLeft="@dimen/x5dp"
+                android:text="@string/late_order"
+                android:textColor="@color/base_color" />
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/imgninepatch"
+                android:contentDescription="@string/line" />
+
+            <RadioButton
+                android:id="@+id/radiobtn4"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/x8dp"
+                android:button="@drawable/radiobutton_state_selection"
+                android:checked="false"
+                android:paddingLeft="@dimen/x5dp"
+                android:text="@string/payment_issues"
+                android:textColor="@color/base_color" />
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/imgninepatch"
+                android:contentDescription="@string/line" />
+
+            <RadioButton
+                android:id="@+id/radiobtn5"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/x8dp"
+                android:button="@drawable/radiobutton_state_selection"
+                android:checked="false"
+                android:paddingLeft="@dimen/x5dp"
+                android:text="@string/something_else"
+                android:textColor="@color/base_color" />
+        </RadioGroup>
+
+        <com.andreabaccega.widget.FormEditText
+            android:id="@+id/edtIssueDescription"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/x10dp"
+            android:layout_marginTop="@dimen/x20dp"
+            android:background="@drawable/imgbox2"
+            android:fontFamily="@string/font_normal"
+            android:gravity="start"
+            android:hint="@string/please_type_your_issue_here"
+            android:imeOptions="actionDone"
+            android:inputType="textMultiLine"
+            android:maxLength="120"
+            android:maxLines="9"
+            android:padding="@dimen/x10dp"
+            android:textColor="@color/text_grey"
+            android:textColorHint="@color/text_grey"
+            android:textSize="13sp" />
+
+        <!--<ImageButton-->
+            <!--android:id="@+id/btnReport"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_marginTop="@dimen/x10dp"-->
+            <!--android:background="#0000"-->
+            <!--android:contentDescription="@string/img_report"-->
+            <!--android:src="@drawable/imgreport2" />-->
+
+
+        <com.ctrlplusz.anytextview.AnyTextView
+            android:id="@+id/btnReport"
+            android:gravity="center"
+            android:layout_width="wrap_content"
+            android:text="@string/report"
+            android:textColor="@color/white"
+            android:textSize="17sp"
+            android:layout_marginTop="@dimen/x10dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:background="@drawable/img_yes"
+            app:typeface="@string/font_normal"/>
+
+
+    </LinearLayout>
+</ScrollView>

@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "811933588387",
+    "firebase_url": "https://grosta-167414.firebaseio.com",
+    "project_id": "grosta-167414",
+    "storage_bucket": "grosta-167414.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:811933588387:android:8c39396778749c0f",
+        "android_client_info": {
+          "package_name": "com.structure"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "811933588387-8nk4un6j00c1h6t91p6v7ohifpe79r5k.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDT8iVuD7my1oNnMFLKMfuDV3rOwxGcmdY"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

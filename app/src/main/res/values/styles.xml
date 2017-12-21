@@ -1,0 +1,49 @@
+<resources>
+
+    <!--&lt;!&ndash; Base application theme. &ndash;&gt;-->
+    <!--<style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">-->
+    <!--&lt;!&ndash; Customize your theme here. &ndash;&gt;-->
+    <!--<item name="colorPrimary">@color/colorPrimary</item>-->
+    <!--<item name="colorPrimaryDark">@color/colorPrimaryDark</item>-->
+    <!--<item name="colorAccent">@color/colorAccent</item>-->
+    <!--</style>-->
+
+
+    <style name="AppBaseTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <!--<item name="colorAccent">#6C0A09</item>-->
+        <item name="colorAccent">@color/base_color</item>
+    </style>
+
+    <!-- BaseApplication theme. -->
+    <style name="AppTheme" parent="AppBaseTheme">
+
+        <item name="colorPrimary">@color/base_color</item>
+        <item name="colorPrimaryDark">@color/base_color</item>
+        <item name="colorControlActivated">@color/base_color</item>
+        <item name="colorControlHighlight">@color/base_color</item>
+        <item name="colorAccent">@color/base_color</item>
+        <item name="android:windowDrawsSystemBarBackgrounds">false</item>
+
+        <!-- All customizations that are NOT specific to a particular API-level can go here. -->
+    </style>
+
+
+
+
+    <!-- Custom Dialog Themes-->
+
+    <style name="DialogTheme" parent="@android:style/Theme.Dialog">
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:windowCloseOnTouchOutside">false</item>
+    </style>
+
+
+    <!--Rating Bar-->
+
+    <!--<style name="RatingBar" parent="Theme.AppCompat">-->
+        <!--<item name="android:progressDrawable">@drawable/imgstar_rated</item>-->
+        <!--<item name="android:indeterminate">@drawable/imgstar_unrated</item>-->
+    <!--</style>-->
+
+
+</resources>

@@ -1,0 +1,253 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/scrollView"
+    android:layout_width="@dimen/x200dp"
+    android:layout_height="match_parent"
+    android:background="#0000"
+    android:orientation="vertical"
+    android:padding="@dimen/x10dp"
+    android:scrollbars="none">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+
+        <LinearLayout
+            android:id="@+id/contUserName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/x30dp"
+            android:layout_marginTop="@dimen/x50dp"
+            android:paddingLeft="@dimen/x10dp">
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/imgProfile"
+                android:layout_width="@dimen/x50dp"
+                android:layout_height="@dimen/x50dp"
+                android:focusable="true"
+                android:scaleType="centerCrop"
+                android:src="@drawable/placeholder" />
+
+
+            <com.ctrlplusz.anytextview.AnyTextView
+                android:id="@+id/txtUserName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:ellipsize="end"
+                android:padding="@dimen/x10dp"
+                android:singleLine="true"
+                android:text=""
+                android:textColor="@color/offwhite"
+                android:textSize="16sp"
+                app:typeface="@string/font_bold" />
+
+        </LinearLayout>
+
+
+        <com.ctrlplusz.anytextview.AnyTextView
+            android:id="@+id/txtHome"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_marginBottom="@dimen/x25dp"
+            android:layout_weight="1"
+            android:drawableLeft="@drawable/imghome"
+            android:drawablePadding="@dimen/x14dp"
+            android:gravity="center_vertical"
+            android:padding="@dimen/x10dp"
+            android:singleLine="true"
+            android:text="@string/home"
+            android:textColor="@color/offwhite"
+            android:textSize="14sp"
+            app:typeface="@string/font_normal" />
+
+        <LinearLayout
+            android:id="@+id/contNotifications"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/x25dp"
+            android:gravity="center_vertical">
+
+            <com.ctrlplusz.anytextview.AnyTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:drawableLeft="@drawable/imgnotification"
+                android:drawablePadding="@dimen/x14dp"
+                android:padding="@dimen/x10dp"
+                android:singleLine="true"
+                android:text="@string/notifications"
+                android:textColor="@color/offwhite"
+                android:textSize="14sp"
+                app:typeface="@string/font_normal" />
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="right|center_vertical"
+                android:padding="@dimen/x5dp">
+
+                <com.ctrlplusz.anytextview.AnyTextView
+                    android:id="@+id/txtNotifications"
+                    android:layout_width="@dimen/x13dp"
+                    android:layout_height="@dimen/x13dp"
+                    android:layout_gravity="right"
+                    android:background="@drawable/notification_circle"
+                    android:gravity="center"
+                    android:textColor="@color/base_color"
+                    android:textSize="10sp"
+                    android:visibility="invisible"
+                    app:typeface="@string/font_normal" />
+
+            </LinearLayout>
+
+
+        </LinearLayout>
+
+
+        <com.ctrlplusz.anytextview.AnyTextView
+            android:id="@+id/txtOrderHistory"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_marginBottom="@dimen/x25dp"
+            android:drawableLeft="@drawable/imghistory"
+            android:drawablePadding="@dimen/x14dp"
+            android:gravity="center_vertical"
+            android:padding="@dimen/x10dp"
+            android:singleLine="true"
+            android:text="@string/orderHistory"
+            android:textColor="@color/offwhite"
+            android:textSize="14sp"
+            app:typeface="@string/font_normal" />
+
+
+        <com.ctrlplusz.anytextview.AnyTextView
+            android:id="@+id/txtFavorite"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_marginBottom="@dimen/x25dp"
+            android:drawableLeft="@drawable/imgfav"
+            android:drawablePadding="@dimen/x14dp"
+            android:gravity="center_vertical"
+            android:padding="@dimen/x10dp"
+            android:singleLine="true"
+            android:text="@string/favorites"
+            android:textColor="@color/offwhite"
+            android:textSize="14sp"
+            app:typeface="@string/font_normal" />
+
+
+        <com.ctrlplusz.anytextview.AnyTextView
+            android:id="@+id/txtSetting"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_marginBottom="@dimen/x25dp"
+            android:drawableLeft="@drawable/imgsettings"
+            android:drawablePadding="@dimen/x14dp"
+            android:gravity="center_vertical"
+            android:padding="@dimen/x10dp"
+            android:singleLine="true"
+            android:text="@string/settings"
+            android:textColor="@color/offwhite"
+            android:textSize="14sp"
+            app:typeface="@string/font_normal" />
+
+
+        <com.ctrlplusz.anytextview.AnyTextView
+            android:id="@+id/txtAddresses"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_marginBottom="@dimen/x25dp"
+            android:layout_weight="1"
+            android:drawableLeft="@drawable/imgaddresses"
+            android:drawablePadding="@dimen/x14dp"
+            android:gravity="center_vertical"
+            android:padding="@dimen/x10dp"
+            android:singleLine="true"
+            android:text="@string/myAddresses"
+            android:textColor="@color/offwhite"
+            android:textSize="14sp"
+            app:typeface="@string/font_normal" />
+
+
+        <com.ctrlplusz.anytextview.AnyTextView
+            android:id="@+id/txtContactUs"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_marginBottom="@dimen/x25dp"
+            android:layout_weight="1"
+            android:drawableLeft="@drawable/imgcontact"
+            android:drawablePadding="@dimen/x14dp"
+            android:gravity="center_vertical"
+            android:padding="@dimen/x10dp"
+            android:singleLine="true"
+            android:text="@string/contactUs"
+            android:textColor="@color/offwhite"
+            android:textSize="14sp"
+            app:typeface="@string/font_normal" />
+
+
+        <com.ctrlplusz.anytextview.AnyTextView
+            android:id="@+id/txtAboutApp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_marginBottom="@dimen/x25dp"
+            android:drawableLeft="@drawable/imgabout"
+            android:drawablePadding="@dimen/x14dp"
+            android:gravity="center_vertical"
+            android:padding="@dimen/x10dp"
+            android:singleLine="true"
+            android:text="@string/aboutApp"
+            android:textColor="@color/offwhite"
+            android:textSize="14sp"
+            app:typeface="@string/font_normal" />
+
+
+        <com.ctrlplusz.anytextview.AnyTextView
+            android:id="@+id/txtLanguage"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_marginBottom="@dimen/x25dp"
+            android:drawableLeft="@drawable/language"
+            android:drawablePadding="@dimen/x14dp"
+            android:gravity="center_vertical"
+            android:padding="@dimen/x10dp"
+            android:singleLine="true"
+            android:text="@string/language"
+            android:textColor="@color/offwhite"
+            android:textSize="14sp"
+            app:typeface="@string/font_normal" />
+
+
+        <com.ctrlplusz.anytextview.AnyTextView
+            android:id="@+id/txtLogout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_marginBottom="@dimen/x25dp"
+            android:drawableLeft="@drawable/imglogout"
+            android:drawablePadding="@dimen/x14dp"
+            android:gravity="center_vertical"
+            android:padding="@dimen/x10dp"
+            android:singleLine="true"
+            android:text="@string/logout"
+            android:textColor="@color/offwhite"
+            android:textSize="14sp"
+            app:typeface="@string/font_normal" />
+
+
+    </LinearLayout>
+
+</ScrollView>
