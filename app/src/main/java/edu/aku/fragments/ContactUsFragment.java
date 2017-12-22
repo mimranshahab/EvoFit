@@ -199,14 +199,14 @@ public class ContactUsFragment extends BaseFragment {
 //            WebServiceFactory.getInstance("0").getContactDetails(0)
 //                    .enqueue(new Callback<WebResponse<ContactDetailWrapper>>() {
 //                        @Override
-//                        public void onResponse(Call<WebResponse<ContactDetailWrapper>> call, Response<WebResponse<ContactDetailWrapper>> response) {
-//                            if (response.content().isSuccess()) {
-//                                contactDetail = response.content().result.contactDetail;
+//                        public void onResponse(Call<WebResponse<ContactDetailWrapper>> call, Response<WebResponse<ContactDetailWrapper>> responseCode) {
+//                            if (responseCode.content().isSuccess()) {
+//                                contactDetail = responseCode.content().result.contactDetail;
 //                                txtEmail.setText(contactDetail.emailAddress);
 //                                txtPhoneNumber.setText(contactDetail.phoneNumber);
 //                                dismissProgress();
 //                            } else {
-//                                UIHelper.showToast(getContext(), response.content().message);
+//                                UIHelper.showToast(getContext(), responseCode.content().message);
 //                                dismissProgress();
 //                            }
 //                        }
@@ -222,14 +222,14 @@ public class ContactUsFragment extends BaseFragment {
 //            WebServiceFactory.getInstance(prefHelper.getUser().token).getContactDetails(prefHelper.getUserID())
 //                    .enqueue(new Callback<WebResponse<ContactDetailWrapper>>() {
 //                        @Override
-//                        public void onResponse(Call<WebResponse<ContactDetailWrapper>> call, Response<WebResponse<ContactDetailWrapper>> response) {
-//                            if (response.content().isSuccess()) {
-//                                contactDetail = response.content().result.contactDetail;
+//                        public void onResponse(Call<WebResponse<ContactDetailWrapper>> call, Response<WebResponse<ContactDetailWrapper>> responseCode) {
+//                            if (responseCode.content().isSuccess()) {
+//                                contactDetail = responseCode.content().result.contactDetail;
 //                                txtEmail.setText(contactDetail.emailAddress);
 //                                txtPhoneNumber.setText(contactDetail.phoneNumber);
 //                                dismissProgress();
 //                            } else {
-//                                UIHelper.showToast(getContext(), response.content().message);
+//                                UIHelper.showToast(getContext(), responseCode.content().message);
 //                                dismissProgress();
 //                            }
 //                        }
@@ -251,12 +251,12 @@ public class ContactUsFragment extends BaseFragment {
 //        WebServiceFactory.getInstance(prefHelper.getUser().token).postFeedback(prefHelper.getUserID(), message)
 //                .enqueue(new Callback<WebResponse<Object>>() {
 //                    @Override
-//                    public void onResponse(Call<WebResponse<Object>> call, Response<WebResponse<Object>> response) {
-//                        if (response.content().isSuccess()) {
-//                            UIHelper.showToast(getContext(), response.content().message);
+//                    public void onResponse(Call<WebResponse<Object>> call, Response<WebResponse<Object>> responseCode) {
+//                        if (responseCode.content().isSuccess()) {
+//                            UIHelper.showToast(getContext(), responseCode.content().message);
 //                            dismissProgress();
 //                        } else {
-//                            UIHelper.showToast(getContext(), response.content().message);
+//                            UIHelper.showToast(getContext(), responseCode.content().message);
 //                            dismissProgress();
 //                        }
 //                    }

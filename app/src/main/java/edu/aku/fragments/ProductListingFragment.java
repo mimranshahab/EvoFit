@@ -167,19 +167,19 @@ public class ProductListingFragment extends BaseFragment {
 //            callProductsGuest.clone()
 //                    .enqueue(new Callback<WebResponse<ProductsWrapper>>() {
 //                        @Override
-//                        public void onResponse(Call<WebResponse<ProductsWrapper>> call, Response<WebResponse<ProductsWrapper>> response) {
-//                            if (response == null || response.content() == null) {
+//                        public void onResponse(Call<WebResponse<ProductsWrapper>> call, Response<WebResponse<ProductsWrapper>> responseCode) {
+//                            if (responseCode == null || responseCode.content() == null) {
 //                                dismissProgress();
 //                                return;
 //                            }
-//                            if (response.content().isSuccess()) {
+//                            if (responseCode.content().isSuccess()) {
 //                                arrProducts.clear();
-//                                arrProducts.addAll(response.content().result.products);
+//                                arrProducts.addAll(responseCode.content().result.products);
 //                                updateCart();
 //                                adapterProductListing.notifyDataSetChanged();
 //                                dismissProgress();
 //                            } else {
-//                                UIHelper.showToast(getContext(), response.content().message);
+//                                UIHelper.showToast(getContext(), responseCode.content().message);
 //                                dismissProgress();
 //                            }
 //                        }
@@ -196,20 +196,20 @@ public class ProductListingFragment extends BaseFragment {
 //                    .enqueue(new Callback<WebResponse<ProductsWrapper>>() {
 //
 //                        @Override
-//                        public void onResponse(Call<WebResponse<ProductsWrapper>> call, Response<WebResponse<ProductsWrapper>> response) {
-//                            if (response == null || response.content() == null) {
+//                        public void onResponse(Call<WebResponse<ProductsWrapper>> call, Response<WebResponse<ProductsWrapper>> responseCode) {
+//                            if (responseCode == null || responseCode.content() == null) {
 //                                dismissProgress();
 //                                return;
 //                            }
-//                            if (response.content().isSuccess()) {
+//                            if (responseCode.content().isSuccess()) {
 //                                arrProducts.clear();
-//                                arrProducts.addAll(response.content().result.products);
+//                                arrProducts.addAll(responseCode.content().result.products);
 ////                                setAdapter();
 //                                updateCart();
 //                                adapterProductListing.notifyDataSetChanged();
 //                                dismissProgress();
 //                            } else {
-//                                UIHelper.showToast(getContext(), response.content().message);
+//                                UIHelper.showToast(getContext(), responseCode.content().message);
 //                                dismissProgress();
 //                            }
 //

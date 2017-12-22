@@ -81,13 +81,13 @@ public class GenericContentFragment extends BaseFragment {
 //        WebServiceFactory.getInstance("0").getStaticPageData(0, key)
 //                .enqueue(new Callback<WebResponse<Content>>() {
 //                    @Override
-//                    public void onResponse(Call<WebResponse<Content>> call, Response<WebResponse<Content>> response) {
+//                    public void onResponse(Call<WebResponse<Content>> call, Response<WebResponse<Content>> responseCode) {
 //
-//                        if (response.body().isSuccess()) {
-//                            txtViewContent.setText(Html.fromHtml(response.body().result.content));
+//                        if (responseCode.body().isSuccess()) {
+//                            txtViewContent.setText(Html.fromHtml(responseCode.body().result.content));
 //                            dismissProgress();
 //                        } else {
-//                            UIHelper.showToast(getContext(), response.body().message);
+//                            UIHelper.showToast(getContext(), responseCode.body().message);
 //                            dismissProgress();
 //                        }
 //

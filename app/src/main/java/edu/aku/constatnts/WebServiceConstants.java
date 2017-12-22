@@ -6,9 +6,15 @@ package edu.aku.constatnts;
 
 public class WebServiceConstants {
 
+ String postmanLink = "https://www.getpostman.com/collections/1d39c488e283b95f6e23";
+
+    public static String BASE_URL = "http://akuhhealthfirstapidev.aku.edu/api/";
 
 
-    public static String BASE_URL = "http://35.160.175.165/portfolio/grosta/api/";
+    public static final String PARAMS_REQUEST_METHOD = "RequestMethod";
+    public static final String PARAMS_REQUEST_DATA = "RequestData";
+
+    public static final String temporaryToken = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJ3d3cuYWt1LmVkdSIsInN1YiI6Im1ubUBtbm0uY29tIiwiaXNzIjoiTW5NIn0.PRbF6RNmjYm7ai8jQNShBmyDLlZfIWv2Z6V2KosJgjE";
 
 
     /**
@@ -18,6 +24,7 @@ public class WebServiceConstants {
     public static String DEVICE_TOKEN = "abc123";
     public static String CURRENCY_TYPE = "AED";
     public static String COUNRTY_ID_UAE = "AE";
+
     public static int CITY_ID = 0;
 
     public static String PAYMENT_TYPE_CREDIT_CARD = "cc";

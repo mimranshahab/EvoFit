@@ -76,7 +76,7 @@ public class AboutAppFragment extends BaseFragment {
 
                 if (response.body().isSuccess()) {
                     txtContent.setText(Html.fromHtml(response.body().result.get(0).content));
-//                            txtContent.setText(response.body().result.get(0).content);
+//                            txtContent.setText(responseCode.body().result.get(0).content);
                 } else {
                     UIHelper.showToast(getContext(), response.body().message);
                 }

@@ -1,6 +1,9 @@
 package edu.aku.managers.retrofit;
 
 import com.google.gson.JsonObject;
+
+import org.json.JSONObject;
+
 import edu.aku.constatnts.WebServiceConstants;
 import edu.aku.model.AddOrder;
 import edu.aku.model.ContactDetail;
@@ -43,6 +46,16 @@ import retrofit2.http.Query;
 
 public interface WebServiceProxy {
 
+
+
+    @Multipart
+    @POST()
+    Call<WebResponse<JsonObject>> webServiceRequestAPI(
+            @Part(WebServiceConstants.PARAMS_REQUEST_METHOD) RequestBody requestMethod,
+            @Part(WebServiceConstants.PARAMS_REQUEST_DATA) RequestBody requestData
+    );
+
+
     /*
      * @param userEmail
      * @param userPassword
@@ -55,7 +68,6 @@ public interface WebServiceProxy {
 
 
     @Multipart
-
     @POST(WebServiceConstants.WS_KEY_REGISTER)
     Call<WebResponse<UserModel>> postSignUp(
             @Part("full_name") RequestBody userName,

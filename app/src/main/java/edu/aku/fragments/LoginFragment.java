@@ -15,6 +15,8 @@ import android.widget.TextView;
 
 import com.andreabaccega.widget.FormEditText;
 import com.ctrlplusz.anytextview.AnyTextView;
+import com.google.gson.JsonObject;
+
 import edu.aku.R;
 import edu.aku.fragments.abstracts.BaseFragment;
 import edu.aku.fragments.abstracts.GenericClickableInterface;
@@ -24,6 +26,7 @@ import edu.aku.helperclasses.ui.helper.TitleBar;
 import edu.aku.helperclasses.ui.helper.UIHelper;
 
 import edu.aku.managers.retrofit.WebServiceFactory;
+import edu.aku.managers.retrofit.WebServices;
 import edu.aku.model.UserModel;
 import edu.aku.model.wrappers.WebResponse;
 import edu.aku.residemenu.ResideMenu;
@@ -37,6 +40,7 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 import static android.content.ContentValues.TAG;
+import static edu.aku.constatnts.WebServiceConstants.temporaryToken;
 
 /**
  * Created by khanhamza on 08-May-17.
@@ -159,7 +163,19 @@ public class LoginFragment extends BaseFragment {
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.txtForgotPassword:
-                getMainActivity().addDockableFragment(ForgotPasswordFragment.newInstance());
+//                getMainActivity().addDockableFragment(ForgotPasswordFragment.newInstance());
+
+                new WebServices(getMainActivity(), temporaryToken).webServiceRequestAPI("UserManager.GetRegisterVM", "", new WebServices.IRequestJsonDataCallBack() {
+                    @Override
+                    public void requestDataResponse(WebResponse<JsonObject> webResponse) {
+                        UIHelper.showShortToastInCenter(getContext(), "Successsssssssss");
+                    }
+
+                    @Override
+                    public void onError() {
+                        UIHelper.showShortToastInCenter(getContext(), "failure");
+                    }
+                });
                 break;
             case R.id.btnLogin:
                 if (edtEmail.testValidity() && edtPassword.testValidity()) {

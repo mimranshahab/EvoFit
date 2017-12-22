@@ -51,7 +51,7 @@ public class WebServiceFactory {
                     Request original = chain.request();
 
                     // Request customization: add request headers
-                    Request.Builder requestBuilder = original.newBuilder().addHeader("token", _token + "").addHeader("_token", _token + "");
+                    Request.Builder requestBuilder = original.newBuilder().addHeader("_token", _token + "");
                     Request request = requestBuilder.build();
                     return chain.proceed(request);
                 }
