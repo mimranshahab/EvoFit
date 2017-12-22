@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.structure">
+    package="edu.aku">
 
 
     <uses-feature
@@ -29,7 +29,7 @@
 
 
     <application
-        android:name=".BaseApplication"
+        android:name="edu.aku.BaseApplication"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
@@ -38,9 +38,9 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
 
-        <meta-data
-            android:name="com.google.android.geo.API_KEY"
-            android:value="AIzaSyBsP8jCqqrTckRDPcfaefKutSDo3NBENok" />
+        <!--<meta-data-->
+            <!--android:name="com.google.android.geo.API_KEY"-->
+            <!--android:value="AIzaSyBsP8jCqqrTckRDPcfaefKutSDo3NBENok" />-->
 
         <meta-data
             android:name="com.google.android.gms.version"
@@ -48,26 +48,26 @@
 
 
 
-        <service
-            android:name=".firebase.MyFirebaseMessagingService">
-            <intent-filter>
-                <action android:name="com.google.firebase.MESSAGING_EVENT"/>
-            </intent-filter>
-        </service>
+        <!--<service-->
+            <!--android:name="edu.aku.firebase.MyFirebaseMessagingService">-->
+            <!--<intent-filter>-->
+                <!--<action android:name="com.google.firebase.MESSAGING_EVENT"/>-->
+            <!--</intent-filter>-->
+        <!--</service>-->
 
-        <service
-            android:name=".firebase.MyFirebaseInstanceIDService">
-            <intent-filter>
-                <action android:name="com.google.firebase.INSTANCE_ID_EVENT"/>
-            </intent-filter>
-        </service>
+        <!--<service-->
+            <!--android:name = "edu.aku.firebase.MyFirebaseInstanceIDService">-->
+            <!--<intent-filter>-->
+                <!--<action android:name="com.google.firebase.INSTANCE_ID_EVENT"/>-->
+            <!--</intent-filter>-->
+        <!--</service>-->
 
 
 
 
         <!-- Splash screen -->
         <activity
-            android:name=".activities.SplashActivity"
+            android:name="edu.aku.activities.SplashActivity"
             android:label="@string/app_name"
             android:screenOrientation="portrait"
             android:theme="@android:style/Theme.Black.NoTitleBar">
@@ -80,13 +80,11 @@
 
         <!-- Main Activity -->
         <activity
-            android:name=".activities.MainActivity"
+            android:name="edu.aku.activities.MainActivity"
             android:label="@string/app_name"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme"
             android:windowSoftInputMode="adjustPan|stateHidden">
-
-
         </activity>
 
     </application>
