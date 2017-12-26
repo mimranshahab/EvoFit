@@ -66,7 +66,6 @@ public class MainActivity extends AppCompatActivity implements ImageChooserListe
     private Bitmap background;
 
     private ImageView imageBlur;
-    public int sortBy = 3;
 
     public boolean isAddressChangedInEditMode;
 
@@ -86,11 +85,6 @@ public class MainActivity extends AppCompatActivity implements ImageChooserListe
         initFragments();
 
         isAddressChangedInEditMode = false;
-        // TODO: 21-Jun-17 Edit Order Logic, Editing disabled if user opens the app
-        if (prefHelper.isEditingOrder()) {
-            prefHelper.removeCart();
-            prefHelper.setIsEditingOrder(false);
-        }
 
     }
 

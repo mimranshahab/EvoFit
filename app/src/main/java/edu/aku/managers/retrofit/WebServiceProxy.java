@@ -4,10 +4,7 @@ import com.google.gson.JsonObject;
 
 import edu.aku.constatnts.WebServiceConstants;
 import edu.aku.models.AddOrder;
-import edu.aku.models.ContactDetail;
 import edu.aku.models.Content;
-import edu.aku.models.Order;
-import edu.aku.models.OrderVariable;
 import edu.aku.models.UserModel;
 import edu.aku.models.extramodels.AddressModel;
 import edu.aku.models.wrappers.AddressWrapper;
@@ -18,8 +15,6 @@ import edu.aku.models.wrappers.CategoryWrapper;
 import edu.aku.models.wrappers.CityWrapper;
 import edu.aku.models.wrappers.CountryWrapper;
 import edu.aku.models.wrappers.NotificationWrapper;
-import edu.aku.models.wrappers.OrdersWrapper;
-import edu.aku.models.wrappers.ProductsWrapper;
 import edu.aku.models.wrappers.SubcategoriesWrapper;
 import edu.aku.models.wrappers.WebResponse;
 
@@ -295,19 +290,6 @@ public interface WebServiceProxy {
 
 
     /**
-     * @param subcategoryId
-     * @return
-     */
-
-    @FormUrlEncoded
-    @POST(WebServiceConstants.WS_KEY_PRODUCT_BY_ID)
-    Call<WebResponse<ProductsWrapper>> getProducts(
-            @Field("subcategoryId") int subcategoryId,
-            @Field("user_id") int userId,
-            @Field("sortby") int sortBy);
-
-
-    /**
      * FAVORITE
      *
      * @param userID
@@ -321,21 +303,6 @@ public interface WebServiceProxy {
             @Field("user_id") int userID,
             @Field("product_id") int productID);
 
-
-    /**
-     * FAVORITE LIST
-     *
-     * @param userID
-     * @return
-     */
-
-    @FormUrlEncoded
-    @POST(WebServiceConstants.WS_KEY_FAVORITE_LIST)
-    Call<WebResponse<ProductsWrapper>> getFavoriteList(@Field("user_id") int userID);
-
-    @FormUrlEncoded
-    @POST(WebServiceConstants.WS_KEY_ORDER_VARIABLES)
-    Call<WebResponse<OrderVariable>> getOrderVariable(@Field("user_id") int userID);
 
     /**
      * SEND VERFICATION CODE
@@ -393,22 +360,6 @@ public interface WebServiceProxy {
             @Field("issue_type") String issueType,
             @Field("issue_detail") String issueDetail
     );
-
-
-    /**
-     * SEARCH VIA KEYWORD WEB SERVICE
-     *
-     * @param keyword
-     * @param userID
-     * @return
-     */
-
-    @FormUrlEncoded
-    @POST(WebServiceConstants.WS_KEY_SEARCH)
-    Call<WebResponse<ProductsWrapper>> getSearchList(
-            @Field("keyword") String keyword,
-            @Field("user_id") int userID);
-
 
     /**
      * GET RATINGS
@@ -487,20 +438,6 @@ public interface WebServiceProxy {
     Call<WebResponse<NotificationWrapper>> getNotifications(
             @Field("user_id") int userID);
 
-
-    /**
-     * GET CONTACT DETAILS
-     *
-     * @param userID
-     * @return
-     */
-
-
-    @GET(WebServiceConstants.WS_KEY_CONTACT_DETAIL)
-    Call<WebResponse<ContactDetail>> getContactDetails(
-            @Query("user_id") int userID);
-
-
     @FormUrlEncoded
     @POST(WebServiceConstants.WS_KEY_GET_SELECTED_ADDRESS)
     Call<WebResponse<AddressWrapper2>> getSelectedAddress(
@@ -545,35 +482,6 @@ public interface WebServiceProxy {
             @Field("order_id") int orderID
     );
 
-
-    @FormUrlEncoded
-    @POST(WebServiceConstants.WS_KEY_ORDER_DETAILS)
-    Call<WebResponse<Order>> getOrderDetails(
-            @Field("order_id") int orderID
-    );
-
-
-    @FormUrlEncoded
-    @POST(WebServiceConstants.WS_KEY_INSTANT_ORDER)
-    Call<WebResponse<OrdersWrapper>> getInstantOrders(
-            @Field("user_id") int userID
-    );
-
-
-    @FormUrlEncoded
-    @POST(WebServiceConstants.WS_KEY_PENDING_ORDER)
-    Call<WebResponse<OrdersWrapper>> getPendingOrders(
-            @Field("user_id") int userID
-    );
-
-
-    @FormUrlEncoded
-    @POST(WebServiceConstants.WS_KEY_COMPLETED_ORDERS)
-    Call<WebResponse<OrdersWrapper>> getCompletedOrders(
-            @Field("user_id") int userID
-    );
-
-
     @FormUrlEncoded
     @POST(WebServiceConstants.WS_KEY_UPDATE_TOKEN)
     Call<WebResponse<Object>> updateToken(
@@ -583,23 +491,12 @@ public interface WebServiceProxy {
     );
 
 
-    @DELETE(WebServiceConstants.WS_KEY_DELETE_ORDER)
-    Call<WebResponse<Object>> deleteOrder(
-            @Path("order_id") int orderId,
-            @Path("user_id") int userId
-    );
+//    @DELETE(WebServiceConstants.WS_KEY_DELETE_ORDER)
+//    Call<WebResponse<Object>> deleteOrder(
+//            @Path("order_id") int orderId,
+//            @Path("user_id") int userId
+//    );
 
-    @FormUrlEncoded
-    @POST(WebServiceConstants.WS_KEY_EDIT_SCHEDULE)
-    Call<WebResponse<Object>> setEditSchedule(
-            @Field("additional_notes") String additional_notes,
-            @Field("user_id") String userID,
-            @Field("delivery_hour") int delivery_hour,
-            @Field("delivery_hour_string") String delivery_hour_string,
-            @Field("frequency") int frequency,
-            @Field("delivery_datetime") String deliveryDate,
-            @Field("order_id") int order_id
-    );
 
 }
 

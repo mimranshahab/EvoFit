@@ -165,7 +165,6 @@ public class LeftSideMenuFragment extends BaseFragment {
                 break;
             case R.id.txtContactUs:
                 closeMenu();
-                getMainActivity().addDockableFragment(ContactUsFragment.newInstance());
                 break;
             case R.id.txtAboutApp:
                 closeMenu();
@@ -209,7 +208,6 @@ public class LeftSideMenuFragment extends BaseFragment {
             @Override
             public void click() {
                 genericDialogFragment.getDialog().dismiss();
-                prefHelper.setIsEditingOrder(false);
                 getMainActivity().isAddressChangedInEditMode = false;
                 prefHelper.removeLocalData();
                 emptyBackStack();

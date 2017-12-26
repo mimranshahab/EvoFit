@@ -166,26 +166,6 @@ public class MyAddressesFragment extends BaseFragment implements AddAdressFragme
         selectDefaultAddress(adapterMyAddresses.getItem(position).getAddressID(), position);
     }
 
-    private void deleteCartWarningPopup(final int position) {
-        final GenericDialogFragment genericDialogFragment = new GenericDialogFragment();
-        genericPopUp(genericDialogFragment, getString(R.string.warning), getString(R.string.yourCartWillBeReset), getString(R.string.agree), getString(R.string.cancel), new GenericClickableInterface() {
-            @Override
-            public void click() {
-                genericDialogFragment.dismiss();
-                prefHelper.removeCart();
-                prefHelper.putSelectedAddress(adapterMyAddresses.getItem(position));
-                emptyBackStack();
-                getMainActivity().addDockableFragment(HomeFragment.newInstance());
-            }
-        }, new GenericClickableInterface() {
-            @Override
-            public void click() {
-                genericDialogFragment.dismiss();
-            }
-        });
-    }
-
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         // TODO: inflate a fragment view
@@ -260,17 +240,7 @@ public class MyAddressesFragment extends BaseFragment implements AddAdressFragme
                     }
 
                     getMainActivity().isAddressChangedInEditMode = true;
-
-                    if (prefHelper.getCart().getProducts().isEmpty()) {
-                        getMainActivity().getTitleBar().txtCircle.setVisibility(View.GONE);
-                        prefHelper.putSelectedAddress(adapterMyAddresses.getItem(position));
-                        emptyBackStack();
-
-                        getMainActivity().addDockableFragment(HomeFragment.newInstance());
-                    } else {
-                        getMainActivity().getTitleBar().txtCircle.setVisibility(View.GONE);
-                        deleteCartWarningPopup(MyAddressesFragment.this.position);
-                    }
+                    getMainActivity().addDockableFragment(HomeFragment.newInstance());
 
                 } else {
                     UIHelper.showToast(getContext(), response.body().message);

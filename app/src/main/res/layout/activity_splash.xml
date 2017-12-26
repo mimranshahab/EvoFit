@@ -1,13 +1,35 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-android:layout_width="match_parent"
-android:layout_height="match_parent">
-
-<ImageView
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:src="@drawable/imgsplash2"
-    android:scaleType="centerCrop"/>
+    android:background="@color/white"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:id="@+id/contParentLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white"
+        android:orientation="vertical">
+
+        <ImageView
+            android:layout_width="200dp"
+            android:layout_height="200dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="147dp"
+            android:scaleType="fitCenter"
+            android:src="@drawable/aku_logo" />
+
+        <com.ctrlplusz.anytextview.AnyTextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:padding="@dimen/x20dp"
+            android:textSize="22sp"
+            android:text="Aga Khan University Hospital
+HEALTH FIRST" />
+
+    </LinearLayout>
+
 
 </RelativeLayout>

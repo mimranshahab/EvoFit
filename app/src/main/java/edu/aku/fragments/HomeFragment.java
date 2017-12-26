@@ -90,7 +90,6 @@ public class HomeFragment extends BaseFragment {
 //                getMainActivity().addDockableFragment(ShoppingCartFragment.newInstance());
             }
         });
-        titleBar.setTxtCircle(prefHelper.getCart().getProducts().size());
     }
 
 //    public void showNextBuildToast() {
