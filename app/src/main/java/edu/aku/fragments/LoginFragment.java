@@ -25,9 +25,11 @@ import edu.aku.helperclasses.PasswordValidation;
 import edu.aku.helperclasses.ui.helper.TitleBar;
 import edu.aku.helperclasses.ui.helper.UIHelper;
 
+import edu.aku.managers.retrofit.GsonFactory;
 import edu.aku.managers.retrofit.WebServiceFactory;
 import edu.aku.managers.retrofit.WebServices;
 import edu.aku.models.UserModel;
+import edu.aku.models.getmodels.RegisterVM;
 import edu.aku.models.wrappers.WebResponse;
 import edu.aku.residemenu.ResideMenu;
 
@@ -40,6 +42,7 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 import static android.content.ContentValues.TAG;
+import static edu.aku.constatnts.WebServiceConstants.METHOD_USER_GET_REGISTER_VM;
 import static edu.aku.constatnts.WebServiceConstants.temporaryToken;
 
 /**
@@ -165,10 +168,11 @@ public class LoginFragment extends BaseFragment {
             case R.id.txtForgotPassword:
 //                getMainActivity().addDockableFragment(ForgotPasswordFragment.newInstance());
 
-                new WebServices(getMainActivity(), temporaryToken).webServiceRequestAPI("UserManager.GetRegisterVM", "", new WebServices.IRequestJsonDataCallBack() {
+                new WebServices(getMainActivity(), temporaryToken).webServiceRequestAPI(METHOD_USER_GET_REGISTER_VM, "", new WebServices.IRequestJsonDataCallBack() {
                     @Override
                     public void requestDataResponse(WebResponse<JsonObject> webResponse) {
-                        UIHelper.showShortToastInCenter(getContext(), "Successsssssssss");
+                        GsonFactory.getSimpleGson().fromJson(webResponse.result, RegisterVM.class);
+                        UIHelper.showShortToastInCenter(getContext(), webResponse.message);
                     }
 
                     @Override

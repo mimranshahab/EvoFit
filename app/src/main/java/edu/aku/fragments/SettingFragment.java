@@ -124,8 +124,7 @@ public class SettingFragment extends BaseFragment {
 
                 break;
             case R.id.contChangePassword:
-                getMainActivity().addDockableFragment(ChangePasswordFragment.newInstance());
-                break;
+//                getMainActivity().addDockableFragment(ChangePasswordFragment.newInstance());
         }
     }
 }

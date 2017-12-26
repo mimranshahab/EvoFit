@@ -80,14 +80,14 @@ public class HomeFragment extends BaseFragment {
         titleBar.setRightButton2(R.drawable.imgsearch, new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                getMainActivity().addDockableFragment(SearchFragment.newInstance());
+//                getMainActivity().addDockableFragment(SearchFragment.newInstance());
             }
         });
 
         titleBar.setRightButton(R.drawable.imgcart, new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                getMainActivity().addDockableFragment(ShoppingCartFragment.newInstance());
+//                getMainActivity().addDockableFragment(ShoppingCartFragment.newInstance());
             }
         });
         titleBar.setTxtCircle(prefHelper.getCart().getProducts().size());
@@ -187,7 +187,7 @@ public class HomeFragment extends BaseFragment {
 
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-        getMainActivity().addDockableFragment(ProductTabFragment.newInstance(adapterCategory.getItem(position).categoryName, adapterCategory.getItem(position).subCategories));
+//        getMainActivity().addDockableFragment(ProductTabFragment.newInstance(adapterCategory.getItem(position).categoryName, adapterCategory.getItem(position).subCategories));
     }
 
     @Override

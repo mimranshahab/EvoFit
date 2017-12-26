@@ -17,7 +17,7 @@ public class WebResponse<T> {
     @SerializedName("ResponseType")
     public String responseType;
 
-    @SerializedName("Result")
+    @SerializedName("ResponseResult")
     public T result;
 
     public boolean isSuccess() {

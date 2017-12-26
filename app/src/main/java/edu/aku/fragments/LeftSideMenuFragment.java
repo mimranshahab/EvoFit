@@ -149,11 +149,11 @@ public class LeftSideMenuFragment extends BaseFragment {
                 break;
             case R.id.txtOrderHistory:
                 closeMenu();
-                getMainActivity().addDockableFragment(OrderHistoryTabFragment.newInstance());
+//                getMainActivity().addDockableFragment(OrderHistoryTabFragment.newInstance());
                 break;
             case R.id.txtFavorite:
                 closeMenu();
-                getMainActivity().addDockableFragment(FavoriteFragment.newInstance());
+//                getMainActivity().addDockableFragment(FavoriteFragment.newInstance());
                 break;
             case R.id.txtSetting:
                 closeMenu();

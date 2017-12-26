@@ -123,7 +123,7 @@ public class WebServices {
 //
 //            RequestBody body = RequestBody.create(okhttp3.MediaType.parse("application/json; charset=utf-8"), params.toString());
 //            if (Helper.isNetworkConnected(mContext, true)) {
-//                WebServiceFactory.getInstance("").verifyCode("", 0).enqueue(new Callback<JsonObject>() {
+//                WebServiceFactory.getInstance("").verifyCode("", 0).enqueue(new Callback<String>() {
 //                    @Override
 //                    public void onResponse(Call<JsonObject> call, Response<JsonObject> response) {
 //                        dismissDialog();
