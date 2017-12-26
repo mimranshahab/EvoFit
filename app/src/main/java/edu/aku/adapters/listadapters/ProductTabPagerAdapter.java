@@ -7,7 +7,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import edu.aku.fragments.ProductListingFragment;
-import edu.aku.model.Category;
+import edu.aku.models.Category;
 
 import java.util.ArrayList;
 

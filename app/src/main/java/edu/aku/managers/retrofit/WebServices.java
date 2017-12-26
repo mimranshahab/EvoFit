@@ -10,12 +10,9 @@ import com.google.gson.JsonObject;
 import edu.aku.helperclasses.Helper;
 import edu.aku.helperclasses.ui.helper.UIHelper;
 
-import org.json.JSONException;
-import org.json.JSONObject;
-
 import java.io.IOException;
 
-import edu.aku.model.wrappers.WebResponse;
+import edu.aku.models.wrappers.WebResponse;
 import okhttp3.MediaType;
 import okhttp3.RequestBody;
 import retrofit2.Call;
@@ -23,7 +20,7 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 /**
- * Created by muhammadmuzammil on 6/30/2017.
+ * Created by hamzakhan on 6/30/2017.
  */
 
 public class WebServices {
@@ -52,10 +49,10 @@ public class WebServices {
     public static boolean IsResponseError(Response<WebResponse<JsonObject>> response) {
         if (response != null && !response.isSuccessful() && response.errorBody() != null) {
             // handle carsResponse.errorBody()
-            int code = response.raw().code();
-            String message = response.raw().message();
-            String errorBody = response.errorBody().toString();
-            String errorMsg = "";
+//            int code = response.raw().code();
+//            String message = response.raw().message();
+//            String errorBody = response.errorBody().toString();
+//            String errorMsg = "";
             return false;
         }
         return true;
@@ -81,7 +78,7 @@ public class WebServices {
                     public void onResponse(Call<WebResponse<JsonObject>> call, Response<WebResponse<JsonObject>> response) {
                         dismissDialog();
                         if (!IsResponseError(response)) {
-                            String errorBody = null;
+                            String errorBody;
                             try {
                                 errorBody = response.errorBody().string();
                                 UIHelper.showShortToastInCenter(mContext, errorBody);
@@ -112,6 +109,8 @@ public class WebServices {
             }
 
         } catch (Exception e) {
+            dismissDialog();
+            e.printStackTrace();
 
         }
 

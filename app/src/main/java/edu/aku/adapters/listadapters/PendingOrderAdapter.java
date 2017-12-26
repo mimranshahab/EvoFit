@@ -12,7 +12,7 @@ import android.widget.LinearLayout;
 import com.ctrlplusz.anytextview.AnyTextView;
 import edu.aku.R;
 import edu.aku.helperclasses.DateHelper;
-import edu.aku.model.Order;
+import edu.aku.models.Order;
 
 import java.util.ArrayList;
 

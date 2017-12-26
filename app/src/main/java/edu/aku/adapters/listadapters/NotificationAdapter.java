@@ -13,7 +13,7 @@ import android.widget.TextView;
 
 import edu.aku.R;
 import edu.aku.constatnts.WebServiceConstants;
-import edu.aku.model.NotificationModel;
+import edu.aku.models.NotificationModel;
 
 import java.util.ArrayList;
 

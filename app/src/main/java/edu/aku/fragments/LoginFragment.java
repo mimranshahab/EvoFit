@@ -27,8 +27,8 @@ import edu.aku.helperclasses.ui.helper.UIHelper;
 
 import edu.aku.managers.retrofit.WebServiceFactory;
 import edu.aku.managers.retrofit.WebServices;
-import edu.aku.model.UserModel;
-import edu.aku.model.wrappers.WebResponse;
+import edu.aku.models.UserModel;
+import edu.aku.models.wrappers.WebResponse;
 import edu.aku.residemenu.ResideMenu;
 
 import butterknife.BindView;

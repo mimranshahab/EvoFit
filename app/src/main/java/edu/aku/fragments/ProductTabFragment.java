@@ -13,7 +13,7 @@ import edu.aku.adapters.listadapters.ProductTabPagerAdapter;
 import edu.aku.fragments.abstracts.BaseFragment;
 import edu.aku.helperclasses.ui.helper.CustomViewPager;
 import edu.aku.helperclasses.ui.helper.TitleBar;
-import edu.aku.model.Category;
+import edu.aku.models.Category;
 
 import java.util.ArrayList;
 

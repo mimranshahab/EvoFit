@@ -12,7 +12,7 @@ import android.widget.ImageView;
 import com.ctrlplusz.anytextview.AnyTextView;
 import edu.aku.R;
 import edu.aku.activities.MainActivity;
-import edu.aku.model.extramodels.AddressModel;
+import edu.aku.models.extramodels.AddressModel;
 
 import java.util.ArrayList;
 

@@ -15,9 +15,9 @@ import edu.aku.helperclasses.ui.helper.TitleBar;
 import edu.aku.helperclasses.ui.helper.UIHelper;
 
 import edu.aku.managers.retrofit.WebServiceFactory;
-import edu.aku.model.NotificationModel;
-import edu.aku.model.wrappers.NotificationWrapper;
-import edu.aku.model.wrappers.WebResponse;
+import edu.aku.models.NotificationModel;
+import edu.aku.models.wrappers.NotificationWrapper;
+import edu.aku.models.wrappers.WebResponse;
 
 import java.util.ArrayList;
 

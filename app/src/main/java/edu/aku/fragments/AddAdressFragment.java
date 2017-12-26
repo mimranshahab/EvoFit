@@ -19,8 +19,8 @@ import edu.aku.helperclasses.GooglePlaceHelper;
 import edu.aku.helperclasses.ui.helper.TitleBar;
 import edu.aku.helperclasses.ui.helper.UIHelper;
 import edu.aku.managers.retrofit.WebServiceFactory;
-import edu.aku.model.extramodels.AddressModel;
-import edu.aku.model.wrappers.WebResponse;
+import edu.aku.models.extramodels.AddressModel;
+import edu.aku.models.wrappers.WebResponse;
 import com.andreabaccega.widget.FormEditText;
 import com.ctrlplusz.anytextview.AnyTextView;
 
@@ -328,7 +328,7 @@ public class AddAdressFragment extends BaseFragment implements GooglePlaceHelper
     }
 
     private void addAddressService(final AddressModel addressModel) {
-        addAddressCall = WebServiceFactory.getInstance(prefHelper.getUser().token).addAddress(WebServiceConstants.COUNRTY_ID_UAE, addressModel.getCountry(),
+        addAddressCall = WebServiceFactory.getInstance(prefHelper.getUser().token).addAddress(WebServiceConstants.COUNTRY_ID_UAE, addressModel.getCountry(),
                 WebServiceConstants.CITY_ID,
                 addressModel.getCity(), addressModel.getStreet(), addressModel.getBuilding(), addressModel.getFloor(),
                 addressModel.getApartment(), addressModel.getLandMark(), addressModel.getLocationType(), addressModel.getLocationName(), addressModel.getLatitude(), addressModel.getLongitude(),
@@ -358,7 +358,7 @@ public class AddAdressFragment extends BaseFragment implements GooglePlaceHelper
     }
 
     private void editAddressService(final AddressModel addressModel) {
-        editAddressCall = WebServiceFactory.getInstance(prefHelper.getUser().token).editAddress(addressModelFromEdit.getAddressID(), WebServiceConstants.COUNRTY_ID_UAE, addressModel.getCountry(),
+        editAddressCall = WebServiceFactory.getInstance(prefHelper.getUser().token).editAddress(addressModelFromEdit.getAddressID(), WebServiceConstants.COUNTRY_ID_UAE, addressModel.getCountry(),
                 WebServiceConstants.CITY_ID,
                 addressModel.getCity(), addressModel.getStreet(), addressModel.getBuilding(), addressModel.getFloor(),
                 addressModel.getApartment(), addressModel.getLandMark(), addressModel.getLocationType(), addressModel.getLocationName(), addressModel.getLatitude(), addressModel.getLongitude(),

@@ -14,8 +14,8 @@ import edu.aku.helperclasses.ui.helper.KeyboardHide;
 import edu.aku.helperclasses.ui.helper.TitleBar;
 import edu.aku.helperclasses.ui.helper.UIHelper;
 import edu.aku.managers.retrofit.WebServiceFactory;
-import edu.aku.model.Content;
-import edu.aku.model.wrappers.WebResponse;
+import edu.aku.models.Content;
+import edu.aku.models.wrappers.WebResponse;
 import com.ctrlplusz.anytextview.AnyTextView;
 
 import java.util.ArrayList;

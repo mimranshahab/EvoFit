@@ -8,7 +8,7 @@ public class WebServiceConstants {
 
  String postmanLink = "https://www.getpostman.com/collections/1d39c488e283b95f6e23";
 
-    public static String BASE_URL = "http://akuhhealthfirstapidev.aku.edu/api/";
+    public static String BASE_URL = "http://ahfapidev.aku.edu/api/";
 
 
     public static final String PARAMS_REQUEST_METHOD = "RequestMethod";
@@ -23,7 +23,7 @@ public class WebServiceConstants {
     public static String DEVICE_TYPE = "android";
     public static String DEVICE_TOKEN = "abc123";
     public static String CURRENCY_TYPE = "AED";
-    public static String COUNRTY_ID_UAE = "AE";
+    public static String COUNTRY_ID_UAE = "AE";
 
     public static int CITY_ID = 0;
 

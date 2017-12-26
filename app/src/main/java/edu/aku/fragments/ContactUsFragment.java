@@ -16,8 +16,8 @@ import edu.aku.R;
 import edu.aku.fragments.abstracts.BaseFragment;
 import edu.aku.helperclasses.ui.helper.TitleBar;
 import edu.aku.managers.retrofit.WebServiceFactory;
-import edu.aku.model.ContactDetail;
-import edu.aku.model.wrappers.WebResponse;
+import edu.aku.models.ContactDetail;
+import edu.aku.models.wrappers.WebResponse;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;

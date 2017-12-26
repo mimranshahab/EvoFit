@@ -9,7 +9,7 @@ import android.widget.ArrayAdapter;
 
 import com.ctrlplusz.anytextview.AnyTextView;
 import edu.aku.R;
-import edu.aku.model.Order;
+import edu.aku.models.Order;
 
 import java.util.ArrayList;
 

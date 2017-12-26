@@ -19,7 +19,7 @@ import edu.aku.helperclasses.ui.helper.TitleBar;
 import edu.aku.helperclasses.ui.helper.UIHelper;
 
 import edu.aku.managers.retrofit.WebServiceFactory;
-import edu.aku.model.wrappers.WebResponse;
+import edu.aku.models.wrappers.WebResponse;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;

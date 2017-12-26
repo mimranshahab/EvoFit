@@ -14,7 +14,7 @@ import com.ctrlplusz.anytextview.AnyTextView;
 import com.nostra13.universalimageloader.core.ImageLoader;
 import edu.aku.R;
 import edu.aku.libraries.imageloader.LazyLoading;
-import edu.aku.model.Products;
+import edu.aku.models.Products;
 
 import java.util.ArrayList;
 

@@ -2,28 +2,26 @@ package edu.aku.managers.retrofit;
 
 import com.google.gson.JsonObject;
 
-import org.json.JSONObject;
-
 import edu.aku.constatnts.WebServiceConstants;
-import edu.aku.model.AddOrder;
-import edu.aku.model.ContactDetail;
-import edu.aku.model.Content;
-import edu.aku.model.Order;
-import edu.aku.model.OrderVariable;
-import edu.aku.model.UserModel;
-import edu.aku.model.extramodels.AddressModel;
-import edu.aku.model.wrappers.AddressWrapper;
-import edu.aku.model.wrappers.AddressWrapper2;
-import edu.aku.model.wrappers.BrandsWrapper;
-import edu.aku.model.wrappers.CategoriesWrapper;
-import edu.aku.model.wrappers.CategoryWrapper;
-import edu.aku.model.wrappers.CityWrapper;
-import edu.aku.model.wrappers.CountryWrapper;
-import edu.aku.model.wrappers.NotificationWrapper;
-import edu.aku.model.wrappers.OrdersWrapper;
-import edu.aku.model.wrappers.ProductsWrapper;
-import edu.aku.model.wrappers.SubcategoriesWrapper;
-import edu.aku.model.wrappers.WebResponse;
+import edu.aku.models.AddOrder;
+import edu.aku.models.ContactDetail;
+import edu.aku.models.Content;
+import edu.aku.models.Order;
+import edu.aku.models.OrderVariable;
+import edu.aku.models.UserModel;
+import edu.aku.models.extramodels.AddressModel;
+import edu.aku.models.wrappers.AddressWrapper;
+import edu.aku.models.wrappers.AddressWrapper2;
+import edu.aku.models.wrappers.BrandsWrapper;
+import edu.aku.models.wrappers.CategoriesWrapper;
+import edu.aku.models.wrappers.CategoryWrapper;
+import edu.aku.models.wrappers.CityWrapper;
+import edu.aku.models.wrappers.CountryWrapper;
+import edu.aku.models.wrappers.NotificationWrapper;
+import edu.aku.models.wrappers.OrdersWrapper;
+import edu.aku.models.wrappers.ProductsWrapper;
+import edu.aku.models.wrappers.SubcategoriesWrapper;
+import edu.aku.models.wrappers.WebResponse;
 
 import java.util.ArrayList;
 
@@ -49,7 +47,7 @@ public interface WebServiceProxy {
 
 
     @Multipart
-    @POST()
+    @POST("./")
     Call<WebResponse<JsonObject>> webServiceRequestAPI(
             @Part(WebServiceConstants.PARAMS_REQUEST_METHOD) RequestBody requestMethod,
             @Part(WebServiceConstants.PARAMS_REQUEST_DATA) RequestBody requestData

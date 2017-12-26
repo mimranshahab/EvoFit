@@ -6,8 +6,8 @@ import android.content.SharedPreferences;
 
 import com.google.gson.Gson;
 import edu.aku.constatnts.AppConstants;
-import edu.aku.model.NotificationModel;
-import edu.aku.model.UserModel;
+import edu.aku.models.NotificationModel;
+import edu.aku.models.UserModel;
 
 /**
  * Class that can be extended to make available simple preference

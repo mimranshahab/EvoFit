@@ -10,11 +10,11 @@ import android.util.Log;
 
 import com.google.gson.Gson;
 import edu.aku.activities.MainActivity;
-import edu.aku.model.Order;
-import edu.aku.model.Products;
-import edu.aku.model.UserModel;
-import edu.aku.model.extramodels.AddressModel;
-import edu.aku.model.wrappers.ProductsWrapper;
+import edu.aku.models.Order;
+import edu.aku.models.Products;
+import edu.aku.models.UserModel;
+import edu.aku.models.extramodels.AddressModel;
+import edu.aku.models.wrappers.ProductsWrapper;
 
 import java.util.ArrayList;
 import java.util.Locale;

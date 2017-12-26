@@ -12,7 +12,7 @@ import com.ctrlplusz.anytextview.AnyTextView;
 import com.nostra13.universalimageloader.core.ImageLoader;
 import edu.aku.R;
 import edu.aku.libraries.imageloader.LazyLoading;
-import edu.aku.model.ItemModel;
+import edu.aku.models.ItemModel;
 
 import java.util.ArrayList;
 

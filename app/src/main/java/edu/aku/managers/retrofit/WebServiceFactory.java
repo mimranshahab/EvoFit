@@ -18,7 +18,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class WebServiceFactory {
 
-    private static WebServiceProxy webServiceProxy = null;
+    private static Retrofit retrofit;
 
 
     /***
@@ -26,18 +26,18 @@ public class WebServiceFactory {
      */
     public static WebServiceProxy getInstance(final String _token) {
 
-     webServiceProxy = null;
+//     webServiceProxy = null;
 
-        if (webServiceProxy == null) {
+        if (retrofit == null) {
 
 //            Gson gson = new GsonBuilder()
 //                    .setDateFormat("yyyy-MM-dd'T'HH:mm:ssZ")
 //                    .create();
 
 
-            HttpLoggingInterceptor logging = new HttpLoggingInterceptor();
+            HttpLoggingInterceptor interceptor = new HttpLoggingInterceptor();
             // set your desired log level
-            logging.setLevel(HttpLoggingInterceptor.Level.BODY);
+            interceptor.setLevel(HttpLoggingInterceptor.Level.BODY);
 
             OkHttpClient.Builder httpClient = new OkHttpClient.Builder();
 //            httpClient.connectTimeout(120, TimeUnit.SECONDS);
@@ -59,18 +59,18 @@ public class WebServiceFactory {
 
 
             // add logging as last interceptor
-            httpClient.addInterceptor(logging);  // <-- this is the important line!
-            Retrofit retrofit
-                    = new Retrofit.Builder()
+//            httpClient.addNetworkInterceptor(interceptor).addInterceptor(interceptor);  // <-- this is the important line!
+            httpClient.addInterceptor(interceptor);  // <-- this is the important line!
+            retrofit = new Retrofit.Builder()
                     .baseUrl(WebServiceConstants.BASE_URL)
-                    .addConverterFactory(GsonConverterFactory.create())
                     .client(httpClient.build())
+                    .addConverterFactory(GsonConverterFactory.create())
                     .build();
 
-            webServiceProxy = retrofit.create(WebServiceProxy.class);
+//            WebServiceFactory.retrofit = retrofit.create(WebServiceProxy.class);
         }
 
-        return webServiceProxy;
+        return retrofit.create(WebServiceProxy.class);
     }
 
 }

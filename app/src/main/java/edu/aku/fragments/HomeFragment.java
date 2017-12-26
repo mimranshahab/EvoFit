@@ -22,11 +22,11 @@ import edu.aku.helperclasses.ui.helper.UIHelper;
 import edu.aku.libraries.imageloader.LazyLoading;
 
 import edu.aku.managers.retrofit.WebServiceFactory;
-import edu.aku.model.Category;
-import edu.aku.model.wrappers.AddressWrapper2;
-import edu.aku.model.wrappers.CategoriesWrapper;
-import edu.aku.model.wrappers.NotificationWrapper;
-import edu.aku.model.wrappers.WebResponse;
+import edu.aku.models.Category;
+import edu.aku.models.wrappers.AddressWrapper2;
+import edu.aku.models.wrappers.CategoriesWrapper;
+import edu.aku.models.wrappers.NotificationWrapper;
+import edu.aku.models.wrappers.WebResponse;
 import edu.aku.residemenu.ResideMenu;
 
 import java.util.ArrayList;

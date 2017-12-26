@@ -18,9 +18,9 @@ import edu.aku.helperclasses.ui.helper.TitleBar;
 import edu.aku.helperclasses.ui.helper.UIHelper;
 
 import edu.aku.managers.retrofit.WebServiceFactory;
-import edu.aku.model.extramodels.AddressModel;
-import edu.aku.model.wrappers.AddressWrapper;
-import edu.aku.model.wrappers.WebResponse;
+import edu.aku.models.extramodels.AddressModel;
+import edu.aku.models.wrappers.AddressWrapper;
+import edu.aku.models.wrappers.WebResponse;
 
 import java.util.ArrayList;
 
