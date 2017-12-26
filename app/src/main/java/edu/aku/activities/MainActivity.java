@@ -55,8 +55,6 @@ public class MainActivity extends AppCompatActivity implements ImageChooserListe
     public String thumbnailFilePath;
     public String thumbnailSmallFilePath;
     private LeftSideMenuFragment leftSideMenuFragment;
-//    public String priceSort = "low-to-high";
-//    public String categorySort = "asc";
 
     private ResideMenu resideMenu;
 
@@ -66,8 +64,6 @@ public class MainActivity extends AppCompatActivity implements ImageChooserListe
     private Bitmap background;
 
     private ImageView imageBlur;
-
-    public boolean isAddressChangedInEditMode;
 
 
     @Override
@@ -82,9 +78,9 @@ public class MainActivity extends AppCompatActivity implements ImageChooserListe
         setSideMenu(ResideMenu.DIRECTION_LEFT);
 
         imageBlur = (ImageView) findViewById(R.id.imageBlur);
-        initFragments();
 
-        isAddressChangedInEditMode = false;
+        // check if user is registered or not
+        initFragments();
 
     }
 
@@ -93,7 +89,6 @@ public class MainActivity extends AppCompatActivity implements ImageChooserListe
         if (prefHelper.getUser() == null) {
             prefHelper.removeLocalData();
             prefHelper.setGuest(true);
-
             addDockableFragment(LoginFragment.newInstance());
         } else {
             prefHelper.setGuest(false);

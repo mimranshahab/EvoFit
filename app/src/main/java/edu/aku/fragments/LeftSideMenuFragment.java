@@ -208,7 +208,6 @@ public class LeftSideMenuFragment extends BaseFragment {
             @Override
             public void click() {
                 genericDialogFragment.getDialog().dismiss();
-                getMainActivity().isAddressChangedInEditMode = false;
                 prefHelper.removeLocalData();
                 emptyBackStack();
                 getMainActivity().addDockableFragment(LoginFragment.newInstance());
