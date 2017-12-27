@@ -46,12 +46,7 @@ public interface WebServiceProxy {
             @Part MultipartBody.Part requestData
     );
 
-//    @Multipart
-//    @POST("./")
-//    Call<WebResponse<String>> uploadFileRequestApi(
-//            @Part(WebServiceConstants.PARAMS_REQUEST_METHOD) RequestBody requestMethod,
-//            @Part(WebServiceConstants.PARAMS_REQUEST_DATA) RequestBody requestData
-//    );
+
 
 
     /*

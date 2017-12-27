@@ -3,25 +3,20 @@ package edu.aku.managers.retrofit;
 import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Context;
-import android.graphics.BitmapFactory;
-import android.media.Image;
 import android.support.annotation.NonNull;
 
-import com.google.common.io.ByteProcessor;
-import com.google.common.io.Files;
 import com.google.gson.JsonObject;
 
 import java.lang.String;
 
 import edu.aku.constatnts.WebServiceConstants;
+import edu.aku.enums.FileType;
 import edu.aku.helperclasses.Helper;
 import edu.aku.helperclasses.ui.helper.UIHelper;
 
 import java.io.File;
 import java.io.IOException;
 
-import edu.aku.managers.FileManager;
-import edu.aku.managers.ImageManager;
 import edu.aku.models.wrappers.WebResponse;
 import okhttp3.MediaType;
 import okhttp3.MultipartBody;
@@ -86,7 +81,7 @@ public class WebServices {
         return false;
     }
 
-    public void webServiceRequestFileAPI(String requestMethod, String filePath, String mediaType, final IRequestJsonDataCallBackForStringResult callBack) {
+    public void webServiceRequestFileAPI(String requestMethod, String filePath, FileType fileType, final IRequestJsonDataCallBackForStringResult callBack) {
 
         RequestBody bodyRequestMethod = getRequestBody(okhttp3.MultipartBody.FORM, requestMethod);
         MultipartBody.Part bodyRequestData;
@@ -100,7 +95,7 @@ public class WebServices {
 
         bodyRequestData =
                 MultipartBody.Part.createFormData(WebServiceConstants.PARAMS_REQUEST_DATA, file.getName(),
-                        RequestBody.create(MediaType.parse(mediaType + "/" +  getExtension(file.getName())), file));
+                        RequestBody.create(MediaType.parse(fileType.canonicalForm() + "/" +  getExtension(file.getName())), file));
         try {
             if (Helper.isNetworkConnected(mContext, true)) {
                 apiService.uploadFileRequestApi(bodyRequestMethod, bodyRequestData).enqueue(new Callback<WebResponse<String>>() {
@@ -218,4 +213,7 @@ public class WebServices {
 
         void onError();
     }
+
+
+
 }

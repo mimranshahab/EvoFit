@@ -8,6 +8,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
+
 import com.andreabaccega.widget.FormEditText;
 import com.ctrlplusz.anytextview.AnyTextView;
 import com.google.gson.JsonObject;
@@ -15,6 +16,7 @@ import com.google.gson.JsonObject;
 import edu.aku.R;
 import edu.aku.activities.MainActivity;
 import edu.aku.constatnts.WebServiceConstants;
+import edu.aku.enums.FileType;
 import edu.aku.fragments.abstracts.BaseFragment;
 import edu.aku.fragments.abstracts.GenericClickableInterface;
 import edu.aku.fragments.abstracts.GenericDialogFragment;
@@ -26,11 +28,14 @@ import edu.aku.helperclasses.ui.helper.KeyboardHide;
 import edu.aku.helperclasses.ui.helper.TitleBar;
 import edu.aku.helperclasses.ui.helper.UIHelper;
 
+import edu.aku.managers.FileManager;
 import edu.aku.managers.retrofit.WebServiceFactory;
 import edu.aku.managers.retrofit.WebServices;
 import edu.aku.models.UserModel;
 import edu.aku.models.wrappers.WebResponse;
+
 import java.io.File;
+
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
@@ -50,6 +55,8 @@ import static edu.aku.constatnts.WebServiceConstants.METHOD_USER_UPLOAD_REQUEST_
  */
 public class SignUpFragment extends BaseFragment implements MainActivity.ChoosePictureInterface {
 
+    String uploadedFileName;
+    boolean isFileUploaded = false;
     Unbinder unbinder;
     @BindView(R.id.btnUploadImage)
     CircleImageView btnUploadImage;
@@ -73,6 +80,7 @@ public class SignUpFragment extends BaseFragment implements MainActivity.ChooseP
     AnyTextView btnSignUp;
     private String imagePath;
     private MultipartBody.Part bodyProfilePicture;
+
     private Call<WebResponse<UserModel>> signUpClickCall;
 
     @Override
@@ -123,6 +131,7 @@ public class SignUpFragment extends BaseFragment implements MainActivity.ChooseP
         edPassword.addValidator(new PasswordValidation());
     }
 
+
     @Override
     public void onDestroyView() {
         super.onDestroyView();
@@ -131,6 +140,7 @@ public class SignUpFragment extends BaseFragment implements MainActivity.ChooseP
 
     @OnClick({R.id.btnUploadImage, R.id.btnSignUp})
     public void onViewClicked(View view) {
+
         switch (view.getId()) {
             case R.id.btnUploadImage:
                 showImageDialog();
@@ -144,10 +154,18 @@ public class SignUpFragment extends BaseFragment implements MainActivity.ChooseP
 //                }
 
                 new WebServices(getMainActivity(), WebServiceConstants.temporaryToken)
-                        .webServiceRequestFileAPI(METHOD_USER_UPLOAD_REQUEST_FILE, imagePath, "image", new WebServices.IRequestJsonDataCallBackForStringResult() {
+                        .webServiceRequestFileAPI(METHOD_USER_UPLOAD_REQUEST_FILE, imagePath, FileType.IMAGE, new WebServices.IRequestJsonDataCallBackForStringResult() {
                             @Override
                             public void requestDataResponse(WebResponse<String> webResponse) {
-                                webResponse.result.toLowerCase();
+                                if (webResponse.result.isEmpty()) {
+                                    return;
+                                } else {
+                                    String[] strings = webResponse.result.split("-");
+                                    isFileUploaded = strings[0].equals("true");
+                                    if (isFileUploaded) {
+                                        uploadedFileName = strings[1];
+                                    }
+                                }
                             }
 
                             @Override
@@ -285,7 +303,7 @@ public class SignUpFragment extends BaseFragment implements MainActivity.ChooseP
     }
 
     @Override
-    public void onDestroy(){
+    public void onDestroy() {
         if (signUpClickCall != null) {
             signUpClickCall.cancel();
         }
