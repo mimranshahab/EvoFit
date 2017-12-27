@@ -3,19 +3,12 @@ package edu.aku.managers.retrofit;
 import com.google.gson.JsonObject;
 
 import edu.aku.constatnts.WebServiceConstants;
-import edu.aku.models.AddOrder;
 import edu.aku.models.Content;
 import edu.aku.models.UserModel;
 import edu.aku.models.extramodels.AddressModel;
 import edu.aku.models.wrappers.AddressWrapper;
 import edu.aku.models.wrappers.AddressWrapper2;
-import edu.aku.models.wrappers.BrandsWrapper;
-import edu.aku.models.wrappers.CategoriesWrapper;
-import edu.aku.models.wrappers.CategoryWrapper;
-import edu.aku.models.wrappers.CityWrapper;
-import edu.aku.models.wrappers.CountryWrapper;
 import edu.aku.models.wrappers.NotificationWrapper;
-import edu.aku.models.wrappers.SubcategoriesWrapper;
 import edu.aku.models.wrappers.WebResponse;
 
 import java.util.ArrayList;
@@ -23,14 +16,12 @@ import java.util.ArrayList;
 import okhttp3.MultipartBody;
 import okhttp3.RequestBody;
 import retrofit2.Call;
-import retrofit2.http.DELETE;
 import retrofit2.http.Field;
 import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
 import retrofit2.http.Multipart;
 import retrofit2.http.POST;
 import retrofit2.http.Part;
-import retrofit2.http.Path;
 import retrofit2.http.Query;
 
 /**
@@ -40,13 +31,27 @@ import retrofit2.http.Query;
 public interface WebServiceProxy {
 
 
-
     @Multipart
     @POST("./")
     Call<WebResponse<JsonObject>> webServiceRequestAPI(
             @Part(WebServiceConstants.PARAMS_REQUEST_METHOD) RequestBody requestMethod,
             @Part(WebServiceConstants.PARAMS_REQUEST_DATA) RequestBody requestData
     );
+
+
+    @Multipart
+    @POST("./")
+    Call<WebResponse<String>> uploadFileRequestApi(
+            @Part(WebServiceConstants.PARAMS_REQUEST_METHOD) RequestBody requestMethod,
+            @Part MultipartBody.Part requestData
+    );
+
+//    @Multipart
+//    @POST("./")
+//    Call<WebResponse<String>> uploadFileRequestApi(
+//            @Part(WebServiceConstants.PARAMS_REQUEST_METHOD) RequestBody requestMethod,
+//            @Part(WebServiceConstants.PARAMS_REQUEST_DATA) RequestBody requestData
+//    );
 
 
     /*
@@ -227,83 +232,6 @@ public interface WebServiceProxy {
 //    Call<WebResponse<CategoriesWrapper>> getCategories();
 
 
-    @FormUrlEncoded
-    @POST(WebServiceConstants.WS_KEY_CATEGORY)
-    Call<WebResponse<CategoriesWrapper>> getCategories(
-            @Query("user_id") int userID,
-            @Field("latitude") double latitude,
-            @Field("longitude") double longitude,
-            @Field("keyword") String keyword);
-
-    /**
-     * Category ID
-     *
-     * @param categoryId
-     * @return
-     */
-
-    @GET(WebServiceConstants.WS_KEY_CATEGORY_BY_ID)
-    Call<WebResponse<CategoryWrapper>> getSingleCategory(
-            @Path("categoryId") int categoryId);
-
-
-    /**
-     * USER UPDATE
-     *
-     * @param oldPassword
-     * @param password
-     * @return
-     */
-
-    @FormUrlEncoded
-    @POST(WebServiceConstants.WS_KEY_CHANGE_PASSWORD)
-    Call<WebResponse<Object>> postChangePassword(
-            @Field("old_password") String oldPassword,
-            @Field("password") String password,
-            @Field("password_confirmation") String passwordConfirmation,
-            @Query("user_id") int userID);
-
-
-    /**
-     * SubCategory ID
-     *
-     * @param categoryId
-     * @return
-     */
-
-
-    @GET(WebServiceConstants.WS_KEY_SUBCATEGORY_BY_ID)
-    Call<WebResponse<SubcategoriesWrapper>> getSubcategories(
-            @Path("categoryId") int categoryId);
-
-
-    /**
-     * BRAND BY CATEGORY ID
-     *
-     * @param categoryId
-     * @return
-     */
-
-    @GET(WebServiceConstants.WS_KEY_BRAND_BY_ID)
-    Call<WebResponse<BrandsWrapper>> getBrands(
-            @Path("categoryId") int categoryId);
-
-
-    /**
-     * FAVORITE
-     *
-     * @param userID
-     * @param productID
-     * @return
-     */
-
-    @FormUrlEncoded
-    @POST(WebServiceConstants.WS_KEY_FAVORITE)
-    Call<WebResponse<Object>> setFavorite(
-            @Field("user_id") int userID,
-            @Field("product_id") int productID);
-
-
     /**
      * SEND VERFICATION CODE
      *
@@ -320,21 +248,6 @@ public interface WebServiceProxy {
             @Field("user_id") int userID
     );
 
-
-    @FormUrlEncoded
-    @POST(WebServiceConstants.WS_KEY_VERIFY_CODE)
-    Call<JsonObject> verifyCode(
-            @Field("code") String countryCode,
-            @Field("user_id") int userID
-    );
-
-
-    /**
-     * PENDING ORDERS
-     *
-     * @param userID
-     * @return
-     */
 
     /**
      * POST FEEDBACK
@@ -395,28 +308,6 @@ public interface WebServiceProxy {
 
 
     /**
-     * GET COUNTRIES LIST
-     *
-     * @return
-     */
-
-    @GET(WebServiceConstants.WS_KEY_COUNTRIES)
-    Call<WebResponse<CountryWrapper>> getCountries();
-
-
-    /**
-     * GET CITIES
-     *
-     * @param countryID
-     * @return
-     */
-
-    @GET(WebServiceConstants.WS_KEY_CITIES)
-    Call<WebResponse<CityWrapper>> getCities(
-            @Path("countryID") String countryID);
-
-
-    /**
      * @param userID
      * @return
      */
@@ -450,37 +341,6 @@ public interface WebServiceProxy {
             @Field("address_id") int addressID,
             @Field("user_id") int userID);
 
-
-    /**
-     * ADD ORDER
-     * <p>
-     * Time format = 2017-04-19 13:50:55
-     *
-     * @param itemsIDs
-     * @param quantities
-     * @param addressID
-     * @param deliveryDateAndTime
-     * @param additionalNotes
-     * @param userID
-     * @return
-     */
-
-    @FormUrlEncoded
-    @POST(WebServiceConstants.WS_KEY_ADD_ORDER)
-    Call<WebResponse<AddOrder>> addOrder(
-            @Field("items_ids") String itemsIDs,
-            @Field("quantities") String quantities,
-            @Field("address_id") int addressID,
-            @Field("delivery_datetime") String deliveryDateAndTime,
-            @Field("additional_notes") String additionalNotes,
-            @Field("user_id") int userID,
-            @Field("payment_method") String paymentMethod,
-            @Field("delivery_hour") int deliveryHour,
-            @Field("delivery_hour_string") String deliveryHourString,
-            @Field("frequency") int frequency,
-            @Field("is_instant") int isInstant,
-            @Field("order_id") int orderID
-    );
 
     @FormUrlEncoded
     @POST(WebServiceConstants.WS_KEY_UPDATE_TOKEN)

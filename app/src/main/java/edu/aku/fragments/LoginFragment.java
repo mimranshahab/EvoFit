@@ -29,7 +29,7 @@ import edu.aku.managers.retrofit.GsonFactory;
 import edu.aku.managers.retrofit.WebServiceFactory;
 import edu.aku.managers.retrofit.WebServices;
 import edu.aku.models.UserModel;
-import edu.aku.models.getmodels.RegisterVM;
+import edu.aku.models.RegisterVM;
 import edu.aku.models.wrappers.WebResponse;
 import edu.aku.residemenu.ResideMenu;
 

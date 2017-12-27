@@ -10,6 +10,8 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import com.andreabaccega.widget.FormEditText;
 import com.ctrlplusz.anytextview.AnyTextView;
+import com.google.gson.JsonObject;
+
 import edu.aku.R;
 import edu.aku.activities.MainActivity;
 import edu.aku.constatnts.WebServiceConstants;
@@ -25,6 +27,7 @@ import edu.aku.helperclasses.ui.helper.TitleBar;
 import edu.aku.helperclasses.ui.helper.UIHelper;
 
 import edu.aku.managers.retrofit.WebServiceFactory;
+import edu.aku.managers.retrofit.WebServices;
 import edu.aku.models.UserModel;
 import edu.aku.models.wrappers.WebResponse;
 import java.io.File;
@@ -39,6 +42,8 @@ import okhttp3.RequestBody;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
+
+import static edu.aku.constatnts.WebServiceConstants.METHOD_USER_UPLOAD_REQUEST_FILE;
 
 /**
  * Created by shehrozmirza on 5/10/2017.
@@ -132,11 +137,24 @@ public class SignUpFragment extends BaseFragment implements MainActivity.ChooseP
                 break;
 
             case R.id.btnSignUp:
-                if (edFullName.testValidity() && edEmailAddress.testValidity() &&
-                        edPassword.testValidity() &&
-                        edMobileNumber.testValidity()) {
-                    signUpClick();
-                }
+//                if (edFullName.testValidity() && edEmailAddress.testValidity() &&
+//                        edPassword.testValidity() &&
+//                        edMobileNumber.testValidity()) {
+//                    signUpClick();
+//                }
+
+                new WebServices(getMainActivity(), WebServiceConstants.temporaryToken)
+                        .webServiceRequestFileAPI(METHOD_USER_UPLOAD_REQUEST_FILE, imagePath, "image", new WebServices.IRequestJsonDataCallBackForStringResult() {
+                            @Override
+                            public void requestDataResponse(WebResponse<String> webResponse) {
+                                webResponse.result.toLowerCase();
+                            }
+
+                            @Override
+                            public void onError() {
+
+                            }
+                        });
                 break;
         }
     }

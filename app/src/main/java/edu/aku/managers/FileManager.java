@@ -2,6 +2,7 @@ package edu.aku.managers;
 
 import android.content.Context;
 import android.content.ContextWrapper;
+import android.webkit.MimeTypeMap;
 import android.webkit.URLUtil;
 
 
@@ -15,6 +16,8 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.io.UnsupportedEncodingException;
+import java.net.URLEncoder;
 import java.nio.channels.FileChannel;
 import java.text.DecimalFormat;
 
@@ -24,9 +27,9 @@ import java.text.DecimalFormat;
  */
 
 public class FileManager {
-    private static final String AUDIO_DIRECTORY_PATH = AppConstants.ROOT_MEDIA_PATH + "/Aaloo Audio";
-    private static final String VIDEO_DIRECTORY_PATH = AppConstants.ROOT_MEDIA_PATH + "/Aaloo Video";
-    private static final String IMAGE_DIRECTORY_PATH = AppConstants.ROOT_MEDIA_PATH + "/Aaloo Image";
+    private static final String AUDIO_DIRECTORY_PATH = AppConstants.ROOT_MEDIA_PATH + "/Akuhf Audio";
+    private static final String VIDEO_DIRECTORY_PATH = AppConstants.ROOT_MEDIA_PATH + "/Akuhf Video";
+    private static final String IMAGE_DIRECTORY_PATH = AppConstants.ROOT_MEDIA_PATH + "/Akuhf Image";
 
     private static void createDirectory(String directory) {
         /*First check if root directory not created then create*/
@@ -249,6 +252,18 @@ public class FileManager {
         }
 
         return hrSize;
+    }
+
+
+    public static String getExtension(String fileName) {
+        String encoded;
+        try {
+            encoded = URLEncoder.encode(fileName, "UTF-8").replace("+", "%20");
+        } catch (UnsupportedEncodingException e) {
+            encoded = fileName;
+        }
+
+        return MimeTypeMap.getFileExtensionFromUrl(encoded).toLowerCase();
     }
 
     public static File createFileInAppDirectory(Context context, String folderName, String fileName) {

@@ -84,14 +84,10 @@ public class BaseSharedPreferenceManager extends SharedPreferenceManager {
     }
 
     public void removeLocalData() {
-        clearDB();
-//        removePreference(context, FILENAME, KEY_USER);
-//        removePreference(context, FILENAME, KEY_GUEST);
-//        removePreference(context, FILENAME, KEY_CART);
-//        removePreference(context, FILENAME, KEY_SELECTED_ADDRESS);
-//        removePreference(context, FILENAME, KEY_IS_EDITING);
-//        removePreference(context, FILENAME, KEY_EDITING_ORDER);
-
+//        clearDB();
+        removePreference(context, FILENAME, KEY_USER);
+        removePreference(context, FILENAME, KEY_GUEST);
+        removePreference(context, FILENAME, KEY_SELECTED_ADDRESS);
     }
 
 

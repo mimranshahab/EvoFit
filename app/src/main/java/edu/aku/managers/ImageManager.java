@@ -26,6 +26,7 @@ import java.text.NumberFormat;
 import static android.support.media.ExifInterface.ORIENTATION_ROTATE_180;
 import static android.support.media.ExifInterface.ORIENTATION_ROTATE_270;
 import static android.support.media.ExifInterface.ORIENTATION_ROTATE_90;
+import static edu.aku.managers.FileManager.getExtension;
 
 /**
  * Created by muhammadmuzammil on 7/18/2017.
@@ -201,16 +202,6 @@ public class ImageManager {
         return U8_4Bitmap;
     }
 
-    public static String getExtension(String fileName) {
-        String encoded;
-        try {
-            encoded = URLEncoder.encode(fileName, "UTF-8").replace("+", "%20");
-        } catch (UnsupportedEncodingException e) {
-            encoded = fileName;
-        }
-
-        return MimeTypeMap.getFileExtensionFromUrl(encoded).toLowerCase();
-    }
 
 
     public static boolean isVideo(String fileName) {

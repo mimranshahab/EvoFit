@@ -239,7 +239,6 @@ public class MyAddressesFragment extends BaseFragment implements AddAdressFragme
                         return;
                     }
 
-                    getMainActivity().isAddressChangedInEditMode = true;
                     getMainActivity().addDockableFragment(HomeFragment.newInstance());
 
                 } else {

@@ -24,7 +24,6 @@ import edu.aku.libraries.imageloader.LazyLoading;
 import edu.aku.managers.retrofit.WebServiceFactory;
 import edu.aku.models.Category;
 import edu.aku.models.wrappers.AddressWrapper2;
-import edu.aku.models.wrappers.CategoriesWrapper;
 import edu.aku.models.wrappers.NotificationWrapper;
 import edu.aku.models.wrappers.WebResponse;
 import edu.aku.residemenu.ResideMenu;
@@ -53,7 +52,6 @@ public class HomeFragment extends BaseFragment {
     private ArrayList<Category> arrCategory;
     private boolean isCallsDone;
     private Call<WebResponse<AddressWrapper2>> getSelectedAddressCall;
-    private Call<WebResponse<CategoriesWrapper>> getCategoryCall;
     private Call<WebResponse<NotificationWrapper>> callNotifications;
 
     public static HomeFragment newInstance() {
@@ -124,7 +122,6 @@ public class HomeFragment extends BaseFragment {
                 getSelectedAddresses();
             } else {
                 bindData();
-                getCategory();
             }
         }
     }
@@ -227,8 +224,6 @@ public class HomeFragment extends BaseFragment {
                 if (response.body().isSuccess()) {
                     prefHelper.putSelectedAddress(response.body().result.address);
                     bindData();
-                    getCategory();
-
                 } else if (response.body().message.trim().equalsIgnoreCase("No Address Found")) {
                     selectDefaultAddressPopup();
                 } else {
@@ -258,39 +253,6 @@ public class HomeFragment extends BaseFragment {
         });
 
         genericDialogFragment.show(getFragmentManager(), null);
-    }
-
-
-    private void getCategory() {
-        getCategoryCall = WebServiceFactory.getInstance(prefHelper.getUser().token).getCategories(prefHelper.getUserID(),
-                prefHelper.getSelectedAddress().getLatitude(),
-                prefHelper.getSelectedAddress().getLongitude(), prefHelper.getSelectedAddress().getLocationName());
-
-        getCategoryCall.enqueue(new Callback<WebResponse<CategoriesWrapper>>() {
-            @Override
-            public void onResponse(Call<WebResponse<CategoriesWrapper>> call,
-                                   Response<WebResponse<CategoriesWrapper>> response) {
-
-                if (response == null || response.body() == null) {
-                    return;
-                }
-
-                if (response.body().isSuccess()) {
-                    arrCategory.clear();
-                    arrCategory.addAll(response.body().result.categories);
-                    adapterCategory.notifyDataSetChanged();
-                    isCallsDone = true;
-                } else {
-                    UIHelper.showToast(getContext(), response.body().message);
-                }
-            }
-
-            @Override
-            public void onFailure(Call<WebResponse<CategoriesWrapper>> call, Throwable t) {
-                if (!getCategoryCall.isCanceled())
-                    t.printStackTrace();
-            }
-        });
     }
 
 
@@ -328,9 +290,6 @@ public class HomeFragment extends BaseFragment {
 
         if (getSelectedAddressCall != null) {
             getSelectedAddressCall.cancel();
-        }
-        if (getCategoryCall != null) {
-            getCategoryCall.cancel();
         }
         super.onDestroy();
     }
