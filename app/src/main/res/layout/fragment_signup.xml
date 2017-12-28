@@ -2,141 +2,282 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/imgmainbg"
     android:fillViewport="true"
     android:focusableInTouchMode="true">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/white_color"
         android:orientation="vertical"
-        android:paddingTop="@dimen/x30dp">
+        android:padding="@dimen/x15dp">
 
-        <de.hdodenhof.circleimageview.CircleImageView
-            android:id="@+id/btnUploadImage"
-            android:layout_width="@dimen/x80dp"
-            android:layout_height="@dimen/x80dp"
-            android:layout_gravity="center_horizontal"
-            android:background="#0000"
-            android:contentDescription="@string/camera_image"
-            android:scaleType="centerCrop"
-            android:src="@drawable/imgcamera2" />
+        <!--<com.ctrlplusz.anytextview.AnyTextView-->
+            <!--android:id="@+id/txtFullName"-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_marginBottom="@dimen/x5dp"-->
+            <!--android:layout_marginTop="@dimen/x10dp"-->
+            <!--android:text="@string/full_name"-->
+            <!--android:textColor="@color/c_black"-->
+            <!--android:textSize="13sp"-->
+            <!--app:typeface="@string/font_bold" />-->
+
+        <!--<com.andreabaccega.widget.FormEditText-->
+            <!--android:id="@+id/edFullName"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_marginBottom="@dimen/x15dp"-->
+            <!--android:background="@drawable/imgninepatch"-->
+            <!--android:hint="Enter Name"-->
+            <!--android:inputType="textPersonName"-->
+            <!--android:maxLength="30"-->
+            <!--android:maxLines="1"-->
+            <!--android:textColor="@color/text_grey"-->
+            <!--android:textSize="16sp"-->
+            <!--app:testType="personFullName" />-->
+
+
+        <!--<com.ctrlplusz.anytextview.AnyTextView-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_marginBottom="@dimen/x5dp"-->
+            <!--android:text="@string/date_of_birth"-->
+            <!--android:textColor="@color/text_color_black"-->
+            <!--android:textSize="13sp"-->
+            <!--app:typeface="@string/font_bold" />-->
+
+        <!--<com.ctrlplusz.anytextview.AnyTextView-->
+            <!--android:id="@+id/txtDateofBirth"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_marginBottom="@dimen/x15dp"-->
+            <!--android:background="@drawable/imgninepatch2"-->
+            <!--android:drawableRight="@drawable/ic_dropdown"-->
+            <!--android:gravity="center_vertical"-->
+            <!--android:maxLines="1"-->
+            <!--android:text="Select Date of Birth"-->
+            <!--android:textColor="@color/text_grey"-->
+            <!--android:textSize="16sp" />-->
+
+
+        <!--<com.ctrlplusz.anytextview.AnyTextView-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_marginBottom="@dimen/x5dp"-->
+            <!--android:text="@string/gender"-->
+            <!--android:textColor="@color/text_color_black"-->
+            <!--android:textSize="13sp"-->
+            <!--app:typeface="@string/font_bold" />-->
+
+        <!--<com.ctrlplusz.anytextview.AnyTextView-->
+            <!--android:id="@+id/txtGender"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_marginBottom="@dimen/x15dp"-->
+            <!--android:background="@drawable/imgninepatch2"-->
+            <!--android:drawableRight="@drawable/ic_dropdown"-->
+            <!--android:gravity="center_vertical"-->
+            <!--android:maxLines="1"-->
+            <!--android:text="Select Gender"-->
+            <!--android:textColor="@color/text_grey"-->
+            <!--android:textSize="16sp" />-->
+
+        <!--<Spinner-->
+            <!--android:id="@+id/spGender"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="0dp"></Spinner>-->
+
+
+        <!--<com.ctrlplusz.anytextview.AnyTextView-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_marginBottom="@dimen/x5dp"-->
+            <!--android:text="@string/cnic_number"-->
+            <!--android:textColor="@color/c_black"-->
+            <!--android:textSize="13sp"-->
+            <!--app:typeface="@string/font_bold" />-->
+
+        <!--<com.andreabaccega.widget.FormEditText-->
+            <!--android:id="@+id/edtCNICNumber"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_marginBottom="@dimen/x15dp"-->
+            <!--android:background="@drawable/imgninepatch"-->
+            <!--android:hint="Enter CNIC Number"-->
+            <!--android:inputType="numberDecimal"-->
+            <!--android:maxLength="15"-->
+            <!--android:maxLines="1"-->
+            <!--android:textColor="@color/text_grey"-->
+            <!--android:textSize="16sp"-->
+            <!--app:testType="numeric" />-->
+
+
+        <!--<com.ctrlplusz.anytextview.AnyTextView-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_marginBottom="@dimen/x5dp"-->
+            <!--android:text="@string/passport_number"-->
+            <!--android:textColor="@color/c_black"-->
+            <!--android:textSize="13sp"-->
+            <!--app:typeface="@string/font_bold" />-->
+
+        <!--<com.andreabaccega.widget.FormEditText-->
+            <!--android:id="@+id/edtPassportNumber"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_marginBottom="@dimen/x15dp"-->
+            <!--android:background="@drawable/imgninepatch"-->
+            <!--android:hint="Enter Passport Number"-->
+            <!--android:inputType="numberDecimal"-->
+            <!--android:maxLength="20"-->
+            <!--android:maxLines="1"-->
+            <!--android:textColor="@color/text_grey"-->
+            <!--android:textSize="16sp"-->
+            <!--app:testType="numeric" />-->
+
+
+        <!--<com.ctrlplusz.anytextview.AnyTextView-->
+            <!--android:id="@+id/txtEmailAddress"-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_marginBottom="@dimen/x5dp"-->
+
+            <!--android:text="@string/email_address"-->
+            <!--android:textColor="@color/text_color_black"-->
+            <!--android:textSize="13sp"-->
+            <!--app:typeface="@string/font_bold" />-->
+
+        <!--<com.andreabaccega.widget.FormEditText-->
+            <!--android:id="@+id/edEmailAddress"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_marginBottom="@dimen/x15dp"-->
+            <!--android:background="@drawable/imgninepatch"-->
+            <!--android:hint="@string/enter_email_address"-->
+            <!--android:inputType="textEmailAddress"-->
+            <!--android:maxLength="30"-->
+            <!--android:maxLines="1"-->
+            <!--android:textColor="@color/text_grey"-->
+            <!--android:textSize="16sp"-->
+            <!--app:testType="email" />-->
+
+
+        <!--<com.ctrlplusz.anytextview.AnyTextView-->
+            <!--android:id="@+id/txtMobileNumber"-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_marginBottom="@dimen/x5dp"-->
+            <!--android:text="@string/mobile_number"-->
+            <!--android:textColor="@color/text_color_black"-->
+            <!--android:textSize="13sp"-->
+            <!--app:typeface="@string/font_bold" />-->
+
+        <!--<com.andreabaccega.widget.FormEditText-->
+            <!--android:id="@+id/edMobileNumber"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_marginBottom="@dimen/x15dp"-->
+            <!--android:background="@drawable/imgninepatch"-->
+            <!--android:hint="Enter Mobile Number"-->
+            <!--android:inputType="number"-->
+            <!--android:maxLength="16"-->
+            <!--android:maxLines="1"-->
+            <!--android:textColor="@color/text_grey"-->
+            <!--android:textSize="16sp"-->
+            <!--app:testType="phone" />-->
+
 
         <com.ctrlplusz.anytextview.AnyTextView
-            android:id="@+id/txtFullName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="@dimen/x5dp"
-            android:layout_marginLeft="@dimen/x20dp"
-            android:layout_marginTop="@dimen/x25dp"
-            android:text="@string/full_name"
-            android:textSize="13sp"
-            android:textColor="@color/base_color"
-            app:typeface="@string/font_bold" />
-
-        <com.andreabaccega.widget.FormEditText
-            android:id="@+id/edFullName"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@drawable/imgninepatch"
-            android:inputType="textPersonName"
-            android:maxLength="30"
-            android:layout_marginBottom="@dimen/x13dp"
-            android:maxLines="1"
-            android:textSize="16sp"
-            android:paddingLeft="@dimen/x20dp"
-            android:textColor="@color/text_grey"
-            app:testType="personFullName" />
-
-        <com.ctrlplusz.anytextview.AnyTextView
-            android:id="@+id/txtEmailAddress"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/x5dp"
-            android:paddingLeft="@dimen/x20dp"
-            android:text="@string/email_address"
-            android:textSize="13sp"
-            android:textColor="@color/base_color"
-            app:typeface="@string/font_bold" />
-
-        <com.andreabaccega.widget.FormEditText
-            android:id="@+id/edEmailAddress"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@drawable/imgninepatch"
-            android:inputType="textEmailAddress"
-        android:layout_marginBottom="@dimen/x13dp"
-            android:maxLength="30"
-            android:maxLines="1"
-            android:textSize="16sp"
-            android:paddingLeft="@dimen/x20dp"
-            android:textColor="@color/text_grey"
-            app:testType="email" />
-
-
-        <com.ctrlplusz.anytextview.AnyTextView
-            android:id="@+id/txtPassword"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/x5dp"
-            android:paddingLeft="@dimen/x20dp"
-            android:text="@string/password"
-            android:textColor="@color/base_color"
+            android:text="@string/landline_number"
+            android:textColor="@color/text_color_black"
             android:textSize="13sp"
             app:typeface="@string/font_bold" />
 
         <com.andreabaccega.widget.FormEditText
-            android:id="@+id/edPassword"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@drawable/imgninepatch"
-            android:inputType="textPassword"
-            android:maxLength="30"
-            android:layout_marginBottom="@dimen/x13dp"
-            android:maxLines="1"
-            android:textSize="16sp"
-            android:paddingLeft="@dimen/x20dp"
-            android:textColor="@color/text_grey" />
-
-        <com.ctrlplusz.anytextview.AnyTextView
-            android:id="@+id/txtMobileNumber"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/x5dp"
-            android:paddingLeft="@dimen/x20dp"
-            android:text="@string/mobile_number"
-            android:textColor="@color/base_color"
-            android:textSize="13sp"
-            app:typeface="@string/font_bold" />
-
-        <com.andreabaccega.widget.FormEditText
-            android:id="@+id/edMobileNumber"
+            android:id="@+id/edtLandlineNumber"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="@dimen/x15dp"
             android:background="@drawable/imgninepatch"
+            android:hint="Enter Landline Number"
             android:inputType="number"
             android:maxLength="16"
             android:maxLines="1"
-            android:textSize="16sp"
-            android:paddingLeft="@dimen/x20dp"
             android:textColor="@color/text_grey"
+            android:textSize="16sp"
             app:testType="phone" />
 
 
         <com.ctrlplusz.anytextview.AnyTextView
-            android:id="@+id/btnSignUp"
-            android:gravity="center"
             android:layout_width="wrap_content"
-            android:text="@string/sign_up"
-            android:textColor="@color/white"
-            android:layout_marginTop="@dimen/x35dp"
-            android:textSize="17sp"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/x5dp"
+            android:text="@string/current_address"
+            android:textColor="@color/c_black"
+            android:textSize="13sp"
+            app:typeface="@string/font_bold" />
+
+        <com.andreabaccega.widget.FormEditText
+            android:id="@+id/edtCurrentAddress"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/x15dp"
+            android:background="@drawable/imgninepatch"
+            android:hint="Enter Current Address"
+            android:inputType="textMultiLine"
+            android:maxLength="100"
+            android:lines="2"
+            android:maxLines="3"
+            android:textColor="@color/text_grey"
+            android:textSize="16sp"
+            app:testType="nocheck" />
+
+
+        <com.ctrlplusz.anytextview.AnyTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/x5dp"
+            android:text="@string/current_address"
+            android:textColor="@color/c_black"
+            android:textSize="13sp"
+            app:typeface="@string/font_bold" />
+
+        <com.andreabaccega.widget.FormEditText
+            android:id="@+id/edtCurrentCity"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/x15dp"
+            android:background="@drawable/imgninepatch"
+            android:hint="Enter Current City"
+            android:inputType="textMultiLine"
+            android:maxLength="15"
+            android:lines="1"
+            android:maxLines="1"
+            android:textColor="@color/text_grey"
+            android:textSize="16sp"
+            app:testType="nocheck" />
+
+
+
+
+
+
+        <com.ctrlplusz.anytextview.AnyTextView
+            android:id="@+id/btnSignUp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
+            android:layout_marginTop="@dimen/x35dp"
             android:background="@drawable/img_yes"
-            app:typeface="@string/font_normal"/>
-
+            android:gravity="center"
+            android:text="@string/sign_up"
+            android:textColor="@color/white"
+            android:textSize="17sp"
+            app:typeface="@string/font_normal" />
 
 
     </LinearLayout>

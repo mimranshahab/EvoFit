@@ -51,7 +51,7 @@ import static edu.aku.constatnts.WebServiceConstants.temporaryToken;
 
 public class LoginFragment extends BaseFragment {
 
-    @BindView(R.id.edtEmail)
+    @BindView(R.id.edtUserName)
     FormEditText edtEmail;
     @BindView(R.id.edtPassword)
     FormEditText edtPassword;
@@ -61,11 +61,9 @@ public class LoginFragment extends BaseFragment {
     AnyTextView btnLogin;
     @BindView(R.id.txtSignUp)
     AnyTextView txtSignUp;
-    Call<WebResponse<UserModel>> loginCall;
     Unbinder unbinder;
 
     public static LoginFragment newInstance() {
-
         Bundle args = new Bundle();
         LoginFragment fragment = new LoginFragment();
         fragment.setArguments(args);
@@ -150,10 +148,10 @@ public class LoginFragment extends BaseFragment {
                 getMainActivity().addDockableFragment(SignUpFragment.newInstance());
             }
         });
-        text1.setSpannableStringValue(textView, getString(R.string.create_an_account), new SpannableString(textView.getText().toString().trim()));
+        text1.setSpannableStringValue(textView, getString(R.string.register_an_account), new SpannableString(textView.getText().toString().trim()));
         text1.setSpan(1.2f);
-        text1.setUnderline(false);
-        text1.setTextViewWithColor(getResources().getColor(R.color.white));
+        text1.setUnderline(true);
+        text1.setTextViewWithColor(getResources().getColor(R.color.base_color));
     }
 
     @Override
@@ -183,59 +181,9 @@ public class LoginFragment extends BaseFragment {
                 break;
             case R.id.btnLogin:
                 if (edtEmail.testValidity() && edtPassword.testValidity()) {
-                    loginClick();
+                    showNextBuildToast();
                 }
                 break;
         }
-    }
-
-
-    private void loginClick() {
-        btnLogin.setEnabled(false);
-        loginCall = WebServiceFactory.getInstance("").login(edtEmail.getText().toString().trim(), edtPassword.getText().toString().trim());
-
-        loginCall.enqueue(new Callback<WebResponse<UserModel>>() {
-            @Override
-            public void onResponse(Call<WebResponse<UserModel>> call,
-                                   Response<WebResponse<UserModel>> response) {
-                btnLogin.setEnabled(true);
-
-                if (response == null || response.body() == null) return;
-
-                if (response.body().isSuccess()) {
-                    Log.d(TAG, "onResponse Login: " + response.body().result.userID);
-                    prefHelper.putUser(response.body().result);
-
-                    if (response.body().result.getIsVerified()) {
-                        prefHelper.setGuest(false);
-                        prefHelper.putUser(response.body().result);
-                        emptyBackStack();
-                        getMainActivity().addDockableFragment(HomeFragment.newInstance());
-                    } else {
-                        UIHelper.showToast(getContext(), "Please verify your account");
-                        getMainActivity().addDockableFragment(VerifyYourNumberFragment.newInstance());
-                    }
-
-                } else {
-                    UIHelper.showToast(getContext(), response.body().message);
-                }
-            }
-
-            @Override
-            public void onFailure(Call<WebResponse<UserModel>> call, Throwable t) {
-                if (!loginCall.isCanceled()) {
-                    btnLogin.setEnabled(true);
-                    t.printStackTrace();
-                }
-            }
-        });
-    }
-
-    @Override
-    public void onDestroy() {
-        if (loginCall != null)
-            loginCall.cancel();
-
-        super.onDestroy();
     }
 }

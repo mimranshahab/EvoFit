@@ -19,12 +19,14 @@ import edu.aku.helperclasses.GooglePlaceHelper;
 import edu.aku.helperclasses.ui.helper.TitleBar;
 import edu.aku.helperclasses.ui.helper.UIHelper;
 import edu.aku.managers.retrofit.WebServiceFactory;
+import edu.aku.models.RegisterOptionsModel;
 import edu.aku.models.extramodels.AddressModel;
 import edu.aku.models.wrappers.WebResponse;
 import com.andreabaccega.widget.FormEditText;
 import com.ctrlplusz.anytextview.AnyTextView;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -118,7 +120,7 @@ public class AddAdressFragment extends BaseFragment implements GooglePlaceHelper
 
 
 //        adaptCity = new ArrayAdapter<>(getMainActivity(), android.R.layout.simple_spinner_item, arrCity);
-        adaptLocation = new ArrayAdapter<>(getMainActivity(), android.R.layout.simple_spinner_item, arrLocation);
+        adaptLocation = new ArrayAdapter<List<RegisterOptionsModel>>(getMainActivity(), android.R.layout.simple_spinner_item, arrLocation);
 
 
         googlePlaceHelper = new GooglePlaceHelper(getMainActivity(), GooglePlaceHelper.PLACE_PICKER, this, this);

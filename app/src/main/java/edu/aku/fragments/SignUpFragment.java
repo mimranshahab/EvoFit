@@ -21,6 +21,7 @@ import edu.aku.fragments.abstracts.BaseFragment;
 import edu.aku.fragments.abstracts.GenericClickableInterface;
 import edu.aku.fragments.abstracts.GenericDialogFragment;
 import edu.aku.fragments.dialogs.SuccessDialogFragment;
+import edu.aku.helperclasses.MarshMallowPermission;
 import edu.aku.helperclasses.MobileNumberValidation;
 import edu.aku.helperclasses.PasswordValidation;
 import edu.aku.helperclasses.RunTimePermissions;
@@ -51,7 +52,7 @@ import retrofit2.Response;
 import static edu.aku.constatnts.WebServiceConstants.METHOD_USER_UPLOAD_REQUEST_FILE;
 
 /**
- * Created by shehrozmirza on 5/10/2017.
+ * Created by hamzakhan on 5/10/2017.
  */
 public class SignUpFragment extends BaseFragment implements MainActivity.ChoosePictureInterface {
 
@@ -78,8 +79,7 @@ public class SignUpFragment extends BaseFragment implements MainActivity.ChooseP
     FormEditText edMobileNumber;
     @BindView(R.id.btnSignUp)
     AnyTextView btnSignUp;
-    private String imagePath;
-    private MultipartBody.Part bodyProfilePicture;
+     private MultipartBody.Part bodyProfilePicture;
 
     private Call<WebResponse<UserModel>> signUpClickCall;
 
@@ -147,38 +147,36 @@ public class SignUpFragment extends BaseFragment implements MainActivity.ChooseP
                 break;
 
             case R.id.btnSignUp:
-//                if (edFullName.testValidity() && edEmailAddress.testValidity() &&
-//                        edPassword.testValidity() &&
-//                        edMobileNumber.testValidity()) {
-//                    signUpClick();
-//                }
 
-                new WebServices(getMainActivity(), WebServiceConstants.temporaryToken)
-                        .webServiceRequestFileAPI(METHOD_USER_UPLOAD_REQUEST_FILE, imagePath, FileType.IMAGE, new WebServices.IRequestJsonDataCallBackForStringResult() {
-                            @Override
-                            public void requestDataResponse(WebResponse<String> webResponse) {
-                                if (webResponse.result.isEmpty()) {
-                                    return;
-                                } else {
-                                    String[] strings = webResponse.result.split("-");
-                                    isFileUploaded = strings[0].equals("true");
-                                    if (isFileUploaded) {
-                                        uploadedFileName = strings[1];
-                                    }
-                                }
-                            }
 
-                            @Override
-                            public void onError() {
-
-                            }
-                        });
                 break;
         }
     }
 
-    private void showImageDialog() {
+    private void uploadImageFile(String originalFilePath) {
+        new WebServices(getMainActivity(), WebServiceConstants.temporaryToken)
+                .webServiceRequestFileAPI(METHOD_USER_UPLOAD_REQUEST_FILE, originalFilePath, FileType.IMAGE, new WebServices.IRequestJsonDataCallBackForStringResult() {
+                    @Override
+                    public void requestDataResponse(WebResponse<String> webResponse) {
+                        if (webResponse.result.isEmpty()) {
+                            return;
+                        } else {
+                            String[] strings = webResponse.result.split("-");
+                            isFileUploaded = strings[0].equals("true");
+                            if (isFileUploaded) {
+                                uploadedFileName = strings[1];
+                            }
+                        }
+                    }
 
+                    @Override
+                    public void onError() {
+
+                    }
+                });
+    }
+
+    private void showImageDialog() {
         final GenericDialogFragment genericDialogFragment = GenericDialogFragment.newInstance();
         genericDialogFragment.setTitle(getString(R.string.selectImage));
         genericDialogFragment.setMessage(getString(R.string.pleaseSelectImageFrom));
@@ -203,8 +201,8 @@ public class SignUpFragment extends BaseFragment implements MainActivity.ChooseP
     @Override
     public void onChoosePicture(String originalFilePath, String thumbnailFilePath, String thumbnailSmallFilePath) {
         btnUploadImage.setImageURI(Uri.parse(String.valueOf(new File(thumbnailFilePath))));
-        imagePath = originalFilePath;
-    }
+        uploadImageFile(originalFilePath);
+     }
 
     @Override
     public void onResume() {
@@ -220,67 +218,6 @@ public class SignUpFragment extends BaseFragment implements MainActivity.ChooseP
         return rootView;
     }
 
-
-    private void signUpClick() {
-
-        RequestBody bodyFullName =
-                getRequestBody(okhttp3.MultipartBody.FORM, edFullName.getText().toString().trim());
-
-        RequestBody bodyEmailAddress =
-                getRequestBody(okhttp3.MultipartBody.FORM, edEmailAddress.getText().toString().trim());
-
-        RequestBody bodyMobileNumber =
-                getRequestBody(okhttp3.MultipartBody.FORM, edMobileNumber.getText().toString().trim());
-
-        RequestBody bodyPassword =
-                getRequestBody(okhttp3.MultipartBody.FORM, edPassword.getText().toString().trim());
-
-        RequestBody bodyDeviceType =
-                getRequestBody(okhttp3.MultipartBody.FORM, WebServiceConstants.DEVICE_TYPE);
-
-        RequestBody bodyDeviceToken =
-                getRequestBody(okhttp3.MultipartBody.FORM, WebServiceConstants.DEVICE_TOKEN);
-
-
-        if (imagePath != null) {
-            File file = new File(imagePath);
-            bodyProfilePicture =
-                    MultipartBody.Part.createFormData("image", file.getName(),
-                            RequestBody.create(MediaType.parse("image/*"), file));
-        }
-
-        btnSignUp.setEnabled(false);
-        signUpClickCall = WebServiceFactory.getInstance("").postSignUp(bodyFullName, bodyEmailAddress,
-                bodyMobileNumber, bodyPassword,
-                bodyDeviceType, bodyDeviceToken, bodyProfilePicture);
-        signUpClickCall.enqueue(new Callback<WebResponse<UserModel>>() {
-
-            @Override
-            public void onResponse(Call<WebResponse<UserModel>> call,
-                                   Response<WebResponse<UserModel>> response) {
-                btnSignUp.setEnabled(true);
-                if (response.body() == null || response.body().result == null)
-                    return;
-
-                if (response.body().isSuccess()) {
-                    prefHelper.setGuest(false);
-                    prefHelper.putUser(response.body().result);
-                    showSignUpSuccessDialog();
-                } else {
-                    UIHelper.showToast(getContext(), response.body().message);
-                }
-            }
-
-            @Override
-            public void onFailure(Call<WebResponse<UserModel>> call, Throwable t) {
-                if (!signUpClickCall.isCanceled()) {
-                    btnSignUp.setEnabled(true);
-                    t.printStackTrace();
-                }
-            }
-        });
-    }
-
     private void showSignUpSuccessDialog() {
 
         final SuccessDialogFragment successDialogFragment = SuccessDialogFragment.newInstance();
@@ -294,12 +231,6 @@ public class SignUpFragment extends BaseFragment implements MainActivity.ChooseP
             }
         });
         successDialogFragment.show(getFragmentManager(), null);
-    }
-
-    @NonNull
-    private RequestBody getRequestBody(MediaType form, String trim) {
-        return RequestBody.create(
-                form, trim);
     }
 
     @Override

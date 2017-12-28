@@ -15,7 +15,8 @@ public class WebServiceConstants {
     public static final String PARAMS_REQUEST_DATA = "RequestData";
     public static final String temporaryToken = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJ3d3cuYWt1LmVkdSIsInN1YiI6Im1ubUBtbm0uY29tIiwiaXNzIjoiTW5NIn0.PRbF6RNmjYm7ai8jQNShBmyDLlZfIWv2Z6V2KosJgjE";
 
-
+    public static final String tempUserName = "mahrukh.mehmood";
+    public static final String tempPassword = "yU~6PWMs(,;3Wk3qK{J0{EWhEb-tl7C";
     /**
      * REQUEST METHODS NAMES
      */
@@ -23,7 +24,6 @@ public class WebServiceConstants {
     // UserManager
     public static final String METHOD_USER_GET_REGISTER_VM = "UserManager.GetRegisterVM";
     public static final String METHOD_USER_UPLOAD_REQUEST_FILE = "UserManager.UploadRequestFile";
-
 
 
     /**

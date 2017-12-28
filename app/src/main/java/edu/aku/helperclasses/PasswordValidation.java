@@ -13,7 +13,7 @@ public class PasswordValidation extends Validator {
     private EditText edtConfirmPassword;
 
     public PasswordValidation() {
-        super("Password must not be less than 6");
+        super("Password must be greater than 5 digits");
     }
 
     public PasswordValidation(EditText edtConfirmPassword) {
