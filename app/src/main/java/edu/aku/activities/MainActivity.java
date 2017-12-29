@@ -20,6 +20,7 @@ import com.kbeanie.imagechooser.api.ChosenImage;
 import com.kbeanie.imagechooser.api.ChosenImages;
 import com.kbeanie.imagechooser.api.ImageChooserListener;
 import com.kbeanie.imagechooser.api.ImageChooserManager;
+
 import edu.aku.R;
 import edu.aku.fragments.HomeFragment;
 import edu.aku.fragments.LeftSideMenuFragment;
@@ -38,17 +39,17 @@ import edu.aku.utility.Utils;
 public class MainActivity extends AppCompatActivity implements ImageChooserListener {
 
     public DrawerLayout drawerLayout;
-    ChoosePictureInterface choosePictureInterface;
+//    ChoosePictureInterface choosePictureInterface;
     OnActivityResultInterface onActivityResultInterface;
 
     private TitleBar titleBar;
     private BaseSharedPreferenceManager prefHelper;
 
-    private ImageChooserManager imageChooserManager;
-
-    public String filePath;
-
-    private int chooserType;
+//    private ImageChooserManager imageChooserManager;
+//
+//    public String filePath;
+//
+//    private int chooserType;
     private final static String TAG = "ICA";
     private boolean isActivityResultOver = false;
     public String originalFilePath;
@@ -92,7 +93,7 @@ public class MainActivity extends AppCompatActivity implements ImageChooserListe
             addDockableFragment(LoginFragment.newInstance());
         } else {
             prefHelper.setGuest(false);
-            if (prefHelper.getUser().getIsVerified() && (prefHelper.getUserID() !=  0)) {
+            if (prefHelper.getUser().getIsVerified() && (prefHelper.getUserID() != 0)) {
                 addDockableFragment(HomeFragment.newInstance());
             } else {
                 addDockableFragment(LoginFragment.newInstance());
@@ -249,63 +250,59 @@ public class MainActivity extends AppCompatActivity implements ImageChooserListe
         return titleBar;
     }
 
-    public void chooseImage() {
-        chooserType = ChooserType.REQUEST_PICK_PICTURE;
-        imageChooserManager = new ImageChooserManager(this,
-                ChooserType.REQUEST_PICK_PICTURE, true);
-        Bundle bundle = new Bundle();
-        bundle.putBoolean(Intent.EXTRA_ALLOW_MULTIPLE, true);
-        imageChooserManager.setExtras(bundle);
-        imageChooserManager.setImageChooserListener(this);
-        imageChooserManager.clearOldFiles();
-        try {
-            filePath = imageChooserManager.choose();
-        } catch (IllegalArgumentException e) {
-            e.printStackTrace();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
-
-    public void takePicture() {
-        chooserType = ChooserType.REQUEST_CAPTURE_PICTURE;
-        imageChooserManager = new ImageChooserManager(this,
-                ChooserType.REQUEST_CAPTURE_PICTURE, true);
-        imageChooserManager.setImageChooserListener(this);
-        try {
-            filePath = imageChooserManager.choose();
-        } catch (IllegalArgumentException e) {
-            e.printStackTrace();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
-
-
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-//        Log.i(TAG, "OnActivityResult");
-//        Log.i(TAG, "File Path : " + filePath);
-//        Log.i(TAG, "Chooser Type: " + chooserType);
-
-        if (requestCode == GooglePlaceHelper.REQUEST_CODE_AUTOCOMPLETE) {
-            onActivityResultInterface.onActivityResultInterface(requestCode, resultCode, data);
-        }
-
-        if (requestCode == PaypalHelper.REQUEST_CODE_PAYPAL) {
-            Log.d(TAG, "onActivityResult: Paypal Request ID = " + requestCode);
-            PaypalHelper.getInstance().onResult(requestCode, resultCode, data);
-        }
-
-        if (resultCode == RESULT_OK
-                && (requestCode == ChooserType.REQUEST_PICK_PICTURE || requestCode == ChooserType.REQUEST_CAPTURE_PICTURE)) {
-            if (imageChooserManager == null) {
-                reinitializeImageChooser();
-            }
-            imageChooserManager.submit(requestCode, data);
-        }
-        return;
-    }
+//    public void chooseImage() {
+//        chooserType = ChooserType.REQUEST_PICK_PICTURE;
+//        imageChooserManager = new ImageChooserManager(this,
+//                ChooserType.REQUEST_PICK_PICTURE, true);
+//        Bundle bundle = new Bundle();
+//        bundle.putBoolean(Intent.EXTRA_ALLOW_MULTIPLE, true);
+//        imageChooserManager.setExtras(bundle);
+//        imageChooserManager.setImageChooserListener(this);
+//        imageChooserManager.clearOldFiles();
+//        try {
+//            filePath = imageChooserManager.choose();
+//        } catch (IllegalArgumentException e) {
+//            e.printStackTrace();
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//        }
+//    }
+//
+//    public void takePicture() {
+//        chooserType = ChooserType.REQUEST_CAPTURE_PICTURE;
+//        imageChooserManager = new ImageChooserManager(this,
+//                ChooserType.REQUEST_CAPTURE_PICTURE, true);
+//        imageChooserManager.setImageChooserListener(this);
+//        try {
+//            filePath = imageChooserManager.choose();
+//        } catch (IllegalArgumentException e) {
+//            e.printStackTrace();
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//        }
+//    }
+//
+//
+//    @Override
+//    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+//
+//        if (requestCode == GooglePlaceHelper.REQUEST_CODE_AUTOCOMPLETE) {
+//            onActivityResultInterface.onActivityResultInterface(requestCode, resultCode, data);
+//        }
+//
+//        if (requestCode == PaypalHelper.REQUEST_CODE_PAYPAL) {
+//            Log.d(TAG, "onActivityResult: Paypal Request ID = " + requestCode);
+//            PaypalHelper.getInstance().onResult(requestCode, resultCode, data);
+//        }
+//
+//        if (resultCode == RESULT_OK
+//                && (requestCode == ChooserType.REQUEST_PICK_PICTURE || requestCode == ChooserType.REQUEST_CAPTURE_PICTURE)) {
+//            if (imageChooserManager == null) {
+//                reinitializeImageChooser();
+//            }
+//            imageChooserManager.submit(requestCode, data);
+//        }
+//    }
 
     @Override
     public void onImageChosen(final ChosenImage image) {
@@ -322,7 +319,7 @@ public class MainActivity extends AppCompatActivity implements ImageChooserListe
                 thumbnailSmallFilePath = image.getFileThumbnailSmall();
                 if (image != null) {
                     Log.i(TAG, "Chosen Image: Is not null");
-                    choosePictureInterface.onChoosePicture(originalFilePath, thumbnailFilePath, thumbnailSmallFilePath);
+//                    choosePictureInterface.onChoosePicture(originalFilePath, thumbnailFilePath, thumbnailSmallFilePath);
 
                     // loadImage(imageViewThumbnail, image.getFileThumbnail());
                 } else {
@@ -358,62 +355,62 @@ public class MainActivity extends AppCompatActivity implements ImageChooserListe
         });
     }
 
-    // Should be called if for some reason the ImageChooserManager is null (Due
-    // to destroying of activity for low memory situations)
-    private void reinitializeImageChooser() {
-        imageChooserManager = new ImageChooserManager(this, chooserType, true);
-        Bundle bundle = new Bundle();
-        bundle.putBoolean(Intent.EXTRA_ALLOW_MULTIPLE, true);
-        imageChooserManager.setExtras(bundle);
-        imageChooserManager.setImageChooserListener(this);
-        imageChooserManager.reinitialize(filePath);
-    }
+//    // Should be called if for some reason the ImageChooserManager is null (Due
+//    // to destroying of activity for low memory situations)
+//    private void reinitializeImageChooser() {
+//        imageChooserManager = new ImageChooserManager(this, chooserType, true);
+//        Bundle bundle = new Bundle();
+//        bundle.putBoolean(Intent.EXTRA_ALLOW_MULTIPLE, true);
+//        imageChooserManager.setExtras(bundle);
+//        imageChooserManager.setImageChooserListener(this);
+//        imageChooserManager.reinitialize(filePath);
+//    }
 
-    @Override
-    protected void onSaveInstanceState(Bundle outState) {
-        Log.i(TAG, "Saving Stuff");
-        Log.i(TAG, "File Path: " + filePath);
-        Log.i(TAG, "Chooser Type: " + chooserType);
-        outState.putBoolean("activity_result_over", isActivityResultOver);
-        outState.putInt("chooser_type", chooserType);
-        outState.putString("media_path", filePath);
-        outState.putString("orig", originalFilePath);
-        outState.putString("thumb", thumbnailFilePath);
-        outState.putString("thumbs", thumbnailSmallFilePath);
-        super.onSaveInstanceState(outState);
-    }
-
-    @Override
-    protected void onRestoreInstanceState(@NonNull Bundle savedInstanceState) {
-        if (savedInstanceState != null) {
-            if (savedInstanceState.containsKey("chooser_type")) {
-                chooserType = savedInstanceState.getInt("chooser_type");
-            }
-            if (savedInstanceState.containsKey("media_path")) {
-                filePath = savedInstanceState.getString("media_path");
-            }
-            if (savedInstanceState.containsKey("activity_result_over")) {
-                isActivityResultOver = savedInstanceState.getBoolean("activity_result_over");
-                originalFilePath = savedInstanceState.getString("orig");
-                thumbnailFilePath = savedInstanceState.getString("thumb");
-                thumbnailSmallFilePath = savedInstanceState.getString("thumbs");
-            }
-        }
-
-        Log.i(TAG, "Restoring Stuff");
-        Log.i(TAG, "File Path: " + filePath);
-        Log.i(TAG, "Chooser Type: " + chooserType);
-        Log.i(TAG, "Activity Result Over: " + isActivityResultOver);
-        super.onRestoreInstanceState(savedInstanceState);
-    }
-
-    public interface ChoosePictureInterface {
-        void onChoosePicture(String originalFilePath, String thumbnailFilePath, String thumbnailSmallFilePath);
-    }
-
-    public void setChoosePictureListener(ChoosePictureInterface choosePictureInterfaceListener) {
-        this.choosePictureInterface = choosePictureInterfaceListener;
-    }
+//    @Override
+//    protected void onSaveInstanceState(Bundle outState) {
+//        Log.i(TAG, "Saving Stuff");
+//        Log.i(TAG, "File Path: " + filePath);
+//        Log.i(TAG, "Chooser Type: " + chooserType);
+//        outState.putBoolean("activity_result_over", isActivityResultOver);
+//        outState.putInt("chooser_type", chooserType);
+//        outState.putString("media_path", filePath);
+//        outState.putString("orig", originalFilePath);
+//        outState.putString("thumb", thumbnailFilePath);
+//        outState.putString("thumbs", thumbnailSmallFilePath);
+//        super.onSaveInstanceState(outState);
+//    }
+//
+//    @Override
+//    protected void onRestoreInstanceState(@NonNull Bundle savedInstanceState) {
+//        if (savedInstanceState != null) {
+//            if (savedInstanceState.containsKey("chooser_type")) {
+//                chooserType = savedInstanceState.getInt("chooser_type");
+//            }
+//            if (savedInstanceState.containsKey("media_path")) {
+//                filePath = savedInstanceState.getString("media_path");
+//            }
+//            if (savedInstanceState.containsKey("activity_result_over")) {
+//                isActivityResultOver = savedInstanceState.getBoolean("activity_result_over");
+//                originalFilePath = savedInstanceState.getString("orig");
+//                thumbnailFilePath = savedInstanceState.getString("thumb");
+//                thumbnailSmallFilePath = savedInstanceState.getString("thumbs");
+//            }
+//        }
+//
+//        Log.i(TAG, "Restoring Stuff");
+//        Log.i(TAG, "File Path: " + filePath);
+//        Log.i(TAG, "Chooser Type: " + chooserType);
+//        Log.i(TAG, "Activity Result Over: " + isActivityResultOver);
+//        super.onRestoreInstanceState(savedInstanceState);
+//    }
+//
+//    public interface ChoosePictureInterface {
+//        void onChoosePicture(String originalFilePath, String thumbnailFilePath, String thumbnailSmallFilePath);
+//    }
+//
+//    public void setChoosePictureListener(ChoosePictureInterface choosePictureInterfaceListener) {
+//        this.choosePictureInterface = choosePictureInterfaceListener;
+//    }
 
     public void setOnActivityResultInterface(OnActivityResultInterface onActivityResultInterface) {
         this.onActivityResultInterface = onActivityResultInterface;

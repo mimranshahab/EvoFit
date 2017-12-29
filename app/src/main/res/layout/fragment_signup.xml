@@ -12,180 +12,187 @@
         android:orientation="vertical"
         android:padding="@dimen/x15dp">
 
-        <!--<com.ctrlplusz.anytextview.AnyTextView-->
-            <!--android:id="@+id/txtFullName"-->
-            <!--android:layout_width="wrap_content"-->
-            <!--android:layout_height="wrap_content"-->
-            <!--android:layout_marginBottom="@dimen/x5dp"-->
-            <!--android:layout_marginTop="@dimen/x10dp"-->
-            <!--android:text="@string/full_name"-->
-            <!--android:textColor="@color/c_black"-->
-            <!--android:textSize="13sp"-->
-            <!--app:typeface="@string/font_bold" />-->
+        <com.ctrlplusz.anytextview.AnyTextView
+            android:id="@+id/txtFullName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/x5dp"
+            android:layout_marginTop="@dimen/x10dp"
+            android:text="@string/full_name"
+            android:textColor="@color/c_black"
+            android:textSize="13sp"
+            app:typeface="@string/font_bold" />
 
-        <!--<com.andreabaccega.widget.FormEditText-->
-            <!--android:id="@+id/edFullName"-->
-            <!--android:layout_width="match_parent"-->
-            <!--android:layout_height="wrap_content"-->
-            <!--android:layout_marginBottom="@dimen/x15dp"-->
-            <!--android:background="@drawable/imgninepatch"-->
-            <!--android:hint="Enter Name"-->
-            <!--android:inputType="textPersonName"-->
-            <!--android:maxLength="30"-->
-            <!--android:maxLines="1"-->
-            <!--android:textColor="@color/text_grey"-->
-            <!--android:textSize="16sp"-->
-            <!--app:testType="personFullName" />-->
-
-
-        <!--<com.ctrlplusz.anytextview.AnyTextView-->
-            <!--android:layout_width="wrap_content"-->
-            <!--android:layout_height="wrap_content"-->
-            <!--android:layout_marginBottom="@dimen/x5dp"-->
-            <!--android:text="@string/date_of_birth"-->
-            <!--android:textColor="@color/text_color_black"-->
-            <!--android:textSize="13sp"-->
-            <!--app:typeface="@string/font_bold" />-->
-
-        <!--<com.ctrlplusz.anytextview.AnyTextView-->
-            <!--android:id="@+id/txtDateofBirth"-->
-            <!--android:layout_width="match_parent"-->
-            <!--android:layout_height="wrap_content"-->
-            <!--android:layout_marginBottom="@dimen/x15dp"-->
-            <!--android:background="@drawable/imgninepatch2"-->
-            <!--android:drawableRight="@drawable/ic_dropdown"-->
-            <!--android:gravity="center_vertical"-->
-            <!--android:maxLines="1"-->
-            <!--android:text="Select Date of Birth"-->
-            <!--android:textColor="@color/text_grey"-->
-            <!--android:textSize="16sp" />-->
+        <com.andreabaccega.widget.FormEditText
+            android:id="@+id/edFullName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/x15dp"
+            android:background="@drawable/imgninepatch"
+            android:hint="Enter Name"
+            android:inputType="textPersonName"
+            android:maxLength="30"
+            android:maxLines="1"
+            android:textColor="@color/text_dark"
+            android:textColorHint="@color/text_light_grey"
+            android:textSize="16sp"
+            app:testType="personFullName" />
 
 
-        <!--<com.ctrlplusz.anytextview.AnyTextView-->
-            <!--android:layout_width="wrap_content"-->
-            <!--android:layout_height="wrap_content"-->
-            <!--android:layout_marginBottom="@dimen/x5dp"-->
-            <!--android:text="@string/gender"-->
-            <!--android:textColor="@color/text_color_black"-->
-            <!--android:textSize="13sp"-->
-            <!--app:typeface="@string/font_bold" />-->
+        <com.ctrlplusz.anytextview.AnyTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/x5dp"
+            android:text="@string/date_of_birth"
+            android:textColor="@color/text_color_black"
+            android:textSize="13sp"
+            app:typeface="@string/font_bold" />
 
-        <!--<com.ctrlplusz.anytextview.AnyTextView-->
-            <!--android:id="@+id/txtGender"-->
-            <!--android:layout_width="match_parent"-->
-            <!--android:layout_height="wrap_content"-->
-            <!--android:layout_marginBottom="@dimen/x15dp"-->
-            <!--android:background="@drawable/imgninepatch2"-->
-            <!--android:drawableRight="@drawable/ic_dropdown"-->
-            <!--android:gravity="center_vertical"-->
-            <!--android:maxLines="1"-->
-            <!--android:text="Select Gender"-->
-            <!--android:textColor="@color/text_grey"-->
-            <!--android:textSize="16sp" />-->
-
-        <!--<Spinner-->
-            <!--android:id="@+id/spGender"-->
-            <!--android:layout_width="match_parent"-->
-            <!--android:layout_height="0dp"></Spinner>-->
+        <com.ctrlplusz.anytextview.AnyTextView
+            android:id="@+id/txtDateofBirth"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/x15dp"
+            android:background="@drawable/imgninepatch2"
+            android:drawableRight="@drawable/ic_dropdown"
+            android:gravity="center_vertical"
+            android:maxLines="1"
+            android:hint="Select Date of Birth"
+            android:textColor="@color/text_dark"
+            android:textColorHint="@color/text_light_grey"
+            android:textSize="16sp" />
 
 
-        <!--<com.ctrlplusz.anytextview.AnyTextView-->
-            <!--android:layout_width="wrap_content"-->
-            <!--android:layout_height="wrap_content"-->
-            <!--android:layout_marginBottom="@dimen/x5dp"-->
-            <!--android:text="@string/cnic_number"-->
-            <!--android:textColor="@color/c_black"-->
-            <!--android:textSize="13sp"-->
-            <!--app:typeface="@string/font_bold" />-->
+        <com.ctrlplusz.anytextview.AnyTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/x5dp"
+            android:text="@string/gender"
+            android:textColor="@color/text_color_black"
+            android:textSize="13sp"
+            app:typeface="@string/font_bold" />
 
-        <!--<com.andreabaccega.widget.FormEditText-->
-            <!--android:id="@+id/edtCNICNumber"-->
-            <!--android:layout_width="match_parent"-->
-            <!--android:layout_height="wrap_content"-->
-            <!--android:layout_marginBottom="@dimen/x15dp"-->
-            <!--android:background="@drawable/imgninepatch"-->
-            <!--android:hint="Enter CNIC Number"-->
-            <!--android:inputType="numberDecimal"-->
-            <!--android:maxLength="15"-->
-            <!--android:maxLines="1"-->
-            <!--android:textColor="@color/text_grey"-->
-            <!--android:textSize="16sp"-->
-            <!--app:testType="numeric" />-->
+        <com.ctrlplusz.anytextview.AnyTextView
+            android:id="@+id/txtGender"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/x15dp"
+            android:background="@drawable/imgninepatch2"
+            android:drawableRight="@drawable/ic_dropdown"
+            android:gravity="center_vertical"
+            android:maxLines="1"
+            android:hint="Select Gender"
+            android:textColor="@color/text_dark"
+            android:textColorHint="@color/text_light_grey"
+            android:textSize="16sp" />
 
-
-        <!--<com.ctrlplusz.anytextview.AnyTextView-->
-            <!--android:layout_width="wrap_content"-->
-            <!--android:layout_height="wrap_content"-->
-            <!--android:layout_marginBottom="@dimen/x5dp"-->
-            <!--android:text="@string/passport_number"-->
-            <!--android:textColor="@color/c_black"-->
-            <!--android:textSize="13sp"-->
-            <!--app:typeface="@string/font_bold" />-->
-
-        <!--<com.andreabaccega.widget.FormEditText-->
-            <!--android:id="@+id/edtPassportNumber"-->
-            <!--android:layout_width="match_parent"-->
-            <!--android:layout_height="wrap_content"-->
-            <!--android:layout_marginBottom="@dimen/x15dp"-->
-            <!--android:background="@drawable/imgninepatch"-->
-            <!--android:hint="Enter Passport Number"-->
-            <!--android:inputType="numberDecimal"-->
-            <!--android:maxLength="20"-->
-            <!--android:maxLines="1"-->
-            <!--android:textColor="@color/text_grey"-->
-            <!--android:textSize="16sp"-->
-            <!--app:testType="numeric" />-->
+        <Spinner
+            android:id="@+id/spGender"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"></Spinner>
 
 
-        <!--<com.ctrlplusz.anytextview.AnyTextView-->
-            <!--android:id="@+id/txtEmailAddress"-->
-            <!--android:layout_width="wrap_content"-->
-            <!--android:layout_height="wrap_content"-->
-            <!--android:layout_marginBottom="@dimen/x5dp"-->
+        <com.ctrlplusz.anytextview.AnyTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/x5dp"
+            android:text="@string/cnic_number"
+            android:textColor="@color/c_black"
+            android:textSize="13sp"
+            app:typeface="@string/font_bold" />
 
-            <!--android:text="@string/email_address"-->
-            <!--android:textColor="@color/text_color_black"-->
-            <!--android:textSize="13sp"-->
-            <!--app:typeface="@string/font_bold" />-->
-
-        <!--<com.andreabaccega.widget.FormEditText-->
-            <!--android:id="@+id/edEmailAddress"-->
-            <!--android:layout_width="match_parent"-->
-            <!--android:layout_height="wrap_content"-->
-            <!--android:layout_marginBottom="@dimen/x15dp"-->
-            <!--android:background="@drawable/imgninepatch"-->
-            <!--android:hint="@string/enter_email_address"-->
-            <!--android:inputType="textEmailAddress"-->
-            <!--android:maxLength="30"-->
-            <!--android:maxLines="1"-->
-            <!--android:textColor="@color/text_grey"-->
-            <!--android:textSize="16sp"-->
-            <!--app:testType="email" />-->
+        <com.andreabaccega.widget.FormEditText
+            android:id="@+id/edtCNICNumber"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/x15dp"
+            android:background="@drawable/imgninepatch"
+            android:hint="Enter CNIC Number"
+            android:inputType="numberDecimal"
+            android:maxLength="15"
+            android:maxLines="1"
+            android:textColor="@color/text_dark"
+            android:textColorHint="@color/text_light_grey"
+            android:textSize="16sp"
+            app:testType="numeric" />
 
 
-        <!--<com.ctrlplusz.anytextview.AnyTextView-->
-            <!--android:id="@+id/txtMobileNumber"-->
-            <!--android:layout_width="wrap_content"-->
-            <!--android:layout_height="wrap_content"-->
-            <!--android:layout_marginBottom="@dimen/x5dp"-->
-            <!--android:text="@string/mobile_number"-->
-            <!--android:textColor="@color/text_color_black"-->
-            <!--android:textSize="13sp"-->
-            <!--app:typeface="@string/font_bold" />-->
+        <com.ctrlplusz.anytextview.AnyTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/x5dp"
+            android:text="@string/passport_number"
+            android:textColor="@color/c_black"
+            android:textSize="13sp"
+            app:typeface="@string/font_bold" />
 
-        <!--<com.andreabaccega.widget.FormEditText-->
-            <!--android:id="@+id/edMobileNumber"-->
-            <!--android:layout_width="match_parent"-->
-            <!--android:layout_height="wrap_content"-->
-            <!--android:layout_marginBottom="@dimen/x15dp"-->
-            <!--android:background="@drawable/imgninepatch"-->
-            <!--android:hint="Enter Mobile Number"-->
-            <!--android:inputType="number"-->
-            <!--android:maxLength="16"-->
-            <!--android:maxLines="1"-->
-            <!--android:textColor="@color/text_grey"-->
-            <!--android:textSize="16sp"-->
-            <!--app:testType="phone" />-->
+        <com.andreabaccega.widget.FormEditText
+            android:id="@+id/edtPassportNumber"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/x15dp"
+            android:background="@drawable/imgninepatch"
+            android:hint="Enter Passport Number"
+            android:inputType="numberDecimal"
+            android:maxLength="20"
+            android:maxLines="1"
+            android:textColor="@color/text_dark"
+            android:textColorHint="@color/text_light_grey"
+            android:textSize="16sp"
+            app:testType="numeric" />
+
+
+        <com.ctrlplusz.anytextview.AnyTextView
+            android:id="@+id/txtEmailAddress"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/x5dp"
+
+            android:text="@string/email_address"
+            android:textColor="@color/text_color_black"
+            android:textSize="13sp"
+            app:typeface="@string/font_bold" />
+
+        <com.andreabaccega.widget.FormEditText
+            android:id="@+id/edEmailAddress"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/x15dp"
+            android:background="@drawable/imgninepatch"
+            android:hint="@string/enter_email_address"
+            android:inputType="textEmailAddress"
+            android:maxLength="30"
+            android:maxLines="1"
+            android:textColor="@color/text_dark"
+            android:textColorHint="@color/text_light_grey"
+            android:textSize="16sp"
+            app:testType="email" />
+
+
+        <com.ctrlplusz.anytextview.AnyTextView
+            android:id="@+id/txtMobileNumber"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/x5dp"
+            android:text="@string/mobile_number"
+            android:textColor="@color/text_color_black"
+            android:textSize="13sp"
+            app:typeface="@string/font_bold" />
+
+        <com.andreabaccega.widget.FormEditText
+            android:id="@+id/edMobileNumber"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/x15dp"
+            android:background="@drawable/imgninepatch"
+            android:hint="Enter Mobile Number"
+            android:inputType="number"
+            android:maxLength="16"
+            android:maxLines="1"
+            android:textColor="@color/text_dark"
+            android:textColorHint="@color/text_light_grey"
+            android:textSize="16sp"
+            app:testType="phone" />
 
 
         <com.ctrlplusz.anytextview.AnyTextView
@@ -207,7 +214,8 @@
             android:inputType="number"
             android:maxLength="16"
             android:maxLines="1"
-            android:textColor="@color/text_grey"
+            android:textColor="@color/text_dark"
+            android:textColorHint="@color/text_light_grey"
             android:textSize="16sp"
             app:testType="phone" />
 
@@ -229,10 +237,11 @@
             android:background="@drawable/imgninepatch"
             android:hint="Enter Current Address"
             android:inputType="textMultiLine"
-            android:maxLength="100"
             android:lines="2"
+            android:maxLength="100"
             android:maxLines="3"
-            android:textColor="@color/text_grey"
+            android:textColor="@color/text_dark"
+            android:textColorHint="@color/text_light_grey"
             android:textSize="16sp"
             app:testType="nocheck" />
 
@@ -241,7 +250,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="@dimen/x5dp"
-            android:text="@string/current_address"
+            android:text="@string/current_city"
             android:textColor="@color/c_black"
             android:textSize="13sp"
             app:typeface="@string/font_bold" />
@@ -253,27 +262,283 @@
             android:layout_marginBottom="@dimen/x15dp"
             android:background="@drawable/imgninepatch"
             android:hint="Enter Current City"
-            android:inputType="textMultiLine"
-            android:maxLength="15"
+            android:inputType="text"
             android:lines="1"
+            android:maxLength="15"
             android:maxLines="1"
-            android:textColor="@color/text_grey"
+            android:textColor="@color/text_dark"
+            android:textColorHint="@color/text_light_grey"
             android:textSize="16sp"
             app:testType="nocheck" />
 
 
+        <com.ctrlplusz.anytextview.AnyTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/x5dp"
+            android:text="Current Country"
+            android:textColor="@color/text_color_black"
+            android:textSize="13sp"
+            app:typeface="@string/font_bold" />
+
+        <com.ctrlplusz.anytextview.AnyTextView
+            android:id="@+id/txtCurrentCountry"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/x15dp"
+            android:background="@drawable/imgninepatch2"
+            android:drawableRight="@drawable/ic_dropdown"
+            android:gravity="center_vertical"
+            android:maxLines="1"
+            android:hint="Select Current Country"
+            android:textColor="@color/text_dark"
+            android:textColorHint="@color/text_light_grey"
+            android:textSize="16sp" />
+
+        <Spinner
+            android:id="@+id/spCurrentCountry"
+            android:layout_width="match_parent"
+            android:layout_height="0dp" />
 
 
+        <com.ctrlplusz.anytextview.AnyTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/x5dp"
+            android:text="@string/permanent_address"
+            android:textColor="@color/c_black"
+            android:textSize="13sp"
+            app:typeface="@string/font_bold" />
+
+        <com.andreabaccega.widget.FormEditText
+            android:id="@+id/edtPermanentAddress"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/x15dp"
+            android:background="@drawable/imgninepatch"
+            android:hint="Enter Permanent Address"
+            android:inputType="textMultiLine"
+            android:lines="2"
+            android:maxLength="100"
+            android:maxLines="3"
+            android:textColor="@color/text_dark"
+            android:textColorHint="@color/text_light_grey"
+            android:textSize="16sp"
+            app:testType="nocheck" />
+
+
+        <com.ctrlplusz.anytextview.AnyTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/x5dp"
+            android:text="Permanent City"
+            android:textColor="@color/c_black"
+            android:textSize="13sp"
+            app:typeface="@string/font_bold" />
+
+        <com.andreabaccega.widget.FormEditText
+            android:id="@+id/edtPermanentCity"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/x15dp"
+            android:background="@drawable/imgninepatch"
+            android:hint="Enter Permanent City"
+            android:inputType="text"
+            android:lines="1"
+            android:maxLength="15"
+            android:maxLines="1"
+            android:textColor="@color/text_dark"
+            android:textColorHint="@color/text_light_grey"
+            android:textSize="16sp"
+            app:testType="nocheck" />
+
+
+        <com.ctrlplusz.anytextview.AnyTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/x5dp"
+            android:text="@string/permanent_country"
+            android:textColor="@color/text_color_black"
+            android:textSize="13sp"
+            app:typeface="@string/font_bold" />
+
+        <com.ctrlplusz.anytextview.AnyTextView
+            android:id="@+id/txtPermanentCountry"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/x15dp"
+            android:background="@drawable/imgninepatch2"
+            android:drawableRight="@drawable/ic_dropdown"
+            android:gravity="center_vertical"
+            android:maxLines="1"
+            android:hint="Select Permanent Country"
+            android:textColor="@color/text_dark"
+            android:textColorHint="@color/text_light_grey"
+            android:textSize="16sp" />
+
+        <Spinner
+            android:id="@+id/spPermanentCountry"
+            android:layout_width="match_parent"
+            android:layout_height="0dp" />
+
+
+        <com.ctrlplusz.anytextview.AnyTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/x5dp"
+            android:text="@string/mr_number"
+            android:textColor="@color/c_black"
+            android:textSize="13sp"
+            app:typeface="@string/font_bold" />
+
+        <com.andreabaccega.widget.FormEditText
+            android:id="@+id/edtMRNumber"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/x15dp"
+            android:background="@drawable/imgninepatch"
+            android:hint="Enter MR Number"
+            android:inputType="textPersonName"
+            android:maxLength="30"
+            android:maxLines="1"
+            android:textColor="@color/text_dark"
+            android:textColorHint="@color/text_light_grey"
+            android:textSize="16sp"
+            app:testType="personFullName" />
+
+        <com.ctrlplusz.anytextview.AnyTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/x5dp"
+            android:text="@string/mother_name"
+            android:textColor="@color/c_black"
+            android:textSize="13sp"
+            app:typeface="@string/font_bold" />
+
+        <com.andreabaccega.widget.FormEditText
+            android:id="@+id/edtMotherName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/x15dp"
+            android:background="@drawable/imgninepatch"
+            android:hint="Enter Mother Name"
+            android:inputType="textPersonName"
+            android:maxLength="30"
+            android:maxLines="1"
+            android:textColor="@color/text_dark"
+            android:textColorHint="@color/text_light_grey"
+            android:textSize="16sp"
+            app:testType="personFullName" />
+
+
+        <com.ctrlplusz.anytextview.AnyTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/x5dp"
+            android:text="@string/card_type"
+            android:textColor="@color/text_color_black"
+            android:textSize="13sp"
+            app:typeface="@string/font_bold" />
+
+        <com.ctrlplusz.anytextview.AnyTextView
+            android:id="@+id/txtCardType"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/x15dp"
+            android:background="@drawable/imgninepatch2"
+            android:drawableEnd="@drawable/ic_dropdown"
+            android:drawableRight="@drawable/ic_dropdown"
+            android:gravity="center_vertical"
+            android:maxLines="1"
+            android:text="Select Card Type"
+            android:textColor="@color/text_dark"
+            android:textColorHint="@color/text_light_grey"
+            android:textSize="16sp" />
+
+        <Spinner
+            android:id="@+id/spCardType"
+            android:layout_width="match_parent"
+            android:layout_height="0dp" />
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:orientation="vertical"
+                android:padding="@dimen/x10dp">
+
+                <com.ctrlplusz.anytextview.AnyTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="@dimen/x5dp"
+                    android:text="Attach CNIC Image"
+                    android:textColor="@color/text_color_black"
+                    android:textSize="13sp"
+                    app:typeface="@string/font_bold" />
+
+
+                <edu.aku.helperclasses.ui.helper.SquareImageView
+                    android:id="@+id/imgCNIC"
+                    android:layout_width="120dp"
+                    android:layout_height="120dp"
+                    android:layout_margin="@dimen/x5dp"
+                    android:background="@color/c_black"
+                    android:scaleType="centerInside"
+                    android:src="@drawable/placeholder" />
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:orientation="vertical"
+                android:padding="@dimen/x10dp">
+
+                <com.ctrlplusz.anytextview.AnyTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="@dimen/x5dp"
+                    android:text="Attach Passport Image"
+                    android:textColor="@color/text_color_black"
+                    android:textSize="13sp"
+                    app:typeface="@string/font_bold" />
+
+
+                <edu.aku.helperclasses.ui.helper.SquareImageView
+                    android:id="@+id/imgPassport"
+                    android:layout_width="120dp"
+                    android:layout_height="120dp"
+                    android:layout_margin="@dimen/x5dp"
+                    android:background="@color/c_black"
+                    android:scaleType="centerInside"
+                    android:src="@drawable/placeholder"
+
+                    />
+
+
+            </LinearLayout>
+
+        </LinearLayout>
 
 
         <com.ctrlplusz.anytextview.AnyTextView
             android:id="@+id/btnSignUp"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
             android:layout_marginTop="@dimen/x35dp"
-            android:background="@drawable/img_yes"
+            android:background="@drawable/rounded_box_filled"
             android:gravity="center"
+            android:padding="@dimen/x10dp"
             android:text="@string/sign_up"
             android:textColor="@color/white"
             android:textSize="17sp"

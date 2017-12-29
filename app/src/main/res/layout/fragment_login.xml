@@ -86,12 +86,13 @@
 
             <com.ctrlplusz.anytextview.AnyTextView
                 android:id="@+id/btnLogin"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
                 android:layout_marginBottom="@dimen/x50dp"
-                android:background="@drawable/img_yes"
+                android:background="@drawable/rounded_box_filled"
                 android:gravity="center"
+                android:padding="@dimen/x10dp"
                 android:text="@string/login"
                 android:textColor="@color/white"
                 android:textSize="17sp"

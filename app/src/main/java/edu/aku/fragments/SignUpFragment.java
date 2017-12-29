@@ -1,18 +1,29 @@
 package edu.aku.fragments;
 
-import android.net.Uri;
+import android.content.Intent;
+import android.graphics.Bitmap;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
+import android.widget.Spinner;
 
 import com.andreabaccega.widget.FormEditText;
 import com.ctrlplusz.anytextview.AnyTextView;
-import com.google.gson.JsonObject;
+import com.nostra13.universalimageloader.core.ImageLoader;
+import com.theartofdev.edmodo.cropper.CropImage;
+import com.theartofdev.edmodo.cropper.CropImageView;
 
+import java.io.File;
+import java.io.IOException;
+
+import butterknife.BindView;
+import butterknife.ButterKnife;
+import butterknife.OnClick;
+import butterknife.Unbinder;
 import edu.aku.R;
 import edu.aku.activities.MainActivity;
 import edu.aku.constatnts.WebServiceConstants;
@@ -21,67 +32,86 @@ import edu.aku.fragments.abstracts.BaseFragment;
 import edu.aku.fragments.abstracts.GenericClickableInterface;
 import edu.aku.fragments.abstracts.GenericDialogFragment;
 import edu.aku.fragments.dialogs.SuccessDialogFragment;
-import edu.aku.helperclasses.MarshMallowPermission;
 import edu.aku.helperclasses.MobileNumberValidation;
-import edu.aku.helperclasses.PasswordValidation;
 import edu.aku.helperclasses.RunTimePermissions;
 import edu.aku.helperclasses.ui.helper.KeyboardHide;
+import edu.aku.helperclasses.ui.helper.SquareImageView;
 import edu.aku.helperclasses.ui.helper.TitleBar;
 import edu.aku.helperclasses.ui.helper.UIHelper;
-
 import edu.aku.managers.FileManager;
-import edu.aku.managers.retrofit.WebServiceFactory;
 import edu.aku.managers.retrofit.WebServices;
-import edu.aku.models.UserModel;
 import edu.aku.models.wrappers.WebResponse;
 
-import java.io.File;
-
-import butterknife.BindView;
-import butterknife.ButterKnife;
-import butterknife.OnClick;
-import butterknife.Unbinder;
-import de.hdodenhof.circleimageview.CircleImageView;
-import okhttp3.MediaType;
-import okhttp3.MultipartBody;
-import okhttp3.RequestBody;
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
-
+import static android.app.Activity.RESULT_OK;
 import static edu.aku.constatnts.WebServiceConstants.METHOD_USER_UPLOAD_REQUEST_FILE;
 
 /**
  * Created by hamzakhan on 5/10/2017.
  */
-public class SignUpFragment extends BaseFragment implements MainActivity.ChoosePictureInterface {
+public class SignUpFragment extends BaseFragment {
 
     String uploadedFileName;
+    //    String filePathCNIC;
+//        String filePathPassport;
+    boolean isSelectingCNICPic;
     boolean isFileUploaded = false;
-    Unbinder unbinder;
-    @BindView(R.id.btnUploadImage)
-    CircleImageView btnUploadImage;
+    @BindView(R.id.edtMotherName)
+    FormEditText edtMotherName;
+    @BindView(R.id.txtCardType)
+    AnyTextView txtCardType;
+    @BindView(R.id.spCardType)
+    Spinner spCardType;
+    @BindView(R.id.btnSignUp)
+    AnyTextView btnSignUp;
     @BindView(R.id.txtFullName)
     AnyTextView txtFullName;
     @BindView(R.id.edFullName)
     FormEditText edFullName;
+    @BindView(R.id.txtDateofBirth)
+    AnyTextView txtDateofBirth;
+    @BindView(R.id.txtGender)
+    AnyTextView txtGender;
+    @BindView(R.id.spGender)
+    Spinner spGender;
+    @BindView(R.id.edtCNICNumber)
+    FormEditText edtCNICNumber;
+    @BindView(R.id.edtPassportNumber)
+    FormEditText edtPassportNumber;
     @BindView(R.id.txtEmailAddress)
     AnyTextView txtEmailAddress;
     @BindView(R.id.edEmailAddress)
     FormEditText edEmailAddress;
-    @BindView(R.id.txtPassword)
-    AnyTextView txtPassword;
-    @BindView(R.id.edPassword)
-    FormEditText edPassword;
     @BindView(R.id.txtMobileNumber)
     AnyTextView txtMobileNumber;
     @BindView(R.id.edMobileNumber)
     FormEditText edMobileNumber;
-    @BindView(R.id.btnSignUp)
-    AnyTextView btnSignUp;
-     private MultipartBody.Part bodyProfilePicture;
+    @BindView(R.id.edtLandlineNumber)
+    FormEditText edtLandlineNumber;
+    @BindView(R.id.edtCurrentAddress)
+    FormEditText edtCurrentAddress;
+    @BindView(R.id.edtCurrentCity)
+    FormEditText edtCurrentCity;
+    @BindView(R.id.txtCurrentCountry)
+    AnyTextView txtCurrentCountry;
+    @BindView(R.id.spCurrentCountry)
+    Spinner spCurrentCountry;
+    @BindView(R.id.edtPermanentAddress)
+    FormEditText edtPermanentAddress;
+    @BindView(R.id.edtPermanentCity)
+    FormEditText edtPermanentCity;
+    @BindView(R.id.txtPermanentCountry)
+    AnyTextView txtPermanentCountry;
+    @BindView(R.id.spPermanentCountry)
+    Spinner spPermanentCountry;
+    @BindView(R.id.edtMRNumber)
+    FormEditText edtMRNumber;
+    @BindView(R.id.imgCNIC)
+    SquareImageView imgCNIC;
+    @BindView(R.id.imgPassport)
+    SquareImageView imgPassport;
 
-    private Call<WebResponse<UserModel>> signUpClickCall;
+    Unbinder unbinder;
+
 
     @Override
     protected int getFragmentLayout() {
@@ -111,7 +141,7 @@ public class SignUpFragment extends BaseFragment implements MainActivity.ChooseP
 
     @Override
     public void setListeners() {
-        getMainActivity().setChoosePictureListener(this);
+
     }
 
     @Override
@@ -128,7 +158,7 @@ public class SignUpFragment extends BaseFragment implements MainActivity.ChooseP
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         edMobileNumber.addValidator(new MobileNumberValidation());
-        edPassword.addValidator(new PasswordValidation());
+//        edPassword.addValidator(new PasswordValidation());
     }
 
 
@@ -138,12 +168,18 @@ public class SignUpFragment extends BaseFragment implements MainActivity.ChooseP
         unbinder.unbind();
     }
 
-    @OnClick({R.id.btnUploadImage, R.id.btnSignUp})
+    @OnClick({R.id.btnSignUp, R.id.imgCNIC, R.id.imgPassport})
     public void onViewClicked(View view) {
 
         switch (view.getId()) {
-            case R.id.btnUploadImage:
-                showImageDialog();
+            case R.id.imgCNIC:
+                isSelectingCNICPic = true;
+                cropImagePicker();
+                break;
+
+            case R.id.imgPassport:
+                isSelectingCNICPic = false;
+                cropImagePicker();
                 break;
 
             case R.id.btnSignUp:
@@ -153,19 +189,22 @@ public class SignUpFragment extends BaseFragment implements MainActivity.ChooseP
         }
     }
 
-    private void uploadImageFile(String originalFilePath) {
+    private void uploadImageFile(final String uploadFilePath) {
         new WebServices(getMainActivity(), WebServiceConstants.temporaryToken)
-                .webServiceRequestFileAPI(METHOD_USER_UPLOAD_REQUEST_FILE, originalFilePath, FileType.IMAGE, new WebServices.IRequestJsonDataCallBackForStringResult() {
+                .webServiceRequestFileAPI(METHOD_USER_UPLOAD_REQUEST_FILE, uploadFilePath, FileType.IMAGE, new WebServices.IRequestJsonDataCallBackForStringResult() {
                     @Override
                     public void requestDataResponse(WebResponse<String> webResponse) {
                         if (webResponse.result.isEmpty()) {
-                            return;
-                        } else {
+                            UIHelper.showToast(getContext(), "Failed to upload file. Please try again.");
+                         } else {
                             String[] strings = webResponse.result.split("-");
                             isFileUploaded = strings[0].equals("true");
                             if (isFileUploaded) {
                                 uploadedFileName = strings[1];
                             }
+
+                            UIHelper.showShortToastInCenter(getContext(), webResponse.message);
+                            setImageAfterResult(uploadFilePath);
                         }
                     }
 
@@ -176,33 +215,33 @@ public class SignUpFragment extends BaseFragment implements MainActivity.ChooseP
                 });
     }
 
-    private void showImageDialog() {
-        final GenericDialogFragment genericDialogFragment = GenericDialogFragment.newInstance();
-        genericDialogFragment.setTitle(getString(R.string.selectImage));
-        genericDialogFragment.setMessage(getString(R.string.pleaseSelectImageFrom));
-        genericDialogFragment.setButton1(getString(R.string.camera), new GenericClickableInterface() {
-            @Override
-            public void click() {
-                genericDialogFragment.getDialog().dismiss();
-                getMainActivity().takePicture();
-            }
-        });
+//    private void showImageDialog() {
+//        final GenericDialogFragment genericDialogFragment = GenericDialogFragment.newInstance();
+//        genericDialogFragment.setTitle(getString(R.string.selectImage));
+//        genericDialogFragment.setMessage(getString(R.string.pleaseSelectImageFrom));
+//        genericDialogFragment.setButton1(getString(R.string.camera), new GenericClickableInterface() {
+//            @Override
+//            public void click() {
+//                genericDialogFragment.getDialog().dismiss();
+//                getMainActivity().takePicture();
+//            }
+//        });
+//
+//        genericDialogFragment.setButton2(getString(R.string.gallery), new GenericClickableInterface() {
+//            @Override
+//            public void click() {
+//                genericDialogFragment.getDialog().dismiss();
+//                getMainActivity().chooseImage();
+//            }
+//        });
+//        genericDialogFragment.show(getFragmentManager(), null);
+//    }
 
-        genericDialogFragment.setButton2(getString(R.string.gallery), new GenericClickableInterface() {
-            @Override
-            public void click() {
-                genericDialogFragment.getDialog().dismiss();
-                getMainActivity().chooseImage();
-            }
-        });
-        genericDialogFragment.show(getFragmentManager(), null);
-    }
-
-    @Override
-    public void onChoosePicture(String originalFilePath, String thumbnailFilePath, String thumbnailSmallFilePath) {
-        btnUploadImage.setImageURI(Uri.parse(String.valueOf(new File(thumbnailFilePath))));
-        uploadImageFile(originalFilePath);
-     }
+//    @Override
+//    public void onChoosePicture(String originalFilePath, String thumbnailFilePath, String thumbnailSmallFilePath) {
+////        btnUploadImage.setImageURI(Uri.parse(String.valueOf(new File(thumbnailFilePath))));
+//        uploadImageFile(originalFilePath);
+//    }
 
     @Override
     public void onResume() {
@@ -216,6 +255,20 @@ public class SignUpFragment extends BaseFragment implements MainActivity.ChooseP
         View rootView = super.onCreateView(inflater, container, savedInstanceState);
         unbinder = ButterKnife.bind(this, rootView);
         return rootView;
+    }
+
+    private void cropImagePicker() {
+        CropImage.activity()
+                .setGuidelines(CropImageView.Guidelines.ON)
+                .setCropShape(CropImageView.CropShape.RECTANGLE)
+                .setMinCropWindowSize(192, 192)
+                .setMinCropResultSize(192, 192)
+                .setMultiTouchEnabled(false)
+                .setOutputCompressFormat(Bitmap.CompressFormat.JPEG)
+                // FIXME: 15-Jul-17 Fix Quality if required
+                .setRequestedSize(640, 640, CropImageView.RequestSizeOptions.RESIZE_FIT)
+                .setOutputCompressQuality(100)
+                .start(getContext(), this);
     }
 
     private void showSignUpSuccessDialog() {
@@ -233,11 +286,53 @@ public class SignUpFragment extends BaseFragment implements MainActivity.ChooseP
         successDialogFragment.show(getFragmentManager(), null);
     }
 
+
     @Override
-    public void onDestroy() {
-        if (signUpClickCall != null) {
-            signUpClickCall.cancel();
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+
+        if (requestCode == CropImage.CROP_IMAGE_ACTIVITY_REQUEST_CODE) {
+            CropImage.ActivityResult result = CropImage.getActivityResult(data);
+            if (resultCode == RESULT_OK) {
+                uploadImageFile(result.getUri().toString());
+            } else if (resultCode == CropImage.CROP_IMAGE_ACTIVITY_RESULT_ERROR_CODE) {
+                Exception error = result.getError();
+                error.printStackTrace();
+            }
         }
-        super.onDestroy();
+    }
+
+
+    private void setImageAfterResult(final String uploadFilePath) {
+        getActivity().runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                try {
+                    setAndUploadImage(uploadFilePath);
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        });
+    }
+
+    private void setAndUploadImage(String uploadFilePath) throws IOException {
+        Log.d("PICTURE", FileManager.getFileSize(uploadFilePath));
+
+//            long originalLength = fileOriginal.length();
+//            originalLength = originalLength / 1024;
+//
+//            String msgOriginalFile = "setAndUploadImage: size Original " + originalLength + " Kb" + " -dimensions " + originalBitmap.getWidth() + " x " + originalBitmap.getHeight();
+//            Log.d("PICTURE", msgOriginalFile);
+//
+//
+//            long thumbLength = fileThumbnail.length();
+//            thumbLength = thumbLength / 1024;
+//            Log.d("PICTURE", "setAndUploadImage: size Thumbnail " + thumbLength + " Kb" + " -dimensions " + thumbnailBitmap.getWidth() + " x " + thumbnailBitmap.getHeight());
+        if (isSelectingCNICPic) {
+            ImageLoader.getInstance().displayImage(uploadFilePath, imgCNIC);
+        } else {
+            ImageLoader.getInstance().displayImage(uploadFilePath, imgPassport);
+        }
     }
 }
+

@@ -141,7 +141,7 @@ public class LeftSideMenuFragment extends BaseFragment {
 
             case R.id.contUserName:
                 closeMenu();
-                getMainActivity().addDockableFragment(EditProfileFragment.newInstance());
+
                 break;
             case R.id.contNotifications:
                 closeMenu();
