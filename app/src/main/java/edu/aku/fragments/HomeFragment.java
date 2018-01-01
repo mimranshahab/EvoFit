@@ -90,10 +90,6 @@ public class HomeFragment extends BaseFragment {
         });
     }
 
-//    public void showNextBuildToast() {
-//        UIHelper.showToast(getContext(), "This feature will be implemented in next build");
-//    }
-
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -113,54 +109,14 @@ public class HomeFragment extends BaseFragment {
         setResideMenu();
         bindViews(view);
         setAdapter();
-        getNotificationsList();
 
-        if (isCallsDone) {
-            bindData();
-        } else {
-            if (prefHelper.getSelectedAddress() == null) {
-                getSelectedAddresses();
-            } else {
-                bindData();
-            }
-        }
-    }
 
-    private void setResideMenu() {
-        getResideMenu().openMenu(ResideMenu.DIRECTION_LEFT);
-        getResideMenu().closeMenu();
-
-        if (prefHelper.getUser() != null && getMainActivity().getLeftSideMenuFragment().txtUserName != null) {
-            getMainActivity().getLeftSideMenuFragment().txtUserName.setText(prefHelper.getUser().userName);
-            getMainActivity().getLeftSideMenuFragment().scrollToTop();
-
-            if (prefHelper.getUser().userProfilePictureURL != null) {
-                ImageLoader.getInstance().displayImage(prefHelper.getUser().userProfilePictureURL, getMainActivity().getLeftSideMenuFragment().imgProfile, LazyLoading.options);
-            }
-        }
     }
 
     @Override
     public void onResume() {
         super.onResume();
     }
-//
-//    private void dummyData() {
-//        arrCategory.clear();
-//        for (int i = 0; i < 6; i++) {
-//            ArrayList<Category> arrSubCategory = new ArrayList<Category>();
-//            arrSubCategory.clear();
-//            int offsetForDummyData = i * 10;
-//            for (int j = 0; j < Constants.PRODUCT_TABS.length; j++) {
-//                arrSubCategory.add(new Category((j + offsetForDummyData), Constants.PRODUCT_TABS[j], "Details dummy", Constants.CHIPS_IMAGES[j]));
-//            }
-//            if (i % 2 == 0) {
-//                arrCategory.add(new Category(i, "Snacks & Chocolates", "Chocolates, Peanuts, Cookies", Constants.CATEGORY_IMAGES[i], arrSubCategory));
-//            } else {
-//                arrCategory.add(new Category(i, "Groceries & Staples", "Flour, Oil, Rice, Honey", Constants.CATEGORY_IMAGES[i], arrSubCategory));
-//            }
-//        }
-//    }
 
 
     private void setAdapter() {
@@ -256,34 +212,6 @@ public class HomeFragment extends BaseFragment {
     }
 
 
-    private void getNotificationsList() {
-
-        callNotifications = WebServiceFactory.getInstance(prefHelper.getUserToken()).getNotifications(prefHelper.getUserID());
-
-        callNotifications.enqueue(new Callback<WebResponse<NotificationWrapper>>() {
-            @Override
-            public void onResponse(Call<WebResponse<NotificationWrapper>> call, Response<WebResponse<NotificationWrapper>> response) {
-                if (response == null || response.body() == null) return;
-
-                if (response.body().isSuccess()) {
-                    if (getMainActivity() != null && getMainActivity().getLeftSideMenuFragment() != null && getMainActivity().getLeftSideMenuFragment().txtNotifications != null)
-
-                        if (response.body().result.notifications.size() > 0) {
-                            getMainActivity().getLeftSideMenuFragment().txtNotifications.setVisibility(View.VISIBLE);
-                            getMainActivity().getLeftSideMenuFragment().txtNotifications.setText(String.valueOf(response.body().result.notifications.size()));
-                        }
-                         else {
-                            getMainActivity().getLeftSideMenuFragment().txtNotifications.setVisibility(View.GONE);
-                        }
-                }
-            }
-
-            @Override
-            public void onFailure(Call<WebResponse<NotificationWrapper>> call, Throwable t) {
-                t.printStackTrace();
-            }
-        });
-    }
 
     @Override
     public void onDestroy() {

@@ -36,35 +36,22 @@ import edu.aku.residemenu.ResideMenu;
 import edu.aku.utility.Blur;
 import edu.aku.utility.Utils;
 
-public class MainActivity extends AppCompatActivity implements ImageChooserListener {
+public class MainActivity extends AppCompatActivity {
 
     public DrawerLayout drawerLayout;
-//    ChoosePictureInterface choosePictureInterface;
-    OnActivityResultInterface onActivityResultInterface;
+     OnActivityResultInterface onActivityResultInterface;
 
     private TitleBar titleBar;
     private BaseSharedPreferenceManager prefHelper;
-
-//    private ImageChooserManager imageChooserManager;
-//
-//    public String filePath;
-//
-//    private int chooserType;
-    private final static String TAG = "ICA";
-    private boolean isActivityResultOver = false;
-    public String originalFilePath;
-    public String thumbnailFilePath;
-    public String thumbnailSmallFilePath;
     private LeftSideMenuFragment leftSideMenuFragment;
 
     private ResideMenu resideMenu;
 
-    //For Blurred Background
-    private Bitmap mDownScaled;
-    private String mBackgroundFilename;
-    private Bitmap background;
-
-    private ImageView imageBlur;
+//    //For Blurred Background
+//    private Bitmap mDownScaled;
+//    private String mBackgroundFilename;
+//    private Bitmap background;
+//    private ImageView imageBlur;
 
 
     @Override
@@ -78,7 +65,7 @@ public class MainActivity extends AppCompatActivity implements ImageChooserListe
 
         setSideMenu(ResideMenu.DIRECTION_LEFT);
 
-        imageBlur = (ImageView) findViewById(R.id.imageBlur);
+//        imageBlur = (ImageView) findViewById(R.id.imageBlur);
 
         // check if user is registered or not
         initFragments();
@@ -106,9 +93,9 @@ public class MainActivity extends AppCompatActivity implements ImageChooserListe
 
 
     public void setSideMenu(int direction) {
-
         resideMenu = new ResideMenu(this);
-        resideMenu.setBackground(R.drawable.imgbgdark);
+        resideMenu.setSwipeDirectionDisable(ResideMenu.DIRECTION_RIGHT);
+        resideMenu.setBackground(R.drawable.imgmainbg);
         resideMenu.attachToActivity(this);
         resideMenu.setScaleValue(0.56f);
         resideMenu.setShadowVisible(false);
@@ -134,49 +121,53 @@ public class MainActivity extends AppCompatActivity implements ImageChooserListe
         return (RelativeLayout) findViewById(R.id.content_frame);
     }
 
-    public ImageView getBlurImage() {
-        return imageBlur;
-    }
+//    public ImageView getBlurImage() {
+//        return imageBlur;
+//    }
 
-    public void setBlurBackground() {
-
-////        if (mBackgroundFilename == null) {
+//    public void setBlurBackground() {
 //
-//        this.mDownScaled = Utils.drawViewToBitmap(this.getMainContentFrame(), Color.parseColor("#fff5f5f5"));
-//
-//        mBackgroundFilename = getBlurredBackgroundFilename();
-//        if (!TextUtils.isEmpty(mBackgroundFilename)) {
-//            //context.getMainContentFrame().setVisibility(View.VISIBLE);
-//            background = Utils.loadBitmapFromFile(mBackgroundFilename);
-////                if (background != null) {
-//            getBlurImage().setVisibility(View.VISIBLE);
-//            getBlurImage().setImageBitmap(background);
-//            getBlurImage().animate().alpha(1);
-////                }
-//        }
-////        } else {
+//////        if (mBackgroundFilename == null) {
+////
+////        this.mDownScaled = Utils.drawViewToBitmap(this.getMainContentFrame(), Color.parseColor("#fff5f5f5"));
+////
+////        mBackgroundFilename = getBlurredBackgroundFilename();
+////        if (!TextUtils.isEmpty(mBackgroundFilename)) {
+////            //context.getMainContentFrame().setVisibility(View.VISIBLE);
+////            background = Utils.loadBitmapFromFile(mBackgroundFilename);
+//////                if (background != null) {
 ////            getBlurImage().setVisibility(View.VISIBLE);
 ////            getBlurImage().setImageBitmap(background);
 ////            getBlurImage().animate().alpha(1);
+//////                }
 ////        }
-    }
+//////        } else {
+//////            getBlurImage().setVisibility(View.VISIBLE);
+//////            getBlurImage().setImageBitmap(background);
+//////            getBlurImage().animate().alpha(1);
+//////        }
+////    }
+////
+////    public String getBlurredBackgroundFilename() {
+////        Bitmap localBitmap = Blur.fastblur(this, this.mDownScaled, 20);
+////        String str = Utils.saveBitmapToFile(this, localBitmap);
+////        this.mDownScaled.recycle();
+////        localBitmap.recycle();
+////        return str;
+////    }
+////
+////    public void removeBlurImage() {
+////        getBlurImage().setVisibility(View.GONE);
+////    }
+//
 
-    public String getBlurredBackgroundFilename() {
-        Bitmap localBitmap = Blur.fastblur(this, this.mDownScaled, 20);
-        String str = Utils.saveBitmapToFile(this, localBitmap);
-        this.mDownScaled.recycle();
-        localBitmap.recycle();
-        return str;
-    }
 
-    public void removeBlurImage() {
-        getBlurImage().setVisibility(View.GONE);
-    }
 
-    @Override
-    public boolean dispatchTouchEvent(MotionEvent ev) {
-        return resideMenu.dispatchTouchEvent(ev);
-    }
+//    @Override
+//    public boolean dispatchTouchEvent(MotionEvent ev) {
+//        return resideMenu.dispatchTouchEvent(ev);
+//    }
+
 
 
     public ResideMenu getResideMenu() {
@@ -249,168 +240,6 @@ public class MainActivity extends AppCompatActivity implements ImageChooserListe
     public TitleBar getTitleBar() {
         return titleBar;
     }
-
-//    public void chooseImage() {
-//        chooserType = ChooserType.REQUEST_PICK_PICTURE;
-//        imageChooserManager = new ImageChooserManager(this,
-//                ChooserType.REQUEST_PICK_PICTURE, true);
-//        Bundle bundle = new Bundle();
-//        bundle.putBoolean(Intent.EXTRA_ALLOW_MULTIPLE, true);
-//        imageChooserManager.setExtras(bundle);
-//        imageChooserManager.setImageChooserListener(this);
-//        imageChooserManager.clearOldFiles();
-//        try {
-//            filePath = imageChooserManager.choose();
-//        } catch (IllegalArgumentException e) {
-//            e.printStackTrace();
-//        } catch (Exception e) {
-//            e.printStackTrace();
-//        }
-//    }
-//
-//    public void takePicture() {
-//        chooserType = ChooserType.REQUEST_CAPTURE_PICTURE;
-//        imageChooserManager = new ImageChooserManager(this,
-//                ChooserType.REQUEST_CAPTURE_PICTURE, true);
-//        imageChooserManager.setImageChooserListener(this);
-//        try {
-//            filePath = imageChooserManager.choose();
-//        } catch (IllegalArgumentException e) {
-//            e.printStackTrace();
-//        } catch (Exception e) {
-//            e.printStackTrace();
-//        }
-//    }
-//
-//
-//    @Override
-//    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-//
-//        if (requestCode == GooglePlaceHelper.REQUEST_CODE_AUTOCOMPLETE) {
-//            onActivityResultInterface.onActivityResultInterface(requestCode, resultCode, data);
-//        }
-//
-//        if (requestCode == PaypalHelper.REQUEST_CODE_PAYPAL) {
-//            Log.d(TAG, "onActivityResult: Paypal Request ID = " + requestCode);
-//            PaypalHelper.getInstance().onResult(requestCode, resultCode, data);
-//        }
-//
-//        if (resultCode == RESULT_OK
-//                && (requestCode == ChooserType.REQUEST_PICK_PICTURE || requestCode == ChooserType.REQUEST_CAPTURE_PICTURE)) {
-//            if (imageChooserManager == null) {
-//                reinitializeImageChooser();
-//            }
-//            imageChooserManager.submit(requestCode, data);
-//        }
-//    }
-
-    @Override
-    public void onImageChosen(final ChosenImage image) {
-        runOnUiThread(new Runnable() {
-
-            @Override
-            public void run() {
-                Log.i(TAG, "Chosen Image: O - " + image.getFilePathOriginal());
-                Log.i(TAG, "Chosen Image: T - " + image.getFileThumbnail());
-                Log.i(TAG, "Chosen Image: Ts - " + image.getFileThumbnailSmall());
-                isActivityResultOver = true;
-                originalFilePath = image.getFilePathOriginal();
-                thumbnailFilePath = image.getFileThumbnail();
-                thumbnailSmallFilePath = image.getFileThumbnailSmall();
-                if (image != null) {
-                    Log.i(TAG, "Chosen Image: Is not null");
-//                    choosePictureInterface.onChoosePicture(originalFilePath, thumbnailFilePath, thumbnailSmallFilePath);
-
-                    // loadImage(imageViewThumbnail, image.getFileThumbnail());
-                } else {
-                    Log.i(TAG, "Chosen Image: Is null");
-                }
-            }
-        });
-
-    }
-
-    @Override
-    public void onImagesChosen(final ChosenImages images) {
-        runOnUiThread(new Runnable() {
-            @Override
-            public void run() {
-                Log.i(TAG, "On Images Chosen: " + images.size());
-                onImageChosen(images.getImage(0));
-            }
-        });
-    }
-
-
-    @Override
-    public void onError(final String reason) {
-        runOnUiThread(new Runnable() {
-
-            @Override
-            public void run() {
-                Log.i(TAG, "OnError: " + reason);
-                Toast.makeText(MainActivity.this, reason,
-                        Toast.LENGTH_LONG).show();
-            }
-        });
-    }
-
-//    // Should be called if for some reason the ImageChooserManager is null (Due
-//    // to destroying of activity for low memory situations)
-//    private void reinitializeImageChooser() {
-//        imageChooserManager = new ImageChooserManager(this, chooserType, true);
-//        Bundle bundle = new Bundle();
-//        bundle.putBoolean(Intent.EXTRA_ALLOW_MULTIPLE, true);
-//        imageChooserManager.setExtras(bundle);
-//        imageChooserManager.setImageChooserListener(this);
-//        imageChooserManager.reinitialize(filePath);
-//    }
-
-//    @Override
-//    protected void onSaveInstanceState(Bundle outState) {
-//        Log.i(TAG, "Saving Stuff");
-//        Log.i(TAG, "File Path: " + filePath);
-//        Log.i(TAG, "Chooser Type: " + chooserType);
-//        outState.putBoolean("activity_result_over", isActivityResultOver);
-//        outState.putInt("chooser_type", chooserType);
-//        outState.putString("media_path", filePath);
-//        outState.putString("orig", originalFilePath);
-//        outState.putString("thumb", thumbnailFilePath);
-//        outState.putString("thumbs", thumbnailSmallFilePath);
-//        super.onSaveInstanceState(outState);
-//    }
-//
-//    @Override
-//    protected void onRestoreInstanceState(@NonNull Bundle savedInstanceState) {
-//        if (savedInstanceState != null) {
-//            if (savedInstanceState.containsKey("chooser_type")) {
-//                chooserType = savedInstanceState.getInt("chooser_type");
-//            }
-//            if (savedInstanceState.containsKey("media_path")) {
-//                filePath = savedInstanceState.getString("media_path");
-//            }
-//            if (savedInstanceState.containsKey("activity_result_over")) {
-//                isActivityResultOver = savedInstanceState.getBoolean("activity_result_over");
-//                originalFilePath = savedInstanceState.getString("orig");
-//                thumbnailFilePath = savedInstanceState.getString("thumb");
-//                thumbnailSmallFilePath = savedInstanceState.getString("thumbs");
-//            }
-//        }
-//
-//        Log.i(TAG, "Restoring Stuff");
-//        Log.i(TAG, "File Path: " + filePath);
-//        Log.i(TAG, "Chooser Type: " + chooserType);
-//        Log.i(TAG, "Activity Result Over: " + isActivityResultOver);
-//        super.onRestoreInstanceState(savedInstanceState);
-//    }
-//
-//    public interface ChoosePictureInterface {
-//        void onChoosePicture(String originalFilePath, String thumbnailFilePath, String thumbnailSmallFilePath);
-//    }
-//
-//    public void setChoosePictureListener(ChoosePictureInterface choosePictureInterfaceListener) {
-//        this.choosePictureInterface = choosePictureInterfaceListener;
-//    }
 
     public void setOnActivityResultInterface(OnActivityResultInterface onActivityResultInterface) {
         this.onActivityResultInterface = onActivityResultInterface;

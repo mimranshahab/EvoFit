@@ -11,6 +11,12 @@ import android.widget.ScrollView;
 
 import com.ctrlplusz.anytextview.AnyTextView;
 import com.nostra13.universalimageloader.core.ImageLoader;
+
+import butterknife.BindView;
+import butterknife.ButterKnife;
+import butterknife.OnClick;
+import butterknife.Unbinder;
+import de.hdodenhof.circleimageview.CircleImageView;
 import edu.aku.R;
 import edu.aku.fragments.abstracts.BaseFragment;
 import edu.aku.fragments.abstracts.GenericClickableInterface;
@@ -18,48 +24,37 @@ import edu.aku.fragments.abstracts.GenericDialogFragment;
 import edu.aku.helperclasses.ui.helper.TitleBar;
 import edu.aku.libraries.imageloader.LazyLoading;
 
-import butterknife.BindView;
-import butterknife.ButterKnife;
-import butterknife.OnClick;
-import butterknife.Unbinder;
-import de.hdodenhof.circleimageview.CircleImageView;
-
 /**
  * Created by khanhamza on 09-May-17.
  */
 
 public class LeftSideMenuFragment extends BaseFragment {
 
-
+    Unbinder unbinder;
     @BindView(R.id.imgProfile)
     CircleImageView imgProfile;
-    @BindView(R.id.txtNotifications)
-    public AnyTextView txtNotifications;
-    @BindView(R.id.contNotifications)
-    LinearLayout contNotifications;
-    @BindView(R.id.txtOrderHistory)
-    AnyTextView txtOrderHistory;
-    @BindView(R.id.txtFavorite)
-    AnyTextView txtFavorite;
-    @BindView(R.id.txtSetting)
-    AnyTextView txtSetting;
-    @BindView(R.id.txtContactUs)
-    AnyTextView txtContactUs;
-    @BindView(R.id.txtAboutApp)
-    AnyTextView txtAboutApp;
-    @BindView(R.id.txtLogout)
-    AnyTextView txtLogout;
-    Unbinder unbinder;
-    @BindView(R.id.txtAddresses)
-    AnyTextView txtAddresses;
     @BindView(R.id.txtUserName)
     AnyTextView txtUserName;
     @BindView(R.id.contUserName)
     LinearLayout contUserName;
-    @BindView(R.id.txtHome)
-    AnyTextView txtHome;
-    @BindView(R.id.txtLanguage)
-    AnyTextView txtLanguage;
+    @BindView(R.id.txtRegistration)
+    AnyTextView txtRegistration;
+    @BindView(R.id.txtHealthHistory)
+    AnyTextView txtHealthHistory;
+    @BindView(R.id.txtMyProfile)
+    AnyTextView txtMyProfile;
+    @BindView(R.id.txtCardSubscription)
+    AnyTextView txtCardSubscription;
+    @BindView(R.id.txtCardRenewal)
+    AnyTextView txtCardRenewal;
+    @BindView(R.id.txtCardUpgrade)
+    AnyTextView txtCardUpgrade;
+    @BindView(R.id.txtPrintCard)
+    AnyTextView txtPrintCard;
+    @BindView(R.id.txtAbout)
+    AnyTextView txtAbout;
+    @BindView(R.id.txtLogout)
+    AnyTextView txtLogout;
     @BindView(R.id.scrollView)
     ScrollView scrollView;
 
@@ -82,16 +77,16 @@ public class LeftSideMenuFragment extends BaseFragment {
         super.onViewCreated(view, savedInstanceState);
 
 
-        if (prefHelper.getUser() != null) {
-            txtUserName.setText(prefHelper.getUser().userName);
-
-            if (prefHelper.getUser().userProfilePictureURL != null) {
-                ImageLoader.getInstance().displayImage(prefHelper.getUser().userProfilePictureURL, imgProfile, LazyLoading.options);
-            }
-//        ImageLoader.getInstance().displayImage("drawable://" + R.drawable.user_image, imgProfile, LazyLoading.options);
-        }
-
-//        scrollToTop();
+//        if (prefHelper.getUser() != null) {
+//            txtUserName.setText(prefHelper.getUser().userName);
+//
+//            if (prefHelper.getUser().userProfilePictureURL != null) {
+//                ImageLoader.getInstance().displayImage(prefHelper.getUser().userProfilePictureURL, imgProfile, LazyLoading.options);
+//            }
+////        ImageLoader.getInstance().displayImage("drawable://" + R.drawable.user_image, imgProfile, LazyLoading.options);
+//        }
+//
+////        scrollToTop();
     }
 
     @Override
@@ -128,76 +123,6 @@ public class LeftSideMenuFragment extends BaseFragment {
         unbinder.unbind();
     }
 
-
-    @OnClick({R.id.txtHome, R.id.contUserName, R.id.contNotifications, R.id.txtAddresses, R.id.txtOrderHistory, R.id.txtFavorite, R.id.txtSetting, R.id.txtContactUs, R.id.txtAboutApp, R.id.txtLogout, R.id.txtLanguage})
-    public void onViewClicked(View view) {
-        switch (view.getId()) {
-
-            case R.id.txtHome:
-                closeMenu();
-                emptyBackStack();
-                getMainActivity().addDockableFragment(HomeFragment.newInstance());
-                break;
-
-            case R.id.contUserName:
-                closeMenu();
-
-                break;
-            case R.id.contNotifications:
-                closeMenu();
-                getMainActivity().addDockableFragment(NotificationFragment.newInstance());
-                break;
-            case R.id.txtOrderHistory:
-                closeMenu();
-//                getMainActivity().addDockableFragment(OrderHistoryTabFragment.newInstance());
-                break;
-            case R.id.txtFavorite:
-                closeMenu();
-//                getMainActivity().addDockableFragment(FavoriteFragment.newInstance());
-                break;
-            case R.id.txtSetting:
-                closeMenu();
-                getMainActivity().addDockableFragment(SettingFragment.newInstance());
-                break;
-            case R.id.txtAddresses:
-                closeMenu();
-                getMainActivity().addDockableFragment(MyAddressesFragment.newInstance());
-                break;
-            case R.id.txtContactUs:
-                closeMenu();
-                break;
-            case R.id.txtAboutApp:
-                closeMenu();
-                getMainActivity().addDockableFragment(AboutAppFragment.newInstance());
-                break;
-
-            case R.id.txtLanguage:
-                closeMenu();
-                final GenericDialogFragment genericDialogFragment = new GenericDialogFragment();
-                genericPopUp(genericDialogFragment, getString(R.string.language), getString(R.string.select_language), "English", "عربى", new GenericClickableInterface() {
-                    @Override
-                    public void click() {
-                        genericDialogFragment.dismiss();
-                        prefHelper.putLang(getMainActivity(), "en", false);
-
-                    }
-                }, new GenericClickableInterface() {
-                    @Override
-                    public void click() {
-                        genericDialogFragment.dismiss();
-                        prefHelper.putLang(getMainActivity(), "ar", false);
-                    }
-                });
-                break;
-
-            case R.id.txtLogout:
-                closeMenu();
-                logoutClick();
-                break;
-        }
-    }
-
-
     private void logoutClick() {
         final GenericDialogFragment genericDialogFragment = GenericDialogFragment.newInstance();
 
@@ -233,4 +158,33 @@ public class LeftSideMenuFragment extends BaseFragment {
     }
 
 
+    @OnClick({R.id.contUserName, R.id.txtRegistration, R.id.txtHealthHistory, R.id.txtMyProfile, R.id.txtCardSubscription, R.id.txtCardRenewal, R.id.txtCardUpgrade, R.id.txtPrintCard, R.id.txtAbout, R.id.txtLogout})
+    public void onViewClicked(View view) {
+        if (getResideMenu().isOpened()) {
+            closeMenu();
+        }
+        switch (view.getId()) {
+            case R.id.contUserName:
+                break;
+            case R.id.txtRegistration:
+                break;
+            case R.id.txtHealthHistory:
+                break;
+            case R.id.txtMyProfile:
+                break;
+            case R.id.txtCardSubscription:
+                break;
+            case R.id.txtCardRenewal:
+                break;
+            case R.id.txtCardUpgrade:
+                break;
+            case R.id.txtPrintCard:
+                break;
+            case R.id.txtAbout:
+                break;
+            case R.id.txtLogout:
+                logoutClick();
+                break;
+        }
+    }
 }

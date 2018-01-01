@@ -340,7 +340,7 @@ public class ResideMenu extends FrameLayout {
             scaleDown_activity.playTogether(alpha_menu);
             scaleDown_activity.start();
 
-            context.setBlurBackground();
+//            context.setBlurBackground();
 
         } catch (Exception e) {
             e.printStackTrace();
@@ -373,7 +373,7 @@ public class ResideMenu extends FrameLayout {
             scaleUp_activity.playTogether(alpha_menu);
             scaleUp_activity.start();
 
-           context.removeBlurImage();
+//           context.removeBlurImage();
 
 
         } catch (Exception e) {

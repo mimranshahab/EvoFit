@@ -45,7 +45,6 @@ public abstract class BaseFragment extends Fragment implements View.OnClickListe
 
     protected View view;
     public BaseSharedPreferenceManager prefHelper;
-    public String uriThumbnail;
     ProgressDialog progressDialog;
 
     // Storage Permissions variables
@@ -105,6 +104,8 @@ public abstract class BaseFragment extends Fragment implements View.OnClickListe
     }
 
     public void setSpinner(ArrayAdapter adaptSpinner, final TextView textView, final Spinner spinner) {
+        if (adaptSpinner == null || spinner == null)
+            return;
         //selected item will look like a spinner set from XML
         adaptSpinner.setDropDownViewResource(android.R.layout.simple_list_item_single_choice);
         spinner.setAdapter(adaptSpinner);
@@ -114,7 +115,8 @@ public abstract class BaseFragment extends Fragment implements View.OnClickListe
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 String str = spinner.getItemAtPosition(position).toString();
-                textView.setText(str);
+                if (textView != null)
+                    textView.setText(str);
             }
 
             @Override
@@ -125,12 +127,10 @@ public abstract class BaseFragment extends Fragment implements View.OnClickListe
     }
 
 
-
-
     protected abstract int getFragmentLayout();
 
     public MainActivity getMainActivity() {
-         return (MainActivity) getActivity();
+        return (MainActivity) getActivity();
     }
 
 
@@ -235,6 +235,12 @@ public abstract class BaseFragment extends Fragment implements View.OnClickListe
 
     public ResideMenu getResideMenu() {
         return getMainActivity().getResideMenu();
+    }
+
+
+    public void setResideMenu() {
+        getResideMenu().openMenu(ResideMenu.DIRECTION_LEFT);
+        getResideMenu().closeMenu();
     }
 
 

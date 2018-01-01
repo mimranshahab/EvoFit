@@ -28,6 +28,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import butterknife.Unbinder;
+import retrofit2.http.PUT;
 
 /**
  * Created by khanhamza on 08-May-17.
@@ -62,8 +63,10 @@ public class LoginFragment extends BaseFragment {
     @Override
     public void setTitlebar(TitleBar titleBar) {
         titleBar.resetViews();
-        titleBar.setVisibility(View.GONE);
+        titleBar.setVisibility(View.VISIBLE);
+        titleBar.showSidebar(getMainActivity());
     }
+
 
     @Override
     public void setListeners() {
@@ -95,33 +98,7 @@ public class LoginFragment extends BaseFragment {
         edtPassword.addValidator(new PasswordValidation());
         setClickableSpan(txtSignUp);
 
-        getResideMenu().openMenu(ResideMenu.DIRECTION_LEFT);
-        closeMenu();
-
-
-        if (prefHelper.isLanguageArabic()) {
-            edtPassword.setGravity(Gravity.END | Gravity.CENTER_VERTICAL);
-        } else {
-            edtPassword.setGravity(Gravity.START | Gravity.CENTER_VERTICAL);
-        }
-
-        edtPassword.addTextChangedListener(new TextWatcher() {
-            public void afterTextChanged(Editable s) {
-            }
-
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-            }
-
-            public void onTextChanged(CharSequence s, int start, int before, int count) {
-                if (s.length() > 0) {
-// position the text type in the left top corner
-                    edtPassword.setGravity(Gravity.LEFT | Gravity.CENTER_VERTICAL);
-                } else {
-// no text entered. Center the hint text.
-                    checkLocaleGravity(edtPassword);
-                }
-            }
-        });
+        setResideMenu();
     }
 
 
@@ -150,7 +127,7 @@ public class LoginFragment extends BaseFragment {
             case R.id.txtForgotPassword:
 //                getMainActivity().addDockableFragment(ForgotPasswordFragment.newInstance());
 
-           showNextBuildToast();
+                showNextBuildToast();
                 break;
             case R.id.btnLogin:
                 if (edtEmail.testValidity() && edtPassword.testValidity()) {

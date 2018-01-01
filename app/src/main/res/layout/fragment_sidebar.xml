@@ -4,14 +4,13 @@
     android:id="@+id/scrollView"
     android:layout_width="@dimen/x200dp"
     android:layout_height="match_parent"
-    android:background="#0000"
+    android:background="@color/c_dark_slate_gray"
     android:orientation="vertical"
-    android:padding="@dimen/x10dp"
     android:scrollbars="none">
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:orientation="vertical">
 
 
@@ -25,11 +24,13 @@
 
             <de.hdodenhof.circleimageview.CircleImageView
                 android:id="@+id/imgProfile"
-                android:layout_width="@dimen/x50dp"
-                android:layout_height="@dimen/x50dp"
+                android:layout_width="@dimen/x70dp"
+                android:layout_height="@dimen/x70dp"
                 android:focusable="true"
                 android:scaleType="centerCrop"
-                android:src="@drawable/placeholder" />
+                android:src="@drawable/user_image"
+                app:civ_border_color="@color/white"
+                app:civ_border_width="@dimen/x2dp" />
 
 
             <com.ctrlplusz.anytextview.AnyTextView
@@ -40,7 +41,7 @@
                 android:ellipsize="end"
                 android:padding="@dimen/x10dp"
                 android:singleLine="true"
-                android:text=""
+                android:text="John Doe"
                 android:textColor="@color/offwhite"
                 android:textSize="16sp"
                 app:typeface="@string/font_bold" />
@@ -49,186 +50,155 @@
 
 
         <com.ctrlplusz.anytextview.AnyTextView
-            android:id="@+id/txtHome"
+            android:id="@+id/txtRegistration"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
-            android:layout_marginBottom="@dimen/x25dp"
-            android:layout_weight="1"
-            android:drawableLeft="@drawable/imghome"
-            android:drawablePadding="@dimen/x14dp"
             android:gravity="center_vertical"
-            android:padding="@dimen/x10dp"
+            android:padding="@dimen/x15dp"
             android:singleLine="true"
-            android:text="@string/home"
+            android:text="Registration"
             android:textColor="@color/offwhite"
             android:textSize="14sp"
-            app:typeface="@string/font_normal" />
+            app:typeface="@string/font_bold" />
 
-        <LinearLayout
-            android:id="@+id/contNotifications"
+        <View
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="@dimen/x25dp"
-            android:gravity="center_vertical">
-
-            <com.ctrlplusz.anytextview.AnyTextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_vertical"
-                android:drawableLeft="@drawable/imgnotification"
-                android:drawablePadding="@dimen/x14dp"
-                android:padding="@dimen/x10dp"
-                android:singleLine="true"
-                android:text="@string/notifications"
-                android:textColor="@color/offwhite"
-                android:textSize="14sp"
-                app:typeface="@string/font_normal" />
-
-            <LinearLayout
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:gravity="right|center_vertical"
-                android:padding="@dimen/x5dp">
-
-                <com.ctrlplusz.anytextview.AnyTextView
-                    android:id="@+id/txtNotifications"
-                    android:layout_width="@dimen/x13dp"
-                    android:layout_height="@dimen/x13dp"
-                    android:layout_gravity="right"
-                    android:background="@drawable/notification_circle"
-                    android:gravity="center"
-                    android:textColor="@color/base_color"
-                    android:textSize="10sp"
-                    android:visibility="invisible"
-                    app:typeface="@string/font_normal" />
-
-            </LinearLayout>
-
-
-        </LinearLayout>
+            android:layout_height="2px"
+            android:background="@color/white" />
 
 
         <com.ctrlplusz.anytextview.AnyTextView
-            android:id="@+id/txtOrderHistory"
+            android:id="@+id/txtHealthHistory"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
-            android:layout_marginBottom="@dimen/x25dp"
-            android:drawableLeft="@drawable/imghistory"
-            android:drawablePadding="@dimen/x14dp"
             android:gravity="center_vertical"
-            android:padding="@dimen/x10dp"
+            android:padding="@dimen/x15dp"
             android:singleLine="true"
-            android:text="@string/orderHistory"
+            android:text="Health History"
             android:textColor="@color/offwhite"
             android:textSize="14sp"
-            app:typeface="@string/font_normal" />
+            app:typeface="@string/font_bold" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="2px"
+            android:background="@color/white" />
 
 
         <com.ctrlplusz.anytextview.AnyTextView
-            android:id="@+id/txtFavorite"
+            android:id="@+id/txtMyProfile"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
-            android:layout_marginBottom="@dimen/x25dp"
-            android:drawableLeft="@drawable/imgfav"
-            android:drawablePadding="@dimen/x14dp"
             android:gravity="center_vertical"
-            android:padding="@dimen/x10dp"
+            android:padding="@dimen/x15dp"
             android:singleLine="true"
-            android:text="@string/favorites"
+            android:text="My Profile"
             android:textColor="@color/offwhite"
             android:textSize="14sp"
-            app:typeface="@string/font_normal" />
+            app:typeface="@string/font_bold" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="2px"
+            android:background="@color/white" />
 
 
         <com.ctrlplusz.anytextview.AnyTextView
-            android:id="@+id/txtSetting"
+            android:id="@+id/txtCardSubscription"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
-            android:layout_marginBottom="@dimen/x25dp"
-            android:drawableLeft="@drawable/imgsettings"
-            android:drawablePadding="@dimen/x14dp"
             android:gravity="center_vertical"
-            android:padding="@dimen/x10dp"
+            android:padding="@dimen/x15dp"
             android:singleLine="true"
-            android:text="@string/settings"
+            android:text="Card Subscription"
             android:textColor="@color/offwhite"
             android:textSize="14sp"
-            app:typeface="@string/font_normal" />
+            app:typeface="@string/font_bold" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="2px"
+            android:background="@color/white" />
 
 
         <com.ctrlplusz.anytextview.AnyTextView
-            android:id="@+id/txtAddresses"
+            android:id="@+id/txtCardRenewal"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
-            android:layout_marginBottom="@dimen/x25dp"
-            android:layout_weight="1"
-            android:drawableLeft="@drawable/imgaddresses"
-            android:drawablePadding="@dimen/x14dp"
             android:gravity="center_vertical"
-            android:padding="@dimen/x10dp"
+            android:padding="@dimen/x15dp"
             android:singleLine="true"
-            android:text="@string/myAddresses"
+            android:text="Card Renewal"
             android:textColor="@color/offwhite"
             android:textSize="14sp"
-            app:typeface="@string/font_normal" />
+            app:typeface="@string/font_bold" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="2px"
+            android:background="@color/white" />
 
 
         <com.ctrlplusz.anytextview.AnyTextView
-            android:id="@+id/txtContactUs"
+            android:id="@+id/txtCardUpgrade"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
-            android:layout_marginBottom="@dimen/x25dp"
-            android:layout_weight="1"
-            android:drawableLeft="@drawable/imgcontact"
-            android:drawablePadding="@dimen/x14dp"
             android:gravity="center_vertical"
-            android:padding="@dimen/x10dp"
+            android:padding="@dimen/x15dp"
             android:singleLine="true"
-            android:text="@string/contactUs"
+            android:text="Card Upgrade"
             android:textColor="@color/offwhite"
             android:textSize="14sp"
-            app:typeface="@string/font_normal" />
+            app:typeface="@string/font_bold" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="2px"
+            android:background="@color/white" />
 
 
         <com.ctrlplusz.anytextview.AnyTextView
-            android:id="@+id/txtAboutApp"
+            android:id="@+id/txtPrintCard"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
-            android:layout_marginBottom="@dimen/x25dp"
-            android:drawableLeft="@drawable/imgabout"
-            android:drawablePadding="@dimen/x14dp"
             android:gravity="center_vertical"
-            android:padding="@dimen/x10dp"
+            android:padding="@dimen/x15dp"
             android:singleLine="true"
-            android:text="@string/aboutApp"
+            android:text="Print Card"
             android:textColor="@color/offwhite"
             android:textSize="14sp"
-            app:typeface="@string/font_normal" />
+            app:typeface="@string/font_bold" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="2px"
+            android:background="@color/white" />
 
 
         <com.ctrlplusz.anytextview.AnyTextView
-            android:id="@+id/txtLanguage"
+            android:id="@+id/txtAbout"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
-            android:layout_marginBottom="@dimen/x25dp"
-            android:drawableLeft="@drawable/language"
-            android:drawablePadding="@dimen/x14dp"
             android:gravity="center_vertical"
-            android:padding="@dimen/x10dp"
+            android:padding="@dimen/x15dp"
             android:singleLine="true"
-            android:text="@string/language"
+            android:text="About"
             android:textColor="@color/offwhite"
             android:textSize="14sp"
-            app:typeface="@string/font_normal" />
+            app:typeface="@string/font_bold" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="2px"
+            android:background="@color/white" />
 
 
         <com.ctrlplusz.anytextview.AnyTextView
@@ -237,15 +207,13 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
             android:layout_marginBottom="@dimen/x25dp"
-            android:drawableLeft="@drawable/imglogout"
-            android:drawablePadding="@dimen/x14dp"
             android:gravity="center_vertical"
-            android:padding="@dimen/x10dp"
+            android:padding="@dimen/x15dp"
             android:singleLine="true"
             android:text="@string/logout"
             android:textColor="@color/offwhite"
             android:textSize="14sp"
-            app:typeface="@string/font_normal" />
+            app:typeface="@string/font_bold" />
 
 
     </LinearLayout>
