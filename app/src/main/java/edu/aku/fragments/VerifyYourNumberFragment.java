@@ -13,7 +13,7 @@ import com.andreabaccega.widget.FormEditText;
 import com.ctrlplusz.anytextview.AnyTextView;
 import edu.aku.R;
 import edu.aku.fragments.abstracts.BaseFragment;
-import edu.aku.helperclasses.MobileNumberValidation;
+import edu.aku.helperclasses.validator.MobileNumberValidation;
 import edu.aku.helperclasses.ui.helper.KeyboardHide;
 import edu.aku.helperclasses.ui.helper.TitleBar;
 import edu.aku.helperclasses.ui.helper.UIHelper;

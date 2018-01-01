@@ -1,10 +1,18 @@
 package edu.aku.managers;
+
+import android.app.DatePickerDialog;
+import android.content.Context;
+import android.widget.DatePicker;
+import android.widget.TextView;
+
 import edu.aku.constatnts.AppConstants;
+import edu.aku.helperclasses.ui.helper.UIHelper;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.Locale;
 import java.util.TimeZone;
 
 /**
@@ -12,6 +20,7 @@ import java.util.TimeZone;
  */
 
 public class DateManager {
+
 
     private static SimpleDateFormat sdfDateInput = new SimpleDateFormat(AppConstants.INPUT_DATE_FORMAT);
     private static SimpleDateFormat sdfDateInputAmPm = new SimpleDateFormat(AppConstants.INPUT_DATE_FORMAT_AM_PM);
@@ -31,6 +40,7 @@ public class DateManager {
         }
         return null;
     }
+
 
     public static String getDate(Date date, String format) {
         if (date == null) return "";
@@ -355,5 +365,30 @@ public class DateManager {
         return mDesiredString;
     }
 
+    public static void showDatePicker(final Context context, final TextView textView, final DatePickerDialog.OnDateSetListener onDateSetListener) {
 
+        if (textView != null) {
+            final Calendar myCalendar = Calendar.getInstance();
+            DatePickerDialog.OnDateSetListener date = new DatePickerDialog.OnDateSetListener() {
+                @Override
+                public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
+                    // TODO Auto-generated method stub
+                    myCalendar.set(Calendar.YEAR, year);
+                    myCalendar.set(Calendar.MONTH, monthOfYear);
+                    myCalendar.set(Calendar.DAY_OF_MONTH, dayOfMonth);
+                    String myFormat = "MM/dd/yy"; // In which you need put here
+                    SimpleDateFormat sdf = new SimpleDateFormat(myFormat, Locale.US);
+                    //UIHelper.showLongToastInCenter(context, sdf.format(myCalendar.getTime()));
+                    textView.setText(sdf.format(myCalendar.getTime()));
+                    if (onDateSetListener != null) {
+                        onDateSetListener.onDateSet(view, year, monthOfYear, dayOfMonth);
+                    }
+                }
+
+            };
+            new DatePickerDialog(context, date, myCalendar.get(Calendar.YEAR), myCalendar.get(Calendar.MONTH), myCalendar.get(Calendar.DAY_OF_MONTH)).show();
+        } else {
+            UIHelper.showLongToastInCenter(context, "Unable to show Date picker");
+        }
+    }
 }

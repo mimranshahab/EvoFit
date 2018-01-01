@@ -5,7 +5,6 @@ import android.support.annotation.Nullable;
 import android.text.Editable;
 import android.text.SpannableString;
 import android.text.TextWatcher;
-import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -15,35 +14,20 @@ import android.widget.TextView;
 
 import com.andreabaccega.widget.FormEditText;
 import com.ctrlplusz.anytextview.AnyTextView;
-import com.google.gson.JsonObject;
 
 import edu.aku.R;
 import edu.aku.fragments.abstracts.BaseFragment;
 import edu.aku.fragments.abstracts.GenericClickableInterface;
 import edu.aku.fragments.abstracts.GenericClickableSpan;
-import edu.aku.helperclasses.PasswordValidation;
+import edu.aku.helperclasses.validator.PasswordValidation;
 import edu.aku.helperclasses.ui.helper.TitleBar;
-import edu.aku.helperclasses.ui.helper.UIHelper;
 
-import edu.aku.managers.retrofit.GsonFactory;
-import edu.aku.managers.retrofit.WebServiceFactory;
-import edu.aku.managers.retrofit.WebServices;
-import edu.aku.models.UserModel;
-import edu.aku.models.RegisterVM;
-import edu.aku.models.wrappers.WebResponse;
 import edu.aku.residemenu.ResideMenu;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import butterknife.Unbinder;
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
-
-import static android.content.ContentValues.TAG;
-import static edu.aku.constatnts.WebServiceConstants.METHOD_USER_GET_REGISTER_VM;
-import static edu.aku.constatnts.WebServiceConstants.temporaryToken;
 
 /**
  * Created by khanhamza on 08-May-17.
@@ -145,7 +129,7 @@ public class LoginFragment extends BaseFragment {
         GenericClickableSpan text1 = new GenericClickableSpan(getMainActivity(), new GenericClickableInterface() {
             @Override
             public void click() {
-                getMainActivity().addDockableFragment(SignUpFragment.newInstance());
+                getMainActivity().addDockableFragment(RegisterFragment.newInstance());
             }
         });
         text1.setSpannableStringValue(textView, getString(R.string.register_an_account), new SpannableString(textView.getText().toString().trim()));
@@ -166,18 +150,7 @@ public class LoginFragment extends BaseFragment {
             case R.id.txtForgotPassword:
 //                getMainActivity().addDockableFragment(ForgotPasswordFragment.newInstance());
 
-                new WebServices(getMainActivity(), temporaryToken).webServiceRequestAPI(METHOD_USER_GET_REGISTER_VM, "", new WebServices.IRequestJsonDataCallBack() {
-                    @Override
-                    public void requestDataResponse(WebResponse<JsonObject> webResponse) {
-                        GsonFactory.getSimpleGson().fromJson(webResponse.result, RegisterVM.class);
-                        UIHelper.showShortToastInCenter(getContext(), webResponse.message);
-                    }
-
-                    @Override
-                    public void onError() {
-                        UIHelper.showShortToastInCenter(getContext(), "failure");
-                    }
-                });
+           showNextBuildToast();
                 break;
             case R.id.btnLogin:
                 if (edtEmail.testValidity() && edtPassword.testValidity()) {

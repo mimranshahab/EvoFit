@@ -34,4 +34,10 @@ public class RegisterOptionsModel {
     public String getValue() {
         return Value;
     }
+
+
+    @Override
+    public String toString() {
+        return getText();
+    }
 }

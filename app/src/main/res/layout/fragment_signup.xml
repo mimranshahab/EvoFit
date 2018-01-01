@@ -134,12 +134,12 @@
             android:background="@drawable/imgninepatch"
             android:hint="Enter Passport Number"
             android:inputType="numberDecimal"
-            android:maxLength="20"
+            android:maxLength="9"
             android:maxLines="1"
             android:textColor="@color/text_dark"
             android:textColorHint="@color/text_light_grey"
             android:textSize="16sp"
-            app:testType="numeric" />
+            app:testType="alphaNumeric" />
 
 
         <com.ctrlplusz.anytextview.AnyTextView
@@ -489,8 +489,20 @@
                     android:layout_height="120dp"
                     android:layout_margin="@dimen/x5dp"
                     android:background="@color/c_black"
-                    android:scaleType="centerInside"
+                    android:scaleType="centerCrop"
                     android:src="@drawable/placeholder" />
+
+                <com.ctrlplusz.anytextview.AnyTextView
+                    android:id="@+id/txtCNICImageName"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/x5dp"
+                    android:text=""
+                    android:singleLine="true"
+                    android:ellipsize="end"
+                    android:textColor="@color/text_color_black"
+                    android:textSize="13sp"
+                    app:typeface="@string/font_bold" />
 
 
             </LinearLayout>
@@ -519,10 +531,21 @@
                     android:layout_height="120dp"
                     android:layout_margin="@dimen/x5dp"
                     android:background="@color/c_black"
-                    android:scaleType="centerInside"
+                    android:scaleType="centerCrop"
                     android:src="@drawable/placeholder"
-
                     />
+
+                <com.ctrlplusz.anytextview.AnyTextView
+                    android:id="@+id/txtPassportImageName"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/x5dp"
+                    android:text=""
+                    android:singleLine="true"
+                    android:ellipsize="end"
+                    android:textColor="@color/text_color_black"
+                    android:textSize="13sp"
+                    app:typeface="@string/font_bold" />
 
 
             </LinearLayout>
@@ -539,7 +562,7 @@
             android:background="@drawable/rounded_box_filled"
             android:gravity="center"
             android:padding="@dimen/x10dp"
-            android:text="@string/sign_up"
+            android:text="@string/next"
             android:textColor="@color/white"
             android:textSize="17sp"
             app:typeface="@string/font_normal" />

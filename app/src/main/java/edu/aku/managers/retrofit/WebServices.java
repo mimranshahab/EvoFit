@@ -17,6 +17,7 @@ import edu.aku.helperclasses.ui.helper.UIHelper;
 import java.io.File;
 import java.io.IOException;
 
+import edu.aku.managers.FileManager;
 import edu.aku.models.wrappers.WebResponse;
 import okhttp3.MediaType;
 import okhttp3.MultipartBody;
@@ -85,7 +86,7 @@ public class WebServices {
 
         RequestBody bodyRequestMethod = getRequestBody(okhttp3.MultipartBody.FORM, requestMethod);
         MultipartBody.Part bodyRequestData;
-        if (filePath == null) {
+        if (filePath == null || !FileManager.isFileExits(filePath)) {
             dismissDialog();
             UIHelper.showShortToastInCenter(mContext, "File path is empty.");
             return;

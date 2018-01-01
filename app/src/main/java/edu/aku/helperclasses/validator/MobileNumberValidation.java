@@ -1,4 +1,4 @@
-package edu.aku.helperclasses;
+package edu.aku.helperclasses.validator;
 
 import android.widget.EditText;
 

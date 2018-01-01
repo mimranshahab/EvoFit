@@ -109,6 +109,7 @@ public abstract class BaseFragment extends Fragment implements View.OnClickListe
         adaptSpinner.setDropDownViewResource(android.R.layout.simple_list_item_single_choice);
         spinner.setAdapter(adaptSpinner);
 
+
         spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {

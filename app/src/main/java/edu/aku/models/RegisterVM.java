@@ -25,7 +25,7 @@ public class RegisterVM {
     private String RegisterRequest;
 
 
-    public List<edu.aku.models.RegisterOptionsModel> getRegisterOptionsModel() {
+    public List<edu.aku.models.RegisterOptionsModel> getGenderList() {
         return GenderList;
     }
 
