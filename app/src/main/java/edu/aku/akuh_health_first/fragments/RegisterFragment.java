@@ -37,7 +37,7 @@ import edu.aku.akuh_health_first.helperclasses.ui.helper.UIHelper;
 import edu.aku.akuh_health_first.helperclasses.validator.CnicValidation;
 import edu.aku.akuh_health_first.helperclasses.validator.MobileNumberValidation;
 import edu.aku.akuh_health_first.managers.DateManager;
-import edu.aku.akuh_health_first.models.RegisterVM;
+import edu.aku.akuh_health_first.models.receiving_model.RegisterVM;
 import edu.aku.akuh_health_first.models.wrappers.WebResponse;
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -52,7 +52,7 @@ import edu.aku.akuh_health_first.managers.FileManager;
 import edu.aku.akuh_health_first.managers.SharedPreferenceManager;
 import edu.aku.akuh_health_first.managers.retrofit.GsonFactory;
 import edu.aku.akuh_health_first.managers.retrofit.WebServices;
-import edu.aku.akuh_health_first.models.RegisterOptionsModel;
+import edu.aku.akuh_health_first.models.receiving_model.RegisterOptionsModel;
 
 import static android.app.Activity.RESULT_OK;
 

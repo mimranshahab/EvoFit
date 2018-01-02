@@ -112,37 +112,37 @@ public class Helper {
     }
 
 
-    public static Map<String, String[]> readContacts(Context context) {
-        Map<String, String[]> contacts = new HashMap<>();
-
-        ContentResolver cr = context.getContentResolver();
-        Cursor cur = cr.query(ContactsContract.CommonDataKinds.Phone.CONTENT_URI,
-                new String[]{
-                        ContactsContract.CommonDataKinds.Phone.CONTACT_ID,
-                        //ContactsContract.Contacts._ID,
-                        ContactsContract.Data.DISPLAY_NAME,
-                        ContactsContract.CommonDataKinds.Phone.NUMBER,
-                }, null, null, null);
-
-        if (cur.getCount() > 0) {
-            String currentUserPhoneNo = SharedPreferenceManager.getInstance(context).getCurrentUser().userPhoneNumber;
-
-            while (cur.moveToNext()) {
-                int id = cur.getInt(0);
-                String displayName = cur.getString(1);
-                String phone = cur.getString(2);
-
-                phone = phone.startsWith("0") ? phone.replaceFirst("0", "92").replaceAll(" ", "") : phone.replaceAll(" ", "");
-                if (phone.equals(currentUserPhoneNo))
-                    continue;
-
-                contacts.put(phone, new String[]{id != 0 ? String.valueOf(id) : "-1", displayName});
-            }
-            cur.close();
-        }
-        Log.e("abc", "Contact sync complete");
-        return contacts;
-    }
+//    public static Map<String, String[]> readContacts(Context context) {
+//        Map<String, String[]> contacts = new HashMap<>();
+//
+//        ContentResolver cr = context.getContentResolver();
+//        Cursor cur = cr.query(ContactsContract.CommonDataKinds.Phone.CONTENT_URI,
+//                new String[]{
+//                        ContactsContract.CommonDataKinds.Phone.CONTACT_ID,
+//                        //ContactsContract.Contacts._ID,
+//                        ContactsContract.Data.DISPLAY_NAME,
+//                        ContactsContract.CommonDataKinds.Phone.NUMBER,
+//                }, null, null, null);
+//
+//        if (cur.getCount() > 0) {
+//            String currentUserPhoneNo = SharedPreferenceManager.getInstance(context).getCurrentUser().userPhoneNumber;
+//
+//            while (cur.moveToNext()) {
+//                int id = cur.getInt(0);
+//                String displayName = cur.getString(1);
+//                String phone = cur.getString(2);
+//
+//                phone = phone.startsWith("0") ? phone.replaceFirst("0", "92").replaceAll(" ", "") : phone.replaceAll(" ", "");
+//                if (phone.equals(currentUserPhoneNo))
+//                    continue;
+//
+//                contacts.put(phone, new String[]{id != 0 ? String.valueOf(id) : "-1", displayName});
+//            }
+//            cur.close();
+//        }
+//        Log.e("abc", "Contact sync complete");
+//        return contacts;
+//    }
 
     public static boolean isNumberExistonPhone(Context context, String number) {
         Uri uri = Uri.withAppendedPath(ContactsContract.PhoneLookup.CONTENT_FILTER_URI, Uri.encode(number));

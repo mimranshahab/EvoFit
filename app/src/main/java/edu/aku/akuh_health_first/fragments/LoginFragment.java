@@ -11,11 +11,14 @@ import android.widget.TextView;
 
 import com.andreabaccega.widget.FormEditText;
 import com.ctrlplusz.anytextview.AnyTextView;
+import com.google.gson.JsonObject;
 
 import edu.aku.akuh_health_first.R;
+import edu.aku.akuh_health_first.constatnts.WebServiceConstants;
 import edu.aku.akuh_health_first.fragments.abstracts.BaseFragment;
 import edu.aku.akuh_health_first.fragments.abstracts.GenericClickableInterface;
 import edu.aku.akuh_health_first.fragments.abstracts.GenericClickableSpan;
+import edu.aku.akuh_health_first.helperclasses.ui.helper.UIHelper;
 import edu.aku.akuh_health_first.helperclasses.validator.PasswordValidation;
 import edu.aku.akuh_health_first.helperclasses.ui.helper.TitleBar;
 
@@ -23,6 +26,11 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import butterknife.Unbinder;
+import edu.aku.akuh_health_first.managers.retrofit.GsonFactory;
+import edu.aku.akuh_health_first.managers.retrofit.WebServices;
+import edu.aku.akuh_health_first.models.UserModel;
+import edu.aku.akuh_health_first.models.sending_model.LoginApiModel;
+import edu.aku.akuh_health_first.models.wrappers.WebResponse;
 
 /**
  * Created by khanhamza on 08-May-17.
@@ -124,8 +132,28 @@ public class LoginFragment extends BaseFragment {
                 showNextBuildToast();
                 break;
             case R.id.btnLogin:
+
                 if (edtEmail.testValidity() && edtPassword.testValidity()) {
                     showNextBuildToast();
+                    // FIXME: 1/2/2018 enter live data
+                    LoginApiModel loginApiModel = new LoginApiModel(WebServiceConstants.tempUserName,WebServiceConstants.tempPassword);
+
+                    new WebServices(getMainActivity(), WebServiceConstants.temporaryToken).webServiceRequestAPI(WebServiceConstants.METHOD_USER_GET_USER, loginApiModel.toString(), new WebServices.IRequestJsonDataCallBack() {
+                        @Override
+                        public void requestDataResponse(WebResponse<JsonObject> webResponse) {
+                            UserModel userModel = GsonFactory.getSimpleGson().fromJson(webResponse.result, UserModel.class);
+                            UIHelper.showShortToastInCenter(getContext(), webResponse.message);
+//                            SharedPreferenceManager.getInstance(getContext()).putObject(AppConstants.KEY_REGISTER_VM, webResponse.result);
+
+                        }
+
+                        @Override
+                        public void onError() {
+                            UIHelper.showShortToastInCenter(getContext(), "failure");
+                        }
+                    });
+
+
                 }
                 break;
         }

@@ -1,4 +1,4 @@
-package edu.aku.akuh_health_first.models;
+package edu.aku.akuh_health_first.models.receiving_model;
 
 import com.google.gson.annotations.SerializedName;
 
