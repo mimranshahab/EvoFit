@@ -207,6 +207,10 @@ public class RegisterFragment extends BaseFragment {
         edtMRNumber.addValidator(new MRValidation());
         edtPassportNumber.addValidator(new PassportValidation());
 
+        getRegisterVM();
+    }
+
+    private void getRegisterVM() {
         new WebServices(getMainActivity(), WebServiceConstants.temporaryToken).webServiceRequestAPI(WebServiceConstants.METHOD_USER_GET_REGISTER_VM, "", new WebServices.IRequestJsonDataCallBack() {
             @Override
             public void requestDataResponse(WebResponse<JsonObject> webResponse) {
