@@ -152,7 +152,7 @@ public class AddFamilyMemberFragment extends BaseFragment {
     private void setSpinnerData() {
         if (registerVM != null) {
             arrRelationship.clear();
-            arrRelationship.addAll(registerVM.getCardTypeList());
+            arrRelationship.addAll(registerVM.getRelationsList());
             arrGender.clear();
             arrGender.addAll(registerVM.getGenderList());
 
@@ -278,13 +278,6 @@ public class AddFamilyMemberFragment extends BaseFragment {
                         if (webResponse.result.isEmpty()) {
                             UIHelper.showToast(getContext(), "Failed to upload file. Please try again.");
                         } else {
-//                            String[] strings = webResponse.result.split("-");
-//                            isFileUploaded = strings[0].equals("true");
-//                            if (isFileUploaded) {
-//                                if (isSelectingCNICPic) nameCNICUploadedFile = strings[1];
-//                                else namePassportUploadedFile = strings[1];
-//                            }
-
                             if (isSelectingCNICPic) {
                                 nameCNICUploadedFile = webResponse.result;
                             } else {
