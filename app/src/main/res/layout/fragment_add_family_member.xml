@@ -295,7 +295,7 @@
                     app:typeface="@string/font_bold" />
 
 
-                <edu.aku.helperclasses.ui.helper.SquareImageView
+                <edu.aku.akuh_health_first.helperclasses.ui.helper.SquareImageView
                     android:id="@+id/imgCNIC"
                     android:layout_width="120dp"
                     android:layout_height="120dp"
@@ -337,7 +337,7 @@
                     app:typeface="@string/font_bold" />
 
 
-                <edu.aku.helperclasses.ui.helper.SquareImageView
+                <edu.aku.akuh_health_first.helperclasses.ui.helper.SquareImageView
                     android:id="@+id/imgPassport"
                     android:layout_width="120dp"
                     android:layout_height="120dp"

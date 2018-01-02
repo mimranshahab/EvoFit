@@ -1,6 +1,0 @@
-package edu.aku.callbacks;
-
-public interface RatingBarDataInterface {
-
-    void getRatings(float ratingValue1, float ratingValue2);
-}

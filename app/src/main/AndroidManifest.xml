@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="edu.aku">
+    package="edu.aku.akuh_health_first">
 
 
     <uses-feature
@@ -29,7 +29,7 @@
 
 
     <application
-        android:name="edu.aku.BaseApplication"
+        android:name="edu.aku.akuh_health_first.BaseApplication"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
@@ -67,7 +67,7 @@
 
         <!-- Splash screen -->
         <activity
-            android:name="edu.aku.activities.SplashActivity"
+            android:name="edu.aku.akuh_health_first.activities.SplashActivity"
             android:label="@string/app_name"
             android:screenOrientation="portrait"
             android:theme="@android:style/Theme.Black.NoTitleBar">
@@ -80,7 +80,7 @@
 
         <!-- Main Activity -->
         <activity
-            android:name="edu.aku.activities.MainActivity"
+            android:name="edu.aku.akuh_health_first.activities.MainActivity"
             android:label="@string/app_name"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme"
