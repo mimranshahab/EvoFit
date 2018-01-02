@@ -48,8 +48,8 @@ import edu.aku.akuh_health_first.helperclasses.validator.PassportValidation;
 import edu.aku.akuh_health_first.managers.FileManager;
 import edu.aku.akuh_health_first.managers.SharedPreferenceManager;
 import edu.aku.akuh_health_first.managers.retrofit.WebServices;
-import edu.aku.akuh_health_first.models.RegisterOptionsModel;
-import edu.aku.akuh_health_first.models.RegisterVM;
+import edu.aku.akuh_health_first.models.receiving_model.RegisterOptionsModel;
+import edu.aku.akuh_health_first.models.receiving_model.RegisterVM;
 import edu.aku.akuh_health_first.models.wrappers.WebResponse;
 
 import static android.app.Activity.RESULT_OK;

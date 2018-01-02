@@ -10,7 +10,7 @@ import android.widget.TextView;
 
 import java.util.List;
 
-import edu.aku.akuh_health_first.models.RegisterOptionsModel;
+import edu.aku.akuh_health_first.models.receiving_model.RegisterOptionsModel;
 import edu.aku.akuh_health_first.R;
 
 public class MySpinnerAdapter extends ArrayAdapter<RegisterOptionsModel> {

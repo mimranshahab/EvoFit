@@ -1,5 +1,6 @@
 package edu.aku.akuh_health_first.models;
 
+import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
 /**
@@ -8,47 +9,159 @@ import com.google.gson.annotations.SerializedName;
 
 public class UserModel {
 
-    @SerializedName("id")
-    public int userID;
-
-    @SerializedName("role_id")
-    public int roleID;
-
-    @SerializedName("full_name")
-    public String userName;
-
-    @SerializedName("email")
-    public String userEmail;
-
-    @SerializedName("mobile_no")
-    public String userPhoneNumber;
-
-    @SerializedName("image")
-    public String userProfilePictureURL;
-
-//
-//    @SerializedName("postal_code")
-//    public String postalCode;
-//
-//    @SerializedName("address")
-//    public String userAddress;
-
-    @SerializedName("notification_status")
-    public String notificationStatus;
-
-
-    @SerializedName("is_verified")
-    public int isVerified;
-
+    @SerializedName("CardNumber")
+    @Expose
+    private Object cardNumber;
+    @SerializedName("Password")
+    @Expose
+    private Object password;
+    @SerializedName("ConfirmPassword")
+    @Expose
+    private Object confirmPassword;
+    @SerializedName("CardEmailAddress")
+    @Expose
+    private Object cardEmailAddress;
+    @SerializedName("CardCellPhoneNumber")
+    @Expose
+    private Object cardCellPhoneNumber;
+    @SerializedName("MotherName")
+    @Expose
+    private Object motherName;
+    @SerializedName("BirthDate")
+    @Expose
+    private Object birthDate;
+    @SerializedName("CardHolderName")
+    @Expose
+    private Object cardHolderName;
+    @SerializedName("CardCreationDateTime")
+    @Expose
+    private Object cardCreationDateTime;
+    @SerializedName("CardIssueDateTime")
+    @Expose
+    private Object cardIssueDateTime;
+    @SerializedName("CardExpiryDateTime")
+    @Expose
+    private Object cardExpiryDateTime;
+    @SerializedName("RecordFound")
+    @Expose
+    private Boolean recordFound;
+    @SerializedName("TempSMSCode")
+    @Expose
+    private Object tempSMSCode;
     @SerializedName("_token")
-    public String token;
+    @Expose
+    private String token;
+    private final static long serialVersionUID = -3272047034082274996L;
 
-
-    public boolean getIsVerified() {
-        return isVerified == 1;
+    public Object getCardNumber() {
+        return cardNumber;
     }
 
-    public void setIsVerified(int isVerified) {
-        this.isVerified = isVerified;
+    public void setCardNumber(Object cardNumber) {
+        this.cardNumber = cardNumber;
+    }
+
+    public Object getPassword() {
+        return password;
+    }
+
+    public void setPassword(Object password) {
+        this.password = password;
+    }
+
+    public Object getConfirmPassword() {
+        return confirmPassword;
+    }
+
+    public void setConfirmPassword(Object confirmPassword) {
+        this.confirmPassword = confirmPassword;
+    }
+
+    public Object getCardEmailAddress() {
+        return cardEmailAddress;
+    }
+
+    public void setCardEmailAddress(Object cardEmailAddress) {
+        this.cardEmailAddress = cardEmailAddress;
+    }
+
+    public Object getCardCellPhoneNumber() {
+        return cardCellPhoneNumber;
+    }
+
+    public void setCardCellPhoneNumber(Object cardCellPhoneNumber) {
+        this.cardCellPhoneNumber = cardCellPhoneNumber;
+    }
+
+    public Object getMotherName() {
+        return motherName;
+    }
+
+    public void setMotherName(Object motherName) {
+        this.motherName = motherName;
+    }
+
+    public Object getBirthDate() {
+        return birthDate;
+    }
+
+    public void setBirthDate(Object birthDate) {
+        this.birthDate = birthDate;
+    }
+
+    public Object getCardHolderName() {
+        return cardHolderName;
+    }
+
+    public void setCardHolderName(Object cardHolderName) {
+        this.cardHolderName = cardHolderName;
+    }
+
+    public Object getCardCreationDateTime() {
+        return cardCreationDateTime;
+    }
+
+    public void setCardCreationDateTime(Object cardCreationDateTime) {
+        this.cardCreationDateTime = cardCreationDateTime;
+    }
+
+    public Object getCardIssueDateTime() {
+        return cardIssueDateTime;
+    }
+
+    public void setCardIssueDateTime(Object cardIssueDateTime) {
+        this.cardIssueDateTime = cardIssueDateTime;
+    }
+
+    public Object getCardExpiryDateTime() {
+        return cardExpiryDateTime;
+    }
+
+    public void setCardExpiryDateTime(Object cardExpiryDateTime) {
+        this.cardExpiryDateTime = cardExpiryDateTime;
+    }
+
+    public Boolean getRecordFound() {
+        return recordFound;
+    }
+
+    public void setRecordFound(Boolean recordFound) {
+        this.recordFound = recordFound;
+    }
+
+    public Object getTempSMSCode() {
+        return tempSMSCode;
+    }
+
+    public void setTempSMSCode(Object tempSMSCode) {
+        this.tempSMSCode = tempSMSCode;
+    }
+
+    public String getToken() {
+        return token;
+    }
+
+    public void setToken(String token) {
+        this.token = token;
     }
 }
