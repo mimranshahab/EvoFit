@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Grosta</string>
+    <string name="app_name">AKU Health First</string>
     <string name="google_maps_key">AIzaSyBsP8jCqqrTckRDPcfaefKutSDo3NBENok</string>
 
     <!--FONTS-->
@@ -674,5 +674,6 @@ Enim vitae euismod eu velit pede eu, sodales malesuada sit fermentum ut dictum d
     <string name="mother_name">Mother Name</string>
     <string name="mr_number">MR Number</string>
     <string name="card_type">Card Type</string>
+    <string name="relationship">Relationship</string>
 
 </resources>

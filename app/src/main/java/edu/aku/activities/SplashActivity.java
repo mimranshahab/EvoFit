@@ -12,7 +12,6 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import edu.aku.R;
 import edu.aku.helperclasses.ui.helper.AnimationHelper;
-import edu.aku.managers.BaseSharedPreferenceManager;
 
 import static android.view.View.VISIBLE;
 
@@ -20,14 +19,12 @@ public class SplashActivity extends Activity {
 
     @BindView(R.id.contParentLayout)
     LinearLayout contParentLayout;
-    private BaseSharedPreferenceManager basePreferenceHelper;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash);
         ButterKnife.bind(this);
-        basePreferenceHelper = new BaseSharedPreferenceManager(SplashActivity.this);
 
 
         final int SPLASH_TIME_OUT = 2000;
@@ -40,7 +37,6 @@ public class SplashActivity extends Activity {
                 animateLayout(SPLASH_TIME_OUT);
             }
         }, 500);
-
 
 
     }
@@ -66,7 +62,6 @@ public class SplashActivity extends Activity {
 
                         // This method will be executed once the timer is over
                         // Start your app main activity
-                        basePreferenceHelper.putLang2(SplashActivity.this, basePreferenceHelper.getLang(), false);
                         Intent i = new Intent(SplashActivity.this, MainActivity.class);
                         startActivity(i);
 

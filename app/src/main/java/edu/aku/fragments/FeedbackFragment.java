@@ -97,36 +97,9 @@ public class FeedbackFragment extends BaseFragment {
         if (edtTextFeedbackMsg.getText().toString().trim().isEmpty()) {
             UIHelper.showToast(getContext(), "Please Write Something in Feedback");
         } else {
-            callFeedBack();
         }
     }
 
-    private void callFeedBack() {
-        callfeedBack = WebServiceFactory.getInstance(prefHelper.getUserToken()).postfeedBack(prefHelper.getUserID(),
-                edtTextFeedbackMsg.getText().toString());
-        callfeedBack.enqueue(new Callback<WebResponse<Object>>() {
-            @Override
-            public void onResponse(Call<WebResponse<Object>> call, Response<WebResponse<Object>> response) {
-                btnDoneFeedback.setEnabled(true);
-                if (response.body() == null || response.body().result == null)
-                    return;
-                if (response.body().isSuccess()) {
-                    popBackStack();
-                    UIHelper.showToast(getContext(), response.body().message);
-                } else {
-                    UIHelper.showToast(getMainActivity(), response.body().message);
-                }
-            }
-
-            @Override
-            public void onFailure(Call<WebResponse<Object>> call, Throwable t) {
-                if (!callfeedBack.isCanceled()) {
-                    btnDoneFeedback.setEnabled(true);
-                    t.printStackTrace();
-                }
-            }
-        });
-    }
 
     @Override
     public void onDestroy() {

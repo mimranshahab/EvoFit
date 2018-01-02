@@ -1,48 +1,26 @@
 
 package edu.aku.activities;
 
-import android.content.Intent;
-import android.graphics.Bitmap;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
-import android.view.MotionEvent;
 import android.view.View;
-import android.widget.ImageView;
 import android.widget.RelativeLayout;
-import android.widget.Toast;
-
-import com.kbeanie.imagechooser.api.ChooserType;
-import com.kbeanie.imagechooser.api.ChosenImage;
-import com.kbeanie.imagechooser.api.ChosenImages;
-import com.kbeanie.imagechooser.api.ImageChooserListener;
-import com.kbeanie.imagechooser.api.ImageChooserManager;
 
 import edu.aku.R;
-import edu.aku.fragments.HomeFragment;
 import edu.aku.fragments.LeftSideMenuFragment;
 import edu.aku.fragments.LoginFragment;
 import edu.aku.fragments.abstracts.GenericClickableInterface;
 import edu.aku.fragments.abstracts.GenericDialogFragment;
-import edu.aku.managers.BaseSharedPreferenceManager;
-import edu.aku.helperclasses.GooglePlaceHelper;
-import edu.aku.helperclasses.PaypalHelper;
-import edu.aku.callbacks.OnActivityResultInterface;
 import edu.aku.helperclasses.ui.helper.TitleBar;
 import edu.aku.residemenu.ResideMenu;
-import edu.aku.utility.Blur;
-import edu.aku.utility.Utils;
 
 public class MainActivity extends AppCompatActivity {
 
     public DrawerLayout drawerLayout;
-     OnActivityResultInterface onActivityResultInterface;
 
     private TitleBar titleBar;
-    private BaseSharedPreferenceManager prefHelper;
     private LeftSideMenuFragment leftSideMenuFragment;
 
     private ResideMenu resideMenu;
@@ -60,9 +38,6 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         setAndBindTitleBar();
-
-        prefHelper = new BaseSharedPreferenceManager(this);
-
         setSideMenu(ResideMenu.DIRECTION_LEFT);
 
 //        imageBlur = (ImageView) findViewById(R.id.imageBlur);
@@ -74,20 +49,8 @@ public class MainActivity extends AppCompatActivity {
 
 
     private void initFragments() {
-        if (prefHelper.getUser() == null) {
-            prefHelper.removeLocalData();
-            prefHelper.setGuest(true);
-            addDockableFragment(LoginFragment.newInstance());
-        } else {
-            prefHelper.setGuest(false);
-            if (prefHelper.getUser().getIsVerified() && (prefHelper.getUserID() != 0)) {
-                addDockableFragment(HomeFragment.newInstance());
-            } else {
-                addDockableFragment(LoginFragment.newInstance());
-            }
-        }
+        addDockableFragment(LoginFragment.newInstance());
     }
-
 
 // RESIDE MENU ->
 
@@ -162,26 +125,16 @@ public class MainActivity extends AppCompatActivity {
 //
 
 
-
 //    @Override
 //    public boolean dispatchTouchEvent(MotionEvent ev) {
 //        return resideMenu.dispatchTouchEvent(ev);
 //    }
 
 
-
     public ResideMenu getResideMenu() {
         return resideMenu;
     }
 
-
-    public BaseSharedPreferenceManager getPrefHelper() {
-        if (prefHelper == null)
-            return new BaseSharedPreferenceManager(this);
-        else {
-            return prefHelper;
-        }
-    }
 
     public void addDrawerFragment() {
 //        sidebarFragment = SidebarFragment.newInstance();
@@ -234,14 +187,12 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void addDockableFragment(Fragment fragment) {
-        getSupportFragmentManager().beginTransaction().replace(R.id.contMain, fragment).addToBackStack(fragment.getClass().getSimpleName()).commit();
+        getSupportFragmentManager().beginTransaction().replace(R.id.contMain, fragment).addToBackStack(fragment.getClass().getSimpleName())
+                .commit();
     }
 
     public TitleBar getTitleBar() {
         return titleBar;
     }
 
-    public void setOnActivityResultInterface(OnActivityResultInterface onActivityResultInterface) {
-        this.onActivityResultInterface = onActivityResultInterface;
-    }
 }

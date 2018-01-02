@@ -128,7 +128,7 @@ public class VerifyYourNumberFragment extends BaseFragment {
                 break;
             case R.id.btnSubmit:
                 if (edtCountryCode.testValidity() && edMobileNumber.testValidity()) {
-                    setCallSendVerifyCode();
+//                    setCallSendVerifyCode();
                 }
                 break;
         }
@@ -152,35 +152,35 @@ public class VerifyYourNumberFragment extends BaseFragment {
     }
 
 
-    private void setCallSendVerifyCode() {
-        callSendVerifyCode = WebServiceFactory.getInstance(prefHelper.getUserToken()).sendVerificationCode(edtCountryCode.getText().toString().trim(),
-                edMobileNumber.getText().toString().trim(), prefHelper.getUserID());
-        callSendVerifyCode
-                .enqueue(new Callback<WebResponse<Object>>() {
-                    @Override
-                    public void onResponse(Call<WebResponse<Object>> call, Response<WebResponse<Object>> response) {
-
-                        if (response == null || response.body() == null) {
-                            return;
-                        }
-                        if (response.body().isSuccess()) {
-                            UIHelper.showToast(getContext(), response.body().message);
-                            if (getMainActivity() != null && edtCountryCode != null && edMobileNumber != null) {
-                                getMainActivity().addDockableFragment(VerifyNumberCodeFragment.newInstance(edtCountryCode.getText().toString().trim(), edMobileNumber.getText().toString().trim()));
-                            }
-                        } else {
-                            UIHelper.showToast(getContext(), response.body().message);
-                        }
-                    }
-
-                    @Override
-                    public void onFailure(Call<WebResponse<Object>> call, Throwable t) {
-                        if (!callSendVerifyCode.isCanceled()) {
-                            t.printStackTrace();
-                        }
-                    }
-                });
-    }
+//    private void setCallSendVerifyCode() {
+//        callSendVerifyCode = WebServiceFactory.getInstance(prefHelper.getUserToken()).sendVerificationCode(edtCountryCode.getText().toString().trim(),
+//                edMobileNumber.getText().toString().trim(), prefHelper.getUserID());
+//        callSendVerifyCode
+//                .enqueue(new Callback<WebResponse<Object>>() {
+//                    @Override
+//                    public void onResponse(Call<WebResponse<Object>> call, Response<WebResponse<Object>> response) {
+//
+//                        if (response == null || response.body() == null) {
+//                            return;
+//                        }
+//                        if (response.body().isSuccess()) {
+//                            UIHelper.showToast(getContext(), response.body().message);
+//                            if (getMainActivity() != null && edtCountryCode != null && edMobileNumber != null) {
+//                                getMainActivity().addDockableFragment(VerifyNumberCodeFragment.newInstance(edtCountryCode.getText().toString().trim(), edMobileNumber.getText().toString().trim()));
+//                            }
+//                        } else {
+//                            UIHelper.showToast(getContext(), response.body().message);
+//                        }
+//                    }
+//
+//                    @Override
+//                    public void onFailure(Call<WebResponse<Object>> call, Throwable t) {
+//                        if (!callSendVerifyCode.isCanceled()) {
+//                            t.printStackTrace();
+//                        }
+//                    }
+//                });
+//    }
 
 
     @Override

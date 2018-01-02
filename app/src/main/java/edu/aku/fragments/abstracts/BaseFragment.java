@@ -23,7 +23,6 @@ import android.widget.TextView;
 import edu.aku.BaseApplication;
 import edu.aku.activities.MainActivity;
 import edu.aku.callbacks.OnNewPacketReceivedListener;
-import edu.aku.managers.BaseSharedPreferenceManager;
 import edu.aku.helperclasses.ui.helper.KeyboardHide;
 import edu.aku.helperclasses.ui.helper.TitleBar;
 import edu.aku.helperclasses.ui.helper.UIHelper;
@@ -44,8 +43,7 @@ import io.reactivex.functions.Consumer;
 public abstract class BaseFragment extends Fragment implements View.OnClickListener, AdapterView.OnItemClickListener {
 
     protected View view;
-    public BaseSharedPreferenceManager prefHelper;
-    ProgressDialog progressDialog;
+     ProgressDialog progressDialog;
 
     // Storage Permissions variables
     private static final int REQUEST_EXTERNAL_STORAGE = 1;
@@ -86,8 +84,7 @@ public abstract class BaseFragment extends Fragment implements View.OnClickListe
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        prefHelper = new BaseSharedPreferenceManager(getMainActivity());
-        progressDialog = new ProgressDialog(getMainActivity());
+         progressDialog = new ProgressDialog(getMainActivity());
     }
 
     @Override
@@ -247,17 +244,6 @@ public abstract class BaseFragment extends Fragment implements View.OnClickListe
     // FOR RESIDE MENU
     public void closeMenu() {
         getMainActivity().getResideMenu().closeMenu();
-    }
-
-
-    protected void checkLocaleGravity(TextView view) {
-        if (prefHelper.isLanguageArabic()) {
-//arabic (rtl)
-            view.setGravity(Gravity.END | Gravity.CENTER_VERTICAL);
-        } else {
-//english (ltr)
-            view.setGravity(Gravity.START | Gravity.CENTER_VERTICAL);
-        }
     }
 
 }

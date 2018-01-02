@@ -30,19 +30,20 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 import butterknife.Unbinder;
 import edu.aku.R;
+import edu.aku.constatnts.AppConstants;
 import edu.aku.constatnts.WebServiceConstants;
 import edu.aku.enums.FileType;
 import edu.aku.fragments.abstracts.BaseFragment;
 import edu.aku.fragments.abstracts.GenericClickableInterface;
 import edu.aku.fragments.dialogs.SuccessDialogFragment;
-import edu.aku.helperclasses.validator.CnicValidation;
-import edu.aku.helperclasses.validator.MRValidation;
-import edu.aku.helperclasses.validator.MobileNumberValidation;
 import edu.aku.helperclasses.RunTimePermissions;
 import edu.aku.helperclasses.ui.helper.KeyboardHide;
 import edu.aku.helperclasses.ui.helper.SquareImageView;
 import edu.aku.helperclasses.ui.helper.TitleBar;
 import edu.aku.helperclasses.ui.helper.UIHelper;
+import edu.aku.helperclasses.validator.CnicValidation;
+import edu.aku.helperclasses.validator.MRValidation;
+import edu.aku.helperclasses.validator.MobileNumberValidation;
 import edu.aku.helperclasses.validator.PassportValidation;
 import edu.aku.managers.DateManager;
 import edu.aku.managers.FileManager;
@@ -54,7 +55,6 @@ import edu.aku.models.RegisterVM;
 import edu.aku.models.wrappers.WebResponse;
 
 import static android.app.Activity.RESULT_OK;
-import static edu.aku.constatnts.AppConstants.KEY_REGISTER_VM;
 import static edu.aku.constatnts.WebServiceConstants.METHOD_USER_GET_REGISTER_VM;
 import static edu.aku.constatnts.WebServiceConstants.METHOD_USER_UPLOAD_REQUEST_FILE;
 import static edu.aku.constatnts.WebServiceConstants.temporaryToken;
@@ -62,27 +62,12 @@ import static edu.aku.constatnts.WebServiceConstants.temporaryToken;
 /**
  * Created by hamzakhan on 5/10/2017.
  */
-public class RegisterFragment extends BaseFragment {
+public class AddFamilyMemberFragment extends BaseFragment {
 
     String nameCNICUploadedFile;
     String namePassportUploadedFile;
     boolean isSelectingCNICPic;
     boolean isFileUploaded = false;
-    @BindView(R.id.txtCNICImageName)
-    AnyTextView txtCNICImageName;
-    @BindView(R.id.txtPassportImageName)
-    AnyTextView txtPassportImageName;
-    private File fileTemporaryProfilePicture;
-
-
-    @BindView(R.id.edtMotherName)
-    FormEditText edtMotherName;
-    @BindView(R.id.txtCardType)
-    AnyTextView txtCardType;
-    @BindView(R.id.spCardType)
-    Spinner spCardType;
-    @BindView(R.id.btnSignUp)
-    AnyTextView btnSignUp;
     @BindView(R.id.txtFullName)
     AnyTextView txtFullName;
     @BindView(R.id.edFullName)
@@ -93,6 +78,12 @@ public class RegisterFragment extends BaseFragment {
     AnyTextView txtGender;
     @BindView(R.id.spGender)
     Spinner spGender;
+    @BindView(R.id.edtMRNumber)
+    FormEditText edtMRNumber;
+    @BindView(R.id.txtRelationship)
+    AnyTextView txtRelationship;
+    @BindView(R.id.spRelationship)
+    Spinner spRelationship;
     @BindView(R.id.edtCNICNumber)
     FormEditText edtCNICNumber;
     @BindView(R.id.edtPassportNumber)
@@ -107,51 +98,37 @@ public class RegisterFragment extends BaseFragment {
     FormEditText edMobileNumber;
     @BindView(R.id.edtLandlineNumber)
     FormEditText edtLandlineNumber;
-    @BindView(R.id.edtCurrentAddress)
-    FormEditText edtCurrentAddress;
-    @BindView(R.id.edtCurrentCity)
-    FormEditText edtCurrentCity;
-    @BindView(R.id.txtCurrentCountry)
-    AnyTextView txtCurrentCountry;
-    @BindView(R.id.spCurrentCountry)
-    Spinner spCurrentCountry;
-    @BindView(R.id.edtPermanentAddress)
-    FormEditText edtPermanentAddress;
-    @BindView(R.id.edtPermanentCity)
-    FormEditText edtPermanentCity;
-    @BindView(R.id.txtPermanentCountry)
-    AnyTextView txtPermanentCountry;
-    @BindView(R.id.spPermanentCountry)
-    Spinner spPermanentCountry;
-    @BindView(R.id.edtMRNumber)
-    FormEditText edtMRNumber;
     @BindView(R.id.imgCNIC)
     SquareImageView imgCNIC;
+    @BindView(R.id.txtCNICImageName)
+    AnyTextView txtCNICImageName;
     @BindView(R.id.imgPassport)
     SquareImageView imgPassport;
+    @BindView(R.id.txtPassportImageName)
+    AnyTextView txtPassportImageName;
+    @BindView(R.id.btnAddMember)
+    AnyTextView btnAddMember;
+
+    private File fileTemporaryProfilePicture;
+
 
     Unbinder unbinder;
     private ArrayList<RegisterOptionsModel> arrGender;
     private ArrayAdapter adaptGender;
 
-    private ArrayList<RegisterOptionsModel> arrCurrentCountry;
-    private ArrayAdapter adaptCurrentCountry;
-
-    private ArrayList<RegisterOptionsModel> arrPermanentCountry;
-    private ArrayAdapter adaptPermanentCountry;
-
-    private ArrayList<RegisterOptionsModel> arrCardType;
-    private ArrayAdapter adaptCardType;
+    private ArrayList<RegisterOptionsModel> arrRelationship;
+    private ArrayAdapter adaptRelationship;
+    private RegisterVM registerVM;
 
 
     @Override
     protected int getFragmentLayout() {
-        return R.layout.fragment_registration;
+        return R.layout.fragment_add_family_member;
     }
 
-    public static RegisterFragment newInstance() {
+    public static AddFamilyMemberFragment newInstance() {
         Bundle args = new Bundle();
-        RegisterFragment fragment = new RegisterFragment();
+        AddFamilyMemberFragment fragment = new AddFamilyMemberFragment();
         fragment.setArguments(args);
         return fragment;
     }
@@ -160,22 +137,39 @@ public class RegisterFragment extends BaseFragment {
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         RunTimePermissions.verifyStoragePermissions(getMainActivity());
+        initializeArray();
+    }
 
+
+    @Override
+    public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+        registerVM = SharedPreferenceManager.getInstance(getContext()).getObject(AppConstants.KEY_REGISTER_VM, RegisterVM.class);
+        setValidations();
+        setSpinnerData();
+    }
+
+    private void setSpinnerData() {
+        if (registerVM != null) {
+            arrRelationship.clear();
+            arrRelationship.addAll(registerVM.getCardTypeList());
+            arrGender.clear();
+            arrGender.addAll(registerVM.getGenderList());
+
+            setSpinner(adaptGender, txtGender, spGender);
+            setSpinner(adaptRelationship, txtRelationship, spRelationship);
+        }
+    }
+
+
+    private void initializeArray() {
         arrGender = new ArrayList<RegisterOptionsModel>();
         adaptGender = new ArrayAdapter<RegisterOptionsModel>(getMainActivity(),
                 android.R.layout.simple_list_item_1, arrGender);
 
-        arrCurrentCountry = new ArrayList<RegisterOptionsModel>();
-        adaptCurrentCountry = new ArrayAdapter<RegisterOptionsModel>(getMainActivity(),
-                android.R.layout.simple_list_item_1, arrCurrentCountry);
-
-        arrPermanentCountry = new ArrayList<RegisterOptionsModel>();
-        adaptPermanentCountry = new ArrayAdapter<RegisterOptionsModel>(getMainActivity(),
-                android.R.layout.simple_list_item_1, arrPermanentCountry);
-
-        arrCardType = new ArrayList<RegisterOptionsModel>();
-        adaptCardType = new ArrayAdapter<RegisterOptionsModel>(getMainActivity(),
-                android.R.layout.simple_list_item_1, arrCardType);
+        arrRelationship = new ArrayList<RegisterOptionsModel>();
+        adaptRelationship = new ArrayAdapter<RegisterOptionsModel>(getMainActivity(),
+                android.R.layout.simple_list_item_1, arrRelationship);
     }
 
 
@@ -202,46 +196,12 @@ public class RegisterFragment extends BaseFragment {
 
     }
 
-    @Override
-    public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
-        super.onViewCreated(view, savedInstanceState);
+
+    private void setValidations() {
         edMobileNumber.addValidator(new MobileNumberValidation());
         edtCNICNumber.addValidator(new CnicValidation());
         edtMRNumber.addValidator(new MRValidation());
         edtPassportNumber.addValidator(new PassportValidation());
-
-        new WebServices(getMainActivity(), temporaryToken).webServiceRequestAPI(METHOD_USER_GET_REGISTER_VM, "", new WebServices.IRequestJsonDataCallBack() {
-            @Override
-            public void requestDataResponse(WebResponse<JsonObject> webResponse) {
-                RegisterVM registerVM = GsonFactory.getSimpleGson().fromJson(webResponse.result, RegisterVM.class);
-                UIHelper.showShortToastInCenter(getContext(), webResponse.message);
-                SharedPreferenceManager.getInstance(getContext()).putObject(KEY_REGISTER_VM, webResponse.result);
-                setSpinnerData(registerVM);
-            }
-
-            @Override
-            public void onError() {
-                UIHelper.showShortToastInCenter(getContext(), "failure");
-            }
-        });
-    }
-
-    private void setSpinnerData(RegisterVM registerVM) {
-        arrGender.clear();
-        arrGender.addAll(registerVM.getGenderList());
-        setSpinner(adaptGender, txtGender, spGender);
-
-        arrCurrentCountry.clear();
-        arrCurrentCountry.addAll(registerVM.getCurrentCountryList());
-        setSpinner(adaptCurrentCountry, txtCurrentCountry, spCurrentCountry);
-
-        arrPermanentCountry.clear();
-        arrPermanentCountry.addAll(registerVM.getPermanentCountryList());
-        setSpinner(adaptPermanentCountry, txtPermanentCountry, spPermanentCountry);
-
-        arrCardType.clear();
-        arrCardType.addAll(registerVM.getCardTypeList());
-        setSpinner(adaptCardType, txtCardType, spCardType);
     }
 
 
@@ -251,7 +211,7 @@ public class RegisterFragment extends BaseFragment {
         unbinder.unbind();
     }
 
-    @OnClick({R.id.btnSignUp, R.id.imgCNIC, R.id.imgPassport, R.id.txtDateofBirth, R.id.txtGender, R.id.txtCurrentCountry, R.id.txtPermanentCountry, R.id.txtCardType})
+    @OnClick({R.id.btnAddMember, R.id.imgCNIC, R.id.imgPassport, R.id.txtDateofBirth, R.id.txtGender,  R.id.txtRelationship})
     public void onViewClicked(View view) {
 
         switch (view.getId()) {
@@ -275,31 +235,27 @@ public class RegisterFragment extends BaseFragment {
                 cropImagePicker();
                 break;
 
-            case R.id.btnSignUp:
-//                if (edFullName.testValidity() && !txtDateofBirth.getText().toString().isEmpty() && edtCNICNumber.testValidity()
-//                        && edtPassportNumber.testValidity() && edEmailAddress.testValidity() && edMobileNumber.testValidity()
-//                        && edtLandlineNumber.testValidity() && edtCurrentAddress.testValidity() && edtCurrentCity.testValidity()
-//                        && edtPermanentAddress.testValidity() && edtPermanentCity.testValidity() && edtMRNumber.testValidity()
-//                        && edtMotherName.testValidity()) {
-//                    if (txtDateofBirth.getText().toString().isEmpty()) {
-//                        UIHelper.showShortToastInCenter(getContext(), "Please select date of Birth");
-//                        break;
-//                    }
-//                    if (nameCNICUploadedFile == null && namePassportUploadedFile == null) {
-//                        UIHelper.showShortToastInCenter(getContext(), "Please upload CNIC or Passport Image");
-//                        break;
-//                    }
-//
-//
-//                    UIHelper.showShortToastInCenter(getContext(), "Successful registration");
-//                    getMainActivity().addDockableFragment(MyFamilyFragment.newInstance());
-//
-//
-//                } else {
-//                    UIHelper.showShortToastInCenter(getContext(), "Please fill all fields correctly.");
-//                }
+            case R.id.btnAddMember:
+                if (edFullName.testValidity() && !txtDateofBirth.getText().toString().isEmpty() && edtCNICNumber.testValidity()
+                        && edtPassportNumber.testValidity() && edEmailAddress.testValidity() && edMobileNumber.testValidity()
+                        && edtLandlineNumber.testValidity()) {
+                    if (txtDateofBirth.getText().toString().isEmpty()) {
+                        UIHelper.showShortToastInCenter(getContext(), "Please select date of Birth");
+                        break;
+                    }
+                    if (nameCNICUploadedFile == null && namePassportUploadedFile == null) {
+                        UIHelper.showShortToastInCenter(getContext(), "Please upload CNIC or Passport Image");
+                        break;
+                    }
 
-                getMainActivity().addDockableFragment(MyFamilyFragment.newInstance());
+
+                    UIHelper.showShortToastInCenter(getContext(), "Successful registration");
+
+
+                } else {
+                    UIHelper.showShortToastInCenter(getContext(), "Please fill all fields correctly.");
+                }
+
 
                 break;
 
@@ -307,17 +263,10 @@ public class RegisterFragment extends BaseFragment {
                 spGender.performClick();
                 break;
 
-            case R.id.txtCurrentCountry:
-                spCurrentCountry.performClick();
+            case R.id.txtRelationship:
+                spRelationship.performClick();
                 break;
 
-            case R.id.txtPermanentCountry:
-                spPermanentCountry.performClick();
-                break;
-
-            case R.id.txtCardType:
-                spCardType.performClick();
-                break;
         }
     }
 
@@ -353,33 +302,6 @@ public class RegisterFragment extends BaseFragment {
                 });
     }
 
-//    private void showImageDialog() {
-//        final GenericDialogFragment genericDialogFragment = GenericDialogFragment.newInstance();
-//        genericDialogFragment.setTitle(getString(R.string.selectImage));
-//        genericDialogFragment.setMessage(getString(R.string.pleaseSelectImageFrom));
-//        genericDialogFragment.setButton1(getString(R.string.camera), new GenericClickableInterface() {
-//            @Override
-//            public void click() {
-//                genericDialogFragment.getDialog().dismiss();
-//                getMainActivity().takePicture();
-//            }
-//        });
-//
-//        genericDialogFragment.setButton2(getString(R.string.gallery), new GenericClickableInterface() {
-//            @Override
-//            public void click() {
-//                genericDialogFragment.getDialog().dismiss();
-//                getMainActivity().chooseImage();
-//            }
-//        });
-//        genericDialogFragment.show(getFragmentManager(), null);
-//    }
-
-//    @Override
-//    public void onChoosePicture(String originalFilePath, String thumbnailFilePath, String thumbnailSmallFilePath) {
-////        btnUploadImage.setImageURI(Uri.parse(String.valueOf(new File(thumbnailFilePath))));
-//        uploadImageFile(originalFilePath);
-//    }
 
     @Override
     public void onResume() {
@@ -456,40 +378,13 @@ public class RegisterFragment extends BaseFragment {
 
     private void setAndUploadImage(String uploadFilePath) throws IOException {
         Log.d("PICTURE", FileManager.getFileSize(uploadFilePath));
-
-//            long originalLength = fileOriginal.length();
-//            originalLength = originalLength / 1024;
-//
-//            String msgOriginalFile = "setAndUploadImage: size Original " + originalLength + " Kb" + " -dimensions " + originalBitmap.getWidth() + " x " + originalBitmap.getHeight();
-//            Log.d("PICTURE", msgOriginalFile);
-//
-//
-//            long thumbLength = fileThumbnail.length();
-//            thumbLength = thumbLength / 1024;
-//            Log.d("PICTURE", "setAndUploadImage: size Thumbnail " + thumbLength + " Kb" + " -dimensions " + thumbnailBitmap.getWidth() + " x " + thumbnailBitmap.getHeight());
         if (isSelectingCNICPic) {
             ImageLoader.getInstance().displayImage(uploadFilePath, imgCNIC);
             txtCNICImageName.setText(nameCNICUploadedFile);
         } else {
             ImageLoader.getInstance().displayImage(uploadFilePath, imgPassport);
-            txtCNICImageName.setText(namePassportUploadedFile);
+            txtPassportImageName.setText(namePassportUploadedFile);
         }
-    }
-
-
-    private void getRegisterVMData() {
-        new WebServices(getMainActivity(), temporaryToken).webServiceRequestAPI(METHOD_USER_GET_REGISTER_VM, "", new WebServices.IRequestJsonDataCallBack() {
-            @Override
-            public void requestDataResponse(WebResponse<JsonObject> webResponse) {
-                GsonFactory.getSimpleGson().fromJson(webResponse.result, RegisterVM.class);
-                UIHelper.showShortToastInCenter(getContext(), webResponse.message);
-            }
-
-            @Override
-            public void onError() {
-                UIHelper.showShortToastInCenter(getContext(), "failure");
-            }
-        });
     }
 }
 

@@ -83,44 +83,45 @@ public class FileManager {
         return imageFile;
     }
 
-    public static File getUserImage(String avatar, boolean thumbnail, Context context) {
-        if (avatar == null || avatar.equals(""))
-            return null;
+//    public static File getUserImage(String avatar, boolean thumbnail, Context context) {
+//        if (avatar == null || avatar.equals(""))
+//            return null;
+//
+//        // FIXME: 8/18/2017  :  REMOVE NULL POINTER EXCEPTION // CONVERT TO JPG
+//        try {
+//            avatar = avatar.substring(0, avatar.lastIndexOf(".")) + ".j";
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//            return null;
+//        }
+//        ContextWrapper cw = new ContextWrapper(context);
+//        File directory;
+//
+//        if (thumbnail) {
+//            directory = cw.getDir(AppConstants.USER_PROFILE_PICTURE_FOLDER_DIRECTORY, Context.MODE_PRIVATE);
+//        }
+//        else {
+//            directory = cw.getCacheDir();
+//            avatar = avatar.replace(AppConstants.SUFFIX_THUMB_IMAGE, "");
+//        }
+//
+//        if (!directory.exists()) {
+//            return null;
+//        }
+//        String filename = URLUtil.guessFileName(avatar, null, null);
+//        File imageFile = new File(directory, filename);
+//        if (!imageFile.exists())
+//            return null;
+//        return imageFile;
+//    }
 
-        // FIXME: 8/18/2017  :  REMOVE NULL POINTER EXCEPTION // CONVERT TO JPG
-        try {
-            avatar = avatar.substring(0, avatar.lastIndexOf(".")) + ".j";
-        } catch (Exception e) {
-            e.printStackTrace();
-            return null;
-        }
-        ContextWrapper cw = new ContextWrapper(context);
-        File directory;
-
-        if (thumbnail)
-            directory = cw.getDir(AppConstants.USER_PROFILE_PICTURE_FOLDER_DIRECTORY, Context.MODE_PRIVATE);
-        else {
-            directory = cw.getCacheDir();
-            avatar = avatar.replace(AppConstants.SUFFIX_THUMB_IMAGE, "");
-        }
-
-        if (!directory.exists()) {
-            return null;
-        }
-        String filename = URLUtil.guessFileName(avatar, null, null);
-        File imageFile = new File(directory, filename);
-        if (!imageFile.exists())
-            return null;
-        return imageFile;
-    }
-
-    public static File getMyImage(boolean isThumbnail, Context context) {
-        ContextWrapper cw = new ContextWrapper(context);
-        if (isThumbnail)
-            return new File(cw.getDir(AppConstants.USER_PROFILE_PICTURE_FOLDER_DIRECTORY, Context.MODE_PRIVATE), AppConstants.USER_PROFILE_THUMBNAIL_NAME);
-        else
-            return new File(cw.getDir(AppConstants.USER_PROFILE_PICTURE_FOLDER_DIRECTORY, Context.MODE_PRIVATE), AppConstants.USER_PROFILE_PICTURE_NAME);
-    }
+//    public static File getMyImage(boolean isThumbnail, Context context) {
+//        ContextWrapper cw = new ContextWrapper(context);
+//        if (isThumbnail)
+//            return new File(cw.getDir(AppConstants.USER_PROFILE_PICTURE_FOLDER_DIRECTORY, Context.MODE_PRIVATE), AppConstants.USER_PROFILE_THUMBNAIL_NAME);
+//        else
+//            return new File(cw.getDir(AppConstants.USER_PROFILE_PICTURE_FOLDER_DIRECTORY, Context.MODE_PRIVATE), AppConstants.USER_PROFILE_PICTURE_NAME);
+//    }
 
     public static boolean isFileExits(String path) {
         return new File(path).exists();

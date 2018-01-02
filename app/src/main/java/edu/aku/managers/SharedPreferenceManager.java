@@ -19,7 +19,6 @@ import edu.aku.models.UserModel;
 public class SharedPreferenceManager {
     private static SharedPreferences pref;
     private static SharedPreferenceManager factory;
-    private final String currentCallKey = "current_call_status";
 
     public static SharedPreferenceManager getInstance(Context context) {
         if (pref == null)

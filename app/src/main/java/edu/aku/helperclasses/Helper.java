@@ -436,16 +436,6 @@ public class Helper {
         return finalTimerString;
     }
 
-    public static Bitmap getProfileImage(String avatar ,Context context) {
-        File profileImageFile = FileManager.getUserImage(avatar, true, context);
-        if (profileImageFile == null) {
-            return ((BitmapDrawable) ContextCompat.getDrawable(context, R.drawable.placeholder)).getBitmap();
-
-        } else {
-            return BitmapFactory.decodeFile(profileImageFile.getAbsolutePath());
-        }
-    }
-
     public static int getStatusBarHeight(Window window , Context context) {
         Rect rectangle = new Rect();
         window.getDecorView().getWindowVisibleDisplayFrame(rectangle);

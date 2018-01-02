@@ -96,8 +96,7 @@
                 android:text="@string/login"
                 android:textColor="@color/white"
                 android:textSize="17sp"
-                app:backgroundTint="@color/colorPrimary"
-                app:typeface="@string/font_normal" />
+                 app:typeface="@string/font_normal" />
 
 
             <LinearLayout
