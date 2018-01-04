@@ -56,8 +56,8 @@
             android:background="@drawable/imgninepatch2"
             android:drawableRight="@drawable/ic_dropdown"
             android:gravity="center_vertical"
-            android:maxLines="1"
             android:hint="Select Date of Birth"
+            android:maxLines="1"
             android:textColor="@color/text_dark"
             android:textColorHint="@color/text_light_grey"
             android:textSize="16sp" />
@@ -80,8 +80,8 @@
             android:background="@drawable/imgninepatch2"
             android:drawableRight="@drawable/ic_dropdown"
             android:gravity="center_vertical"
-            android:maxLines="1"
             android:hint="Select Gender"
+            android:maxLines="1"
             android:textColor="@color/text_dark"
             android:textColorHint="@color/text_light_grey"
             android:textSize="16sp" />
@@ -101,6 +101,21 @@
             android:textSize="13sp"
             app:typeface="@string/font_bold" />
 
+        <!--<com.andreabaccega.widget.FormEditText-->
+        <!--android:id="@+id/edtCNICNumber"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_marginBottom="@dimen/x15dp"-->
+        <!--android:background="@drawable/imgninepatch"-->
+        <!--android:hint="Enter CNIC Number"-->
+        <!--android:inputType="numberDecimal"-->
+        <!--android:maxLength="15"-->
+        <!--android:maxLines="1"-->
+        <!--android:textColor="@color/text_dark"-->
+        <!--android:textColorHint="@color/text_light_grey"-->
+        <!--android:textSize="16sp"-->
+        <!--app:testType="numeric" />-->
+
         <com.andreabaccega.widget.FormEditText
             android:id="@+id/edtCNICNumber"
             android:layout_width="match_parent"
@@ -108,13 +123,11 @@
             android:layout_marginBottom="@dimen/x15dp"
             android:background="@drawable/imgninepatch"
             android:hint="Enter CNIC Number"
-            android:inputType="numberDecimal"
             android:maxLength="15"
             android:maxLines="1"
             android:textColor="@color/text_dark"
             android:textColorHint="@color/text_light_grey"
-            android:textSize="16sp"
-            app:testType="numeric" />
+            android:textSize="16sp" />
 
 
         <com.ctrlplusz.anytextview.AnyTextView
@@ -289,8 +302,8 @@
             android:background="@drawable/imgninepatch2"
             android:drawableRight="@drawable/ic_dropdown"
             android:gravity="center_vertical"
-            android:maxLines="1"
             android:hint="Select Current Country"
+            android:maxLines="1"
             android:textColor="@color/text_dark"
             android:textColorHint="@color/text_light_grey"
             android:textSize="16sp" />
@@ -370,8 +383,8 @@
             android:background="@drawable/imgninepatch2"
             android:drawableRight="@drawable/ic_dropdown"
             android:gravity="center_vertical"
-            android:maxLines="1"
             android:hint="Select Permanent Country"
+            android:maxLines="1"
             android:textColor="@color/text_dark"
             android:textColorHint="@color/text_light_grey"
             android:textSize="16sp" />
@@ -497,9 +510,9 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_margin="@dimen/x5dp"
-                    android:text=""
-                    android:singleLine="true"
                     android:ellipsize="end"
+                    android:singleLine="true"
+                    android:text=""
                     android:textColor="@color/text_color_black"
                     android:textSize="13sp"
                     app:typeface="@string/font_bold" />
@@ -532,17 +545,16 @@
                     android:layout_margin="@dimen/x5dp"
                     android:background="@color/c_black"
                     android:scaleType="centerCrop"
-                    android:src="@drawable/placeholder"
-                    />
+                    android:src="@drawable/placeholder" />
 
                 <com.ctrlplusz.anytextview.AnyTextView
                     android:id="@+id/txtPassportImageName"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_margin="@dimen/x5dp"
-                    android:text=""
-                    android:singleLine="true"
                     android:ellipsize="end"
+                    android:singleLine="true"
+                    android:text=""
                     android:textColor="@color/text_color_black"
                     android:textSize="13sp"
                     app:typeface="@string/font_bold" />

@@ -69,8 +69,6 @@ dependencies {
     annotationProcessor 'com.jakewharton:butterknife-compiler:8.5.1'
     compile 'com.google.android.gms:play-services-places:10.2.1'
     //    compile 'com.google.firebase:firebase-messaging:10.2.1'
-    compile 'ru.egslava:MaskedEditText:1.0.5'
-
 }
 
 
