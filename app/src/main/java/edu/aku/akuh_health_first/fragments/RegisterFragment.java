@@ -36,6 +36,7 @@ import edu.aku.akuh_health_first.helperclasses.ui.helper.TitleBar;
 import edu.aku.akuh_health_first.helperclasses.ui.helper.UIHelper;
 import edu.aku.akuh_health_first.helperclasses.validator.CnicValidation;
 import edu.aku.akuh_health_first.helperclasses.validator.MobileNumberValidation;
+import edu.aku.akuh_health_first.libraries.maskformatter.MaskFormatter;
 import edu.aku.akuh_health_first.managers.DateManager;
 import edu.aku.akuh_health_first.models.receiving_model.RegisterVM;
 import edu.aku.akuh_health_first.models.wrappers.WebResponse;
@@ -199,6 +200,8 @@ public class RegisterFragment extends BaseFragment {
 
     }
 
+    private static final String CNIC_MASK = "99999-9999999-9";
+
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
@@ -206,7 +209,7 @@ public class RegisterFragment extends BaseFragment {
         edtCNICNumber.addValidator(new CnicValidation());
         edtMRNumber.addValidator(new MRValidation());
         edtPassportNumber.addValidator(new PassportValidation());
-
+        edtCNICNumber.addTextChangedListener(new MaskFormatter(CNIC_MASK, edtCNICNumber, '-'));
         getRegisterVM();
     }
 
