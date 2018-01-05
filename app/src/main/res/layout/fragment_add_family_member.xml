@@ -108,13 +108,13 @@
             android:layout_marginBottom="@dimen/x15dp"
             android:background="@drawable/imgninepatch"
             android:hint="Enter MR Number"
-            android:inputType="textPersonName"
+            android:inputType="number"
             android:maxLength="30"
             android:maxLines="1"
             android:textColor="@color/text_dark"
             android:textColorHint="@color/text_light_grey"
             android:textSize="16sp"
-            app:testType="personFullName" />
+            app:testType="nocheck" />
 
 
         <com.ctrlplusz.anytextview.AnyTextView
@@ -162,13 +162,13 @@
             android:layout_marginBottom="@dimen/x15dp"
             android:background="@drawable/imgninepatch"
             android:hint="Enter CNIC Number"
-            android:inputType="numberDecimal"
+            android:inputType="number"
             android:maxLength="15"
             android:maxLines="1"
             android:textColor="@color/text_dark"
             android:textColorHint="@color/text_light_grey"
             android:textSize="16sp"
-            app:testType="numeric" />
+            app:testType="nocheck" />
 
 
         <com.ctrlplusz.anytextview.AnyTextView

@@ -34,6 +34,7 @@ import edu.aku.akuh_health_first.helperclasses.ui.helper.TitleBar;
 import edu.aku.akuh_health_first.helperclasses.ui.helper.UIHelper;
 import edu.aku.akuh_health_first.helperclasses.validator.CnicValidation;
 import edu.aku.akuh_health_first.helperclasses.validator.MobileNumberValidation;
+import edu.aku.akuh_health_first.libraries.maskformatter.MaskFormatter;
 import edu.aku.akuh_health_first.managers.DateManager;
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -53,6 +54,8 @@ import edu.aku.akuh_health_first.models.receiving_model.RegisterVM;
 import edu.aku.akuh_health_first.models.wrappers.WebResponse;
 
 import static android.app.Activity.RESULT_OK;
+import static edu.aku.akuh_health_first.constatnts.AppConstants.CNIC_MASK;
+import static edu.aku.akuh_health_first.constatnts.AppConstants.MR_NUMBER_MASK;
 
 /**
  * Created by hamzakhan on 5/10/2017.
@@ -172,7 +175,7 @@ public class AddFamilyMemberFragment extends BaseFragment {
     public void setTitlebar(TitleBar titleBar) {
         titleBar.resetViews();
         titleBar.setVisibility(View.VISIBLE);
-        titleBar.setTitle("Register");
+        titleBar.setTitle("Add Family Member");
         titleBar.showBackButton(getMainActivity());
     }
 
@@ -197,6 +200,9 @@ public class AddFamilyMemberFragment extends BaseFragment {
         edtCNICNumber.addValidator(new CnicValidation());
         edtMRNumber.addValidator(new MRValidation());
         edtPassportNumber.addValidator(new PassportValidation());
+
+        edtCNICNumber.addTextChangedListener(new MaskFormatter(CNIC_MASK, edtCNICNumber, '-'));
+        edtMRNumber.addTextChangedListener(new MaskFormatter(MR_NUMBER_MASK, edtMRNumber, '-'));
     }
 
 
