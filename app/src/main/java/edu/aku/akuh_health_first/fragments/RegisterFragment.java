@@ -56,6 +56,8 @@ import edu.aku.akuh_health_first.managers.retrofit.WebServices;
 import edu.aku.akuh_health_first.models.receiving_model.RegisterOptionsModel;
 
 import static android.app.Activity.RESULT_OK;
+import static edu.aku.akuh_health_first.constatnts.AppConstants.CNIC_MASK;
+import static edu.aku.akuh_health_first.constatnts.AppConstants.MR_NUMBER_MASK;
 
 /**
  * Created by hamzakhan on 5/10/2017.
@@ -200,7 +202,6 @@ public class RegisterFragment extends BaseFragment {
 
     }
 
-    private static final String CNIC_MASK = "99999-9999999-9";
 
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
@@ -210,6 +211,7 @@ public class RegisterFragment extends BaseFragment {
         edtMRNumber.addValidator(new MRValidation());
         edtPassportNumber.addValidator(new PassportValidation());
         edtCNICNumber.addTextChangedListener(new MaskFormatter(CNIC_MASK, edtCNICNumber, '-'));
+        edtMRNumber.addTextChangedListener(new MaskFormatter(MR_NUMBER_MASK, edtMRNumber, '-'));
         getRegisterVM();
     }
 
@@ -303,7 +305,10 @@ public class RegisterFragment extends BaseFragment {
 //                    UIHelper.showShortToastInCenter(getContext(), "Please fill all fields correctly.");
 //                }
 
-                getMainActivity().addDockableFragment(MyFamilyFragment.newInstance());
+
+                if (edtCNICNumber.testValidity() && edtMRNumber.testValidity()) {
+                    getMainActivity().addDockableFragment(MyFamilyFragment.newInstance());
+                }
 
                 break;
 

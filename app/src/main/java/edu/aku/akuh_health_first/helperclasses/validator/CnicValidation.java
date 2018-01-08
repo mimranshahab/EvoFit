@@ -19,7 +19,7 @@ public class CnicValidation extends Validator {
 
     @Override
     public boolean isValid(EditText et) {
-        return et.getText().toString().length() == 13;
+        return et.getText().toString().length() == 15;
     }
 
 

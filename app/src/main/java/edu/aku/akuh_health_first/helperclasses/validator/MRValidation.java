@@ -19,7 +19,7 @@ public class MRValidation extends Validator {
 
     @Override
     public boolean isValid(EditText et) {
-        return et.getText().toString().length() == 7;
+        return et.getText().toString().length() == 9;
     }
 
 

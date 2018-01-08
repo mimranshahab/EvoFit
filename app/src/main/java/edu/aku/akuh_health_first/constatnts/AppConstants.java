@@ -24,6 +24,11 @@ public class AppConstants {
     public static final String USER_PROFILE_PICTURE = ROOT_MEDIA_PATH + "/" + BaseApplication.getApplicationName() + " Profile";
 
 
+
+    public static final String CNIC_MASK = "99999-9999999-9";
+    public static final String MR_NUMBER_MASK = "999-99-99";
+
+
     public static final int REQUEST_TIME_OUT = 25 * 1000;
 
     public static final String PREFIX_MESSAGE = "msg-single-";
