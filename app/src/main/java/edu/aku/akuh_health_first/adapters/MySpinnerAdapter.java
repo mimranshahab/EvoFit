@@ -66,7 +66,7 @@ public class MySpinnerAdapter extends ArrayAdapter<RegisterOptionsModel> {
         position = position - 1; // Adjust for initial selection item
         RegisterOptionsModel item = getItem(position);
 
-        // ... Resolve views & populate with data ...
+        // ... Resolve edu.aku.akuh_health_first.views & populate with data ...
 
         return row;
     }

@@ -103,7 +103,7 @@ public class ResideMenu extends FrameLayout {
     /**
      * This constructor provides you to create menus with your own custom
      * layouts, but if you use custom menu then do not call addMenuItem because
-     * it will not be able to find default views
+     * it will not be able to find default edu.aku.akuh_health_first.views
      */
     public ResideMenu(Context context, int customLeftMenuId,
                       int customRightMenuId) {
@@ -553,7 +553,7 @@ public class ResideMenu extends FrameLayout {
     /**
      * If there were some view you don't want reside menu
      * to intercept their touch event, you could add it to
-     * ignored views.
+     * ignored edu.aku.akuh_health_first.views.
      *
      * @param v
      */
@@ -562,7 +562,7 @@ public class ResideMenu extends FrameLayout {
     }
 
     /**
-     * Remove a view from ignored views;
+     * Remove a view from ignored edu.aku.akuh_health_first.views;
      *
      * @param v
      */
