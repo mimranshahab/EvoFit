@@ -157,11 +157,10 @@ public class LeftSideMenuFragment extends BaseFragment {
 
     @OnClick({R.id.contUserName, R.id.txtRegistration, R.id.txtHealthHistory, R.id.txtMyProfile, R.id.txtCardSubscription, R.id.txtCardRenewal, R.id.txtCardUpgrade, R.id.txtPrintCard, R.id.txtAbout, R.id.txtLogout})
     public void onViewClicked(View view) {
-        if (getResideMenu().isOpened()) {
-            closeMenu();
-        }
+
         switch (view.getId()) {
             case R.id.contUserName:
+                showNextBuildToast();
                 break;
             case R.id.txtRegistration:
                 break;

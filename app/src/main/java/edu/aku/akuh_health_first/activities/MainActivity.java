@@ -1,29 +1,28 @@
-
 package edu.aku.akuh_health_first.activities;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
+import android.view.Gravity;
 import android.view.View;
-import android.widget.RelativeLayout;
 
-import edu.aku.akuh_health_first.fragments.LeftSideMenuFragment;
+ import edu.aku.akuh_health_first.R;
+ import edu.aku.akuh_health_first.fragments.LeftSideMenuFragment;
 import edu.aku.akuh_health_first.fragments.LoginFragment;
 import edu.aku.akuh_health_first.fragments.abstracts.GenericClickableInterface;
 import edu.aku.akuh_health_first.fragments.abstracts.GenericDialogFragment;
 import edu.aku.akuh_health_first.helperclasses.ui.helper.TitleBar;
-import edu.aku.akuh_health_first.residemenu.ResideMenu;
-import edu.aku.akuh_health_first.R;
+
 
 public class MainActivity extends AppCompatActivity {
 
-    public DrawerLayout drawerLayout;
+    private DrawerLayout drawerLayout;
 
     private TitleBar titleBar;
     private LeftSideMenuFragment leftSideMenuFragment;
 
-    private ResideMenu resideMenu;
+//    private ResideMenu resideMenu;
 
 //    //For Blurred Background
 //    private Bitmap mDownScaled;
@@ -36,12 +35,22 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
         setAndBindTitleBar();
-        setSideMenu(ResideMenu.DIRECTION_LEFT);
+        drawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
 
+        addDrawerFragment();
+
+//        SlidingMenu menu = new SlidingMenu(this);
+//        menu.setMode(SlidingMenu.LEFT);
+//        menu.setTouchModeAbove(SlidingMenu.TOUCHMODE_FULLSCREEN);
+////        menu.setShadowWidthRes(R.dimen.shadow_width);
+////        menu.setShadowDrawable(R.drawable.shadow);
+//        menu.setBehindOffsetRes(R.dimen.slidingmenu_offset);
+//        menu.setFadeDegree(0.35f);
+//        menu.attachToActivity(this, SlidingMenu.SLIDING_WINDOW);
+////        menu.setMenu(R.layout.fragment_sidebar);
+//        menu.setMenu(leftSideMenuFragment, getSupportFragmentManager());
 //        imageBlur = (ImageView) findViewById(R.id.imageBlur);
-
         // check if user is registered or not
         initFragments();
 
@@ -52,93 +61,97 @@ public class MainActivity extends AppCompatActivity {
         addDockableFragment(LoginFragment.newInstance());
     }
 
+
+    public DrawerLayout getDrawerLayout() {
+        return drawerLayout;
+    }
 // RESIDE MENU ->
 
 
-    public void setSideMenu(int direction) {
-        resideMenu = new ResideMenu(this);
-        resideMenu.setSwipeDirectionDisable(ResideMenu.DIRECTION_RIGHT);
-        resideMenu.setBackground(R.drawable.imgmainbg);
-        resideMenu.attachToActivity(this);
-        resideMenu.setScaleValue(0.56f);
-        resideMenu.setShadowVisible(false);
-        setMenuItemDirection(direction);
-    }
-
-
-    public void setMenuItemDirection(int direction) {
-
-        if (direction == ResideMenu.DIRECTION_LEFT) {
-            leftSideMenuFragment = LeftSideMenuFragment.newInstance();
-            resideMenu.addMenuItem(leftSideMenuFragment, "LeftSideMenuFragment", direction);
-        }
-    }
-
-    public LeftSideMenuFragment getLeftSideMenuFragment() {
-        return leftSideMenuFragment;
-    }
-
-
-    public RelativeLayout getMainContentFrame() {
-//        return R.id.content_frame;
-        return (RelativeLayout) findViewById(R.id.content_frame);
-    }
-
-//    public ImageView getBlurImage() {
-//        return imageBlur;
+//    public void setSideMenu(int direction) {
+//        resideMenu = new ResideMenu(this);
+//        resideMenu.setSwipeDirectionDisable(ResideMenu.DIRECTION_RIGHT);
+//        resideMenu.setBackground(R.drawable.imgmainbg);
+//        resideMenu.attachToActivity(this);
+//        resideMenu.setScaleValue(0.56f);
+//        resideMenu.setShadowVisible(false);
+//        setMenuItemDirection(direction);
 //    }
-
-//    public void setBlurBackground() {
 //
-//////        if (mBackgroundFilename == null) {
+//
+//    public void setMenuItemDirection(int direction) {
+//
+//        if (direction == ResideMenu.DIRECTION_LEFT) {
+//            leftSideMenuFragment = LeftSideMenuFragment.newInstance();
+//            resideMenu.addMenuItem(leftSideMenuFragment, "LeftSideMenuFragment", direction);
+//        }
+//    }
+//
+//    public LeftSideMenuFragment getLeftSideMenuFragment() {
+//        return leftSideMenuFragment;
+//    }
+//
+//
+//    public RelativeLayout getMainContentFrame() {
+////        return R.id.content_frame;
+//        return (RelativeLayout) findViewById(R.id.content_frame);
+//    }
+//
+////    public ImageView getBlurImage() {
+////        return imageBlur;
+////    }
+//
+////    public void setBlurBackground() {
 ////
-////        this.mDownScaled = Utils.drawViewToBitmap(this.getMainContentFrame(), Color.parseColor("#fff5f5f5"));
-////
-////        mBackgroundFilename = getBlurredBackgroundFilename();
-////        if (!TextUtils.isEmpty(mBackgroundFilename)) {
-////            //context.getMainContentFrame().setVisibility(View.VISIBLE);
-////            background = Utils.loadBitmapFromFile(mBackgroundFilename);
-//////                if (background != null) {
-////            getBlurImage().setVisibility(View.VISIBLE);
-////            getBlurImage().setImageBitmap(background);
-////            getBlurImage().animate().alpha(1);
-//////                }
-////        }
-//////        } else {
+////////        if (mBackgroundFilename == null) {
+//////
+//////        this.mDownScaled = Utils.drawViewToBitmap(this.getMainContentFrame(), Color.parseColor("#fff5f5f5"));
+//////
+//////        mBackgroundFilename = getBlurredBackgroundFilename();
+//////        if (!TextUtils.isEmpty(mBackgroundFilename)) {
+//////            //context.getMainContentFrame().setVisibility(View.VISIBLE);
+//////            background = Utils.loadBitmapFromFile(mBackgroundFilename);
+////////                if (background != null) {
 //////            getBlurImage().setVisibility(View.VISIBLE);
 //////            getBlurImage().setImageBitmap(background);
 //////            getBlurImage().animate().alpha(1);
+////////                }
 //////        }
-////    }
+////////        } else {
+////////            getBlurImage().setVisibility(View.VISIBLE);
+////////            getBlurImage().setImageBitmap(background);
+////////            getBlurImage().animate().alpha(1);
+////////        }
+//////    }
+//////
+//////    public String getBlurredBackgroundFilename() {
+//////        Bitmap localBitmap = Blur.fastblur(this, this.mDownScaled, 20);
+//////        String str = Utils.saveBitmapToFile(this, localBitmap);
+//////        this.mDownScaled.recycle();
+//////        localBitmap.recycle();
+//////        return str;
+//////    }
+//////
+//////    public void removeBlurImage() {
+//////        getBlurImage().setVisibility(View.GONE);
+//////    }
 ////
-////    public String getBlurredBackgroundFilename() {
-////        Bitmap localBitmap = Blur.fastblur(this, this.mDownScaled, 20);
-////        String str = Utils.saveBitmapToFile(this, localBitmap);
-////        this.mDownScaled.recycle();
-////        localBitmap.recycle();
-////        return str;
-////    }
-////
-////    public void removeBlurImage() {
-////        getBlurImage().setVisibility(View.GONE);
+//
+//
+////    @Override
+////    public boolean dispatchTouchEvent(MotionEvent ev) {
+////        return resideMenu.dispatchTouchEvent(ev);
 ////    }
 //
-
-
-//    @Override
-//    public boolean dispatchTouchEvent(MotionEvent ev) {
-//        return resideMenu.dispatchTouchEvent(ev);
+//
+//    public ResideMenu getResideMenu() {
+//        return resideMenu;
 //    }
 
 
-    public ResideMenu getResideMenu() {
-        return resideMenu;
-    }
-
-
     public void addDrawerFragment() {
-//        sidebarFragment = SidebarFragment.newInstance();
-//        getSupportFragmentManager().beginTransaction().replace(R.id.containerDrawer, sidebarFragment).commit();
+        leftSideMenuFragment = LeftSideMenuFragment.newInstance();
+        getSupportFragmentManager().beginTransaction().replace(R.id.contDrawer, leftSideMenuFragment).commit();
     }
 
 
@@ -152,8 +165,8 @@ public class MainActivity extends AppCompatActivity {
     public void onBackPressed() {
         if (getSupportFragmentManager().getBackStackEntryCount() > 1) {
 
-            if (resideMenu.isOpened()) {
-                resideMenu.closeMenu();
+            if (drawerLayout.isDrawerOpen(Gravity.LEFT)) {
+                drawerLayout.closeDrawer(Gravity.LEFT);
             } else {
                 super.onBackPressed();
             }

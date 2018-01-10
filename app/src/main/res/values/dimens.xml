@@ -80,4 +80,8 @@
     <dimen name="gallery_item_size">@dimen/x100dp</dimen>
     <dimen name="reply_layout_height">@dimen/x45dp</dimen>
 
+    <dimen name="shadow_width">15dp</dimen>
+    <dimen name="slidingmenu_offset">60dp</dimen>
+
+
 </resources>

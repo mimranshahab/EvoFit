@@ -1,6 +1,7 @@
 package edu.aku.akuh_health_first.helperclasses.ui.helper;
 
 import android.content.Context;
+import android.support.v4.view.GravityCompat;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -14,7 +15,7 @@ import com.ctrlplusz.anytextview.AnyTextView;
 
 import edu.aku.akuh_health_first.R;
 import edu.aku.akuh_health_first.activities.MainActivity;
-import edu.aku.akuh_health_first.residemenu.ResideMenu;
+import edu.aku.akuh_health_first.libraries.residemenu.ResideMenu;
 
 import butterknife.BindView;
 
@@ -160,7 +161,8 @@ public class TitleBar extends RelativeLayout {
             @Override
             public void onClick(View v) {
                 if (mActivity != null) {
-                    mActivity.getResideMenu().openMenu(ResideMenu.DIRECTION_LEFT);
+//                    mActivity.getResideMenu().openMenu(ResideMenu.DIRECTION_LEFT);
+                    mActivity.getDrawerLayout().openDrawer(GravityCompat.START);
                 }
 
             }

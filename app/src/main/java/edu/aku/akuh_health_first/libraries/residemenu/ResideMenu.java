@@ -1,4 +1,4 @@
-package edu.aku.akuh_health_first.residemenu;
+package edu.aku.akuh_health_first.libraries.residemenu;
 
 import android.animation.Animator;
 import android.animation.AnimatorSet;
@@ -249,7 +249,6 @@ public class ResideMenu extends FrameLayout {
 
 
         if (direction == DIRECTION_LEFT) {
-
 
             //this.leftMenuItems.add(menuItem);
             transaction.replace(leftMenuView.getId(), sideMenuView);

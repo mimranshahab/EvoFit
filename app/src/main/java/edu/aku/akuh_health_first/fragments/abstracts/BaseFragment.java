@@ -23,7 +23,6 @@ import edu.aku.akuh_health_first.callbacks.OnNewPacketReceivedListener;
 import edu.aku.akuh_health_first.helperclasses.ui.helper.KeyboardHide;
 import edu.aku.akuh_health_first.helperclasses.ui.helper.TitleBar;
 import edu.aku.akuh_health_first.helperclasses.ui.helper.UIHelper;
-import edu.aku.akuh_health_first.residemenu.ResideMenu;
 import edu.aku.akuh_health_first.BaseApplication;
 import edu.aku.akuh_health_first.activities.MainActivity;
 
@@ -229,20 +228,20 @@ public abstract class BaseFragment extends Fragment implements View.OnClickListe
     }
 
 
-    public ResideMenu getResideMenu() {
-        return getMainActivity().getResideMenu();
-    }
+//    public ResideMenu getResideMenu() {
+//        return getMainActivity().getResideMenu();
+//    }
 
 
     public void setResideMenu() {
-        getResideMenu().openMenu(ResideMenu.DIRECTION_LEFT);
-        getResideMenu().closeMenu();
+//        getResideMenu().openMenu(ResideMenu.DIRECTION_LEFT);
+//        getResideMenu().closeMenu();
     }
 
 
     // FOR RESIDE MENU
-    public void closeMenu() {
-        getMainActivity().getResideMenu().closeMenu();
-    }
+//    public void closeMenu() {
+//        getMainActivity().getResideMenu().closeMenu();
+//    }
 
 }
