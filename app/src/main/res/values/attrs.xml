@@ -1,73 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+        <declare-styleable name="SlideShowView">
+            <attr name="selector" format="reference" />
 
-    <!--<declare-styleable name="SwipeRevealLayout">-->
-        <!--<attr name="dragEdge">-->
-            <!--<flag name="left" value="1" />-->
-            <!--<flag name="right" value="2" />-->
-            <!--<flag name="top" value="4" />-->
-            <!--<flag name="bottom" value="8" />-->
-        <!--</attr>-->
-        <!---->
-        <!--<attr name="mode">-->
-            <!--<enum name="normal" value="0" />-->
-            <!--<enum name="same_level"   value="1" />-->
-        <!--</attr>-->
+            <!-- PLAYLIST -->
+            <attr name="playlist" format="enum">
+                <enum name="sequential" value="1" />
+                <enum name="random" value="2" />
+            </attr>
+            <attr name="slideDuration" format="integer" />
+            <attr name="loop" format="boolean" />
+            <attr name="enableAutoAdvance" format="boolean" />
 
-        <!--<attr name="flingVelocity" format="integer" />-->
-
-        <!--<attr name="minDistRequestDisallowParent" format="dimension" />-->
-    <!--</declare-styleable>-->
-
-    <attr name="bottomSheetBuilderBackgroundColor" format="color" />
-    <attr name="bottomSheetBuilderItemTextColor" format="color" />
-    <attr name="bottomSheetBuilderTitleTextColor" format="color" />
-
-    <declare-styleable name="PinEntryEditText">
-        <attr name="pinAnimationType" format="enum">
-            <enum name="popIn" value="0" />
-            <enum name="fromBottom" value="1" />
-            <enum name="none" value="-1" />
-        </attr>
-        <attr name="pinCharacterMask" format="string" />
-        <attr name="pinRepeatedHint" format="string" />
-        <attr name="pinLineStroke" format="dimension" />
-        <attr name="pinLineStrokeSelected" format="dimension" />
-        <attr name="pinCharacterSpacing" format="dimension" />
-        <attr name="pinTextBottomPadding" format="dimension" />
-        <attr name="pinLineColors" format="color" />
-        <attr name="pinBackgroundDrawable" format="reference" />
-        <attr name="pinBackgroundIsSquare" format="boolean" />
-    </declare-styleable>
-
-
-    <declare-styleable name="SlidingMenu">
-        <attr name="mode">
-            <enum name="left" value="0" />
-            <enum name="right" value="1" />
-        </attr>
-        <attr name="viewAbove" format="reference" />
-        <attr name="viewBehind" format="reference" />
-        <attr name="behindOffset" format="dimension" />
-        <attr name="behindWidth" format="dimension" />
-        <attr name="behindScrollScale" format="float" />
-        <attr name="touchModeAbove">
-            <enum name="margin" value="0" />
-            <enum name="fullscreen" value="1" />
-            <enum name="none" value="2" />
-        </attr>
-        <attr name="touchModeBehind">
-            <enum name="margin" value="0" />
-            <enum name="fullscreen" value="1" />
-            <enum name="none" value="2" />
-        </attr>
-        <attr name="shadowDrawable" format="reference" />
-        <attr name="shadowWidth" format="dimension" />
-        <attr name="fadeEnabled" format="boolean" />
-        <attr name="fadeDegree" format="float" />
-        <attr name="selectorEnabled" format="boolean" />
-        <attr name="selectorDrawable" format="reference" />
-    </declare-styleable>
-
-
+            <!-- TRANSITIONS -->
+            <attr name="transition" format="enum">
+                <enum name="none" value="1" />
+                <enum name="random" value="2" />
+                <enum name="fade" value="3" />
+                <enum name="zoom" value="4" />
+                <enum name="slideAndZoom" value="5" />
+                <enum name="flipHorizontal" value="6" />
+                <enum name="flipVertical" value="7" />
+            </attr>
+            <attr name="transitionDuration" format="integer" />
+        </declare-styleable>
 </resources>

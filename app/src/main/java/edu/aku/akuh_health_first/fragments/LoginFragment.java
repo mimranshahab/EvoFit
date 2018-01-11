@@ -26,6 +26,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import butterknife.Unbinder;
+import edu.aku.akuh_health_first.libraries.slideshow.SlideShowAdapter;
 import edu.aku.akuh_health_first.managers.retrofit.GsonFactory;
 import edu.aku.akuh_health_first.managers.retrofit.WebServices;
 import edu.aku.akuh_health_first.models.UserModel;
@@ -127,9 +128,8 @@ public class LoginFragment extends BaseFragment {
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.txtForgotPassword:
-//                getMainActivity().addDockableFragment(ForgotPasswordFragment.newInstance());
+                getMainActivity().addDockableFragment(SlideShowFragment.newInstance());
 
-                showNextBuildToast();
                 break;
             case R.id.btnLogin:
 
