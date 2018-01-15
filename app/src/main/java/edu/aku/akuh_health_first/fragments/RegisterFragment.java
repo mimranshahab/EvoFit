@@ -4,6 +4,7 @@ import android.app.DatePickerDialog;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -24,10 +25,13 @@ import com.theartofdev.edmodo.cropper.CropImageView;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.List;
 
 import edu.aku.akuh_health_first.constatnts.AppConstants;
 import edu.aku.akuh_health_first.constatnts.WebServiceConstants;
+import edu.aku.akuh_health_first.enums.BaseURLTypes;
 import edu.aku.akuh_health_first.enums.FileType;
+import edu.aku.akuh_health_first.enums.WebServiceTypes;
 import edu.aku.akuh_health_first.fragments.dialogs.SuccessDialogFragment;
 import edu.aku.akuh_health_first.helperclasses.RunTimePermissions;
 import edu.aku.akuh_health_first.helperclasses.ui.helper.KeyboardHide;
@@ -38,6 +42,9 @@ import edu.aku.akuh_health_first.helperclasses.validator.CnicValidation;
 import edu.aku.akuh_health_first.helperclasses.validator.MobileNumberValidation;
 import edu.aku.akuh_health_first.libraries.maskformatter.MaskFormatter;
 import edu.aku.akuh_health_first.managers.DateManager;
+import edu.aku.akuh_health_first.managers.retrofit.WebServiceFactory;
+import edu.aku.akuh_health_first.models.PacsView;
+import edu.aku.akuh_health_first.models.UserModel;
 import edu.aku.akuh_health_first.models.receiving_model.RegisterVM;
 import edu.aku.akuh_health_first.models.wrappers.WebResponse;
 import butterknife.BindView;
@@ -54,6 +61,11 @@ import edu.aku.akuh_health_first.managers.SharedPreferenceManager;
 import edu.aku.akuh_health_first.managers.retrofit.GsonFactory;
 import edu.aku.akuh_health_first.managers.retrofit.WebServices;
 import edu.aku.akuh_health_first.models.receiving_model.RegisterOptionsModel;
+import okhttp3.MediaType;
+import okhttp3.RequestBody;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 import static android.app.Activity.RESULT_OK;
 import static edu.aku.akuh_health_first.constatnts.AppConstants.CNIC_MASK;
@@ -212,24 +224,27 @@ public class RegisterFragment extends BaseFragment {
         edtPassportNumber.addValidator(new PassportValidation());
         edtCNICNumber.addTextChangedListener(new MaskFormatter(CNIC_MASK, edtCNICNumber, '-'));
         edtMRNumber.addTextChangedListener(new MaskFormatter(MR_NUMBER_MASK, edtMRNumber, '-'));
-        getRegisterVM();
+//        getRegisterVM();
+        CallPacManager();
     }
 
     private void getRegisterVM() {
-        new WebServices(getMainActivity(), WebServiceConstants.temporaryToken).webServiceRequestAPI(WebServiceConstants.METHOD_USER_GET_REGISTER_VM, "", new WebServices.IRequestJsonDataCallBack() {
-            @Override
-            public void requestDataResponse(WebResponse<JsonObject> webResponse) {
-                RegisterVM registerVM = GsonFactory.getSimpleGson().fromJson(webResponse.result, RegisterVM.class);
-                UIHelper.showShortToastInCenter(getContext(), webResponse.message);
-                SharedPreferenceManager.getInstance(getContext()).putObject(AppConstants.KEY_REGISTER_VM, webResponse.result);
-                setSpinnerData(registerVM);
-            }
+        new WebServices(getMainActivity(),
+                WebServiceConstants.temporaryToken, WebServiceTypes.ONLY_TOKEN, BaseURLTypes.AHFA)
+                .webServiceRequestAPI(WebServiceConstants.METHOD_USER_GET_REGISTER_VM, "", new WebServices.IRequestJsonDataCallBack() {
+                    @Override
+                    public void requestDataResponse(WebResponse<JsonObject> webResponse) {
+                        RegisterVM registerVM = GsonFactory.getSimpleGson().fromJson(webResponse.result, RegisterVM.class);
+                        UIHelper.showShortToastInCenter(getContext(), webResponse.message);
+                        SharedPreferenceManager.getInstance(getContext()).putObject(AppConstants.KEY_REGISTER_VM, webResponse.result);
+                        setSpinnerData(registerVM);
+                    }
 
-            @Override
-            public void onError() {
-                UIHelper.showShortToastInCenter(getContext(), "failure");
-            }
-        });
+                    @Override
+                    public void onError() {
+                        UIHelper.showShortToastInCenter(getContext(), "failure");
+                    }
+                });
     }
 
     private void setSpinnerData(RegisterVM registerVM) {
@@ -331,7 +346,8 @@ public class RegisterFragment extends BaseFragment {
     }
 
     private void uploadImageFile(final String uploadFilePath, final String uploadFileUriPath) {
-        new WebServices(getMainActivity(), WebServiceConstants.temporaryToken)
+        new WebServices(getMainActivity(),
+                WebServiceConstants.temporaryToken, WebServiceTypes.ONLY_TOKEN, BaseURLTypes.AHFA)
                 .webServiceRequestFileAPI(WebServiceConstants.METHOD_USER_UPLOAD_REQUEST_FILE, uploadFilePath, FileType.IMAGE, new WebServices.IRequestJsonDataCallBackForStringResult() {
                     @Override
                     public void requestDataResponse(WebResponse<String> webResponse) {
@@ -486,19 +502,64 @@ public class RegisterFragment extends BaseFragment {
     }
 
 
-    private void getRegisterVMData() {
-        new WebServices(getMainActivity(), WebServiceConstants.temporaryToken).webServiceRequestAPI(WebServiceConstants.METHOD_USER_GET_REGISTER_VM, "", new WebServices.IRequestJsonDataCallBack() {
+    private void CallPacManager() {
+        ArrayList<String> item = new ArrayList<String>();
+        item.add(WebServiceConstants.tempPacViews.toString());
+
+        PacsView pacViews = new PacsView(item);
+//        new WebServices(getMainActivity(),
+//                WebServiceConstants.temporaryToken, WebServiceTypes.TOKEN_AND_BEARER, BaseURLTypes.PACS).webServiceRequestAPI(WebServiceConstants.METHOD_PACMANAGER,
+//                pacViews.toString(),
+//                new WebServices.IRequestJsonDataCallBack() {
+//                    @Override
+//                    public void requestDataResponse(WebResponse<JsonObject> webResponse) {
+//                        UIHelper.showShortToastInCenter(getContext(), webResponse.message);
+//
+//                    }
+//
+//                    @Override
+//                    public void onError() {
+//                        UIHelper.showShortToastInCenter(getContext(), "failure");
+//                    }
+//                });
+        RequestBody bodyRequestMethod = getRequestBody(okhttp3.MultipartBody.FORM, WebServiceConstants.METHOD_PACMANAGER);
+        RequestBody bodyRequestData = getRequestBody(okhttp3.MultipartBody.FORM, pacViews.toString());
+
+        Call<WebResponse<JsonObject>> pacManager = WebServiceFactory.getInstance(WebServiceConstants.temporaryToken,
+                WebServiceTypes.TOKEN_AND_BEARER, BaseURLTypes.PACS)
+                .pacView(bodyRequestMethod, bodyRequestData);
+        pacManager.enqueue(new Callback<WebResponse<JsonObject>>() {
             @Override
-            public void requestDataResponse(WebResponse<JsonObject> webResponse) {
-                GsonFactory.getSimpleGson().fromJson(webResponse.result, RegisterVM.class);
-                UIHelper.showShortToastInCenter(getContext(), webResponse.message);
+            public void onResponse(Call<WebResponse<JsonObject>> call, Response<WebResponse<JsonObject>> response) {
+                if (response != null && response.body() != null) {
+                    if (response.body().isSuccess()) {
+
+                        PacsView entity = GsonFactory.getSimpleGson().fromJson(response.body().result, PacsView.class);
+
+                        UIHelper.showToast(getContext(), entity.toString());
+                    }
+
+                } else {
+                    UIHelper.showToast(getContext(), "Null Response");
+
+                }
             }
 
+
             @Override
-            public void onError() {
-                UIHelper.showShortToastInCenter(getContext(), "failure");
+            public void onFailure(Call<WebResponse<JsonObject>> call, Throwable t) {
+
+                t.printStackTrace();
+
+
             }
         });
+    }
+
+    @NonNull
+    public RequestBody getRequestBody(MediaType form, String trim) {
+        return RequestBody.create(
+                form, trim);
     }
 }
 

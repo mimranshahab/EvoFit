@@ -1,5 +1,7 @@
 package edu.aku.akuh_health_first.constatnts;
 
+import edu.aku.akuh_health_first.fragments.LoginFragment;
+
 /**
  * Created by khanhamza on 09-Mar-17.
  */
@@ -9,13 +11,16 @@ public class WebServiceConstants {
     String postmanLink = "https://www.getpostman.com/collections/1d39c488e283b95f6e23";
 
     public static String BASE_URL = "http://ahfapidev.aku.edu/api/";
+    public static String PACS_URL = "https://pacsviewer.aku.edu/api/";
 
 
     public static final String PARAMS_REQUEST_METHOD = "RequestMethod";
     public static final String PARAMS_REQUEST_DATA = "RequestData";
+    public static final String requestor = "aku.edu";
     public static final String temporaryToken = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJ3d3cuYWt1LmVkdSIsInN1YiI6Im1ubUBtbm0uY29tIiwiaXNzIjoiTW5NIn0.PRbF6RNmjYm7ai8jQNShBmyDLlZfIWv2Z6V2KosJgjE";
 
     public static final String tempUserName = "mahrukh.mehmood";
+    public static final String tempPacViews = "46015891";
     public static final String tempPassword = "yU~6PWMs(,;3Wk3qK{J0{EWhEb-tl7C";
     /**
      * REQUEST METHODS NAMES
@@ -25,6 +30,7 @@ public class WebServiceConstants {
     public static final String METHOD_USER_GET_REGISTER_VM = "UserManager.GetRegisterVM";
     public static final String METHOD_USER_GET_USER = "UserManager.Login";
     public static final String METHOD_USER_UPLOAD_REQUEST_FILE = "UserManager.UploadRequestFile";
+    public static final String METHOD_PACMANAGER = "PACSManager.GetPacs";
 
 
     /**
@@ -42,6 +48,11 @@ public class WebServiceConstants {
     public static final String WS_KEY_REGISTER = "register";
     public static final String WS_KEY_EDIT_PROFILE = "user/update";
     public static final String WS_KEY_FORGOT_PASSWORD = "forgotpassword";
+    public static final String WS_KEY_GET_TOKEN = "GetToken";
+    public static final String WS_KEY_GET_REQUESTOR= "Requestor: aku.edu";
+    public static final String WS_KEY_PACS_VIEWER = "PACSViewer";
+    public static final String WS_KEY_IMAGE_URL = "wado?requestType=WADO&studyUID=1.2.392.200036.9125.2.353644173100.64863020020.362418&seriesUID=1.2.392.200036.9125.3.353644173100.64863020020.362419&objectUID=1.2.392.200036.9125.9.0.253360372.1325662243.606907748&contentType=image/jpeg";
+
 
     public static final String WS_KEY_STATIC_PAGE = "cms";
     public static final String WS_KEY_ADDRESSES = "address";

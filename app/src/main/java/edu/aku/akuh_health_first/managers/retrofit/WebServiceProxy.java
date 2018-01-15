@@ -2,7 +2,10 @@ package edu.aku.akuh_health_first.managers.retrofit;
 
 import com.google.gson.JsonObject;
 
+import org.json.JSONObject;
+
 import edu.aku.akuh_health_first.constatnts.WebServiceConstants;
+import edu.aku.akuh_health_first.fragments.LoginFragment;
 import edu.aku.akuh_health_first.models.Content;
 import edu.aku.akuh_health_first.models.UserModel;
 import edu.aku.akuh_health_first.models.extramodels.AddressModel;
@@ -15,10 +18,12 @@ import java.util.ArrayList;
 
 import okhttp3.MultipartBody;
 import okhttp3.RequestBody;
+import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.http.Field;
 import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
+import retrofit2.http.Headers;
 import retrofit2.http.Multipart;
 import retrofit2.http.POST;
 import retrofit2.http.Part;
@@ -47,7 +52,21 @@ public interface WebServiceProxy {
     );
 
 
+    @Headers(WebServiceConstants.WS_KEY_GET_REQUESTOR)
+    @GET(WebServiceConstants.WS_KEY_GET_TOKEN)
+    Call<String> getToken();
 
+
+    @Multipart
+    @POST(WebServiceConstants.WS_KEY_PACS_VIEWER)
+    Call<WebResponse<JsonObject>> pacView(
+            @Part("requestmethod") RequestBody requestmethod,
+            @Part("requestdata") RequestBody requestdata
+
+    );
+
+    @GET(WebServiceConstants.WS_KEY_IMAGE_URL)
+    Call<ResponseBody> downloadFileWithFixedUrl();
 
     /*
      * @param userEmail
@@ -72,6 +91,8 @@ public interface WebServiceProxy {
             @Part MultipartBody.Part profilePicture
     );
 
+
+
     /**
      * Login
      *
@@ -81,12 +102,15 @@ public interface WebServiceProxy {
      */
 
 
+
+
+
+
     @FormUrlEncoded
     @POST(WebServiceConstants.WS_KEY_LOGIN)
     Call<WebResponse<UserModel>> login(
             @Field("email") String userEmail,
             @Field("password") String userPassword);
-
 
     @Multipart
     @POST(WebServiceConstants.WS_KEY_EDIT_PROFILE)

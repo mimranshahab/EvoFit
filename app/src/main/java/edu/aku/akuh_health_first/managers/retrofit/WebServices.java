@@ -10,7 +10,9 @@ import com.google.gson.JsonObject;
 import java.lang.String;
 
 import edu.aku.akuh_health_first.constatnts.WebServiceConstants;
+import edu.aku.akuh_health_first.enums.BaseURLTypes;
 import edu.aku.akuh_health_first.enums.FileType;
+import edu.aku.akuh_health_first.enums.WebServiceTypes;
 import edu.aku.akuh_health_first.helperclasses.Helper;
 import edu.aku.akuh_health_first.helperclasses.ui.helper.UIHelper;
 import edu.aku.akuh_health_first.managers.FileManager;
@@ -36,8 +38,9 @@ public class WebServices {
     private Context mContext;
 
 
-    public WebServices(Activity activity, String token) {
-        apiService = WebServiceFactory.getInstance(token);
+    public WebServices(Activity activity, String token, final WebServiceTypes webServiceTypes, BaseURLTypes baseURLTypes) {
+//        apiService = WebServiceFactory.getInstance(token);
+        apiService = WebServiceFactory.getInstance(token,webServiceTypes, baseURLTypes);
         mContext = activity;
         mDialog = new ProgressDialog(mContext);
         mDialog.setMessage("Loading.....");
@@ -146,7 +149,9 @@ public class WebServices {
 
         try {
             if (Helper.isNetworkConnected(mContext, true)) {
-                apiService.webServiceRequestAPI(bodyRequestMethod, bodyRequestData).enqueue(new Callback<WebResponse<JsonObject>>() {
+                Call<WebResponse<JsonObject>> webResponseCall = apiService.webServiceRequestAPI(bodyRequestMethod, bodyRequestData);
+//                webResponseCall.request().newBuilder().addHeader("name", "hkhkhkhkhk").build();
+                webResponseCall.enqueue(new Callback<WebResponse<JsonObject>>() {
                     @Override
                     public void onResponse(Call<WebResponse<JsonObject>> call, Response<WebResponse<JsonObject>> response) {
                         dismissDialog();
@@ -190,8 +195,57 @@ public class WebServices {
     }
 
 
+//    public void webServiceGetToken(final IRequestJsonDataCallBackForStringResult callBack) {
+//
+//
+//        try {
+//            if (Helper.isNetworkConnected(mContext, true)) {
+//                apiService.getToken().enqueue(new Callback<WebResponse<String>>() {
+//                    @Override
+//                    public void onResponse(Call<WebResponse<String>> call, Response<WebResponse<String>> response) {
+//                        dismissDialog();
+//                        if (!IsResponseErrorForStringResult(response)) {
+//                            String errorBody;
+//                            try {
+//                                errorBody = response.errorBody().string();
+//                                UIHelper.showShortToastInCenter(mContext, errorBody);
+//                                callBack.onError();
+//                            } catch (IOException e) {
+//                                e.printStackTrace();
+//                            }
+//                            return;
+//                        }
+//
+//                        if (hasValidStatusForStringResult(response))
+//                            callBack.requestDataResponse(response.body());
+//                        else {
+//                            String message = response.body().message != null ? response.body().message : response.errorBody().toString();
+//                            UIHelper.showShortToastInCenter(mContext, message);
+//                        }
+//                    }
+//
+//                    @Override
+//                    public void onFailure(Call<WebResponse<String>> call, Throwable t) {
+//                        UIHelper.showShortToastInCenter(mContext, "Something went wrong, Please check your internet connection.");
+//                        dismissDialog();
+//                        callBack.onError();
+//                    }
+//                });
+//            } else {
+//                dismissDialog();
+//            }
+//
+//        } catch (Exception e) {
+//            dismissDialog();
+//            e.printStackTrace();
+//
+//        }
+//
+//    }
+
+
     @NonNull
-    private RequestBody getRequestBody(MediaType form, String trim) {
+    public RequestBody getRequestBody(MediaType form, String trim) {
         return RequestBody.create(
                 form, trim);
     }

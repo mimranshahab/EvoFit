@@ -26,7 +26,9 @@ import java.util.ArrayList;
 
 import edu.aku.akuh_health_first.constatnts.AppConstants;
 import edu.aku.akuh_health_first.constatnts.WebServiceConstants;
+import edu.aku.akuh_health_first.enums.BaseURLTypes;
 import edu.aku.akuh_health_first.enums.FileType;
+import edu.aku.akuh_health_first.enums.WebServiceTypes;
 import edu.aku.akuh_health_first.helperclasses.RunTimePermissions;
 import edu.aku.akuh_health_first.helperclasses.ui.helper.KeyboardHide;
 import edu.aku.akuh_health_first.helperclasses.ui.helper.SquareImageView;
@@ -272,7 +274,7 @@ public class AddFamilyMemberFragment extends BaseFragment {
     }
 
     private void uploadImageFile(final String uploadFilePath, final String uploadFileUriPath) {
-        new WebServices(getMainActivity(), WebServiceConstants.temporaryToken)
+        new WebServices(getMainActivity(), WebServiceConstants.temporaryToken, WebServiceTypes.ONLY_TOKEN, BaseURLTypes.AHFA)
                 .webServiceRequestFileAPI(WebServiceConstants.METHOD_USER_UPLOAD_REQUEST_FILE, uploadFilePath, FileType.IMAGE, new WebServices.IRequestJsonDataCallBackForStringResult() {
                     @Override
                     public void requestDataResponse(WebResponse<String> webResponse) {

@@ -17,6 +17,16 @@ public class LoginApiModel {
     @SerializedName("Password")
     private String password;
 
+    public String getToken() {
+        return token;
+    }
+
+    public void setToken(String token) {
+        this.token = token;
+    }
+
+    private String token;
+
 
     public LoginApiModel(String userid, String password) {
         this.userid = userid;
