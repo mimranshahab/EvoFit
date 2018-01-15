@@ -52,7 +52,7 @@ public class FeedbackFragment extends BaseFragment {
         titleBar.resetViews();
         titleBar.setVisibility(View.VISIBLE);
         titleBar.setTitle(getString(R.string.feedback_and_suggestions));
-        titleBar.showBackButton(getMainActivity());
+        titleBar.showBackButton(getBaseActivity());
     }
 
     @Override

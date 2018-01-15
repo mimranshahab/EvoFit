@@ -66,7 +66,7 @@ public class GenericContentFragment extends BaseFragment {
         titleBar.resetViews();
         titleBar.setVisibility(View.VISIBLE);
         titleBar.setTitle(title);
-        titleBar.showBackButton(getMainActivity());
+        titleBar.showBackButton(getBaseActivity());
     }
 
     @Override

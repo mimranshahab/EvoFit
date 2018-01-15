@@ -22,7 +22,7 @@ import android.widget.LinearLayout;
 import com.nineoldandroids.view.ViewHelper;
 
 import edu.aku.akuh_health_first.R;
-import edu.aku.akuh_health_first.activities.MainActivity;
+import edu.aku.akuh_health_first.activities.BaseActivity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -55,7 +55,7 @@ public class ResideMenu extends FrameLayout {
     /**
      * Current attaching activity.
      */
-    private MainActivity activity;
+    private BaseActivity activity;
     /**
      * The DecorView of current activity.
      */
@@ -85,12 +85,12 @@ public class ResideMenu extends FrameLayout {
     private boolean mUse3D;
     private static final int ROTATE_Y_ANGLE = 10;
 
-    private MainActivity context;
+    private BaseActivity context;
 
     //private BlurTask blurTask;
 
 
-    public ResideMenu(MainActivity context) {
+    public ResideMenu(BaseActivity context) {
         super(context);
         initViews(context, -1, -1);
 
@@ -167,13 +167,13 @@ public class ResideMenu extends FrameLayout {
      *
      * @param activity
      */
-    public void attachToActivity(MainActivity activity) {
+    public void attachToActivity(BaseActivity activity) {
         initValue(activity);
         setShadowAdjustScaleXByOrientation();
         viewDecor.addView(this, 0);
     }
 
-    private void initValue(MainActivity activity) {
+    private void initValue(BaseActivity activity) {
         try {
             this.activity = activity;
             //leftMenuItems = new ArrayList<ResideMenuItem>();

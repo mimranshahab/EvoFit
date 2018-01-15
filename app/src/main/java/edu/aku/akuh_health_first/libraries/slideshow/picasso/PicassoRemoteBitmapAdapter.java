@@ -5,7 +5,10 @@ import android.content.Context;
 import com.squareup.picasso.Picasso;
 import com.squareup.picasso.RequestCreator;
 
+import java.net.URL;
 import java.util.Collection;
+
+import retrofit2.http.Url;
 
 /**
  * An implementation of GenericPicassoBitmapAdapter to load remote images from the Internet

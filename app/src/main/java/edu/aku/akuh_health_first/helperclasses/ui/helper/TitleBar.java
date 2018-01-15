@@ -14,8 +14,7 @@ import com.ctrlplusz.anytextview.AnyEditTextView;
 import com.ctrlplusz.anytextview.AnyTextView;
 
 import edu.aku.akuh_health_first.R;
-import edu.aku.akuh_health_first.activities.MainActivity;
-import edu.aku.akuh_health_first.libraries.residemenu.ResideMenu;
+ import edu.aku.akuh_health_first.activities.BaseActivity;
 
 import butterknife.BindView;
 
@@ -104,7 +103,7 @@ public class TitleBar extends RelativeLayout {
         txtCircle.setVisibility(GONE);
     }
 
-    public void setSearchField(final MainActivity mActivity, TextView.OnEditorActionListener onEditorActionListener) {
+    public void setSearchField(final BaseActivity mActivity, TextView.OnEditorActionListener onEditorActionListener) {
         containerTitlebar1.setVisibility(GONE);
         containerTitlebar2.setVisibility(VISIBLE);
         edtSearchField.setVisibility(VISIBLE);
@@ -116,7 +115,7 @@ public class TitleBar extends RelativeLayout {
     }
 
 
-    public void closeSearchField(final MainActivity mActivity) {
+    public void closeSearchField(final BaseActivity mActivity) {
         containerTitlebar1.setVisibility(VISIBLE);
 
         containerTitlebar2.setVisibility(GONE);
@@ -133,7 +132,7 @@ public class TitleBar extends RelativeLayout {
     }
 
 
-    public void showBackButton(final MainActivity mActivity) {
+    public void showBackButton(final BaseActivity mActivity) {
         this.btnLeft1.setVisibility(VISIBLE);
         this.btnLeft1.setImageResource(R.drawable.imgback);
         btnLeft1.setOnClickListener(new OnClickListener() {
@@ -154,7 +153,7 @@ public class TitleBar extends RelativeLayout {
     }
 
 
-    public void showSidebar(final MainActivity mActivity) {
+    public void showSidebar(final BaseActivity mActivity) {
         this.btnLeft1.setVisibility(VISIBLE);
         this.btnLeft1.setImageResource(R.drawable.imgside_nav);
         btnLeft1.setOnClickListener(new OnClickListener() {

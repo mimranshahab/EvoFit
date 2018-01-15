@@ -94,6 +94,7 @@
             android:name=".activities.slidingmenu.SlidingFragmentActivity"
             android:theme="@style/AppTheme"
             android:screenOrientation="portrait" />
+        <activity android:name=".activities.HomeActivity" />
 
     </application>
 

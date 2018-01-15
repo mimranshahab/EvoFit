@@ -7,27 +7,13 @@
 //import android.content.Intent;
 //import android.media.RingtoneManager;
 //import android.net.Uri;
-//import android.support.v7.app.NotificationCompat;
-//import android.util.Pair;
+//import android.support.v4.app.NotificationCompat;
 //
-//import com.structure.AppConstants;
-//import com.structure.BaseApplication;
-//import com.structure.R;
-//import com.structure.activities.ChatActivity;
-//import com.structure.activities.MainActivity;
-//import com.structure.enums.CallType;
-//import com.structure.enums.MuteType;
-//import com.structure.models.ChatModel;
-//import com.structure.models.ContactDetailModel;
-//import com.structure.models.GroupDetailModel;
-//import com.structure.models.MessageModel;
-//import com.structure.util.Helper;
-//
-//import io.realm.RealmResults;
-//
-//import static com.structure.AppConstants.LIGHT_DURATION_OFF;
-//import static com.structure.AppConstants.LIGHT_DURATION_ON;
-//import static com.structure.util.Helper.getProfileImage;
+//import edu.aku.akuh_health_first.BaseApplication;
+//import edu.aku.akuh_health_first.R;
+//import edu.aku.akuh_health_first.activities.MainActivity;
+//import edu.aku.akuh_health_first.constatnts.AppConstants;
+//import edu.aku.akuh_health_first.managers.DateManager;
 //
 ///**
 // * Created by muhammadmuzammil on 7/25/2017.

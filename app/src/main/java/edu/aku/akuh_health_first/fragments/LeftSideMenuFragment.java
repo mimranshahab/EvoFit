@@ -132,7 +132,7 @@ public class LeftSideMenuFragment extends BaseFragment {
             public void click() {
                 genericDialogFragment.getDialog().dismiss();
                 emptyBackStack();
-                getMainActivity().addDockableFragment(LoginFragment.newInstance());
+                getBaseActivity().addDockableFragment(LoginFragment.newInstance());
             }
         });
 

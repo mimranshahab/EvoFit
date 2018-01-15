@@ -1,4 +1,4 @@
-package edu.aku.akuh_health_first.utility;
+package edu.aku.akuh_health_first.utils.utility;
 
 import android.app.Activity;
 import android.content.Context;

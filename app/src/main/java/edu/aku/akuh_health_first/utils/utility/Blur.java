@@ -1,4 +1,4 @@
-package edu.aku.akuh_health_first.utility;
+package edu.aku.akuh_health_first.utils.utility;
 
 import android.annotation.SuppressLint;
 import android.content.Context;

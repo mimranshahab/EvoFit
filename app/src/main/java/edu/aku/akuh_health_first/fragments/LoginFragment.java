@@ -26,7 +26,6 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import butterknife.Unbinder;
-import edu.aku.akuh_health_first.libraries.slideshow.SlideShowAdapter;
 import edu.aku.akuh_health_first.managers.retrofit.GsonFactory;
 import edu.aku.akuh_health_first.managers.retrofit.WebServices;
 import edu.aku.akuh_health_first.models.UserModel;
@@ -67,7 +66,7 @@ public class LoginFragment extends BaseFragment {
     public void setTitlebar(TitleBar titleBar) {
         titleBar.resetViews();
         titleBar.setVisibility(View.VISIBLE);
-        titleBar.showSidebar(getMainActivity());
+        titleBar.showSidebar(getBaseActivity());
     }
 
 
@@ -101,15 +100,14 @@ public class LoginFragment extends BaseFragment {
         edtPassword.addValidator(new PasswordValidation());
         setClickableSpan(txtSignUp);
 
-        setResideMenu();
     }
 
 
     private void setClickableSpan(TextView textView) {
-        GenericClickableSpan text1 = new GenericClickableSpan(getMainActivity(), new GenericClickableInterface() {
+        GenericClickableSpan text1 = new GenericClickableSpan(getBaseActivity(), new GenericClickableInterface() {
             @Override
             public void click() {
-                getMainActivity().addDockableFragment(RegisterFragment.newInstance());
+                getBaseActivity().addDockableFragment(RegisterFragment.newInstance());
             }
         });
         text1.setSpannableStringValue(textView, getString(R.string.register_an_account), new SpannableString(textView.getText().toString().trim()));
@@ -128,7 +126,7 @@ public class LoginFragment extends BaseFragment {
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.txtForgotPassword:
-                getMainActivity().addDockableFragment(SlideShowFragment.newInstance());
+                getBaseActivity().addDockableFragment(SlideShowFragment.newInstance());
 
                 break;
             case R.id.btnLogin:
@@ -138,7 +136,7 @@ public class LoginFragment extends BaseFragment {
                     // FIXME: 1/2/2018 enter live data
                     LoginApiModel loginApiModel = new LoginApiModel(WebServiceConstants.tempUserName,WebServiceConstants.tempPassword);
 
-                    new WebServices(getMainActivity(), WebServiceConstants.temporaryToken).webServiceRequestAPI(WebServiceConstants.METHOD_USER_GET_USER, loginApiModel.toString(), new WebServices.IRequestJsonDataCallBack() {
+                    new WebServices(getBaseActivity(), WebServiceConstants.temporaryToken).webServiceRequestAPI(WebServiceConstants.METHOD_USER_GET_USER, loginApiModel.toString(), new WebServices.IRequestJsonDataCallBack() {
                         @Override
                         public void requestDataResponse(WebResponse<JsonObject> webResponse) {
                             UserModel userModel = GsonFactory.getSimpleGson().fromJson(webResponse.result, UserModel.class);

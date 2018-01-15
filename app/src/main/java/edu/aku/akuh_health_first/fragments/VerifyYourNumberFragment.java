@@ -71,7 +71,7 @@ public class VerifyYourNumberFragment extends BaseFragment {
         titleBar.resetViews();
         titleBar.setVisibility(View.VISIBLE);
         titleBar.setTitle(getString(R.string.verifyYourNumber));
-        titleBar.showBackButton(getMainActivity());
+        titleBar.showBackButton(getBaseActivity());
     }
 
     @Override
@@ -98,7 +98,7 @@ public class VerifyYourNumberFragment extends BaseFragment {
         arrCountries.clear();
 
         setSpinnerArray();
-        adaptCountry = new ArrayAdapter<>(getMainActivity(),
+        adaptCountry = new ArrayAdapter<>(getBaseActivity(),
                 android.R.layout.simple_list_item_1, arrCountries);
 
     }
@@ -143,7 +143,7 @@ public class VerifyYourNumberFragment extends BaseFragment {
     @Override
     public void onResume() {
         super.onResume();
-        KeyboardHide.hideSoftKeyboard(getMainActivity(), getView());
+        KeyboardHide.hideSoftKeyboard(getBaseActivity(), getView());
 
     }
 
@@ -161,8 +161,8 @@ public class VerifyYourNumberFragment extends BaseFragment {
 //                        }
 //                        if (response.body().isSuccess()) {
 //                            UIHelper.showToast(getContext(), response.body().message);
-//                            if (getMainActivity() != null && edtCountryCode != null && edMobileNumber != null) {
-//                                getMainActivity().addDockableFragment(VerifyNumberCodeFragment.newInstance(edtCountryCode.getText().toString().trim(), edMobileNumber.getText().toString().trim()));
+//                            if (getBaseActivity() != null && edtCountryCode != null && edMobileNumber != null) {
+//                                getBaseActivity().addDockableFragment(VerifyNumberCodeFragment.newInstance(edtCountryCode.getText().toString().trim(), edMobileNumber.getText().toString().trim()));
 //                            }
 //                        } else {
 //                            UIHelper.showToast(getContext(), response.body().message);

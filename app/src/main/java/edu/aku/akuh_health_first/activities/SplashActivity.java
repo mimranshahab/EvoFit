@@ -19,13 +19,13 @@ public class SplashActivity extends Activity {
 
     @BindView(R.id.contParentLayout)
     LinearLayout contParentLayout;
-//    private final int SPLASH_TIME_OUT = 2000;
-//    private final int ANIMATIONS_DELAY = 500;
-//    private final int ANIMATIONS_TIME_OUT = 1000;
+    private final int SPLASH_TIME_OUT = 2000;
+    private final int ANIMATIONS_DELAY = 500;
+    private final int ANIMATIONS_TIME_OUT = 1000;
 
-    private final int SPLASH_TIME_OUT = 200;
-    private final int ANIMATIONS_DELAY = 50;
-    private final int ANIMATIONS_TIME_OUT = 100;
+//    private final int SPLASH_TIME_OUT = 200;
+//    private final int ANIMATIONS_DELAY = 50;
+//    private final int ANIMATIONS_TIME_OUT = 100;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

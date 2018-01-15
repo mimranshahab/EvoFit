@@ -1,23 +1,14 @@
 package edu.aku.akuh_health_first.activities;
 
 import android.os.Bundle;
-import android.os.PersistableBundle;
 import android.support.annotation.Nullable;
-import android.support.v4.app.Fragment;
-import android.support.v4.widget.DrawerLayout;
-import android.support.v7.app.AppCompatActivity;
 import android.view.Gravity;
-import android.view.View;
 
 import edu.aku.akuh_health_first.R;
-import edu.aku.akuh_health_first.fragments.LeftSideMenuFragment;
 import edu.aku.akuh_health_first.fragments.LoginFragment;
-import edu.aku.akuh_health_first.fragments.abstracts.GenericClickableInterface;
-import edu.aku.akuh_health_first.fragments.abstracts.GenericDialogFragment;
-import edu.aku.akuh_health_first.helperclasses.ui.helper.TitleBar;
 
 
-public class MainActivity extends BaseActivity {
+public class HomeActivity extends BaseActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,7 +26,7 @@ public class MainActivity extends BaseActivity {
 
     @Override
     protected int getViewId() {
-        return R.layout.activity_main;
+        return R.layout.activity_home;
     }
 
     @Override

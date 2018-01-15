@@ -75,7 +75,7 @@ public class VerifyNumberCodeFragment extends BaseFragment {
         titleBar.resetViews();
         titleBar.setVisibility(View.VISIBLE);
         titleBar.setTitle(getString(R.string.verificationCode));
-        titleBar.showBackButton(getMainActivity());
+        titleBar.showBackButton(getBaseActivity());
     }
 
     @Override
@@ -144,7 +144,7 @@ public class VerifyNumberCodeFragment extends BaseFragment {
     @Override
     public void onResume() {
         super.onResume();
-        KeyboardHide.hideSoftKeyboard(getMainActivity(), getView());
+        KeyboardHide.hideSoftKeyboard(getBaseActivity(), getView());
 
     }
 

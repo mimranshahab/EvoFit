@@ -60,7 +60,7 @@ public class SlideShowFragment extends BaseFragment {
         titleBar.setRightButton(R.drawable.menu_divider, new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                PopupMenu popup = new PopupMenu(getContext(), getMainActivity().getTitleBar().btnRight1);
+                PopupMenu popup = new PopupMenu(getContext(), getBaseActivity().getTitleBar().btnRight1);
                 popup.getMenuInflater().inflate(R.menu.slideshow, popup.getMenu());
                 popup.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
                     @Override

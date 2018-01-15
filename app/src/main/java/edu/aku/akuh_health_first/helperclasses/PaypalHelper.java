@@ -12,7 +12,7 @@ import com.paypal.android.sdk.payments.PaymentActivity;
 import com.paypal.android.sdk.payments.PaymentConfirmation;
 
 import edu.aku.akuh_health_first.helperclasses.ui.helper.UIHelper;
-import edu.aku.akuh_health_first.activities.MainActivity;
+import edu.aku.akuh_health_first.activities.BaseActivity;
 
 import java.math.BigDecimal;
 
@@ -32,7 +32,7 @@ public class PaypalHelper {
     private PayPalConfiguration payPalConfiguration;
     private String payPalClientID = CONFIG_CLIENT_ID_SANDBOX;
     private Intent service;
-    private MainActivity context;
+    private BaseActivity context;
     private String price;
     private PayPalInterface payPalinterface;
 
@@ -53,7 +53,7 @@ public class PaypalHelper {
         return paypalHelper;
     }
 
-    public void configurePayPal(MainActivity context, String price, PayPalInterface paypalInterface) {
+    public void configurePayPal(BaseActivity context, String price, PayPalInterface paypalInterface) {
         this.context = context;
         this.price = price;
         this.payPalinterface = paypalInterface;

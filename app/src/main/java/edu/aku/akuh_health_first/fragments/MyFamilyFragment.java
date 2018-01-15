@@ -42,11 +42,11 @@ public class MyFamilyFragment extends BaseFragment {
     public void setTitlebar(TitleBar titleBar) {
         titleBar.resetViews();
         titleBar.setVisibility(View.VISIBLE);
-        titleBar.showBackButton(getMainActivity());
+        titleBar.showBackButton(getBaseActivity());
         titleBar.setRightButton(R.drawable.plus, new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                getMainActivity().addDockableFragment(AddFamilyMemberFragment.newInstance());
+                getBaseActivity().addDockableFragment(AddFamilyMemberFragment.newInstance());
             }
         });
     }
