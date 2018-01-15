@@ -171,22 +171,22 @@ public class RegisterFragment extends BaseFragment {
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        RunTimePermissions.verifyStoragePermissions(getMainActivity());
+        RunTimePermissions.verifyStoragePermissions(getBaseActivity());
 
         arrGender = new ArrayList<RegisterOptionsModel>();
-        adaptGender = new ArrayAdapter<RegisterOptionsModel>(getMainActivity(),
+        adaptGender = new ArrayAdapter<RegisterOptionsModel>(getBaseActivity(),
                 android.R.layout.simple_list_item_1, arrGender);
 
         arrCurrentCountry = new ArrayList<RegisterOptionsModel>();
-        adaptCurrentCountry = new ArrayAdapter<RegisterOptionsModel>(getMainActivity(),
+        adaptCurrentCountry = new ArrayAdapter<RegisterOptionsModel>(getBaseActivity(),
                 android.R.layout.simple_list_item_1, arrCurrentCountry);
 
         arrPermanentCountry = new ArrayList<RegisterOptionsModel>();
-        adaptPermanentCountry = new ArrayAdapter<RegisterOptionsModel>(getMainActivity(),
+        adaptPermanentCountry = new ArrayAdapter<RegisterOptionsModel>(getBaseActivity(),
                 android.R.layout.simple_list_item_1, arrPermanentCountry);
 
         arrCardType = new ArrayList<RegisterOptionsModel>();
-        adaptCardType = new ArrayAdapter<RegisterOptionsModel>(getMainActivity(),
+        adaptCardType = new ArrayAdapter<RegisterOptionsModel>(getBaseActivity(),
                 android.R.layout.simple_list_item_1, arrCardType);
     }
 
@@ -196,7 +196,7 @@ public class RegisterFragment extends BaseFragment {
         titleBar.resetViews();
         titleBar.setVisibility(View.VISIBLE);
         titleBar.setTitle("Register");
-        titleBar.showBackButton(getMainActivity());
+        titleBar.showBackButton(getBaseActivity());
     }
 
     @Override
@@ -229,7 +229,7 @@ public class RegisterFragment extends BaseFragment {
     }
 
     private void getRegisterVM() {
-        new WebServices(getMainActivity(),
+        new WebServices(getBaseActivity(),
                 WebServiceConstants.temporaryToken, WebServiceTypes.ONLY_TOKEN, BaseURLTypes.AHFA)
                 .webServiceRequestAPI(WebServiceConstants.METHOD_USER_GET_REGISTER_VM, "", new WebServices.IRequestJsonDataCallBack() {
                     @Override
@@ -313,7 +313,7 @@ public class RegisterFragment extends BaseFragment {
 //
 //
 //                    UIHelper.showShortToastInCenter(getContext(), "Successful registration");
-//                    getMainActivity().addDockableFragment(MyFamilyFragment.newInstance());
+//                    getBaseActivity().addDockableFragment(MyFamilyFragment.newInstance());
 //
 //
 //                } else {
@@ -322,7 +322,7 @@ public class RegisterFragment extends BaseFragment {
 
 
                 if (edtCNICNumber.testValidity() && edtMRNumber.testValidity()) {
-                    getMainActivity().addDockableFragment(MyFamilyFragment.newInstance());
+                    getBaseActivity().addDockableFragment(MyFamilyFragment.newInstance());
                 }
 
                 break;
@@ -346,7 +346,7 @@ public class RegisterFragment extends BaseFragment {
     }
 
     private void uploadImageFile(final String uploadFilePath, final String uploadFileUriPath) {
-        new WebServices(getMainActivity(),
+        new WebServices(getBaseActivity(),
                 WebServiceConstants.temporaryToken, WebServiceTypes.ONLY_TOKEN, BaseURLTypes.AHFA)
                 .webServiceRequestFileAPI(WebServiceConstants.METHOD_USER_UPLOAD_REQUEST_FILE, uploadFilePath, FileType.IMAGE, new WebServices.IRequestJsonDataCallBackForStringResult() {
                     @Override
@@ -386,7 +386,7 @@ public class RegisterFragment extends BaseFragment {
 //            @Override
 //            public void click() {
 //                genericDialogFragment.getDialog().dismiss();
-//                getMainActivity().takePicture();
+//                getBaseActivity().takePicture();
 //            }
 //        });
 //
@@ -394,7 +394,7 @@ public class RegisterFragment extends BaseFragment {
 //            @Override
 //            public void click() {
 //                genericDialogFragment.getDialog().dismiss();
-//                getMainActivity().chooseImage();
+//                getBaseActivity().chooseImage();
 //            }
 //        });
 //        genericDialogFragment.show(getFragmentManager(), null);
@@ -409,7 +409,7 @@ public class RegisterFragment extends BaseFragment {
     @Override
     public void onResume() {
         super.onResume();
-        KeyboardHide.hideSoftKeyboard(getMainActivity(), getView());
+        KeyboardHide.hideSoftKeyboard(getBaseActivity(), getView());
     }
 
     @Override
@@ -442,7 +442,7 @@ public class RegisterFragment extends BaseFragment {
         successDialogFragment.setButton1(getString(R.string.Ok), new GenericClickableInterface() {
             @Override
             public void click() {
-                getMainActivity().addDockableFragment(VerifyYourNumberFragment.newInstance());
+                getBaseActivity().addDockableFragment(VerifyYourNumberFragment.newInstance());
                 successDialogFragment.getDialog().dismiss();
             }
         });
@@ -507,7 +507,7 @@ public class RegisterFragment extends BaseFragment {
         item.add(WebServiceConstants.tempPacViews.toString());
 
         PacsView pacViews = new PacsView(item);
-//        new WebServices(getMainActivity(),
+//        new WebServices(getBaseActivity(),
 //                WebServiceConstants.temporaryToken, WebServiceTypes.TOKEN_AND_BEARER, BaseURLTypes.PACS).webServiceRequestAPI(WebServiceConstants.METHOD_PACMANAGER,
 //                pacViews.toString(),
 //                new WebServices.IRequestJsonDataCallBack() {

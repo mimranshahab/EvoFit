@@ -1,50 +1,61 @@
-
 package edu.aku.akuh_health_first.activities;
 
 import android.os.Bundle;
+import android.os.PersistableBundle;
+import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
+import android.view.Gravity;
 import android.view.View;
-import android.widget.RelativeLayout;
 
+import edu.aku.akuh_health_first.R;
 import edu.aku.akuh_health_first.fragments.LeftSideMenuFragment;
 import edu.aku.akuh_health_first.fragments.LoginFragment;
 import edu.aku.akuh_health_first.fragments.abstracts.GenericClickableInterface;
 import edu.aku.akuh_health_first.fragments.abstracts.GenericDialogFragment;
 import edu.aku.akuh_health_first.helperclasses.ui.helper.TitleBar;
-import edu.aku.akuh_health_first.residemenu.ResideMenu;
-import edu.aku.akuh_health_first.R;
 
-public class MainActivity extends AppCompatActivity {
 
-    public DrawerLayout drawerLayout;
-
-    private TitleBar titleBar;
-    private LeftSideMenuFragment leftSideMenuFragment;
-
-    private ResideMenu resideMenu;
-
-//    //For Blurred Background
-//    private Bitmap mDownScaled;
-//    private String mBackgroundFilename;
-//    private Bitmap background;
-//    private ImageView imageBlur;
-
+public class MainActivity extends BaseActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+//        setContentView(R.layout.activity_main);
+    }
 
-        setAndBindTitleBar();
-        setSideMenu(ResideMenu.DIRECTION_LEFT);
-
-//        imageBlur = (ImageView) findViewById(R.id.imageBlur);
-
-        // check if user is registered or not
+    @Override
+    protected void onPostCreate(@Nullable Bundle savedInstanceState) {
+        super.onPostCreate(savedInstanceState);
         initFragments();
+    }
 
+
+
+    @Override
+    protected int getViewId() {
+        return R.layout.activity_main;
+    }
+
+    @Override
+    protected int getTitlebarLayoutId() {
+        return R.id.titlebar;
+    }
+
+    @Override
+    protected int getDrawerLayoutId() {
+        return R.id.drawer_layout;
+    }
+
+    @Override
+    protected int getDockableFragmentId() {
+        return R.id.contMain;
+    }
+
+    @Override
+    protected int getDrawerFragmentId() {
+        return R.id.contDrawer;
     }
 
 
@@ -52,108 +63,13 @@ public class MainActivity extends AppCompatActivity {
         addDockableFragment(LoginFragment.newInstance());
     }
 
-// RESIDE MENU ->
-
-
-    public void setSideMenu(int direction) {
-        resideMenu = new ResideMenu(this);
-        resideMenu.setSwipeDirectionDisable(ResideMenu.DIRECTION_RIGHT);
-        resideMenu.setBackground(R.drawable.imgmainbg);
-        resideMenu.attachToActivity(this);
-        resideMenu.setScaleValue(0.56f);
-        resideMenu.setShadowVisible(false);
-        setMenuItemDirection(direction);
-    }
-
-
-    public void setMenuItemDirection(int direction) {
-
-        if (direction == ResideMenu.DIRECTION_LEFT) {
-            leftSideMenuFragment = LeftSideMenuFragment.newInstance();
-            resideMenu.addMenuItem(leftSideMenuFragment, "LeftSideMenuFragment", direction);
-        }
-    }
-
-    public LeftSideMenuFragment getLeftSideMenuFragment() {
-        return leftSideMenuFragment;
-    }
-
-
-    public RelativeLayout getMainContentFrame() {
-//        return R.id.content_frame;
-        return (RelativeLayout) findViewById(R.id.content_frame);
-    }
-
-//    public ImageView getBlurImage() {
-//        return imageBlur;
-//    }
-
-//    public void setBlurBackground() {
-//
-//////        if (mBackgroundFilename == null) {
-////
-////        this.mDownScaled = Utils.drawViewToBitmap(this.getMainContentFrame(), Color.parseColor("#fff5f5f5"));
-////
-////        mBackgroundFilename = getBlurredBackgroundFilename();
-////        if (!TextUtils.isEmpty(mBackgroundFilename)) {
-////            //context.getMainContentFrame().setVisibility(View.VISIBLE);
-////            background = Utils.loadBitmapFromFile(mBackgroundFilename);
-//////                if (background != null) {
-////            getBlurImage().setVisibility(View.VISIBLE);
-////            getBlurImage().setImageBitmap(background);
-////            getBlurImage().animate().alpha(1);
-//////                }
-////        }
-//////        } else {
-//////            getBlurImage().setVisibility(View.VISIBLE);
-//////            getBlurImage().setImageBitmap(background);
-//////            getBlurImage().animate().alpha(1);
-//////        }
-////    }
-////
-////    public String getBlurredBackgroundFilename() {
-////        Bitmap localBitmap = Blur.fastblur(this, this.mDownScaled, 20);
-////        String str = Utils.saveBitmapToFile(this, localBitmap);
-////        this.mDownScaled.recycle();
-////        localBitmap.recycle();
-////        return str;
-////    }
-////
-////    public void removeBlurImage() {
-////        getBlurImage().setVisibility(View.GONE);
-////    }
-//
-
-
-//    @Override
-//    public boolean dispatchTouchEvent(MotionEvent ev) {
-//        return resideMenu.dispatchTouchEvent(ev);
-//    }
-
-
-    public ResideMenu getResideMenu() {
-        return resideMenu;
-    }
-
-
-    public void addDrawerFragment() {
-//        sidebarFragment = SidebarFragment.newInstance();
-//        getSupportFragmentManager().beginTransaction().replace(R.id.containerDrawer, sidebarFragment).commit();
-    }
-
-
-    private void setAndBindTitleBar() {
-        titleBar = (TitleBar) findViewById(R.id.titlebar);
-        titleBar.setVisibility(View.GONE);
-        titleBar.resetViews();
-    }
 
     @Override
     public void onBackPressed() {
         if (getSupportFragmentManager().getBackStackEntryCount() > 1) {
 
-            if (resideMenu.isOpened()) {
-                resideMenu.closeMenu();
+            if (drawerLayout.isDrawerOpen(Gravity.START)) {
+                drawerLayout.closeDrawer(Gravity.START);
             } else {
                 super.onBackPressed();
             }
@@ -163,36 +79,5 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-
-    private void closeApp() {
-        final GenericDialogFragment genericDialogFragment = GenericDialogFragment.newInstance();
-
-        genericDialogFragment.setTitle("Quit");
-        genericDialogFragment.setMessage("Do you want to close this application?");
-        genericDialogFragment.setButton1("Yes", new GenericClickableInterface() {
-            @Override
-            public void click() {
-                genericDialogFragment.getDialog().dismiss();
-                finish();
-            }
-        });
-
-        genericDialogFragment.setButton2("No", new GenericClickableInterface() {
-            @Override
-            public void click() {
-                genericDialogFragment.getDialog().dismiss();
-            }
-        });
-        genericDialogFragment.show(getSupportFragmentManager(), null);
-    }
-
-    public void addDockableFragment(Fragment fragment) {
-        getSupportFragmentManager().beginTransaction().replace(R.id.contMain, fragment).addToBackStack(fragment.getClass().getSimpleName())
-                .commit();
-    }
-
-    public TitleBar getTitleBar() {
-        return titleBar;
-    }
 
 }

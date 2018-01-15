@@ -1,6 +1,7 @@
 package edu.aku.akuh_health_first.helperclasses.ui.helper;
 
 import android.content.Context;
+import android.support.v4.view.GravityCompat;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -13,8 +14,7 @@ import com.ctrlplusz.anytextview.AnyEditTextView;
 import com.ctrlplusz.anytextview.AnyTextView;
 
 import edu.aku.akuh_health_first.R;
-import edu.aku.akuh_health_first.activities.MainActivity;
-import edu.aku.akuh_health_first.residemenu.ResideMenu;
+ import edu.aku.akuh_health_first.activities.BaseActivity;
 
 import butterknife.BindView;
 
@@ -103,7 +103,7 @@ public class TitleBar extends RelativeLayout {
         txtCircle.setVisibility(GONE);
     }
 
-    public void setSearchField(final MainActivity mActivity, TextView.OnEditorActionListener onEditorActionListener) {
+    public void setSearchField(final BaseActivity mActivity, TextView.OnEditorActionListener onEditorActionListener) {
         containerTitlebar1.setVisibility(GONE);
         containerTitlebar2.setVisibility(VISIBLE);
         edtSearchField.setVisibility(VISIBLE);
@@ -115,7 +115,7 @@ public class TitleBar extends RelativeLayout {
     }
 
 
-    public void closeSearchField(final MainActivity mActivity) {
+    public void closeSearchField(final BaseActivity mActivity) {
         containerTitlebar1.setVisibility(VISIBLE);
 
         containerTitlebar2.setVisibility(GONE);
@@ -132,7 +132,7 @@ public class TitleBar extends RelativeLayout {
     }
 
 
-    public void showBackButton(final MainActivity mActivity) {
+    public void showBackButton(final BaseActivity mActivity) {
         this.btnLeft1.setVisibility(VISIBLE);
         this.btnLeft1.setImageResource(R.drawable.imgback);
         btnLeft1.setOnClickListener(new OnClickListener() {
@@ -153,14 +153,15 @@ public class TitleBar extends RelativeLayout {
     }
 
 
-    public void showSidebar(final MainActivity mActivity) {
+    public void showSidebar(final BaseActivity mActivity) {
         this.btnLeft1.setVisibility(VISIBLE);
         this.btnLeft1.setImageResource(R.drawable.imgside_nav);
         btnLeft1.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
                 if (mActivity != null) {
-                    mActivity.getResideMenu().openMenu(ResideMenu.DIRECTION_LEFT);
+//                    mActivity.getResideMenu().openMenu(ResideMenu.DIRECTION_LEFT);
+                    mActivity.getDrawerLayout().openDrawer(GravityCompat.START);
                 }
 
             }

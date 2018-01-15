@@ -3,14 +3,14 @@ package edu.aku.akuh_health_first.fragments.abstracts;
 import android.Manifest;
 import android.app.Activity;
 import android.app.ProgressDialog;
-import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
+import android.support.v4.widget.DrawerLayout;
 import android.util.Log;
 import android.util.Pair;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -19,11 +19,11 @@ import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 import android.widget.TextView;
 
+import edu.aku.akuh_health_first.activities.BaseActivity;
 import edu.aku.akuh_health_first.callbacks.OnNewPacketReceivedListener;
 import edu.aku.akuh_health_first.helperclasses.ui.helper.KeyboardHide;
 import edu.aku.akuh_health_first.helperclasses.ui.helper.TitleBar;
 import edu.aku.akuh_health_first.helperclasses.ui.helper.UIHelper;
-import edu.aku.akuh_health_first.residemenu.ResideMenu;
 import edu.aku.akuh_health_first.BaseApplication;
 import edu.aku.akuh_health_first.activities.MainActivity;
 
@@ -42,48 +42,10 @@ import io.reactivex.functions.Consumer;
 public abstract class BaseFragment extends Fragment implements View.OnClickListener, AdapterView.OnItemClickListener {
 
     protected View view;
-    ProgressDialog progressDialog;
-
-    // Storage Permissions variables
-    private static final int REQUEST_EXTERNAL_STORAGE = 1;
-    private static String[] PERMISSIONS_STORAGE = {
-            Manifest.permission.READ_EXTERNAL_STORAGE,
-            Manifest.permission.WRITE_EXTERNAL_STORAGE
-    };
-
-    //persmission method.
-    public static void verifyStoragePermissions(Activity activity) {
-        // Check if we have read or write permission
-        int writePermission = ActivityCompat.checkSelfPermission(activity, Manifest.permission.WRITE_EXTERNAL_STORAGE);
-        int readPermission = ActivityCompat.checkSelfPermission(activity, Manifest.permission.READ_EXTERNAL_STORAGE);
-
-        if (writePermission != PackageManager.PERMISSION_GRANTED || readPermission != PackageManager.PERMISSION_GRANTED) {
-            // We don't have permission so prompt the user
-            ActivityCompat.requestPermissions(
-                    activity,
-                    PERMISSIONS_STORAGE,
-                    REQUEST_EXTERNAL_STORAGE
-            );
-        }
-    }
-
-    public void showProgress() {
-        progressDialog.setCancelable(false);
-//        progressDialog.setProgressDrawable(getResources().getDrawable(R.drawable.progress_bar_states));
-//        progressDialog.setIndeterminateDrawable(getResources().getDrawable(R.drawable.loader ));
-        progressDialog.setMessage("Loading");
-        progressDialog.show();
-    }
-
-    public void dismissProgress() {
-        progressDialog.dismiss();
-    }
-
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        progressDialog = new ProgressDialog(getMainActivity());
     }
 
     @Override
@@ -96,7 +58,9 @@ public abstract class BaseFragment extends Fragment implements View.OnClickListe
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        getMainActivity().getTitleBar().resetViews();
+        getBaseActivity().getTitleBar().resetViews();
+        getBaseActivity().getDrawerLayout().setDrawerLockMode(DrawerLayout.LOCK_MODE_UNLOCKED);
+        getBaseActivity().getDrawerLayout().closeDrawer(Gravity.LEFT);
     }
 
     public void setSpinner(ArrayAdapter adaptSpinner, final TextView textView, final Spinner spinner) {
@@ -125,8 +89,8 @@ public abstract class BaseFragment extends Fragment implements View.OnClickListe
 
     protected abstract int getFragmentLayout();
 
-    public MainActivity getMainActivity() {
-        return (MainActivity) getActivity();
+    public BaseActivity getBaseActivity() {
+        return (BaseActivity) getActivity();
     }
 
 
@@ -157,20 +121,20 @@ public abstract class BaseFragment extends Fragment implements View.OnClickListe
         super.onResume();
         setListeners();
 
-        if (getMainActivity() != null) {
-            setTitlebar(getMainActivity().getTitleBar());
+        if (getBaseActivity() != null) {
+            setTitlebar(getBaseActivity().getTitleBar());
         }
 
-        if (getMainActivity() != null && getMainActivity().getWindow().getDecorView() != null) {
-            KeyboardHide.hideSoftKeyboard(getMainActivity(), getMainActivity().getWindow().getDecorView());
+        if (getBaseActivity() != null && getBaseActivity().getWindow().getDecorView() != null) {
+            KeyboardHide.hideSoftKeyboard(getBaseActivity(), getBaseActivity().getWindow().getDecorView());
         }
     }
 
     @Override
     public void onPause() {
 
-        if (getMainActivity() != null && getMainActivity().getWindow().getDecorView() != null) {
-            KeyboardHide.hideSoftKeyboard(getMainActivity(), getMainActivity().getWindow().getDecorView());
+        if (getBaseActivity() != null && getBaseActivity().getWindow().getDecorView() != null) {
+            KeyboardHide.hideSoftKeyboard(getBaseActivity(), getBaseActivity().getWindow().getDecorView());
         }
 
         super.onPause();
@@ -229,20 +193,20 @@ public abstract class BaseFragment extends Fragment implements View.OnClickListe
     }
 
 
-    public ResideMenu getResideMenu() {
-        return getMainActivity().getResideMenu();
-    }
+//    public ResideMenu getResideMenu() {
+//        return getBaseActivity().getResideMenu();
+//    }
 
-
-    public void setResideMenu() {
-        getResideMenu().openMenu(ResideMenu.DIRECTION_LEFT);
-        getResideMenu().closeMenu();
-    }
+//
+//    public void setResideMenu() {
+////        getResideMenu().openMenu(ResideMenu.DIRECTION_LEFT);
+////        getResideMenu().closeMenu();
+//    }
 
 
     // FOR RESIDE MENU
-    public void closeMenu() {
-        getMainActivity().getResideMenu().closeMenu();
-    }
+//    public void closeMenu() {
+//        getBaseActivity().getResideMenu().closeMenu();
+//    }
 
 }

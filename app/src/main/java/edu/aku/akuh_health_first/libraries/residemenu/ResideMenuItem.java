@@ -1,4 +1,4 @@
-package edu.aku.akuh_health_first.residemenu;
+package edu.aku.akuh_health_first.libraries.residemenu;
 
 import android.content.Context;
 import android.view.LayoutInflater;

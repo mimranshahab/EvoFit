@@ -2,6 +2,18 @@
     <string name="app_name">AKU Health First</string>
     <string name="google_maps_key">AIzaSyBsP8jCqqrTckRDPcfaefKutSDo3NBENok</string>
 
+
+
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+
+    <string name="action_right_drawer">Right Drawer</string>
+
+
+
+
+
     <!--FONTS-->
     <string name="font_normal">Roboto-Light_D.ttf</string>
     <string name="font_bold">Roboto-Regular_1B.ttf</string>

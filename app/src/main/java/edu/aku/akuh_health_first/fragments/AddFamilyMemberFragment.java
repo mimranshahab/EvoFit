@@ -136,7 +136,7 @@ public class AddFamilyMemberFragment extends BaseFragment {
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        RunTimePermissions.verifyStoragePermissions(getMainActivity());
+        RunTimePermissions.verifyStoragePermissions(getBaseActivity());
         initializeArray();
     }
 
@@ -164,11 +164,11 @@ public class AddFamilyMemberFragment extends BaseFragment {
 
     private void initializeArray() {
         arrGender = new ArrayList<RegisterOptionsModel>();
-        adaptGender = new ArrayAdapter<RegisterOptionsModel>(getMainActivity(),
+        adaptGender = new ArrayAdapter<RegisterOptionsModel>(getBaseActivity(),
                 android.R.layout.simple_list_item_1, arrGender);
 
         arrRelationship = new ArrayList<RegisterOptionsModel>();
-        adaptRelationship = new ArrayAdapter<RegisterOptionsModel>(getMainActivity(),
+        adaptRelationship = new ArrayAdapter<RegisterOptionsModel>(getBaseActivity(),
                 android.R.layout.simple_list_item_1, arrRelationship);
     }
 
@@ -178,7 +178,7 @@ public class AddFamilyMemberFragment extends BaseFragment {
         titleBar.resetViews();
         titleBar.setVisibility(View.VISIBLE);
         titleBar.setTitle("Add Family Member");
-        titleBar.showBackButton(getMainActivity());
+        titleBar.showBackButton(getBaseActivity());
     }
 
     @Override
@@ -274,7 +274,7 @@ public class AddFamilyMemberFragment extends BaseFragment {
     }
 
     private void uploadImageFile(final String uploadFilePath, final String uploadFileUriPath) {
-        new WebServices(getMainActivity(), WebServiceConstants.temporaryToken, WebServiceTypes.ONLY_TOKEN, BaseURLTypes.AHFA)
+        new WebServices(getBaseActivity(), WebServiceConstants.temporaryToken)
                 .webServiceRequestFileAPI(WebServiceConstants.METHOD_USER_UPLOAD_REQUEST_FILE, uploadFilePath, FileType.IMAGE, new WebServices.IRequestJsonDataCallBackForStringResult() {
                     @Override
                     public void requestDataResponse(WebResponse<String> webResponse) {
@@ -302,7 +302,7 @@ public class AddFamilyMemberFragment extends BaseFragment {
     @Override
     public void onResume() {
         super.onResume();
-        KeyboardHide.hideSoftKeyboard(getMainActivity(), getView());
+        KeyboardHide.hideSoftKeyboard(getBaseActivity(), getView());
     }
 
     @Override
@@ -335,7 +335,7 @@ public class AddFamilyMemberFragment extends BaseFragment {
         successDialogFragment.setButton1(getString(R.string.Ok), new GenericClickableInterface() {
             @Override
             public void click() {
-                getMainActivity().addDockableFragment(VerifyYourNumberFragment.newInstance());
+                getBaseActivity().addDockableFragment(VerifyYourNumberFragment.newInstance());
                 successDialogFragment.getDialog().dismiss();
             }
         });

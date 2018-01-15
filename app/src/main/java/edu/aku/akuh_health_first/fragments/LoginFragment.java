@@ -93,7 +93,7 @@ public class LoginFragment extends BaseFragment {
     public void setTitlebar(TitleBar titleBar) {
         titleBar.resetViews();
         titleBar.setVisibility(View.VISIBLE);
-        titleBar.showSidebar(getMainActivity());
+        titleBar.showSidebar(getBaseActivity());
     }
 
 
@@ -129,8 +129,7 @@ public class LoginFragment extends BaseFragment {
 
         serviceCallToken();
 
-        setResideMenu();
-    }
+     }
 
 
     private void serviceCallToken() {
@@ -166,10 +165,10 @@ public class LoginFragment extends BaseFragment {
 
 
     private void setClickableSpan(TextView textView) {
-        GenericClickableSpan text1 = new GenericClickableSpan(getMainActivity(), new GenericClickableInterface() {
+        GenericClickableSpan text1 = new GenericClickableSpan(getBaseActivity(), new GenericClickableInterface() {
             @Override
             public void click() {
-                getMainActivity().addDockableFragment(RegisterFragment.newInstance());
+                getBaseActivity().addDockableFragment(RegisterFragment.newInstance());
             }
         });
         text1.setSpannableStringValue(textView, getString(R.string.register_an_account), new SpannableString(textView.getText().toString().trim()));
@@ -188,11 +187,10 @@ public class LoginFragment extends BaseFragment {
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.txtForgotPassword:
-                getMainActivity().addDockableFragment(PacImageFragment.newInstance());
+                getBaseActivity().addDockableFragment(SlideShowFragment.newInstance());
                 Intent i = new Intent(getMainActivity(), PacsActivity.class);
                 startActivity(i);
 
-//                showNextBuildToast();
                 break;
             case R.id.btnLogin:
 
@@ -201,7 +199,7 @@ public class LoginFragment extends BaseFragment {
                     // FIXME: 1/2/2018 enter live data
                     LoginApiModel loginApiModel = new LoginApiModel(WebServiceConstants.tempUserName, WebServiceConstants.tempPassword);
 
-                    new WebServices(getMainActivity(),
+                    new WebServices(getBaseActivity(),
                             WebServiceConstants.temporaryToken,
                             WebServiceTypes.ONLY_TOKEN,
                             BaseURLTypes.AHFA).webServiceRequestAPI(WebServiceConstants.METHOD_USER_GET_USER,
@@ -211,7 +209,6 @@ public class LoginFragment extends BaseFragment {
                                 public void requestDataResponse(WebResponse<JsonObject> webResponse) {
                                     UserModel userModel = GsonFactory.getSimpleGson().fromJson(webResponse.result, UserModel.class);
                                     UIHelper.showShortToastInCenter(getContext(), webResponse.message);
-//                            SharedPreferenceManager.getInstance(getContext()).putObject(AppConstants.KEY_REGISTER_VM, webResponse.result);
 
                                 }
 
@@ -226,6 +223,5 @@ public class LoginFragment extends BaseFragment {
                 break;
         }
     }
-
 
 }

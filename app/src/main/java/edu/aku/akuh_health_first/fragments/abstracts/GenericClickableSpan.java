@@ -11,7 +11,7 @@ import android.text.style.StyleSpan;
 import android.view.View;
 import android.widget.TextView;
 
-import edu.aku.akuh_health_first.activities.MainActivity;
+import edu.aku.akuh_health_first.activities.BaseActivity;
 
 import static android.graphics.Typeface.BOLD;
 
@@ -27,7 +27,7 @@ public class GenericClickableSpan extends ClickableSpan {
     private SpannableString spannableString;
     private String fullTextViewString;
     private GenericClickableInterface genericClickableInterface;
-    private MainActivity mainActivity;
+    private BaseActivity baseActivity;
     private Boolean isUnderline = true;
 
     public void setUnderline(Boolean underline) {
@@ -45,9 +45,9 @@ public class GenericClickableSpan extends ClickableSpan {
 //    }
 
 
-    public GenericClickableSpan(MainActivity activity, GenericClickableInterface genericClickableInterface) {
+    public GenericClickableSpan(BaseActivity activity, GenericClickableInterface genericClickableInterface) {
         this.genericClickableInterface = genericClickableInterface;
-        this.mainActivity = activity;
+        this.baseActivity = activity;
     }
 
     public void setTextViewWithColor(int color) {
@@ -74,7 +74,7 @@ public class GenericClickableSpan extends ClickableSpan {
     @Override
     public void updateDrawState(TextPaint ds) {
         super.updateDrawState(ds);
-//        ds.setColor(mainActivity.getResources().getColor(R.color.offwhite));
+//        ds.setColor(baseActivity.getResources().getColor(R.color.offwhite));
         ds.setUnderlineText(isUnderline);
     }
 
