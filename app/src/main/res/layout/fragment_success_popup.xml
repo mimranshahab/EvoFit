@@ -5,7 +5,7 @@
     android:layout_height="wrap_content"
     android:layout_gravity="center"
     android:layout_margin="@dimen/x20dp"
-    android:background="@color/white"
+    android:background="@color/c_white"
     android:orientation="vertical"
     android:paddingTop="@dimen/x15dp"
     android:paddingLeft="@dimen/x15dp"
@@ -44,7 +44,7 @@
         android:layout_height="wrap_content"
         android:gravity="center"
         android:text="John Doe"
-        android:textColor="@color/base_color"
+        android:textColor="@color/colorPrimary"
         android:textSize="16sp"
         app:typeface="@string/font_bold" />
 
@@ -81,7 +81,7 @@
             android:text="@string/ok"
             android:textSize="16sp"
             android:textAllCaps="false"
-            android:textColor="@color/base_color"
+            android:textColor="@color/colorPrimary"
             android:visibility="visible" />
 
         <Button

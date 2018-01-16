@@ -1,64 +1,30 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#3F51B5</color>
-    <color name="colorPrimaryDark">#303F9F</color>
-    <color name="colorAccent">#FF4081</color>
-    <color name="base_color">#6495ED</color>
+    <color name="colorPrimary">#19BBDE</color>
+    <color name="colorPrimaryDark">#4C667F</color>
+    <color name="colorAccent">#FD1999</color>
     <color name="text_grey">#5C5C5B</color>
     <color name="text_hint">#8C8C8B</color>
     <color name="text_dark">#333333</color>
     <color name="star_grey">#A3A3A3</color>
     <color name="line">#E5E5E5</color>
-    <color name="offwhite">#E5E5E5</color>
-    <color name="white">#FFF</color>
 
-    <!--Smart Mart Colors-->
-    <color name="base_blue">#25AAE1</color>
-    <color name="base_grey">#939598</color>
-    <color name="text_blue">#0B729C</color>
-    <color name="tab_bar">#1A7CA4</color>
-    <color name="seperator_line">#D5D5D5</color>
-    <color name="font_bold_black">#464646</color>
-    <color name="text_light_grey">#777777</color>
-    <color name="colorSwitch">@color/base_blue</color>
-    <color name="white_color">#FFFFFF</color>
-    <color name="transparent">@android:color/transparent</color>
 
     <!-- App color AKUHF -->
 
-    <color name="login_button">#FF9900</color>
-    <color name="login_pink">#FD1999</color>
-    <color name="login_blue">#4788CD</color>
+    <color name="base_reddish">#D13535</color>
     <color name="bg_color">#E8E8E8</color>
+    <color name="base_grey">#394752</color>
+    <color name="base_amber">#FF8200</color>
+    <color name="base_blue">#19BBDE</color>
+    <color name="base_dark_blue">#19BBDE</color>
 
     <color name="colorPrimaryHalfTransparent">#44a71825</color>
-
-    <color name="primary_light">#d73543</color>
-
-    <color name="primary_text">#212121</color>
-    <color name="text_color">#000</color>
-    <color name="secondary_text">#757575</color>
-    <color name="icons">#FFFFFF</color>
     <color name="divider">#BDBDBD</color>
 
 
-    <color name="title_bar_selected_color">#e02c3c</color>
+    <color name="title_bar_selected_color">@color/colorPrimaryDark</color>
     <color name="title_bar_color">@color/colorPrimary</color>
-
-    <!--<color name="title_bar_selected_color">#ED333E</color>-->
-    <!--<color name="title_bar_color">#E11E2E</color>-->
-
-    <color name="hint_color">#AAFFFFFF</color>
-    <color name="text_color_black">#222</color>
-    <color name="text_color_white">#fff</color>
-    <color name="background_tint_line">#DF648C</color>
-    <color name="list_bg">#F1F0F5</color>
-    <color name="seperator">#DCDBE4</color>
-    <color name="seperator_screen">#EDEDED</color>
-    <color name="line_color_edittext">#9999AC</color>
-    <color name="header_text_color">#9999AC</color>
-    <color name="seperator_dark">#9999AC</color>
-    <color name="pink_bg_color">#E14A4F</color>
 
     <color name="text_color_grey">#71748B</color>
     <color name="text_color_grey_dark">#2d2e37</color>
@@ -71,7 +37,8 @@
     <color name="seperator_light_gray">#F2F0F6</color>
 
 
-    <color name="transparent_grey">#11444444</color>
+    <color name="transparent_grey">#11444444</color>d
+    <color name="transparent">#00000000</color>d
     <color name="active_icon_color">#8A000000</color>
 
     <color name="colorSheetText">#DE000000</color>

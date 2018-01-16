@@ -23,8 +23,8 @@
        android:layout_margin="@dimen/x20dp"
        android:text="Register"
        android:padding="@dimen/x15dp"
-       android:textColor="@color/white"
-       android:background="@drawable/rounded_box_filled"
+       android:textColor="@color/c_white"
+       android:background="@drawable/rounded_box_filled_base_grey"
        />
 
 </RelativeLayout>

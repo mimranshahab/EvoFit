@@ -10,7 +10,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/white_color"
+        android:background="@color/c_white"
         android:orientation="vertical"
         android:paddingTop="@dimen/x20dp">
 
@@ -22,7 +22,7 @@
             android:layout_marginLeft="@dimen/x20dp"
             android:layout_marginTop="@dimen/x5dp"
             android:text="@string/country"
-            android:textColor="@color/base_color"
+            android:textColor="@color/colorPrimary"
             app:typeface="@string/font_bold" />
 
         <RelativeLayout
@@ -65,7 +65,7 @@
             android:layout_marginBottom="@dimen/x5dp"
             android:paddingLeft="@dimen/x20dp"
             android:text="@string/country_code"
-            android:textColor="@color/base_color"
+            android:textColor="@color/colorPrimary"
             android:textSize="13sp"
             app:typeface="@string/font_bold" />
 
@@ -88,7 +88,7 @@
             android:layout_marginBottom="@dimen/x5dp"
             android:paddingLeft="@dimen/x20dp"
             android:text="@string/mobile_number"
-            android:textColor="@color/base_color"
+            android:textColor="@color/colorPrimary"
             android:textSize="13sp"
             app:typeface="@string/font_bold" />
 
@@ -120,7 +120,7 @@
             android:gravity="center"
             android:layout_width="wrap_content"
             android:text="@string/submit"
-            android:textColor="@color/white"
+            android:textColor="@color/c_white"
             android:textSize="17sp"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"

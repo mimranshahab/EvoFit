@@ -27,7 +27,7 @@
         android:gravity="center"
         android:minLines="2"
         android:text="@string/delivery_speed"
-        android:textColor="@color/base_color"
+        android:textColor="@color/colorPrimary"
         android:textSize="16sp"
         app:typeface="@string/font_bold" />
 
@@ -48,7 +48,7 @@
         android:gravity="center"
         android:minLines="2"
         android:text="@string/product_accuracy"
-        android:textColor="@color/base_color"
+        android:textColor="@color/colorPrimary"
         android:textSize="15sp"
         app:typeface="@string/font_bold" />
 
@@ -86,7 +86,7 @@
             android:background="#0000"
             android:padding="@dimen/x20dp"
             android:text="@string/yes"
-            android:textColor="@color/base_color"
+            android:textColor="@color/colorPrimary"
             android:textSize="15sp" />
 
         <Button
@@ -97,7 +97,7 @@
             android:background="#0FFF"
             android:padding="@dimen/x20dp"
             android:text="@string/no"
-            android:textColor="@color/base_color"
+            android:textColor="@color/colorPrimary"
             android:textSize="15sp" />
     </LinearLayout>
 
