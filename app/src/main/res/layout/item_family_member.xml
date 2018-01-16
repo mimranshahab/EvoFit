@@ -3,6 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:gravity="center_vertical"
     android:orientation="vertical"
     android:padding="@dimen/x5dp">
 
@@ -14,7 +15,7 @@
 
 
         <ImageView
-            android:id="@+id/imgProduct"
+            android:id="@+id/imgUser"
             android:layout_width="@dimen/x100dp"
             android:layout_height="@dimen/x100dp"
             android:layout_margin="@dimen/x5dp"
@@ -40,6 +41,7 @@
                     android:layout_weight=".5"
                     android:gravity="center_vertical"
                     android:text="Sarah Albert"
+                    android:textColor="@color/c_grayasparagus"
                     android:textSize="@dimen/x14dp"
                     app:typeface="@string/font_bold" />
 
@@ -50,6 +52,7 @@
                     android:layout_weight=".5"
                     android:gravity="end|center_vertical"
                     android:text="View Profile"
+                    android:textColor="@color/base_blue"
                     android:textSize="@dimen/x12dp"
                     app:typeface="@string/font_regular" />
 
@@ -61,6 +64,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="111-11-11"
+                android:textColor="@color/c_cadmium_red"
                 android:textSize="@dimen/x12dp"
                 app:typeface="@string/font_regular" />
 
@@ -69,6 +73,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="female"
+                android:textColor="@color/c_grayasparagus"
                 android:textSize="@dimen/x12dp"
                 app:typeface="@string/font_regular" />
 
@@ -77,6 +82,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="23 years"
+                android:textColor="@color/c_grayasparagus"
                 android:textSize="@dimen/x12dp"
                 app:typeface="@string/font_regular" />
 
@@ -85,6 +91,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="sarah.albert@gmail.com"
+                android:textColor="@color/c_grayasparagus"
                 android:textSize="@dimen/x12dp"
                 app:typeface="@string/font_regular" />
 

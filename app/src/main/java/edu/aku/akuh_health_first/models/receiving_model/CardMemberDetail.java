@@ -3,9 +3,9 @@ package edu.aku.akuh_health_first.models.receiving_model;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-import org.reactivestreams.Subscriber;
-
 import java.util.List;
+
+import edu.aku.akuh_health_first.managers.retrofit.GsonFactory;
 
 /**
  * Created by aqsa.sarwar on 1/16/2018.
@@ -367,6 +367,14 @@ public class CardMemberDetail {
         this.active = active;
     }
 
+    public CardMemberDetail(String cardNumber) {
+        this.cardNumber = cardNumber;
+    }
+
+    @Override
+    public String toString() {
+        return GsonFactory.getConfiguredGson().toJson(this);
+    }
 }
 
 

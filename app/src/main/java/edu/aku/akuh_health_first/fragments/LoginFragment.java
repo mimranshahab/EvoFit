@@ -129,7 +129,7 @@ public class LoginFragment extends BaseFragment {
 
         serviceCallToken();
 
-     }
+    }
 
 
     private void serviceCallToken() {
@@ -188,34 +188,37 @@ public class LoginFragment extends BaseFragment {
         switch (view.getId()) {
             case R.id.txtForgotPassword:
                 getBaseActivity().addDockableFragment(SlideShowFragment.newInstance());
-               getBaseActivity().openActivity(getBaseActivity(), PacsActivity.class);
+                getBaseActivity().openActivity(getBaseActivity(), PacsActivity.class);
 
                 break;
             case R.id.btnLogin:
 
                 if (edtEmail.testValidity() && edtPassword.testValidity()) {
-                    showNextBuildToast();
+//                    showNextBuildToast();
+                    getBaseActivity().addDockableFragment(HomeFragment.newInstance());
+
                     // FIXME: 1/2/2018 enter live data
-                    LoginApiModel loginApiModel = new LoginApiModel(WebServiceConstants.tempUserName, WebServiceConstants.tempPassword);
-
-                    new WebServices(getBaseActivity(),
-                            WebServiceConstants.temporaryToken,
-                            WebServiceTypes.ONLY_TOKEN,
-                            BaseURLTypes.AHFA).webServiceRequestAPI(WebServiceConstants.METHOD_USER_GET_USER,
-                            loginApiModel.toString(),
-                            new WebServices.IRequestJsonDataCallBack() {
-                                @Override
-                                public void requestDataResponse(WebResponse<JsonObject> webResponse) {
-                                    UserModel userModel = GsonFactory.getSimpleGson().fromJson(webResponse.result, UserModel.class);
-                                    UIHelper.showShortToastInCenter(getContext(), webResponse.message);
-
-                                }
-
-                                @Override
-                                public void onError() {
-                                    UIHelper.showShortToastInCenter(getContext(), "failure");
-                                }
-                            });
+//                    LoginApiModel loginApiModel = new LoginApiModel(WebServiceConstants.tempUserName, WebServiceConstants.tempPassword);
+//
+//                    new WebServices(getBaseActivity(),
+//                            WebServiceConstants.temporaryToken,
+//                            WebServiceTypes.ONLY_TOKEN,
+//                            BaseURLTypes.AHFA).webServiceRequestAPI(WebServiceConstants.METHOD_USER_GET_USER,
+//                            loginApiModel.toString(),
+//                            new WebServices.IRequestJsonDataCallBack() {
+//                                @Override
+//                                public void requestDataResponse(WebResponse<JsonObject> webResponse) {
+//                                    UserModel userModel = GsonFactory.getSimpleGson().fromJson(webResponse.result, UserModel.class);
+//                                    UIHelper.showShortToastInCenter(getContext(), webResponse.message);
+//
+//
+//                                }
+//
+//                                @Override
+//                                public void onError() {
+//                                    UIHelper.showShortToastInCenter(getContext(), "failure");
+//                                }
+//                            });
 
 
                 }

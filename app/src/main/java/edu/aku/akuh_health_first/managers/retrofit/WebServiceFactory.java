@@ -82,7 +82,7 @@ public class WebServiceFactory {
 //            httpClient.addNetworkInterceptor(interceptor).addInterceptor(interceptor);  // <-- this is the important line!
             httpClient.addInterceptor(interceptor);  // <-- this is the important line!
             retrofit = new Retrofit.Builder()
-                    .baseUrl(WebServiceConstants.PACS_URL)
+                    .baseUrl(WebServiceConstants.BASE_URL)
                     .addConverterFactory(GsonConverterFactory.create(GsonFactory.getSimpleGson()))
                     .client(httpClient.build())
                     .build();
