@@ -57,14 +57,6 @@ public interface WebServiceProxy {
     Call<String> getToken();
 
 
-    @Multipart
-    @POST(WebServiceConstants.WS_KEY_PACS_VIEWER)
-    Call<WebResponse<JsonObject>> pacView(
-            @Part("requestmethod") RequestBody requestmethod,
-            @Part("requestdata") RequestBody requestdata
-
-    );
-
     @GET(WebServiceConstants.WS_KEY_IMAGE_URL)
     Call<ResponseBody> downloadFileWithFixedUrl();
 

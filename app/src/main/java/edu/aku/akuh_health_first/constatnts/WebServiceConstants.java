@@ -11,17 +11,18 @@ public class WebServiceConstants {
     String postmanLink = "https://www.getpostman.com/collections/1d39c488e283b95f6e23";
 
     public static String BASE_URL = "http://ahfapidev.aku.edu/api/";
-    public static String PACS_URL = "https://pacsviewer.aku.edu/api/";
+    public static String PACS_VIEWER_URL = "https://pacsviewer.aku.edu/api/PACSViewer";
+    public static String PACS_URL_DOWNLOAD = "https://pacsviewer.aku.edu/";
 
 
     public static final String PARAMS_REQUEST_METHOD = "RequestMethod";
     public static final String PARAMS_REQUEST_DATA = "RequestData";
     public static final String requestor = "aku.edu";
     public static final String temporaryToken = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJ3d3cuYWt1LmVkdSIsInN1YiI6Im1ubUBtbm0uY29tIiwiaXNzIjoiTW5NIn0.PRbF6RNmjYm7ai8jQNShBmyDLlZfIWv2Z6V2KosJgjE";
-
     public static final String tempUserName = "mahrukh.mehmood";
     public static final String tempPacViews = "46015891";
-    public static final String tempPassword = "yU~6PWMs(,;3Wk3qK{J0{EWhEb-tl7C";
+    public static final String tempCardNumber = "0000-0000-0031";
+    public static final String tempPassword = "uL952ERAghddR2h+CedbuA==";
     /**
      * REQUEST METHODS NAMES
      */

@@ -11,16 +11,16 @@ import android.widget.ScrollView;
 
 import com.ctrlplusz.anytextview.AnyTextView;
 
-import edu.aku.akuh_health_first.fragments.abstracts.BaseFragment;
-import edu.aku.akuh_health_first.fragments.abstracts.GenericClickableInterface;
-import edu.aku.akuh_health_first.fragments.abstracts.GenericDialogFragment;
-import edu.aku.akuh_health_first.helperclasses.ui.helper.TitleBar;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import butterknife.Unbinder;
 import de.hdodenhof.circleimageview.CircleImageView;
 import edu.aku.akuh_health_first.R;
+import edu.aku.akuh_health_first.fragments.abstracts.BaseFragment;
+import edu.aku.akuh_health_first.fragments.abstracts.GenericClickableInterface;
+import edu.aku.akuh_health_first.fragments.abstracts.GenericDialogFragment;
+import edu.aku.akuh_health_first.helperclasses.ui.helper.TitleBar;
 
 /**
  * Created by khanhamza on 09-May-17.
@@ -35,26 +35,23 @@ public class LeftSideMenuFragment extends BaseFragment {
     AnyTextView txtUserName;
     @BindView(R.id.contUserName)
     LinearLayout contUserName;
-    @BindView(R.id.txtRegistration)
-    AnyTextView txtRegistration;
+    @BindView(R.id.txtHome)
+    AnyTextView txtHome;
     @BindView(R.id.txtHealthHistory)
     AnyTextView txtHealthHistory;
-    @BindView(R.id.txtMyProfile)
-    AnyTextView txtMyProfile;
+    @BindView(R.id.txtVisitTimeline)
+    AnyTextView txtVisitTimeline;
     @BindView(R.id.txtCardSubscription)
     AnyTextView txtCardSubscription;
-    @BindView(R.id.txtCardRenewal)
-    AnyTextView txtCardRenewal;
-    @BindView(R.id.txtCardUpgrade)
-    AnyTextView txtCardUpgrade;
-    @BindView(R.id.txtPrintCard)
-    AnyTextView txtPrintCard;
+    @BindView(R.id.txtMyProfile)
+    AnyTextView txtMyProfile;
     @BindView(R.id.txtAbout)
     AnyTextView txtAbout;
     @BindView(R.id.txtLogout)
     AnyTextView txtLogout;
     @BindView(R.id.scrollView)
     ScrollView scrollView;
+
 
     public static LeftSideMenuFragment newInstance() {
 
@@ -155,26 +152,21 @@ public class LeftSideMenuFragment extends BaseFragment {
     }
 
 
-    @OnClick({R.id.contUserName, R.id.txtRegistration, R.id.txtHealthHistory, R.id.txtMyProfile, R.id.txtCardSubscription, R.id.txtCardRenewal, R.id.txtCardUpgrade, R.id.txtPrintCard, R.id.txtAbout, R.id.txtLogout})
+    @OnClick({R.id.contUserName, R.id.txtHome, R.id.txtHealthHistory, R.id.txtVisitTimeline, R.id.txtCardSubscription, R.id.txtMyProfile, R.id.txtAbout, R.id.txtLogout})
     public void onViewClicked(View view) {
-
         switch (view.getId()) {
             case R.id.contUserName:
                 showNextBuildToast();
                 break;
-            case R.id.txtRegistration:
+            case R.id.txtHome:
                 break;
             case R.id.txtHealthHistory:
                 break;
-            case R.id.txtMyProfile:
+            case R.id.txtVisitTimeline:
                 break;
             case R.id.txtCardSubscription:
                 break;
-            case R.id.txtCardRenewal:
-                break;
-            case R.id.txtCardUpgrade:
-                break;
-            case R.id.txtPrintCard:
+            case R.id.txtMyProfile:
                 break;
             case R.id.txtAbout:
                 break;
