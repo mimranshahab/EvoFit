@@ -15,7 +15,6 @@ import okhttp3.Response;
 import okhttp3.logging.HttpLoggingInterceptor;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
-import retrofit2.converter.scalars.ScalarsConverterFactory;
 
 /**
  * Created by khanhamza on 09-Mar-17.
@@ -30,7 +29,6 @@ public class WebServiceFactory {
     /***
      *      SINGLETON Design Pattern
      */
-//    public static WebServiceProxy getInstance(final String _token, final WebServiceTypes webServiceTypes, BaseURLTypes baseURLTypes) {
     public static WebServiceProxy getInstance(final String _token, final WebServiceTypes webServiceTypes, BaseURLTypes baseURLTypes) {
 
         retrofit = null;

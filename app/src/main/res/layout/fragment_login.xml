@@ -105,7 +105,7 @@
                 android:text="@string/login"
                 android:textColor="@color/white"
                 android:textSize="17sp"
-                app:typeface="@string/font_normal" />
+                app:typeface="@string/font_regular" />
 
 
             <LinearLayout
@@ -147,7 +147,7 @@
                 android:text="@string/not_a_member_register_an_account"
                 android:textAllCaps="false"
                 android:textColor="@color/text_color_black"
-                app:typeface="@string/font_normal" />
+                app:typeface="@string/font_regular" />
 
         </LinearLayout>
 

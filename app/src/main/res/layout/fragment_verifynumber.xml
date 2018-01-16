@@ -38,7 +38,7 @@
                 android:drawableRight="@drawable/imgdrop_down2"
                 android:paddingLeft="@dimen/x20dp"
                 android:textColor="@color/text_grey"
-                app:typeface="@string/font_normal" />
+                app:typeface="@string/font_regular" />
 
             <Spinner
                 android:id="@+id/spCountryList"
@@ -125,7 +125,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
             android:background="@drawable/img_yes"
-            app:typeface="@string/font_normal"/>
+            app:typeface="@string/font_regular"/>
 
 
     </LinearLayout>

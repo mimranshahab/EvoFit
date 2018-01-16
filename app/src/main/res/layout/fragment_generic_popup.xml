@@ -40,7 +40,7 @@
             android:minLines="2"
             android:text="Message"
             android:textSize="14sp"
-            app:typeface="@string/font_normal" />
+            app:typeface="@string/font_regular" />
 
         <LinearLayout
             android:layout_width="match_parent"

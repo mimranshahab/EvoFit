@@ -35,7 +35,7 @@
         android:text="@string/you_are_all_signed_up"
         android:textColor="@color/text_dark"
         android:textSize="15sp"
-        app:typeface="@string/font_normal" />
+        app:typeface="@string/font_regular" />
 
 
     <com.ctrlplusz.anytextview.AnyTextView
@@ -58,7 +58,7 @@
         android:text="@string/we_re_glad_you_re_here"
         android:textColor="@color/text_dark"
         android:textSize="15sp"
-        app:typeface="@string/font_normal" />
+        app:typeface="@string/font_regular" />
 
 
     <LinearLayout

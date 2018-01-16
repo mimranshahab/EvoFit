@@ -43,7 +43,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
         android:background="@drawable/img_yes"
-        app:typeface="@string/font_normal"/>
+        app:typeface="@string/font_bold"/>
 
 
 </LinearLayout>

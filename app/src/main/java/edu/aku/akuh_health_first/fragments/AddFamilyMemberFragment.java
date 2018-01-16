@@ -274,7 +274,7 @@ public class AddFamilyMemberFragment extends BaseFragment {
     }
 
     private void uploadImageFile(final String uploadFilePath, final String uploadFileUriPath) {
-        new WebServices(getBaseActivity(), WebServiceConstants.temporaryToken)
+        new WebServices(getBaseActivity(), WebServiceConstants.temporaryToken,WebServiceTypes.ONLY_TOKEN , BaseURLTypes.AHFA)
                 .webServiceRequestFileAPI(WebServiceConstants.METHOD_USER_UPLOAD_REQUEST_FILE, uploadFilePath, FileType.IMAGE, new WebServices.IRequestJsonDataCallBackForStringResult() {
                     @Override
                     public void requestDataResponse(WebResponse<String> webResponse) {

@@ -1,5 +1,7 @@
 package edu.aku.akuh_health_first.activities;
 
+import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.widget.DrawerLayout;
@@ -126,6 +128,10 @@ public abstract class BaseActivity extends AppCompatActivity {
         return titleBar;
     }
 
+    public void openActivity(Activity activity , Class<?> tClass) {
+        Intent i = new Intent(activity, tClass);
+        startActivity(i);
+    }
 
 // RESIDE MENU ->
 

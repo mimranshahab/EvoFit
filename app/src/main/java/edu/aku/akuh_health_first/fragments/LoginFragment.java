@@ -188,8 +188,7 @@ public class LoginFragment extends BaseFragment {
         switch (view.getId()) {
             case R.id.txtForgotPassword:
                 getBaseActivity().addDockableFragment(SlideShowFragment.newInstance());
-                Intent i = new Intent(getMainActivity(), PacsActivity.class);
-                startActivity(i);
+               getBaseActivity().openActivity(getBaseActivity(), PacsActivity.class);
 
                 break;
             case R.id.btnLogin:

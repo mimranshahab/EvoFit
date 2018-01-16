@@ -376,7 +376,7 @@
             android:text="@string/add"
             android:textColor="@color/white"
             android:textSize="17sp"
-            app:typeface="@string/font_normal" />
+            app:typeface="@string/font_regular"></com.ctrlplusz.anytextview.AnyTextView>
 
 
     </LinearLayout>

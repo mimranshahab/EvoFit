@@ -15,7 +15,7 @@
 
 
     <!--FONTS-->
-    <string name="font_normal">Roboto-Light_D.ttf</string>
+    <string name="font_regular">Roboto-Light_D.ttf</string>
     <string name="font_bold">Roboto-Regular_1B.ttf</string>
     <string name="next_build">This feature will be implemented in next build</string>
     <string name="guest_msg">Please login to use this feature.</string>

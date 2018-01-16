@@ -39,7 +39,9 @@ public class WebServices {
 
 
     public WebServices(Activity activity, String token, final WebServiceTypes webServiceTypes, BaseURLTypes baseURLTypes) {
-//        apiService = WebServiceFactory.getInstance(token);
+
+
+
         apiService = WebServiceFactory.getInstance(token,webServiceTypes, baseURLTypes);
         mContext = activity;
         mDialog = new ProgressDialog(mContext);
