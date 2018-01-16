@@ -19,23 +19,23 @@
             android:orientation="vertical"
             android:padding="@dimen/x20dp">
 
-            <edu.aku.akuh_health_first.views.AnyTextView
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/x25dp"
+                android:layout_marginRight="@dimen/x25dp"
                 android:gravity="center"
-                android:text="Patient Portal"
-                android:textColor="@color/login_pink"
-                android:textSize="34sp"
-                app:typeface="@string/font_bold" />
+                android:scaleType="centerInside"
+                android:src="@drawable/logo_healthfirst" />
 
             <edu.aku.akuh_health_first.views.AnyTextView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:gravity="center"
-                android:text="Access to Medical Record"
-                android:textColor="@color/c_gray"
                 android:layout_marginBottom="@dimen/x40dp"
-                android:textSize="16sp"
+                android:gravity="center"
+                android:text="User Login"
+                android:textColor="@color/colorPrimary"
+                android:textSize="@dimen/s25"
                 app:typeface="@string/font_bold" />
 
             <edu.aku.akuh_health_first.views.AnyEditTextView
@@ -54,8 +54,8 @@
                 android:paddingRight="@dimen/x15dp"
                 android:paddingTop="@dimen/x5dp"
                 android:singleLine="true"
-                android:textColor="@color/text_color_black"
-                android:textColorHint="@color/base_grey"
+                android:textColor="@color/text_color_grey_dark"
+                android:textColorHint="@color/text_hint"
                 android:textSize="14sp"
                 app:testType="nocheck" />
 
@@ -76,8 +76,8 @@
                 android:paddingRight="@dimen/x15dp"
                 android:paddingTop="@dimen/x5dp"
                 android:singleLine="true"
-                android:textColor="@color/text_color_black"
-                android:textColorHint="@color/base_grey"
+                android:textColor="@color/text_color_grey_dark"
+                android:textColorHint="@color/text_hint"
                 android:textSize="14sp"
                 app:testType="nocheck" />
 
@@ -89,7 +89,7 @@
                 android:gravity="right"
                 android:paddingRight="@dimen/x30dp"
                 android:text="@string/forgot_password"
-                android:textColor="@color/text_color_black"
+                android:textColor="@color/text_color_grey_dark"
                 app:typeface="@string/font_bold" />
 
 
@@ -99,13 +99,13 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
                 android:layout_marginBottom="@dimen/x50dp"
-                android:background="@drawable/rounded_box_filled"
+                android:background="@drawable/rounded_box_filled_base_grey"
                 android:gravity="center"
                 android:padding="@dimen/x10dp"
                 android:text="@string/login"
-                android:textColor="@color/white"
+                android:textColor="@color/c_white"
                 android:textSize="17sp"
-                app:typeface="@string/font_normal" />
+                app:typeface="@string/font_bold" />
 
 
             <LinearLayout
@@ -125,7 +125,7 @@
                     android:layout_height="wrap_content"
                     android:padding="@dimen/x10dp"
                     android:text="@string/new_user"
-                    android:textColor="@color/text_color_black"
+                    android:textColor="@color/text_color_grey_dark"
                     android:textSize="16sp"
                     app:typeface="@string/font_bold" />
 
@@ -146,7 +146,7 @@
                 android:paddingRight="@dimen/x15dp"
                 android:text="@string/not_a_member_register_an_account"
                 android:textAllCaps="false"
-                android:textColor="@color/text_color_black"
+                android:textColor="@color/text_color_grey_dark"
                 app:typeface="@string/font_normal" />
 
         </LinearLayout>

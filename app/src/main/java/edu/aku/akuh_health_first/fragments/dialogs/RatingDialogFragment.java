@@ -56,12 +56,12 @@ public class RatingDialogFragment extends DialogFragment implements
 
     private void setStarColor() {
         LayerDrawable stars = (LayerDrawable) ratingbarDeliverySpeed.getProgressDrawable();
-        stars.getDrawable(2).setColorFilter(getResources().getColor(R.color.base_color), PorterDuff.Mode.SRC_ATOP);
+        stars.getDrawable(2).setColorFilter(getResources().getColor(R.color.colorPrimary), PorterDuff.Mode.SRC_ATOP);
         stars.getDrawable(0).setColorFilter(getResources().getColor(R.color.star_grey), PorterDuff.Mode.SRC_ATOP);
         stars.getDrawable(1).setColorFilter(getResources().getColor(R.color.star_grey), PorterDuff.Mode.SRC_ATOP);
 
         LayerDrawable stars2 = (LayerDrawable) ratingBarProductAccuracy.getProgressDrawable();
-        stars2.getDrawable(2).setColorFilter(getResources().getColor(R.color.base_color), PorterDuff.Mode.SRC_ATOP);
+        stars2.getDrawable(2).setColorFilter(getResources().getColor(R.color.colorPrimary), PorterDuff.Mode.SRC_ATOP);
         stars2.getDrawable(0).setColorFilter(getResources().getColor(R.color.star_grey), PorterDuff.Mode.SRC_ATOP);
         stars2.getDrawable(1).setColorFilter(getResources().getColor(R.color.star_grey), PorterDuff.Mode.SRC_ATOP);
     }

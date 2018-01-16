@@ -174,7 +174,7 @@ public class LoginFragment extends BaseFragment {
         text1.setSpannableStringValue(textView, getString(R.string.register_an_account), new SpannableString(textView.getText().toString().trim()));
         text1.setSpan(1.2f);
         text1.setUnderline(true);
-        text1.setTextViewWithColor(getResources().getColor(R.color.base_color));
+        text1.setTextViewWithColor(getResources().getColor(R.color.colorPrimary));
     }
 
     @Override
@@ -188,7 +188,7 @@ public class LoginFragment extends BaseFragment {
         switch (view.getId()) {
             case R.id.txtForgotPassword:
                 getBaseActivity().addDockableFragment(SlideShowFragment.newInstance());
-                Intent i = new Intent(getMainActivity(), PacsActivity.class);
+                Intent i = new Intent(getBaseActivity(), PacsActivity.class);
                 startActivity(i);
 
                 break;

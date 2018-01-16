@@ -29,7 +29,7 @@
                 android:focusable="true"
                 android:scaleType="centerCrop"
                 android:src="@drawable/user_image"
-                app:civ_border_color="@color/white"
+                app:civ_border_color="@color/c_white"
                 app:civ_border_width="@dimen/x2dp" />
 
 
@@ -42,7 +42,7 @@
                 android:padding="@dimen/x10dp"
                 android:singleLine="true"
                 android:text="John Doe"
-                android:textColor="@color/offwhite"
+                android:textColor="@color/c_white"
                 android:textSize="16sp"
                 app:typeface="@string/font_bold" />
 
@@ -58,14 +58,14 @@
             android:padding="@dimen/x15dp"
             android:singleLine="true"
             android:text="Registration"
-            android:textColor="@color/offwhite"
+            android:textColor="@color/c_white"
             android:textSize="14sp"
             app:typeface="@string/font_bold" />
 
         <View
             android:layout_width="match_parent"
             android:layout_height="2px"
-            android:background="@color/white" />
+            android:background="@color/c_white" />
 
 
         <com.ctrlplusz.anytextview.AnyTextView
@@ -77,14 +77,14 @@
             android:padding="@dimen/x15dp"
             android:singleLine="true"
             android:text="Health History"
-            android:textColor="@color/offwhite"
+            android:textColor="@color/c_white"
             android:textSize="14sp"
             app:typeface="@string/font_bold" />
 
         <View
             android:layout_width="match_parent"
             android:layout_height="2px"
-            android:background="@color/white" />
+            android:background="@color/c_white" />
 
 
         <com.ctrlplusz.anytextview.AnyTextView
@@ -96,14 +96,14 @@
             android:padding="@dimen/x15dp"
             android:singleLine="true"
             android:text="My Profile"
-            android:textColor="@color/offwhite"
+            android:textColor="@color/c_white"
             android:textSize="14sp"
             app:typeface="@string/font_bold" />
 
         <View
             android:layout_width="match_parent"
             android:layout_height="2px"
-            android:background="@color/white" />
+            android:background="@color/c_white" />
 
 
         <com.ctrlplusz.anytextview.AnyTextView
@@ -115,14 +115,14 @@
             android:padding="@dimen/x15dp"
             android:singleLine="true"
             android:text="Card Subscription"
-            android:textColor="@color/offwhite"
+            android:textColor="@color/c_white"
             android:textSize="14sp"
             app:typeface="@string/font_bold" />
 
         <View
             android:layout_width="match_parent"
             android:layout_height="2px"
-            android:background="@color/white" />
+            android:background="@color/c_white" />
 
 
         <com.ctrlplusz.anytextview.AnyTextView
@@ -134,14 +134,14 @@
             android:padding="@dimen/x15dp"
             android:singleLine="true"
             android:text="Card Renewal"
-            android:textColor="@color/offwhite"
+            android:textColor="@color/c_white"
             android:textSize="14sp"
             app:typeface="@string/font_bold" />
 
         <View
             android:layout_width="match_parent"
             android:layout_height="2px"
-            android:background="@color/white" />
+            android:background="@color/c_white" />
 
 
         <com.ctrlplusz.anytextview.AnyTextView
@@ -153,14 +153,14 @@
             android:padding="@dimen/x15dp"
             android:singleLine="true"
             android:text="Card Upgrade"
-            android:textColor="@color/offwhite"
+            android:textColor="@color/c_white"
             android:textSize="14sp"
             app:typeface="@string/font_bold" />
 
         <View
             android:layout_width="match_parent"
             android:layout_height="2px"
-            android:background="@color/white" />
+            android:background="@color/c_white" />
 
 
         <com.ctrlplusz.anytextview.AnyTextView
@@ -172,14 +172,14 @@
             android:padding="@dimen/x15dp"
             android:singleLine="true"
             android:text="Print Card"
-            android:textColor="@color/offwhite"
+            android:textColor="@color/c_white"
             android:textSize="14sp"
             app:typeface="@string/font_bold" />
 
         <View
             android:layout_width="match_parent"
             android:layout_height="2px"
-            android:background="@color/white" />
+            android:background="@color/c_white" />
 
 
         <com.ctrlplusz.anytextview.AnyTextView
@@ -191,14 +191,14 @@
             android:padding="@dimen/x15dp"
             android:singleLine="true"
             android:text="About"
-            android:textColor="@color/offwhite"
+            android:textColor="@color/c_white"
             android:textSize="14sp"
             app:typeface="@string/font_bold" />
 
         <View
             android:layout_width="match_parent"
             android:layout_height="2px"
-            android:background="@color/white" />
+            android:background="@color/c_white" />
 
 
         <com.ctrlplusz.anytextview.AnyTextView
@@ -211,7 +211,7 @@
             android:padding="@dimen/x15dp"
             android:singleLine="true"
             android:text="@string/logout"
-            android:textColor="@color/offwhite"
+            android:textColor="@color/c_white"
             android:textSize="14sp"
             app:typeface="@string/font_bold" />
 
