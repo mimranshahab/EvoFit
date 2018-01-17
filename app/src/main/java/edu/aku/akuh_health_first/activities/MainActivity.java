@@ -58,6 +58,11 @@ public class MainActivity extends BaseActivity {
         return R.id.contDrawer;
     }
 
+    @Override
+    protected int getPermanentViewId() {
+        return 0;
+    }
+
 
     private void initFragments() {
         addDockableFragment(LoginFragment.newInstance());

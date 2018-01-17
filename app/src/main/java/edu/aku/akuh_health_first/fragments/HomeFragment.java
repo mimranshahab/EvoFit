@@ -23,7 +23,6 @@ import edu.aku.akuh_health_first.adapters.recyleradapters.FamilyMembersAdapter;
 import edu.aku.akuh_health_first.callbacks.OnItemClickListener;
 import edu.aku.akuh_health_first.constatnts.WebServiceConstants;
 import edu.aku.akuh_health_first.enums.BaseURLTypes;
-import edu.aku.akuh_health_first.enums.WebServiceTypes;
 import edu.aku.akuh_health_first.fragments.abstracts.BaseFragment;
 import edu.aku.akuh_health_first.helperclasses.ui.helper.TitleBar;
 import edu.aku.akuh_health_first.helperclasses.ui.helper.UIHelper;
@@ -98,8 +97,7 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener, 
 
         new WebServices(getBaseActivity(),
                 WebServiceConstants.temporaryToken,
-                WebServiceTypes.ONLY_TOKEN,
-                BaseURLTypes.AHFA).webServiceRequestAPI(WebServiceConstants.METHOD_CARD_MEMBER,
+                BaseURLTypes.AHFA_BASE_URL).webServiceRequestAPI(WebServiceConstants.METHOD_CARD_MEMBER,
                 cardMemberDetail.toString(),
                 new WebServices.IRequestJsonDataCallBack() {
                     @Override
@@ -109,6 +107,8 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener, 
                         arrFamList.addAll(userModel.getFamilyMembersList());
                         adapterFamilyMembers.notifyDataSetChanged();
                         setData(userModel);
+
+
                     }
 
                     @Override
@@ -132,6 +132,7 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener, 
     @Override
     public void setTitlebar(TitleBar titleBar) {
         titleBar.resetViews();
+        titleBar.setVisibility(View.VISIBLE);
         titleBar.showSidebar(getBaseActivity());
         titleBar.setTitle("Home");
 

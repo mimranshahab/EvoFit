@@ -139,7 +139,8 @@ public class TitleBar extends RelativeLayout {
             @Override
             public void onClick(View v) {
                 if (mActivity != null) {
-                    mActivity.getSupportFragmentManager().popBackStack();
+//                    mActivity.getSupportFragmentManager().popBackStack();
+                    mActivity.onBackPressed();
                 }
 
             }
@@ -160,8 +161,7 @@ public class TitleBar extends RelativeLayout {
             @Override
             public void onClick(View v) {
                 if (mActivity != null) {
-//                    mActivity.getResideMenu().openMenu(ResideMenu.DIRECTION_LEFT);
-                    mActivity.getDrawerLayout().openDrawer(GravityCompat.START);
+                     mActivity.getDrawerLayout().openDrawer(GravityCompat.START);
                 }
 
             }

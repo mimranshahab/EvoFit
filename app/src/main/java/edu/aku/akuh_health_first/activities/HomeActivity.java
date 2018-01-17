@@ -2,10 +2,15 @@ package edu.aku.akuh_health_first.activities;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v4.app.Fragment;
 import android.view.Gravity;
 
+import java.util.List;
+
 import edu.aku.akuh_health_first.R;
+import edu.aku.akuh_health_first.fragments.HomeFragment;
 import edu.aku.akuh_health_first.fragments.LoginFragment;
+import edu.aku.akuh_health_first.fragments.abstracts.BaseFragment;
 
 
 public class HomeActivity extends BaseActivity {
@@ -21,7 +26,6 @@ public class HomeActivity extends BaseActivity {
         super.onPostCreate(savedInstanceState);
         initFragments();
     }
-
 
 
     @Override
@@ -49,9 +53,13 @@ public class HomeActivity extends BaseActivity {
         return R.id.contDrawer;
     }
 
+    @Override
+    protected int getPermanentViewId() {
+        return R.id.contPermanent;
+    }
 
     private void initFragments() {
-        addDockableFragment(LoginFragment.newInstance());
+        replacePermanentFramgment(HomeFragment.newInstance());
     }
 
 
@@ -63,6 +71,9 @@ public class HomeActivity extends BaseActivity {
                 drawerLayout.closeDrawer(Gravity.START);
             } else {
                 super.onBackPressed();
+                List<Fragment> fragments = getSupportFragmentManager().getFragments();
+                BaseFragment fragment = (BaseFragment) fragments.get(fragments.size() - 1);
+                fragment.setTitlebar(titleBar);
             }
 
         } else {

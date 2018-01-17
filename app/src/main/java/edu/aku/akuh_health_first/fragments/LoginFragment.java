@@ -14,6 +14,7 @@ import com.ctrlplusz.anytextview.AnyTextView;
 import com.google.gson.JsonObject;
 
 import edu.aku.akuh_health_first.R;
+import edu.aku.akuh_health_first.activities.HomeActivity;
 import edu.aku.akuh_health_first.constatnts.WebServiceConstants;
 import edu.aku.akuh_health_first.enums.BaseURLTypes;
 import edu.aku.akuh_health_first.fragments.abstracts.BaseFragment;
@@ -177,12 +178,12 @@ public class LoginFragment extends BaseFragment {
                 new WebServices.IRequestJsonDataCallBack() {
                     @Override
                     public void requestDataResponse(WebResponse<JsonObject> webResponse) {
-                        UserModel userModel = GsonFactory.getSimpleGson().fromJson(webResponse.result, UserModel.class);
-                        UIHelper.showShortToastInCenter(getContext(), webResponse.message);
+//                        UserModel userModel = GsonFactory.getSimpleGson().fromJson(webResponse.result, UserModel.class);
+//                        UIHelper.showShortToastInCenter(getContext(), webResponse.message);
 
-                        // FIXME: 1/16/2018 AQSA call HomeActivity here
-                        getBaseActivity().addDockableFragment(HomeFragment.newInstance());
-                    }
+
+                        getBaseActivity().openActivity(getBaseActivity(), HomeActivity.class);
+                     }
 
                     @Override
                     public void onError() {

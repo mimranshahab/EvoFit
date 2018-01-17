@@ -7,11 +7,15 @@ import android.support.v4.app.Fragment;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Gravity;
+import android.view.KeyEvent;
 import android.view.View;
+
+import java.util.List;
 
 import edu.aku.akuh_health_first.R;
 import edu.aku.akuh_health_first.fragments.LeftSideMenuFragment;
 import edu.aku.akuh_health_first.fragments.LoginFragment;
+import edu.aku.akuh_health_first.fragments.abstracts.BaseFragment;
 import edu.aku.akuh_health_first.fragments.abstracts.GenericClickableInterface;
 import edu.aku.akuh_health_first.fragments.abstracts.GenericDialogFragment;
 import edu.aku.akuh_health_first.helperclasses.ui.helper.TitleBar;
@@ -65,9 +69,12 @@ public abstract class BaseActivity extends AppCompatActivity {
 
     protected abstract int getDrawerFragmentId();
 
+    protected abstract int getPermanentViewId();
+
     public DrawerLayout getDrawerLayout() {
         return drawerLayout;
     }
+
 
     public void addDrawerFragment() {
         leftSideMenuFragment = LeftSideMenuFragment.newInstance();
@@ -81,20 +88,20 @@ public abstract class BaseActivity extends AppCompatActivity {
         titleBar.resetViews();
     }
 
-    @Override
-    public void onBackPressed() {
-        if (getSupportFragmentManager().getBackStackEntryCount() > 1) {
-
-            if (drawerLayout.isDrawerOpen(Gravity.LEFT)) {
-                drawerLayout.closeDrawer(Gravity.LEFT);
-            } else {
-                super.onBackPressed();
-            }
-
-        } else {
-            closeApp();
-        }
-    }
+//    @Override
+//    public void onBackPressed() {
+//        if (getSupportFragmentManager().getBackStackEntryCount() > 1) {
+//
+//            if (drawerLayout.isDrawerOpen(Gravity.LEFT)) {
+//                drawerLayout.closeDrawer(Gravity.LEFT);
+//            } else {
+//                super.onBackPressed();
+//            }
+//
+//        } else {
+//            closeApp();
+//        }
+//    }
 
 
     public void closeApp() {
@@ -124,16 +131,25 @@ public abstract class BaseActivity extends AppCompatActivity {
                 .commit();
     }
 
+    public void replacePermanentFramgment(Fragment fragment) {
+        getSupportFragmentManager().beginTransaction().replace(getPermanentViewId(), fragment).addToBackStack(fragment.getClass().getSimpleName())
+                .commit();
+    }
+
     public TitleBar getTitleBar() {
         return titleBar;
     }
 
-    public void openActivity(Activity activity , Class<?> tClass) {
+    public void openActivity(Activity activity, Class<?> tClass) {
         Intent i = new Intent(activity, tClass);
         startActivity(i);
     }
 
-// RESIDE MENU ->
+    public LeftSideMenuFragment getLeftSideMenuFragment() {
+        return leftSideMenuFragment;
+    }
+
+    // RESIDE MENU ->
 
 
 //    public void setSideMenu(int direction) {
