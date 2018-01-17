@@ -70,8 +70,6 @@ public class LeftSideMenuFragment extends BaseFragment {
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-
-
 //        if (prefHelper.getUser() != null) {
 //            txtUserName.setText(prefHelper.getUser().userName);
 //
