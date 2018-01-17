@@ -59,6 +59,7 @@ public class GenericContentFragment extends BaseFragment {
 
     private void bindViews(View view) {
         txtViewContent = (TextView) view.findViewById(R.id.txtViewContent_generic_content);
+        txtViewContent.setText(key);
     }
 
     @Override
