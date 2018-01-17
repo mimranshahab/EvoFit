@@ -57,7 +57,7 @@ public class FamilyMembersAdapter extends RecyclerView.Adapter<FamilyMembersAdap
         holder.txtEmailAddress.setText("EmailAddress " + familyMembersList.getEmailAddress());
 
 
-        holder.txtViewProfile.setOnClickListener(new View.OnClickListener() {
+        holder.contListItem.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 onItemClick.onItemClick(i, familyMembersList);
@@ -92,6 +92,8 @@ public class FamilyMembersAdapter extends RecyclerView.Adapter<FamilyMembersAdap
         AnyTextView txtAge;
         @BindView(R.id.txtEmailAddress)
         AnyTextView txtEmailAddress;
+        @BindView(R.id.contListItem)
+        LinearLayout contListItem;
 
         ViewHolder(View view) {
             super(view);

@@ -153,9 +153,7 @@ public class LoginFragment extends BaseFragment {
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.txtForgotPassword:
-//                getBaseActivity().addDockableFragment(SlideShowFragment.newInstance());
-//               getBaseActivity().openActivity(getBaseActivity(), PacsActivity.class);
-
+                getBaseActivity().addDockableFragment(ForgotPassowrdFragment.newInstance());
                 break;
             case R.id.btnLogin:
                 // FIXME: 1/2/2018 enter live data

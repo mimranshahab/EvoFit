@@ -19,6 +19,7 @@ import de.hdodenhof.circleimageview.CircleImageView;
 import edu.aku.akuh_health_first.R;
 import edu.aku.akuh_health_first.fragments.abstracts.BaseFragment;
 import edu.aku.akuh_health_first.fragments.abstracts.GenericClickableInterface;
+import edu.aku.akuh_health_first.fragments.abstracts.GenericContentFragment;
 import edu.aku.akuh_health_first.fragments.abstracts.GenericDialogFragment;
 import edu.aku.akuh_health_first.helperclasses.ui.helper.TitleBar;
 
@@ -169,6 +170,7 @@ public class LeftSideMenuFragment extends BaseFragment {
             case R.id.txtMyProfile:
                 break;
             case R.id.txtAbout:
+                getBaseActivity().addDockableFragment(GenericContentFragment.newInstance(getString(R.string.generic), "About"));
                 break;
             case R.id.txtLogout:
                 logoutClick();
