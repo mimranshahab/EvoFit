@@ -10,6 +10,7 @@ import java.util.concurrent.TimeUnit;
 import edu.aku.akuh_health_first.BuildConfig;
 import edu.aku.akuh_health_first.fragments.LoginFragment;
 import edu.aku.akuh_health_first.libraries.fileloader.utility.AndroidFileManager;
+import edu.aku.akuh_health_first.managers.retrofit.WebServices;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.Response;
@@ -55,7 +56,7 @@ public class FileDownloader {
     @WorkerThread
     public File download() throws Exception {
         Request request = new Request.Builder()
-                .addHeader("Authorization", "Bearer " + LoginFragment.getBearerToken())
+                .addHeader("Authorization", "Bearer " + WebServices.getBearerToken())
                 .addHeader("Requestor", "aku.edu")
                 .addHeader("Accept", "image/jpeg")
                 .url(uri).build();

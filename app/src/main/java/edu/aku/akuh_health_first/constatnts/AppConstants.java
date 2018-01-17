@@ -26,6 +26,7 @@ public class AppConstants {
 
 
     public static final String CNIC_MASK = "99999-9999999-9";
+    public static final String CARD_MASK = "9999-9999-9999";
     public static final String MR_NUMBER_MASK = "999-99-99";
 
 

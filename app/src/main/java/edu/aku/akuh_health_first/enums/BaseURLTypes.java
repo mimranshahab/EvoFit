@@ -1,9 +1,9 @@
 package edu.aku.akuh_health_first.enums;
 
 public enum BaseURLTypes {
-    PACS,
-    AHFA,
-    THIRD;
+    PACS_VIEWER,
+    AHFA_BASE_URL,
+    PACS_IMAGE_DOWNLOAD;
 
 
     public String canonicalForm() {

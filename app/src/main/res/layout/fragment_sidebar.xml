@@ -50,14 +50,14 @@
 
 
         <com.ctrlplusz.anytextview.AnyTextView
-            android:id="@+id/txtRegistration"
+            android:id="@+id/txtHome"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
             android:gravity="center_vertical"
             android:padding="@dimen/x15dp"
             android:singleLine="true"
-            android:text="Registration"
+            android:text="Home"
             android:textColor="@color/c_white"
             android:textSize="14sp"
             app:typeface="@string/font_bold" />
@@ -88,14 +88,14 @@
 
 
         <com.ctrlplusz.anytextview.AnyTextView
-            android:id="@+id/txtMyProfile"
+            android:id="@+id/txtVisitTimeline"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
             android:gravity="center_vertical"
             android:padding="@dimen/x15dp"
             android:singleLine="true"
-            android:text="My Profile"
+            android:text="Visit Timeline"
             android:textColor="@color/c_white"
             android:textSize="14sp"
             app:typeface="@string/font_bold" />
@@ -126,14 +126,14 @@
 
 
         <com.ctrlplusz.anytextview.AnyTextView
-            android:id="@+id/txtCardRenewal"
+            android:id="@+id/txtMyProfile"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
             android:gravity="center_vertical"
             android:padding="@dimen/x15dp"
             android:singleLine="true"
-            android:text="Card Renewal"
+            android:text="My Profile"
             android:textColor="@color/c_white"
             android:textSize="14sp"
             app:typeface="@string/font_bold" />
@@ -142,45 +142,6 @@
             android:layout_width="match_parent"
             android:layout_height="2px"
             android:background="@color/c_white" />
-
-
-        <com.ctrlplusz.anytextview.AnyTextView
-            android:id="@+id/txtCardUpgrade"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_vertical"
-            android:gravity="center_vertical"
-            android:padding="@dimen/x15dp"
-            android:singleLine="true"
-            android:text="Card Upgrade"
-            android:textColor="@color/c_white"
-            android:textSize="14sp"
-            app:typeface="@string/font_bold" />
-
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="2px"
-            android:background="@color/c_white" />
-
-
-        <com.ctrlplusz.anytextview.AnyTextView
-            android:id="@+id/txtPrintCard"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_vertical"
-            android:gravity="center_vertical"
-            android:padding="@dimen/x15dp"
-            android:singleLine="true"
-            android:text="Print Card"
-            android:textColor="@color/c_white"
-            android:textSize="14sp"
-            app:typeface="@string/font_bold" />
-
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="2px"
-            android:background="@color/c_white" />
-
 
         <com.ctrlplusz.anytextview.AnyTextView
             android:id="@+id/txtAbout"
@@ -199,6 +160,46 @@
             android:layout_width="match_parent"
             android:layout_height="2px"
             android:background="@color/c_white" />
+
+
+        <!--<com.ctrlplusz.anytextview.AnyTextView-->
+            <!--android:id="@+id/txtCardUpgrade"-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_gravity="center_vertical"-->
+            <!--android:gravity="center_vertical"-->
+            <!--android:padding="@dimen/x15dp"-->
+            <!--android:singleLine="true"-->
+            <!--android:text="Card Upgrade"-->
+            <!--android:textColor="@color/c_white"-->
+            <!--android:textSize="14sp"-->
+            <!--app:typeface="@string/font_bold" />-->
+
+        <!--<View-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="2px"-->
+            <!--android:background="@color/c_white" />-->
+
+
+        <!--<com.ctrlplusz.anytextview.AnyTextView-->
+            <!--android:id="@+id/txtPrintCard"-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_gravity="center_vertical"-->
+            <!--android:gravity="center_vertical"-->
+            <!--android:padding="@dimen/x15dp"-->
+            <!--android:singleLine="true"-->
+            <!--android:text="Print Card"-->
+            <!--android:textColor="@color/c_white"-->
+            <!--android:textSize="14sp"-->
+            <!--app:typeface="@string/font_bold" />-->
+
+        <!--<View-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="2px"-->
+            <!--android:background="@color/c_white" />-->
+
+
 
 
         <com.ctrlplusz.anytextview.AnyTextView

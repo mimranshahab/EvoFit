@@ -1,11 +1,8 @@
 package edu.aku.akuh_health_first.fragments;
 
-import android.content.Intent;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.text.SpannableString;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,19 +13,14 @@ import com.andreabaccega.widget.FormEditText;
 import com.ctrlplusz.anytextview.AnyTextView;
 import com.google.gson.JsonObject;
 
-import java.io.IOException;
-
 import edu.aku.akuh_health_first.R;
-import edu.aku.akuh_health_first.activities.MainActivity;
-import edu.aku.akuh_health_first.activities.PacsActivity;
-import edu.aku.akuh_health_first.activities.SplashActivity;
 import edu.aku.akuh_health_first.constatnts.WebServiceConstants;
 import edu.aku.akuh_health_first.enums.BaseURLTypes;
-import edu.aku.akuh_health_first.enums.WebServiceTypes;
 import edu.aku.akuh_health_first.fragments.abstracts.BaseFragment;
 import edu.aku.akuh_health_first.fragments.abstracts.GenericClickableInterface;
 import edu.aku.akuh_health_first.fragments.abstracts.GenericClickableSpan;
 import edu.aku.akuh_health_first.helperclasses.ui.helper.UIHelper;
+import edu.aku.akuh_health_first.helperclasses.validator.CardNumberValidation;
 import edu.aku.akuh_health_first.helperclasses.validator.PasswordValidation;
 import edu.aku.akuh_health_first.helperclasses.ui.helper.TitleBar;
 
@@ -36,21 +28,14 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import butterknife.Unbinder;
+import edu.aku.akuh_health_first.libraries.maskformatter.MaskFormatter;
 import edu.aku.akuh_health_first.managers.retrofit.GsonFactory;
-import edu.aku.akuh_health_first.managers.retrofit.WebServiceFactory;
 import edu.aku.akuh_health_first.managers.retrofit.WebServices;
-import edu.aku.akuh_health_first.models.PacsView;
 import edu.aku.akuh_health_first.models.UserModel;
 import edu.aku.akuh_health_first.models.sending_model.LoginApiModel;
 import edu.aku.akuh_health_first.models.wrappers.WebResponse;
-import okhttp3.MediaType;
-import okhttp3.RequestBody;
-import okhttp3.ResponseBody;
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
 
-import static android.content.ContentValues.TAG;
+import static edu.aku.akuh_health_first.constatnts.AppConstants.CARD_MASK;
 
 /**
  * Created by khanhamza on 08-May-17.
@@ -59,7 +44,7 @@ import static android.content.ContentValues.TAG;
 public class LoginFragment extends BaseFragment {
 
     @BindView(R.id.edtUserName)
-    FormEditText edtEmail;
+    FormEditText edtCardNumber;
     @BindView(R.id.edtPassword)
     FormEditText edtPassword;
     @BindView(R.id.txtForgotPassword)
@@ -70,12 +55,6 @@ public class LoginFragment extends BaseFragment {
     AnyTextView txtSignUp;
     Unbinder unbinder;
 
-    public static String getBearerToken() {
-        return bearerToken;
-    }
-
-
-    public static String bearerToken = "";
 
     public static LoginFragment newInstance() {
         Bundle args = new Bundle();
@@ -125,42 +104,29 @@ public class LoginFragment extends BaseFragment {
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         edtPassword.addValidator(new PasswordValidation());
+        edtCardNumber.addValidator(new CardNumberValidation());
+        edtCardNumber.addTextChangedListener(new MaskFormatter(CARD_MASK, edtCardNumber, '-'));
+
         setClickableSpan(txtSignUp);
 
-        serviceCallToken();
+//        serviceCallToken();
 
     }
 
 
     private void serviceCallToken() {
 
-        Call<String> token = WebServiceFactory.getInstance("", WebServiceTypes.ONLY_TOKEN, BaseURLTypes.PACS).getToken();
-        token.enqueue(new Callback<String>() {
+        new WebServices(getContext()).webServiceGetToken(new WebServices.IRequestStringCallBack() {
             @Override
-            public void onResponse(Call<String> call, Response<String> response) {
-                if (response != null && response.body() != null) {
-                    if (!response.body().isEmpty()) {
-//                        UIHelper.showToast(getContext(), response.body().toString());
-                        bearerToken = response.body().toString();
-                    }
-
-                } else {
-                    UIHelper.showToast(getContext(), "Null Response");
-
-                }
+            public void requestDataResponse(String webResponse) {
+                WebServices.setBearerToken(webResponse);
             }
 
-
             @Override
-            public void onFailure(Call<String> call, Throwable t) {
-
-                t.printStackTrace();
-
+            public void onError() {
 
             }
         });
-
-
     }
 
 
@@ -187,43 +153,42 @@ public class LoginFragment extends BaseFragment {
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.txtForgotPassword:
-                getBaseActivity().addDockableFragment(SlideShowFragment.newInstance());
-                getBaseActivity().openActivity(getBaseActivity(), PacsActivity.class);
+//                getBaseActivity().addDockableFragment(SlideShowFragment.newInstance());
+//               getBaseActivity().openActivity(getBaseActivity(), PacsActivity.class);
 
                 break;
             case R.id.btnLogin:
-
-                if (edtEmail.testValidity() && edtPassword.testValidity()) {
-//                    showNextBuildToast();
-                    getBaseActivity().addDockableFragment(HomeFragment.newInstance());
-
-                    // FIXME: 1/2/2018 enter live data
-//                    LoginApiModel loginApiModel = new LoginApiModel(WebServiceConstants.tempUserName, WebServiceConstants.tempPassword);
-//
-//                    new WebServices(getBaseActivity(),
-//                            WebServiceConstants.temporaryToken,
-//                            WebServiceTypes.ONLY_TOKEN,
-//                            BaseURLTypes.AHFA).webServiceRequestAPI(WebServiceConstants.METHOD_USER_GET_USER,
-//                            loginApiModel.toString(),
-//                            new WebServices.IRequestJsonDataCallBack() {
-//                                @Override
-//                                public void requestDataResponse(WebResponse<JsonObject> webResponse) {
-//                                    UserModel userModel = GsonFactory.getSimpleGson().fromJson(webResponse.result, UserModel.class);
-//                                    UIHelper.showShortToastInCenter(getContext(), webResponse.message);
-//
-//
-//                                }
-//
-//                                @Override
-//                                public void onError() {
-//                                    UIHelper.showShortToastInCenter(getContext(), "failure");
-//                                }
-//                            });
-
-
+                // FIXME: 1/2/2018 enter live data
+                edtCardNumber.setText(WebServiceConstants.tempCardNumber);
+                edtPassword.setText(WebServiceConstants.tempPassword);
+                if (edtCardNumber.testValidity() && edtPassword.testValidity()) {
+                    LoginApiModel loginApiModel = new LoginApiModel(edtCardNumber.getText().toString(), edtPassword.getText().toString());
+                    loginCall(loginApiModel);
                 }
                 break;
         }
+    }
+
+    private void loginCall(LoginApiModel loginApiModel) {
+        new WebServices(getBaseActivity(),
+                WebServiceConstants.temporaryToken,
+                BaseURLTypes.AHFA_BASE_URL).webServiceRequestAPI(WebServiceConstants.METHOD_USER_GET_USER,
+                loginApiModel.toString(),
+                new WebServices.IRequestJsonDataCallBack() {
+                    @Override
+                    public void requestDataResponse(WebResponse<JsonObject> webResponse) {
+                        UserModel userModel = GsonFactory.getSimpleGson().fromJson(webResponse.result, UserModel.class);
+                        UIHelper.showShortToastInCenter(getContext(), webResponse.message);
+
+                        // FIXME: 1/16/2018 AQSA call HomeActivity here
+                        getBaseActivity().addDockableFragment(HomeFragment.newInstance());
+                    }
+
+                    @Override
+                    public void onError() {
+                        UIHelper.showShortToastInCenter(getContext(), "failure");
+                    }
+                });
     }
 
 }

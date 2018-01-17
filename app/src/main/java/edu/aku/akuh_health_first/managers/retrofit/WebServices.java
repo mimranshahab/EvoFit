@@ -12,7 +12,6 @@ import java.lang.String;
 import edu.aku.akuh_health_first.constatnts.WebServiceConstants;
 import edu.aku.akuh_health_first.enums.BaseURLTypes;
 import edu.aku.akuh_health_first.enums.FileType;
-import edu.aku.akuh_health_first.enums.WebServiceTypes;
 import edu.aku.akuh_health_first.helperclasses.Helper;
 import edu.aku.akuh_health_first.helperclasses.ui.helper.UIHelper;
 import edu.aku.akuh_health_first.managers.FileManager;
@@ -36,13 +35,30 @@ public class WebServices {
     private WebServiceProxy apiService;
     private ProgressDialog mDialog;
     private Context mContext;
+    private static String bearerToken = "";
+
+    public static String getBearerToken() {
+        return bearerToken;
+    }
+
+    public static void setBearerToken(String bearerToken) {
+        WebServices.bearerToken = bearerToken;
+    }
+
+    public WebServices(Activity activity, String token, BaseURLTypes baseURLTypes) {
+        switch (baseURLTypes) {
+            case PACS_VIEWER:
+                apiService = WebServiceFactory.getInstancePACSURL(token, bearerToken);
+                break;
+            case AHFA_BASE_URL:
+                apiService = WebServiceFactory.getInstanceBaseURL(token);
+                break;
+            case PACS_IMAGE_DOWNLOAD:
+                apiService = WebServiceFactory.getInstancePACSURL(token, bearerToken);
+                break;
+        }
 
 
-    public WebServices(Activity activity, String token, final WebServiceTypes webServiceTypes, BaseURLTypes baseURLTypes) {
-
-
-
-        apiService = WebServiceFactory.getInstance(token,webServiceTypes, baseURLTypes);
         mContext = activity;
         mDialog = new ProgressDialog(mContext);
         mDialog.setMessage("Loading.....");
@@ -55,6 +71,13 @@ public class WebServices {
 
     public WebServices(Context mContext) {
         this.mContext = mContext;
+        mDialog = new ProgressDialog(mContext);
+        mDialog.setMessage("Loading.....");
+        mDialog.setTitle("Please Wait");
+        mDialog.setCancelable(true);
+
+        if (!((Activity) mContext).isFinishing())
+            mDialog.show();
     }
 
     public static boolean IsResponseError(Response<WebResponse<JsonObject>> response) {
@@ -85,7 +108,7 @@ public class WebServices {
         return false;
     }
 
-    public void webServiceRequestFileAPI(String requestMethod, String filePath, FileType fileType, final IRequestJsonDataCallBackForStringResult callBack) {
+    public void webServiceUploadFileAPI(String requestMethod, String filePath, FileType fileType, final IRequestJsonDataCallBackForStringResult callBack) {
 
         RequestBody bodyRequestMethod = getRequestBody(okhttp3.MultipartBody.FORM, requestMethod);
         MultipartBody.Part bodyRequestData;
@@ -197,53 +220,43 @@ public class WebServices {
     }
 
 
-//    public void webServiceGetToken(final IRequestJsonDataCallBackForStringResult callBack) {
-//
-//
-//        try {
-//            if (Helper.isNetworkConnected(mContext, true)) {
-//                apiService.getToken().enqueue(new Callback<WebResponse<String>>() {
-//                    @Override
-//                    public void onResponse(Call<WebResponse<String>> call, Response<WebResponse<String>> response) {
-//                        dismissDialog();
-//                        if (!IsResponseErrorForStringResult(response)) {
-//                            String errorBody;
-//                            try {
-//                                errorBody = response.errorBody().string();
-//                                UIHelper.showShortToastInCenter(mContext, errorBody);
-//                                callBack.onError();
-//                            } catch (IOException e) {
-//                                e.printStackTrace();
-//                            }
-//                            return;
-//                        }
-//
-//                        if (hasValidStatusForStringResult(response))
-//                            callBack.requestDataResponse(response.body());
-//                        else {
-//                            String message = response.body().message != null ? response.body().message : response.errorBody().toString();
-//                            UIHelper.showShortToastInCenter(mContext, message);
-//                        }
-//                    }
-//
-//                    @Override
-//                    public void onFailure(Call<WebResponse<String>> call, Throwable t) {
-//                        UIHelper.showShortToastInCenter(mContext, "Something went wrong, Please check your internet connection.");
-//                        dismissDialog();
-//                        callBack.onError();
-//                    }
-//                });
-//            } else {
-//                dismissDialog();
-//            }
-//
-//        } catch (Exception e) {
-//            dismissDialog();
-//            e.printStackTrace();
-//
-//        }
-//
-//    }
+    public void webServiceGetToken(final IRequestStringCallBack callBack) {
+
+
+        try {
+            if (Helper.isNetworkConnected(mContext, true)) {
+                apiService.getToken().enqueue(new Callback<String>() {
+                    @Override
+                    public void onResponse(Call<String> call, Response<String> response) {
+                        dismissDialog();
+                        if (response != null && response.body() != null) {
+                            if (!response.body().isEmpty()) {
+                                callBack.requestDataResponse(response.body());
+                            }
+
+                        } else {
+                            UIHelper.showToast(mContext, "Null Response");
+                        }
+                    }
+
+                    @Override
+                    public void onFailure(Call<String> call, Throwable t) {
+                        UIHelper.showShortToastInCenter(mContext, "Something went wrong, Please check your internet connection.");
+                        dismissDialog();
+                        callBack.onError();
+                    }
+                });
+            } else {
+                dismissDialog();
+            }
+
+        } catch (Exception e) {
+            dismissDialog();
+            e.printStackTrace();
+
+        }
+
+    }
 
 
     @NonNull
@@ -265,6 +278,12 @@ public class WebServices {
 
     public interface IRequestJsonDataCallBackForStringResult {
         void requestDataResponse(WebResponse<String> webResponse);
+
+        void onError();
+    }
+
+    public interface IRequestStringCallBack {
+        void requestDataResponse(String webResponse);
 
         void onError();
     }
