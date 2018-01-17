@@ -181,7 +181,7 @@ public class LoginFragment extends BaseFragment {
                         UIHelper.showShortToastInCenter(getContext(), webResponse.message);
 
                         // FIXME: 1/16/2018 AQSA call HomeActivity here
-
+                        getBaseActivity().addDockableFragment(HomeFragment.newInstance());
                     }
 
                     @Override
