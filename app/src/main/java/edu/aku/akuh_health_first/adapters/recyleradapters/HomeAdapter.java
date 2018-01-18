@@ -54,9 +54,11 @@ public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.ViewHolder> {
         holder.txtAge.setText("Age " + user.getAge());
         holder.txtEmailAddress.setText("EmailAddress " + user.getEmailAddress());
 
-
-        AnimationHelper.fade(((ViewHolder) holder).viewSelected, 0.0f, View.VISIBLE, View.VISIBLE, 0.3f, 300);
-
+        if (user.isSelected()) {
+            holder.contListItem.setBackgroundColor(activity.getResources().getColor(R.color.colorPrimaryHalfTransparent));
+        } else {
+            holder.contListItem.setBackgroundColor(activity.getResources().getColor(R.color.c_white));
+        }
         setListener(holder, user);
     }
 
@@ -98,9 +100,6 @@ public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.ViewHolder> {
         AnyTextView txtEmailAddress;
         @BindView(R.id.contListItem)
         LinearLayout contListItem;
-        @BindView(R.id.viewSelected)
-        View viewSelected;
-
 
         ViewHolder(View view) {
             super(view);

@@ -22,10 +22,12 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import butterknife.Unbinder;
+import edu.aku.akuh_health_first.BaseApplication;
 import edu.aku.akuh_health_first.R;
 import edu.aku.akuh_health_first.adapters.recyleradapters.HomeAdapter;
 import edu.aku.akuh_health_first.callbacks.OnItemClickListener;
 import edu.aku.akuh_health_first.constatnts.AppConstants;
+import edu.aku.akuh_health_first.constatnts.Events;
 import edu.aku.akuh_health_first.constatnts.WebServiceConstants;
 import edu.aku.akuh_health_first.enums.BaseURLTypes;
 import edu.aku.akuh_health_first.fragments.abstracts.BaseFragment;
@@ -36,7 +38,6 @@ import edu.aku.akuh_health_first.managers.retrofit.WebServices;
 import edu.aku.akuh_health_first.models.receiving_model.CardMemberDetail;
 import edu.aku.akuh_health_first.models.receiving_model.UserDetailModel;
 import edu.aku.akuh_health_first.models.wrappers.WebResponse;
-import edu.aku.akuh_health_first.views.AnyTextView;
 
 /**
  * Created by aqsa.sarwar on 1/16/2018.
@@ -100,15 +101,25 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener, 
                 new WebServices.IRequestJsonDataCallBack() {
                     @Override
                     public void requestDataResponse(WebResponse<JsonObject> webResponse) {
-                        CardMemberDetail userModel = GsonFactory.getSimpleGson().fromJson(webResponse.result, CardMemberDetail.class);
+                        CardMemberDetail cardMemberDetail = GsonFactory.getSimpleGson().fromJson(webResponse.result, CardMemberDetail.class);
                         arrUserLists.clear();
-                        arrUserLists.add(userModel.getSubscriber());
-                        arrUserLists.addAll(userModel.getFamilyMembersList());
-                        adaptHome.notifyDataSetChanged();
-                        sharedPreferenceManager.putObject(AppConstants.KEY_ALL_USERS, arrUserLists);
-                        if (sharedPreferenceManager.getCurrentUser() == null) {
+                        arrUserLists.add(cardMemberDetail.getSubscriber());
+                        arrUserLists.addAll(cardMemberDetail.getFamilyMembersList());
+
+                        UserDetailModel currentUser = sharedPreferenceManager.getCurrentUser();
+                        if (currentUser == null && arrUserLists.size() > 0) {
                             sharedPreferenceManager.putObject(AppConstants.KEY_CURRENT_USER_MODEL, arrUserLists.get(0));
+                        } else if (currentUser != null && arrUserLists.size() > 0) {
+                            for (int i = 0; i < arrUserLists.size(); i++) {
+                                if (arrUserLists.get(i).getMRNumber().equals(currentUser.getMRNumber())) {
+                                    arrUserLists.get(i).setSelected(true);
+                                }
+                            }
                         }
+
+                        sharedPreferenceManager.putObject(AppConstants.KEY_ALL_USERS, arrUserLists);
+                        adaptHome.notifyDataSetChanged();
+
                     }
 
                     @Override
@@ -159,13 +170,13 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener, 
     @Override
     public void onItemClick(int position, Object object) {
         if (object instanceof UserDetailModel) {
-
             for (UserDetailModel userDetailModel : arrUserLists) {
                 userDetailModel.setSelected(false);
             }
             arrUserLists.get(position).setSelected(true);
             sharedPreferenceManager.putObject(AppConstants.KEY_CURRENT_USER_MODEL, object);
             adaptHome.notifyDataSetChanged();
+            notifyToAll(Events.ON_CURRENT_USER_CHANGED, object);
         }
     }
 }
