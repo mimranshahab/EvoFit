@@ -42,6 +42,8 @@ import edu.aku.akuh_health_first.models.receiving_model.UserDetailModel;
 import edu.aku.akuh_health_first.models.wrappers.WebResponse;
 import okhttp3.ResponseBody;
 
+import static edu.aku.akuh_health_first.constatnts.AppConstants.DOC_PATH;
+
 /**
  * Created by aqsa.sarwar on 1/17/2018.
  */
@@ -139,26 +141,17 @@ public class NeurophysiologyFragment extends BaseFragment implements View.OnClic
                                 public void requestDataResponse(WebResponse<String> webResponse) {
                                     String fileName = neurophysiology.getDetailReportID();
 
-                                    boolean storeSuccesfully = FileManager.writeResponseBodyToDisk(webResponse.result, fileName);
+                                    FileManager.writeResponseBodyToDisk(webResponse.result, fileName);
 
-                                    if (storeSuccesfully) {
-//                                         final File file = new File(AppConstants.DOC_PATH
-//                                                + "/" + fileName);
+                                    final File file = new File(DOC_PATH
+                                            + "/" + fileName);
 
-
-                                        final java.io.File file = new java.io.File(Environment
-                                                .getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS)
-                                                + "/" + fileName);
-
-
-                                        new Handler().postDelayed(new Runnable() {
-                                            @Override
-                                            public void run() {
-                                                FileManager.openFile(getContext(), file);
-                                            }
-                                        }, 2000);
-
-                                    }
+                                    new Handler().postDelayed(new Runnable() {
+                                        @Override
+                                        public void run() {
+                                            FileManager.openFile(getContext(), file);
+                                        }
+                                    }, 300);
 
 
                                 }

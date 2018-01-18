@@ -6,6 +6,7 @@ import android.content.ContextWrapper;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Environment;
+import android.util.Base64;
 import android.util.Log;
 import android.webkit.MimeTypeMap;
 import android.webkit.URLUtil;
@@ -137,80 +138,27 @@ public class FileManager {
 //            return new File(cw.getDir(AppConstants.USER_PROFILE_PICTURE_F OLDER_DIRECTORY, Context.MODE_PRIVATE), AppConstants.USER_PROFILE_PICTURE_NAME);
 //    }
 
-    public static boolean writeResponseBodyToDisk(String body, String fileName) {
+    public static void writeResponseBodyToDisk(String body, String fileName) {
+
+        createDirectory(DOC_PATH);
+
+        File dwldsPath = new File(DOC_PATH
+                + "/" + fileName);
+
+        byte[] pdfAsBytes = Base64.decode(body, 0);
+        FileOutputStream os;
         try {
-
-            createDirectory(DOC_PATH);
-
-//            java.io.File futureStudioIconFile = new java.io.File(Environment
-//                    .getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS)
-//                    + "/" + fileName);
-
-            File futureStudioIconFile = new File(DOC_PATH
-                    + "/" + fileName);
-
-
-//
-            InputStream inputStream = null;
-            OutputStream outputStream = null;
-
-
-
-
-            org.apache.commons.io.FileUtils.writeByteArrayToFile(futureStudioIconFile, body.getBytes("ISO-8859-1"));
-            return true;
-
-        } catch (UnsupportedEncodingException e) {
+            os = new FileOutputStream(dwldsPath, false);
+            os.write(pdfAsBytes);
+            os.flush();
+            os.close();
+        } catch (FileNotFoundException e) {
             e.printStackTrace();
-            return false;
         } catch (IOException e) {
             e.printStackTrace();
-            return false;
         }
 
 
-
-//
-//            try {
-//                byte[] fileReader = new byte[4096];
-//
-//                long fileSize = body.getBytes().length;
-//                long fileSizeDownloaded = 0;
-//
-//                inputStream = IOUtils.toInputStream(body, "ISO-8859-1");
-//                outputStream = new FileOutputStream(futureStudioIconFile);
-//
-//                while (true) {
-//                    int read = inputStream.read(fileReader);
-//
-//                    if (read == -1) {
-//                        break;
-//                    }
-//
-//                    outputStream.write(fileReader, 0, read);
-//
-//                    fileSizeDownloaded += read;
-//
-//                    Log.d(TAG, "file download: " + fileSizeDownloaded + " of " + fileSize);
-//                }
-//
-//                outputStream.flush();
-//
-//                return true;
-//            } catch (IOException e) {
-//                return false;
-//            } finally {
-//                if (inputStream != null) {
-//                    inputStream.close();
-//                }
-//
-//                if (outputStream != null) {
-//                    outputStream.close();
-//                }
-//            }
-//        } catch (IOException e) {
-//            return false;
-//        }
     }
 
     public static boolean isFileExits(String path) {
