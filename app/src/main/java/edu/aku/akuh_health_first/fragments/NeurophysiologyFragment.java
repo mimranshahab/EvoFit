@@ -1,6 +1,8 @@
 package edu.aku.akuh_health_first.fragments;
 
 import android.os.Bundle;
+import android.os.Environment;
+import android.os.Handler;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
@@ -15,6 +17,7 @@ import android.widget.AdapterView;
 import com.google.gson.JsonObject;
 import com.google.gson.reflect.TypeToken;
 
+import java.io.File;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
 
@@ -24,15 +27,20 @@ import butterknife.Unbinder;
 import edu.aku.akuh_health_first.R;
 import edu.aku.akuh_health_first.adapters.recyleradapters.NeurophysiologyAdapter;
 import edu.aku.akuh_health_first.callbacks.OnItemClickListener;
+import edu.aku.akuh_health_first.constatnts.AppConstants;
 import edu.aku.akuh_health_first.constatnts.WebServiceConstants;
 import edu.aku.akuh_health_first.enums.BaseURLTypes;
 import edu.aku.akuh_health_first.fragments.abstracts.BaseFragment;
 import edu.aku.akuh_health_first.helperclasses.ui.helper.TitleBar;
 import edu.aku.akuh_health_first.helperclasses.ui.helper.UIHelper;
+import edu.aku.akuh_health_first.libraries.fileloader.FileLoader;
+import edu.aku.akuh_health_first.managers.FileManager;
 import edu.aku.akuh_health_first.managers.retrofit.GsonFactory;
 import edu.aku.akuh_health_first.managers.retrofit.WebServices;
 import edu.aku.akuh_health_first.models.Neurophysiology;
+import edu.aku.akuh_health_first.models.receiving_model.UserDetailModel;
 import edu.aku.akuh_health_first.models.wrappers.WebResponse;
+import okhttp3.ResponseBody;
 
 /**
  * Created by aqsa.sarwar on 1/17/2018.
@@ -49,6 +57,7 @@ public class NeurophysiologyFragment extends BaseFragment implements View.OnClic
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        arrNeuropysiologyLists = new ArrayList<Neurophysiology>();
         adaptNeuropysiology = new NeurophysiologyAdapter(getBaseActivity(), arrNeuropysiologyLists, this);
     }
 
@@ -76,6 +85,11 @@ public class NeurophysiologyFragment extends BaseFragment implements View.OnClic
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+        bindView();
+        serviceCall();
+    }
+
+    private void bindView() {
         RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getBaseActivity());
         recyclerNeurophysiology.setLayoutManager(mLayoutManager);
         ((DefaultItemAnimator) recyclerNeurophysiology.getItemAnimator()).setSupportsChangeAnimations(false);
@@ -83,7 +97,6 @@ public class NeurophysiologyFragment extends BaseFragment implements View.OnClic
         LayoutAnimationController animation = AnimationUtils.loadLayoutAnimation(getContext(), resId);
         recyclerNeurophysiology.setLayoutAnimation(animation);
         recyclerNeurophysiology.setAdapter(adaptNeuropysiology);
-        serviceCall();
     }
 
     @Override
@@ -117,33 +130,81 @@ public class NeurophysiologyFragment extends BaseFragment implements View.OnClic
 
     @Override
     public void onItemClick(int position, Object object) {
+        if (object instanceof Neurophysiology) {
+            final Neurophysiology neurophysiology = (Neurophysiology) object;
+            new WebServices(getBaseActivity(), WebServiceConstants.temporaryToken, BaseURLTypes.AHFA_BASE_URL)
+                    .webServiceRequestAPIForWebResponseWithString(WebServiceConstants.METHOD_NEUROPHIOLOGY_SHOW_REPORT,
+                            neurophysiology.toString(), new WebServices.IRequestWebResponseWithStringDataCallBack() {
+                                @Override
+                                public void requestDataResponse(WebResponse<String> webResponse) {
+                                    String fileName = neurophysiology.getDetailReportID();
+
+                                    boolean storeSuccesfully = FileManager.writeResponseBodyToDisk(webResponse.result, fileName);
+
+                                    if (storeSuccesfully) {
+//                                         final File file = new File(AppConstants.DOC_PATH
+//                                                + "/" + fileName);
+
+
+                                        final java.io.File file = new java.io.File(Environment
+                                                .getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS)
+                                                + "/" + fileName);
+
+
+                                        new Handler().postDelayed(new Runnable() {
+                                            @Override
+                                            public void run() {
+                                                FileManager.openFile(getContext(), file);
+                                            }
+                                        }, 2000);
+
+                                    }
+
+
+                                }
+
+                                @Override
+                                public void onError() {
+
+
+                                }
+                            }
+                    );
+        }
 
     }
 
     private void serviceCall() {
         // FIXME: 1/18/2018 Use live data in future
-        sharedPreferenceManager.getCurrentUser().setMRNumber(WebServiceConstants.tempMRN);
+        UserDetailModel currentUser = sharedPreferenceManager.getCurrentUser();
+        currentUser.setMRNumber(WebServiceConstants.tempMRN);
+        sharedPreferenceManager.putObject(AppConstants.KEY_CURRENT_USER_MODEL, currentUser);
 
         new WebServices(getBaseActivity(),
                 WebServiceConstants.temporaryToken,
-                BaseURLTypes.AHFA_BASE_URL).webServiceRequestAPI(WebServiceConstants.METHOD_NEUROPHIOLOGY,
-                sharedPreferenceManager.getCurrentUser().getMRNumberwithComma(),
-                new WebServices.IRequestJsonDataCallBack() {
-                    @Override
-                    public void requestDataResponse(WebResponse<JsonObject> webResponse) {
-                        Type type = new TypeToken<ArrayList<Neurophysiology>>() {
-                        }.getType();
-                        ArrayList<Neurophysiology> arrayList = GsonFactory.getSimpleGson().fromJson(webResponse.result, type);
-                        arrNeuropysiologyLists.clear();
-                        arrNeuropysiologyLists.addAll(arrayList);
-                        adaptNeuropysiology.notifyDataSetChanged();
-                    }
+                BaseURLTypes.AHFA_BASE_URL)
+                .webServiceRequestAPIForArray(WebServiceConstants.METHOD_NEUROPHIOLOGY,
+                        currentUser.getMRNumberwithComma(),
+                        new WebServices.IRequestArrayDataCallBack() {
+                            @Override
+                            public void requestDataResponse(WebResponse<ArrayList<JsonObject>> webResponse) {
 
-                    @Override
-                    public void onError() {
-                        UIHelper.showShortToastInCenter(getContext(), "failure");
-                    }
-                });
+                                Type type = new TypeToken<ArrayList<Neurophysiology>>() {
+                                }.getType();
+                                ArrayList<Neurophysiology> arrayList = GsonFactory.getSimpleGson()
+                                        .fromJson(GsonFactory.getSimpleGson().toJson(webResponse.result)
+                                                , type);
+
+                                arrNeuropysiologyLists.clear();
+                                arrNeuropysiologyLists.addAll(arrayList);
+                                adaptNeuropysiology.notifyDataSetChanged();
+                            }
+
+                            @Override
+                            public void onError() {
+                                UIHelper.showShortToastInCenter(getContext(), "failure");
+                            }
+                        });
 
     }
 }

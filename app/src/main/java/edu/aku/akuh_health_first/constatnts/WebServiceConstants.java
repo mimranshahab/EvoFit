@@ -35,6 +35,7 @@ public class WebServiceConstants {
     public static final String METHOD_USER_UPLOAD_REQUEST_FILE = "UserManager.UploadRequestFile";
     public static final String METHOD_PACMANAGER = "PACSManager.GetPacs";
     public static final String METHOD_NEUROPHIOLOGY = "NeurophysiologyManager.GetNeurophysiologyExam";
+    public static final String METHOD_NEUROPHIOLOGY_SHOW_REPORT= "NeurophysiologyManager.ShowReport";
 
 
     /**

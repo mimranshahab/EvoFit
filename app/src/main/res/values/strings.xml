@@ -3,15 +3,10 @@
     <string name="google_maps_key">AIzaSyBsP8jCqqrTckRDPcfaefKutSDo3NBENok</string>
 
 
-
-
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
 
     <string name="action_right_drawer">Right Drawer</string>
-
-
-
 
 
     <!--FONTS-->
@@ -251,7 +246,7 @@
     <!--Title bar all layout here-->
 
     <string name="about">About App</string>
-     <string name="generic">Lorem ipsum dolor sit amet, rutrum tempus nascetur parturient ipsum lobortis, vel iaculis posuere leo odio, cum velit amet at vestibulum non, ac eiusmod ornare dictum, in praesent sed. Tincidunt pellentesque. Tellus earum a, wisi tempus suspendisse quam dui adipiscing. Sapien morbi scelerisque vitae sit, molestie suscipit quis cras parturient ipsum, sodales turpis, fusce ultrices quam vestibulum nec sit malesuada. Nonummy ultricies placerat integer vel similique, eu vestibulum volutpat quisque eget, porttitor vulputate morbi quam eros augue, amet turpis, et elit mauris vehicula. Malesuada donec erat, ut penatibus rutrum, amet lectus arcu. Dis suspendisse itaque dis dolor semper, justo amet condimentum nunc nibh quis etiam, luctus diam in enim donec id nam, ante dolor ultrices nam consequat aliquam. Tincidunt aliquam metus nulla eu quam integer, at sem in pellentesque ipsum, libero diam eos iaculis aliquam libero, a per vestibulum felis arcu. Et eros nullam est hymenaeos, libero leo, consequat a vehicula, vitae massa dictumst.
+    <string name="generic">Lorem ipsum dolor sit amet, rutrum tempus nascetur parturient ipsum lobortis, vel iaculis posuere leo odio, cum velit amet at vestibulum non, ac eiusmod ornare dictum, in praesent sed. Tincidunt pellentesque. Tellus earum a, wisi tempus suspendisse quam dui adipiscing. Sapien morbi scelerisque vitae sit, molestie suscipit quis cras parturient ipsum, sodales turpis, fusce ultrices quam vestibulum nec sit malesuada. Nonummy ultricies placerat integer vel similique, eu vestibulum volutpat quisque eget, porttitor vulputate morbi quam eros augue, amet turpis, et elit mauris vehicula. Malesuada donec erat, ut penatibus rutrum, amet lectus arcu. Dis suspendisse itaque dis dolor semper, justo amet condimentum nunc nibh quis etiam, luctus diam in enim donec id nam, ante dolor ultrices nam consequat aliquam. Tincidunt aliquam metus nulla eu quam integer, at sem in pellentesque ipsum, libero diam eos iaculis aliquam libero, a per vestibulum felis arcu. Et eros nullam est hymenaeos, libero leo, consequat a vehicula, vitae massa dictumst.
 Ut leo duis, lacus rerum integer in lobortis cursus, montes sodales amet nunc nec nunc justo. Pulvinar turpis lectus et nunc consectetuer, ultrices viverra. Elit adipiscing metus id wisi. Mi nibh sociosqu, odio dignissim fames nisl wisi. Aenean lectus, luctus sit ullamcorper tincidunt, sed pellentesque feugiat in. Fusce aliquam vitae justo risus, ullamcorper donec. Proin amet donec at tristique, diam et justo ipsum nascetur. Lacinia nisl faucibus tempus aliquam ante eu, sit id montes varius. Ligula non, pretium mauris, orci lacus ac fringilla. Sed at.
 Aliquam vitae, eu elit, in luctus nulla nunc ornare sodales tincidunt, libero laoreet accumsan netus, amet nec eros venenatis justo dis sit. Pede pulvinar leo dui eros, habitant erat nunc lectus. Suscipit ligula in cras et, etiam parturient accumsan erat orci neque, phasellus nullam mauris wisi convallis in. Lacinia dapibus sociis aspernatur nibh, sodales pretium arcu, consectetuer ornare metus eros, est accumsan et lorem duis adipiscing, vehicula fusce elementum. Natoque cursus ultricies semper nostra dignissim, eget duis viverra vestibulum, elit eros quis quisque elementum semper massa.
 Enim vitae euismod eu velit pede eu, sodales malesuada sit fermentum ut dictum dictum, justo dui sapien vitae. Justo quisque, commodo potenti nascetur ultrices tellus consequat ut, ligula tristique aliquam dapibus et in quis. Donec nibh arcu vel nonummy. Eget felis. In tellus orci donec, felis porta et dis nibh, tellus dictumst fermentum enim sit nulla praesent. Dolor sed tempor maecenas, vitae auctor tellus bibendum venenatis, mauris turpis blandit, pede risus a elit pulvinar eu proin, eleifend augue anim. Varius posuere pharetra tincidunt, aliquam aliquam luctus voluptatibus dignissim, eu quis. Suspendisse hac imperdiet donec cras id mauris, et sit tempor lobortis, etiam nec volutpat vel eu vitae eros, aliquam at suscipit molestie, platea in wisi feugiat egestas nulla.
@@ -687,5 +682,10 @@ Enim vitae euismod eu velit pede eu, sodales malesuada sit fermentum ut dictum d
     <string name="mr_number">MR Number</string>
     <string name="card_type">Card Type</string>
     <string name="relationship">Relationship</string>
+    <string name="hospitalLocation"><b>HospitalLocation: </b></string>
+    <string name="date_time"><b>DateTime: </b></string>
+    <string name="requestNumber"><b>RequestNumber: </b></string>
+    <string name="admissionNumber"><b>AdmissionNumber: </b></string>
+    <string name="service"><b>Service: </b></string>
 
 </resources>

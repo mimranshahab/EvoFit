@@ -5,6 +5,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
 
 import java.util.ArrayList;
 
@@ -14,7 +15,6 @@ import butterknife.ButterKnife;
 import edu.aku.akuh_health_first.R;
 import edu.aku.akuh_health_first.callbacks.OnItemClickListener;
 import edu.aku.akuh_health_first.models.Neurophysiology;
-import edu.aku.akuh_health_first.models.receiving_model.UserDetailModel;
 import edu.aku.akuh_health_first.views.AnyTextView;
 
 /**
@@ -46,14 +46,23 @@ public class NeurophysiologyAdapter extends RecyclerView.Adapter<Neurophysiology
     public void onBindViewHolder(final ViewHolder holder, int i) {
 
         final Neurophysiology neurophysiology = neurophysiologyArrayList.get(holder.getAdapterPosition());
-        holder.txtHospLoc.setText("HospitalLocation"+neurophysiology.getHospitalLocation());
+        holder.txtHospLoc.setText(activity.getString(R.string.hospitalLocation) + " " + neurophysiology.getHospitalLocation());
 //        holder.txtViewProfile.setText(neurophysiology.getName());
-        holder.txtReqDatetime.setText("RequestServiceDateTime " + neurophysiology.getRequestServiceDateTime());
-        holder.txtReqNum.setText("RequestNumber " + neurophysiology.getRequestNumber());
-        holder.txtAdmNo.setText("AdmissionNumber " + neurophysiology.getAdmissionNumber());
-        holder.txtService.setText("Service " + neurophysiology.getService());
+        holder.txtReqDatetime.setText(activity.getString(R.string.date_time) + " " + neurophysiology.getRequestServiceDateTime());
+        holder.txtReqNum.setText(activity.getString(R.string.requestNumber) + " " + neurophysiology.getRequestNumber());
+        holder.txtAdmNo.setText(activity.getString(R.string.admissionNumber) + " " + neurophysiology.getAdmissionNumber());
+        holder.txtService.setText(activity.getString(R.string.service) + " " + neurophysiology.getService());
 
+        setListener(holder, neurophysiology);
+    }
 
+    private void setListener(final ViewHolder holder, final Neurophysiology neurophysiology) {
+        holder.contListItem.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onItemClick.onItemClick(holder.getAdapterPosition(), neurophysiology);
+            }
+        });
     }
 
 
@@ -80,7 +89,8 @@ public class NeurophysiologyAdapter extends RecyclerView.Adapter<Neurophysiology
         AnyTextView txtAdmNo;
         @BindView(R.id.txtService)
         AnyTextView txtService;
-
+        @BindView(R.id.contListItem)
+        LinearLayout contListItem;
 
 
         ViewHolder(View view) {

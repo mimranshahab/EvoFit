@@ -19,6 +19,7 @@ import edu.aku.akuh_health_first.models.wrappers.WebResponse;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
 
 import okhttp3.MediaType;
 import okhttp3.MultipartBody;
@@ -87,6 +88,13 @@ public class WebServices {
         return true;
     }
 
+    public static boolean IsResponseErrorForArray(Response<WebResponse<ArrayList<JsonObject>>> response) {
+        if (response != null && !response.isSuccessful() && response.errorBody() != null) {
+            return false;
+        }
+        return true;
+    }
+
     public static boolean IsResponseErrorForStringResult(Response<WebResponse<String>> response) {
         if (response != null && !response.isSuccessful() && response.errorBody() != null) {
             return false;
@@ -101,6 +109,13 @@ public class WebServices {
         return false;
     }
 
+    public static boolean hasValidStatusForArray(Response<WebResponse<ArrayList<JsonObject>>> response) {
+        if (response != null && response.body() != null) {
+            return response.body().isSuccess();
+        }
+        return false;
+    }
+
     public static boolean hasValidStatusForStringResult(Response<WebResponse<String>> response) {
         if (response != null && response.body() != null) {
             return response.body().isSuccess();
@@ -108,7 +123,7 @@ public class WebServices {
         return false;
     }
 
-    public void webServiceUploadFileAPI(String requestMethod, String filePath, FileType fileType, final IRequestJsonDataCallBackForStringResult callBack) {
+    public void webServiceUploadFileAPI(String requestMethod, String filePath, FileType fileType, final IRequestWebResponseWithStringDataCallBack callBack) {
 
         RequestBody bodyRequestMethod = getRequestBody(okhttp3.MultipartBody.FORM, requestMethod);
         MultipartBody.Part bodyRequestData;
@@ -219,6 +234,110 @@ public class WebServices {
 
     }
 
+    public void webServiceRequestAPIForWebResponseWithString(String requestMethod, String requestData, final IRequestWebResponseWithStringDataCallBack callBack) {
+        RequestBody bodyRequestMethod = getRequestBody(okhttp3.MultipartBody.FORM, requestMethod);
+        RequestBody bodyRequestData = getRequestBody(okhttp3.MultipartBody.FORM, requestData);
+
+        try {
+            if (Helper.isNetworkConnected(mContext, true)) {
+                Call<WebResponse<String>> webResponseCall = apiService.webServiceRequestAPIForWebResponseWithString(bodyRequestMethod, bodyRequestData);
+//                webResponseCall.request().newBuilder().addHeader("name", "hkhkhkhkhk").build();
+                webResponseCall.enqueue(new Callback<WebResponse<String>>() {
+                    @Override
+                    public void onResponse(Call<WebResponse<String>> call, Response<WebResponse<String>> response) {
+                        dismissDialog();
+                        if (!IsResponseErrorForStringResult(response)) {
+                            String errorBody;
+                            try {
+                                errorBody = response.errorBody().string();
+                                UIHelper.showShortToastInCenter(mContext, errorBody);
+                                callBack.onError();
+                            } catch (IOException e) {
+                                e.printStackTrace();
+                            }
+                            return;
+                        }
+
+                        if (hasValidStatusForStringResult(response))
+                            callBack.requestDataResponse(response.body());
+                        else {
+                            String message = response.body().message != null ? response.body().message : response.errorBody().toString();
+                            UIHelper.showShortToastInCenter(mContext, message);
+                        }
+                    }
+
+                    @Override
+                    public void onFailure(Call<WebResponse<String>> call, Throwable t) {
+                        UIHelper.showShortToastInCenter(mContext, "Something went wrong, Please check your internet connection.");
+                        dismissDialog();
+                        callBack.onError();
+                    }
+                });
+            } else {
+                dismissDialog();
+            }
+
+        } catch (Exception e) {
+            dismissDialog();
+            e.printStackTrace();
+
+        }
+
+    }
+
+
+    public void webServiceRequestAPIForArray(String requestMethod, String requestData, final IRequestArrayDataCallBack callBack) {
+
+        RequestBody bodyRequestMethod = getRequestBody(okhttp3.MultipartBody.FORM, requestMethod);
+        RequestBody bodyRequestData = getRequestBody(okhttp3.MultipartBody.FORM, requestData);
+
+        try {
+            if (Helper.isNetworkConnected(mContext, true)) {
+                Call<WebResponse<ArrayList<JsonObject>>> webResponseCall = apiService.webServiceRequestAPIForArray(bodyRequestMethod, bodyRequestData);
+//                webResponseCall.request().newBuilder().addHeader("name", "hkhkhkhkhk").build();
+                webResponseCall.enqueue(new Callback<WebResponse<ArrayList<JsonObject>>>() {
+                    @Override
+                    public void onResponse(Call<WebResponse<ArrayList<JsonObject>>> call, Response<WebResponse<ArrayList<JsonObject>>> response) {
+                        dismissDialog();
+                        if (!IsResponseErrorForArray(response)) {
+                            String errorBody;
+                            try {
+                                errorBody = response.errorBody().string();
+                                UIHelper.showShortToastInCenter(mContext, errorBody);
+                                callBack.onError();
+                            } catch (IOException e) {
+                                e.printStackTrace();
+                            }
+                            return;
+                        }
+
+                        if (hasValidStatusForArray(response))
+                            callBack.requestDataResponse(response.body());
+                        else {
+                            String message = response.body().message != null ? response.body().message : response.errorBody().toString();
+                            UIHelper.showShortToastInCenter(mContext, message);
+                        }
+                    }
+
+                    @Override
+                    public void onFailure(Call<WebResponse<ArrayList<JsonObject>>> call, Throwable t) {
+                        UIHelper.showShortToastInCenter(mContext, "Something went wrong, Please check your internet connection.");
+                        dismissDialog();
+                        callBack.onError();
+                    }
+                });
+            } else {
+                dismissDialog();
+            }
+
+        } catch (Exception e) {
+            dismissDialog();
+            e.printStackTrace();
+
+        }
+
+    }
+
 
     public void webServiceGetToken(final IRequestStringCallBack callBack) {
 
@@ -276,7 +395,13 @@ public class WebServices {
         void onError();
     }
 
-    public interface IRequestJsonDataCallBackForStringResult {
+    public interface IRequestArrayDataCallBack {
+        void requestDataResponse(WebResponse<ArrayList<JsonObject>> webResponse);
+
+        void onError();
+    }
+
+    public interface IRequestWebResponseWithStringDataCallBack {
         void requestDataResponse(WebResponse<String> webResponse);
 
         void onError();

@@ -70,8 +70,7 @@ public class LoginFragment extends BaseFragment {
     @Override
     public void setTitlebar(TitleBar titleBar) {
         titleBar.resetViews();
-        titleBar.setVisibility(View.VISIBLE);
-        titleBar.showSidebar(getBaseActivity());
+        titleBar.setVisibility(View.GONE);
     }
 
 
