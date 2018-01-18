@@ -8,6 +8,8 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.AnimationUtils;
+import android.view.animation.LayoutAnimationController;
 import android.widget.AdapterView;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -21,8 +23,9 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 import butterknife.Unbinder;
 import edu.aku.akuh_health_first.R;
-import edu.aku.akuh_health_first.adapters.recyleradapters.FamilyMembersAdapter;
+import edu.aku.akuh_health_first.adapters.recyleradapters.HomeAdapter;
 import edu.aku.akuh_health_first.callbacks.OnItemClickListener;
+import edu.aku.akuh_health_first.constatnts.AppConstants;
 import edu.aku.akuh_health_first.constatnts.WebServiceConstants;
 import edu.aku.akuh_health_first.enums.BaseURLTypes;
 import edu.aku.akuh_health_first.fragments.abstracts.BaseFragment;
@@ -31,7 +34,7 @@ import edu.aku.akuh_health_first.helperclasses.ui.helper.UIHelper;
 import edu.aku.akuh_health_first.managers.retrofit.GsonFactory;
 import edu.aku.akuh_health_first.managers.retrofit.WebServices;
 import edu.aku.akuh_health_first.models.receiving_model.CardMemberDetail;
-import edu.aku.akuh_health_first.models.receiving_model.FamilyMembersList;
+import edu.aku.akuh_health_first.models.receiving_model.UserDetailModel;
 import edu.aku.akuh_health_first.models.wrappers.WebResponse;
 import edu.aku.akuh_health_first.views.AnyTextView;
 
@@ -43,30 +46,16 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener, 
 
 
     @BindView(R.id.listFamilyMembers)
-    RecyclerView listFamilyMembers;
+    RecyclerView recyclerHome;
     Unbinder unbinder;
-    @BindView(R.id.imgUser)
-    ImageView imgUser;
-    @BindView(R.id.txtName)
-    AnyTextView txtName;
-    @BindView(R.id.txtViewProfile)
-    AnyTextView txtViewProfile;
-    @BindView(R.id.txtMRN)
-    AnyTextView txtMRN;
-    @BindView(R.id.txtGender)
-    AnyTextView txtGender;
-    @BindView(R.id.txtAge)
-    AnyTextView txtAge;
-    @BindView(R.id.txtEmailAddress)
-    AnyTextView txtEmailAddress;
-    @BindView(R.id.containerList)
-    LinearLayout containerList;
-    private FamilyMembersAdapter adapterFamilyMembers;
-    private ArrayList<FamilyMembersList> arrFamList = new ArrayList<>();
+    private HomeAdapter adaptHome;
+    private ArrayList<UserDetailModel> arrUserLists = new ArrayList<>();
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        arrUserLists.clear();
+        adaptHome = new HomeAdapter(getBaseActivity(), arrUserLists, this);
 
     }
 
@@ -84,16 +73,21 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener, 
         return fragment;
     }
 
+
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+        RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getBaseActivity());
+        recyclerHome.setLayoutManager(mLayoutManager);
+        ((DefaultItemAnimator) recyclerHome.getItemAnimator()).setSupportsChangeAnimations(false);
+        int resId = R.anim.layout_animation_fall_bottom;
+        LayoutAnimationController animation = AnimationUtils.loadLayoutAnimation(getContext(), resId);
+        recyclerHome.setLayoutAnimation(animation);
+//        recyclerHome.setItemAnimator(new DefaultItemAnimator());
+        recyclerHome.setAdapter(adaptHome);
+
 
         serviceCall();
-        adapterFamilyMembers = new FamilyMembersAdapter(getBaseActivity(), arrFamList, this);
-        RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getBaseActivity());
-        listFamilyMembers.setLayoutManager(mLayoutManager);
-        listFamilyMembers.setItemAnimator(new DefaultItemAnimator());
-        listFamilyMembers.setAdapter(adapterFamilyMembers);
     }
 
     private void serviceCall() {
@@ -107,12 +101,14 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener, 
                     @Override
                     public void requestDataResponse(WebResponse<JsonObject> webResponse) {
                         CardMemberDetail userModel = GsonFactory.getSimpleGson().fromJson(webResponse.result, CardMemberDetail.class);
-                        arrFamList.clear();
-                        arrFamList.addAll(userModel.getFamilyMembersList());
-                        adapterFamilyMembers.notifyDataSetChanged();
-                        setData(userModel);
-
-
+                        arrUserLists.clear();
+                        arrUserLists.add(userModel.getSubscriber());
+                        arrUserLists.addAll(userModel.getFamilyMembersList());
+                        adaptHome.notifyDataSetChanged();
+                        sharedPreferenceManager.putObject(AppConstants.KEY_ALL_USERS, arrUserLists);
+                        if (sharedPreferenceManager.getCurrentUser() == null) {
+                            sharedPreferenceManager.putObject(AppConstants.KEY_CURRENT_USER_MODEL, arrUserLists.get(0));
+                        }
                     }
 
                     @Override
@@ -123,15 +119,6 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener, 
 
     }
 
-    private void setData(CardMemberDetail userModel) {
-
-        txtName.setText(userModel.getSubscriber().getName());
-        txtAge.setText("Age " + userModel.getSubscriber().getAge());
-        txtEmailAddress.setText("EmailAddress " + userModel.getSubscriber().getEmailAddress());
-        txtMRN.setText("MR# " + userModel.getSubscriber().getMRNumber());
-        txtGender.setText("Gender " + userModel.getSubscriber().getMRNumber());
-
-    }
 
     @Override
     public void setTitlebar(TitleBar titleBar) {
@@ -171,16 +158,14 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener, 
 
     @Override
     public void onItemClick(int position, Object object) {
-        if (object instanceof FamilyMembersList) {
-            FamilyMembersList familyMembersList = (FamilyMembersList) object;
-            getBaseActivity().addDockableFragment(HealthHistoryFragment.newInstance());
+        if (object instanceof UserDetailModel) {
 
+            for (UserDetailModel userDetailModel : arrUserLists) {
+                userDetailModel.setSelected(false);
+            }
+            arrUserLists.get(position).setSelected(true);
+            sharedPreferenceManager.putObject(AppConstants.KEY_CURRENT_USER_MODEL, object);
+            adaptHome.notifyDataSetChanged();
         }
-    }
-
-    @OnClick(R.id.containerList)
-    public void onViewClicked() {
-
-        getBaseActivity().addDockableFragment(HealthHistoryFragment.newInstance());
     }
 }

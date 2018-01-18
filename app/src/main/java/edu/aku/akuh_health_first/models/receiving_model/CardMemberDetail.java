@@ -90,10 +90,10 @@ public class CardMemberDetail {
     private Boolean recordFound;
     @SerializedName("Subscriber")
     @Expose
-    private Subscriber subscriber;
+    private UserDetailModel subscriber;
     @SerializedName("FamilyMembersList")
     @Expose
-    private List<FamilyMembersList> familyMembersList = null;
+    private List<UserDetailModel> familyMembersList = null;
     @SerializedName("_token")
     @Expose
     private String token;
@@ -311,19 +311,19 @@ public class CardMemberDetail {
         this.recordFound = recordFound;
     }
 
-    public Subscriber getSubscriber() {
+    public UserDetailModel getSubscriber() {
         return subscriber;
     }
 
-    public void setSubscriber(Subscriber subscriber) {
+    public void setSubscriber(UserDetailModel subscriber) {
         this.subscriber = subscriber;
     }
 
-    public List<FamilyMembersList> getFamilyMembersList() {
+    public List<UserDetailModel> getFamilyMembersList() {
         return familyMembersList;
     }
 
-    public void setFamilyMembersList(List<FamilyMembersList> familyMembersList) {
+    public void setFamilyMembersList(List<UserDetailModel> familyMembersList) {
         this.familyMembersList = familyMembersList;
     }
 

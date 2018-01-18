@@ -16,10 +16,9 @@ import edu.aku.akuh_health_first.fragments.abstracts.BaseFragment;
 import edu.aku.akuh_health_first.helperclasses.CountDownTimerHelper;
 import edu.aku.akuh_health_first.helperclasses.ui.helper.KeyboardHide;
 import edu.aku.akuh_health_first.helperclasses.ui.helper.TitleBar;
+import edu.aku.akuh_health_first.models.CardModel;
 import edu.aku.akuh_health_first.models.wrappers.WebResponse;
 import edu.aku.akuh_health_first.R;
-
-import edu.aku.akuh_health_first.models.UserModel;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -49,7 +48,7 @@ public class VerifyNumberCodeFragment extends BaseFragment {
     Unbinder unbinder;
 
     private CountDownTimer countDownTimer;
-    private Call<WebResponse<UserModel>> callCodeVerification;
+    private Call<WebResponse<CardModel>> callCodeVerification;
     private Call<WebResponse<Object>> callSendVerifyCode;
     private String phoneNumber;
     private String countryCode;

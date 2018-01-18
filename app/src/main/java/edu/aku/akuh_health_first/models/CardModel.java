@@ -7,7 +7,7 @@ import com.google.gson.annotations.SerializedName;
  * Created by khanhamza on 09-Mar-17.
  */
 
-public class UserModel {
+public class CardModel {
 
     @SerializedName("CardNumber")
     @Expose

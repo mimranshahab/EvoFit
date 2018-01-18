@@ -44,7 +44,8 @@ public class AppConstants {
 
 
     /*******************Preferences KEYS******************/
-    public static final String USER_DATA = "userData";
+    public static final String KEY_CURRENT_USER_MODEL = "userModel";
+    public static final String KEY_ALL_USERS = "allUsers";
     public static final String USER_NOTIFICATION_DATA = "USER_NOTIFICATION_DATA";
     public static String PROFILE_REGISTRATION = "profile_registration";
     public static String FORCED_RESTART = "forced_restart";
