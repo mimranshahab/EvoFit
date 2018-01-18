@@ -40,7 +40,6 @@ import edu.aku.akuh_health_first.helperclasses.validator.CnicValidation;
 import edu.aku.akuh_health_first.helperclasses.validator.MobileNumberValidation;
 import edu.aku.akuh_health_first.libraries.maskformatter.MaskFormatter;
 import edu.aku.akuh_health_first.managers.DateManager;
-import edu.aku.akuh_health_first.managers.retrofit.WebServiceFactory;
 import edu.aku.akuh_health_first.models.PacsView;
 import edu.aku.akuh_health_first.models.receiving_model.RegisterVM;
 import edu.aku.akuh_health_first.models.wrappers.WebResponse;
@@ -60,9 +59,6 @@ import edu.aku.akuh_health_first.managers.retrofit.WebServices;
 import edu.aku.akuh_health_first.models.receiving_model.RegisterOptionsModel;
 import okhttp3.MediaType;
 import okhttp3.RequestBody;
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
 
 import static android.app.Activity.RESULT_OK;
 import static edu.aku.akuh_health_first.constatnts.AppConstants.CNIC_MASK;
@@ -235,7 +231,7 @@ public class RegisterFragment extends BaseFragment {
                         UIHelper.showShortToastInCenter(getContext(), webResponse.message);
                         SharedPreferenceManager.getInstance(getContext()).putObject(AppConstants.KEY_REGISTER_VM, webResponse.result);
                         setSpinnerData(registerVM);
-                    }
+                     }
 
                     @Override
                     public void onError() {
@@ -487,7 +483,7 @@ public class RegisterFragment extends BaseFragment {
                                 PacsView entity = GsonFactory.getSimpleGson().fromJson(webResponse.result, PacsView.class);
 
                                 UIHelper.showToast(getContext(), entity.toString());
-                            }
+                             }
 
                             @Override
                             public void onError() {

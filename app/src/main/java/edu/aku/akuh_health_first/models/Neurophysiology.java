@@ -3,174 +3,184 @@ package edu.aku.akuh_health_first.models;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-public class Neurophysiology
-{
+import edu.aku.akuh_health_first.managers.retrofit.GsonFactory;
 
-@SerializedName("HospitalLocation")
-@Expose
-private String hospitalLocation;
-@SerializedName("RequestServiceDateTime")
-@Expose
-private String requestServiceDateTime;
-@SerializedName("RequestNumber")
-@Expose
-private String requestNumber;
-@SerializedName("AdmissionNumber")
-@Expose
-private String admissionNumber;
-@SerializedName("Service")
-@Expose
-private String service;
-@SerializedName("ReportID")
-@Expose
-private String reportID;
-@SerializedName("Status")
-@Expose
-private String status;
-@SerializedName("Reportable")
-@Expose
-private String reportable;
-@SerializedName("HasCompanionReport")
-@Expose
-private String hasCompanionReport;
-@SerializedName("DetailReportID")
-@Expose
-private String detailReportID;
-@SerializedName("exists")
-@Expose
-private String exists;
-@SerializedName("LastFileDateTime")
-@Expose
-private Object lastFileDateTime;
-@SerializedName("LastFileUser")
-@Expose
-private Object lastFileUser;
-@SerializedName("LastFileTerminal")
-@Expose
-private Object lastFileTerminal;
-@SerializedName("Active")
-@Expose
-private Object active;
-private final static long serialVersionUID = 3310356648763487153L;
+public class Neurophysiology {
 
-public String getHospitalLocation() {
-return hospitalLocation;
-}
+    private final String tempMRN;
+    @SerializedName("HospitalLocation")
+    @Expose
+    private String hospitalLocation;
+    @SerializedName("RequestServiceDateTime")
+    @Expose
+    private String requestServiceDateTime;
+    @SerializedName("RequestNumber")
+    @Expose
+    private String requestNumber;
+    @SerializedName("AdmissionNumber")
+    @Expose
+    private String admissionNumber;
+    @SerializedName("Service")
+    @Expose
+    private String service;
+    @SerializedName("ReportID")
+    @Expose
+    private String reportID;
+    @SerializedName("Status")
+    @Expose
+    private String status;
+    @SerializedName("Reportable")
+    @Expose
+    private String reportable;
+    @SerializedName("HasCompanionReport")
+    @Expose
+    private String hasCompanionReport;
+    @SerializedName("DetailReportID")
+    @Expose
+    private String detailReportID;
+    @SerializedName("exists")
+    @Expose
+    private String exists;
+    @SerializedName("LastFileDateTime")
+    @Expose
+    private Object lastFileDateTime;
+    @SerializedName("LastFileUser")
+    @Expose
+    private Object lastFileUser;
+    @SerializedName("LastFileTerminal")
+    @Expose
+    private Object lastFileTerminal;
+    @SerializedName("Active")
+    @Expose
+    private Object active;
+    private final static long serialVersionUID = 3310356648763487153L;
 
-public void setHospitalLocation(String hospitalLocation) {
-this.hospitalLocation = hospitalLocation;
-}
+    public Neurophysiology(String tempMRN) {
+        this.tempMRN = tempMRN;
+    }
 
-public String getRequestServiceDateTime() {
-return requestServiceDateTime;
-}
+    public String getHospitalLocation() {
+        return hospitalLocation;
+    }
 
-public void setRequestServiceDateTime(String requestServiceDateTime) {
-this.requestServiceDateTime = requestServiceDateTime;
-}
+    public void setHospitalLocation(String hospitalLocation) {
+        this.hospitalLocation = hospitalLocation;
+    }
 
-public String getRequestNumber() {
-return requestNumber;
-}
+    public String getRequestServiceDateTime() {
+        return requestServiceDateTime;
+    }
 
-public void setRequestNumber(String requestNumber) {
-this.requestNumber = requestNumber;
-}
+    public void setRequestServiceDateTime(String requestServiceDateTime) {
+        this.requestServiceDateTime = requestServiceDateTime;
+    }
 
-public String getAdmissionNumber() {
-return admissionNumber;
-}
+    public String getRequestNumber() {
+        return requestNumber;
+    }
 
-public void setAdmissionNumber(String admissionNumber) {
-this.admissionNumber = admissionNumber;
-}
+    public void setRequestNumber(String requestNumber) {
+        this.requestNumber = requestNumber;
+    }
 
-public String getService() {
-return service;
-}
+    public String getAdmissionNumber() {
+        return admissionNumber;
+    }
 
-public void setService(String service) {
-this.service = service;
-}
+    public void setAdmissionNumber(String admissionNumber) {
+        this.admissionNumber = admissionNumber;
+    }
 
-public String getReportID() {
-return reportID;
-}
+    public String getService() {
+        return service;
+    }
 
-public void setReportID(String reportID) {
-this.reportID = reportID;
-}
+    public void setService(String service) {
+        this.service = service;
+    }
 
-public String getStatus() {
-return status;
-}
+    public String getReportID() {
+        return reportID;
+    }
 
-public void setStatus(String status) {
-this.status = status;
-}
+    public void setReportID(String reportID) {
+        this.reportID = reportID;
+    }
 
-public String getReportable() {
-return reportable;
-}
+    public String getStatus() {
+        return status;
+    }
 
-public void setReportable(String reportable) {
-this.reportable = reportable;
-}
+    public void setStatus(String status) {
+        this.status = status;
+    }
 
-public String getHasCompanionReport() {
-return hasCompanionReport;
-}
+    public String getReportable() {
+        return reportable;
+    }
 
-public void setHasCompanionReport(String hasCompanionReport) {
-this.hasCompanionReport = hasCompanionReport;
-}
+    public void setReportable(String reportable) {
+        this.reportable = reportable;
+    }
 
-public String getDetailReportID() {
-return detailReportID;
-}
+    public String getHasCompanionReport() {
+        return hasCompanionReport;
+    }
 
-public void setDetailReportID(String detailReportID) {
-this.detailReportID = detailReportID;
-}
+    public void setHasCompanionReport(String hasCompanionReport) {
+        this.hasCompanionReport = hasCompanionReport;
+    }
 
-public String getExists() {
-return exists;
-}
+    public String getDetailReportID() {
+        return detailReportID;
+    }
 
-public void setExists(String exists) {
-this.exists = exists;
-}
+    public void setDetailReportID(String detailReportID) {
+        this.detailReportID = detailReportID;
+    }
 
-public Object getLastFileDateTime() {
-return lastFileDateTime;
-}
+    public String getExists() {
+        return exists;
+    }
 
-public void setLastFileDateTime(Object lastFileDateTime) {
-this.lastFileDateTime = lastFileDateTime;
-}
+    public void setExists(String exists) {
+        this.exists = exists;
+    }
 
-public Object getLastFileUser() {
-return lastFileUser;
-}
+    public Object getLastFileDateTime() {
+        return lastFileDateTime;
+    }
 
-public void setLastFileUser(Object lastFileUser) {
-this.lastFileUser = lastFileUser;
-}
+    public void setLastFileDateTime(Object lastFileDateTime) {
+        this.lastFileDateTime = lastFileDateTime;
+    }
 
-public Object getLastFileTerminal() {
-return lastFileTerminal;
-}
+    public Object getLastFileUser() {
+        return lastFileUser;
+    }
 
-public void setLastFileTerminal(Object lastFileTerminal) {
-this.lastFileTerminal = lastFileTerminal;
-}
+    public void setLastFileUser(Object lastFileUser) {
+        this.lastFileUser = lastFileUser;
+    }
 
-public Object getActive() {
-return active;
-}
+    public Object getLastFileTerminal() {
+        return lastFileTerminal;
+    }
 
-public void setActive(Object active) {
-this.active = active;
-}
+    public void setLastFileTerminal(Object lastFileTerminal) {
+        this.lastFileTerminal = lastFileTerminal;
+    }
 
+    public Object getActive() {
+        return active;
+    }
+
+    public void setActive(Object active) {
+        this.active = active;
+    }
+
+    @Override
+    public String toString() {
+        return GsonFactory.getConfiguredGson().toJson(this);
+    }
 }

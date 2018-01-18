@@ -111,7 +111,6 @@ public class SharedPreferenceManager {
     }
 
     public List<UserDetailModel> getAllUsers() {
-
         Type type = new TypeToken<List<UserDetailModel>>() {
         }.getType();
         return GsonFactory.getSimpleGson().fromJson(getString(KEY_ALL_USERS), type);

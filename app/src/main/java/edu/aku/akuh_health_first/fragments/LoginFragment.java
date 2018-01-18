@@ -179,7 +179,7 @@ public class LoginFragment extends BaseFragment {
 
 
                         getBaseActivity().openActivity(getBaseActivity(), HomeActivity.class);
-                     }
+                    }
 
                     @Override
                     public void onError() {

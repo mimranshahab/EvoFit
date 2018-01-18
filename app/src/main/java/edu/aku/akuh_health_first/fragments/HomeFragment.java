@@ -11,8 +11,6 @@ import android.view.ViewGroup;
 import android.view.animation.AnimationUtils;
 import android.view.animation.LayoutAnimationController;
 import android.widget.AdapterView;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
 
 import com.google.gson.JsonObject;
 
@@ -20,7 +18,6 @@ import java.util.ArrayList;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
-import butterknife.OnClick;
 import butterknife.Unbinder;
 import edu.aku.akuh_health_first.R;
 import edu.aku.akuh_health_first.adapters.recyleradapters.HomeAdapter;
@@ -36,7 +33,6 @@ import edu.aku.akuh_health_first.managers.retrofit.WebServices;
 import edu.aku.akuh_health_first.models.receiving_model.CardMemberDetail;
 import edu.aku.akuh_health_first.models.receiving_model.UserDetailModel;
 import edu.aku.akuh_health_first.models.wrappers.WebResponse;
-import edu.aku.akuh_health_first.views.AnyTextView;
 
 /**
  * Created by aqsa.sarwar on 1/16/2018.
@@ -109,7 +105,7 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener, 
                         if (sharedPreferenceManager.getCurrentUser() == null) {
                             sharedPreferenceManager.putObject(AppConstants.KEY_CURRENT_USER_MODEL, arrUserLists.get(0));
                         }
-                    }
+                     }
 
                     @Override
                     public void onError() {

@@ -22,6 +22,7 @@ public class WebServiceConstants {
     public static final String tempUserName = "mahrukh.mehmood";
     public static final String tempPacViews = "46015891";
     public static final String tempCardNumber = "0000-0000-0031";
+    public static final String tempMRN = "291-32-60";
     public static final String tempPassword = "uL952ERAghddR2h+CedbuA==";
     /**
      * REQUEST METHODS NAMES
@@ -33,6 +34,7 @@ public class WebServiceConstants {
     public static final String METHOD_CARD_MEMBER = "UserManager.GetCardMembersDetail";
     public static final String METHOD_USER_UPLOAD_REQUEST_FILE = "UserManager.UploadRequestFile";
     public static final String METHOD_PACMANAGER = "PACSManager.GetPacs";
+    public static final String METHOD_NEUROPHIOLOGY = "NeurophysiologyManager.GetNeurophysiologyExam";
 
 
     /**

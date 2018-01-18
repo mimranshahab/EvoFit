@@ -515,4 +515,8 @@ public class UserDetailModel implements Serializable {
         this.active = active;
     }
 
+
+    public String getMRNumberwithComma() {
+        return "\"" + mRNumber + "\"";
+    }
 }
