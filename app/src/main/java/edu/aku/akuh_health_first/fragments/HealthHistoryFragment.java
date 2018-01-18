@@ -6,10 +6,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
-import android.widget.EditText;
 
-import com.ctrlplusz.anytextview.AnyTextView;
-
+import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import butterknife.Unbinder;
@@ -17,12 +15,28 @@ import edu.aku.akuh_health_first.R;
 import edu.aku.akuh_health_first.fragments.abstracts.BaseFragment;
 import edu.aku.akuh_health_first.helperclasses.ui.helper.TitleBar;
 import edu.aku.akuh_health_first.helperclasses.ui.helper.UIHelper;
-import edu.aku.akuh_health_first.models.wrappers.WebResponse;
-import retrofit2.Call;
+import edu.aku.akuh_health_first.views.AnyTextView;
 
 public class HealthHistoryFragment extends BaseFragment {
 
 
+    @BindView(R.id.btnClinicalLab)
+    AnyTextView btnClinicalLab;
+    @BindView(R.id.btnRadiology)
+    AnyTextView btnRadiology;
+    @BindView(R.id.btnMedProf)
+    AnyTextView btnMedProf;
+    @BindView(R.id.btnImmunizationProfile)
+    AnyTextView btnImmunizationProfile;
+    @BindView(R.id.btnCardio)
+    AnyTextView btnCardio;
+    @BindView(R.id.btnNeurophysiology)
+    AnyTextView btnNeurophysiology;
+    @BindView(R.id.btnEndoscopy)
+    AnyTextView btnEndoscopy;
+    @BindView(R.id.btnDischargeSummary)
+    AnyTextView btnDischargeSummary;
+    Unbinder unbinder;
 
     public static HealthHistoryFragment newInstance() {
 
@@ -71,10 +85,45 @@ public class HealthHistoryFragment extends BaseFragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         // TODO: inflate a fragment view
         View rootView = super.onCreateView(inflater, container, savedInstanceState);
+        unbinder = ButterKnife.bind(this, rootView);
         return rootView;
     }
 
 
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+        unbinder.unbind();
+    }
 
+    @OnClick({R.id.btnClinicalLab, R.id.btnRadiology, R.id.btnMedProf, R.id.btnImmunizationProfile, R.id.btnCardio, R.id.btnNeurophysiology, R.id.btnEndoscopy, R.id.btnDischargeSummary})
+    public void onViewClicked(View view) {
+        switch (view.getId()) {
+            case R.id.btnClinicalLab:
+                UIHelper.showToast(getBaseActivity(), getString(R.string.will_be_implemented_soon));
+                break;
+            case R.id.btnRadiology:
+                UIHelper.showToast(getBaseActivity(), getString(R.string.will_be_implemented_soon));
+                break;
+            case R.id.btnMedProf:
+                UIHelper.showToast(getBaseActivity(), getString(R.string.will_be_implemented_soon));
+                break;
+            case R.id.btnImmunizationProfile:
+                UIHelper.showToast(getBaseActivity(), getString(R.string.will_be_implemented_soon));
+                break;
+            case R.id.btnCardio:
+                UIHelper.showToast(getBaseActivity(), getString(R.string.will_be_implemented_soon));
+                break;
+            case R.id.btnNeurophysiology:
+                getBaseActivity().addDockableFragment(NeurophysiologyFragment.newInstance());
 
+                break;
+            case R.id.btnEndoscopy:
+                UIHelper.showToast(getBaseActivity(), getString(R.string.will_be_implemented_soon));
+                break;
+            case R.id.btnDischargeSummary:
+                UIHelper.showToast(getBaseActivity(), getString(R.string.will_be_implemented_soon));
+                break;
+        }
+    }
 }

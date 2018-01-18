@@ -160,6 +160,7 @@ public class LeftSideMenuFragment extends BaseFragment {
             case R.id.txtHome:
                 break;
             case R.id.txtHealthHistory:
+                getBaseActivity().addDockableFragment(HealthHistoryFragment.newInstance());
                 break;
             case R.id.txtVisitTimeline:
                 break;

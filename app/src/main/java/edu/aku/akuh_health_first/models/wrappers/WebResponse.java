@@ -17,7 +17,7 @@ public class WebResponse<T> {
     @SerializedName("ResponseType")
     public String responseType;
 
-    @SerializedName("ResponseResult")
+    @SerializedName("Neurophysiology")
     public T result;
 
     public boolean isSuccess() {

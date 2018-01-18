@@ -3,182 +3,206 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#fff"
+    android:background="@drawable/imgmainbg"
     android:gravity="center_horizontal"
     android:orientation="vertical"
     android:padding="@dimen/x10dp">
-
+<ScrollView
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:orientation="horizontal"
-        android:padding="@dimen/x10dp"
-        android:weightSum="1">
+        android:layout_height="match_parent"
+        android:orientation="vertical">
 
-
-        <edu.aku.akuh_health_first.views.AnyTextView
-            android:id="@+id/btnClinicalLab"
-            android:layout_width="0dp"
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight=".5"
-            android:drawablePadding="@dimen/x7dp"
-            android:drawableTop="@drawable/icon_about"
             android:gravity="center"
-            android:text="Clinical Laboratory"
-            android:textColor="@color/c_black"
-            android:textSize="@dimen/x14dp"
-            app:typeface="@string/font_bold" />
+            android:orientation="horizontal"
+            android:padding="@dimen/x10dp"
+            android:weightSum="1">
 
 
-        <edu.aku.akuh_health_first.views.AnyTextView
-            android:id="@+id/btnRadiology"
-            android:layout_width="0dp"
+            <edu.aku.akuh_health_first.views.AnyTextView
+                android:id="@+id/btnClinicalLab"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight=".5"
+                android:drawablePadding="@dimen/x7dp"
+                android:drawableTop="@drawable/ill_restore_anim"
+                android:gravity="center"
+                android:text="Clinical Laboratory"
+                android:textColor="@color/c_black"
+                android:textSize="@dimen/x14dp"
+                app:typeface="@string/font_bold" />
+
+            <View
+                android:layout_width="0.5dp"
+                android:layout_height="fill_parent"
+                android:background="@color/c_black" />
+
+            <edu.aku.akuh_health_first.views.AnyTextView
+                android:id="@+id/btnRadiology"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight=".5"
+                android:drawablePadding="@dimen/x7dp"
+                android:drawableTop="@drawable/ill_restore_anim"
+                android:gravity="center"
+                android:text="Radiology"
+                android:textColor="@color/c_black"
+                android:textSize="@dimen/x14dp"
+                app:typeface="@string/font_bold" />
+
+
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:background="@color/c_black" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight=".5"
-            android:drawablePadding="@dimen/x7dp"
-            android:drawableTop="@drawable/icon_about"
             android:gravity="center"
-            android:text="Radiology"
-            android:textColor="@color/c_black"
-            android:textSize="@dimen/x14dp"
-            app:typeface="@string/font_bold" />
+            android:orientation="horizontal"
+            android:padding="@dimen/x10dp"
+            android:weightSum="1">
 
+
+            <edu.aku.akuh_health_first.views.AnyTextView
+                android:id="@+id/btnMedProf"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight=".5"
+                android:drawablePadding="@dimen/x7dp"
+                android:drawableTop="@drawable/ill_restore_anim"
+                android:gravity="center"
+                android:text="Medication Profile"
+                android:textColor="@color/c_black"
+                android:textSize="@dimen/x14dp"
+                app:typeface="@string/font_bold" />
+
+            <View
+                android:layout_width="0.5dp"
+                android:layout_height="fill_parent"
+                android:background="@color/c_black" />
+
+            <edu.aku.akuh_health_first.views.AnyTextView
+                android:id="@+id/btnImmunizationProfile"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight=".5"
+                android:drawablePadding="@dimen/x7dp"
+                android:drawableTop="@drawable/ill_restore_anim"
+                android:gravity="center"
+                android:text="Immunization Profile"
+                android:textColor="@color/c_black"
+                android:textSize="@dimen/x14dp"
+                app:typeface="@string/font_bold" />
+
+
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:background="@color/c_black" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:padding="@dimen/x10dp"
+            android:weightSum="1">
+
+
+            <edu.aku.akuh_health_first.views.AnyTextView
+                android:id="@+id/btnCardio"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight=".5"
+                android:drawablePadding="@dimen/x7dp"
+                android:drawableTop="@drawable/ill_restore_anim"
+                android:gravity="center"
+                android:text="Cardiopulmonary and Angiograms"
+                android:textColor="@color/c_black"
+                android:textSize="@dimen/x14dp"
+                app:typeface="@string/font_bold" />
+
+            <View
+                android:layout_width="0.5dp"
+                android:layout_height="fill_parent"
+                android:background="@color/c_black" />
+
+            <edu.aku.akuh_health_first.views.AnyTextView
+                android:id="@+id/btnNeurophysiology"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight=".5"
+                android:drawablePadding="@dimen/x7dp"
+                android:drawableTop="@drawable/ill_restore_anim"
+                android:gravity="center"
+                android:text="Neurophysiology"
+                android:textColor="@color/c_black"
+                android:textSize="@dimen/x14dp"
+                app:typeface="@string/font_bold" />
+
+
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:background="@color/c_black" />
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:padding="@dimen/x10dp"
+            android:weightSum="1">
+
+
+            <edu.aku.akuh_health_first.views.AnyTextView
+                android:id="@+id/btnEndoscopy"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight=".5"
+                android:drawablePadding="@dimen/x7dp"
+                android:drawableTop="@drawable/ill_restore_anim"
+                android:gravity="center"
+                android:text="Endoscopy"
+                android:textColor="@color/c_black"
+                android:textSize="@dimen/x14dp"
+                app:typeface="@string/font_bold" />
+
+            <View
+                android:layout_width="0.5dp"
+                android:layout_height="fill_parent"
+                android:background="@color/c_black" />
+
+            <edu.aku.akuh_health_first.views.AnyTextView
+                android:id="@+id/btnDischargeSummary"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight=".5"
+                android:drawablePadding="@dimen/x7dp"
+                android:drawableTop="@drawable/ill_restore_anim"
+                android:gravity="center"
+                android:text="Discharge Summary"
+                android:textColor="@color/c_black"
+                android:textSize="@dimen/x14dp"
+                app:typeface="@string/font_bold" />
+
+
+        </LinearLayout>
 
     </LinearLayout>
-
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="0.5dp"
-        android:background="@color/c_black" />
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:orientation="horizontal"
-        android:padding="@dimen/x10dp"
-        android:weightSum="1">
-
-
-        <edu.aku.akuh_health_first.views.AnyTextView
-            android:id="@+id/btnMedProf"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight=".5"
-            android:drawablePadding="@dimen/x7dp"
-            android:drawableTop="@drawable/icon_about"
-            android:gravity="center"
-            android:text="Medication Profile"
-            android:textColor="@color/c_black"
-            android:textSize="@dimen/x14dp"
-            app:typeface="@string/font_bold" />
-
-
-        <edu.aku.akuh_health_first.views.AnyTextView
-            android:id="@+id/btnImmunizationProfile"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight=".5"
-            android:drawablePadding="@dimen/x7dp"
-            android:drawableTop="@drawable/icon_about"
-            android:gravity="center"
-            android:text="Immunization Profile"
-            android:textColor="@color/c_black"
-            android:textSize="@dimen/x14dp"
-            app:typeface="@string/font_bold" />
-
-
-    </LinearLayout>
-
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="0.5dp"
-        android:background="@color/c_black" />
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:orientation="horizontal"
-        android:padding="@dimen/x10dp"
-        android:weightSum="1">
-
-
-        <edu.aku.akuh_health_first.views.AnyTextView
-            android:id="@+id/btnCardio"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight=".5"
-            android:drawablePadding="@dimen/x7dp"
-            android:drawableTop="@drawable/icon_about"
-            android:gravity="center"
-            android:text="Cardiopulmonary and Angiograms"
-            android:textColor="@color/c_black"
-            android:textSize="@dimen/x14dp"
-            app:typeface="@string/font_bold" />
-
-
-        <edu.aku.akuh_health_first.views.AnyTextView
-            android:id="@+id/btnNeurophysiology"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight=".5"
-            android:drawablePadding="@dimen/x7dp"
-            android:drawableTop="@drawable/icon_about"
-            android:gravity="center"
-            android:text="Neurophysiology"
-            android:textColor="@color/c_black"
-            android:textSize="@dimen/x14dp"
-            app:typeface="@string/font_bold" />
-
-
-    </LinearLayout>
-
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="0.5dp"
-        android:background="@color/c_black" />
-
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:orientation="horizontal"
-        android:padding="@dimen/x10dp"
-        android:weightSum="1">
-
-
-        <edu.aku.akuh_health_first.views.AnyTextView
-            android:id="@+id/btnEndoscopy"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight=".5"
-            android:drawablePadding="@dimen/x7dp"
-            android:drawableTop="@drawable/icon_about"
-            android:gravity="center"
-            android:text="Endoscopy"
-            android:textColor="@color/c_black"
-            android:textSize="@dimen/x14dp"
-            app:typeface="@string/font_bold" />
-
-
-        <edu.aku.akuh_health_first.views.AnyTextView
-            android:id="@+id/btnDischargeSummary"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight=".5"
-            android:drawablePadding="@dimen/x7dp"
-            android:drawableTop="@drawable/icon_about"
-            android:gravity="center"
-            android:text="Discharge Summary"
-            android:textColor="@color/c_black"
-            android:textSize="@dimen/x14dp"
-            app:typeface="@string/font_bold" />
-
-
-    </LinearLayout>
-
-
+</ScrollView>
 </LinearLayout>
