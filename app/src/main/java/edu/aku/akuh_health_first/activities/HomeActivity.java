@@ -75,7 +75,6 @@ public class HomeActivity extends BaseActivity {
                 BaseFragment fragment = (BaseFragment) fragments.get(fragments.size() - 1);
                 fragment.setTitlebar(titleBar);
             }
-
         } else {
             closeApp();
         }

@@ -17,17 +17,22 @@ import butterknife.OnClick;
 import butterknife.Unbinder;
 import de.hdodenhof.circleimageview.CircleImageView;
 import edu.aku.akuh_health_first.R;
+import edu.aku.akuh_health_first.activities.HomeActivity;
+import edu.aku.akuh_health_first.activities.MainActivity;
+import edu.aku.akuh_health_first.callbacks.OnNewPacketReceivedListener;
+import edu.aku.akuh_health_first.constatnts.Events;
 import edu.aku.akuh_health_first.fragments.abstracts.BaseFragment;
 import edu.aku.akuh_health_first.fragments.abstracts.GenericClickableInterface;
 import edu.aku.akuh_health_first.fragments.abstracts.GenericContentFragment;
 import edu.aku.akuh_health_first.fragments.abstracts.GenericDialogFragment;
 import edu.aku.akuh_health_first.helperclasses.ui.helper.TitleBar;
+import edu.aku.akuh_health_first.models.receiving_model.UserDetailModel;
 
 /**
  * Created by khanhamza on 09-May-17.
  */
 
-public class LeftSideMenuFragment extends BaseFragment {
+public class LeftSideMenuFragment extends BaseFragment implements OnNewPacketReceivedListener {
 
     Unbinder unbinder;
     @BindView(R.id.imgProfile)
@@ -71,15 +76,12 @@ public class LeftSideMenuFragment extends BaseFragment {
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-//        if (prefHelper.getUser() != null) {
-//            txtUserName.setText(prefHelper.getUser().userName);
-//
-//            if (prefHelper.getUser().userProfilePictureURL != null) {
-//                ImageLoader.getInstance().displayImage(prefHelper.getUser().userProfilePictureURL, imgProfile, LazyLoading.options);
-//            }
-////        ImageLoader.getInstance().displayImage("drawable://" + R.drawable.user_image, imgProfile, LazyLoading.options);
-//        }
-//
+
+        if (sharedPreferenceManager.getCurrentUser() != null) {
+            txtUserName.setText(sharedPreferenceManager.getCurrentUser().getName());
+        }
+
+        subscribeToNewPacket(this);
 ////        scrollToTop();
     }
 
@@ -127,8 +129,9 @@ public class LeftSideMenuFragment extends BaseFragment {
             @Override
             public void click() {
                 genericDialogFragment.getDialog().dismiss();
-                emptyBackStack();
-                getBaseActivity().addDockableFragment(LoginFragment.newInstance());
+                getBaseActivity().clearAllActivitiesExceptThis(MainActivity.class);
+//                emptyBackStack();
+//                getBaseActivity().addDockableFragment(LoginFragment.newInstance());
             }
         });
 
@@ -158,6 +161,11 @@ public class LeftSideMenuFragment extends BaseFragment {
                 showNextBuildToast();
                 break;
             case R.id.txtHome:
+                if (getActivity() instanceof HomeActivity) {
+                    getBaseActivity().reload();
+                } else {
+                    getBaseActivity().clearAllActivitiesExceptThis(HomeActivity.class);
+                }
                 break;
             case R.id.txtHealthHistory:
                 getBaseActivity().addDockableFragment(HealthHistoryFragment.newInstance());
@@ -176,4 +184,16 @@ public class LeftSideMenuFragment extends BaseFragment {
                 break;
         }
     }
+
+    @Override
+    public void onNewPacket(int event, Object data) {
+        switch (event) {
+            case Events.ON_CURRENT_USER_CHANGED:
+                UserDetailModel userDetailModel = (UserDetailModel) data;
+                txtUserName.setText(userDetailModel.getName());
+                break;
+        }
+
+    }
+
 }

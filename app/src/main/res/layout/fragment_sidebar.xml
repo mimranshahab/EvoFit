@@ -51,7 +51,7 @@
 
         <com.ctrlplusz.anytextview.AnyTextView
             android:id="@+id/txtHome"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
             android:gravity="center_vertical"
@@ -70,7 +70,7 @@
 
         <com.ctrlplusz.anytextview.AnyTextView
             android:id="@+id/txtHealthHistory"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
             android:gravity="center_vertical"
@@ -89,7 +89,7 @@
 
         <com.ctrlplusz.anytextview.AnyTextView
             android:id="@+id/txtVisitTimeline"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
             android:gravity="center_vertical"
@@ -108,7 +108,7 @@
 
         <com.ctrlplusz.anytextview.AnyTextView
             android:id="@+id/txtCardSubscription"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
             android:gravity="center_vertical"
@@ -127,7 +127,7 @@
 
         <com.ctrlplusz.anytextview.AnyTextView
             android:id="@+id/txtMyProfile"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
             android:gravity="center_vertical"
@@ -145,7 +145,7 @@
 
         <com.ctrlplusz.anytextview.AnyTextView
             android:id="@+id/txtAbout"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
             android:gravity="center_vertical"
@@ -204,7 +204,7 @@
 
         <com.ctrlplusz.anytextview.AnyTextView
             android:id="@+id/txtLogout"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
             android:layout_marginBottom="@dimen/x25dp"
