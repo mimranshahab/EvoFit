@@ -5,11 +5,16 @@ import android.content.Context;
 import android.content.SharedPreferences;
 
 import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
 
-import edu.aku.akuh_health_first.R;
-import edu.aku.akuh_health_first.constatnts.AppConstants;
+import java.lang.reflect.Type;
+import java.util.List;
+
+import edu.aku.akuh_health_first.managers.retrofit.GsonFactory;
 import edu.aku.akuh_health_first.models.NotificationModel;
-import edu.aku.akuh_health_first.models.UserModel;
+import edu.aku.akuh_health_first.models.receiving_model.UserDetailModel;
+
+import static edu.aku.akuh_health_first.constatnts.AppConstants.*;
 
 /**
  * Class that can be extended to make available simple preference
@@ -101,127 +106,35 @@ public class SharedPreferenceManager {
         return pref.contains(key);
     }
 
-    public UserModel getCurrentUser() {
-        return getObject(AppConstants.USER_DATA, UserModel.class);
+    public UserDetailModel getCurrentUser() {
+        return getObject(KEY_CURRENT_USER_MODEL, UserDetailModel.class);
+    }
+
+    public List<UserDetailModel> getAllUsers() {
+
+        Type type = new TypeToken<List<UserDetailModel>>() {
+        }.getType();
+        return GsonFactory.getSimpleGson().fromJson(getString(KEY_ALL_USERS), type);
     }
 
     public NotificationModel getNotificationModel() {
-        return getObject(AppConstants.USER_NOTIFICATION_DATA, NotificationModel.class);
+        return getObject(USER_NOTIFICATION_DATA, NotificationModel.class);
     }
 
     public boolean isProfileRegistered() {
-        return getBoolean(AppConstants.PROFILE_REGISTRATION);
+        return getBoolean(PROFILE_REGISTRATION);
     }
 
     public void setProfileRegistered(boolean profileRegistered) {
-        putValue(AppConstants.PROFILE_REGISTRATION, profileRegistered);
+        putValue(PROFILE_REGISTRATION, profileRegistered);
     }
 
     public boolean isForcedRestart() {
-        return getBoolean(AppConstants.FORCED_RESTART);
+        return getBoolean(FORCED_RESTART);
     }
 
     public void setForcedRestart(boolean isForcedRestart) {
-        putValue(AppConstants.FORCED_RESTART, isForcedRestart);
-    }
-
-
-    protected void putStringPreference(Context context, String prefsName, String key, String value) {
-
-        SharedPreferences preferences = context.getSharedPreferences(prefsName, Activity.MODE_PRIVATE);
-        SharedPreferences.Editor editor = preferences.edit();
-
-        editor.putString(key, value);
-        editor.commit();
-    }
-
-    protected String getStringPreference(Context context, String prefsName,
-                                         String key) {
-
-        SharedPreferences preferences = context.getSharedPreferences(
-                prefsName, Activity.MODE_PRIVATE);
-        String value = preferences.getString(key, "");
-        return value;
-    }
-
-    protected void putBooleanPreference(Context context, String prefsName,
-                                        String key, boolean value) {
-
-        SharedPreferences preferences = context.getSharedPreferences(
-                prefsName, Activity.MODE_PRIVATE);
-        SharedPreferences.Editor editor = preferences.edit();
-
-        editor.putBoolean(key, value);
-        editor.commit();
-    }
-
-    protected boolean getBooleanPreference(Context context, String prefsName,
-                                           String key) {
-
-        SharedPreferences preferences = context.getSharedPreferences(
-                prefsName, Activity.MODE_PRIVATE);
-        boolean value = preferences.getBoolean(key, false);
-        return value;
-    }
-
-    protected void putIntegerPreference(Context context, String prefsName,
-                                        String key, int value) {
-
-        SharedPreferences preferences = context.getSharedPreferences(
-                prefsName, Activity.MODE_PRIVATE);
-        SharedPreferences.Editor editor = preferences.edit();
-
-        editor.putInt(key, value);
-        editor.commit();
-    }
-
-    protected int getIntegerPreference(Context context, String prefsName,
-                                       String key) {
-
-        SharedPreferences preferences = context.getSharedPreferences(
-                prefsName, Activity.MODE_PRIVATE);
-        int value = preferences.getInt(key, -1);
-        return value;
-    }
-
-    protected void putLongPreference(Context context, String prefsName,
-                                     String key, long value) {
-
-        SharedPreferences preferences = context.getSharedPreferences(
-                prefsName, Activity.MODE_PRIVATE);
-        SharedPreferences.Editor editor = preferences.edit();
-
-        editor.putLong(key, value);
-        editor.commit();
-    }
-
-
-    protected long getLongPreference(Context context, String prefsName,
-                                     String key) {
-
-        SharedPreferences preferences = context.getSharedPreferences(
-                prefsName, Activity.MODE_PRIVATE);
-        long value = preferences.getLong(key, Integer.MIN_VALUE);
-        return value;
-    }
-
-    protected void putFloatPreference(Context context, String prefsName,
-                                      String key, float value) {
-
-        SharedPreferences preferences = context.getSharedPreferences(
-                prefsName, Activity.MODE_PRIVATE);
-        SharedPreferences.Editor editor = preferences.edit();
-        editor.putFloat(key, value);
-        editor.commit();
-    }
-
-    protected float getFloatPreference(Context context, String prefsName,
-                                       String key) {
-
-        SharedPreferences preferences = context.getSharedPreferences(
-                prefsName, Activity.MODE_PRIVATE);
-        float value = preferences.getFloat(key, Float.MIN_VALUE);
-        return value;
+        putValue(FORCED_RESTART, isForcedRestart);
     }
 
     protected void removePreference(Context context, String prefsName,

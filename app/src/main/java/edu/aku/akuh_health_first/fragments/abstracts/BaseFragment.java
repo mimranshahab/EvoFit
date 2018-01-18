@@ -29,6 +29,7 @@ import edu.aku.akuh_health_first.activities.MainActivity;
 
 import java.text.NumberFormat;
 
+import edu.aku.akuh_health_first.managers.SharedPreferenceManager;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.annotations.NonNull;
 import io.reactivex.disposables.Disposable;
@@ -42,10 +43,12 @@ import io.reactivex.functions.Consumer;
 public abstract class BaseFragment extends Fragment implements View.OnClickListener, AdapterView.OnItemClickListener {
 
     protected View view;
+    public SharedPreferenceManager sharedPreferenceManager;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        sharedPreferenceManager = SharedPreferenceManager.getInstance(getContext());
     }
 
     @Override

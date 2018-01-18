@@ -17,7 +17,7 @@ public class RegisterVM {
     private List<RegisterOptionsModel> PermanentCountryList;
     @SerializedName("CardTypeList")
     private List<RegisterOptionsModel> CardTypeList;
-    @SerializedName("Subscriber")
+    @SerializedName("UserDetailModel")
     private String Subscriber;
     @SerializedName("FamilyMembersList")
     private List<RegisterOptionsModel> FamilyMembersList;

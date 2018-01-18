@@ -30,9 +30,7 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 import butterknife.Unbinder;
 import edu.aku.akuh_health_first.libraries.maskformatter.MaskFormatter;
-import edu.aku.akuh_health_first.managers.retrofit.GsonFactory;
 import edu.aku.akuh_health_first.managers.retrofit.WebServices;
-import edu.aku.akuh_health_first.models.UserModel;
 import edu.aku.akuh_health_first.models.sending_model.LoginApiModel;
 import edu.aku.akuh_health_first.models.wrappers.WebResponse;
 
@@ -176,7 +174,7 @@ public class LoginFragment extends BaseFragment {
                 new WebServices.IRequestJsonDataCallBack() {
                     @Override
                     public void requestDataResponse(WebResponse<JsonObject> webResponse) {
-//                        UserModel userModel = GsonFactory.getSimpleGson().fromJson(webResponse.result, UserModel.class);
+//                        CardModel userModel = GsonFactory.getSimpleGson().fromJson(webResponse.result, CardModel.class);
 //                        UIHelper.showShortToastInCenter(getContext(), webResponse.message);
 
 

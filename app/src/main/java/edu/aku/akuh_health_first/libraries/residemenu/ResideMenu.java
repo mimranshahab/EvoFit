@@ -29,7 +29,7 @@ import java.util.List;
 
 
 /**
- * UserModel: special
+ * CardModel: special
  * Date: 13-12-10
  * Time: 下午10:44
  * Mail: specialcyci@gmail.com

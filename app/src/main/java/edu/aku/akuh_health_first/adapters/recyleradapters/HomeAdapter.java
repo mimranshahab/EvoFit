@@ -2,11 +2,9 @@ package edu.aku.akuh_health_first.adapters.recyleradapters;
 
 import android.app.Activity;
 import android.support.v7.widget.RecyclerView;
-import android.util.DisplayMetrics;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 
@@ -15,22 +13,22 @@ import java.util.ArrayList;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import edu.aku.akuh_health_first.R;
-import edu.aku.akuh_health_first.activities.BaseActivity;
 import edu.aku.akuh_health_first.callbacks.OnItemClickListener;
-import edu.aku.akuh_health_first.models.receiving_model.FamilyMembersList;
+import edu.aku.akuh_health_first.helperclasses.ui.helper.AnimationHelper;
+import edu.aku.akuh_health_first.models.receiving_model.UserDetailModel;
 import edu.aku.akuh_health_first.views.AnyTextView;
 
 /**
  */
-public class FamilyMembersAdapter extends RecyclerView.Adapter<FamilyMembersAdapter.ViewHolder> {
+public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.ViewHolder> {
 
 
     private final OnItemClickListener onItemClick;
     private Activity activity;
-    private ArrayList<FamilyMembersList> familyMembersLists;
+    private ArrayList<UserDetailModel> userList;
 
-    public FamilyMembersAdapter(Activity activity, ArrayList<FamilyMembersList> familyMembersLists, OnItemClickListener onItemClickListener) {
-        this.familyMembersLists = familyMembersLists;
+    public HomeAdapter(Activity activity, ArrayList<UserDetailModel> userList, OnItemClickListener onItemClickListener) {
+        this.userList = userList;
         this.activity = activity;
         this.onItemClick = onItemClickListener;
     }
@@ -40,40 +38,46 @@ public class FamilyMembersAdapter extends RecyclerView.Adapter<FamilyMembersAdap
 
         View itemView = null;
         itemView = LayoutInflater.from(activity)
-                .inflate(R.layout.item_family_member, parent, false);
+                .inflate(R.layout.item_user, parent, false);
         return new ViewHolder(itemView);
     }
 
     @Override
-    public void onBindViewHolder(final ViewHolder holder, final int i) {
+    public void onBindViewHolder(final ViewHolder holder, int i) {
 
-        final FamilyMembersList familyMembersList = familyMembersLists.get(i);
-//        ImageLoader.getInstance().displayImage(familyMembersLists.get(i).getImageUrl(), holder.imgUser);
-        holder.txtName.setText(familyMembersList.getName());
-//        holder.txtViewProfile.setText(familyMembersList.getName());
-        holder.txtMRN.setText("MR# " + familyMembersList.getMRNumber());
-        holder.txtGender.setText("Gender " + familyMembersList.getGender());
-        holder.txtAge.setText("Age " + familyMembersList.getAge());
-        holder.txtEmailAddress.setText("EmailAddress " + familyMembersList.getEmailAddress());
+        final UserDetailModel user = userList.get(holder.getAdapterPosition());
+//        ImageLoader.getInstance().displayImage(users.get(i).getImageUrl(), holder.imgUser);
+        holder.txtName.setText(user.getName());
+//        holder.txtViewProfile.setText(user.getName());
+        holder.txtMRN.setText("MR# " + user.getMRNumber());
+        holder.txtGender.setText("Gender " + user.getGender());
+        holder.txtAge.setText("Age " + user.getAge());
+        holder.txtEmailAddress.setText("EmailAddress " + user.getEmailAddress());
 
 
+        AnimationHelper.fade(((ViewHolder) holder).viewSelected, 0.0f, View.VISIBLE, View.VISIBLE, 0.3f, 300);
+
+        setListener(holder, user);
+    }
+
+    private void setListener(final ViewHolder holder, final UserDetailModel user) {
         holder.contListItem.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                onItemClick.onItemClick(i, familyMembersList);
+                onItemClick.onItemClick(holder.getAdapterPosition(), user);
             }
         });
     }
 
-    public void addItem(ArrayList<FamilyMembersList> homeCategories) {
-        this.familyMembersLists = homeCategories;
+    public void addItem(ArrayList<UserDetailModel> homeCategories) {
+        this.userList = homeCategories;
         notifyDataSetChanged();
     }
 
 
     @Override
     public int getItemCount() {
-        return familyMembersLists.size();
+        return userList.size();
     }
 
 
@@ -94,6 +98,9 @@ public class FamilyMembersAdapter extends RecyclerView.Adapter<FamilyMembersAdap
         AnyTextView txtEmailAddress;
         @BindView(R.id.contListItem)
         LinearLayout contListItem;
+        @BindView(R.id.viewSelected)
+        View viewSelected;
+
 
         ViewHolder(View view) {
             super(view);

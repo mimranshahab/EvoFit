@@ -2,12 +2,9 @@ package edu.aku.akuh_health_first.managers.retrofit;
 
 import com.google.gson.JsonObject;
 
-import org.json.JSONObject;
-
 import edu.aku.akuh_health_first.constatnts.WebServiceConstants;
-import edu.aku.akuh_health_first.fragments.LoginFragment;
+import edu.aku.akuh_health_first.models.CardModel;
 import edu.aku.akuh_health_first.models.Content;
-import edu.aku.akuh_health_first.models.UserModel;
 import edu.aku.akuh_health_first.models.extramodels.AddressModel;
 import edu.aku.akuh_health_first.models.wrappers.AddressWrapper;
 import edu.aku.akuh_health_first.models.wrappers.AddressWrapper2;
@@ -73,7 +70,7 @@ public interface WebServiceProxy {
 
     @Multipart
     @POST(WebServiceConstants.WS_KEY_REGISTER)
-    Call<WebResponse<UserModel>> postSignUp(
+    Call<WebResponse<CardModel>> postSignUp(
             @Part("full_name") RequestBody userName,
             @Part("email") RequestBody userEmail,
             @Part("mobile_no") RequestBody userPhoneNumber,
@@ -100,13 +97,13 @@ public interface WebServiceProxy {
 
     @FormUrlEncoded
     @POST(WebServiceConstants.WS_KEY_LOGIN)
-    Call<WebResponse<UserModel>> login(
+    Call<WebResponse<CardModel>> login(
             @Field("email") String userEmail,
             @Field("password") String userPassword);
 
     @Multipart
     @POST(WebServiceConstants.WS_KEY_EDIT_PROFILE)
-    Call<WebResponse<UserModel>> postEditProfile(
+    Call<WebResponse<CardModel>> postEditProfile(
             @Part("user_id") RequestBody userID,
             @Part("full_name") RequestBody userName,
             @Part("mobile_no") RequestBody userPhoneNumber,

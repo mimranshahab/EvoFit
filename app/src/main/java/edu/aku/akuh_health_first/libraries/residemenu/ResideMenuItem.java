@@ -10,7 +10,7 @@ import edu.aku.akuh_health_first.R;
 
 
 /**
- * UserModel: special
+ * CardModel: special
  * Date: 13-12-10
  * Time: 下午11:05
  * Mail: specialcyci@gmail.com
