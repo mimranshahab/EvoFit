@@ -63,9 +63,11 @@ public abstract class BaseFragment extends Fragment implements View.OnClickListe
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         getBaseActivity().getTitleBar().resetViews();
-        getBaseActivity().getDrawerLayout().setDrawerLockMode(DrawerLayout.LOCK_MODE_UNLOCKED);
+        getBaseActivity().getDrawerLayout().setDrawerLockMode(getDrawerLockMode());
         getBaseActivity().getDrawerLayout().closeDrawer(Gravity.LEFT);
     }
+
+    public abstract int getDrawerLockMode();
 
     public void setSpinner(ArrayAdapter adaptSpinner, final TextView textView, final Spinner spinner) {
         if (adaptSpinner == null || spinner == null)

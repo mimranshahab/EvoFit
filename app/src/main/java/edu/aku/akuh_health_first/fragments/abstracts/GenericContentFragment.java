@@ -2,6 +2,7 @@ package edu.aku.akuh_health_first.fragments.abstracts;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v4.widget.DrawerLayout;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.TextView;
@@ -74,6 +75,12 @@ public class GenericContentFragment extends BaseFragment {
     public void setListeners() {
 
     }
+
+    @Override
+    public int getDrawerLockMode() {
+        return DrawerLayout.LOCK_MODE_UNLOCKED;
+    }
+
 
 //    private void bindData(String key) {
 //

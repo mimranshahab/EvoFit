@@ -2,6 +2,7 @@ package edu.aku.akuh_health_first.fragments;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v4.widget.DrawerLayout;
 import android.text.SpannableString;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -107,8 +108,12 @@ public class LoginFragment extends BaseFragment {
 
         setClickableSpan(txtSignUp);
 
-//        serviceCallToken();
 
+    }
+
+    @Override
+    public int getDrawerLockMode() {
+        return DrawerLayout.LOCK_MODE_LOCKED_CLOSED;
     }
 
 

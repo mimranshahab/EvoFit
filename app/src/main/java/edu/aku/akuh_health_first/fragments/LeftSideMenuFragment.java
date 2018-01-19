@@ -2,6 +2,7 @@ package edu.aku.akuh_health_first.fragments;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v4.widget.DrawerLayout;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -114,6 +115,12 @@ public class LeftSideMenuFragment extends BaseFragment implements OnNewPacketRec
     }
 
     @Override
+    public int getDrawerLockMode() {
+        return DrawerLayout.LOCK_MODE_UNDEFINED;
+    }
+
+
+    @Override
     public void onDestroyView() {
         super.onDestroyView();
         unbinder.unbind();
@@ -171,6 +178,8 @@ public class LeftSideMenuFragment extends BaseFragment implements OnNewPacketRec
                 getBaseActivity().addDockableFragment(HealthHistoryFragment.newInstance());
                 break;
             case R.id.txtVisitTimeline:
+                getBaseActivity().addDockableFragment(TimelineFragment.newInstance());
+
                 break;
             case R.id.txtCardSubscription:
                 break;

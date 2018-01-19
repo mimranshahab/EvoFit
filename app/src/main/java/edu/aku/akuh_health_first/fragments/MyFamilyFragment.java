@@ -1,6 +1,7 @@
 package edu.aku.akuh_health_first.fragments;
 
 import android.os.Bundle;
+import android.support.v4.widget.DrawerLayout;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -32,6 +33,12 @@ public class MyFamilyFragment extends BaseFragment {
         fragment.setArguments(args);
         return fragment;
     }
+
+    @Override
+    public int getDrawerLockMode() {
+        return DrawerLayout.LOCK_MODE_LOCKED_CLOSED;
+    }
+
 
     @Override
     protected int getFragmentLayout() {
