@@ -2,6 +2,7 @@ package edu.aku.akuh_health_first.fragments;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v4.widget.DrawerLayout;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,6 +15,7 @@ import de.hdodenhof.circleimageview.CircleImageView;
 import edu.aku.akuh_health_first.R;
 import edu.aku.akuh_health_first.fragments.abstracts.BaseFragment;
 import edu.aku.akuh_health_first.helperclasses.ui.helper.TitleBar;
+import edu.aku.akuh_health_first.models.receiving_model.UserDetailModel;
 import edu.aku.akuh_health_first.views.AnyTextView;
 
 /**
@@ -61,15 +63,21 @@ public class ProfileFragment extends BaseFragment {
         setData();
     }
 
+    @Override
+    public int getDrawerLockMode() {
+        return DrawerLayout.LOCK_MODE_UNLOCKED;
+    }
+
     private void setData() {
-        txtUserName.setText(sharedPreferenceManager.getCurrentUser().getName());
-        txtAge.setText("Age "+sharedPreferenceManager.getCurrentUser().getAge()+"  Gender "+sharedPreferenceManager.getCurrentUser().getGender());
-        txtEmailAddress.setText(sharedPreferenceManager.getCurrentUser().getEmailAddress());
+        UserDetailModel currentUser = sharedPreferenceManager.getCurrentUser();
+        txtUserName.setText(currentUser.getName());
+        txtAge.setText("Age " + currentUser.getAge() + "  Gender " + currentUser.getGender());
+        txtEmailAddress.setText(currentUser.getEmailAddress());
 //        txtExpDate.setText(sharedPreferenceManager.getCurrentUser().);
-        txtMRN.setText(sharedPreferenceManager.getCurrentUser().getMRNumber());
+        txtMRN.setText(currentUser.getMRNumber());
 //        txtIssueDate.setText(sharedPreferenceManager.getCurrentUser());
-        txtCardType.setText("CardType: " + sharedPreferenceManager.getCurrentUser().getCardTypeDescription());
-        txtCardNum.setText("CardNumber: " + sharedPreferenceManager.getCurrentUser().getCardNumber());
+        txtCardType.setText("CardType: " + currentUser.getCardTypeDescription());
+        txtCardNum.setText("CardNumber: " + currentUser.getCardNumber());
         txtExpDate.setText("Expiry date: 12-12-2022");
         txtIssueDate.setText("Issue date: 01-01-2018");
     }
