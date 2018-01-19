@@ -2,6 +2,7 @@ package edu.aku.akuh_health_first.fragments;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v4.widget.DrawerLayout;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -106,6 +107,7 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener, 
                         UserDetailModel currentUser = sharedPreferenceManager.getCurrentUser();
                         if (currentUser == null && arrUserLists.size() > 0) {
                             sharedPreferenceManager.putObject(AppConstants.KEY_CURRENT_USER_MODEL, arrUserLists.get(0));
+                            arrUserLists.get(0).setSelected(true);
                         } else if (currentUser != null && arrUserLists.size() > 0) {
                             for (int i = 0; i < arrUserLists.size(); i++) {
                                 if (arrUserLists.get(i).getMRNumber().equals(currentUser.getMRNumber())) {
@@ -121,7 +123,7 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener, 
 
                     @Override
                     public void onError() {
-                        UIHelper.showShortToastInCenter(getContext(), "failure");
+                        UIHelper.showShortToastInCenter(getContext(), "Something went wrong!");
                     }
                 });
 
@@ -144,6 +146,12 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener, 
     @Override
     public void onClick(View v) {
 
+    }
+
+
+    @Override
+    public int getDrawerLockMode() {
+        return DrawerLayout.LOCK_MODE_UNLOCKED;
     }
 
     @Override

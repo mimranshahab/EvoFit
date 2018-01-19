@@ -2,10 +2,12 @@ package edu.aku.akuh_health_first.fragments;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v4.widget.DrawerLayout;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
+import android.widget.LinearLayout;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -37,6 +39,22 @@ public class HealthHistoryFragment extends BaseFragment {
     @BindView(R.id.btnDischargeSummary)
     AnyTextView btnDischargeSummary;
     Unbinder unbinder;
+    @BindView(R.id.contLab)
+    LinearLayout contLab;
+    @BindView(R.id.contRadiology)
+    LinearLayout contRadiology;
+    @BindView(R.id.contMedicalProfile)
+    LinearLayout contMedicalProfile;
+    @BindView(R.id.contImmunization)
+    LinearLayout contImmunization;
+    @BindView(R.id.contCardio)
+    LinearLayout contCardio;
+    @BindView(R.id.contNeuroPhysiology)
+    LinearLayout contNeuroPhysiology;
+    @BindView(R.id.contEndo)
+    LinearLayout contEndo;
+    @BindView(R.id.contSummary)
+    LinearLayout contSummary;
 
     public static HealthHistoryFragment newInstance() {
 
@@ -65,6 +83,12 @@ public class HealthHistoryFragment extends BaseFragment {
         titleBar.setTitle("Health History");
         titleBar.showBackButton(getBaseActivity());
     }
+
+    @Override
+    public int getDrawerLockMode() {
+        return DrawerLayout.LOCK_MODE_UNLOCKED;
+    }
+
 
     @Override
     public void setListeners() {
@@ -96,33 +120,32 @@ public class HealthHistoryFragment extends BaseFragment {
         unbinder.unbind();
     }
 
-    @OnClick({R.id.btnClinicalLab, R.id.btnRadiology, R.id.btnMedProf, R.id.btnImmunizationProfile, R.id.btnCardio, R.id.btnNeurophysiology, R.id.btnEndoscopy, R.id.btnDischargeSummary})
+    @OnClick({R.id.contLab, R.id.contRadiology, R.id.contMedicalProfile, R.id.contImmunization, R.id.contCardio, R.id.contNeuroPhysiology, R.id.contEndo, R.id.contSummary})
     public void onViewClicked(View view) {
         switch (view.getId()) {
-            case R.id.btnClinicalLab:
-                UIHelper.showToast(getBaseActivity(), getString(R.string.will_be_implemented_soon));
+            case R.id.contLab:
+                showNextBuildToast();
                 break;
-            case R.id.btnRadiology:
-                UIHelper.showToast(getBaseActivity(), getString(R.string.will_be_implemented_soon));
+            case R.id.contRadiology:
+                showNextBuildToast();
                 break;
-            case R.id.btnMedProf:
-                UIHelper.showToast(getBaseActivity(), getString(R.string.will_be_implemented_soon));
+            case R.id.contMedicalProfile:
+                showNextBuildToast();
                 break;
-            case R.id.btnImmunizationProfile:
-                UIHelper.showToast(getBaseActivity(), getString(R.string.will_be_implemented_soon));
+            case R.id.contImmunization:
+                showNextBuildToast();
                 break;
-            case R.id.btnCardio:
-                UIHelper.showToast(getBaseActivity(), getString(R.string.will_be_implemented_soon));
+            case R.id.contCardio:
+                showNextBuildToast();
                 break;
-            case R.id.btnNeurophysiology:
+            case R.id.contNeuroPhysiology:
                 getBaseActivity().addDockableFragment(NeurophysiologyFragment.newInstance());
-
                 break;
-            case R.id.btnEndoscopy:
-                UIHelper.showToast(getBaseActivity(), getString(R.string.will_be_implemented_soon));
+            case R.id.contEndo:
+                showNextBuildToast();
                 break;
-            case R.id.btnDischargeSummary:
-                UIHelper.showToast(getBaseActivity(), getString(R.string.will_be_implemented_soon));
+            case R.id.contSummary:
+                showNextBuildToast();
                 break;
         }
     }

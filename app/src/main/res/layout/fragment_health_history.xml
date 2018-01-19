@@ -22,6 +22,7 @@
 
 
             <LinearLayout
+                android:id="@+id/contLab"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -54,6 +55,7 @@
 
 
             <LinearLayout
+                android:id="@+id/contRadiology"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -94,6 +96,7 @@
 
 
             <LinearLayout
+                android:id="@+id/contMedicalProfile"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -124,6 +127,7 @@
                 android:background="@color/c_black" />
 
             <LinearLayout
+                android:id="@+id/contImmunization"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -162,6 +166,7 @@
             android:padding="@dimen/x10dp">
 
             <LinearLayout
+                android:id="@+id/contCardio"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -193,6 +198,7 @@
                 android:background="@color/c_black" />
 
             <LinearLayout
+                android:id="@+id/contNeuroPhysiology"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -233,6 +239,7 @@
             android:padding="@dimen/x10dp">
 
             <LinearLayout
+                android:id="@+id/contEndo"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -263,6 +270,7 @@
                 android:background="@color/c_black" />
 
             <LinearLayout
+                android:id="@+id/contSummary"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
