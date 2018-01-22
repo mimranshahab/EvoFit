@@ -91,28 +91,30 @@
                 android:orientation="horizontal">
 
                 <Button
-                    android:id="@+id/btnShowGraph"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="@dimen/x10dp"
-                    android:layout_weight=".5"
-                    android:visibility="gone"
-                    android:background="@drawable/rounded_box_filled_base_grey"
-                    android:text="Show Graph"
-                    android:textAllCaps="false"
-                     android:textColor="@color/c_white" />
-
-                <Button
                     android:id="@+id/btnShowReport"
                     android:layout_width="0dp"
-                    android:visibility="gone"
                     android:layout_height="wrap_content"
                     android:layout_margin="@dimen/x10dp"
                     android:layout_weight=".5"
                     android:background="@drawable/rounded_box_filled_base_grey"
                     android:text="Show Report"
                     android:textAllCaps="false"
-                    android:textColor="@color/c_white" />
+                    android:textColor="@color/c_white"
+                    android:visibility="gone" />
+
+                <Button
+                    android:id="@+id/btnShowGraph"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/x10dp"
+                    android:layout_weight=".5"
+                    android:background="@drawable/rounded_box_filled_base_grey"
+                    android:text="Show Graph"
+                    android:textAllCaps="false"
+                    android:textColor="@color/c_white"
+                    android:visibility="gone" />
+
+
             </LinearLayout>
 
         </LinearLayout>

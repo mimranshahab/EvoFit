@@ -22,6 +22,7 @@ public class TimelineAdapter extends RecyclerView.Adapter<TimelineAdapter.ViewHo
 
     private final OnItemClickListener onItemClick;
 
+
     private Activity activity;
     private ArrayList<TimelineModel> neurophysiologyArrayList;
 
@@ -44,7 +45,10 @@ public class TimelineAdapter extends RecyclerView.Adapter<TimelineAdapter.ViewHo
     public void onBindViewHolder(final ViewHolder holder, int i) {
 
         final TimelineModel timelineModel = neurophysiologyArrayList.get(holder.getAdapterPosition());
-        holder.txtText.setText(timelineModel.getText());
+        holder.txtVisit.setText(timelineModel.getText());
+        holder.txtPurpose.setText(timelineModel.getText());
+        holder.txtDoctor.setText(timelineModel.getText());
+
         setListener(holder, timelineModel);
     }
 
@@ -66,8 +70,15 @@ public class TimelineAdapter extends RecyclerView.Adapter<TimelineAdapter.ViewHo
 
 
     static class ViewHolder extends RecyclerView.ViewHolder {
-        @BindView(R.id.txtText)
-        AnyTextView txtText;
+
+        @BindView(R.id.txtVisit)
+        AnyTextView txtVisit;
+
+        @BindView(R.id.txtPurpose)
+        AnyTextView txtPurpose;
+
+        @BindView(R.id.txtDoctor)
+        AnyTextView txtDoctor;
 
         ViewHolder(View view) {
             super(view);

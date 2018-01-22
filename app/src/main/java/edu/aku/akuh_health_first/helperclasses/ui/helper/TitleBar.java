@@ -1,6 +1,8 @@
 package edu.aku.akuh_health_first.helperclasses.ui.helper;
 
 import android.content.Context;
+import android.content.res.ColorStateList;
+import android.media.Image;
 import android.support.v4.view.GravityCompat;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
@@ -14,7 +16,7 @@ import com.ctrlplusz.anytextview.AnyEditTextView;
 import com.ctrlplusz.anytextview.AnyTextView;
 
 import edu.aku.akuh_health_first.R;
- import edu.aku.akuh_health_first.activities.BaseActivity;
+import edu.aku.akuh_health_first.activities.BaseActivity;
 
 import butterknife.BindView;
 
@@ -35,7 +37,7 @@ public class TitleBar extends RelativeLayout {
     private ImageButton btnRight3;
     private ImageButton btnRight2;
     //change Right button
-    public ImageButton btnRight1;
+    public ImageView btnRight1;
 
 
     private AnyEditTextView edtSearchField;
@@ -77,7 +79,7 @@ public class TitleBar extends RelativeLayout {
         btnLeft1 = (ImageButton) findViewById(R.id.btnLeft1);
         btnRight3 = (ImageButton) findViewById(R.id.btnRight3);
         btnRight2 = (ImageButton) findViewById(R.id.btnRight2);
-        btnRight1 = (ImageButton) findViewById(R.id.btnRight1);
+        btnRight1 = (ImageView) findViewById(R.id.btnRight1);
         btnLeftSearchField = (ImageButton) findViewById(R.id.btnLeftSearchField);
         btnRightSearchField = (ImageButton) findViewById(R.id.btnRightSearchField);
         txtClearAll = (TextView) findViewById(R.id.txtClearAll);
@@ -161,7 +163,7 @@ public class TitleBar extends RelativeLayout {
             @Override
             public void onClick(View v) {
                 if (mActivity != null) {
-                     mActivity.getDrawerLayout().openDrawer(GravityCompat.START);
+                    mActivity.getDrawerLayout().openDrawer(GravityCompat.START);
                 }
 
             }
@@ -178,6 +180,14 @@ public class TitleBar extends RelativeLayout {
     public void setRightButton(int drawable, OnClickListener onClickListener) {
         this.btnRight1.setVisibility(VISIBLE);
         this.btnRight1.setImageResource(drawable);
+        this.btnRight1.setOnClickListener(onClickListener);
+    }
+
+
+    public void setRightButton(int drawable, OnClickListener onClickListener, int colorToTint) {
+        this.btnRight1.setVisibility(VISIBLE);
+        this.btnRight1.setImageResource(drawable);
+        this.btnRight1.setColorFilter(colorToTint);
         this.btnRight1.setOnClickListener(onClickListener);
     }
 

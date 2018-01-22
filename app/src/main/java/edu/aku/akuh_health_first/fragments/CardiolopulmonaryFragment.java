@@ -37,6 +37,7 @@ import edu.aku.akuh_health_first.managers.FileManager;
 import edu.aku.akuh_health_first.managers.retrofit.GsonFactory;
 import edu.aku.akuh_health_first.managers.retrofit.WebServices;
 import edu.aku.akuh_health_first.models.CardioModel;
+import edu.aku.akuh_health_first.models.Neurophysiology;
 import edu.aku.akuh_health_first.models.receiving_model.UserDetailModel;
 import edu.aku.akuh_health_first.models.wrappers.WebResponse;
 
@@ -117,11 +118,11 @@ public class CardiolopulmonaryFragment extends BaseFragment implements View.OnCl
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
+
         switch (view.getId()) {
             case R.id.btnShowGraph:
                 showGraphAPI(adapterCardio.getItem(position));
                 break;
-
             case R.id.btnShowReport:
                 showReportAPI(adapterCardio.getItem(position));
                 break;
@@ -149,75 +150,104 @@ public class CardiolopulmonaryFragment extends BaseFragment implements View.OnCl
     }
 
     private void showGraphAPI(final CardioModel cardiolopulmonary) {
-        new WebServices(getBaseActivity(), WebServiceConstants.temporaryToken, BaseURLTypes.AHFA_BASE_URL)
-                .webServiceRequestAPIForWebResponseWithString(WebServiceConstants.METHOD_CARDIO_SHOW_GRAPH,
-                        cardiolopulmonary.toString(), new WebServices.IRequestWebResponseWithStringDataCallBack() {
-                            @Override
-                            public void requestDataResponse(WebResponse<String> webResponse) {
-                                String fileName = cardiolopulmonary.getDetailReportID();
+        String fileName = cardiolopulmonary.getDetailReportID();
+        final File file = new File(DOC_PATH
+                + "/" + fileName);
+        if (FileManager.isFileExits(file.getPath())) {
 
-                                FileManager.writeResponseBodyToDisk(webResponse.result, fileName);
+//            UIHelper.showToast(getContext(), "File already exist");
+            new Handler().postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                    FileManager.openFile(getContext(), file);
+                }
+            }, 300);
+        } else {
 
-                                final File file = new File(DOC_PATH
-                                        + "/" + fileName);
+            new WebServices(getBaseActivity(), WebServiceConstants.temporaryToken, BaseURLTypes.AHFA_BASE_URL)
+                    .webServiceRequestAPIForWebResponseWithString(WebServiceConstants.METHOD_CARDIO_SHOW_GRAPH,
+                            cardiolopulmonary.toString(), new WebServices.IRequestWebResponseWithStringDataCallBack() {
+                                @Override
+                                public void requestDataResponse(WebResponse<String> webResponse) {
+                                    String fileName = cardiolopulmonary.getDetailReportID();
 
-                                new Handler().postDelayed(new Runnable() {
-                                    @Override
-                                    public void run() {
-                                        FileManager.openFile(getContext(), file);
-                                    }
-                                }, 300);
+                                    FileManager.writeResponseBodyToDisk(webResponse.result, fileName);
+
+                                    final File file = new File(DOC_PATH
+                                            + "/" + fileName);
+
+                                    new Handler().postDelayed(new Runnable() {
+                                        @Override
+                                        public void run() {
+                                            FileManager.openFile(getContext(), file);
+                                        }
+                                    }, 300);
 
 
+                                }
+
+                                @Override
+                                public void onError() {
+
+
+                                }
                             }
-
-                            @Override
-                            public void onError() {
-
-
-                            }
-                        }
-                );
+                    );
+        }
     }
 
     private void showReportAPI(final CardioModel cardiolopulmonary) {
-        new WebServices(getBaseActivity(), WebServiceConstants.temporaryToken, BaseURLTypes.AHFA_BASE_URL)
-                .webServiceRequestAPIForWebResponseWithString(WebServiceConstants.METHOD_CARDIO_SHOW_REPORT,
-                        cardiolopulmonary.tempCardioOb(), new WebServices.IRequestWebResponseWithStringDataCallBack() {
-                            @Override
-                            public void requestDataResponse(WebResponse<String> webResponse) {
-                                String fileName = cardiolopulmonary.getDetailReportID();
+//        String fileName = cardiolopulmonary.getDetailReportID();
+//        final File file = new File(DOC_PATH
+//                + "/" + fileName);
+//        if (FileManager.isFileExits(file.getPath())) {
+//
+//            UIHelper.showToast(getContext(), "File already exist");
+//            new Handler().postDelayed(new Runnable() {
+//                @Override
+//                public void run() {
+//                    FileManager.openFile(getContext(), file);
+//                }
+//            }, 300);
+//        } else {
 
-                                FileManager.writeResponseBodyToDisk(webResponse.result, fileName);
+            new WebServices(getBaseActivity(), WebServiceConstants.temporaryToken, BaseURLTypes.AHFA_BASE_URL)
+                    .webServiceRequestAPIForWebResponseWithString(WebServiceConstants.METHOD_CARDIO_SHOW_REPORT,
+                            cardiolopulmonary.tempCardioOb(), new WebServices.IRequestWebResponseWithStringDataCallBack() {
+                                @Override
+                                public void requestDataResponse(WebResponse<String> webResponse) {
+                                    String fileName = cardiolopulmonary.getDetailReportID();
 
-                                final File file = new File(DOC_PATH
-                                        + "/" + fileName);
+                                    FileManager.writeResponseBodyToDisk(webResponse.result, fileName);
 
-                                new Handler().postDelayed(new Runnable() {
-                                    @Override
-                                    public void run() {
-                                        FileManager.openFile(getContext(), file);
-                                    }
-                                }, 300);
+                                    final File file = new File(DOC_PATH
+                                            + "/" + fileName);
+
+                                    new Handler().postDelayed(new Runnable() {
+                                        @Override
+                                        public void run() {
+                                            FileManager.openFile(getContext(), file);
+                                        }
+                                    }, 300);
 
 
+                                }
+
+                                @Override
+                                public void onError() {
+
+
+                                }
                             }
+                    );
+        }
 
-                            @Override
-                            public void onError() {
-
-
-                            }
-                        }
-                );
-    }
-
+//    }
 
     private void serviceCall() {
         // FIXME: 1/18/2018 Use live data in future
         UserDetailModel currentUser = sharedPreferenceManager.getCurrentUser();
         currentUser.setMRNumber(WebServiceConstants.tempMRN);
-        sharedPreferenceManager.putObject(AppConstants.KEY_CURRENT_USER_MODEL, currentUser);
 
         new WebServices(getBaseActivity(),
                 WebServiceConstants.temporaryToken,

@@ -112,8 +112,11 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener, 
                             for (int i = 0; i < arrUserLists.size(); i++) {
                                 if (arrUserLists.get(i).getMRNumber().equals(currentUser.getMRNumber())) {
                                     arrUserLists.get(i).setSelected(true);
+                                    break;
                                 }
                             }
+                        } else {
+                            arrUserLists.get(0).setSelected(true);
                         }
 
                         sharedPreferenceManager.putObject(AppConstants.KEY_CARD_MEMBER_DETAIL, cardMemberDetail);
@@ -136,6 +139,12 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener, 
         titleBar.setVisibility(View.VISIBLE);
         titleBar.showSidebar(getBaseActivity());
         titleBar.setTitle("Home");
+        titleBar.setRightButton(R.drawable.ic_notification_icon, new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                UIHelper.showToast(getContext(),"jahxjahxaxh");
+            }
+        });
 
     }
 
