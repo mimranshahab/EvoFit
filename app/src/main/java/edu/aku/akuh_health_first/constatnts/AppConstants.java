@@ -24,7 +24,6 @@ public class AppConstants {
     public static final String DOC_PATH = ROOT_MEDIA_PATH + "/Docs";
 
 
-
     public static final String CNIC_MASK = "99999-9999999-9";
     public static final String CARD_MASK = "9999-9999-9999";
     public static final String MR_NUMBER_MASK = "999-99-99";
@@ -35,7 +34,7 @@ public class AppConstants {
 
     /*******************Preferences KEYS******************/
     public static final String KEY_CURRENT_USER_MODEL = "userModel";
-    public static final String KEY_ALL_USERS = "allUsers";
+    public static final String KEY_CARD_MEMBER_DETAIL = "cardMemberDetail";
     public static final String USER_NOTIFICATION_DATA = "USER_NOTIFICATION_DATA";
     public static String PROFILE_REGISTRATION = "profile_registration";
     public static String FORCED_RESTART = "forced_restart";

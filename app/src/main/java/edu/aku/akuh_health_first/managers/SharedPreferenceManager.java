@@ -12,6 +12,7 @@ import java.util.List;
 
 import edu.aku.akuh_health_first.managers.retrofit.GsonFactory;
 import edu.aku.akuh_health_first.models.NotificationModel;
+import edu.aku.akuh_health_first.models.receiving_model.CardMemberDetail;
 import edu.aku.akuh_health_first.models.receiving_model.UserDetailModel;
 
 import static edu.aku.akuh_health_first.constatnts.AppConstants.*;
@@ -110,10 +111,11 @@ public class SharedPreferenceManager {
         return getObject(KEY_CURRENT_USER_MODEL, UserDetailModel.class);
     }
 
-    public List<UserDetailModel> getAllUsers() {
-        Type type = new TypeToken<List<UserDetailModel>>() {
-        }.getType();
-        return GsonFactory.getSimpleGson().fromJson(getString(KEY_ALL_USERS), type);
+    public CardMemberDetail getCardMemberDetail() {
+//        Type type = new TypeToken<List<UserDetailModel>>() {
+//        }.getType();
+//        return GsonFactory.getSimpleGson().fromJson(getString(KEY_CARD_MEMBER_DETAIL), CardMemberDetail.class);
+        return getObject(KEY_CARD_MEMBER_DETAIL, CardMemberDetail.class);
     }
 
     public NotificationModel getNotificationModel() {
