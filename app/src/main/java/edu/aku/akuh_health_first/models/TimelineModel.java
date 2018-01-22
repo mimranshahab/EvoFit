@@ -12,7 +12,7 @@ public class TimelineModel {
         return Visit;
     }
 
-   
+
     public void setVisit(String visit) {
         Visit = visit;
     }
