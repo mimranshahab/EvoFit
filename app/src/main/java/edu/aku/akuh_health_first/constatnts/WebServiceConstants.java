@@ -36,6 +36,9 @@ public class WebServiceConstants {
     public static final String METHOD_PACMANAGER = "PACSManager.GetPacs";
     public static final String METHOD_NEUROPHIOLOGY = "NeurophysiologyManager.GetNeurophysiologyExam";
     public static final String METHOD_NEUROPHIOLOGY_SHOW_REPORT= "NeurophysiologyManager.ShowReport";
+    public static final String METHOD_CARDIO= "CardiopulmonaryManager.GetCardiopulmonaryExam";
+    public static final String METHOD_CARDIO_SHOW_REPORT= "CardiopulmonaryManager.ShowReport";
+    public static final String METHOD_CARDIO_SHOW_GRAPH= "CardiopulmonaryManager.ShowGraph";
 
 
     /**
