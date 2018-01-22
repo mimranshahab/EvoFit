@@ -136,7 +136,8 @@ public class HealthHistoryFragment extends BaseFragment {
                 showNextBuildToast();
                 break;
             case R.id.contCardio:
-                showNextBuildToast();
+                getBaseActivity().addDockableFragment(CardiolopulmonaryFragment.newInstance());
+
                 break;
             case R.id.contNeuroPhysiology:
                 getBaseActivity().addDockableFragment(NeurophysiologyFragment.newInstance());

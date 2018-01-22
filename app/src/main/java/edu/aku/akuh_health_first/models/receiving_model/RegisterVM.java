@@ -13,7 +13,7 @@ public class RegisterVM {
     private List<RegisterOptionsModel> NationalityList;
     @SerializedName("CurrentCountryList")
     private List<RegisterOptionsModel> CurrentCountryList;
-    @SerializedName("PermanentCountryList")
+    @SerializedName("asdf")
     private List<RegisterOptionsModel> PermanentCountryList;
     @SerializedName("CardTypeList")
     private List<RegisterOptionsModel> CardTypeList;
