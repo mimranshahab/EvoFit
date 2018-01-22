@@ -116,7 +116,7 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener, 
                             }
                         }
 
-                        sharedPreferenceManager.putObject(AppConstants.KEY_ALL_USERS, arrUserLists);
+                        sharedPreferenceManager.putObject(AppConstants.KEY_CARD_MEMBER_DETAIL, cardMemberDetail);
                         adaptHome.notifyDataSetChanged();
 
                     }

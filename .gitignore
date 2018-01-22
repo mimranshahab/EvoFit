@@ -7,6 +7,7 @@
 gradle
 /captures
 .externalNativeBuild
+.modules
 
 # Built application files
 *.apk

@@ -31,6 +31,7 @@ import edu.aku.akuh_health_first.activities.MainActivity;
 import java.text.NumberFormat;
 
 import edu.aku.akuh_health_first.managers.SharedPreferenceManager;
+import edu.aku.akuh_health_first.models.receiving_model.UserDetailModel;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.annotations.NonNull;
 import io.reactivex.disposables.Disposable;
@@ -65,6 +66,10 @@ public abstract class BaseFragment extends Fragment implements View.OnClickListe
         getBaseActivity().getTitleBar().resetViews();
         getBaseActivity().getDrawerLayout().setDrawerLockMode(getDrawerLockMode());
         getBaseActivity().getDrawerLayout().closeDrawer(Gravity.LEFT);
+    }
+
+    public UserDetailModel getCurrentUser() {
+        return sharedPreferenceManager.getCurrentUser();
     }
 
     public abstract int getDrawerLockMode();

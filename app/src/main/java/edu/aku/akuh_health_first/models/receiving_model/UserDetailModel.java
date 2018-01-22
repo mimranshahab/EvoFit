@@ -7,7 +7,8 @@ import com.google.gson.annotations.SerializedName;
 
 import io.realm.annotations.Ignore;
 
-public class UserDetailModel implements Serializable {
+public class
+UserDetailModel implements Serializable {
     transient boolean isSelected = false;
 
     public boolean isSelected() {
