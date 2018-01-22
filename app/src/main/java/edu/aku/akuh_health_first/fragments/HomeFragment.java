@@ -136,7 +136,7 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener, 
         titleBar.setVisibility(View.VISIBLE);
         titleBar.showSidebar(getBaseActivity());
         titleBar.setTitle("Home");
-
+         
     }
 
     @Override

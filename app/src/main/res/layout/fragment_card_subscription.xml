@@ -4,16 +4,15 @@
     xmlns:card_view="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_gravity="center_vertical"
+    android:layout_gravity="center"
     android:background="@drawable/imgmainbg"
-    android:orientation="vertical"
-    android:padding="@dimen/x10dp">
+    android:orientation="vertical" >
 
 
     <ImageView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="@dimen/x20dp"
+        android:layout_margin="@dimen/x30dp"
 
         android:src="@drawable/logo_healthfirst" />
 
@@ -23,17 +22,17 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
-        android:layout_marginLeft="@dimen/x5dp"
-        android:layout_marginRight="@dimen/x5dp"
-        android:layout_marginTop="@dimen/x5dp"
+        android:layout_margin="@dimen/x3dp"
         android:animateLayoutChanges="true"
+        android:layout_gravity="center_horizontal"
         android:padding="@dimen/x2dp"
-         card_view:cardCornerRadius="5dp"
+        card_view:cardCornerRadius="5dp"
         card_view:cardElevation="x15dp">
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:background="@color/c_white">
 
             <View
                 android:layout_width="@dimen/x10dp"
@@ -82,8 +81,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="Card Type"
-
-                            android:textColor="@color/c_white" />
+                            android:textColor="@color/base_amber" />
 
                     </LinearLayout>
 
@@ -258,7 +256,7 @@
             <LinearLayout
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:layout_weight="0.3">
+                android:layout_weight="0.2">
 
                 <edu.aku.akuh_health_first.helperclasses.ui.helper.SquareImageView
                     android:layout_width="match_parent"
