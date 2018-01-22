@@ -141,44 +141,65 @@ public class NeurophysiologyFragment extends BaseFragment implements View.OnClic
     public void onItemClick(int position, Object object) {
         if (object instanceof Neurophysiology) {
             final Neurophysiology neurophysiology = (Neurophysiology) object;
-            new WebServices(getBaseActivity(), WebServiceConstants.temporaryToken, BaseURLTypes.AHFA_BASE_URL)
-                    .webServiceRequestAPIForWebResponseWithString(WebServiceConstants.METHOD_NEUROPHIOLOGY_SHOW_REPORT,
-                            neurophysiology.toString(), new WebServices.IRequestWebResponseWithStringDataCallBack() {
-                                @Override
-                                public void requestDataResponse(WebResponse<String> webResponse) {
-                                    String fileName = neurophysiology.getDetailReportID();
 
-                                    FileManager.writeResponseBodyToDisk(webResponse.result, fileName);
+            String fileName = neurophysiology.getDetailReportID();
+            final File file = new File(DOC_PATH
+                    + "/" + fileName);
 
-                                    final File file = new File(DOC_PATH
-                                            + "/" + fileName);
+            if (FileManager.isFileExits(file.getPath())) {
 
-                                    new Handler().postDelayed(new Runnable() {
-                                        @Override
-                                        public void run() {
-                                            FileManager.openFile(getContext(), file);
-                                        }
-                                    }, 300);
-
-
-                                }
-
-                                @Override
-                                public void onError() {
+//                UIHelper.showToast(getContext(), "File already exist");
+                new Handler().postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        FileManager.openFile(getContext(), file);
+                    }
+                }, 300);
+            } else {
+                showReportAPI(neurophysiology);
+            }
 
 
-                                }
-                            }
-                    );
         }
 
+    }
+
+    private void showReportAPI(final Neurophysiology neurophysiology) {
+        new WebServices(getBaseActivity(), WebServiceConstants.temporaryToken, BaseURLTypes.AHFA_BASE_URL)
+                .webServiceRequestAPIForWebResponseWithString(WebServiceConstants.METHOD_NEUROPHIOLOGY_SHOW_REPORT,
+                        neurophysiology.toString(), new WebServices.IRequestWebResponseWithStringDataCallBack() {
+                            @Override
+                            public void requestDataResponse(WebResponse<String> webResponse) {
+                                String fileName = neurophysiology.getDetailReportID();
+
+                                FileManager.writeResponseBodyToDisk(webResponse.result, fileName);
+
+                                final File file = new File(DOC_PATH
+                                        + "/" + fileName);
+
+                                new Handler().postDelayed(new Runnable() {
+                                    @Override
+                                    public void run() {
+                                        FileManager.openFile(getContext(), file);
+                                    }
+                                }, 300);
+
+
+                            }
+
+                            @Override
+                            public void onError() {
+
+
+                            }
+                        }
+                );
     }
 
     private void serviceCall() {
         // FIXME: 1/18/2018 Use live data in future
         UserDetailModel currentUser = sharedPreferenceManager.getCurrentUser();
         currentUser.setMRNumber(WebServiceConstants.tempMRN);
-        sharedPreferenceManager.putObject(AppConstants.KEY_CURRENT_USER_MODEL, currentUser);
 
         new WebServices(getBaseActivity(),
                 WebServiceConstants.temporaryToken,

@@ -5,6 +5,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.LinearLayout;
 
 import java.util.ArrayList;
@@ -52,12 +53,12 @@ public class NeurophysiologyAdapter extends RecyclerView.Adapter<Neurophysiology
         holder.txtReqNum.setText(activity.getString(R.string.requestNumber) + " " + neurophysiology.getRequestNumber());
         holder.txtAdmNo.setText(activity.getString(R.string.admissionNumber) + " " + neurophysiology.getAdmissionNumber());
         holder.txtService.setText(activity.getString(R.string.service) + " " + neurophysiology.getService());
-
+        holder.btnShowReport.setVisibility(View.VISIBLE);
         setListener(holder, neurophysiology);
     }
 
     private void setListener(final ViewHolder holder, final Neurophysiology neurophysiology) {
-        holder.contListItem.setOnClickListener(new View.OnClickListener() {
+        holder.btnShowReport.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 onItemClick.onItemClick(holder.getAdapterPosition(), neurophysiology);
@@ -91,7 +92,8 @@ public class NeurophysiologyAdapter extends RecyclerView.Adapter<Neurophysiology
         AnyTextView txtService;
         @BindView(R.id.contListItem)
         LinearLayout contListItem;
-
+        @BindView(R.id.btnShowReport)
+        Button btnShowReport;
 
         ViewHolder(View view) {
             super(view);
