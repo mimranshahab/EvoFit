@@ -23,6 +23,7 @@ public class WebServiceConstants {
     public static final String tempPacViews = "46015891";
     public static final String tempCardNumber = "0000-0000-0031";
     public static final String tempMRN = "291-32-60";
+    public static final String tempMRN_LAB = "510-29-10";
     public static final String tempPassword = "uL952ERAghddR2h+CedbuA==";
     /**
      * REQUEST METHODS NAMES
@@ -39,6 +40,7 @@ public class WebServiceConstants {
     public static final String METHOD_CARDIO= "CardiopulmonaryManager.GetCardiopulmonaryExam";
     public static final String METHOD_CARDIO_SHOW_REPORT= "CardiopulmonaryManager.ShowReport";
     public static final String METHOD_CARDIO_SHOW_GRAPH= "CardiopulmonaryManager.ShowGraph";
+    public static final String METHOD_CLINICAL_LAB= "LaboratoryManager.GetLabSpecimenList";
 
 
     /**
