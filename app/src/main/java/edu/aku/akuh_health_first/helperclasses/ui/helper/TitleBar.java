@@ -136,7 +136,7 @@ public class TitleBar extends RelativeLayout {
 
     public void showBackButton(final BaseActivity mActivity) {
         this.btnLeft1.setVisibility(VISIBLE);
-        this.btnLeft1.setImageResource(R.drawable.imgback);
+        this.btnLeft1.setImageResource(R.drawable.ic_back);
         btnLeft1.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
