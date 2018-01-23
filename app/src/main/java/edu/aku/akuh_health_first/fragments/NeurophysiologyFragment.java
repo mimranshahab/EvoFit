@@ -5,6 +5,7 @@ import android.os.Environment;
 import android.os.Handler;
 import android.support.annotation.Nullable;
 import android.support.v4.widget.DrawerLayout;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -53,6 +54,8 @@ public class NeurophysiologyFragment extends BaseFragment implements View.OnClic
 
     @BindView(R.id.listNeurophysiology)
     RecyclerView recyclerNeurophysiology;
+    @BindView(R.id.refreshLayout)
+    SwipeRefreshLayout refreshLayout;
     Unbinder unbinder;
     private ArrayList<Neurophysiology> arrNeuropysiologyLists;
     private NeurophysiologyAdapter adaptNeuropysiology;
@@ -104,7 +107,13 @@ public class NeurophysiologyFragment extends BaseFragment implements View.OnClic
 
     @Override
     public void setListeners() {
-
+        refreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                serviceCall();
+                refreshLayout.setRefreshing(false);
+            }
+        });
     }
 
     @Override
