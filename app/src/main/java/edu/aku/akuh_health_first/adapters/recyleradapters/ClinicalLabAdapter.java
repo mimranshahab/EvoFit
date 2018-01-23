@@ -47,6 +47,13 @@ public class ClinicalLabAdapter extends RecyclerView.Adapter<ClinicalLabAdapter.
 
         final LaboratoryModel model = arrData.get(holder.getAdapterPosition());
 
+        holder.txtSpecimenNumber.setText(model.getSpecimenNumber());
+        holder.txtRequestNumber.setText(model.getRequestNumber());
+        holder.txtEnteredDateTime.setText(model.getEnteredDTTM());
+        holder.txtVisitDateTime.setText(model.getVisitDTTM());
+        holder.txtVisitIDandType.setText(model.getVisitID() + " - " + model.getVisitTypeID());
+        holder.txtVisitLocationID.setText(model.getVisitLocationID());
+        holder.btnShowDetail.setText("Show " + model.getSpecimenType() + " Details");
         setListener(holder, model);
     }
 
