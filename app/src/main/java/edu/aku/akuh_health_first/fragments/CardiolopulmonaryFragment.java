@@ -159,7 +159,7 @@ public class CardiolopulmonaryFragment extends BaseFragment implements View.OnCl
     }
 
     private void showGraphAPI(final CardioModel cardiolopulmonary) {
-        String fileName = cardiolopulmonary.getDetailReportID();
+        String fileName = cardiolopulmonary.getDetailGraphID();
         final File file = new File(DOC_PATH
                 + "/" + fileName);
         if (FileManager.isFileExits(file.getPath())) {
@@ -178,7 +178,7 @@ public class CardiolopulmonaryFragment extends BaseFragment implements View.OnCl
                             cardiolopulmonary.toString(), new WebServices.IRequestWebResponseWithStringDataCallBack() {
                                 @Override
                                 public void requestDataResponse(WebResponse<String> webResponse) {
-                                    String fileName = cardiolopulmonary.getDetailReportID();
+                                    String fileName = cardiolopulmonary.getDetailGraphID();
 
                                     FileManager.writeResponseBodyToDisk(webResponse.result, fileName);
 
@@ -211,8 +211,7 @@ public class CardiolopulmonaryFragment extends BaseFragment implements View.OnCl
                 + "/" + fileName);
         if (FileManager.isFileExits(file.getPath())) {
 
-            UIHelper.showToast(getContext(), "File already exist");
-            new Handler().postDelayed(new Runnable() {
+             new Handler().postDelayed(new Runnable() {
                 @Override
                 public void run() {
                     FileManager.openFile(getContext(), file);

@@ -224,7 +224,7 @@ public class RegisterFragment extends BaseFragment {
         edtPassportNumber.addValidator(new PassportValidation());
         edtCNICNumber.addTextChangedListener(new MaskFormatter(CNIC_MASK, edtCNICNumber, '-'));
         edtMRNumber.addTextChangedListener(new MaskFormatter(MR_NUMBER_MASK, edtMRNumber, '-'));
-        getRegisterVM();
+//        getRegisterVM();
 //        CallPacManager();
     }
 
@@ -321,10 +321,11 @@ public class RegisterFragment extends BaseFragment {
 //                }
 
 
-                if (edtCNICNumber.testValidity() && edtMRNumber.testValidity()) {
-                    getBaseActivity().addDockableFragment(MyFamilyFragment.newInstance());
-                }
+//                if (edtCNICNumber.testValidity() && edtMRNumber.testValidity()) {
+//                    getBaseActivity().addDockableFragment(MyFamilyFragment.newInstance());
+//                }
 
+                getBaseActivity().addDockableFragment(MyFamilyFragment.newInstance());
                 break;
 
             case R.id.txtGender:
