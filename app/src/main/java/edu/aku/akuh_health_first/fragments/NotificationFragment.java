@@ -78,7 +78,7 @@ public class NotificationFragment extends BaseFragment implements View.OnClickLi
     @Override
     public void setTitlebar(TitleBar titleBar) {
         titleBar.resetViews();
-        titleBar.setTitle("Timeline");
+        titleBar.setTitle("Notifications");
         titleBar.showBackButton(getBaseActivity());
     }
 

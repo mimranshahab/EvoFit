@@ -8,6 +8,12 @@ public class TimelineModel {
     private String Visit;
     private String Purpose;
 
+//    public TimelineModel(String visit, String purpose, String doctor) {
+//        Visit = visit;
+//        Purpose = purpose;
+//        Doctor = doctor;
+//    }
+
     public String getVisit() {
         return Visit;
     }

@@ -62,7 +62,7 @@ public class TimelineFragment extends BaseFragment implements View.OnClickListen
         timelineAdapter = new TimelineAdapter(getBaseActivity(), arrTimeLine, this);
 
         TimelineModel timelineModel = new TimelineModel();
-        timelineModel.setText(getString(R.string.generic));
+//        timelineModel.setText(getString(R.string.generic));
 
         arrTimeLine.add(timelineModel);
         arrTimeLine.add(timelineModel);

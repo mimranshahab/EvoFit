@@ -45,9 +45,9 @@ public class TimelineAdapter extends RecyclerView.Adapter<TimelineAdapter.ViewHo
     public void onBindViewHolder(final ViewHolder holder, int i) {
 
         final TimelineModel timelineModel = neurophysiologyArrayList.get(holder.getAdapterPosition());
-        holder.txtVisit.setText(timelineModel.getText());
-        holder.txtPurpose.setText(timelineModel.getText());
-        holder.txtDoctor.setText(timelineModel.getText());
+//        holder.txtVisit.setText(timelineModel.getText());
+//        holder.txtPurpose.setText(timelineModel.getText());
+//        holder.txtDoctor.setText(timelineModel.getText());
 
         setListener(holder, timelineModel);
     }
