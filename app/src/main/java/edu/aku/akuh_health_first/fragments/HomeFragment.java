@@ -142,7 +142,8 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener, 
         titleBar.setRightButton(R.drawable.ic_notification_icon, new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                UIHelper.showToast(getContext(),"jahxjahxaxh");
+//                UIHelper.showToast(getContext(),"jahxjahxaxh");
+                getBaseActivity().addDockableFragment(NotificationFragment.newInstance());
             }
         });
 
