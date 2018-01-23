@@ -3,10 +3,12 @@ package edu.aku.akuh_health_first.fragments;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.widget.DrawerLayout;
+import android.support.v7.widget.CardView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
+import android.widget.LinearLayout;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -15,6 +17,7 @@ import de.hdodenhof.circleimageview.CircleImageView;
 import edu.aku.akuh_health_first.R;
 import edu.aku.akuh_health_first.fragments.abstracts.BaseFragment;
 import edu.aku.akuh_health_first.helperclasses.ui.helper.TitleBar;
+import edu.aku.akuh_health_first.models.receiving_model.CardMemberDetail;
 import edu.aku.akuh_health_first.models.receiving_model.UserDetailModel;
 import edu.aku.akuh_health_first.views.AnyTextView;
 
@@ -23,6 +26,8 @@ import edu.aku.akuh_health_first.views.AnyTextView;
  */
 
 public class ProfileFragment extends BaseFragment {
+
+    Unbinder unbinder;
     @BindView(R.id.circleImageView)
     CircleImageView circleImageView;
     @BindView(R.id.txtUserName)
@@ -35,13 +40,16 @@ public class ProfileFragment extends BaseFragment {
     AnyTextView txtAge;
     @BindView(R.id.txtCardNum)
     AnyTextView txtCardNum;
+    @BindView(R.id.txtCreationDate)
+    AnyTextView txtCreationDate;
+    @BindView(R.id.txtExpirayDate)
+    AnyTextView txtExpirayDate;
+    @BindView(R.id.contListItem)
+    LinearLayout contListItem;
+    @BindView(R.id.cardView2)
+    CardView cardView2;
     @BindView(R.id.txtCardType)
     AnyTextView txtCardType;
-    @BindView(R.id.txtIssueDate)
-    AnyTextView txtIssueDate;
-    @BindView(R.id.txtExpDate)
-    AnyTextView txtExpDate;
-    Unbinder unbinder;
 
     @Override
     protected int getFragmentLayout() {
@@ -70,16 +78,17 @@ public class ProfileFragment extends BaseFragment {
 
     private void setData() {
         UserDetailModel currentUser = sharedPreferenceManager.getCurrentUser();
+        CardMemberDetail cardMemberDetail = sharedPreferenceManager.getCardMemberDetail();
         txtUserName.setText(currentUser.getName());
         txtAge.setText("Age " + currentUser.getAge() + "  Gender " + currentUser.getGender());
         txtEmailAddress.setText(currentUser.getEmailAddress());
 //        txtExpDate.setText(sharedPreferenceManager.getCurrentUser().);
         txtMRN.setText(currentUser.getMRNumber());
 //        txtIssueDate.setText(sharedPreferenceManager.getCurrentUser());
-        txtCardType.setText("CardType: " + currentUser.getCardTypeDescription());
-        txtCardNum.setText("CardNumber: " + currentUser.getCardNumber());
-        txtExpDate.setText("Expiry date: 12-12-2022");
-        txtIssueDate.setText("Issue date: 01-01-2018");
+        txtCardType.setText("CardType: " + cardMemberDetail.getCardTypeDescription());
+        txtCardNum.setText("CardNumber: " + cardMemberDetail.getCardNumber());
+        txtExpirayDate.setText("Expiry date: " + cardMemberDetail.getCardExpiryDateTime());
+        txtCreationDate.setText("Issue date: " + cardMemberDetail.getCardCreationDateTime());
     }
 
     @Override
