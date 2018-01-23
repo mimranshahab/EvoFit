@@ -124,9 +124,7 @@ public class HealthHistoryFragment extends BaseFragment {
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.contLab:
-
                 getBaseActivity().addDockableFragment(ClinicalLaboratoryFragment.newInstance());
-
                 break;
             case R.id.contRadiology:
                 showNextBuildToast();
@@ -146,7 +144,6 @@ public class HealthHistoryFragment extends BaseFragment {
                 break;
             case R.id.contEndo:
                 showNextBuildToast();
-                break;
             case R.id.contSummary:
                 showNextBuildToast();
                 break;
