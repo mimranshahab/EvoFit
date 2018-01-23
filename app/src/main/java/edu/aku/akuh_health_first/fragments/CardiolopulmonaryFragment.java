@@ -197,19 +197,19 @@ public class CardiolopulmonaryFragment extends BaseFragment implements View.OnCl
     }
 
     private void showReportAPI(final CardioModel cardiolopulmonary) {
-//        String fileName = cardiolopulmonary.getDetailReportID();
-//        final File file = new File(DOC_PATH
-//                + "/" + fileName);
-//        if (FileManager.isFileExits(file.getPath())) {
-//
-//            UIHelper.showToast(getContext(), "File already exist");
-//            new Handler().postDelayed(new Runnable() {
-//                @Override
-//                public void run() {
-//                    FileManager.openFile(getContext(), file);
-//                }
-//            }, 300);
-//        } else {
+        String fileName = cardiolopulmonary.getDetailReportID();
+        final File file = new File(DOC_PATH
+                + "/" + fileName);
+        if (FileManager.isFileExits(file.getPath())) {
+
+            UIHelper.showToast(getContext(), "File already exist");
+            new Handler().postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                    FileManager.openFile(getContext(), file);
+                }
+            }, 300);
+        } else {
 
             new WebServices(getBaseActivity(), WebServiceConstants.temporaryToken, BaseURLTypes.AHFA_BASE_URL)
                     .webServiceRequestAPIForWebResponseWithString(WebServiceConstants.METHOD_CARDIO_SHOW_REPORT,
@@ -242,7 +242,7 @@ public class CardiolopulmonaryFragment extends BaseFragment implements View.OnCl
                     );
         }
 
-//    }
+    }
 
     private void serviceCall() {
         // FIXME: 1/18/2018 Use live data in future
