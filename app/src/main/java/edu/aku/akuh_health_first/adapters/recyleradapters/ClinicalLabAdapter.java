@@ -7,7 +7,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.LinearLayout;
 
 import java.util.ArrayList;
 
@@ -15,7 +14,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import edu.aku.akuh_health_first.R;
 import edu.aku.akuh_health_first.callbacks.OnItemClickListener;
-import edu.aku.akuh_health_first.models.Neurophysiology;
+import edu.aku.akuh_health_first.models.LaboratoryModel;
 import edu.aku.akuh_health_first.views.AnyTextView;
 
 /**
@@ -26,10 +25,10 @@ public class ClinicalLabAdapter extends RecyclerView.Adapter<ClinicalLabAdapter.
     private final OnItemClickListener onItemClick;
 
     private Activity activity;
-    private ArrayList<Neurophysiology> neurophysiologyArrayList;
+    private ArrayList<LaboratoryModel> arrData;
 
-    public ClinicalLabAdapter(Activity activity, ArrayList<Neurophysiology> userList, OnItemClickListener onItemClickListener) {
-        this.neurophysiologyArrayList = userList;
+    public ClinicalLabAdapter(Activity activity, ArrayList<LaboratoryModel> arrayList, OnItemClickListener onItemClickListener) {
+        this.arrData = arrayList;
         this.activity = activity;
         this.onItemClick = onItemClickListener;
     }
@@ -46,12 +45,12 @@ public class ClinicalLabAdapter extends RecyclerView.Adapter<ClinicalLabAdapter.
     @Override
     public void onBindViewHolder(final ViewHolder holder, int i) {
 
-        final Neurophysiology neurophysiology = neurophysiologyArrayList.get(holder.getAdapterPosition());
+        final LaboratoryModel model = arrData.get(holder.getAdapterPosition());
 
-        setListener(holder, neurophysiology);
+        setListener(holder, model);
     }
 
-    private void setListener(final ViewHolder holder, final Neurophysiology neurophysiology) {
+    private void setListener(final ViewHolder holder, final LaboratoryModel neurophysiology) {
         holder.btnShowDetail.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -61,15 +60,15 @@ public class ClinicalLabAdapter extends RecyclerView.Adapter<ClinicalLabAdapter.
     }
 
 
-    public void addItem(ArrayList<Neurophysiology> homeCategories) {
-        this.neurophysiologyArrayList = homeCategories;
+    public void addItem(ArrayList<LaboratoryModel> homeCategories) {
+        this.arrData = homeCategories;
         notifyDataSetChanged();
     }
 
 
     @Override
     public int getItemCount() {
-        return neurophysiologyArrayList.size();
+        return arrData.size();
     }
 
     static class ViewHolder extends RecyclerView.ViewHolder {
