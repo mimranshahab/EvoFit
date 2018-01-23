@@ -53,13 +53,6 @@ public class NotificationFragment extends BaseFragment implements View.OnClickLi
         arrNotifications.add(notificationModel);
         arrNotifications.add(notificationModel);
         arrNotifications.add(notificationModel);
-        arrNotifications.add(notificationModel);
-        arrNotifications.add(notificationModel);
-        arrNotifications.add(notificationModel);
-        arrNotifications.add(notificationModel);
-        arrNotifications.add(notificationModel);
-        arrNotifications.add(notificationModel);
-        arrNotifications.add(notificationModel);
     }
 
     public static NotificationFragment newInstance() {
