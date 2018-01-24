@@ -38,6 +38,8 @@ public class CardSubscriptionFragment extends BaseFragment {
     AnyTextView txtEmailAddress;
     @BindView(R.id.contListItem)
     LinearLayout contListItem;
+    @BindView(R.id.contParent)
+    LinearLayout contParent;
     Unbinder unbinder;
 
     public static CardSubscriptionFragment newInstance() {
@@ -69,7 +71,7 @@ public class CardSubscriptionFragment extends BaseFragment {
 
     @Override
     public void setListeners() {
-
+        contParent.setOnClickListener(this);
     }
 
     @Override
