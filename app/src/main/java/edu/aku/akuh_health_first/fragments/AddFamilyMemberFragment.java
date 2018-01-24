@@ -144,9 +144,9 @@ public class AddFamilyMemberFragment extends BaseFragment {
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        registerVM = SharedPreferenceManager.getInstance(getContext()).getObject(AppConstants.KEY_REGISTER_VM, RegisterVM.class);
+//        registerVM = SharedPreferenceManager.getInstance(getContext()).getObject(AppConstants.KEY_REGISTER_VM, RegisterVM.class);
         setValidations();
-        setSpinnerData();
+//        setSpinnerData();
     }
 
     private void setSpinnerData() {

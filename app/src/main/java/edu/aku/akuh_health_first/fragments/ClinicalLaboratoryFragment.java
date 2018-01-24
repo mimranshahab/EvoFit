@@ -83,7 +83,7 @@ public class ClinicalLaboratoryFragment extends BaseFragment implements View.OnC
     @Override
     public void setTitlebar(TitleBar titleBar) {
         titleBar.resetViews();
-        titleBar.setTitle("Neurophysiology");
+        titleBar.setTitle("Clinical Laboratory");
         titleBar.showBackButton(getBaseActivity());
     }
 
