@@ -25,62 +25,37 @@
             android:paddingBottom="@dimen/x10dp">
 
             <edu.aku.akuh_health_first.views.AnyTextView
-                android:id="@+id/txtTitle"
+                android:id="@+id/txtExamDate"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Mercedes-Benz S-Class"
+                android:text="Exam Date: March 11,2017"
+                android:textColor="@color/primary_text_color_selector"
+
                 android:textSize="@dimen/x14dp"
                 app:typeface="@string/font_regular" />
 
             <edu.aku.akuh_health_first.views.AnyTextView
-                android:id="@+id/txtDetail"
+                android:id="@+id/txtExams"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="412,732 QAR"
-                android:textColor="#2fabba"
-                android:textSize="@dimen/x12dp"
+                android:text="Exam: abcdxyz"
+                android:textColor="@color/primary_text_color_selector"
+                android:textSize="@dimen/s15"
                 app:typeface="@string/font_regular" />
 
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+            <edu.aku.akuh_health_first.views.AnyTextView
+                android:id="@+id/txtStatus"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Status: F"
+                android:textColor="@color/primary_text_color_selector"
+                android:textSize="@dimen/s15"
+                app:typeface="@string/font_regular" />
 
-                <edu.aku.akuh_health_first.views.AnyTextView
-                    android:id="@+id/txtLocation"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:drawablePadding="@dimen/x5dp"
-                    android:text=""
-                    android:textSize="@dimen/s15"
-                    android:visibility="gone"
-                    app:typeface="@string/font_regular" />
-
-                <edu.aku.akuh_health_first.views.AnyTextView
-                    android:id="@+id/txtKilometer"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:drawablePadding="@dimen/x5dp"
-                    android:text="km 20458"
-                    android:textSize="@dimen/s15"
-                    app:typeface="@string/font_regular" />
-
-            </RelativeLayout>
 
         </LinearLayout>
 
-        <RelativeLayout
-            android:layout_width="100dp"
-            android:layout_height="match_parent">
 
-            <ImageView
-                android:id="@+id/imgProduct"
-                android:layout_width="@dimen/x100dp"
-                android:layout_height="match_parent"
-                android:src="@drawable/placeholder"
-                android:scaleType="centerCrop" />
-
-
-        </RelativeLayout>
     </LinearLayout>
 
 

@@ -50,6 +50,8 @@ public class ProfileFragment extends BaseFragment {
     CardView cardView2;
     @BindView(R.id.txtCardType)
     AnyTextView txtCardType;
+    @BindView(R.id.contParent)
+    LinearLayout contParent;
 
     @Override
     protected int getFragmentLayout() {
@@ -102,11 +104,17 @@ public class ProfileFragment extends BaseFragment {
     @Override
     public void setListeners() {
 
-
+        contParent.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                int a = 0;
+            }
+        });
     }
 
     @Override
     public void onClick(View v) {
+
 
     }
 

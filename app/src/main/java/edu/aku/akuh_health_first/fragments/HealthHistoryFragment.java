@@ -16,7 +16,6 @@ import butterknife.Unbinder;
 import edu.aku.akuh_health_first.R;
 import edu.aku.akuh_health_first.fragments.abstracts.BaseFragment;
 import edu.aku.akuh_health_first.helperclasses.ui.helper.TitleBar;
-import edu.aku.akuh_health_first.helperclasses.ui.helper.UIHelper;
 import edu.aku.akuh_health_first.views.AnyTextView;
 
 public class HealthHistoryFragment extends BaseFragment {
@@ -127,7 +126,7 @@ public class HealthHistoryFragment extends BaseFragment {
                 getBaseActivity().addDockableFragment(ClinicalLaboratoryFragment.newInstance());
                 break;
             case R.id.contRadiology:
-                showNextBuildToast();
+                getBaseActivity().addDockableFragment(Graph_View.newInstance(12.2,1.2));
                 break;
             case R.id.contMedicalProfile:
                 showNextBuildToast();

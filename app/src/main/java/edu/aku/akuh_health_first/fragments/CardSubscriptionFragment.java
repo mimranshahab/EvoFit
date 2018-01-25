@@ -71,12 +71,16 @@ public class CardSubscriptionFragment extends BaseFragment {
 
     @Override
     public void setListeners() {
-        contParent.setOnClickListener(this);
+        contParent.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                int a = 0;
+            }
+        });
     }
 
     @Override
     public void onClick(View view) {
-
     }
 
     @Override
