@@ -80,5 +80,4 @@ public class FullScreenRotatedActivity extends BaseActivity {
         }
     }
 
-
 }

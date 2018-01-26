@@ -83,7 +83,9 @@ public class Graph_View extends BaseFragment {
 
     @Override
     public void setTitlebar(TitleBar titleBar) {
-
+        titleBar.resetViews();
+        titleBar.setVisibility(View.VISIBLE);
+        titleBar.setTitle("Graph View");
     }
 
     @Override
