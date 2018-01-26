@@ -19,16 +19,17 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
-            android:layout_marginLeft="@dimen/x5dp"
-            android:layout_marginRight="@dimen/x5dp"
-            android:layout_marginTop="@dimen/x10dp"
+            android:layout_margin="@dimen/x10dp"
             android:layout_weight=".25"
+            android:alpha=".8"
             android:animateLayoutChanges="true"
             android:padding="@dimen/x10dp"
+            app:cardBackgroundColor="#FEB990"
             card_view:cardCornerRadius="5dp"
             card_view:cardElevation="x15dp">
 
             <LinearLayout
+                android:id="@+id/contSummary"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_gravity="center_horizontal"
@@ -39,6 +40,7 @@
                     android:layout_width="@dimen/x100dp"
                     android:layout_height="@dimen/x100dp"
                     android:layout_gravity="center"
+                    android:layout_marginLeft="@dimen/x15dp"
                     android:padding="@dimen/x10dp"
 
                     android:scaleType="centerCrop"
@@ -59,18 +61,19 @@
         <android.support.v7.widget.CardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-
             android:layout_centerInParent="true"
-            android:layout_marginLeft="@dimen/x5dp"
-            android:layout_marginRight="@dimen/x5dp"
-            android:layout_marginTop="@dimen/x10dp"
+            android:layout_margin="@dimen/x10dp"
+
             android:layout_weight=".25"
             android:animateLayoutChanges="true"
             android:padding="@dimen/x10dp"
+            app:cardBackgroundColor="@color/colorPrimaryHalfTransparent"
             card_view:cardCornerRadius="5dp"
             card_view:cardElevation="x15dp">
 
             <LinearLayout
+                android:id="@+id/contHistory"
+
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_gravity="center_horizontal"
@@ -81,6 +84,7 @@
                     android:layout_width="@dimen/x100dp"
                     android:layout_height="@dimen/x100dp"
                     android:layout_gravity="center"
+                    android:layout_marginLeft="@dimen/x15dp"
                     android:padding="@dimen/x10dp"
 
                     android:scaleType="centerCrop"
@@ -91,7 +95,7 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:padding="@dimen/x15dp"
-                    android:text="HEALTH SUMMARY"
+                    android:text="HEALTH HISTORY"
                     android:textColor="@color/primary_text_color_selector"
                     android:textSize="@dimen/s20"
                     app:typeface="@string/font_bold" />
@@ -103,16 +107,20 @@
             android:layout_height="wrap_content"
 
             android:layout_centerInParent="true"
-            android:layout_marginLeft="@dimen/x5dp"
-            android:layout_marginRight="@dimen/x5dp"
-            android:layout_marginTop="@dimen/x10dp"
+            android:layout_margin="@dimen/x10dp"
+
             android:layout_weight=".25"
+            android:alpha=".8"
             android:animateLayoutChanges="true"
+
             android:padding="@dimen/x10dp"
+            app:cardBackgroundColor="#CCDC9B"
             card_view:cardCornerRadius="5dp"
             card_view:cardElevation="x15dp">
 
             <LinearLayout
+
+                android:id="@+id/contProfile"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_gravity="center_horizontal"
@@ -123,8 +131,8 @@
                     android:layout_width="@dimen/x100dp"
                     android:layout_height="@dimen/x100dp"
                     android:layout_gravity="center"
+                    android:layout_marginLeft="@dimen/x15dp"
                     android:padding="@dimen/x10dp"
-
                     android:scaleType="centerCrop"
                     android:src="@drawable/placeholder" />
 
@@ -133,7 +141,7 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:padding="@dimen/x15dp"
-                    android:text="HEALTH SUMMARY"
+                    android:text="MY PROFILE "
                     android:textColor="@color/primary_text_color_selector"
                     android:textSize="@dimen/s20"
                     app:typeface="@string/font_bold" />
@@ -145,16 +153,19 @@
 
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
-            android:layout_marginLeft="@dimen/x5dp"
-            android:layout_marginRight="@dimen/x5dp"
-            android:layout_marginTop="@dimen/x10dp"
+            android:layout_margin="@dimen/x10dp"
+
             android:layout_weight=".25"
+            android:alpha=".8"
             android:animateLayoutChanges="true"
+
             android:padding="@dimen/x10dp"
+            app:cardBackgroundColor="#DF636B"
             card_view:cardCornerRadius="5dp"
             card_view:cardElevation="x15dp">
 
             <LinearLayout
+                android:id="@+id/contTimeline"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_gravity="center_horizontal"
@@ -165,6 +176,7 @@
                     android:layout_width="@dimen/x100dp"
                     android:layout_height="@dimen/x100dp"
                     android:layout_gravity="center"
+                    android:layout_marginLeft="@dimen/x15dp"
                     android:padding="@dimen/x10dp"
 
                     android:scaleType="centerCrop"
@@ -175,7 +187,7 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:padding="@dimen/x15dp"
-                    android:text="HEALTH SUMMARY"
+                    android:text="VISIT TIMELINE "
                     android:textColor="@color/primary_text_color_selector"
                     android:textSize="@dimen/s20"
                     app:typeface="@string/font_bold" />

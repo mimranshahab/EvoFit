@@ -2,9 +2,16 @@ package edu.aku.akuh_health_first.fragments;
 
 import android.os.Bundle;
 import android.support.v4.widget.DrawerLayout;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.AdapterView;
+import android.widget.LinearLayout;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
+import butterknife.OnClick;
+import butterknife.Unbinder;
 import edu.aku.akuh_health_first.R;
 import edu.aku.akuh_health_first.fragments.abstracts.BaseFragment;
 import edu.aku.akuh_health_first.helperclasses.ui.helper.TitleBar;
@@ -14,6 +21,16 @@ import edu.aku.akuh_health_first.helperclasses.ui.helper.TitleBar;
  */
 
 public class HomeDetailFragment extends BaseFragment {
+    @BindView(R.id.contSummary)
+    LinearLayout contSummary;
+    @BindView(R.id.contHistory)
+    LinearLayout contHistory;
+    @BindView(R.id.contProfile)
+    LinearLayout contProfile;
+    @BindView(R.id.contTimeline)
+    LinearLayout contTimeline;
+    Unbinder unbinder;
+
     public static HomeDetailFragment newInstance() {
 
         Bundle args = new Bundle();
@@ -35,7 +52,9 @@ public class HomeDetailFragment extends BaseFragment {
 
     @Override
     public void setTitlebar(TitleBar titleBar) {
-
+        titleBar.resetViews();
+        titleBar.setTitle("Home Detail");
+        titleBar.showBackButton(getBaseActivity());
     }
 
     @Override
@@ -51,5 +70,37 @@ public class HomeDetailFragment extends BaseFragment {
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
+    }
+
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        // TODO: inflate a fragment view
+        View rootView = super.onCreateView(inflater, container, savedInstanceState);
+        unbinder = ButterKnife.bind(this, rootView);
+        return rootView;
+    }
+
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+        unbinder.unbind();
+    }
+
+    @OnClick({R.id.contSummary, R.id.contHistory, R.id.contProfile, R.id.contTimeline})
+    public void onViewClicked(View view) {
+        switch (view.getId()) {
+            case R.id.contSummary:
+                getBaseActivity().addDockableFragment(HealthSummaryFragment.newInstance());
+                break;
+            case R.id.contHistory:
+                getBaseActivity().addDockableFragment(HealthHistoryFragment.newInstance());
+                break;
+            case R.id.contProfile:
+                getBaseActivity().addDockableFragment(ProfileFragment.newInstance());
+                break;
+            case R.id.contTimeline:
+                getBaseActivity().addDockableFragment(TimelineFragment.newInstance());
+                break;
+        }
     }
 }

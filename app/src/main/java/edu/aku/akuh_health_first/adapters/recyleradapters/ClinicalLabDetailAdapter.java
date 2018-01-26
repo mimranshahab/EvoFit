@@ -22,14 +22,12 @@ import edu.aku.akuh_health_first.views.AnyTextView;
 
 public class ClinicalLabDetailAdapter extends RecyclerView.Adapter<ClinicalLabDetailAdapter.ViewHolder> {
 
-    private final ClinicalLaboratoryDetailFragment clinicalLaboratoryDetailFragment;
     private final ArrayList<LaboratoryModel> arrClinicalLabLists;
     private BaseActivity activity;
 
-    public ClinicalLabDetailAdapter(BaseActivity activity, ArrayList<LaboratoryModel> arrClinicalLabLists, ClinicalLaboratoryDetailFragment clinicalLaboratoryDetailFragment) {
+    public ClinicalLabDetailAdapter(BaseActivity activity, ArrayList<LaboratoryModel> arrClinicalLabLists) {
         this.activity = activity;
         this.arrClinicalLabLists = arrClinicalLabLists;
-        this.clinicalLaboratoryDetailFragment = clinicalLaboratoryDetailFragment;
     }
 
     @Override
@@ -46,7 +44,7 @@ public class ClinicalLabDetailAdapter extends RecyclerView.Adapter<ClinicalLabDe
         final LaboratoryModel model = arrClinicalLabLists.get(holder.getAdapterPosition());
 
         holder.txtName.setText(model.getReportName());
-        holder.txtRange.setText(model.getNormalRangeFormatted());
+        holder.txtRange.setText("Range "+model.getNormalRangeFormatted()+" Normal");
         holder.txtComments.setText(model.getComments());
         setListener(holder, model);
     }
