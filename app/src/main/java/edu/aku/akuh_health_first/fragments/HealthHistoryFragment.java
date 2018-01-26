@@ -126,7 +126,7 @@ public class HealthHistoryFragment extends BaseFragment {
                 getBaseActivity().addDockableFragment(ClinicalLaboratoryFragment.newInstance());
                 break;
             case R.id.contRadiology:
-                getBaseActivity().addDockableFragment(Graph_View.newInstance(12.2,1.2));
+                showNextBuildToast();
                 break;
             case R.id.contMedicalProfile:
                 showNextBuildToast();

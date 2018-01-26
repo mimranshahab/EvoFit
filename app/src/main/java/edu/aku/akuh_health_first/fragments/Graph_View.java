@@ -7,19 +7,26 @@ import android.view.View;
 import android.widget.AdapterView;
 
 import com.jjoe64.graphview.GraphView;
+import com.jjoe64.graphview.LegendRenderer;
+import com.jjoe64.graphview.helper.DateAsXAxisLabelFormatter;
 import com.jjoe64.graphview.series.DataPoint;
 import com.jjoe64.graphview.series.LineGraphSeries;
+import com.jjoe64.graphview.series.PointsGraphSeries;
+
+import java.util.Date;
 
 import edu.aku.akuh_health_first.R;
 import edu.aku.akuh_health_first.fragments.abstracts.BaseFragment;
+import edu.aku.akuh_health_first.helperclasses.DateHelper;
 import edu.aku.akuh_health_first.helperclasses.ui.helper.TitleBar;
+import edu.aku.akuh_health_first.managers.DateManager;
 
 /**
  * Created by aqsa.sarwar on 1/24/2018.
  */
 
 public class Graph_View extends BaseFragment {
-    public static Graph_View newInstance(double x, double y) {
+    public static Graph_View newInstance() {
 
         Bundle args = new Bundle();
 
@@ -32,14 +39,36 @@ public class Graph_View extends BaseFragment {
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         GraphView graph = (GraphView) view.findViewById(R.id.graph);
+
+        Date date4 = DateManager.getDate(DateManager.getCurrentMillis());
+        Date date3 = DateManager.getDate(DateManager.getCurrentMillis() - 40000);
+        Date date2 = DateManager.getDate(DateManager.getCurrentMillis() - 800000);
+        Date date1 = DateManager.getDate(DateManager.getCurrentMillis() - 1000000);
+        // you can directly pass Date objects to DataPoint-Constructor
+        // this will convert the Date to double via Date#getTime()
         LineGraphSeries<DataPoint> series = new LineGraphSeries<DataPoint>(new DataPoint[]{
-                new DataPoint(0, 1),
-                new DataPoint(1, 5),
-                new DataPoint(2, 3),
-                new DataPoint(3, 2),
-                new DataPoint(4, 6)
+                new DataPoint(date1
+                        , 1),
+                new DataPoint(date2, 5),
+                new DataPoint(date3, 2),
+                new DataPoint(date4, 8)
         });
         graph.addSeries(series);
+
+        // set date label formatter
+        graph.getGridLabelRenderer().setLabelFormatter(new DateAsXAxisLabelFormatter(graph.getContext()));
+        graph.getGridLabelRenderer().setNumHorizontalLabels(6);
+
+        // set manual x bounds to have nice steps
+        graph.getViewport().setMinX(date1.getTime());
+        graph.getViewport().setMaxX(date4.getTime());
+        graph.getViewport().setXAxisBoundsManual(true);
+        graph.getViewport().setScalable(true);
+        graph.getViewport().setScrollable(true);
+
+        // as we use dates as labels, the human rounding to nice readable numbers
+        // is not nessecary
+        graph.getGridLabelRenderer().setHumanRounding(false);
     }
 
     @Override
