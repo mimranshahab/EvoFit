@@ -6,6 +6,8 @@
     android:layout_height="wrap_content"
     android:layout_marginBottom="@dimen/x10dp"
     android:orientation="vertical"
+    android:background="@drawable/imgmainbg"
+ 
     android:padding="@dimen/x8dp">
 
     <android.support.v7.widget.CardView
@@ -23,189 +25,47 @@
             android:layout_height="wrap_content"
             android:background="@color/c_white"
             android:orientation="vertical"
-            android:padding="@dimen/x5dp">
+            android:padding="@dimen/x10dp">
 
-            <LinearLayout
+            <edu.aku.akuh_health_first.views.AnyTextView
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="match_parent"
+                android:ellipsize="end"
+                android:padding="@dimen/x3dp"
+                android:text="Collection Date: "
+                android:textSize="@dimen/s14"
+                app:typeface="@string/font_regular" />
 
-                <LinearLayout
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:orientation="vertical"
-                    android:padding="@dimen/x5dp">
-
-                    <edu.aku.akuh_health_first.views.AnyTextView
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:ellipsize="end"
-                        android:text="Specimen Number:"
-                        android:textSize="@dimen/s14"
-                        app:typeface="@string/font_regular" />
-
-                    <edu.aku.akuh_health_first.views.AnyTextView
-                        android:id="@+id/txtSpecimenNumber"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:ellipsize="end"
-                        android:text="41225000"
-                        android:textSize="@dimen/s14"
-                        app:typeface="@string/font_bold" />
-
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:orientation="vertical"
-                    android:padding="@dimen/x5dp">
-
-                    <edu.aku.akuh_health_first.views.AnyTextView
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:ellipsize="end"
-                        android:text="Request Number:"
-                        android:textSize="@dimen/s14"
-                        app:typeface="@string/font_regular" />
-
-                    <edu.aku.akuh_health_first.views.AnyTextView
-                        android:id="@+id/txtRequestNumber"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:ellipsize="end"
-                        android:text="321321321"
-                        android:textSize="@dimen/s14"
-                        app:typeface="@string/font_bold" />
-
-                </LinearLayout>
-
-            </LinearLayout>
-
-            <LinearLayout
+            <edu.aku.akuh_health_first.views.AnyTextView
+                android:id="@+id/txtCollectionDate"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-
-                <LinearLayout
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:orientation="vertical"
-                    android:padding="@dimen/x5dp">
-
-                    <edu.aku.akuh_health_first.views.AnyTextView
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:ellipsize="end"
-                        android:text="Entered Date &amp; Time:"
-                        android:textSize="@dimen/s14"
-                        app:typeface="@string/font_regular" />
-
-                    <edu.aku.akuh_health_first.views.AnyTextView
-                        android:id="@+id/txtEnteredDateTime"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:ellipsize="end"
-                        android:text="date and time"
-                        android:textSize="@dimen/s14"
-                        app:typeface="@string/font_bold" />
-
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:orientation="vertical"
-                    android:padding="@dimen/x5dp">
-
-                    <edu.aku.akuh_health_first.views.AnyTextView
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:ellipsize="end"
-                        android:text="Visit Date &amp; Time:"
-                        android:textSize="@dimen/s14"
-                        app:typeface="@string/font_regular" />
-
-                    <edu.aku.akuh_health_first.views.AnyTextView
-                        android:id="@+id/txtVisitDateTime"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:ellipsize="end"
-                        android:text="date and time"
-                        android:textSize="@dimen/s14"
-                        app:typeface="@string/font_bold" />
-
-                </LinearLayout>
-
-            </LinearLayout>
+                android:layout_height="match_parent"
+                android:ellipsize="end"
+                android:padding="@dimen/x3dp"
+                android:text="Mar 04, 2017 11:20"
+                android:textSize="@dimen/s15"
+                app:typeface="@string/font_bold" />
 
 
-            <LinearLayout
+            <edu.aku.akuh_health_first.views.AnyTextView
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="match_parent"
+                android:ellipsize="end"
+                android:padding="@dimen/x3dp"
+                android:text="Reported Date: "
+                android:textSize="@dimen/s14"
+                app:typeface="@string/font_regular" />
 
-                <LinearLayout
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:orientation="vertical"
-                    android:padding="@dimen/x5dp">
-
-                    <edu.aku.akuh_health_first.views.AnyTextView
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:ellipsize="end"
-                        android:text="Visit ID &amp; Type:"
-                        android:textSize="@dimen/s14"
-                        app:typeface="@string/font_regular" />
-
-                    <edu.aku.akuh_health_first.views.AnyTextView
-                        android:id="@+id/txtVisitIDandType"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:ellipsize="end"
-                        android:text="101735356 - CLI"
-                        android:textSize="@dimen/s14"
-                        app:typeface="@string/font_bold" />
-
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:orientation="vertical"
-                    android:padding="@dimen/x5dp">
-
-                    <edu.aku.akuh_health_first.views.AnyTextView
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:ellipsize="end"
-                        android:text="Visit Location ID:"
-                        android:textSize="@dimen/s14"
-                        app:typeface="@string/font_regular" />
-
-                    <edu.aku.akuh_health_first.views.AnyTextView
-                        android:id="@+id/txtVisitLocationID"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:ellipsize="end"
-                        android:text="CHC-CHS"
-                        android:textSize="@dimen/s14"
-                        app:typeface="@string/font_bold" />
-
-                </LinearLayout>
-
-            </LinearLayout>
-
-
-            <View
+            <edu.aku.akuh_health_first.views.AnyTextView
+                android:id="@+id/txtReportedDateTime"
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/recycler_seperator_height"
-                android:layout_margin="@dimen/x10dp"
-                android:background="@color/base_grey" />
+                android:layout_height="match_parent"
+                android:ellipsize="end"
+                android:padding="@dimen/x3dp"
+
+                android:text="Mar 06, 2017 12:20"
+                android:textSize="@dimen/s15"
+                app:typeface="@string/font_bold" />
 
 
         </LinearLayout>

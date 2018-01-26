@@ -1,54 +1,63 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:card_view="http://schemas.android.com/tools"
     android:layout_width="match_parent"
+    android:background="@drawable/imgmainbg"
     android:layout_height="wrap_content"
     android:orientation="vertical">
 
-
-    <LinearLayout
+    <android.support.v7.widget.CardView
+        android:id="@+id/cardView2"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginLeft="@dimen/x10dp"
-        android:layout_marginTop="@dimen/x5dp"
-        android:layout_weight="1"
-        android:descendantFocusability="blocksDescendants"
-        android:orientation="horizontal">
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/x3dp"
+        android:animateLayoutChanges="true"
+        android:padding="@dimen/x2dp"
+        card_view:cardCornerRadius="@dimen/x10dp"
+        card_view:cardElevation="x15dp">
 
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="@dimen/x10dp"
-            android:layout_weight="1"
             android:orientation="vertical"
             android:paddingBottom="@dimen/x10dp">
 
             <edu.aku.akuh_health_first.views.AnyTextView
-                android:id="@+id/txtExamDate"
+                android:id="@+id/txtName"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Exam Date: March 11,2017"
+                android:hint="Sodium    134 mmol/L "
+                android:padding="@dimen/x5dp"
                 android:textColor="@color/primary_text_color_selector"
-
+                android:textColorHint="@color/primary_text_color_selector"
                 android:textSize="@dimen/x14dp"
+
                 app:typeface="@string/font_regular" />
 
             <edu.aku.akuh_health_first.views.AnyTextView
-                android:id="@+id/txtExams"
+                android:id="@+id/txtRange"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Exam: abcdxyz"
+                android:hint="(Range 136 -145)  Normal"
+                android:padding="@dimen/x5dp"
                 android:textColor="@color/primary_text_color_selector"
+                android:textColorHint="@color/primary_text_color_selector"
                 android:textSize="@dimen/s15"
                 app:typeface="@string/font_regular" />
 
             <edu.aku.akuh_health_first.views.AnyTextView
-                android:id="@+id/txtStatus"
+                android:id="@+id/txtComments"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Status: F"
+                android:hint="According to American Diabetes Association(ADA):For Diagnosis of diabetes mellitus"
+                android:maxLines="3"
+                android:padding="@dimen/x5dp"
+
                 android:textColor="@color/primary_text_color_selector"
+                android:textColorHint="@color/primary_text_color_selector"
                 android:textSize="@dimen/s15"
                 app:typeface="@string/font_regular" />
 
@@ -56,7 +65,6 @@
         </LinearLayout>
 
 
-    </LinearLayout>
-
+    </android.support.v7.widget.CardView>
 
 </LinearLayout>
