@@ -45,8 +45,7 @@ public class ClinicalLaboratoryDetailFragment extends BaseFragment {
     AnyTextView txtCollectionDate;
     @BindView(R.id.txtReportedDateTime)
     AnyTextView txtReportedDateTime;
-    @BindView(R.id.cardView2)
-    CardView cardView2;
+
     @BindView(R.id.listClinicalLabResult)
     RecyclerView listClinicalLabResult;
     Unbinder unbinder;
@@ -77,14 +76,14 @@ public class ClinicalLaboratoryDetailFragment extends BaseFragment {
     public void setTitlebar(TitleBar titleBar) {
         titleBar.resetViews();
         titleBar.setTitle("Detail");
-
+        titleBar.showBackButton(getBaseActivity());
     }
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         arrClinicalLabLists = new ArrayList<LaboratoryModel>();
-        adapterClinicalLabDetail = new ClinicalLabDetailAdapter(getBaseActivity(), arrClinicalLabLists, this);
+        adapterClinicalLabDetail = new ClinicalLabDetailAdapter(getBaseActivity(), arrClinicalLabLists);
     }
 
     @Override

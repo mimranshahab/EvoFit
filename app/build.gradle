@@ -74,6 +74,8 @@ dependencies {
 //   graph library
     compile 'com.jjoe64:graphview:4.2.1'
     compile 'com.github.PhilJay:MPAndroidChart:v3.0.3'
+    compile 'me.tankery.lib:circularSeekBar:1.1.4'
+
 }
 
 //apply plugin: 'com.google.gms.google-services'

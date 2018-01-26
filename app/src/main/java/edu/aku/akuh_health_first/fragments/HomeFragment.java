@@ -191,6 +191,7 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener, 
             sharedPreferenceManager.putObject(AppConstants.KEY_CURRENT_USER_MODEL, object);
             adaptHome.notifyDataSetChanged();
             notifyToAll(Events.ON_CURRENT_USER_CHANGED, object);
+            getBaseActivity().addDockableFragment(HomeDetailFragment.newInstance());
         }
     }
 }
