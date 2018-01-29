@@ -1,56 +1,248 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/imgmainbg"
-    android:orientation="horizontal">
+    android:orientation="vertical"
+    android:padding="@dimen/x10dp">
 
     <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="horizontal"
-        android:weightSum="1">
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
 
-        <me.tankery.lib.circularseekbar.CircularSeekBar
-            android:id="@+id/progressbarGreen"
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/x120dp"
-            android:layout_gravity="left|center_horizontal"
-            android:layout_marginLeft="@dimen/x4dp"
-            android:layout_marginRight="@dimen/x4dp"
-            android:layout_marginTop="@dimen/x4dp"
-            android:layout_weight=".5"
-            app:cs_circle_color="@color/transparent"
-            app:cs_circle_progress_color="@color/base_reddish"
-            app:cs_circle_stroke_width="@dimen/x10dp"
-            app:cs_circle_style="round"
-            app:cs_disable_pointer="true"
-            app:cs_end_angle="90"
-            app:cs_maintain_equal_circle="true"
-            app:cs_progress="100"
-            app:cs_start_angle="-150" />
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/x10dp"
+            android:layout_marginLeft="@dimen/x30dp"
+            android:layout_marginRight="@dimen/x30dp"
+            android:layout_marginTop="@dimen/x10dp">
 
-        <me.tankery.lib.circularseekbar.CircularSeekBar
-            android:id="@+id/progressbarRed"
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/x120dp"
-            android:layout_gravity="right|center_horizontal"
-            android:layout_marginLeft="@dimen/x4dp"
-            android:layout_marginRight="@dimen/x4dp"
-            android:layout_marginTop="@dimen/x4dp"
-            android:layout_weight=".5"
-            app:cs_circle_color="@color/transparent"
-            app:cs_circle_progress_color="@color/c_green"
-            app:cs_circle_stroke_width="@dimen/x10dp"
-            app:cs_circle_style="round"
-            app:cs_disable_pointer="true"
-            app:cs_end_angle="90"
-            app:cs_maintain_equal_circle="true"
-            app:cs_progress="100"
-            app:cs_start_angle="-150"
+            <me.tankery.lib.circularseekbar.CircularSeekBar
+                android:id="@+id/progressbarGreen"
+                android:layout_width="@dimen/x120dp"
+                android:layout_height="@dimen/x120dp"
+                android:layout_alignParentRight="true"
+                app:cs_circle_color="@color/transparent"
+                app:cs_circle_progress_color="@color/c_green"
+                app:cs_circle_stroke_width="@dimen/x12dp"
+                app:cs_circle_style="square"
+                app:cs_disable_pointer="true"
+                app:cs_end_angle="90"
+                app:cs_maintain_equal_circle="true"
+                app:cs_progress="90"
+                app:cs_start_angle="-120" />
+
+            <edu.aku.akuh_health_first.views.AnyTextView
+                android:id="@+id/myTextProgressGreen"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBottom="@id/progressbarGreen"
+                android:layout_alignLeft="@id/progressbarGreen"
+                android:layout_alignRight="@id/progressbarGreen"
+                android:layout_alignTop="@id/progressbarGreen"
+                android:background="@android:color/transparent"
+                android:gravity="center"
+                android:padding="@dimen/x5dp"
+                android:text="67.5kg"
+                android:textColor="@color/c_green"
+                android:textSize="@dimen/s20"
+                app:typeface="@string/font_bold"></edu.aku.akuh_health_first.views.AnyTextView>
+
+            <me.tankery.lib.circularseekbar.CircularSeekBar
+                android:id="@+id/progressbarRed"
+                android:layout_width="@dimen/x120dp"
+                android:layout_height="@dimen/x120dp"
+                android:layout_alignParentLeft="true"
+                app:cs_circle_color="@color/transparent"
+                app:cs_circle_progress_color="@color/base_reddish"
+                app:cs_circle_stroke_width="@dimen/x12dp"
+                app:cs_circle_style="square"
+                app:cs_disable_pointer="true"
+                app:cs_end_angle="90"
+                app:cs_maintain_equal_circle="true"
+                app:cs_progress="90"
+                app:cs_start_angle="-120"
 
 
-            />
+                />
+
+            <edu.aku.akuh_health_first.views.AnyTextView
+                android:id="@+id/myTextProgress"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBottom="@id/progressbarRed"
+                android:layout_alignLeft="@id/progressbarRed"
+                android:layout_alignRight="@id/progressbarRed"
+                android:layout_alignTop="@id/progressbarRed"
+                android:background="@android:color/transparent"
+                android:gravity="center"
+                android:text="5+"
+                android:textColor="@color/base_reddish"
+                android:textSize="@dimen/s25"
+                app:typeface="@string/font_bold"></edu.aku.akuh_health_first.views.AnyTextView>
+
+        </RelativeLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <edu.aku.akuh_health_first.views.AnyTextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/x10dp"
+                android:background="@drawable/rounded_box_gradient_gray"
+                android:maxLines="5"
+                android:padding="@dimen/x10dp"
+                android:text="5.5ft/ 166cm
+"
+                android:textColor="@color/base_blue"
+                android:textSize="@dimen/s20"
+                app:typeface="@string/font_bold" />
+
+            <edu.aku.akuh_health_first.views.AnyTextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/rounded_box_filled_columbia_blue"
+                android:padding="@dimen/x5dp"
+                android:text="Allergy"
+                android:textColor="@color/c_white"
+                android:textSize="@dimen/s15"
+                app:typeface="@string/font_regular" />
+
+            <View
+                android:layout_width="fill_parent"
+                android:layout_height="@dimen/x1dp"
+                android:background="@color/c_white" />
+
+            <edu.aku.akuh_health_first.views.AnyTextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/rounded_box_filled_columbia_blue"
+                android:padding="@dimen/x5dp"
+                android:text="No known Allergy"
+                android:textColor="@color/c_white"
+                android:textSize="@dimen/s15"
+                app:typeface="@string/font_regular" />
+
+            <edu.aku.akuh_health_first.views.AnyTextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/x15dp"
+                android:background="@drawable/rounded_box_gradient_gray"
+                android:padding="@dimen/x5dp"
+                android:text="Lab Test Repports"
+                android:textColor="@color/base_amber"
+                android:textSize="@dimen/s15"
+                app:typeface="@string/font_bold" />
+
+            <View
+                android:id="@+id/view"
+                android:layout_width="fill_parent"
+                android:layout_height="@dimen/x1dp"
+                android:background="@color/base_amber" />
+
+            <edu.aku.akuh_health_first.views.AnyTextView
+                android:id="@+id/txtReport"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/x10dp"
+                android:hint="Glucose random"
+                android:padding="@dimen/x5dp"
+                android:textColor="@color/text_color_grey"
+                android:textSize="@dimen/s15"
+                app:typeface="@string/font_bold" />
+
+            <View
+                android:layout_width="fill_parent"
+                android:layout_height="@dimen/x1dp"
+                android:background="@color/c_gray_x11gray" />
+
+            <edu.aku.akuh_health_first.views.AnyTextView
+                android:id="@+id/txtReport1"
+
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Glucose random"
+                android:padding="@dimen/x5dp"
+                android:textColor="@color/text_color_grey"
+                android:textSize="@dimen/s15"
+                app:typeface="@string/font_bold" />
+
+            <View
+                android:layout_width="fill_parent"
+                android:layout_height="@dimen/x1dp"
+                android:background="@color/c_gray_x11gray" />
+
+            <edu.aku.akuh_health_first.views.AnyTextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/x15dp"
+                android:background="@drawable/rounded_box_gradient_gray"
+                android:padding="@dimen/x5dp"
+                android:text="Active Medication"
+                android:textColor="@color/base_amber"
+                android:textSize="@dimen/s15"
+                app:typeface="@string/font_bold" />
+
+            <View
+                android:layout_width="fill_parent"
+                android:layout_height="@dimen/x1dp"
+                android:background="@color/base_amber" />
+
+            <edu.aku.akuh_health_first.views.AnyTextView
+                android:id="@+id/txtActiveMedication"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/x10dp"
+                android:hint="Glucose random"
+                android:padding="@dimen/x5dp"
+                android:textColor="@color/text_color_grey"
+                android:textSize="@dimen/s15"
+                app:typeface="@string/font_bold" />
+
+            <View
+                android:layout_width="fill_parent"
+                android:layout_height="@dimen/x1dp"
+                android:background="@color/c_gray_x11gray" />
+
+
+            <edu.aku.akuh_health_first.views.AnyTextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/x15dp"
+                android:background="@drawable/rounded_box_gradient_gray"
+                android:padding="@dimen/x5dp"
+                android:text="Last Vist"
+                android:textColor="@color/base_amber"
+                android:textSize="@dimen/s15"
+                app:typeface="@string/font_bold" />
+
+            <View
+                android:layout_width="fill_parent"
+                android:layout_height="@dimen/x1dp"
+                android:background="@color/base_amber" />
+
+            <edu.aku.akuh_health_first.views.AnyTextView
+                android:id="@+id/txtLastVisit"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/x10dp"
+                android:hint="Glucose random"
+                android:padding="@dimen/x5dp"
+                android:textColor="@color/text_color_grey"
+                android:textSize="@dimen/s15"
+                app:typeface="@string/font_bold" />
+
+            <View
+                android:layout_width="fill_parent"
+                android:layout_height="@dimen/x1dp"
+                android:background="@color/c_gray_x11gray" />
+
+        </LinearLayout>
     </LinearLayout>
-</LinearLayout>
+</ScrollView>

@@ -26,7 +26,7 @@
     <color name="title_bar_selected_color">@color/colorPrimaryDark</color>
     <color name="title_bar_color">@color/colorPrimary</color>
 
-    <color name="text_color_grey">#71748B</color>
+    <color name="text_color_grey">#9396AB</color>
     <color name="text_color_grey_dark">#2d2e37</color>
     <color name="text_color_black_transparent">#99000000</color>
     <color name="profile_username_hint_color">#9396AB</color>
