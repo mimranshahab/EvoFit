@@ -6,36 +6,51 @@
     android:background="@drawable/imgmainbg"
     android:orientation="horizontal">
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal"
+        android:weightSum="1">
 
-    <me.tankery.lib.circularseekbar.CircularSeekBar
-        android:id="@+id/progressbarGreen"
-        android:layout_width="@dimen/x120dp"
-        android:layout_height="@dimen/x120dp"
-        android:layout_marginLeft="@dimen/x4dp"
-        android:layout_marginRight="@dimen/x4dp"
-        android:layout_marginTop="@dimen/x4dp"
-        app:cs_circle_stroke_width="@dimen/x10dp"
-        app:cs_circle_style="round"
-        app:cs_disable_pointer="true"
-        app:cs_end_angle="90"
-        app:cs_maintain_equal_circle="true"
-        app:cs_progress="80"
-        app:cs_start_angle="-180" />
+        <me.tankery.lib.circularseekbar.CircularSeekBar
+            android:id="@+id/progressbarGreen"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/x120dp"
+            android:layout_gravity="left|center_horizontal"
+            android:layout_marginLeft="@dimen/x4dp"
+            android:layout_marginRight="@dimen/x4dp"
+            android:layout_marginTop="@dimen/x4dp"
+            android:layout_weight=".5"
+            app:cs_circle_color="@color/transparent"
+            app:cs_circle_progress_color="@color/base_reddish"
+            app:cs_circle_stroke_width="@dimen/x10dp"
+            app:cs_circle_style="round"
+            app:cs_disable_pointer="true"
+            app:cs_end_angle="90"
+            app:cs_maintain_equal_circle="true"
+            app:cs_progress="100"
+            app:cs_start_angle="-150" />
 
-    <me.tankery.lib.circularseekbar.CircularSeekBar
-        android:backgroundTint="@color/base_amber"
-        android:id="@+id/progressbarRed"
-        android:layout_width="@dimen/x120dp"
-        android:layout_height="@dimen/x120dp"
-        android:layout_marginLeft="@dimen/x4dp"
-        android:layout_marginRight="@dimen/x4dp"
-        android:layout_marginTop="@dimen/x4dp"
-        app:cs_circle_stroke_width="@dimen/x10dp"
-        app:cs_circle_style="round"
-        app:cs_disable_pointer="true"
-        app:cs_end_angle="90"
-        app:cs_maintain_equal_circle="true"
-        app:cs_progress="80"
-        app:cs_start_angle="-180" />
+        <me.tankery.lib.circularseekbar.CircularSeekBar
+            android:id="@+id/progressbarRed"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/x120dp"
+            android:layout_gravity="right|center_horizontal"
+            android:layout_marginLeft="@dimen/x4dp"
+            android:layout_marginRight="@dimen/x4dp"
+            android:layout_marginTop="@dimen/x4dp"
+            android:layout_weight=".5"
+            app:cs_circle_color="@color/transparent"
+            app:cs_circle_progress_color="@color/c_green"
+            app:cs_circle_stroke_width="@dimen/x10dp"
+            app:cs_circle_style="round"
+            app:cs_disable_pointer="true"
+            app:cs_end_angle="90"
+            app:cs_maintain_equal_circle="true"
+            app:cs_progress="100"
+            app:cs_start_angle="-150"
 
+
+            />
+    </LinearLayout>
 </LinearLayout>
