@@ -11,9 +11,11 @@ import android.view.Gravity;
 import android.view.KeyEvent;
 import android.view.View;
 
+import java.io.Serializable;
 import java.util.List;
 
 import edu.aku.akuh_health_first.R;
+import edu.aku.akuh_health_first.constatnts.AppConstants;
 import edu.aku.akuh_health_first.fragments.DropDownUserInfo;
 import edu.aku.akuh_health_first.fragments.LeftSideMenuFragment;
 import edu.aku.akuh_health_first.fragments.LoginFragment;
@@ -21,13 +23,15 @@ import edu.aku.akuh_health_first.fragments.abstracts.BaseFragment;
 import edu.aku.akuh_health_first.fragments.abstracts.GenericClickableInterface;
 import edu.aku.akuh_health_first.fragments.abstracts.GenericDialogFragment;
 import edu.aku.akuh_health_first.helperclasses.ui.helper.TitleBar;
+import edu.aku.akuh_health_first.models.LaboratoryModel;
+
+import static edu.aku.akuh_health_first.constatnts.AppConstants.LABORATORY_MODEL;
 
 
 public abstract class BaseActivity extends AppCompatActivity {
 
     protected DrawerLayout drawerLayout;
     protected TitleBar titleBar;
-    protected DropDownUserInfo dropDownUserInfo;
     private LeftSideMenuFragment leftSideMenuFragment;
 
 //    private ResideMenu resideMenu;
@@ -44,7 +48,6 @@ public abstract class BaseActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(getViewId());
         setAndBindTitleBar();
-
         drawerLayout = (DrawerLayout) findViewById(getDrawerLayoutId());
 
         addDrawerFragment();
@@ -66,7 +69,6 @@ public abstract class BaseActivity extends AppCompatActivity {
     protected abstract int getViewId();
 
     protected abstract int getTitlebarLayoutId();
-
 
     protected abstract int getDrawerLayoutId();
 
@@ -92,8 +94,6 @@ public abstract class BaseActivity extends AppCompatActivity {
         titleBar.setVisibility(View.GONE);
         titleBar.resetViews();
     }
-
-
 
 //    @Override
 //    public void onBackPressed() {
@@ -147,8 +147,14 @@ public abstract class BaseActivity extends AppCompatActivity {
         return titleBar;
     }
 
-    public void openActivity(Activity activity, Class<?> tClass) {
-        Intent i = new Intent(activity, tClass);
+    public void openActivity(Class<?> tClass) {
+        Intent i = new Intent(this, tClass);
+        startActivity(i);
+    }
+
+    public void openActivity(Class<?> tClass, LaboratoryModel object) {
+        Intent i = new Intent(this, tClass);
+        i.putExtra(LABORATORY_MODEL, object);
         startActivity(i);
     }
 

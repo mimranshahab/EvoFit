@@ -17,6 +17,7 @@ public class AppConstants {
     public static final String INPUT_TIME_FORMAT = "yyyy-dd-MM hh:mm:ss a";
     public static final String OUTPUT_TIME_FORMAT = "hh:mm a";
     public static final String OUTPUT_DATE_TIME_FORMAT = "EEEE dd,yyyy hh:mm a";
+    public static final String INPUT_LAB_DATE_FORMAT_AM_PM = "mm/dd/yyyy hh:mm:ss a";
 
     public static final String GENERAL_DATE_FORMAT = "dd-MM-yy";
     public static final String ROOT_MEDIA_PATH = Environment.getExternalStorageDirectory().getPath()
@@ -30,6 +31,10 @@ public class AppConstants {
 
 
     public static final int REQUEST_TIME_OUT = 25 * 1000;
+
+
+    /*************** INTENT DATA KEYS **************/
+    public static final String LABORATORY_MODEL = "laboratoryModel";
 
 
     /*******************Preferences KEYS******************/

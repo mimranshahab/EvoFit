@@ -12,6 +12,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import edu.aku.akuh_health_first.R;
 import edu.aku.akuh_health_first.activities.BaseActivity;
+import edu.aku.akuh_health_first.callbacks.OnItemClickListener;
 import edu.aku.akuh_health_first.fragments.ClinicalLaboratoryDetailFragment;
 import edu.aku.akuh_health_first.models.LaboratoryModel;
 import edu.aku.akuh_health_first.views.AnyTextView;
@@ -24,10 +25,12 @@ public class ClinicalLabDetailAdapter extends RecyclerView.Adapter<ClinicalLabDe
 
     private final ArrayList<LaboratoryModel> arrClinicalLabLists;
     private BaseActivity activity;
+    private OnItemClickListener onItemClickListener;
 
-    public ClinicalLabDetailAdapter(BaseActivity activity, ArrayList<LaboratoryModel> arrClinicalLabLists) {
+    public ClinicalLabDetailAdapter(BaseActivity activity, ArrayList<LaboratoryModel> arrClinicalLabLists, OnItemClickListener onItemClickListener) {
         this.activity = activity;
         this.arrClinicalLabLists = arrClinicalLabLists;
+        this.onItemClickListener = onItemClickListener;
     }
 
     @Override
@@ -44,7 +47,7 @@ public class ClinicalLabDetailAdapter extends RecyclerView.Adapter<ClinicalLabDe
         final LaboratoryModel model = arrClinicalLabLists.get(holder.getAdapterPosition());
 
         holder.txtName.setText(model.getReportName());
-        holder.txtRange.setText("Range "+model.getNormalRangeFormatted()+" Normal");
+        holder.txtRange.setText("Range " + model.getNormalRangeFormatted() + " Normal");
         holder.txtComments.setText(model.getComments());
         setListener(holder, model);
     }
@@ -53,7 +56,7 @@ public class ClinicalLabDetailAdapter extends RecyclerView.Adapter<ClinicalLabDe
         holder.cardView2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-//                onItemClick.onItemClick(holder.getAdapterPosition(), neurophysiology);
+                onItemClickListener.onItemClick(holder.getAdapterPosition(), neurophysiology);
             }
         });
     }

@@ -3,7 +3,6 @@ package edu.aku.akuh_health_first.fragments;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.widget.DrawerLayout;
-import android.support.v7.widget.CardView;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -24,7 +23,9 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
 import edu.aku.akuh_health_first.R;
+import edu.aku.akuh_health_first.activities.GraphActivity;
 import edu.aku.akuh_health_first.adapters.recyleradapters.ClinicalLabDetailAdapter;
+import edu.aku.akuh_health_first.callbacks.OnItemClickListener;
 import edu.aku.akuh_health_first.constatnts.WebServiceConstants;
 import edu.aku.akuh_health_first.enums.BaseURLTypes;
 import edu.aku.akuh_health_first.fragments.abstracts.BaseFragment;
@@ -40,7 +41,7 @@ import edu.aku.akuh_health_first.views.AnyTextView;
  * Created by aqsa.sarwar on 1/25/2018.
  */
 
-public class ClinicalLaboratoryDetailFragment extends BaseFragment {
+public class ClinicalLaboratoryDetailFragment extends BaseFragment implements OnItemClickListener {
     @BindView(R.id.txtCollectionDate)
     AnyTextView txtCollectionDate;
     @BindView(R.id.txtReportedDateTime)
@@ -75,7 +76,7 @@ public class ClinicalLaboratoryDetailFragment extends BaseFragment {
     @Override
     public void setTitlebar(TitleBar titleBar) {
         titleBar.resetViews();
-        titleBar.setTitle("Detail");
+        titleBar.setTitle("Lab Detail");
         titleBar.showBackButton(getBaseActivity());
     }
 
@@ -85,7 +86,7 @@ public class ClinicalLaboratoryDetailFragment extends BaseFragment {
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         arrClinicalLabLists = new ArrayList<LaboratoryModel>();
-        adapterClinicalLabDetail = new ClinicalLabDetailAdapter(getBaseActivity(), arrClinicalLabLists);
+        adapterClinicalLabDetail = new ClinicalLabDetailAdapter(getBaseActivity(), arrClinicalLabLists, this);
     }
 
     @Override
@@ -94,6 +95,7 @@ public class ClinicalLaboratoryDetailFragment extends BaseFragment {
         bindView();
         serviceCall();
     }
+
     private void bindView() {
         RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getBaseActivity());
         listClinicalLabResult.setLayoutManager(mLayoutManager);
@@ -103,6 +105,7 @@ public class ClinicalLaboratoryDetailFragment extends BaseFragment {
         listClinicalLabResult.setLayoutAnimation(animation);
         listClinicalLabResult.setAdapter(adapterClinicalLabDetail);
     }
+
     @Override
     public void setListeners() {
 
@@ -160,6 +163,17 @@ public class ClinicalLaboratoryDetailFragment extends BaseFragment {
                                 UIHelper.showShortToastInCenter(getContext(), "failure");
                             }
                         });
+
+    }
+
+    @Override
+    public void onItemClick(int position, Object object) {
+        if (object instanceof LaboratoryModel) {
+            LaboratoryModel laboratoryModel = (LaboratoryModel) object;
+            if (laboratoryModel.isNumeric()) {
+                getBaseActivity().openActivity(GraphActivity.class, laboratoryModel);
+            }
+        }
 
     }
 }
