@@ -24,7 +24,8 @@ public class DateManager {
 
     private static SimpleDateFormat sdfDateInput = new SimpleDateFormat(AppConstants.INPUT_DATE_FORMAT);
     private static SimpleDateFormat sdfDateInputAmPm = new SimpleDateFormat(AppConstants.INPUT_DATE_FORMAT_AM_PM);
-    private static SimpleDateFormat sdfDateOuput = new SimpleDateFormat(AppConstants.OUTPUT_DATE_FORMAT);
+    private static SimpleDateFormat sdfLabDateInputAmPm = new SimpleDateFormat(AppConstants.INPUT_LAB_DATE_FORMAT_AM_PM);
+    private static SimpleDateFormat sdfDateOuput = new SimpleDateFormat(AppConstants.OUTPUT_DATE_TIME_FORMAT);
     private static SimpleDateFormat sdfTimeInput = new SimpleDateFormat(AppConstants.INPUT_TIME_FORMAT);
     private static SimpleDateFormat sdfTimeOuput = new SimpleDateFormat(AppConstants.OUTPUT_TIME_FORMAT);
 
@@ -34,7 +35,7 @@ public class DateManager {
 
     public static Date getDate(String date) {
         try {
-            return sdfDateInputAmPm.parse(date);
+            return sdfLabDateInputAmPm.parse(date);
         } catch (ParseException e) {
             e.printStackTrace();
         }

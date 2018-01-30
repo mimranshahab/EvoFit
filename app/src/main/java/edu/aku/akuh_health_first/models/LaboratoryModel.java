@@ -140,6 +140,123 @@ public class LaboratoryModel implements Serializable {
     @SerializedName("Active")
     @Expose
     private Object active;
+    @SerializedName("isExternalReport")
+    @Expose
+    private Boolean isExternalReport;
+    @SerializedName("ExternalPath")
+    @Expose
+    private Object externalPath;
+    @SerializedName("ExternalFile")
+    @Expose
+    private Object externalFile;
+    @SerializedName("SpecimenNumber")
+    @Expose
+    private String specimenNumber;
+    @SerializedName("PerformedTestID")
+    @Expose
+    private String performedTestID;
+    @SerializedName("Mnemonic")
+    @Expose
+    private String mnemonic;
+    @SerializedName("Abbreviation")
+    @Expose
+    private String abbreviation;
+    @SerializedName("DepartmentID")
+    @Expose
+    private String departmentID;
+    @SerializedName("ResultMethod")
+    @Expose
+    private String resultMethod;
+    @SerializedName("NormalRangeFormatted")
+    @Expose
+    private String normalRangeFormatted;
+    @SerializedName("Result")
+    @Expose
+    private String result;
+    @SerializedName("Unit")
+    @Expose
+    private String unit;
+    @SerializedName("AbnormalFlag")
+    @Expose
+    private String abnormalFlag;
+    @SerializedName("ResultEntryUser")
+    @Expose
+    private String resultEntryUser;
+    @SerializedName("ResultEntryDttm")
+    @Expose
+    private String resultEntryDttm;
+    @SerializedName("ResultVerifyUser")
+    @Expose
+    private String resultVerifyUser;
+    @SerializedName("ResultVerifyDttm")
+    @Expose
+    private String resultVerifyDttm;
+    @SerializedName("FirstEntryUser")
+    @Expose
+    private String firstEntryUser;
+    @SerializedName("FirstEntryDTTM")
+    @Expose
+    private String firstEntryDTTM;
+    @SerializedName("Comments")
+    @Expose
+    private String comments;
+    @SerializedName("ResultComments")
+    @Expose
+    private String resultComments;
+    @SerializedName("ReviewFlag")
+    @Expose
+    private String reviewFlag;
+    @SerializedName("Optional")
+    @Expose
+    private String optional;
+    @SerializedName("Reportable")
+    @Expose
+    private String reportable;
+    @SerializedName("ExcludeResultTransferCP")
+    @Expose
+    private String excludeResultTransferCP;
+    @SerializedName("ForwardUser")
+    @Expose
+    private String forwardUser;
+    @SerializedName("ReportName")
+    @Expose
+    private String reportName;
+    @SerializedName("isNumericResult")
+    @Expose
+    private String isNumericResult;
+    @SerializedName("IsVerified")
+    @Expose
+    private Boolean isVerified;
+    @SerializedName("PrevSpecimen1")
+    @Expose
+    private String prevSpecimen1;
+    @SerializedName("PrevResult1Dttm")
+    @Expose
+    private String prevResult1Dttm;
+    @SerializedName("PrevResult1")
+    @Expose
+    private String prevResult1;
+    @SerializedName("PrevSpecimen2")
+    @Expose
+    private String prevSpecimen2;
+    @SerializedName("PrevResult2Dttm")
+    @Expose
+    private String prevResult2Dttm;
+    @SerializedName("PrevResult2")
+    @Expose
+    private String prevResult2;
+    @SerializedName("PrevSpecimen3")
+    @Expose
+    private String prevSpecimen3;
+    @SerializedName("PrevResult3Dttm")
+    @Expose
+    private String prevResult3Dttm;
+    @SerializedName("PrevResult3")
+    @Expose
+    private String prevResult3;
+
+
+
     private String tempSpiceNum;
 
     public Object getSOrderedTestParentId() {
@@ -506,120 +623,7 @@ public class LaboratoryModel implements Serializable {
         return "\"" + tempSpiceNum + "\"";
     }
 
-    @SerializedName("isExternalReport")
-    @Expose
-    private Boolean isExternalReport;
-    @SerializedName("ExternalPath")
-    @Expose
-    private Object externalPath;
-    @SerializedName("ExternalFile")
-    @Expose
-    private Object externalFile;
-    @SerializedName("SpecimenNumber")
-    @Expose
-    private String specimenNumber;
-    @SerializedName("PerformedTestID")
-    @Expose
-    private String performedTestID;
-    @SerializedName("Mnemonic")
-    @Expose
-    private String mnemonic;
-    @SerializedName("Abbreviation")
-    @Expose
-    private String abbreviation;
-    @SerializedName("DepartmentID")
-    @Expose
-    private String departmentID;
-    @SerializedName("ResultMethod")
-    @Expose
-    private String resultMethod;
-    @SerializedName("NormalRangeFormatted")
-    @Expose
-    private String normalRangeFormatted;
-    @SerializedName("Result")
-    @Expose
-    private String result;
-    @SerializedName("Unit")
-    @Expose
-    private String unit;
-    @SerializedName("AbnormalFlag")
-    @Expose
-    private String abnormalFlag;
-    @SerializedName("ResultEntryUser")
-    @Expose
-    private String resultEntryUser;
-    @SerializedName("ResultEntryDttm")
-    @Expose
-    private String resultEntryDttm;
-    @SerializedName("ResultVerifyUser")
-    @Expose
-    private String resultVerifyUser;
-    @SerializedName("ResultVerifyDttm")
-    @Expose
-    private String resultVerifyDttm;
-    @SerializedName("FirstEntryUser")
-    @Expose
-    private String firstEntryUser;
-    @SerializedName("FirstEntryDTTM")
-    @Expose
-    private String firstEntryDTTM;
-    @SerializedName("Comments")
-    @Expose
-    private String comments;
-    @SerializedName("ResultComments")
-    @Expose
-    private String resultComments;
-    @SerializedName("ReviewFlag")
-    @Expose
-    private String reviewFlag;
-    @SerializedName("Optional")
-    @Expose
-    private String optional;
-    @SerializedName("Reportable")
-    @Expose
-    private String reportable;
-    @SerializedName("ExcludeResultTransferCP")
-    @Expose
-    private String excludeResultTransferCP;
-    @SerializedName("ForwardUser")
-    @Expose
-    private String forwardUser;
-    @SerializedName("ReportName")
-    @Expose
-    private String reportName;
-    @SerializedName("isNumericResult")
-    @Expose
-    private String isNumericResult;
-    @SerializedName("IsVerified")
-    @Expose
-    private Boolean isVerified;
-    @SerializedName("PrevSpecimen1")
-    @Expose
-    private String prevSpecimen1;
-    @SerializedName("PrevResult1Dttm")
-    @Expose
-    private String prevResult1Dttm;
-    @SerializedName("PrevResult1")
-    @Expose
-    private String prevResult1;
-    @SerializedName("PrevSpecimen2")
-    @Expose
-    private String prevSpecimen2;
-    @SerializedName("PrevResult2Dttm")
-    @Expose
-    private String prevResult2Dttm;
-    @SerializedName("PrevResult2")
-    @Expose
-    private String prevResult2;
-    @SerializedName("PrevSpecimen3")
-    @Expose
-    private String prevSpecimen3;
-    @SerializedName("PrevResult3Dttm")
-    @Expose
-    private String prevResult3Dttm;
-    @SerializedName("PrevResult3")
-    @Expose
-    private String prevResult3;
+
     private final static long serialVersionUID = 9133402102176218178L;
 
     public Boolean getIsExternalReport() {
@@ -917,6 +921,11 @@ public class LaboratoryModel implements Serializable {
 
     public void setPrevResult3(String prevResult3) {
         this.prevResult3 = prevResult3;
+    }
+
+
+    public boolean isNumeric() {
+        return isNumericResult.equals("Y") ;
     }
 
 

@@ -15,7 +15,7 @@ import com.ctrlplusz.anytextview.AnyTextView;
 import com.google.gson.JsonObject;
 
 import edu.aku.akuh_health_first.R;
-import edu.aku.akuh_health_first.activities.FullScreenRotatedActivity;
+import edu.aku.akuh_health_first.activities.GraphActivity;
 import edu.aku.akuh_health_first.activities.HomeActivity;
 import edu.aku.akuh_health_first.constatnts.WebServiceConstants;
 import edu.aku.akuh_health_first.enums.BaseURLTypes;
@@ -157,9 +157,9 @@ public class LoginFragment extends BaseFragment {
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.txtForgotPassword:
-                 getBaseActivity().openActivity(getBaseActivity(), FullScreenRotatedActivity.class);
+                getBaseActivity().addDockableFragment(ForgotPassowrdFragment.newInstance());
+//                getBaseActivity().openActivity(GraphActivity.class);
 
-//                getBaseActivity().addDockableFragment(ForgotPassowrdFragment.newInstance());
                 break;
             case R.id.btnLogin:
                 // FIXME: 1/2/2018 enter live data
@@ -185,7 +185,7 @@ public class LoginFragment extends BaseFragment {
 //                        UIHelper.showShortToastInCenter(getContext(), webResponse.message);
 
 
-                        getBaseActivity().openActivity(getBaseActivity(), HomeActivity.class);
+                        getBaseActivity().openActivity(HomeActivity.class);
                     }
 
                     @Override

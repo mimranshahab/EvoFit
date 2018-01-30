@@ -1,5 +1,6 @@
 package edu.aku.akuh_health_first.activities;
 
+import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.os.PersistableBundle;
 import android.support.annotation.Nullable;
@@ -30,8 +31,6 @@ public class MainActivity extends BaseActivity {
         super.onPostCreate(savedInstanceState);
         initFragments();
     }
-
-
 
     @Override
     protected int getViewId() {
