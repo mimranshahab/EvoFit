@@ -1,8 +1,6 @@
 package edu.aku.akuh_health_first.helperclasses.ui.helper;
 
 import android.content.Context;
-import android.content.res.ColorStateList;
-import android.media.Image;
 import android.support.v4.view.GravityCompat;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
@@ -12,13 +10,12 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
-import com.ctrlplusz.anytextview.AnyEditTextView;
 import com.ctrlplusz.anytextview.AnyTextView;
 
+import butterknife.BindView;
+import de.hdodenhof.circleimageview.CircleImageView;
 import edu.aku.akuh_health_first.R;
 import edu.aku.akuh_health_first.activities.BaseActivity;
-
-import butterknife.BindView;
 
 /**
  * Created by khanhamza on 02-Mar-17.
@@ -26,8 +23,11 @@ import butterknife.BindView;
 
 public class TitleBar extends RelativeLayout {
 
-    @BindView(R.id.txtCircle)
     public TextView txtCircle;
+    CircleImageView circleImageView;
+    edu.aku.akuh_health_first.views.AnyTextView txtUserName;
+    edu.aku.akuh_health_first.views.AnyTextView txtMRN;
+    RelativeLayout contDropDown;
 
 
     private ImageView imgTitle;
@@ -40,13 +40,9 @@ public class TitleBar extends RelativeLayout {
     public ImageView btnRight1;
 
 
-    private AnyEditTextView edtSearchField;
-    private ImageButton btnLeftSearchField;
-    private ImageButton btnRightSearchField;
     private TextView txtClearAll;
 
     private RelativeLayout containerTitlebar1;
-    private RelativeLayout containerTitlebar2;
 
 
     public TitleBar(Context context) {
@@ -69,59 +65,47 @@ public class TitleBar extends RelativeLayout {
         LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         inflater.inflate(R.layout.titlebar_main, this);
         bindViews();
-        containerTitlebar2.setVisibility(GONE);
     }
 
     private void bindViews() {
         imgTitle = (ImageView) findViewById(R.id.imgTitle);
         txtTitle = (AnyTextView) findViewById(R.id.txtTitle);
-        edtSearchField = (AnyEditTextView) findViewById(R.id.edtSearchField);
         btnLeft1 = (ImageButton) findViewById(R.id.btnLeft1);
         btnRight3 = (ImageButton) findViewById(R.id.btnRight3);
         btnRight2 = (ImageButton) findViewById(R.id.btnRight2);
         btnRight1 = (ImageView) findViewById(R.id.btnRight1);
-        btnLeftSearchField = (ImageButton) findViewById(R.id.btnLeftSearchField);
-        btnRightSearchField = (ImageButton) findViewById(R.id.btnRightSearchField);
         txtClearAll = (TextView) findViewById(R.id.txtClearAll);
         txtCircle = (TextView) findViewById(R.id.txtCircle);
-
+        circleImageView = (CircleImageView) findViewById(R.id.circleImageView);
         containerTitlebar1 = (RelativeLayout) findViewById(R.id.containerTitlebar1);
-        containerTitlebar2 = (RelativeLayout) findViewById(R.id.containerTitlebar2);
+        contDropDown = (RelativeLayout) findViewById(R.id.contDropDown);
+        txtMRN = (edu.aku.akuh_health_first.views.AnyTextView) findViewById(R.id.txtMRN);
+        txtUserName = (edu.aku.akuh_health_first.views.AnyTextView) findViewById(R.id.txtUserName);
+
     }
 
     public void resetViews() {
         imgTitle.setVisibility(GONE);
-        edtSearchField.setVisibility(GONE);
+        circleImageView.setVisibility(GONE);
         txtTitle.setVisibility(GONE);
         btnLeft1.setVisibility(GONE);
         btnRight3.setVisibility(GONE);
         btnRight2.setVisibility(GONE);
         btnRight1.setVisibility(GONE);
         txtClearAll.setVisibility(GONE);
-        btnLeftSearchField.setVisibility(GONE);
-        btnRightSearchField.setVisibility(GONE);
-        containerTitlebar2.setVisibility(GONE);
         containerTitlebar1.setVisibility(VISIBLE);
         txtCircle.setVisibility(GONE);
+        contDropDown.setVisibility(GONE);
     }
 
     public void setSearchField(final BaseActivity mActivity, TextView.OnEditorActionListener onEditorActionListener) {
         containerTitlebar1.setVisibility(GONE);
-        containerTitlebar2.setVisibility(VISIBLE);
-        edtSearchField.setVisibility(VISIBLE);
-        edtSearchField.setOnEditorActionListener(onEditorActionListener);
-    }
-
-    public String getEdtSearchFieldText() {
-        return edtSearchField.getText().toString();
     }
 
 
     public void closeSearchField(final BaseActivity mActivity) {
         containerTitlebar1.setVisibility(VISIBLE);
 
-        containerTitlebar2.setVisibility(GONE);
-        edtSearchField.setVisibility(GONE);
         if (mActivity != null) {
             mActivity.getSupportFragmentManager().popBackStack();
         }
@@ -183,6 +167,12 @@ public class TitleBar extends RelativeLayout {
         this.btnRight1.setOnClickListener(onClickListener);
     }
 
+    public void setCircleImageView(int drawable, OnClickListener onClickListener) {
+        this.circleImageView.setVisibility(VISIBLE);
+        this.circleImageView.setImageResource(drawable);
+        this.circleImageView.setOnClickListener(onClickListener);
+    }
+
 
     public void setRightButton(int drawable, OnClickListener onClickListener, int colorToTint) {
         this.btnRight1.setVisibility(VISIBLE);
@@ -217,18 +207,13 @@ public class TitleBar extends RelativeLayout {
         this.btnRight2.setOnClickListener(onClickListener);
     }
 
-    public void setLeftButtonSearchBar(int drawable, OnClickListener onClickListener) {
-        this.btnLeftSearchField.setVisibility(VISIBLE);
-        this.btnLeftSearchField.setImageResource(drawable);
-        this.btnLeftSearchField.setOnClickListener(onClickListener);
-    }
 
-    public void setRightButtonSearchBar(int drawable, OnClickListener onClickListener) {
-        this.btnRightSearchField.setVisibility(VISIBLE);
-        this.btnRightSearchField.setImageResource(drawable);
-        this.btnRightSearchField.setOnClickListener(onClickListener);
-        edtSearchField.setText("");
+    public void showAndHideDropDown() {
+        if (this.contDropDown.getVisibility() == VISIBLE) {
+            this.contDropDown.setVisibility(GONE);
+        } else {
+            this.contDropDown.setVisibility(VISIBLE);
+        }
     }
-
 
 }

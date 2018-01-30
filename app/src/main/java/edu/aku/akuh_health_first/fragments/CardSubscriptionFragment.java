@@ -69,6 +69,8 @@ public class CardSubscriptionFragment extends BaseFragment {
         titleBar.showBackButton(getBaseActivity());
     }
 
+
+
     @Override
     public void setListeners() {
         contParent.setOnClickListener(new View.OnClickListener() {

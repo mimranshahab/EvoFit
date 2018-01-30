@@ -101,6 +101,8 @@ public class ProfileFragment extends BaseFragment {
 
     }
 
+
+
     @Override
     public void setListeners() {
 

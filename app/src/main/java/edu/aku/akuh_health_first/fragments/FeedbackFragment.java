@@ -56,6 +56,7 @@ public class FeedbackFragment extends BaseFragment {
         titleBar.showBackButton(getBaseActivity());
     }
 
+
     @Override
     public void setListeners() {
 

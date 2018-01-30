@@ -8,6 +8,7 @@ import android.widget.AdapterView;
 import android.widget.TextView;
 
 import edu.aku.akuh_health_first.R;
+import edu.aku.akuh_health_first.fragments.DropDownUserInfo;
 import edu.aku.akuh_health_first.helperclasses.ui.helper.TitleBar;
 
 
@@ -70,6 +71,8 @@ public class GenericContentFragment extends BaseFragment {
         titleBar.setTitle(title);
         titleBar.showBackButton(getBaseActivity());
     }
+
+
 
     @Override
     public void setListeners() {

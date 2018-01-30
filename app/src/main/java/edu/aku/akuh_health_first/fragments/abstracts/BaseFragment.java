@@ -1,14 +1,9 @@
 package edu.aku.akuh_health_first.fragments.abstracts;
 
-import android.Manifest;
-import android.app.Activity;
-import android.app.ProgressDialog;
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
-import android.support.v4.widget.DrawerLayout;
 import android.util.Log;
 import android.util.Pair;
 import android.view.Gravity;
@@ -22,11 +17,11 @@ import android.widget.TextView;
 
 import edu.aku.akuh_health_first.activities.BaseActivity;
 import edu.aku.akuh_health_first.callbacks.OnNewPacketReceivedListener;
+import edu.aku.akuh_health_first.fragments.DropDownUserInfo;
 import edu.aku.akuh_health_first.helperclasses.ui.helper.KeyboardHide;
 import edu.aku.akuh_health_first.helperclasses.ui.helper.TitleBar;
 import edu.aku.akuh_health_first.helperclasses.ui.helper.UIHelper;
 import edu.aku.akuh_health_first.BaseApplication;
-import edu.aku.akuh_health_first.activities.MainActivity;
 
 import java.text.NumberFormat;
 
@@ -124,6 +119,7 @@ public abstract class BaseFragment extends Fragment implements View.OnClickListe
     }
 
     public abstract void setTitlebar(TitleBar titleBar);
+
 
     public abstract void setListeners();
 

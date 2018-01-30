@@ -86,6 +86,8 @@ public class CardiolopulmonaryFragment extends BaseFragment implements View.OnCl
         titleBar.showBackButton(getBaseActivity());
     }
 
+
+
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);

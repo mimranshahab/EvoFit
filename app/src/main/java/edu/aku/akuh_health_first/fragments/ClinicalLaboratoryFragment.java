@@ -87,6 +87,7 @@ public class ClinicalLaboratoryFragment extends BaseFragment implements View.OnC
         titleBar.showBackButton(getBaseActivity());
     }
 
+
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);

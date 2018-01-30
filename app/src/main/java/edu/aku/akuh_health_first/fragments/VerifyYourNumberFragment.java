@@ -75,6 +75,8 @@ public class VerifyYourNumberFragment extends BaseFragment {
         titleBar.showBackButton(getBaseActivity());
     }
 
+
+
     @Override
     public void setListeners() {
     }

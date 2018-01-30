@@ -88,6 +88,8 @@ public class NeurophysiologyFragment extends BaseFragment implements View.OnClic
         titleBar.showBackButton(getBaseActivity());
     }
 
+
+
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);

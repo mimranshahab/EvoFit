@@ -42,6 +42,7 @@ public class MainActivity extends BaseActivity {
         return R.id.titlebar;
     }
 
+
     @Override
     protected int getDrawerLayoutId() {
         return R.id.drawer_layout;

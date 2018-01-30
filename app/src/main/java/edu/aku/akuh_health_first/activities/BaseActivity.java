@@ -16,6 +16,7 @@ import java.util.List;
 
 import edu.aku.akuh_health_first.R;
 import edu.aku.akuh_health_first.constatnts.AppConstants;
+import edu.aku.akuh_health_first.fragments.DropDownUserInfo;
 import edu.aku.akuh_health_first.fragments.LeftSideMenuFragment;
 import edu.aku.akuh_health_first.fragments.LoginFragment;
 import edu.aku.akuh_health_first.fragments.abstracts.BaseFragment;
@@ -156,7 +157,6 @@ public abstract class BaseActivity extends AppCompatActivity {
         i.putExtra(LABORATORY_MODEL, object);
         startActivity(i);
     }
-
 
     public LeftSideMenuFragment getLeftSideMenuFragment() {
         return leftSideMenuFragment;
