@@ -193,6 +193,8 @@ public class RegisterFragment extends BaseFragment {
         titleBar.showBackButton(getBaseActivity());
     }
 
+
+
     @Override
     public void setListeners() {
 

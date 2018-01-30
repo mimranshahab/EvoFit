@@ -78,6 +78,7 @@ public class VerifyNumberCodeFragment extends BaseFragment {
         titleBar.showBackButton(getBaseActivity());
     }
 
+
     @Override
     public void onPause() {
         countDownTimer.cancel();

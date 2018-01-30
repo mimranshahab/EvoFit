@@ -86,6 +86,7 @@ public class Graph_View extends BaseFragment {
 
     }
 
+
     @Override
     public void setListeners() {
 

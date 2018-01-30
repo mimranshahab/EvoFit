@@ -14,6 +14,7 @@ import android.view.View;
 import java.util.List;
 
 import edu.aku.akuh_health_first.R;
+import edu.aku.akuh_health_first.fragments.DropDownUserInfo;
 import edu.aku.akuh_health_first.fragments.LeftSideMenuFragment;
 import edu.aku.akuh_health_first.fragments.LoginFragment;
 import edu.aku.akuh_health_first.fragments.abstracts.BaseFragment;
@@ -26,6 +27,7 @@ public abstract class BaseActivity extends AppCompatActivity {
 
     protected DrawerLayout drawerLayout;
     protected TitleBar titleBar;
+    protected DropDownUserInfo dropDownUserInfo;
     private LeftSideMenuFragment leftSideMenuFragment;
 
 //    private ResideMenu resideMenu;
@@ -42,6 +44,7 @@ public abstract class BaseActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(getViewId());
         setAndBindTitleBar();
+
         drawerLayout = (DrawerLayout) findViewById(getDrawerLayoutId());
 
         addDrawerFragment();
@@ -63,6 +66,7 @@ public abstract class BaseActivity extends AppCompatActivity {
     protected abstract int getViewId();
 
     protected abstract int getTitlebarLayoutId();
+
 
     protected abstract int getDrawerLayoutId();
 
@@ -88,6 +92,8 @@ public abstract class BaseActivity extends AppCompatActivity {
         titleBar.setVisibility(View.GONE);
         titleBar.resetViews();
     }
+
+
 
 //    @Override
 //    public void onBackPressed() {

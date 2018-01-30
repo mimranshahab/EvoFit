@@ -79,6 +79,8 @@ public class ClinicalLaboratoryDetailFragment extends BaseFragment {
         titleBar.showBackButton(getBaseActivity());
     }
 
+
+
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

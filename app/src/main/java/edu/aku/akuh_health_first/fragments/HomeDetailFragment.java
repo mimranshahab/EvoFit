@@ -51,11 +51,18 @@ public class HomeDetailFragment extends BaseFragment {
     }
 
     @Override
-    public void setTitlebar(TitleBar titleBar) {
+    public void setTitlebar(final TitleBar titleBar) {
         titleBar.resetViews();
         titleBar.setTitle("Home Detail");
         titleBar.showBackButton(getBaseActivity());
+        titleBar.setCircleImageView(R.drawable.user_image, new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                titleBar.showAndHideDropDown();
+            }
+        });
     }
+
 
     @Override
     public void setListeners() {

@@ -110,6 +110,7 @@ public class TimelineFragment extends BaseFragment implements View.OnClickListen
         titleBar.showBackButton(getBaseActivity());
     }
 
+
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
