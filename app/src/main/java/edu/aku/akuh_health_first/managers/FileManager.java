@@ -374,3 +374,10 @@ public class FileManager {
         return arrayList;
     }
 }
+
+    public static String getReplacedSlash(String Value) {
+
+        return Value.replace("\\", "/");
+
+    }
+}

@@ -144,7 +144,7 @@ public class HealthHistoryFragment extends BaseFragment {
             case R.id.contEndo:
                 showNextBuildToast();
             case R.id.contSummary:
-                showNextBuildToast();
+                getBaseActivity().addDockableFragment(DischargeSummaryFragment.newInstance());
                 break;
         }
     }
