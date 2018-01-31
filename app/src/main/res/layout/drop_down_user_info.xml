@@ -1,41 +1,63 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
+    android:layout_height="@dimen/x120dp"
+    android:layout_marginBottom="?android:attr/actionBarSize"
     android:layout_gravity="center_horizontal"
-    android:orientation="vertical"
+    android:orientation="vertical">
 
-    android:padding="@dimen/x10dp">
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/circleImageView2"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginBottom="@dimen/x40dp"
+        android:background="@color/base_blue"
+        android:id="@+id/view2" />
+
 
     <edu.aku.akuh_health_first.views.AnyTextView
         android:id="@+id/txtUserName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="center_vertical"
-        android:drawableLeft="@drawable/user_placeholder"
-        android:drawablePadding="@dimen/x10dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
         android:text="Name: Dummy User"
-        android:textColor="@color/text_color_grey_dark"
-        android:textSize="@dimen/s14"
-        app:typeface="@string/font_regular"
+        android:padding="@dimen/x5dp"
 
-        />
+        android:textAlignment="center"
+        android:textColor="@color/c_white"
+        android:textSize="@dimen/s16"
+        app:typeface="@string/font_bold" />
 
     <edu.aku.akuh_health_first.views.AnyTextView
         android:id="@+id/txtMRN"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentTop="true"
         android:layout_gravity="center_vertical"
-        android:drawableLeft="@drawable/user_placeholder"
-        android:drawablePadding="@dimen/x10dp"
         android:text="MRNumber: 111-22-33"
-        android:textColor="@color/text_color_grey_dark"
-        android:textSize="@dimen/s14"
-        app:typeface="@string/font_regular"
+        android:textColor="@color/c_white"
+        android:padding="@dimen/x5dp"
+        android:textSize="@dimen/s16"
+        app:typeface="@string/font_bold" />
 
-        />
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/circleImageView2"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/x80dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:scaleType="centerCrop"
+        android:src="@drawable/ic_settings_profile" />
 
 
-</LinearLayout>
+</RelativeLayout>

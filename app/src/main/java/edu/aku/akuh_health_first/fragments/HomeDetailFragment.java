@@ -2,19 +2,25 @@ package edu.aku.akuh_health_first.fragments;
 
 import android.os.Bundle;
 import android.support.v4.widget.DrawerLayout;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.LinearLayout;
 
+import java.io.File;
+import java.util.ArrayList;
+
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import butterknife.Unbinder;
 import edu.aku.akuh_health_first.R;
+import edu.aku.akuh_health_first.constatnts.AppConstants;
 import edu.aku.akuh_health_first.fragments.abstracts.BaseFragment;
 import edu.aku.akuh_health_first.helperclasses.ui.helper.TitleBar;
+import edu.aku.akuh_health_first.managers.FileManager;
 
 /**
  * Created by aqsa.sarwar on 1/26/2018.
@@ -93,7 +99,7 @@ public class HomeDetailFragment extends BaseFragment {
         unbinder.unbind();
     }
 
-    @OnClick({R.id.contSummary, R.id.contHistory, R.id.contProfile, R.id.contTimeline})
+    @OnClick({R.id.contSummary, R.id.contHistory, R.id.contProfile, R.id.contTimeline, R.id.contDownloadedFile})
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.contSummary:
@@ -107,6 +113,13 @@ public class HomeDetailFragment extends BaseFragment {
                 break;
             case R.id.contTimeline:
                 getBaseActivity().addDockableFragment(TimelineFragment.newInstance());
+                break;
+
+            case R.id.contDownloadedFile:
+                ArrayList<File> arrFiles = new ArrayList<>();
+
+                arrFiles.addAll(FileManager.getFiles(AppConstants.getUserFolderPath(getContext())));
+                Log.d("FILE", "FILE COUNT: " + arrFiles.size());
                 break;
         }
     }

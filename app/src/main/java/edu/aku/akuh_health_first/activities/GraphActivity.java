@@ -49,8 +49,8 @@ public class GraphActivity extends BaseActivity {
     }
 
     private void initViews() {
-        titleBar = findViewById(R.id.titlebar);
-        graph = findViewById(R.id.graph);
+        titleBar = (TitleBar) findViewById(R.id.titlebar);
+        graph = (GraphView) findViewById(R.id.graph);
     }
 
 
@@ -126,13 +126,13 @@ public class GraphActivity extends BaseActivity {
 
         if (getResources().getConfiguration().orientation == Configuration.ORIENTATION_PORTRAIT) {
             graph.getGridLabelRenderer().setNumHorizontalLabels(3);
-            AnyTextView txtPrevReuslt1 = findViewById(R.id.txtPrevReuslt1);
-            AnyTextView txtPrevReuslt2 = findViewById(R.id.txtPrevReuslt2);
-            AnyTextView txtResult = findViewById(R.id.txtResult);
+            AnyTextView txtPrevReuslt1 = (AnyTextView) findViewById(R.id.txtPrevReuslt1);
+            AnyTextView txtPrevReuslt2 =(AnyTextView) findViewById(R.id.txtPrevReuslt2);
+            AnyTextView txtResult =(AnyTextView) findViewById(R.id.txtResult);
 
-            AnyTextView txtPrevReuslt1date = findViewById(R.id.txtPrevReuslt1Date);
-            AnyTextView txtPrevReuslt2date = findViewById(R.id.txtPrevReuslt2Date);
-            AnyTextView txtResultdate = findViewById(R.id.txtResultDate);
+            AnyTextView txtPrevReuslt1date =(AnyTextView) findViewById(R.id.txtPrevReuslt1Date);
+            AnyTextView txtPrevReuslt2date = (AnyTextView)findViewById(R.id.txtPrevReuslt2Date);
+            AnyTextView txtResultdate =(AnyTextView) findViewById(R.id.txtResultDate);
             txtPrevReuslt1.setText("Previous Result 1: " + laboratoryModel.getPrevResult1());
             txtPrevReuslt2.setText("Previous Result 2: " + laboratoryModel.getPrevResult2());
             txtResult.setText("Result: " + laboratoryModel.getResult());
