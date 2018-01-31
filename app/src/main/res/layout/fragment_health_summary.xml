@@ -82,7 +82,9 @@
                 android:text="5+"
                 android:textColor="@color/base_reddish"
                 android:textSize="@dimen/s25"
-                app:typeface="@string/font_bold"></edu.aku.akuh_health_first.views.AnyTextView>
+                app:typeface="@string/font_bold">
+
+            </edu.aku.akuh_health_first.views.AnyTextView>
 
         </RelativeLayout>
 

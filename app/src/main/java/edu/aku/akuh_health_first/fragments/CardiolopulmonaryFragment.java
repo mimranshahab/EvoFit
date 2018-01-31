@@ -38,7 +38,6 @@ import edu.aku.akuh_health_first.managers.FileManager;
 import edu.aku.akuh_health_first.managers.retrofit.GsonFactory;
 import edu.aku.akuh_health_first.managers.retrofit.WebServices;
 import edu.aku.akuh_health_first.models.CardioModel;
-import edu.aku.akuh_health_first.models.Neurophysiology;
 import edu.aku.akuh_health_first.models.receiving_model.UserDetailModel;
 import edu.aku.akuh_health_first.models.wrappers.WebResponse;
 
@@ -50,7 +49,7 @@ import static edu.aku.akuh_health_first.constatnts.AppConstants.DOC_PATH;
 
 public class CardiolopulmonaryFragment extends BaseFragment implements View.OnClickListener, OnItemClickListener {
 
-    @BindView(R.id.listNeurophysiology)
+    @BindView(R.id.recylerView)
     RecyclerView recyclerCardio;
     Unbinder unbinder;
     @BindView(R.id.refreshLayout)
@@ -76,7 +75,7 @@ public class CardiolopulmonaryFragment extends BaseFragment implements View.OnCl
 
     @Override
     protected int getFragmentLayout() {
-        return R.layout.fragment_neurophysiology;
+        return R.layout.fragment_general_recyler_view;
     }
 
     @Override

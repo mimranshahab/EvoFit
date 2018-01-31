@@ -28,6 +28,7 @@ import butterknife.Unbinder;
 import edu.aku.akuh_health_first.R;
 import edu.aku.akuh_health_first.adapters.recyleradapters.DischargeSummaryAdapter;
 import edu.aku.akuh_health_first.callbacks.OnItemClickListener;
+import edu.aku.akuh_health_first.constatnts.AppConstants;
 import edu.aku.akuh_health_first.constatnts.WebServiceConstants;
 import edu.aku.akuh_health_first.enums.BaseURLTypes;
 import edu.aku.akuh_health_first.fragments.abstracts.BaseFragment;
@@ -36,18 +37,15 @@ import edu.aku.akuh_health_first.managers.FileManager;
 import edu.aku.akuh_health_first.managers.retrofit.GsonFactory;
 import edu.aku.akuh_health_first.managers.retrofit.WebServices;
 import edu.aku.akuh_health_first.models.DischargeSummaryModel;
-import edu.aku.akuh_health_first.models.Neurophysiology;
 import edu.aku.akuh_health_first.models.receiving_model.UserDetailModel;
 import edu.aku.akuh_health_first.models.wrappers.WebResponse;
-
-import static edu.aku.akuh_health_first.constatnts.AppConstants.DOC_PATH;
 
 /**
  * Created by aqsa.sarwar on 1/30/2018.
  */
 
 public class DischargeSummaryFragment extends BaseFragment implements View.OnClickListener, OnItemClickListener {
-    @BindView(R.id.listNeurophysiology)
+    @BindView(R.id.recylerView)
     RecyclerView recylerViewDischageSummary;
     @BindView(R.id.refreshLayout)
     SwipeRefreshLayout refreshLayout;
@@ -140,7 +138,7 @@ public class DischargeSummaryFragment extends BaseFragment implements View.OnCli
 
     @Override
     protected int getFragmentLayout() {
-        return R.layout.fragment_neurophysiology;
+        return R.layout.fragment_general_recyler_view;
     }
 
     @Override
@@ -194,9 +192,9 @@ public class DischargeSummaryFragment extends BaseFragment implements View.OnCli
                             public void requestDataResponse(WebResponse<String> webResponse) {
                                 String fileName =  FileManager.getFileNameFromPath(FileManager.getReplacedSlash(summaryModel.getSummaryPath()));
 
-                                FileManager.writeResponseBodyToDisk(webResponse.result, fileName);
+                                FileManager.writeResponseBodyToDisk(webResponse.result, fileName, AppConstants.getUserFolderPath(getContext()));
 
-                                final File file = new File(DOC_PATH
+                                final File file = new File(AppConstants.getUserFolderPath(getContext())
                                         + "/" + fileName);
 
                                 new Handler().postDelayed(new Runnable() {
@@ -224,7 +222,7 @@ public class DischargeSummaryFragment extends BaseFragment implements View.OnCli
             final DischargeSummaryModel summaryModel = (DischargeSummaryModel) object;
 
             String fileName = FileManager.getFileNameFromPath(FileManager.getReplacedSlash(summaryModel.getSummaryPath()));
-            final File file = new File(DOC_PATH
+            final File file = new File(AppConstants.getUserFolderPath(getContext())
                     + "/" + fileName);
 
             if (FileManager.isFileExits(file.getPath())) {

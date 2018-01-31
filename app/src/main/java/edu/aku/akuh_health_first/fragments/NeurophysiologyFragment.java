@@ -1,7 +1,6 @@
 package edu.aku.akuh_health_first.fragments;
 
 import android.os.Bundle;
-import android.os.Environment;
 import android.os.Handler;
 import android.support.annotation.Nullable;
 import android.support.v4.widget.DrawerLayout;
@@ -35,14 +34,12 @@ import edu.aku.akuh_health_first.enums.BaseURLTypes;
 import edu.aku.akuh_health_first.fragments.abstracts.BaseFragment;
 import edu.aku.akuh_health_first.helperclasses.ui.helper.TitleBar;
 import edu.aku.akuh_health_first.helperclasses.ui.helper.UIHelper;
-import edu.aku.akuh_health_first.libraries.fileloader.FileLoader;
 import edu.aku.akuh_health_first.managers.FileManager;
 import edu.aku.akuh_health_first.managers.retrofit.GsonFactory;
 import edu.aku.akuh_health_first.managers.retrofit.WebServices;
 import edu.aku.akuh_health_first.models.Neurophysiology;
 import edu.aku.akuh_health_first.models.receiving_model.UserDetailModel;
 import edu.aku.akuh_health_first.models.wrappers.WebResponse;
-import okhttp3.ResponseBody;
 
 
 /**
@@ -51,7 +48,7 @@ import okhttp3.ResponseBody;
 
 public class NeurophysiologyFragment extends BaseFragment implements View.OnClickListener, OnItemClickListener {
 
-    @BindView(R.id.listNeurophysiology)
+    @BindView(R.id.recylerView)
     RecyclerView recyclerNeurophysiology;
     @BindView(R.id.refreshLayout)
     SwipeRefreshLayout refreshLayout;
@@ -77,7 +74,7 @@ public class NeurophysiologyFragment extends BaseFragment implements View.OnClic
 
     @Override
     protected int getFragmentLayout() {
-        return R.layout.fragment_neurophysiology;
+        return R.layout.fragment_general_recyler_view;
     }
 
     @Override

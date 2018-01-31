@@ -116,10 +116,9 @@ public class HomeDetailFragment extends BaseFragment {
                 break;
 
             case R.id.contDownloadedFile:
-                ArrayList<File> arrFiles = new ArrayList<>();
 
-                arrFiles.addAll(FileManager.getFiles(AppConstants.getUserFolderPath(getContext())));
-                Log.d("FILE", "FILE COUNT: " + arrFiles.size());
+                getBaseActivity().addDockableFragment(MyDocumentsFragment.newInstance());
+
                 break;
         }
     }

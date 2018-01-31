@@ -373,7 +373,7 @@ public class FileManager {
         arrayList.addAll(Arrays.asList(f.listFiles()));
         return arrayList;
     }
-}
+
 
     public static String getReplacedSlash(String Value) {
 

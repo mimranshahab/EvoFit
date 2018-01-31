@@ -1,7 +1,6 @@
 package edu.aku.akuh_health_first.fragments;
 
 import android.os.Bundle;
-import android.os.Handler;
 import android.support.annotation.Nullable;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v4.widget.SwipeRefreshLayout;
@@ -18,7 +17,6 @@ import android.widget.AdapterView;
 import com.google.gson.JsonObject;
 import com.google.gson.reflect.TypeToken;
 
-import java.io.File;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
 
@@ -46,7 +44,7 @@ import edu.aku.akuh_health_first.models.wrappers.WebResponse;
 
 public class ClinicalLaboratoryFragment extends BaseFragment implements View.OnClickListener, OnItemClickListener {
 
-    @BindView(R.id.listNeurophysiology)
+    @BindView(R.id.recylerView)
     RecyclerView recyclerNeurophysiology;
     @BindView(R.id.refreshLayout)
     SwipeRefreshLayout refreshLayout;
@@ -73,7 +71,7 @@ public class ClinicalLaboratoryFragment extends BaseFragment implements View.OnC
 
     @Override
     protected int getFragmentLayout() {
-        return R.layout.fragment_neurophysiology;
+        return R.layout.fragment_general_recyler_view;
     }
 
     @Override
