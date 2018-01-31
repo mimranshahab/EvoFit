@@ -221,6 +221,7 @@ public class FileManager {
         return path.substring(index + 1);
     }
 
+
     public static void copyFile(String inputPath, String outputPath) {
         InputStream in = null;
         OutputStream out = null;
@@ -325,7 +326,7 @@ public class FileManager {
             } else if (url.toString().contains(".pdf")) {
                 // PDF file
                 intent.setDataAndType(uri, "application/pdf");
-             } else if (url.toString().contains(".ppt") || url.toString().contains(".pptx")) {
+            } else if (url.toString().contains(".ppt") || url.toString().contains(".pptx")) {
                 // Powerpoint file
                 intent.setDataAndType(uri, "application/vnd.ms-powerpoint");
             } else if (url.toString().contains(".xls") || url.toString().contains(".xlsx")) {
@@ -362,5 +363,11 @@ public class FileManager {
         } catch (ActivityNotFoundException e) {
             Toast.makeText(context, "No application found which can open the file", Toast.LENGTH_SHORT).show();
         }
+    }
+
+    public static String getReplacedSlash(String Value) {
+
+        return Value.replace("\\", "/");
+
     }
 }

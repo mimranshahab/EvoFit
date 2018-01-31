@@ -11,15 +11,8 @@ import android.view.Gravity;
 import android.view.KeyEvent;
 import android.view.View;
 
-import java.io.Serializable;
-import java.util.List;
 
-import edu.aku.akuh_health_first.R;
-import edu.aku.akuh_health_first.constatnts.AppConstants;
-import edu.aku.akuh_health_first.fragments.DropDownUserInfo;
 import edu.aku.akuh_health_first.fragments.LeftSideMenuFragment;
-import edu.aku.akuh_health_first.fragments.LoginFragment;
-import edu.aku.akuh_health_first.fragments.abstracts.BaseFragment;
 import edu.aku.akuh_health_first.fragments.abstracts.GenericClickableInterface;
 import edu.aku.akuh_health_first.fragments.abstracts.GenericDialogFragment;
 import edu.aku.akuh_health_first.helperclasses.ui.helper.TitleBar;

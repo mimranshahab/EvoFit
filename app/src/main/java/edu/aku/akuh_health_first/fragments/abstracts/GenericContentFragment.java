@@ -8,7 +8,6 @@ import android.widget.AdapterView;
 import android.widget.TextView;
 
 import edu.aku.akuh_health_first.R;
-import edu.aku.akuh_health_first.fragments.DropDownUserInfo;
 import edu.aku.akuh_health_first.helperclasses.ui.helper.TitleBar;
 
 
