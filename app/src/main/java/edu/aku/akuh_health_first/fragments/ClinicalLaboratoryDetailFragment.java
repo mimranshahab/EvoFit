@@ -65,7 +65,7 @@ public class ClinicalLaboratoryDetailFragment extends BaseFragment implements On
 
     @Override
     public int getDrawerLockMode() {
-        return DrawerLayout.LOCK_MODE_UNLOCKED;
+        return DrawerLayout.LOCK_MODE_LOCKED_CLOSED;
     }
 
     @Override
@@ -78,6 +78,8 @@ public class ClinicalLaboratoryDetailFragment extends BaseFragment implements On
         titleBar.resetViews();
         titleBar.setTitle("Lab Detail");
         titleBar.showBackButton(getBaseActivity());
+        titleBar.setCircleImageView( );
+        titleBar.showHome(getBaseActivity());
     }
 
 

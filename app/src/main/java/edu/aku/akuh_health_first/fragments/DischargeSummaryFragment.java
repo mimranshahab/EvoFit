@@ -71,7 +71,7 @@ public class DischargeSummaryFragment extends BaseFragment implements View.OnCli
 
     @Override
     public int getDrawerLockMode() {
-        return DrawerLayout.LOCK_MODE_UNLOCKED;
+        return DrawerLayout.LOCK_MODE_LOCKED_CLOSED;
     }
 
     @Override
@@ -146,12 +146,8 @@ public class DischargeSummaryFragment extends BaseFragment implements View.OnCli
         titleBar.resetViews();
         titleBar.setTitle("Discharge Summary");
         titleBar.showBackButton(getBaseActivity());
-        titleBar.setCircleImageView(R.drawable.user_image, new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                titleBar.showAndHideDropDown();
-            }
-        });
+        titleBar.setCircleImageView( );
+        titleBar.showHome(getBaseActivity());
     }
 
     @Override

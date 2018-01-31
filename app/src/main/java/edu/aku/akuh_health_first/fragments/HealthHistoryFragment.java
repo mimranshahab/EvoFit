@@ -81,11 +81,13 @@ public class HealthHistoryFragment extends BaseFragment {
         titleBar.setVisibility(View.VISIBLE);
         titleBar.setTitle("Health History");
         titleBar.showBackButton(getBaseActivity());
+        titleBar.setCircleImageView( );
+        titleBar.showHome(getBaseActivity());
     }
 
     @Override
     public int getDrawerLockMode() {
-        return DrawerLayout.LOCK_MODE_UNLOCKED;
+        return DrawerLayout.LOCK_MODE_LOCKED_CLOSED;
     }
 
 

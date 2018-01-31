@@ -355,17 +355,6 @@ public class FileManager {
         }
     }
 
-    public static ArrayList<File> getFilesForFolder(final File folder, ArrayList<File> arrayList) {
-        for (final File fileEntry : folder.listFiles()) {
-            if (fileEntry.isDirectory()) {
-                arrayList.addAll(getFilesForFolder(fileEntry, arrayList));
-            } else {
-                arrayList.add(fileEntry);
-            }
-        }
-        return arrayList;
-    }
-
     public static ArrayList<File> getFiles(String DirectoryPath) {
         File f = new File(DirectoryPath);
         f.mkdirs();

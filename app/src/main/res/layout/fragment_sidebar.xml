@@ -68,42 +68,42 @@
             android:background="@color/c_white" />
 
 
-        <com.ctrlplusz.anytextview.AnyTextView
-            android:id="@+id/txtHealthHistory"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_vertical"
-            android:gravity="center_vertical"
-            android:padding="@dimen/x15dp"
-            android:singleLine="true"
-            android:text="Health History"
-            android:textColor="@color/c_white"
-            android:textSize="14sp"
-            app:typeface="@string/font_bold" />
+        <!--<com.ctrlplusz.anytextview.AnyTextView-->
+            <!--android:id="@+id/txtHealthHistory"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_gravity="center_vertical"-->
+            <!--android:gravity="center_vertical"-->
+            <!--android:padding="@dimen/x15dp"-->
+            <!--android:singleLine="true"-->
+            <!--android:text="Health History"-->
+            <!--android:textColor="@color/c_white"-->
+            <!--android:textSize="14sp"-->
+            <!--app:typeface="@string/font_bold" />-->
 
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="2px"
-            android:background="@color/c_white" />
+        <!--<View-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="2px"-->
+            <!--android:background="@color/c_white" />-->
 
 
-        <com.ctrlplusz.anytextview.AnyTextView
-            android:id="@+id/txtVisitTimeline"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_vertical"
-            android:gravity="center_vertical"
-            android:padding="@dimen/x15dp"
-            android:singleLine="true"
-            android:text="Visit Timeline"
-            android:textColor="@color/c_white"
-            android:textSize="14sp"
-            app:typeface="@string/font_bold" />
+        <!--<com.ctrlplusz.anytextview.AnyTextView-->
+            <!--android:id="@+id/txtVisitTimeline"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_gravity="center_vertical"-->
+            <!--android:gravity="center_vertical"-->
+            <!--android:padding="@dimen/x15dp"-->
+            <!--android:singleLine="true"-->
+            <!--android:text="Visit Timeline"-->
+            <!--android:textColor="@color/c_white"-->
+            <!--android:textSize="14sp"-->
+            <!--app:typeface="@string/font_bold" />-->
 
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="2px"
-            android:background="@color/c_white" />
+        <!--<View-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="2px"-->
+            <!--android:background="@color/c_white" />-->
 
 
         <com.ctrlplusz.anytextview.AnyTextView
@@ -125,23 +125,23 @@
             android:background="@color/c_white" />
 
 
-        <com.ctrlplusz.anytextview.AnyTextView
-            android:id="@+id/txtMyProfile"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_vertical"
-            android:gravity="center_vertical"
-            android:padding="@dimen/x15dp"
-            android:singleLine="true"
-            android:text="My Profile"
-            android:textColor="@color/c_white"
-            android:textSize="14sp"
-            app:typeface="@string/font_bold" />
+        <!--<com.ctrlplusz.anytextview.AnyTextView-->
+            <!--android:id="@+id/txtMyProfile"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_gravity="center_vertical"-->
+            <!--android:gravity="center_vertical"-->
+            <!--android:padding="@dimen/x15dp"-->
+            <!--android:singleLine="true"-->
+            <!--android:text="My Profile"-->
+            <!--android:textColor="@color/c_white"-->
+            <!--android:textSize="14sp"-->
+            <!--app:typeface="@string/font_bold" />-->
 
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="2px"
-            android:background="@color/c_white" />
+        <!--<View-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="2px"-->
+            <!--android:background="@color/c_white" />-->
 
         <com.ctrlplusz.anytextview.AnyTextView
             android:id="@+id/txtAbout"

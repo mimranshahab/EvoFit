@@ -17,6 +17,7 @@ import butterknife.BindView;
 import de.hdodenhof.circleimageview.CircleImageView;
 import edu.aku.akuh_health_first.R;
 import edu.aku.akuh_health_first.activities.BaseActivity;
+import edu.aku.akuh_health_first.activities.HomeActivity;
 
 /**
  * Created by khanhamza on 02-Mar-17.
@@ -92,7 +93,7 @@ public class TitleBar extends RelativeLayout {
         btnLeft1.setVisibility(GONE);
         btnRight3.setVisibility(GONE);
         btnRight2.setVisibility(GONE);
-        btnRight1.setVisibility(GONE);
+        btnRight1.setVisibility(INVISIBLE);
         txtClearAll.setVisibility(GONE);
         containerTitlebar1.setVisibility(VISIBLE);
         txtCircle.setVisibility(GONE);
@@ -168,10 +169,15 @@ public class TitleBar extends RelativeLayout {
         this.btnRight1.setOnClickListener(onClickListener);
     }
 
-    public void setCircleImageView(int drawable, OnClickListener onClickListener) {
+    public void setCircleImageView() {
         this.circleImageView.setVisibility(VISIBLE);
-        this.circleImageView.setImageResource(drawable);
-        this.circleImageView.setOnClickListener(onClickListener);
+        this.circleImageView.setImageResource(R.drawable.user_image);
+        this.circleImageView.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                showAndHideDropDown();
+            }
+        });
     }
 
 
@@ -206,6 +212,22 @@ public class TitleBar extends RelativeLayout {
         this.btnRight2.setVisibility(VISIBLE);
         btnRight2.setImageResource(drawable);
         this.btnRight2.setOnClickListener(onClickListener);
+    }
+
+
+    public void showHome(final BaseActivity activity) {
+        this.btnRight2.setVisibility(VISIBLE);
+        btnRight2.setImageResource(R.drawable.ic_action_home);
+        this.btnRight2.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (activity instanceof HomeActivity) {
+                    activity.reload();
+                } else {
+                    activity.clearAllActivitiesExceptThis(HomeActivity.class);
+                }
+            }
+        });
     }
 
 

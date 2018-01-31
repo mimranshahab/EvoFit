@@ -82,7 +82,7 @@ public class TimelineFragment extends BaseFragment implements View.OnClickListen
 
     @Override
     public int getDrawerLockMode() {
-        return DrawerLayout.LOCK_MODE_UNLOCKED;
+        return DrawerLayout.LOCK_MODE_LOCKED_CLOSED;
     }
 
 
@@ -91,6 +91,8 @@ public class TimelineFragment extends BaseFragment implements View.OnClickListen
         titleBar.resetViews();
         titleBar.setTitle("Timeline");
         titleBar.showBackButton(getBaseActivity());
+        titleBar.setCircleImageView( );
+        titleBar.showHome(getBaseActivity());
     }
 
 

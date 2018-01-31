@@ -44,14 +44,8 @@ public class LeftSideMenuFragment extends BaseFragment implements OnNewPacketRec
     LinearLayout contUserName;
     @BindView(R.id.txtHome)
     AnyTextView txtHome;
-    @BindView(R.id.txtHealthHistory)
-    AnyTextView txtHealthHistory;
-    @BindView(R.id.txtVisitTimeline)
-    AnyTextView txtVisitTimeline;
     @BindView(R.id.txtCardSubscription)
     AnyTextView txtCardSubscription;
-    @BindView(R.id.txtMyProfile)
-    AnyTextView txtMyProfile;
     @BindView(R.id.txtAbout)
     AnyTextView txtAbout;
     @BindView(R.id.txtLogout)
@@ -161,7 +155,7 @@ public class LeftSideMenuFragment extends BaseFragment implements OnNewPacketRec
     }
 
 
-    @OnClick({R.id.contUserName, R.id.txtHome, R.id.txtHealthHistory, R.id.txtVisitTimeline, R.id.txtCardSubscription, R.id.txtMyProfile, R.id.txtAbout, R.id.txtLogout})
+    @OnClick({R.id.contUserName, R.id.txtHome, R.id.txtCardSubscription, R.id.txtAbout, R.id.txtLogout})
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.contUserName:
@@ -174,19 +168,11 @@ public class LeftSideMenuFragment extends BaseFragment implements OnNewPacketRec
                     getBaseActivity().clearAllActivitiesExceptThis(HomeActivity.class);
                 }
                 break;
-            case R.id.txtHealthHistory:
-                getBaseActivity().addDockableFragment(HealthHistoryFragment.newInstance());
-                break;
-            case R.id.txtVisitTimeline:
-                getBaseActivity().addDockableFragment(TimelineFragment.newInstance());
 
-                break;
             case R.id.txtCardSubscription:
                 getBaseActivity().addDockableFragment(CardSubscriptionFragment.newInstance());
                 break;
-            case R.id.txtMyProfile:
-                getBaseActivity().addDockableFragment(ProfileFragment.newInstance());
-                break;
+
             case R.id.txtAbout:
                 getBaseActivity().addDockableFragment(GenericContentFragment.newInstance(getString(R.string.generic), "About"));
                 break;

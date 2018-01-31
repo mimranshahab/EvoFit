@@ -61,7 +61,7 @@ public class HealthSummaryFragment extends BaseFragment {
 
     @Override
     public int getDrawerLockMode() {
-        return DrawerLayout.LOCK_MODE_UNLOCKED;
+        return DrawerLayout.LOCK_MODE_LOCKED_CLOSED;
     }
 
     @Override
@@ -74,6 +74,8 @@ public class HealthSummaryFragment extends BaseFragment {
         titleBar.resetViews();
         titleBar.setTitle("Health Summary");
         titleBar.showBackButton(getBaseActivity());
+        titleBar.setCircleImageView( );
+        titleBar.showHome(getBaseActivity());
     }
 
 

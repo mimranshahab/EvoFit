@@ -10,9 +10,10 @@
     <RelativeLayout
         android:id="@+id/contDropDown"
         android:layout_width="match_parent"
-         android:layout_height="wrap_content"
+        android:layout_height="wrap_content"
         android:visibility="gone">
-        <include layout="@layout/drop_down_user_info"/>
+
+        <include layout="@layout/drop_down_user_info" />
 
     </RelativeLayout>
 
@@ -50,6 +51,7 @@
             android:layout_centerHorizontal="true"
             android:layout_centerVertical="true"
             android:gravity="center"
+            android:visibility="gone"
             android:src="@drawable/imglogoname" />
 
 
@@ -72,17 +74,19 @@
             android:layout_marginLeft="@dimen/x8dp"
             android:background="@color/colorPrimary"
             android:padding="@dimen/x5dp"
-            android:src="@drawable/imgcart" />
+            android:src="@drawable/imgcart"
+            android:visibility="visible" />
 
         <de.hdodenhof.circleimageview.CircleImageView
             android:id="@+id/circleImageView"
-            android:layout_width="@dimen/x35dp"
-            android:layout_height="@dimen/x35dp"
+            android:layout_width="@dimen/x30dp"
+            android:layout_height="match_parent"
             android:layout_alignParentRight="true"
             android:layout_alignParentTop="true"
-            android:layout_centerInParent="true"
-            android:layout_marginTop="@dimen/x9dp"
+            android:layout_centerVertical="true"
+            android:layout_margin="@dimen/x5dp"
             android:scaleType="centerCrop"
+            android:src="@drawable/user_image"
             android:visibility="visible" />
 
         <TextView
@@ -109,7 +113,7 @@
             android:layout_toLeftOf="@id/btnRight1"
             android:background="@color/colorPrimary"
             android:padding="@dimen/x5dp"
-            android:src="@drawable/imgsearch" />
+            android:src="@drawable/ic_action_home" />
 
 
         <ImageButton
@@ -137,9 +141,6 @@
             android:textColor="#E8F4FA"
             android:visibility="gone" />
     </RelativeLayout>
-
-
-
 
 
 </RelativeLayout>

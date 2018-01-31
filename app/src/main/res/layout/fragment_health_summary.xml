@@ -12,81 +12,90 @@
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
-        <RelativeLayout
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="@dimen/x10dp"
-            android:layout_marginLeft="@dimen/x30dp"
-            android:layout_marginRight="@dimen/x30dp"
-            android:layout_marginTop="@dimen/x10dp">
+            android:gravity="center_horizontal">
 
-            <me.tankery.lib.circularseekbar.CircularSeekBar
-                android:id="@+id/progressbarGreen"
-                android:layout_width="@dimen/x120dp"
-                android:layout_height="@dimen/x120dp"
-                android:layout_alignParentRight="true"
-                app:cs_circle_color="@color/transparent"
-                app:cs_circle_progress_color="@color/c_green"
-                app:cs_circle_stroke_width="@dimen/x12dp"
-                app:cs_circle_style="square"
-                app:cs_disable_pointer="true"
-                app:cs_end_angle="90"
-                app:cs_maintain_equal_circle="true"
-                app:cs_progress="90"
-                app:cs_start_angle="-120" />
+            <RelativeLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_margin="@dimen/x5dp"
+                android:layout_weight="1">
 
-            <edu.aku.akuh_health_first.views.AnyTextView
-                android:id="@+id/myTextProgressGreen"
-                android:layout_width="wrap_content"
+                <me.tankery.lib.circularseekbar.CircularSeekBar
+                    android:id="@+id/progressbarGreen"
+                    android:layout_width="@dimen/x120dp"
+                    android:layout_height="@dimen/x120dp"
+                    android:layout_centerInParent="true"
+                    app:cs_circle_color="@color/transparent"
+                    app:cs_circle_progress_color="@color/c_green"
+                    app:cs_circle_stroke_width="@dimen/x12dp"
+                    app:cs_circle_style="square"
+                    app:cs_disable_pointer="true"
+                    app:cs_end_angle="90"
+                    app:cs_maintain_equal_circle="true"
+                    app:cs_progress="90"
+                    app:cs_start_angle="-120" />
+
+                <edu.aku.akuh_health_first.views.AnyTextView
+                    android:id="@+id/myTextProgressGreen"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:background="@android:color/transparent"
+                    android:gravity="center"
+                    android:padding="@dimen/x5dp"
+                    android:text="67.5kg"
+                    android:textColor="@color/c_green"
+                    android:textSize="@dimen/s20"
+                    app:typeface="@string/font_bold" />
+
+
+            </RelativeLayout>
+
+
+            <RelativeLayout
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_alignBottom="@id/progressbarGreen"
-                android:layout_alignLeft="@id/progressbarGreen"
-                android:layout_alignRight="@id/progressbarGreen"
-                android:layout_alignTop="@id/progressbarGreen"
-                android:background="@android:color/transparent"
-                android:gravity="center"
-                android:padding="@dimen/x5dp"
-                android:text="67.5kg"
-                android:textColor="@color/c_green"
-                android:textSize="@dimen/s20"
-                app:typeface="@string/font_bold"></edu.aku.akuh_health_first.views.AnyTextView>
+                android:layout_margin="@dimen/x5dp"
 
-            <me.tankery.lib.circularseekbar.CircularSeekBar
-                android:id="@+id/progressbarRed"
-                android:layout_width="@dimen/x120dp"
-                android:layout_height="@dimen/x120dp"
-                android:layout_alignParentLeft="true"
-                app:cs_circle_color="@color/transparent"
-                app:cs_circle_progress_color="@color/base_reddish"
-                app:cs_circle_stroke_width="@dimen/x12dp"
-                app:cs_circle_style="square"
-                app:cs_disable_pointer="true"
-                app:cs_end_angle="90"
-                app:cs_maintain_equal_circle="true"
-                app:cs_progress="90"
-                app:cs_start_angle="-120"
+                android:layout_weight="1">
+
+                <me.tankery.lib.circularseekbar.CircularSeekBar
+                    android:id="@+id/progressbarRed"
+                    android:layout_width="@dimen/x120dp"
+                    android:layout_height="@dimen/x120dp"
+                    android:layout_centerInParent="true"
+                    app:cs_circle_color="@color/transparent"
+                    app:cs_circle_progress_color="@color/base_reddish"
+                    app:cs_circle_stroke_width="@dimen/x12dp"
+                    app:cs_circle_style="square"
+                    app:cs_disable_pointer="true"
+                    app:cs_end_angle="90"
+                    app:cs_maintain_equal_circle="true"
+                    app:cs_progress="90"
+                    app:cs_start_angle="-120"
 
 
-                />
+                    />
 
-            <edu.aku.akuh_health_first.views.AnyTextView
-                android:id="@+id/myTextProgress"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignBottom="@id/progressbarRed"
-                android:layout_alignLeft="@id/progressbarRed"
-                android:layout_alignRight="@id/progressbarRed"
-                android:layout_alignTop="@id/progressbarRed"
-                android:background="@android:color/transparent"
-                android:gravity="center"
-                android:text="5+"
-                android:textColor="@color/base_reddish"
-                android:textSize="@dimen/s25"
-                app:typeface="@string/font_bold">
-
-            </edu.aku.akuh_health_first.views.AnyTextView>
+                <edu.aku.akuh_health_first.views.AnyTextView
+                    android:id="@+id/myTextProgress"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:background="@android:color/transparent"
+                    android:gravity="center"
+                    android:text="5+"
+                    android:textColor="@color/base_reddish"
+                    android:textSize="@dimen/s25"
+                    app:typeface="@string/font_bold" />
 
         </RelativeLayout>
+
+
+        </LinearLayout>
 
         <LinearLayout
             android:layout_width="wrap_content"
