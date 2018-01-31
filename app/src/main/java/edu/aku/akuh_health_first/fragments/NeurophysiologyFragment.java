@@ -44,7 +44,6 @@ import edu.aku.akuh_health_first.models.receiving_model.UserDetailModel;
 import edu.aku.akuh_health_first.models.wrappers.WebResponse;
 import okhttp3.ResponseBody;
 
-import static edu.aku.akuh_health_first.constatnts.AppConstants.DOC_PATH;
 
 /**
  * Created by aqsa.sarwar on 1/17/2018.
@@ -87,7 +86,6 @@ public class NeurophysiologyFragment extends BaseFragment implements View.OnClic
         titleBar.setTitle("Neurophysiology");
         titleBar.showBackButton(getBaseActivity());
     }
-
 
 
     @Override
@@ -154,7 +152,7 @@ public class NeurophysiologyFragment extends BaseFragment implements View.OnClic
             final Neurophysiology neurophysiology = (Neurophysiology) object;
 
             String fileName = neurophysiology.getDetailReportID();
-            final File file = new File(DOC_PATH
+            final File file = new File(AppConstants.getUserFolderPath(getContext())
                     + "/" + fileName);
 
             if (FileManager.isFileExits(file.getPath())) {
@@ -183,9 +181,9 @@ public class NeurophysiologyFragment extends BaseFragment implements View.OnClic
                             public void requestDataResponse(WebResponse<String> webResponse) {
                                 String fileName = neurophysiology.getDetailReportID();
 
-                                FileManager.writeResponseBodyToDisk(webResponse.result, fileName);
+                                FileManager.writeResponseBodyToDisk(webResponse.result, fileName, AppConstants.getUserFolderPath(getContext()));
 
-                                final File file = new File(DOC_PATH
+                                final File file = new File(AppConstants.getUserFolderPath(getContext())
                                         + "/" + fileName);
 
                                 new Handler().postDelayed(new Runnable() {

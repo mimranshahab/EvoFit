@@ -1,8 +1,11 @@
 package edu.aku.akuh_health_first.constatnts;
 
+import android.content.Context;
 import android.os.Environment;
 
 import edu.aku.akuh_health_first.BaseApplication;
+import edu.aku.akuh_health_first.activities.BaseActivity;
+import edu.aku.akuh_health_first.managers.SharedPreferenceManager;
 
 
 /**
@@ -20,9 +23,15 @@ public class AppConstants {
     public static final String INPUT_LAB_DATE_FORMAT_AM_PM = "mm/dd/yyyy hh:mm:ss a";
 
     public static final String GENERAL_DATE_FORMAT = "dd-MM-yy";
-    public static final String ROOT_MEDIA_PATH = Environment.getExternalStorageDirectory().getPath()
-            + "/" + BaseApplication.getApplicationName() + "/Media";
-    public static final String DOC_PATH = ROOT_MEDIA_PATH + "/Docs";
+    public static final String ROOT_PATH = Environment.getExternalStorageDirectory().getPath()
+            + "/" + BaseApplication.getApplicationName();
+
+    public static final String DOC_PATH = ROOT_PATH + "/Docs";
+
+
+    public static String getUserFolderPath(Context context) {
+        return DOC_PATH + "/" + SharedPreferenceManager.getInstance(context).getCurrentUser().getMRNumber();
+    }
 
 
     public static final String CNIC_MASK = "99999-9999999-9";

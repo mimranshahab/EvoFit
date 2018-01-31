@@ -1,5 +1,6 @@
 package edu.aku.akuh_health_first.helperclasses.ui.helper;
 
+import android.animation.Animator;
 import android.content.Context;
 import android.support.v4.view.GravityCompat;
 import android.util.AttributeSet;
@@ -209,11 +210,43 @@ public class TitleBar extends RelativeLayout {
 
 
     public void showAndHideDropDown() {
-        if (this.contDropDown.getVisibility() == VISIBLE) {
-            this.contDropDown.setVisibility(GONE);
+        int height = this.containerTitlebar1.getHeight();
+        if (contDropDown.getVisibility() == View.VISIBLE) {
+
+            contDropDown.animate()
+                    .translationY(-height)
+                    .setDuration(300)
+                    .setListener(new Animator.AnimatorListener() {
+                        @Override
+                        public void onAnimationStart(Animator animation) {
+
+                        }
+
+                        @Override
+                        public void onAnimationEnd(Animator animation) {
+                            contDropDown.setVisibility(View.GONE);
+                        }
+
+                        @Override
+                        public void onAnimationCancel(Animator animation) {
+
+                        }
+
+                        @Override
+                        public void onAnimationRepeat(Animator animation) {
+
+                        }
+                    })
+                    .start();
         } else {
-            this.contDropDown.setVisibility(VISIBLE);
+            contDropDown.setVisibility(View.VISIBLE);
+            contDropDown.animate()
+                    .translationY(height)
+                    .setDuration(300)
+                    .setListener(null)
+                    .start();
         }
+
     }
 
 }

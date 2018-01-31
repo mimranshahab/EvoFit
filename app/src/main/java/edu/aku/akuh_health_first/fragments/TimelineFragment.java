@@ -15,11 +15,6 @@ import android.view.animation.AnimationUtils;
 import android.view.animation.LayoutAnimationController;
 import android.widget.AdapterView;
 
-import com.google.gson.JsonObject;
-import com.google.gson.reflect.TypeToken;
-
-import java.io.File;
-import java.lang.reflect.Type;
 import java.util.ArrayList;
 
 import butterknife.BindView;
@@ -28,21 +23,9 @@ import butterknife.Unbinder;
 import edu.aku.akuh_health_first.R;
 import edu.aku.akuh_health_first.adapters.recyleradapters.TimelineAdapter;
 import edu.aku.akuh_health_first.callbacks.OnItemClickListener;
-import edu.aku.akuh_health_first.constatnts.AppConstants;
-import edu.aku.akuh_health_first.constatnts.WebServiceConstants;
-import edu.aku.akuh_health_first.enums.BaseURLTypes;
 import edu.aku.akuh_health_first.fragments.abstracts.BaseFragment;
 import edu.aku.akuh_health_first.helperclasses.ui.helper.TitleBar;
-import edu.aku.akuh_health_first.helperclasses.ui.helper.UIHelper;
-import edu.aku.akuh_health_first.managers.FileManager;
-import edu.aku.akuh_health_first.managers.retrofit.GsonFactory;
-import edu.aku.akuh_health_first.managers.retrofit.WebServices;
-import edu.aku.akuh_health_first.models.Neurophysiology;
 import edu.aku.akuh_health_first.models.TimelineModel;
-import edu.aku.akuh_health_first.models.receiving_model.UserDetailModel;
-import edu.aku.akuh_health_first.models.wrappers.WebResponse;
-
-import static edu.aku.akuh_health_first.constatnts.AppConstants.DOC_PATH;
 
 /**
  * Created by aqsa.sarwar on 1/17/2018.

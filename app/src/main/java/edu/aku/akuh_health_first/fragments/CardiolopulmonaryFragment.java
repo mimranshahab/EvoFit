@@ -182,9 +182,9 @@ public class CardiolopulmonaryFragment extends BaseFragment implements View.OnCl
                                 public void requestDataResponse(WebResponse<String> webResponse) {
                                     String fileName = cardiolopulmonary.getDetailGraphID();
 
-                                    FileManager.writeResponseBodyToDisk(webResponse.result, fileName);
+                                    FileManager.writeResponseBodyToDisk(webResponse.result, fileName, AppConstants.getUserFolderPath(getContext()));
 
-                                    final File file = new File(DOC_PATH
+                                    final File file = new File( AppConstants.getUserFolderPath(getContext())
                                             + "/" + fileName);
 
                                     new Handler().postDelayed(new Runnable() {
@@ -228,9 +228,9 @@ public class CardiolopulmonaryFragment extends BaseFragment implements View.OnCl
                                 public void requestDataResponse(WebResponse<String> webResponse) {
                                     String fileName = cardiolopulmonary.getDetailReportID();
 
-                                    FileManager.writeResponseBodyToDisk(webResponse.result, fileName);
+                                    FileManager.writeResponseBodyToDisk(webResponse.result, fileName, AppConstants.getUserFolderPath(getContext()));
 
-                                    final File file = new File(DOC_PATH
+                                    final File file = new File( AppConstants.getUserFolderPath(getContext())
                                             + "/" + fileName);
 
                                     new Handler().postDelayed(new Runnable() {

@@ -18,18 +18,6 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
-            <edu.aku.akuh_health_first.helperclasses.ui.helper.TitleBar
-                android:id="@+id/titlebar"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
-
-            <!--<include-->
-                <!--android:id="@+id/lytDropDown"-->
-                <!--android:layout_width="match_parent"-->
-                <!--android:layout_height="wrap_content"-->
-                <!--android:layout_below="@id/titlebar"-->
-                <!--android:layout="@layout/drop_down_user_info"-->
-                <!--android:visibility="gone" />-->
 
             <FrameLayout
                 android:id="@+id/contPermanent"
@@ -44,6 +32,11 @@
                 android:layout_height="match_parent"
                 android:layout_below="@id/titlebar"
                 android:layout_centerHorizontal="true" />
+
+            <edu.aku.akuh_health_first.helperclasses.ui.helper.TitleBar
+                android:id="@+id/titlebar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
 
 
             <ProgressBar

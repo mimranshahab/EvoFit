@@ -17,7 +17,6 @@ import android.widget.TextView;
 
 import edu.aku.akuh_health_first.activities.BaseActivity;
 import edu.aku.akuh_health_first.callbacks.OnNewPacketReceivedListener;
-import edu.aku.akuh_health_first.fragments.DropDownUserInfo;
 import edu.aku.akuh_health_first.helperclasses.ui.helper.KeyboardHide;
 import edu.aku.akuh_health_first.helperclasses.ui.helper.TitleBar;
 import edu.aku.akuh_health_first.helperclasses.ui.helper.UIHelper;

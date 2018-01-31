@@ -5,25 +5,15 @@ import android.content.Context;
 import android.content.ContextWrapper;
 import android.content.Intent;
 import android.net.Uri;
-import android.os.Environment;
 import android.util.Base64;
-import android.util.Log;
 import android.webkit.MimeTypeMap;
 import android.webkit.URLUtil;
 import android.widget.Toast;
 
 
-import com.kbeanie.imagechooser.api.FileUtils;
-
-import org.apache.commons.io.IOUtils;
-
 import edu.aku.akuh_health_first.constatnts.AppConstants;
 import edu.aku.akuh_health_first.utils.LogUtil;
-import edu.aku.akuh_health_first.utils.utility.Utils;
-import okhttp3.ResponseBody;
-import okio.Utf8;
 
-import java.io.ByteArrayInputStream;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -35,8 +25,9 @@ import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
 import java.nio.channels.FileChannel;
 import java.text.DecimalFormat;
+import java.util.ArrayList;
+import java.util.Arrays;
 
-import static android.content.ContentValues.TAG;
 import static edu.aku.akuh_health_first.constatnts.AppConstants.DOC_PATH;
 
 
@@ -48,7 +39,7 @@ public class FileManager {
 
     private static void createDirectory(String directory) {
         /*First check if root directory not created then create*/
-        File rootDirectory = new File(AppConstants.ROOT_MEDIA_PATH);
+        File rootDirectory = new File(AppConstants.ROOT_PATH);
         if (!rootDirectory.exists())
             rootDirectory.mkdirs();
 
@@ -138,11 +129,11 @@ public class FileManager {
 //            return new File(cw.getDir(AppConstants.USER_PROFILE_PICTURE_F OLDER_DIRECTORY, Context.MODE_PRIVATE), AppConstants.USER_PROFILE_PICTURE_NAME);
 //    }
 
-    public static void writeResponseBodyToDisk(String body, String fileName) {
+    public static void writeResponseBodyToDisk(String body, String fileName, String directoryPath) {
 
-        createDirectory(DOC_PATH);
+        createDirectory(directoryPath);
 
-        File dwldsPath = new File(DOC_PATH
+        File dwldsPath = new File(directoryPath
                 + "/" + fileName);
 
         byte[] pdfAsBytes = Base64.decode(body, 0);
@@ -325,7 +316,7 @@ public class FileManager {
             } else if (url.toString().contains(".pdf")) {
                 // PDF file
                 intent.setDataAndType(uri, "application/pdf");
-             } else if (url.toString().contains(".ppt") || url.toString().contains(".pptx")) {
+            } else if (url.toString().contains(".ppt") || url.toString().contains(".pptx")) {
                 // Powerpoint file
                 intent.setDataAndType(uri, "application/vnd.ms-powerpoint");
             } else if (url.toString().contains(".xls") || url.toString().contains(".xlsx")) {
@@ -362,5 +353,24 @@ public class FileManager {
         } catch (ActivityNotFoundException e) {
             Toast.makeText(context, "No application found which can open the file", Toast.LENGTH_SHORT).show();
         }
+    }
+
+    public static ArrayList<File> getFilesForFolder(final File folder, ArrayList<File> arrayList) {
+        for (final File fileEntry : folder.listFiles()) {
+            if (fileEntry.isDirectory()) {
+                arrayList.addAll(getFilesForFolder(fileEntry, arrayList));
+            } else {
+                arrayList.add(fileEntry);
+            }
+        }
+        return arrayList;
+    }
+
+    public static ArrayList<File> getFiles(String DirectoryPath) {
+        File f = new File(DirectoryPath);
+        f.mkdirs();
+        ArrayList<File> arrayList = new ArrayList<>();
+        arrayList.addAll(Arrays.asList(f.listFiles()));
+        return arrayList;
     }
 }
