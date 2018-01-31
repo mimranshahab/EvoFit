@@ -84,6 +84,8 @@ public class CardiolopulmonaryFragment extends BaseFragment implements View.OnCl
         titleBar.resetViews();
         titleBar.setTitle("Cardiolopulmonary");
         titleBar.showBackButton(getBaseActivity());
+        titleBar.setCircleImageView( );
+        titleBar.showHome(getBaseActivity());
     }
 
 
@@ -122,7 +124,7 @@ public class CardiolopulmonaryFragment extends BaseFragment implements View.OnCl
 
     @Override
     public int getDrawerLockMode() {
-        return DrawerLayout.LOCK_MODE_UNLOCKED;
+        return DrawerLayout.LOCK_MODE_LOCKED_CLOSED;
     }
 
 

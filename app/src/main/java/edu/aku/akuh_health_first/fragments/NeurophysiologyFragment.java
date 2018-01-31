@@ -85,6 +85,8 @@ public class NeurophysiologyFragment extends BaseFragment implements View.OnClic
         titleBar.resetViews();
         titleBar.setTitle("Neurophysiology");
         titleBar.showBackButton(getBaseActivity());
+        titleBar.setCircleImageView( );
+        titleBar.showHome(getBaseActivity());
     }
 
 
@@ -123,7 +125,7 @@ public class NeurophysiologyFragment extends BaseFragment implements View.OnClic
 
     @Override
     public int getDrawerLockMode() {
-        return DrawerLayout.LOCK_MODE_UNLOCKED;
+        return DrawerLayout.LOCK_MODE_LOCKED_CLOSED;
     }
 
 

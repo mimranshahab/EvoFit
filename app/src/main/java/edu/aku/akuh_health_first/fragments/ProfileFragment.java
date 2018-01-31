@@ -75,7 +75,7 @@ public class ProfileFragment extends BaseFragment {
 
     @Override
     public int getDrawerLockMode() {
-        return DrawerLayout.LOCK_MODE_UNLOCKED;
+        return DrawerLayout.LOCK_MODE_LOCKED_CLOSED;
     }
 
     private void setData() {
@@ -98,6 +98,8 @@ public class ProfileFragment extends BaseFragment {
         titleBar.resetViews();
         titleBar.setTitle("My profile");
         titleBar.showBackButton(getBaseActivity());
+        titleBar.setCircleImageView( );
+        titleBar.showHome(getBaseActivity());
 
     }
 

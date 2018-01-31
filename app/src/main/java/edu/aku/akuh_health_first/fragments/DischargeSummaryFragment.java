@@ -28,6 +28,7 @@ import butterknife.Unbinder;
 import edu.aku.akuh_health_first.R;
 import edu.aku.akuh_health_first.adapters.recyleradapters.DischargeSummaryAdapter;
 import edu.aku.akuh_health_first.callbacks.OnItemClickListener;
+import edu.aku.akuh_health_first.constatnts.AppConstants;
 import edu.aku.akuh_health_first.constatnts.WebServiceConstants;
 import edu.aku.akuh_health_first.enums.BaseURLTypes;
 import edu.aku.akuh_health_first.fragments.abstracts.BaseFragment;
@@ -73,7 +74,7 @@ public class DischargeSummaryFragment extends BaseFragment implements View.OnCli
 
     @Override
     public int getDrawerLockMode() {
-        return DrawerLayout.LOCK_MODE_UNLOCKED;
+        return DrawerLayout.LOCK_MODE_LOCKED_CLOSED;
     }
 
     @Override
@@ -148,12 +149,8 @@ public class DischargeSummaryFragment extends BaseFragment implements View.OnCli
         titleBar.resetViews();
         titleBar.setTitle("Discharge Summary");
         titleBar.showBackButton(getBaseActivity());
-        titleBar.setCircleImageView(R.drawable.user_image, new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                titleBar.showAndHideDropDown();
-            }
-        });
+        titleBar.setCircleImageView( );
+        titleBar.showHome(getBaseActivity());
     }
 
     @Override
@@ -194,7 +191,7 @@ public class DischargeSummaryFragment extends BaseFragment implements View.OnCli
                             public void requestDataResponse(WebResponse<String> webResponse) {
                                 String fileName =  FileManager.getFileNameFromPath(FileManager.getReplacedSlash(summaryModel.getSummaryPath()));
 
-                                FileManager.writeResponseBodyToDisk(webResponse.result, fileName);
+                                FileManager.writeResponseBodyToDisk(webResponse.result, fileName, AppConstants.getUserFolderPath(getContext()));
 
                                 final File file = new File(DOC_PATH
                                         + "/" + fileName);

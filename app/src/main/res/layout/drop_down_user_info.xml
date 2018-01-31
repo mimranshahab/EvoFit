@@ -57,7 +57,9 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
         android:scaleType="centerCrop"
-        android:src="@drawable/ic_settings_profile" />
+        app:civ_border_width="@dimen/x3dp"
+        app:civ_border_color="@color/colorPrimaryDark"
+        android:src="@drawable/user_image" />
 
 
 </RelativeLayout>
