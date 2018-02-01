@@ -1,24 +1,56 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:card_view="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:orientation="vertical"
-    android:padding="@dimen/x5dp">
+    android:orientation="horizontal"
+    android:paddingLeft="@dimen/x10dp"
+    android:paddingRight="@dimen/x10dp"
+    android:paddingBottom="@dimen/x5dp"
+    android:paddingTop="@dimen/x5dp">
 
-    <edu.aku.akuh_health_first.views.AnyTextView
-        android:id="@+id/txtFileName"
+
+    <android.support.v7.widget.CardView
+        android:id="@+id/cardView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_gravity="center_vertical"
-        android:layout_margin="@dimen/x1dp"
-        android:background="@drawable/rounded_box_gradient_gray"
-        android:padding="@dimen/x5dp"
-        android:text="ABC-111111111-AC1"
-        android:textColor="@color/base_blue"
-        android:textSize="@dimen/s14"
-        app:typeface="@string/font_regular" />
+        android:layout_margin="@dimen/x5dp"
+        android:animateLayoutChanges="true"
+        android:padding="@dimen/x2dp"
+        card_view:cardCornerRadius="x5dp"
+        card_view:cardElevation="x15dp">
 
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/c_white"
+            android:gravity="center"
+            android:orientation="vertical">
+
+
+            <edu.aku.akuh_health_first.views.AnyTextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/x5dp"
+                android:text="File Name:"
+                android:textColor="@color/text_color_grey_dark"
+                android:textSize="@dimen/s16"
+                app:typeface="@string/font_bold" />
+
+            <edu.aku.akuh_health_first.views.AnyTextView
+                android:id="@+id/txtFileName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/x5dp"
+                android:text="File Name"
+                android:textSize="@dimen/s14"
+                app:typeface="@string/font_regular" />
+
+
+        </LinearLayout>
+
+    </android.support.v7.widget.CardView>
 
 
 </LinearLayout>

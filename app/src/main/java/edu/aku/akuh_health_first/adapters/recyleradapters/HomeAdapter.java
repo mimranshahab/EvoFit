@@ -73,12 +73,6 @@ public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.ViewHolder> {
             }
         });
 
-        holder.btnViewProfile.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                activity.addDockableFragment(HealthHistoryFragment.newInstance());
-            }
-        });
     }
 
     public void addItem(ArrayList<UserDetailModel> homeCategories) {
@@ -98,8 +92,6 @@ public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.ViewHolder> {
         ImageView imgUser;
         @BindView(R.id.txtName)
         AnyTextView txtName;
-        @BindView(R.id.btnViewProfile)
-        Button btnViewProfile;
         @BindView(R.id.txtMRN)
         AnyTextView txtMRN;
         @BindView(R.id.txtGender)

@@ -16,15 +16,13 @@ import android.view.animation.LayoutAnimationController;
 import android.widget.AdapterView;
 
 import java.io.File;
-import java.util.AbstractQueue;
 import java.util.ArrayList;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
 import edu.aku.akuh_health_first.R;
-import edu.aku.akuh_health_first.adapters.recyleradapters.FileDownloadedAdapter;
-import edu.aku.akuh_health_first.adapters.recyleradapters.NeurophysiologyAdapter;
+import edu.aku.akuh_health_first.adapters.recyleradapters.MyDocumentsAdapter;
 import edu.aku.akuh_health_first.constatnts.AppConstants;
 import edu.aku.akuh_health_first.fragments.abstracts.BaseFragment;
 import edu.aku.akuh_health_first.helperclasses.ui.helper.TitleBar;
@@ -42,7 +40,7 @@ public class MyDocumentsFragment extends BaseFragment {
     @BindView(R.id.refreshLayout)
     SwipeRefreshLayout refreshLayout;
     Unbinder unbinder;
-    private FileDownloadedAdapter adapterFileDownloded;
+    private MyDocumentsAdapter adapterFileDownloded;
     private ArrayList<File> arrFiles;
     private ArrayList<File> arrFiles1;
 
@@ -60,7 +58,7 @@ public class MyDocumentsFragment extends BaseFragment {
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         arrFiles = new ArrayList<File>();
-        adapterFileDownloded = new FileDownloadedAdapter(getBaseActivity(), arrFiles);
+        adapterFileDownloded = new MyDocumentsAdapter(getBaseActivity(), arrFiles);
     }
 
     @Override
