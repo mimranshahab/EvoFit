@@ -106,15 +106,15 @@
                     app:typeface="@string/font_regular" />
 
 
-                <Button
-                    android:id="@+id/btnViewProfile"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/x5dp"
-                    android:shadowColor="@color/base_amber"
-                    android:text="View Profile"
-                    android:textColor="@color/c_white"
-                    android:textSize="@dimen/s15" />
+                <!--<Button-->
+                    <!--android:id="@+id/btnViewProfile"-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:layout_marginTop="@dimen/x5dp"-->
+                    <!--android:shadowColor="@color/base_amber"-->
+                    <!--android:text="View Profile"-->
+                    <!--android:textColor="@color/c_white"-->
+                    <!--android:textSize="@dimen/s15" />-->
 
 
             </LinearLayout>

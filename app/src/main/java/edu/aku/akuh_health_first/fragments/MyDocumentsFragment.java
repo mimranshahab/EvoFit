@@ -1,6 +1,5 @@
 package edu.aku.akuh_health_first.fragments;
 
-import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.widget.DrawerLayout;
@@ -16,9 +15,8 @@ import android.view.animation.AnimationUtils;
 import android.view.animation.LayoutAnimationController;
 import android.widget.AdapterView;
 
-import com.santalu.emptyview.EmptyView;
-
 import java.io.File;
+import java.util.AbstractQueue;
 import java.util.ArrayList;
 
 import butterknife.BindView;
@@ -72,7 +70,7 @@ public class MyDocumentsFragment extends BaseFragment {
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-
+        bindView();
         arrFiles.addAll(FileManager.getFiles(AppConstants.getUserFolderPath(getContext())));
         adapterFileDownloded.notifyDataSetChanged();
         Log.d("FILE", "FILE COUNT: " + arrFiles.size());
@@ -102,9 +100,7 @@ public class MyDocumentsFragment extends BaseFragment {
         int resId = R.anim.layout_animation_fall_bottom;
         LayoutAnimationController animation = AnimationUtils.loadLayoutAnimation(getContext(), resId);
         recylerView.setLayoutAnimation(animation);
-
         recylerView.setAdapter(adapterFileDownloded);
-
     }
 
     @Override
