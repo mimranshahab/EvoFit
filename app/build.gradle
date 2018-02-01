@@ -75,6 +75,7 @@ dependencies {
 //   graph library
     compile 'com.jjoe64:graphview:4.2.1'
      compile 'me.tankery.lib:circularSeekBar:1.1.4'
+    compile 'com.github.santalu:emptyview:1.0.4'
  }
 
 //apply plugin: 'com.google.gms.google-services'

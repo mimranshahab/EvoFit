@@ -1,5 +1,6 @@
 package edu.aku.akuh_health_first.fragments;
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.widget.DrawerLayout;
@@ -15,20 +16,22 @@ import android.view.animation.AnimationUtils;
 import android.view.animation.LayoutAnimationController;
 import android.widget.AdapterView;
 
+import com.santalu.emptyview.EmptyView;
+
 import java.io.File;
-import java.util.AbstractQueue;
 import java.util.ArrayList;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
 import edu.aku.akuh_health_first.R;
-import edu.aku.akuh_health_first.adapters.recyleradapters.FileDownloadedAdapter;
-import edu.aku.akuh_health_first.adapters.recyleradapters.NeurophysiologyAdapter;
+import edu.aku.akuh_health_first.adapters.recyleradapters.MyDocumentsAdapter;
 import edu.aku.akuh_health_first.constatnts.AppConstants;
 import edu.aku.akuh_health_first.fragments.abstracts.BaseFragment;
 import edu.aku.akuh_health_first.helperclasses.ui.helper.TitleBar;
+import edu.aku.akuh_health_first.helperclasses.ui.helper.UIHelper;
 import edu.aku.akuh_health_first.managers.FileManager;
+import edu.aku.akuh_health_first.views.AnyTextView;
 
 /**
  * Created by aqsa.sarwar on 1/31/2018.
@@ -42,7 +45,9 @@ public class MyDocumentsFragment extends BaseFragment {
     @BindView(R.id.refreshLayout)
     SwipeRefreshLayout refreshLayout;
     Unbinder unbinder;
-    private FileDownloadedAdapter adapterFileDownloded;
+    @BindView(R.id.empty_view)
+    AnyTextView emptyView;
+    private MyDocumentsAdapter adapterFileDownloded;
     private ArrayList<File> arrFiles;
     private ArrayList<File> arrFiles1;
 
@@ -60,20 +65,29 @@ public class MyDocumentsFragment extends BaseFragment {
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         arrFiles = new ArrayList<File>();
-        adapterFileDownloded = new FileDownloadedAdapter(getBaseActivity(), arrFiles);
+        adapterFileDownloded = new MyDocumentsAdapter(getBaseActivity(), arrFiles);
     }
 
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        bindView();
+
         arrFiles.addAll(FileManager.getFiles(AppConstants.getUserFolderPath(getContext())));
         adapterFileDownloded.notifyDataSetChanged();
         Log.d("FILE", "FILE COUNT: " + arrFiles.size());
+//        }
+        if (arrFiles.size() > 0) {
+            bindView();
+            emptyView.setVisibility(View.GONE);
+            refreshLayout.setVisibility(View.VISIBLE);
+
+        } else {
+            refreshLayout.setVisibility(View.GONE);
+            emptyView.setVisibility(View.VISIBLE);
 
 
-
+        }
     }
 
     @Override
@@ -88,7 +102,9 @@ public class MyDocumentsFragment extends BaseFragment {
         int resId = R.anim.layout_animation_fall_bottom;
         LayoutAnimationController animation = AnimationUtils.loadLayoutAnimation(getContext(), resId);
         recylerView.setLayoutAnimation(animation);
+
         recylerView.setAdapter(adapterFileDownloded);
+
     }
 
     @Override

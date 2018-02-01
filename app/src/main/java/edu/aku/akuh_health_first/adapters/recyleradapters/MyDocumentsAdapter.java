@@ -2,7 +2,7 @@
  * Created by aqsa.sarwar on 1/31/2018.
  */
 
-//public class FileDownloadedAdapter extends RecyclerView.Adapter(CardioAdapter.ViewHolder) {
+//public class MyDocumentsAdapter extends RecyclerView.Adapter(CardioAdapter.ViewHolder) {
 //}
 package edu.aku.akuh_health_first.adapters.recyleradapters;
 
@@ -12,8 +12,6 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
-import android.widget.LinearLayout;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -28,13 +26,13 @@ import edu.aku.akuh_health_first.views.AnyTextView;
 
 /**
  */
-public class FileDownloadedAdapter extends RecyclerView.Adapter<FileDownloadedAdapter.ViewHolder> {
+public class MyDocumentsAdapter extends RecyclerView.Adapter<MyDocumentsAdapter.ViewHolder> {
 
 
     private Activity activity;
     private ArrayList<File> arrData;
 
-    public FileDownloadedAdapter(Activity activity, ArrayList<File> arrayList) {
+    public MyDocumentsAdapter(Activity activity, ArrayList<File> arrayList) {
         this.arrData = arrayList;
         this.activity = activity;
 
@@ -54,29 +52,31 @@ public class FileDownloadedAdapter extends RecyclerView.Adapter<FileDownloadedAd
 
         final File model = arrData.get(holder.getAdapterPosition());
 
-        holder.txtFileName.setText(model.getName());
+            holder.txtFileName.setText(model.getName());
 //        holder.txtFileName.setText(arrData.get(i).getName());
 
-        holder.txtFileName.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                final File file = new File(AppConstants.getUserFolderPath(activity)
-                        + "/" + model.getName());
-                if (FileManager.isFileExits(file.getPath())) {
-                    new Handler().postDelayed(new Runnable() {
-                        @Override
-                        public void run() {
-                            FileManager.openFile(activity, file);
-                        }
-                    }, 300);
+            holder.txtFileName.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    final File file = new File(AppConstants.getUserFolderPath(activity)
+                            + "/" + model.getName());
+                    if (FileManager.isFileExits(file.getPath())) {
+                        new Handler().postDelayed(new Runnable() {
+                            @Override
+                            public void run() {
+                                FileManager.openFile(activity, file);
+                            }
+                        }, 300);
 
 
+                    }
                 }
-            }
 
-    });
+            });
 
-    }
+        }
+
+
     public void addItem(ArrayList<File> homeCategories) {
         this.arrData = homeCategories;
         notifyDataSetChanged();
