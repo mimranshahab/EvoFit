@@ -74,7 +74,7 @@ dependencies {
     compile 'com.github.apache:commons-io:2.5'
 //   graph library
     compile 'com.jjoe64:graphview:4.2.1'
-     compile 'me.tankery.lib:circularSeekBar:1.1.4'
+    compile 'me.tankery.lib:circularSeekBar:1.1.4'
  }
 
 //apply plugin: 'com.google.gms.google-services'

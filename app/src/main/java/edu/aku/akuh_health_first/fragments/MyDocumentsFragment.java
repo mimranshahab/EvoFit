@@ -1,5 +1,6 @@
 package edu.aku.akuh_health_first.fragments;
 
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.widget.DrawerLayout;
@@ -14,6 +15,7 @@ import android.view.ViewGroup;
 import android.view.animation.AnimationUtils;
 import android.view.animation.LayoutAnimationController;
 import android.widget.AdapterView;
+import android.widget.Toast;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -22,28 +24,33 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
 import edu.aku.akuh_health_first.R;
+import edu.aku.akuh_health_first.activities.MainActivity;
 import edu.aku.akuh_health_first.adapters.recyleradapters.MyDocumentsAdapter;
+import edu.aku.akuh_health_first.callbacks.OnItemClickListener;
 import edu.aku.akuh_health_first.constatnts.AppConstants;
 import edu.aku.akuh_health_first.fragments.abstracts.BaseFragment;
 import edu.aku.akuh_health_first.helperclasses.ui.helper.TitleBar;
+import edu.aku.akuh_health_first.helperclasses.ui.helper.UIHelper;
+import edu.aku.akuh_health_first.libraries.swipetodelete.CdsItemTouchCallback;
+import edu.aku.akuh_health_first.libraries.swipetodelete.CdsRecyclerView;
 import edu.aku.akuh_health_first.managers.FileManager;
 
 /**
  * Created by aqsa.sarwar on 1/31/2018.
  */
 
-public class MyDocumentsFragment extends BaseFragment {
+public class MyDocumentsFragment extends BaseFragment implements OnItemClickListener {
 
 
-    @BindView(R.id.recylerView)
-    RecyclerView recylerView;
+    CdsRecyclerView recylerView;
     @BindView(R.id.refreshLayout)
     SwipeRefreshLayout refreshLayout;
     Unbinder unbinder;
     private MyDocumentsAdapter adapterFileDownloded;
     private ArrayList<File> arrFiles;
-    private ArrayList<File> arrFiles1;
 
+//    private CdsItemTouchCallback.ItemDragCompleteListener mItemDragCompleteListener;
+//    private CdsItemTouchCallback.ItemSwipeCompleteListener mItemSwipeCompleteListener;
 
     public static MyDocumentsFragment newInstance() {
 
@@ -58,20 +65,18 @@ public class MyDocumentsFragment extends BaseFragment {
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         arrFiles = new ArrayList<File>();
-        adapterFileDownloded = new MyDocumentsAdapter(getBaseActivity(), arrFiles);
+        adapterFileDownloded = new MyDocumentsAdapter(getBaseActivity(), arrFiles, this);
     }
 
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
+        initListeners();
         bindView();
         arrFiles.addAll(FileManager.getFiles(AppConstants.getUserFolderPath(getContext())));
         adapterFileDownloded.notifyDataSetChanged();
         Log.d("FILE", "FILE COUNT: " + arrFiles.size());
-
-
-
     }
 
     @Override
@@ -80,6 +85,9 @@ public class MyDocumentsFragment extends BaseFragment {
     }
 
     private void bindView() {
+        recylerView = new CdsRecyclerView(getContext());
+        recylerView = view.findViewById(R.id.recylerView);
+
         RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getBaseActivity());
         recylerView.setLayoutManager(mLayoutManager);
         ((DefaultItemAnimator) recylerView.getItemAnimator()).setSupportsChangeAnimations(false);
@@ -89,9 +97,30 @@ public class MyDocumentsFragment extends BaseFragment {
         recylerView.setAdapter(adapterFileDownloded);
     }
 
+
+    private void initListeners() {
+
+//        mItemDragCompleteListener = new CdsItemTouchCallback.ItemDragCompleteListener() {
+//            @Override
+//            public void onItemDragComplete(int fromPosition, int toPosition) {
+//                Toast.makeText(getContext(), "Item dragged from " + fromPosition +
+//                        " to " + toPosition, Toast.LENGTH_SHORT).show();
+//            }
+//        };
+//        mItemSwipeCompleteListener = new CdsItemTouchCallback.ItemSwipeCompleteListener() {
+//            @Override
+//            public void onItemSwipeComplete(int position) {
+//                Toast.makeText(getContext(), "Item was swiped:" + position,
+//                        Toast.LENGTH_SHORT).show();
+//            }
+//        };
+
+    }
+
+
     @Override
     protected int getFragmentLayout() {
-        return R.layout.fragment_general_recyler_view;
+        return R.layout.fragment_mydocument;
     }
 
     @Override
@@ -99,6 +128,8 @@ public class MyDocumentsFragment extends BaseFragment {
         titleBar.resetViews();
         titleBar.setTitle("My Documents");
         titleBar.showBackButton(getBaseActivity());
+        titleBar.showHome(getBaseActivity());
+        titleBar.setCircleImageView();
 
     }
 
@@ -111,6 +142,14 @@ public class MyDocumentsFragment extends BaseFragment {
                 refreshLayout.setRefreshing(false);
             }
         });
+
+
+////        recylerView.setItemDragCompleteListener(mItemDragCompleteListener);
+//        recylerView.setItemSwipeCompleteListener(mItemSwipeCompleteListener);
+//
+//        recylerView.enableItemSwipe();
+//        recylerView.enableItemDrag();
+
     }
 
     @Override
@@ -119,7 +158,7 @@ public class MyDocumentsFragment extends BaseFragment {
     }
 
     @Override
-    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+    public void onItemClick(AdapterView<?> parent, View view, final int position, long id) {
 
     }
 
@@ -135,5 +174,28 @@ public class MyDocumentsFragment extends BaseFragment {
     public void onDestroyView() {
         super.onDestroyView();
         unbinder.unbind();
+    }
+
+    @Override
+    public void onItemClick(final int position, Object object) {
+
+        if (object instanceof File) {
+            final File file = (File) object;
+
+
+            UIHelper.showAlertDialog("Press 'OK' to delete this File.", "Delete", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialogInterface, int i) {
+                    file.delete();
+                    arrFiles.remove(position);
+//                    adapterFileDownloded.removeItem(position);
+                    adapterFileDownloded.notifyDataSetChanged();
+                    UIHelper.showToast(getContext(), "File deleted successfully.");
+                }
+            }, getContext());
+
+        }
+
+
     }
 }

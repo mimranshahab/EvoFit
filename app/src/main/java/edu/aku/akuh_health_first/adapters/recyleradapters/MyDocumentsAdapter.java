@@ -12,6 +12,8 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.ImageView;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -19,22 +21,26 @@ import java.util.ArrayList;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import edu.aku.akuh_health_first.R;
+import edu.aku.akuh_health_first.callbacks.OnItemClickListener;
 import edu.aku.akuh_health_first.constatnts.AppConstants;
+import edu.aku.akuh_health_first.libraries.swipetodelete.CdsRecyclerViewAdapter;
 import edu.aku.akuh_health_first.managers.FileManager;
 import edu.aku.akuh_health_first.views.AnyTextView;
 
 /**
  */
-public class MyDocumentsAdapter extends RecyclerView.Adapter<MyDocumentsAdapter.ViewHolder> {
+public class MyDocumentsAdapter extends CdsRecyclerViewAdapter<File, MyDocumentsAdapter.ViewHolder> {
 
 
     private Activity activity;
     private ArrayList<File> arrData;
+    private OnItemClickListener onItemClickListener;
 
-    public MyDocumentsAdapter(Activity activity, ArrayList<File> arrayList) {
+    public MyDocumentsAdapter(Activity activity, ArrayList<File> arrayList,  OnItemClickListener onItemClickListener) {
+        super(activity, arrayList);
         this.arrData = arrayList;
         this.activity = activity;
-
+        this.onItemClickListener = onItemClickListener;
     }
 
     @Override
@@ -47,12 +53,24 @@ public class MyDocumentsAdapter extends RecyclerView.Adapter<MyDocumentsAdapter.
     }
 
     @Override
-    public void onBindViewHolder(final ViewHolder holder, int i) {
+    public void bindHolder(final ViewHolder holder, int i) {
 
         final File model = arrData.get(holder.getAdapterPosition());
 
         holder.txtFileName.setText(model.getName());
-//        holder.txtFileName.setText(arrData.get(i).getName());
+
+        setListener(holder, model);
+
+    }
+
+    private void setListener(final ViewHolder holder, final File model) {
+
+        holder.btnDelete.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                onItemClickListener.onItemClick(holder.getAdapterPosition(), model);
+            }
+        });
 
         holder.txtFileName.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -71,9 +89,9 @@ public class MyDocumentsAdapter extends RecyclerView.Adapter<MyDocumentsAdapter.
                 }
             }
 
-    });
-
+        });
     }
+
     public void addItem(ArrayList<File> homeCategories) {
         this.arrData = homeCategories;
         notifyDataSetChanged();
@@ -89,6 +107,8 @@ public class MyDocumentsAdapter extends RecyclerView.Adapter<MyDocumentsAdapter.
 
         @BindView(R.id.txtFileName)
         AnyTextView txtFileName;
+        @BindView(R.id.btnDelete)
+        ImageView btnDelete;
 
         ViewHolder(View view) {
             super(view);
