@@ -18,6 +18,7 @@ import android.widget.AdapterView;
 import android.widget.Toast;
 
 import java.io.File;
+import java.util.AbstractQueue;
 import java.util.ArrayList;
 
 import butterknife.BindView;
@@ -31,9 +32,11 @@ import edu.aku.akuh_health_first.constatnts.AppConstants;
 import edu.aku.akuh_health_first.fragments.abstracts.BaseFragment;
 import edu.aku.akuh_health_first.helperclasses.ui.helper.TitleBar;
 import edu.aku.akuh_health_first.helperclasses.ui.helper.UIHelper;
+import edu.aku.akuh_health_first.helperclasses.ui.helper.UIHelper;
 import edu.aku.akuh_health_first.libraries.swipetodelete.CdsItemTouchCallback;
 import edu.aku.akuh_health_first.libraries.swipetodelete.CdsRecyclerView;
 import edu.aku.akuh_health_first.managers.FileManager;
+import edu.aku.akuh_health_first.views.AnyTextView;
 
 /**
  * Created by aqsa.sarwar on 1/31/2018.
@@ -46,6 +49,8 @@ public class MyDocumentsFragment extends BaseFragment implements OnItemClickList
     @BindView(R.id.refreshLayout)
     SwipeRefreshLayout refreshLayout;
     Unbinder unbinder;
+    @BindView(R.id.empty_view)
+    AnyTextView emptyView;
     private MyDocumentsAdapter adapterFileDownloded;
     private ArrayList<File> arrFiles;
 
@@ -77,6 +82,18 @@ public class MyDocumentsFragment extends BaseFragment implements OnItemClickList
         arrFiles.addAll(FileManager.getFiles(AppConstants.getUserFolderPath(getContext())));
         adapterFileDownloded.notifyDataSetChanged();
         Log.d("FILE", "FILE COUNT: " + arrFiles.size());
+//        }
+        if (arrFiles.size() > 0) {
+            bindView();
+            emptyView.setVisibility(View.GONE);
+            refreshLayout.setVisibility(View.VISIBLE);
+
+        } else {
+            refreshLayout.setVisibility(View.GONE);
+            emptyView.setVisibility(View.VISIBLE);
+
+
+        }
     }
 
     @Override
@@ -142,14 +159,6 @@ public class MyDocumentsFragment extends BaseFragment implements OnItemClickList
                 refreshLayout.setRefreshing(false);
             }
         });
-
-
-////        recylerView.setItemDragCompleteListener(mItemDragCompleteListener);
-//        recylerView.setItemSwipeCompleteListener(mItemSwipeCompleteListener);
-//
-//        recylerView.enableItemSwipe();
-//        recylerView.enableItemDrag();
-
     }
 
     @Override
