@@ -1000,17 +1000,7 @@ public class DateHelper {
         return differenceSeconds;
     }
 
-//    public static long getTimeInMillis(String creation_date) {
-//        try {
-//            Date date = DateUtils.parseDate(creation_date,
-//                    "yyyy-MM-dd HH:mm:ss");
-//            return date.getTime();
-//        } catch (ParseException e) {
-//
-//            e.printStackTrace();
-//        }
-//        return 0;
-//    }
+
 
     public static String TimeZone(String dateString) {
 

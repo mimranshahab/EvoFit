@@ -24,6 +24,7 @@ public class WebServiceConstants {
     public static final String tempCardNumber = "0000-0000-0031";
     public static final String tempMRN = "291-32-60";
     public static final String tempMRN_LAB = "510-29-10";
+    public static final String tempMRN_immunization = "269-14-57";
     public static final String temp_Specimen_Num = "53786623";
     public static final String tempPassword = "uL952ERAghddR2h+CedbuA==";
     /**
@@ -48,6 +49,11 @@ public class WebServiceConstants {
     public static final String METHOD_SHOW_REPORT_DS= "PatientManager.ShowReport";
     public static final String METHOD_VISIT_PATIENT_DS= "PatientManager.GetPatientVisit";
     public static final String METHOD_DISCHARGE_SUMMARY_LIST= "PatientManager.GetDischargeSummaryList";
+
+    public static final String METHOD_IMMUNIZATION_VACCINE_SCHEDULE= "PharmacyManager.VaccineSchedule";
+    public static final String METHOD_IMMUNIZATION_UPDATE_VACCINE= "PharmacyManager.UpdateVaccine";
+    public static final String METHOD_IMMUNIZATION_ADD_VACCINE= "PharmacyManager.AddVaccine";
+    public static final String METHOD_IMMUNIZATION_VACCINE_IDS= "PharmacyManager.GetVaccineIDs";
 
 
     /**

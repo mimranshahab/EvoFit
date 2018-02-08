@@ -2,6 +2,7 @@ package edu.aku.akuh_health_first.managers;
 
 import android.app.DatePickerDialog;
 import android.content.Context;
+import android.text.format.DateUtils;
 import android.widget.DatePicker;
 import android.widget.TextView;
 
@@ -28,6 +29,13 @@ public class DateManager {
     private static SimpleDateFormat sdfDateOuput = new SimpleDateFormat(AppConstants.OUTPUT_DATE_TIME_FORMAT);
     private static SimpleDateFormat sdfTimeInput = new SimpleDateFormat(AppConstants.INPUT_TIME_FORMAT);
     private static SimpleDateFormat sdfTimeOuput = new SimpleDateFormat(AppConstants.OUTPUT_TIME_FORMAT);
+
+
+    // Custom FOR AKUH
+    public static SimpleDateFormat sdfDateInputImmunization = new SimpleDateFormat(AppConstants.INPUT_DATE_FORMAT_IMMUNIZATION);
+
+
+    // Methods
 
     public static Date getDate(long millisecond) {
         return new Date(millisecond);
@@ -392,4 +400,16 @@ public class DateManager {
             UIHelper.showLongToastInCenter(context, "Unable to show Date picker");
         }
     }
+
+
+    public static long getTimeInMillis(SimpleDateFormat simpleDateFormat, String date) {
+        try {
+            return simpleDateFormat.parse(date).getTime();
+        } catch (ParseException e) {
+
+            e.printStackTrace();
+        }
+        return 0;
+    }
+
 }

@@ -13,9 +13,7 @@ import java.util.ArrayList;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
-import butterknife.OnItemClick;
 import edu.aku.akuh_health_first.R;
-import edu.aku.akuh_health_first.callbacks.OnItemClickListener;
 import edu.aku.akuh_health_first.models.CardioModel;
 import edu.aku.akuh_health_first.views.AnyTextView;
 

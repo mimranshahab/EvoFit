@@ -22,6 +22,13 @@ public class AppConstants {
     public static final String OUTPUT_DATE_TIME_FORMAT = "EEEE dd,yyyy hh:mm a";
     public static final String INPUT_LAB_DATE_FORMAT_AM_PM = "mm/dd/yyyy hh:mm:ss a";
 
+
+    // Custom For AKUH
+    public static final String INPUT_DATE_FORMAT_IMMUNIZATION = "dd/MM/yyyy";
+
+
+
+
     public static final String GENERAL_DATE_FORMAT = "dd-MM-yy";
     public static final String ROOT_PATH = Environment.getExternalStorageDirectory().getPath()
             + "/" + BaseApplication.getApplicationName();

@@ -1,35 +1,60 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:fab="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/imgmainbg"
     android:orientation="vertical">
 
-    <android.support.v4.widget.SwipeRefreshLayout
-        android:id="@+id/refreshLayout"
-        android:layout_width="match_parent"
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
 
-        android:layout_height="wrap_content"
-        android:background="@drawable/imgmainbg">
-
-        <android.support.v7.widget.RecyclerView
-            android:id="@+id/recylerView"
+        <android.support.v4.widget.SwipeRefreshLayout
+            android:id="@+id/refreshLayout"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
 
-        </android.support.v7.widget.RecyclerView>
-    </android.support.v4.widget.SwipeRefreshLayout>
+            android:layout_height="wrap_content"
+            android:background="@drawable/imgmainbg">
 
-    <edu.aku.akuh_health_first.views.AnyTextView
-        android:id="@+id/empty_view"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@color/colorSheetDivider"
-        android:gravity="center"
-        android:text="No item Found"
-        android:textColor="@color/c_black"
-        android:textSize="@dimen/s22"
-        android:visibility="visible"
-        app:typeface="@string/font_bold" />
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/recylerView"
+
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+            </android.support.v7.widget.RecyclerView>
+        </android.support.v4.widget.SwipeRefreshLayout>
+
+        <edu.aku.akuh_health_first.views.AnyTextView
+            android:id="@+id/empty_view"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/colorSheetDivider"
+            android:gravity="center"
+            android:text="No item Found"
+            android:textColor="@color/c_black"
+            android:textSize="@dimen/s22"
+            android:visibility="gone"
+            app:typeface="@string/font_bold" />
+
+
+        <com.github.clans.fab.FloatingActionButton
+            android:id="@+id/fab"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@id/refreshLayout"
+            android:layout_alignParentRight="true"
+            android:layout_marginBottom="@dimen/x8dp"
+            android:layout_marginRight="@dimen/x8dp"
+            android:padding="@dimen/x8dp"
+            android:visibility="gone"
+            android:src="@drawable/plus"
+            fab:fab_colorNormal="@color/app_primary"
+            fab:fab_colorPressed="@color/app_primary_pressed"
+            fab:fab_colorRipple="@color/app_ripple" />
+    </RelativeLayout>
+
 </LinearLayout>
+
