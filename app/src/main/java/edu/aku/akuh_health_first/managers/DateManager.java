@@ -374,6 +374,7 @@ public class DateManager {
         return mDesiredString;
     }
 
+
     public static void showDatePicker(final Context context, final TextView textView, final DatePickerDialog.OnDateSetListener onDateSetListener) {
 
         if (textView != null) {

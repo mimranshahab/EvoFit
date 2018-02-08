@@ -24,6 +24,7 @@ public class WebServiceConstants {
     public static final String tempCardNumber = "0000-0000-0031";
     public static final String tempMRN = "291-32-60";
     public static final String tempMRN_LAB = "510-29-10";
+    public static final String tempMRN_RADIOLOGY = "294-71-23";
     public static final String tempMRN_immunization = "269-14-57";
     public static final String temp_Specimen_Num = "53786623";
     public static final String tempPassword = "uL952ERAghddR2h+CedbuA==";
@@ -37,6 +38,8 @@ public class WebServiceConstants {
     public static final String METHOD_CARD_MEMBER = "UserManager.GetCardMembersDetail";
     public static final String METHOD_USER_UPLOAD_REQUEST_FILE = "UserManager.UploadRequestFile";
     public static final String METHOD_PACMANAGER = "PACSManager.GetPacs";
+    public static final String METHOD_GET_RADIOLOGY_EXAMS = "RadiologyManager.GetRadiologyExams";
+    public static final String METHOD_GET_RADIOLOGY_GET_EXAM_DETAIL = "RadiologyManager.GetExamDetail";
     public static final String METHOD_NEUROPHIOLOGY = "NeurophysiologyManager.GetNeurophysiologyExam";
     public static final String METHOD_NEUROPHIOLOGY_SHOW_REPORT= "NeurophysiologyManager.ShowReport";
     public static final String METHOD_CARDIO= "CardiopulmonaryManager.GetCardiopulmonaryExam";

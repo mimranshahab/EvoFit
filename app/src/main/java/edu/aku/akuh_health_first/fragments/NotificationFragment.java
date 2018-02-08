@@ -75,7 +75,7 @@ public class NotificationFragment extends BaseFragment implements View.OnClickLi
 
     @Override
     public int getDrawerLockMode() {
-        return DrawerLayout.LOCK_MODE_UNLOCKED;
+        return DrawerLayout.LOCK_MODE_LOCKED_CLOSED;
     }
 
 

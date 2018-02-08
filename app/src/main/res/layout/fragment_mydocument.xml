@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v4.widget.SwipeRefreshLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/refreshLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/imgmainbg"
+    android:orientation="vertical">
+
+
+    <edu.aku.akuh_health_first.libraries.swipetodelete.CdsRecyclerView
+        android:id="@+id/recylerView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+    </edu.aku.akuh_health_first.libraries.swipetodelete.CdsRecyclerView>
+
+</android.support.v4.widget.SwipeRefreshLayout>

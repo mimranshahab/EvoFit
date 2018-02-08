@@ -95,20 +95,20 @@ public class DischargeSummaryFragment extends BaseFragment implements View.OnCli
         UserDetailModel currentUser = sharedPreferenceManager.getCurrentUser();
         currentUser.setMRNumber(WebServiceConstants.tempMRN_LAB);
 
-        new WebServices(getBaseActivity(), WebServiceConstants.temporaryToken, BaseURLTypes.AHFA_BASE_URL)
-                .webServiceRequestAPI(WebServiceConstants.METHOD_PATIENT_DETAIL_DS,
-                        currentUser.getMRNumberwithComma(),
-                        new WebServices.IRequestJsonDataCallBack() {
-                            @Override
-                            public void requestDataResponse(WebResponse<JsonObject> webResponse) {
-
-                            }
-
-                            @Override
-                            public void onError() {
-
-                            }
-                        });
+//        new WebServices(getBaseActivity(), WebServiceConstants.temporaryToken, BaseURLTypes.AHFA_BASE_URL)
+//                .webServiceRequestAPI(WebServiceConstants.METHOD_PATIENT_DETAIL_DS,
+//                        currentUser.getMRNumberwithComma(),
+//                        new WebServices.IRequestJsonDataCallBack() {
+//                            @Override
+//                            public void requestDataResponse(WebResponse<JsonObject> webResponse) {
+//
+//                            }
+//
+//                            @Override
+//                            public void onError() {
+//
+//                            }
+//                        });
 
         new WebServices(getBaseActivity(), WebServiceConstants.temporaryToken, BaseURLTypes.AHFA_BASE_URL)
                 .webServiceRequestAPIForArray(WebServiceConstants.METHOD_DISCHARGE_SUMMARY_LIST,

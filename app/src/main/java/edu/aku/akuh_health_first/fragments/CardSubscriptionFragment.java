@@ -53,7 +53,7 @@ public class CardSubscriptionFragment extends BaseFragment {
 
     @Override
     public int getDrawerLockMode() {
-        return DrawerLayout.LOCK_MODE_UNLOCKED;
+        return DrawerLayout.LOCK_MODE_LOCKED_CLOSED;
     }
 
     @Override

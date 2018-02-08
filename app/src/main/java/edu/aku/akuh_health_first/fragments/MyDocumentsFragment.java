@@ -1,5 +1,6 @@
 package edu.aku.akuh_health_first.fragments;
 
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.widget.DrawerLayout;
@@ -14,6 +15,7 @@ import android.view.ViewGroup;
 import android.view.animation.AnimationUtils;
 import android.view.animation.LayoutAnimationController;
 import android.widget.AdapterView;
+import android.widget.Toast;
 
 import java.io.File;
 import java.util.AbstractQueue;
@@ -23,11 +25,16 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
 import edu.aku.akuh_health_first.R;
+import edu.aku.akuh_health_first.activities.MainActivity;
 import edu.aku.akuh_health_first.adapters.recyleradapters.MyDocumentsAdapter;
+import edu.aku.akuh_health_first.callbacks.OnItemClickListener;
 import edu.aku.akuh_health_first.constatnts.AppConstants;
 import edu.aku.akuh_health_first.fragments.abstracts.BaseFragment;
 import edu.aku.akuh_health_first.helperclasses.ui.helper.TitleBar;
 import edu.aku.akuh_health_first.helperclasses.ui.helper.UIHelper;
+import edu.aku.akuh_health_first.helperclasses.ui.helper.UIHelper;
+import edu.aku.akuh_health_first.libraries.swipetodelete.CdsItemTouchCallback;
+import edu.aku.akuh_health_first.libraries.swipetodelete.CdsRecyclerView;
 import edu.aku.akuh_health_first.managers.FileManager;
 import edu.aku.akuh_health_first.views.AnyTextView;
 
@@ -35,10 +42,9 @@ import edu.aku.akuh_health_first.views.AnyTextView;
  * Created by aqsa.sarwar on 1/31/2018.
  */
 
-public class MyDocumentsFragment extends BaseFragment {
+public class MyDocumentsFragment extends BaseFragment implements OnItemClickListener {
 
 
-    @BindView(R.id.recylerView)
     RecyclerView recylerView;
     @BindView(R.id.refreshLayout)
     SwipeRefreshLayout refreshLayout;
@@ -47,8 +53,6 @@ public class MyDocumentsFragment extends BaseFragment {
     AnyTextView emptyView;
     private MyDocumentsAdapter adapterFileDownloded;
     private ArrayList<File> arrFiles;
-    private ArrayList<File> arrFiles1;
-
 
     public static MyDocumentsFragment newInstance() {
 
@@ -63,7 +67,7 @@ public class MyDocumentsFragment extends BaseFragment {
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         arrFiles = new ArrayList<File>();
-        adapterFileDownloded = new MyDocumentsAdapter(getBaseActivity(), arrFiles);
+        adapterFileDownloded = new MyDocumentsAdapter(getBaseActivity(), arrFiles, this);
     }
 
     @Override
@@ -76,16 +80,22 @@ public class MyDocumentsFragment extends BaseFragment {
         Log.d("FILE", "FILE COUNT: " + arrFiles.size());
 //        }
         if (arrFiles.size() > 0) {
-            bindView();
-            emptyView.setVisibility(View.GONE);
-            refreshLayout.setVisibility(View.VISIBLE);
+            showView();
 
         } else {
-            refreshLayout.setVisibility(View.GONE);
-            emptyView.setVisibility(View.VISIBLE);
-
-
+            showEmptyView();
         }
+    }
+
+    private void showEmptyView() {
+        refreshLayout.setVisibility(View.GONE);
+        emptyView.setVisibility(View.VISIBLE);
+    }
+
+    private void showView() {
+        bindView();
+        emptyView.setVisibility(View.GONE);
+        refreshLayout.setVisibility(View.VISIBLE);
     }
 
     @Override
@@ -94,6 +104,8 @@ public class MyDocumentsFragment extends BaseFragment {
     }
 
     private void bindView() {
+        recylerView = view.findViewById(R.id.recylerView);
+
         RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getBaseActivity());
         recylerView.setLayoutManager(mLayoutManager);
         ((DefaultItemAnimator) recylerView.getItemAnimator()).setSupportsChangeAnimations(false);
@@ -102,6 +114,7 @@ public class MyDocumentsFragment extends BaseFragment {
         recylerView.setLayoutAnimation(animation);
         recylerView.setAdapter(adapterFileDownloded);
     }
+
 
     @Override
     protected int getFragmentLayout() {
@@ -113,6 +126,8 @@ public class MyDocumentsFragment extends BaseFragment {
         titleBar.resetViews();
         titleBar.setTitle("My Documents");
         titleBar.showBackButton(getBaseActivity());
+        titleBar.showHome(getBaseActivity());
+        titleBar.setCircleImageView();
 
     }
 
@@ -121,7 +136,6 @@ public class MyDocumentsFragment extends BaseFragment {
         refreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
-
                 refreshLayout.setRefreshing(false);
             }
         });
@@ -133,7 +147,7 @@ public class MyDocumentsFragment extends BaseFragment {
     }
 
     @Override
-    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+    public void onItemClick(AdapterView<?> parent, View view, final int position, long id) {
 
     }
 
@@ -149,5 +163,29 @@ public class MyDocumentsFragment extends BaseFragment {
     public void onDestroyView() {
         super.onDestroyView();
         unbinder.unbind();
+    }
+
+    @Override
+    public void onItemClick(final int position, Object object) {
+
+        if (object instanceof File) {
+            final File file = (File) object;
+
+
+            UIHelper.showAlertDialog("Press 'OK' to delete this File.", "Delete", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialogInterface, int i) {
+                    file.delete();
+                    arrFiles.remove(position);
+//                    adapterFileDownloded.removeItem(position);
+                    adapterFileDownloded.notifyDataSetChanged();
+                    UIHelper.showToast(getContext(), "File deleted successfully.");
+                    if (arrFiles.size() == 0) {
+                        showEmptyView();
+                    }
+                }
+            }, getContext());
+
+        }
     }
 }
