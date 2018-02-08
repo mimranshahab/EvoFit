@@ -32,15 +32,14 @@ import edu.aku.akuh_health_first.views.AnyTextView;
 
 /**
  */
-public class MyDocumentsAdapter extends CdsRecyclerViewAdapter<File, MyDocumentsAdapter.ViewHolder> {
+public class MyDocumentsAdapter extends RecyclerView.Adapter<MyDocumentsAdapter.ViewHolder> {
 
 
     private Activity activity;
     private ArrayList<File> arrData;
     private OnItemClickListener onItemClickListener;
 
-    public MyDocumentsAdapter(Activity activity, ArrayList<File> arrayList,  OnItemClickListener onItemClickListener) {
-        super(activity, arrayList);
+    public MyDocumentsAdapter(Activity activity, ArrayList<File> arrayList, OnItemClickListener onItemClickListener) {
         this.arrData = arrayList;
         this.activity = activity;
         this.onItemClickListener = onItemClickListener;
@@ -56,7 +55,7 @@ public class MyDocumentsAdapter extends CdsRecyclerViewAdapter<File, MyDocuments
     }
 
     @Override
-    public void bindHolder(final ViewHolder holder, int i) {
+    public void onBindViewHolder(final ViewHolder holder, int i) {
 
         final File model = arrData.get(holder.getAdapterPosition());
 
@@ -75,7 +74,7 @@ public class MyDocumentsAdapter extends CdsRecyclerViewAdapter<File, MyDocuments
             }
         });
 
-        holder.txtFileName.setOnClickListener(new View.OnClickListener() {
+        holder.contItem.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 final File file = new File(AppConstants.getUserFolderPath(activity)
@@ -108,6 +107,8 @@ public class MyDocumentsAdapter extends CdsRecyclerViewAdapter<File, MyDocuments
 
     static class ViewHolder extends RecyclerView.ViewHolder {
 
+        @BindView(R.id.contItem)
+        LinearLayout contItem;
         @BindView(R.id.txtFileName)
         AnyTextView txtFileName;
         @BindView(R.id.btnDelete)

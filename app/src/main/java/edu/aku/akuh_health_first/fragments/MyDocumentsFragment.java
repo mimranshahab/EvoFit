@@ -45,7 +45,7 @@ import edu.aku.akuh_health_first.views.AnyTextView;
 public class MyDocumentsFragment extends BaseFragment implements OnItemClickListener {
 
 
-    CdsRecyclerView recylerView;
+    RecyclerView recylerView;
     @BindView(R.id.refreshLayout)
     SwipeRefreshLayout refreshLayout;
     Unbinder unbinder;
@@ -53,9 +53,6 @@ public class MyDocumentsFragment extends BaseFragment implements OnItemClickList
     AnyTextView emptyView;
     private MyDocumentsAdapter adapterFileDownloded;
     private ArrayList<File> arrFiles;
-
-//    private CdsItemTouchCallback.ItemDragCompleteListener mItemDragCompleteListener;
-//    private CdsItemTouchCallback.ItemSwipeCompleteListener mItemSwipeCompleteListener;
 
     public static MyDocumentsFragment newInstance() {
 
@@ -77,23 +74,28 @@ public class MyDocumentsFragment extends BaseFragment implements OnItemClickList
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        initListeners();
         bindView();
         arrFiles.addAll(FileManager.getFiles(AppConstants.getUserFolderPath(getContext())));
         adapterFileDownloded.notifyDataSetChanged();
         Log.d("FILE", "FILE COUNT: " + arrFiles.size());
 //        }
         if (arrFiles.size() > 0) {
-            bindView();
-            emptyView.setVisibility(View.GONE);
-            refreshLayout.setVisibility(View.VISIBLE);
+            showView();
 
         } else {
-            refreshLayout.setVisibility(View.GONE);
-            emptyView.setVisibility(View.VISIBLE);
-
-
+            showEmptyView();
         }
+    }
+
+    private void showEmptyView() {
+        refreshLayout.setVisibility(View.GONE);
+        emptyView.setVisibility(View.VISIBLE);
+    }
+
+    private void showView() {
+        bindView();
+        emptyView.setVisibility(View.GONE);
+        refreshLayout.setVisibility(View.VISIBLE);
     }
 
     @Override
@@ -102,7 +104,6 @@ public class MyDocumentsFragment extends BaseFragment implements OnItemClickList
     }
 
     private void bindView() {
-        recylerView = new CdsRecyclerView(getContext());
         recylerView = view.findViewById(R.id.recylerView);
 
         RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getBaseActivity());
@@ -115,29 +116,9 @@ public class MyDocumentsFragment extends BaseFragment implements OnItemClickList
     }
 
 
-    private void initListeners() {
-
-//        mItemDragCompleteListener = new CdsItemTouchCallback.ItemDragCompleteListener() {
-//            @Override
-//            public void onItemDragComplete(int fromPosition, int toPosition) {
-//                Toast.makeText(getContext(), "Item dragged from " + fromPosition +
-//                        " to " + toPosition, Toast.LENGTH_SHORT).show();
-//            }
-//        };
-//        mItemSwipeCompleteListener = new CdsItemTouchCallback.ItemSwipeCompleteListener() {
-//            @Override
-//            public void onItemSwipeComplete(int position) {
-//                Toast.makeText(getContext(), "Item was swiped:" + position,
-//                        Toast.LENGTH_SHORT).show();
-//            }
-//        };
-
-    }
-
-
     @Override
     protected int getFragmentLayout() {
-        return R.layout.fragment_mydocument;
+        return R.layout.fragment_general_recyler_view;
     }
 
     @Override
@@ -155,7 +136,6 @@ public class MyDocumentsFragment extends BaseFragment implements OnItemClickList
         refreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
-
                 refreshLayout.setRefreshing(false);
             }
         });
@@ -200,11 +180,12 @@ public class MyDocumentsFragment extends BaseFragment implements OnItemClickList
 //                    adapterFileDownloded.removeItem(position);
                     adapterFileDownloded.notifyDataSetChanged();
                     UIHelper.showToast(getContext(), "File deleted successfully.");
+                    if (arrFiles.size() == 0) {
+                        showEmptyView();
+                    }
                 }
             }, getContext());
 
         }
-
-
     }
 }

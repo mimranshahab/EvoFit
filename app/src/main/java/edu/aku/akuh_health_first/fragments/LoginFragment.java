@@ -191,8 +191,8 @@ public class LoginFragment extends BaseFragment {
 
                     @Override
                     public void onError() {
-                        UIHelper.showShortToastInCenter(getContext(), "failure");
-                    }
+
+                     }
                 });
     }
 

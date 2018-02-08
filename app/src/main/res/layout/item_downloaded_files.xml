@@ -24,6 +24,7 @@
         card_view:cardElevation="x15dp">
 
         <LinearLayout
+            android:id="@+id/contItem"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center">

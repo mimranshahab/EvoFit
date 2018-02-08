@@ -72,7 +72,6 @@ public class GenericContentFragment extends BaseFragment {
     }
 
 
-
     @Override
     public void setListeners() {
 
@@ -80,7 +79,7 @@ public class GenericContentFragment extends BaseFragment {
 
     @Override
     public int getDrawerLockMode() {
-        return DrawerLayout.LOCK_MODE_UNLOCKED;
+        return DrawerLayout.LOCK_MODE_LOCKED_CLOSED;
     }
 
 
