@@ -51,9 +51,9 @@ public class VaccineAdapter extends RecyclerView.Adapter<VaccineAdapter.ViewHold
 
         holder.txtType.setText(model.getVaccinationStatus());
 
-        holder.txtDateTime.setText( model.getVaccinationDate());
-        holder.txtLocation.setText( model.getHospitalLocation());
-        holder.txtName.setText( model.getDescription());
+        holder.txtDateTime.setText(model.getVaccinationDate());
+        holder.txtLocation.setText(model.getHospitalLocation());
+        holder.txtName.setText(model.getDescription());
 
 
 //        setListener(holder, model);

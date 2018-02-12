@@ -27,8 +27,6 @@ public class AppConstants {
     public static final String INPUT_DATE_FORMAT_IMMUNIZATION = "dd/MM/yyyy";
 
 
-
-
     public static final String GENERAL_DATE_FORMAT = "dd-MM-yy";
     public static final String ROOT_PATH = Environment.getExternalStorageDirectory().getPath()
             + "/" + BaseApplication.getApplicationName();
@@ -61,6 +59,10 @@ public class AppConstants {
     public static String FORCED_RESTART = "forced_restart";
     public static final String KEY_REGISTER_VM = "register_vm";
 
+
+    public static final String schedule = "Schedule";
+    public static final String vaccinated = "Vaccinated";
+    public static final String due = "Due";
 
     public static String RESOURCE_PART = "Android";
 

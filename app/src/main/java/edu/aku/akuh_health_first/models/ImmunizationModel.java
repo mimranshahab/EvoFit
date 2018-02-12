@@ -86,7 +86,6 @@ public class ImmunizationModel {
     @Expose
     private Object active;
     private final static long serialVersionUID = -2088648535189790337L;
-    private String status;
 
     public Object getMRN() {
         return mRN;
@@ -289,9 +288,16 @@ public class ImmunizationModel {
     }
 
     public String getVaccinationStatus() {
-        if (DateManager.getTimeInMillis(DateManager.sdfDateInputImmunization, getVaccinationDate()) < DateManager.getCurrentMillis())
-            return status = "Schedule";
-    else
-        {
-            return status = "Due";}
-}}
+
+        if (getVaccinationDate() == null || getVaccinationDate().isEmpty()) {
+            if (DateManager.getTimeInMillis(DateManager.sdfDateInputImmunization, getVaccinationDate()) < DateManager.getCurrentMillis())
+                return AppConstants.schedule;
+            else {
+                return AppConstants.due;
+            }
+        } else {
+            return AppConstants.vaccinated;
+        }
+    }
+
+}

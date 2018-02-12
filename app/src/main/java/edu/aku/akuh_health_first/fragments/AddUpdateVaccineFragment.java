@@ -1,5 +1,6 @@
 package edu.aku.akuh_health_first.fragments;
 
+import android.app.DatePickerDialog;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.widget.DrawerLayout;
@@ -8,6 +9,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
+import android.widget.DatePicker;
 import android.widget.Spinner;
 
 import com.google.gson.JsonObject;
@@ -26,11 +29,13 @@ import edu.aku.akuh_health_first.enums.BaseURLTypes;
 import edu.aku.akuh_health_first.fragments.abstracts.BaseFragment;
 import edu.aku.akuh_health_first.helperclasses.ui.helper.TitleBar;
 import edu.aku.akuh_health_first.helperclasses.ui.helper.UIHelper;
+import edu.aku.akuh_health_first.managers.DateManager;
 import edu.aku.akuh_health_first.managers.retrofit.GsonFactory;
 import edu.aku.akuh_health_first.managers.retrofit.WebServices;
 import edu.aku.akuh_health_first.models.ImmunizationModel;
 import edu.aku.akuh_health_first.models.receiving_model.UserDetailModel;
 import edu.aku.akuh_health_first.models.wrappers.WebResponse;
+import edu.aku.akuh_health_first.views.AnyEditTextView;
 import edu.aku.akuh_health_first.views.AnyTextView;
 
 /**
@@ -43,15 +48,24 @@ public class AddUpdateVaccineFragment extends BaseFragment {
     @BindView(R.id.spVaccine)
     Spinner spVaccine;
     Unbinder unbinder;
+    @BindView(R.id.txtVaccineDate)
+    AnyTextView txtVaccineDate;
+    @BindView(R.id.txtVaccineLocation)
+    AnyEditTextView txtVaccineLocation;
+    @BindView(R.id.txtComments)
+    AnyEditTextView txtComments;
+    @BindView(R.id.btnSave)
+    Button btnSave;
     private boolean isFromAdd;
     private ArrayList<String> arrVaccine;
     private ArrayAdapter adapterVaccine;
 
-    public static AddUpdateVaccineFragment newInstance() {
+    public static AddUpdateVaccineFragment newInstance(boolean isFromAdd) {
 
         Bundle args = new Bundle();
 
         AddUpdateVaccineFragment fragment = new AddUpdateVaccineFragment();
+        fragment.isFromAdd = isFromAdd;
         fragment.setArguments(args);
         return fragment;
     }
@@ -59,8 +73,8 @@ public class AddUpdateVaccineFragment extends BaseFragment {
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        arrVaccine = new ArrayList<String>();
-        adapterVaccine = new ArrayAdapter(getBaseActivity(), android.R.layout.simple_list_item_1, arrVaccine);
+        arrVaccine = new ArrayList<>();
+        adapterVaccine = new ArrayAdapter<String>(getBaseActivity(), android.R.layout.simple_list_item_1, arrVaccine);
     }
 
     @Override
@@ -101,18 +115,7 @@ public class AddUpdateVaccineFragment extends BaseFragment {
 
     @Override
     public void setListeners() {
-        spVaccine.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
 
-            }
-
-
-            @Override
-            public void onNothingSelected(AdapterView<?> parent) {
-
-            }
-        });
     }
 
     @Override
@@ -168,8 +171,29 @@ public class AddUpdateVaccineFragment extends BaseFragment {
 
     }
 
-    @OnClick(R.id.txtVaccine)
-    public void onViewClicked() {
-        spVaccine.performClick();
+
+    @OnClick({R.id.txtVaccine, R.id.txtVaccineDate, R.id.btnSave})
+    public void onViewClicked(View view) {
+        switch (view.getId()) {
+            case R.id.txtVaccine:
+                spVaccine.performClick();
+                break;
+            case R.id.txtVaccineDate:
+                DateManager.showDatePicker(getContext(), txtVaccineDate, null);
+                break;
+            case R.id.btnSave:
+                if (txtVaccineDate.getText().toString().isEmpty()) {
+                    txtVaccineDate.setError("Please select Vaccination Plan Date");
+                    break;
+                } else {
+                    txtVaccineDate.setError(null);
+                }
+
+                if (txtVaccineLocation.testValidity()) {
+                    showNextBuildToast();
+                }
+
+                break;
+        }
     }
 }

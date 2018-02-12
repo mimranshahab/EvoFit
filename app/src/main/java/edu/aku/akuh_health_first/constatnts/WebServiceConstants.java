@@ -24,6 +24,7 @@ public class WebServiceConstants {
     public static final String tempCardNumber = "0000-0000-0031";
     public static final String tempMRN = "291-32-60";
     public static final String tempMRN_LAB = "510-29-10";
+    public static final String tempMRN_ENDOSCOPY = "100-08-60";
     public static final String tempMRN_RADIOLOGY = "294-71-23";
     public static final String tempMRN_immunization = "269-14-57";
     public static final String temp_Specimen_Num = "53786623";
@@ -37,26 +38,34 @@ public class WebServiceConstants {
     public static final String METHOD_USER_GET_USER = "UserManager.Login";
     public static final String METHOD_CARD_MEMBER = "UserManager.GetCardMembersDetail";
     public static final String METHOD_USER_UPLOAD_REQUEST_FILE = "UserManager.UploadRequestFile";
+
     public static final String METHOD_PACMANAGER = "PACSManager.GetPacs";
     public static final String METHOD_GET_RADIOLOGY_EXAMS = "RadiologyManager.GetRadiologyExams";
     public static final String METHOD_GET_RADIOLOGY_GET_EXAM_DETAIL = "RadiologyManager.GetExamDetail";
-    public static final String METHOD_NEUROPHIOLOGY = "NeurophysiologyManager.GetNeurophysiologyExam";
-    public static final String METHOD_NEUROPHIOLOGY_SHOW_REPORT= "NeurophysiologyManager.ShowReport";
-    public static final String METHOD_CARDIO= "CardiopulmonaryManager.GetCardiopulmonaryExam";
-    public static final String METHOD_CARDIO_SHOW_REPORT= "CardiopulmonaryManager.ShowReport";
-    public static final String METHOD_CARDIO_SHOW_GRAPH= "CardiopulmonaryManager.ShowGraph";
-    public static final String METHOD_CLINICAL_LAB= "LaboratoryManager.GetLabSpecimenList";
-    public static final String METHOD_CLINICAL_LAB_DETAIL= "LaboratoryManager.GetLabSpecimenList";
-    public static final String METHOD_CLINICAL_LAB_RESULT= "LaboratoryManager.GetLabSpecimenResults";
-    public static final String METHOD_PATIENT_DETAIL_DS= "PatientManager.GetPatientDetail";
-    public static final String METHOD_SHOW_REPORT_DS= "PatientManager.ShowReport";
-    public static final String METHOD_VISIT_PATIENT_DS= "PatientManager.GetPatientVisit";
-    public static final String METHOD_DISCHARGE_SUMMARY_LIST= "PatientManager.GetDischargeSummaryList";
 
-    public static final String METHOD_IMMUNIZATION_VACCINE_SCHEDULE= "PharmacyManager.VaccineSchedule";
-    public static final String METHOD_IMMUNIZATION_UPDATE_VACCINE= "PharmacyManager.UpdateVaccine";
-    public static final String METHOD_IMMUNIZATION_ADD_VACCINE= "PharmacyManager.AddVaccine";
-    public static final String METHOD_IMMUNIZATION_VACCINE_IDS= "PharmacyManager.GetVaccineIDs";
+    public static final String METHOD_NEUROPHIOLOGY = "NeurophysiologyManager.GetNeurophysiologyExam";
+    public static final String METHOD_NEUROPHIOLOGY_SHOW_REPORT = "NeurophysiologyManager.ShowReport";
+
+    public static final String METHOD_CARDIO = "CardiopulmonaryManager.GetCardiopulmonaryExam";
+    public static final String METHOD_CARDIO_SHOW_REPORT = "CardiopulmonaryManager.ShowReport";
+    public static final String METHOD_CARDIO_SHOW_GRAPH = "CardiopulmonaryManager.ShowGraph";
+
+    public static final String METHOD_CLINICAL_LAB = "LaboratoryManager.GetLabSpecimenList";
+    public static final String METHOD_CLINICAL_LAB_DETAIL = "LaboratoryManager.GetLabSpecimenList";
+    public static final String METHOD_CLINICAL_LAB_RESULT = "LaboratoryManager.GetLabSpecimenResults";
+
+    public static final String METHOD_SHOW_REPORT_DS = "PatientManager.ShowReport";
+    public static final String METHOD_PATIENT_DETAIL_DS = "PatientManager.GetPatientDetail";
+    public static final String METHOD_GET_PATIENT_VISIT = "PatientManager.GetPatientVisit";
+    public static final String METHOD_DISCHARGE_SUMMARY_LIST = "PatientManager.GetDischargeSummaryList";
+
+    public static final String METHOD_GET_ENDOSCOPY_LIST = "PatientManager.GetEndoscopyList";
+    public static final String METHOD_GET_ENDOSCOPY_REPORT = "SharedManager.GetReport";
+
+    public static final String METHOD_IMMUNIZATION_VACCINE_SCHEDULE = "PharmacyManager.VaccineSchedule";
+    public static final String METHOD_IMMUNIZATION_UPDATE_VACCINE = "PharmacyManager.UpdateVaccine";
+    public static final String METHOD_IMMUNIZATION_ADD_VACCINE = "PharmacyManager.AddVaccine";
+    public static final String METHOD_IMMUNIZATION_VACCINE_IDS = "PharmacyManager.GetVaccineIDs";
 
 
     /**
@@ -75,7 +84,7 @@ public class WebServiceConstants {
     public static final String WS_KEY_EDIT_PROFILE = "user/update";
     public static final String WS_KEY_FORGOT_PASSWORD = "forgotpassword";
     public static final String WS_KEY_GET_TOKEN = "GetToken";
-    public static final String WS_KEY_GET_REQUESTOR= "Requestor: aku.edu";
+    public static final String WS_KEY_GET_REQUESTOR = "Requestor: aku.edu";
     public static final String WS_KEY_PACS_VIEWER = "PACSViewer";
     public static final String WS_KEY_IMAGE_URL = "wado?requestType=WADO&studyUID=1.2.392.200036.9125.2.353644173100.64863020020.362418&seriesUID=1.2.392.200036.9125.3.353644173100.64863020020.362419&objectUID=1.2.392.200036.9125.9.0.253360372.1325662243.606907748&contentType=image/jpeg";
 
