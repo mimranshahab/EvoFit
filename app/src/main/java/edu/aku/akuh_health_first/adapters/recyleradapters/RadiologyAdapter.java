@@ -6,6 +6,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.LinearLayout;
 
@@ -15,6 +16,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import edu.aku.akuh_health_first.R;
 import edu.aku.akuh_health_first.callbacks.OnItemClickListener;
+import edu.aku.akuh_health_first.models.CardioModel;
 import edu.aku.akuh_health_first.models.RadiologyModel;
 import edu.aku.akuh_health_first.views.AnyTextView;
 
@@ -23,12 +25,12 @@ import edu.aku.akuh_health_first.views.AnyTextView;
 public class RadiologyAdapter extends RecyclerView.Adapter<RadiologyAdapter.ViewHolder> {
 
 
-    private final OnItemClickListener onItemClick;
 
+    private final AdapterView.OnItemClickListener onItemClick;
     private Activity activity;
     private ArrayList<RadiologyModel> arrayList;
 
-    public RadiologyAdapter(Activity activity, ArrayList<RadiologyModel> userList, OnItemClickListener onItemClickListener) {
+    public RadiologyAdapter(Activity activity, ArrayList<RadiologyModel> userList, AdapterView.OnItemClickListener onItemClickListener) {
         this.arrayList = userList;
         this.activity = activity;
         this.onItemClick = onItemClickListener;
@@ -56,16 +58,25 @@ public class RadiologyAdapter extends RecyclerView.Adapter<RadiologyAdapter.View
         setListener(holder, model);
     }
 
-    private void setListener(final ViewHolder holder, final RadiologyModel radiologyModel) {
-        holder.contListItem.setOnClickListener(new View.OnClickListener() {
+    private void setListener(final RadiologyAdapter.ViewHolder holder, final RadiologyModel cardioModel) {
+        holder.btnShowGraph.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                onItemClick.onItemClick(holder.getAdapterPosition(), radiologyModel);
+                onItemClick.onItemClick(null, v, holder.getAdapterPosition(), 0);
             }
         });
+
+        holder.btnShowReport.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onItemClick.onItemClick(null, v, holder.getAdapterPosition(), 0);
+            }
+        });
+
     }
-
-
+    public RadiologyModel getItem(int position) {
+        return arrayList.get(position);
+    }
     public void addItem(ArrayList<RadiologyModel> homeCategories) {
         this.arrayList = homeCategories;
         notifyDataSetChanged();

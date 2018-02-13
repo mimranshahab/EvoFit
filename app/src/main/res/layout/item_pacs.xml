@@ -29,88 +29,75 @@
 
 
             <edu.aku.akuh_health_first.views.AnyTextView
-                android:id="@+id/txtReqDatetime"
+                android:id="@+id/txtstudyTitle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:padding="@dimen/x5dp"
-                android:text="DateTime"
-                android:textColor="@color/c_grayasparagus"
-                android:textSize="@dimen/s12"
-                app:typeface="@string/font_regular" />
-
-            <edu.aku.akuh_health_first.views.AnyTextView
-                android:id="@+id/txtExamOrderNumber"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:padding="@dimen/x5dp"
-                android:text="Exam Order Number"
+                android:padding="@dimen/x3dp"
+                android:text="studyTitle"
 
                 android:textColor="@color/c_grayasparagus"
                 android:textSize="@dimen/s12"
                 app:typeface="@string/font_regular" />
 
             <edu.aku.akuh_health_first.views.AnyTextView
-                android:id="@+id/txtExamTypeId"
+                android:id="@+id/txtpatient_Name"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:padding="@dimen/x5dp"
-                android:text="Exam Type Id"
-
+                android:padding="@dimen/x3dp"
+                android:text="patient_Name"
                 android:textColor="@color/c_grayasparagus"
                 android:textSize="@dimen/s12"
                 app:typeface="@string/font_regular" />
 
             <edu.aku.akuh_health_first.views.AnyTextView
-                android:id="@+id/txtExam"
+                android:id="@+id/txtpatientMRN"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:padding="@dimen/x5dp"
-                android:text="Exam"
+                android:padding="@dimen/x3dp"
+                android:text="patientMRN"
                 android:textColor="@color/c_grayasparagus"
                 android:textSize="@dimen/s12"
                 app:typeface="@string/font_regular" />
 
             <edu.aku.akuh_health_first.views.AnyTextView
-                android:id="@+id/txtStatus"
+                android:id="@+id/txtPatientGender"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:padding="@dimen/x5dp"
-                android:text="Status"
+                android:padding="@dimen/x3dp"
+                android:text="patientGender"
                 android:textColor="@color/c_grayasparagus"
                 android:textSize="@dimen/s12"
                 app:typeface="@string/font_regular" />
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="horizontal">
+            <edu.aku.akuh_health_first.views.AnyTextView
+                android:id="@+id/txtpatientDOB"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/x3dp"
+                android:text="patientDOB"
+                android:textColor="@color/c_grayasparagus"
+                android:textSize="@dimen/s12"
+                app:typeface="@string/font_regular" />
 
-                <Button
-                    android:id="@+id/btnShowReport"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="@dimen/x10dp"
-                    android:layout_weight=".5"
-                    android:background="@drawable/rounded_box_filled_base_grey"
-                    android:text="Show Report"
-                    android:textAllCaps="false"
-                    android:textColor="@color/c_white"
-                    android:visibility="visible" />
+            <edu.aku.akuh_health_first.views.AnyTextView
+                android:id="@+id/txtstudyDataCount"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/x3dp"
+                android:text="studyDataCount"
+                android:textColor="@color/c_grayasparagus"
+                android:textSize="@dimen/s12"
+                app:typeface="@string/font_regular" />
 
-                <Button
-                    android:id="@+id/btnShowGraph"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="@dimen/x10dp"
-                    android:layout_weight=".5"
-                    android:background="@drawable/rounded_box_filled_base_grey"
-                    android:text="Show Graph"
-                    android:textAllCaps="false"
-                    android:textColor="@color/c_white"
-                    android:visibility="visible" />
-
-
-            </LinearLayout>
+            <edu.aku.akuh_health_first.views.AnyTextView
+                android:id="@+id/txtstudyDataDateTime"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/x3dp"
+                android:text="studyDataDateTime "
+                android:textColor="@color/c_grayasparagus"
+                android:textSize="@dimen/s12"
+                app:typeface="@string/font_regular" />
 
         </LinearLayout>
 

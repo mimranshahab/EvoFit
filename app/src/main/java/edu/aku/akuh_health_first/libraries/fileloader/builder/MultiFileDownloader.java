@@ -41,7 +41,7 @@ public class MultiFileDownloader {
     public void loadMultiple(String... uris) {
         MultiFileLoadRequest[] loadRequestArr = new MultiFileLoadRequest[uris.length];
         for (int i = 0; i < uris.length; i++) {
-            MultiFileLoadRequest loadRequest = new MultiFileLoadRequest(uris[i], directoryName, directoryType, forceLoadFromNetwork);
+            MultiFileLoadRequest loadRequest = new MultiFileLoadRequest(uris[i]/*, directoryName, directoryType, forceLoadFromNetwork*/);
             loadRequestArr[i] = loadRequest;
         }
         multiFileDownloadTask = new MultiFileDownloadTask(context, listener);

@@ -7,12 +7,15 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 
+
 import edu.aku.akuh_health_first.fragments.LeftSideMenuFragment;
 import edu.aku.akuh_health_first.fragments.abstracts.GenericClickableInterface;
 import edu.aku.akuh_health_first.fragments.abstracts.GenericDialogFragment;
 import edu.aku.akuh_health_first.helperclasses.ui.helper.TitleBar;
 import edu.aku.akuh_health_first.models.LaboratoryModel;
 
+
+import static edu.aku.akuh_health_first.constatnts.AppConstants.JSON_STRING_KEY;
 import static edu.aku.akuh_health_first.constatnts.AppConstants.LABORATORY_MODEL;
 
 
@@ -145,6 +148,13 @@ public abstract class BaseActivity extends AppCompatActivity {
         i.putExtra(LABORATORY_MODEL, object);
         startActivity(i);
     }
+
+    public void openActivity(Class<?> tClass, String object) {
+        Intent i = new Intent(this, tClass);
+        i.putExtra(JSON_STRING_KEY, object);
+        startActivity(i);
+    }
+
 
     public LeftSideMenuFragment getLeftSideMenuFragment() {
         return leftSideMenuFragment;

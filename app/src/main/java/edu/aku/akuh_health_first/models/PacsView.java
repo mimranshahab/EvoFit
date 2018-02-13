@@ -117,6 +117,7 @@ public class PacsView {
         return GsonFactory.getConfiguredGson().toJson(this);
     }
 
+
     public PacsView(List<String>  PACS_Accessions) {
         this.PACS_Accessions = PACS_Accessions;
     }
