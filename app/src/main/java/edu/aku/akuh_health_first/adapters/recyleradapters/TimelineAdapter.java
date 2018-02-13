@@ -1,6 +1,7 @@
 package edu.aku.akuh_health_first.adapters.recyleradapters;
 
 import android.app.Activity;
+import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -24,10 +25,10 @@ public class TimelineAdapter extends RecyclerView.Adapter<TimelineAdapter.ViewHo
 
 
     private Activity activity;
-    private ArrayList<TimelineModel> neurophysiologyArrayList;
+    private ArrayList<TimelineModel> arrData;
 
     public TimelineAdapter(Activity activity, ArrayList<TimelineModel> userList, OnItemClickListener onItemClickListener) {
-        this.neurophysiologyArrayList = userList;
+        this.arrData = userList;
         this.activity = activity;
         this.onItemClick = onItemClickListener;
     }
@@ -44,11 +45,14 @@ public class TimelineAdapter extends RecyclerView.Adapter<TimelineAdapter.ViewHo
     @Override
     public void onBindViewHolder(final ViewHolder holder, int i) {
 
-        final TimelineModel timelineModel = neurophysiologyArrayList.get(holder.getAdapterPosition());
-//        holder.txtVisit.setText(timelineModel.getText());
-//        holder.txtPurpose.setText(timelineModel.getText());
-//        holder.txtDoctor.setText(timelineModel.getText());
+        final TimelineModel timelineModel = arrData.get(holder.getAdapterPosition());
 
+
+        holder.txtFacility.setText(timelineModel.getPatientvisithospitallocation());
+        holder.txtVisitDateTime.setText(timelineModel.getPatientvisitdatetime());
+        holder.txtDoctorName.setText(timelineModel.getPatientvisitdoctorname());
+        holder.txtService.setText(timelineModel.getPatientvisitservice());
+        holder.txtVisitType.setText(timelineModel.getPatientvisittype());
         setListener(holder, timelineModel);
     }
 
@@ -58,27 +62,31 @@ public class TimelineAdapter extends RecyclerView.Adapter<TimelineAdapter.ViewHo
 
 
     public void addItems(ArrayList<TimelineModel> homeCategories) {
-        this.neurophysiologyArrayList = homeCategories;
+        this.arrData = homeCategories;
         notifyDataSetChanged();
     }
 
 
     @Override
     public int getItemCount() {
-        return neurophysiologyArrayList.size();
+        return arrData.size();
     }
 
 
     static class ViewHolder extends RecyclerView.ViewHolder {
 
-        @BindView(R.id.txtVisit)
-        AnyTextView txtVisit;
-
-        @BindView(R.id.txtPurpose)
-        AnyTextView txtPurpose;
-
-        @BindView(R.id.txtDoctor)
-        AnyTextView txtDoctor;
+        @BindView(R.id.txtFacility)
+        AnyTextView txtFacility;
+        @BindView(R.id.txtVisitDateTime)
+        AnyTextView txtVisitDateTime;
+        @BindView(R.id.txtDoctorName)
+        AnyTextView txtDoctorName;
+        @BindView(R.id.txtService)
+        AnyTextView txtService;
+        @BindView(R.id.txtVisitType)
+        AnyTextView txtVisitType;
+        @BindView(R.id.cardView)
+        CardView cardView;
 
         ViewHolder(View view) {
             super(view);

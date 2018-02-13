@@ -112,9 +112,7 @@ public class HomeDetailFragment extends BaseFragment {
                 break;
 
             case R.id.contDownloadedFile:
-
                 getBaseActivity().addDockableFragment(MyDocumentsFragment.newInstance());
-
                 break;
         }
     }

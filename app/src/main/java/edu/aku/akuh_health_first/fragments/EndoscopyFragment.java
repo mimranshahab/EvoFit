@@ -26,8 +26,8 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
 import edu.aku.akuh_health_first.R;
-import edu.aku.akuh_health_first.adapters.recyleradapters.NeurophysiologyAdapter;
-import edu.aku.akuh_health_first.adapters.recyleradapters.TimelineAdapter;
+import edu.aku.akuh_health_first.adapters.recyleradapters.ClinicalLabAdapter;
+import edu.aku.akuh_health_first.adapters.recyleradapters.EndoscopyAdapter;
 import edu.aku.akuh_health_first.callbacks.OnItemClickListener;
 import edu.aku.akuh_health_first.constatnts.AppConstants;
 import edu.aku.akuh_health_first.constatnts.WebServiceConstants;
@@ -38,8 +38,9 @@ import edu.aku.akuh_health_first.helperclasses.ui.helper.UIHelper;
 import edu.aku.akuh_health_first.managers.FileManager;
 import edu.aku.akuh_health_first.managers.retrofit.GsonFactory;
 import edu.aku.akuh_health_first.managers.retrofit.WebServices;
-import edu.aku.akuh_health_first.models.Neurophysiology;
-import edu.aku.akuh_health_first.models.TimelineModel;
+import edu.aku.akuh_health_first.models.DischargeSummaryModel;
+import edu.aku.akuh_health_first.models.EndoscopyModel;
+import edu.aku.akuh_health_first.models.LaboratoryModel;
 import edu.aku.akuh_health_first.models.receiving_model.UserDetailModel;
 import edu.aku.akuh_health_first.models.wrappers.WebResponse;
 
@@ -48,28 +49,29 @@ import edu.aku.akuh_health_first.models.wrappers.WebResponse;
  * Created by aqsa.sarwar on 1/17/2018.
  */
 
-public class TimelineFragment extends BaseFragment implements View.OnClickListener, OnItemClickListener {
+public class EndoscopyFragment extends BaseFragment implements View.OnClickListener, OnItemClickListener {
 
     @BindView(R.id.recylerView)
     RecyclerView recyclerView;
     @BindView(R.id.refreshLayout)
     SwipeRefreshLayout refreshLayout;
+
     Unbinder unbinder;
-    private ArrayList<TimelineModel> arrData;
-    private TimelineAdapter adapter;
+    private ArrayList<EndoscopyModel> arrClinicalLabLists;
+    private EndoscopyAdapter adaptNeuropysiology;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        arrData = new ArrayList<TimelineModel>();
-        adapter = new TimelineAdapter(getBaseActivity(), arrData, this);
+        arrClinicalLabLists = new ArrayList<EndoscopyModel>();
+        adaptNeuropysiology = new EndoscopyAdapter(getBaseActivity(), arrClinicalLabLists, this);
     }
 
-    public static TimelineFragment newInstance() {
+    public static EndoscopyFragment newInstance() {
 
         Bundle args = new Bundle();
 
-        TimelineFragment fragment = new TimelineFragment();
+        EndoscopyFragment fragment = new EndoscopyFragment();
         fragment.setArguments(args);
         return fragment;
     }
@@ -82,7 +84,7 @@ public class TimelineFragment extends BaseFragment implements View.OnClickListen
     @Override
     public void setTitlebar(TitleBar titleBar) {
         titleBar.resetViews();
-        titleBar.setTitle("Timeline");
+        titleBar.setTitle("Endoscopy");
         titleBar.showBackButton(getBaseActivity());
         titleBar.setCircleImageView();
         titleBar.showHome(getBaseActivity());
@@ -103,7 +105,7 @@ public class TimelineFragment extends BaseFragment implements View.OnClickListen
         int resId = R.anim.layout_animation_fall_bottom;
         LayoutAnimationController animation = AnimationUtils.loadLayoutAnimation(getContext(), resId);
         recyclerView.setLayoutAnimation(animation);
-        recyclerView.setAdapter(adapter);
+        recyclerView.setAdapter(adaptNeuropysiology);
     }
 
     @Override
@@ -149,35 +151,39 @@ public class TimelineFragment extends BaseFragment implements View.OnClickListen
 
     @Override
     public void onItemClick(int position, Object object) {
-        if (object instanceof TimelineModel) {
+        if (object instanceof EndoscopyModel) {
+            EndoscopyModel endoscopyModel = (EndoscopyModel) object;
+            DischargeSummaryModel dischargeSummaryModel = new DischargeSummaryModel();
+            dischargeSummaryModel.setSummaryPath(endoscopyModel.getReportpath());
 
+            showReportAPI(dischargeSummaryModel);
         }
 
     }
 
+
     private void serviceCall() {
         // FIXME: 1/18/2018 Use live data in future
         UserDetailModel currentUser = sharedPreferenceManager.getCurrentUser();
-        currentUser.setMRNumber(WebServiceConstants.tempMRN_LAB);
+        currentUser.setMRNumber(WebServiceConstants.tempMRN_ENDOSCOPY);
 
         new WebServices(getBaseActivity(),
                 WebServiceConstants.temporaryToken,
                 BaseURLTypes.AHFA_BASE_URL)
-                .webServiceRequestAPIForArray(WebServiceConstants.METHOD_GET_PATIENT_VISIT,
+                .webServiceRequestAPIForArray(WebServiceConstants.METHOD_GET_ENDOSCOPY_LIST,
                         currentUser.getMRNumberwithComma(),
                         new WebServices.IRequestArrayDataCallBack() {
                             @Override
                             public void requestDataResponse(WebResponse<ArrayList<JsonObject>> webResponse) {
 
-                                Type type = new TypeToken<ArrayList<TimelineModel>>() {
+                                Type type = new TypeToken<ArrayList<EndoscopyModel>>() {
                                 }.getType();
-                                ArrayList<TimelineModel> arrayList = GsonFactory.getSimpleGson()
+                                ArrayList<EndoscopyModel> arrayList = GsonFactory.getSimpleGson()
                                         .fromJson(GsonFactory.getSimpleGson().toJson(webResponse.result)
                                                 , type);
-
-                                arrData.clear();
-                                arrData.addAll(arrayList);
-                                adapter.notifyDataSetChanged();
+                                arrClinicalLabLists.clear();
+                                arrClinicalLabLists.addAll(arrayList);
+                                adaptNeuropysiology.notifyDataSetChanged();
                             }
 
                             @Override
@@ -187,4 +193,39 @@ public class TimelineFragment extends BaseFragment implements View.OnClickListen
                         });
 
     }
+
+
+    private void showReportAPI(final DischargeSummaryModel model) {
+        new WebServices(getBaseActivity(), WebServiceConstants.temporaryToken, BaseURLTypes.AHFA_BASE_URL)
+                .webServiceRequestAPIForWebResponseWithString(WebServiceConstants.METHOD_SHOW_REPORT_DS,
+                        model.toString(), new WebServices.IRequestWebResponseWithStringDataCallBack() {
+                            @Override
+                            public void requestDataResponse(WebResponse<String> webResponse) {
+                                String fileName = FileManager.getFileNameFromPath(FileManager.getReplacedSlash(model.getSummaryPath()));
+
+                                FileManager.writeResponseBodyToDisk(webResponse.result, fileName, AppConstants.getUserFolderPath(getContext()));
+
+                                final File file = new File(AppConstants.getUserFolderPath(getContext())
+                                        + "/" + fileName);
+
+                                new Handler().postDelayed(new Runnable() {
+                                    @Override
+                                    public void run() {
+                                        FileManager.openFile(getContext(), file);
+                                    }
+                                }, 300);
+
+
+                            }
+
+                            @Override
+                            public void onError() {
+
+
+                            }
+                        }
+                );
+    }
+
+
 }

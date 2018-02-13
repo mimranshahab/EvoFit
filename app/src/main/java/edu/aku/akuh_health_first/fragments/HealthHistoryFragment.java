@@ -81,7 +81,7 @@ public class HealthHistoryFragment extends BaseFragment {
         titleBar.setVisibility(View.VISIBLE);
         titleBar.setTitle("Health History");
         titleBar.showBackButton(getBaseActivity());
-        titleBar.setCircleImageView( );
+        titleBar.setCircleImageView();
         titleBar.showHome(getBaseActivity());
     }
 
@@ -132,11 +132,9 @@ public class HealthHistoryFragment extends BaseFragment {
                 break;
             case R.id.contMedicalProfile:
                 showNextBuildToast();
-//                getBaseActivity().addDockableFragment(ImmunizationProfileFragment.newInstance());
                 break;
             case R.id.contImmunization:
                 getBaseActivity().addDockableFragment(ImmunizationProfileFragment.newInstance());
-
                 break;
             case R.id.contCardio:
                 getBaseActivity().addDockableFragment(CardiolopulmonaryFragment.newInstance());
@@ -146,7 +144,7 @@ public class HealthHistoryFragment extends BaseFragment {
                 getBaseActivity().addDockableFragment(NeurophysiologyFragment.newInstance());
                 break;
             case R.id.contEndo:
-                showNextBuildToast();
+                getBaseActivity().addDockableFragment(EndoscopyFragment.newInstance());
                 break;
             case R.id.contSummary:
                 getBaseActivity().addDockableFragment(DischargeSummaryFragment.newInstance());
