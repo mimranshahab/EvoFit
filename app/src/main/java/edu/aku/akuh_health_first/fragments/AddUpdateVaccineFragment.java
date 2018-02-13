@@ -4,6 +4,8 @@ import android.app.DatePickerDialog;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.widget.DrawerLayout;
+import android.text.Html;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,6 +14,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.Spinner;
+import android.widget.TextView;
 
 import com.google.gson.JsonObject;
 import com.google.gson.reflect.TypeToken;
@@ -24,6 +27,7 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 import butterknife.Unbinder;
 import edu.aku.akuh_health_first.R;
+import edu.aku.akuh_health_first.constatnts.AppConstants;
 import edu.aku.akuh_health_first.constatnts.WebServiceConstants;
 import edu.aku.akuh_health_first.enums.BaseURLTypes;
 import edu.aku.akuh_health_first.fragments.abstracts.BaseFragment;
@@ -33,6 +37,8 @@ import edu.aku.akuh_health_first.managers.DateManager;
 import edu.aku.akuh_health_first.managers.retrofit.GsonFactory;
 import edu.aku.akuh_health_first.managers.retrofit.WebServices;
 import edu.aku.akuh_health_first.models.ImmunizationModel;
+import edu.aku.akuh_health_first.models.RadiologyDetailModel;
+import edu.aku.akuh_health_first.models.receiving_model.AddVaccineModel;
 import edu.aku.akuh_health_first.models.receiving_model.UserDetailModel;
 import edu.aku.akuh_health_first.models.wrappers.WebResponse;
 import edu.aku.akuh_health_first.views.AnyEditTextView;
@@ -43,13 +49,15 @@ import edu.aku.akuh_health_first.views.AnyTextView;
  */
 
 public class AddUpdateVaccineFragment extends BaseFragment {
-    @BindView(R.id.txtVaccine)
-    AnyTextView txtVaccine;
+    @BindView(R.id.txtVaccinatedDate)
+    AnyTextView txtVaccinatedDate;
+    @BindView(R.id.txtVaccinationPlanDate)
+    AnyTextView txtVaccinationPlanDate;
     @BindView(R.id.spVaccine)
     Spinner spVaccine;
     Unbinder unbinder;
-    @BindView(R.id.txtVaccineDate)
-    AnyTextView txtVaccineDate;
+    @BindView(R.id.txtVaccine)
+    AnyTextView txtVaccine;
     @BindView(R.id.txtVaccineLocation)
     AnyEditTextView txtVaccineLocation;
     @BindView(R.id.txtComments)
@@ -59,13 +67,15 @@ public class AddUpdateVaccineFragment extends BaseFragment {
     private boolean isFromAdd;
     private ArrayList<String> arrVaccine;
     private ArrayAdapter adapterVaccine;
+    private ImmunizationModel immunizationModel;
 
-    public static AddUpdateVaccineFragment newInstance(boolean isFromAdd) {
+    public static AddUpdateVaccineFragment newInstance(boolean isFromAdd, ImmunizationModel immunizationModel) {
 
         Bundle args = new Bundle();
 
         AddUpdateVaccineFragment fragment = new AddUpdateVaccineFragment();
         fragment.isFromAdd = isFromAdd;
+        fragment.immunizationModel = immunizationModel;
         fragment.setArguments(args);
         return fragment;
     }
@@ -157,7 +167,7 @@ public class AddUpdateVaccineFragment extends BaseFragment {
 
                                 for (int i = 0; i < arrayList.size(); i++) {
 
-                                    arrVaccine.add(arrayList.get(i).getDescription());
+                                    arrVaccine.add(arrayList.get(i).getVaccineID());
 
                                 }
                                 setSpinner(adapterVaccine, txtVaccine, spVaccine);
@@ -165,35 +175,89 @@ public class AddUpdateVaccineFragment extends BaseFragment {
 
                             @Override
                             public void onError() {
-                                UIHelper.showShortToastInCenter(getContext(), "failure");
+
                             }
                         });
 
     }
 
 
-    @OnClick({R.id.txtVaccine, R.id.txtVaccineDate, R.id.btnSave})
+    @OnClick({R.id.txtVaccine, R.id.txtVaccinatedDate, R.id.btnSave, R.id.txtVaccinationPlanDate})
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.txtVaccine:
                 spVaccine.performClick();
                 break;
-            case R.id.txtVaccineDate:
-                DateManager.showDatePicker(getContext(), txtVaccineDate, null);
+            case R.id.txtVaccinatedDate:
+                DateManager.showDatePicker(getContext(), txtVaccinatedDate, null);
                 break;
+
+
+            case R.id.txtVaccinationPlanDate:
+                if (isFromAdd) {
+                    DateManager.showDatePicker(getContext(), txtVaccinationPlanDate, null);
+                } else {
+                    UIHelper.showToast(getContext(), "You can't update previous plan date");
+                }
+
+                break;
+
             case R.id.btnSave:
-                if (txtVaccineDate.getText().toString().isEmpty()) {
-                    txtVaccineDate.setError("Please select Vaccination Plan Date");
+                if (txtVaccinationPlanDate.getText().toString().isEmpty()) {
+                    txtVaccinationPlanDate.setError("Please select Vaccination Plan Date");
                     break;
                 } else {
-                    txtVaccineDate.setError(null);
+                    txtVaccinationPlanDate.setError(null);
                 }
 
                 if (txtVaccineLocation.testValidity()) {
-                    showNextBuildToast();
+
+
+                    if (isFromAdd) {
+                        ImmunizationModel immunizationModel = new ImmunizationModel();
+
+                        immunizationModel.setMRN(WebServiceConstants.tempMRN_immunization);
+                        immunizationModel.setScheduleID("U");
+                        immunizationModel.setVisitID("U");
+                        immunizationModel.setActive("Y");
+                        immunizationModel.setRouteID("PO");
+                        immunizationModel.setLastFileTerminal("MOBILE");
+                        immunizationModel.setVaccineID(txtVaccine.getStringTrimmed());
+                        immunizationModel.setHospitalLocation(txtVaccineLocation.getStringTrimmed());
+                        immunizationModel.setLastFileUser("mahrukh.mehmood@aku.edu");
+                        immunizationModel.setComments(txtComments.getStringTrimmed());
+                        immunizationModel.setVaccinePlanDate(txtVaccinationPlanDate.getStringTrimmed());
+                        immunizationModel.setVaccinationDate(txtVaccinatedDate.getStringTrimmed());
+
+                        addVaccineService(immunizationModel.toString());
+                        Log.d(TAG, "onViewClicked: " + immunizationModel.toString());
+
+                    }
+
                 }
 
                 break;
         }
     }
+
+    private void addVaccineService(String jsonData) {
+        new WebServices(getBaseActivity(), WebServiceConstants.temporaryToken, BaseURLTypes.AHFA_BASE_URL)
+                .webServiceRequestAPI(WebServiceConstants.METHOD_IMMUNIZATION_ADD_VACCINE,
+                        jsonData,
+                        new WebServices.IRequestJsonDataCallBack() {
+                            @Override
+                            public void requestDataResponse(WebResponse<JsonObject> webResponse) {
+                                AddVaccineModel addVaccineModel = GsonFactory.getSimpleGson().fromJson(webResponse.result, AddVaccineModel.class);
+                                popBackStack();
+                                UIHelper.showToast(getContext(), addVaccineModel.getMessage());
+                            }
+
+                            @Override
+                            public void onError() {
+
+                            }
+                        });
+    }
+
+
 }

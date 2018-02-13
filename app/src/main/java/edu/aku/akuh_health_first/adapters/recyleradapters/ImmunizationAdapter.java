@@ -58,9 +58,9 @@ public class ImmunizationAdapter extends RecyclerView.Adapter<ImmunizationAdapte
         holder.txtLocation.setText(model.getHospitalLocation());
         holder.txtName.setText(model.getDescription());
 
-        if (holder.getAdapterPosition() == 2 || holder.getAdapterPosition() == 3 || holder.getAdapterPosition() == 5 || holder.getAdapterPosition() == 8 || holder.getAdapterPosition() == 0) {
-            model.setVaccinationDate("");
-        }
+//        if (holder.getAdapterPosition() == 2 || holder.getAdapterPosition() == 3 || holder.getAdapterPosition() == 5 || holder.getAdapterPosition() == 8 || holder.getAdapterPosition() == 0) {
+//            model.setVaccinationDate("");
+//        }
 
         if (model.getVaccinationStatus().equals(AppConstants.schedule)) {
             holder.contBorder.setBackgroundColor(activity.getResources().getColor(R.color.base_grey));

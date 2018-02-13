@@ -123,7 +123,7 @@ public class ImmunizationProfileFragment extends BaseFragment implements View.On
         mFab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                getBaseActivity().addDockableFragment(AddUpdateVaccineFragment.newInstance(true));
+                getBaseActivity().addDockableFragment(AddUpdateVaccineFragment.newInstance(true, null));
             }
         });
     }
