@@ -485,7 +485,7 @@ public class RegisterFragment extends BaseFragment {
 
 
         new WebServices(getBaseActivity(), WebServiceConstants.temporaryToken, BaseURLTypes.PACS_VIEWER)
-                .webServiceRequestAPI(WebServiceConstants.METHOD_PACMANAGER, pacViews.toString(),
+                .webServiceRequestAPI(WebServiceConstants.METHOD_PACS_MANAGER, pacViews.toString(),
                         new WebServices.IRequestJsonDataCallBack() {
                             @Override
                             public void requestDataResponse(WebResponse<JsonObject> webResponse) {

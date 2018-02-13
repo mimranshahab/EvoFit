@@ -46,7 +46,7 @@ public class WebServices {
         WebServices.bearerToken = bearerToken;
     }
 
-    public WebServices(Activity activity, String token, BaseURLTypes baseURLTypes) {
+    public WebServices(Activity activity, String token, BaseURLTypes baseURLTypes){
         switch (baseURLTypes) {
             case PACS_VIEWER:
                 apiService = WebServiceFactory.getInstancePACSURL(token, bearerToken);
@@ -55,6 +55,7 @@ public class WebServices {
                 apiService = WebServiceFactory.getInstanceBaseURL(token);
                 break;
             case PACS_IMAGE_DOWNLOAD:
+//                apiService = WebServiceFactory.getInstancePACImageDownload(bearerToken);
                 apiService = WebServiceFactory.getInstancePACSURL(token, bearerToken);
                 break;
         }
@@ -344,7 +345,7 @@ public class WebServices {
 
         try {
             if (Helper.isNetworkConnected(mContext, true)) {
-                apiService.getToken().enqueue(new Callback<String>() {
+                WebServiceFactory.getInstance().getToken().enqueue(new Callback<String>() {
                     @Override
                     public void onResponse(Call<String> call, Response<String> response) {
                         dismissDialog();

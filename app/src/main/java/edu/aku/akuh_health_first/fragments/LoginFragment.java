@@ -109,7 +109,7 @@ public class LoginFragment extends BaseFragment {
         edtCardNumber.addTextChangedListener(new MaskFormatter(CARD_MASK, edtCardNumber, '-'));
 
         setClickableSpan(txtSignUp);
-
+//        serviceCallToken();
 
     }
 
@@ -119,20 +119,20 @@ public class LoginFragment extends BaseFragment {
     }
 
 
-    private void serviceCallToken() {
-
-        new WebServices(getContext()).webServiceGetToken(new WebServices.IRequestStringCallBack() {
-            @Override
-            public void requestDataResponse(String webResponse) {
-                WebServices.setBearerToken(webResponse);
-            }
-
-            @Override
-            public void onError() {
-
-            }
-        });
-    }
+//    private void serviceCallToken() {
+//
+//        new WebServices(getContext()).webServiceGetToken(new WebServices.IRequestStringCallBack() {
+//            @Override
+//            public void requestDataResponse(String webResponse) {
+//                WebServices.setBearerToken(webResponse);
+//            }
+//
+//            @Override
+//            public void onError() {
+//
+//            }
+//        });
+//    }
 
 
     private void setClickableSpan(TextView textView) {

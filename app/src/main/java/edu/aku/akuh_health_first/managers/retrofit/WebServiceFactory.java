@@ -22,6 +22,7 @@ public class WebServiceFactory {
     private static Retrofit retrofitBase;
     private static Retrofit retrofitPACSViewer;
     private static Retrofit retrofitPACSDownload;
+    private static Retrofit retrofitPACSToken;
 
     /***
      *      SINGLETON Design Pattern
@@ -177,5 +178,50 @@ public class WebServiceFactory {
 
     }
 
+    public static WebServiceProxy getInstance() {
+
+        if (retrofitPACSToken == null) {
+
+
+            HttpLoggingInterceptor interceptor = new HttpLoggingInterceptor();
+            // set your desired log level
+            interceptor.setLevel(HttpLoggingInterceptor.Level.BODY);
+
+            OkHttpClient.Builder httpClient = new OkHttpClient.Builder();
+            httpClient.connectTimeout(120, TimeUnit.SECONDS);
+            httpClient.readTimeout(121, TimeUnit.SECONDS);
+
+
+//             add your other interceptors …
+            httpClient.addInterceptor(new Interceptor() {
+
+                @Override
+                public Response intercept(Chain chain) throws IOException {
+                    Request original = chain.request();
+                    Request.Builder requestBuilder = original.newBuilder();
+//                    requestBuilder.addHeader("_token", _token + "");
+
+                    // Request customization: add request headers
+
+                    Request request = requestBuilder.build();
+                    return chain.proceed(request);
+
+                }
+            });
+
+
+            // add logging as last interceptor
+//            httpClient.addNetworkInterceptor(interceptor).addInterceptor(interceptor);  // <-- this is the important line!
+            httpClient.addInterceptor(interceptor);  // <-- this is the important line!
+            retrofitPACSToken = new Retrofit.Builder()
+                    .baseUrl(WebServiceConstants.PACS_URL)
+                    .addConverterFactory(GsonConverterFactory.create(GsonFactory.getSimpleGson()))
+                    .client(httpClient.build())
+                    .build();
+
+        }
+
+        return retrofitPACSToken.create(WebServiceProxy.class);
+    }
 
 }

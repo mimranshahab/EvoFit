@@ -11,8 +11,9 @@ public class WebServiceConstants {
     String postmanLink = "https://www.getpostman.com/collections/1d39c488e283b95f6e23";
 
     public static String BASE_URL = "http://ahfapidev.aku.edu/api/";
-    public static String PACS_VIEWER_URL = "https://pacsviewer.aku.edu/api/PACSViewer";
+    public static String PACS_VIEWER_URL = "https://pacsviewer.aku.edu/api/PACSViewer/";
     public static String PACS_URL_DOWNLOAD = "https://pacsviewer.aku.edu/";
+    public static String PACS_URL = "https://pacsviewer.aku.edu/api/";
 
 
     public static final String PARAMS_REQUEST_METHOD = "RequestMethod";
@@ -26,6 +27,7 @@ public class WebServiceConstants {
     public static final String tempMRN_LAB = "510-29-10";
     public static final String tempMRN_ENDOSCOPY = "100-08-60";
     public static final String tempMRN_RADIOLOGY = "294-71-23";
+    public static final String tempMRN_RADIOLOGY1 = "015-94-53";
     public static final String tempMRN_immunization = "269-14-57";
     public static final String temp_Specimen_Num = "53786623";
     public static final String tempPassword = "uL952ERAghddR2h+CedbuA==";
@@ -38,11 +40,8 @@ public class WebServiceConstants {
     public static final String METHOD_USER_GET_USER = "UserManager.Login";
     public static final String METHOD_CARD_MEMBER = "UserManager.GetCardMembersDetail";
     public static final String METHOD_USER_UPLOAD_REQUEST_FILE = "UserManager.UploadRequestFile";
-
-    public static final String METHOD_PACMANAGER = "PACSManager.GetPacs";
     public static final String METHOD_GET_RADIOLOGY_EXAMS = "RadiologyManager.GetRadiologyExams";
     public static final String METHOD_GET_RADIOLOGY_GET_EXAM_DETAIL = "RadiologyManager.GetExamDetail";
-
     public static final String METHOD_NEUROPHIOLOGY = "NeurophysiologyManager.GetNeurophysiologyExam";
     public static final String METHOD_NEUROPHIOLOGY_SHOW_REPORT = "NeurophysiologyManager.ShowReport";
 
@@ -66,6 +65,14 @@ public class WebServiceConstants {
     public static final String METHOD_IMMUNIZATION_UPDATE_VACCINE = "PharmacyManager.UpdateVaccine";
     public static final String METHOD_IMMUNIZATION_ADD_VACCINE = "PharmacyManager.AddVaccine";
     public static final String METHOD_IMMUNIZATION_VACCINE_IDS = "PharmacyManager.GetVaccineIDs";
+
+
+
+    public static final String METHOD_PACS_MANAGER= "PACSManager.GetPacs";
+    public static final String METHOD_PACS_ACCESSIONS= "{\"PACS_Accessions\":[" ;
+    public static final String METHOD_PACS_ACCESSIONS_end= "]}" ;
+//    44161191
+
 
 
     /**

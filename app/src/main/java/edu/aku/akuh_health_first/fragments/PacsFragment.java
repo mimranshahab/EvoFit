@@ -15,10 +15,7 @@ import android.view.animation.LayoutAnimationController;
 import android.widget.AdapterView;
 
 import com.google.gson.JsonObject;
-import com.google.gson.reflect.TypeToken;
 
-import java.io.IOException;
-import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -26,10 +23,11 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
 import edu.aku.akuh_health_first.R;
-import edu.aku.akuh_health_first.activities.HomeActivity;
 import edu.aku.akuh_health_first.activities.PacsActivity;
-import edu.aku.akuh_health_first.adapters.recyleradapters.RadiologyAdapter;
+import edu.aku.akuh_health_first.adapters.recyleradapters.PacsDescriptionAdapter;
 import edu.aku.akuh_health_first.callbacks.OnItemClickListener;
+import edu.aku.akuh_health_first.constatnts.AppConstants;
+import edu.aku.akuh_health_first.constatnts.Events;
 import edu.aku.akuh_health_first.constatnts.WebServiceConstants;
 import edu.aku.akuh_health_first.enums.BaseURLTypes;
 import edu.aku.akuh_health_first.fragments.abstracts.BaseFragment;
@@ -37,7 +35,7 @@ import edu.aku.akuh_health_first.helperclasses.ui.helper.TitleBar;
 import edu.aku.akuh_health_first.helperclasses.ui.helper.UIHelper;
 import edu.aku.akuh_health_first.managers.retrofit.GsonFactory;
 import edu.aku.akuh_health_first.managers.retrofit.WebServices;
-import edu.aku.akuh_health_first.models.CardModel;
+import edu.aku.akuh_health_first.models.PacsDescriptionModel;
 import edu.aku.akuh_health_first.models.PacsModel;
 import edu.aku.akuh_health_first.models.RadiologyModel;
 import edu.aku.akuh_health_first.models.receiving_model.UserDetailModel;
@@ -48,28 +46,34 @@ import edu.aku.akuh_health_first.models.wrappers.WebResponse;
  * Created by aqsa.sarwar on 1/17/2018.
  */
 
-public class RadiologyFragment extends BaseFragment implements View.OnClickListener, OnItemClickListener {
+public class PacsFragment extends BaseFragment implements View.OnClickListener, OnItemClickListener {
 
+    private static final String RADIOLOGY_MODEL_KEY = "RADIOLOGY_MODEL_KEY";
     @BindView(R.id.recylerView)
     RecyclerView recyclerView;
     @BindView(R.id.refreshLayout)
     SwipeRefreshLayout refreshLayout;
     Unbinder unbinder;
-    private ArrayList<RadiologyModel> arrData;
-    private RadiologyAdapter adapterRadiology;
+
+    private PacsDescriptionAdapter adapterPacsDescriptionAdapter;
+    private RadiologyModel radioModel;
+    private List<JsonObject> object;
+    private ArrayList<PacsDescriptionModel> arrData;
 
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        arrData = new ArrayList<RadiologyModel>();
-        adapterRadiology = new RadiologyAdapter(getBaseActivity(), arrData, this);
+        arrData = new ArrayList<PacsDescriptionModel>();
+        adapterPacsDescriptionAdapter = new PacsDescriptionAdapter(getBaseActivity(), arrData, this);
+        radioModel = getArguments().getParcelable("RADIOLOGY_MODEL_KEY");
     }
 
-    public static RadiologyFragment newInstance() {
+    public static PacsFragment newInstance(RadiologyModel item) {
 
         Bundle args = new Bundle();
-        RadiologyFragment fragment = new RadiologyFragment();
+        PacsFragment fragment = new PacsFragment();
+        args.putParcelable(RADIOLOGY_MODEL_KEY, item);
         fragment.setArguments(args);
         return fragment;
     }
@@ -83,7 +87,7 @@ public class RadiologyFragment extends BaseFragment implements View.OnClickListe
     public void setTitlebar(TitleBar titleBar) {
         titleBar.resetViews();
         titleBar.setVisibility(View.VISIBLE);
-        titleBar.setTitle("Radiology");
+        titleBar.setTitle("Pacs detail");
         titleBar.showBackButton(getBaseActivity());
         titleBar.setCircleImageView();
         titleBar.showHome(getBaseActivity());
@@ -97,18 +101,6 @@ public class RadiologyFragment extends BaseFragment implements View.OnClickListe
              /*
         //////////Get Bearer token
          */
-        new WebServices(getContext()).webServiceGetToken(new WebServices.IRequestStringCallBack() {
-            @Override
-            public void requestDataResponse(String webResponse) {
-                WebServices.setBearerToken(webResponse);
-            }
-
-            @Override
-            public void onError() {
-
-            }
-        });
-
         bindView();
         serviceCall();
     }
@@ -120,7 +112,7 @@ public class RadiologyFragment extends BaseFragment implements View.OnClickListe
         int resId = R.anim.layout_animation_fall_bottom;
         LayoutAnimationController animation = AnimationUtils.loadLayoutAnimation(getContext(), resId);
         recyclerView.setLayoutAnimation(animation);
-        recyclerView.setAdapter(adapterRadiology);
+        recyclerView.setAdapter(adapterPacsDescriptionAdapter);
     }
 
     @Override
@@ -128,7 +120,7 @@ public class RadiologyFragment extends BaseFragment implements View.OnClickListe
         refreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
-                serviceCall();
+//                serviceCall();
                 refreshLayout.setRefreshing(false);
             }
         });
@@ -147,31 +139,9 @@ public class RadiologyFragment extends BaseFragment implements View.OnClickListe
 
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-        switch (view.getId()) {
-            case R.id.btnShowGraph:
-
-                showPacsImages(adapterRadiology.getItem(position));
-                break;
-            case R.id.btnShowReport:
-                RadiologyModel object = adapterRadiology.getItem(position);
-                if (object instanceof RadiologyModel) {
-                    RadiologyModel radiologyModel = (RadiologyModel) object;
-                    getBaseActivity().addDockableFragment(RadiologyDescriptionFragment.newInstance(radiologyModel.toString()));
-                }
-
-
-                break;
-        }
-    }
-
-    private void showPacsImages(final RadiologyModel item) {
-
-
-        getBaseActivity().addDockableFragment(PacsFragment.newInstance(item));
-
-
 
     }
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -190,45 +160,65 @@ public class RadiologyFragment extends BaseFragment implements View.OnClickListe
     @Override
     public void onItemClick(int position, Object object) {
 
+        if (object instanceof PacsDescriptionModel) {
+        UIHelper.showToast(getContext(),"onItemClick");
+
+            getBaseActivity().openActivity(PacsActivity.class, object.toString());
+
+        }
     }
 
 
     private void serviceCall() {
-        // FIXME: 1/18/2018 Use live data in future
-        UserDetailModel currentUser = sharedPreferenceManager.getCurrentUser();
-        currentUser.setMRNumber(WebServiceConstants.tempMRN);
-
         new WebServices(getBaseActivity(),
                 WebServiceConstants.temporaryToken,
-                BaseURLTypes.AHFA_BASE_URL)
-                .webServiceRequestAPIForArray(WebServiceConstants.METHOD_GET_RADIOLOGY_EXAMS,
-                        currentUser.getMRNumberwithComma(),
-                        new WebServices.IRequestArrayDataCallBack() {
+                BaseURLTypes.PACS_VIEWER)
+                .webServiceRequestAPI(WebServiceConstants.METHOD_PACS_MANAGER,
+                        WebServiceConstants.METHOD_PACS_ACCESSIONS + radioModel.getAccessionnumberwithComma() + WebServiceConstants.METHOD_PACS_ACCESSIONS_end
+                        ,
+                        new WebServices.IRequestJsonDataCallBack() {
                             @Override
-                            public void requestDataResponse(WebResponse<ArrayList<JsonObject>> webResponse) {
+                            public void requestDataResponse(WebResponse<JsonObject> webResponse) {
+                                PacsModel pacsModel = GsonFactory.getSimpleGson().fromJson(webResponse.result, PacsModel.class);
+//                        getBaseActivity().openActivity(PacsActivity.class, pacsModel.toString());
+//                                for (List<JsonObject> objectsList : pacsModel) {
+//                                    object.add(objectsList.get(0));
+//                                }
+                                ArrayList arrayList = new ArrayList<PacsDescriptionAdapter>();
+//                                if (pacsModel != null) {
+                                    for (int i = 0; i < pacsModel.getPatient_Name().size(); i++) {
 
-                                Type type = new TypeToken<ArrayList<RadiologyModel>>() {
-                                }.getType();
-                                ArrayList<RadiologyModel> arrayList = GsonFactory.getSimpleGson()
-                                        .fromJson(GsonFactory.getSimpleGson().toJson(webResponse.result)
-                                                , type);
+                                        PacsDescriptionModel pacsDescriptionModel = new PacsDescriptionModel();
 
-                                arrData.clear();
-                                arrData.addAll(arrayList);
-                                adapterRadiology.notifyDataSetChanged();
+                                        pacsDescriptionModel.setPatient_Name(pacsModel.getPatient_Name().get(i));
+                                        pacsDescriptionModel.setPatientDOB(pacsModel.getPatientDOB().get(i));
+                                        pacsDescriptionModel.setPatientAge(pacsModel.getPatientAge().get(i));
+                                        pacsDescriptionModel.setPatientGender(pacsModel.getPatientGender().get(i));
+                                        pacsDescriptionModel.setPatientMRN(pacsModel.getPatientMRN().get(i));
+                                        pacsDescriptionModel.setStudyDataCount(pacsModel.getStudyDataCount().get(i));
+                                        pacsDescriptionModel.setStudyTitle(pacsModel.getStudyTitle().get(i));
+                                        pacsDescriptionModel.setStudyDataString(pacsModel.getStudyDataString().get(i));
+
+
+                                        arrayList.add(pacsDescriptionModel);
+
+                                    }
+
+                                    arrData.clear();
+
+                                    arrData.addAll(arrayList);
+                                    adapterPacsDescriptionAdapter.notifyDataSetChanged();
+                                    arrData.size();
+//                                }
                             }
-
                             @Override
                             public void onError() {
-                                UIHelper.showShortToastInCenter(getContext(), "failure");
+
                             }
                         });
 
 
-
-
     }
-
 
 
 }

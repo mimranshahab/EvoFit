@@ -1,7 +1,12 @@
 package edu.aku.akuh_health_first.models;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
+
+import java.lang.annotation.Annotation;
 
 import edu.aku.akuh_health_first.managers.retrofit.GsonFactory;
 
@@ -9,7 +14,7 @@ import edu.aku.akuh_health_first.managers.retrofit.GsonFactory;
  * Created by hamza.ahmed on 2/7/2018.
  */
 
-public class RadiologyModel {
+public class RadiologyModel implements Parcelable {
 
 
     @Expose
@@ -168,6 +173,9 @@ public class RadiologyModel {
     public String getAccessionnumber() {
         return accessionnumber;
     }
+        public String getAccessionnumberwithComma() {
+        return "\"" + accessionnumber + "\"";
+    }
 
     public void setAccessionnumber(String accessionnumber) {
         this.accessionnumber = accessionnumber;
@@ -193,5 +201,16 @@ public class RadiologyModel {
     @Override
     public String toString() {
          return GsonFactory.getSimpleGson().toJson(this);
+    }
+
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+
     }
 }
