@@ -29,6 +29,7 @@ public class WebServiceConstants {
     public static final String tempMRN_RADIOLOGY = "294-71-23";
     public static final String tempMRN_RADIOLOGY1 = "015-94-53";
     public static final String tempMRN_immunization = "269-14-57";
+    public static final String tempMRN_Timeline = "\"510-29-10\"";
     public static final String temp_Specimen_Num = "53786623";
     public static final String tempPassword = "uL952ERAghddR2h+CedbuA==";
     /**

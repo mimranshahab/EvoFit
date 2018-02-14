@@ -26,6 +26,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
 import edu.aku.akuh_health_first.R;
+import edu.aku.akuh_health_first.activities.PacsActivity;
 import edu.aku.akuh_health_first.adapters.recyleradapters.NeurophysiologyAdapter;
 import edu.aku.akuh_health_first.adapters.recyleradapters.TimelineAdapter;
 import edu.aku.akuh_health_first.callbacks.OnItemClickListener;
@@ -39,6 +40,7 @@ import edu.aku.akuh_health_first.managers.FileManager;
 import edu.aku.akuh_health_first.managers.retrofit.GsonFactory;
 import edu.aku.akuh_health_first.managers.retrofit.WebServices;
 import edu.aku.akuh_health_first.models.Neurophysiology;
+import edu.aku.akuh_health_first.models.PacsDescriptionModel;
 import edu.aku.akuh_health_first.models.TimelineModel;
 import edu.aku.akuh_health_first.models.receiving_model.UserDetailModel;
 import edu.aku.akuh_health_first.models.wrappers.WebResponse;
@@ -150,6 +152,7 @@ public class TimelineFragment extends BaseFragment implements View.OnClickListen
     @Override
     public void onItemClick(int position, Object object) {
         if (object instanceof TimelineModel) {
+            getBaseActivity().addDockableFragment(HealthHistoryFragment.newInstance());
 
         }
 
@@ -159,7 +162,7 @@ public class TimelineFragment extends BaseFragment implements View.OnClickListen
         // FIXME: 1/18/2018 Use live data in future
         UserDetailModel currentUser = sharedPreferenceManager.getCurrentUser();
         currentUser.setMRNumber(WebServiceConstants.tempMRN_LAB);
-
+//
         new WebServices(getBaseActivity(),
                 WebServiceConstants.temporaryToken,
                 BaseURLTypes.AHFA_BASE_URL)

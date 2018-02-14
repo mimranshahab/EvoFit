@@ -477,33 +477,6 @@ public class RegisterFragment extends BaseFragment {
     }
 
 
-    private void CallPacManager() {
-        ArrayList<String> item = new ArrayList<String>();
-        item.add(WebServiceConstants.tempPacViews.toString());
-
-        PacsView pacViews = new PacsView(item);
-
-
-        new WebServices(getBaseActivity(), WebServiceConstants.temporaryToken, BaseURLTypes.PACS_VIEWER)
-                .webServiceRequestAPI(WebServiceConstants.METHOD_PACS_MANAGER, pacViews.toString(),
-                        new WebServices.IRequestJsonDataCallBack() {
-                            @Override
-                            public void requestDataResponse(WebResponse<JsonObject> webResponse) {
-
-                                PacsView entity = GsonFactory.getSimpleGson().fromJson(webResponse.result, PacsView.class);
-
-                                UIHelper.showToast(getContext(), entity.toString());
-                             }
-
-                            @Override
-                            public void onError() {
-
-                            }
-                        });
-
-
-
-    }
 
     @NonNull
     public RequestBody getRequestBody(MediaType form, String trim) {

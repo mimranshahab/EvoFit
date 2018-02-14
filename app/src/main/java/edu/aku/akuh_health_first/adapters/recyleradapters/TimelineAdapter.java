@@ -1,11 +1,13 @@
 package edu.aku.akuh_health_first.adapters.recyleradapters;
 
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
 
 import java.util.ArrayList;
 
@@ -53,11 +55,38 @@ public class TimelineAdapter extends RecyclerView.Adapter<TimelineAdapter.ViewHo
         holder.txtDoctorName.setText(timelineModel.getPatientvisitdoctorname());
         holder.txtService.setText(timelineModel.getPatientvisitservice());
         holder.txtVisitType.setText(timelineModel.getPatientvisittype());
+        /*
+        set banner color
+        In-Patient ---->Blue
+        Out-Patient ---->Orange
+        ER ---->Red
+        Clinical ---->Green
+
+         */
+        if (timelineModel.getPatientvisittype().equals("ER")) {
+            holder.llcolorCode.setBackgroundResource(R.color.c_brick_red);
+        } else if (timelineModel.getPatientvisittype().equals("IN")) {
+            holder.llcolorCode.setBackgroundResource(R.color.base_dark_blue);
+
+        } else if (timelineModel.getPatientvisittype().equals("CLI")) {
+            holder.llcolorCode.setBackgroundResource(R.color.c_dark_green);
+
+        } else {
+            holder.llcolorCode.setBackgroundResource(R.color.base_amber);
+
+        }
+
+
         setListener(holder, timelineModel);
     }
 
-    private void setListener(final ViewHolder holder, final TimelineModel neurophysiology) {
-
+    private void setListener(final ViewHolder holder, final TimelineModel timelineModel) {
+        holder.cardView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onItemClick.onItemClick(holder.getAdapterPosition(), timelineModel);
+            }
+        });
     }
 
 
@@ -71,7 +100,6 @@ public class TimelineAdapter extends RecyclerView.Adapter<TimelineAdapter.ViewHo
     public int getItemCount() {
         return arrData.size();
     }
-
 
     static class ViewHolder extends RecyclerView.ViewHolder {
 
@@ -87,10 +115,14 @@ public class TimelineAdapter extends RecyclerView.Adapter<TimelineAdapter.ViewHo
         AnyTextView txtVisitType;
         @BindView(R.id.cardView)
         CardView cardView;
+        @BindView(R.id.llcolorCode)
+        LinearLayout llcolorCode;
 
         ViewHolder(View view) {
             super(view);
             ButterKnife.bind(this, view);
         }
     }
+
+
 }

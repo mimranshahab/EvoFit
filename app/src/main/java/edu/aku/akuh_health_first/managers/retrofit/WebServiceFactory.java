@@ -105,7 +105,7 @@ public class WebServiceFactory {
                     Request.Builder requestBuilder = original.newBuilder();
 
                     requestBuilder.addHeader("_token", _token + "");
-                    requestBuilder.addHeader("Authorization", "Bearer " + bearerToken);
+                    requestBuilder.addHeader("Authorization", "Bearer " + WebServices.getBearerToken());
                     requestBuilder.addHeader("Requestor", "aku.edu");
 
                     // Request customization: add request headers

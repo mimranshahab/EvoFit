@@ -161,8 +161,6 @@ public class PacsFragment extends BaseFragment implements View.OnClickListener, 
     public void onItemClick(int position, Object object) {
 
         if (object instanceof PacsDescriptionModel) {
-        UIHelper.showToast(getContext(),"onItemClick");
-
             getBaseActivity().openActivity(PacsActivity.class, object.toString());
 
         }
@@ -198,6 +196,7 @@ public class PacsFragment extends BaseFragment implements View.OnClickListener, 
                                         pacsDescriptionModel.setStudyDataCount(pacsModel.getStudyDataCount().get(i));
                                         pacsDescriptionModel.setStudyTitle(pacsModel.getStudyTitle().get(i));
                                         pacsDescriptionModel.setStudyDataString(pacsModel.getStudyDataString().get(i));
+                                        pacsDescriptionModel.setStudyDataDateTime(pacsModel.getStudyDataDateTime().get(i));
 
 
                                         arrayList.add(pacsDescriptionModel);

@@ -18,7 +18,7 @@
         app:typeface="@string/font_bold" />
 
     <ImageButton
-        android:id="@+id/btnLeft"
+        android:id="@+id/btnPrevious"
         android:layout_width="match_parent"
         android:layout_height="@dimen/x100dp"
         android:layout_centerInParent="true"
@@ -38,7 +38,7 @@
         android:scaleType="centerCrop" />
 
     <ImageButton
-        android:id="@+id/btnRight"
+        android:id="@+id/btnNext"
         android:layout_width="match_parent"
         android:layout_height="@dimen/x100dp"
         android:layout_centerInParent="true"
