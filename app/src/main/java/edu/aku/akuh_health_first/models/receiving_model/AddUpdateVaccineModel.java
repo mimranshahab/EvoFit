@@ -7,7 +7,7 @@ import com.google.gson.annotations.SerializedName;
  * Created by hamza.ahmed on 2/13/2018.
  */
 
-public class AddVaccineModel {
+public class AddUpdateVaccineModel {
 
 
     @Expose

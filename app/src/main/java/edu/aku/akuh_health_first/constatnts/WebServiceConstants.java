@@ -16,6 +16,11 @@ public class WebServiceConstants {
     public static String PACS_URL = "https://pacsviewer.aku.edu/api/";
 
 
+    public static final String WS_KEY_GET_TOKEN = "GetToken";
+    public static final String WS_KEY_GET_REQUESTOR = "Requestor: aku.edu";
+
+
+
     public static final String PARAMS_REQUEST_METHOD = "RequestMethod";
     public static final String PARAMS_REQUEST_DATA = "RequestData";
     public static final String requestor = "aku.edu";
@@ -31,6 +36,7 @@ public class WebServiceConstants {
     public static final String tempMRN_immunization = "269-14-57";
     public static final String temp_Specimen_Num = "53786623";
     public static final String tempPassword = "uL952ERAghddR2h+CedbuA==";
+
     /**
      * REQUEST METHODS NAMES
      */
@@ -38,19 +44,23 @@ public class WebServiceConstants {
     // UserManager
     public static final String METHOD_USER_GET_REGISTER_VM = "UserManager.GetRegisterVM";
     public static final String METHOD_USER_GET_USER = "UserManager.Login";
-    public static final String METHOD_CARD_MEMBER = "UserManager.GetCardMembersDetail";
+    public static final String METHOD_CARD_MEMBER = "UserManager.GetRegisteredCardAndMembers";
     public static final String METHOD_USER_UPLOAD_REQUEST_FILE = "UserManager.UploadRequestFile";
+
+
     public static final String METHOD_GET_RADIOLOGY_EXAMS = "RadiologyManager.GetRadiologyExams";
     public static final String METHOD_GET_RADIOLOGY_GET_EXAM_DETAIL = "RadiologyManager.GetExamDetail";
+
+
     public static final String METHOD_NEUROPHIOLOGY = "NeurophysiologyManager.GetNeurophysiologyExam";
     public static final String METHOD_NEUROPHIOLOGY_SHOW_REPORT = "NeurophysiologyManager.ShowReport";
+
 
     public static final String METHOD_CARDIO = "CardiopulmonaryManager.GetCardiopulmonaryExam";
     public static final String METHOD_CARDIO_SHOW_REPORT = "CardiopulmonaryManager.ShowReport";
     public static final String METHOD_CARDIO_SHOW_GRAPH = "CardiopulmonaryManager.ShowGraph";
 
     public static final String METHOD_CLINICAL_LAB = "LaboratoryManager.GetLabSpecimenList";
-    public static final String METHOD_CLINICAL_LAB_DETAIL = "LaboratoryManager.GetLabSpecimenList";
     public static final String METHOD_CLINICAL_LAB_RESULT = "LaboratoryManager.GetLabSpecimenResults";
 
     public static final String METHOD_SHOW_REPORT_DS = "PatientManager.ShowReport";
@@ -67,47 +77,10 @@ public class WebServiceConstants {
     public static final String METHOD_IMMUNIZATION_VACCINE_IDS = "PharmacyManager.GetVaccineIDs";
 
 
-
-    public static final String METHOD_PACS_MANAGER= "PACSManager.GetPacs";
-    public static final String METHOD_PACS_ACCESSIONS= "{\"PACS_Accessions\":[" ;
-    public static final String METHOD_PACS_ACCESSIONS_end= "]}" ;
+    public static final String METHOD_PACS_MANAGER = "PACSManager.GetPacs";
+    public static final String METHOD_PACS_ACCESSIONS = "{\"PACS_Accessions\":[";
+    public static final String METHOD_PACS_ACCESSIONS_end = "]}";
 //    44161191
 
 
-
-    /**
-     * CONSTANTS
-     */
-    public static String DEVICE_TYPE = "android";
-    public static String DEVICE_TOKEN = "abc123";
-    public static String CURRENCY_TYPE = "AED";
-    public static String COUNTRY_ID_UAE = "AE";
-
-    public static int CITY_ID = 0;
-
-
-    public static final String WS_KEY_LOGIN = "login";
-    public static final String WS_KEY_REGISTER = "register";
-    public static final String WS_KEY_EDIT_PROFILE = "user/update";
-    public static final String WS_KEY_FORGOT_PASSWORD = "forgotpassword";
-    public static final String WS_KEY_GET_TOKEN = "GetToken";
-    public static final String WS_KEY_GET_REQUESTOR = "Requestor: aku.edu";
-    public static final String WS_KEY_PACS_VIEWER = "PACSViewer";
-    public static final String WS_KEY_IMAGE_URL = "wado?requestType=WADO&studyUID=1.2.392.200036.9125.2.353644173100.64863020020.362418&seriesUID=1.2.392.200036.9125.3.353644173100.64863020020.362419&objectUID=1.2.392.200036.9125.9.0.253360372.1325662243.606907748&contentType=image/jpeg";
-
-
-    public static final String WS_KEY_STATIC_PAGE = "cms";
-    public static final String WS_KEY_ADDRESSES = "address";
-    public static final String WS_KEY_ADD_ADDRESS = "address/add";
-    public static final String WS_KEY_DELETE_ADDRESS = "address/delete";
-    public static final String WS_KEY_EDIT_ADDRESS = "address/edit";
-    public static final String WS_KEY_NOTIFICATIONS_CLEAR = "notifications/clear";
-    public static final String WS_KEY_NOTIFICATIONS_GET = "notifications/get";
-    public static final String WS_KEY_FEEDBACK = "feedback/add";
-    public static final String WS_KEY_SELECT_ADDRESS = "address/select";
-    public static final String WS_KEY_GET_SELECTED_ADDRESS = "address/selected";
-    public static final String WS_KEY_UPDATE_TOKEN = "updateToken";
-    public static final String WS_KEY_SEND_CODE = "sendCode";
-    public static final String WS_KEY_REPORT_AN_ISSUE = "issue/report";
-    public static final String WS_KEY_RATING_BAR = "rate/shopping";
 }

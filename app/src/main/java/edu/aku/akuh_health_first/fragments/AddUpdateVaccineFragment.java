@@ -1,10 +1,8 @@
 package edu.aku.akuh_health_first.fragments;
 
-import android.app.DatePickerDialog;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.widget.DrawerLayout;
-import android.text.Html;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -12,22 +10,20 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.DatePicker;
 import android.widget.Spinner;
-import android.widget.TextView;
 
 import com.google.gson.JsonObject;
 import com.google.gson.reflect.TypeToken;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;
+import java.util.HashMap;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import butterknife.Unbinder;
 import edu.aku.akuh_health_first.R;
-import edu.aku.akuh_health_first.constatnts.AppConstants;
 import edu.aku.akuh_health_first.constatnts.WebServiceConstants;
 import edu.aku.akuh_health_first.enums.BaseURLTypes;
 import edu.aku.akuh_health_first.fragments.abstracts.BaseFragment;
@@ -37,8 +33,7 @@ import edu.aku.akuh_health_first.managers.DateManager;
 import edu.aku.akuh_health_first.managers.retrofit.GsonFactory;
 import edu.aku.akuh_health_first.managers.retrofit.WebServices;
 import edu.aku.akuh_health_first.models.ImmunizationModel;
-import edu.aku.akuh_health_first.models.RadiologyDetailModel;
-import edu.aku.akuh_health_first.models.receiving_model.AddVaccineModel;
+import edu.aku.akuh_health_first.models.receiving_model.AddUpdateVaccineModel;
 import edu.aku.akuh_health_first.models.receiving_model.UserDetailModel;
 import edu.aku.akuh_health_first.models.wrappers.WebResponse;
 import edu.aku.akuh_health_first.views.AnyEditTextView;
@@ -60,14 +55,14 @@ public class AddUpdateVaccineFragment extends BaseFragment {
     AnyTextView txtVaccine;
     @BindView(R.id.txtVaccineLocation)
     AnyEditTextView txtVaccineLocation;
-    @BindView(R.id.txtComments)
-    AnyEditTextView txtComments;
     @BindView(R.id.btnSave)
     Button btnSave;
     private boolean isFromAdd;
     private ArrayList<String> arrVaccine;
     private ArrayAdapter adapterVaccine;
     private ImmunizationModel immunizationModel;
+
+    HashMap<String, String> vaccineIDandDescriptions = new HashMap<String, String>();
 
     public static AddUpdateVaccineFragment newInstance(boolean isFromAdd, ImmunizationModel immunizationModel) {
 
@@ -96,6 +91,14 @@ public class AddUpdateVaccineFragment extends BaseFragment {
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         serviceCall();
+
+
+        if (!isFromAdd) {
+            txtVaccinationPlanDate.setText(immunizationModel.getVaccinePlanDate());
+            txtVaccineLocation.setText(immunizationModel.getHospitalLocation());
+            txtVaccineLocation.setFocusable(false);
+            txtVaccineLocation.setClickable(false);
+        }
     }
 
     @Override
@@ -112,6 +115,7 @@ public class AddUpdateVaccineFragment extends BaseFragment {
             titleBar.setTitle("Update Vaccine");
         }
 
+        titleBar.showBackButton(getBaseActivity());
 
     }
 
@@ -165,11 +169,12 @@ public class AddUpdateVaccineFragment extends BaseFragment {
                                         .fromJson(GsonFactory.getSimpleGson().toJson(webResponse.result)
                                                 , type);
 
-                                for (int i = 0; i < arrayList.size(); i++) {
 
-                                    arrVaccine.add(arrayList.get(i).getVaccineID());
-
+                                for (ImmunizationModel model : arrayList) {
+                                    vaccineIDandDescriptions.put(model.getDescription(), model.getVaccineID());
+                                    arrVaccine.add(model.getDescription());
                                 }
+
                                 setSpinner(adapterVaccine, txtVaccine, spVaccine);
                             }
 
@@ -215,23 +220,32 @@ public class AddUpdateVaccineFragment extends BaseFragment {
 
                     if (isFromAdd) {
                         ImmunizationModel immunizationModel = new ImmunizationModel();
-
                         immunizationModel.setMRN(WebServiceConstants.tempMRN_immunization);
                         immunizationModel.setScheduleID("U");
                         immunizationModel.setVisitID("U");
                         immunizationModel.setActive("Y");
                         immunizationModel.setRouteID("PO");
                         immunizationModel.setLastFileTerminal("MOBILE");
-                        immunizationModel.setVaccineID(txtVaccine.getStringTrimmed());
+
+                        immunizationModel.setVaccineID(vaccineIDandDescriptions.get(txtVaccine.getText().toString()));
+
+                        UIHelper.showToast(getContext(), vaccineIDandDescriptions.get(txtVaccine.getText().toString()));
+
+
                         immunizationModel.setHospitalLocation(txtVaccineLocation.getStringTrimmed());
-                        immunizationModel.setLastFileUser("mahrukh.mehmood@aku.edu");
-                        immunizationModel.setComments(txtComments.getStringTrimmed());
+//                        immunizationModel.setLastFileUser("mahrukh.mehmood@aku.edu");
                         immunizationModel.setVaccinePlanDate(txtVaccinationPlanDate.getStringTrimmed());
                         immunizationModel.setVaccinationDate(txtVaccinatedDate.getStringTrimmed());
 
-                        addVaccineService(immunizationModel.toString());
+//                        addVaccineService(immunizationModel.toString());
                         Log.d(TAG, "onViewClicked: " + immunizationModel.toString());
 
+                    } else {
+                        immunizationModel.setMRN(WebServiceConstants.tempMRN_immunization);
+                        immunizationModel.setActive("Y");
+                        immunizationModel.setLastFileTerminal("MOBILE");
+                        immunizationModel.setVaccineID(txtVaccine.getStringTrimmed());
+                        immunizationModel.setVaccinationDate(txtVaccinatedDate.getStringTrimmed());
                     }
 
                 }
@@ -247,9 +261,29 @@ public class AddUpdateVaccineFragment extends BaseFragment {
                         new WebServices.IRequestJsonDataCallBack() {
                             @Override
                             public void requestDataResponse(WebResponse<JsonObject> webResponse) {
-                                AddVaccineModel addVaccineModel = GsonFactory.getSimpleGson().fromJson(webResponse.result, AddVaccineModel.class);
+                                AddUpdateVaccineModel addUpdateVaccineModel = GsonFactory.getSimpleGson().fromJson(webResponse.result, AddUpdateVaccineModel.class);
                                 popBackStack();
-                                UIHelper.showToast(getContext(), addVaccineModel.getMessage());
+                                UIHelper.showToast(getContext(), addUpdateVaccineModel.getMessage());
+                            }
+
+                            @Override
+                            public void onError() {
+
+                            }
+                        });
+    }
+
+
+    private void updateVaccine(String jsonData) {
+        new WebServices(getBaseActivity(), WebServiceConstants.temporaryToken, BaseURLTypes.AHFA_BASE_URL)
+                .webServiceRequestAPI(WebServiceConstants.METHOD_IMMUNIZATION_UPDATE_VACCINE,
+                        jsonData,
+                        new WebServices.IRequestJsonDataCallBack() {
+                            @Override
+                            public void requestDataResponse(WebResponse<JsonObject> webResponse) {
+                                AddUpdateVaccineModel addUpdateVaccineModel = GsonFactory.getSimpleGson().fromJson(webResponse.result, AddUpdateVaccineModel.class);
+                                popBackStack();
+                                UIHelper.showToast(getContext(), addUpdateVaccineModel.getMessage());
                             }
 
                             @Override

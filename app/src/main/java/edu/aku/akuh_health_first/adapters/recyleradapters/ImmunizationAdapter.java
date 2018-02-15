@@ -15,6 +15,7 @@ import java.util.ArrayList;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import edu.aku.akuh_health_first.R;
+import edu.aku.akuh_health_first.callbacks.OnItemClickListener;
 import edu.aku.akuh_health_first.constatnts.AppConstants;
 import edu.aku.akuh_health_first.models.CardioModel;
 import edu.aku.akuh_health_first.models.ImmunizationModel;
@@ -25,13 +26,13 @@ import edu.aku.akuh_health_first.views.AnyTextView;
 public class ImmunizationAdapter extends RecyclerView.Adapter<ImmunizationAdapter.ViewHolder> {
 
 
-    private final AdapterView.OnItemClickListener onItemClick;
+    private final OnItemClickListener onItemClick;
 
 
     private Activity activity;
     private ArrayList<ImmunizationModel> arrImmunization;
 
-    public ImmunizationAdapter(Activity activity, ArrayList<ImmunizationModel> userList, AdapterView.OnItemClickListener onItemClickListener) {
+    public ImmunizationAdapter(Activity activity, ArrayList<ImmunizationModel> userList, OnItemClickListener onItemClickListener) {
         this.arrImmunization = userList;
         this.activity = activity;
         this.onItemClick = onItemClickListener;
@@ -58,10 +59,6 @@ public class ImmunizationAdapter extends RecyclerView.Adapter<ImmunizationAdapte
         holder.txtLocation.setText(model.getHospitalLocation());
         holder.txtName.setText(model.getDescription());
 
-//        if (holder.getAdapterPosition() == 2 || holder.getAdapterPosition() == 3 || holder.getAdapterPosition() == 5 || holder.getAdapterPosition() == 8 || holder.getAdapterPosition() == 0) {
-//            model.setVaccinationDate("");
-//        }
-
         if (model.getVaccinationStatus().equals(AppConstants.schedule)) {
             holder.contBorder.setBackgroundColor(activity.getResources().getColor(R.color.base_grey));
             holder.btnUpdate.setVisibility(View.VISIBLE);
@@ -73,6 +70,17 @@ public class ImmunizationAdapter extends RecyclerView.Adapter<ImmunizationAdapte
             holder.contBorder.setBackgroundColor(activity.getResources().getColor(R.color.base_reddish));
             holder.btnUpdate.setVisibility(View.VISIBLE);
         }
+
+        setListener(holder, model);
+    }
+
+    private void setListener(final ViewHolder holder, final ImmunizationModel model) {
+        holder.btnUpdate.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                onItemClick.onItemClick(holder.getAdapterPosition(), model);
+            }
+        });
     }
 
     public ImmunizationModel getItem(int position) {

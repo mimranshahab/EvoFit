@@ -119,30 +119,6 @@
                 android:textColorHint="@color/text_hint"
                 android:textSize="16sp" />
 
-            <edu.aku.akuh_health_first.views.AnyTextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/x20dp"
-                android:text="Comments"
-                android:textColor="@color/c_black"
-                android:textSize="@dimen/s16"
-                app:typeface="@string/font_bold" />
-
-
-            <edu.aku.akuh_health_first.views.AnyEditTextView
-                android:id="@+id/txtComments"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="@dimen/x15dp"
-                android:background="@drawable/imgbox"
-                android:gravity="top"
-                android:hint="Write comments here"
-                android:padding="@dimen/x10dp"
-                android:textColor="@color/text_dark"
-                android:textColorHint="@color/text_hint"
-                android:textSize="16sp" />
-
-
             <Button
                 android:id="@+id/btnSave"
                 android:layout_width="match_parent"
