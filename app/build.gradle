@@ -77,6 +77,7 @@ dependencies {
     compile 'me.tankery.lib:circularSeekBar:1.1.4'
     compile 'com.github.santalu:emptyview:1.0.4'
     compile 'org.zakariya.stickyheaders:stickyheaders:0.7.6'
+    compile 'com.github.warkiz.widget:indicatorseekbar:1.2.9'
 }
 
 //apply plugin: 'com.google.gms.google-services'

@@ -39,7 +39,8 @@ public class WebServiceConstants {
     // UserManager
     public static final String METHOD_USER_GET_REGISTER_VM = "UserManager.GetRegisterVM";
     public static final String METHOD_USER_GET_USER = "UserManager.Login";
-    public static final String METHOD_CARD_MEMBER = "UserManager.GetCardMembersDetail";
+//    public static final String METHOD_CARD_MEMBER = "UserManager.GetCardMembersDetail";
+    public static final String METHOD_CARD_MEMBER = "UserManager.GetRegisteredCardAndMembers";
     public static final String METHOD_USER_UPLOAD_REQUEST_FILE = "UserManager.UploadRequestFile";
     public static final String METHOD_GET_RADIOLOGY_EXAMS = "RadiologyManager.GetRadiologyExams";
     public static final String METHOD_GET_RADIOLOGY_GET_EXAM_DETAIL = "RadiologyManager.GetExamDetail";

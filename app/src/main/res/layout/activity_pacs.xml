@@ -12,9 +12,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
+        android:background="@drawable/transparent_grey_round_box"
         android:padding="@dimen/x10dp"
         android:textSize="@dimen/s16"
-        android:background="@drawable/transparent_grey_round_box"
         app:typeface="@string/font_bold" />
 
     <ImageButton
@@ -25,8 +25,8 @@
         android:layout_toLeftOf="@id/image"
         android:background="@color/base_blue"
         android:padding="10dp"
-        android:tint="@color/c_black"
-        android:src="@drawable/imgback" />
+        android:src="@drawable/imgback"
+        android:tint="@color/c_black" />
 
     <ImageView
         android:id="@+id/image"
@@ -45,8 +45,8 @@
         android:layout_toRightOf="@id/image"
         android:background="@color/base_blue"
         android:padding="10dp"
-        android:tint="@color/c_black"
-        android:src="@drawable/imgnext" />
+        android:src="@drawable/imgnext"
+        android:tint="@color/c_black" />
 
     <ProgressBar
         android:id="@+id/progressbar"
@@ -54,4 +54,17 @@
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
         android:visibility="gone" />
+
+
+    <com.warkiz.widget.IndicatorSeekBar
+        android:id="@+id/indSeekbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@id/image"
+        android:layout_marginTop="@dimen/x20dp"
+        app:isb_indicator_type="circular_bubble"
+        app:isb_progress="50"
+        app:isb_seek_bar_type="continuous_texts_ends"
+        app:isb_tick_num="5"
+        app:isb_tick_type="oval" />
 </RelativeLayout>

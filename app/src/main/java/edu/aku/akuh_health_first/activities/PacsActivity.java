@@ -3,6 +3,7 @@ package edu.aku.akuh_health_first.activities;
 
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.Color;
 import android.os.Bundle;
 
 import android.support.v7.app.AppCompatActivity;
@@ -15,6 +16,10 @@ import android.widget.TextView;
 
 
 import com.google.gson.Gson;
+import com.warkiz.widget.IndicatorSeekBar;
+import com.warkiz.widget.IndicatorSeekBarType;
+import com.warkiz.widget.IndicatorType;
+import com.warkiz.widget.TickType;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -51,6 +56,7 @@ public class PacsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_pacs);
         bindViews();
+        indicatorSeekbar();
 
         fromJson = getIntent().getExtras().getString(AppConstants.JSON_STRING_KEY);
         pacsModel = GsonFactory.getSimpleGson().fromJson(fromJson, PacsDescriptionModel.class);
@@ -71,6 +77,8 @@ public class PacsActivity extends AppCompatActivity {
            setListeners(uri);
 
         }
+
+
 //        final MultiFileDownloader multiFileDownloader = FileLoader.multiFileDownload(this);
 //        multiFileDownloader.progressListener(new MultiFileDownloadListener() {
 //            @Override
@@ -150,5 +158,29 @@ public class PacsActivity extends AppCompatActivity {
                         Log.d(TAG, "onError: " + t.getMessage());
                     }
                 });
+    }
+
+    private void indicatorSeekbar() {
+        IndicatorSeekBar indicatorSeekBar = new IndicatorSeekBar.Builder(this)
+                .setMax(200)
+                .setMin(0)
+                .setProgress(35)
+                .setSeekBarType(IndicatorSeekBarType.CONTINUOUS)
+                .setTickType(TickType.OVAL)
+                .setTickNum(8)
+                .setBackgroundTrackSize(2)//dp size
+                .setProgressTrackSize(3)//dp size
+                .setIndicatorType(IndicatorType.CIRCULAR_BUBBLE)
+                .setIndicatorColor(Color.parseColor("#19BBDE"))
+                .build();
+
+//change build params at the runtime.
+
+        indicatorSeekBar.getBuilder()
+                .setMax(232)
+                .setMin(43)
+                .setTickType(TickType.OVAL)
+                .setTickColor(Color.parseColor("#19BBDE"))
+                .apply();
     }
 }
