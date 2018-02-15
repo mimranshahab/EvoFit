@@ -104,7 +104,7 @@
                     android:layout_margin="@dimen/x10dp"
                     android:layout_weight=".5"
                     android:background="@drawable/rounded_box_filled_base_grey"
-                    android:text="Show Graph"
+                    android:text="Show Pacs"
                     android:textAllCaps="false"
                     android:textColor="@color/c_white"
                     android:visibility="visible" />

@@ -46,7 +46,7 @@ public class WebServices {
         WebServices.bearerToken = bearerToken;
     }
 
-    public WebServices(Activity activity, String token, BaseURLTypes baseURLTypes){
+    public WebServices(Activity activity, String token, BaseURLTypes baseURLTypes) {
         switch (baseURLTypes) {
             case PACS_VIEWER:
                 apiService = WebServiceFactory.getInstancePACSURL(token, bearerToken);
@@ -55,7 +55,6 @@ public class WebServices {
                 apiService = WebServiceFactory.getInstanceBaseURL(token);
                 break;
             case PACS_IMAGE_DOWNLOAD:
-//                apiService = WebServiceFactory.getInstancePACImageDownload(bearerToken);
                 apiService = WebServiceFactory.getInstancePACSURL(token, bearerToken);
                 break;
         }
