@@ -59,16 +59,20 @@ public class ImmunizationAdapter extends RecyclerView.Adapter<ImmunizationAdapte
         holder.txtLocation.setText(model.getHospitalLocation());
         holder.txtName.setText(model.getDescription());
 
-        if (model.getVaccinationStatus().equals(AppConstants.schedule)) {
-            holder.contBorder.setBackgroundColor(activity.getResources().getColor(R.color.base_grey));
-            holder.btnUpdate.setVisibility(View.VISIBLE);
-        } else if (model.getVaccinationStatus().equals(AppConstants.vaccinated)) {
-            holder.contBorder.setBackgroundColor(activity.getResources().getColor(R.color.c_green));
-            holder.btnUpdate.setVisibility(View.GONE);
-            holder.txtDateTime.setText(model.getVaccinationDate());
-        } else if (model.getVaccinationStatus().equals(AppConstants.due)) {
-            holder.contBorder.setBackgroundColor(activity.getResources().getColor(R.color.base_reddish));
-            holder.btnUpdate.setVisibility(View.VISIBLE);
+        switch (model.getVaccinationStatus()) {
+            case AppConstants.schedule:
+                holder.contBorder.setBackgroundColor(activity.getResources().getColor(R.color.base_grey));
+                holder.btnUpdate.setVisibility(View.VISIBLE);
+                break;
+            case AppConstants.vaccinated:
+                holder.contBorder.setBackgroundColor(activity.getResources().getColor(R.color.c_green));
+                holder.btnUpdate.setVisibility(View.GONE);
+                holder.txtDateTime.setText(model.getVaccinationDate());
+                break;
+            case AppConstants.due:
+                holder.contBorder.setBackgroundColor(activity.getResources().getColor(R.color.base_reddish));
+                holder.btnUpdate.setVisibility(View.VISIBLE);
+                break;
         }
 
         setListener(holder, model);
