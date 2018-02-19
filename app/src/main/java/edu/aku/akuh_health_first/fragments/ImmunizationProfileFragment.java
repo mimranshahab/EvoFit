@@ -123,7 +123,7 @@ public class ImmunizationProfileFragment extends BaseFragment implements View.On
         mFab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                getBaseActivity().addDockableFragment(AddUpdateVaccineFragment.newInstance(true));
+                getBaseActivity().addDockableFragment(AddUpdateVaccineFragment.newInstance(true, null));
             }
         });
     }
@@ -140,16 +140,6 @@ public class ImmunizationProfileFragment extends BaseFragment implements View.On
 
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-//
-//
-//        switch (view.getId()) {
-//            case R.id.btnShowGraph:
-//                showGraphAPI(adapterImmunization.getItem(position));
-//                break;
-//            case R.id.btnShowReport:
-//                showReportAPI(adapterImmunization.getItem(position));
-//                break;
-//        }
 
     }
 
@@ -169,6 +159,10 @@ public class ImmunizationProfileFragment extends BaseFragment implements View.On
 
     @Override
     public void onItemClick(int position, Object object) {
+        if (object instanceof ImmunizationModel) {
+            getBaseActivity().addDockableFragment(AddUpdateVaccineFragment.newInstance(false, (ImmunizationModel) object));
+
+        }
 
     }
 

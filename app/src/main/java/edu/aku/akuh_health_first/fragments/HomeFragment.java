@@ -101,7 +101,7 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener, 
                     public void requestDataResponse(WebResponse<JsonObject> webResponse) {
                         CardMemberDetail cardMemberDetail = GsonFactory.getSimpleGson().fromJson(webResponse.result, CardMemberDetail.class);
                         arrUserLists.clear();
-                        arrUserLists.add(cardMemberDetail.getSubscriber());
+//                        arrUserLists.add(cardMemberDetail.getSubscriber());
                         arrUserLists.addAll(cardMemberDetail.getFamilyMembersList());
 
                         UserDetailModel currentUser = sharedPreferenceManager.getCurrentUser();

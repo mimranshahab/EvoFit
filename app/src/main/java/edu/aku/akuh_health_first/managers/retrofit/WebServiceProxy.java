@@ -52,9 +52,6 @@ public interface WebServiceProxy {
     Call<String> getToken();
 
 
-    @GET(WebServiceConstants.WS_KEY_IMAGE_URL)
-    Call<ResponseBody> downloadFileWithFixedUrl();
-
     @Multipart
     @POST("./")
     Call<WebResponse<String>> webServiceRequestAPIForWebResponseWithString(

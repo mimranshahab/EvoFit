@@ -7,12 +7,13 @@ import com.google.gson.annotations.SerializedName;
 
 import edu.aku.akuh_health_first.constatnts.AppConstants;
 import edu.aku.akuh_health_first.managers.DateManager;
+import edu.aku.akuh_health_first.managers.retrofit.GsonFactory;
 
 public class ImmunizationModel {
 
     @SerializedName("MRN")
     @Expose
-    private Object mRN;
+    private String mRN;
     @SerializedName("strVisitDate")
     @Expose
     private Object strVisitDate;
@@ -78,20 +79,20 @@ public class ImmunizationModel {
     private Object lastFileDateTime;
     @SerializedName("LastFileUser")
     @Expose
-    private Object lastFileUser;
+    private String lastFileUser;
     @SerializedName("LastFileTerminal")
     @Expose
-    private Object lastFileTerminal;
+    private String lastFileTerminal;
     @SerializedName("Active")
     @Expose
-    private Object active;
+    private String active;
     private final static long serialVersionUID = -2088648535189790337L;
 
     public Object getMRN() {
         return mRN;
     }
 
-    public void setMRN(Object mRN) {
+    public void setMRN(String mRN) {
         this.mRN = mRN;
     }
 
@@ -267,7 +268,7 @@ public class ImmunizationModel {
         return lastFileUser;
     }
 
-    public void setLastFileUser(Object lastFileUser) {
+    public void setLastFileUser(String lastFileUser) {
         this.lastFileUser = lastFileUser;
     }
 
@@ -275,7 +276,7 @@ public class ImmunizationModel {
         return lastFileTerminal;
     }
 
-    public void setLastFileTerminal(Object lastFileTerminal) {
+    public void setLastFileTerminal(String lastFileTerminal) {
         this.lastFileTerminal = lastFileTerminal;
     }
 
@@ -283,7 +284,7 @@ public class ImmunizationModel {
         return active;
     }
 
-    public void setActive(Object active) {
+    public void setActive(String active) {
         this.active = active;
     }
 
@@ -300,4 +301,8 @@ public class ImmunizationModel {
         }
     }
 
+    @Override
+    public String toString() {
+        return GsonFactory.getSimpleGson().toJson(this);
+    }
 }

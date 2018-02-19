@@ -77,6 +77,11 @@ public class RadiologyDescriptionFragment extends BaseFragment {
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
+        apiService();
+
+    }
+
+    private void apiService() {
         new WebServices(getBaseActivity(), WebServiceConstants.temporaryToken, BaseURLTypes.AHFA_BASE_URL)
                 .webServiceRequestAPI(WebServiceConstants.METHOD_GET_RADIOLOGY_GET_EXAM_DETAIL,
                         jsonData,
@@ -94,7 +99,6 @@ public class RadiologyDescriptionFragment extends BaseFragment {
 
                             }
                         });
-
     }
 
     @Override

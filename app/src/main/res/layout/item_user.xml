@@ -37,7 +37,7 @@
                 android:layout_height="@dimen/x100dp"
                 android:layout_margin="@dimen/x5dp"
                 android:scaleType="centerCrop"
-                android:src="@drawable/hijab" />
+                android:src="@drawable/user_image" />
 
 
             <LinearLayout
