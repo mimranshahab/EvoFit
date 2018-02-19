@@ -11,6 +11,16 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content">
 
+        <edu.aku.akuh_health_first.views.AnyEditTextView
+            android:id="@+id/edtSearchBar"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_above="@id/refreshLayout"
+            android:background="@drawable/search_bg"
+            android:drawableLeft="@drawable/search"
+            android:hint="@string/search"
+            android:visibility="gone" />
+
         <android.support.v4.widget.SwipeRefreshLayout
             android:id="@+id/refreshLayout"
             android:layout_width="match_parent"
@@ -49,8 +59,8 @@
             android:layout_marginBottom="@dimen/x8dp"
             android:layout_marginRight="@dimen/x8dp"
             android:padding="@dimen/x8dp"
-            android:visibility="gone"
             android:src="@drawable/plus"
+            android:visibility="gone"
             fab:fab_colorNormal="@color/app_primary"
             fab:fab_colorPressed="@color/app_primary_pressed"
             fab:fab_colorRipple="@color/app_ripple" />

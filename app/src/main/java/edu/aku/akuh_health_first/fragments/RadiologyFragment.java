@@ -156,6 +156,10 @@ public class RadiologyFragment extends BaseFragment implements View.OnClickListe
                 RadiologyModel object = adapterRadiology.getItem(position);
                 if (object instanceof RadiologyModel) {
                     RadiologyModel radiologyModel = (RadiologyModel) object;
+//                    radiologyModel.setExamordernumber("4416119");
+//                    radiologyModel.setExamorderexamnumber("1");
+//                    radiologyModel.setVisitlocation("Stadium Road");
+//                    radiologyModel.setReportid("15779861");
                     getBaseActivity().addDockableFragment(RadiologyDescriptionFragment.newInstance(radiologyModel.toString()));
                 }
 
@@ -168,7 +172,6 @@ public class RadiologyFragment extends BaseFragment implements View.OnClickListe
 
 
         getBaseActivity().addDockableFragment(PacsFragment.newInstance(item));
-
 
 
     }
@@ -225,10 +228,7 @@ public class RadiologyFragment extends BaseFragment implements View.OnClickListe
                         });
 
 
-
-
     }
-
 
 
 }
