@@ -34,7 +34,6 @@ import edu.aku.akuh_health_first.managers.retrofit.GsonFactory;
 import edu.aku.akuh_health_first.managers.retrofit.WebServices;
 import edu.aku.akuh_health_first.models.ImmunizationModel;
 import edu.aku.akuh_health_first.models.receiving_model.AddUpdateVaccineModel;
-import edu.aku.akuh_health_first.models.receiving_model.UserDetailModel;
 import edu.aku.akuh_health_first.models.wrappers.WebResponse;
 import edu.aku.akuh_health_first.views.AnyEditTextView;
 import edu.aku.akuh_health_first.views.AnyTextView;
@@ -50,19 +49,26 @@ public class AddUpdateVaccineFragment extends BaseFragment {
     AnyTextView txtVaccinationPlanDate;
     @BindView(R.id.spVaccine)
     Spinner spVaccine;
+    @BindView(R.id.spRouteId)
+    Spinner spRouteId;
     Unbinder unbinder;
     @BindView(R.id.txtVaccine)
     AnyTextView txtVaccine;
+    @BindView(R.id.txtRouteId)
+    AnyTextView txtRouteId;
     @BindView(R.id.txtVaccineLocation)
     AnyEditTextView txtVaccineLocation;
     @BindView(R.id.btnSave)
     Button btnSave;
     private boolean isFromAdd;
     private ArrayList<String> arrVaccine;
+    private ArrayList<String> arrRouteIDs;
     private ArrayAdapter adapterVaccine;
+    private ArrayAdapter adapterRoute;
     private ImmunizationModel immunizationModel;
 
     HashMap<String, String> vaccineIDandDescriptions = new HashMap<String, String>();
+    HashMap<String, String> routeIDandDescriptions = new HashMap<String, String>();
 
     public static AddUpdateVaccineFragment newInstance(boolean isFromAdd, ImmunizationModel immunizationModel) {
 
@@ -79,7 +85,9 @@ public class AddUpdateVaccineFragment extends BaseFragment {
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         arrVaccine = new ArrayList<>();
+        arrRouteIDs = new ArrayList<>();
         adapterVaccine = new ArrayAdapter<String>(getBaseActivity(), android.R.layout.simple_list_item_1, arrVaccine);
+        adapterRoute = new ArrayAdapter<String>(getBaseActivity(), android.R.layout.simple_list_item_1, arrRouteIDs);
     }
 
     @Override
@@ -90,14 +98,16 @@ public class AddUpdateVaccineFragment extends BaseFragment {
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        serviceCall();
-
 
         if (!isFromAdd) {
+            txtVaccine.setText(immunizationModel.getDescription());
             txtVaccinationPlanDate.setText(immunizationModel.getVaccinePlanDate());
             txtVaccineLocation.setText(immunizationModel.getHospitalLocation());
             txtVaccineLocation.setFocusable(false);
             txtVaccineLocation.setClickable(false);
+        } else {
+            getVaccineIdsService();
+            getRouteIdsService();
         }
     }
 
@@ -149,10 +159,7 @@ public class AddUpdateVaccineFragment extends BaseFragment {
         unbinder.unbind();
     }
 
-    private void serviceCall() {
-        // FIXME: 1/18/2018 Use live data in future
-        UserDetailModel currentUser = sharedPreferenceManager.getCurrentUser();
-        currentUser.setMRNumber(WebServiceConstants.tempMRN);
+    private void getVaccineIdsService() {
 
         new WebServices(getBaseActivity(),
                 WebServiceConstants.temporaryToken,
@@ -187,11 +194,50 @@ public class AddUpdateVaccineFragment extends BaseFragment {
     }
 
 
-    @OnClick({R.id.txtVaccine, R.id.txtVaccinatedDate, R.id.btnSave, R.id.txtVaccinationPlanDate})
+    private void getRouteIdsService() {
+
+        new WebServices(getBaseActivity(),
+                WebServiceConstants.temporaryToken,
+                BaseURLTypes.AHFA_BASE_URL)
+                .webServiceRequestAPIForArray(WebServiceConstants.METHOD_IMMUNIZATION_ROUTE_IDS,
+                        "",
+                        new WebServices.IRequestArrayDataCallBack() {
+                            @Override
+                            public void requestDataResponse(WebResponse<ArrayList<JsonObject>> webResponse) {
+
+                                Type type = new TypeToken<ArrayList<ImmunizationModel>>() {
+                                }.getType();
+                                ArrayList<ImmunizationModel> arrayList = GsonFactory.getSimpleGson()
+                                        .fromJson(GsonFactory.getSimpleGson().toJson(webResponse.result)
+                                                , type);
+
+
+                                for (ImmunizationModel model : arrayList) {
+                                    routeIDandDescriptions.put(model.getDescription(), model.getRouteID());
+                                    arrRouteIDs.add(model.getDescription());
+                                }
+
+                                setSpinner(adapterRoute, txtRouteId, spRouteId);
+                            }
+
+                            @Override
+                            public void onError() {
+
+                            }
+                        });
+
+    }
+
+
+    @OnClick({R.id.txtRouteId, R.id.txtVaccine, R.id.txtVaccinatedDate, R.id.btnSave, R.id.txtVaccinationPlanDate})
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.txtVaccine:
                 spVaccine.performClick();
+                break;
+
+            case R.id.txtRouteId:
+                spRouteId.performClick();
                 break;
             case R.id.txtVaccinatedDate:
                 DateManager.showDatePicker(getContext(), txtVaccinatedDate, null);
@@ -208,49 +254,55 @@ public class AddUpdateVaccineFragment extends BaseFragment {
                 break;
 
             case R.id.btnSave:
-                if (txtVaccinationPlanDate.getText().toString().isEmpty()) {
-                    txtVaccinationPlanDate.setError("Please select Vaccination Plan Date");
-                    break;
-                } else {
-                    txtVaccinationPlanDate.setError(null);
-                }
-
-                if (txtVaccineLocation.testValidity()) {
-
-
-                    if (isFromAdd) {
-                        ImmunizationModel immunizationModel = new ImmunizationModel();
-                        immunizationModel.setMRN(WebServiceConstants.tempMRN_immunization);
-                        immunizationModel.setScheduleID("U");
-                        immunizationModel.setVisitID("U");
-                        immunizationModel.setActive("Y");
-                        immunizationModel.setRouteID("PO");
-                        immunizationModel.setLastFileTerminal("MOBILE");
-
-                        immunizationModel.setVaccineID(vaccineIDandDescriptions.get(txtVaccine.getText().toString()));
-
-                        UIHelper.showToast(getContext(), vaccineIDandDescriptions.get(txtVaccine.getText().toString()));
-
-
-                        immunizationModel.setHospitalLocation(txtVaccineLocation.getStringTrimmed());
-//                        immunizationModel.setLastFileUser("mahrukh.mehmood@aku.edu");
-                        immunizationModel.setVaccinePlanDate(txtVaccinationPlanDate.getStringTrimmed());
-                        immunizationModel.setVaccinationDate(txtVaccinatedDate.getStringTrimmed());
-
-//                        addVaccineService(immunizationModel.toString());
-                        Log.d(TAG, "onViewClicked: " + immunizationModel.toString());
-
-                    } else {
-                        immunizationModel.setMRN(WebServiceConstants.tempMRN_immunization);
-                        immunizationModel.setActive("Y");
-                        immunizationModel.setLastFileTerminal("MOBILE");
-                        immunizationModel.setVaccineID(txtVaccine.getStringTrimmed());
-                        immunizationModel.setVaccinationDate(txtVaccinatedDate.getStringTrimmed());
-                    }
-
-                }
-
+                saveButtonPressed();
                 break;
+        }
+    }
+
+    private void saveButtonPressed() {
+        if (txtVaccinationPlanDate.getText().toString().isEmpty()) {
+            txtVaccinationPlanDate.setError("Please select Vaccination Plan Date");
+            return;
+        } else {
+            txtVaccinationPlanDate.setError(null);
+        }
+
+        if (txtVaccineLocation.testValidity()) {
+
+
+            if (isFromAdd) {
+                ImmunizationModel immunizationModel = new ImmunizationModel();
+                immunizationModel.setMRN(WebServiceConstants.tempMRN_immunization);
+                immunizationModel.setScheduleID("U");
+                immunizationModel.setVisitID("U");
+                immunizationModel.setActive("Y");
+                immunizationModel.setRouteID("PO");
+                immunizationModel.setLastFileTerminal("MOBILE");
+
+                immunizationModel.setVaccineID(vaccineIDandDescriptions.get(txtVaccine.getText().toString()));
+                immunizationModel.setRouteID(routeIDandDescriptions.get(txtRouteId.getText().toString()));
+
+
+                immunizationModel.setHospitalLocation(txtVaccineLocation.getStringTrimmed());
+//                        immunizationModel.setLastFileUser("mahrukh.mehmood@aku.edu");
+                immunizationModel.setVaccinePlanDate(txtVaccinationPlanDate.getStringTrimmed());
+                immunizationModel.setVaccinationDate(txtVaccinatedDate.getStringTrimmed());
+
+//                        UIHelper.showToast(getContext(), vaccineIDandDescriptions.get(txtVaccine.getText().toString()));
+
+                addVaccineService(immunizationModel.toString());
+                Log.d(TAG, "onViewClicked: " + immunizationModel.toString());
+
+            } else {
+                immunizationModel.setMRN(WebServiceConstants.tempMRN_immunization);
+                immunizationModel.setActive("Y");
+                immunizationModel.setLastFileTerminal("MOBILE");
+                immunizationModel.setSource("MOBILE");
+                immunizationModel.setVaccinationDate(txtVaccinatedDate.getStringTrimmed());
+                updateVaccine(immunizationModel.toString());
+                Log.d(TAG, "onViewClicked: " + immunizationModel.toString());
+            }
+
         }
     }
 
@@ -262,7 +314,9 @@ public class AddUpdateVaccineFragment extends BaseFragment {
                             @Override
                             public void requestDataResponse(WebResponse<JsonObject> webResponse) {
                                 AddUpdateVaccineModel addUpdateVaccineModel = GsonFactory.getSimpleGson().fromJson(webResponse.result, AddUpdateVaccineModel.class);
-                                popBackStack();
+                                if (addUpdateVaccineModel.getStatus()) {
+                                    popBackStack();
+                                }
                                 UIHelper.showToast(getContext(), addUpdateVaccineModel.getMessage());
                             }
 
@@ -282,7 +336,9 @@ public class AddUpdateVaccineFragment extends BaseFragment {
                             @Override
                             public void requestDataResponse(WebResponse<JsonObject> webResponse) {
                                 AddUpdateVaccineModel addUpdateVaccineModel = GsonFactory.getSimpleGson().fromJson(webResponse.result, AddUpdateVaccineModel.class);
-                                popBackStack();
+                                if (addUpdateVaccineModel.getStatus()) {
+                                    popBackStack();
+                                }
                                 UIHelper.showToast(getContext(), addUpdateVaccineModel.getMessage());
                             }
 

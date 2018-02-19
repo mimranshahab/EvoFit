@@ -61,7 +61,7 @@ public class AppConstants {
     public static final String KEY_REGISTER_VM = "register_vm";
 
 
-    public static final String schedule = "Schedule";
+    public static final String schedule = "Scheduled";
     public static final String vaccinated = "Vaccinated";
     public static final String due = "Due";
 

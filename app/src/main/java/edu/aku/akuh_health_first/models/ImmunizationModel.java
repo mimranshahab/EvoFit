@@ -73,7 +73,11 @@ public class ImmunizationModel {
     private Object remarks;
     @SerializedName("Source")
     @Expose
-    private Object source;
+    private String source;
+
+    @SerializedName("VaccinationStatus")
+    @Expose
+    private String vaccinationStatus;
     @SerializedName("LastFileDateTime")
     @Expose
     private Object lastFileDateTime;
@@ -252,7 +256,7 @@ public class ImmunizationModel {
         return source;
     }
 
-    public void setSource(Object source) {
+    public void setSource(String source) {
         this.source = source;
     }
 
@@ -288,17 +292,23 @@ public class ImmunizationModel {
         this.active = active;
     }
 
+    public void setVaccinationStatus(String vaccinationStatus) {
+        this.vaccinationStatus = vaccinationStatus;
+    }
+
     public String getVaccinationStatus() {
 
-        if (getVaccinationDate() == null || getVaccinationDate().isEmpty()) {
-            if (DateManager.getTimeInMillis(DateManager.sdfDateInputImmunization, getVaccinationDate()) < DateManager.getCurrentMillis())
-                return AppConstants.schedule;
-            else {
-                return AppConstants.due;
-            }
-        } else {
-            return AppConstants.vaccinated;
-        }
+//        if (getVaccinationDate() == null || getVaccinationDate().isEmpty()) {
+//            if (DateManager.getTimeInMillis(DateManager.sdfDateInputImmunization, getVaccinationDate()) < DateManager.getCurrentMillis())
+//                return AppConstants.schedule;
+//            else {
+//                return AppConstants.due;
+//            }
+//        } else {
+//            return AppConstants.vaccinated;
+//        }
+
+        return vaccinationStatus;
     }
 
     @Override
