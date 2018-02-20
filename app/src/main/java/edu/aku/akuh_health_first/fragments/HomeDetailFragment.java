@@ -2,25 +2,20 @@ package edu.aku.akuh_health_first.fragments;
 
 import android.os.Bundle;
 import android.support.v4.widget.DrawerLayout;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.LinearLayout;
 
-import java.io.File;
-import java.util.ArrayList;
-
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import butterknife.Unbinder;
 import edu.aku.akuh_health_first.R;
-import edu.aku.akuh_health_first.constatnts.AppConstants;
 import edu.aku.akuh_health_first.fragments.abstracts.BaseFragment;
 import edu.aku.akuh_health_first.helperclasses.ui.helper.TitleBar;
-import edu.aku.akuh_health_first.managers.FileManager;
+import edu.aku.akuh_health_first.models.TimelineModel;
 
 /**
  * Created by aqsa.sarwar on 1/26/2018.
@@ -102,7 +97,7 @@ public class HomeDetailFragment extends BaseFragment {
                 getBaseActivity().addDockableFragment(HealthSummaryFragment.newInstance());
                 break;
             case R.id.contHistory:
-                getBaseActivity().addDockableFragment(HealthHistoryFragment.newInstance());
+                getBaseActivity().addDockableFragment(HealthHistoryFragment.newInstance(false, -1));
                 break;
             case R.id.contProfile:
                 getBaseActivity().addDockableFragment(ProfileFragment.newInstance());

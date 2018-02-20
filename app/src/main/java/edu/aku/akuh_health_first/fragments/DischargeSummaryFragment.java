@@ -37,6 +37,7 @@ import edu.aku.akuh_health_first.managers.FileManager;
 import edu.aku.akuh_health_first.managers.retrofit.GsonFactory;
 import edu.aku.akuh_health_first.managers.retrofit.WebServices;
 import edu.aku.akuh_health_first.models.DischargeSummaryModel;
+import edu.aku.akuh_health_first.models.SearchModel;
 import edu.aku.akuh_health_first.models.receiving_model.UserDetailModel;
 import edu.aku.akuh_health_first.models.wrappers.WebResponse;
 
@@ -92,12 +93,12 @@ public class DischargeSummaryFragment extends BaseFragment implements View.OnCli
     }
 
     private void serviceCall() {
-        UserDetailModel currentUser = sharedPreferenceManager.getCurrentUser();
-        currentUser.setMRNumber(WebServiceConstants.tempMRN_LAB);
-
+        SearchModel model = new SearchModel();
+        model.setMRNumber(WebServiceConstants.tempMRN_LAB);
+        model.setVisitID(null);
         new WebServices(getBaseActivity(), WebServiceConstants.temporaryToken, BaseURLTypes.AHFA_BASE_URL)
                 .webServiceRequestAPIForArray(WebServiceConstants.METHOD_DISCHARGE_SUMMARY_LIST,
-                        currentUser.getMRNumberwithComma(),
+                        model.toString(),
                         new WebServices.IRequestArrayDataCallBack() {
                             @Override
                             public void requestDataResponse(WebResponse<ArrayList<JsonObject>> webResponse) {
@@ -131,7 +132,7 @@ public class DischargeSummaryFragment extends BaseFragment implements View.OnCli
         titleBar.resetViews();
         titleBar.setTitle("Discharge Summary");
         titleBar.showBackButton(getBaseActivity());
-        titleBar.setCircleImageView( );
+        titleBar.setCircleImageView();
         titleBar.showHome(getBaseActivity());
     }
 
@@ -171,7 +172,7 @@ public class DischargeSummaryFragment extends BaseFragment implements View.OnCli
                         summaryModel.toString(), new WebServices.IRequestWebResponseWithStringDataCallBack() {
                             @Override
                             public void requestDataResponse(WebResponse<String> webResponse) {
-                                String fileName =  FileManager.getFileNameFromPath(FileManager.getReplacedSlash(summaryModel.getSummaryPath()));
+                                String fileName = FileManager.getFileNameFromPath(FileManager.getReplacedSlash(summaryModel.getSummaryPath()));
 
                                 FileManager.writeResponseBodyToDisk(webResponse.result, fileName, AppConstants.getUserFolderPath(getContext()));
 

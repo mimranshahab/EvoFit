@@ -34,6 +34,7 @@ import edu.aku.akuh_health_first.helperclasses.ui.helper.UIHelper;
 import edu.aku.akuh_health_first.managers.retrofit.GsonFactory;
 import edu.aku.akuh_health_first.managers.retrofit.WebServices;
 import edu.aku.akuh_health_first.models.LaboratoryModel;
+import edu.aku.akuh_health_first.models.SearchModel;
 import edu.aku.akuh_health_first.models.receiving_model.UserDetailModel;
 import edu.aku.akuh_health_first.models.wrappers.WebResponse;
 
@@ -79,7 +80,7 @@ public class ClinicalLaboratoryFragment extends BaseFragment implements View.OnC
         titleBar.resetViews();
         titleBar.setTitle("Clinical Laboratory");
         titleBar.showBackButton(getBaseActivity());
-        titleBar.setCircleImageView( );
+        titleBar.setCircleImageView();
         titleBar.showHome(getBaseActivity());
     }
 
@@ -156,14 +157,15 @@ public class ClinicalLaboratoryFragment extends BaseFragment implements View.OnC
 
     private void serviceCall() {
         // FIXME: 1/18/2018 Use live data in future
-        UserDetailModel currentUser = sharedPreferenceManager.getCurrentUser();
-        currentUser.setMRNumber(WebServiceConstants.tempMRN_LAB);
+        SearchModel model = new SearchModel();
+        model.setMRNumber(WebServiceConstants.tempMRN_LAB);
+        model.setVisitID(null);
 
         new WebServices(getBaseActivity(),
                 WebServiceConstants.temporaryToken,
                 BaseURLTypes.AHFA_BASE_URL)
                 .webServiceRequestAPIForArray(WebServiceConstants.METHOD_CLINICAL_LAB,
-                        currentUser.getMRNumberwithComma(),
+                        model.toString(),
                         new WebServices.IRequestArrayDataCallBack() {
                             @Override
                             public void requestDataResponse(WebResponse<ArrayList<JsonObject>> webResponse) {

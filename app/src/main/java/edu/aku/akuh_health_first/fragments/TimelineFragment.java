@@ -41,6 +41,7 @@ import edu.aku.akuh_health_first.managers.retrofit.GsonFactory;
 import edu.aku.akuh_health_first.managers.retrofit.WebServices;
 import edu.aku.akuh_health_first.models.Neurophysiology;
 import edu.aku.akuh_health_first.models.PacsDescriptionModel;
+import edu.aku.akuh_health_first.models.SearchModel;
 import edu.aku.akuh_health_first.models.TimelineModel;
 import edu.aku.akuh_health_first.models.receiving_model.UserDetailModel;
 import edu.aku.akuh_health_first.models.wrappers.WebResponse;
@@ -152,7 +153,7 @@ public class TimelineFragment extends BaseFragment implements View.OnClickListen
     @Override
     public void onItemClick(int position, Object object) {
         if (object instanceof TimelineModel) {
-            getBaseActivity().addDockableFragment(HealthHistoryFragment.newInstance());
+            getBaseActivity().addDockableFragment(HealthHistoryFragment.newInstance(true,((TimelineModel) object).getPatientVisitAdmissionID()));
 
         }
 
@@ -160,14 +161,14 @@ public class TimelineFragment extends BaseFragment implements View.OnClickListen
 
     private void serviceCall() {
         // FIXME: 1/18/2018 Use live data in future
-        UserDetailModel currentUser = sharedPreferenceManager.getCurrentUser();
-        currentUser.setMRNumber(WebServiceConstants.tempMRN_LAB);
-//
+        SearchModel model = new SearchModel();
+        model.setMRNumber(WebServiceConstants.tempMRN_LAB);
+        model.setVisitID(null);
         new WebServices(getBaseActivity(),
                 WebServiceConstants.temporaryToken,
                 BaseURLTypes.AHFA_BASE_URL)
                 .webServiceRequestAPIForArray(WebServiceConstants.METHOD_GET_PATIENT_VISIT,
-                        currentUser.getMRNumberwithComma(),
+                        model.toString(),
                         new WebServices.IRequestArrayDataCallBack() {
                             @Override
                             public void requestDataResponse(WebResponse<ArrayList<JsonObject>> webResponse) {

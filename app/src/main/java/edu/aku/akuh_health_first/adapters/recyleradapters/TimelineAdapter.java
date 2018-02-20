@@ -50,11 +50,11 @@ public class TimelineAdapter extends RecyclerView.Adapter<TimelineAdapter.ViewHo
         final TimelineModel timelineModel = arrData.get(holder.getAdapterPosition());
 
 
-        holder.txtFacility.setText(timelineModel.getPatientvisithospitallocation());
-        holder.txtVisitDateTime.setText(timelineModel.getPatientvisitdatetime());
-        holder.txtDoctorName.setText(timelineModel.getPatientvisitdoctorname());
-        holder.txtService.setText(timelineModel.getPatientvisitservice());
-        holder.txtVisitType.setText(timelineModel.getPatientvisittype());
+        holder.txtFacility.setText(timelineModel.getPatientVisitHospitalLocation());
+        holder.txtVisitDateTime.setText(timelineModel.getPatientVisitDateTime());
+        holder.txtDoctorName.setText(timelineModel.getPatientVisitDoctorName());
+        holder.txtService.setText(timelineModel.getPatientVisitService());
+        holder.txtVisitType.setText(timelineModel.getPatientVisitType());
         /*
         set banner color
         In-Patient ---->Blue
@@ -63,12 +63,12 @@ public class TimelineAdapter extends RecyclerView.Adapter<TimelineAdapter.ViewHo
         Clinical ---->Green
 
          */
-        if (timelineModel.getPatientvisittype().equals("ER")) {
+        if (timelineModel.getPatientVisitType().equals("ER")) {
             holder.llcolorCode.setBackgroundResource(R.color.c_brick_red);
-        } else if (timelineModel.getPatientvisittype().equals("IN")) {
+        } else if (timelineModel.getPatientVisitType().equals("IN")) {
             holder.llcolorCode.setBackgroundResource(R.color.base_dark_blue);
 
-        } else if (timelineModel.getPatientvisittype().equals("CLI")) {
+        } else if (timelineModel.getPatientVisitType().equals("CLI")) {
             holder.llcolorCode.setBackgroundResource(R.color.c_dark_green);
 
         } else {

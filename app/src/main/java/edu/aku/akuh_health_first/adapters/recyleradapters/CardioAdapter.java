@@ -49,7 +49,7 @@ public class CardioAdapter extends RecyclerView.Adapter<CardioAdapter.ViewHolder
         holder.txtHospLoc.setText(activity.getString(R.string.hospitalLocation) + " " + cardioModel.getHospitalLocation());
 //        holder.txtViewProfile.setText(cardioModel.getName());
         holder.txtReqDatetime.setText(activity.getString(R.string.date_time) + " " + cardioModel.getRequestServiceDateTime());
-        holder.txtReqNum.setText(activity.getString(R.string.requestNumber) + " " + cardioModel.getRequestNumber());
+        holder.txtReqNum.setText(activity.getString(R.string.status) + " " + cardioModel.getStatus());
         holder.txtAdmNo.setText(activity.getString(R.string.admissionNumber) + " " + cardioModel.getAdmissionNumber());
         holder.txtService.setText(activity.getString(R.string.service) + " " + cardioModel.getService());
 
