@@ -7,8 +7,22 @@ import com.google.gson.annotations.SerializedName;
  * Created by hamza.ahmed on 2/12/2018.
  */
 
-public class EndoscopyModel {
+public class EndoscopyModel implements IsRecordFound {
 
+    @Expose
+    @SerializedName("RecordMessage")
+    private String recordmessage;
+    @Expose
+    @SerializedName("RecordFound")
+    private String recordfound;
+
+
+    @Expose
+    @SerializedName("Active")
+    private String active;
+    @Expose
+    @SerializedName("LastFileTerminal")
+    private String lastfileterminal;
     @Expose
     @SerializedName("LastFileUser")
     private String lastfileuser;
@@ -18,6 +32,9 @@ public class EndoscopyModel {
     @Expose
     @SerializedName("ReportPath")
     private String reportpath;
+    @Expose
+    @SerializedName("PhysicianName")
+    private String physicianname;
     @Expose
     @SerializedName("PhysicianID")
     private String physicianid;
@@ -34,11 +51,43 @@ public class EndoscopyModel {
     @SerializedName("Procedures")
     private String procedures;
     @Expose
-    @SerializedName("ProcedureDttm")
-    private String proceduredttm;
+    @SerializedName("ProcedureDateTime")
+    private String proceduredatetime;
     @Expose
     @SerializedName("ReportId")
     private String reportid;
+
+    public String getRecordmessage() {
+        return recordmessage;
+    }
+
+    public void setRecordmessage(String recordmessage) {
+        this.recordmessage = recordmessage;
+    }
+
+    public String getRecordfound() {
+        return recordfound;
+    }
+
+    public void setRecordfound(String recordfound) {
+        this.recordfound = recordfound;
+    }
+
+    public String getActive() {
+        return active;
+    }
+
+    public void setActive(String active) {
+        this.active = active;
+    }
+
+    public String getLastfileterminal() {
+        return lastfileterminal;
+    }
+
+    public void setLastfileterminal(String lastfileterminal) {
+        this.lastfileterminal = lastfileterminal;
+    }
 
     public String getLastfileuser() {
         return lastfileuser;
@@ -62,6 +111,14 @@ public class EndoscopyModel {
 
     public void setReportpath(String reportpath) {
         this.reportpath = reportpath;
+    }
+
+    public String getPhysicianname() {
+        return physicianname;
+    }
+
+    public void setPhysicianname(String physicianname) {
+        this.physicianname = physicianname;
     }
 
     public String getPhysicianid() {
@@ -104,12 +161,12 @@ public class EndoscopyModel {
         this.procedures = procedures;
     }
 
-    public String getProceduredttm() {
-        return proceduredttm;
+    public String getProceduredatetime() {
+        return proceduredatetime;
     }
 
-    public void setProceduredttm(String proceduredttm) {
-        this.proceduredttm = proceduredttm;
+    public void setProceduredatetime(String proceduredatetime) {
+        this.proceduredatetime = proceduredatetime;
     }
 
     public String getReportid() {
@@ -118,5 +175,10 @@ public class EndoscopyModel {
 
     public void setReportid(String reportid) {
         this.reportid = reportid;
+    }
+
+    @Override
+    public boolean isRecordFound() {
+        return getRecordfound().equals("true");
     }
 }

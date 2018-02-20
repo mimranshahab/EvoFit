@@ -184,9 +184,15 @@ public class EndoscopyFragment extends BaseFragment implements View.OnClickListe
                                 ArrayList<EndoscopyModel> arrayList = GsonFactory.getSimpleGson()
                                         .fromJson(GsonFactory.getSimpleGson().toJson(webResponse.result)
                                                 , type);
-                                arrClinicalLabLists.clear();
-                                arrClinicalLabLists.addAll(arrayList);
-                                adaptNeuropysiology.notifyDataSetChanged();
+                                if (arrayList.get(0).isRecordFound()) {
+                                    arrClinicalLabLists.clear();
+                                    arrClinicalLabLists.addAll(arrayList);
+                                    adaptNeuropysiology.notifyDataSetChanged();
+                                } else {
+                                    UIHelper.showToast(getContext(), arrayList.get(0).getRecordmessage());
+                                }
+
+
                             }
 
                             @Override
