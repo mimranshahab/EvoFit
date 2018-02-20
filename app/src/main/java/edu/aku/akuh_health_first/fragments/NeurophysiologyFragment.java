@@ -38,6 +38,7 @@ import edu.aku.akuh_health_first.managers.FileManager;
 import edu.aku.akuh_health_first.managers.retrofit.GsonFactory;
 import edu.aku.akuh_health_first.managers.retrofit.WebServices;
 import edu.aku.akuh_health_first.models.Neurophysiology;
+import edu.aku.akuh_health_first.models.SearchModel;
 import edu.aku.akuh_health_first.models.receiving_model.UserDetailModel;
 import edu.aku.akuh_health_first.models.wrappers.WebResponse;
 
@@ -82,7 +83,7 @@ public class NeurophysiologyFragment extends BaseFragment implements View.OnClic
         titleBar.resetViews();
         titleBar.setTitle("Neurophysiology");
         titleBar.showBackButton(getBaseActivity());
-        titleBar.setCircleImageView( );
+        titleBar.setCircleImageView();
         titleBar.showHome(getBaseActivity());
     }
 
@@ -206,14 +207,14 @@ public class NeurophysiologyFragment extends BaseFragment implements View.OnClic
 
     private void serviceCall() {
         // FIXME: 1/18/2018 Use live data in future
-        UserDetailModel currentUser = sharedPreferenceManager.getCurrentUser();
-        currentUser.setMRNumber(WebServiceConstants.tempMRN);
-
+        SearchModel model = new SearchModel();
+        model.setMRNumber(WebServiceConstants.tempMRN);
+        model.setVisitID(null);
         new WebServices(getBaseActivity(),
                 WebServiceConstants.temporaryToken,
                 BaseURLTypes.AHFA_BASE_URL)
                 .webServiceRequestAPIForArray(WebServiceConstants.METHOD_NEUROPHIOLOGY,
-                        currentUser.getMRNumberwithComma(),
+                        model.toString(),
                         new WebServices.IRequestArrayDataCallBack() {
                             @Override
                             public void requestDataResponse(WebResponse<ArrayList<JsonObject>> webResponse) {

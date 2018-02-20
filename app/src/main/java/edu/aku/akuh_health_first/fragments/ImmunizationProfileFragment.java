@@ -37,6 +37,7 @@ import edu.aku.akuh_health_first.helperclasses.ui.helper.UIHelper;
 import edu.aku.akuh_health_first.managers.retrofit.GsonFactory;
 import edu.aku.akuh_health_first.managers.retrofit.WebServices;
 import edu.aku.akuh_health_first.models.ImmunizationModel;
+import edu.aku.akuh_health_first.models.SearchModel;
 import edu.aku.akuh_health_first.models.receiving_model.UserDetailModel;
 import edu.aku.akuh_health_first.models.wrappers.WebResponse;
 
@@ -169,6 +170,10 @@ public class ImmunizationProfileFragment extends BaseFragment implements View.On
 
     private void serviceCall() {
         // FIXME: 1/18/2018 Use live data in future
+//        SearchModel model = new SearchModel();
+//        model.setMRNumber(WebServiceConstants.tempMRN_immunization);
+//        model.setVisitID(null);
+
         UserDetailModel currentUser = sharedPreferenceManager.getCurrentUser();
         currentUser.setMRNumber(WebServiceConstants.tempMRN_immunization);
 

@@ -38,6 +38,7 @@ import edu.aku.akuh_health_first.managers.FileManager;
 import edu.aku.akuh_health_first.managers.retrofit.GsonFactory;
 import edu.aku.akuh_health_first.managers.retrofit.WebServices;
 import edu.aku.akuh_health_first.models.CardioModel;
+import edu.aku.akuh_health_first.models.SearchModel;
 import edu.aku.akuh_health_first.models.receiving_model.UserDetailModel;
 import edu.aku.akuh_health_first.models.wrappers.WebResponse;
 
@@ -83,10 +84,9 @@ public class CardiolopulmonaryFragment extends BaseFragment implements View.OnCl
         titleBar.resetViews();
         titleBar.setTitle("Cardiolopulmonary");
         titleBar.showBackButton(getBaseActivity());
-        titleBar.setCircleImageView( );
+        titleBar.setCircleImageView();
         titleBar.showHome(getBaseActivity());
     }
-
 
 
     @Override
@@ -185,7 +185,7 @@ public class CardiolopulmonaryFragment extends BaseFragment implements View.OnCl
 
                                     FileManager.writeResponseBodyToDisk(webResponse.result, fileName, AppConstants.getUserFolderPath(getContext()));
 
-                                    final File file = new File( AppConstants.getUserFolderPath(getContext())
+                                    final File file = new File(AppConstants.getUserFolderPath(getContext())
                                             + "/" + fileName);
 
                                     new Handler().postDelayed(new Runnable() {
@@ -214,7 +214,7 @@ public class CardiolopulmonaryFragment extends BaseFragment implements View.OnCl
                 + "/" + fileName);
         if (FileManager.isFileExits(file.getPath())) {
 
-             new Handler().postDelayed(new Runnable() {
+            new Handler().postDelayed(new Runnable() {
                 @Override
                 public void run() {
                     FileManager.openFile(getContext(), file);
@@ -231,7 +231,7 @@ public class CardiolopulmonaryFragment extends BaseFragment implements View.OnCl
 
                                     FileManager.writeResponseBodyToDisk(webResponse.result, fileName, AppConstants.getUserFolderPath(getContext()));
 
-                                    final File file = new File( AppConstants.getUserFolderPath(getContext())
+                                    final File file = new File(AppConstants.getUserFolderPath(getContext())
                                             + "/" + fileName);
 
                                     new Handler().postDelayed(new Runnable() {
@@ -257,14 +257,14 @@ public class CardiolopulmonaryFragment extends BaseFragment implements View.OnCl
 
     private void serviceCall() {
         // FIXME: 1/18/2018 Use live data in future
-        UserDetailModel currentUser = sharedPreferenceManager.getCurrentUser();
-        currentUser.setMRNumber(WebServiceConstants.tempMRN);
-
+        SearchModel model = new SearchModel();
+        model.setMRNumber(WebServiceConstants.tempMRN);
+        model.setVisitID(null);
         new WebServices(getBaseActivity(),
                 WebServiceConstants.temporaryToken,
                 BaseURLTypes.AHFA_BASE_URL)
                 .webServiceRequestAPIForArray(WebServiceConstants.METHOD_CARDIO,
-                        currentUser.getMRNumberwithComma(),
+                        model.toString(),
                         new WebServices.IRequestArrayDataCallBack() {
                             @Override
                             public void requestDataResponse(WebResponse<ArrayList<JsonObject>> webResponse) {

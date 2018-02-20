@@ -20,7 +20,6 @@ public class WebServiceConstants {
     public static final String WS_KEY_GET_REQUESTOR = "Requestor: aku.edu";
 
 
-
     public static final String PARAMS_REQUEST_METHOD = "RequestMethod";
     public static final String PARAMS_REQUEST_DATA = "RequestData";
     public static final String requestor = "aku.edu";
@@ -37,6 +36,7 @@ public class WebServiceConstants {
     public static final String tempMRN_Timeline = "\"510-29-10\"";
     public static final String temp_Specimen_Num = "53786623";
     public static final String tempPassword = "uL952ERAghddR2h+CedbuA==";
+    public static final String tempMRN_Cardio = "200-47-97";
 
     /**
      * REQUEST METHODS NAMES
@@ -84,5 +84,5 @@ public class WebServiceConstants {
     public static final String METHOD_PACS_ACCESSIONS_end = "]}";
 //    44161191
 
-
+    public static final String METHOD_VISIT_MENU = "SharedManager.GetVisitMenuList";
 }
