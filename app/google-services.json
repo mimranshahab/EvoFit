@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "309211542325",
+    "firebase_url": "https://aku-health-first.firebaseio.com",
+    "project_id": "aku-health-first",
+    "storage_bucket": "aku-health-first.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:309211542325:android:dbd0e44835a3b19c",
+        "android_client_info": {
+          "package_name": "edu.aku.akuh_health_first"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "309211542325-0k2788tlm0o7n07b9gajp1n2baahuptt.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBDB26ES4JsSV6cWm32ri0IwwOkxBkTxvk"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
