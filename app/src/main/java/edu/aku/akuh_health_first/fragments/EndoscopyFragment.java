@@ -26,7 +26,6 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
 import edu.aku.akuh_health_first.R;
-import edu.aku.akuh_health_first.adapters.recyleradapters.ClinicalLabAdapter;
 import edu.aku.akuh_health_first.adapters.recyleradapters.EndoscopyAdapter;
 import edu.aku.akuh_health_first.callbacks.OnItemClickListener;
 import edu.aku.akuh_health_first.constatnts.AppConstants;
@@ -40,10 +39,9 @@ import edu.aku.akuh_health_first.managers.retrofit.GsonFactory;
 import edu.aku.akuh_health_first.managers.retrofit.WebServices;
 import edu.aku.akuh_health_first.models.DischargeSummaryModel;
 import edu.aku.akuh_health_first.models.EndoscopyModel;
-import edu.aku.akuh_health_first.models.LaboratoryModel;
 import edu.aku.akuh_health_first.models.SearchModel;
-import edu.aku.akuh_health_first.models.receiving_model.UserDetailModel;
 import edu.aku.akuh_health_first.models.wrappers.WebResponse;
+import edu.aku.akuh_health_first.views.AnyTextView;
 
 
 /**
@@ -58,6 +56,8 @@ public class EndoscopyFragment extends BaseFragment implements View.OnClickListe
     SwipeRefreshLayout refreshLayout;
 
     Unbinder unbinder;
+    @BindView(R.id.empty_view)
+    AnyTextView emptyView;
     private ArrayList<EndoscopyModel> arrClinicalLabLists;
     private EndoscopyAdapter adaptNeuropysiology;
 
@@ -236,5 +236,15 @@ public class EndoscopyFragment extends BaseFragment implements View.OnClickListe
                 );
     }
 
+    private void showEmptyView() {
+        refreshLayout.setVisibility(View.GONE);
+        emptyView.setVisibility(View.VISIBLE);
+    }
+
+    private void showView() {
+        bindView();
+        emptyView.setVisibility(View.GONE);
+        refreshLayout.setVisibility(View.VISIBLE);
+    }
 
 }

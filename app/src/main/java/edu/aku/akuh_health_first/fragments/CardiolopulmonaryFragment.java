@@ -39,8 +39,8 @@ import edu.aku.akuh_health_first.managers.retrofit.GsonFactory;
 import edu.aku.akuh_health_first.managers.retrofit.WebServices;
 import edu.aku.akuh_health_first.models.CardioModel;
 import edu.aku.akuh_health_first.models.SearchModel;
-import edu.aku.akuh_health_first.models.receiving_model.UserDetailModel;
 import edu.aku.akuh_health_first.models.wrappers.WebResponse;
+import edu.aku.akuh_health_first.views.AnyTextView;
 
 import static edu.aku.akuh_health_first.constatnts.AppConstants.DOC_PATH;
 
@@ -55,6 +55,8 @@ public class CardiolopulmonaryFragment extends BaseFragment implements View.OnCl
     Unbinder unbinder;
     @BindView(R.id.refreshLayout)
     SwipeRefreshLayout refreshLayout;
+    @BindView(R.id.empty_view)
+    AnyTextView emptyView;
     private ArrayList<CardioModel> arrCardioModelLists;
     private CardioAdapter adapterCardio;
 
@@ -94,6 +96,18 @@ public class CardiolopulmonaryFragment extends BaseFragment implements View.OnCl
         super.onViewCreated(view, savedInstanceState);
         bindView();
         serviceCall();
+
+    }
+
+    private void showEmptyView() {
+        refreshLayout.setVisibility(View.GONE);
+        emptyView.setVisibility(View.VISIBLE);
+    }
+
+    private void showView() {
+        bindView();
+        emptyView.setVisibility(View.GONE);
+        refreshLayout.setVisibility(View.VISIBLE);
     }
 
     private void bindView() {
@@ -278,6 +292,15 @@ public class CardiolopulmonaryFragment extends BaseFragment implements View.OnCl
                                 arrCardioModelLists.clear();
                                 arrCardioModelLists.addAll(arrayList);
                                 adapterCardio.notifyDataSetChanged();
+
+                                if (arrCardioModelLists.size() > 0) {
+                                    showView();
+
+                                } else {
+                                    showEmptyView();
+                                }
+
+
                             }
 
                             @Override
@@ -287,4 +310,6 @@ public class CardiolopulmonaryFragment extends BaseFragment implements View.OnCl
                         });
 
     }
+
+
 }

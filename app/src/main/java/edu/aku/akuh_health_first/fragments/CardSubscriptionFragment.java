@@ -123,4 +123,6 @@ public class CardSubscriptionFragment extends BaseFragment {
         super.onDestroyView();
         unbinder.unbind();
     }
+
+
 }

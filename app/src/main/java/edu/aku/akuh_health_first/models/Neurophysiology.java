@@ -5,7 +5,35 @@ import com.google.gson.annotations.SerializedName;
 
 import edu.aku.akuh_health_first.managers.retrofit.GsonFactory;
 
-public class Neurophysiology {
+public class Neurophysiology implements IsRecordFound {
+
+    @Expose
+    @SerializedName("RecordMessage")
+    private String recordmessage;
+    @Expose
+    @SerializedName("RecordFound")
+    private String recordfound;
+
+    @Override
+    public boolean isRecordFound() {
+        return getRecordfound().equals("true");
+    }
+
+    public String getRecordmessage() {
+        return recordmessage;
+    }
+
+    public void setRecordmessage(String recordmessage) {
+        this.recordmessage = recordmessage;
+    }
+
+    public String getRecordfound() {
+        return recordfound;
+    }
+
+    public void setRecordfound(String recordfound) {
+        this.recordfound = recordfound;
+    }
 
     private final String tempMRN;
     @SerializedName("HospitalLocation")

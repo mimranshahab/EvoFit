@@ -78,6 +78,8 @@ dependencies {
     compile 'com.github.santalu:emptyview:1.0.4'
     compile 'org.zakariya.stickyheaders:stickyheaders:0.7.6'
     compile 'com.github.warkiz.widget:indicatorseekbar:1.2.9'
+    compile 'com.jsibbold:zoomage:1.1.0'
+
 }
 
 apply plugin: 'com.google.gms.google-services'
