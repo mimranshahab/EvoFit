@@ -36,7 +36,6 @@ public class PacsActivity extends AppCompatActivity {
     private static final String TAG = "MainActivity";
 
     private int progress;
-    private String fromJson;
     private PacsDescriptionModel pacsModel;
     private ImageView iv;
     private ImageButton btnPrevious;
@@ -57,7 +56,7 @@ public class PacsActivity extends AppCompatActivity {
         bindViews();
 //        indicatorSeekbar();
 
-        fromJson = getIntent().getExtras().getString(AppConstants.JSON_STRING_KEY);
+        String fromJson = getIntent().getExtras().getString(AppConstants.JSON_STRING_KEY);
         pacsModel = GsonFactory.getSimpleGson().fromJson(fromJson, PacsDescriptionModel.class);
         pacsList = (ArrayList<String>) pacsModel.getStudyDataString();
         final ArrayList uri = new ArrayList<String>();

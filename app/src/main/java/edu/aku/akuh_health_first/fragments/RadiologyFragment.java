@@ -161,7 +161,7 @@ public class RadiologyFragment extends BaseFragment implements View.OnClickListe
                 break;
             case R.id.btnShowReport:
                 RadiologyModel object = adapterRadiology.getItem(position);
-                if (object instanceof RadiologyModel) {
+                if (object != null) {
                     RadiologyModel radiologyModel = (RadiologyModel) object;
 //                    radiologyModel.setExamordernumber("4416119");
 //                    radiologyModel.setExamorderexamnumber("1");

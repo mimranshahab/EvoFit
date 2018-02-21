@@ -1,52 +1,61 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/imgmainbg"
+    android:background="@color/c_black"
+    android:orientation="vertical"
     tools:context=".activities.PacsActivity">
+
 
     <edu.aku.akuh_health_first.views.AnyTextView
         android:id="@+id/tv_progress"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
+        android:layout_gravity="center_horizontal"
         android:background="@drawable/transparent_grey_round_box"
         android:padding="@dimen/x10dp"
+        android:text="0/0"
+        android:textColor="@color/c_white"
         android:textSize="@dimen/s16"
         app:typeface="@string/font_bold" />
 
-    <ImageButton
-        android:id="@+id/btnPrevious"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="@dimen/x100dp"
-        android:layout_centerInParent="true"
-        android:layout_toLeftOf="@id/image"
-        android:background="@color/base_blue"
-        android:padding="10dp"
-        android:src="@drawable/imgback"
-        android:tint="@color/c_black" />
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:gravity="center">
 
-    <ImageView
-        android:id="@+id/image"
-        android:layout_width="@dimen/x300dp"
-        android:layout_height="@dimen/x400dp"
-        android:layout_centerInParent="true"
-        android:layout_margin="@dimen/x5dp"
-        android:adjustViewBounds="true"
-        android:scaleType="centerCrop" />
 
-    <ImageButton
-        android:id="@+id/btnNext"
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/x100dp"
-        android:layout_centerInParent="true"
-        android:layout_toRightOf="@id/image"
-        android:background="@color/base_blue"
-        android:padding="10dp"
-        android:src="@drawable/imgnext"
-        android:tint="@color/c_black" />
+        <ImageButton
+            android:id="@+id/btnPrevious"
+            android:layout_width="@dimen/x50dp"
+            android:layout_height="@dimen/x50dp"
+            android:background="@color/base_blue"
+            android:src="@drawable/imgback"
+            android:tint="@color/c_black" />
+
+        <ImageView
+            android:id="@+id/image"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_margin="@dimen/x5dp"
+            android:layout_weight="1"
+            android:scaleType="centerCrop" />
+
+        <ImageButton
+            android:id="@+id/btnNext"
+            android:layout_width="@dimen/x50dp"
+            android:layout_height="@dimen/x50dp"
+            android:layout_centerInParent="true"
+            android:layout_toRightOf="@id/image"
+            android:background="@color/base_blue"
+            android:padding="10dp"
+            android:src="@drawable/imgnext"
+            android:tint="@color/c_black" />
+    </LinearLayout>
+
 
     <ProgressBar
         android:id="@+id/progressbar"
@@ -55,16 +64,20 @@
         android:layout_centerInParent="true"
         android:visibility="gone" />
 
-
-    <!--<com.warkiz.widget.IndicatorSeekBar-->
-        <!--android:id="@+id/indSeekbar"-->
-        <!--android:layout_width="match_parent"-->
-        <!--android:layout_height="wrap_content"-->
-        <!--android:layout_alignBottom="@id/image"-->
-        <!--android:layout_marginTop="@dimen/x20dp"-->
-        <!--app:isb_indicator_type="circular_bubble"-->
-        <!--app:isb_progress="50"-->
-        <!--app:isb_seek_bar_type="continuous_texts_ends"-->
-        <!--app:isb_tick_num="5"-->
-        <!--app:isb_tick_type="oval" />-->
-</RelativeLayout>
+    <com.warkiz.widget.IndicatorSeekBar
+        android:id="@+id/indSeekbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@id/image"
+        android:layout_marginTop="@dimen/x20dp"
+        app:isb_indicator_color="@color/colorPrimary"
+        app:isb_indicator_text_color="@color/colorPrimary"
+        app:isb_indicator_type="circular_bubble"
+        app:isb_progress="50"
+        app:isb_seek_bar_type="continuous_texts_ends"
+        app:isb_text_color="@color/colorPrimary"
+        app:isb_thumb_color="@color/colorPrimary"
+        app:isb_tick_num="5"
+        app:isb_tick_type="oval"
+        app:isb_track_progress_bar_color="@color/colorPrimary" />
+</LinearLayout>
