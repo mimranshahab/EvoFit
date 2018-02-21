@@ -10,6 +10,7 @@ import com.google.gson.reflect.TypeToken;
 import java.lang.reflect.Type;
 import java.util.List;
 
+import edu.aku.akuh_health_first.constatnts.AppConstants;
 import edu.aku.akuh_health_first.managers.retrofit.GsonFactory;
 import edu.aku.akuh_health_first.models.NotificationModel;
 import edu.aku.akuh_health_first.models.receiving_model.CardMemberDetail;
@@ -26,6 +27,7 @@ import static edu.aku.akuh_health_first.constatnts.AppConstants.*;
 public class SharedPreferenceManager {
     private static SharedPreferences pref;
     private static SharedPreferenceManager factory;
+
 
     public static SharedPreferenceManager getInstance(Context context) {
         if (pref == null)
@@ -147,5 +149,10 @@ public class SharedPreferenceManager {
 
         editor.remove(key);
         editor.commit();
+    }
+
+    public void putFirebaseToken(String token) {
+        putValue(AppConstants.KEY_FIREBASE_TOKEN, token);
+
     }
 }

@@ -24,7 +24,6 @@ import edu.aku.akuh_health_first.activities.SplashActivity;
 
 import io.reactivex.subjects.PublishSubject;
 import io.realm.Realm;
-import uk.co.chrisjenx.calligraphy.CalligraphyConfig;
 
 /**
  * Created by khanhamza on 09-Mar-17.
@@ -63,14 +62,14 @@ public class BaseApplication extends MultiDexApplication implements Application.
         return stringId == 0 ? applicationInfo.nonLocalizedLabel.toString() : context.getString(stringId);
     }
 
-    private void configureCalligraphyLibrary() {
-        CalligraphyConfig.initDefault(new CalligraphyConfig.Builder()
-                .setDefaultFontPath("fonts/SanFranciscoRegular.ttf")
-                .setFontAttrId(R.attr.fontPath)
-                .build()
-        );
-
-    }
+//    private void configureCalligraphyLibrary() {
+//        CalligraphyConfig.initDefault(new CalligraphyConfig.Builder()
+//                .setDefaultFontPath("fonts/SanFranciscoRegular.ttf")
+//                .setFontAttrId(R.attr.fontPath)
+//                .build()
+//        );
+//
+//    }
 
     private void configImageLoader(Context context) {
         DisplayImageOptions defaultOptions = new DisplayImageOptions.Builder().cacheOnDisk(true).cacheInMemory(true).imageScaleType(ImageScaleType.EXACTLY).displayer(new FadeInBitmapDisplayer(300)).build();

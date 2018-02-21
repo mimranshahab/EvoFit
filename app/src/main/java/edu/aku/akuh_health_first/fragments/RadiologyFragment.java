@@ -204,7 +204,6 @@ public class RadiologyFragment extends BaseFragment implements View.OnClickListe
 
 
     private void serviceCall() {
-        // FIXME: 1/18/2018 Use live data in future
 //        SearchModel model = new SearchModel();
 //        model.setMRNumber(WebServiceConstants.tempMRN);
 //        model.setVisitID(null);
@@ -213,7 +212,7 @@ public class RadiologyFragment extends BaseFragment implements View.OnClickListe
                 WebServiceConstants.temporaryToken,
                 BaseURLTypes.AHFA_BASE_URL)
                 .webServiceRequestAPIForArray(WebServiceConstants.METHOD_GET_RADIOLOGY_EXAMS,
-                       "262-79-21",
+                        WebServiceConstants.tempMRN_RADIOLOGY,
                         new WebServices.IRequestArrayDataCallBack() {
                             @Override
                             public void requestDataResponse(WebResponse<ArrayList<JsonObject>> webResponse) {

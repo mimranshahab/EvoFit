@@ -59,6 +59,7 @@ public class AppConstants {
     public static String PROFILE_REGISTRATION = "profile_registration";
     public static String FORCED_RESTART = "forced_restart";
     public static final String KEY_REGISTER_VM = "register_vm";
+    public static final String KEY_FIREBASE_TOKEN = "firebase_token";
 
 
     public static final String schedule = "Scheduled";
