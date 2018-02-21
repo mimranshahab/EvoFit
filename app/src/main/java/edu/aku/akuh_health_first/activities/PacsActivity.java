@@ -16,6 +16,7 @@ import android.widget.TextView;
 
 
 import com.google.gson.Gson;
+import com.jsibbold.zoomage.ZoomageView;
 import com.warkiz.widget.IndicatorSeekBar;
 import com.warkiz.widget.IndicatorSeekBarType;
 import com.warkiz.widget.IndicatorType;
@@ -28,6 +29,7 @@ import java.util.List;
 import edu.aku.akuh_health_first.R;
 import edu.aku.akuh_health_first.constatnts.AppConstants;
 import edu.aku.akuh_health_first.constatnts.WebServiceConstants;
+import edu.aku.akuh_health_first.helperclasses.ui.helper.TitleBar;
 import edu.aku.akuh_health_first.helperclasses.ui.helper.UIHelper;
 import edu.aku.akuh_health_first.libraries.fileloader.FileLoader;
 import edu.aku.akuh_health_first.libraries.fileloader.listener.FileRequestListener;
@@ -43,20 +45,24 @@ public class PacsActivity extends AppCompatActivity {
 
     private int progress;
     private PacsDescriptionModel pacsModel;
-    private ImageView iv;
+    private ZoomageView iv;
     private ImageButton btnPrevious;
     private ImageButton btnNext;
     private TextView tvProgress;
     private ArrayList<String> pacsList;
-
+    TitleBar titleBar;
+    IndicatorSeekBar indicatorSeekBar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_pacs);
         bindViews();
-        indicatorSeekbar();
+//        indicatorSeekbar();
+        setTitlebar();
 
+
+        pacsList = new ArrayList<String>();
         String fromJson = getIntent().getExtras().getString(AppConstants.JSON_STRING_KEY);
         pacsModel = GsonFactory.getSimpleGson().fromJson(fromJson, PacsDescriptionModel.class);
         pacsList = (ArrayList<String>) pacsModel.getStudyDataString();
@@ -73,70 +79,83 @@ public class PacsActivity extends AppCompatActivity {
 //        for (int i = 0; i < uri.size(); i++) {
 //            MultiFileLoadRequest loadRequest = new MultiFileLoadRequest(uri.get(i).toString());
 //            multiFileLoadRequests.add(i, loadRequest);
-           setListeners(uri);
+        setListeners(uri);
 
-        }
+    }
+
+    private void setTitlebar() {
+        titleBar.resetViews();
+        titleBar.setVisibility(View.VISIBLE);
+        titleBar.showBackButton(this);
+        titleBar.setTitle("PACS Viewer");
+    }
 
 
-//        final MultiFileDownloader multiFileDownloader = FileLoader.multiFileDownload(this);
-//        multiFileDownloader.progressListener(new MultiFileDownloadListener() {
-//            @Override
-//            public void onProgress(final File downloadedFile, final int progress, final int totalFiles) {
-////                multiFileDownloader.cancelLoad();
-//
-////                imgList = new ArrayList<Bitmap>();
-////
-////                for (int i = 1; i <= totalFiles; i++) {
-////                    imgList.add(BitmapFactory.decodeFile(downloadedFile.getAbsolutePath()));
-////
-////                }
-//                MainActivity.this.progress = progress;
-//                tvProgress.setText(progress + " of " + totalFiles);
-//                Glide.with(MainActivity.this).load(downloadedFile).into(iv);
-//            }
-//        }).loadMultiple(multiFileLoadRequests);
-
-//    }
 
     private void setListeners(final ArrayList uri/*, final List<MultiFileLoadRequest> multiFileLoadRequests*/) {
 //        for (int j = 1; j <= multiFileLoadRequests.size(); j++) {
-            progress = uri.size();
-            btnPrevious.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    if ( progress <= 1) {
-                        return;
-                    } else {
-                        loadImage(iv, uri.get(--progress).toString());
-                        tvProgress.setText(progress + " of " + uri.size());
-                    }
+        progress = uri.size();
+        final int arraySize = uri.size();
 
+        btnPrevious.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (progress <= 1) {
+                    return;
+                } else {
+                    loadImage(iv, uri.get(--progress).toString());
+                    tvProgress.setText(progress + " of " + arraySize);
                 }
-            });
 
-            btnNext.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    if (progress >= uri.size()) {
-                        return;
-                    } else {
-                        loadImage(iv, uri.get(progress++).toString());
-                        tvProgress.setText(progress + " of " + uri.size());
-                    }
+            }
+        });
+
+        btnNext.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (progress >= arraySize) {
+                    return;
+                } else {
+                    loadImage(iv, uri.get(progress++).toString());
+                    tvProgress.setText(progress + " of " + arraySize);
                 }
-            });
+            }
+        });
 
 
-        }
+        indicatorSeekBar.setOnSeekChangeListener(new IndicatorSeekBar.OnSeekBarChangeListener() {
+            @Override
+            public void onProgressChanged(IndicatorSeekBar seekBar, int progress, float progressFloat, boolean fromUserTouch) {
+//             tvProgress.setText(String.valueOf(progress));
 
+             }
+
+            @Override
+            public void onSectionChanged(IndicatorSeekBar seekBar, int thumbPosOnTick, String textBelowTick, boolean fromUserTouch) {
+
+            }
+
+            @Override
+            public void onStartTrackingTouch(IndicatorSeekBar seekBar, int thumbPosOnTick) {
+
+            }
+
+            @Override
+            public void onStopTrackingTouch(IndicatorSeekBar seekBar) {
+
+            }
+        });
+
+    }
 
 
     private void bindViews() {
-        iv = (ImageView) findViewById(R.id.image);
+        iv = (ZoomageView) findViewById(R.id.image);
         btnPrevious = (ImageButton) findViewById(R.id.btnPrevious);
         btnNext = (ImageButton) findViewById(R.id.btnNext);
         tvProgress = (TextView) findViewById(R.id.tv_progress);
-        pacsList = new ArrayList<String>();
+        titleBar = findViewById(R.id.titlebar);
+        indicatorSeekBar = findViewById(R.id.indSeekbar);
     }
 
     private void loadImage(final ImageView iv, String imageUrl) {
@@ -159,27 +178,27 @@ public class PacsActivity extends AppCompatActivity {
                 });
     }
 
-    private void indicatorSeekbar() {
-        IndicatorSeekBar indicatorSeekBar = new IndicatorSeekBar.Builder(this)
-                .setMax(200)
-                .setMin(0)
-                .setProgress(35)
-                .setSeekBarType(IndicatorSeekBarType.CONTINUOUS)
-                .setTickType(TickType.OVAL)
-                .setTickNum(8)
-                .setBackgroundTrackSize(2)//dp size
-                .setProgressTrackSize(3)//dp size
-                .setIndicatorType(IndicatorType.CIRCULAR_BUBBLE)
-                .setIndicatorColor(Color.parseColor("#19BBDE"))
-                .build();
-
-//change build params at the runtime.
-
-        indicatorSeekBar.getBuilder()
-                .setMax(232)
-                .setMin(43)
-                .setTickType(TickType.OVAL)
-                .setTickColor(Color.parseColor("#19BBDE"))
-                .apply();
-    }
+//    private void indicatorSeekbar() {
+////        indicatorSeekBar = new IndicatorSeekBar.Builder(this)
+////                .setMax(20)
+////                .setMin(0)
+//////                .setProgress(35)
+////                .setSeekBarType(IndicatorSeekBarType.CONTINUOUS)
+////                .setTickType(TickType.OVAL)
+//////                .setTickNum(8)
+////                .setBackgroundTrackSize(2)//dp size
+////                .setProgressTrackSize(3)//dp size
+////                .setIndicatorType(IndicatorType.CIRCULAR_BUBBLE)
+//////                .setIndicatorColor(Color.parseColor("#19BBDE"))
+////                .build();
+//
+////change build params at the runtime.
+//
+////        indicatorSeekBar.getBuilder()
+////                .setMax(232)
+////                .setMin(43)
+////                .setTickType(TickType.OVAL)
+////                .setTickColor(Color.parseColor("#19BBDE"))
+////                .apply();
+//    }
 }

@@ -1,6 +1,7 @@
 package edu.aku.akuh_health_first.helperclasses.ui.helper;
 
 import android.animation.Animator;
+import android.app.Activity;
 import android.content.Context;
 import android.support.v4.view.GravityCompat;
 import android.util.AttributeSet;
@@ -120,7 +121,7 @@ public class TitleBar extends RelativeLayout {
     }
 
 
-    public void showBackButton(final BaseActivity mActivity) {
+    public void showBackButton(final Activity mActivity) {
         this.btnLeft1.setVisibility(VISIBLE);
         this.btnLeft1.setImageResource(R.drawable.ic_back);
         btnLeft1.setOnClickListener(new OnClickListener() {
