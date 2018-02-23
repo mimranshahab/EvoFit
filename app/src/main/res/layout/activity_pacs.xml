@@ -9,17 +9,11 @@
     tools:context=".activities.PacsActivity">
 
 
-    <edu.aku.akuh_health_first.views.AnyTextView
-        android:id="@+id/tv_progress"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:background="@drawable/transparent_grey_round_box"
-        android:padding="@dimen/x10dp"
-        android:text="0/0"
-        android:textColor="@color/c_white"
-        android:textSize="@dimen/s16"
-        app:typeface="@string/font_bold" />
+    <edu.aku.akuh_health_first.helperclasses.ui.helper.TitleBar
+        android:id="@+id/titlebar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -30,23 +24,32 @@
 
         <ImageButton
             android:id="@+id/btnPrevious"
-            android:layout_width="@dimen/x50dp"
+            android:layout_width="@dimen/x30dp"
             android:layout_height="@dimen/x50dp"
             android:background="@color/base_blue"
             android:src="@drawable/imgback"
             android:tint="@color/c_black" />
 
-        <ImageView
+        <com.jsibbold.zoomage.ZoomageView
             android:id="@+id/image"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_margin="@dimen/x5dp"
             android:layout_weight="1"
-            android:scaleType="centerCrop" />
+            android:scaleType="fitCenter"
+            android:src="@drawable/placeholder"
+            app:zoomage_animateOnReset="true"
+            app:zoomage_autoCenter="true"
+            app:zoomage_autoResetMode="UNDER"
+            app:zoomage_maxScale="8"
+            app:zoomage_minScale="0.6"
+            app:zoomage_restrictBounds="false"
+            app:zoomage_translatable="true"
+            app:zoomage_zoomable="true" />
 
         <ImageButton
             android:id="@+id/btnNext"
-            android:layout_width="@dimen/x50dp"
+            android:layout_width="@dimen/x30dp"
             android:layout_height="@dimen/x50dp"
             android:layout_centerInParent="true"
             android:layout_toRightOf="@id/image"
@@ -64,20 +67,45 @@
         android:layout_centerInParent="true"
         android:visibility="gone" />
 
-    <com.warkiz.widget.IndicatorSeekBar
-        android:id="@+id/indSeekbar"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignBottom="@id/image"
-        android:layout_marginTop="@dimen/x20dp"
-        app:isb_indicator_color="@color/colorPrimary"
-        app:isb_indicator_text_color="@color/colorPrimary"
-        app:isb_indicator_type="circular_bubble"
-        app:isb_progress="50"
-        app:isb_seek_bar_type="continuous_texts_ends"
-        app:isb_text_color="@color/colorPrimary"
-        app:isb_thumb_color="@color/colorPrimary"
-        app:isb_tick_num="5"
-        app:isb_tick_type="oval"
-        app:isb_track_progress_bar_color="@color/colorPrimary" />
+        android:layout_height="wrap_content">
+
+
+        <com.warkiz.widget.IndicatorSeekBar
+            android:id="@+id/indSeekbar"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@id/image"
+            android:layout_marginTop="@dimen/x20dp"
+            android:layout_weight="0.9"
+            app:isb_indicator_color="@color/colorPrimary"
+            app:isb_indicator_text_color="@color/c_white"
+            app:isb_indicator_type="circular_bubble"
+            app:isb_max="20"
+            app:isb_min="0"
+            app:isb_show_indicator="true"
+            app:isb_seek_bar_type="continuous_texts_ends"
+            app:isb_text_color="@color/colorPrimary"
+            app:isb_thumb_color="@color/colorPrimary"
+            app:isb_tick_type="oval"
+            app:isb_track_progress_bar_color="@color/colorPrimary" />
+
+
+        <edu.aku.akuh_health_first.views.AnyTextView
+            android:id="@+id/tv_progress"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_gravity="center_horizontal"
+            android:layout_weight="0.14"
+            android:gravity="center"
+            android:padding="@dimen/x5dp"
+            android:text="0/0"
+            android:textColor="@color/c_white"
+            android:textSize="@dimen/s16"
+            app:typeface="@string/font_bold" />
+
+    </LinearLayout>
+
+
 </LinearLayout>
