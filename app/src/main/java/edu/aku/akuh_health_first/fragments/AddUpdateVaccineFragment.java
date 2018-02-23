@@ -18,6 +18,7 @@ import com.google.gson.reflect.TypeToken;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Set;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -126,7 +127,6 @@ public class AddUpdateVaccineFragment extends BaseFragment {
         }
 
         titleBar.showBackButton(getBaseActivity());
-
     }
 
     @Override
@@ -179,9 +179,7 @@ public class AddUpdateVaccineFragment extends BaseFragment {
 
                                 for (ImmunizationModel model : arrayList) {
                                     vaccineIDandDescriptions.put(model.getDescription(), model.getVaccineID());
-                                    arrVaccine.add(model.getDescription());
                                 }
-
                                 setSpinner(adapterVaccine, txtVaccine, spVaccine);
                             }
 

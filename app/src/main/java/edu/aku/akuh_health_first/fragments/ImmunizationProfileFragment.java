@@ -170,18 +170,15 @@ public class ImmunizationProfileFragment extends BaseFragment implements View.On
 
     private void serviceCall() {
         // FIXME: 1/18/2018 Use live data in future
-//        SearchModel model = new SearchModel();
-//        model.setMRNumber(WebServiceConstants.tempMRN_immunization);
-//        model.setVisitID(null);
-
-        UserDetailModel currentUser = sharedPreferenceManager.getCurrentUser();
-        currentUser.setMRNumber(WebServiceConstants.tempMRN_immunization);
+        SearchModel model = new SearchModel();
+        model.setMRNumber(WebServiceConstants.tempMRN_immunization);
+        model.setVisitID(null);
 
         new WebServices(getBaseActivity(),
                 WebServiceConstants.temporaryToken,
                 BaseURLTypes.AHFA_BASE_URL)
                 .webServiceRequestAPIForArray(WebServiceConstants.METHOD_IMMUNIZATION_VACCINE_SCHEDULE,
-                        currentUser.getMRNumberwithComma(),
+                        model.toString(),
                         new WebServices.IRequestArrayDataCallBack() {
                             @Override
                             public void requestDataResponse(WebResponse<ArrayList<JsonObject>> webResponse) {

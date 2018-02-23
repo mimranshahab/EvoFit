@@ -1,100 +1,100 @@
 
 package edu.aku.akuh_health_first.activities;
 
+import android.app.ProgressDialog;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-import android.graphics.Color;
 import android.os.Bundle;
 
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
-import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 
-import com.google.gson.Gson;
 import com.jsibbold.zoomage.ZoomageView;
 import com.warkiz.widget.IndicatorSeekBar;
-import com.warkiz.widget.IndicatorSeekBarType;
-import com.warkiz.widget.IndicatorType;
-import com.warkiz.widget.TickType;
 
 import java.io.File;
 import java.util.ArrayList;
-import java.util.List;
 
 import edu.aku.akuh_health_first.R;
-import edu.aku.akuh_health_first.constatnts.AppConstants;
-import edu.aku.akuh_health_first.constatnts.WebServiceConstants;
+import edu.aku.akuh_health_first.helperclasses.Helper;
+import edu.aku.akuh_health_first.helperclasses.ui.helper.TitleBar;
 import edu.aku.akuh_health_first.helperclasses.ui.helper.UIHelper;
 import edu.aku.akuh_health_first.libraries.fileloader.FileLoader;
 import edu.aku.akuh_health_first.libraries.fileloader.listener.FileRequestListener;
 import edu.aku.akuh_health_first.libraries.fileloader.pojo.FileResponse;
 import edu.aku.akuh_health_first.libraries.fileloader.request.FileLoadRequest;
-import edu.aku.akuh_health_first.libraries.fileloader.request.MultiFileLoadRequest;
+import edu.aku.akuh_health_first.managers.SharedPreferenceManager;
 import edu.aku.akuh_health_first.managers.retrofit.GsonFactory;
 import edu.aku.akuh_health_first.models.PacsDescriptionModel;
-import edu.aku.akuh_health_first.models.PacsModel;
+import edu.aku.akuh_health_first.models.TupleModel;
 
 public class PacsActivity extends AppCompatActivity {
     private static final String TAG = "MainActivity";
 
-    private int progress;
+    private int pointer;
     private PacsDescriptionModel pacsModel;
     private ZoomageView iv;
     private ImageButton btnPrevious;
     private ImageButton btnNext;
+    private ImageButton btnPreviousBatch;
+    private ImageButton btnNextBatch;
     private TextView tvProgress;
     private ArrayList<String> pacsList;
-    private int min = 1, max = 0;
-
+    private int min = 0, max = 0;
+    ProgressDialog loader;
     private ArrayList<TupleModel> arrTupleModel;
     TitleBar titleBar;
     IndicatorSeekBar indicatorSeekBar;
+    TupleModel selectedTupleModel;
+    int selectedTupleIndex;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_pacs);
         arrTupleModel = new ArrayList<>();
-
+        loader = Helper.getLoader(this);
 
         bindViews();
-//        indicatorSeekbar();
         setTitlebar();
 
-        String fromJson = getIntent().getExtras().getString(AppConstants.JSON_STRING_KEY);
+//        String fromJson = getIntent().getExtras().getString(AppConstants.JSON_STRING_KEY);
+
+        String fromJson = SharedPreferenceManager.getInstance(this).getString("JSON_STRING_KEY");
         pacsModel = GsonFactory.getSimpleGson().fromJson(fromJson, PacsDescriptionModel.class);
         pacsList = (ArrayList<String>) pacsModel.getStudyDataString();
-        final ArrayList uri = new ArrayList<String>();
 
         uriArrToTuple(pacsList.size());
-        updateData(uri, arrTupleModel.get(0));
+        selectedTupleModel = arrTupleModel.get(0);
+        selectedTupleIndex = 0;
 
-        setListeners(uri);
-    }
-
-    private void updateData(ArrayList uri, TupleModel tupleModel) {
-        for (int i = tupleModel.getMin(); i < tupleModel.getMax(); i++) {
-            uri.add(pacsList.get(i));
-
+        if (Helper.isNetworkConnected(this, true)) {
+            updateData(arrTupleModel.get(0));
         }
-        loadImage(iv, uri.get(0).toString());
-        tvProgress.setText(1 + " of " + uri.size());
+        setListeners();
     }
 
-    private void uriArrToTuple(int size) {
-//        final List<MultiFileLoadRequest> multiFileLoadRequests = new ArrayList<>();
-//        for (int i = 0; i < uri.size(); i++) {
-//            MultiFileLoadRequest loadRequest = new MultiFileLoadRequest(uri.get(i).toString());
-//            multiFileLoadRequests.add(i, loadRequest);
-        setListeners(uri);
-
-        for (int j = size; j > 0; j = j - 20) {
+    private void updateData(TupleModel tupleModel) {
+        loader.show();
+            for (int i = tupleModel.getMin(); i <= tupleModel.getMax(); i++) {
+                if (pacsList.get(i) != null) {
+                    loadImage(iv, pacsList.get(i), false);
+                }
+            }
+            loader.dismiss();
+            loadImage(iv, pacsList.get(tupleModel.getMin()), true);
+            tvProgress.setText((tupleModel.getMin() + 1) + " of " + pacsList.size());
+            pointer = tupleModel.getMin();
+            indicatorSeekBar.setMax(tupleModel.getMax() + 1);
+            indicatorSeekBar.setMin(tupleModel.getMin() + 1);
+            indicatorSeekBar.setProgress(tupleModel.getMin() + 1);
     }
+
 
     private void setTitlebar() {
         titleBar.resetViews();
@@ -103,89 +103,112 @@ public class PacsActivity extends AppCompatActivity {
         titleBar.setTitle("PACS Viewer");
     }
 
-            if (j > 20) {
-                min = max + 1;
-                max = max + 20;
+    private void uriArrToTuple(int size) {
+
+        for (int j = size; j > 0; j = j - 30) {
+            if (j > 30) {
+                min = max + 0;
+                max = max + 30;
                 TupleModel tupleModel = new TupleModel();
                 tupleModel.setMin(min);
                 tupleModel.setMax(max);
                 arrTupleModel.add(tupleModel);
-                Log.d(TAG, "uriArrToTuple_loop: " + tupleModel.getMin());
-                Log.d(TAG, "uriArrToTuple_loop: " + tupleModel.getMax());
-
-
             } else {
                 TupleModel tupleModel = new TupleModel();
-                tupleModel.setMin(max + 1);
-                tupleModel.setMax(size);
+                tupleModel.setMin(max);
+                tupleModel.setMax(size - 1);
                 arrTupleModel.add(tupleModel);
-
-                Log.d(TAG, "uriArrToTuple_else: " + tupleModel.getMin());
-                Log.d(TAG, "uriArrToTuple_else: " + tupleModel.getMax());
-
-
             }
         }
 
     }
-//        final MultiFileDownloader multiFileDownloader = FileLoader.multiFileDownload(this);
-//        multiFileDownloader.progressListener(new MultiFileDownloadListener() {
-//            @Override
-//            public void onProgress(final File downloadedFile, final int progress, final int totalFiles) {
-////                multiFileDownloader.cancelLoad();
-//
-////                imgList = new ArrayList<Bitmap>();
-////
-////                for (int i = 1; i <= totalFiles; i++) {
-////                    imgList.add(BitmapFactory.decodeFile(downloadedFile.getAbsolutePath()));
-////
-////                }
-//                MainActivity.this.progress = progress;
-//                tvProgress.setText(progress + " of " + totalFiles);
-//                Glide.with(MainActivity.this).load(downloadedFile).into(iv);
-//            }
-//        }).loadMultiple(multiFileLoadRequests);
 
-//    }
-
-    private void setListeners(final ArrayList uri/*, final List<MultiFileLoadRequest> multiFileLoadRequests*/) {
-//        for (int j = 1; j <= multiFileLoadRequests.size(); j++) {
-        progress = uri.size();
+    private void setListeners() {
+        pointer = selectedTupleModel.getMin();
         btnPrevious.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (progress <= 1) {
+                if (pointer <= selectedTupleModel.getMin()) {
                     return;
                 } else {
-                    loadImage(iv, uri.get(--progress).toString());
-                    tvProgress.setText(progress + " of " + uri.size());
-
+                    pointer--;
+                    if (pacsList.get(pointer) != null) {
+                        loadImage(iv, pacsList.get(pointer).toString(), true);
+                        tvProgress.setText(pointer + 1 + " of " + pacsList.size());
+                        indicatorSeekBar.setProgress(pointer + 1);
+                    }
                 }
-
             }
         });
 
         btnNext.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (progress >= uri.size()) {
+                if (pointer > (selectedTupleModel.getMax() - 1)) {
                     return;
                 } else {
-                    loadImage(iv, uri.get(progress++).toString());
-                    tvProgress.setText(progress + " of " + uri.size());
+                    pointer++;
+                    if (pacsList.get(pointer) != null) {
+                        loadImage(iv, pacsList.get(pointer).toString(), true);
+                        tvProgress.setText(pointer + 1 + " of " + pacsList.size());
+                        indicatorSeekBar.setProgress(pointer + 1);
+
+                    }
                 }
-
-
             }
         });
 
 
+        btnNextBatch.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (!Helper.isNetworkConnected(PacsActivity.this, true)) {
+                    return;
+                }
+
+                if (selectedTupleIndex < arrTupleModel.size()) {
+                    selectedTupleIndex++;
+                    if (arrTupleModel.size() <= selectedTupleIndex) return;
+                    if (arrTupleModel.get(selectedTupleIndex) != null) {
+                        selectedTupleModel = arrTupleModel.get(selectedTupleIndex);
+                        updateData(selectedTupleModel);
+                    }
+
+                } else {
+                    UIHelper.showToast(PacsActivity.this, "No further batch");
+                }
+            }
+        });
+
+
+        btnPreviousBatch.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (!Helper.isNetworkConnected(PacsActivity.this, true)) {
+                    return;
+                }
+
+                if (selectedTupleIndex > 0) {
+                    selectedTupleIndex--;
+                    if (arrTupleModel.get(selectedTupleIndex) != null) {
+                        selectedTupleModel = arrTupleModel.get(selectedTupleIndex);
+                        updateData(selectedTupleModel);
+                    }
+                }
+            }
+        });
+
+
+        indicatorSeekBar.setMin(selectedTupleModel.getMin() + 1);
+        indicatorSeekBar.setMax(selectedTupleModel.getMax() + 1);
+
         indicatorSeekBar.setOnSeekChangeListener(new IndicatorSeekBar.OnSeekBarChangeListener() {
             @Override
             public void onProgressChanged(IndicatorSeekBar seekBar, int progress, float progressFloat, boolean fromUserTouch) {
-//             tvProgress.setText(String.valueOf(progress));
-
-             }
+                pointer = progress - 1;
+                loadImage(iv, pacsList.get(progress - 1), true);
+                tvProgress.setText(progress + " of " + pacsList.size());
+            }
 
             @Override
             public void onSectionChanged(IndicatorSeekBar seekBar, int thumbPosOnTick, String textBelowTick, boolean fromUserTouch) {
@@ -205,27 +228,27 @@ public class PacsActivity extends AppCompatActivity {
 
     }
 
-
     private void bindViews() {
         iv = (ZoomageView) findViewById(R.id.image);
         btnPrevious = (ImageButton) findViewById(R.id.btnPrevious);
         btnNext = (ImageButton) findViewById(R.id.btnNext);
+        btnPreviousBatch = (ImageButton) findViewById(R.id.btnPreviousBatch);
+        btnNextBatch = (ImageButton) findViewById(R.id.btnNextBatch);
         tvProgress = (TextView) findViewById(R.id.tv_progress);
         titleBar = findViewById(R.id.titlebar);
         indicatorSeekBar = findViewById(R.id.indSeekbar);
     }
 
-    private void loadImage(final ImageView iv, String imageUrl) {
-        iv.setImageBitmap(null);
+    private void loadImage(final ImageView iv, String imageUrl, final boolean isShowImage) {
         FileLoader.with(this)
                 .load(imageUrl)
                 .asFile(new FileRequestListener<File>() {
                     @Override
                     public void onLoad(FileLoadRequest request, FileResponse<File> response) {
                         Bitmap bitmap = BitmapFactory.decodeFile(response.getDownloadedFile().getPath());
-                        iv.setImageBitmap(bitmap);
-
-
+                        if (isShowImage) {
+                            iv.setImageBitmap(bitmap);
+                        }
                     }
 
                     @Override
@@ -235,27 +258,5 @@ public class PacsActivity extends AppCompatActivity {
                 });
     }
 
-//    private void indicatorSeekbar() {
-////        indicatorSeekBar = new IndicatorSeekBar.Builder(this)
-////                .setMax(20)
-////                .setMin(0)
-//////                .setProgress(35)
-////                .setSeekBarType(IndicatorSeekBarType.CONTINUOUS)
-////                .setTickType(TickType.OVAL)
-//////                .setTickNum(8)
-////                .setBackgroundTrackSize(2)//dp size
-////                .setProgressTrackSize(3)//dp size
-////                .setIndicatorType(IndicatorType.CIRCULAR_BUBBLE)
-//////                .setIndicatorColor(Color.parseColor("#19BBDE"))
-////                .build();
 //
-////change build params at the runtime.
-//
-////        indicatorSeekBar.getBuilder()
-////                .setMax(232)
-////                .setMin(43)
-////                .setTickType(TickType.OVAL)
-////                .setTickColor(Color.parseColor("#19BBDE"))
-////                .apply();
-//    }
 }

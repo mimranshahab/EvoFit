@@ -14,7 +14,7 @@ import edu.aku.akuh_health_first.managers.retrofit.GsonFactory;
  * Created by hamza.ahmed on 2/7/2018.
  */
 
-public class RadiologyModel implements Parcelable, IsRecordFound {
+public class RadiologyModel implements IsRecordFound {
 
     @Expose
     @SerializedName("RecordMessage")
@@ -232,14 +232,4 @@ public class RadiologyModel implements Parcelable, IsRecordFound {
         return GsonFactory.getSimpleGson().toJson(this);
     }
 
-
-    @Override
-    public int describeContents() {
-        return 0;
-    }
-
-    @Override
-    public void writeToParcel(Parcel dest, int flags) {
-
-    }
 }

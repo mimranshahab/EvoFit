@@ -58,7 +58,5 @@ public interface WebServiceProxy {
             @Part(WebServiceConstants.PARAMS_REQUEST_METHOD) RequestBody requestMethod,
             @Part(WebServiceConstants.PARAMS_REQUEST_DATA) RequestBody requestData
     );
-
-
 }
 

@@ -22,13 +22,30 @@
         android:gravity="center">
 
 
-        <ImageButton
-            android:id="@+id/btnPrevious"
-            android:layout_width="@dimen/x30dp"
-            android:layout_height="@dimen/x50dp"
-            android:background="@color/base_blue"
-            android:src="@drawable/imgback"
-            android:tint="@color/c_black" />
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <ImageButton
+                android:id="@+id/btnPrevious"
+                android:layout_width="@dimen/x40dp"
+                android:layout_height="@dimen/x50dp"
+                android:background="@color/base_blue"
+                android:src="@drawable/imgback"
+                android:tint="@color/c_black" />
+
+            <ImageButton
+                android:id="@+id/btnPreviousBatch"
+                android:layout_width="@dimen/x40dp"
+                android:layout_height="@dimen/x50dp"
+                android:background="@color/base_blue"
+                android:src="@drawable/ic_back_shadow"
+                android:tint="@color/c_black" />
+
+
+        </LinearLayout>
 
         <com.jsibbold.zoomage.ZoomageView
             android:id="@+id/image"
@@ -37,7 +54,7 @@
             android:layout_margin="@dimen/x5dp"
             android:layout_weight="1"
             android:scaleType="fitCenter"
-            android:src="@drawable/placeholder"
+            android:src="@drawable/picture_loading"
             app:zoomage_animateOnReset="true"
             app:zoomage_autoCenter="true"
             app:zoomage_autoResetMode="UNDER"
@@ -47,16 +64,33 @@
             app:zoomage_translatable="true"
             app:zoomage_zoomable="true" />
 
-        <ImageButton
-            android:id="@+id/btnNext"
-            android:layout_width="@dimen/x30dp"
-            android:layout_height="@dimen/x50dp"
-            android:layout_centerInParent="true"
-            android:layout_toRightOf="@id/image"
-            android:background="@color/base_blue"
-            android:padding="10dp"
-            android:src="@drawable/imgnext"
-            android:tint="@color/c_black" />
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <ImageButton
+                android:id="@+id/btnNext"
+                android:layout_width="@dimen/x40dp"
+                android:layout_height="@dimen/x50dp"
+                android:background="@color/base_blue"
+                android:padding="10dp"
+                android:src="@drawable/imgnext"
+                android:tint="@color/c_black" />
+
+            <ImageButton
+                android:id="@+id/btnNextBatch"
+                android:layout_width="@dimen/x40dp"
+                android:layout_height="@dimen/x50dp"
+                android:background="@color/base_blue"
+                android:padding="10dp"
+                android:src="@drawable/ic_fab_next"
+                android:tint="@color/c_black" />
+
+        </LinearLayout>
+
+
     </LinearLayout>
 
 
@@ -69,7 +103,9 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:paddingLeft="@dimen/x5dp"
+        android:paddingRight="@dimen/x5dp">
 
 
         <com.warkiz.widget.IndicatorSeekBar
@@ -83,9 +119,9 @@
             app:isb_indicator_text_color="@color/c_white"
             app:isb_indicator_type="circular_bubble"
             app:isb_max="20"
-            app:isb_min="0"
-            app:isb_show_indicator="true"
+            app:isb_min="1"
             app:isb_seek_bar_type="continuous_texts_ends"
+            app:isb_show_indicator="true"
             app:isb_text_color="@color/colorPrimary"
             app:isb_thumb_color="@color/colorPrimary"
             app:isb_tick_type="oval"

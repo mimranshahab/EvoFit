@@ -57,7 +57,6 @@ public class PacsFragment extends BaseFragment implements View.OnClickListener, 
 
     private PacsDescriptionAdapter adapterPacsDescriptionAdapter;
     private RadiologyModel radioModel;
-    private List<JsonObject> object;
     private ArrayList<PacsDescriptionModel> arrData;
 
 
@@ -66,14 +65,13 @@ public class PacsFragment extends BaseFragment implements View.OnClickListener, 
         super.onCreate(savedInstanceState);
         arrData = new ArrayList<PacsDescriptionModel>();
         adapterPacsDescriptionAdapter = new PacsDescriptionAdapter(getBaseActivity(), arrData, this);
-        radioModel = getArguments().getParcelable("RADIOLOGY_MODEL_KEY");
     }
 
     public static PacsFragment newInstance(RadiologyModel item) {
 
         Bundle args = new Bundle();
         PacsFragment fragment = new PacsFragment();
-        args.putParcelable(RADIOLOGY_MODEL_KEY, item);
+        fragment.radioModel = item;
         fragment.setArguments(args);
         return fragment;
     }
@@ -161,7 +159,11 @@ public class PacsFragment extends BaseFragment implements View.OnClickListener, 
     public void onItemClick(int position, Object object) {
 
         if (object instanceof PacsDescriptionModel) {
-            getBaseActivity().openActivity(PacsActivity.class, object.toString());
+            PacsDescriptionModel pacsDescriptionModel = (PacsDescriptionModel) object;
+
+            sharedPreferenceManager.putValue("JSON_STRING_KEY", pacsDescriptionModel.toString());
+
+            getBaseActivity().openActivity(PacsActivity.class, "");
 
         }
     }
@@ -184,32 +186,33 @@ public class PacsFragment extends BaseFragment implements View.OnClickListener, 
 //                                }
                                 ArrayList arrayList = new ArrayList<PacsDescriptionAdapter>();
 //                                if (pacsModel != null) {
-                                    for (int i = 0; i < pacsModel.getPatient_Name().size(); i++) {
+                                for (int i = 0; i < pacsModel.getPatient_Name().size(); i++) {
 
-                                        PacsDescriptionModel pacsDescriptionModel = new PacsDescriptionModel();
+                                    PacsDescriptionModel pacsDescriptionModel = new PacsDescriptionModel();
 
-                                        pacsDescriptionModel.setPatient_Name(pacsModel.getPatient_Name().get(i));
-                                        pacsDescriptionModel.setPatientDOB(pacsModel.getPatientDOB().get(i));
-                                        pacsDescriptionModel.setPatientAge(pacsModel.getPatientAge().get(i));
-                                        pacsDescriptionModel.setPatientGender(pacsModel.getPatientGender().get(i));
-                                        pacsDescriptionModel.setPatientMRN(pacsModel.getPatientMRN().get(i));
-                                        pacsDescriptionModel.setStudyDataCount(pacsModel.getStudyDataCount().get(i));
-                                        pacsDescriptionModel.setStudyTitle(pacsModel.getStudyTitle().get(i));
-                                        pacsDescriptionModel.setStudyDataString(pacsModel.getStudyDataString().get(i));
-                                        pacsDescriptionModel.setStudyDataDateTime(pacsModel.getStudyDataDateTime().get(i));
+                                    pacsDescriptionModel.setPatient_Name(pacsModel.getPatient_Name().get(i));
+                                    pacsDescriptionModel.setPatientDOB(pacsModel.getPatientDOB().get(i));
+                                    pacsDescriptionModel.setPatientAge(pacsModel.getPatientAge().get(i));
+                                    pacsDescriptionModel.setPatientGender(pacsModel.getPatientGender().get(i));
+                                    pacsDescriptionModel.setPatientMRN(pacsModel.getPatientMRN().get(i));
+                                    pacsDescriptionModel.setStudyDataCount(pacsModel.getStudyDataCount().get(i));
+                                    pacsDescriptionModel.setStudyTitle(pacsModel.getStudyTitle().get(i));
+                                    pacsDescriptionModel.setStudyDataString(pacsModel.getStudyDataString().get(i));
+                                    pacsDescriptionModel.setStudyDataDateTime(pacsModel.getStudyDataDateTime().get(i));
 
 
-                                        arrayList.add(pacsDescriptionModel);
+                                    arrayList.add(pacsDescriptionModel);
 
-                                    }
+                                }
 
-                                    arrData.clear();
+                                arrData.clear();
 
-                                    arrData.addAll(arrayList);
-                                    adapterPacsDescriptionAdapter.notifyDataSetChanged();
-                                    arrData.size();
+                                arrData.addAll(arrayList);
+                                adapterPacsDescriptionAdapter.notifyDataSetChanged();
+                                arrData.size();
 //                                }
                             }
+
                             @Override
                             public void onError() {
 
