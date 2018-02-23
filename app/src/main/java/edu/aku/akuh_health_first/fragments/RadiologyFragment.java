@@ -101,10 +101,7 @@ public class RadiologyFragment extends BaseFragment implements View.OnClickListe
     }
 
 
-    private void showEmptyView() {
-        refreshLayout.setVisibility(View.GONE);
-        emptyView.setVisibility(View.VISIBLE);
-    }
+
 
     private void bearerTokenCall() {
         new WebServices(getContext()).webServiceGetToken(new WebServices.IRequestStringCallBack() {
@@ -226,6 +223,14 @@ public class RadiologyFragment extends BaseFragment implements View.OnClickListe
                                 arrData.clear();
                                 arrData.addAll(arrayList);
                                 adapterRadiology.notifyDataSetChanged();
+
+
+                                if (arrData.size() > 0) {
+                                    showView();
+
+                                } else {
+                                    showEmptyView();
+                                }
                             }
 
                             @Override
@@ -236,6 +241,15 @@ public class RadiologyFragment extends BaseFragment implements View.OnClickListe
 
 
     }
+    private void showEmptyView() {
+        refreshLayout.setVisibility(View.GONE);
+        emptyView.setVisibility(View.VISIBLE);
+    }
 
+    private void showView() {
+        bindView();
+        emptyView.setVisibility(View.GONE);
+        refreshLayout.setVisibility(View.VISIBLE);
+    }
 
 }

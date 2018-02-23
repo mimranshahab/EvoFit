@@ -178,12 +178,7 @@ public class PacsFragment extends BaseFragment implements View.OnClickListener, 
                             @Override
                             public void requestDataResponse(WebResponse<JsonObject> webResponse) {
                                 PacsModel pacsModel = GsonFactory.getSimpleGson().fromJson(webResponse.result, PacsModel.class);
-//                        getBaseActivity().openActivity(PacsActivity.class, pacsModel.toString());
-//                                for (List<JsonObject> objectsList : pacsModel) {
-//                                    object.add(objectsList.get(0));
-//                                }
                                 ArrayList arrayList = new ArrayList<PacsDescriptionAdapter>();
-//                                if (pacsModel != null) {
                                     for (int i = 0; i < pacsModel.getPatient_Name().size(); i++) {
 
                                         PacsDescriptionModel pacsDescriptionModel = new PacsDescriptionModel();
@@ -208,7 +203,6 @@ public class PacsFragment extends BaseFragment implements View.OnClickListener, 
                                     arrData.addAll(arrayList);
                                     adapterPacsDescriptionAdapter.notifyDataSetChanged();
                                     arrData.size();
-//                                }
                             }
                             @Override
                             public void onError() {
