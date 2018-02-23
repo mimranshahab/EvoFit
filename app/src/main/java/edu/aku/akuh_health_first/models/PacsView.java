@@ -8,7 +8,35 @@ import com.google.gson.annotations.SerializedName;
 
 import edu.aku.akuh_health_first.managers.retrofit.GsonFactory;
 
-public class PacsView {
+public class PacsView implements IsRecordFound {
+
+    @Expose
+    @SerializedName("RecordMessage")
+    private String recordmessage;
+    @Expose
+    @SerializedName("RecordFound")
+    private String recordfound;
+
+    @Override
+    public boolean isRecordFound() {
+        return getRecordfound().equals("true");
+    }
+
+    public String getRecordmessage() {
+        return recordmessage;
+    }
+
+    public void setRecordmessage(String recordmessage) {
+        this.recordmessage = recordmessage;
+    }
+
+    public String getRecordfound() {
+        return recordfound;
+    }
+
+    public void setRecordfound(String recordfound) {
+        this.recordfound = recordfound;
+    }
 
     private final List<String> PACS_Accessions;
     @SerializedName("studyDataString")
@@ -118,7 +146,7 @@ public class PacsView {
     }
 
 
-    public PacsView(List<String>  PACS_Accessions) {
+    public PacsView(List<String> PACS_Accessions) {
         this.PACS_Accessions = PACS_Accessions;
     }
 }

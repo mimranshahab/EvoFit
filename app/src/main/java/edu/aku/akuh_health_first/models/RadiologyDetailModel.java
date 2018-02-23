@@ -7,7 +7,35 @@ import com.google.gson.annotations.SerializedName;
  * Created by hamza.ahmed on 2/8/2018.
  */
 
-public class RadiologyDetailModel {
+public class RadiologyDetailModel implements IsRecordFound {
+
+    @Expose
+    @SerializedName("RecordMessage")
+    private String recordmessage;
+    @Expose
+    @SerializedName("RecordFound")
+    private String recordfound;
+
+    @Override
+    public boolean isRecordFound() {
+        return getRecordfound().equals("true");
+    }
+
+    public String getRecordmessage() {
+        return recordmessage;
+    }
+
+    public void setRecordmessage(String recordmessage) {
+        this.recordmessage = recordmessage;
+    }
+
+    public String getRecordfound() {
+        return recordfound;
+    }
+
+    public void setRecordfound(String recordfound) {
+        this.recordfound = recordfound;
+    }
 
     @Expose
     @SerializedName("ADDENDUMINITIATOR")

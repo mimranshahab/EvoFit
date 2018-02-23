@@ -35,8 +35,8 @@ import edu.aku.akuh_health_first.managers.retrofit.GsonFactory;
 import edu.aku.akuh_health_first.managers.retrofit.WebServices;
 import edu.aku.akuh_health_first.models.LaboratoryModel;
 import edu.aku.akuh_health_first.models.SearchModel;
-import edu.aku.akuh_health_first.models.receiving_model.UserDetailModel;
 import edu.aku.akuh_health_first.models.wrappers.WebResponse;
+import edu.aku.akuh_health_first.views.AnyTextView;
 
 
 /**
@@ -51,6 +51,8 @@ public class ClinicalLaboratoryFragment extends BaseFragment implements View.OnC
     SwipeRefreshLayout refreshLayout;
 
     Unbinder unbinder;
+    @BindView(R.id.empty_view)
+    AnyTextView emptyView;
     private ArrayList<LaboratoryModel> arrClinicalLabLists;
     private ClinicalLabAdapter adaptNeuropysiology;
 
@@ -179,6 +181,14 @@ public class ClinicalLaboratoryFragment extends BaseFragment implements View.OnC
                                 arrClinicalLabLists.clear();
                                 arrClinicalLabLists.addAll(arrayList);
                                 adaptNeuropysiology.notifyDataSetChanged();
+
+                                if (arrClinicalLabLists.size() > 0) {
+                                    showView();
+
+                                } else {
+                                    showEmptyView();
+                                }
+
                             }
 
                             @Override
@@ -187,5 +197,16 @@ public class ClinicalLaboratoryFragment extends BaseFragment implements View.OnC
                             }
                         });
 
+    }
+
+    private void showEmptyView() {
+        refreshLayout.setVisibility(View.GONE);
+        emptyView.setVisibility(View.VISIBLE);
+    }
+
+    private void showView() {
+        bindView();
+        emptyView.setVisibility(View.GONE);
+        refreshLayout.setVisibility(View.VISIBLE);
     }
 }

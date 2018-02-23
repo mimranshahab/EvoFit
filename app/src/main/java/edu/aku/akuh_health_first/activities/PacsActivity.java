@@ -29,7 +29,6 @@ import java.util.List;
 import edu.aku.akuh_health_first.R;
 import edu.aku.akuh_health_first.constatnts.AppConstants;
 import edu.aku.akuh_health_first.constatnts.WebServiceConstants;
-import edu.aku.akuh_health_first.helperclasses.ui.helper.TitleBar;
 import edu.aku.akuh_health_first.helperclasses.ui.helper.UIHelper;
 import edu.aku.akuh_health_first.libraries.fileloader.FileLoader;
 import edu.aku.akuh_health_first.libraries.fileloader.listener.FileRequestListener;
@@ -50,6 +49,9 @@ public class PacsActivity extends AppCompatActivity {
     private ImageButton btnNext;
     private TextView tvProgress;
     private ArrayList<String> pacsList;
+    private int min = 1, max = 0;
+
+    private ArrayList<TupleModel> arrTupleModel;
     TitleBar titleBar;
     IndicatorSeekBar indicatorSeekBar;
 
@@ -57,30 +59,41 @@ public class PacsActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_pacs);
+        arrTupleModel = new ArrayList<>();
+
+
         bindViews();
 //        indicatorSeekbar();
         setTitlebar();
 
-
-        pacsList = new ArrayList<String>();
         String fromJson = getIntent().getExtras().getString(AppConstants.JSON_STRING_KEY);
         pacsModel = GsonFactory.getSimpleGson().fromJson(fromJson, PacsDescriptionModel.class);
         pacsList = (ArrayList<String>) pacsModel.getStudyDataString();
         final ArrayList uri = new ArrayList<String>();
-        for (String stringList : pacsList) {
-            uri.add(stringList);
+
+        uriArrToTuple(pacsList.size());
+        updateData(uri, arrTupleModel.get(0));
+
+        setListeners(uri);
+    }
+
+    private void updateData(ArrayList uri, TupleModel tupleModel) {
+        for (int i = tupleModel.getMin(); i < tupleModel.getMax(); i++) {
+            uri.add(pacsList.get(i));
+
         }
-
-
         loadImage(iv, uri.get(0).toString());
         tvProgress.setText(1 + " of " + uri.size());
+    }
 
+    private void uriArrToTuple(int size) {
 //        final List<MultiFileLoadRequest> multiFileLoadRequests = new ArrayList<>();
 //        for (int i = 0; i < uri.size(); i++) {
 //            MultiFileLoadRequest loadRequest = new MultiFileLoadRequest(uri.get(i).toString());
 //            multiFileLoadRequests.add(i, loadRequest);
         setListeners(uri);
 
+        for (int j = size; j > 0; j = j - 20) {
     }
 
     private void setTitlebar() {
@@ -90,13 +103,54 @@ public class PacsActivity extends AppCompatActivity {
         titleBar.setTitle("PACS Viewer");
     }
 
+            if (j > 20) {
+                min = max + 1;
+                max = max + 20;
+                TupleModel tupleModel = new TupleModel();
+                tupleModel.setMin(min);
+                tupleModel.setMax(max);
+                arrTupleModel.add(tupleModel);
+                Log.d(TAG, "uriArrToTuple_loop: " + tupleModel.getMin());
+                Log.d(TAG, "uriArrToTuple_loop: " + tupleModel.getMax());
 
+
+            } else {
+                TupleModel tupleModel = new TupleModel();
+                tupleModel.setMin(max + 1);
+                tupleModel.setMax(size);
+                arrTupleModel.add(tupleModel);
+
+                Log.d(TAG, "uriArrToTuple_else: " + tupleModel.getMin());
+                Log.d(TAG, "uriArrToTuple_else: " + tupleModel.getMax());
+
+
+            }
+        }
+
+    }
+//        final MultiFileDownloader multiFileDownloader = FileLoader.multiFileDownload(this);
+//        multiFileDownloader.progressListener(new MultiFileDownloadListener() {
+//            @Override
+//            public void onProgress(final File downloadedFile, final int progress, final int totalFiles) {
+////                multiFileDownloader.cancelLoad();
+//
+////                imgList = new ArrayList<Bitmap>();
+////
+////                for (int i = 1; i <= totalFiles; i++) {
+////                    imgList.add(BitmapFactory.decodeFile(downloadedFile.getAbsolutePath()));
+////
+////                }
+//                MainActivity.this.progress = progress;
+//                tvProgress.setText(progress + " of " + totalFiles);
+//                Glide.with(MainActivity.this).load(downloadedFile).into(iv);
+//            }
+//        }).loadMultiple(multiFileLoadRequests);
+
+//    }
 
     private void setListeners(final ArrayList uri/*, final List<MultiFileLoadRequest> multiFileLoadRequests*/) {
 //        for (int j = 1; j <= multiFileLoadRequests.size(); j++) {
         progress = uri.size();
-        final int arraySize = uri.size();
-
         btnPrevious.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -104,7 +158,8 @@ public class PacsActivity extends AppCompatActivity {
                     return;
                 } else {
                     loadImage(iv, uri.get(--progress).toString());
-                    tvProgress.setText(progress + " of " + arraySize);
+                    tvProgress.setText(progress + " of " + uri.size());
+
                 }
 
             }
@@ -113,12 +168,14 @@ public class PacsActivity extends AppCompatActivity {
         btnNext.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (progress >= arraySize) {
+                if (progress >= uri.size()) {
                     return;
                 } else {
                     loadImage(iv, uri.get(progress++).toString());
-                    tvProgress.setText(progress + " of " + arraySize);
+                    tvProgress.setText(progress + " of " + uri.size());
                 }
+
+
             }
         });
 

@@ -5,7 +5,35 @@ import java.io.Serializable;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-public class LaboratoryModel implements Serializable {
+public class LaboratoryModel implements Serializable, IsRecordFound {
+
+    @Expose
+    @SerializedName("RecordMessage")
+    private String recordmessage;
+    @Expose
+    @SerializedName("RecordFound")
+    private String recordfound;
+
+    @Override
+    public boolean isRecordFound() {
+        return getRecordfound().equals("true");
+    }
+
+    public String getRecordmessage() {
+        return recordmessage;
+    }
+
+    public void setRecordmessage(String recordmessage) {
+        this.recordmessage = recordmessage;
+    }
+
+    public String getRecordfound() {
+        return recordfound;
+    }
+
+    public void setRecordfound(String recordfound) {
+        this.recordfound = recordfound;
+    }
 
     @SerializedName("sOrderedTestParentId")
     @Expose
@@ -254,7 +282,6 @@ public class LaboratoryModel implements Serializable {
     @SerializedName("PrevResult3")
     @Expose
     private String prevResult3;
-
 
 
     private String tempSpiceNum;
@@ -925,7 +952,7 @@ public class LaboratoryModel implements Serializable {
 
 
     public boolean isNumeric() {
-        return isNumericResult.equals("Y") ;
+        return isNumericResult.equals("Y");
     }
 
 

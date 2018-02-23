@@ -14,7 +14,35 @@ import edu.aku.akuh_health_first.managers.retrofit.GsonFactory;
  * Created by hamza.ahmed on 2/7/2018.
  */
 
-public class RadiologyModel implements Parcelable {
+public class RadiologyModel implements Parcelable, IsRecordFound {
+
+    @Expose
+    @SerializedName("RecordMessage")
+    private String recordmessage;
+    @Expose
+    @SerializedName("RecordFound")
+    private String recordfound;
+
+    @Override
+    public boolean isRecordFound() {
+        return getRecordfound().equals("true");
+    }
+
+    public String getRecordmessage() {
+        return recordmessage;
+    }
+
+    public void setRecordmessage(String recordmessage) {
+        this.recordmessage = recordmessage;
+    }
+
+    public String getRecordfound() {
+        return recordfound;
+    }
+
+    public void setRecordfound(String recordfound) {
+        this.recordfound = recordfound;
+    }
 
 
     @Expose
@@ -173,7 +201,8 @@ public class RadiologyModel implements Parcelable {
     public String getAccessionnumber() {
         return accessionnumber;
     }
-        public String getAccessionnumberwithComma() {
+
+    public String getAccessionnumberwithComma() {
         return "\"" + accessionnumber + "\"";
     }
 
@@ -200,7 +229,7 @@ public class RadiologyModel implements Parcelable {
 
     @Override
     public String toString() {
-         return GsonFactory.getSimpleGson().toJson(this);
+        return GsonFactory.getSimpleGson().toJson(this);
     }
 
 
