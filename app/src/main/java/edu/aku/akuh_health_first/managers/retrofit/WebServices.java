@@ -15,6 +15,7 @@ import edu.aku.akuh_health_first.enums.FileType;
 import edu.aku.akuh_health_first.helperclasses.Helper;
 import edu.aku.akuh_health_first.helperclasses.ui.helper.UIHelper;
 import edu.aku.akuh_health_first.managers.FileManager;
+import edu.aku.akuh_health_first.models.PaymentRequestModel;
 import edu.aku.akuh_health_first.models.wrappers.WebResponse;
 
 import java.io.File;
@@ -57,6 +58,8 @@ public class WebServices {
             case PACS_IMAGE_DOWNLOAD:
                 apiService = WebServiceFactory.getInstancePACSURL(token, bearerToken);
                 break;
+            case PAYMENT_GATEWAY_URL:
+                apiService = WebServiceFactory.getInstancePaymentGateway("");
         }
 
 
@@ -360,6 +363,75 @@ public class WebServices {
 
                     @Override
                     public void onFailure(Call<String> call, Throwable t) {
+                        UIHelper.showShortToastInCenter(mContext, "Something went wrong, Please check your internet connection.");
+                        dismissDialog();
+                        callBack.onError();
+                    }
+                });
+            } else {
+                dismissDialog();
+            }
+
+        } catch (Exception e) {
+            dismissDialog();
+            e.printStackTrace();
+
+        }
+
+    }
+
+    public void webServiceCyberSouce(final IRequestStringCallBack callBack) {
+        PaymentRequestModel payRequestModel = new PaymentRequestModel();
+
+        try {
+            if (Helper.isNetworkConnected(mContext, true)) {
+                apiService.cyberSoft(
+
+                        payRequestModel.getAccessKey() + "",
+                        payRequestModel.getProfileID() + "",
+                        payRequestModel.getTransactionUUID() + "",
+                        payRequestModel.getSignedFieldNames() + "",
+                        payRequestModel.getUnsignedFieldNames() + "",
+                        payRequestModel.getSignedDateTimeString() + "",
+                        payRequestModel.getLocale() + "",
+                        payRequestModel.getBillAddressLine() + "",
+                        payRequestModel.getBillAddressCity() + "",
+                        payRequestModel.getBillAddressCountry() + "",
+                        payRequestModel.getBillEmailAddress() + "",
+                        payRequestModel.getBillSurName() + "",
+                        payRequestModel.getBillForeName() + "",
+                        payRequestModel.getBillPhone() + "",
+                        payRequestModel.getBillCompanyName() + "",
+                        payRequestModel.getConsumerID() + "",
+                        payRequestModel.getConsIPAddress() + "",
+                        payRequestModel.getTransactionType() + "",
+                        payRequestModel.getReferenceNo() + "",
+                        payRequestModel.getAmount() + "",
+                        payRequestModel.getCurrency() + "",
+                        payRequestModel.getMerchantDefinedData() + "",
+                        payRequestModel.getMerchantDefinedData() + "",
+                        payRequestModel.getMerchantDefinedData() + "",
+                        payRequestModel.getMerchantDefinedData() + "",
+                        payRequestModel.getMerchantDefinedData() + "",
+                        WebServiceConstants.Secret_token_paymentGatway + ""
+
+
+                ).enqueue(new Callback<Object>() {
+                    @Override
+                    public void onResponse(Call<Object> call, Response<Object> response) {
+                        dismissDialog();
+                        if (response != null && response.body() != null) {
+//                            if (!response.body()) {
+//                                callBack.requestDataResponse(response.body());
+//                            }
+
+                        } else {
+                            UIHelper.showToast(mContext, "Null Response");
+                        }
+                    }
+
+                    @Override
+                    public void onFailure(Call<Object> call, Throwable t) {
                         UIHelper.showShortToastInCenter(mContext, "Something went wrong, Please check your internet connection.");
                         dismissDialog();
                         callBack.onError();
