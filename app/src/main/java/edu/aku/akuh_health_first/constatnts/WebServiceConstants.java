@@ -15,6 +15,7 @@ public class WebServiceConstants {
     public static String PACS_URL_DOWNLOAD = "https://pacsviewer.aku.edu/";
     public static String PACS_URL = "https://pacsviewer.aku.edu/api/";
     public static String PAYMENT_GATEWAY_URL = "https://testsecureacceptance.cybersource.com/pay/";
+//    public static String PAYMENT_GATEWAY_URL = "https://ebctest.cybersource.com/ebctest/";
 
     public static final String WS_KEY_GET_TOKEN = "GetToken";
     public static final String WS_KEY_GET_REQUESTOR = "Requestor: aku.edu";

@@ -18,38 +18,31 @@ public class PaymentRequestModel {
     private String Signature;
     private String AccessKey = "5584828bcca73288a5b758619b9e299b";
     private String ProfileID = "3700ABA3-08F4-4D24-9730-08E949C82044";
-
-    private String TransactionUUID = "HFM-" + UUID.randomUUID().toString();
-
-    private String SignedFieldNames = "access_key,profile_id,transaction_uuid,signed_field_names," +
-            "unsigned_field_names,signed_date_time,locale,transaction_type," +
-            "reference_number,amount,currency,bill_to_address_line1,bill_to_address_city," +
-            "bill_to_address_country,bill_to_email,bill_to_surname,bill_to_forename,bill_to_phone,bill_to_company_name," +
-            "consumer_id,customer_ip_address," +
-            "merchant_defined_data1,card_type,card_number,card_expiry_date,card_cvn";
-
-
+        private String TransactionUUID = "HFM-" + UUID.randomUUID().toString();
+//    private String TransactionUUID = "8ec35ae9-c97e-4a34-ad0c-5d3f7c8cfe42";
+    private String SignedFieldNames = "access_key,profile_id,transaction_uuid,signed_field_names,unsigned_field_names,signed_date_time,locale,transaction_type,reference_number,amount,currency,bill_to_address_line1,bill_to_address_city,bill_to_address_country,bill_to_email,bill_to_surname,bill_to_forename,bill_to_phone,bill_to_company_name,consumer_id,customer_ip_address,merchant_defined_data1,card_type,card_number,card_expiry_date,card_cvn,signature";
+//    private String SignedFieldNames = "access_key,profile_id,transaction_uuid,signed_field_names,unsigned_field_names,signed_date_time,locale,transaction_type,reference_number,amount,currency,bill_to_address_line1,bill_to_address_city,bill_to_address_country,bill_to_email,bill_to_surname,bill_to_forename,bill_to_phone,bill_to_company_name,consumer_id,customer_ip_address";
     private String UnsignedFieldNames = "";
-    private String SignedDateTimeString = DateManager.getCurrentFormattedDate();
+    private String SignedDateTimeString = "2018-02-12T10:15:04Z" ;
     private String Locale = "en";
-
-    private String BillAddressLine = "appartment abc";
+    private String BillAddressLine = "Karachi";
     private String BillAddressCity = "Karachi";
     private String BillAddressCountry = "Pakistan";
     private String BillEmailAddress = "aqsa.sarwar@aku.edu";
+//    private String BillEmailAddress = "faisal.shah@aku.edu";
     private String BillSurName = "Sarwar";
     private String BillForeName = "Aqsa";
-    private String BillPhone = "03003953328";
-    private String BillCompanyName = "aku";
-
-    private String ConsumerID = "";
-    private String ConsIPAddress;
+    private String BillPhone = "+923332184946";
+    private String BillCompanyName = "AGA Khan University";
+    private String ConsumerID = "1234-5648-9970";
+//    private String ConsIPAddress = "10.1.12.39";
+    private String ConsIPAddress ;
     private String TransactionType = "create_payment_token";
-    private String ReferenceNo = "123456789";
+    private String ReferenceNo = "636540453045649695";
 
-    private double Amount = 200.00;
-    private String CardExpirydate;
-    private String CVN = "005";
+    private double Amount = 2000.00;
+    private String CardExpirydate= "20-02-2020";
+    private String CVN = "123";
     private String MerchantDefinedData = "WC";
     private String Currency = "PKR";
     private String CardNumber = "41111111111111111";

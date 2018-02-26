@@ -91,11 +91,11 @@ public interface WebServiceProxy {
             @Field("currency") String currency,
             @Field("merchant_defined_data1") String merchant_defined_data1,
 
-            @Field("card_type") String card_type,
-            @Field("card_number") String card_number,
-            @Field("card_expiry_date") String card_eexpiry_date,
-            @Field("card_cvn") String card_cvn,
-            @Field("secret_token") String secret_token
+//            @Field("card_type") String card_type,
+//            @Field("card_number") String card_number,
+//            @Field("card_expiry_date") String card_eexpiry_date,
+//            @Field("card_cvn") String card_cvn,
+            @Field("signature") String signature
 
     );
 

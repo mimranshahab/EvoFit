@@ -409,11 +409,12 @@ public class WebServices {
                         payRequestModel.getAmount() + "",
                         payRequestModel.getCurrency() + "",
                         payRequestModel.getMerchantDefinedData() + "",
-                        payRequestModel.getMerchantDefinedData() + "",
-                        payRequestModel.getMerchantDefinedData() + "",
-                        payRequestModel.getMerchantDefinedData() + "",
-                        payRequestModel.getMerchantDefinedData() + "",
-                        WebServiceConstants.Secret_token_paymentGatway + ""
+//                        payRequestModel.getMerchantDefinedData() + "",
+//                        payRequestModel.getMerchantDefinedData() + "",
+//                        payRequestModel.getMerchantDefinedData() + "",
+//                        payRequestModel.getMerchantDefinedData() + "",
+//                        WebServiceConstants.Secret_token_paymentGatway + ""
+                        payRequestModel.getSignature()+""
 
 
                 ).enqueue(new Callback<Object>() {
