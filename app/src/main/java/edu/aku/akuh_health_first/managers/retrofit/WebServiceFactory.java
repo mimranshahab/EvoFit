@@ -79,7 +79,7 @@ public class WebServiceFactory {
 
     public static WebServiceProxy getInstancePaymentGateway(final String _token) {
 
-        if (retrofitBase == null) {
+        if (retrofitPaymentGateway == null) {
 
 //            Gson gson = new GsonBuilder()
 //                    .setDateFormat("yyyy-MM-dd'T'HH:mm:ssZ")
@@ -102,7 +102,8 @@ public class WebServiceFactory {
                 public Response intercept(Chain chain) throws IOException {
                     Request original = chain.request();
                     Request.Builder requestBuilder = original.newBuilder();
-//                    requestBuilder.addHeader("_token", _token + "");
+//                    requestBuilder.addHeader("access_token", _token + "00add7ee-9523-45b6-ac52-90f3e86962dd");
+//                    requestBuilder.addHeader("Authorization", "Bearer " + "5584828bcca73288a5b758619b9e299b");
 
                     // Request customization: add request headers
 
@@ -116,7 +117,7 @@ public class WebServiceFactory {
             // add logging as last interceptor
 //            httpClient.addNetworkInterceptor(interceptor).addInterceptor(interceptor);  // <-- this is the important line!
             httpClient.addInterceptor(interceptor);  // <-- this is the important line!
-            retrofitBase = new Retrofit.Builder()
+            retrofitPaymentGateway = new Retrofit.Builder()
                     .baseUrl(WebServiceConstants.PAYMENT_GATEWAY_URL)
                     .addConverterFactory(GsonConverterFactory.create(GsonFactory.getSimpleGson()))
                     .client(httpClient.build())
@@ -124,7 +125,7 @@ public class WebServiceFactory {
 
         }
 
-        return retrofitBase.create(WebServiceProxy.class);
+        return retrofitPaymentGateway.create(WebServiceProxy.class);
     }
 
     public static WebServiceProxy getInstancePACSURL(final String _token, final String bearerToken) {

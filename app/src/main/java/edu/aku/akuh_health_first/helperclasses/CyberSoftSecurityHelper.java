@@ -2,6 +2,8 @@ package edu.aku.akuh_health_first.helperclasses;
 
 import android.util.Base64;
 
+import org.apache.commons.codec.binary.Hex;
+
 import java.io.UnsupportedEncodingException;
 import java.nio.charset.StandardCharsets;
 import java.security.InvalidKeyException;
@@ -26,12 +28,19 @@ public class CyberSoftSecurityHelper {
     }
 
     private String sign(String data, String secretKey) throws InvalidKeyException, NoSuchAlgorithmException, UnsupportedEncodingException {
-        SecretKeySpec secretKeySpec = new SecretKeySpec(secretKey.getBytes(), HMAC_SHA256);
+        SecretKeySpec secretKeySpec = new SecretKeySpec(secretKey.getBytes("UTF-8"), HMAC_SHA256);
         Mac mac = Mac.getInstance(HMAC_SHA256);
         mac.init(secretKeySpec);
+//
+//        byte[] rawHmac = mac.doFinal(data.getBytes("UTF-8"));
+//        return org.apache.commons.codec.binary.Base64.encodeBase64(rawHmac).toString();
 
-        byte[] rawHmac = mac.doFinal(data.getBytes("UTF-8"));
-        return org.apache.commons.codec.binary.Base64.encodeBase64(rawHmac).toString();
+
+        Mac sha256_HMAC = Mac.getInstance("HmacSHA256");
+        SecretKeySpec secret_key = new SecretKeySpec(data.getBytes("UTF-8"), "HmacSHA256");
+        sha256_HMAC.init(secret_key);
+
+        return new String(Hex.encodeHex(sha256_HMAC.doFinal(data.getBytes("UTF-8"))));
 
     }
 

@@ -98,10 +98,10 @@ public class ForgotPassowrdFragment extends BaseFragment {
         parameter.put("currency", payRequestModel.getCurrency());
         parameter.put("merchant_defined_data1", payRequestModel.getMerchantDefinedData());
 
-//        parameter.put("card_type", payRequestModel.getCardType());
-//        parameter.put("card_number", payRequestModel.getCardNumber());
-//        parameter.put("card_expiry_date", payRequestModel.getCardExpirydate());
-//        parameter.put("card_cvn", payRequestModel.getCVN());
+        parameter.put("card_type", payRequestModel.getCardType());
+        parameter.put("card_number", payRequestModel.getCardNumber());
+        parameter.put("card_expiry_date", payRequestModel.getCardExpirydate());
+        parameter.put("card_cvn", payRequestModel.getCVN());
 
 
         try {
