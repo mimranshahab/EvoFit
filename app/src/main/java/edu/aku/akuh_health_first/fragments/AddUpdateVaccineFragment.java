@@ -176,9 +176,9 @@ public class AddUpdateVaccineFragment extends BaseFragment {
                                         .fromJson(GsonFactory.getSimpleGson().toJson(webResponse.result)
                                                 , type);
 
-
                                 for (ImmunizationModel model : arrayList) {
                                     vaccineIDandDescriptions.put(model.getDescription(), model.getVaccineID());
+                                    arrVaccine.add(model.getDescription());
                                 }
                                 setSpinner(adapterVaccine, txtVaccine, spVaccine);
                             }
@@ -188,7 +188,6 @@ public class AddUpdateVaccineFragment extends BaseFragment {
 
                             }
                         });
-
     }
 
 
