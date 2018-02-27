@@ -5,7 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:gravity="center_horizontal"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:padding="@dimen/x10dp">
 
 
     <android.support.v7.widget.CardView
@@ -17,112 +18,100 @@
         android:layout_marginRight="@dimen/x5dp"
         android:layout_marginTop="@dimen/x5dp"
         android:animateLayoutChanges="true"
-        android:padding="@dimen/x2dp"
-        card_view:cardCornerRadius="5dp"
-        card_view:cardElevation="x15dp">
+        android:padding="@dimen/x5dp"
+        app:cardCornerRadius="@dimen/x10dp"
+        app:cardElevation="@dimen/x5dp"
 
+        >
 
-        <LinearLayout
-            android:id="@+id/contListItem"
+        <FrameLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@color/c_white"
-            android:gravity="center_vertical"
-            android:orientation="horizontal">
-
-
-            <de.hdodenhof.circleimageview.CircleImageView
-                android:id="@+id/imgUser"
-                android:layout_width="@dimen/x100dp"
-                android:layout_height="@dimen/x100dp"
-                android:layout_margin="@dimen/x5dp"
-                android:scaleType="centerCrop"
-                android:src="@drawable/user_image" />
-
+            android:layout_height="match_parent"
+            android:background="@color/base_amber"
+            android:padding="@dimen/x2dp">
 
             <LinearLayout
+                android:id="@+id/contListItem"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center_vertical"
-                android:layout_margin="@dimen/x5dp"
-                android:orientation="vertical">
+                android:layout_marginRight="@dimen/x4dp"
+                android:background="@drawable/round_edges"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+
+                <de.hdodenhof.circleimageview.CircleImageView
+                    android:id="@+id/imgUser"
+                    android:layout_width="@dimen/x100dp"
+                    android:layout_height="@dimen/x100dp"
+                    android:layout_margin="@dimen/x5dp"
+                    android:background="@drawable/circle_stroke_gray"
+                    android:padding="@dimen/x10dp"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/male_icon" />
+
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal">
+                    android:layout_gravity="center_vertical"
+                    android:layout_margin="@dimen/x5dp"
+                    android:orientation="vertical">
 
-                    <edu.aku.akuh_health_first.views.AnyTextView
-                        android:id="@+id/txtName"
-                        android:layout_width="wrap_content"
+                    <LinearLayout
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_weight=".5"
-                        android:gravity="center_vertical"
-                        android:text="Sarah Albert"
-                        android:textColor="@color/c_grayasparagus"
-                        android:textSize="@dimen/s16"
-                        app:typeface="@string/font_bold" />
+                        android:orientation="horizontal">
 
+                        <edu.aku.akuh_health_first.views.AnyTextView
+                            android:id="@+id/txtName"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:gravity="center_vertical"
+                            android:text="Asma Ali "
+                            android:textColor="@color/c_grayasparagus"
+                            android:textSize="@dimen/s16"
+                            app:typeface="@string/font_bold" />
+
+
+                        <edu.aku.akuh_health_first.views.AnyTextView
+                            android:id="@+id/txtRelation"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:gravity="center_vertical"
+                            android:padding="@dimen/s5"
+                            android:text="(Daughter)"
+                            android:textColor="@color/colorPrimary"
+                            android:textSize="@dimen/x12dp"
+                            app:typeface="@string/font_regular" />
+
+                    </LinearLayout>
 
                     <edu.aku.akuh_health_first.views.AnyTextView
                         android:id="@+id/txtMRN"
-                        android:layout_width="wrap_content"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_weight=".5"
-                        android:gravity="end|center_vertical"
-                        android:text="111-11-11"
-                        android:textColor="@color/c_cadmium_red"
+                        android:text="178-88-90"
+                        android:textColor="@color/c_red"
                         android:textSize="@dimen/x12dp"
                         app:typeface="@string/font_regular" />
+
+                    <edu.aku.akuh_health_first.views.AnyTextView
+                        android:id="@+id/txtGender_age"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Female / 40"
+                        android:textColor="@color/c_grayasparagus"
+                        android:textSize="@dimen/x12dp"
+                        app:typeface="@string/font_regular" />
+
 
                 </LinearLayout>
 
 
-                <edu.aku.akuh_health_first.views.AnyTextView
-                    android:id="@+id/txtGender"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="female"
-                    android:textColor="@color/c_grayasparagus"
-                    android:textSize="@dimen/x12dp"
-                    app:typeface="@string/font_regular" />
-
-                <edu.aku.akuh_health_first.views.AnyTextView
-                    android:id="@+id/txtAge"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="23 years"
-                    android:textColor="@color/c_grayasparagus"
-                    android:textSize="@dimen/x12dp"
-                    app:typeface="@string/font_regular" />
-
-                <edu.aku.akuh_health_first.views.AnyTextView
-                    android:id="@+id/txtEmailAddress"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="sarah.albert@gmail.com"
-                    android:textColor="@color/c_grayasparagus"
-                    android:textSize="@dimen/x12dp"
-                    app:typeface="@string/font_regular" />
-
-
-                <!--<Button-->
-                    <!--android:id="@+id/btnViewProfile"-->
-                    <!--android:layout_width="match_parent"-->
-                    <!--android:layout_height="wrap_content"-->
-                    <!--android:layout_marginTop="@dimen/x5dp"-->
-                    <!--android:shadowColor="@color/base_amber"-->
-                    <!--android:text="View Profile"-->
-                    <!--android:textColor="@color/c_white"-->
-                    <!--android:textSize="@dimen/s15" />-->
-
-
             </LinearLayout>
 
-
-        </LinearLayout>
-
-
+        </FrameLayout>
     </android.support.v7.widget.CardView>
 
 </RelativeLayout>
