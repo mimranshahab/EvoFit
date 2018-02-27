@@ -12,7 +12,7 @@ import edu.aku.akuh_health_first.managers.retrofit.GsonFactory;
 public class LoginApiModel {
 
 
-    @SerializedName("Userid")
+    @SerializedName("CardNumber")
     private String userid;
     @SerializedName("Password")
     private String password;

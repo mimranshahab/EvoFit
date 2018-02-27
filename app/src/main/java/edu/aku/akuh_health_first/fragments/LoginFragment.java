@@ -177,16 +177,12 @@ public class LoginFragment extends BaseFragment {
     private void loginCall(LoginApiModel loginApiModel) {
         new WebServices(getBaseActivity(),
                 WebServiceConstants.temporaryToken,
-                BaseURLTypes.AHFA_BASE_URL).webServiceRequestAPI(WebServiceConstants.METHOD_USER_GET_USER,
+                BaseURLTypes.AHFA_BASE_URL)
+                .webServiceRequestAPI(WebServiceConstants.METHOD_USER_GET_USER,
                 loginApiModel.toString(),
                 new WebServices.IRequestJsonDataCallBack() {
                     @Override
                     public void requestDataResponse(WebResponse<JsonObject> webResponse) {
-//                        CardModel userModel = GsonFactory.getSimpleGson().fromJson(webResponse.result, CardModel.class);
-
-//                        UIHelper.showShortToastInCenter(getContext(), webResponse.message);
-
-
                         getBaseActivity().openActivity(HomeActivity.class);
                     }
 

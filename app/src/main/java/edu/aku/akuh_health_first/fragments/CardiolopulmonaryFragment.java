@@ -195,7 +195,7 @@ public class CardiolopulmonaryFragment extends BaseFragment implements View.OnCl
                             cardiolopulmonary.toString(), new WebServices.IRequestWebResponseWithStringDataCallBack() {
                                 @Override
                                 public void requestDataResponse(WebResponse<String> webResponse) {
-                                    String fileName = cardiolopulmonary.getDetailGraphID();
+                                    String fileName = "abcd.pdf";
 
                                     FileManager.writeResponseBodyToDisk(webResponse.result, fileName, AppConstants.getUserFolderPath(getContext()));
 
