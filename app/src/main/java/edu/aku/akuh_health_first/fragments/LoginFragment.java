@@ -183,6 +183,7 @@ public class LoginFragment extends BaseFragment {
                     @Override
                     public void requestDataResponse(WebResponse<JsonObject> webResponse) {
 //                        CardModel userModel = GsonFactory.getSimpleGson().fromJson(webResponse.result, CardModel.class);
+
 //                        UIHelper.showShortToastInCenter(getContext(), webResponse.message);
 
 

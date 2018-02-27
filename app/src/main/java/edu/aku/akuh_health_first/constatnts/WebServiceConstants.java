@@ -14,7 +14,8 @@ public class WebServiceConstants {
     public static String PACS_VIEWER_URL = "https://pacsviewer.aku.edu/api/PACSViewer/";
     public static String PACS_URL_DOWNLOAD = "https://pacsviewer.aku.edu/";
     public static String PACS_URL = "https://pacsviewer.aku.edu/api/";
-    public static String PAYMENT_GATEWAY_URL = "https://testsecureacceptance.cybersource.com/pay/";
+//    public static String PAYMENT_GATEWAY_URL = "https://testsecureacceptance.cybersource.com/pay/";
+    public static String PAYMENT_GATEWAY_URL = "https://testsecureacceptance.cybersource.com/token/create/";
 //    public static String PAYMENT_GATEWAY_URL = "https://ebctest.cybersource.com/ebctest/";
 
     public static final String WS_KEY_GET_TOKEN = "GetToken";
@@ -33,8 +34,8 @@ public class WebServiceConstants {
     public static final String tempMRN_RADIOLOGY = "294-71-23";
     public static final String tempMRN_RADIOLOGY1 = "015-94-53";
     public static final String tempMRN_immunization = "269-14-57";
-    public static final String tempMRN_Timeline = "\"510-29-10\"";
-    public static final String temp_Specimen_Num = "53786623";
+    public static final String temp_Specimen_Num = "56070141";
+//    public static final String temp_Specimen_Num = "47556226";
     public static final String tempPassword = "uL952ERAghddR2h+CedbuA==";
     public static final String tempMRN_Cardio = "200-47-97";
 
@@ -62,7 +63,7 @@ public class WebServiceConstants {
     public static final String METHOD_CARDIO_SHOW_GRAPH = "CardiopulmonaryManager.ShowGraph";
 
     public static final String METHOD_CLINICAL_LAB = "LaboratoryManager.GetLabSpecimenList";
-    public static final String METHOD_CLINICAL_LAB_RESULT = "LaboratoryManager.GetLabSpecimenResults";
+    public static final String METHOD_CLINICAL_LAB_DETAILS = "LaboratoryManager.GetLabSpecimenDetails";
 
     public static final String METHOD_SHOW_REPORT_DS = "PatientManager.ShowReport";
     public static final String METHOD_PATIENT_DETAIL_DS = "PatientManager.GetPatientDetail";

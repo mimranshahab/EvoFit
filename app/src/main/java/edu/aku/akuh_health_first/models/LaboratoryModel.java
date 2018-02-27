@@ -1,9 +1,10 @@
 package edu.aku.akuh_health_first.models;
 
-import java.io.Serializable;
-
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
+
+import java.io.Serializable;
+
 
 public class LaboratoryModel implements Serializable, IsRecordFound {
 

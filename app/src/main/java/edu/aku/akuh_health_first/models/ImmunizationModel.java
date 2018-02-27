@@ -4,9 +4,6 @@ import java.io.Serializable;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
-
-import edu.aku.akuh_health_first.constatnts.AppConstants;
-import edu.aku.akuh_health_first.managers.DateManager;
 import edu.aku.akuh_health_first.managers.retrofit.GsonFactory;
 
 public class ImmunizationModel implements IsRecordFound {

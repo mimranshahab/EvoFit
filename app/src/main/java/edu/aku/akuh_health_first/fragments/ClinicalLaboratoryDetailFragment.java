@@ -4,7 +4,6 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.widget.DefaultItemAnimator;
-import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -15,9 +14,7 @@ import android.view.animation.LayoutAnimationController;
 import android.widget.AdapterView;
 
 import com.google.gson.JsonObject;
-import com.google.gson.reflect.TypeToken;
 
-import java.lang.reflect.Type;
 import java.util.ArrayList;
 
 import butterknife.BindView;
@@ -35,6 +32,8 @@ import edu.aku.akuh_health_first.helperclasses.ui.helper.UIHelper;
 import edu.aku.akuh_health_first.managers.retrofit.GsonFactory;
 import edu.aku.akuh_health_first.managers.retrofit.WebServices;
 import edu.aku.akuh_health_first.models.LaboratoryModel;
+import edu.aku.akuh_health_first.models.LaboratoryUpdateModel;
+import edu.aku.akuh_health_first.models.SearchModel;
 import edu.aku.akuh_health_first.models.wrappers.WebResponse;
 import edu.aku.akuh_health_first.views.AnyTextView;
 
@@ -141,25 +140,23 @@ public class ClinicalLaboratoryDetailFragment extends BaseFragment implements On
 
     private void serviceCall() {
         // FIXME: 1/18/2018 Use live data in future
-
+        SearchModel model = new SearchModel();
+        model.setRecordID(WebServiceConstants.temp_Specimen_Num);
+        model.setVisitID(null);
         new WebServices(getBaseActivity(),
                 WebServiceConstants.temporaryToken,
                 BaseURLTypes.AHFA_BASE_URL)
-                .webServiceRequestAPIForArray(WebServiceConstants.METHOD_CLINICAL_LAB_RESULT,
-                        WebServiceConstants.temp_Specimen_Num,
-                        new WebServices.IRequestArrayDataCallBack() {
+                .webServiceRequestAPI(WebServiceConstants.METHOD_CLINICAL_LAB_DETAILS,
+                        model.toString(),
+
+
+//                        WebServiceConstants.temp_Specimen_Num,
+                        new WebServices.IRequestJsonDataCallBack() {
                             @Override
-                            public void requestDataResponse(WebResponse<ArrayList<JsonObject>> webResponse) {
+                            public void requestDataResponse(WebResponse<JsonObject> webResponse) {
+                        LaboratoryUpdateModel laboratoryUpdateModel =
+                                GsonFactory.getSimpleGson().fromJson(webResponse.result, LaboratoryUpdateModel.class);
 
-                                Type type = new TypeToken<ArrayList<LaboratoryModel>>() {
-                                }.getType();
-                                ArrayList<LaboratoryModel> arrayList = GsonFactory.getSimpleGson()
-                                        .fromJson(GsonFactory.getSimpleGson().toJson(webResponse.result)
-                                                , type);
-
-                                arrClinicalLabLists.clear();
-                                arrClinicalLabLists.addAll(arrayList);
-                                adapterClinicalLabDetail.notifyDataSetChanged();
                             }
 
                             @Override
