@@ -8,6 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 
 import java.util.ArrayList;
@@ -61,18 +62,20 @@ public class ImmunizationAdapter extends RecyclerView.Adapter<ImmunizationAdapte
 
         switch (model.getVaccinationStatus()) {
             case AppConstants.schedule:
-                holder.contBorder.setBackgroundColor(activity.getResources().getColor(R.color.base_grey));
+                holder.imgStatusColor.setBackgroundColor(activity.getResources().getColor(R.color.base_blue));
                 holder.btnUpdate.setVisibility(View.VISIBLE);
                 break;
             case AppConstants.vaccinated:
-                holder.contBorder.setBackgroundColor(activity.getResources().getColor(R.color.c_green));
+                holder.imgStatusColor.setBackgroundColor(activity.getResources().getColor(R.color.c_green));
                 holder.btnUpdate.setVisibility(View.GONE);
                 holder.txtDateTime.setText(model.getVaccinationDate());
                 break;
             case AppConstants.due:
-                holder.contBorder.setBackgroundColor(activity.getResources().getColor(R.color.base_reddish));
+                holder.imgStatusColor.setBackgroundColor(activity.getResources().getColor(R.color.base_reddish));
                 holder.btnUpdate.setVisibility(View.VISIBLE);
                 break;
+            case AppConstants.over_due:
+                holder.imgStatusColor.setBackgroundColor(activity.getResources().getColor(R.color.base_amber));
         }
 
         setListener(holder, model);
@@ -116,8 +119,8 @@ public class ImmunizationAdapter extends RecyclerView.Adapter<ImmunizationAdapte
         LinearLayout contListItem;
         @BindView(R.id.cardView2)
         CardView cardView2;
-        @BindView(R.id.contBorder)
-        LinearLayout contBorder;
+        @BindView(R.id.imgStatusColor)
+        ImageView imgStatusColor;
         @BindView(R.id.btnUpdate)
         Button btnUpdate;
 

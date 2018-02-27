@@ -66,36 +66,36 @@ public interface WebServiceProxy {
     @FormUrlEncoded
     @POST("./")
     Call<Object> cyberSoft(
+            @Field("reference_number") String reference_number,
+            @Field("transaction_type") String transaction_type,
+            @Field("currency") String currency,
+            @Field("amount") String amount,
+            @Field("locale") String locale,
             @Field("access_key") String access_key,
             @Field("profile_id") String profile_id,
             @Field("transaction_uuid") String transaction_uuid,
+            @Field("signed_date_time") String signed_date_time,
             @Field("signed_field_names") String signed_field_names,
             @Field("unsigned_field_names") String unsigned_field_names,
-            @Field("signed_date_time") String signed_date_time,
-            @Field("locale") String locale,
-
+            @Field("signature") String signature,
+            @Field("payment_method") String payment_method,
+            @Field("card_type") String card_type,
+            @Field("card_number") String card_number,
+            @Field("card_expiry_date") String card_eexpiry_date,
+            @Field("card_cvn") String card_cvn,
+            @Field("bill_to_forename") String bill_to_forename,
+            @Field("bill_to_surname") String bill_to_surname,
+            @Field("bill_to_email") String bill_to_email,
             @Field("bill_to_address_line1") String bill_to_address_line1,
             @Field("bill_to_address_city") String bill_to_address_city,
-            @Field("bill_to_address_country") String bill_to_address_country,
-            @Field("bill_to_email") String bill_to_email,
-            @Field("bill_to_surname") String bill_to_surname,
-            @Field("bill_to_forename") String bill_to_forename,
-            @Field("bill_to_phone") String bill_to_phone,
-            @Field("bill_to_company_name") String bill_to_company_name,
+            @Field("bill_to_address_country") String bill_to_address_country
 
-            @Field("consumer_id") String consumer_id,
-            @Field("customer_ip_address") String customer_ip_address,
-            @Field("transaction_type") String transaction_type,
-            @Field("reference_number") String reference_number,
-            @Field("amount") String amount,
-            @Field("currency") String currency,
-            @Field("merchant_defined_data1") String merchant_defined_data1,
+//            @Field("bill_to_phone") String bill_to_phone,
+//            @Field("bill_to_company_name") String bill_to_company_name,
+//            @Field("consumer_id") String consumer_id,
+//            @Field("customer_ip_address") String customer_ip_address,
+//            @Field("merchant_defined_data1") String merchant_defined_data1,
 
-//            @Field("card_type") String card_type,
-//            @Field("card_number") String card_number,
-//            @Field("card_expiry_date") String card_eexpiry_date,
-//            @Field("card_cvn") String card_cvn,
-            @Field("signature") String signature
 
     );
 

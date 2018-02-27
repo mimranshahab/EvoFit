@@ -29,6 +29,7 @@ public class DateManager {
     private static SimpleDateFormat sdfDateOuput = new SimpleDateFormat(AppConstants.OUTPUT_DATE_TIME_FORMAT);
     private static SimpleDateFormat sdfTimeInput = new SimpleDateFormat(AppConstants.INPUT_TIME_FORMAT);
     private static SimpleDateFormat sdfTimeOuput = new SimpleDateFormat(AppConstants.OUTPUT_TIME_FORMAT);
+    private static SimpleDateFormat sdfUTCOutput = new SimpleDateFormat(AppConstants.OUTPUT_UTC);
 
 
     // Custom FOR AKUH
@@ -69,6 +70,12 @@ public class DateManager {
 
     public static String getTime(long millisecond) {
         return sdfTimeOuput.format(new Date(millisecond));
+    }
+
+
+    public static String getCurrentUTCDateTime() {
+        sdfUTCOutput.setTimeZone(TimeZone.getTimeZone("gmt"));
+        return sdfUTCOutput.format(new Date());
     }
 
     public static String getFormattedDate(String inputDate) {

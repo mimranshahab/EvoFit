@@ -380,42 +380,35 @@ public class WebServices {
 
     }
 
-    public void webServiceCyberSouce(final IRequestStringCallBack callBack) {
-        PaymentRequestModel payRequestModel = new PaymentRequestModel();
+    public void webServiceCyberSouce(final IRequestStringCallBack callBack, PaymentRequestModel payRequestModel) {
 
         try {
             if (Helper.isNetworkConnected(mContext, true)) {
                 apiService.cyberSoft(
 
+                        payRequestModel.getReferenceNo() + "",
+                        payRequestModel.getTransactionType() + "",
+                        payRequestModel.getCurrency() + "",
+                        payRequestModel.getAmount() + "",
+                        payRequestModel.getLocale() + "",
                         payRequestModel.getAccessKey() + "",
                         payRequestModel.getProfileID() + "",
                         payRequestModel.getTransactionUUID() + "",
+                        payRequestModel.getSignedDateTimeString() + "",
                         payRequestModel.getSignedFieldNames() + "",
                         payRequestModel.getUnsignedFieldNames() + "",
-                        payRequestModel.getSignedDateTimeString() + "",
-                        payRequestModel.getLocale() + "",
+                        payRequestModel.getSignature() + "",
+                        payRequestModel.getPaymentMethod() + "",
+                        payRequestModel.getCardType() + "",
+                        payRequestModel.getCardNumber() + "",
+                        payRequestModel.getCardExpirydate() + "",
+                        payRequestModel.getCVN() + "",
+                        payRequestModel.getBillForeName() + "",
+                        payRequestModel.getBillSurName() + "",
+                        payRequestModel.getBillEmailAddress() + "",
                         payRequestModel.getBillAddressLine() + "",
                         payRequestModel.getBillAddressCity() + "",
-                        payRequestModel.getBillAddressCountry() + "",
-                        payRequestModel.getBillEmailAddress() + "",
-                        payRequestModel.getBillSurName() + "",
-                        payRequestModel.getBillForeName() + "",
-                        payRequestModel.getBillPhone() + "",
-                        payRequestModel.getBillCompanyName() + "",
-                        payRequestModel.getConsumerID() + "",
-                        payRequestModel.getConsIPAddress() + "",
-                        payRequestModel.getTransactionType() + "",
-                        payRequestModel.getReferenceNo() + "",
-                        payRequestModel.getAmount() + "",
-                        payRequestModel.getCurrency() + "",
-                        payRequestModel.getMerchantDefinedData() + "",
-//                        payRequestModel.getMerchantDefinedData() + "",
-//                        payRequestModel.getMerchantDefinedData() + "",
-//                        payRequestModel.getMerchantDefinedData() + "",
-//                        payRequestModel.getMerchantDefinedData() + "",
-//                        WebServiceConstants.Secret_token_paymentGatway + ""
-                        payRequestModel.getSignature()+""
-
+                        payRequestModel.getBillAddressCountry() + ""
 
                 ).enqueue(new Callback<Object>() {
                     @Override

@@ -19,6 +19,7 @@ public class AppConstants {
     public static final String OUTPUT_DATE_FORMAT = "EEEE dd,yyyy";
     public static final String INPUT_TIME_FORMAT = "yyyy-dd-MM hh:mm:ss a";
     public static final String OUTPUT_TIME_FORMAT = "hh:mm a";
+    public static final String OUTPUT_UTC = "yyyy-MM-dd'T'HH:mm:ss'Z'";
     public static final String OUTPUT_DATE_TIME_FORMAT = "EEEE dd,yyyy hh:mm a";
     public static final String INPUT_LAB_DATE_FORMAT_AM_PM = "mm/dd/yyyy hh:mm:ss a";
 
@@ -65,6 +66,7 @@ public class AppConstants {
     public static final String schedule = "Scheduled";
     public static final String vaccinated = "Vaccinated";
     public static final String due = "Due";
+    public static final String over_due = "Overdue";
 
     public static String RESOURCE_PART = "Android";
 
