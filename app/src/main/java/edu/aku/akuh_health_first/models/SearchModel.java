@@ -45,6 +45,17 @@ public class SearchModel implements IsRecordFound {
     @Expose
     @SerializedName("MRNumber")
     private String MRNumber;
+    @Expose
+    @SerializedName("RecordID")
+    private String RecordID;
+
+    public String getRecordID() {
+        return RecordID;
+    }
+
+    public void setRecordID(String recordID) {
+        RecordID = recordID;
+    }
 
     public String getVisitID() {
         return VisitID;

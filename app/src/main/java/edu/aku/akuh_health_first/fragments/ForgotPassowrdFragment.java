@@ -97,11 +97,38 @@ public class ForgotPassowrdFragment extends BaseFragment {
         parameter.put("amount", payRequestModel.getAmount() + "");
         parameter.put("currency", payRequestModel.getCurrency());
         parameter.put("merchant_defined_data1", payRequestModel.getMerchantDefinedData());
+        parameter.put("payment_method", payRequestModel.getPaymentMethod());
 
         parameter.put("card_type", payRequestModel.getCardType());
         parameter.put("card_number", payRequestModel.getCardNumber());
         parameter.put("card_expiry_date", payRequestModel.getCardExpirydate());
         parameter.put("card_cvn", payRequestModel.getCVN());
+
+//        parameter.put("reference_number", payRequestModel.getReferenceNo());
+//        parameter.put("transaction_type", payRequestModel.getTransactionType());
+//        parameter.put("currency", payRequestModel.getCurrency());
+//        parameter.put("amount", payRequestModel.getAmount());
+//        parameter.put("locale", payRequestModel.getLocale());
+//        parameter.put("access_key", payRequestModel.getAccessKey());
+//        parameter.put("profile_id", payRequestModel.getProfileID());
+//        parameter.put("transaction_uuid", payRequestModel.getTransactionUUID());
+//        parameter.put("signed_date_time", payRequestModel.getSignedDateTimeString());
+//        parameter.put("signed_field_names", payRequestModel.getSignedFieldNames());
+//        parameter.put("unsigned_field_names", payRequestModel.getUnsignedFieldNames());
+////        parameter.put("signature", payRequestModel.getSignature());
+//        parameter.put("payment_method", payRequestModel.getPaymentMethod());
+//        parameter.put("card_type", payRequestModel.getCardType());
+//        parameter.put("card_number", payRequestModel.getCardNumber());
+//        parameter.put("card_expiry_date", payRequestModel.getCardExpirydate());
+//        parameter.put("card_cvn", payRequestModel.getCVN());
+//        parameter.put("bill_to_forename", payRequestModel.getBillForeName());
+//        parameter.put("bill_to_surname", payRequestModel.getBillSurName());
+//        parameter.put("bill_to_email", payRequestModel.getBillEmailAddress());
+//        parameter.put("bill_to_address_line1", payRequestModel.getBillAddressLine());
+//        parameter.put("bill_to_address_city", payRequestModel.getBillAddressCity());
+//        parameter.put("bill_to_address_postal_code", "75300");
+//        parameter.put("bill_to_address_state", "Karachi");
+//        parameter.put("bill_to_address_country", payRequestModel.getBillAddressCountry());
 
 
         try {
@@ -155,7 +182,7 @@ public class ForgotPassowrdFragment extends BaseFragment {
 
     private void getCyberSoftToken() {
         new WebServices(getBaseActivity(), null, BaseURLTypes.PAYMENT_GATEWAY_URL)
-                .webServiceCyberSouce(
+                .webServiceCyberSouce(payRequestModel,
                         new WebServices.IRequestStringCallBack() {
 
                             @Override
