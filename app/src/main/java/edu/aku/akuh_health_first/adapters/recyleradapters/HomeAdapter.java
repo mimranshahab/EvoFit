@@ -52,8 +52,11 @@ public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.ViewHolder> {
         holder.txtName.setText(user.getName());
 //        holder.txtViewProfile.setText(user.getName());
         holder.txtMRN.setText(user.getMRNumber());
-        holder.txtGenderAge.setText(user.getGender()+" / "+user.getAge());
-        holder.txtRelation.setText(user.getRelationshipDescription());
+        if (user.getGender().equals("F")) {
+            holder.imgUser.setImageResource(R.drawable.female_icon);
+        } else {
+            holder.imgUser.setImageResource(R.drawable.male_icon);
+        }
 
 //        if (user.isSelected()) {
 //            holder.contListItem.setBackgroundColor(activity.getResources().getColor(R.color.colorPrimaryHalfTransparent));
@@ -90,12 +93,8 @@ public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.ViewHolder> {
         CircleImageView imgUser;
         @BindView(R.id.txtName)
         AnyTextView txtName;
-        @BindView(R.id.txtRelation)
-        AnyTextView txtRelation;
         @BindView(R.id.txtMRN)
         AnyTextView txtMRN;
-        @BindView(R.id.txtGender_age)
-        AnyTextView txtGenderAge;
         @BindView(R.id.contListItem)
         LinearLayout contListItem;
         @BindView(R.id.cardView2)

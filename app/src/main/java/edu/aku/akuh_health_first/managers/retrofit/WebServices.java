@@ -5,6 +5,7 @@ import android.app.ProgressDialog;
 import android.content.Context;
 import android.support.annotation.NonNull;
 
+import com.google.gson.JsonNull;
 import com.google.gson.JsonObject;
 
 import java.lang.String;
@@ -84,46 +85,66 @@ public class WebServices {
             mDialog.show();
     }
 
-    public static boolean IsResponseError(Response<WebResponse<JsonObject>> response) {
-        if (response != null && !response.isSuccessful() && response.errorBody() != null) {
+    private static boolean IsResponseError(Response<WebResponse<JsonObject>> response) {
+        return !(response != null && !response.isSuccessful() && response.errorBody() != null);
+    }
+
+    private static boolean IsResponseErrorForArray(Response<WebResponse<ArrayList<JsonObject>>> response) {
+        return !(response != null && !response.isSuccessful() && response.errorBody() != null);
+    }
+
+    private boolean IsResponseErrorForStringResult(Response<WebResponse<String>> response) {
+        return !(response != null && !response.isSuccessful() && response.errorBody() != null);
+    }
+
+    private boolean hasValidStatus(Response<WebResponse<JsonObject>> response) {
+        if (response != null && response.body() != null) {
+            if (response.body().isSuccess()) {
+
+                //for testing
+//                return true;
+
+                if (response.body().result.get("RecordFound") == null) {
+                    return false;
+                } else if (response.body().result.get("RecordFound").isJsonNull()) {
+                    return false;
+                } else {
+                    return response.body().result.get("RecordFound").getAsString().equals("true");
+                }
+            } else {
+                return false;
+            }
+
+        } else {
             return false;
         }
-        return true;
     }
 
-    public static boolean IsResponseErrorForArray(Response<WebResponse<ArrayList<JsonObject>>> response) {
-        if (response != null && !response.isSuccessful() && response.errorBody() != null) {
+    private boolean hasValidStatusForArray(Response<WebResponse<ArrayList<JsonObject>>> response) {
+        if (response != null && response.body() != null) {
+            if (response.body().isSuccess()) {
+
+                //for testing
+//                return true;
+
+                if (response.body().result.get(0).get("RecordFound") == null) {
+                    return false;
+                } else if (response.body().result.get(0).get("RecordFound").isJsonNull()) {
+                    return false;
+                } else {
+                    return response.body().result.get(0).get("RecordFound").getAsString().equals("true");
+                }
+            } else {
+                return false;
+            }
+
+        } else {
             return false;
         }
-        return true;
     }
 
-    public static boolean IsResponseErrorForStringResult(Response<WebResponse<String>> response) {
-        if (response != null && !response.isSuccessful() && response.errorBody() != null) {
-            return false;
-        }
-        return true;
-    }
-
-    public static boolean hasValidStatus(Response<WebResponse<JsonObject>> response) {
-        if (response != null && response.body() != null) {
-            return response.body().isSuccess();
-        }
-        return false;
-    }
-
-    public static boolean hasValidStatusForArray(Response<WebResponse<ArrayList<JsonObject>>> response) {
-        if (response != null && response.body() != null) {
-            return response.body().isSuccess();
-        }
-        return false;
-    }
-
-    public static boolean hasValidStatusForStringResult(Response<WebResponse<String>> response) {
-        if (response != null && response.body() != null) {
-            return response.body().isSuccess();
-        }
-        return false;
+    private boolean hasValidStatusForStringResult(Response<WebResponse<String>> response) {
+        return response != null && response.body() != null && response.body().isSuccess();
     }
 
     public void webServiceUploadFileAPI(String requestMethod, String filePath, FileType fileType, final IRequestWebResponseWithStringDataCallBack callBack) {
@@ -213,8 +234,18 @@ public class WebServices {
                         if (hasValidStatus(response))
                             callBack.requestDataResponse(response.body());
                         else {
-                            String message = response.body().message != null ? response.body().message : response.errorBody().toString();
-                            UIHelper.showShortToastInCenter(mContext, message);
+                            if (response != null && response.body() != null) {
+                                if (response.body().isSuccess()) {
+                                    if (response.body().result.get("RecordMessage") != null) {
+                                        String message = response.body().result.get("RecordMessage").toString();
+                                        UIHelper.showShortToastInCenter(mContext, message);
+                                    } else {
+                                        errorToastForObject(response);
+                                    }
+                                } else {
+                                    errorToastForObject(response);
+                                }
+                            }
                         }
                     }
 
@@ -317,8 +348,19 @@ public class WebServices {
                         if (hasValidStatusForArray(response))
                             callBack.requestDataResponse(response.body());
                         else {
-                            String message = response.body().message != null ? response.body().message : response.errorBody().toString();
-                            UIHelper.showShortToastInCenter(mContext, message);
+                            if (response != null && response.body() != null) {
+                                if (response.body().isSuccess()) {
+                                    if (response.body().result.get(0).get("RecordMessage") != null) {
+                                        String message = response.body().result.get(0).get("RecordMessage").toString();
+                                        UIHelper.showShortToastInCenter(mContext, message);
+                                    } else {
+                                        errorToastForArray(response);
+                                    }
+                                } else {
+                                    errorToastForArray(response);
+                                }
+                            }
+
                         }
                     }
 
@@ -339,6 +381,16 @@ public class WebServices {
 
         }
 
+    }
+
+    private void errorToastForArray(Response<WebResponse<ArrayList<JsonObject>>> response) {
+        String message = response.body().message != null ? response.body().message : response.errorBody().toString();
+        UIHelper.showShortToastInCenter(mContext, message);
+    }
+
+    private void errorToastForObject(Response<WebResponse<JsonObject>> response) {
+        String message = response.body().message != null ? response.body().message : response.errorBody().toString();
+        UIHelper.showShortToastInCenter(mContext, message);
     }
 
 
