@@ -14,7 +14,7 @@ public class WebServiceConstants {
     public static String PACS_VIEWER_URL = "https://pacsviewer.aku.edu/api/PACSViewer/";
     public static String PACS_URL_DOWNLOAD = "https://pacsviewer.aku.edu/";
     public static String PACS_URL = "https://pacsviewer.aku.edu/api/";
-//    public static String PAYMENT_GATEWAY_URL = "https://testsecureacceptance.cybersource.com/pay/";
+    //    public static String PAYMENT_GATEWAY_URL = "https://testsecureacceptance.cybersource.com/pay/";
     public static String PAYMENT_GATEWAY_URL = "https://testsecureacceptance.cybersource.com/token/create/";
 //    public static String PAYMENT_GATEWAY_URL = "https://ebctest.cybersource.com/ebctest/";
 
@@ -35,11 +35,10 @@ public class WebServiceConstants {
     public static final String tempMRN_RADIOLOGY1 = "015-94-53";
     public static final String tempMRN_immunization = "269-14-57";
     public static final String temp_Specimen_Num = "56070141";
-//    public static final String temp_Specimen_Num = "47556226";
-    public static final String tempPassword = "uL952ERAghddR2h+CedbuA==";
-//    public static final String tempMRN_Cardio = "200-47-97";
+    public static final String tempPassword = "user123";
+    //    public static final String temp_Specimen_Num = "47556226";
+    //    public static final String tempMRN_Cardio = "200-47-97";
     public static final String tempMRN_Cardio = "275-02-02";
-//    public static final String tempPassword = "user123";
 //    public static final String tempMRN_Cardio = "200-47-97";
 
     /**
