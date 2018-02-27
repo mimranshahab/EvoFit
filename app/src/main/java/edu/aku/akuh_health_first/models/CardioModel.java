@@ -42,6 +42,9 @@ public class CardioModel
     @SerializedName("HospitalLocation")
     @Expose
     private String hospitalLocation;
+    @SerializedName("MRN")
+    @Expose
+    private String mRN;
     @SerializedName("RequestServiceDateTime")
     @Expose
     private String requestServiceDateTime;
@@ -84,19 +87,23 @@ public class CardioModel
     @SerializedName("exists")
     @Expose
     private String exists;
+    @SerializedName("IsAngiogram")
+    @Expose
+    private String isAngiogram;
     @SerializedName("LastFileDateTime")
     @Expose
-    private Object lastFileDateTime;
+    private String lastFileDateTime;
     @SerializedName("LastFileUser")
     @Expose
-    private Object lastFileUser;
+    private String lastFileUser;
     @SerializedName("LastFileTerminal")
     @Expose
-    private Object lastFileTerminal;
+    private String lastFileTerminal;
     @SerializedName("Active")
     @Expose
-    private Object active;
-    private final static long serialVersionUID = -1358548789672497396L;
+    private String active;
+
+    private final static long serialVersionUID = 2241373079708123524L;
 
     public String getHospitalLocation() {
         return hospitalLocation;
@@ -104,6 +111,14 @@ public class CardioModel
 
     public void setHospitalLocation(String hospitalLocation) {
         this.hospitalLocation = hospitalLocation;
+    }
+
+    public String getMRN() {
+        return mRN;
+    }
+
+    public void setMRN(String mRN) {
+        this.mRN = mRN;
     }
 
     public String getRequestServiceDateTime() {
@@ -218,50 +233,58 @@ public class CardioModel
         this.exists = exists;
     }
 
+    public String getIsAngiogram() {
+        return isAngiogram;
+    }
 
+    public void setIsAngiogram(String isAngiogram) {
+        this.isAngiogram = isAngiogram;
+    }
 
-    public Object getLastFileDateTime() {
+    public String getLastFileDateTime() {
         return lastFileDateTime;
     }
 
-    public void setLastFileDateTime(Object lastFileDateTime) {
+    public void setLastFileDateTime(String lastFileDateTime) {
         this.lastFileDateTime = lastFileDateTime;
     }
 
-    public Object getLastFileUser() {
+    public String getLastFileUser() {
         return lastFileUser;
     }
 
-    public void setLastFileUser(Object lastFileUser) {
+    public void setLastFileUser(String lastFileUser) {
         this.lastFileUser = lastFileUser;
     }
 
-    public Object getLastFileTerminal() {
+    public String getLastFileTerminal() {
         return lastFileTerminal;
     }
 
-    public void setLastFileTerminal(Object lastFileTerminal) {
+    public void setLastFileTerminal(String lastFileTerminal) {
         this.lastFileTerminal = lastFileTerminal;
     }
 
-    public Object getActive() {
+    public String getActive() {
         return active;
     }
 
-    public void setActive(Object active) {
+    public void setActive(String active) {
         this.active = active;
     }
 
+    
+
     public String tempCardioOb = "{\n" +
-            "            \"HospitalLocation\": \"Stadium Road\",\n" +
-            "            \"RequestServiceDateTime\": \"2017-01-05T10:42:51\",\n" +
-            "            \"RequestNumber\": \"1025362\",\n" +
-            "            \"AdmissionNumber\": \"104979464\",\n" +
-            "            \"Service\": \"ECHO - ECHO\",\n" +
-            "            \"ReportID\": \"2017:ECH100\",\n" +
-            "        \n" +
-            "            \"DetailReportID\": \"20170105_CPS_2017ECH100.pdf\"\n" +
-            "        }";
+        "            \"HospitalLocation\": \"Stadium Road\",\n" +
+                "            \"RequestServiceDateTime\": \"2017-01-05T10:42:51\",\n" +
+                "            \"RequestNumber\": \"1025362\",\n" +
+                "            \"AdmissionNumber\": \"104979464\",\n" +
+                "            \"Service\": \"ECHO - ECHO\",\n" +
+                "            \"ReportID\": \"2017:ECH100\",\n" +
+                "        \n" +
+                "            \"DetailReportID\": \"20170105_CPS_2017ECH100.pdf\"\n" +
+                "        }";
 
     @Override
     public String toString() {

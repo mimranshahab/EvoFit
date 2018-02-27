@@ -1,11 +1,10 @@
 package edu.aku.akuh_health_first.adapters.recyleradapters;
 
-import android.app.Activity;
+import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 
@@ -13,11 +12,10 @@ import java.util.ArrayList;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import de.hdodenhof.circleimageview.CircleImageView;
 import edu.aku.akuh_health_first.R;
 import edu.aku.akuh_health_first.activities.BaseActivity;
 import edu.aku.akuh_health_first.callbacks.OnItemClickListener;
-import edu.aku.akuh_health_first.fragments.HealthHistoryFragment;
-import edu.aku.akuh_health_first.helperclasses.ui.helper.AnimationHelper;
 import edu.aku.akuh_health_first.models.receiving_model.UserDetailModel;
 import edu.aku.akuh_health_first.views.AnyTextView;
 
@@ -27,6 +25,7 @@ public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.ViewHolder> {
 
 
     private final OnItemClickListener onItemClick;
+
     private BaseActivity activity;
     private ArrayList<UserDetailModel> userList;
 
@@ -52,16 +51,15 @@ public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.ViewHolder> {
 //        ImageLoader.getInstance().displayImage(users.get(i).getImageUrl(), holder.imgUser);
         holder.txtName.setText(user.getName());
 //        holder.txtViewProfile.setText(user.getName());
-        holder.txtMRN.setText("MR# " + user.getMRNumber());
-        holder.txtGender.setText("Gender " + user.getGender());
-        holder.txtAge.setText("Age " + user.getAge());
-        holder.txtEmailAddress.setText(user.getEmailAddress());
+        holder.txtMRN.setText(user.getMRNumber());
+        holder.txtGenderAge.setText(user.getGender()+" / "+user.getAge());
+        holder.txtRelation.setText(user.getRelationshipDescription());
 
-        if (user.isSelected()) {
-            holder.contListItem.setBackgroundColor(activity.getResources().getColor(R.color.colorPrimaryHalfTransparent));
-        } else {
-            holder.contListItem.setBackgroundColor(activity.getResources().getColor(R.color.c_white));
-        }
+//        if (user.isSelected()) {
+//            holder.contListItem.setBackgroundColor(activity.getResources().getColor(R.color.colorPrimaryHalfTransparent));
+//        } else {
+//            holder.contListItem.setBackgroundColor(activity.getResources().getColor(R.color.c_white));
+//        }
         setListener(holder, user);
     }
 
@@ -89,19 +87,19 @@ public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.ViewHolder> {
 
     static class ViewHolder extends RecyclerView.ViewHolder {
         @BindView(R.id.imgUser)
-        ImageView imgUser;
+        CircleImageView imgUser;
         @BindView(R.id.txtName)
         AnyTextView txtName;
+        @BindView(R.id.txtRelation)
+        AnyTextView txtRelation;
         @BindView(R.id.txtMRN)
         AnyTextView txtMRN;
-        @BindView(R.id.txtGender)
-        AnyTextView txtGender;
-        @BindView(R.id.txtAge)
-        AnyTextView txtAge;
-        @BindView(R.id.txtEmailAddress)
-        AnyTextView txtEmailAddress;
+        @BindView(R.id.txtGender_age)
+        AnyTextView txtGenderAge;
         @BindView(R.id.contListItem)
         LinearLayout contListItem;
+        @BindView(R.id.cardView2)
+        CardView cardView2;
 
         ViewHolder(View view) {
             super(view);

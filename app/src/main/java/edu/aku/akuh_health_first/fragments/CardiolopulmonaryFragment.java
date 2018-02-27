@@ -238,7 +238,7 @@ public class CardiolopulmonaryFragment extends BaseFragment implements View.OnCl
 
             new WebServices(getBaseActivity(), WebServiceConstants.temporaryToken, BaseURLTypes.AHFA_BASE_URL)
                     .webServiceRequestAPIForWebResponseWithString(WebServiceConstants.METHOD_CARDIO_SHOW_REPORT,
-                            cardiolopulmonary.tempCardioOb(), new WebServices.IRequestWebResponseWithStringDataCallBack() {
+                            cardiolopulmonary.toString(), new WebServices.IRequestWebResponseWithStringDataCallBack() {
                                 @Override
                                 public void requestDataResponse(WebResponse<String> webResponse) {
                                     String fileName = cardiolopulmonary.getDetailReportID();
@@ -272,7 +272,8 @@ public class CardiolopulmonaryFragment extends BaseFragment implements View.OnCl
     private void serviceCall() {
         // FIXME: 1/18/2018 Use live data in future
         SearchModel model = new SearchModel();
-        model.setMRNumber(WebServiceConstants.tempMRN);
+//        model.setMRNumber(WebServiceConstants.tempMRN);
+        model.setMRNumber(WebServiceConstants.tempMRN_Cardio);
         model.setVisitID(null);
         new WebServices(getBaseActivity(),
                 WebServiceConstants.temporaryToken,
