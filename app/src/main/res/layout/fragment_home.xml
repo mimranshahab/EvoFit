@@ -3,116 +3,129 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_gravity="center_vertical"
+    android:layout_gravity="center_horizontal"
     android:background="@color/c_white"
     android:orientation="vertical"
     android:padding="@dimen/x10dp">
 
-    <android.support.v7.widget.CardView
-        android:id="@+id/cardView2"
+    <!--<android.support.v7.widget.CardView-->
+    <!--android:id="@+id/cardView2"-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:layout_centerInParent="true"-->
+    <!---->
+    <!--android:animateLayoutChanges="true"-->
+    <!--app:cardCornerRadius="@dimen/x10dp"-->
+    <!--app:cardElevation="@dimen/x5dp"-->
+
+    <!--&gt;-->
+
+
+    <RelativeLayout
+        android:id="@+id/contListItem"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
         android:layout_marginLeft="@dimen/x5dp"
         android:layout_marginRight="@dimen/x5dp"
-        android:layout_marginTop="@dimen/x5dp"
-        android:animateLayoutChanges="true"
-        android:padding="@dimen/x5dp"
-        app:cardCornerRadius="@dimen/x10dp"
-        app:cardElevation="@dimen/x5dp"
+        android:padding="@dimen/x5dp">
 
-        >
-
-        <FrameLayout
+        <LinearLayout
+            android:id="@+id/linearLayout"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:background="@color/base_amber"
-            android:padding="@dimen/x2dp">
+            android:layout_height="wrap_content"
+            android:layout_below="@id/imgUser"
+            android:background="@drawable/rounded_box_filled_columbia_blue"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:padding="@dimen/x10dp">
 
             <LinearLayout
-                android:id="@+id/contListItem"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginRight="@dimen/x4dp"
-                android:background="@drawable/rounded_box_filled_columbia_blue"
-                android:gravity="center_vertical"
+                android:layout_height="match_parent"
+                android:layout_marginTop="@dimen/x40dp"
+                android:gravity="center"
                 android:orientation="horizontal">
 
-
-                <de.hdodenhof.circleimageview.CircleImageView
-                    android:id="@+id/imgUser"
-                    android:layout_width="@dimen/x100dp"
-                    android:layout_height="@dimen/x100dp"
-                    android:layout_margin="@dimen/x5dp"
-                    android:background="@drawable/circle_stroke_gray"
-                    android:padding="@dimen/x10dp"
-                    android:scaleType="centerCrop"
-                    android:src="@drawable/male_icon" />
-
-
-                <LinearLayout
-                    android:layout_width="match_parent"
+                <edu.aku.akuh_health_first.views.AnyTextView
+                    android:id="@+id/txtName"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="center_vertical"
-                    android:layout_margin="@dimen/x5dp"
-                    android:orientation="vertical">
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="horizontal">
-
-                        <edu.aku.akuh_health_first.views.AnyTextView
-                            android:id="@+id/txtName"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:gravity="center_vertical"
-                            android:text="Asma Ali "
-                            android:textColor="@color/c_grayasparagus"
-                            android:textSize="@dimen/s16"
-                            app:typeface="@string/font_bold" />
+                    android:gravity="center_vertical"
+                    android:text="Asma Ali "
+                    android:textColor="@color/c_white"
+                    android:textSize="@dimen/s16"
+                    app:typeface="@string/font_bold" />
 
 
-                        <edu.aku.akuh_health_first.views.AnyTextView
-                            android:id="@+id/txtRelation"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:gravity="center_vertical"
-                            android:padding="@dimen/s5"
-                            android:text="(Daughter)"
-                            android:textColor="@color/colorPrimary"
-                            android:textSize="@dimen/x12dp"
-                            app:typeface="@string/font_regular" />
-
-                    </LinearLayout>
-
-                    <edu.aku.akuh_health_first.views.AnyTextView
-                        android:id="@+id/txtMRN"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="178-88-90"
-                        android:textColor="@color/c_red"
-                        android:textSize="@dimen/x12dp"
-                        app:typeface="@string/font_regular" />
-
-                    <edu.aku.akuh_health_first.views.AnyTextView
-                        android:id="@+id/txtGender_age"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="Female / 40"
-                        android:textColor="@color/c_grayasparagus"
-                        android:textSize="@dimen/x12dp"
-                        app:typeface="@string/font_regular" />
-
-
-                </LinearLayout>
-
+                <edu.aku.akuh_health_first.views.AnyTextView
+                    android:id="@+id/txtRelation"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:padding="@dimen/s5"
+                    android:text="(Daughter)"
+                    android:textColor="@color/c_white"
+                    android:textSize="@dimen/x12dp"
+                    app:typeface="@string/font_regular" />
 
             </LinearLayout>
 
-        </FrameLayout>
-    </android.support.v7.widget.CardView>
+            <edu.aku.akuh_health_first.views.AnyTextView
+                android:id="@+id/txtMRN"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="178-88-90"
+                android:textColor="@color/c_white"
+                android:textSize="@dimen/x12dp"
+                app:typeface="@string/font_regular" />
 
+            <edu.aku.akuh_health_first.views.AnyTextView
+                android:id="@+id/txtGender_age"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Female / 40"
+                android:textColor="@color/c_white"
+                android:textSize="@dimen/x12dp"
+                app:typeface="@string/font_regular" />
+
+
+        </LinearLayout>
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/imgUser"
+            android:layout_width="@dimen/x100dp"
+            android:layout_height="@dimen/x100dp"
+            android:layout_centerHorizontal="true"
+            android:layout_gravity="center"
+            android:layout_marginBottom="-50dp"
+            android:padding="@dimen/x1dp"
+            android:scaleType="centerCrop"
+            android:src="@drawable/user_image"
+            app:civ_border_color="@color/c_white"
+            app:civ_border_width="@dimen/x2dp"
+
+
+            />
+
+
+    </RelativeLayout>
+
+    <!--</android.support.v7.widget.CardView>-->
+
+    <edu.aku.akuh_health_first.views.AnyTextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:drawableLeft="@drawable/family_icon"
+        android:drawablePadding="@dimen/x5dp"
+        android:padding="@dimen/x5dp"
+        android:layout_marginLeft="@dimen/x5dp"
+        android:layout_marginRight="@dimen/x5dp"
+        android:text="Family Members"
+        android:textColor="@color/colorPrimary"
+        android:textSize="16sp"
+        app:typeface="@string/font_bold"
+
+        />
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/listFamilyMembers"

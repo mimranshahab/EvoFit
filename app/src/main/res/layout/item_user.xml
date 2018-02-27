@@ -18,7 +18,7 @@
         android:layout_marginRight="@dimen/x5dp"
         android:layout_marginTop="@dimen/x5dp"
         android:animateLayoutChanges="true"
-        android:padding="@dimen/x5dp"
+        android:padding="@dimen/x7dp"
         app:cardCornerRadius="@dimen/x10dp"
         app:cardElevation="@dimen/x5dp"
 
@@ -37,6 +37,7 @@
                 android:layout_marginRight="@dimen/x4dp"
                 android:background="@drawable/round_edges"
                 android:gravity="center_vertical"
+                android:padding="@dimen/x5dp"
                 android:orientation="horizontal">
 
 
