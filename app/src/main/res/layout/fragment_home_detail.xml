@@ -27,8 +27,7 @@
             <FrameLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:background="@color/base_reddish"
->
+                android:background="@color/base_reddish">
 
 
                 <LinearLayout
@@ -91,8 +90,7 @@
             <FrameLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:background="@color/base_green"
-            >
+                android:background="@color/base_green">
 
                 <LinearLayout
                     android:id="@+id/contHistory"
@@ -153,7 +151,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:background="@color/base_blue"
-
                 >
 
                 <LinearLayout
