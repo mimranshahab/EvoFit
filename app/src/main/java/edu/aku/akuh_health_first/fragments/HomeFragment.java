@@ -12,6 +12,8 @@ import android.view.ViewGroup;
 import android.view.animation.AnimationUtils;
 import android.view.animation.LayoutAnimationController;
 import android.widget.AdapterView;
+import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 
 import com.google.gson.JsonObject;
 
@@ -20,7 +22,7 @@ import java.util.ArrayList;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
-import edu.aku.akuh_health_first.BaseApplication;
+import de.hdodenhof.circleimageview.CircleImageView;
 import edu.aku.akuh_health_first.R;
 import edu.aku.akuh_health_first.adapters.recyleradapters.HomeAdapter;
 import edu.aku.akuh_health_first.callbacks.OnItemClickListener;
@@ -36,6 +38,7 @@ import edu.aku.akuh_health_first.managers.retrofit.WebServices;
 import edu.aku.akuh_health_first.models.receiving_model.CardMemberDetail;
 import edu.aku.akuh_health_first.models.receiving_model.UserDetailModel;
 import edu.aku.akuh_health_first.models.wrappers.WebResponse;
+import edu.aku.akuh_health_first.views.AnyTextView;
 
 /**
  * Created by aqsa.sarwar on 1/16/2018.
@@ -47,6 +50,20 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener, 
     @BindView(R.id.listFamilyMembers)
     RecyclerView recyclerHome;
     Unbinder unbinder;
+    @BindView(R.id.txtName)
+    AnyTextView txtName;
+    @BindView(R.id.txtRelation)
+    AnyTextView txtRelation;
+    @BindView(R.id.txtMRN)
+    AnyTextView txtMRN;
+    @BindView(R.id.txtGender_age)
+    AnyTextView txtGenderAge;
+    @BindView(R.id.linearLayout)
+    LinearLayout linearLayout;
+    @BindView(R.id.imgUser)
+    CircleImageView imgUser;
+    @BindView(R.id.contListItem)
+    RelativeLayout contListItem;
     private HomeAdapter adaptHome;
     private ArrayList<UserDetailModel> arrUserLists = new ArrayList<>();
 
@@ -89,6 +106,16 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener, 
         serviceCall();
     }
 
+    private void setData() {
+        if (arrUserLists.get(0).getMembershipTypeID().equalsIgnoreCase("SUBSCRIBER")) {
+            txtName.setText(arrUserLists.get(0).getName());
+            txtRelation.setText(arrUserLists.get(0).getMembershipTypeID());
+            txtGenderAge.setText(arrUserLists.get(0).getGender() + "/" + arrUserLists.get(0).getAge());
+            txtMRN.setText(arrUserLists.get(0).getMRNumber());
+        }
+
+    }
+
     private void serviceCall() {
         CardMemberDetail cardMemberDetail = new CardMemberDetail(WebServiceConstants.tempCardNumber);
 
@@ -121,6 +148,9 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener, 
 
                         sharedPreferenceManager.putObject(AppConstants.KEY_CARD_MEMBER_DETAIL, cardMemberDetail);
                         adaptHome.notifyDataSetChanged();
+
+                        setData();
+
 
                     }
 

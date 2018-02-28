@@ -6,7 +6,7 @@
     android:layout_gravity="center_horizontal"
     android:background="@color/c_white"
     android:orientation="vertical"
-    android:padding="@dimen/x10dp">
+    android:padding="@dimen/x3dp">
 
     <!--<android.support.v7.widget.CardView-->
     <!--android:id="@+id/cardView2"-->
@@ -27,7 +27,7 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="@dimen/x5dp"
         android:layout_marginRight="@dimen/x5dp"
-        android:padding="@dimen/x5dp">
+        android:padding="@dimen/x3dp">
 
         <LinearLayout
             android:id="@+id/linearLayout"
@@ -52,6 +52,7 @@
                     android:layout_height="wrap_content"
                     android:gravity="center_vertical"
                     android:text="Asma Ali "
+                    android:padding="@dimen/x5dp"
                     android:textColor="@color/c_white"
                     android:textSize="@dimen/s16"
                     app:typeface="@string/font_bold" />
@@ -62,7 +63,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:gravity="center_vertical"
-                    android:padding="@dimen/s5"
+                    android:padding="@dimen/x5dp"
                     android:text="(Daughter)"
                     android:textColor="@color/c_white"
                     android:textSize="@dimen/x12dp"
@@ -116,13 +117,14 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:drawableLeft="@drawable/family_icon"
-        android:drawablePadding="@dimen/x5dp"
         android:padding="@dimen/x5dp"
+        android:layout_marginTop="@dimen/x7dp"
         android:layout_marginLeft="@dimen/x5dp"
         android:layout_marginRight="@dimen/x5dp"
         android:text="Family Members"
         android:textColor="@color/colorPrimary"
         android:textSize="16sp"
+        android:drawablePadding="@dimen/x5dp"
         app:typeface="@string/font_bold"
 
         />

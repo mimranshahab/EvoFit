@@ -5,7 +5,6 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 import android.widget.LinearLayout;
 
 import java.util.ArrayList;
@@ -25,6 +24,7 @@ public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.ViewHolder> {
 
 
     private final OnItemClickListener onItemClick;
+
 
     private BaseActivity activity;
     private ArrayList<UserDetailModel> userList;
@@ -48,10 +48,13 @@ public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.ViewHolder> {
     public void onBindViewHolder(final ViewHolder holder, int i) {
 
         final UserDetailModel user = userList.get(holder.getAdapterPosition());
+//        holder.txtViewProfile.setText(user.getName());
 //        ImageLoader.getInstance().displayImage(users.get(i).getImageUrl(), holder.imgUser);
         holder.txtName.setText(user.getName());
-//        holder.txtViewProfile.setText(user.getName());
         holder.txtMRN.setText(user.getMRNumber());
+        holder.txtGenderAge.setText(user.getGender() + " / " + user.getAge());
+        holder.txtRelation.setText(user.getRelationshipDescription());
+
         if (user.getGender().equals("F")) {
             holder.imgUser.setImageResource(R.drawable.female_icon);
         } else {
@@ -93,13 +96,16 @@ public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.ViewHolder> {
         CircleImageView imgUser;
         @BindView(R.id.txtName)
         AnyTextView txtName;
+        @BindView(R.id.txtRelation)
+        AnyTextView txtRelation;
         @BindView(R.id.txtMRN)
         AnyTextView txtMRN;
+        @BindView(R.id.txtGender_age)
+        AnyTextView txtGenderAge;
         @BindView(R.id.contListItem)
         LinearLayout contListItem;
         @BindView(R.id.cardView2)
         CardView cardView2;
-
         ViewHolder(View view) {
             super(view);
             ButterKnife.bind(this, view);
