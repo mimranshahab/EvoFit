@@ -34,6 +34,7 @@ import edu.aku.akuh_health_first.enums.BaseURLTypes;
 import edu.aku.akuh_health_first.fragments.abstracts.BaseFragment;
 import edu.aku.akuh_health_first.helperclasses.ui.helper.TitleBar;
 import edu.aku.akuh_health_first.helperclasses.ui.helper.UIHelper;
+import edu.aku.akuh_health_first.managers.DateManager;
 import edu.aku.akuh_health_first.managers.FileManager;
 import edu.aku.akuh_health_first.managers.retrofit.GsonFactory;
 import edu.aku.akuh_health_first.managers.retrofit.WebServices;
@@ -184,15 +185,9 @@ public class EndoscopyFragment extends BaseFragment implements View.OnClickListe
                                 ArrayList<EndoscopyModel> arrayList = GsonFactory.getSimpleGson()
                                         .fromJson(GsonFactory.getSimpleGson().toJson(webResponse.result)
                                                 , type);
-                                if (arrayList.get(0).isRecordFound()) {
-                                    arrClinicalLabLists.clear();
-                                    arrClinicalLabLists.addAll(arrayList);
-                                    adaptNeuropysiology.notifyDataSetChanged();
-                                } else {
-                                    UIHelper.showToast(getContext(), arrayList.get(0).getRecordmessage());
-                                }
-
-
+                                arrClinicalLabLists.clear();
+                                arrClinicalLabLists.addAll(arrayList);
+                                adaptNeuropysiology.notifyDataSetChanged();
                             }
 
                             @Override
@@ -210,7 +205,9 @@ public class EndoscopyFragment extends BaseFragment implements View.OnClickListe
                         model.toString(), new WebServices.IRequestWebResponseWithStringDataCallBack() {
                             @Override
                             public void requestDataResponse(WebResponse<String> webResponse) {
-                                String fileName = FileManager.getFileNameFromPath(FileManager.getReplacedSlash(model.getSummaryPath()));
+//                                String fileName = FileManager.getFileNameFromPath(FileManager.getReplacedSlash(model.getSummaryPath()));
+
+                                String fileName = AppConstants.FILE_NAME + DateManager.getTime(DateManager.getCurrentMillis());
 
                                 FileManager.writeResponseBodyToDisk(webResponse.result, fileName, AppConstants.getUserFolderPath(getContext()));
 

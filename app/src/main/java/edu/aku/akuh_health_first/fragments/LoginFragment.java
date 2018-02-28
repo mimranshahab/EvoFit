@@ -76,7 +76,6 @@ public class LoginFragment extends BaseFragment {
     }
 
 
-
     @Override
     public void setListeners() {
 
@@ -108,7 +107,7 @@ public class LoginFragment extends BaseFragment {
         edtCardNumber.addValidator(new CardNumberValidation());
         edtCardNumber.addTextChangedListener(new MaskFormatter(CARD_MASK, edtCardNumber, '-'));
 
-        setClickableSpan(txtSignUp);
+//        setClickableSpan(txtSignUp);
 //        serviceCallToken();
 
     }
@@ -135,18 +134,18 @@ public class LoginFragment extends BaseFragment {
 //    }
 
 
-    private void setClickableSpan(TextView textView) {
-        GenericClickableSpan text1 = new GenericClickableSpan(getBaseActivity(), new GenericClickableInterface() {
-            @Override
-            public void click() {
-                getBaseActivity().addDockableFragment(RegisterFragment.newInstance());
-            }
-        });
-        text1.setSpannableStringValue(textView, getString(R.string.register_an_account), new SpannableString(textView.getText().toString().trim()));
-        text1.setSpan(1.2f);
-        text1.setUnderline(true);
-        text1.setTextViewWithColor(getResources().getColor(R.color.colorPrimary));
-    }
+//    private void setClickableSpan(TextView textView) {
+//        GenericClickableSpan text1 = new GenericClickableSpan(getBaseActivity(), new GenericClickableInterface() {
+//            @Override
+//            public void click() {
+//                getBaseActivity().addDockableFragment(RegisterFragment.newInstance());
+//            }
+//        });
+//        text1.setSpannableStringValue(textView, getString(R.string.register_an_account), new SpannableString(textView.getText().toString().trim()));
+//        text1.setSpan(1.2f);
+//        text1.setUnderline(true);
+//        text1.setTextViewWithColor(getResources().getColor(R.color.colorPrimary));
+//    }
 
     @Override
     public void onDestroyView() {
@@ -154,13 +153,11 @@ public class LoginFragment extends BaseFragment {
         unbinder.unbind();
     }
 
-    @OnClick({R.id.txtForgotPassword, R.id.btnLogin})
+    @OnClick({R.id.txtForgotPassword, R.id.btnLogin, R.id.txtSignUp})
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.txtForgotPassword:
                 getBaseActivity().addDockableFragment(ForgotPassowrdFragment.newInstance());
-//                getBaseActivity().openActivity(GraphActivity.class);
-
                 break;
             case R.id.btnLogin:
                 // FIXME: 1/2/2018 enter live data
@@ -171,6 +168,9 @@ public class LoginFragment extends BaseFragment {
                     loginCall(loginApiModel);
                 }
                 break;
+
+            case R.id.txtSignUp:
+                getBaseActivity().addDockableFragment(RegisterFragment.newInstance());
         }
     }
 
@@ -179,18 +179,18 @@ public class LoginFragment extends BaseFragment {
                 WebServiceConstants.temporaryToken,
                 BaseURLTypes.AHFA_BASE_URL)
                 .webServiceRequestAPI(WebServiceConstants.METHOD_USER_GET_USER,
-                loginApiModel.toString(),
-                new WebServices.IRequestJsonDataCallBack() {
-                    @Override
-                    public void requestDataResponse(WebResponse<JsonObject> webResponse) {
-                        getBaseActivity().openActivity(HomeActivity.class);
-                    }
+                        loginApiModel.toString(),
+                        new WebServices.IRequestJsonDataCallBack() {
+                            @Override
+                            public void requestDataResponse(WebResponse<JsonObject> webResponse) {
+                                getBaseActivity().openActivity(HomeActivity.class);
+                            }
 
-                    @Override
-                    public void onError() {
+                            @Override
+                            public void onError() {
 
-                     }
-                });
+                            }
+                        });
     }
 
 }

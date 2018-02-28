@@ -3,25 +3,26 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/imgmainbg"
+    android:background="@drawable/gradient_login"
     android:orientation="vertical">
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
         android:orientation="vertical">
 
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:gravity="center"
             android:orientation="vertical"
-            android:padding="@dimen/x20dp">
+            android:padding="@dimen/x50dp">
 
             <ImageView
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="@dimen/x100dp"
                 android:layout_marginLeft="@dimen/x25dp"
                 android:layout_marginRight="@dimen/x25dp"
                 android:gravity="center"
@@ -33,9 +34,9 @@
                 android:layout_height="match_parent"
                 android:layout_marginBottom="@dimen/x40dp"
                 android:gravity="center"
-                android:text="User Login"
-                android:textColor="@color/colorPrimary"
-                android:textSize="@dimen/s25"
+                android:text="Access to Medical Information"
+                android:textColor="@color/base_amber"
+                android:textSize="@dimen/s16"
                 app:typeface="@string/font_bold" />
 
             <edu.aku.akuh_health_first.views.AnyEditTextView
@@ -81,27 +82,16 @@
                 android:textSize="14sp"
                 app:testType="nocheck" />
 
-            <com.ctrlplusz.anytextview.AnyTextView
-                android:id="@+id/txtForgotPassword"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="@dimen/x20dp"
-                android:gravity="right"
-                android:paddingRight="@dimen/x30dp"
-                android:text="@string/forgot_password"
-                android:textColor="@color/text_color_grey_dark"
-                app:typeface="@string/font_bold" />
-
 
             <com.ctrlplusz.anytextview.AnyTextView
                 android:id="@+id/btnLogin"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
-                android:layout_marginBottom="@dimen/x50dp"
-                android:background="@drawable/rounded_box_filled_base_grey"
+                android:layout_marginBottom="@dimen/x20dp"
+                android:background="@drawable/rounded_box_filled_base_amber"
                 android:gravity="center"
-                android:padding="@dimen/x10dp"
+                android:padding="@dimen/x8dp"
                 android:text="@string/login"
                 android:textColor="@color/c_white"
                 android:textSize="17sp"
@@ -112,20 +102,22 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="@dimen/x10dp"
+                android:alpha="0.7"
                 android:gravity="center">
 
                 <ImageView
                     android:layout_width="0dp"
                     android:layout_height="2px"
                     android:layout_weight="1"
+                    android:alpha="0.8"
                     android:src="@color/c_black" />
 
                 <com.ctrlplusz.anytextview.AnyTextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:padding="@dimen/x10dp"
-                    android:text="@string/new_user"
-                    android:textColor="@color/text_color_grey_dark"
+                    android:text="OR"
+                    android:textColor="#004F72"
                     android:textSize="16sp"
                     app:typeface="@string/font_bold" />
 
@@ -133,21 +125,48 @@
                     android:layout_width="0dp"
                     android:layout_height="2px"
                     android:layout_weight="1"
+                    android:alpha="0.8"
                     android:src="@color/c_black" />
 
             </LinearLayout>
 
+
             <com.ctrlplusz.anytextview.AnyTextView
-                android:id="@+id/txtSignUp"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="@dimen/x10dp"
                 android:gravity="center_horizontal"
-                android:paddingRight="@dimen/x15dp"
-                android:text="@string/not_a_member_register_an_account"
+                android:text="Don't have an account?"
                 android:textAllCaps="false"
-                android:textColor="@color/text_color_grey_dark"
+                android:textColor="#004F72"
+
                 app:typeface="@string/font_regular" />
+
+
+            <com.ctrlplusz.anytextview.AnyTextView
+                android:id="@+id/txtSignUp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/x10dp"
+                android:drawablePadding="@dimen/x8dp"
+                android:drawableRight="@drawable/icon_login_next"
+                android:gravity="center"
+                android:text="Sign Up"
+                android:textAllCaps="false"
+                android:textColor="#004F72"
+                android:textSize="@dimen/s25"
+                app:typeface="@string/font_bold" />
+
+
+            <com.ctrlplusz.anytextview.AnyTextView
+                android:id="@+id/txtForgotPassword"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:alpha="0.8"
+                android:gravity="right"
+                android:text="@string/forgot_password"
+                android:textColor="@color/c_white"
+                app:typeface="@string/font_bold" />
 
         </LinearLayout>
 

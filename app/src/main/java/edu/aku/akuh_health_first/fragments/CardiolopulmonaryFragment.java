@@ -34,6 +34,7 @@ import edu.aku.akuh_health_first.enums.BaseURLTypes;
 import edu.aku.akuh_health_first.fragments.abstracts.BaseFragment;
 import edu.aku.akuh_health_first.helperclasses.ui.helper.TitleBar;
 import edu.aku.akuh_health_first.helperclasses.ui.helper.UIHelper;
+import edu.aku.akuh_health_first.managers.DateManager;
 import edu.aku.akuh_health_first.managers.FileManager;
 import edu.aku.akuh_health_first.managers.retrofit.GsonFactory;
 import edu.aku.akuh_health_first.managers.retrofit.WebServices;
@@ -176,26 +177,14 @@ public class CardiolopulmonaryFragment extends BaseFragment implements View.OnCl
     }
 
     private void showGraphAPI(final CardioModel cardiolopulmonary) {
-        String fileName = cardiolopulmonary.getDetailGraphID();
-        final File file = new File(DOC_PATH
-                + "/" + fileName);
-        if (FileManager.isFileExits(file.getPath())) {
 
-//            UIHelper.showToast(getContext(), "File already exist");
-            new Handler().postDelayed(new Runnable() {
-                @Override
-                public void run() {
-                    FileManager.openFile(getContext(), file);
-                }
-            }, 300);
-        } else {
 
-            new WebServices(getBaseActivity(), WebServiceConstants.temporaryToken, BaseURLTypes.AHFA_BASE_URL)
+        new WebServices(getBaseActivity(), WebServiceConstants.temporaryToken, BaseURLTypes.AHFA_BASE_URL)
                     .webServiceRequestAPIForWebResponseWithString(WebServiceConstants.METHOD_CARDIO_SHOW_GRAPH,
                             cardiolopulmonary.toString(), new WebServices.IRequestWebResponseWithStringDataCallBack() {
                                 @Override
                                 public void requestDataResponse(WebResponse<String> webResponse) {
-                                    String fileName = "abcd.pdf";
+                                    String fileName = AppConstants.FILE_NAME + DateManager.getTime(DateManager.getCurrentMillis());
 
                                     FileManager.writeResponseBodyToDisk(webResponse.result, fileName, AppConstants.getUserFolderPath(getContext()));
 
@@ -219,60 +208,59 @@ public class CardiolopulmonaryFragment extends BaseFragment implements View.OnCl
                                 }
                             }
                     );
-        }
     }
 
     private void showReportAPI(final CardioModel cardiolopulmonary) {
-        String fileName = cardiolopulmonary.getDetailReportID();
-        final File file = new File(DOC_PATH
-                + "/" + fileName);
-        if (FileManager.isFileExits(file.getPath())) {
+//        String fileName = AppConstants.FILE_NAME + DateManager.getTime(DateManager.getCurrentMillis());
+//
+//        final File file = new File(DOC_PATH
+//                + "/" + fileName);
+//        if (FileManager.isFileExits(file.getPath())) {
+//
+//            new Handler().postDelayed(new Runnable() {
+//                @Override
+//                public void run() {
+//                    FileManager.openFile(getContext(), file);
+//                }
+//            }, 300);
+//        } else {
 
-            new Handler().postDelayed(new Runnable() {
-                @Override
-                public void run() {
-                    FileManager.openFile(getContext(), file);
-                }
-            }, 300);
-        } else {
-
-            new WebServices(getBaseActivity(), WebServiceConstants.temporaryToken, BaseURLTypes.AHFA_BASE_URL)
-                    .webServiceRequestAPIForWebResponseWithString(WebServiceConstants.METHOD_CARDIO_SHOW_REPORT,
-                            cardiolopulmonary.toString(), new WebServices.IRequestWebResponseWithStringDataCallBack() {
-                                @Override
-                                public void requestDataResponse(WebResponse<String> webResponse) {
-                                    String fileName = cardiolopulmonary.getDetailReportID();
-
-                                    FileManager.writeResponseBodyToDisk(webResponse.result, fileName, AppConstants.getUserFolderPath(getContext()));
-
-                                    final File file = new File(AppConstants.getUserFolderPath(getContext())
-                                            + "/" + fileName);
-
-                                    new Handler().postDelayed(new Runnable() {
-                                        @Override
-                                        public void run() {
-                                            FileManager.openFile(getContext(), file);
-                                        }
-                                    }, 300);
+        new WebServices(getBaseActivity(), WebServiceConstants.temporaryToken, BaseURLTypes.AHFA_BASE_URL)
+                .webServiceRequestAPIForWebResponseWithString(WebServiceConstants.METHOD_CARDIO_SHOW_REPORT,
+                        cardiolopulmonary.toString(), new WebServices.IRequestWebResponseWithStringDataCallBack() {
+                            @Override
+                            public void requestDataResponse(WebResponse<String> webResponse) {
+//                                String fileName = cardiolopulmonary.getDetailReportID();
+                                String fileName = AppConstants.FILE_NAME + DateManager.getTime(DateManager.getCurrentMillis());
 
 
-                                }
+                                FileManager.writeResponseBodyToDisk(webResponse.result, fileName, AppConstants.getUserFolderPath(getContext()));
 
-                                @Override
-                                public void onError() {
+                                final File file = new File(AppConstants.getUserFolderPath(getContext())
+                                        + "/" + fileName);
+
+                                new Handler().postDelayed(new Runnable() {
+                                    @Override
+                                    public void run() {
+                                        FileManager.openFile(getContext(), file);
+                                    }
+                                }, 300);
 
 
-                                }
                             }
-                    );
-        }
 
+                            @Override
+                            public void onError() {
+
+
+                            }
+                        }
+                );
     }
 
     private void serviceCall() {
         // FIXME: 1/18/2018 Use live data in future
         SearchModel model = new SearchModel();
-//        model.setMRNumber(WebServiceConstants.tempMRN);
         model.setMRNumber(WebServiceConstants.tempMRN_Cardio);
         model.setVisitID(null);
         new WebServices(getBaseActivity(),

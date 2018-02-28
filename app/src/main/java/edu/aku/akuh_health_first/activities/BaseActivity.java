@@ -3,11 +3,13 @@ package edu.aku.akuh_health_first.activities;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 
 
+import edu.aku.akuh_health_first.R;
 import edu.aku.akuh_health_first.fragments.LeftSideMenuFragment;
 import edu.aku.akuh_health_first.fragments.abstracts.GenericClickableInterface;
 import edu.aku.akuh_health_first.fragments.abstracts.GenericDialogFragment;
@@ -125,12 +127,17 @@ public abstract class BaseActivity extends AppCompatActivity {
     }
 
     public void addDockableFragment(Fragment fragment) {
-        getSupportFragmentManager().beginTransaction().replace(getDockableFragmentId(), fragment).addToBackStack(fragment.getClass().getSimpleName())
+        FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
+        fragmentTransaction.setCustomAnimations(R.anim.slide_in_right, R.anim.slide_out_left);
+        fragmentTransaction.replace(getDockableFragmentId(), fragment).addToBackStack(fragment.getClass().getSimpleName())
                 .commit();
     }
 
     public void replacePermanentFramgment(Fragment fragment) {
-        getSupportFragmentManager().beginTransaction().replace(getPermanentViewId(), fragment).addToBackStack(fragment.getClass().getSimpleName())
+        FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
+        fragmentTransaction.setCustomAnimations(R.anim.slide_in_right, R.anim.slide_out_left);
+
+        fragmentTransaction.replace(getPermanentViewId(), fragment).addToBackStack(fragment.getClass().getSimpleName())
                 .commit();
     }
 
