@@ -1111,6 +1111,7 @@
     <color name="fab_color_shadow">#44000000</color>
     <color name="gallery_item_background">#ddd</color>
     <color name="pin_normal">#6B767E</color>
+    <color name="base_background">#EAEAF0</color>
 
 
 </resources>
