@@ -44,7 +44,7 @@
                         android:layout_width="@dimen/x130dp"
                         android:layout_height="@dimen/x130dp"
                         android:scaleType="centerCrop"
-                        android:src="@drawable/hh_lab" />
+                        android:src="@drawable/clinical_labortaory" />
 
                     <edu.aku.akuh_health_first.views.AnyTextView
 
@@ -89,7 +89,7 @@
                         android:layout_width="@dimen/x130dp"
                         android:layout_height="@dimen/x130dp"
                         android:scaleType="centerCrop"
-                        android:src="@drawable/hh_radiology" />
+                        android:src="@drawable/radiology" />
 
                     <edu.aku.akuh_health_first.views.AnyTextView
 
@@ -147,7 +147,7 @@
                         android:layout_height="@dimen/x130dp"
                         android:scaleType="centerCrop"
 
-                        android:src="@drawable/hh_medicalprofile" />
+                        android:src="@drawable/medication" />
 
                     <edu.aku.akuh_health_first.views.AnyTextView
 
@@ -195,7 +195,7 @@
                         android:layout_height="@dimen/x130dp"
                         android:scaleType="centerCrop"
 
-                        android:src="@drawable/hh_immunization" />
+                        android:src="@drawable/immunization" />
 
                     <edu.aku.akuh_health_first.views.AnyTextView
 
@@ -253,7 +253,7 @@
                         android:layout_height="@dimen/x130dp"
                         android:scaleType="centerCrop"
 
-                        android:src="@drawable/hh_cardio" />
+                        android:src="@drawable/cardiopulmonary" />
 
                     <edu.aku.akuh_health_first.views.AnyTextView
 
@@ -301,7 +301,7 @@
                         android:layout_height="@dimen/x130dp"
                         android:scaleType="centerCrop"
 
-                        android:src="@drawable/hh_neuro" />
+                        android:src="@drawable/neurophysiology" />
 
                     <edu.aku.akuh_health_first.views.AnyTextView
 
@@ -357,7 +357,7 @@
                         android:layout_width="@dimen/x130dp"
                         android:layout_height="@dimen/x130dp"
                         android:scaleType="centerCrop"
-                        android:src="@drawable/hh_endo" />
+                        android:src="@drawable/endoscopy" />
 
                     <edu.aku.akuh_health_first.views.AnyTextView
 
@@ -405,7 +405,7 @@
                         android:layout_height="@dimen/x130dp"
                         android:scaleType="centerCrop"
 
-                        android:src="@drawable/hh_summary" />
+                        android:src="@drawable/discharge_summary" />
 
                     <edu.aku.akuh_health_first.views.AnyTextView
 

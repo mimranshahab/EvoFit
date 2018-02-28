@@ -3,6 +3,7 @@ package edu.aku.akuh_health_first.fragments;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.widget.DrawerLayout;
+import android.support.v7.widget.CardView;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -31,46 +32,61 @@ import edu.aku.akuh_health_first.managers.retrofit.WebServices;
 import edu.aku.akuh_health_first.models.SearchModel;
 import edu.aku.akuh_health_first.models.wrappers.MenuModel;
 import edu.aku.akuh_health_first.models.wrappers.WebResponse;
-import edu.aku.akuh_health_first.views.AnyTextView;
 
 public class HealthHistoryFragment extends BaseFragment {
 
 
     private static final String IS_FROM_VISIT_TIMELINE = "isVisitTimeline";
     private static final String VISIT_ID = "patientVisitAdmissionID";
-    @BindView(R.id.btnClinicalLab)
-    AnyTextView btnClinicalLab;
-    @BindView(R.id.btnRadiology)
-    AnyTextView btnRadiology;
-    @BindView(R.id.btnMedProf)
-    AnyTextView btnMedProf;
-    @BindView(R.id.btnImmunizationProfile)
-    AnyTextView btnImmunizationProfile;
-    @BindView(R.id.btnCardio)
-    AnyTextView btnCardio;
-    @BindView(R.id.btnNeurophysiology)
-    AnyTextView btnNeurophysiology;
-    @BindView(R.id.btnEndoscopy)
-    AnyTextView btnEndoscopy;
-    @BindView(R.id.btnDischargeSummary)
-    AnyTextView btnDischargeSummary;
+    //    @BindView(R.id.btnClinicalLab)
+//    AnyTextView btnClinicalLab;
+//    @BindView(R.id.btnRadiology)
+//    AnyTextView btnRadiology;
+//    @BindView(R.id.btnMedProf)
+//    AnyTextView btnMedProf;
+//    @BindView(R.id.btnImmunizationProfile)
+//    AnyTextView btnImmunizationProfile;
+//    @BindView(R.id.btnCardio)
+//    AnyTextView btnCardio;
+//    @BindView(R.id.btnNeurophysiology)
+//    AnyTextView btnNeurophysiology;
+//    @BindView(R.id.btnEndoscopy)
+//    AnyTextView btnEndoscopy;
+//    @BindView(R.id.btnDischargeSummary)
+//    AnyTextView btnDischargeSummary;
     Unbinder unbinder;
+//    @BindView(R.id.contLab)
+//    LinearLayout contLab;
+//    @BindView(R.id.contRadiology)
+//    LinearLayout contRadiology;
+//    @BindView(R.id.contMedicalProfile)
+//    LinearLayout contMedicalProfile;
+//    @BindView(R.id.contImmunization)
+//    LinearLayout contImmunization;
+//    @BindView(R.id.contCardio)
+//    LinearLayout contCardio;
+//    @BindView(R.id.contNeuroPhysiology)
+//    LinearLayout contNeuroPhysiology;
+//    @BindView(R.id.contEndo)
+//    LinearLayout contEndo;
+//    @BindView(R.id.contSummary)
+//    LinearLayout contSummary;
     @BindView(R.id.contLab)
-    LinearLayout contLab;
+    CardView contLab;
     @BindView(R.id.contRadiology)
-    LinearLayout contRadiology;
+    CardView contRadiology;
     @BindView(R.id.contMedicalProfile)
-    LinearLayout contMedicalProfile;
+    CardView contMedicalProfile;
     @BindView(R.id.contImmunization)
-    LinearLayout contImmunization;
+    CardView contImmunization;
     @BindView(R.id.contCardio)
-    LinearLayout contCardio;
+    CardView contCardio;
     @BindView(R.id.contNeuroPhysiology)
-    LinearLayout contNeuroPhysiology;
+    CardView contNeuroPhysiology;
     @BindView(R.id.contEndo)
-    LinearLayout contEndo;
+    CardView contEndo;
     @BindView(R.id.contSummary)
-    LinearLayout contSummary;
+    CardView contSummary;
     private boolean isVisitTimeline;
     private List<MenuModel> arrData;
     private ArrayList<String> tempArr;
@@ -83,7 +99,7 @@ public class HealthHistoryFragment extends BaseFragment {
         HealthHistoryFragment fragment = new HealthHistoryFragment();
         fragment.setArguments(args);
         args.putBoolean(IS_FROM_VISIT_TIMELINE, isVisitTimeline);
-        args.putInt(VISIT_ID,patientVisitAdmissionID);
+        args.putInt(VISIT_ID, patientVisitAdmissionID);
         return fragment;
     }
 
@@ -110,7 +126,7 @@ public class HealthHistoryFragment extends BaseFragment {
     private void serviceCall() {
         SearchModel model = new SearchModel();
         model.setMRNumber(WebServiceConstants.tempMRN_LAB);
-        model.setVisitID(patientVisitAdmissionID+"");
+        model.setVisitID(patientVisitAdmissionID + "");
         new WebServices(getBaseActivity(),
                 WebServiceConstants.temporaryToken,
                 BaseURLTypes.AHFA_BASE_URL)
@@ -188,21 +204,22 @@ public class HealthHistoryFragment extends BaseFragment {
             }
         }
     }
-        private void tempArray () {
-            tempArr = new ArrayList<String>();
-            tempArr.add("Discharge Summary");
-            tempArr.add("Clinical Laboratory");
-            tempArr.add("Medication Profile");
-            tempArr.add("Immunization Profile");
-            tempArr.add("Cardiopulmonary");
-            tempArr.add("Neurophysiology");
-            tempArr.add("Endoscopy");
-            tempArr.add("Radiology");
-        }
+
+    private void tempArray() {
+        tempArr = new ArrayList<String>();
+        tempArr.add("Discharge Summary");
+        tempArr.add("Clinical Laboratory");
+        tempArr.add("Medication Profile");
+        tempArr.add("Immunization Profile");
+        tempArr.add("Cardiopulmonary");
+        tempArr.add("Neurophysiology");
+        tempArr.add("Endoscopy");
+        tempArr.add("Radiology");
+    }
 
     @Override
     protected int getFragmentLayout() {
-        return R.layout.fragment_health_history;
+        return R.layout.fragment_health_historyv1;
     }
 
     @Override
