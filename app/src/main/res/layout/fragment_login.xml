@@ -22,17 +22,14 @@
 
             <ImageView
                 android:layout_width="wrap_content"
-                android:layout_height="@dimen/x100dp"
-                android:layout_marginLeft="@dimen/x25dp"
-                android:layout_marginRight="@dimen/x25dp"
+                android:layout_height="wrap_content"
                 android:gravity="center"
-                android:scaleType="centerInside"
-                android:src="@drawable/logo_healthfirst" />
+                 android:src="@drawable/login_logo" />
 
             <edu.aku.akuh_health_first.views.AnyTextView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_marginBottom="@dimen/x40dp"
+                android:layout_marginBottom="@dimen/x30dp"
                 android:gravity="center"
                 android:text="Access to Medical Information"
                 android:textColor="@color/base_amber"
@@ -45,15 +42,15 @@
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="@dimen/x15dp"
                 android:background="@drawable/rounded_box"
-                android:drawableLeft="@drawable/imgemail_icon"
-                android:drawablePadding="@dimen/x10dp"
+                android:drawableLeft="@drawable/user_icon"
+                android:drawablePadding="@dimen/x5dp"
                 android:hint="@string/user_id"
                 android:inputType="text"
                 android:maxLength="30"
-                android:paddingBottom="@dimen/x5dp"
-                android:paddingLeft="@dimen/x15dp"
-                android:paddingRight="@dimen/x15dp"
-                android:paddingTop="@dimen/x5dp"
+                android:paddingBottom="@dimen/x8dp"
+                android:paddingLeft="@dimen/x10dp"
+                android:paddingRight="@dimen/x10dp"
+                android:paddingTop="@dimen/x8dp"
                 android:singleLine="true"
                 android:textColor="@color/text_color_grey_dark"
                 android:textColorHint="@color/text_hint"
@@ -67,15 +64,15 @@
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="@dimen/x20dp"
                 android:background="@drawable/rounded_box"
-                android:drawableLeft="@drawable/imgpassword"
-                android:drawablePadding="@dimen/x10dp"
+                android:drawableLeft="@drawable/password_icon"
+                android:drawablePadding="@dimen/x5dp"
                 android:hint="@string/password"
                 android:inputType="textPassword"
                 android:maxLength="30"
-                android:paddingBottom="@dimen/x5dp"
-                android:paddingLeft="@dimen/x18dp"
-                android:paddingRight="@dimen/x15dp"
-                android:paddingTop="@dimen/x5dp"
+                android:paddingBottom="@dimen/x8dp"
+                android:paddingLeft="@dimen/x10dp"
+                android:paddingRight="@dimen/x10dp"
+                android:paddingTop="@dimen/x8dp"
                 android:singleLine="true"
                 android:textColor="@color/text_color_grey_dark"
                 android:textColorHint="@color/text_hint"
@@ -102,7 +99,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="@dimen/x10dp"
-                android:alpha="0.7"
+                android:alpha="0.5"
                 android:gravity="center">
 
                 <ImageView
@@ -134,12 +131,11 @@
             <com.ctrlplusz.anytextview.AnyTextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="@dimen/x10dp"
+                android:layout_marginBottom="@dimen/x15dp"
                 android:gravity="center_horizontal"
                 android:text="Don't have an account?"
-                android:textAllCaps="false"
                 android:textColor="#004F72"
-
+                android:textSize="@dimen/s14"
                 app:typeface="@string/font_regular" />
 
 
@@ -147,14 +143,13 @@
                 android:id="@+id/txtSignUp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="@dimen/x10dp"
-                android:drawablePadding="@dimen/x8dp"
-                android:drawableRight="@drawable/icon_login_next"
+                android:layout_marginBottom="@dimen/x15dp"
+                android:drawablePadding="@dimen/x5dp"
+                android:drawableRight="@drawable/signup"
                 android:gravity="center"
                 android:text="Sign Up"
-                android:textAllCaps="false"
                 android:textColor="#004F72"
-                android:textSize="@dimen/s25"
+                android:textSize="@dimen/s23"
                 app:typeface="@string/font_bold" />
 
 
@@ -163,9 +158,9 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:alpha="0.8"
-                android:gravity="right"
                 android:text="@string/forgot_password"
                 android:textColor="@color/c_white"
+                android:textSize="@dimen/s14"
                 app:typeface="@string/font_bold" />
 
         </LinearLayout>
