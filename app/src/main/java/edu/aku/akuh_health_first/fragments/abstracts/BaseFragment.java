@@ -1,6 +1,7 @@
 package edu.aku.akuh_health_first.fragments.abstracts;
 
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -17,15 +18,20 @@ import android.widget.TextView;
 
 import edu.aku.akuh_health_first.activities.BaseActivity;
 import edu.aku.akuh_health_first.callbacks.OnNewPacketReceivedListener;
+import edu.aku.akuh_health_first.constatnts.AppConstants;
 import edu.aku.akuh_health_first.helperclasses.ui.helper.KeyboardHide;
 import edu.aku.akuh_health_first.helperclasses.ui.helper.TitleBar;
 import edu.aku.akuh_health_first.helperclasses.ui.helper.UIHelper;
 import edu.aku.akuh_health_first.BaseApplication;
 
+import java.io.File;
 import java.text.NumberFormat;
 
+import edu.aku.akuh_health_first.managers.DateManager;
+import edu.aku.akuh_health_first.managers.FileManager;
 import edu.aku.akuh_health_first.managers.SharedPreferenceManager;
 import edu.aku.akuh_health_first.models.receiving_model.UserDetailModel;
+import edu.aku.akuh_health_first.models.wrappers.WebResponse;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.annotations.NonNull;
 import io.reactivex.disposables.Disposable;
@@ -199,6 +205,23 @@ public abstract class BaseFragment extends Fragment implements View.OnClickListe
         UIHelper.showToast(getContext(), "This feature will be implemented in next build");
     }
 
+
+    public void saveAndOpenFile(WebResponse<String> webResponse) {
+        String fileName = AppConstants.FILE_NAME + DateManager.getTime(DateManager.getCurrentMillis()) + ".pdf";
+
+        String path = FileManager.writeResponseBodyToDisk(getContext(), webResponse.result, fileName, AppConstants.getUserFolderPath(getContext()), true , true);
+
+//                                final File file = new File(AppConstants.getUserFolderPath(getContext())
+//                                        + "/" + fileName + ".pdf");
+        final File file = new File(path);
+
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                FileManager.openFile(getContext(), file);
+            }
+        }, 100);
+    }
 
 //    public ResideMenu getResideMenu() {
 //        return getBaseActivity().getResideMenu();

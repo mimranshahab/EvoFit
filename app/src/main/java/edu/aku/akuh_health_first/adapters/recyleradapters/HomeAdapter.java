@@ -52,8 +52,8 @@ public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.ViewHolder> {
 //        ImageLoader.getInstance().displayImage(users.get(i).getImageUrl(), holder.imgUser);
         holder.txtName.setText(user.getName());
         holder.txtMRN.setText(user.getMRNumber());
-        holder.txtGenderAge.setText(user.getGender() + " / " + user.getAge());
-        holder.txtRelation.setText(user.getRelationshipDescription());
+        holder.txtGenderAge.setText(user.getGenderDescription() + " / " + user.getAge());
+        holder.txtRelation.setText("(" + user.getRelationshipDescription() + ")");
 
         if (user.getGender().equals("F")) {
             holder.imgUser.setImageResource(R.drawable.female_icon);
@@ -106,6 +106,7 @@ public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.ViewHolder> {
         LinearLayout contListItem;
         @BindView(R.id.cardView2)
         CardView cardView2;
+
         ViewHolder(View view) {
             super(view);
             ButterKnife.bind(this, view);

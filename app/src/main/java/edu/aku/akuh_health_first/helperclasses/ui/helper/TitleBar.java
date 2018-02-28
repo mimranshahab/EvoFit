@@ -145,7 +145,7 @@ public class TitleBar extends RelativeLayout {
 
     public void showSidebar(final BaseActivity mActivity) {
         this.btnLeft1.setVisibility(VISIBLE);
-        this.btnLeft1.setImageResource(R.drawable.imgside_nav);
+        this.btnLeft1.setImageResource(R.drawable.menu_icon);
         btnLeft1.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {

@@ -165,22 +165,7 @@ public class NeurophysiologyFragment extends BaseFragment implements View.OnClic
                             @Override
                             public void requestDataResponse(WebResponse<String> webResponse) {
 //                                String fileName = neurophysiology.getDetailReportID();
-
-                                String fileName = AppConstants.FILE_NAME + DateManager.getTime(DateManager.getCurrentMillis());
-
-                                FileManager.writeResponseBodyToDisk(webResponse.result, fileName, AppConstants.getUserFolderPath(getContext()));
-
-                                final File file = new File(AppConstants.getUserFolderPath(getContext())
-                                        + "/" + fileName);
-
-                                new Handler().postDelayed(new Runnable() {
-                                    @Override
-                                    public void run() {
-                                        FileManager.openFile(getContext(), file);
-                                    }
-                                }, 300);
-
-
+                                saveAndOpenFile(webResponse);
                             }
 
                             @Override
@@ -191,6 +176,8 @@ public class NeurophysiologyFragment extends BaseFragment implements View.OnClic
                         }
                 );
     }
+
+
 
     private void serviceCall() {
         // FIXME: 1/18/2018 Use live data in future

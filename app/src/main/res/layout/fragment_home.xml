@@ -39,37 +39,53 @@
             android:orientation="vertical"
             android:padding="@dimen/x10dp">
 
-            <LinearLayout
+            <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_marginTop="@dimen/x40dp"
-                android:gravity="center"
                 android:orientation="horizontal">
 
-                <edu.aku.akuh_health_first.views.AnyTextView
-                    android:id="@+id/txtName"
+                <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:gravity="center_vertical"
-                    android:text="Asma Ali "
-                    android:padding="@dimen/x5dp"
-                    android:textColor="@color/c_white"
-                    android:textSize="@dimen/s16"
-                    app:typeface="@string/font_bold" />
+                    android:layout_centerInParent="true">
 
 
-                <edu.aku.akuh_health_first.views.AnyTextView
-                    android:id="@+id/txtRelation"
+                    <edu.aku.akuh_health_first.views.AnyTextView
+                        android:id="@+id/txtName"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_marginRight="@dimen/x5dp"
+                        android:gravity="center_vertical"
+                        android:text="Name"
+                        android:textColor="@color/c_white"
+                        android:textSize="@dimen/s16"
+                        app:typeface="@string/font_bold" />
+
+
+                    <edu.aku.akuh_health_first.views.AnyTextView
+                        android:id="@+id/txtRelation"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="center"
+                        android:gravity="center_vertical"
+                        android:text="(SUBSCRIBER)"
+                        android:textColor="@color/c_white"
+                        android:textSize="@dimen/x12dp"
+                        app:typeface="@string/font_regular" />
+
+
+                </LinearLayout>
+
+
+                <ImageView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:gravity="center_vertical"
-                    android:padding="@dimen/x5dp"
-                    android:text="(Daughter)"
-                    android:textColor="@color/c_white"
-                    android:textSize="@dimen/x12dp"
-                    app:typeface="@string/font_regular" />
+                    android:layout_alignParentEnd="true"
+                    android:layout_centerVertical="true"
+                    android:src="@drawable/img_go" />
 
-            </LinearLayout>
+            </RelativeLayout>
 
             <edu.aku.akuh_health_first.views.AnyTextView
                 android:id="@+id/txtMRN"
@@ -99,12 +115,10 @@
             android:layout_centerHorizontal="true"
             android:layout_gravity="center"
             android:layout_marginBottom="-50dp"
-            android:padding="@dimen/x1dp"
             android:scaleType="centerCrop"
-            android:src="@drawable/user_image"
+            android:src="@drawable/male_icon_filled"
             app:civ_border_color="@color/c_white"
-            app:civ_border_width="@dimen/x2dp"
-
+            app:civ_border_width="@dimen/x3dp"
 
             />
 
@@ -116,15 +130,15 @@
     <edu.aku.akuh_health_first.views.AnyTextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:drawableLeft="@drawable/family_icon"
-        android:padding="@dimen/x5dp"
-        android:layout_marginTop="@dimen/x7dp"
         android:layout_marginLeft="@dimen/x5dp"
         android:layout_marginRight="@dimen/x5dp"
+        android:layout_marginTop="@dimen/x7dp"
+        android:drawableLeft="@drawable/family_icon"
+        android:drawablePadding="@dimen/x5dp"
+        android:padding="@dimen/x5dp"
         android:text="Family Members"
         android:textColor="@color/colorPrimary"
         android:textSize="16sp"
-        android:drawablePadding="@dimen/x5dp"
         app:typeface="@string/font_bold"
 
         />

@@ -90,7 +90,7 @@ public class HomeDetailFragment extends BaseFragment {
         unbinder.unbind();
     }
 
-    @OnClick({R.id.contSummary, R.id.contHistory, R.id.contProfile, R.id.contTimeline, R.id.contDownloadedFile})
+    @OnClick({R.id.contSummary, R.id.contHistory, R.id.contProfile, R.id.contTimeline})
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.contSummary:
@@ -104,10 +104,6 @@ public class HomeDetailFragment extends BaseFragment {
                 break;
             case R.id.contTimeline:
                 getBaseActivity().addDockableFragment(TimelineFragment.newInstance());
-                break;
-
-            case R.id.contDownloadedFile:
-                getBaseActivity().addDockableFragment(MyDocumentsFragment.newInstance());
                 break;
         }
     }

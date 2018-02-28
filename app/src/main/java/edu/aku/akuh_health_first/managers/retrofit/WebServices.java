@@ -68,7 +68,7 @@ public class WebServices {
         mDialog = new ProgressDialog(mContext);
         mDialog.setMessage("Loading.....");
         mDialog.setTitle("Please Wait");
-        mDialog.setCancelable(true);
+        mDialog.setCancelable(false);
 
         if (!((Activity) mContext).isFinishing())
             mDialog.show();

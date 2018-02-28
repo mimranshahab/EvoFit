@@ -12,6 +12,7 @@ import android.widget.Toast;
 
 
 import edu.aku.akuh_health_first.constatnts.AppConstants;
+import edu.aku.akuh_health_first.helperclasses.ui.helper.UIHelper;
 import edu.aku.akuh_health_first.utils.LogUtil;
 
 import java.io.File;
@@ -48,47 +49,47 @@ public class FileManager {
             innerDirectory.mkdir();
 
     }
-
-    /**
-     * Avatar is the location on which it saved picture
-     *
-     * @param avatar
-     * @param thumbnail
-     * @return
-     */
-    public static File createProfileImage(String avatar, boolean thumbnail, Context context) {
-        if (avatar == null || avatar.equals(""))
-            return null;
-
-        try {
-            avatar = avatar.substring(0, avatar.lastIndexOf(".")) + ".j";
-        } catch (Exception e) {
-//            e.printStackTrace();
-            return null;
-        }
-        ContextWrapper cw = new ContextWrapper(context);
-        File directory;
-
-        if (thumbnail)
-            directory = cw.getDir("userProfile", Context.MODE_PRIVATE);
-        else
-            directory = cw.getCacheDir();
-
-        if (!directory.exists()) {
-            directory.mkdir();
-        }
-
-        String filename = URLUtil.guessFileName(avatar, null, null);
-        File imageFile = new File(directory, filename);
-        if (!imageFile.exists())
-            try {
-                imageFile.createNewFile();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        return imageFile;
-    }
-
+//
+//    /**
+//     * Avatar is the location on which it saved picture
+//     *
+//     * @param avatar
+//     * @param thumbnail
+//     * @return
+//     */
+//    public static File createProfileImage(String avatar, boolean thumbnail, Context context) {
+//        if (avatar == null || avatar.equals(""))
+//            return null;
+//
+//        try {
+//            avatar = avatar.substring(0, avatar.lastIndexOf(".")) + ".j";
+//        } catch (Exception e) {
+////            e.printStackTrace();
+//            return null;
+//        }
+//        ContextWrapper cw = new ContextWrapper(context);
+//        File directory;
+//
+//        if (thumbnail)
+//            directory = cw.getDir("userProfile", Context.MODE_PRIVATE);
+//        else
+//            directory = cw.getCacheDir();
+//
+//        if (!directory.exists()) {
+//            directory.mkdir();
+//        }
+//
+//        String filename = URLUtil.guessFileName(avatar, null, null);
+//        File imageFile = new File(directory, filename);
+//        if (!imageFile.exists())
+//            try {
+//                imageFile.createNewFile();
+//            } catch (IOException e) {
+//                e.printStackTrace();
+//            }
+//        return imageFile;
+//    }
+//
 //    public static File getUserImage(String avatar, boolean thumbnail, Context context) {
 //        if (avatar == null || avatar.equals(""))
 //            return null;
@@ -105,8 +106,47 @@ public class FileManager {
 //
 //        if (thumbnail) {
 //            directory = cw.getDir(AppConstants.USER_PROFILE_PICTURE_FOLDER_DIRECTORY, Context.MODE_PRIVATE);
+//        } else {
+//            directory = cw.getCacheDir();
+//            avatar = avatar.replace(AppConstants.SUFFIX_THUMB_IMAGE, "");
 //        }
-//        else {
+//
+//        if (!directory.exists()) {
+//            return null;
+//        }
+//        String filename = URLUtil.guessFileName(avatar, null, null);
+//        File imageFile = new File(directory, filename);
+//        if (!imageFile.exists())
+//            return null;
+//        return imageFile;
+//    }
+//
+//    public static File getMyImage(boolean isThumbnail, Context context) {
+//        ContextWrapper cw = new ContextWrapper(context);
+//        if (isThumbnail)
+//            return new File(cw.getDir(AppConstants.USER_PROFILE_PICTURE_FOLDER_DIRECTORY, Context.MODE_PRIVATE), AppConstants.USER_PROFILE_THUMBNAIL_NAME);
+//        else
+//            return new File(cw.getDir(AppConstants.USER_PROFILE_PICTURE_F OLDER_DIRECTORY, Context.MODE_PRIVATE), AppConstants.USER_PROFILE_PICTURE_NAME);
+//    }
+
+
+    //    public static File getUserImage(String avatar, boolean thumbnail, Context context) {
+//        if (avatar == null || avatar.equals(""))
+//            return null;
+//
+//        // FIXME: 8/18/2017  :  REMOVE NULL POINTER EXCEPTION // CONVERT TO JPG
+//        try {
+//            avatar = avatar.substring(0, avatar.lastIndexOf(".")) + ".j";
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//            return null;
+//        }
+//        ContextWrapper cw = new ContextWrapper(context);
+//        File directory;
+//
+//        if (thumbnail) {
+//            directory = cw.getDir(AppConstants.USER_PROFILE_PICTURE_FOLDER_DIRECTORY, Context.MODE_PRIVATE);
+//        } else {
 //            directory = cw.getCacheDir();
 //            avatar = avatar.replace(AppConstants.SUFFIX_THUMB_IMAGE, "");
 //        }
@@ -121,25 +161,33 @@ public class FileManager {
 //        return imageFile;
 //    }
 
-//    public static File getMyImage(boolean isThumbnail, Context context) {
-//        ContextWrapper cw = new ContextWrapper(context);
-//        if (isThumbnail)
-//            return new File(cw.getDir(AppConstants.USER_PROFILE_PICTURE_FOLDER_DIRECTORY, Context.MODE_PRIVATE), AppConstants.USER_PROFILE_THUMBNAIL_NAME);
-//        else
-//            return new File(cw.getDir(AppConstants.USER_PROFILE_PICTURE_F OLDER_DIRECTORY, Context.MODE_PRIVATE), AppConstants.USER_PROFILE_PICTURE_NAME);
-//    }
+    public static String writeResponseBodyToDisk(Context context, String body, String fileName, String directoryPath, boolean isSaveInCache, boolean isSaveInExternalCache) {
+        File file;
+        if (isSaveInCache) {
+            ContextWrapper cw = new ContextWrapper(context);
+            File directory;
+            if (isSaveInExternalCache) {
+                directory = cw.getExternalCacheDir();
+            } else {
+                directory = cw.getCacheDir();
+            }
+            if (!directory.exists()) {
+                directory.mkdir();
+            }
 
-    public static void writeResponseBodyToDisk(String body, String fileName, String directoryPath) {
+            file = new File(directory, fileName);
 
-        createDirectory(directoryPath);
+        } else {
+            createDirectory(directoryPath);
+            file = new File(directoryPath
+                    + "/" + fileName);
+        }
 
-        File dwldsPath = new File(directoryPath
-                + "/" + fileName);
 
         byte[] pdfAsBytes = Base64.decode(body, 0);
         FileOutputStream os;
         try {
-            os = new FileOutputStream(dwldsPath, false);
+            os = new FileOutputStream(file, false);
             os.write(pdfAsBytes);
             os.flush();
             os.close();
@@ -148,8 +196,7 @@ public class FileManager {
         } catch (IOException e) {
             e.printStackTrace();
         }
-
-
+        return file.getAbsolutePath();
     }
 
     public static boolean isFileExits(String path) {
@@ -304,6 +351,10 @@ public class FileManager {
 
 
     public static void openFile(Context context, File url) {
+        if (url == null) {
+            UIHelper.showToast(context, "File is null");
+            return;
+        }
 
         try {
 
