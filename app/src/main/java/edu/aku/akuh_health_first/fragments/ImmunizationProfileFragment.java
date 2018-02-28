@@ -103,7 +103,8 @@ public class ImmunizationProfileFragment extends BaseFragment implements View.On
 
     private void bindView() {
         RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getBaseActivity());
-//        RecyclerView.LayoutManager mLayoutManager = new GridLayoutManager(getBaseActivity(),3);
+        // FIXME: 2/28/2018 NullPointerException:
+        // FIXME: Attempt to invoke virtual method 'void android.support.v7.widget.RecyclerView.setLayoutManager
         recyclerView.setLayoutManager(mLayoutManager);
         ((DefaultItemAnimator) recyclerView.getItemAnimator()).setSupportsChangeAnimations(false);
         int resId = R.anim.layout_animation_fall_bottom;

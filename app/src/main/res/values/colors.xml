@@ -12,12 +12,13 @@
 
     <!-- App color AKUHF -->
 
-    <color name="base_reddish">#D13535</color>
+    <color name="base_reddish">#D52B29</color>
     <color name="bg_color">#E8E8E8</color>
     <color name="base_grey">#394752</color>
     <color name="base_amber">#FF8200</color>
-    <color name="base_blue">#19BBDE</color>
+    <color name="base_blue">#1DB9D9</color>
     <color name="base_dark_blue">#19BBDE</color>
+    <color name="base_green">#63A509</color>
 
     <color name="colorPrimaryHalfTransparent">#4419BBDE</color>
     <color name="divider">#BDBDBD</color>

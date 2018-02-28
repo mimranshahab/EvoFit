@@ -96,6 +96,7 @@ public class ClinicalLaboratoryFragment extends BaseFragment implements View.OnC
 
     private void bindView() {
         RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getBaseActivity());
+        // FIXME: 2/28/2018 Crash
         recyclerNeurophysiology.setLayoutManager(mLayoutManager);
         ((DefaultItemAnimator) recyclerNeurophysiology.getItemAnimator()).setSupportsChangeAnimations(false);
         int resId = R.anim.layout_animation_fall_bottom;
