@@ -34,6 +34,7 @@ import edu.aku.akuh_health_first.enums.BaseURLTypes;
 import edu.aku.akuh_health_first.fragments.abstracts.BaseFragment;
 import edu.aku.akuh_health_first.helperclasses.ui.helper.TitleBar;
 import edu.aku.akuh_health_first.helperclasses.ui.helper.UIHelper;
+import edu.aku.akuh_health_first.managers.DateManager;
 import edu.aku.akuh_health_first.managers.FileManager;
 import edu.aku.akuh_health_first.managers.retrofit.GsonFactory;
 import edu.aku.akuh_health_first.managers.retrofit.WebServices;
@@ -152,25 +153,7 @@ public class NeurophysiologyFragment extends BaseFragment implements View.OnClic
     public void onItemClick(int position, Object object) {
         if (object instanceof Neurophysiology) {
             final Neurophysiology neurophysiology = (Neurophysiology) object;
-
-            String fileName = neurophysiology.getDetailReportID();
-            final File file = new File(AppConstants.getUserFolderPath(getContext())
-                    + "/" + fileName);
-
-            if (FileManager.isFileExits(file.getPath())) {
-
-//                UIHelper.showToast(getContext(), "File already exist");
-                new Handler().postDelayed(new Runnable() {
-                    @Override
-                    public void run() {
-                        FileManager.openFile(getContext(), file);
-                    }
-                }, 300);
-            } else {
-                showReportAPI(neurophysiology);
-            }
-
-
+            showReportAPI(neurophysiology);
         }
 
     }
@@ -181,7 +164,9 @@ public class NeurophysiologyFragment extends BaseFragment implements View.OnClic
                         neurophysiology.toString(), new WebServices.IRequestWebResponseWithStringDataCallBack() {
                             @Override
                             public void requestDataResponse(WebResponse<String> webResponse) {
-                                String fileName = neurophysiology.getDetailReportID();
+//                                String fileName = neurophysiology.getDetailReportID();
+
+                                String fileName = AppConstants.FILE_NAME + DateManager.getTime(DateManager.getCurrentMillis());
 
                                 FileManager.writeResponseBodyToDisk(webResponse.result, fileName, AppConstants.getUserFolderPath(getContext()));
 

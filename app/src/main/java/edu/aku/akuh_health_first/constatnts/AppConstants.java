@@ -3,8 +3,11 @@ package edu.aku.akuh_health_first.constatnts;
 import android.content.Context;
 import android.os.Environment;
 
+import java.util.Calendar;
+
 import edu.aku.akuh_health_first.BaseApplication;
 import edu.aku.akuh_health_first.activities.BaseActivity;
+import edu.aku.akuh_health_first.managers.DateManager;
 import edu.aku.akuh_health_first.managers.SharedPreferenceManager;
 
 
@@ -68,7 +71,5 @@ public class AppConstants {
     public static final String due = "Due";
     public static final String over_due = "Overdue";
 
-    public static String RESOURCE_PART = "Android";
-
-
+    public static String FILE_NAME = "AKUH-PatientReport";
 }

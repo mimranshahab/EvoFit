@@ -69,7 +69,7 @@ public class DateManager {
     }
 
     public static String getTime(long millisecond) {
-        return sdfTimeOuput.format(new Date(millisecond));
+        return sdfUTCOutput.format(new Date(millisecond));
     }
 
 
