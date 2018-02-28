@@ -47,12 +47,11 @@
                     <ImageView
                         android:layout_width="@dimen/x100dp"
                         android:layout_height="@dimen/x100dp"
-                        android:layout_gravity="center"
-                        android:layout_marginLeft="@dimen/x15dp"
+                        android:layout_gravity="center_horizontal"
                         android:padding="@dimen/x10dp"
 
                         android:scaleType="centerCrop"
-                        android:src="@drawable/placeholder" />
+                        android:src="@drawable/health_summary" />
 
                     <edu.aku.akuh_health_first.views.AnyTextView
                         android:layout_width="match_parent"
@@ -110,12 +109,11 @@
                     <ImageView
                         android:layout_width="@dimen/x100dp"
                         android:layout_height="@dimen/x100dp"
-                        android:layout_gravity="center"
-                        android:layout_marginLeft="@dimen/x15dp"
+                        android:layout_gravity="center_horizontal"
                         android:padding="@dimen/x10dp"
 
                         android:scaleType="centerCrop"
-                        android:src="@drawable/placeholder" />
+                        android:src="@drawable/health_history" />
 
                     <edu.aku.akuh_health_first.views.AnyTextView
                         android:layout_width="match_parent"
@@ -154,7 +152,7 @@
             <FrameLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:background="@color/base_amber"
+                android:background="@color/base_blue"
 
                 >
 
@@ -174,10 +172,9 @@
                         android:layout_width="@dimen/x100dp"
                         android:layout_height="@dimen/x100dp"
                         android:layout_gravity="center"
-                        android:layout_marginLeft="@dimen/x15dp"
                         android:padding="@dimen/x10dp"
                         android:scaleType="centerCrop"
-                        android:src="@drawable/placeholder" />
+                        android:src="@drawable/my_profile" />
 
                     <edu.aku.akuh_health_first.views.AnyTextView
                         android:layout_width="match_parent"
@@ -187,7 +184,7 @@
                         android:padding="@dimen/x10dp"
                         android:text="My Profile"
 
-                        android:textColor="@color/base_amber"
+                        android:textColor="@color/base_blue"
                         android:textSize="@dimen/s20"
                         app:typeface="@string/font_bold" />
                 </LinearLayout>
@@ -196,7 +193,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:alpha="0.1"
-                    android:background="@color/base_amber">
+                    android:background="@color/base_blue">
 
                 </LinearLayout>
             </FrameLayout>
@@ -216,7 +213,7 @@
             <FrameLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:background="@color/base_blue"
+                android:background="@color/base_amber"
 
                 >
 
@@ -235,12 +232,11 @@
                     <ImageView
                         android:layout_width="@dimen/x100dp"
                         android:layout_height="@dimen/x100dp"
-                        android:layout_gravity="center"
-                        android:layout_marginLeft="@dimen/x15dp"
+                        android:layout_gravity="center_horizontal"
                         android:padding="@dimen/x10dp"
 
                         android:scaleType="centerCrop"
-                        android:src="@drawable/placeholder" />
+                        android:src="@drawable/visit_timeline" />
 
                     <edu.aku.akuh_health_first.views.AnyTextView
                         android:layout_width="match_parent"
@@ -250,7 +246,7 @@
                         android:padding="@dimen/x10dp"
                         android:text="Visit Timeline"
 
-                        android:textColor="@color/base_blue"
+                        android:textColor="@color/base_amber"
                         android:textSize="@dimen/s20"
                         app:typeface="@string/font_bold" />
                 </LinearLayout>
@@ -259,7 +255,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:alpha="0.1"
-                    android:background="@color/base_blue">
+                    android:background="@color/base_amber">
 
                 </LinearLayout>
             </FrameLayout>
