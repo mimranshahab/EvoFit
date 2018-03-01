@@ -101,16 +101,16 @@ public class WebServices {
         if (response != null && response.body() != null) {
             if (response.body().isSuccess()) {
 
-                //for testing
-//                return true;
+//                for testing
+                return true;
 
-                if (response.body().result.get("RecordFound") == null) {
-                    return false;
-                } else if (response.body().result.get("RecordFound").isJsonNull()) {
-                    return false;
-                } else {
-                    return response.body().result.get("RecordFound").getAsString().equals("true");
-                }
+//                if (response.body().result.get("RecordFound") == null) {
+//                    return false;
+//                } else if (response.body().result.get("RecordFound").isJsonNull()) {
+//                    return false;
+//                } else {
+//                    return response.body().result.get("RecordFound").getAsString().equals("true");
+//                }
             } else {
                 return false;
             }
@@ -125,15 +125,15 @@ public class WebServices {
             if (response.body().isSuccess()) {
 
                 //for testing
-//                return true;
+                return true;
 
-                if (response.body().result.get(0).get("RecordFound") == null) {
-                    return false;
-                } else if (response.body().result.get(0).get("RecordFound").isJsonNull()) {
-                    return false;
-                } else {
-                    return response.body().result.get(0).get("RecordFound").getAsString().equals("true");
-                }
+//                if (response.body().result.get(0).get("RecordFound") == null) {
+//                    return false;
+//                } else if (response.body().result.get(0).get("RecordFound").isJsonNull()) {
+//                    return false;
+//                } else {
+//                    return response.body().result.get(0).get("RecordFound").getAsString().equals("true");
+//                }
             } else {
                 return false;
             }
