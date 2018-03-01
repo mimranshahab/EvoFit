@@ -5,24 +5,22 @@
     android:layout_height="match_parent"
     android:background="@color/base_background"
     android:fillViewport="true"
-    android:padding="@dimen/x5dp"
-   >
 
+    android:padding="@dimen/x5dp">
 
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:padding="@dimen/x4dp"
-        android:weightSum="4"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:padding="@dimen/x8dp"
+    >
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:orientation="horizontal"
             android:layout_weight="1"
-           >
+            android:orientation="horizontal">
 
 
             <android.support.v7.widget.CardView
@@ -42,9 +40,9 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:gravity="center_horizontal"
-                    android:padding="@dimen/x10dp"
-                    android:orientation="vertical">
+                    android:gravity="center"
+                    android:orientation="vertical"
+                    android:padding="@dimen/x10dp">
 
 
                     <ImageView
@@ -58,8 +56,8 @@
 
                     <edu.aku.akuh_health_first.views.AnyTextView
 
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
                         android:gravity="center_horizontal"
                         android:padding="@dimen/x5dp"
                         android:text="Clinical Laboratory"
@@ -91,9 +89,9 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:gravity="center_horizontal"
-                    android:padding="@dimen/x10dp"
-                    android:orientation="vertical">
+                    android:gravity="center"
+                    android:orientation="vertical"
+                    android:padding="@dimen/x10dp">
 
 
                     <ImageView
@@ -107,7 +105,7 @@
                         android:layout_width="match_parent"
 
 
-                        android:layout_height="match_parent"
+                        android:layout_height="wrap_content"
                         android:gravity="center_horizontal"
                         android:padding="@dimen/x5dp"
                         android:text="Radiology"
@@ -124,9 +122,10 @@
 
 
         <LinearLayout
-            android:layout_width="match_parent"             android:layout_weight="1"
-
+            android:layout_width="match_parent"
             android:layout_height="match_parent"
+
+            android:layout_weight="1"
             android:orientation="horizontal"
 
             >
@@ -151,9 +150,9 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:gravity="center_horizontal"
-                    android:padding="@dimen/x10dp"
-                    android:orientation="vertical">
+                    android:gravity="center"
+                    android:orientation="vertical"
+                    android:padding="@dimen/x10dp">
 
                     <ImageView
                         android:layout_width="wrap_content"
@@ -164,8 +163,8 @@
 
                     <edu.aku.akuh_health_first.views.AnyTextView
 
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
                         android:gravity="center_horizontal"
                         android:padding="@dimen/x5dp"
                         android:text="Medication Profile"
@@ -199,9 +198,9 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:gravity="center_horizontal"
-                    android:padding="@dimen/x10dp"
-                    android:orientation="vertical">
+                    android:gravity="center"
+                    android:orientation="vertical"
+                    android:padding="@dimen/x10dp">
 
 
                     <ImageView
@@ -213,10 +212,10 @@
 
                     <edu.aku.akuh_health_first.views.AnyTextView
 
-                        android:layout_width="match_parent"
+                        android:layout_width="wrap_content"
 
 
-                        android:layout_height="match_parent"
+                        android:layout_height="wrap_content"
                         android:gravity="center_horizontal"
                         android:padding="@dimen/x5dp"
                         android:text="Immunization Profile"
@@ -233,9 +232,10 @@
 
 
         <LinearLayout
-            android:layout_width="match_parent"             android:layout_weight="1"
-
+            android:layout_width="match_parent"
             android:layout_height="match_parent"
+
+            android:layout_weight="1"
             android:orientation="horizontal"
 
             >
@@ -258,9 +258,9 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:gravity="center_horizontal"
-                    android:padding="@dimen/x10dp"
-                    android:orientation="vertical">
+                    android:gravity="center"
+                    android:orientation="vertical"
+                    android:padding="@dimen/x10dp">
 
 
                     <ImageView
@@ -272,10 +272,10 @@
 
                     <edu.aku.akuh_health_first.views.AnyTextView
 
-                        android:layout_width="match_parent"
+                        android:layout_width="wrap_content"
 
 
-                        android:layout_height="match_parent"
+                        android:layout_height="wrap_content"
                         android:gravity="center_horizontal"
                         android:padding="@dimen/x5dp"
                         android:text="Cardiopulmonary and Angiograms"
@@ -307,9 +307,9 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:gravity="center_horizontal"
-                    android:padding="@dimen/x10dp"
-                    android:orientation="vertical">
+                    android:gravity="center"
+                    android:orientation="vertical"
+                    android:padding="@dimen/x10dp">
 
 
                     <ImageView
@@ -321,8 +321,8 @@
 
                     <edu.aku.akuh_health_first.views.AnyTextView
 
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
                         android:gravity="center_horizontal"
                         android:padding="@dimen/x5dp"
                         android:text="Neurophysiology"
@@ -340,11 +340,11 @@
 
 
         <LinearLayout
-            android:layout_width="match_parent"             android:layout_weight="1"
-
+            android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:orientation="horizontal"
-          >
+
+            android:layout_weight="1"
+            android:orientation="horizontal">
 
 
             <android.support.v7.widget.CardView
@@ -365,9 +365,9 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:gravity="center_horizontal"
-                    android:padding="@dimen/x10dp"
-                    android:orientation="vertical">
+                    android:gravity="center"
+                    android:orientation="vertical"
+                    android:padding="@dimen/x10dp">
 
 
                     <ImageView
@@ -378,8 +378,8 @@
 
                     <edu.aku.akuh_health_first.views.AnyTextView
 
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
                         android:gravity="center_horizontal"
                         android:padding="@dimen/x5dp"
                         android:text="Endoscopy"
@@ -411,9 +411,9 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:gravity="center_horizontal"
-                    android:padding="@dimen/x10dp"
-                    android:orientation="vertical">
+                    android:gravity="center"
+                    android:orientation="vertical"
+                    android:padding="@dimen/x10dp">
 
 
                     <ImageView
@@ -425,8 +425,8 @@
 
                     <edu.aku.akuh_health_first.views.AnyTextView
 
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
                         android:gravity="center_horizontal"
                         android:padding="@dimen/x5dp"
                         android:text="Discharge Summary"
