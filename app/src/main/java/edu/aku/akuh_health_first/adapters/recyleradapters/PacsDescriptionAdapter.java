@@ -2,21 +2,33 @@ package edu.aku.akuh_health_first.adapters.recyleradapters;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 
+import com.nostra13.universalimageloader.core.ImageLoader;
+
+import java.io.File;
 import java.util.ArrayList;
+import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import edu.aku.akuh_health_first.R;
 import edu.aku.akuh_health_first.callbacks.OnItemClickListener;
+import edu.aku.akuh_health_first.libraries.fileloader.FileLoader;
+import edu.aku.akuh_health_first.libraries.fileloader.listener.FileRequestListener;
+import edu.aku.akuh_health_first.libraries.fileloader.pojo.FileResponse;
+import edu.aku.akuh_health_first.libraries.fileloader.request.FileLoadRequest;
 import edu.aku.akuh_health_first.models.PacsDescriptionModel;
 import edu.aku.akuh_health_first.models.receiving_model.UserDetailModel;
 import edu.aku.akuh_health_first.views.AnyTextView;
@@ -51,13 +63,20 @@ public class PacsDescriptionAdapter extends RecyclerView.Adapter<PacsDescription
     public void onBindViewHolder(final ViewHolder holder, int i) {
 
         final PacsDescriptionModel model = arrayList.get(holder.getAdapterPosition());
-        holder.txtpatientName.setText("Name : "+model.getPatient_Name());
-        holder.txtpatientDOB.setText("DOB : "+model.getPatientDOB());
-        holder.txtPatientGender.setText("Gender : "+model.getPatientGender());
-        holder.txtpatientMRN.setText("MRNumber : "+model.getPatientMRN());
-        holder.txtstudyTitle.setText("Title : "+model.getStudyTitle());
+        holder.txtpatientName.setText("Name : " + model.getPatient_Name());
+        holder.txtpatientDOB.setVisibility(View.GONE);
+//        holder.txtpatientDOB.setText("DOB : " + model.getPatientDOB());
+
+//        holder.txtPatientGender.setText("Gender : " + model.getPatientGender());
+        holder.txtPatientGender.setVisibility(View.GONE);
+        holder.txtpatientMRN.setText("MRNumber : " + model.getPatientMRN());
+        holder.txtstudyTitle.setText("Title : " + model.getStudyTitle());
         holder.txtstudyDataCount.setText(model.getStudyDataCount());
-        holder.txtstudyDataDateTime.setText("Date & Time : "+model.getStudyDataDateTime());
+//        holder.txtstudyDataDateTime.setText("Date & Time : " + model.getStudyDataDateTime());
+        holder.txtstudyDataDateTime.setVisibility(View.GONE);
+        List<String> imageUri = model.getStudyDataString();
+        loadImage(holder.imgPacs, imageUri.get(0), true);
+
         setListener(holder, model);
     }
 
@@ -67,7 +86,9 @@ public class PacsDescriptionAdapter extends RecyclerView.Adapter<PacsDescription
             public void onClick(View v) {
                 onItemClick.onItemClick(holder.getAdapterPosition(), pacsDescriptionModel);
             }
-        });}
+        });
+    }
+
     public PacsDescriptionModel getItem(int position) {
         return arrayList.get(position);
     }
@@ -77,6 +98,23 @@ public class PacsDescriptionAdapter extends RecyclerView.Adapter<PacsDescription
         notifyDataSetChanged();
     }
 
+    private void loadImage(final ImageView iv, String imageUrl, final boolean isShowImage) {
+        FileLoader.with(activity)
+                .load(imageUrl)
+                .asFile(new FileRequestListener<File>() {
+                    @Override
+                    public void onLoad(FileLoadRequest request, FileResponse<File> response) {
+                        Bitmap bitmap = BitmapFactory.decodeFile(response.getDownloadedFile().getPath());
+                        if (isShowImage) {
+                            iv.setImageBitmap(bitmap);
+                        }
+                    }
+
+                    @Override
+                    public void onError(FileLoadRequest request, Throwable t) {
+                    }
+                });
+    }
 
     @Override
     public int getItemCount() {
@@ -102,6 +140,8 @@ public class PacsDescriptionAdapter extends RecyclerView.Adapter<PacsDescription
         LinearLayout contListItem;
         @BindView(R.id.cardView2)
         CardView cardView2;
+        @BindView(R.id.imgPacs)
+        ImageView imgPacs;
 
         ViewHolder(View view) {
             super(view);

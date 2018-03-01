@@ -4,12 +4,15 @@ import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.widget.DrawerLayout;
+import android.text.Html;
 import android.text.style.AbsoluteSizeSpan;
 import android.text.style.ForegroundColorSpan;
+import android.text.style.TextAppearanceSpan;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
+import android.widget.LinearLayout;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -26,20 +29,29 @@ import edu.aku.akuh_health_first.views.CustomTypefaceSpan;
  */
 
 public class HealthSummaryFragment extends BaseFragment {
-    @BindView(R.id.myTextProgressGreen)
-    AnyTextView myTextProgressGreen;
-    @BindView(R.id.myTextProgress)
-    AnyTextView myTextProgress;
-    @BindView(R.id.txtReport)
-    AnyTextView txtReport;
-    @BindView(R.id.txtReport1)
-    AnyTextView txtReport1;
-    @BindView(R.id.txtActiveMedication)
-    AnyTextView txtActiveMedication;
-    @BindView(R.id.txtLastVisit)
-    AnyTextView txtLastVisit;
     Unbinder unbinder;
     Typeface regular, bold, light;
+
+    @BindView(R.id.txtBloodType)
+    AnyTextView txtBloodType;
+    @BindView(R.id.txtHeight)
+    AnyTextView txtHeight;
+    @BindView(R.id.txtWeight)
+    AnyTextView txtWeight;
+
+
+    @BindView(R.id.txtTestName)
+    AnyTextView txtTestName;
+    @BindView(R.id.txtResult)
+    AnyTextView txtResult;
+    @BindView(R.id.txtDate)
+    AnyTextView txtDate;
+    @BindView(R.id.txtDrName)
+    AnyTextView txtDrName;
+    @BindView(R.id.txtLoc)
+    AnyTextView txtLoc;
+    @BindView(R.id.txtDateLastVisit)
+    AnyTextView txtDateLastVisit;
 
     public static HealthSummaryFragment newInstance() {
 
@@ -66,7 +78,7 @@ public class HealthSummaryFragment extends BaseFragment {
 
     @Override
     protected int getFragmentLayout() {
-        return R.layout.fragment_health_summary;
+        return R.layout.fragment_health_summary_v1;
     }
 
     @Override
@@ -74,7 +86,7 @@ public class HealthSummaryFragment extends BaseFragment {
         titleBar.resetViews();
         titleBar.setTitle("Health Summary");
         titleBar.showBackButton(getBaseActivity());
-        titleBar.setCircleImageView( );
+        titleBar.setCircleImageView();
         titleBar.showHome(getBaseActivity());
     }
 
@@ -83,6 +95,7 @@ public class HealthSummaryFragment extends BaseFragment {
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         setSpannyText();
+
     }
 
 
@@ -170,13 +183,26 @@ public class HealthSummaryFragment extends BaseFragment {
                         new ForegroundColorSpan(getResources().getColor(R.color.text_color_grey)),
                         new CustomTypefaceSpan(light)).append("Rabia Hassan Shaikh", new CustomTypefaceSpan(light));
 
+//
+//        txtReport.setText(spanny);
+//        txtReport1.setText(spanny1);
+//        txtActiveMedication.setText(medi1);
+//        txtLastVisit.setText(lastVisit);
+//        myTextProgressGreen.setText(greenText);
+//        myTextProgress.setText(redText);
+        Spanny bloodType = new Spanny("B+", new CustomTypefaceSpan(bold));
+        Spanny weight = new Spanny("47.5", new CustomTypefaceSpan(bold)).append("kg",
+                new AbsoluteSizeSpan(getBaseActivity().getResources().getDimensionPixelSize(R.dimen.s12)));
 
-        txtReport.setText(spanny);
-        txtReport1.setText(spanny1);
-        txtActiveMedication.setText(medi1);
-        txtLastVisit.setText(lastVisit);
-        myTextProgressGreen.setText(greenText);
-        myTextProgress.setText(redText);
+
+        Spanny height = new Spanny("5.5", new CustomTypefaceSpan(bold)).append("ft\n",
+                new AbsoluteSizeSpan(getBaseActivity().getResources().getDimensionPixelSize(R.dimen.s12))).append("166",
+                new CustomTypefaceSpan(bold)).append("cm",
+                new AbsoluteSizeSpan(getBaseActivity().getResources().getDimensionPixelSize(R.dimen.s12)));
+
+        txtBloodType.setText(bloodType);
+        txtHeight.setText(height);
+        txtWeight.setText(weight);
 
 
     }
