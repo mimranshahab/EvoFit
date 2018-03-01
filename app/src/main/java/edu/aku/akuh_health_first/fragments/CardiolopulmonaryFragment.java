@@ -184,21 +184,7 @@ public class CardiolopulmonaryFragment extends BaseFragment implements View.OnCl
                             cardiolopulmonary.toString(), new WebServices.IRequestWebResponseWithStringDataCallBack() {
                                 @Override
                                 public void requestDataResponse(WebResponse<String> webResponse) {
-                                    String fileName = AppConstants.FILE_NAME + DateManager.getTime(DateManager.getCurrentMillis());
-
-                                    FileManager.writeResponseBodyToDisk(webResponse.result, fileName, AppConstants.getUserFolderPath(getContext()));
-
-                                    final File file = new File(AppConstants.getUserFolderPath(getContext())
-                                            + "/" + fileName);
-
-                                    new Handler().postDelayed(new Runnable() {
-                                        @Override
-                                        public void run() {
-                                            FileManager.openFile(getContext(), file);
-                                        }
-                                    }, 300);
-
-
+                                    saveAndOpenFile(webResponse);
                                 }
 
                                 @Override
@@ -230,23 +216,7 @@ public class CardiolopulmonaryFragment extends BaseFragment implements View.OnCl
                         cardiolopulmonary.toString(), new WebServices.IRequestWebResponseWithStringDataCallBack() {
                             @Override
                             public void requestDataResponse(WebResponse<String> webResponse) {
-//                                String fileName = cardiolopulmonary.getDetailReportID();
-                                String fileName = AppConstants.FILE_NAME + DateManager.getTime(DateManager.getCurrentMillis());
-
-
-                                FileManager.writeResponseBodyToDisk(webResponse.result, fileName, AppConstants.getUserFolderPath(getContext()));
-
-                                final File file = new File(AppConstants.getUserFolderPath(getContext())
-                                        + "/" + fileName);
-
-                                new Handler().postDelayed(new Runnable() {
-                                    @Override
-                                    public void run() {
-                                        FileManager.openFile(getContext(), file);
-                                    }
-                                }, 300);
-
-
+                                saveAndOpenFile(webResponse);
                             }
 
                             @Override

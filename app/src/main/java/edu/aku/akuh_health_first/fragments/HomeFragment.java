@@ -66,6 +66,7 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener, 
     RelativeLayout contListItem;
     private HomeAdapter adaptHome;
     private ArrayList<UserDetailModel> arrUserLists = new ArrayList<>();
+    UserDetailModel subscriber;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -107,13 +108,15 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener, 
     }
 
     private void setData() {
-        if (arrUserLists.get(0).getMembershipTypeID().equalsIgnoreCase("SUBSCRIBER")) {
-            txtName.setText(arrUserLists.get(0).getName());
-            txtRelation.setText(arrUserLists.get(0).getMembershipTypeID());
-            txtGenderAge.setText(arrUserLists.get(0).getGender() + "/" + arrUserLists.get(0).getAge());
-            txtMRN.setText(arrUserLists.get(0).getMRNumber());
+        if (subscriber.getGender().equals("F")) {
+            imgUser.setImageResource(R.drawable.female_icon_filled);
+        } else {
+            imgUser.setImageResource(R.drawable.male_icon_filled);
         }
 
+        txtName.setText(subscriber.getName());
+        txtGenderAge.setText(subscriber.getGenderDescription() + "/" + subscriber.getAge());
+        txtMRN.setText(subscriber.getMRNumber());
     }
 
     private void serviceCall() {
@@ -145,6 +148,8 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener, 
                         } else {
                             arrUserLists.get(0).setSelected(true);
                         }
+                        subscriber = arrUserLists.get(0);
+                        arrUserLists.remove(0);
 
                         sharedPreferenceManager.putObject(AppConstants.KEY_CARD_MEMBER_DETAIL, cardMemberDetail);
                         adaptHome.notifyDataSetChanged();
@@ -169,7 +174,7 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener, 
         titleBar.setVisibility(View.VISIBLE);
         titleBar.showSidebar(getBaseActivity());
         titleBar.setTitle("Home");
-        titleBar.setRightButton(R.drawable.ic_notification_icon, new View.OnClickListener() {
+        titleBar.setRightButton(R.drawable.notification_icon, new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 getBaseActivity().addDockableFragment(NotificationFragment.newInstance());

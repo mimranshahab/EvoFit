@@ -40,9 +40,11 @@ public class CyberSoftSecurityHelper {
         SecretKeySpec secret_key = new SecretKeySpec(data.getBytes("UTF-8"), "HmacSHA256");
         sha256_HMAC.init(secret_key);
 
-        return new String(Hex.encodeHex(sha256_HMAC.doFinal(data.getBytes("UTF-8"))));
+//        return new String(Hex.encodeHex(sha256_HMAC.doFinal(data.getBytes("UTF-8"))));
 
-    }
+        byte[] bytes = sha256_HMAC.doFinal(data.getBytes("UTF-8"));
+        return Base64.encodeToString(bytes, Base64.DEFAULT);
+     }
 
     private String buildDataToSign(HashMap params) {
         String[] signedFieldNames = String.valueOf(params.get("signed_field_names")).split(",");

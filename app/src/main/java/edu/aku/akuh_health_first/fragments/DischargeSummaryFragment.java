@@ -173,23 +173,7 @@ public class DischargeSummaryFragment extends BaseFragment implements View.OnCli
                         summaryModel.toString(), new WebServices.IRequestWebResponseWithStringDataCallBack() {
                             @Override
                             public void requestDataResponse(WebResponse<String> webResponse) {
-//                                String fileName = FileManager.getFileNameFromPath(FileManager.getReplacedSlash(summaryModel.getSummaryPath()));
-
-                                String fileName = AppConstants.FILE_NAME + DateManager.getTime(DateManager.getCurrentMillis());
-
-                                FileManager.writeResponseBodyToDisk(webResponse.result, fileName, AppConstants.getUserFolderPath(getContext()));
-
-                                final File file = new File(AppConstants.getUserFolderPath(getContext())
-                                        + "/" + fileName);
-
-                                new Handler().postDelayed(new Runnable() {
-                                    @Override
-                                    public void run() {
-                                        FileManager.openFile(getContext(), file);
-                                    }
-                                }, 300);
-
-
+                                saveAndOpenFile(webResponse);
                             }
 
                             @Override
