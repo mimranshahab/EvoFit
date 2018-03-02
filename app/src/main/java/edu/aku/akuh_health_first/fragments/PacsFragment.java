@@ -17,7 +17,6 @@ import android.widget.AdapterView;
 import com.google.gson.JsonObject;
 
 import java.util.ArrayList;
-import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -26,20 +25,17 @@ import edu.aku.akuh_health_first.R;
 import edu.aku.akuh_health_first.activities.PacsActivity;
 import edu.aku.akuh_health_first.adapters.recyleradapters.PacsDescriptionAdapter;
 import edu.aku.akuh_health_first.callbacks.OnItemClickListener;
-import edu.aku.akuh_health_first.constatnts.AppConstants;
-import edu.aku.akuh_health_first.constatnts.Events;
 import edu.aku.akuh_health_first.constatnts.WebServiceConstants;
 import edu.aku.akuh_health_first.enums.BaseURLTypes;
 import edu.aku.akuh_health_first.fragments.abstracts.BaseFragment;
 import edu.aku.akuh_health_first.helperclasses.ui.helper.TitleBar;
-import edu.aku.akuh_health_first.helperclasses.ui.helper.UIHelper;
 import edu.aku.akuh_health_first.managers.retrofit.GsonFactory;
 import edu.aku.akuh_health_first.managers.retrofit.WebServices;
 import edu.aku.akuh_health_first.models.PacsDescriptionModel;
 import edu.aku.akuh_health_first.models.PacsModel;
 import edu.aku.akuh_health_first.models.RadiologyModel;
-import edu.aku.akuh_health_first.models.receiving_model.UserDetailModel;
 import edu.aku.akuh_health_first.models.wrappers.WebResponse;
+import edu.aku.akuh_health_first.views.AnyTextView;
 
 
 /**
@@ -54,6 +50,8 @@ public class PacsFragment extends BaseFragment implements View.OnClickListener, 
     @BindView(R.id.refreshLayout)
     SwipeRefreshLayout refreshLayout;
     Unbinder unbinder;
+    @BindView(R.id.empty_view)
+    AnyTextView emptyView;
 
     private PacsDescriptionAdapter adapterPacsDescriptionAdapter;
     private RadiologyModel radioModel;
@@ -180,10 +178,6 @@ public class PacsFragment extends BaseFragment implements View.OnClickListener, 
                             @Override
                             public void requestDataResponse(WebResponse<JsonObject> webResponse) {
                                 PacsModel pacsModel = GsonFactory.getSimpleGson().fromJson(webResponse.result, PacsModel.class);
-//                        getBaseActivity().openActivity(PacsActivity.class, pacsModel.toString());
-//                                for (List<JsonObject> objectsList : pacsModel) {
-//                                    object.add(objectsList.get(0));
-//                                }
                                 ArrayList arrayList = new ArrayList<PacsDescriptionAdapter>();
 //                                if (pacsModel != null) {
                                 for (int i = 0; i < pacsModel.getPatient_Name().size(); i++) {
@@ -209,8 +203,15 @@ public class PacsFragment extends BaseFragment implements View.OnClickListener, 
 
                                 arrData.addAll(arrayList);
                                 adapterPacsDescriptionAdapter.notifyDataSetChanged();
-                                arrData.size();
-//                                }
+
+                                if (arrData.size() > 0) {
+                                    showView();
+
+                                } else {
+                                    showEmptyView();
+                                }
+
+
                             }
 
                             @Override
@@ -222,5 +223,15 @@ public class PacsFragment extends BaseFragment implements View.OnClickListener, 
 
     }
 
+    private void showEmptyView() {
+        refreshLayout.setVisibility(View.GONE);
+        emptyView.setVisibility(View.VISIBLE);
+    }
+
+    private void showView() {
+        bindView();
+        emptyView.setVisibility(View.GONE);
+        refreshLayout.setVisibility(View.VISIBLE);
+    }
 
 }

@@ -1,0 +1,431 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/c_white"
+    android:orientation="vertical"
+    android:padding="@dimen/x10dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+
+            <android.support.v7.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/x5dp"
+                android:layout_weight="1"
+                android:animateLayoutChanges="true"
+                app:cardCornerRadius="@dimen/x10dp"
+                app:cardElevation="@dimen/x5dp"
+
+                >
+
+                <FrameLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@color/base_reddish">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginTop="@dimen/x4dp"
+                        android:background="@drawable/round_edges_topview"
+                        android:gravity="center_vertical"
+                        android:orientation="vertical">
+
+
+
+                        <edu.aku.akuh_health_first.views.AnyTextView
+                            android:id="@+id/txtBloodType"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:drawableLeft="@drawable/blood_type"
+                            android:gravity="center"
+                            android:text="B+"
+                            android:paddingTop="@dimen/x10dp"
+                            android:textColor="@color/base_reddish"
+                            android:textSize="@dimen/s18"
+                            app:typeface="@string/font_bold" />
+
+
+                        <edu.aku.akuh_health_first.views.AnyTextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="bottom|end"
+                            android:padding="@dimen/x5dp"
+                            android:text="Blood Type"
+                            android:textColor="@color/text_color_grey_dark"
+                            android:textSize="@dimen/s12"
+                            app:typeface="@string/font_regular" />
+                    </LinearLayout>
+
+
+                </FrameLayout>
+            </android.support.v7.widget.CardView>
+
+
+            <android.support.v7.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/x5dp"
+                android:layout_weight="1"
+                android:animateLayoutChanges="true"
+                app:cardCornerRadius="@dimen/x10dp"
+                app:cardElevation="@dimen/x5dp"
+
+                >
+
+                <FrameLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@color/base_green">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginTop="@dimen/x4dp"
+                        android:background="@drawable/round_edges_topview"
+                        android:gravity="center_vertical"
+                        android:orientation="vertical">
+
+
+
+                        <edu.aku.akuh_health_first.views.AnyTextView
+                            android:id="@+id/txtHeight"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:drawableLeft="@drawable/height"
+                            android:gravity="center_vertical"
+                            android:text="166cm"
+                            android:paddingLeft="-5dp"
+                            android:paddingTop="@dimen/x10dp"
+                            android:textColor="@color/base_green"
+                            android:textSize="@dimen/s18"
+                            app:typeface="@string/font_bold" />
+
+
+                        <edu.aku.akuh_health_first.views.AnyTextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="bottom|end"
+                            android:padding="@dimen/x5dp"
+                            android:text="Blood Type"
+                            android:textColor="@color/text_color_grey_dark"
+                            android:textSize="@dimen/s12"
+                            app:typeface="@string/font_regular" />
+                    </LinearLayout>
+
+
+                </FrameLayout>
+            </android.support.v7.widget.CardView>
+
+            <android.support.v7.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/x5dp"
+                android:layout_weight="1"
+                android:animateLayoutChanges="true"
+                app:cardCornerRadius="@dimen/x10dp"
+                app:cardElevation="@dimen/x5dp"
+
+
+                >
+
+                <FrameLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@color/base_blue">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginTop="@dimen/x4dp"
+                        android:background="@drawable/round_edges_topview"
+                        android:gravity="center_vertical"
+                        android:orientation="vertical">
+
+                        <edu.aku.akuh_health_first.views.AnyTextView
+                            android:id="@+id/txtWeight"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:drawableLeft="@drawable/weight"
+                            android:gravity="center_vertical"
+                            android:paddingLeft="-5dp"
+                            android:paddingTop="@dimen/x10dp"
+                            android:text="100kg"
+                            android:textColor="@color/base_blue"
+                            android:textSize="@dimen/s18"
+                            app:typeface="@string/font_bold"
+
+
+                            />
+
+                        <edu.aku.akuh_health_first.views.AnyTextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="bottom|end"
+                            android:padding="@dimen/x5dp"
+                            android:text="Weight"
+                            android:textColor="@color/text_color_grey_dark"
+                            android:textSize="@dimen/s12"
+                            app:typeface="@string/font_regular" />
+                    </LinearLayout>
+
+
+                    <!--</LinearLayout>-->
+
+                </FrameLayout>
+            </android.support.v7.widget.CardView>
+
+        </LinearLayout>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+
+            <edu.aku.akuh_health_first.views.AnyTextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:drawableLeft="@drawable/lab_report"
+                android:drawablePadding="@dimen/x5dp"
+                android:padding="@dimen/x5dp"
+                android:text="Last Lab Reports"
+                android:textColor="@color/base_amber"
+                android:textSize="@dimen/s18"
+                app:typeface="@string/font_bold" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_margin="@dimen/x5dp"
+                android:background="@drawable/rounded_box_gradient_gray"
+                android:orientation="vertical"
+                android:padding="@dimen/x10dp">
+
+                <edu.aku.akuh_health_first.views.AnyTextView
+                    android:id="@+id/txtTestName"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Glucose Random"
+                    android:textColor="@color/base_reddish"
+                    android:textSize="@dimen/s16"
+                    app:typeface="@string/font_bold" />
+
+                <edu.aku.akuh_health_first.views.AnyTextView
+                    android:id="@+id/txtResult"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="302 mg/dl (Panic High)"
+                    android:textColor="@color/c_charcoal"
+                    android:textSize="@dimen/s14"
+                    app:typeface="@string/font_regular" />
+
+                <edu.aku.akuh_health_first.views.AnyTextView
+                    android:id="@+id/txtDate"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="bottom|end"
+                    android:text="Mar 04,2017 12:20"
+                    android:textColor="@color/c_charcoal"
+                    android:textSize="@dimen/s14"
+                    app:typeface="@string/font_regular" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_margin="@dimen/x5dp"
+                android:background="@drawable/rounded_box_gradient_gray"
+                android:orientation="vertical"
+
+                android:padding="@dimen/x10dp">
+
+                <edu.aku.akuh_health_first.views.AnyTextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Glucose Random"
+                    android:textColor="@color/base_reddish"
+                    android:textSize="@dimen/s16"
+                    app:typeface="@string/font_bold" />
+
+                <edu.aku.akuh_health_first.views.AnyTextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="302 mg/dl (Panic High)"
+                    android:textColor="@color/c_charcoal"
+                    android:textSize="@dimen/s14"
+                    app:typeface="@string/font_regular" />
+
+                <edu.aku.akuh_health_first.views.AnyTextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="bottom|end"
+                    android:text="Mar 04,2017 12:20"
+                    android:textColor="@color/c_charcoal"
+                    android:textSize="@dimen/s14"
+                    app:typeface="@string/font_regular" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_margin="@dimen/x5dp"
+                android:background="@drawable/rounded_box_gradient_gray"
+                android:orientation="vertical"
+                android:padding="@dimen/x10dp">
+
+                <edu.aku.akuh_health_first.views.AnyTextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Glucose Random"
+                    android:textColor="@color/base_reddish"
+                    android:textSize="@dimen/s16"
+                    app:typeface="@string/font_bold" />
+
+                <edu.aku.akuh_health_first.views.AnyTextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="302 mg/dl (Panic High)"
+                    android:textColor="@color/c_charcoal"
+                    android:textSize="@dimen/s14"
+                    app:typeface="@string/font_regular" />
+
+                <edu.aku.akuh_health_first.views.AnyTextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="bottom|end"
+                    android:text="Mar 04,2017 12:20"
+                    android:textColor="@color/c_charcoal"
+                    android:textSize="@dimen/s14"
+                    app:typeface="@string/font_regular" />
+            </LinearLayout>
+
+
+            <edu.aku.akuh_health_first.views.AnyTextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/x10dp"
+                android:drawableLeft="@drawable/last_visits"
+                android:drawablePadding="@dimen/x5dp"
+                android:padding="@dimen/x5dp"
+                android:text="Last Visits"
+                android:textColor="@color/base_amber"
+                android:textSize="@dimen/s18"
+                app:typeface="@string/font_bold" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_margin="@dimen/x5dp"
+                android:background="@drawable/rounded_box_gradient_gray"
+                android:orientation="vertical"
+                android:padding="@dimen/x10dp">
+
+                <edu.aku.akuh_health_first.views.AnyTextView
+                    android:id="@+id/txtDrName"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:drawableLeft="@drawable/doctor"
+                    android:drawablePadding="@dimen/x5dp"
+                    android:drawableTint="@color/base_reddish"
+                    android:text="Dr.Rabia Hassan Shaikh"
+                    android:textColor="@color/base_reddish"
+                    android:textSize="@dimen/s16"
+                    app:typeface="@string/font_bold" />
+
+                <edu.aku.akuh_health_first.views.AnyTextView
+                    android:id="@+id/txtLoc"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/location"
+                    android:textColor="@color/c_charcoal"
+                    android:textSize="@dimen/s14"
+                    app:typeface="@string/font_regular" />
+
+                <edu.aku.akuh_health_first.views.AnyTextView
+                    android:id="@+id/txtDateLastVisit"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="bottom|end"
+                    android:text="Mar 04,2017 12:20"
+                    android:textColor="@color/c_charcoal"
+                    android:textSize="@dimen/s14"
+                    app:typeface="@string/font_regular" />
+            </LinearLayout>
+
+
+            <edu.aku.akuh_health_first.views.AnyTextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:drawableLeft="@drawable/last_visits"
+                android:drawablePadding="@dimen/x5dp"
+                android:padding="@dimen/x5dp"
+                android:text="Active Medication"
+                android:textColor="@color/base_amber"
+                android:textSize="@dimen/s18"
+                app:typeface="@string/font_bold" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_margin="@dimen/x5dp"
+                android:background="@drawable/rounded_box_gradient_gray"
+                android:orientation="vertical"
+                android:padding="@dimen/x10dp">
+
+                <edu.aku.akuh_health_first.views.AnyTextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:drawableLeft="@drawable/doctor"
+                    android:drawablePadding="@dimen/x5dp"
+                    android:drawableTint="@color/base_reddish"
+                    android:text="Active Medication"
+                    android:textColor="@color/base_reddish"
+                    android:textSize="@dimen/s16"
+                    app:typeface="@string/font_bold" />
+
+                <edu.aku.akuh_health_first.views.AnyTextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/location"
+                    android:textColor="@color/c_charcoal"
+                    android:textSize="@dimen/s14"
+                    app:typeface="@string/font_regular" />
+
+                <edu.aku.akuh_health_first.views.AnyTextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="bottom|end"
+                    android:text="Mar 04,2017 12:20"
+                    android:textColor="@color/c_charcoal"
+                    android:textSize="@dimen/s14"
+                    app:typeface="@string/font_regular" />
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </LinearLayout>
+</ScrollView>
