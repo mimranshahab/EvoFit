@@ -152,6 +152,7 @@
                 android:text="Sign Up"
                 android:textColor="#004F72"
                 android:textSize="@dimen/s23"
+                android:visibility="gone"
                 app:typeface="@string/font_bold" />
 
 

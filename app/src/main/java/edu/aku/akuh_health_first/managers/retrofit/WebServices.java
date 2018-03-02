@@ -102,15 +102,15 @@ public class WebServices {
             if (response.body().isSuccess()) {
 
 //                for testing
-                return true;
+//                return true;
 
-//                if (response.body().result.get("RecordFound") == null) {
-//                    return false;
-//                } else if (response.body().result.get("RecordFound").isJsonNull()) {
-//                    return false;
-//                } else {
-//                    return response.body().result.get("RecordFound").getAsString().equals("true");
-//                }
+                if (response.body().result.get("RecordFound") == null) {
+                    return false;
+                } else if (response.body().result.get("RecordFound").isJsonNull()) {
+                    return false;
+                } else {
+                    return response.body().result.get("RecordFound").getAsString().equals("true");
+                }
             } else {
                 return false;
             }
@@ -125,15 +125,15 @@ public class WebServices {
             if (response.body().isSuccess()) {
 
                 //for testing
-                return true;
+//                return true;
 
-//                if (response.body().result.get(0).get("RecordFound") == null) {
-//                    return false;
-//                } else if (response.body().result.get(0).get("RecordFound").isJsonNull()) {
-//                    return false;
-//                } else {
-//                    return response.body().result.get(0).get("RecordFound").getAsString().equals("true");
-//                }
+                if (response.body().result.get(0).get("RecordFound") == null) {
+                    return false;
+                } else if (response.body().result.get(0).get("RecordFound").isJsonNull()) {
+                    return false;
+                } else {
+                    return response.body().result.get(0).get("RecordFound").getAsString().equals("true");
+                }
             } else {
                 return false;
             }
@@ -236,16 +236,21 @@ public class WebServices {
                         else {
                             if (response != null && response.body() != null) {
                                 if (response.body().isSuccess()) {
-                                    if (response.body().result.get("RecordMessage") != null) {
+                                    if (response.body().result.get("RecordMessage") == null) {
+                                        errorToastForObject(response);
+                                    } else if (response.body().result.get("RecordMessage").isJsonNull()) {
+                                        errorToastForObject(response);
+                                    } else {
                                         String message = response.body().result.get("RecordMessage").toString();
                                         UIHelper.showShortToastInCenter(mContext, message);
-                                    } else {
-                                        errorToastForObject(response);
                                     }
+
                                 } else {
-                                    errorToastForObject(response);
+                                    String message = response.body().message != null ? response.body().message : response.errorBody().toString();
+                                    UIHelper.showToast(mContext, message);
                                 }
                             }
+
                         }
                     }
 
@@ -350,14 +355,18 @@ public class WebServices {
                         else {
                             if (response != null && response.body() != null) {
                                 if (response.body().isSuccess()) {
-                                    if (response.body().result.get(0).get("RecordMessage") != null) {
+                                    if (response.body().result.get(0).get("RecordMessage") == null) {
+                                        errorToastForArray(response);
+                                    } else if (response.body().result.get(0).get("RecordMessage").isJsonNull()) {
+                                        errorToastForArray(response);
+                                    } else {
                                         String message = response.body().result.get(0).get("RecordMessage").toString();
                                         UIHelper.showShortToastInCenter(mContext, message);
-                                    } else {
-                                        errorToastForArray(response);
                                     }
+
                                 } else {
-                                    errorToastForArray(response);
+                                    String message = response.body().message != null ? response.body().message : response.errorBody().toString();
+                                    UIHelper.showToast(mContext, message);
                                 }
                             }
 
@@ -384,13 +393,12 @@ public class WebServices {
     }
 
     private void errorToastForArray(Response<WebResponse<ArrayList<JsonObject>>> response) {
-        String message = response.body().message != null ? response.body().message : response.errorBody().toString();
-        UIHelper.showShortToastInCenter(mContext, message);
+        UIHelper.showShortToastInCenter(mContext, "API Error in RecordFound");
     }
 
     private void errorToastForObject(Response<WebResponse<JsonObject>> response) {
-        String message = response.body().message != null ? response.body().message : response.errorBody().toString();
-        UIHelper.showShortToastInCenter(mContext, message);
+//        String message = response.body().message != null ? response.body().message : response.errorBody().toString();
+        UIHelper.showShortToastInCenter(mContext, "API Error in RecordFound");
     }
 
 

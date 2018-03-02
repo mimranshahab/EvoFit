@@ -16,7 +16,11 @@ import android.view.animation.LayoutAnimationController;
 import android.widget.AdapterView;
 
 import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
 import com.google.gson.reflect.TypeToken;
+
+import org.json.JSONObject;
+import org.json.JSONStringer;
 
 import java.io.File;
 import java.lang.reflect.Type;
@@ -155,10 +159,8 @@ public class EndoscopyFragment extends BaseFragment implements View.OnClickListe
     public void onItemClick(int position, Object object) {
         if (object instanceof EndoscopyModel) {
             EndoscopyModel endoscopyModel = (EndoscopyModel) object;
-            DischargeSummaryModel dischargeSummaryModel = new DischargeSummaryModel();
-            dischargeSummaryModel.setSummaryPath(endoscopyModel.getReportpath());
 
-            showReportAPI(dischargeSummaryModel);
+            showReportAPI(endoscopyModel);
         }
 
     }
@@ -199,10 +201,10 @@ public class EndoscopyFragment extends BaseFragment implements View.OnClickListe
     }
 
 
-    private void showReportAPI(final DischargeSummaryModel model) {
+    private void showReportAPI(final EndoscopyModel model) {
         new WebServices(getBaseActivity(), WebServiceConstants.temporaryToken, BaseURLTypes.AHFA_BASE_URL)
-                .webServiceRequestAPIForWebResponseWithString(WebServiceConstants.METHOD_SHOW_REPORT_DS,
-                        model.toString(), new WebServices.IRequestWebResponseWithStringDataCallBack() {
+                .webServiceRequestAPIForWebResponseWithString(WebServiceConstants.METHOD_GET_ENDOSCOPY_REPORT,
+                        JSONObject.quote(model.getReportpath()), new WebServices.IRequestWebResponseWithStringDataCallBack() {
                             @Override
                             public void requestDataResponse(WebResponse<String> webResponse) {
                                 saveAndOpenFile(webResponse);
@@ -210,7 +212,6 @@ public class EndoscopyFragment extends BaseFragment implements View.OnClickListe
 
                             @Override
                             public void onError() {
-
 
                             }
                         }

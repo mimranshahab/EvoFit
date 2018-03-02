@@ -21,6 +21,7 @@ import java.util.ArrayList;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 import butterknife.Unbinder;
 import de.hdodenhof.circleimageview.CircleImageView;
 import edu.aku.akuh_health_first.R;
@@ -64,6 +65,8 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener, 
     CircleImageView imgUser;
     @BindView(R.id.contListItem)
     RelativeLayout contListItem;
+    @BindView(R.id.contParentLayout)
+    LinearLayout contParentLayout;
     private HomeAdapter adaptHome;
     private ArrayList<UserDetailModel> arrUserLists = new ArrayList<>();
     UserDetailModel subscriber;
@@ -230,4 +233,43 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener, 
             getBaseActivity().addDockableFragment(HomeDetailFragment.newInstance());
         }
     }
+
+    @OnClick(R.id.contListItem)
+    public void onViewClicked() {
+//                getBaseActivity().addDockableFragment(HomeDetailFragment.newInstance());
+
+        i++;
+        if (i > 6) {
+            i = 1;
+        }
+
+        switch (i) {
+            case 1:
+                contParentLayout.setBackgroundResource(R.drawable.test1);
+                break;
+
+            case 2:
+                contParentLayout.setBackgroundResource(R.drawable.test2);
+                break;
+
+            case 3:
+                contParentLayout.setBackgroundResource(R.drawable.test3);
+                break;
+
+            case 4:
+                contParentLayout.setBackgroundResource(R.drawable.test4);
+                break;
+
+            case 5:
+                contParentLayout.setBackgroundResource(R.drawable.test5);
+                break;
+
+            case 6:
+                contParentLayout.setBackgroundResource(R.drawable.test6);
+                break;
+        }
+
+    }
+
+    int i = 1;
 }

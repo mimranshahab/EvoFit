@@ -104,8 +104,11 @@ public class AddUpdateVaccineFragment extends BaseFragment {
             txtVaccine.setText(immunizationModel.getDescription());
             txtVaccinationPlanDate.setText(immunizationModel.getVaccinePlanDate());
             txtVaccineLocation.setText(immunizationModel.getHospitalLocation());
+            txtRouteId.setText(immunizationModel.getRouteID());
             txtVaccineLocation.setFocusable(false);
             txtVaccineLocation.setClickable(false);
+            txtRouteId.setFocusable(false);
+            txtRouteId.setClickable(false);
         } else {
             getVaccineIdsService();
             getRouteIdsService();

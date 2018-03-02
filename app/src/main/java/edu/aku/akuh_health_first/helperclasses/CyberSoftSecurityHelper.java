@@ -1,7 +1,5 @@
 package edu.aku.akuh_health_first.helperclasses;
 
-import android.util.Base64;
-
 import org.apache.commons.codec.binary.Hex;
 
 import java.io.UnsupportedEncodingException;
@@ -28,9 +26,9 @@ public class CyberSoftSecurityHelper {
     }
 
     private String sign(String data, String secretKey) throws InvalidKeyException, NoSuchAlgorithmException, UnsupportedEncodingException {
-        SecretKeySpec secretKeySpec = new SecretKeySpec(secretKey.getBytes("UTF-8"), HMAC_SHA256);
-        Mac mac = Mac.getInstance(HMAC_SHA256);
-        mac.init(secretKeySpec);
+//        SecretKeySpec secretKeySpec = new SecretKeySpec(secretKey.getBytes("UTF-8"), HMAC_SHA256);
+//        Mac mac = Mac.getInstance(HMAC_SHA256);
+//        mac.init(secretKeySpec);
 //
 //        byte[] rawHmac = mac.doFinal(data.getBytes("UTF-8"));
 //        return org.apache.commons.codec.binary.Base64.encodeBase64(rawHmac).toString();
@@ -40,11 +38,11 @@ public class CyberSoftSecurityHelper {
         SecretKeySpec secret_key = new SecretKeySpec(data.getBytes("UTF-8"), "HmacSHA256");
         sha256_HMAC.init(secret_key);
 
-//        return new String(Hex.encodeHex(sha256_HMAC.doFinal(data.getBytes("UTF-8"))));
-
-        byte[] bytes = sha256_HMAC.doFinal(data.getBytes("UTF-8"));
-        return Base64.encodeToString(bytes, Base64.DEFAULT);
-     }
+        return new String(Hex.encodeHex(sha256_HMAC.doFinal(data.getBytes("UTF-8"))));
+//
+//        byte[] bytes = sha256_HMAC.doFinal(data.getBytes("UTF-8"));
+//        return Base64.encodeToString(bytes, Base64.DEFAULT);
+    }
 
     private String buildDataToSign(HashMap params) {
         String[] signedFieldNames = String.valueOf(params.get("signed_field_names")).split(",");

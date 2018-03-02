@@ -17,8 +17,8 @@
         android:layout_marginRight="@dimen/x5dp"
         android:layout_marginTop="@dimen/x5dp"
         android:animateLayoutChanges="true"
-         app:cardCornerRadius="@dimen/x10dp"
-        app:cardElevation="@dimen/x5dp"
+         app:cardCornerRadius="@dimen/x8dp"
+        app:cardElevation="@dimen/x3dp"
 
         >
 
@@ -26,17 +26,17 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:background="@color/base_amber"
-            android:padding="@dimen/x2dp">
+            android:padding="@dimen/x1dp">
 
             <LinearLayout
                 android:id="@+id/contListItem"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginRight="@dimen/x4dp"
+                android:layout_marginRight="@dimen/x5dp"
                 android:background="@drawable/round_edges_two_sides"
                 android:gravity="center_vertical"
                 android:orientation="horizontal"
-                android:padding="@dimen/x10dp">
+                android:padding="@dimen/x7dp">
 
 
                 <de.hdodenhof.circleimageview.CircleImageView

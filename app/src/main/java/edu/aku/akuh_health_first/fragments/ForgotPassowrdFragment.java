@@ -115,7 +115,6 @@ public class ForgotPassowrdFragment extends BaseFragment {
         parameter.put("signed_date_time", payRequestModel.getSignedDateTimeString());
         parameter.put("signed_field_names", payRequestModel.getSignedFieldNames());
         parameter.put("unsigned_field_names", payRequestModel.getUnsignedFieldNames());
-//        parameter.put("signature", payRequestModel.getSignature());
         parameter.put("payment_method", payRequestModel.getPaymentMethod());
         parameter.put("card_type", payRequestModel.getCardType());
         parameter.put("card_expiry_date", payRequestModel.getCardExpirydate());

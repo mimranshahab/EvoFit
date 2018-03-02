@@ -1,222 +1,134 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/scrollView"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/colorPrimaryDark"
+    android:background="@color/transparent"
     android:orientation="vertical"
     android:scrollbars="none">
 
-    <LinearLayout
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical">
+        android:layout_height="match_parent">
 
-
-        <LinearLayout
-            android:id="@+id/contUserName"
+        <ImageView
+            android:alpha="0.85"
+            android:id="@+id/imgBackground"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="@dimen/x30dp"
-            android:layout_marginTop="@dimen/x50dp"
-            android:paddingLeft="@dimen/x10dp">
+            android:layout_height="match_parent"
+            android:src="@drawable/test6"
+            android:scaleType="centerCrop" />
 
-            <de.hdodenhof.circleimageview.CircleImageView
-                android:id="@+id/imgProfile"
-                android:layout_width="@dimen/x70dp"
-                android:layout_height="@dimen/x70dp"
-                android:focusable="true"
-                android:scaleType="centerCrop"
-                android:src="@drawable/user_image"
-                app:civ_border_color="@color/c_white"
-                app:civ_border_width="@dimen/x2dp" />
+        <ScrollView
+            android:id="@+id/scrollView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
 
-
-            <com.ctrlplusz.anytextview.AnyTextView
-                android:id="@+id/txtUserName"
-                android:layout_width="wrap_content"
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center_vertical"
-                android:ellipsize="end"
-                android:padding="@dimen/x10dp"
-                android:singleLine="true"
-                android:text="John Doe"
-                android:textColor="@color/c_white"
-                android:textSize="16sp"
-                app:typeface="@string/font_bold" />
-
-        </LinearLayout>
+                android:orientation="vertical">
 
 
-        <com.ctrlplusz.anytextview.AnyTextView
-            android:id="@+id/txtHome"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_vertical"
-            android:gravity="center_vertical"
-            android:padding="@dimen/x15dp"
-            android:singleLine="true"
-            android:text="Home"
-            android:textColor="@color/c_white"
-            android:textSize="14sp"
-            app:typeface="@string/font_bold" />
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="@dimen/x30dp"
+                    android:layout_marginTop="@dimen/x50dp">
 
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="2px"
-            android:background="@color/c_white" />
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/login_logo" />
 
 
-        <!--<com.ctrlplusz.anytextview.AnyTextView-->
-            <!--android:id="@+id/txtHealthHistory"-->
-            <!--android:layout_width="match_parent"-->
-            <!--android:layout_height="wrap_content"-->
-            <!--android:layout_gravity="center_vertical"-->
-            <!--android:gravity="center_vertical"-->
-            <!--android:padding="@dimen/x15dp"-->
-            <!--android:singleLine="true"-->
-            <!--android:text="Health History"-->
-            <!--android:textColor="@color/c_white"-->
-            <!--android:textSize="14sp"-->
-            <!--app:typeface="@string/font_bold" />-->
-
-        <!--<View-->
-            <!--android:layout_width="match_parent"-->
-            <!--android:layout_height="2px"-->
-            <!--android:background="@color/c_white" />-->
+                </LinearLayout>
 
 
-        <!--<com.ctrlplusz.anytextview.AnyTextView-->
-            <!--android:id="@+id/txtVisitTimeline"-->
-            <!--android:layout_width="match_parent"-->
-            <!--android:layout_height="wrap_content"-->
-            <!--android:layout_gravity="center_vertical"-->
-            <!--android:gravity="center_vertical"-->
-            <!--android:padding="@dimen/x15dp"-->
-            <!--android:singleLine="true"-->
-            <!--android:text="Visit Timeline"-->
-            <!--android:textColor="@color/c_white"-->
-            <!--android:textSize="14sp"-->
-            <!--app:typeface="@string/font_bold" />-->
+                <com.ctrlplusz.anytextview.AnyTextView
+                    android:id="@+id/txtHome"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:background="@color/c_quarter_transparent"
+                    android:gravity="center_vertical"
+                    android:padding="@dimen/x15dp"
+                    android:singleLine="true"
+                    android:text="Home"
+                    android:textColor="@color/c_white"
+                    android:textSize="14sp"
+                    app:typeface="@string/font_bold" />
 
-        <!--<View-->
-            <!--android:layout_width="match_parent"-->
-            <!--android:layout_height="2px"-->
-            <!--android:background="@color/c_white" />-->
-
-
-        <com.ctrlplusz.anytextview.AnyTextView
-            android:id="@+id/txtCardSubscription"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_vertical"
-            android:gravity="center_vertical"
-            android:padding="@dimen/x15dp"
-            android:singleLine="true"
-            android:text="Card Subscription"
-            android:textColor="@color/c_white"
-            android:textSize="14sp"
-            app:typeface="@string/font_bold" />
-
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="2px"
-            android:background="@color/c_white" />
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="2px"
+                    android:background="@color/base_amberSemiTransparent" />
 
 
-        <!--<com.ctrlplusz.anytextview.AnyTextView-->
-            <!--android:id="@+id/txtMyProfile"-->
-            <!--android:layout_width="match_parent"-->
-            <!--android:layout_height="wrap_content"-->
-            <!--android:layout_gravity="center_vertical"-->
-            <!--android:gravity="center_vertical"-->
-            <!--android:padding="@dimen/x15dp"-->
-            <!--android:singleLine="true"-->
-            <!--android:text="My Profile"-->
-            <!--android:textColor="@color/c_white"-->
-            <!--android:textSize="14sp"-->
-            <!--app:typeface="@string/font_bold" />-->
+                <com.ctrlplusz.anytextview.AnyTextView
+                    android:id="@+id/txtCardSubscription"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:background="@color/c_quarter_transparent"
+                    android:gravity="center_vertical"
+                    android:padding="@dimen/x15dp"
+                    android:singleLine="true"
+                    android:text="Card Subscription"
+                    android:textColor="@color/c_white"
 
-        <!--<View-->
-            <!--android:layout_width="match_parent"-->
-            <!--android:layout_height="2px"-->
-            <!--android:background="@color/c_white" />-->
+                    android:textSize="14sp"
+                    app:typeface="@string/font_bold" />
 
-        <com.ctrlplusz.anytextview.AnyTextView
-            android:id="@+id/txtAbout"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_vertical"
-            android:gravity="center_vertical"
-            android:padding="@dimen/x15dp"
-            android:singleLine="true"
-            android:text="About"
-            android:textColor="@color/c_white"
-            android:textSize="14sp"
-            app:typeface="@string/font_bold" />
-
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="2px"
-            android:background="@color/c_white" />
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="2px"
+                    android:background="@color/base_amberSemiTransparent" />
 
 
-        <!--<com.ctrlplusz.anytextview.AnyTextView-->
-            <!--android:id="@+id/txtCardUpgrade"-->
-            <!--android:layout_width="wrap_content"-->
-            <!--android:layout_height="wrap_content"-->
-            <!--android:layout_gravity="center_vertical"-->
-            <!--android:gravity="center_vertical"-->
-            <!--android:padding="@dimen/x15dp"-->
-            <!--android:singleLine="true"-->
-            <!--android:text="Card Upgrade"-->
-            <!--android:textColor="@color/c_white"-->
-            <!--android:textSize="14sp"-->
-            <!--app:typeface="@string/font_bold" />-->
+                <com.ctrlplusz.anytextview.AnyTextView
+                    android:id="@+id/txtAbout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:background="@color/c_quarter_transparent"
+                    android:gravity="center_vertical"
+                    android:padding="@dimen/x15dp"
+                    android:singleLine="true"
+                    android:text="About"
+                    android:textColor="@color/c_white"
 
-        <!--<View-->
-            <!--android:layout_width="match_parent"-->
-            <!--android:layout_height="2px"-->
-            <!--android:background="@color/c_white" />-->
+                    android:textSize="14sp"
+                    app:typeface="@string/font_bold" />
 
-
-        <!--<com.ctrlplusz.anytextview.AnyTextView-->
-            <!--android:id="@+id/txtPrintCard"-->
-            <!--android:layout_width="wrap_content"-->
-            <!--android:layout_height="wrap_content"-->
-            <!--android:layout_gravity="center_vertical"-->
-            <!--android:gravity="center_vertical"-->
-            <!--android:padding="@dimen/x15dp"-->
-            <!--android:singleLine="true"-->
-            <!--android:text="Print Card"-->
-            <!--android:textColor="@color/c_white"-->
-            <!--android:textSize="14sp"-->
-            <!--app:typeface="@string/font_bold" />-->
-
-        <!--<View-->
-            <!--android:layout_width="match_parent"-->
-            <!--android:layout_height="2px"-->
-            <!--android:background="@color/c_white" />-->
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="2px"
+                    android:background="@color/base_amberSemiTransparent" />
 
 
+                <com.ctrlplusz.anytextview.AnyTextView
+                    android:id="@+id/txtLogout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginBottom="@dimen/x25dp"
+                    android:background="@color/c_quarter_transparent"
+                    android:gravity="center_vertical"
+                    android:padding="@dimen/x15dp"
+                    android:singleLine="true"
+                    android:text="@string/logout"
+                    android:textColor="@color/c_white"
+                    android:textSize="14sp"
+                    app:typeface="@string/font_bold" />
 
 
-        <com.ctrlplusz.anytextview.AnyTextView
-            android:id="@+id/txtLogout"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_vertical"
-            android:layout_marginBottom="@dimen/x25dp"
-            android:gravity="center_vertical"
-            android:padding="@dimen/x15dp"
-            android:singleLine="true"
-            android:text="@string/logout"
-            android:textColor="@color/c_white"
-            android:textSize="14sp"
-            app:typeface="@string/font_bold" />
+            </LinearLayout>
+
+        </ScrollView>
 
 
-    </LinearLayout>
+    </RelativeLayout>
 
-</ScrollView>
+
+</RelativeLayout>

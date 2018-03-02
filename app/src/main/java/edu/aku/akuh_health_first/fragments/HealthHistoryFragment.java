@@ -27,6 +27,7 @@ import edu.aku.akuh_health_first.constatnts.WebServiceConstants;
 import edu.aku.akuh_health_first.enums.BaseURLTypes;
 import edu.aku.akuh_health_first.fragments.abstracts.BaseFragment;
 import edu.aku.akuh_health_first.helperclasses.ui.helper.TitleBar;
+import edu.aku.akuh_health_first.helperclasses.ui.helper.UIHelper;
 import edu.aku.akuh_health_first.managers.retrofit.GsonFactory;
 import edu.aku.akuh_health_first.managers.retrofit.WebServices;
 import edu.aku.akuh_health_first.models.SearchModel;
@@ -38,39 +39,8 @@ public class HealthHistoryFragment extends BaseFragment {
 
     private static final String IS_FROM_VISIT_TIMELINE = "isVisitTimeline";
     private static final String VISIT_ID = "patientVisitAdmissionID";
-    //    @BindView(R.id.btnClinicalLab)
-//    AnyTextView btnClinicalLab;
-//    @BindView(R.id.btnRadiology)
-//    AnyTextView btnRadiology;
-//    @BindView(R.id.btnMedProf)
-//    AnyTextView btnMedProf;
-//    @BindView(R.id.btnImmunizationProfile)
-//    AnyTextView btnImmunizationProfile;
-//    @BindView(R.id.btnCardio)
-//    AnyTextView btnCardio;
-//    @BindView(R.id.btnNeurophysiology)
-//    AnyTextView btnNeurophysiology;
-//    @BindView(R.id.btnEndoscopy)
-//    AnyTextView btnEndoscopy;
-//    @BindView(R.id.btnDischargeSummary)
-//    AnyTextView btnDischargeSummary;
+
     Unbinder unbinder;
-//    @BindView(R.id.contLab)
-//    LinearLayout contLab;
-//    @BindView(R.id.contRadiology)
-//    LinearLayout contRadiology;
-//    @BindView(R.id.contMedicalProfile)
-//    LinearLayout contMedicalProfile;
-//    @BindView(R.id.contImmunization)
-//    LinearLayout contImmunization;
-//    @BindView(R.id.contCardio)
-//    LinearLayout contCardio;
-//    @BindView(R.id.contNeuroPhysiology)
-//    LinearLayout contNeuroPhysiology;
-//    @BindView(R.id.contEndo)
-//    LinearLayout contEndo;
-//    @BindView(R.id.contSummary)
-//    LinearLayout contSummary;
     @BindView(R.id.contLab)
     CardView contLab;
     @BindView(R.id.contRadiology)
@@ -87,6 +57,8 @@ public class HealthHistoryFragment extends BaseFragment {
     CardView contEndo;
     @BindView(R.id.contSummary)
     CardView contSummary;
+    @BindView(R.id.contParentLayout)
+    LinearLayout contParentLayout;
     private boolean isVisitTimeline;
     private List<MenuModel> arrData;
     private ArrayList<String> tempArr;
@@ -117,9 +89,10 @@ public class HealthHistoryFragment extends BaseFragment {
         super.onViewCreated(view, savedInstanceState);
         setListeners();
 
-        if (isVisitTimeline) {
-            serviceCall();
 
+        if (isVisitTimeline) {
+            contParentLayout.setVisibility(View.GONE);
+            serviceCall();
         }
     }
 
@@ -136,6 +109,7 @@ public class HealthHistoryFragment extends BaseFragment {
                             @Override
                             public void requestDataResponse(WebResponse<ArrayList<JsonObject>> webResponse) {
 
+
                                 Type type = new TypeToken<ArrayList<MenuModel>>() {
                                 }.getType();
                                 arrData = GsonFactory.getSimpleGson()
@@ -147,14 +121,15 @@ public class HealthHistoryFragment extends BaseFragment {
 
                             @Override
                             public void onError() {
-
+                                UIHelper.showToast(getContext(), "Something went wrong");
+                                contParentLayout.setVisibility(View.GONE);
                             }
                         });
 
     }
 
     private void bindViews() {
-
+        contParentLayout.setVisibility(View.VISIBLE);
         tempArray();
         if (arrData.size() > 0) {
             for (int i = 0; i < arrData.size(); i = i + 2) {

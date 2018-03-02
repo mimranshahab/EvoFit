@@ -7,7 +7,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
-import android.widget.LinearLayout;
+import android.widget.ImageView;
 import android.widget.ScrollView;
 
 import com.ctrlplusz.anytextview.AnyTextView;
@@ -16,32 +16,22 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import butterknife.Unbinder;
-import de.hdodenhof.circleimageview.CircleImageView;
 import edu.aku.akuh_health_first.R;
 import edu.aku.akuh_health_first.activities.HomeActivity;
 import edu.aku.akuh_health_first.activities.MainActivity;
-import edu.aku.akuh_health_first.callbacks.OnNewPacketReceivedListener;
-import edu.aku.akuh_health_first.constatnts.Events;
 import edu.aku.akuh_health_first.fragments.abstracts.BaseFragment;
 import edu.aku.akuh_health_first.fragments.abstracts.GenericClickableInterface;
 import edu.aku.akuh_health_first.fragments.abstracts.GenericContentFragment;
 import edu.aku.akuh_health_first.fragments.abstracts.GenericDialogFragment;
 import edu.aku.akuh_health_first.helperclasses.ui.helper.TitleBar;
-import edu.aku.akuh_health_first.models.receiving_model.UserDetailModel;
 
 /**
  * Created by khanhamza on 09-May-17.
  */
 
-public class LeftSideMenuFragment extends BaseFragment implements OnNewPacketReceivedListener {
+public class LeftSideMenuFragment extends BaseFragment {
 
     Unbinder unbinder;
-    @BindView(R.id.imgProfile)
-    CircleImageView imgProfile;
-    @BindView(R.id.txtUserName)
-    AnyTextView txtUserName;
-    @BindView(R.id.contUserName)
-    LinearLayout contUserName;
     @BindView(R.id.txtHome)
     AnyTextView txtHome;
     @BindView(R.id.txtCardSubscription)
@@ -52,6 +42,8 @@ public class LeftSideMenuFragment extends BaseFragment implements OnNewPacketRec
     AnyTextView txtLogout;
     @BindView(R.id.scrollView)
     ScrollView scrollView;
+    @BindView(R.id.imgBackground)
+    ImageView imgBackground;
 
 
     public static LeftSideMenuFragment newInstance() {
@@ -72,11 +64,7 @@ public class LeftSideMenuFragment extends BaseFragment implements OnNewPacketRec
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        if (sharedPreferenceManager.getCurrentUser() != null) {
-            txtUserName.setText(sharedPreferenceManager.getCurrentUser().getName());
-        }
-
-        subscribeToNewPacket(this);
+//        subscribeToNewPacket(this);
 ////        scrollToTop();
     }
 
@@ -155,12 +143,10 @@ public class LeftSideMenuFragment extends BaseFragment implements OnNewPacketRec
     }
 
 
-    @OnClick({R.id.contUserName, R.id.txtHome, R.id.txtCardSubscription, R.id.txtAbout, R.id.txtLogout})
+    @OnClick({R.id.txtHome, R.id.txtCardSubscription, R.id.txtAbout, R.id.txtLogout})
     public void onViewClicked(View view) {
         switch (view.getId()) {
-            case R.id.contUserName:
-                showNextBuildToast();
-                break;
+
             case R.id.txtHome:
                 if (getActivity() instanceof HomeActivity) {
                     getBaseActivity().reload();
@@ -177,20 +163,55 @@ public class LeftSideMenuFragment extends BaseFragment implements OnNewPacketRec
                 getBaseActivity().addDockableFragment(GenericContentFragment.newInstance(getString(R.string.generic), "About"));
                 break;
             case R.id.txtLogout:
-                logoutClick();
+//                logoutClick();
+
+                i++;
+                if (i > 6) {
+                    i = 1;
+                }
+
+
+                switch (i) {
+                    case 1:
+                        imgBackground.setImageResource(R.drawable.test1);
+                        break;
+
+                    case 2:
+                        imgBackground.setImageResource(R.drawable.test2);
+                        break;
+
+                    case 3:
+                        imgBackground.setImageResource(R.drawable.test3);
+                        break;
+
+                    case 4:
+                        imgBackground.setImageResource(R.drawable.test4);
+                        break;
+
+                    case 5:
+                        imgBackground.setImageResource(R.drawable.test5);
+                        break;
+
+                    case 6:
+                        imgBackground.setImageResource(R.drawable.test6);
+                        break;
+                }
+
                 break;
         }
     }
 
-    @Override
-    public void onNewPacket(int event, Object data) {
-        switch (event) {
-            case Events.ON_CURRENT_USER_CHANGED:
-                UserDetailModel userDetailModel = (UserDetailModel) data;
-                txtUserName.setText(userDetailModel.getName());
-                break;
-        }
+    int i = 1;
 
-    }
+//    @Override
+//    public void onNewPacket(int event, Object data) {
+//        switch (event) {
+//            case Events.ON_CURRENT_USER_CHANGED:
+//                UserDetailModel userDetailModel = (UserDetailModel) data;
+//                txtUserName.setText(userDetailModel.getName());
+//                break;
+//        }
+//
+//    }
 
 }
