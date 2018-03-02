@@ -336,7 +336,8 @@ public class WebServices {
 //                webResponseCall.request().newBuilder().addHeader("name", "hkhkhkhkhk").build();
                 webResponseCall.enqueue(new Callback<WebResponse<ArrayList<JsonObject>>>() {
                     @Override
-                    public void onResponse(Call<WebResponse<ArrayList<JsonObject>>> call, Response<WebResponse<ArrayList<JsonObject>>> response) {
+                    public void onResponse(Call<WebResponse<ArrayList<JsonObject>>> call,
+                                           Response<WebResponse<ArrayList<JsonObject>>> response) {
                         dismissDialog();
                         if (!IsResponseErrorForArray(response)) {
                             String errorBody;
@@ -382,6 +383,7 @@ public class WebServices {
                 });
             } else {
                 dismissDialog();
+                UIHelper.showToast(mContext,"else block");
             }
 
         } catch (Exception e) {

@@ -116,7 +116,7 @@ public class HealthHistoryFragment extends BaseFragment {
                                         .fromJson(GsonFactory.getSimpleGson().toJson(webResponse.result)
                                                 , type);
 
-                                bindViews();
+                                bindViewsVisitTimeline();
                             }
 
                             @Override
@@ -128,7 +128,7 @@ public class HealthHistoryFragment extends BaseFragment {
 
     }
 
-    private void bindViews() {
+    private void bindViewsVisitTimeline() {
         contParentLayout.setVisibility(View.VISIBLE);
         tempArray();
         if (arrData.size() > 0) {
@@ -139,17 +139,17 @@ public class HealthHistoryFragment extends BaseFragment {
                         case "Discharge Summary":
                             contSummary.setEnabled(false);
                             contSummary.setAlpha(.15f);
-                            Log.d(TAG, "bindViews: DS ");
+                            Log.d(TAG, "bindViewsVisitTimeline: DS ");
                             break;
                         case "Clinical Laboratory":
                             contLab.setEnabled(false);
                             contLab.setAlpha(.15f);
-                            Log.d(TAG, "bindViews: CL ");
+                            Log.d(TAG, "bindViewsVisitTimeline: CL ");
                             break;
                         case "Radiology":
                             contRadiology.setEnabled(false);
                             contRadiology.setAlpha(.15f);
-                            Log.d(TAG, "bindViews: Rad");
+                            Log.d(TAG, "bindViewsVisitTimeline: Rad");
                             break;
                         case "Medication Profile":
                             contImmunization.setEnabled(false);
@@ -264,7 +264,6 @@ public class HealthHistoryFragment extends BaseFragment {
                 break;
             case R.id.contCardio:
                 getBaseActivity().addDockableFragment(CardiolopulmonaryFragment.newInstance());
-
                 break;
             case R.id.contNeuroPhysiology:
                 getBaseActivity().addDockableFragment(NeurophysiologyFragment.newInstance());
