@@ -56,7 +56,7 @@ public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.ViewHolder> {
         holder.txtRelation.setText("(" + user.getRelationshipDescription() + ")");
 
         if (user.getGender().equals("F")) {
-            holder.imgUser.setImageResource(R.drawable.female_icon);
+            holder.imgUser.setImageResource(R.drawable.baby_photo1);
         } else {
             holder.imgUser.setImageResource(R.drawable.male_icon);
         }
