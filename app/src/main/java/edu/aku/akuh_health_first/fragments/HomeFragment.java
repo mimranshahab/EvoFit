@@ -112,7 +112,7 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener, 
 
     private void setData() {
         if (subscriber.getGender().equals("F")) {
-            imgUser.setImageResource(R.drawable.female_icon_filled);
+            imgUser.setImageResource(R.drawable.baby_photo2);
         } else {
             imgUser.setImageResource(R.drawable.male_icon_filled);
         }

@@ -197,6 +197,7 @@ public class WebServices {
                 });
             } else {
                 dismissDialog();
+                callBack.onError();
             }
 
         } catch (Exception e) {
@@ -263,6 +264,7 @@ public class WebServices {
                 });
             } else {
                 dismissDialog();
+                callBack.onError();
             }
 
         } catch (Exception e) {
@@ -314,6 +316,7 @@ public class WebServices {
                 });
             } else {
                 dismissDialog();
+                callBack.onError();
             }
 
         } catch (Exception e) {

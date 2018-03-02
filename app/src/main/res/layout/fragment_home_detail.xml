@@ -43,7 +43,8 @@
                     android:background="@drawable/round_edges_white"
                     android:gravity="center_vertical"
                     android:orientation="horizontal"
-                    android:padding="@dimen/x10dp">
+                    android:padding="@dimen/x5dp"
+                    >
 
 
                     <ImageView
@@ -61,7 +62,6 @@
                         android:gravity="right"
                         android:padding="@dimen/x10dp"
                         android:text="My Profile"
-
                         android:textColor="@color/base_blue"
                         android:textSize="@dimen/s20"
                         app:typeface="@string/font_bold" />
@@ -104,16 +104,15 @@
                     android:background="@drawable/round_edges_white"
                     android:gravity="center_vertical"
                     android:orientation="horizontal"
-                    android:padding="@dimen/x10dp"
+                    android:padding="@dimen/x5dp"
 
                     >
 
                     <ImageView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_gravity="center_horizontal"
+                        android:layout_gravity="center_vertical"
                         android:padding="@dimen/x10dp"
-
                         android:scaleType="centerCrop"
                         android:src="@drawable/health_summary" />
 
@@ -168,13 +167,13 @@
                     android:background="@drawable/round_edges_white"
                     android:gravity="center_vertical"
                     android:orientation="horizontal"
-                    android:padding="@dimen/x10dp">
+                    android:padding="@dimen/x5dp">
 
 
                     <ImageView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_gravity="center_horizontal"
+                        android:layout_gravity="center_vertical"
                         android:padding="@dimen/x10dp"
 
                         android:scaleType="centerCrop"
@@ -233,13 +232,13 @@
                     android:background="@drawable/round_edges_white"
                     android:gravity="center_vertical"
                     android:orientation="horizontal"
-                    android:padding="@dimen/x10dp">
+                    android:padding="@dimen/x5dp">
 
 
                     <ImageView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_gravity="center_horizontal"
+                        android:layout_gravity="center_vertical"
                         android:padding="@dimen/x10dp"
 
                         android:scaleType="centerCrop"
