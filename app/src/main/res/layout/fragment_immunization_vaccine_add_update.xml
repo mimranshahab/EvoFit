@@ -75,7 +75,7 @@
                 android:id="@+id/spRouteId"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
-                android:gravity="center" />
+                android:layout_gravity="center" />
 
 
             <edu.aku.akuh_health_first.views.AnyTextView
@@ -107,7 +107,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/x20dp"
-                android:text="Vaccinated Date"
+                android:text="Vaccination Date"
                 android:textColor="@color/c_black"
                 android:textSize="@dimen/s16"
                 app:typeface="@string/font_bold" />

@@ -4,6 +4,7 @@ import java.io.Serializable;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
+
 import edu.aku.akuh_health_first.managers.retrofit.GsonFactory;
 
 public class ImmunizationModel implements IsRecordFound {
@@ -14,6 +15,7 @@ public class ImmunizationModel implements IsRecordFound {
     @Expose
     @SerializedName("RecordFound")
     private String recordfound;
+
     @Override
     public boolean isRecordFound() {
         return getRecordfound().equals("true");
@@ -59,6 +61,11 @@ public class ImmunizationModel implements IsRecordFound {
     @SerializedName("RouteID")
     @Expose
     private String routeID;
+
+
+    @SerializedName("RouteDescription")
+    @Expose
+    private String routeDescription;
     @SerializedName("SiteOfInjectionID")
     @Expose
     private Object siteOfInjectionID;
@@ -122,6 +129,14 @@ public class ImmunizationModel implements IsRecordFound {
 
     public void setMRN(String mRN) {
         this.mRN = mRN;
+    }
+
+    public String getRouteDescription() {
+        return routeDescription;
+    }
+
+    public void setRouteDescription(String routeDescription) {
+        this.routeDescription = routeDescription;
     }
 
     public Object getStrVisitDate() {
