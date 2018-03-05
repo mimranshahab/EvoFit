@@ -275,29 +275,29 @@ public class HealthHistoryFragment extends BaseFragment {
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.contLab:
-                getBaseActivity().addDockableFragment(ClinicalLaboratoryFragment.newInstance(true, patientVisitAdmissionID));
+                getBaseActivity().addDockableFragment(ClinicalLaboratoryFragment.newInstance(isVisitTimeline, patientVisitAdmissionID));
                 break;
             case R.id.contRadiology:
-                getBaseActivity().addDockableFragment(RadiologyFragment.newInstance(true, patientVisitAdmissionID));
+                getBaseActivity().addDockableFragment(RadiologyFragment.newInstance(isVisitTimeline, patientVisitAdmissionID));
                 break;
             case R.id.contMedicalProfile:
                 showNextBuildToast();
                 break;
             case R.id.contImmunization:
-                getBaseActivity().addDockableFragment(ImmunizationProfileFragment.newInstance(true, patientVisitAdmissionID));
+                getBaseActivity().addDockableFragment(ImmunizationProfileFragment.newInstance(isVisitTimeline, patientVisitAdmissionID));
                 break;
             case R.id.contCardio:
-                getBaseActivity().addDockableFragment(CardiolopulmonaryFragment.newInstance(true, patientVisitAdmissionID));
+                getBaseActivity().addDockableFragment(CardiolopulmonaryFragment.newInstance(isVisitTimeline, patientVisitAdmissionID));
 
                 break;
             case R.id.contNeuroPhysiology:
-                getBaseActivity().addDockableFragment(NeurophysiologyFragment.newInstance(true, patientVisitAdmissionID));
+                getBaseActivity().addDockableFragment(NeurophysiologyFragment.newInstance(isVisitTimeline, patientVisitAdmissionID));
                 break;
             case R.id.contEndo:
-                getBaseActivity().addDockableFragment(EndoscopyFragment.newInstance(true, patientVisitAdmissionID));
+                getBaseActivity().addDockableFragment(EndoscopyFragment.newInstance(isVisitTimeline, patientVisitAdmissionID));
                 break;
             case R.id.contSummary:
-                getBaseActivity().addDockableFragment(DischargeSummaryFragment.newInstance(true, patientVisitAdmissionID));
+                getBaseActivity().addDockableFragment(DischargeSummaryFragment.newInstance(isVisitTimeline, patientVisitAdmissionID));
                 break;
         }
     }
