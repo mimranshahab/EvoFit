@@ -3,27 +3,20 @@ package edu.aku.akuh_health_first.fragments;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.widget.DrawerLayout;
-import android.text.Html;
-import android.text.SpannableString;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
-import android.widget.TextView;
 
 import com.andreabaccega.widget.FormEditText;
 import com.ctrlplusz.anytextview.AnyTextView;
 import com.google.gson.JsonObject;
 
 import edu.aku.akuh_health_first.R;
-import edu.aku.akuh_health_first.activities.GraphActivity;
 import edu.aku.akuh_health_first.activities.HomeActivity;
 import edu.aku.akuh_health_first.constatnts.WebServiceConstants;
 import edu.aku.akuh_health_first.enums.BaseURLTypes;
 import edu.aku.akuh_health_first.fragments.abstracts.BaseFragment;
-import edu.aku.akuh_health_first.fragments.abstracts.GenericClickableInterface;
-import edu.aku.akuh_health_first.fragments.abstracts.GenericClickableSpan;
-import edu.aku.akuh_health_first.helperclasses.ui.helper.UIHelper;
 import edu.aku.akuh_health_first.helperclasses.validator.CardNumberValidation;
 import edu.aku.akuh_health_first.helperclasses.validator.PasswordValidation;
 import edu.aku.akuh_health_first.helperclasses.ui.helper.TitleBar;
@@ -179,7 +172,7 @@ public class LoginFragment extends BaseFragment {
         new WebServices(getBaseActivity(),
                 WebServiceConstants.temporaryToken,
                 BaseURLTypes.AHFA_BASE_URL)
-                .webServiceRequestAPI(WebServiceConstants.METHOD_USER_GET_USER,
+                .webServiceRequestAPIForJsonObject(WebServiceConstants.METHOD_USER_GET_USER,
                         loginApiModel.toString(),
                         new WebServices.IRequestJsonDataCallBack() {
                             @Override

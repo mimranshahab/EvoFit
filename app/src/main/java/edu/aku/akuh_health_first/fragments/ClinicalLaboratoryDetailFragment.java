@@ -146,7 +146,7 @@ public class ClinicalLaboratoryDetailFragment extends BaseFragment implements On
         new WebServices(getBaseActivity(),
                 WebServiceConstants.temporaryToken,
                 BaseURLTypes.AHFA_BASE_URL)
-                .webServiceRequestAPI(WebServiceConstants.METHOD_CLINICAL_LAB_DETAILS,
+                .webServiceRequestAPIForJsonObject(WebServiceConstants.METHOD_CLINICAL_LAB_DETAILS,
                         model.toString(),
 
 

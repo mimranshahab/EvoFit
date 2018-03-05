@@ -4,7 +4,6 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.widget.DrawerLayout;
 import android.text.Html;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -83,7 +82,7 @@ public class RadiologyDescriptionFragment extends BaseFragment {
 
     private void apiService() {
         new WebServices(getBaseActivity(), WebServiceConstants.temporaryToken, BaseURLTypes.AHFA_BASE_URL)
-                .webServiceRequestAPI(WebServiceConstants.METHOD_GET_RADIOLOGY_GET_EXAM_DETAIL,
+                .webServiceRequestAPIForJsonObject(WebServiceConstants.METHOD_GET_RADIOLOGY_GET_EXAM_DETAIL,
                         jsonData,
                         new WebServices.IRequestJsonDataCallBack() {
                             @Override

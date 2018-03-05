@@ -102,15 +102,21 @@ public class WebServices {
             if (response.body().isSuccess()) {
 
 //                for testing
-                return true;
+//                return true;
 
-//                if (response.body().result.get("RecordFound") == null) {
-//                    return false;
-//                } else if (response.body().result.get("RecordFound").isJsonNull()) {
-//                    return false;
-//                } else {
-//                    return response.body().result.get("RecordFound").getAsString().equals("true");
-//                }
+                if (response.body().result.get("RecordFound") == null) {
+                    if (response.body().result.get("StrStatus") == null) {
+                        return false;
+                    } else if (response.body().result.get("StrStatus").isJsonNull()) {
+                        return false;
+                    } else {
+                        return response.body().result.get("StrStatus").getAsString().toLowerCase().equals("true");
+                    }
+                } else if (response.body().result.get("RecordFound").isJsonNull()) {
+                    return false;
+                } else {
+                    return response.body().result.get("RecordFound").getAsString().equals("true");
+                }
             } else {
                 return false;
             }
@@ -207,7 +213,7 @@ public class WebServices {
         }
     }
 
-    public void webServiceRequestAPI(String requestMethod, String requestData, final IRequestJsonDataCallBack callBack) {
+    public void webServiceRequestAPIForJsonObject(String requestMethod, String requestData, final IRequestJsonDataCallBack callBack) {
 
         RequestBody bodyRequestMethod = getRequestBody(okhttp3.MultipartBody.FORM, requestMethod);
         RequestBody bodyRequestData = getRequestBody(okhttp3.MultipartBody.FORM, requestData);
@@ -235,10 +241,19 @@ public class WebServices {
                         if (hasValidStatus(response))
                             callBack.requestDataResponse(response.body());
                         else {
-                            if (response != null && response.body() != null) {
+                            if (response.body() != null) {
                                 if (response.body().isSuccess()) {
                                     if (response.body().result.get("RecordMessage") == null) {
-                                        errorToastForObject(response);
+
+                                        if (response.body().result.get("Message") == null) {
+                                            errorToastForObject(response);
+                                        } else if (response.body().result.get("Message").isJsonNull()) {
+                                            errorToastForObject(response);
+                                        } else {
+                                            String message = response.body().result.get("Message").toString();
+                                            UIHelper.showShortToastInCenter(mContext, message);
+                                        }
+
                                     } else if (response.body().result.get("RecordMessage").isJsonNull()) {
                                         errorToastForObject(response);
                                     } else {
@@ -339,8 +354,7 @@ public class WebServices {
 //                webResponseCall.request().newBuilder().addHeader("name", "hkhkhkhkhk").build();
                 webResponseCall.enqueue(new Callback<WebResponse<ArrayList<JsonObject>>>() {
                     @Override
-                    public void onResponse(Call<WebResponse<ArrayList<JsonObject>>> call,
-                                           Response<WebResponse<ArrayList<JsonObject>>> response) {
+                    public void onResponse(Call<WebResponse<ArrayList<JsonObject>>> call, Response<WebResponse<ArrayList<JsonObject>>> response) {
                         dismissDialog();
                         if (!IsResponseErrorForArray(response)) {
                             String errorBody;

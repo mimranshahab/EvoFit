@@ -10,6 +10,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import com.google.gson.JsonObject;
 import com.google.gson.reflect.TypeToken;
@@ -33,6 +34,7 @@ import edu.aku.akuh_health_first.managers.retrofit.WebServices;
 import edu.aku.akuh_health_first.models.SearchModel;
 import edu.aku.akuh_health_first.models.wrappers.MenuModel;
 import edu.aku.akuh_health_first.models.wrappers.WebResponse;
+import edu.aku.akuh_health_first.views.AnyTextView;
 
 public class HealthHistoryFragment extends BaseFragment {
 
@@ -59,6 +61,26 @@ public class HealthHistoryFragment extends BaseFragment {
     CardView contSummary;
     @BindView(R.id.contParentLayout)
     LinearLayout contParentLayout;
+    @BindView(R.id.txtTimelineView)
+    AnyTextView txtTimelineView;
+    @BindView(R.id.contTimeLinebar)
+    LinearLayout contTimeLinebar;
+    @BindView(R.id.txtClinicCount)
+    TextView txtClinicCount;
+    @BindView(R.id.txtRadiology)
+    TextView txtRadiology;
+    @BindView(R.id.txtMedicationCount)
+    TextView txtMedicationCount;
+    @BindView(R.id.txtImmunizationCount)
+    TextView txtImmunizationCount;
+    @BindView(R.id.txtCardioCount)
+    TextView txtCardioCount;
+    @BindView(R.id.txtNeuroCount)
+    TextView txtNeuroCount;
+    @BindView(R.id.txtEndoscopyCount)
+    TextView txtEndoscopyCount;
+    @BindView(R.id.txtDischargeCount)
+    TextView txtDischargeCount;
     private boolean isVisitTimeline;
     private List<MenuModel> arrData;
     private ArrayList<String> tempArr;
@@ -91,6 +113,8 @@ public class HealthHistoryFragment extends BaseFragment {
 
 
         if (isVisitTimeline) {
+            contTimeLinebar.setVisibility(View.VISIBLE);
+            txtTimelineView.setText("Displaying results for Visit Admission ID: " + patientVisitAdmissionID);
             contParentLayout.setVisibility(View.GONE);
             serviceCall();
         }
@@ -251,28 +275,29 @@ public class HealthHistoryFragment extends BaseFragment {
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.contLab:
-                getBaseActivity().addDockableFragment(ClinicalLaboratoryFragment.newInstance());
+                getBaseActivity().addDockableFragment(ClinicalLaboratoryFragment.newInstance(true, patientVisitAdmissionID));
                 break;
             case R.id.contRadiology:
-                getBaseActivity().addDockableFragment(RadiologyFragment.newInstance());
+                getBaseActivity().addDockableFragment(RadiologyFragment.newInstance(true, patientVisitAdmissionID));
                 break;
             case R.id.contMedicalProfile:
                 showNextBuildToast();
                 break;
             case R.id.contImmunization:
-                getBaseActivity().addDockableFragment(ImmunizationProfileFragment.newInstance());
+                getBaseActivity().addDockableFragment(ImmunizationProfileFragment.newInstance(true, patientVisitAdmissionID));
                 break;
             case R.id.contCardio:
-                getBaseActivity().addDockableFragment(CardiolopulmonaryFragment.newInstance());
+                getBaseActivity().addDockableFragment(CardiolopulmonaryFragment.newInstance(true, patientVisitAdmissionID));
+
                 break;
             case R.id.contNeuroPhysiology:
-                getBaseActivity().addDockableFragment(NeurophysiologyFragment.newInstance());
+                getBaseActivity().addDockableFragment(NeurophysiologyFragment.newInstance(true, patientVisitAdmissionID));
                 break;
             case R.id.contEndo:
-                getBaseActivity().addDockableFragment(EndoscopyFragment.newInstance());
+                getBaseActivity().addDockableFragment(EndoscopyFragment.newInstance(true, patientVisitAdmissionID));
                 break;
             case R.id.contSummary:
-                getBaseActivity().addDockableFragment(DischargeSummaryFragment.newInstance());
+                getBaseActivity().addDockableFragment(DischargeSummaryFragment.newInstance(true, patientVisitAdmissionID));
                 break;
         }
     }

@@ -59,6 +59,8 @@ public class NeurophysiologyFragment extends BaseFragment implements View.OnClic
     AnyTextView emptyView;
     private ArrayList<Neurophysiology> arrNeuropysiologyLists;
     private NeurophysiologyAdapter adaptNeuropysiology;
+    boolean isFromTimeline;
+    int patientVisitAdmissionID;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -67,11 +69,13 @@ public class NeurophysiologyFragment extends BaseFragment implements View.OnClic
         adaptNeuropysiology = new NeurophysiologyAdapter(getBaseActivity(), arrNeuropysiologyLists, this);
     }
 
-    public static NeurophysiologyFragment newInstance() {
+    public static NeurophysiologyFragment newInstance(boolean isFromTimeline,  int patientVisitAdmissionID) {
 
         Bundle args = new Bundle();
 
         NeurophysiologyFragment fragment = new NeurophysiologyFragment();
+        fragment.isFromTimeline = isFromTimeline;
+        fragment.patientVisitAdmissionID = patientVisitAdmissionID;
         fragment.setArguments(args);
         return fragment;
     }
@@ -183,8 +187,11 @@ public class NeurophysiologyFragment extends BaseFragment implements View.OnClic
         // FIXME: 1/18/2018 Use live data in future
         SearchModel model = new SearchModel();
         model.setMRNumber(WebServiceConstants.tempMRN);
-        model.setVisitID(null);
-        new WebServices(getBaseActivity(),
+        if (isFromTimeline) {
+            model.setVisitID(String.valueOf(patientVisitAdmissionID));
+        } else {
+            model.setVisitID(null);
+        }        new WebServices(getBaseActivity(),
                 WebServiceConstants.temporaryToken,
                 BaseURLTypes.AHFA_BASE_URL)
                 .webServiceRequestAPIForArray(WebServiceConstants.METHOD_NEUROPHIOLOGY,

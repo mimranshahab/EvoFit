@@ -55,6 +55,8 @@ public class ClinicalLaboratoryFragment extends BaseFragment implements View.OnC
     AnyTextView emptyView;
     private ArrayList<LaboratoryModel> arrClinicalLabLists;
     private ClinicalLabAdapter adaptNeuropysiology;
+    boolean isFromTimeline;
+    int patientVisitAdmissionID;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -63,11 +65,13 @@ public class ClinicalLaboratoryFragment extends BaseFragment implements View.OnC
         adaptNeuropysiology = new ClinicalLabAdapter(getBaseActivity(), arrClinicalLabLists, this);
     }
 
-    public static ClinicalLaboratoryFragment newInstance() {
+    public static ClinicalLaboratoryFragment newInstance(boolean isFromTimeline, int patientVisitAdmissionID) {
 
         Bundle args = new Bundle();
 
         ClinicalLaboratoryFragment fragment = new ClinicalLaboratoryFragment();
+        fragment.isFromTimeline = isFromTimeline;
+        fragment.patientVisitAdmissionID = patientVisitAdmissionID;
         fragment.setArguments(args);
         return fragment;
     }
@@ -162,7 +166,11 @@ public class ClinicalLaboratoryFragment extends BaseFragment implements View.OnC
         // FIXME: 1/18/2018 Use live data in future
         SearchModel model = new SearchModel();
         model.setMRNumber(WebServiceConstants.tempMRN_LAB);
-        model.setVisitID(null);
+        if (isFromTimeline) {
+            model.setVisitID(String.valueOf(patientVisitAdmissionID));
+        } else {
+            model.setVisitID(null);
+        }
 
         new WebServices(getBaseActivity(),
                 WebServiceConstants.temporaryToken,

@@ -58,7 +58,8 @@ public class ImmunizationProfileFragment extends BaseFragment implements View.On
     AnyTextView emptyView;
     private ArrayList<ImmunizationModel> arrImmunization;
     private ImmunizationAdapter adapterImmunization;
-
+    boolean isFromTimeline;
+    int patientVisitAdmissionID;
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -66,11 +67,13 @@ public class ImmunizationProfileFragment extends BaseFragment implements View.On
         adapterImmunization = new ImmunizationAdapter(getBaseActivity(), arrImmunization, this);
     }
 
-    public static ImmunizationProfileFragment newInstance() {
+    public static ImmunizationProfileFragment newInstance(boolean isFromTimeline,  int patientVisitAdmissionID) {
 
         Bundle args = new Bundle();
 
         ImmunizationProfileFragment fragment = new ImmunizationProfileFragment();
+        fragment.isFromTimeline = isFromTimeline;
+        fragment.patientVisitAdmissionID = patientVisitAdmissionID;
         fragment.setArguments(args);
         return fragment;
     }
@@ -174,8 +177,11 @@ public class ImmunizationProfileFragment extends BaseFragment implements View.On
         // FIXME: 1/18/2018 Use live data in future
         SearchModel model = new SearchModel();
         model.setMRNumber(WebServiceConstants.tempMRN_immunization);
-        model.setVisitID(null);
-
+        if (isFromTimeline) {
+            model.setVisitID(String.valueOf(patientVisitAdmissionID));
+        } else {
+            model.setVisitID(null);
+        }
         new WebServices(getBaseActivity(),
                 WebServiceConstants.temporaryToken,
                 BaseURLTypes.AHFA_BASE_URL)

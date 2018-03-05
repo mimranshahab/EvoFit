@@ -1,20 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_gravity="center_horizontal"
-    android:background="@color/colorPrimary"
     android:layout_marginBottom="?android:actionBarSize"
+    android:background="@color/colorPrimary"
     android:orientation="horizontal"
-    android:padding="@dimen/x8dp">
+    android:padding="@dimen/x5dp">
 
     <de.hdodenhof.circleimageview.CircleImageView
         android:id="@+id/circleImageView2"
-        android:layout_width="@dimen/x60dp"
-        android:layout_height="@dimen/x60dp"
+        android:layout_width="@dimen/x45dp"
+        android:layout_height="match_parent"
         android:layout_gravity="center"
         android:scaleType="centerCrop"
         android:src="@drawable/baby_photo2"
@@ -37,7 +36,7 @@
             android:text="Name: Dummy User"
             android:textAlignment="center"
             android:textColor="@color/c_white"
-            android:textSize="@dimen/s14"
+            android:textSize="@dimen/s10"
             app:typeface="@string/font_bold" />
 
         <edu.aku.akuh_health_first.views.AnyTextView
@@ -51,7 +50,7 @@
             android:padding="@dimen/x5dp"
             android:text="MRNumber: 111-22-33"
             android:textColor="@color/c_white"
-            android:textSize="@dimen/s14"
+            android:textSize="@dimen/s10"
             app:typeface="@string/font_bold" />
 
     </LinearLayout>
