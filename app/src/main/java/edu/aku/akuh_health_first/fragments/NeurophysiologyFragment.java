@@ -212,7 +212,7 @@ public class NeurophysiologyFragment extends BaseFragment implements View.OnClic
 
                             @Override
                             public void onError() {
-                                UIHelper.showShortToastInCenter(getContext(), "failure");
+                                showEmptyView();
                             }
                         });
 

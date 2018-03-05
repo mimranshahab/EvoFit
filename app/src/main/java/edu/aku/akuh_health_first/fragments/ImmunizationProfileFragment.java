@@ -204,7 +204,8 @@ public class ImmunizationProfileFragment extends BaseFragment implements View.On
 
                             @Override
                             public void onError() {
-                                UIHelper.showShortToastInCenter(getContext(), "failure");
+//                                UIHelper.showShortToastInCenter(getContext(), "failure");
+                                showEmptyView();
                             }
                         });
 

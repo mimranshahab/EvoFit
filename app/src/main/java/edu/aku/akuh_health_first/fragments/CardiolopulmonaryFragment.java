@@ -148,6 +148,7 @@ public class CardiolopulmonaryFragment extends BaseFragment implements View.OnCl
 
         switch (view.getId()) {
             case R.id.btnShowGraph:
+
                 showGraphAPI(adapterCardio.getItem(position));
                 break;
             case R.id.btnShowReport:
@@ -264,7 +265,9 @@ public class CardiolopulmonaryFragment extends BaseFragment implements View.OnCl
 
                             @Override
                             public void onError() {
-                                UIHelper.showShortToastInCenter(getContext(), "failure");
+                                showEmptyView();
+
+
                             }
                         });
 

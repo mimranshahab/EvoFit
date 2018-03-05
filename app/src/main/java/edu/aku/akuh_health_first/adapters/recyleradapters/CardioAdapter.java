@@ -46,15 +46,28 @@ public class CardioAdapter extends RecyclerView.Adapter<CardioAdapter.ViewHolder
     public void onBindViewHolder(final ViewHolder holder, int i) {
 
         final CardioModel cardioModel = arrListCardioModel.get(holder.getAdapterPosition());
-        holder.txtHospLoc.setText(activity.getString(R.string.hospitalLocation) + " " + cardioModel.getHospitalLocation());
+//        holder.txtHospLoc.setText(activity.getString(R.string.hospitalLocation) + " " + cardioModel.getHospitalLocation());
 //        holder.txtViewProfile.setText(cardioModel.getName());
         holder.txtReqDatetime.setText(activity.getString(R.string.date_time) + " " + cardioModel.getRequestServiceDateTime());
-        holder.txtReqNum.setText(activity.getString(R.string.status) + " " + cardioModel.getStatus());
-        holder.txtAdmNo.setText(activity.getString(R.string.admissionNumber) + " " + cardioModel.getAdmissionNumber());
+//        holder.txtReqNum.setText(activity.getString(R.string.status) + " " + cardioModel.getStatus());
+        holder.txtStatus.setText(activity.getString(R.string.status) + " " + cardioModel.getStatus());
         holder.txtService.setText(activity.getString(R.string.service) + " " + cardioModel.getService());
+
+        holder.txtHospLoc.setVisibility(View.GONE);
+        holder.txtReqNum.setVisibility(View.GONE);
 
         holder.btnShowGraph.setVisibility(View.VISIBLE);
         holder.btnShowReport.setVisibility(View.VISIBLE);
+        if (!cardioModel.isGraphAvailable(cardioModel.getGraphAvailable())) {
+            holder.btnShowGraph.setEnabled(false);
+            holder.btnShowGraph.setAlpha(.15f);
+        }
+
+        if (!cardioModel.isReportAvailable(cardioModel.getReportable())) {
+            holder.btnShowReport.setEnabled(false);
+            holder.btnShowReport.setAlpha(.15f);
+
+        }
 
         setListener(holder, cardioModel);
     }
@@ -101,7 +114,7 @@ public class CardioAdapter extends RecyclerView.Adapter<CardioAdapter.ViewHolder
         @BindView(R.id.txtReqNum)
         AnyTextView txtReqNum;
         @BindView(R.id.txtAdmNo)
-        AnyTextView txtAdmNo;
+        AnyTextView txtStatus;
         @BindView(R.id.txtService)
         AnyTextView txtService;
         @BindView(R.id.contListItem)

@@ -16,6 +16,7 @@ public class CardioModel
     @Expose
     @SerializedName("RecordFound")
     private String recordfound;
+
     @Override
     public boolean isRecordFound() {
         return getRecordfound().equals("true");
@@ -36,7 +37,6 @@ public class CardioModel
     public void setRecordfound(String recordfound) {
         this.recordfound = recordfound;
     }
-
 
 
     @SerializedName("HospitalLocation")
@@ -273,26 +273,21 @@ public class CardioModel
         this.active = active;
     }
 
-    
-
-    public String tempCardioOb = "{\n" +
-        "            \"HospitalLocation\": \"Stadium Road\",\n" +
-                "            \"RequestServiceDateTime\": \"2017-01-05T10:42:51\",\n" +
-                "            \"RequestNumber\": \"1025362\",\n" +
-                "            \"AdmissionNumber\": \"104979464\",\n" +
-                "            \"Service\": \"ECHO - ECHO\",\n" +
-                "            \"ReportID\": \"2017:ECH100\",\n" +
-                "        \n" +
-                "            \"DetailReportID\": \"20170105_CPS_2017ECH100.pdf\"\n" +
-                "        }";
 
     @Override
     public String toString() {
         return GsonFactory.getConfiguredGson().toJson(this);
     }
 
-    public String tempCardioOb() {
-        return tempCardioOb;
+    public boolean isGraphAvailable(String graphAvailable) {
+
+        if (graphAvailable.equalsIgnoreCase("true")) return true;
+        else return false;
+    }
+    public boolean isReportAvailable(String reportable) {
+
+        if (reportable.equalsIgnoreCase("true")) return true;
+        else return false;
     }
 
 }

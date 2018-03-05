@@ -1,7 +1,6 @@
 package edu.aku.akuh_health_first.fragments;
 
 import android.os.Bundle;
-import android.os.Handler;
 import android.support.annotation.Nullable;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v4.widget.SwipeRefreshLayout;
@@ -16,13 +15,10 @@ import android.view.animation.LayoutAnimationController;
 import android.widget.AdapterView;
 
 import com.google.gson.JsonObject;
-import com.google.gson.JsonParser;
 import com.google.gson.reflect.TypeToken;
 
 import org.json.JSONObject;
-import org.json.JSONStringer;
 
-import java.io.File;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
 
@@ -32,17 +28,12 @@ import butterknife.Unbinder;
 import edu.aku.akuh_health_first.R;
 import edu.aku.akuh_health_first.adapters.recyleradapters.EndoscopyAdapter;
 import edu.aku.akuh_health_first.callbacks.OnItemClickListener;
-import edu.aku.akuh_health_first.constatnts.AppConstants;
 import edu.aku.akuh_health_first.constatnts.WebServiceConstants;
 import edu.aku.akuh_health_first.enums.BaseURLTypes;
 import edu.aku.akuh_health_first.fragments.abstracts.BaseFragment;
 import edu.aku.akuh_health_first.helperclasses.ui.helper.TitleBar;
-import edu.aku.akuh_health_first.helperclasses.ui.helper.UIHelper;
-import edu.aku.akuh_health_first.managers.DateManager;
-import edu.aku.akuh_health_first.managers.FileManager;
 import edu.aku.akuh_health_first.managers.retrofit.GsonFactory;
 import edu.aku.akuh_health_first.managers.retrofit.WebServices;
-import edu.aku.akuh_health_first.models.DischargeSummaryModel;
 import edu.aku.akuh_health_first.models.EndoscopyModel;
 import edu.aku.akuh_health_first.models.SearchModel;
 import edu.aku.akuh_health_first.models.wrappers.WebResponse;
@@ -63,14 +54,14 @@ public class EndoscopyFragment extends BaseFragment implements View.OnClickListe
     Unbinder unbinder;
     @BindView(R.id.empty_view)
     AnyTextView emptyView;
-    private ArrayList<EndoscopyModel> arrClinicalLabLists;
-    private EndoscopyAdapter adaptNeuropysiology;
+    private ArrayList<EndoscopyModel> arrEndoscopy;
+    private EndoscopyAdapter adapterEndoscopy;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        arrClinicalLabLists = new ArrayList<EndoscopyModel>();
-        adaptNeuropysiology = new EndoscopyAdapter(getBaseActivity(), arrClinicalLabLists, this);
+        arrEndoscopy = new ArrayList<EndoscopyModel>();
+        adapterEndoscopy = new EndoscopyAdapter(getBaseActivity(), arrEndoscopy, this);
     }
 
     public static EndoscopyFragment newInstance() {
@@ -111,7 +102,7 @@ public class EndoscopyFragment extends BaseFragment implements View.OnClickListe
         int resId = R.anim.layout_animation_fall_bottom;
         LayoutAnimationController animation = AnimationUtils.loadLayoutAnimation(getContext(), resId);
         recyclerView.setLayoutAnimation(animation);
-        recyclerView.setAdapter(adaptNeuropysiology);
+        recyclerView.setAdapter(adapterEndoscopy);
     }
 
     @Override
@@ -187,14 +178,22 @@ public class EndoscopyFragment extends BaseFragment implements View.OnClickListe
                                 ArrayList<EndoscopyModel> arrayList = GsonFactory.getSimpleGson()
                                         .fromJson(GsonFactory.getSimpleGson().toJson(webResponse.result)
                                                 , type);
-                                arrClinicalLabLists.clear();
-                                arrClinicalLabLists.addAll(arrayList);
-                                adaptNeuropysiology.notifyDataSetChanged();
+                                arrEndoscopy.clear();
+                                arrEndoscopy.addAll(arrayList);
+                                adapterEndoscopy.notifyDataSetChanged();
+
+                                if (arrEndoscopy.size() > 0) {
+                                    showView();
+
+                                } else {
+                                    showEmptyView();
+                                }
+
                             }
 
                             @Override
                             public void onError() {
-
+                                showEmptyView();
                             }
                         });
 

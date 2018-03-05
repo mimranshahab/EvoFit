@@ -1,7 +1,6 @@
 package edu.aku.akuh_health_first.fragments;
 
 import android.os.Bundle;
-import android.os.Handler;
 import android.support.annotation.Nullable;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v4.widget.SwipeRefreshLayout;
@@ -18,7 +17,6 @@ import android.widget.AdapterView;
 import com.google.gson.JsonObject;
 import com.google.gson.reflect.TypeToken;
 
-import java.io.File;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
 
@@ -37,6 +35,8 @@ import edu.aku.akuh_health_first.managers.retrofit.WebServices;
 import edu.aku.akuh_health_first.models.SearchModel;
 import edu.aku.akuh_health_first.models.TimelineModel;
 import edu.aku.akuh_health_first.models.wrappers.WebResponse;
+import edu.aku.akuh_health_first.views.AnyEditTextView;
+import edu.aku.akuh_health_first.views.AnyTextView;
 
 
 /**
@@ -49,7 +49,11 @@ public class TimelineFragment extends BaseFragment implements View.OnClickListen
     RecyclerView recyclerView;
     @BindView(R.id.refreshLayout)
     SwipeRefreshLayout refreshLayout;
+    @BindView(R.id.empty_view)
+    AnyTextView emptyView;
     Unbinder unbinder;
+    @BindView(R.id.edtSearchBar)
+    AnyEditTextView edtSearchBar;
     private ArrayList<TimelineModel> arrData;
     private TimelineAdapter adapter;
 
@@ -87,6 +91,7 @@ public class TimelineFragment extends BaseFragment implements View.OnClickListen
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+        edtSearchBar.setVisibility(View.VISIBLE);
         bindView();
         serviceCall();
     }
@@ -145,7 +150,7 @@ public class TimelineFragment extends BaseFragment implements View.OnClickListen
     @Override
     public void onItemClick(int position, Object object) {
         if (object instanceof TimelineModel) {
-            getBaseActivity().addDockableFragment(HealthHistoryFragment.newInstance(true,((TimelineModel) object).getPatientVisitAdmissionID()));
+            getBaseActivity().addDockableFragment(HealthHistoryFragment.newInstance(true, ((TimelineModel) object).getPatientVisitAdmissionID()));
 
         }
 
@@ -174,13 +179,34 @@ public class TimelineFragment extends BaseFragment implements View.OnClickListen
                                 arrData.clear();
                                 arrData.addAll(arrayList);
                                 adapter.notifyDataSetChanged();
+
+
+                                if (arrData.size() > 0) {
+                                    showView();
+
+                                } else {
+                                    showEmptyView();
+                                }
                             }
 
                             @Override
                             public void onError() {
+                                showEmptyView();
 
                             }
                         });
 
+    }
+
+
+    private void showEmptyView() {
+        refreshLayout.setVisibility(View.GONE);
+        emptyView.setVisibility(View.VISIBLE);
+    }
+
+    private void showView() {
+        bindView();
+        emptyView.setVisibility(View.GONE);
+        refreshLayout.setVisibility(View.VISIBLE);
     }
 }

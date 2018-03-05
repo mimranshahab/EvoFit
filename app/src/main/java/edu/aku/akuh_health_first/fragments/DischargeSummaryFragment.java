@@ -41,6 +41,7 @@ import edu.aku.akuh_health_first.models.DischargeSummaryModel;
 import edu.aku.akuh_health_first.models.SearchModel;
 import edu.aku.akuh_health_first.models.receiving_model.UserDetailModel;
 import edu.aku.akuh_health_first.models.wrappers.WebResponse;
+import edu.aku.akuh_health_first.views.AnyTextView;
 
 /**
  * Created by aqsa.sarwar on 1/30/2018.
@@ -51,6 +52,9 @@ public class DischargeSummaryFragment extends BaseFragment implements View.OnCli
     RecyclerView recylerViewDischageSummary;
     @BindView(R.id.refreshLayout)
     SwipeRefreshLayout refreshLayout;
+    @BindView(R.id.empty_view)
+    AnyTextView emptyView;
+
     Unbinder unbinder;
     private ArrayList<DischargeSummaryModel> arrDischargeSummary;
     private DischargeSummaryAdapter adapterDischargesummary;
@@ -93,35 +97,6 @@ public class DischargeSummaryFragment extends BaseFragment implements View.OnCli
         recylerViewDischageSummary.setAdapter(adapterDischargesummary);
     }
 
-    private void serviceCall() {
-        SearchModel model = new SearchModel();
-        model.setMRNumber(WebServiceConstants.tempMRN_LAB);
-        model.setVisitID(null);
-        new WebServices(getBaseActivity(), WebServiceConstants.temporaryToken, BaseURLTypes.AHFA_BASE_URL)
-                .webServiceRequestAPIForArray(WebServiceConstants.METHOD_DISCHARGE_SUMMARY_LIST,
-                        model.toString(),
-                        new WebServices.IRequestArrayDataCallBack() {
-                            @Override
-                            public void requestDataResponse(WebResponse<ArrayList<JsonObject>> webResponse) {
-
-
-                                Type type = new TypeToken<ArrayList<DischargeSummaryModel>>() {
-                                }.getType();
-                                ArrayList<DischargeSummaryModel> arrayList = GsonFactory.getSimpleGson()
-                                        .fromJson(GsonFactory.getSimpleGson().toJson(webResponse.result)
-                                                , type);
-
-                                arrDischargeSummary.clear();
-                                arrDischargeSummary.addAll(arrayList);
-                                adapterDischargesummary.notifyDataSetChanged();
-                            }
-
-                            @Override
-                            public void onError() {
-
-                            }
-                        });
-    }
 
     @Override
     protected int getFragmentLayout() {
@@ -179,7 +154,6 @@ public class DischargeSummaryFragment extends BaseFragment implements View.OnCli
                             @Override
                             public void onError() {
 
-
                             }
                         }
                 );
@@ -192,5 +166,53 @@ public class DischargeSummaryFragment extends BaseFragment implements View.OnCli
             showReportAPI(summaryModel);
         }
 
+    }
+
+    private void serviceCall() {
+        SearchModel model = new SearchModel();
+        model.setMRNumber(WebServiceConstants.tempMRN_LAB);
+        model.setVisitID(null);
+        new WebServices(getBaseActivity(), WebServiceConstants.temporaryToken, BaseURLTypes.AHFA_BASE_URL)
+                .webServiceRequestAPIForArray(WebServiceConstants.METHOD_DISCHARGE_SUMMARY_LIST,
+                        model.toString(),
+                        new WebServices.IRequestArrayDataCallBack() {
+                            @Override
+                            public void requestDataResponse(WebResponse<ArrayList<JsonObject>> webResponse) {
+
+
+                                Type type = new TypeToken<ArrayList<DischargeSummaryModel>>() {
+                                }.getType();
+                                ArrayList<DischargeSummaryModel> arrayList = GsonFactory.getSimpleGson()
+                                        .fromJson(GsonFactory.getSimpleGson().toJson(webResponse.result)
+                                                , type);
+
+                                arrDischargeSummary.clear();
+                                arrDischargeSummary.addAll(arrayList);
+                                adapterDischargesummary.notifyDataSetChanged();
+                                if (arrDischargeSummary.size() > 0) {
+                                    showView();
+
+                                } else {
+                                    showEmptyView();
+                                }
+
+                            }
+
+                            @Override
+                            public void onError() {
+                                showEmptyView();
+                            }
+                        });
+    }
+
+    private void showEmptyView() {
+        refreshLayout.setVisibility(View.GONE);
+        emptyView.setVisibility(View.VISIBLE);
+    }
+
+    private void showView() {
+        bindView();
+        emptyView.setVisibility(View.GONE);
+        refreshLayout.setVisibility(View.VISIBLE);
     }
 }

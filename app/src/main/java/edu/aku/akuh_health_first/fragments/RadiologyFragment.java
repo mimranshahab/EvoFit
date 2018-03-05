@@ -233,7 +233,8 @@ public class RadiologyFragment extends BaseFragment implements View.OnClickListe
 
                             @Override
                             public void onError() {
-                                UIHelper.showShortToastInCenter(getContext(), "failure");
+//                                UIHelper.showShortToastInCenter(getContext(), "failure");
+                                showEmptyView();
                             }
                         });
 

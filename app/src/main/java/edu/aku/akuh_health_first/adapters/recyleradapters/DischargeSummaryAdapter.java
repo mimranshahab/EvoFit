@@ -48,10 +48,16 @@ public class DischargeSummaryAdapter extends RecyclerView.Adapter<DischargeSumma
     public void onBindViewHolder(final ViewHolder holder, int i) {
 
         final DischargeSummaryModel DischargeSummaryModel = arrdischargeSummaryModels.get(holder.getAdapterPosition());
-        holder.txtHospLoc.setText("AdmissionDateTime:  "+ DischargeSummaryModel.getAdmissionDateTime());
+//        holder.txtHospLoc.setText("AdmissionDateTime:  "+ DischargeSummaryModel.getAdmissionDateTime());
+
+
+        holder.txtAdmNo.setVisibility(View.GONE);
+        holder.txtHospLoc.setVisibility(View.GONE);
+        holder.txtReqNum.setVisibility(View.GONE);
+
         holder.txtReqDatetime.setText("MRNumber:  "+ DischargeSummaryModel.getMRNumber());
-        holder.txtReqNum.setText("Physician Name:  "+DischargeSummaryModel.getPhyName());
-        holder.txtAdmNo.setText("Visit Type:  "+DischargeSummaryModel.getVisitType());
+//        holder.txtReqNum.setText("Physician Name:  "+DischargeSummaryModel.getPhyName());
+//        holder.txtStatus.setText("Visit Type:  "+DischargeSummaryModel.getVisitType());
         holder.txtService.setText("Last File DTTM:  "+DischargeSummaryModel.getLastFileDttm());
         holder.btnShowReport.setVisibility(View.VISIBLE);
         setListener(holder, DischargeSummaryModel);

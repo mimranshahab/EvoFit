@@ -50,8 +50,11 @@ public class NeurophysiologyAdapter extends RecyclerView.Adapter<Neurophysiology
         holder.txtHospLoc.setText(activity.getString(R.string.hospitalLocation) + " " + neurophysiology.getHospitalLocation());
 //        holder.txtViewProfile.setText(neurophysiology.getName());
         holder.txtReqDatetime.setText(activity.getString(R.string.date_time) + " " + neurophysiology.getRequestServiceDateTime());
-        holder.txtReqNum.setText(activity.getString(R.string.requestNumber) + " " + neurophysiology.getRequestNumber());
-        holder.txtAdmNo.setText(activity.getString(R.string.admissionNumber) + " " + neurophysiology.getAdmissionNumber());
+//        holder.txtReqNum.setText(activity.getString(R.string.requestNumber) + " " + neurophysiology.getRequestNumber());
+//        holder.txtStatus.setText(activity.getString(R.string.admissionNumber) + " " + neurophysiology.getAdmissionNumber());
+        holder.txtAdmNo.setVisibility(View.GONE);
+        holder.txtHospLoc.setVisibility(View.GONE);
+        holder.txtReqNum.setVisibility(View.GONE);
         holder.txtService.setText(activity.getString(R.string.service) + " " + neurophysiology.getService());
         holder.btnShowReport.setVisibility(View.VISIBLE);
         setListener(holder, neurophysiology);

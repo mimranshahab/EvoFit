@@ -102,15 +102,15 @@ public class WebServices {
             if (response.body().isSuccess()) {
 
 //                for testing
-//                return true;
+                return true;
 
-                if (response.body().result.get("RecordFound") == null) {
-                    return false;
-                } else if (response.body().result.get("RecordFound").isJsonNull()) {
-                    return false;
-                } else {
-                    return response.body().result.get("RecordFound").getAsString().equals("true");
-                }
+//                if (response.body().result.get("RecordFound") == null) {
+//                    return false;
+//                } else if (response.body().result.get("RecordFound").isJsonNull()) {
+//                    return false;
+//                } else {
+//                    return response.body().result.get("RecordFound").getAsString().equals("true");
+//                }
             } else {
                 return false;
             }
@@ -386,7 +386,7 @@ public class WebServices {
                 });
             } else {
                 dismissDialog();
-                UIHelper.showToast(mContext,"else block");
+                callBack.onError();
             }
 
         } catch (Exception e) {
@@ -435,6 +435,7 @@ public class WebServices {
                 });
             } else {
                 dismissDialog();
+                callBack.onError();
             }
 
         } catch (Exception e) {
@@ -498,6 +499,7 @@ public class WebServices {
                 });
             } else {
                 dismissDialog();
+                callBack.onError();
             }
 
         } catch (Exception e) {

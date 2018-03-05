@@ -15,8 +15,6 @@ import java.util.ArrayList;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import edu.aku.akuh_health_first.R;
-import edu.aku.akuh_health_first.callbacks.OnItemClickListener;
-import edu.aku.akuh_health_first.models.CardioModel;
 import edu.aku.akuh_health_first.models.RadiologyModel;
 import edu.aku.akuh_health_first.views.AnyTextView;
 
@@ -50,10 +48,11 @@ public class RadiologyAdapter extends RecyclerView.Adapter<RadiologyAdapter.View
 
         final RadiologyModel model = arrayList.get(holder.getAdapterPosition());
         holder.txtExamDatetime.setText("Exam Date" + " - " + model.getExamdate());
-        holder.txtExamOrderNumber.setText("Exam Order Number" + " - " + model.getExamordernumber());
-        holder.txtExamTypeId.setText("Exam Type ID" + " - " + model.getExamtypeid());
+        holder.txtLocation.setText("Hospital Facility" + " - " + model.getVisitlocation());
+//        holder.txtExamTypeId.setText("Exam Type ID" + " - " + model.getExamtypeid());
         holder.txtExam.setText("Exam" + " - " + model.getExam());
         holder.txtStatus.setText("Status" + " - " + model.getStatus());
+
 //        holder.btnShowReport.setVisibility(View.VISIBLE);
         setListener(holder, model);
     }
@@ -91,8 +90,8 @@ public class RadiologyAdapter extends RecyclerView.Adapter<RadiologyAdapter.View
     static class ViewHolder extends RecyclerView.ViewHolder {
         @BindView(R.id.txtReqDatetime)
         AnyTextView txtExamDatetime;
-        @BindView(R.id.txtExamOrderNumber)
-        AnyTextView txtExamOrderNumber;
+        @BindView(R.id.txtLocation)
+        AnyTextView txtLocation;
         @BindView(R.id.txtExamTypeId)
         AnyTextView txtExamTypeId;
         @BindView(R.id.txtExam)

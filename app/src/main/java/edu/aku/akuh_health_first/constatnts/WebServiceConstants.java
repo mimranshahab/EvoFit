@@ -37,8 +37,8 @@ public class WebServiceConstants {
     public static final String temp_Specimen_Num = "56070141";
     public static final String tempPassword = "user123";
     //    public static final String temp_Specimen_Num = "47556226";
-    //    public static final String tempMRN_Cardio = "200-47-97";
-    public static final String tempMRN_Cardio = "275-02-02";
+//    public static final String tempMRN_Cardio = "275-02-02";
+    public static final String tempMRN_Cardio = "289-49-15";
 //    public static final String tempMRN_Cardio = "200-47-97";
 
     /**

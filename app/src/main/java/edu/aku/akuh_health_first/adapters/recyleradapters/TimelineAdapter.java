@@ -1,12 +1,12 @@
 package edu.aku.akuh_health_first.adapters.recyleradapters;
 
-import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.FrameLayout;
 import android.widget.LinearLayout;
 
 import java.util.ArrayList;
@@ -64,15 +64,19 @@ public class TimelineAdapter extends RecyclerView.Adapter<TimelineAdapter.ViewHo
 
          */
         if (timelineModel.getPatientVisitType().equals("ER")) {
-            holder.llcolorCode.setBackgroundResource(R.color.c_brick_red);
+            holder.frameColorCode.setBackgroundResource(R.color.c_brick_red);
+            holder.llColorCode.setBackgroundResource(R.color.c_brick_red);
         } else if (timelineModel.getPatientVisitType().equals("IN")) {
-            holder.llcolorCode.setBackgroundResource(R.color.base_dark_blue);
+            holder.frameColorCode.setBackgroundResource(R.color.base_dark_blue);
+            holder.llColorCode.setBackgroundResource(R.color.base_dark_blue);
 
         } else if (timelineModel.getPatientVisitType().equals("CLI")) {
-            holder.llcolorCode.setBackgroundResource(R.color.c_dark_green);
+            holder.frameColorCode.setBackgroundResource(R.color.c_dark_green);
+            holder.llColorCode.setBackgroundResource(R.color.c_dark_green);
 
         } else {
-            holder.llcolorCode.setBackgroundResource(R.color.base_amber);
+            holder.frameColorCode.setBackgroundResource(R.color.base_amber);
+            holder.llColorCode.setBackgroundResource(R.color.base_amber);
 
         }
 
@@ -115,8 +119,10 @@ public class TimelineAdapter extends RecyclerView.Adapter<TimelineAdapter.ViewHo
         AnyTextView txtVisitType;
         @BindView(R.id.cardView)
         CardView cardView;
-        @BindView(R.id.llcolorCode)
-        LinearLayout llcolorCode;
+        @BindView(R.id.frameColorCode)
+        FrameLayout frameColorCode;
+        @BindView(R.id.llColorCode)
+        LinearLayout llColorCode;
 
         ViewHolder(View view) {
             super(view);

@@ -48,10 +48,14 @@ public class EndoscopyAdapter extends RecyclerView.Adapter<EndoscopyAdapter.View
 
         final EndoscopyModel model = arrData.get(holder.getAdapterPosition());
 
-        holder.txtProcedures.setText(model.getProcedures());
+
+        holder.txtMRNumber.setVisibility(View.GONE);
+        holder.txtReportTypeId.setVisibility(View.GONE);
+
+        holder.txtProcedures.setText("Procedure: "+model.getProcedures());
         holder.txtDateTime.setText(model.getProceduredatetime());
-        holder.txtMRNumber.setText(model.getMrnumber());
-        holder.txtReportTypeId.setText(model.getReporttypeid());
+        holder.txtMRNumber.setText("Dr."+model.getPhysicianname());
+//        holder.txtReportTypeId.setText(model.getReporttypeid());
         setListener(holder, model);
     }
 

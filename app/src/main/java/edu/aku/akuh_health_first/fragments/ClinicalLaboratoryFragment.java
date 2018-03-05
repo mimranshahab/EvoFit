@@ -194,8 +194,10 @@ public class ClinicalLaboratoryFragment extends BaseFragment implements View.OnC
 
                             @Override
                             public void onError() {
-                                UIHelper.showShortToastInCenter(getContext(), "failure");
+//                                UIHelper.showShortToastInCenter(getContext(), "failure");
+                                showEmptyView();
                             }
+
                         });
 
     }
