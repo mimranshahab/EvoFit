@@ -10,15 +10,15 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-         android:orientation="vertical">
+        android:orientation="vertical">
 
 
         <LinearLayout
             android:id="@+id/contTimeLinebar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:visibility="gone"
-            android:background="@color/colorPrimaryHalfTransparent">
+            android:background="@color/colorPrimaryHalfTransparent"
+            android:visibility="gone">
 
             <edu.aku.akuh_health_first.views.AnyTextView
                 android:id="@+id/txtTimelineView"
@@ -28,8 +28,8 @@
                 android:gravity="center"
                 android:padding="@dimen/x5dp"
                 android:text="Displaying result for Visit ID: "
-                android:textSize="@dimen/s16"
                 android:textColor="@color/text_dark"
+                android:textSize="@dimen/s16"
                 app:typeface="@string/font_regular" />
 
         </LinearLayout>
@@ -52,7 +52,6 @@
                     android:id="@+id/contLab"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
-                    android:layout_centerInParent="true"
                     android:layout_margin="@dimen/x5dp"
                     android:layout_weight="1"
                     android:animateLayoutChanges="true"
@@ -86,19 +85,19 @@
 
                             <TextView
                                 android:id="@+id/txtClinicCount"
-                                android:layout_width="@dimen/x25dp"
-                                android:layout_height="@dimen/x25dp"
+                                android:layout_width="@dimen/x20dp"
+                                android:layout_height="@dimen/x20dp"
                                 android:layout_alignParentRight="true"
                                 android:layout_alignParentTop="true"
-                                android:layout_marginRight="@dimen/x25dp"
+                                android:layout_marginRight="@dimen/x10dp"
                                 android:layout_marginTop="@dimen/x5dp"
                                 android:background="@drawable/circle_green"
                                 android:gravity="center"
                                 android:maxLines="1"
-                                android:padding="@dimen/x5dp"
+                                android:padding="@dimen/x2dp"
                                 android:text="99"
                                 android:textColor="@color/c_white"
-                                android:textSize="@dimen/s12" />
+                                android:textSize="@dimen/s10" />
 
 
                         </RelativeLayout>
@@ -112,7 +111,7 @@
                             android:lines="2"
                             android:text="Clinical Laboratory"
                             android:textColor="@color/c_black"
-                            android:textSize="@dimen/s14"
+                            android:textSize="@dimen/s11"
                             app:typeface="@string/font_bold"
 
 
@@ -160,19 +159,19 @@
 
                             <TextView
                                 android:id="@+id/txtRadiology"
-                                android:layout_width="@dimen/x25dp"
-                                android:layout_height="@dimen/x25dp"
+                                android:layout_width="@dimen/x20dp"
+                                android:layout_height="@dimen/x20dp"
                                 android:layout_alignParentRight="true"
                                 android:layout_alignParentTop="true"
-                                android:layout_marginRight="@dimen/x25dp"
+                                android:layout_marginRight="@dimen/x10dp"
                                 android:layout_marginTop="@dimen/x5dp"
                                 android:background="@drawable/circle_green"
                                 android:gravity="center"
                                 android:maxLines="1"
-                                android:padding="@dimen/x5dp"
+                                android:padding="@dimen/x2dp"
                                 android:text="99"
                                 android:textColor="@color/c_white"
-                                android:textSize="@dimen/s12" />
+                                android:textSize="@dimen/s10" />
 
 
                         </RelativeLayout>
@@ -187,7 +186,7 @@
                             android:lines="2"
                             android:text="Radiology"
                             android:textColor="@color/c_black"
-                            android:textSize="@dimen/s14"
+                            android:textSize="@dimen/s11"
                             app:typeface="@string/font_bold"
 
                             />
@@ -195,17 +194,6 @@
                     </LinearLayout>
 
                 </android.support.v7.widget.CardView>
-            </LinearLayout>
-
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-
-                android:layout_weight="1"
-                android:orientation="horizontal"
-
-                >
 
 
                 <android.support.v7.widget.CardView
@@ -248,19 +236,19 @@
 
                             <TextView
                                 android:id="@+id/txtMedicationCount"
-                                android:layout_width="@dimen/x25dp"
-                                android:layout_height="@dimen/x25dp"
+                                android:layout_width="@dimen/x20dp"
+                                android:layout_height="@dimen/x20dp"
                                 android:layout_alignParentRight="true"
                                 android:layout_alignParentTop="true"
-                                android:layout_marginRight="@dimen/x25dp"
+                                android:layout_marginRight="@dimen/x10dp"
                                 android:layout_marginTop="@dimen/x5dp"
                                 android:background="@drawable/circle_green"
                                 android:gravity="center"
                                 android:maxLines="1"
-                                android:padding="@dimen/x5dp"
+                                android:padding="@dimen/x2dp"
                                 android:text="99"
                                 android:textColor="@color/c_white"
-                                android:textSize="@dimen/s12" />
+                                android:textSize="@dimen/s10" />
 
                         </RelativeLayout>
 
@@ -272,7 +260,7 @@
                             android:lines="2"
                             android:text="Medication Profile"
                             android:textColor="@color/c_black"
-                            android:textSize="@dimen/s14"
+                            android:textSize="@dimen/s11"
                             app:typeface="@string/font_bold"
 
 
@@ -281,6 +269,19 @@
                     </LinearLayout>
 
                 </android.support.v7.widget.CardView>
+
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+
+                android:orientation="horizontal"
+
+                >
+
 
                 <android.support.v7.widget.CardView
                     android:id="@+id/contImmunization"
@@ -323,19 +324,19 @@
 
                             <TextView
                                 android:id="@+id/txtImmunizationCount"
-                                android:layout_width="@dimen/x25dp"
-                                android:layout_height="@dimen/x25dp"
+                                android:layout_width="@dimen/x20dp"
+                                android:layout_height="@dimen/x20dp"
                                 android:layout_alignParentRight="true"
                                 android:layout_alignParentTop="true"
-                                android:layout_marginRight="@dimen/x25dp"
+                                android:layout_marginRight="@dimen/x10dp"
                                 android:layout_marginTop="@dimen/x5dp"
                                 android:background="@drawable/circle_green"
                                 android:gravity="center"
                                 android:maxLines="1"
-                                android:padding="@dimen/x5dp"
+                                android:padding="@dimen/x2dp"
                                 android:text="99"
                                 android:textColor="@color/c_white"
-                                android:textSize="@dimen/s12" />
+                                android:textSize="@dimen/s10" />
 
                         </RelativeLayout>
 
@@ -349,7 +350,7 @@
                             android:lines="2"
                             android:text="Immunization Profile"
                             android:textColor="@color/c_black"
-                            android:textSize="@dimen/s14"
+                            android:textSize="@dimen/s11"
                             app:typeface="@string/font_bold"
 
 
@@ -357,17 +358,6 @@
                     </LinearLayout>
 
                 </android.support.v7.widget.CardView>
-            </LinearLayout>
-
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-
-                android:layout_weight="1"
-                android:orientation="horizontal"
-
-                >
 
                 <android.support.v7.widget.CardView
                     android:id="@+id/contCardio"
@@ -408,19 +398,19 @@
 
                             <TextView
                                 android:id="@+id/txtCardioCount"
-                                android:layout_width="@dimen/x25dp"
-                                android:layout_height="@dimen/x25dp"
+                                android:layout_width="@dimen/x20dp"
+                                android:layout_height="@dimen/x20dp"
                                 android:layout_alignParentRight="true"
                                 android:layout_alignParentTop="true"
-                                android:layout_marginRight="@dimen/x25dp"
+                                android:layout_marginRight="@dimen/x10dp"
                                 android:layout_marginTop="@dimen/x5dp"
                                 android:background="@drawable/circle_green"
                                 android:gravity="center"
                                 android:maxLines="1"
-                                android:padding="@dimen/x5dp"
+                                android:padding="@dimen/x2dp"
                                 android:text="99"
                                 android:textColor="@color/c_white"
-                                android:textSize="@dimen/s12" />
+                                android:textSize="@dimen/s10" />
 
                         </RelativeLayout>
 
@@ -434,7 +424,7 @@
                             android:lines="2"
                             android:text="Cardiopulmonary and Angiograms"
                             android:textColor="@color/c_black"
-                            android:textSize="@dimen/s14"
+                            android:textSize="@dimen/s11"
                             app:typeface="@string/font_bold"
 
                             />
@@ -483,19 +473,19 @@
 
                             <TextView
                                 android:id="@+id/txtNeuroCount"
-                                android:layout_width="@dimen/x25dp"
-                                android:layout_height="@dimen/x25dp"
+                                android:layout_width="@dimen/x20dp"
+                                android:layout_height="@dimen/x20dp"
                                 android:layout_alignParentRight="true"
                                 android:layout_alignParentTop="true"
-                                android:layout_marginRight="@dimen/x25dp"
+                                android:layout_marginRight="@dimen/x10dp"
                                 android:layout_marginTop="@dimen/x5dp"
                                 android:background="@drawable/circle_green"
                                 android:gravity="center"
                                 android:maxLines="1"
-                                android:padding="@dimen/x5dp"
+                                android:padding="@dimen/x2dp"
                                 android:text="99"
                                 android:textColor="@color/c_white"
-                                android:textSize="@dimen/s12" />
+                                android:textSize="@dimen/s10" />
 
                         </RelativeLayout>
 
@@ -507,7 +497,7 @@
                             android:lines="2"
                             android:text="Neurophysiology"
                             android:textColor="@color/c_black"
-                            android:textSize="@dimen/s14"
+                            android:textSize="@dimen/s11"
                             app:typeface="@string/font_bold"
 
 
@@ -516,21 +506,23 @@
                     </LinearLayout>
 
                 </android.support.v7.widget.CardView>
+
+
             </LinearLayout>
 
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-
                 android:layout_weight="1"
+
                 android:orientation="horizontal">
 
 
                 <android.support.v7.widget.CardView
                     android:id="@+id/contEndo"
                     android:layout_width="0dp"
-                    android:layout_height="match_parent"
+                    android:layout_height="wrap_content"
                     android:layout_centerInParent="true"
                     android:layout_margin="@dimen/x5dp"
                     android:layout_weight="1"
@@ -567,19 +559,19 @@
 
                             <TextView
                                 android:id="@+id/txtEndoscopyCount"
-                                android:layout_width="@dimen/x25dp"
-                                android:layout_height="@dimen/x25dp"
+                                android:layout_width="@dimen/x20dp"
+                                android:layout_height="@dimen/x20dp"
                                 android:layout_alignParentRight="true"
                                 android:layout_alignParentTop="true"
-                                android:layout_marginRight="@dimen/x25dp"
+                                android:layout_marginRight="@dimen/x10dp"
                                 android:layout_marginTop="@dimen/x5dp"
                                 android:background="@drawable/circle_green"
                                 android:gravity="center"
                                 android:maxLines="1"
-                                android:padding="@dimen/x5dp"
+                                android:padding="@dimen/x2dp"
                                 android:text="99"
                                 android:textColor="@color/c_white"
-                                android:textSize="@dimen/s12" />
+                                android:textSize="@dimen/s10" />
 
                         </RelativeLayout>
 
@@ -591,7 +583,7 @@
                             android:lines="2"
                             android:text="Endoscopy"
                             android:textColor="@color/c_black"
-                            android:textSize="@dimen/s14"
+                            android:textSize="@dimen/s11"
                             app:typeface="@string/font_bold"
 
 
@@ -639,19 +631,19 @@
 
                             <TextView
                                 android:id="@+id/txtDischargeCount"
-                                android:layout_width="@dimen/x25dp"
-                                android:layout_height="@dimen/x25dp"
+                                android:layout_width="@dimen/x20dp"
+                                android:layout_height="@dimen/x20dp"
                                 android:layout_alignParentRight="true"
                                 android:layout_alignParentTop="true"
-                                android:layout_marginRight="@dimen/x25dp"
+                                android:layout_marginRight="@dimen/x10dp"
                                 android:layout_marginTop="@dimen/x5dp"
                                 android:background="@drawable/circle_green"
                                 android:gravity="center"
                                 android:maxLines="1"
-                                android:padding="@dimen/x5dp"
+                                android:padding="@dimen/x2dp"
                                 android:text="99"
                                 android:textColor="@color/c_white"
-                                android:textSize="@dimen/s12" />
+                                android:textSize="@dimen/s10" />
 
                         </RelativeLayout>
 
@@ -663,14 +655,258 @@
                             android:lines="2"
                             android:text="Discharge Summary"
                             android:textColor="@color/c_black"
-                            android:textSize="@dimen/s14"
+                            android:textSize="@dimen/s11"
                             app:typeface="@string/font_bold" />
 
 
                     </LinearLayout>
                 </android.support.v7.widget.CardView>
 
+
+                <android.support.v7.widget.CardView
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_margin="@dimen/x5dp"
+                    android:layout_weight="1"
+                    android:animateLayoutChanges="true"
+                    android:padding="@dimen/x7dp"
+                    android:visibility="invisible"
+                    app:cardCornerRadius="@dimen/x10dp"
+                    app:cardElevation="@dimen/x5dp"
+
+                    >
+
+
+                </android.support.v7.widget.CardView>
+
             </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:orientation="horizontal"
+                android:visibility="invisible">
+
+
+                <android.support.v7.widget.CardView
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_margin="@dimen/x5dp"
+                    android:layout_weight="1"
+                    android:animateLayoutChanges="true"
+                    android:padding="@dimen/x7dp"
+                    app:cardCornerRadius="@dimen/x10dp"
+                    app:cardElevation="@dimen/x5dp"
+
+                    >
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:gravity="bottom"
+                        android:orientation="vertical"
+                        android:padding="@dimen/x5dp">
+
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="0dp"
+                            android:layout_weight="1">
+
+
+                            <ImageView
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:layout_gravity="center"
+                                android:layout_weight="1"
+                                android:padding="@dimen/x3dp"
+                                android:scaleType="fitCenter"
+                                android:src="@drawable/clinical_labortaory" />
+
+                            <TextView
+                                android:layout_width="@dimen/x20dp"
+                                android:layout_height="@dimen/x20dp"
+                                android:layout_alignParentRight="true"
+                                android:layout_alignParentTop="true"
+                                android:layout_marginRight="@dimen/x10dp"
+                                android:layout_marginTop="@dimen/x5dp"
+                                android:background="@drawable/circle_green"
+                                android:gravity="center"
+                                android:maxLines="1"
+                                android:padding="@dimen/x2dp"
+                                android:text="99"
+                                android:textColor="@color/c_white"
+                                android:textSize="@dimen/s10" />
+
+
+                        </RelativeLayout>
+
+
+                        <edu.aku.akuh_health_first.views.AnyTextView
+
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center_horizontal"
+                            android:lines="2"
+                            android:text="Clinical Laboratory"
+                            android:textColor="@color/c_black"
+                            android:textSize="@dimen/s11"
+                            app:typeface="@string/font_bold"
+
+
+                            />
+                    </LinearLayout>
+
+                </android.support.v7.widget.CardView>
+
+
+                <android.support.v7.widget.CardView
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_centerInParent="true"
+                    android:layout_margin="@dimen/x5dp"
+                    android:layout_weight="1"
+                    android:animateLayoutChanges="true"
+                    android:padding="@dimen/x7dp"
+                    app:cardCornerRadius="@dimen/x10dp"
+                    app:cardElevation="@dimen/x5dp"
+
+                    >
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:gravity="center_horizontal"
+                        android:orientation="vertical"
+                        android:padding="@dimen/x5dp">
+
+
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="0dp"
+                            android:layout_weight="1">
+
+                            <ImageView
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:layout_gravity="center"
+                                android:layout_weight="1"
+                                android:padding="@dimen/x3dp"
+                                android:scaleType="fitCenter"
+                                android:src="@drawable/radiology" />
+
+                            <TextView
+                                android:layout_width="@dimen/x20dp"
+                                android:layout_height="@dimen/x20dp"
+                                android:layout_alignParentRight="true"
+                                android:layout_alignParentTop="true"
+                                android:layout_marginRight="@dimen/x10dp"
+                                android:layout_marginTop="@dimen/x5dp"
+                                android:background="@drawable/circle_green"
+                                android:gravity="center"
+                                android:maxLines="1"
+                                android:padding="@dimen/x2dp"
+                                android:text="99"
+                                android:textColor="@color/c_white"
+                                android:textSize="@dimen/s10" />
+
+
+                        </RelativeLayout>
+
+                        <edu.aku.akuh_health_first.views.AnyTextView
+
+                            android:layout_width="match_parent"
+
+
+                            android:layout_height="wrap_content"
+                            android:gravity="center_horizontal"
+                            android:lines="2"
+                            android:text="Radiology"
+                            android:textColor="@color/c_black"
+                            android:textSize="@dimen/s11"
+                            app:typeface="@string/font_bold"
+
+                            />
+
+                    </LinearLayout>
+
+                </android.support.v7.widget.CardView>
+
+
+                <android.support.v7.widget.CardView
+
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_centerInParent="true"
+                    android:layout_margin="@dimen/x5dp"
+                    android:layout_weight="1"
+                    android:animateLayoutChanges="true"
+                    android:padding="@dimen/x7dp"
+                    app:cardCornerRadius="@dimen/x10dp"
+                    app:cardElevation="@dimen/x5dp"
+
+                    >
+
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:gravity="center_horizontal"
+                        android:orientation="vertical"
+                        android:padding="@dimen/x5dp">
+
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="0dp"
+                            android:layout_weight="1">
+
+
+                            <ImageView
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:layout_gravity="center"
+                                android:layout_weight="1"
+                                android:padding="@dimen/x3dp"
+                                android:scaleType="fitCenter"
+                                android:src="@drawable/medication" />
+
+                            <TextView
+                                android:layout_width="@dimen/x20dp"
+                                android:layout_height="@dimen/x20dp"
+                                android:layout_alignParentRight="true"
+                                android:layout_alignParentTop="true"
+                                android:layout_marginRight="@dimen/x10dp"
+                                android:layout_marginTop="@dimen/x5dp"
+                                android:background="@drawable/circle_green"
+                                android:gravity="center"
+                                android:maxLines="1"
+                                android:padding="@dimen/x2dp"
+                                android:text="99"
+                                android:textColor="@color/c_white"
+                                android:textSize="@dimen/s10" />
+
+                        </RelativeLayout>
+
+                        <edu.aku.akuh_health_first.views.AnyTextView
+
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center_horizontal"
+                            android:lines="2"
+                            android:text="Medication Profile"
+                            android:textColor="@color/c_black"
+                            android:textSize="@dimen/s11"
+                            app:typeface="@string/font_bold"
+
+
+                            />
+
+                    </LinearLayout>
+
+                </android.support.v7.widget.CardView>
+
+            </LinearLayout>
+
 
         </LinearLayout>
     </LinearLayout>

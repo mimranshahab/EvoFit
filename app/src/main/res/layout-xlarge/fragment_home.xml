@@ -27,23 +27,22 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="@dimen/x5dp"
-        android:layout_marginRight="@dimen/x5dp"
-        android:padding="@dimen/x3dp">
+        android:layout_marginRight="@dimen/x5dp">
 
         <LinearLayout
             android:id="@+id/linearLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/x50dp"
+            android:layout_marginTop="@dimen/x30dp"
             android:background="@drawable/rounded_box_filled_columbia_blue"
             android:gravity="center"
             android:orientation="vertical"
-            android:padding="@dimen/x15dp">
+            android:padding="@dimen/x5dp">
 
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_marginTop="@dimen/x40dp"
+                android:layout_marginTop="@dimen/x25dp"
                 android:orientation="horizontal">
 
                 <LinearLayout
@@ -61,7 +60,7 @@
                         android:gravity="center_vertical"
                         android:text="Name"
                         android:textColor="@color/c_white"
-                        android:textSize="@dimen/s16"
+                        android:textSize="@dimen/s10"
                         app:typeface="@string/font_bold" />
 
 
@@ -73,7 +72,7 @@
                         android:gravity="center_vertical"
                         android:text="(SUBSCRIBER)"
                         android:textColor="@color/c_white"
-                        android:textSize="@dimen/s16"
+                        android:textSize="@dimen/s10"
                         app:typeface="@string/font_regular" />
 
 
@@ -97,7 +96,7 @@
                 android:padding="@dimen/x3dp"
                 android:text="178-88-90"
                 android:textColor="@color/c_white"
-                android:textSize="@dimen/s14"
+                android:textSize="@dimen/s10"
                 app:typeface="@string/font_regular" />
 
             <edu.aku.akuh_health_first.views.AnyTextView
@@ -106,7 +105,7 @@
                 android:layout_height="wrap_content"
                 android:text="Female / 40"
                 android:textColor="@color/c_white"
-                android:textSize="@dimen/s14"
+                android:textSize="@dimen/s10"
                 app:typeface="@string/font_regular" />
 
 
@@ -114,8 +113,8 @@
 
         <de.hdodenhof.circleimageview.CircleImageView
             android:id="@+id/imgUser"
-            android:layout_width="@dimen/x100dp"
-            android:layout_height="@dimen/x100dp"
+            android:layout_width="@dimen/x60dp"
+            android:layout_height="@dimen/x60dp"
             android:layout_centerHorizontal="true"
             android:layout_gravity="center"
             android:scaleType="centerCrop"

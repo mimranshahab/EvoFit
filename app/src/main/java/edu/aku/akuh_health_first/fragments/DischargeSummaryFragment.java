@@ -54,12 +54,16 @@ public class DischargeSummaryFragment extends BaseFragment implements View.OnCli
     Unbinder unbinder;
     private ArrayList<DischargeSummaryModel> arrDischargeSummary;
     private DischargeSummaryAdapter adapterDischargesummary;
+    boolean isFromTimeline;
+    int patientVisitAdmissionID;
 
-    public static DischargeSummaryFragment newInstance() {
+    public static DischargeSummaryFragment newInstance(boolean isFromTimeline, int patientVisitAdmissionID) {
 
         Bundle args = new Bundle();
 
         DischargeSummaryFragment fragment = new DischargeSummaryFragment();
+        fragment.isFromTimeline = isFromTimeline;
+        fragment.patientVisitAdmissionID = patientVisitAdmissionID;
         fragment.setArguments(args);
         return fragment;
     }
@@ -96,7 +100,11 @@ public class DischargeSummaryFragment extends BaseFragment implements View.OnCli
     private void serviceCall() {
         SearchModel model = new SearchModel();
         model.setMRNumber(WebServiceConstants.tempMRN_LAB);
-        model.setVisitID(null);
+        if (isFromTimeline) {
+            model.setVisitID(String.valueOf(patientVisitAdmissionID));
+        } else {
+            model.setVisitID(null);
+        }
         new WebServices(getBaseActivity(), WebServiceConstants.temporaryToken, BaseURLTypes.AHFA_BASE_URL)
                 .webServiceRequestAPIForArray(WebServiceConstants.METHOD_DISCHARGE_SUMMARY_LIST,
                         model.toString(),

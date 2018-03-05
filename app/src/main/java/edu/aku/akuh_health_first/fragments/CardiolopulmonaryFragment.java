@@ -60,6 +60,8 @@ public class CardiolopulmonaryFragment extends BaseFragment implements View.OnCl
     AnyTextView emptyView;
     private ArrayList<CardioModel> arrCardioModelLists;
     private CardioAdapter adapterCardio;
+    boolean isFromTimeline;
+    int patientVisitAdmissionID;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -68,11 +70,13 @@ public class CardiolopulmonaryFragment extends BaseFragment implements View.OnCl
         adapterCardio = new CardioAdapter(getBaseActivity(), arrCardioModelLists, this);
     }
 
-    public static CardiolopulmonaryFragment newInstance() {
+    public static CardiolopulmonaryFragment newInstance(boolean isFromTimeline, int patientVisitAdmissionID) {
 
         Bundle args = new Bundle();
 
         CardiolopulmonaryFragment fragment = new CardiolopulmonaryFragment();
+        fragment.isFromTimeline = isFromTimeline;
+        fragment.patientVisitAdmissionID = patientVisitAdmissionID;
         fragment.setArguments(args);
         return fragment;
     }
@@ -180,20 +184,20 @@ public class CardiolopulmonaryFragment extends BaseFragment implements View.OnCl
 
 
         new WebServices(getBaseActivity(), WebServiceConstants.temporaryToken, BaseURLTypes.AHFA_BASE_URL)
-                    .webServiceRequestAPIForWebResponseWithString(WebServiceConstants.METHOD_CARDIO_SHOW_GRAPH,
-                            cardiolopulmonary.toString(), new WebServices.IRequestWebResponseWithStringDataCallBack() {
-                                @Override
-                                public void requestDataResponse(WebResponse<String> webResponse) {
-                                    saveAndOpenFile(webResponse);
-                                }
-
-                                @Override
-                                public void onError() {
-
-
-                                }
+                .webServiceRequestAPIForWebResponseWithString(WebServiceConstants.METHOD_CARDIO_SHOW_GRAPH,
+                        cardiolopulmonary.toString(), new WebServices.IRequestWebResponseWithStringDataCallBack() {
+                            @Override
+                            public void requestDataResponse(WebResponse<String> webResponse) {
+                                saveAndOpenFile(webResponse);
                             }
-                    );
+
+                            @Override
+                            public void onError() {
+
+
+                            }
+                        }
+                );
     }
 
     private void showReportAPI(final CardioModel cardiolopulmonary) {
@@ -232,7 +236,11 @@ public class CardiolopulmonaryFragment extends BaseFragment implements View.OnCl
         // FIXME: 1/18/2018 Use live data in future
         SearchModel model = new SearchModel();
         model.setMRNumber(WebServiceConstants.tempMRN_Cardio);
-        model.setVisitID(null);
+        if (isFromTimeline) {
+            model.setVisitID(String.valueOf(patientVisitAdmissionID));
+        } else {
+            model.setVisitID(null);
+        }
         new WebServices(getBaseActivity(),
                 WebServiceConstants.temporaryToken,
                 BaseURLTypes.AHFA_BASE_URL)

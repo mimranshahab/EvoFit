@@ -234,6 +234,7 @@ public class TitleBar extends RelativeLayout {
 
     public void showAndHideDropDown() {
         int height = this.containerTitlebar1.getHeight();
+
         if (contDropDown.getVisibility() == View.VISIBLE) {
 
             contDropDown.animate()

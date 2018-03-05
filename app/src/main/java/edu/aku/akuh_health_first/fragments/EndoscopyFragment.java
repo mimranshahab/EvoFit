@@ -65,7 +65,8 @@ public class EndoscopyFragment extends BaseFragment implements View.OnClickListe
     AnyTextView emptyView;
     private ArrayList<EndoscopyModel> arrClinicalLabLists;
     private EndoscopyAdapter adaptNeuropysiology;
-
+    boolean isFromTimeline;
+    int patientVisitAdmissionID;
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -73,11 +74,13 @@ public class EndoscopyFragment extends BaseFragment implements View.OnClickListe
         adaptNeuropysiology = new EndoscopyAdapter(getBaseActivity(), arrClinicalLabLists, this);
     }
 
-    public static EndoscopyFragment newInstance() {
+    public static EndoscopyFragment newInstance(boolean isFromTimeline,  int patientVisitAdmissionID) {
 
         Bundle args = new Bundle();
 
         EndoscopyFragment fragment = new EndoscopyFragment();
+        fragment.isFromTimeline = isFromTimeline;
+        fragment.patientVisitAdmissionID = patientVisitAdmissionID;
         fragment.setArguments(args);
         return fragment;
     }
@@ -171,7 +174,11 @@ public class EndoscopyFragment extends BaseFragment implements View.OnClickListe
 
         SearchModel model = new SearchModel();
         model.setMRNumber(WebServiceConstants.tempMRN_ENDOSCOPY);
-        model.setVisitID(null);
+        if (isFromTimeline) {
+            model.setVisitID(String.valueOf(patientVisitAdmissionID));
+        } else {
+            model.setVisitID(null);
+        }
 
         new WebServices(getBaseActivity(),
                 WebServiceConstants.temporaryToken,

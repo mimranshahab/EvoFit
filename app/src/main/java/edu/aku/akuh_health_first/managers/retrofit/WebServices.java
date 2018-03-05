@@ -105,7 +105,13 @@ public class WebServices {
 //                return true;
 
                 if (response.body().result.get("RecordFound") == null) {
-                    return false;
+                    if (response.body().result.get("StrStatus") == null) {
+                        return false;
+                    } else if (response.body().result.get("StrStatus").isJsonNull()) {
+                        return false;
+                    } else {
+                        return response.body().result.get("StrStatus").getAsString().toLowerCase().equals("true");
+                    }
                 } else if (response.body().result.get("RecordFound").isJsonNull()) {
                     return false;
                 } else {
@@ -207,7 +213,7 @@ public class WebServices {
         }
     }
 
-    public void webServiceRequestAPI(String requestMethod, String requestData, final IRequestJsonDataCallBack callBack) {
+    public void webServiceRequestAPIForJsonObject(String requestMethod, String requestData, final IRequestJsonDataCallBack callBack) {
 
         RequestBody bodyRequestMethod = getRequestBody(okhttp3.MultipartBody.FORM, requestMethod);
         RequestBody bodyRequestData = getRequestBody(okhttp3.MultipartBody.FORM, requestData);
@@ -235,10 +241,19 @@ public class WebServices {
                         if (hasValidStatus(response))
                             callBack.requestDataResponse(response.body());
                         else {
-                            if (response != null && response.body() != null) {
+                            if (response.body() != null) {
                                 if (response.body().isSuccess()) {
                                     if (response.body().result.get("RecordMessage") == null) {
-                                        errorToastForObject(response);
+
+                                        if (response.body().result.get("Message") == null) {
+                                            errorToastForObject(response);
+                                        } else if (response.body().result.get("Message").isJsonNull()) {
+                                            errorToastForObject(response);
+                                        } else {
+                                            String message = response.body().result.get("Message").toString();
+                                            UIHelper.showShortToastInCenter(mContext, message);
+                                        }
+
                                     } else if (response.body().result.get("RecordMessage").isJsonNull()) {
                                         errorToastForObject(response);
                                     } else {
@@ -251,7 +266,6 @@ public class WebServices {
                                     UIHelper.showToast(mContext, message);
                                 }
                             }
-
                         }
                     }
 

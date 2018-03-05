@@ -171,7 +171,7 @@ public class PacsFragment extends BaseFragment implements View.OnClickListener, 
         new WebServices(getBaseActivity(),
                 WebServiceConstants.temporaryToken,
                 BaseURLTypes.PACS_VIEWER)
-                .webServiceRequestAPI(WebServiceConstants.METHOD_PACS_MANAGER,
+                .webServiceRequestAPIForJsonObject(WebServiceConstants.METHOD_PACS_MANAGER,
                         WebServiceConstants.METHOD_PACS_ACCESSIONS + radioModel.getAccessionnumberwithComma() + WebServiceConstants.METHOD_PACS_ACCESSIONS_end
                         ,
                         new WebServices.IRequestJsonDataCallBack() {

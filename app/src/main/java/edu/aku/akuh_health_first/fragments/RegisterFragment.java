@@ -41,7 +41,6 @@ import edu.aku.akuh_health_first.helperclasses.validator.CnicValidation;
 import edu.aku.akuh_health_first.helperclasses.validator.MobileNumberValidation;
 import edu.aku.akuh_health_first.libraries.maskformatter.MaskFormatter;
 import edu.aku.akuh_health_first.managers.DateManager;
-import edu.aku.akuh_health_first.models.PacsView;
 import edu.aku.akuh_health_first.models.receiving_model.RegisterVM;
 import edu.aku.akuh_health_first.models.wrappers.WebResponse;
 import butterknife.BindView;
@@ -233,7 +232,7 @@ public class RegisterFragment extends BaseFragment {
     private void getRegisterVM() {
         new WebServices(getBaseActivity(),
                 WebServiceConstants.temporaryToken, BaseURLTypes.AHFA_BASE_URL)
-                .webServiceRequestAPI(WebServiceConstants.METHOD_USER_GET_REGISTER_VM, "", new WebServices.IRequestJsonDataCallBack() {
+                .webServiceRequestAPIForJsonObject(WebServiceConstants.METHOD_USER_GET_REGISTER_VM, "", new WebServices.IRequestJsonDataCallBack() {
                     @Override
                     public void requestDataResponse(WebResponse<JsonObject> webResponse) {
                         RegisterVM registerVM = GsonFactory.getSimpleGson().fromJson(webResponse.result, RegisterVM.class);

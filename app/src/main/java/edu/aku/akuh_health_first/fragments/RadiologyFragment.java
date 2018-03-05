@@ -55,7 +55,8 @@ public class RadiologyFragment extends BaseFragment implements View.OnClickListe
     AnyTextView emptyView;
     private ArrayList<RadiologyModel> arrData;
     private RadiologyAdapter adapterRadiology;
-
+    boolean isFromTimeline;
+    int patientVisitAdmissionID;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -64,10 +65,12 @@ public class RadiologyFragment extends BaseFragment implements View.OnClickListe
         adapterRadiology = new RadiologyAdapter(getBaseActivity(), arrData, this);
     }
 
-    public static RadiologyFragment newInstance() {
+    public static RadiologyFragment newInstance(boolean isFromTimeline,  int patientVisitAdmissionID) {
 
         Bundle args = new Bundle();
         RadiologyFragment fragment = new RadiologyFragment();
+        fragment.isFromTimeline = isFromTimeline;
+        fragment.patientVisitAdmissionID = patientVisitAdmissionID;
         fragment.setArguments(args);
         return fragment;
     }
@@ -201,8 +204,11 @@ public class RadiologyFragment extends BaseFragment implements View.OnClickListe
     private void serviceCall() {
         SearchModel model = new SearchModel();
         model.setMRNumber(WebServiceConstants.tempMRN_RADIOLOGY1);
-        model.setVisitID(null);
-
+        if (isFromTimeline) {
+            model.setVisitID(String.valueOf(patientVisitAdmissionID));
+        } else {
+            model.setVisitID(null);
+        }
         new WebServices(getBaseActivity(),
                 WebServiceConstants.temporaryToken,
                 BaseURLTypes.AHFA_BASE_URL)

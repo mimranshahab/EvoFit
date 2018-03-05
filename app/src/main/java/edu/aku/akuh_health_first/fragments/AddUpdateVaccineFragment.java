@@ -18,7 +18,6 @@ import com.google.gson.reflect.TypeToken;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Set;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -105,8 +104,8 @@ public class AddUpdateVaccineFragment extends BaseFragment {
             txtVaccinationPlanDate.setText(immunizationModel.getVaccinePlanDate());
             txtVaccineLocation.setText(immunizationModel.getHospitalLocation());
             txtRouteId.setText(immunizationModel.getRouteID());
-            txtVaccineLocation.setFocusable(false);
-            txtVaccineLocation.setClickable(false);
+//            txtVaccineLocation.setFocusable(false);
+//            txtVaccineLocation.setClickable(false);
             txtRouteId.setFocusable(false);
             txtRouteId.setClickable(false);
         } else {
@@ -276,7 +275,7 @@ public class AddUpdateVaccineFragment extends BaseFragment {
                 immunizationModel.setScheduleID("U");
                 immunizationModel.setVisitID("U");
                 immunizationModel.setActive("Y");
-                immunizationModel.setRouteID("PO");
+//                immunizationModel.setRouteID("PO");
                 immunizationModel.setLastFileTerminal("MOBILE");
 
                 immunizationModel.setVaccineID(vaccineIDandDescriptions.get(txtVaccine.getText().toString()));
@@ -299,6 +298,7 @@ public class AddUpdateVaccineFragment extends BaseFragment {
                 immunizationModel.setLastFileTerminal("MOBILE");
                 immunizationModel.setSource("MOBILE");
                 immunizationModel.setVaccinationDate(txtVaccinatedDate.getStringTrimmed());
+                immunizationModel.setHospitalLocation(txtVaccineLocation.getStringTrimmed());
                 updateVaccine(immunizationModel.toString());
                 Log.d(TAG, "onViewClicked: " + immunizationModel.toString());
             }
@@ -308,7 +308,7 @@ public class AddUpdateVaccineFragment extends BaseFragment {
 
     private void addVaccineService(String jsonData) {
         new WebServices(getBaseActivity(), WebServiceConstants.temporaryToken, BaseURLTypes.AHFA_BASE_URL)
-                .webServiceRequestAPI(WebServiceConstants.METHOD_IMMUNIZATION_ADD_VACCINE,
+                .webServiceRequestAPIForJsonObject(WebServiceConstants.METHOD_IMMUNIZATION_ADD_VACCINE,
                         jsonData,
                         new WebServices.IRequestJsonDataCallBack() {
                             @Override
@@ -330,7 +330,7 @@ public class AddUpdateVaccineFragment extends BaseFragment {
 
     private void updateVaccine(String jsonData) {
         new WebServices(getBaseActivity(), WebServiceConstants.temporaryToken, BaseURLTypes.AHFA_BASE_URL)
-                .webServiceRequestAPI(WebServiceConstants.METHOD_IMMUNIZATION_UPDATE_VACCINE,
+                .webServiceRequestAPIForJsonObject(WebServiceConstants.METHOD_IMMUNIZATION_UPDATE_VACCINE,
                         jsonData,
                         new WebServices.IRequestJsonDataCallBack() {
                             @Override

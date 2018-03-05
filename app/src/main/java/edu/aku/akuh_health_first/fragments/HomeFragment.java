@@ -127,7 +127,7 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener, 
 
         new WebServices(getBaseActivity(),
                 WebServiceConstants.temporaryToken,
-                BaseURLTypes.AHFA_BASE_URL).webServiceRequestAPI(WebServiceConstants.METHOD_CARD_MEMBER,
+                BaseURLTypes.AHFA_BASE_URL).webServiceRequestAPIForJsonObject(WebServiceConstants.METHOD_CARD_MEMBER,
                 cardMemberDetail.toString(),
                 new WebServices.IRequestJsonDataCallBack() {
                     @Override
