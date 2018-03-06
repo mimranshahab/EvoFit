@@ -486,7 +486,9 @@ public class WebServices {
                         payRequestModel.getBillEmailAddress() + "",
                         payRequestModel.getBillAddressLine() + "",
                         payRequestModel.getBillAddressCity() + "",
-                        payRequestModel.getBillAddressCountry() + ""
+                        payRequestModel.getBillAddressCountry() + "",
+                        payRequestModel.getBillPostalAddress() + "",
+                        payRequestModel.getBillState() + ""
 
                 ).enqueue(new Callback<Object>() {
                     @Override
@@ -504,6 +506,84 @@ public class WebServices {
 
                     @Override
                     public void onFailure(Call<Object> call, Throwable t) {
+                        UIHelper.showShortToastInCenter(mContext, "Something went wrong, Please check your internet connection.");
+                        dismissDialog();
+                        callBack.onError();
+                    }
+                });
+            } else {
+                dismissDialog();
+                callBack.onError();
+            }
+
+        } catch (Exception e) {
+            dismissDialog();
+            e.printStackTrace();
+
+        }
+
+    }
+
+    public void webServiceGetCyberSignature(String requestMethod, String requestData, final IRequestJsonDataCallBack callBack) {
+
+        RequestBody bodyRequestMethod = getRequestBody(okhttp3.MultipartBody.FORM, requestMethod);
+        RequestBody bodyRequestData = getRequestBody(okhttp3.MultipartBody.FORM, requestData);
+
+        try {
+            if (Helper.isNetworkConnected(mContext, true)) {
+                Call<WebResponse<JsonObject>> webResponseCall = apiService.webServiceRequestAPI(bodyRequestMethod, bodyRequestData);
+//                webResponseCall.request().newBuilder().addHeader("name", "hkhkhkhkhk").build();
+                webResponseCall.enqueue(new Callback<WebResponse<JsonObject>>() {
+                    @Override
+                    public void onResponse(Call<WebResponse<JsonObject>> call, Response<WebResponse<JsonObject>> response) {
+                        dismissDialog();
+                        if (!IsResponseError(response)) {
+                            String errorBody;
+                            try {
+                                errorBody = response.errorBody().string();
+                                UIHelper.showShortToastInCenter(mContext, errorBody);
+                                callBack.onError();
+                            } catch (IOException e) {
+                                e.printStackTrace();
+                            }
+                            return;
+                        }
+
+
+                        if (response.body() != null && response.body().isSuccess()) {
+                            callBack.requestDataResponse(response.body());
+                        } else {
+                            if (response.body() != null) {
+                                if (response.body().isSuccess()) {
+                                    if (response.body().result.get("RecordMessage") == null) {
+
+                                        if (response.body().result.get("Message") == null) {
+                                            errorToastForObject(response);
+                                        } else if (response.body().result.get("Message").isJsonNull()) {
+                                            errorToastForObject(response);
+                                        } else {
+                                            String message = response.body().result.get("Message").toString();
+                                            UIHelper.showShortToastInCenter(mContext, message);
+                                        }
+
+                                    } else if (response.body().result.get("RecordMessage").isJsonNull()) {
+                                        errorToastForObject(response);
+                                    } else {
+                                        String message = response.body().result.get("RecordMessage").toString();
+                                        UIHelper.showShortToastInCenter(mContext, message);
+                                    }
+
+                                } else {
+                                    String message = response.body().message != null ? response.body().message : response.errorBody().toString();
+                                    UIHelper.showToast(mContext, message);
+                                }
+                            }
+
+                        }
+                    }
+
+                    @Override
+                    public void onFailure(Call<WebResponse<JsonObject>> call, Throwable t) {
                         UIHelper.showShortToastInCenter(mContext, "Something went wrong, Please check your internet connection.");
                         dismissDialog();
                         callBack.onError();

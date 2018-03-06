@@ -17,6 +17,8 @@ import com.google.gson.reflect.TypeToken;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
 import java.util.HashMap;
 
 import butterknife.BindView;
@@ -69,14 +71,16 @@ public class AddUpdateVaccineFragment extends BaseFragment {
 
     HashMap<String, String> vaccineIDandDescriptions = new HashMap<String, String>();
     HashMap<String, String> routeIDandDescriptions = new HashMap<String, String>();
+    private ArrayList<String> arrUsedVaccineDes;
 
-    public static AddUpdateVaccineFragment newInstance(boolean isFromAdd, ImmunizationModel immunizationModel) {
+    public static AddUpdateVaccineFragment newInstance(boolean isFromAdd, ImmunizationModel immunizationModel, ArrayList<String> arrUsedVaccineDes) {
 
         Bundle args = new Bundle();
 
         AddUpdateVaccineFragment fragment = new AddUpdateVaccineFragment();
         fragment.isFromAdd = isFromAdd;
         fragment.immunizationModel = immunizationModel;
+        fragment.arrUsedVaccineDes = arrUsedVaccineDes;
         fragment.setArguments(args);
         return fragment;
     }
@@ -183,6 +187,8 @@ public class AddUpdateVaccineFragment extends BaseFragment {
                                     vaccineIDandDescriptions.put(model.getDescription(), model.getVaccineID());
                                     arrVaccine.add(model.getDescription());
                                 }
+
+                                arrVaccine.removeAll(arrUsedVaccineDes);
                                 setSpinner(adapterVaccine, txtVaccine, spVaccine);
                             }
 
