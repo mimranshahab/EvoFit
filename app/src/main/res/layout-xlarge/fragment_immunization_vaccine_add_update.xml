@@ -19,10 +19,10 @@
             <edu.aku.akuh_health_first.views.AnyTextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/x20dp"
+                android:layout_marginTop="@dimen/x15dp"
                 android:text="Vaccine"
                 android:textColor="@color/c_black"
-                android:textSize="@dimen/s16"
+                android:textSize="@dimen/s12"
                 app:typeface="@string/font_bold" />
 
 
@@ -50,10 +50,10 @@
             <edu.aku.akuh_health_first.views.AnyTextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/x20dp"
+                android:layout_marginTop="@dimen/x12dp"
                 android:text="Route"
                 android:textColor="@color/c_black"
-                android:textSize="@dimen/s16"
+                android:textSize="@dimen/s12"
                 app:typeface="@string/font_bold" />
 
 
@@ -81,10 +81,10 @@
             <edu.aku.akuh_health_first.views.AnyTextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/x20dp"
+                android:layout_marginTop="@dimen/x12dp"
                 android:text="Vaccination Plan Date"
                 android:textColor="@color/c_black"
-                android:textSize="@dimen/s16"
+                android:textSize="@dimen/s12"
                 app:typeface="@string/font_bold" />
 
 
@@ -106,10 +106,10 @@
             <edu.aku.akuh_health_first.views.AnyTextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/x20dp"
+                android:layout_marginTop="@dimen/x12dp"
                 android:text="Vaccination Date"
                 android:textColor="@color/c_black"
-                android:textSize="@dimen/s16"
+                android:textSize="@dimen/s12"
                 app:typeface="@string/font_bold" />
 
 
@@ -131,10 +131,10 @@
             <edu.aku.akuh_health_first.views.AnyTextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/x20dp"
+                android:layout_marginTop="@dimen/x12dp"
                 android:text="Vaccine Location"
                 android:textColor="@color/c_black"
-                android:textSize="@dimen/s16"
+                android:textSize="@dimen/s12"
                 app:typeface="@string/font_bold" />
 
 
@@ -160,7 +160,8 @@
                 android:layout_marginRight="@dimen/x10dp"
                 android:background="@drawable/rounded_box_filled_base_grey"
                 android:text="Save"
-                android:textColor="@color/c_white" />
+                android:textColor="@color/c_white"
+                android:textSize="@dimen/s10" />
         </LinearLayout>
     </ScrollView>
 </LinearLayout>

@@ -6,6 +6,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Filter;
 import android.widget.FrameLayout;
 import android.widget.LinearLayout;
 
@@ -28,11 +29,15 @@ public class TimelineAdapter extends RecyclerView.Adapter<TimelineAdapter.ViewHo
 
     private Activity activity;
     private ArrayList<TimelineModel> arrData;
+    private ArrayList<TimelineModel> filteredData = new ArrayList<>();
+    private ItemFilter mFilter = new ItemFilter();
 
-    public TimelineAdapter(Activity activity, ArrayList<TimelineModel> userList, OnItemClickListener onItemClickListener) {
-        this.arrData = userList;
+
+    public TimelineAdapter(Activity activity, ArrayList<TimelineModel> arrData, OnItemClickListener onItemClickListener) {
+        this.arrData = arrData;
         this.activity = activity;
         this.onItemClick = onItemClickListener;
+        filteredData = arrData;
     }
 
     @Override
@@ -47,7 +52,7 @@ public class TimelineAdapter extends RecyclerView.Adapter<TimelineAdapter.ViewHo
     @Override
     public void onBindViewHolder(final ViewHolder holder, int i) {
 
-        final TimelineModel timelineModel = arrData.get(holder.getAdapterPosition());
+        final TimelineModel timelineModel = filteredData.get(holder.getAdapterPosition());
 
         /*
         Dr name PatientVisitDoctorName
@@ -101,15 +106,16 @@ public class TimelineAdapter extends RecyclerView.Adapter<TimelineAdapter.ViewHo
     }
 
 
-    public void addItems(ArrayList<TimelineModel> homeCategories) {
-        this.arrData = homeCategories;
+    public void addItems(ArrayList<TimelineModel> arrData) {
+        this.arrData = arrData;
         notifyDataSetChanged();
     }
 
 
     @Override
     public int getItemCount() {
-        return arrData.size();
+//        return arrData.size();
+        return getCount();
     }
 
     static class ViewHolder extends RecyclerView.ViewHolder {
@@ -136,6 +142,71 @@ public class TimelineAdapter extends RecyclerView.Adapter<TimelineAdapter.ViewHo
             ButterKnife.bind(this, view);
         }
     }
+
+
+    // FILTER DATA START
+
+    public int getCount() {
+        if (filteredData == null) {
+            return 0;
+        }
+        return filteredData.size();
+    }
+
+    public TimelineModel getItem(int position) {
+        return filteredData.get(position);
+    }
+
+    public long getItemId(int position) {
+        return position;
+    }
+
+    public Filter getFilter() {
+        return mFilter;
+    }
+
+
+    private class ItemFilter extends Filter {
+        @Override
+        protected FilterResults performFiltering(CharSequence constraint) {
+
+            String filterString = constraint.toString().toLowerCase();
+
+            FilterResults results = new FilterResults();
+
+            final ArrayList<TimelineModel> list = arrData;
+
+            int count = list.size();
+
+//            final ArrayList<String> nlist = new ArrayList<String>(count);
+            final ArrayList<TimelineModel> filterData = new ArrayList<TimelineModel>();
+
+            String filterableString;
+
+            for (int i = 0; i < count; i++) {
+                filterableString = list.get(i).getPatientVisitDoctorName();
+                if (filterableString.toLowerCase().contains(filterString)) {
+//                    nlist.add(filterableString);
+                    filterData.add(list.get(i));
+                }
+            }
+
+            results.values = filterData;
+            results.count = filterData.size();
+
+            return results;
+        }
+
+        @Override
+        protected void publishResults(CharSequence constraint, FilterResults results) {
+            filteredData = (ArrayList<TimelineModel>) results.values;
+            notifyDataSetChanged();
+        }
+
+    }
+
+
+// FILTER DATA CLOSE
 
 
 }

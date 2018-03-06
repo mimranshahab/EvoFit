@@ -31,12 +31,10 @@ import edu.aku.akuh_health_first.constatnts.WebServiceConstants;
 import edu.aku.akuh_health_first.enums.BaseURLTypes;
 import edu.aku.akuh_health_first.fragments.abstracts.BaseFragment;
 import edu.aku.akuh_health_first.helperclasses.ui.helper.TitleBar;
-import edu.aku.akuh_health_first.helperclasses.ui.helper.UIHelper;
 import edu.aku.akuh_health_first.managers.retrofit.GsonFactory;
 import edu.aku.akuh_health_first.managers.retrofit.WebServices;
 import edu.aku.akuh_health_first.models.ImmunizationModel;
 import edu.aku.akuh_health_first.models.SearchModel;
-import edu.aku.akuh_health_first.models.receiving_model.UserDetailModel;
 import edu.aku.akuh_health_first.models.wrappers.WebResponse;
 import edu.aku.akuh_health_first.views.AnyTextView;
 
@@ -60,6 +58,8 @@ public class ImmunizationProfileFragment extends BaseFragment implements View.On
     private ImmunizationAdapter adapterImmunization;
     boolean isFromTimeline;
     int patientVisitAdmissionID;
+    private ArrayList<String> arrUsedVaccineDes = new ArrayList<>();
+
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -67,7 +67,7 @@ public class ImmunizationProfileFragment extends BaseFragment implements View.On
         adapterImmunization = new ImmunizationAdapter(getBaseActivity(), arrImmunization, this);
     }
 
-    public static ImmunizationProfileFragment newInstance(boolean isFromTimeline,  int patientVisitAdmissionID) {
+    public static ImmunizationProfileFragment newInstance(boolean isFromTimeline, int patientVisitAdmissionID) {
 
         Bundle args = new Bundle();
 
@@ -129,7 +129,7 @@ public class ImmunizationProfileFragment extends BaseFragment implements View.On
         mFab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                getBaseActivity().addDockableFragment(AddUpdateVaccineFragment.newInstance(true, null));
+                getBaseActivity().addDockableFragment(AddUpdateVaccineFragment.newInstance(true, null, arrUsedVaccineDes));
             }
         });
     }
@@ -166,7 +166,7 @@ public class ImmunizationProfileFragment extends BaseFragment implements View.On
     @Override
     public void onItemClick(int position, Object object) {
         if (object instanceof ImmunizationModel) {
-            getBaseActivity().addDockableFragment(AddUpdateVaccineFragment.newInstance(false, (ImmunizationModel) object));
+            getBaseActivity().addDockableFragment(AddUpdateVaccineFragment.newInstance(false, (ImmunizationModel) object, arrUsedVaccineDes));
 
         }
 
@@ -200,9 +200,14 @@ public class ImmunizationProfileFragment extends BaseFragment implements View.On
                                 arrImmunization.clear();
                                 arrImmunization.addAll(arrayList);
                                 adapterImmunization.notifyDataSetChanged();
+
+                                arrUsedVaccineDes.clear();
+                                for (ImmunizationModel immunizationModel : arrImmunization) {
+                                    arrUsedVaccineDes.add(immunizationModel.getDescription());
+                                }
+
                                 if (arrImmunization.size() > 0) {
                                     showView();
-
                                 } else {
                                     showEmptyView();
                                 }

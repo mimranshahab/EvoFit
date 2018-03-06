@@ -88,7 +88,9 @@ public interface WebServiceProxy {
             @Field("bill_to_email") String bill_to_email,
             @Field("bill_to_address_line1") String bill_to_address_line1,
             @Field("bill_to_address_city") String bill_to_address_city,
-            @Field("bill_to_address_country") String bill_to_address_country
+            @Field("bill_to_address_country") String bill_to_address_country,
+            @Field("bill_to_address_postal_code") String bill_to_address_postal_code,
+            @Field("bill_to_address_state") String bill_to_address_state
 
 //            @Field("bill_to_phone") String bill_to_phone,
 //            @Field("bill_to_company_name") String bill_to_company_name,

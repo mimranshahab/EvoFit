@@ -71,11 +71,11 @@ public class ImmunizationAdapter extends RecyclerView.Adapter<ImmunizationAdapte
                 holder.txtDateTime.setText(model.getVaccinationDate());
                 break;
             case AppConstants.due:
-                holder.imgStatusColor.setBackgroundColor(activity.getResources().getColor(R.color.base_reddish));
+                holder.imgStatusColor.setBackgroundColor(activity.getResources().getColor(R.color.base_amber));
                 holder.btnUpdate.setVisibility(View.VISIBLE);
                 break;
             case AppConstants.over_due:
-                holder.imgStatusColor.setBackgroundColor(activity.getResources().getColor(R.color.base_amber));
+                holder.imgStatusColor.setBackgroundColor(activity.getResources().getColor(R.color.base_reddish));
         }
 
         setListener(holder, model);

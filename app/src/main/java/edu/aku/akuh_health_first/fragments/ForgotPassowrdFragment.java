@@ -1,10 +1,8 @@
 package edu.aku.akuh_health_first.fragments;
 
-import android.net.wifi.WifiManager;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.widget.DrawerLayout;
-import android.text.format.Formatter;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
@@ -27,9 +25,9 @@ import edu.aku.akuh_health_first.managers.retrofit.GsonFactory;
 import edu.aku.akuh_health_first.managers.retrofit.WebServices;
 import edu.aku.akuh_health_first.models.PaymentRequestModel;
 import edu.aku.akuh_health_first.models.receiving_model.AddUpdateVaccineModel;
+import edu.aku.akuh_health_first.models.wrappers.Parameters;
+import edu.aku.akuh_health_first.models.wrappers.PaymentModel;
 import edu.aku.akuh_health_first.models.wrappers.WebResponse;
-
-import static android.content.Context.WIFI_SERVICE;
 
 /**
  * Created by aqsa.sarwar on 1/17/2018.
@@ -39,14 +37,12 @@ public class ForgotPassowrdFragment extends BaseFragment {
 
     PaymentRequestModel payRequestModel;
     CyberSoftSecurityHelper cyberSoftSecurityHelper;
-    HashMap parameter;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         payRequestModel = new PaymentRequestModel();
         cyberSoftSecurityHelper = new CyberSoftSecurityHelper();
-        parameter = new HashMap<String, String>();
     }
 
 
@@ -68,83 +64,38 @@ public class ForgotPassowrdFragment extends BaseFragment {
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-//        WifiManager wm = (WifiManager) getContext().getApplicationContext().getSystemService(WIFI_SERVICE);
-//        String ip = Formatter.formatIpAddress(wm.getConnectionInfo().getIpAddress());
-//        payRequestModel.setConsIPAddress(ip);
+        UIHelper.showToast(getContext(), "Payment gateway service for testing..");
 
+        PaymentModel paymentModel = new PaymentModel();
+        Parameters parameters = new Parameters();
 
-        //add items
+        parameters.setReferenceNumber(payRequestModel.getReferenceNo());
+        parameters.setTransactionType(payRequestModel.getTransactionType());
+        parameters.setCurrency(payRequestModel.getCurrency());
+        parameters.setAmount(payRequestModel.getAmount());
+        parameters.setLocale(payRequestModel.getLocale());
+        parameters.setAccessKey(payRequestModel.getAccessKey());
+        parameters.setProfileId(payRequestModel.getProfileID());
+        parameters.setTransactionUuid(payRequestModel.getTransactionUUID());
+        parameters.setSignedDateTime(payRequestModel.getSignedDateTimeString());
+        parameters.setSignedFieldNames(payRequestModel.getSignedFieldNames());
+        parameters.setUnsignedFieldNames(payRequestModel.getUnsignedFieldNames());
+        parameters.setPaymentMethod(payRequestModel.getPaymentMethod());
+        parameters.setCardType(payRequestModel.getCardType());
+        parameters.setCardExpiryDate(payRequestModel.getCardExpirydate());
+        parameters.setCardCvn(payRequestModel.getCVN());
+        parameters.setBillToForename(payRequestModel.getBillForeName());
+        parameters.setBillToSurname(payRequestModel.getBillSurName());
+        parameters.setBillToEmail(payRequestModel.getBillEmailAddress());
+        parameters.setBillToAddressLine1(payRequestModel.getBillAddressLine());
+        parameters.setBillToAddressCity(payRequestModel.getBillAddressCity());
+        parameters.setBillToAddressCountry(payRequestModel.getBillAddressCountry());
+        parameters.setBill_to_address_postal_code(payRequestModel.getBillPostalAddress());
+        parameters.setBill_to_address_state(payRequestModel.getBillState());
 
-//        parameter.put("access_key", payRequestModel.getAccessKey());
-//        parameter.put("profile_id", payRequestModel.getProfileID());
-//        parameter.put("transaction_uuid", payRequestModel.getTransactionUUID());
-//        parameter.put("signed_field_names", payRequestModel.getSignedFieldNames());
-//        parameter.put("unsigned_field_names", payRequestModel.getUnsignedFieldNames());
-//        parameter.put("signed_date_time", payRequestModel.getSignedDateTimeString());
-//        parameter.put("locale", payRequestModel.getLocale());
-//        parameter.put("bill_to_address_line1", payRequestModel.getBillAddressLine());
-//        parameter.put("bill_to_address_city", payRequestModel.getBillAddressCity());
-//        parameter.put("bill_to_address_country", payRequestModel.getBillAddressCountry());
-//        parameter.put("bill_to_email", payRequestModel.getBillEmailAddress());
-//        parameter.put("bill_to_surname", payRequestModel.getBillSurName());
-//        parameter.put("bill_to_forename", payRequestModel.getBillForeName());
-//        parameter.put("bill_to_phone", payRequestModel.getBillPhone());
-//        parameter.put("bill_to_company_name", payRequestModel.getBillCompanyName());
-//        parameter.put("consumer_id", payRequestModel.getConsumerID());
-//        parameter.put("customer_ip_address", payRequestModel.getConsIPAddress());
-//        parameter.put("transaction_type", payRequestModel.getTransactionType());
-//        parameter.put("reference_number", payRequestModel.getReferenceNo());
-//        parameter.put("amount", payRequestModel.getAmount() + "");
-//        parameter.put("currency", payRequestModel.getCurrency());
-//        parameter.put("merchant_defined_data1", payRequestModel.getMerchantDefinedData());
-//
-//        parameter.put("card_type", payRequestModel.getCardType());
-//        parameter.put("card_number", payRequestModel.getCardNumber());
-//        parameter.put("card_expiry_date", payRequestModel.getCardExpirydate());
-//        parameter.put("card_cvn", payRequestModel.getCVN());
+        paymentModel.setParameters(parameters);
 
-
-        parameter.put("reference_number", payRequestModel.getReferenceNo());
-        parameter.put("transaction_type", payRequestModel.getTransactionType());
-        parameter.put("currency", payRequestModel.getCurrency());
-        parameter.put("amount", payRequestModel.getAmount());
-        parameter.put("locale", payRequestModel.getLocale());
-        parameter.put("access_key", payRequestModel.getAccessKey());
-        parameter.put("profile_id", payRequestModel.getProfileID());
-        parameter.put("transaction_uuid", payRequestModel.getTransactionUUID());
-        parameter.put("signed_date_time", payRequestModel.getSignedDateTimeString());
-        parameter.put("signed_field_names", payRequestModel.getSignedFieldNames());
-        parameter.put("unsigned_field_names", payRequestModel.getUnsignedFieldNames());
-        parameter.put("payment_method", payRequestModel.getPaymentMethod());
-        parameter.put("card_type", payRequestModel.getCardType());
-        parameter.put("card_expiry_date", payRequestModel.getCardExpirydate());
-        parameter.put("card_cvn", payRequestModel.getCVN());
-        parameter.put("bill_to_forename", payRequestModel.getBillForeName());
-        parameter.put("bill_to_surname", payRequestModel.getBillSurName());
-        parameter.put("bill_to_email", payRequestModel.getBillEmailAddress());
-        parameter.put("bill_to_address_line1", payRequestModel.getBillAddressLine());
-        parameter.put("bill_to_address_city", payRequestModel.getBillAddressCity());
-        parameter.put("bill_to_address_country", payRequestModel.getBillAddressCountry());
-
-
-        try {
-            String signature = cyberSoftSecurityHelper.sign(parameter);
-            payRequestModel.setSignature(signature);
-            Log.d(TAG, "Signature: " + signature);
-
-        } catch (InvalidKeyException e) {
-            e.printStackTrace();
-        } catch (NoSuchAlgorithmException e) {
-            e.printStackTrace();
-        } catch (UnsupportedEncodingException e) {
-            e.printStackTrace();
-        }
-
-        parameter.put("signature", payRequestModel.getSignature());
-
-        getCyberSoftToken();
-
-
+        getCyberSignatureService(paymentModel);
     }
 
     @Override
@@ -177,7 +128,7 @@ public class ForgotPassowrdFragment extends BaseFragment {
     }
 
 
-    private void getCyberSoftToken() {
+    private void paymentGatewayService() {
         new WebServices(getBaseActivity(), null, BaseURLTypes.PAYMENT_GATEWAY_URL)
                 .webServiceCyberSouce(
                         new WebServices.IRequestStringCallBack() {
@@ -193,6 +144,24 @@ public class ForgotPassowrdFragment extends BaseFragment {
                             }
                         }
                         , payRequestModel);
+    }
+
+
+    private void getCyberSignatureService(final PaymentModel paymentModel) {
+        new WebServices(getBaseActivity(), WebServiceConstants.temporaryToken, BaseURLTypes.AHFA_BASE_URL)
+                .webServiceGetCyberSignature("PaymentManager.GetCybersourceSignature", paymentModel.toString(), new WebServices.IRequestJsonDataCallBack() {
+                    @Override
+                    public void requestDataResponse(WebResponse<JsonObject> webResponse) {
+                        PaymentModel paymentModel1 = GsonFactory.getSimpleGson().fromJson(webResponse.result, PaymentModel.class);
+                        payRequestModel.setSignature(paymentModel1.getSignature());
+                        paymentGatewayService();
+                    }
+
+                    @Override
+                    public void onError() {
+
+                    }
+                });
     }
 
 }

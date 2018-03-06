@@ -18,47 +18,60 @@ public class PaymentRequestModel {
     private String Signature;
     private String AccessKey = "5584828bcca73288a5b758619b9e299b";
     private String ProfileID = "3700ABA3-08F4-4D24-9730-08E949C82044";
-    private String TransactionUUID = UUID.randomUUID().toString();
-    //    private String TransactionUUID = "8ec35ae9-c97e-4a34-ad0c-5d3f7c8cfe42";
-//    private String SignedFieldNames = "access_key,profile_id,transaction_uuid,signed_field_names,unsigned_field_names,signed_date_time,locale,transaction_type,reference_number,amount,currency,bill_to_address_line1,bill_to_address_city,bill_to_address_country,bill_to_email,bill_to_surname,bill_to_forename,bill_to_phone,bill_to_company_name,consumer_id,customer_ip_address,merchant_defined_data1,card_type,card_number,card_expiry_date,card_cvn,signature";
-    //    private String SignedFieldNames = "access_key,profile_id,transaction_uuid,signed_field_names,unsigned_field_names,signed_date_time,locale,transaction_type,reference_number,amount,currency,bill_to_address_line1,bill_to_address_city,bill_to_address_country,bill_to_email,bill_to_surname,bill_to_forename,bill_to_phone,bill_to_company_name,consumer_id,customer_ip_address";
+//    private String TransactionUUID = UUID.randomUUID().toString();
+    private String TransactionUUID = "HFM-636558589041890115";
 
-    private String SignedFieldNames = "reference_number,transaction_type,currency,amount,locale,access," +
-            "profile_id,transaction_uuid,signed_date_time,signed_field_names,unsigned_field_names" +
-            "signature,payment,card_type,card_expiry_date,card_cvn," +
-            "bill_to_forename,bill_to_surname=,bill_to_email,bill_to_address_line1," +
-            "bill_to_address_city,bill_to_address_postal_code,bill_to_address_state,bill_to_address_country" ;
+    private String SignedFieldNames = "reference_number,transaction_type,currency,amount,locale,access_key," +
+            "profile_id,transaction_uuid,signed_date_time,signed_field_names,unsigned_field_names,payment_method," +
+            "card_type,card_expiry_date,card_cvn,bill_to_forename,bill_to_surname,bill_to_email,bill_to_address_line1," +
+            "bill_to_address_city,bill_to_address_country,bill_to_address_postal_code,bill_to_address_state" ;
+
+//    private String SignedFieldNames = "reference_number,transaction_type,currency,amount,locale,access_key," +
+//            "profile_id,transaction_uuid,signed_date_time,signed_field_names,unsigned_field_names,payment_method," +
+//            "bill_to_forename,bill_to_surname,bill_to_email,bill_to_address_line1," +
+//            "bill_to_address_city,bill_to_address_country" ;
 
     private String UnsignedFieldNames = "";
     private String SignedDateTimeString = DateManager.getCurrentUTCDateTime();
     private String Locale = "en";
     private String BillAddressLine = "Aga Khan Hospital";
     private String BillAddressCity = "Karachi";
-    private String BillAddressCountry = "Pakistan";
-    private String BillEmailAddress = "aqsa.sarwar@aku.edu";
-//    private String BillPostalCode = "75300";
-//    private String BillState = "Sind";
-    //    private String BillEmailAddress = "faisal.shah@aku.edu";
-    private String BillSurName = "Sarwar";
-    private String BillForeName = "Aqsa";
+    private String BillAddressCountry = "PK";
+    private String BillEmailAddress = "mahrukh.mehmood@aku.edu";
+    private String BillSurName = "Sarah Khan";
+    private String BillForeName = "Sarah Khan";
     private String BillPhone = "+923332184946";
     private String BillCompanyName = "AGA Khan University";
+    private String BillState = "SINDH";
+    private String BillPostalAddress = "75300";
     private String ConsumerID = "1234-5648-9970";
-    //    private String ConsIPAddress = "10.1.12.39";
-    private String ConsIPAddress;
     private String TransactionType = "create_payment_token";
-    private String ReferenceNo = "636540453045649695";
-
-
-    private double Amount = 2000.00;
+    private String ReferenceNo = "168-636558589041890115";
+    private String Amount = "2000";
     private String CardExpirydate = "02-2020";
     private String CVN = "123";
-    private String MerchantDefinedData = "WC";
     private String Currency = "PKR";
     private String CardNumber = "4111111111111111";
     private String CardType = "001";
     private String PaymentMethod = "card";
 
+
+
+    public String getBillState() {
+        return BillState;
+    }
+
+    public void setBillState(String billState) {
+        BillState = billState;
+    }
+
+    public String getBillPostalAddress() {
+        return BillPostalAddress;
+    }
+
+    public void setBillPostalAddress(String billPostalAddress) {
+        BillPostalAddress = billPostalAddress;
+    }
 
     public String getPaymentMethod() {
         return PaymentMethod;
@@ -77,7 +90,7 @@ public class PaymentRequestModel {
     }
 
 
-    public void setAmount(long amount) {
+    public void setAmount(String amount) {
         Amount = amount;
     }
 
@@ -113,14 +126,6 @@ public class PaymentRequestModel {
         this.CVN = CVN;
     }
 
-
-    public String getMerchantDefinedData() {
-        return MerchantDefinedData;
-    }
-
-    public void setMerchantDefinedData(String merchantDefinedData) {
-        MerchantDefinedData = merchantDefinedData;
-    }
 
 
     public String getAccessKey() {
@@ -251,14 +256,6 @@ public class PaymentRequestModel {
         ConsumerID = consumerID;
     }
 
-    public String getConsIPAddress() {
-        return ConsIPAddress;
-    }
-
-    public void setConsIPAddress(String consIPAddress) {
-        ConsIPAddress = consIPAddress;
-    }
-
     public String getTransactionType() {
         return TransactionType;
     }
@@ -275,12 +272,8 @@ public class PaymentRequestModel {
         ReferenceNo = referenceNo;
     }
 
-    public double getAmount() {
+    public String getAmount() {
         return Amount;
-    }
-
-    public void setAmount(double amount) {
-        Amount = amount;
     }
 
     public String getCurrency() {
