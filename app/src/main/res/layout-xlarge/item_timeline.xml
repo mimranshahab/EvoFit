@@ -4,8 +4,7 @@
     xmlns:card_view="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:orientation="vertical"
-    >
+    android:orientation="vertical">
 
 
     <android.support.v7.widget.CardView
@@ -16,10 +15,7 @@
         android:layout_weight="1"
         android:animateLayoutChanges="true"
         app:cardCornerRadius="@dimen/x10dp"
-        app:cardElevation="@dimen/x5dp"
-
-
-        >
+        app:cardElevation="@dimen/x5dp">
 
         <FrameLayout
             android:id="@+id/frameColorCode"
@@ -32,11 +28,10 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_gravity="center_horizontal"
-                android:layout_marginRight="@dimen/x4dp"
+                android:layout_marginRight="@dimen/x2dp"
                 android:background="@drawable/round_edges_two_sides"
                 android:gravity="center_vertical"
-                android:orientation="horizontal"
-              >
+                android:orientation="horizontal">
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -54,24 +49,23 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_alignParentLeft="true"
-                            android:padding="@dimen/x3dp"
+                            android:padding="@dimen/x2dp"
                             android:text="Doctor: "
                             android:textColor="@color/primary_text_color_selector"
-                            android:textSize="@dimen/s14"
+                            android:textSize="@dimen/s10"
                             app:typeface="@string/font_bold" />
 
                         <edu.aku.akuh_health_first.views.AnyTextView
                             android:id="@+id/txtDoctorName"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:padding="@dimen/x3dp"
+                            android:padding="@dimen/x2dp"
                             android:text="Jan 22, 2018"
                             android:textColor="@color/text_dark"
 
-                            android:textSize="@dimen/s14"
+                            android:textSize="@dimen/s10"
                             app:typeface="@string/font_regular" />
                     </LinearLayout>
-
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -81,48 +75,23 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_alignParentLeft="true"
-                            android:padding="@dimen/x3dp"
+                            android:padding="@dimen/x2dp"
                             android:text="Service: "
                             android:textColor="@color/primary_text_color_selector"
-                            android:textSize="@dimen/s14"
+                            android:textSize="@dimen/s10"
                             app:typeface="@string/font_bold" />
 
                         <edu.aku.akuh_health_first.views.AnyTextView
                             android:id="@+id/txtService"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:padding="@dimen/x3dp"
+                            android:padding="@dimen/x2dp"
                             android:text="Jan 22, 2018"
                             android:textColor="@color/text_dark"
 
-                            android:textSize="@dimen/s14"
+                            android:textSize="@dimen/s10"
                             app:typeface="@string/font_regular" />
                     </LinearLayout>
-                    <!--<LinearLayout-->
-                        <!--android:layout_width="match_parent"-->
-                        <!--android:layout_height="wrap_content"-->
-                        <!--android:orientation="horizontal">-->
-
-                        <!--<edu.aku.akuh_health_first.views.AnyTextView-->
-                            <!--android:layout_width="wrap_content"-->
-                            <!--android:layout_height="wrap_content"-->
-                            <!--android:layout_alignParentLeft="true"-->
-                            <!--android:padding="@dimen/x3dp"-->
-                            <!--android:text="Visit Type: "-->
-                            <!--android:textColor="@color/primary_text_color_selector"-->
-                            <!--android:textSize="@dimen/s14"-->
-                            <!--app:typeface="@string/font_bold" />-->
-
-                        <!--<edu.aku.akuh_health_first.views.AnyTextView-->
-                            <!--android:id="@+id/txtVisitType"-->
-                            <!--android:layout_width="wrap_content"-->
-                            <!--android:layout_height="wrap_content"-->
-                            <!--android:padding="@dimen/x3dp"-->
-                            <!--android:text="Jan 22, 2018"-->
-                            <!--android:textColor="@color/text_dark"-->
-                            <!--android:textSize="@dimen/s14"-->
-                            <!--app:typeface="@string/font_regular" />-->
-                    <!--</LinearLayout>-->
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -132,22 +101,26 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_alignParentLeft="true"
-                            android:padding="@dimen/x3dp"
+                            android:padding="@dimen/x2dp"
                             android:text="Facility: "
                             android:textColor="@color/primary_text_color_selector"
-                            android:textSize="@dimen/s14"
+                            android:textSize="@dimen/s10"
                             app:typeface="@string/font_bold" />
 
                         <edu.aku.akuh_health_first.views.AnyTextView
                             android:id="@+id/txtFacility"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:padding="@dimen/x3dp"
+                            android:padding="@dimen/x2dp"
                             android:text="Jan 22, 2018"
                             android:textColor="@color/text_dark"
-                            android:textSize="@dimen/s14"
+                            android:textSize="@dimen/s10"
                             app:typeface="@string/font_regular" />
                     </LinearLayout>
+
+
+
+
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -157,24 +130,25 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_alignParentLeft="true"
-                            android:padding="@dimen/x3dp"
+                            android:padding="@dimen/x2dp"
                             android:text="Visit Date: "
                             android:textColor="@color/primary_text_color_selector"
-                            android:textSize="@dimen/s14"
+                            android:textSize="@dimen/s10"
                             app:typeface="@string/font_bold" />
 
                         <edu.aku.akuh_health_first.views.AnyTextView
                             android:id="@+id/txtVisitDateTime"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:padding="@dimen/x3dp"
+                            android:padding="@dimen/x2dp"
                             android:text="Jan 22, 2018"
 
                             android:textColor="@color/text_dark"
 
-                            android:textSize="@dimen/s14"
+                            android:textSize="@dimen/s10"
                             app:typeface="@string/font_regular" />
                     </LinearLayout>
+
 
                 </LinearLayout>
 

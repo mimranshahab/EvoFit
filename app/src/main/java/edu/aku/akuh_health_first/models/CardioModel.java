@@ -281,13 +281,16 @@ public class CardioModel
 
     public boolean isGraphAvailable(String graphAvailable) {
 
-        if (graphAvailable.equalsIgnoreCase("true")) return true;
+        if (graphAvailable != null && graphAvailable.equalsIgnoreCase("true"))
+            return true;
+
+
         else return false;
     }
+
     public boolean isReportAvailable(String reportable) {
-
-        if (reportable.equalsIgnoreCase("true")) return true;
+        if (reportable != null && reportable.equalsIgnoreCase("true")) return true;
         else return false;
-    }
 
+    }
 }

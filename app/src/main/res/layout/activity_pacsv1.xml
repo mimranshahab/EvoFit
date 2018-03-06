@@ -21,39 +21,11 @@
         android:layout_weight="1"
         android:gravity="center">
 
-
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:gravity="center"
-            android:orientation="vertical">
-
-            <ImageButton
-                android:id="@+id/btnPrevious"
-                android:layout_width="@dimen/x40dp"
-                android:layout_height="@dimen/x50dp"
-                android:background="@color/pacs_blue"
-                android:src="@drawable/imgback"
-                android:tint="@color/c_black" />
-
-            <ImageButton
-                android:id="@+id/btnPreviousBatch"
-                android:layout_width="@dimen/x40dp"
-                android:layout_height="@dimen/x50dp"
-                android:background="@color/pacs_blue"
-                android:src="@drawable/ic_back_shadow"
-                android:tint="@color/c_black" />
-
-
-        </LinearLayout>
-
-
         <com.jsibbold.zoomage.ZoomageView
             android:id="@+id/image"
-            android:layout_width="0dp"
+            android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_margin="@dimen/x5dp"
-            android:layout_weight="1"
             android:scaleType="fitCenter"
             android:src="@drawable/picture_loading"
             app:zoomage_animateOnReset="true"
@@ -65,16 +37,60 @@
             app:zoomage_translatable="true"
             app:zoomage_zoomable="true" />
 
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
         <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:gravity="center"
-            android:orientation="vertical">
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <Button
+
+
+                android:id="@+id/btnPrevious"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_margin="@dimen/x2dp"
+                android:layout_marginLeft="@dimen/x5dp"
+                android:layout_marginRight="@dimen/x5dp"
+                android:background="@color/pacs_blue"
+                android:padding="10dp"
+
+                android:text="Previous"
+                android:textAlignment="center"
+                android:textAllCaps="false"
+                android:textSize="@dimen/s12"
+                android:tint="@color/c_black" />
+
+            <edu.aku.akuh_health_first.views.AnyTextView
+                android:id="@+id/tv_progress"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_gravity="center_horizontal"
+                android:layout_weight="0.14"
+                android:gravity="center"
+                android:padding="@dimen/x5dp"
+                android:text="0/0"
+                android:textColor="@color/c_white"
+                android:textSize="@dimen/s16"
+
+                app:typeface="@string/font_bold" />
 
             <Button
                 android:id="@+id/btnNext"
                 android:layout_width="wrap_content"
+
                 android:layout_height="wrap_content"
+                android:layout_margin="@dimen/x2dp"
+                android:layout_marginLeft="@dimen/x5dp"
+                android:layout_marginRight="@dimen/x5dp"
                 android:background="@color/pacs_blue"
                 android:padding="10dp"
                 android:text="Next"
@@ -83,23 +99,9 @@
                 android:textSize="@dimen/s12"
                 android:tint="@color/c_black" />
 
-            <Button
-                android:id="@+id/btnNextBatch"
-                android:layout_width="wrap_content"
-                android:layout_height="@dimen/x50dp"
-                android:background="@color/pacs_blue"
-                android:padding="10dp"
-                android:src="@drawable/ic_fab_next"
-                android:text="Next Batch"
-                android:textAllCaps="false"
-                android:textSize="@dimen/s12"
-                android:tint="@color/c_black" />
 
         </LinearLayout>
-
-
     </LinearLayout>
-
 
     <ProgressBar
         android:id="@+id/progressbar"
@@ -111,9 +113,20 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:paddingLeft="@dimen/x5dp"
-        android:paddingRight="@dimen/x5dp">
+        android:orientation="horizontal">
 
+        <Button
+            android:id="@+id/btnPreviousBatch"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/x2dp"
+            android:background="@color/pacs_blue"
+            android:padding="10dp"
+            android:text="Previous Batch"
+            android:textAlignment="center"
+            android:textAllCaps="false"
+            android:textSize="@dimen/s12"
+            android:tint="@color/c_black" />
 
         <com.warkiz.widget.IndicatorSeekBar
             android:id="@+id/indSeekbar"
@@ -134,22 +147,37 @@
             app:isb_tick_type="oval"
             app:isb_track_progress_bar_color="@color/colorPrimary" />
 
-
         <edu.aku.akuh_health_first.views.AnyTextView
-            android:id="@+id/tv_progress"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_gravity="center_horizontal"
-            android:layout_weight="0.14"
-            android:gravity="center"
+            android:id="@+id/txttotalCount"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:layout_toLeftOf="@id/btnNext"
             android:padding="@dimen/x5dp"
-            android:text="0/0"
+            android:text="1400"
             android:textColor="@color/c_white"
             android:textSize="@dimen/s16"
-
             app:typeface="@string/font_bold" />
+
+        <Button
+            android:id="@+id/btnNextBatch"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/x2dp"
+            android:background="@color/pacs_blue"
+            android:padding="10dp"
+
+            android:src="@drawable/ic_fab_next"
+            android:text="Next Batch"
+            android:textAllCaps="false"
+            android:textSize="@dimen/s12"
+            android:tint="@color/c_black" />
+
 
     </LinearLayout>
 
 
 </LinearLayout>
+
+

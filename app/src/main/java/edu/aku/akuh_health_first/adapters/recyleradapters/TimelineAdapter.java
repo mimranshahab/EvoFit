@@ -49,12 +49,19 @@ public class TimelineAdapter extends RecyclerView.Adapter<TimelineAdapter.ViewHo
 
         final TimelineModel timelineModel = arrData.get(holder.getAdapterPosition());
 
+        /*
+        Dr name PatientVisitDoctorName
+        Service PatientVisitService
+        loc, facility  PatientVisitLocation,PatientVisitHospitalLocation
+        date PatientVisitDateTime
+         */
 
-        holder.txtFacility.setText(timelineModel.getPatientVisitHospitalLocation());
+        holder.txtFacility.setText(timelineModel.getPatientVisitLocation() + "," + timelineModel.getPatientVisitHospitalLocation());
         holder.txtVisitDateTime.setText(timelineModel.getPatientVisitDateTime());
         holder.txtDoctorName.setText(timelineModel.getPatientVisitDoctorName());
         holder.txtService.setText(timelineModel.getPatientVisitService());
-        holder.txtVisitType.setText(timelineModel.getPatientVisitType());
+//        holder.txtVisitType.setText(timelineModel.getPatientVisitType());
+//        holder.txtVisitType.setVisibility(View.GONE);
         /*
         set banner color
         In-Patient ---->Blue
@@ -115,8 +122,8 @@ public class TimelineAdapter extends RecyclerView.Adapter<TimelineAdapter.ViewHo
         AnyTextView txtDoctorName;
         @BindView(R.id.txtService)
         AnyTextView txtService;
-        @BindView(R.id.txtVisitType)
-        AnyTextView txtVisitType;
+//        @BindView(R.id.txtVisitType)
+//        AnyTextView txtVisitType;
         @BindView(R.id.cardView)
         CardView cardView;
         @BindView(R.id.frameColorCode)

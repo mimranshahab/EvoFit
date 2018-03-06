@@ -11,7 +11,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_centerInParent="true"
-        android:layout_margin="@dimen/x5dp"
+        android:padding="@dimen/x5dp"
         android:animateLayoutChanges="true"
         card_view:cardCornerRadius="5dp"
         card_view:cardElevation="x15dp">
@@ -26,13 +26,14 @@
             <edu.aku.akuh_health_first.views.AnyTextView
                 android:id="@+id/txtHospLoc"
                 android:layout_width="wrap_content"
+
                 android:layout_height="wrap_content"
                 android:layout_weight=".5"
                 android:gravity="center_vertical"
                 android:padding="@dimen/x3dp"
                 android:text="HospitalLocation Stadium Road"
                 android:textColor="@color/c_grayasparagus"
-                android:textSize="@dimen/s14"
+                android:textSize="@dimen/s10"
                 app:typeface="@string/font_bold" />
 
 
@@ -40,21 +41,22 @@
                 android:id="@+id/txtReqDatetime"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+
                 android:padding="@dimen/x3dp"
                 android:text="DateTime"
                 android:textColor="@color/c_grayasparagus"
-                android:textSize="@dimen/s14"
+                android:textSize="@dimen/s10"
                 app:typeface="@string/font_regular" />
 
             <edu.aku.akuh_health_first.views.AnyTextView
                 android:id="@+id/txtReqNum"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+
                 android:padding="@dimen/x3dp"
                 android:text="RequestNumber"
-
                 android:textColor="@color/c_grayasparagus"
-                android:textSize="@dimen/s14"
+                android:textSize="@dimen/s10"
                 app:typeface="@string/font_regular" />
 
             <edu.aku.akuh_health_first.views.AnyTextView
@@ -62,10 +64,10 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:padding="@dimen/x3dp"
-                android:text="AdmissionNumber"
 
+                android:text="AdmissionNumber"
                 android:textColor="@color/c_grayasparagus"
-                android:textSize="@dimen/s14"
+                android:textSize="@dimen/s10"
                 app:typeface="@string/font_regular" />
 
             <edu.aku.akuh_health_first.views.AnyTextView
@@ -75,12 +77,13 @@
                 android:padding="@dimen/x3dp"
                 android:text="Service"
                 android:textColor="@color/c_grayasparagus"
-                android:textSize="@dimen/s14"
+
+                android:textSize="@dimen/s10"
                 app:typeface="@string/font_regular" />
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:orientation="horizontal">
 
                 <Button
@@ -94,13 +97,14 @@
                     android:text="Show Report"
                     android:textAllCaps="false"
                     android:textColor="@color/c_white"
-                    android:textSize="@dimen/s14"
+                    android:textSize="@dimen/s10"
                     android:visibility="gone" />
 
                 <Button
                     android:id="@+id/btnShowGraph"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
+
                     android:layout_marginLeft="@dimen/x5dp"
                     android:layout_marginRight="@dimen/x5dp"
                     android:layout_weight=".5"
@@ -108,7 +112,7 @@
                     android:text="Show Graph"
                     android:textAllCaps="false"
                     android:textColor="@color/c_white"
-                    android:textSize="@dimen/s14"
+                    android:textSize="@dimen/s10"
                     android:visibility="gone" />
 
 

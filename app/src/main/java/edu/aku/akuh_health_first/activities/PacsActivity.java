@@ -1,18 +1,17 @@
-
 package edu.aku.akuh_health_first.activities;
 
 import android.app.ProgressDialog;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
-
+import android.os.PersistableBundle;
+import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
-import android.widget.ImageButton;
+import android.widget.Button;
 import android.widget.ImageView;
-import android.widget.TextView;
-
+import android.widget.ProgressBar;
 
 import com.jsibbold.zoomage.ZoomageView;
 import com.warkiz.widget.IndicatorSeekBar;
@@ -20,6 +19,8 @@ import com.warkiz.widget.IndicatorSeekBar;
 import java.io.File;
 import java.util.ArrayList;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
 import edu.aku.akuh_health_first.R;
 import edu.aku.akuh_health_first.helperclasses.Helper;
 import edu.aku.akuh_health_first.helperclasses.ui.helper.TitleBar;
@@ -32,18 +33,34 @@ import edu.aku.akuh_health_first.managers.SharedPreferenceManager;
 import edu.aku.akuh_health_first.managers.retrofit.GsonFactory;
 import edu.aku.akuh_health_first.models.PacsDescriptionModel;
 import edu.aku.akuh_health_first.models.TupleModel;
+import edu.aku.akuh_health_first.views.AnyTextView;
 
 public class PacsActivity extends AppCompatActivity {
     private static final String TAG = "MainActivity";
+    @BindView(R.id.titlebar)
+    TitleBar titlebar;
+    @BindView(R.id.image)
+    ZoomageView image;
+    @BindView(R.id.btnPrevious)
+    Button btnPrevious;
+    @BindView(R.id.tv_progress)
+    AnyTextView tvProgress;
+    @BindView(R.id.btnNext)
+    Button btnNext;
+    @BindView(R.id.progressbar)
+    ProgressBar progressbar;
+    @BindView(R.id.btnPreviousBatch)
+    Button btnPreviousBatch;
+    @BindView(R.id.indSeekbar)
+    IndicatorSeekBar indSeekbar;
+    @BindView(R.id.txttotalCount)
+    AnyTextView txttotalCount;
+    @BindView(R.id.btnNextBatch)
+    Button btnNextBatch;
 
     private int pointer;
     private PacsDescriptionModel pacsModel;
-    private ZoomageView iv;
-    private ImageButton btnPrevious;
-    private ImageButton btnNext;
-    private ImageButton btnPreviousBatch;
-    private ImageButton btnNextBatch;
-    private TextView tvProgress;
+
     private ArrayList<String> pacsList;
     private int min = 0, max = 0;
     ProgressDialog loader;
@@ -56,11 +73,18 @@ public class PacsActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_pacs);
+        setContentView(R.layout.activity_pacsv1);
+        ButterKnife.bind(this);
         arrTupleModel = new ArrayList<>();
         loader = Helper.getLoader(this);
 
-        bindViews();
+    }
+
+    @Override
+    public void onPostCreate(@Nullable Bundle savedInstanceState, @Nullable PersistableBundle persistentState) {
+        super.onPostCreate(savedInstanceState, persistentState);
+
+
         setTitlebar();
 
 //        String fromJson = getIntent().getExtras().getString(AppConstants.JSON_STRING_KEY);
@@ -77,22 +101,24 @@ public class PacsActivity extends AppCompatActivity {
             updateData(arrTupleModel.get(0));
         }
         setListeners();
+        txttotalCount.setText(pacsList.size());
+
     }
 
     private void updateData(TupleModel tupleModel) {
         loader.show();
-            for (int i = tupleModel.getMin(); i <= tupleModel.getMax(); i++) {
-                if (pacsList.get(i) != null) {
-                    loadImage(iv, pacsList.get(i), false);
-                }
+        for (int i = tupleModel.getMin(); i <= tupleModel.getMax(); i++) {
+            if (pacsList.get(i) != null) {
+                loadImage(image, pacsList.get(i), false);
             }
-            loader.dismiss();
-            loadImage(iv, pacsList.get(tupleModel.getMin()), true);
-            tvProgress.setText((tupleModel.getMin() + 1) + " of " + pacsList.size());
-            pointer = tupleModel.getMin();
-            indicatorSeekBar.setMax(tupleModel.getMax() + 1);
-            indicatorSeekBar.setMin(tupleModel.getMin() + 1);
-            indicatorSeekBar.setProgress(tupleModel.getMin() + 1);
+        }
+        loader.dismiss();
+        loadImage(image, pacsList.get(tupleModel.getMin()), true);
+        tvProgress.setText((tupleModel.getMin() + 1) + " of " + pacsList.size());
+        pointer = tupleModel.getMin();
+        indicatorSeekBar.setMax(tupleModel.getMax() + 1);
+        indicatorSeekBar.setMin(tupleModel.getMin() + 1);
+        indicatorSeekBar.setProgress(tupleModel.getMin() + 1);
     }
 
 
@@ -101,6 +127,7 @@ public class PacsActivity extends AppCompatActivity {
         titleBar.setVisibility(View.VISIBLE);
         titleBar.showBackButton(this);
         titleBar.setTitle("PACS Viewer");
+
     }
 
     private void uriArrToTuple(int size) {
@@ -133,7 +160,7 @@ public class PacsActivity extends AppCompatActivity {
                 } else {
                     pointer--;
                     if (pacsList.get(pointer) != null) {
-                        loadImage(iv, pacsList.get(pointer).toString(), true);
+                        loadImage(image, pacsList.get(pointer).toString(), true);
                         tvProgress.setText(pointer + 1 + " of " + pacsList.size());
                         indicatorSeekBar.setProgress(pointer + 1);
                     }
@@ -149,7 +176,7 @@ public class PacsActivity extends AppCompatActivity {
                 } else {
                     pointer++;
                     if (pacsList.get(pointer) != null) {
-                        loadImage(iv, pacsList.get(pointer).toString(), true);
+                        loadImage(image, pacsList.get(pointer).toString(), true);
                         tvProgress.setText(pointer + 1 + " of " + pacsList.size());
                         indicatorSeekBar.setProgress(pointer + 1);
 
@@ -206,7 +233,7 @@ public class PacsActivity extends AppCompatActivity {
             @Override
             public void onProgressChanged(IndicatorSeekBar seekBar, int progress, float progressFloat, boolean fromUserTouch) {
                 pointer = progress - 1;
-                loadImage(iv, pacsList.get(progress - 1), true);
+                loadImage(image, pacsList.get(progress - 1), true);
                 tvProgress.setText(progress + " of " + pacsList.size());
             }
 
@@ -228,16 +255,6 @@ public class PacsActivity extends AppCompatActivity {
 
     }
 
-    private void bindViews() {
-        iv = (ZoomageView) findViewById(R.id.image);
-        btnPrevious = (ImageButton) findViewById(R.id.btnPrevious);
-        btnNext = (ImageButton) findViewById(R.id.btnNext);
-        btnPreviousBatch = (ImageButton) findViewById(R.id.btnPreviousBatch);
-        btnNextBatch = (ImageButton) findViewById(R.id.btnNextBatch);
-        tvProgress = (TextView) findViewById(R.id.tv_progress);
-        titleBar = findViewById(R.id.titlebar);
-        indicatorSeekBar = findViewById(R.id.indSeekbar);
-    }
 
     private void loadImage(final ImageView iv, String imageUrl, final boolean isShowImage) {
         FileLoader.with(this)

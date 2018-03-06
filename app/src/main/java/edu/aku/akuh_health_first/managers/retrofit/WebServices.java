@@ -102,21 +102,21 @@ public class WebServices {
             if (response.body().isSuccess()) {
 
 //                for testing
-//                return true;
+                return true;
 
-                if (response.body().result.get("RecordFound") == null) {
-                    if (response.body().result.get("StrStatus") == null) {
-                        return false;
-                    } else if (response.body().result.get("StrStatus").isJsonNull()) {
-                        return false;
-                    } else {
-                        return response.body().result.get("StrStatus").getAsString().toLowerCase().equals("true");
-                    }
-                } else if (response.body().result.get("RecordFound").isJsonNull()) {
-                    return false;
-                } else {
-                    return response.body().result.get("RecordFound").getAsString().equals("true");
-                }
+//                if (response.body().result.get("RecordFound") == null) {
+//                    if (response.body().result.get("StrStatus") == null) {
+//                        return false;
+//                    } else if (response.body().result.get("StrStatus").isJsonNull()) {
+//                        return false;
+//                    } else {
+//                        return response.body().result.get("StrStatus").getAsString().toLowerCase().equals("true");
+//                    }
+//                } else if (response.body().result.get("RecordFound").isJsonNull()) {
+//                    return false;
+//                } else {
+//                    return response.body().result.get("RecordFound").getAsString().equals("true");
+//                }
             } else {
                 return false;
             }
