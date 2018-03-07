@@ -231,7 +231,7 @@ public class HealthHistoryFragment extends BaseFragment {
             titleBar.setTitle("Health History");
         }
         titleBar.showBackButton(getBaseActivity());
-        titleBar.setCircleImageView();
+        titleBar.setUserDisplay();
         titleBar.showHome(getBaseActivity());
     }
 
@@ -281,7 +281,7 @@ public class HealthHistoryFragment extends BaseFragment {
                 getBaseActivity().addDockableFragment(RadiologyFragment.newInstance(isVisitTimeline, patientVisitAdmissionID));
                 break;
             case R.id.contMedicalProfile:
-                showNextBuildToast();
+                getBaseActivity().addDockableFragment(MedicationTabLayout.newInstance(isVisitTimeline, patientVisitAdmissionID));
                 break;
             case R.id.contImmunization:
                 getBaseActivity().addDockableFragment(ImmunizationProfileFragment.newInstance(isVisitTimeline, patientVisitAdmissionID));

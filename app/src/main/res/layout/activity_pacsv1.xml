@@ -10,9 +10,9 @@
 
 
     <edu.aku.akuh_health_first.helperclasses.ui.helper.TitleBar
-        android:id="@+id/titlebar"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+    android:id="@+id/titlebar"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content" />
 
 
     <LinearLayout
@@ -103,12 +103,6 @@
         </LinearLayout>
     </LinearLayout>
 
-    <ProgressBar
-        android:id="@+id/progressbar"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
-        android:visibility="gone" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -118,7 +112,7 @@
         <Button
             android:id="@+id/btnPreviousBatch"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:layout_margin="@dimen/x2dp"
             android:background="@color/pacs_blue"
             android:padding="10dp"
@@ -131,10 +125,9 @@
         <com.warkiz.widget.IndicatorSeekBar
             android:id="@+id/indSeekbar"
             android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_alignBottom="@id/image"
-            android:layout_marginTop="@dimen/x20dp"
-            android:layout_weight="0.9"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+             android:layout_weight="0.9"
             app:isb_indicator_color="@color/colorPrimary"
             app:isb_indicator_text_color="@color/c_white"
             app:isb_indicator_type="circular_bubble"
@@ -150,10 +143,8 @@
         <edu.aku.akuh_health_first.views.AnyTextView
             android:id="@+id/txttotalCount"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
-            android:layout_centerHorizontal="true"
-            android:layout_toLeftOf="@id/btnNext"
+            android:layout_height="match_parent"
+            android:gravity="center"
             android:padding="@dimen/x5dp"
             android:text="1400"
             android:textColor="@color/c_white"

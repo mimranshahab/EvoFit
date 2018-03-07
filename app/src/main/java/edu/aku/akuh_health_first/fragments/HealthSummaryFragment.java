@@ -4,15 +4,12 @@ import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.widget.DrawerLayout;
-import android.text.Html;
 import android.text.style.AbsoluteSizeSpan;
 import android.text.style.ForegroundColorSpan;
-import android.text.style.TextAppearanceSpan;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
-import android.widget.LinearLayout;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -86,7 +83,7 @@ public class HealthSummaryFragment extends BaseFragment {
         titleBar.resetViews();
         titleBar.setTitle("Health Summary");
         titleBar.showBackButton(getBaseActivity());
-        titleBar.setCircleImageView();
+        titleBar.setUserDisplay();
         titleBar.showHome(getBaseActivity());
     }
 

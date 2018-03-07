@@ -15,7 +15,6 @@ import butterknife.Unbinder;
 import edu.aku.akuh_health_first.R;
 import edu.aku.akuh_health_first.fragments.abstracts.BaseFragment;
 import edu.aku.akuh_health_first.helperclasses.ui.helper.TitleBar;
-import edu.aku.akuh_health_first.models.TimelineModel;
 
 /**
  * Created by aqsa.sarwar on 1/26/2018.
@@ -56,7 +55,7 @@ public class HomeDetailFragment extends BaseFragment {
         titleBar.resetViews();
         titleBar.setTitle("Home Detail");
         titleBar.showBackButton(getBaseActivity());
-        titleBar.setCircleImageView();
+        titleBar.setUserDisplay();
         titleBar.showHome(getBaseActivity());
     }
 

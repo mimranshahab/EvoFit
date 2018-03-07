@@ -30,7 +30,6 @@ import edu.aku.akuh_health_first.constatnts.WebServiceConstants;
 import edu.aku.akuh_health_first.enums.BaseURLTypes;
 import edu.aku.akuh_health_first.fragments.abstracts.BaseFragment;
 import edu.aku.akuh_health_first.helperclasses.ui.helper.TitleBar;
-import edu.aku.akuh_health_first.helperclasses.ui.helper.UIHelper;
 import edu.aku.akuh_health_first.managers.retrofit.GsonFactory;
 import edu.aku.akuh_health_first.managers.retrofit.WebServices;
 import edu.aku.akuh_health_first.models.LaboratoryModel;
@@ -86,7 +85,7 @@ public class ClinicalLaboratoryFragment extends BaseFragment implements View.OnC
         titleBar.resetViews();
         titleBar.setTitle("Clinical Laboratory");
         titleBar.showBackButton(getBaseActivity());
-        titleBar.setCircleImageView();
+        titleBar.setUserDisplay();
         titleBar.showHome(getBaseActivity());
     }
 

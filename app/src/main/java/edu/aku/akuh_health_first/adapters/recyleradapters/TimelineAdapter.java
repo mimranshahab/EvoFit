@@ -128,7 +128,7 @@ public class TimelineAdapter extends RecyclerView.Adapter<TimelineAdapter.ViewHo
         AnyTextView txtDoctorName;
         @BindView(R.id.txtService)
         AnyTextView txtService;
-//        @BindView(R.id.txtVisitType)
+        //        @BindView(R.id.txtVisitType)
 //        AnyTextView txtVisitType;
         @BindView(R.id.cardView)
         CardView cardView;
@@ -181,11 +181,20 @@ public class TimelineAdapter extends RecyclerView.Adapter<TimelineAdapter.ViewHo
 //            final ArrayList<String> nlist = new ArrayList<String>(count);
             final ArrayList<TimelineModel> filterData = new ArrayList<TimelineModel>();
 
-            String filterableString;
+            String filterableString1;
+            String filterableString2;
+            String filterableString3;
+            String filterableString4;
 
             for (int i = 0; i < count; i++) {
-                filterableString = list.get(i).getPatientVisitDoctorName();
-                if (filterableString.toLowerCase().contains(filterString)) {
+                filterableString1 = list.get(i).getPatientVisitDoctorName();
+                filterableString2 = list.get(i).getPatientVisitService();
+                filterableString3 = list.get(i).getPatientVisitHospitalLocation();
+                filterableString4 = list.get(i).getPatientVisitLocation();
+                if (filterableString1.toLowerCase().contains(filterString)
+                        || filterableString2.toLowerCase().contains(filterString)
+                        || filterableString3.toLowerCase().contains(filterString)
+                        || filterableString4.toLowerCase().contains(filterString)) {
 //                    nlist.add(filterableString);
                     filterData.add(list.get(i));
                 }

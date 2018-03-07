@@ -1,7 +1,6 @@
 package edu.aku.akuh_health_first.fragments;
 
 import android.os.Bundle;
-import android.os.Handler;
 import android.support.annotation.Nullable;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v4.widget.SwipeRefreshLayout;
@@ -20,7 +19,6 @@ import android.widget.AdapterView;
 import com.google.gson.JsonObject;
 import com.google.gson.reflect.TypeToken;
 
-import java.io.File;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
 
@@ -87,7 +85,7 @@ public class TimelineFragment extends BaseFragment implements View.OnClickListen
         titleBar.resetViews();
         titleBar.setTitle("Timeline");
         titleBar.showBackButton(getBaseActivity());
-        titleBar.setCircleImageView();
+        titleBar.setUserDisplay();
         titleBar.showHome(getBaseActivity());
     }
 

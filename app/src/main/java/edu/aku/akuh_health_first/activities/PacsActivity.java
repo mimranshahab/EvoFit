@@ -37,36 +37,25 @@ import edu.aku.akuh_health_first.views.AnyTextView;
 
 public class PacsActivity extends AppCompatActivity {
     private static final String TAG = "MainActivity";
-    @BindView(R.id.titlebar)
-    TitleBar titlebar;
-    @BindView(R.id.image)
+
     ZoomageView image;
-    @BindView(R.id.btnPrevious)
     Button btnPrevious;
-    @BindView(R.id.tv_progress)
     AnyTextView tvProgress;
-    @BindView(R.id.btnNext)
     Button btnNext;
-    @BindView(R.id.progressbar)
-    ProgressBar progressbar;
-    @BindView(R.id.btnPreviousBatch)
     Button btnPreviousBatch;
-    @BindView(R.id.indSeekbar)
-    IndicatorSeekBar indSeekbar;
-    @BindView(R.id.txttotalCount)
     AnyTextView txttotalCount;
-    @BindView(R.id.btnNextBatch)
     Button btnNextBatch;
 
-    private int pointer;
-    private PacsDescriptionModel pacsModel;
 
+    IndicatorSeekBar indicatorSeekBar;
+    TitleBar titlebar;
+    private int pointer;
+
+    private PacsDescriptionModel pacsModel;
     private ArrayList<String> pacsList;
     private int min = 0, max = 0;
     ProgressDialog loader;
     private ArrayList<TupleModel> arrTupleModel;
-    TitleBar titleBar;
-    IndicatorSeekBar indicatorSeekBar;
     TupleModel selectedTupleModel;
     int selectedTupleIndex;
 
@@ -74,20 +63,22 @@ public class PacsActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_pacsv1);
-        ButterKnife.bind(this);
         arrTupleModel = new ArrayList<>();
         loader = Helper.getLoader(this);
 
-    }
 
-    @Override
-    public void onPostCreate(@Nullable Bundle savedInstanceState, @Nullable PersistableBundle persistentState) {
-        super.onPostCreate(savedInstanceState, persistentState);
-
+        image = findViewById(R.id.image);
+        btnPrevious = findViewById(R.id.btnPrevious);
+        tvProgress = findViewById(R.id.tv_progress);
+        btnNext = findViewById(R.id.btnNext);
+        btnPreviousBatch = findViewById(R.id.btnPreviousBatch);
+        indicatorSeekBar = findViewById(R.id.indSeekbar);
+        txttotalCount = findViewById(R.id.txttotalCount);
+        btnNextBatch = findViewById(R.id.btnNextBatch);
+        titlebar = findViewById(R.id.titlebar);
 
         setTitlebar();
 
-//        String fromJson = getIntent().getExtras().getString(AppConstants.JSON_STRING_KEY);
 
         String fromJson = SharedPreferenceManager.getInstance(this).getString("JSON_STRING_KEY");
         pacsModel = GsonFactory.getSimpleGson().fromJson(fromJson, PacsDescriptionModel.class);
@@ -101,8 +92,7 @@ public class PacsActivity extends AppCompatActivity {
             updateData(arrTupleModel.get(0));
         }
         setListeners();
-        txttotalCount.setText(pacsList.size());
-
+        txttotalCount.setText(String.valueOf(pacsList.size()));
     }
 
     private void updateData(TupleModel tupleModel) {
@@ -123,10 +113,10 @@ public class PacsActivity extends AppCompatActivity {
 
 
     private void setTitlebar() {
-        titleBar.resetViews();
-        titleBar.setVisibility(View.VISIBLE);
-        titleBar.showBackButton(this);
-        titleBar.setTitle("PACS Viewer");
+        titlebar.resetViews();
+        titlebar.setVisibility(View.VISIBLE);
+        titlebar.showBackButton(this);
+        titlebar.setTitle("PACS Viewer");
 
     }
 

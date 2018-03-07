@@ -170,7 +170,7 @@ public class TitleBar extends RelativeLayout {
         this.btnRight1.setOnClickListener(onClickListener);
     }
 
-    public void setCircleImageView() {
+    public void setUserDisplay() {
         this.circleImageView.setVisibility(VISIBLE);
         this.circleImageView.setImageResource(R.drawable.user_image);
         this.circleImageView.setOnClickListener(new OnClickListener() {

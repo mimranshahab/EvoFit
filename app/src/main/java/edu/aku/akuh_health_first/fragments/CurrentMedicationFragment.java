@@ -14,6 +14,7 @@ import android.view.animation.AnimationUtils;
 import android.view.animation.LayoutAnimationController;
 import android.widget.AdapterView;
 
+import com.github.clans.fab.FloatingActionButton;
 import com.google.gson.JsonObject;
 import com.google.gson.reflect.TypeToken;
 
@@ -24,7 +25,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
 import edu.aku.akuh_health_first.R;
-import edu.aku.akuh_health_first.adapters.recyleradapters.RadiologyAdapter;
+import edu.aku.akuh_health_first.adapters.recyleradapters.CurrentMedicationAdapter;
 import edu.aku.akuh_health_first.callbacks.OnItemClickListener;
 import edu.aku.akuh_health_first.constatnts.WebServiceConstants;
 import edu.aku.akuh_health_first.enums.BaseURLTypes;
@@ -32,7 +33,7 @@ import edu.aku.akuh_health_first.fragments.abstracts.BaseFragment;
 import edu.aku.akuh_health_first.helperclasses.ui.helper.TitleBar;
 import edu.aku.akuh_health_first.managers.retrofit.GsonFactory;
 import edu.aku.akuh_health_first.managers.retrofit.WebServices;
-import edu.aku.akuh_health_first.models.RadiologyModel;
+import edu.aku.akuh_health_first.models.MedicationProfileModel;
 import edu.aku.akuh_health_first.models.SearchModel;
 import edu.aku.akuh_health_first.models.wrappers.WebResponse;
 import edu.aku.akuh_health_first.views.AnyTextView;
@@ -42,31 +43,34 @@ import edu.aku.akuh_health_first.views.AnyTextView;
  * Created by aqsa.sarwar on 1/17/2018.
  */
 
-public class RadiologyFragment extends BaseFragment implements View.OnClickListener, OnItemClickListener {
+public class CurrentMedicationFragment extends BaseFragment implements View.OnClickListener, OnItemClickListener {
 
     @BindView(R.id.recylerView)
     RecyclerView recyclerView;
+    Unbinder unbinder;
     @BindView(R.id.refreshLayout)
     SwipeRefreshLayout refreshLayout;
-    Unbinder unbinder;
+    @BindView(R.id.fab)
+    FloatingActionButton mFab;
     @BindView(R.id.empty_view)
     AnyTextView emptyView;
-    private ArrayList<RadiologyModel> arrData;
-    private RadiologyAdapter adapterRadiology;
+    private ArrayList<MedicationProfileModel> arrData;
+    private CurrentMedicationAdapter adapter;
     boolean isFromTimeline;
     int patientVisitAdmissionID;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        arrData = new ArrayList<RadiologyModel>();
-        adapterRadiology = new RadiologyAdapter(getBaseActivity(), arrData, this);
+        arrData = new ArrayList<MedicationProfileModel>();
+        adapter = new CurrentMedicationAdapter(getBaseActivity(), arrData, this);
     }
 
-    public static RadiologyFragment newInstance(boolean isFromTimeline,  int patientVisitAdmissionID) {
+    public static CurrentMedicationFragment newInstance(boolean isFromTimeline, int patientVisitAdmissionID) {
 
         Bundle args = new Bundle();
-        RadiologyFragment fragment = new RadiologyFragment();
+
+        CurrentMedicationFragment fragment = new CurrentMedicationFragment();
         fragment.isFromTimeline = isFromTimeline;
         fragment.patientVisitAdmissionID = patientVisitAdmissionID;
         fragment.setArguments(args);
@@ -81,8 +85,7 @@ public class RadiologyFragment extends BaseFragment implements View.OnClickListe
     @Override
     public void setTitlebar(TitleBar titleBar) {
         titleBar.resetViews();
-        titleBar.setVisibility(View.VISIBLE);
-        titleBar.setTitle("Radiology");
+        titleBar.setTitle("Medication Profile");
         titleBar.showBackButton(getBaseActivity());
         titleBar.setUserDisplay();
         titleBar.showHome(getBaseActivity());
@@ -92,29 +95,11 @@ public class RadiologyFragment extends BaseFragment implements View.OnClickListe
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-
-
-        bearerTokenCall();
         bindView();
         serviceCall();
-
-
+        mFab.setVisibility(View.VISIBLE);
     }
 
-
-    private void bearerTokenCall() {
-        new WebServices(getContext()).webServiceGetToken(new WebServices.IRequestStringCallBack() {
-            @Override
-            public void requestDataResponse(String webResponse) {
-                WebServices.setBearerToken(webResponse);
-            }
-
-            @Override
-            public void onError() {
-
-            }
-        });
-    }
 
     private void bindView() {
         RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getBaseActivity());
@@ -123,7 +108,7 @@ public class RadiologyFragment extends BaseFragment implements View.OnClickListe
         int resId = R.anim.layout_animation_fall_bottom;
         LayoutAnimationController animation = AnimationUtils.loadLayoutAnimation(getContext(), resId);
         recyclerView.setLayoutAnimation(animation);
-        recyclerView.setAdapter(adapterRadiology);
+        recyclerView.setAdapter(adapter);
     }
 
     @Override
@@ -135,11 +120,17 @@ public class RadiologyFragment extends BaseFragment implements View.OnClickListe
                 refreshLayout.setRefreshing(false);
             }
         });
+
+        mFab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                getBaseActivity().addDockableFragment(AddUpdateMedicationFragment.newInstance(true, null));
+            }
+        });
     }
 
     @Override
     public void onClick(View v) {
-
     }
 
     @Override
@@ -150,32 +141,6 @@ public class RadiologyFragment extends BaseFragment implements View.OnClickListe
 
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-        switch (view.getId()) {
-            case R.id.btnShowGraph:
-
-                showPacsImages(adapterRadiology.getItem(position));
-                break;
-            case R.id.btnShowReport:
-                RadiologyModel object = adapterRadiology.getItem(position);
-                if (object != null) {
-                    RadiologyModel radiologyModel = (RadiologyModel) object;
-//                    radiologyModel.setExamordernumber("4416119");
-//                    radiologyModel.setExamorderexamnumber("1");
-//                    radiologyModel.setVisitlocation("Stadium Road");
-//                    radiologyModel.setReportid("15779861");
-                    getBaseActivity().addDockableFragment(RadiologyDescriptionFragment.newInstance(radiologyModel.toString()));
-                }
-
-
-                break;
-        }
-    }
-
-    private void showPacsImages(final RadiologyModel item) {
-
-
-        getBaseActivity().addDockableFragment(PacsFragment.newInstance(item));
-
 
     }
 
@@ -195,13 +160,18 @@ public class RadiologyFragment extends BaseFragment implements View.OnClickListe
 
     @Override
     public void onItemClick(int position, Object object) {
+        if (object instanceof MedicationProfileModel) {
+//            getBaseActivity().addDockableFragment(AddUpdateVaccineFragment.newInstance(false, (MedicationProfileModel) object, arrUsedVaccineDes));
+
+        }
 
     }
 
 
     private void serviceCall() {
+        // FIXME: 1/18/2018 Use live data in future
         SearchModel model = new SearchModel();
-        model.setMRNumber(WebServiceConstants.tempMRN_RADIOLOGY1);
+        model.setMRNumber(WebServiceConstants.tempMRN_immunization);
         if (isFromTimeline) {
             model.setVisitID(String.valueOf(patientVisitAdmissionID));
         } else {
@@ -210,26 +180,24 @@ public class RadiologyFragment extends BaseFragment implements View.OnClickListe
         new WebServices(getBaseActivity(),
                 WebServiceConstants.temporaryToken,
                 BaseURLTypes.AHFA_BASE_URL)
-                .webServiceRequestAPIForArray(WebServiceConstants.METHOD_GET_RADIOLOGY_EXAMS,
+                .webServiceRequestAPIForArray(WebServiceConstants.METHOD_CURRENT_MEDICATION,
                         model.toString(),
                         new WebServices.IRequestArrayDataCallBack() {
                             @Override
                             public void requestDataResponse(WebResponse<ArrayList<JsonObject>> webResponse) {
 
-                                Type type = new TypeToken<ArrayList<RadiologyModel>>() {
+                                Type type = new TypeToken<ArrayList<MedicationProfileModel>>() {
                                 }.getType();
-                                ArrayList<RadiologyModel> arrayList = GsonFactory.getSimpleGson()
+                                ArrayList<MedicationProfileModel> arrayList = GsonFactory.getSimpleGson()
                                         .fromJson(GsonFactory.getSimpleGson().toJson(webResponse.result)
                                                 , type);
 
                                 arrData.clear();
                                 arrData.addAll(arrayList);
-                                adapterRadiology.notifyDataSetChanged();
-
+                                adapter.notifyDataSetChanged();
 
                                 if (arrData.size() > 0) {
                                     showView();
-
                                 } else {
                                     showEmptyView();
                                 }
@@ -241,7 +209,6 @@ public class RadiologyFragment extends BaseFragment implements View.OnClickListe
                                 showEmptyView();
                             }
                         });
-
 
     }
 
@@ -255,5 +222,4 @@ public class RadiologyFragment extends BaseFragment implements View.OnClickListe
         emptyView.setVisibility(View.GONE);
         refreshLayout.setVisibility(View.VISIBLE);
     }
-
 }
