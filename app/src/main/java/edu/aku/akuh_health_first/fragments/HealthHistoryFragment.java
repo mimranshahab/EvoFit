@@ -156,9 +156,11 @@ public class HealthHistoryFragment extends BaseFragment {
         contParentLayout.setVisibility(View.VISIBLE);
         tempArray();
         if (arrData.size() > 0) {
-            for (int i = 0; i < arrData.size(); i = i + 2) {
-                if (tempArr.contains(arrData.get(i).getTitle())) {
-
+            contImmunization.setEnabled(false);
+            contImmunization.setAlpha(.15f);
+            for (int i = 0; i < arrData.size(); i++) {
+//                if (tempArr.contains(arrData.get(i).getTitle())) {
+                if (arrData.get(i).getTotalCount() < 1) {
                     switch (arrData.get(i).getTitle()) {
                         case "Discharge Summary":
                             contSummary.setEnabled(false);
@@ -175,11 +177,8 @@ public class HealthHistoryFragment extends BaseFragment {
                             contRadiology.setAlpha(.15f);
                             Log.d(TAG, "bindViewsVisitTimeline: Rad");
                             break;
+
                         case "Medication Profile":
-                            contImmunization.setEnabled(false);
-                            contImmunization.setAlpha(.15f);
-                            break;
-                        case "Immunization Profile":
                             contMedicalProfile.setEnabled(false);
                             contMedicalProfile.setAlpha(.15f);
                             break;
@@ -209,7 +208,6 @@ public class HealthHistoryFragment extends BaseFragment {
         tempArr.add("Discharge Summary");
         tempArr.add("Clinical Laboratory");
         tempArr.add("Medication Profile");
-        tempArr.add("Immunization Profile");
         tempArr.add("Cardiopulmonary");
         tempArr.add("Neurophysiology");
         tempArr.add("Endoscopy");

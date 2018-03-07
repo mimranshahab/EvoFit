@@ -98,7 +98,7 @@ public class PacsFragment extends BaseFragment implements View.OnClickListener, 
         //////////Get Bearer token
          */
         bindView();
-        serviceCall();
+        serviceCall(radioModel);
     }
 
     private void bindView() {
@@ -167,12 +167,12 @@ public class PacsFragment extends BaseFragment implements View.OnClickListener, 
     }
 
 
-    private void serviceCall() {
+    private void serviceCall(RadiologyModel radioModel) {
         new WebServices(getBaseActivity(),
                 WebServiceConstants.temporaryToken,
                 BaseURLTypes.PACS_VIEWER)
                 .webServiceRequestAPIForJsonObject(WebServiceConstants.METHOD_PACS_MANAGER,
-                        WebServiceConstants.METHOD_PACS_ACCESSIONS + radioModel.getAccessionnumberwithComma() + WebServiceConstants.METHOD_PACS_ACCESSIONS_end
+                        WebServiceConstants.METHOD_PACS_ACCESSIONS + this.radioModel.getAccessionnumberwithComma() + WebServiceConstants.METHOD_PACS_ACCESSIONS_end
                         ,
                         new WebServices.IRequestJsonDataCallBack() {
                             @Override

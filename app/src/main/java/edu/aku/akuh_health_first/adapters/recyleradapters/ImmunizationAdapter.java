@@ -1,15 +1,16 @@
 package edu.aku.akuh_health_first.adapters.recyleradapters;
 
 import android.app.Activity;
+import android.support.v4.content.res.ResourcesCompat;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
 import android.widget.Button;
-import android.widget.ImageView;
+import android.widget.FrameLayout;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 
 import java.util.ArrayList;
 
@@ -18,7 +19,6 @@ import butterknife.ButterKnife;
 import edu.aku.akuh_health_first.R;
 import edu.aku.akuh_health_first.callbacks.OnItemClickListener;
 import edu.aku.akuh_health_first.constatnts.AppConstants;
-import edu.aku.akuh_health_first.models.CardioModel;
 import edu.aku.akuh_health_first.models.ImmunizationModel;
 import edu.aku.akuh_health_first.views.AnyTextView;
 
@@ -62,20 +62,35 @@ public class ImmunizationAdapter extends RecyclerView.Adapter<ImmunizationAdapte
 
         switch (model.getVaccinationStatus()) {
             case AppConstants.schedule:
-                holder.imgStatusColor.setBackgroundColor(activity.getResources().getColor(R.color.base_blue));
+
+                holder.frameColorCode.setBackgroundColor(activity.getResources().getColor(R.color.base_blue));
+                holder.txtType.setBackgroundResource(R.drawable.rounded_box_filled_primary_color);
+                holder.btnupdateColorCode.setBackgroundResource(R.drawable.rounded_box_filled_primary_color);
                 holder.btnUpdate.setVisibility(View.VISIBLE);
                 break;
+
             case AppConstants.vaccinated:
-                holder.imgStatusColor.setBackgroundColor(activity.getResources().getColor(R.color.c_green));
+
+                holder.frameColorCode.setBackgroundColor(activity.getResources().getColor(R.color.c_green));
                 holder.btnUpdate.setVisibility(View.GONE);
+                holder.txtType.setBackgroundResource(R.drawable.rounded_box_filled_base_green);
                 holder.txtDateTime.setText(model.getVaccinationDate());
                 break;
+
             case AppConstants.due:
-                holder.imgStatusColor.setBackgroundColor(activity.getResources().getColor(R.color.base_amber));
+
+                holder.frameColorCode.setBackgroundColor(activity.getResources().getColor(R.color.base_amber));
+                holder.txtType.setBackgroundResource(R.drawable.rounded_box_filled_base_amber);
+                holder.btnupdateColorCode.setBackgroundResource(R.drawable.rounded_box_filled_base_amber);
                 holder.btnUpdate.setVisibility(View.VISIBLE);
                 break;
+
             case AppConstants.over_due:
-                holder.imgStatusColor.setBackgroundColor(activity.getResources().getColor(R.color.base_reddish));
+
+                holder.frameColorCode.setBackgroundColor(activity.getResources().getColor(R.color.base_reddish));
+                holder.txtType.setBackgroundResource(R.drawable.rounded_box_filled_base_red);
+                holder.btnupdateColorCode.setBackgroundResource(R.drawable.rounded_box_filled_base_red);
+                break;
         }
 
         setListener(holder, model);
@@ -113,16 +128,19 @@ public class ImmunizationAdapter extends RecyclerView.Adapter<ImmunizationAdapte
         AnyTextView txtName;
         @BindView(R.id.txtDateTime)
         AnyTextView txtDateTime;
+        @BindView(R.id.frameColorCode)
+        FrameLayout frameColorCode;
         @BindView(R.id.txtLocation)
         AnyTextView txtLocation;
         @BindView(R.id.contListItem)
         LinearLayout contListItem;
         @BindView(R.id.cardView2)
         CardView cardView2;
-        @BindView(R.id.imgStatusColor)
-        ImageView imgStatusColor;
-        @BindView(R.id.btnUpdate)
-        Button btnUpdate;
+        @BindView(R.id.RLUpdate)
+        RelativeLayout btnUpdate;
+
+        @BindView(R.id.btnupdateColorCode)
+        AnyTextView btnupdateColorCode;
 
 
         ViewHolder(View view) {

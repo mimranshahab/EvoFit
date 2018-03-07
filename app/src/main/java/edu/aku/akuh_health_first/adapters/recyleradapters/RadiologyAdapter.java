@@ -49,11 +49,9 @@ public class RadiologyAdapter extends RecyclerView.Adapter<RadiologyAdapter.View
         final RadiologyModel model = arrayList.get(holder.getAdapterPosition());
         holder.txtExamDatetime.setText("Exam Date" + " - " + model.getExamdate());
         holder.txtLocation.setText("Hospital Facility" + " - " + model.getVisitlocation());
-//        holder.txtExamTypeId.setText("Exam Type ID" + " - " + model.getExamtypeid());
         holder.txtExam.setText("Exam" + " - " + model.getExam());
         holder.txtStatus.setText("Status" + " - " + model.getStatus());
 
-//        holder.btnShowReport.setVisibility(View.VISIBLE);
         setListener(holder, model);
     }
 
@@ -92,8 +90,7 @@ public class RadiologyAdapter extends RecyclerView.Adapter<RadiologyAdapter.View
         AnyTextView txtExamDatetime;
         @BindView(R.id.txtLocation)
         AnyTextView txtLocation;
-        @BindView(R.id.txtExamTypeId)
-        AnyTextView txtExamTypeId;
+
         @BindView(R.id.txtExam)
         AnyTextView txtExam;
         @BindView(R.id.txtStatus)

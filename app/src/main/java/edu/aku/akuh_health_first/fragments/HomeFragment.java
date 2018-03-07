@@ -112,6 +112,7 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener, 
 
     private void setData() {
         if (subscriber.getGender().equals("F")) {
+            // FIXME: 3/7/2018 crash.NullPointerException: Attempt to invoke virtual method 'void de.hdodenhof.circleimageview
             imgUser.setImageResource(R.drawable.baby_photo2);
         } else {
             imgUser.setImageResource(R.drawable.male_icon_filled);

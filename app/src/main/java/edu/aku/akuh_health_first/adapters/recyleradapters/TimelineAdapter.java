@@ -128,8 +128,6 @@ public class TimelineAdapter extends RecyclerView.Adapter<TimelineAdapter.ViewHo
         AnyTextView txtDoctorName;
         @BindView(R.id.txtService)
         AnyTextView txtService;
-//        @BindView(R.id.txtVisitType)
-//        AnyTextView txtVisitType;
         @BindView(R.id.cardView)
         CardView cardView;
         @BindView(R.id.frameColorCode)
