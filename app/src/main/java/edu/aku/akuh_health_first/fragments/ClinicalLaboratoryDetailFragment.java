@@ -16,13 +16,13 @@ import android.widget.AdapterView;
 import com.google.gson.JsonObject;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
 import edu.aku.akuh_health_first.R;
-import edu.aku.akuh_health_first.activities.GraphActivity;
-import edu.aku.akuh_health_first.adapters.recyleradapters.ClinicalLabDetailAdapter;
+import edu.aku.akuh_health_first.adapters.recyleradapters.ClinicalLabDetailAdapterv1;
 import edu.aku.akuh_health_first.callbacks.OnItemClickListener;
 import edu.aku.akuh_health_first.constatnts.WebServiceConstants;
 import edu.aku.akuh_health_first.enums.BaseURLTypes;
@@ -31,8 +31,8 @@ import edu.aku.akuh_health_first.helperclasses.ui.helper.TitleBar;
 import edu.aku.akuh_health_first.helperclasses.ui.helper.UIHelper;
 import edu.aku.akuh_health_first.managers.retrofit.GsonFactory;
 import edu.aku.akuh_health_first.managers.retrofit.WebServices;
-import edu.aku.akuh_health_first.models.LaboratoryModel;
 import edu.aku.akuh_health_first.models.LaboratoryUpdateModel;
+import edu.aku.akuh_health_first.models.LstLaboratorySpecimenResults;
 import edu.aku.akuh_health_first.models.SearchModel;
 import edu.aku.akuh_health_first.models.wrappers.WebResponse;
 import edu.aku.akuh_health_first.views.AnyTextView;
@@ -42,6 +42,7 @@ import edu.aku.akuh_health_first.views.AnyTextView;
  */
 
 public class ClinicalLaboratoryDetailFragment extends BaseFragment implements OnItemClickListener {
+    private static final String SPECIMEN_NNUMBER = "specimenNumber";
     @BindView(R.id.txtCollectionDate)
     AnyTextView txtCollectionDate;
     @BindView(R.id.txtReportedDateTime)
@@ -50,16 +51,18 @@ public class ClinicalLaboratoryDetailFragment extends BaseFragment implements On
     @BindView(R.id.listClinicalLabResult)
     RecyclerView listClinicalLabResult;
     Unbinder unbinder;
-    private ArrayList<LaboratoryModel> arrClinicalLabLists;
-    private ClinicalLabDetailAdapter adapterClinicalLabDetail;
+    private ArrayList<LstLaboratorySpecimenResults> arrClinicalLabLists;
+    private ClinicalLabDetailAdapterv1 adapterClinicalLabDetail;
+    private String specimenNumber;
 
 
-    public static ClinicalLaboratoryDetailFragment newInstance() {
+    public static ClinicalLaboratoryDetailFragment newInstance(String specimenNumber) {
 
         Bundle args = new Bundle();
 
         ClinicalLaboratoryDetailFragment fragment = new ClinicalLaboratoryDetailFragment();
         fragment.setArguments(args);
+        args.getString(SPECIMEN_NNUMBER, specimenNumber);
         return fragment;
     }
 
@@ -78,17 +81,17 @@ public class ClinicalLaboratoryDetailFragment extends BaseFragment implements On
         titleBar.resetViews();
         titleBar.setTitle("Lab Detail");
         titleBar.showBackButton(getBaseActivity());
-        titleBar.setCircleImageView( );
+        titleBar.setCircleImageView();
         titleBar.showHome(getBaseActivity());
     }
-
 
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        arrClinicalLabLists = new ArrayList<LaboratoryModel>();
-        adapterClinicalLabDetail = new ClinicalLabDetailAdapter(getBaseActivity(), arrClinicalLabLists, this);
+        arrClinicalLabLists = new ArrayList<LstLaboratorySpecimenResults>();
+        adapterClinicalLabDetail = new ClinicalLabDetailAdapterv1(getBaseActivity(), arrClinicalLabLists, this);
+        specimenNumber = getArguments().getString(SPECIMEN_NNUMBER);
     }
 
     @Override
@@ -141,7 +144,8 @@ public class ClinicalLaboratoryDetailFragment extends BaseFragment implements On
     private void serviceCall() {
         // FIXME: 1/18/2018 Use live data in future
         SearchModel model = new SearchModel();
-        model.setRecordID(WebServiceConstants.temp_Specimen_Num);
+//        model.setRecordID(specimenNumber);
+        model.setRecordID("53786623");
         model.setVisitID(null);
         new WebServices(getBaseActivity(),
                 WebServiceConstants.temporaryToken,
@@ -154,8 +158,13 @@ public class ClinicalLaboratoryDetailFragment extends BaseFragment implements On
                         new WebServices.IRequestJsonDataCallBack() {
                             @Override
                             public void requestDataResponse(WebResponse<JsonObject> webResponse) {
-                        LaboratoryUpdateModel laboratoryUpdateModel =
-                                GsonFactory.getSimpleGson().fromJson(webResponse.result, LaboratoryUpdateModel.class);
+                                LaboratoryUpdateModel laboratoryUpdateModel =
+                                        GsonFactory.getSimpleGson().fromJson(webResponse.result, LaboratoryUpdateModel.class);
+                                if (laboratoryUpdateModel.getLstLaboratorySpecimenResults() != null) {
+                                    arrClinicalLabLists.clear();
+                                    arrClinicalLabLists.addAll(laboratoryUpdateModel.getLstLaboratorySpecimenResults());
+                                    adapterClinicalLabDetail.notifyDataSetChanged();
+                                }
 
                             }
 
@@ -169,12 +178,12 @@ public class ClinicalLaboratoryDetailFragment extends BaseFragment implements On
 
     @Override
     public void onItemClick(int position, Object object) {
-        if (object instanceof LaboratoryModel) {
-            LaboratoryModel laboratoryModel = (LaboratoryModel) object;
-            if (laboratoryModel.isNumeric()) {
-                getBaseActivity().openActivity(GraphActivity.class, laboratoryModel);
-            }
-        }
+//        if (object instanceof LaboratoryModel) {
+//            LaboratoryModel laboratoryModel = (LaboratoryModel) object;
+//            if (laboratoryModel.isNumeric()) {
+//                getBaseActivity().openActivity(GraphActivity.class, laboratoryModel);
+//            }
+//        }
 
     }
 }

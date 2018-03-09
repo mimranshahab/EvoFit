@@ -1,196 +1,342 @@
 package edu.aku.akuh_health_first.models;
 
+import java.io.Serializable;
+
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
 public class LstLaboratorySpecimenResults {
-    @Expose
-    @SerializedName("PrevResult3")
-    private String PrevResult3;
-    @Expose
-    @SerializedName("PrevResult3Dttm")
-    private String PrevResult3Dttm;
-    @Expose
-    @SerializedName("PrevSpecimen3")
-    private String PrevSpecimen3;
-    @Expose
-    @SerializedName("PrevResult2")
-    private String PrevResult2;
-    @Expose
-    @SerializedName("PrevResult2Dttm")
-    private String PrevResult2Dttm;
-    @Expose
-    @SerializedName("PrevSpecimen2")
-    private String PrevSpecimen2;
-    @Expose
-    @SerializedName("PrevResult1")
-    private String PrevResult1;
-    @Expose
-    @SerializedName("PrevResult1Dttm")
-    private String PrevResult1Dttm;
-    @Expose
-    @SerializedName("PrevSpecimen1")
-    private String PrevSpecimen1;
-    @Expose
-    @SerializedName("IsVerified")
-    private boolean IsVerified;
-    @Expose
-    @SerializedName("isNumericResult")
-    private String isNumericResult;
-    @Expose
-    @SerializedName("ReportName")
-    private String ReportName;
-    @Expose
-    @SerializedName("ForwardUser")
-    private String ForwardUser;
-    @Expose
-    @SerializedName("ExcludeResultTransferCP")
-    private String ExcludeResultTransferCP;
-    @Expose
-    @SerializedName("Reportable")
-    private String Reportable;
-    @Expose
-    @SerializedName("Optional")
-    private String Optional;
-    @Expose
-    @SerializedName("ReviewFlag")
-    private String ReviewFlag;
-    @Expose
-    @SerializedName("ResultComments")
-    private String ResultComments;
-    @Expose
-    @SerializedName("Comments")
-    private String Comments;
-    @Expose
-    @SerializedName("FirstEntryDTTM")
-    private String FirstEntryDTTM;
-    @Expose
-    @SerializedName("FirstEntryUser")
-    private String FirstEntryUser;
-    @Expose
-    @SerializedName("ResultVerifyDttm")
-    private String ResultVerifyDttm;
-    @Expose
-    @SerializedName("ResultVerifyUser")
-    private String ResultVerifyUser;
-    @Expose
-    @SerializedName("ResultEntryDttm")
-    private String ResultEntryDttm;
-    @Expose
-    @SerializedName("ResultEntryUser")
-    private String ResultEntryUser;
-    @Expose
-    @SerializedName("AbnormalFlag")
-    private String AbnormalFlag;
-    @Expose
-    @SerializedName("Unit")
-    private String Unit;
-    @Expose
-    @SerializedName("Result")
-    private String Result;
-    @Expose
-    @SerializedName("NormalRangeFormatted")
-    private String NormalRangeFormatted;
-    @Expose
-    @SerializedName("ResultMethod")
-    private String ResultMethod;
-    @Expose
-    @SerializedName("DepartmentID")
-    private String DepartmentID;
-    @Expose
-    @SerializedName("Abbreviation")
-    private String Abbreviation;
-    @Expose
-    @SerializedName("Mnemonic")
-    private String Mnemonic;
-    @Expose
-    @SerializedName("PerformedTestID")
-    private String PerformedTestID;
-    @Expose
-    @SerializedName("SpecimenNumber")
-    private String SpecimenNumber;
-    @Expose
+
     @SerializedName("isExternalReport")
-    private boolean isExternalReport;
+    @Expose
+    private Boolean isExternalReport;
+    @SerializedName("ExternalPath")
+    @Expose
+    private Object externalPath;
+    @SerializedName("ExternalFile")
+    @Expose
+    private Object externalFile;
+    @SerializedName("SpecimenNumber")
+    @Expose
+    private String specimenNumber;
+    @SerializedName("PerformedTestID")
+    @Expose
+    private String performedTestID;
+    @SerializedName("Mnemonic")
+    @Expose
+    private String mnemonic;
+    @SerializedName("Abbreviation")
+    @Expose
+    private String abbreviation;
+    @SerializedName("DepartmentID")
+    @Expose
+    private String departmentID;
+    @SerializedName("ResultMethod")
+    @Expose
+    private String resultMethod;
+    @SerializedName("NormalRangeFormatted")
+    @Expose
+    private String normalRangeFormatted;
+    @SerializedName("Result")
+    @Expose
+    private String result;
+    @SerializedName("Unit")
+    @Expose
+    private String unit;
+    @SerializedName("AbnormalFlag")
+    @Expose
+    private String abnormalFlag;
+    @SerializedName("ResultEntryUser")
+    @Expose
+    private String resultEntryUser;
+    @SerializedName("ResultEntryDttm")
+    @Expose
+    private String resultEntryDttm;
+    @SerializedName("ResultVerifyUser")
+    @Expose
+    private String resultVerifyUser;
+    @SerializedName("ResultVerifyDttm")
+    @Expose
+    private String resultVerifyDttm;
+    @SerializedName("FirstEntryUser")
+    @Expose
+    private String firstEntryUser;
+    @SerializedName("FirstEntryDTTM")
+    @Expose
+    private String firstEntryDTTM;
+    @SerializedName("Comments")
+    @Expose
+    private String comments;
+    @SerializedName("ResultComments")
+    @Expose
+    private String resultComments;
+    @SerializedName("ReviewFlag")
+    @Expose
+    private String reviewFlag;
+    @SerializedName("Optional")
+    @Expose
+    private String optional;
+    @SerializedName("Reportable")
+    @Expose
+    private String reportable;
+    @SerializedName("ExcludeResultTransferCP")
+    @Expose
+    private String excludeResultTransferCP;
+    @SerializedName("ForwardUser")
+    @Expose
+    private String forwardUser;
+    @SerializedName("ReportName")
+    @Expose
+    private String reportName;
+    @SerializedName("isNumericResult")
+    @Expose
+    private String isNumericResult;
+    @SerializedName("IsVerified")
+    @Expose
+    private Boolean isVerified;
+    @SerializedName("PrevSpecimen1")
+    @Expose
+    private String prevSpecimen1;
+    @SerializedName("PrevResult1Dttm")
+    @Expose
+    private String prevResult1Dttm;
+    @SerializedName("PrevResult1")
+    @Expose
+    private String prevResult1;
+    @SerializedName("PrevSpecimen2")
+    @Expose
+    private String prevSpecimen2;
+    @SerializedName("PrevResult2Dttm")
+    @Expose
+    private String prevResult2Dttm;
+    @SerializedName("PrevResult2")
+    @Expose
+    private String prevResult2;
+    @SerializedName("PrevSpecimen3")
+    @Expose
+    private String prevSpecimen3;
+    @SerializedName("PrevResult3Dttm")
+    @Expose
+    private String prevResult3Dttm;
+    @SerializedName("PrevResult3")
+    @Expose
+    private String prevResult3;
+    private final static long serialVersionUID = 7059046181713280754L;
 
-    public String getPrevResult3() {
-        return PrevResult3;
+    public Boolean getIsExternalReport() {
+        return isExternalReport;
     }
 
-    public void setPrevResult3(String PrevResult3) {
-        this.PrevResult3 = PrevResult3;
+    public void setIsExternalReport(Boolean isExternalReport) {
+        this.isExternalReport = isExternalReport;
     }
 
-    public String getPrevResult3Dttm() {
-        return PrevResult3Dttm;
+    public Object getExternalPath() {
+        return externalPath;
     }
 
-    public void setPrevResult3Dttm(String PrevResult3Dttm) {
-        this.PrevResult3Dttm = PrevResult3Dttm;
+    public void setExternalPath(Object externalPath) {
+        this.externalPath = externalPath;
     }
 
-    public String getPrevSpecimen3() {
-        return PrevSpecimen3;
+    public Object getExternalFile() {
+        return externalFile;
     }
 
-    public void setPrevSpecimen3(String PrevSpecimen3) {
-        this.PrevSpecimen3 = PrevSpecimen3;
+    public void setExternalFile(Object externalFile) {
+        this.externalFile = externalFile;
     }
 
-    public String getPrevResult2() {
-        return PrevResult2;
+    public String getSpecimenNumber() {
+        return specimenNumber;
     }
 
-    public void setPrevResult2(String PrevResult2) {
-        this.PrevResult2 = PrevResult2;
+    public void setSpecimenNumber(String specimenNumber) {
+        this.specimenNumber = specimenNumber;
     }
 
-    public String getPrevResult2Dttm() {
-        return PrevResult2Dttm;
+    public String getPerformedTestID() {
+        return performedTestID;
     }
 
-    public void setPrevResult2Dttm(String PrevResult2Dttm) {
-        this.PrevResult2Dttm = PrevResult2Dttm;
+    public void setPerformedTestID(String performedTestID) {
+        this.performedTestID = performedTestID;
     }
 
-    public String getPrevSpecimen2() {
-        return PrevSpecimen2;
+    public String getMnemonic() {
+        return mnemonic;
     }
 
-    public void setPrevSpecimen2(String PrevSpecimen2) {
-        this.PrevSpecimen2 = PrevSpecimen2;
+    public void setMnemonic(String mnemonic) {
+        this.mnemonic = mnemonic;
     }
 
-    public String getPrevResult1() {
-        return PrevResult1;
+    public String getAbbreviation() {
+        return abbreviation;
     }
 
-    public void setPrevResult1(String PrevResult1) {
-        this.PrevResult1 = PrevResult1;
+    public void setAbbreviation(String abbreviation) {
+        this.abbreviation = abbreviation;
     }
 
-    public String getPrevResult1Dttm() {
-        return PrevResult1Dttm;
+    public String getDepartmentID() {
+        return departmentID;
     }
 
-    public void setPrevResult1Dttm(String PrevResult1Dttm) {
-        this.PrevResult1Dttm = PrevResult1Dttm;
+    public void setDepartmentID(String departmentID) {
+        this.departmentID = departmentID;
     }
 
-    public String getPrevSpecimen1() {
-        return PrevSpecimen1;
+    public String getResultMethod() {
+        return resultMethod;
     }
 
-    public void setPrevSpecimen1(String PrevSpecimen1) {
-        this.PrevSpecimen1 = PrevSpecimen1;
+    public void setResultMethod(String resultMethod) {
+        this.resultMethod = resultMethod;
     }
 
-    public boolean getIsVerified() {
-        return IsVerified;
+    public String getNormalRangeFormatted() {
+        return normalRangeFormatted;
     }
 
-    public void setIsVerified(boolean IsVerified) {
-        this.IsVerified = IsVerified;
+    public void setNormalRangeFormatted(String normalRangeFormatted) {
+        this.normalRangeFormatted = normalRangeFormatted;
+    }
+
+    public String getResult() {
+        return result;
+    }
+
+    public void setResult(String result) {
+        this.result = result;
+    }
+
+    public String getUnit() {
+        return unit;
+    }
+
+    public void setUnit(String unit) {
+        this.unit = unit;
+    }
+
+    public String getAbnormalFlag() {
+        return abnormalFlag;
+    }
+
+    public void setAbnormalFlag(String abnormalFlag) {
+        this.abnormalFlag = abnormalFlag;
+    }
+
+    public String getResultEntryUser() {
+        return resultEntryUser;
+    }
+
+    public void setResultEntryUser(String resultEntryUser) {
+        this.resultEntryUser = resultEntryUser;
+    }
+
+    public String getResultEntryDttm() {
+        return resultEntryDttm;
+    }
+
+    public void setResultEntryDttm(String resultEntryDttm) {
+        this.resultEntryDttm = resultEntryDttm;
+    }
+
+    public String getResultVerifyUser() {
+        return resultVerifyUser;
+    }
+
+    public void setResultVerifyUser(String resultVerifyUser) {
+        this.resultVerifyUser = resultVerifyUser;
+    }
+
+    public String getResultVerifyDttm() {
+        return resultVerifyDttm;
+    }
+
+    public void setResultVerifyDttm(String resultVerifyDttm) {
+        this.resultVerifyDttm = resultVerifyDttm;
+    }
+
+    public String getFirstEntryUser() {
+        return firstEntryUser;
+    }
+
+    public void setFirstEntryUser(String firstEntryUser) {
+        this.firstEntryUser = firstEntryUser;
+    }
+
+    public String getFirstEntryDTTM() {
+        return firstEntryDTTM;
+    }
+
+    public void setFirstEntryDTTM(String firstEntryDTTM) {
+        this.firstEntryDTTM = firstEntryDTTM;
+    }
+
+    public String getComments() {
+        return comments;
+    }
+
+    public void setComments(String comments) {
+        this.comments = comments;
+    }
+
+    public String getResultComments() {
+        return resultComments;
+    }
+
+    public void setResultComments(String resultComments) {
+        this.resultComments = resultComments;
+    }
+
+    public String getReviewFlag() {
+        return reviewFlag;
+    }
+
+    public void setReviewFlag(String reviewFlag) {
+        this.reviewFlag = reviewFlag;
+    }
+
+    public String getOptional() {
+        return optional;
+    }
+
+    public void setOptional(String optional) {
+        this.optional = optional;
+    }
+
+    public String getReportable() {
+        return reportable;
+    }
+
+    public void setReportable(String reportable) {
+        this.reportable = reportable;
+    }
+
+    public String getExcludeResultTransferCP() {
+        return excludeResultTransferCP;
+    }
+
+    public void setExcludeResultTransferCP(String excludeResultTransferCP) {
+        this.excludeResultTransferCP = excludeResultTransferCP;
+    }
+
+    public String getForwardUser() {
+        return forwardUser;
+    }
+
+    public void setForwardUser(String forwardUser) {
+        this.forwardUser = forwardUser;
+    }
+
+    public String getReportName() {
+        return reportName;
+    }
+
+    public void setReportName(String reportName) {
+        this.reportName = reportName;
     }
 
     public String getIsNumericResult() {
@@ -201,203 +347,84 @@ public class LstLaboratorySpecimenResults {
         this.isNumericResult = isNumericResult;
     }
 
-    public String getReportName() {
-        return ReportName;
+    public Boolean getIsVerified() {
+        return isVerified;
     }
 
-    public void setReportName(String ReportName) {
-        this.ReportName = ReportName;
+    public void setIsVerified(Boolean isVerified) {
+        this.isVerified = isVerified;
     }
 
-    public String getForwardUser() {
-        return ForwardUser;
+    public String getPrevSpecimen1() {
+        return prevSpecimen1;
     }
 
-    public void setForwardUser(String ForwardUser) {
-        this.ForwardUser = ForwardUser;
+    public void setPrevSpecimen1(String prevSpecimen1) {
+        this.prevSpecimen1 = prevSpecimen1;
     }
 
-    public String getExcludeResultTransferCP() {
-        return ExcludeResultTransferCP;
+    public String getPrevResult1Dttm() {
+        return prevResult1Dttm;
     }
 
-    public void setExcludeResultTransferCP(String ExcludeResultTransferCP) {
-        this.ExcludeResultTransferCP = ExcludeResultTransferCP;
+    public void setPrevResult1Dttm(String prevResult1Dttm) {
+        this.prevResult1Dttm = prevResult1Dttm;
     }
 
-    public String getReportable() {
-        return Reportable;
+    public String getPrevResult1() {
+        return prevResult1;
     }
 
-    public void setReportable(String Reportable) {
-        this.Reportable = Reportable;
+    public void setPrevResult1(String prevResult1) {
+        this.prevResult1 = prevResult1;
     }
 
-    public String getOptional() {
-        return Optional;
+    public String getPrevSpecimen2() {
+        return prevSpecimen2;
     }
 
-    public void setOptional(String Optional) {
-        this.Optional = Optional;
+    public void setPrevSpecimen2(String prevSpecimen2) {
+        this.prevSpecimen2 = prevSpecimen2;
     }
 
-    public String getReviewFlag() {
-        return ReviewFlag;
+    public String getPrevResult2Dttm() {
+        return prevResult2Dttm;
     }
 
-    public void setReviewFlag(String ReviewFlag) {
-        this.ReviewFlag = ReviewFlag;
+    public void setPrevResult2Dttm(String prevResult2Dttm) {
+        this.prevResult2Dttm = prevResult2Dttm;
     }
 
-    public String getResultComments() {
-        return ResultComments;
+    public String getPrevResult2() {
+        return prevResult2;
     }
 
-    public void setResultComments(String ResultComments) {
-        this.ResultComments = ResultComments;
+    public void setPrevResult2(String prevResult2) {
+        this.prevResult2 = prevResult2;
     }
 
-    public String getComments() {
-        return Comments;
+    public String getPrevSpecimen3() {
+        return prevSpecimen3;
     }
 
-    public void setComments(String Comments) {
-        this.Comments = Comments;
+    public void setPrevSpecimen3(String prevSpecimen3) {
+        this.prevSpecimen3 = prevSpecimen3;
     }
 
-    public String getFirstEntryDTTM() {
-        return FirstEntryDTTM;
+    public String getPrevResult3Dttm() {
+        return prevResult3Dttm;
     }
 
-    public void setFirstEntryDTTM(String FirstEntryDTTM) {
-        this.FirstEntryDTTM = FirstEntryDTTM;
+    public void setPrevResult3Dttm(String prevResult3Dttm) {
+        this.prevResult3Dttm = prevResult3Dttm;
     }
 
-    public String getFirstEntryUser() {
-        return FirstEntryUser;
+    public String getPrevResult3() {
+        return prevResult3;
     }
 
-    public void setFirstEntryUser(String FirstEntryUser) {
-        this.FirstEntryUser = FirstEntryUser;
+    public void setPrevResult3(String prevResult3) {
+        this.prevResult3 = prevResult3;
     }
 
-    public String getResultVerifyDttm() {
-        return ResultVerifyDttm;
-    }
-
-    public void setResultVerifyDttm(String ResultVerifyDttm) {
-        this.ResultVerifyDttm = ResultVerifyDttm;
-    }
-
-    public String getResultVerifyUser() {
-        return ResultVerifyUser;
-    }
-
-    public void setResultVerifyUser(String ResultVerifyUser) {
-        this.ResultVerifyUser = ResultVerifyUser;
-    }
-
-    public String getResultEntryDttm() {
-        return ResultEntryDttm;
-    }
-
-    public void setResultEntryDttm(String ResultEntryDttm) {
-        this.ResultEntryDttm = ResultEntryDttm;
-    }
-
-    public String getResultEntryUser() {
-        return ResultEntryUser;
-    }
-
-    public void setResultEntryUser(String ResultEntryUser) {
-        this.ResultEntryUser = ResultEntryUser;
-    }
-
-    public String getAbnormalFlag() {
-        return AbnormalFlag;
-    }
-
-    public void setAbnormalFlag(String AbnormalFlag) {
-        this.AbnormalFlag = AbnormalFlag;
-    }
-
-    public String getUnit() {
-        return Unit;
-    }
-
-    public void setUnit(String Unit) {
-        this.Unit = Unit;
-    }
-
-    public String getResult() {
-        return Result;
-    }
-
-    public void setResult(String Result) {
-        this.Result = Result;
-    }
-
-    public String getNormalRangeFormatted() {
-        return NormalRangeFormatted;
-    }
-
-    public void setNormalRangeFormatted(String NormalRangeFormatted) {
-        this.NormalRangeFormatted = NormalRangeFormatted;
-    }
-
-    public String getResultMethod() {
-        return ResultMethod;
-    }
-
-    public void setResultMethod(String ResultMethod) {
-        this.ResultMethod = ResultMethod;
-    }
-
-    public String getDepartmentID() {
-        return DepartmentID;
-    }
-
-    public void setDepartmentID(String DepartmentID) {
-        this.DepartmentID = DepartmentID;
-    }
-
-    public String getAbbreviation() {
-        return Abbreviation;
-    }
-
-    public void setAbbreviation(String Abbreviation) {
-        this.Abbreviation = Abbreviation;
-    }
-
-    public String getMnemonic() {
-        return Mnemonic;
-    }
-
-    public void setMnemonic(String Mnemonic) {
-        this.Mnemonic = Mnemonic;
-    }
-
-    public String getPerformedTestID() {
-        return PerformedTestID;
-    }
-
-    public void setPerformedTestID(String PerformedTestID) {
-        this.PerformedTestID = PerformedTestID;
-    }
-
-    public String getSpecimenNumber() {
-        return SpecimenNumber;
-    }
-
-    public void setSpecimenNumber(String SpecimenNumber) {
-        this.SpecimenNumber = SpecimenNumber;
-    }
-
-    public boolean getIsExternalReport() {
-        return isExternalReport;
-    }
-
-    public void setIsExternalReport(boolean isExternalReport) {
-        this.isExternalReport = isExternalReport;
-    }
 }

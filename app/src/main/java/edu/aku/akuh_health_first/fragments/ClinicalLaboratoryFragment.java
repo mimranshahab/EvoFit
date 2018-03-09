@@ -24,13 +24,12 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
 import edu.aku.akuh_health_first.R;
-import edu.aku.akuh_health_first.adapters.recyleradapters.ClinicalLabAdapter;
+import edu.aku.akuh_health_first.adapters.recyleradapters.ClinicalLabAdapterV1;
 import edu.aku.akuh_health_first.callbacks.OnItemClickListener;
 import edu.aku.akuh_health_first.constatnts.WebServiceConstants;
 import edu.aku.akuh_health_first.enums.BaseURLTypes;
 import edu.aku.akuh_health_first.fragments.abstracts.BaseFragment;
 import edu.aku.akuh_health_first.helperclasses.ui.helper.TitleBar;
-import edu.aku.akuh_health_first.helperclasses.ui.helper.UIHelper;
 import edu.aku.akuh_health_first.managers.retrofit.GsonFactory;
 import edu.aku.akuh_health_first.managers.retrofit.WebServices;
 import edu.aku.akuh_health_first.models.LaboratoryModel;
@@ -54,7 +53,7 @@ public class ClinicalLaboratoryFragment extends BaseFragment implements View.OnC
     @BindView(R.id.empty_view)
     AnyTextView emptyView;
     private ArrayList<LaboratoryModel> arrClinicalLabLists;
-    private ClinicalLabAdapter adaptNeuropysiology;
+    private ClinicalLabAdapterV1 adaptNeuropysiology;
     boolean isFromTimeline;
     int patientVisitAdmissionID;
 
@@ -62,7 +61,7 @@ public class ClinicalLaboratoryFragment extends BaseFragment implements View.OnC
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         arrClinicalLabLists = new ArrayList<LaboratoryModel>();
-        adaptNeuropysiology = new ClinicalLabAdapter(getBaseActivity(), arrClinicalLabLists, this);
+        adaptNeuropysiology = new ClinicalLabAdapterV1(getBaseActivity(), arrClinicalLabLists, this);
     }
 
     public static ClinicalLaboratoryFragment newInstance(boolean isFromTimeline, int patientVisitAdmissionID) {
@@ -153,8 +152,8 @@ public class ClinicalLaboratoryFragment extends BaseFragment implements View.OnC
     @Override
     public void onItemClick(int position, Object object) {
         if (object instanceof LaboratoryModel) {
-
-            getBaseActivity().addDockableFragment(ClinicalLaboratoryDetailFragment.newInstance());
+            LaboratoryModel modelLaboratoryModel = (LaboratoryModel) object;
+            getBaseActivity().addDockableFragment(ClinicalLaboratoryDetailFragment.newInstance(modelLaboratoryModel.getSpecimenNumber()));
 
 
         }

@@ -15,6 +15,7 @@ import edu.aku.akuh_health_first.activities.BaseActivity;
 import edu.aku.akuh_health_first.callbacks.OnItemClickListener;
 import edu.aku.akuh_health_first.fragments.ClinicalLaboratoryDetailFragment;
 import edu.aku.akuh_health_first.models.LaboratoryModel;
+import edu.aku.akuh_health_first.models.LstLaboratorySpecimenResults;
 import edu.aku.akuh_health_first.views.AnyTextView;
 
 /**
@@ -23,11 +24,11 @@ import edu.aku.akuh_health_first.views.AnyTextView;
 
 public class ClinicalLabDetailAdapter extends RecyclerView.Adapter<ClinicalLabDetailAdapter.ViewHolder> {
 
-    private final ArrayList<LaboratoryModel> arrClinicalLabLists;
+    private final ArrayList<LstLaboratorySpecimenResults> arrClinicalLabLists;
     private BaseActivity activity;
     private OnItemClickListener onItemClickListener;
 
-    public ClinicalLabDetailAdapter(BaseActivity activity, ArrayList<LaboratoryModel> arrClinicalLabLists, OnItemClickListener onItemClickListener) {
+    public ClinicalLabDetailAdapter(BaseActivity activity, ArrayList<LstLaboratorySpecimenResults> arrClinicalLabLists, OnItemClickListener onItemClickListener) {
         this.activity = activity;
         this.arrClinicalLabLists = arrClinicalLabLists;
         this.onItemClickListener = onItemClickListener;
@@ -44,15 +45,15 @@ public class ClinicalLabDetailAdapter extends RecyclerView.Adapter<ClinicalLabDe
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
 
-        final LaboratoryModel model = arrClinicalLabLists.get(holder.getAdapterPosition());
+        final LstLaboratorySpecimenResults model = arrClinicalLabLists.get(holder.getAdapterPosition());
 
-        holder.txtName.setText(model.getReportName());
+        holder.txtName.setText(model.getReportName() +" "+ model.getResult() +" "+ model.getUnit());
         holder.txtRange.setText("Range " + model.getNormalRangeFormatted() + " Normal");
-        holder.txtComments.setText(model.getComments());
+//        holder.txtComments.setText(model.getComments());
         setListener(holder, model);
     }
 
-    private void setListener(final ClinicalLabDetailAdapter.ViewHolder holder, final LaboratoryModel neurophysiology) {
+    private void setListener(final ClinicalLabDetailAdapter.ViewHolder holder, final LstLaboratorySpecimenResults neurophysiology) {
         holder.cardView2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -72,8 +73,8 @@ public class ClinicalLabDetailAdapter extends RecyclerView.Adapter<ClinicalLabDe
         AnyTextView txtName;
         @BindView(R.id.txtRange)
         AnyTextView txtRange;
-        @BindView(R.id.txtComments)
-        AnyTextView txtComments;
+//        @BindView(R.id.txtComments)
+//        AnyTextView txtComments;
         @BindView(R.id.cardView2)
         CardView cardView2;
 

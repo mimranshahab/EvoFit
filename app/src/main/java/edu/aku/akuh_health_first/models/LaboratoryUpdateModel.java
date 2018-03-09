@@ -42,7 +42,7 @@ public class LaboratoryUpdateModel
 
         @SerializedName("lstLaboratorySpecimenResults")
         @Expose
-        private Object lstLaboratorySpecimenResults;
+        private List<LstLaboratorySpecimenResults> lstLaboratorySpecimenResults;
         @SerializedName("lstLaboratoryMicSpecimenOrderedProc")
         @Expose
         private List<LstLaboratoryMicspecimenOrderedProc> lstLaboratoryMicSpecimenOrderedProc = null;
@@ -142,11 +142,11 @@ public class LaboratoryUpdateModel
 
         private final static long serialVersionUID = -792760789047274044L;
 
-    public Object getLstLaboratorySpecimenResults() {
+    public  List<LstLaboratorySpecimenResults> getLstLaboratorySpecimenResults() {
         return lstLaboratorySpecimenResults;
     }
 
-    public void setLstLaboratorySpecimenResults(Object lstLaboratorySpecimenResults) {
+    public void setLstLaboratorySpecimenResults(List<LstLaboratorySpecimenResults> lstLaboratorySpecimenResults) {
         this.lstLaboratorySpecimenResults = lstLaboratorySpecimenResults;
     }
 

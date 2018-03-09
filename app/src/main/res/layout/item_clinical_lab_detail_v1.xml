@@ -40,46 +40,24 @@
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:ellipsize="end"
-                        android:text="Specimen Number:"
+                        android:text="Report Name:"
+                        android:textColor="@color/text_color_grey_dark"
                         android:textSize="@dimen/s14"
                         app:typeface="@string/font_regular" />
 
                     <edu.aku.akuh_health_first.views.AnyTextView
-                        android:id="@+id/txtSpecimenNumber"
+                        android:id="@+id/txtReportName"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:ellipsize="end"
-                        android:text="41225000"
+                        android:text=""
+
+                        android:textColor="@color/base_amber"
                         android:textSize="@dimen/s14"
                         app:typeface="@string/font_bold" />
 
                 </LinearLayout>
 
-                <LinearLayout
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:orientation="vertical"
-                    android:padding="@dimen/x5dp">
-
-                    <edu.aku.akuh_health_first.views.AnyTextView
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:ellipsize="end"
-                        android:text="Request Number:"
-                        android:textSize="@dimen/s14"
-                        app:typeface="@string/font_regular" />
-
-                    <edu.aku.akuh_health_first.views.AnyTextView
-                        android:id="@+id/txtRequestNumber"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:ellipsize="end"
-                        android:text="321321321"
-                        android:textSize="@dimen/s14"
-                        app:typeface="@string/font_bold" />
-
-                </LinearLayout>
 
             </LinearLayout>
 
@@ -98,21 +76,22 @@
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:ellipsize="end"
-                        android:text="Entered Date &amp; Time:"
+                        android:text="NormalRange"
+
+                        android:textColor="@color/text_color_grey_dark"
                         android:textSize="@dimen/s14"
                         app:typeface="@string/font_regular" />
 
                     <edu.aku.akuh_health_first.views.AnyTextView
-                        android:id="@+id/txtEnteredDateTime"
+                        android:id="@+id/txtNormalRangeFormatted"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:ellipsize="end"
-                        android:text="date and time"
+                        android:text=""
                         android:textSize="@dimen/s14"
                         app:typeface="@string/font_bold" />
 
                 </LinearLayout>
-
                 <LinearLayout
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
@@ -123,21 +102,24 @@
                     <edu.aku.akuh_health_first.views.AnyTextView
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:ellipsize="end"
-                        android:text="Visit Date &amp; Time:"
+                        android:text="Result"
+                        android:textColor="@color/text_color_grey_dark"
                         android:textSize="@dimen/s14"
                         app:typeface="@string/font_regular" />
 
                     <edu.aku.akuh_health_first.views.AnyTextView
-                        android:id="@+id/txtVisitDateTime"
+                        android:id="@+id/txtResult"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:ellipsize="end"
-                        android:text="date and time"
+                        android:text=""
+                        android:textColor="@color/text_color_grey_dark"
                         android:textSize="@dimen/s14"
                         app:typeface="@string/font_bold" />
 
                 </LinearLayout>
+
+
+
 
             </LinearLayout>
 
@@ -145,9 +127,8 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
-
                 <LinearLayout
-                    android:layout_width="0dp"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:orientation="vertical"
@@ -157,65 +138,23 @@
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:ellipsize="end"
-                        android:text="Visit ID &amp; Type:"
+                        android:text="Graph Result"
                         android:textSize="@dimen/s14"
                         app:typeface="@string/font_regular" />
 
                     <edu.aku.akuh_health_first.views.AnyTextView
-                        android:id="@+id/txtVisitIDandType"
+                        android:id="@+id/txtGraph"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:ellipsize="end"
-                        android:text="101735356 - CLI"
+                        android:text="date and time"
+                        android:textColor="@color/text_color_grey_dark"
                         android:textSize="@dimen/s14"
                         app:typeface="@string/font_bold" />
 
                 </LinearLayout>
 
-                <LinearLayout
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:orientation="vertical"
-                    android:padding="@dimen/x5dp">
-
-                    <edu.aku.akuh_health_first.views.AnyTextView
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:ellipsize="end"
-                        android:text="Visit Location ID:"
-                        android:textSize="@dimen/s14"
-                        app:typeface="@string/font_regular" />
-
-                    <edu.aku.akuh_health_first.views.AnyTextView
-                        android:id="@+id/txtVisitLocationID"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:ellipsize="end"
-                        android:text="CHC-CHS"
-                        android:textSize="@dimen/s14"
-                        app:typeface="@string/font_bold" />
-
-                </LinearLayout>
 
             </LinearLayout>
-
-
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/recycler_seperator_height"
-                android:layout_margin="@dimen/x10dp"
-                android:background="@color/base_grey" />
-
-            <Button
-                android:id="@+id/btnShowDetail"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="@dimen/x10dp"
-                android:layout_marginRight="@dimen/x10dp"
-                android:background="@drawable/rounded_box_filled_base_grey"
-                android:text="Show LAB/MIC Detail"
-                android:textColor="@color/c_white" />
 
 
         </LinearLayout>
