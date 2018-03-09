@@ -424,7 +424,7 @@ public class DateManager {
                     myCalendar.set(Calendar.HOUR_OF_DAY, i);
                     myCalendar.set(Calendar.MINUTE, i1);
 
-                    String myFormat = "dd/MM/yyyy HH:mm"; // In which you need put here
+                    String myFormat = "MMM dd, yyyy HH:mm"; // In which you need put here
                     SimpleDateFormat sdf = new SimpleDateFormat(myFormat, Locale.US);
 
                     textView.setText(sdf.format(myCalendar.getTime()));

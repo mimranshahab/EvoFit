@@ -4,8 +4,8 @@
     xmlns:card_view="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:padding="@dimen/x3dp"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:padding="@dimen/x3dp">
 
 
     <android.support.v7.widget.CardView
@@ -61,12 +61,13 @@
 
                         <edu.aku.akuh_health_first.views.AnyTextView
                             android:id="@+id/txtMedicineName"
-                            android:layout_width="wrap_content"
+                            android:layout_width="match_parent"
                             android:layout_height="wrap_content"
+                            android:ellipsize="end"
                             android:padding="@dimen/x3dp"
+                            android:singleLine="true"
                             android:text="MedicineName"
                             android:textColor="@color/base_green"
-
                             android:textSize="@dimen/s14"
                             app:typeface="@string/font_bold" />
                     </LinearLayout>
@@ -97,7 +98,6 @@
                             android:textSize="@dimen/s14"
                             app:typeface="@string/font_regular" />
                     </LinearLayout>
-
 
 
                     <LinearLayout

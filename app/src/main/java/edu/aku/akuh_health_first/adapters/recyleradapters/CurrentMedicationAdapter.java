@@ -53,9 +53,7 @@ public class CurrentMedicationAdapter extends RecyclerView.Adapter<CurrentMedica
 
         holder.txtMedicineName.setText(model.getRxmedmedication());
 
-
-        // FIXME: 3/7/2018 description goes here in future
-        holder.txtFrequency.setText(model.getRxmedfrequency());
+        holder.txtFrequency.setText(model.getRxmedfrequencydescription());
         holder.txtRoute.setText(model.getRxmedroutedescription()); // Null in History
         holder.txtStartDate.setText(model.getRxmedstartdatetime());
         holder.txtStopDate.setText(model.getRxmedstopdatetime());

@@ -294,7 +294,7 @@ public class AddUpdateVaccineFragment extends BaseFragment {
                 immunizationModel.setVaccinePlanDate(txtVaccinationPlanDate.getStringTrimmed());
                 immunizationModel.setVaccinationDate(txtVaccinatedDate.getStringTrimmed());
 
-//                        UIHelper.showToast(getContext(), vaccineIDandDescriptions.get(txtVaccine.getText().toString()));
+//                        UIHelper.showToast(getContext(), frequencyIDandDescriptions.get(txtVaccine.getText().toString()));
 
                 addVaccineService(immunizationModel.toString());
                 Log.d(TAG, "onViewClicked: " + immunizationModel.toString());

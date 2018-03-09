@@ -3,6 +3,8 @@ package edu.aku.akuh_health_first.models;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
+import java.util.List;
+
 /**
  * Created by hamza.ahmed on 3/7/2018.
  */
@@ -29,10 +31,25 @@ public class MedicationProfileModel {
     private String lastfiledatetime;
     @Expose
     @SerializedName("MedicineList")
-    private String medicinelist;
+    private List<String> medicinelist;
+    @Expose
+    @SerializedName("FrequencyIDList")
+    private List<String> frequencyidlist;
     @Expose
     @SerializedName("RouteIDList")
-    private String routeidlist;
+    private List<String> routeidlist;
+    @Expose
+    @SerializedName("RXMedTimingList")
+    private List<String> rxmedtiminglist;
+    @Expose
+    @SerializedName("RXMedUrduDirection")
+    private String rxmedurdudirection;
+    @Expose
+    @SerializedName("RXMedTimings")
+    private String rxmedtimings;
+    @Expose
+    @SerializedName("RXMedFrequencyDescription")
+    private String rxmedfrequencydescription;
     @Expose
     @SerializedName("isPatientOnBoard")
     private boolean ispatientonboard;
@@ -41,7 +58,7 @@ public class MedicationProfileModel {
     private String rxmedroutedescription;
     @Expose
     @SerializedName("MedicineExceedLimit")
-    private String medicineexceedlimit;
+    private boolean medicineexceedlimit;
     @Expose
     @SerializedName("MRNumber")
     private String mrnumber;
@@ -70,8 +87,8 @@ public class MedicationProfileModel {
     @SerializedName("RXMedStartDateTime")
     private String rxmedstartdatetime;
     @Expose
-    @SerializedName("RXMedFrequency")
-    private String rxmedfrequency;
+    @SerializedName("RXMedFrequencyID")
+    private String rxmedfrequencyid;
     @Expose
     @SerializedName("RXMedDose")
     private String rxmeddose;
@@ -133,20 +150,60 @@ public class MedicationProfileModel {
         this.lastfiledatetime = lastfiledatetime;
     }
 
-    public String getMedicinelist() {
+    public List<String> getMedicinelist() {
         return medicinelist;
     }
 
-    public void setMedicinelist(String medicinelist) {
+    public void setMedicinelist(List<String> medicinelist) {
         this.medicinelist = medicinelist;
     }
 
-    public String getRouteidlist() {
+    public List<String> getFrequencyidlist() {
+        return frequencyidlist;
+    }
+
+    public void setFrequencyidlist(List<String> frequencyidlist) {
+        this.frequencyidlist = frequencyidlist;
+    }
+
+    public List<String> getRouteidlist() {
         return routeidlist;
     }
 
-    public void setRouteidlist(String routeidlist) {
+    public void setRouteidlist(List<String> routeidlist) {
         this.routeidlist = routeidlist;
+    }
+
+    public List<String> getRxmedtiminglist() {
+        return rxmedtiminglist;
+    }
+
+    public void setRxmedtiminglist(List<String> rxmedtiminglist) {
+        this.rxmedtiminglist = rxmedtiminglist;
+    }
+
+    public String getRxmedurdudirection() {
+        return rxmedurdudirection;
+    }
+
+    public void setRxmedurdudirection(String rxmedurdudirection) {
+        this.rxmedurdudirection = rxmedurdudirection;
+    }
+
+    public String getRxmedtimings() {
+        return rxmedtimings;
+    }
+
+    public void setRxmedtimings(String rxmedtimings) {
+        this.rxmedtimings = rxmedtimings;
+    }
+
+    public String getRxmedfrequencydescription() {
+        return rxmedfrequencydescription;
+    }
+
+    public void setRxmedfrequencydescription(String rxmedfrequencydescription) {
+        this.rxmedfrequencydescription = rxmedfrequencydescription;
     }
 
     public boolean getIspatientonboard() {
@@ -165,11 +222,11 @@ public class MedicationProfileModel {
         this.rxmedroutedescription = rxmedroutedescription;
     }
 
-    public String getMedicineexceedlimit() {
+    public boolean getMedicineexceedlimit() {
         return medicineexceedlimit;
     }
 
-    public void setMedicineexceedlimit(String medicineexceedlimit) {
+    public void setMedicineexceedlimit(boolean medicineexceedlimit) {
         this.medicineexceedlimit = medicineexceedlimit;
     }
 
@@ -245,12 +302,12 @@ public class MedicationProfileModel {
         this.rxmedstartdatetime = rxmedstartdatetime;
     }
 
-    public String getRxmedfrequency() {
-        return rxmedfrequency;
+    public String getRxmedfrequencyid() {
+        return rxmedfrequencyid;
     }
 
-    public void setRxmedfrequency(String rxmedfrequency) {
-        this.rxmedfrequency = rxmedfrequency;
+    public void setRxmedfrequencyid(String rxmedfrequencyid) {
+        this.rxmedfrequencyid = rxmedfrequencyid;
     }
 
     public String getRxmeddose() {
