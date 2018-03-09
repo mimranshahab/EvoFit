@@ -29,4 +29,6 @@ public class AnyTextView extends AppCompatTextView {
     public String getStringTrimmed(){
         return  getText().toString().trim() ;
     }
+
+
 }

@@ -11,7 +11,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
-        android:layout_margin="@dimen/x10dp"
+        android:layout_margin="@dimen/x15dp"
         android:animateLayoutChanges="true"
         app:cardCornerRadius="@dimen/x8dp"
         app:cardElevation="@dimen/x3dp"
@@ -32,35 +32,35 @@
                 android:background="@drawable/rounded_box"
                 android:gravity="center_vertical"
                 android:orientation="vertical"
-                android:padding="@dimen/x7dp">
+                android:padding="@dimen/x5dp">
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:orientation="horizontal"
-                    android:padding="@dimen/x5dp">
+                    android:padding="@dimen/x3dp">
 
                     <edu.aku.akuh_health_first.views.AnyTextView
                         android:id="@+id/txtDateTime"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_weight=".5"
-                        android:text="22 jan ,2018"
-                        android:textSize="@dimen/s14" />
+                        android:textSize="@dimen/s10"
+                        android:text="22 jan ,2018" />
 
 
                     <edu.aku.akuh_health_first.views.AnyTextView
                         android:id="@+id/txtType"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginLeft="@dimen/x35dp"
+                        android:layout_marginLeft="@dimen/x45dp"
                         android:layout_weight=".5"
                         android:background="@drawable/rounded_box_filled_base_green"
                         android:gravity="center_horizontal"
-                        android:padding="@dimen/x3dp"
+                        android:padding="@dimen/x2dp"
                         android:text="Vaccinated"
                         android:textColor="@color/c_white"
-                        android:textSize="@dimen/s16"
+                        android:textSize="@dimen/s10"
                         app:typeface="@string/font_bold" />
 
                 </LinearLayout>
@@ -80,8 +80,8 @@
 
                     <de.hdodenhof.circleimageview.CircleImageView
                         android:id="@+id/imgUser"
-                        android:layout_width="@dimen/x70dp"
-                        android:layout_height="@dimen/x70dp"
+                        android:layout_width="@dimen/x60dp"
+                        android:layout_height="@dimen/x60dp"
                         android:layout_margin="@dimen/x5dp"
                         android:background="@drawable/circle_stroke_gray"
                         android:scaleType="centerCrop"
@@ -101,10 +101,9 @@
                             android:id="@+id/txtName"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:padding="@dimen/x2dp"
                             android:text="Hepatitus A "
                             android:textColor="@color/text_color_grey_dark"
-                            android:textSize="@dimen/s16"
+                            android:textSize="@dimen/s12"
                             app:typeface="@string/font_bold" />
 
 
@@ -112,20 +111,18 @@
                             android:id="@+id/txtLocation"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:padding="@dimen/x2dp"
                             android:text="CHC"
                             android:textColor="@color/text_color_grey_dark"
-                            android:textSize="@dimen/s14"
+                            android:textSize="@dimen/s10"
                             app:typeface="@string/font_regular" />
 
                         <edu.aku.akuh_health_first.views.AnyTextView
                             android:id="@+id/txtFacility"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:padding="@dimen/x2dp"
                             android:text="Stadium Road"
                             android:textColor="@color/text_color_grey_dark"
-                            android:textSize="@dimen/s14"
+                            android:textSize="@dimen/s10"
                             app:typeface="@string/font_regular" />
 
 
@@ -135,32 +132,23 @@
                 <RelativeLayout
                     android:id="@+id/RLUpdate"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="@dimen/x20dp"
-                    android:layout_marginRight="@dimen/x20dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="@dimen/x30dp"
+                    android:layout_marginRight="@dimen/x30dp"
 
 
                     >
 
-                    <!--<Button-->
-                    <!--android:layout_width="match_parent"-->
-                    <!--android:layout_height="wrap_content"-->
-                    <!--android:background="@color/c_white"-->
-                    <!--android:gravity="center"-->
-                    <!--android:text="Update"-->
-                    <!--android:textColor="@color/text_color_grey_dark"-->
-
-                    <!--/>     -->
 
                     <edu.aku.akuh_health_first.views.AnyTextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:background="@color/c_white"
                         android:gravity="center"
-                        android:padding="@dimen/x5dp"
+                        android:padding="@dimen/x3dp"
                         android:text="UPDATE"
                         android:textColor="@color/text_color_grey_dark"
-                        android:textSize="@dimen/s14"
+                        android:textSize="@dimen/s10"
 
                         />
 
@@ -170,7 +158,9 @@
                         android:layout_height="wrap_content"
                         android:alpha=".25"
                         android:background="@drawable/rounded_box_filled_base_red"
-                        android:padding="@dimen/x5dp"
+                        android:padding="@dimen/x3dp"
+                        android:gravity="center"
+                        android:textSize="@dimen/s10"
 
                         />
 

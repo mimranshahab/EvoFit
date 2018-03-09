@@ -204,6 +204,7 @@ public class RadiologyModel implements IsRecordFound {
 
     public String getAccessionnumberwithComma() {
         return "\"" + accessionnumber + "\"";
+
     }
 
     public void setAccessionnumber(String accessionnumber) {

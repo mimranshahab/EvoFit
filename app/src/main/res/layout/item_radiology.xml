@@ -4,27 +4,26 @@
     xmlns:card_view="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:orientation="vertical"
-    android:padding="@dimen/x10dp">
+    android:orientation="vertical">
 
     <android.support.v7.widget.CardView
         android:id="@+id/cardView2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
-        android:layout_marginLeft="@dimen/x5dp"
-        android:layout_marginRight="@dimen/x5dp"
-        android:layout_marginTop="@dimen/x5dp"
+        android:layout_margin="@dimen/x5dp"
         android:animateLayoutChanges="true"
-        android:padding="@dimen/x2dp"
-        card_view:cardCornerRadius="5dp"
-        card_view:cardElevation="x15dp">
+        app:cardCornerRadius="@dimen/x8dp"
+        app:cardElevation="@dimen/x5dp"
+
+
+        >
 
         <LinearLayout
             android:id="@+id/contListItem"
+            android:padding="@dimen/x5dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="@dimen/x5dp"
             android:orientation="vertical">
 
             <edu.aku.akuh_health_first.views.AnyTextView
@@ -33,7 +32,6 @@
                 android:layout_height="wrap_content"
                 android:padding="@dimen/x5dp"
                 android:text="Exam Order Number"
-
                 android:textColor="@color/c_grayasparagus"
                 android:textSize="@dimen/s12"
                 app:typeface="@string/font_regular" />
@@ -48,17 +46,6 @@
                 android:textSize="@dimen/s12"
                 app:typeface="@string/font_regular" />
 
-
-            <edu.aku.akuh_health_first.views.AnyTextView
-                android:id="@+id/txtExamTypeId"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:padding="@dimen/x5dp"
-                android:text="Exam Type Id"
-
-                android:textColor="@color/c_grayasparagus"
-                android:textSize="@dimen/s12"
-                app:typeface="@string/font_regular" />
 
             <edu.aku.akuh_health_first.views.AnyTextView
                 android:id="@+id/txtExam"
@@ -82,28 +69,31 @@
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
                 android:orientation="horizontal">
 
                 <Button
                     android:id="@+id/btnShowReport"
                     android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="@dimen/x10dp"
+                    android:layout_height="match_parent"
+                    android:layout_margin="@dimen/x5dp"
                     android:layout_weight=".5"
-                    android:background="@drawable/rounded_box_filled_base_grey"
+                    android:background="@drawable/rounded_box_filled_primary_color"
                     android:text="Show Report"
                     android:textAllCaps="false"
+                    android:textSize="@dimen/s14"
                     android:textColor="@color/c_white"
                     android:visibility="visible" />
 
                 <Button
                     android:id="@+id/btnShowGraph"
                     android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="@dimen/x10dp"
+                    android:layout_height="match_parent"
+                    android:layout_margin="@dimen/x5dp"
                     android:layout_weight=".5"
-                    android:background="@drawable/rounded_box_filled_base_grey"
+                    android:textSize="@dimen/s14"
+
+                    android:background="@drawable/rounded_box_filled_base_amber"
                     android:text="Show Pacs"
                     android:textAllCaps="false"
                     android:textColor="@color/c_white"

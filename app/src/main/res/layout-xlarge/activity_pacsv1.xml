@@ -10,9 +10,11 @@
 
 
     <edu.aku.akuh_health_first.helperclasses.ui.helper.TitleBar
-    android:id="@+id/titlebar"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content" />
+        android:id="@+id/titlebar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        />
 
 
     <LinearLayout
@@ -53,15 +55,17 @@
 
             <Button
 
-               android:id="@+id/btnPrevious"
+                android:id="@+id/btnPrevious"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="@dimen/x2dp"
                 android:background="@drawable/rounded_box_filled_columbia_blue"
+                android:padding="@dimen/x2dp"
                 android:text="Previous"
+
                 android:textAlignment="center"
                 android:textAllCaps="false"
-                android:textSize="@dimen/s10"
+                android:textSize="@dimen/s6"
                 android:tint="@color/c_black" />
 
             <edu.aku.akuh_health_first.views.AnyTextView
@@ -73,7 +77,7 @@
                 android:gravity="bottom|center_horizontal"
                 android:text="0/0"
                 android:textColor="@color/c_white"
-                android:textSize="@dimen/s12"
+                android:textSize="@dimen/s10"
 
                 app:typeface="@string/font_bold" />
 
@@ -82,23 +86,19 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="@dimen/x2dp"
+
                 android:background="@drawable/rounded_box_filled_columbia_blue"
+                android:padding="@dimen/x2dp"
                 android:text="Next"
                 android:textAlignment="center"
                 android:textAllCaps="false"
-                android:textSize="@dimen/s10"
+                android:textSize="@dimen/s6"
                 android:tint="@color/c_black" />
 
 
         </LinearLayout>
     </LinearLayout>
 
-    <ProgressBar
-        android:id="@+id/progressbar"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
-        android:visibility="gone" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -111,10 +111,12 @@
             android:layout_height="wrap_content"
             android:layout_margin="@dimen/x2dp"
             android:background="@drawable/rounded_box_filled_columbia_blue"
+            android:padding="@dimen/x2dp"
             android:text="Previous Batch"
             android:textAlignment="center"
             android:textAllCaps="false"
-            android:textSize="@dimen/s10"
+
+            android:textSize="@dimen/s6"
             android:tint="@color/c_black" />
 
         <com.warkiz.widget.IndicatorSeekBar
@@ -139,24 +141,26 @@
         <edu.aku.akuh_health_first.views.AnyTextView
             android:id="@+id/txttotalCount"
             android:layout_width="wrap_content"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:gravity="center"
             android:padding="@dimen/x5dp"
             android:text="1400"
             android:textColor="@color/c_white"
-            android:textSize="@dimen/s12"
+            android:textSize="@dimen/s10"
             app:typeface="@string/font_bold" />
 
         <Button
             android:id="@+id/btnNextBatch"
             android:layout_width="wrap_content"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:layout_margin="@dimen/x2dp"
             android:background="@drawable/rounded_box_filled_columbia_blue"
+            android:padding="@dimen/x2dp"
             android:src="@drawable/ic_fab_next"
             android:text="Next Batch"
+
             android:textAllCaps="false"
-            android:textSize="@dimen/s10"
+            android:textSize="@dimen/s6"
             android:tint="@color/c_black" />
 
 

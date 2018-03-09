@@ -19,7 +19,7 @@
 
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
-        <item name="colorControlActivated">@color/base_reddish</item>
+        <item name="colorControlActivated">@color/base_amber</item>
         <item name="colorControlHighlight">@color/base_amber</item>
         <item name="colorAccent">@color/colorAccent</item>
         <item name="android:windowDrawsSystemBarBackgrounds">true</item>

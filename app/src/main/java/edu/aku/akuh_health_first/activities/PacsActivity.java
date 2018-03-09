@@ -4,8 +4,6 @@ import android.app.ProgressDialog;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
-import android.os.PersistableBundle;
-import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
@@ -19,8 +17,6 @@ import com.warkiz.widget.IndicatorSeekBar;
 import java.io.File;
 import java.util.ArrayList;
 
-import butterknife.BindView;
-import butterknife.ButterKnife;
 import edu.aku.akuh_health_first.R;
 import edu.aku.akuh_health_first.helperclasses.Helper;
 import edu.aku.akuh_health_first.helperclasses.ui.helper.TitleBar;
@@ -37,25 +33,25 @@ import edu.aku.akuh_health_first.views.AnyTextView;
 
 public class PacsActivity extends AppCompatActivity {
     private static final String TAG = "MainActivity";
-
+    TitleBar titlebar;
     ZoomageView image;
     Button btnPrevious;
     AnyTextView tvProgress;
     Button btnNext;
+    ProgressBar progressbar;
     Button btnPreviousBatch;
+    IndicatorSeekBar indicatorSeekBar;
     AnyTextView txttotalCount;
     Button btnNextBatch;
 
-
-    IndicatorSeekBar indicatorSeekBar;
-    TitleBar titlebar;
     private int pointer;
-
     private PacsDescriptionModel pacsModel;
+
     private ArrayList<String> pacsList;
     private int min = 0, max = 0;
     ProgressDialog loader;
     private ArrayList<TupleModel> arrTupleModel;
+
     TupleModel selectedTupleModel;
     int selectedTupleIndex;
 
@@ -65,19 +61,10 @@ public class PacsActivity extends AppCompatActivity {
         setContentView(R.layout.activity_pacsv1);
         arrTupleModel = new ArrayList<>();
         loader = Helper.getLoader(this);
+        bindViews();
 
 
-        image = findViewById(R.id.image);
-        btnPrevious = findViewById(R.id.btnPrevious);
-        tvProgress = findViewById(R.id.tv_progress);
-        btnNext = findViewById(R.id.btnNext);
-        btnPreviousBatch = findViewById(R.id.btnPreviousBatch);
-        indicatorSeekBar = findViewById(R.id.indSeekbar);
-        txttotalCount = findViewById(R.id.txttotalCount);
-        btnNextBatch = findViewById(R.id.btnNextBatch);
-        titlebar = findViewById(R.id.titlebar);
-
-        setTitlebar();
+        settitlebar();
 
 
         String fromJson = SharedPreferenceManager.getInstance(this).getString("JSON_STRING_KEY");
@@ -92,8 +79,26 @@ public class PacsActivity extends AppCompatActivity {
             updateData(arrTupleModel.get(0));
         }
         setListeners();
-        txttotalCount.setText(String.valueOf(pacsList.size()));
+        txttotalCount.setText(pacsList.size()+"");
+
     }
+
+    private void bindViews() {
+
+        titlebar = findViewById(R.id.titlebar);
+        image = findViewById(R.id.image);
+        btnPrevious = findViewById(R.id.btnPrevious);
+        tvProgress = findViewById(R.id.tv_progress);
+        btnNext = findViewById(R.id.btnNext);
+        progressbar = findViewById(R.id.progressBar);
+        btnPreviousBatch = findViewById(R.id.btnPreviousBatch);
+        indicatorSeekBar = findViewById(R.id.indSeekbar);
+        txttotalCount = findViewById(R.id.txttotalCount);
+        btnNextBatch = findViewById(R.id.btnNextBatch);
+
+
+    }
+
 
     private void updateData(TupleModel tupleModel) {
         loader.show();
@@ -112,7 +117,7 @@ public class PacsActivity extends AppCompatActivity {
     }
 
 
-    private void setTitlebar() {
+    private void settitlebar() {
         titlebar.resetViews();
         titlebar.setVisibility(View.VISIBLE);
         titlebar.showBackButton(this);
