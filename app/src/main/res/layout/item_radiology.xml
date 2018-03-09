@@ -21,15 +21,18 @@
 
         <LinearLayout
             android:id="@+id/contListItem"
-            android:padding="@dimen/x5dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:padding="@dimen/x5dp">
 
             <edu.aku.akuh_health_first.views.AnyTextView
                 android:id="@+id/txtLocation"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:drawableLeft="@drawable/password_icon"
+                android:drawablePadding="@dimen/x7dp"
+                android:gravity="center_vertical"
                 android:padding="@dimen/x5dp"
                 android:text="Exam Order Number"
                 android:textColor="@color/c_grayasparagus"
@@ -38,8 +41,11 @@
 
             <edu.aku.akuh_health_first.views.AnyTextView
                 android:id="@+id/txtReqDatetime"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:drawableLeft="@drawable/password_icon"
+                android:drawablePadding="@dimen/x7dp"
+                android:gravity="center_vertical"
                 android:padding="@dimen/x5dp"
                 android:text="DateTime"
                 android:textColor="@color/c_grayasparagus"
@@ -49,8 +55,11 @@
 
             <edu.aku.akuh_health_first.views.AnyTextView
                 android:id="@+id/txtExam"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:drawableLeft="@drawable/password_icon"
+                android:drawablePadding="@dimen/x7dp"
+                android:gravity="center_vertical"
                 android:padding="@dimen/x5dp"
                 android:text="Exam"
                 android:textColor="@color/c_grayasparagus"
@@ -59,8 +68,11 @@
 
             <edu.aku.akuh_health_first.views.AnyTextView
                 android:id="@+id/txtStatus"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:drawableLeft="@drawable/password_icon"
+                android:drawablePadding="@dimen/x7dp"
+                android:gravity="center_vertical"
                 android:padding="@dimen/x5dp"
                 android:text="Status"
                 android:textColor="@color/c_grayasparagus"
@@ -81,8 +93,8 @@
                     android:background="@drawable/rounded_box_filled_primary_color"
                     android:text="Show Report"
                     android:textAllCaps="false"
-                    android:textSize="@dimen/s14"
                     android:textColor="@color/c_white"
+                    android:textSize="@dimen/s14"
                     android:visibility="visible" />
 
                 <Button
@@ -91,12 +103,12 @@
                     android:layout_height="match_parent"
                     android:layout_margin="@dimen/x5dp"
                     android:layout_weight=".5"
-                    android:textSize="@dimen/s14"
-
                     android:background="@drawable/rounded_box_filled_base_amber"
+
                     android:text="Show Pacs"
                     android:textAllCaps="false"
                     android:textColor="@color/c_white"
+                    android:textSize="@dimen/s14"
                     android:visibility="visible" />
 
 
