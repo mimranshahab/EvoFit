@@ -3,7 +3,6 @@ package edu.aku.akuh_health_first.fragments;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.widget.DrawerLayout;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,8 +16,7 @@ import com.google.gson.reflect.TypeToken;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Collections;
+import java.util.Calendar;
 import java.util.HashMap;
 
 import butterknife.BindView;
@@ -26,6 +24,7 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 import butterknife.Unbinder;
 import edu.aku.akuh_health_first.R;
+import edu.aku.akuh_health_first.callbacks.OnCalendarUpdate;
 import edu.aku.akuh_health_first.constatnts.WebServiceConstants;
 import edu.aku.akuh_health_first.enums.BaseURLTypes;
 import edu.aku.akuh_health_first.fragments.abstracts.BaseFragment;
@@ -34,7 +33,10 @@ import edu.aku.akuh_health_first.helperclasses.ui.helper.UIHelper;
 import edu.aku.akuh_health_first.managers.DateManager;
 import edu.aku.akuh_health_first.managers.retrofit.GsonFactory;
 import edu.aku.akuh_health_first.managers.retrofit.WebServices;
+import edu.aku.akuh_health_first.models.AddNewMedicine;
+import edu.aku.akuh_health_first.models.FrequencyIDsModel;
 import edu.aku.akuh_health_first.models.ImmunizationModel;
+import edu.aku.akuh_health_first.models.MedicationProfileModel;
 import edu.aku.akuh_health_first.models.receiving_model.AddUpdateVaccineModel;
 import edu.aku.akuh_health_first.models.wrappers.WebResponse;
 import edu.aku.akuh_health_first.views.AnyEditTextView;
@@ -44,43 +46,48 @@ import edu.aku.akuh_health_first.views.AnyTextView;
  * Created by aqsa.sarwar on 2/8/2018.
  */
 
-public class AddUpdateVaccineFragment extends BaseFragment {
-    @BindView(R.id.txtVaccinatedDate)
-    AnyTextView txtVaccinatedDate;
-    @BindView(R.id.txtVaccinationPlanDate)
-    AnyTextView txtVaccinationPlanDate;
-    @BindView(R.id.spVaccine)
-    Spinner spVaccine;
-    @BindView(R.id.spRouteId)
-    Spinner spRouteId;
-    Unbinder unbinder;
-    @BindView(R.id.txtVaccine)
-    AnyTextView txtVaccine;
+public class AddUpdateMedicationFragment extends BaseFragment {
+
+    @BindView(R.id.edtMedicineName)
+    AnyEditTextView edtMedicineName;
+    @BindView(R.id.txtFrequencyDesc)
+    AnyTextView txtFrequencyDesc;
+    @BindView(R.id.spFrequencyDesc)
+    Spinner spFrequencyDesc;
     @BindView(R.id.txtRouteId)
     AnyTextView txtRouteId;
-    @BindView(R.id.txtVaccineLocation)
-    AnyEditTextView txtVaccineLocation;
+    @BindView(R.id.spRouteId)
+    Spinner spRouteId;
+    @BindView(R.id.txtStartDateTime)
+    AnyTextView txtStartDateTime;
+    @BindView(R.id.txtStopDateTime)
+    AnyTextView txtStopDateTime;
     @BindView(R.id.btnSave)
     Button btnSave;
+    Unbinder unbinder;
     private boolean isFromAdd;
-    private ArrayList<String> arrVaccine;
+    private ArrayList<String> arrFrequency;
     private ArrayList<String> arrRouteIDs;
     private ArrayAdapter adapterVaccine;
     private ArrayAdapter adapterRoute;
-    private ImmunizationModel immunizationModel;
+    private MedicationProfileModel medicationProfileModel;
 
-    HashMap<String, String> vaccineIDandDescriptions = new HashMap<String, String>();
+    HashMap<String, String> frequencyIDandDescriptions = new HashMap<String, String>();
     HashMap<String, String> routeIDandDescriptions = new HashMap<String, String>();
-    private ArrayList<String> arrUsedVaccineDes;
 
-    public static AddUpdateVaccineFragment newInstance(boolean isFromAdd, ImmunizationModel immunizationModel, ArrayList<String> arrUsedVaccineDes) {
+    OnCalendarUpdate onCalendarUpdateStartDate;
+    OnCalendarUpdate onCalendarUpdateStopDate;
+
+    long startDateInMillis;
+    long stopDateInMillis;
+
+    public static AddUpdateMedicationFragment newInstance(boolean isFromAdd, MedicationProfileModel medicationProfileModel) {
 
         Bundle args = new Bundle();
 
-        AddUpdateVaccineFragment fragment = new AddUpdateVaccineFragment();
+        AddUpdateMedicationFragment fragment = new AddUpdateMedicationFragment();
         fragment.isFromAdd = isFromAdd;
-        fragment.immunizationModel = immunizationModel;
-        fragment.arrUsedVaccineDes = arrUsedVaccineDes;
+        fragment.medicationProfileModel = medicationProfileModel;
         fragment.setArguments(args);
         return fragment;
     }
@@ -88,9 +95,9 @@ public class AddUpdateVaccineFragment extends BaseFragment {
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        arrVaccine = new ArrayList<>();
+        arrFrequency = new ArrayList<>();
         arrRouteIDs = new ArrayList<>();
-        adapterVaccine = new ArrayAdapter<String>(getBaseActivity(), android.R.layout.simple_list_item_1, arrVaccine);
+        adapterVaccine = new ArrayAdapter<String>(getBaseActivity(), android.R.layout.simple_list_item_1, arrFrequency);
         adapterRoute = new ArrayAdapter<String>(getBaseActivity(), android.R.layout.simple_list_item_1, arrRouteIDs);
     }
 
@@ -104,33 +111,30 @@ public class AddUpdateVaccineFragment extends BaseFragment {
         super.onViewCreated(view, savedInstanceState);
 
         if (!isFromAdd) {
-            txtVaccine.setText(immunizationModel.getDescription());
-            txtVaccinationPlanDate.setText(immunizationModel.getVaccinePlanDate());
-            txtVaccineLocation.setText(immunizationModel.getHospitalLocation());
-            txtRouteId.setText(immunizationModel.getRouteDescription()
-            );
-//            txtVaccineLocation.setFocusable(false);
-//            txtVaccineLocation.setClickable(false);
-            txtRouteId.setFocusable(false);
-            txtRouteId.setClickable(false);
+//            txtFrequencyDesc.setText(immunizationModel.getDescription());
+//            txtStartDateTime.setText(immunizationModel.getVaccinePlanDate());
+//            txtRouteId.setText(immunizationModel.getRouteDescription()
+//            );
+//            txtRouteId.setFocusable(false);
+//            txtRouteId.setClickable(false);
         } else {
-            getVaccineIdsService();
+            getFrequencyIds();
             getRouteIdsService();
         }
     }
 
     @Override
     protected int getFragmentLayout() {
-        return R.layout.fragment_immunization_vaccine_add_update;
+        return R.layout.fragment_medication_add_update;
     }
 
     @Override
     public void setTitlebar(TitleBar titleBar) {
         titleBar.resetViews();
         if (isFromAdd) {
-            titleBar.setTitle("Add Vaccine");
+            titleBar.setTitle("Add New Medicine");
         } else {
-            titleBar.setTitle("Update Vaccine");
+            titleBar.setTitle("Update Medicine");
         }
 
         titleBar.showBackButton(getBaseActivity());
@@ -146,6 +150,19 @@ public class AddUpdateVaccineFragment extends BaseFragment {
 
     @Override
     public void setListeners() {
+        onCalendarUpdateStartDate = new OnCalendarUpdate() {
+            @Override
+            public void onCalendarUpdate(Calendar calendar) {
+                startDateInMillis = calendar.getTimeInMillis();
+            }
+        };
+
+        onCalendarUpdateStopDate = new OnCalendarUpdate() {
+            @Override
+            public void onCalendarUpdate(Calendar calendar) {
+                stopDateInMillis = calendar.getTimeInMillis();
+            }
+        };
 
     }
 
@@ -166,30 +183,30 @@ public class AddUpdateVaccineFragment extends BaseFragment {
         unbinder.unbind();
     }
 
-    private void getVaccineIdsService() {
+    private void getFrequencyIds() {
 
         new WebServices(getBaseActivity(),
                 WebServiceConstants.temporaryToken,
                 BaseURLTypes.AHFA_BASE_URL)
-                .webServiceRequestAPIForArray(WebServiceConstants.METHOD_IMMUNIZATION_VACCINE_IDS,
+                .webServiceRequestAPIForArray(WebServiceConstants.METHOD_FREQUENCY_IDS,
                         "",
                         new WebServices.IRequestArrayDataCallBack() {
                             @Override
                             public void requestDataResponse(WebResponse<ArrayList<JsonObject>> webResponse) {
 
-                                Type type = new TypeToken<ArrayList<ImmunizationModel>>() {
+                                Type type = new TypeToken<ArrayList<FrequencyIDsModel>>() {
                                 }.getType();
-                                ArrayList<ImmunizationModel> arrayList = GsonFactory.getSimpleGson()
+                                ArrayList<FrequencyIDsModel> arrayList = GsonFactory.getSimpleGson()
                                         .fromJson(GsonFactory.getSimpleGson().toJson(webResponse.result)
                                                 , type);
 
-                                for (ImmunizationModel model : arrayList) {
-                                    vaccineIDandDescriptions.put(model.getDescription(), model.getVaccineID());
-                                    arrVaccine.add(model.getDescription());
+                                for (FrequencyIDsModel model : arrayList) {
+                                    frequencyIDandDescriptions.put(model.getRxmedfrequencydescription(), model.getRxmedfrequencyid());
+                                    arrFrequency.add(model.getRxmedfrequencydescription());
                                 }
 
-                                arrVaccine.removeAll(arrUsedVaccineDes);
-                                setSpinner(adapterVaccine, txtVaccine, spVaccine);
+
+                                setSpinner(adapterVaccine, txtFrequencyDesc, spFrequencyDesc);
                             }
 
                             @Override
@@ -235,28 +252,23 @@ public class AddUpdateVaccineFragment extends BaseFragment {
     }
 
 
-    @OnClick({R.id.txtRouteId, R.id.txtVaccine, R.id.txtVaccinatedDate, R.id.btnSave, R.id.txtVaccinationPlanDate})
+    @OnClick({R.id.txtRouteId, R.id.txtFrequencyDesc, R.id.txtStopDateTime, R.id.btnSave, R.id.txtStartDateTime})
     public void onViewClicked(View view) {
         switch (view.getId()) {
-            case R.id.txtVaccine:
-                spVaccine.performClick();
+            case R.id.txtFrequencyDesc:
+                spFrequencyDesc.performClick();
                 break;
 
             case R.id.txtRouteId:
                 spRouteId.performClick();
                 break;
-            case R.id.txtVaccinatedDate:
-                DateManager.showDatePicker(getContext(), txtVaccinatedDate, null);
+            case R.id.txtStartDateTime:
+                DateManager.showDateTimePicker(getContext(), txtStartDateTime, onCalendarUpdateStartDate, false);
                 break;
 
 
-            case R.id.txtVaccinationPlanDate:
-                if (isFromAdd) {
-                    DateManager.showDatePicker(getContext(), txtVaccinationPlanDate, null);
-                } else {
-                    UIHelper.showToast(getContext(), "You can't update previous plan date");
-                }
-
+            case R.id.txtStopDateTime:
+                DateManager.showDateTimePicker(getContext(), txtStopDateTime, onCalendarUpdateStopDate, false);
                 break;
 
             case R.id.btnSave:
@@ -266,56 +278,71 @@ public class AddUpdateVaccineFragment extends BaseFragment {
     }
 
     private void saveButtonPressed() {
-        if (txtVaccinationPlanDate.getText().toString().isEmpty()) {
-            txtVaccinationPlanDate.setError("Please select Vaccination Plan Date");
-            return;
-        } else {
-            txtVaccinationPlanDate.setError(null);
-        }
+        if (edtMedicineName.testValidity()) {
 
-        if (txtVaccineLocation.testValidity()) {
-
-
-            if (isFromAdd) {
-                ImmunizationModel immunizationModel = new ImmunizationModel();
-                immunizationModel.setMRN(WebServiceConstants.tempMRN_immunization);
-                immunizationModel.setScheduleID("U");
-                immunizationModel.setVisitID("U");
-                immunizationModel.setActive("Y");
-//                immunizationModel.setRouteID("PO");
-                immunizationModel.setLastFileTerminal("MOBILE");
-
-                immunizationModel.setVaccineID(vaccineIDandDescriptions.get(txtVaccine.getText().toString()));
-                immunizationModel.setRouteID(routeIDandDescriptions.get(txtRouteId.getText().toString()));
-
-
-                immunizationModel.setHospitalLocation(txtVaccineLocation.getStringTrimmed());
-//                        immunizationModel.setLastFileUser("mahrukh.mehmood@aku.edu");
-                immunizationModel.setVaccinePlanDate(txtVaccinationPlanDate.getStringTrimmed());
-                immunizationModel.setVaccinationDate(txtVaccinatedDate.getStringTrimmed());
-
-//                        UIHelper.showToast(getContext(), frequencyIDandDescriptions.get(txtVaccine.getText().toString()));
-
-                addVaccineService(immunizationModel.toString());
-                Log.d(TAG, "onViewClicked: " + immunizationModel.toString());
-
+            // FIXME: 3/7/2018 for time commenting this.
+            if (txtFrequencyDesc.getText().toString().isEmpty()) {
+                txtFrequencyDesc.setError("Please Select Frequency");
+                UIHelper.showToast(getContext(), "Please Select Frequency");
+                return;
             } else {
-                immunizationModel.setMRN(WebServiceConstants.tempMRN_immunization);
-                immunizationModel.setActive("Y");
-                immunizationModel.setLastFileTerminal("MOBILE");
-                immunizationModel.setSource("MOBILE");
-                immunizationModel.setVaccinationDate(txtVaccinatedDate.getStringTrimmed());
-                immunizationModel.setHospitalLocation(txtVaccineLocation.getStringTrimmed());
-                updateVaccine(immunizationModel.toString());
-                Log.d(TAG, "onViewClicked: " + immunizationModel.toString());
+                txtFrequencyDesc.setError(null);
             }
 
+
+            if (txtRouteId.getText().toString().isEmpty()) {
+                txtRouteId.setError("Please Select Route");
+                UIHelper.showToast(getContext(), "Please Select Route");
+
+                return;
+            } else {
+                txtRouteId.setError(null);
+            }
+
+
+            if (txtStartDateTime.getText().toString().isEmpty()) {
+                txtStartDateTime.setError("Please Select Start Date");
+                UIHelper.showToast(getContext(), "Please Select Start Date");
+
+                return;
+            } else {
+                txtStartDateTime.setError(null);
+            }
+
+            if (txtStopDateTime.getText().toString().isEmpty()) {
+                txtStopDateTime.setError("Please Select Stop Date");
+                UIHelper.showToast(getContext(), "Please Select Stop Date");
+
+                return;
+            } else {
+                txtStopDateTime.setError(null);
+            }
+
+
+            if (startDateInMillis < stopDateInMillis) {
+                AddNewMedicine addNewMedicine = new AddNewMedicine();
+                addNewMedicine.setLastFileterminal("MOBILE");
+                addNewMedicine.setMrnumber(WebServiceConstants.tempMRN_immunization);
+                addNewMedicine.setRxmedfrequencyid(frequencyIDandDescriptions.get(txtFrequencyDesc.getStringTrimmed()));
+                addNewMedicine.setRxmedmedication(edtMedicineName.getStringTrimmed());
+                addNewMedicine.setRxmedroute(routeIDandDescriptions.get(txtRouteId.getStringTrimmed()));
+                addNewMedicine.setRxmedstartdatetime(txtStartDateTime.getStringTrimmed());
+                addNewMedicine.setRxmedstopdatetime(txtStopDateTime.getStringTrimmed());
+                addMedicineService(addNewMedicine.toString());
+            } else {
+                UIHelper.showToast(getContext(), "Start Date Time should be smaller than Stop Date Time.");
+            }
+
+
         }
+
+
     }
 
-    private void addVaccineService(String jsonData) {
+
+    private void addMedicineService(String jsonData) {
         new WebServices(getBaseActivity(), WebServiceConstants.temporaryToken, BaseURLTypes.AHFA_BASE_URL)
-                .webServiceRequestAPIForJsonObject(WebServiceConstants.METHOD_IMMUNIZATION_ADD_VACCINE,
+                .webServiceRequestAPIForJsonObject(WebServiceConstants.METHOD_ADD_MEDICINE,
                         jsonData,
                         new WebServices.IRequestJsonDataCallBack() {
                             @Override

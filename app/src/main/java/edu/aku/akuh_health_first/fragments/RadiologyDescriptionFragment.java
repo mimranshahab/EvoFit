@@ -68,7 +68,7 @@ public class RadiologyDescriptionFragment extends BaseFragment {
         titleBar.setTitle("Radiology Report");
         titleBar.showBackButton(getBaseActivity());
         titleBar.showHome(getBaseActivity());
-        titleBar.setCircleImageView();
+        titleBar.setUserDisplay();
     }
 
 

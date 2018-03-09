@@ -15,26 +15,20 @@ import android.view.ViewGroup;
 import android.view.animation.AnimationUtils;
 import android.view.animation.LayoutAnimationController;
 import android.widget.AdapterView;
-import android.widget.Toast;
 
 import java.io.File;
-import java.util.AbstractQueue;
 import java.util.ArrayList;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
 import edu.aku.akuh_health_first.R;
-import edu.aku.akuh_health_first.activities.MainActivity;
 import edu.aku.akuh_health_first.adapters.recyleradapters.MyDocumentsAdapter;
 import edu.aku.akuh_health_first.callbacks.OnItemClickListener;
 import edu.aku.akuh_health_first.constatnts.AppConstants;
 import edu.aku.akuh_health_first.fragments.abstracts.BaseFragment;
 import edu.aku.akuh_health_first.helperclasses.ui.helper.TitleBar;
 import edu.aku.akuh_health_first.helperclasses.ui.helper.UIHelper;
-import edu.aku.akuh_health_first.helperclasses.ui.helper.UIHelper;
-import edu.aku.akuh_health_first.libraries.swipetodelete.CdsItemTouchCallback;
-import edu.aku.akuh_health_first.libraries.swipetodelete.CdsRecyclerView;
 import edu.aku.akuh_health_first.managers.FileManager;
 import edu.aku.akuh_health_first.views.AnyTextView;
 
@@ -127,7 +121,7 @@ public class MyDocumentsFragment extends BaseFragment implements OnItemClickList
         titleBar.setTitle("My Documents");
         titleBar.showBackButton(getBaseActivity());
         titleBar.showHome(getBaseActivity());
-        titleBar.setCircleImageView();
+        titleBar.setUserDisplay();
 
     }
 

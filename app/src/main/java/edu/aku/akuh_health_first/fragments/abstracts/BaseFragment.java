@@ -79,6 +79,7 @@ public abstract class BaseFragment extends Fragment implements View.OnClickListe
         if (adaptSpinner == null || spinner == null)
             return;
         //selected item will look like a spinner set from XML
+//        simple_list_item_single_choice
         adaptSpinner.setDropDownViewResource(android.R.layout.simple_list_item_single_choice);
         spinner.setAdapter(adaptSpinner);
 

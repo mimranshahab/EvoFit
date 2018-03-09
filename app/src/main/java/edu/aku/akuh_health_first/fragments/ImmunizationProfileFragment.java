@@ -88,7 +88,7 @@ public class ImmunizationProfileFragment extends BaseFragment implements View.On
         titleBar.resetViews();
         titleBar.setTitle("Immunization");
         titleBar.showBackButton(getBaseActivity());
-        titleBar.setCircleImageView();
+        titleBar.setUserDisplay();
         titleBar.showHome(getBaseActivity());
     }
 

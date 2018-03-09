@@ -98,7 +98,7 @@ public class ProfileFragment extends BaseFragment {
         titleBar.resetViews();
         titleBar.setTitle("My profile");
         titleBar.showBackButton(getBaseActivity());
-        titleBar.setCircleImageView( );
+        titleBar.setUserDisplay( );
         titleBar.showHome(getBaseActivity());
 
     }

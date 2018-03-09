@@ -14,7 +14,7 @@ public class WebServiceConstants {
     public static String PACS_VIEWER_URL = "https://pacsviewer.aku.edu/api/PACSViewer/";
     public static String PACS_URL_DOWNLOAD = "https://pacsviewer.aku.edu/";
     public static String PACS_URL = "https://pacsviewer.aku.edu/api/";
-        public static String PAYMENT_GATEWAY_URL = "https://testsecureacceptance.cybersource.com/pay/";
+    public static String PAYMENT_GATEWAY_URL = "https://testsecureacceptance.cybersource.com/pay/";
 //    public static String PAYMENT_GATEWAY_URL = "https://testsecureacceptance.cybersource.com/token/create/";
 
     public static final String WS_KEY_GET_TOKEN = "GetToken";
@@ -79,6 +79,12 @@ public class WebServiceConstants {
     public static final String METHOD_IMMUNIZATION_ADD_VACCINE = "PharmacyManager.AddVaccine";
     public static final String METHOD_IMMUNIZATION_VACCINE_IDS = "PharmacyManager.GetVaccineIDs";
     public static final String METHOD_IMMUNIZATION_ROUTE_IDS = "PharmacyManager.GetRouteIDs";
+
+    public static final String METHOD_CURRENT_MEDICATION = "PharmacyManager.GetCurrentMedicine";
+    public static final String METHOD_PREVIOUS_MEDICATION = "PharmacyManager.GetPreviousProfileMedications";
+    public static final String METHOD_ADD_MEDICINE = "PharmacyManager.AddMedicine";
+    public static final String METHOD_FREQUENCY_IDS = "PharmacyManager.GetFrequencyIDs";
+
 
 
     public static final String METHOD_PACS_MANAGER = "PACSManager.GetPacs";
