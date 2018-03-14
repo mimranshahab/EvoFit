@@ -67,7 +67,6 @@ public class WebServiceConstants {
     public static final String METHOD_CLINICAL_LAB_DETAILS = "LaboratoryManager.GetLabSpecimenDetails";
 
     public static final String METHOD_SHOW_REPORT_DS = "PatientManager.ShowReport";
-    public static final String METHOD_PATIENT_DETAIL_DS = "PatientManager.GetPatientDetail";
     public static final String METHOD_GET_PATIENT_VISIT = "PatientManager.GetPatientVisit";
     public static final String METHOD_DISCHARGE_SUMMARY_LIST = "PatientManager.GetDischargeSummaryList";
 
@@ -85,7 +84,8 @@ public class WebServiceConstants {
     public static final String METHOD_ADD_MEDICINE = "PharmacyManager.AddMedicine";
     public static final String METHOD_FREQUENCY_IDS = "PharmacyManager.GetFrequencyIDs";
 
-
+    public static final String METHOD_PATIENT_HEALTH_SUMMARY = "SharedManager.GetPatientHealthSummary";
+    public static final String METHOD_DETAIL_HEALTH_SUMMARY = "SharedManager.GetHealthSummary";
 
     public static final String METHOD_PACS_MANAGER = "PACSManager.GetPacs";
     public static final String METHOD_PACS_ACCESSIONS = "{\"PACS_Accessions\":[";

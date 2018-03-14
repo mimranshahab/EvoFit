@@ -8,9 +8,7 @@ import android.view.ViewGroup;
 import android.support.v4.app.Fragment;
 
 import edu.aku.akuh_health_first.fragments.CurrentMedicationFragment;
-import edu.aku.akuh_health_first.fragments.ImmunizationProfileFragment;
 import edu.aku.akuh_health_first.fragments.PreviousMedicationFragment;
-import edu.aku.akuh_health_first.models.ImmunizationModel;
 
 public class MedicationProfileTabPagerAdapter extends FragmentStatePagerAdapter {
 
@@ -26,7 +24,7 @@ public class MedicationProfileTabPagerAdapter extends FragmentStatePagerAdapter 
 
     // CURRENT FRAGMENT
 
-    SparseArray<Fragment> registeredFragments = new SparseArray<>();
+    private SparseArray<Fragment> registeredFragments = new SparseArray<>();
 
     @Override
     public Object instantiateItem(ViewGroup container, int position) {

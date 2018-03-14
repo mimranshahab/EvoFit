@@ -24,6 +24,7 @@ import android.provider.BaseColumns;
 import android.provider.ContactsContract;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
+import android.text.TextUtils;
 import android.util.Log;
 import android.util.Patterns;
 import android.view.Gravity;
@@ -109,6 +110,38 @@ public class Helper {
         }
         Log.i("Service not", "running");
         return false;
+    }
+
+
+    public static String feetToCentimeter(String feet){
+        double dCentimeter = 0d;
+        if(!TextUtils.isEmpty(feet)){
+            if(feet.contains("'")){
+                String tempfeet = feet.substring(0, feet.indexOf("'"));
+                if(!TextUtils.isEmpty(tempfeet)){
+                    dCentimeter += ((Double.valueOf(tempfeet))*30.48);
+                }
+            }if(feet.contains("\"")){
+                String tempinch = feet.substring(feet.indexOf("'")+1, feet.indexOf("\""));
+                if(!TextUtils.isEmpty(tempinch)){
+                    dCentimeter += ((Double.valueOf(tempinch))*2.54);
+                }
+            }
+        }
+        return String.valueOf(dCentimeter);
+        //Format to decimal digit as per your requirement
+    }
+
+    public static String centimeterToFeet(String centemeter) {
+        int feetPart = 0;
+        int inchesPart = 0;
+        if(!TextUtils.isEmpty(centemeter)) {
+            double dCentimeter = Double.valueOf(centemeter);
+            feetPart = (int) Math.floor((dCentimeter / 2.54) / 12);
+            System.out.println((dCentimeter / 2.54) - (feetPart * 12));
+            inchesPart = (int) Math.ceil((dCentimeter / 2.54) - (feetPart * 12));
+        }
+        return String.format("%d' %d''", feetPart, inchesPart);
     }
 
 

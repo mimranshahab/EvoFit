@@ -163,40 +163,44 @@ public class LeftSideMenuFragment extends BaseFragment {
                 getBaseActivity().addDockableFragment(GenericContentFragment.newInstance(getString(R.string.generic), "About"));
                 break;
             case R.id.txtLogout:
-//                logoutClick();
+                logoutClick();
 
-                i++;
-                if (i > 6) {
-                    i = 1;
-                }
+//                imageChanger();
+
+                break;
+        }
+    }
+
+    private void imageChanger() {
+        i++;
+        if (i > 6) {
+            i = 1;
+        }
 
 
-                switch (i) {
-                    case 1:
-                        imgBackground.setImageResource(R.drawable.test1);
-                        break;
+        switch (i) {
+            case 1:
+                imgBackground.setImageResource(R.drawable.test1);
+                break;
 
-                    case 2:
-                        imgBackground.setImageResource(R.drawable.test2);
-                        break;
+            case 2:
+                imgBackground.setImageResource(R.drawable.test2);
+                break;
 
-                    case 3:
-                        imgBackground.setImageResource(R.drawable.test3);
-                        break;
+            case 3:
+                imgBackground.setImageResource(R.drawable.test3);
+                break;
 
-                    case 4:
-                        imgBackground.setImageResource(R.drawable.test4);
-                        break;
+            case 4:
+                imgBackground.setImageResource(R.drawable.test4);
+                break;
 
-                    case 5:
-                        imgBackground.setImageResource(R.drawable.test5);
-                        break;
+            case 5:
+                imgBackground.setImageResource(R.drawable.test5);
+                break;
 
-                    case 6:
-                        imgBackground.setImageResource(R.drawable.test6);
-                        break;
-                }
-
+            case 6:
+                imgBackground.setImageResource(R.drawable.test6);
                 break;
         }
     }
