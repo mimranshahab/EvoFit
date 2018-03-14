@@ -49,7 +49,7 @@ public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.ViewHolder> {
 
         final UserDetailModel user = userList.get(holder.getAdapterPosition());
 //        holder.txtViewProfile.setText(user.getName());
-//        ImageLoader.getInstance().displayImage(users.get(i).getImageUrl(), holder.imgUser);
+//        ImageLoader.getInstance().displayImage(users.get(i).getImageUrl(), holder.imgIcon);
         holder.txtName.setText(user.getName());
         holder.txtMRN.setText(user.getMRNumber());
         holder.txtGenderAge.setText(user.getGenderDescription() + " / " + user.getAge());
@@ -92,7 +92,7 @@ public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.ViewHolder> {
 
 
     static class ViewHolder extends RecyclerView.ViewHolder {
-        @BindView(R.id.imgUser)
+        @BindView(R.id.imgIcon)
         CircleImageView imgUser;
         @BindView(R.id.txtName)
         AnyTextView txtName;

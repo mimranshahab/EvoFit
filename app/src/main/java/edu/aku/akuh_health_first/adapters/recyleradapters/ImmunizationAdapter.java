@@ -1,13 +1,11 @@
 package edu.aku.akuh_health_first.adapters.recyleradapters;
 
 import android.app.Activity;
-import android.support.v4.content.res.ResourcesCompat;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.FrameLayout;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
@@ -16,6 +14,7 @@ import java.util.ArrayList;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import de.hdodenhof.circleimageview.CircleImageView;
 import edu.aku.akuh_health_first.R;
 import edu.aku.akuh_health_first.callbacks.OnItemClickListener;
 import edu.aku.akuh_health_first.constatnts.AppConstants;
@@ -55,7 +54,6 @@ public class ImmunizationAdapter extends RecyclerView.Adapter<ImmunizationAdapte
 
         holder.txtType.setText(model.getVaccinationStatus());
 
-
         holder.txtDateTime.setText(model.getVaccinePlanDate());
         holder.txtLocation.setText(model.getHospitalLocation());
         holder.txtName.setText(model.getDescription());
@@ -63,37 +61,34 @@ public class ImmunizationAdapter extends RecyclerView.Adapter<ImmunizationAdapte
         switch (model.getVaccinationStatus()) {
             case AppConstants.schedule:
 
-                holder.frameColorCode.setBackgroundColor(activity.getResources().getColor(R.color.base_blue));
-                holder.txtType.setBackgroundResource(R.drawable.rounded_box_filled_primary_color);
-                holder.btnupdateColorCode.setBackgroundResource(R.drawable.rounded_box_filled_primary_color);
-                holder.btnUpdate.setVisibility(View.VISIBLE);
+                setViews(holder, activity.getResources().getColor(R.color.base_blue), R.drawable.rounded_box_filled_primary_color, R.drawable.immunization_icon_blue, View.VISIBLE);
                 break;
 
             case AppConstants.vaccinated:
 
-                holder.frameColorCode.setBackgroundColor(activity.getResources().getColor(R.color.c_green));
-                holder.btnUpdate.setVisibility(View.GONE);
-                holder.txtType.setBackgroundResource(R.drawable.rounded_box_filled_base_green);
-                holder.txtDateTime.setText(model.getVaccinationDate());
+                setViews(holder, activity.getResources().getColor(R.color.c_green), R.drawable.rounded_box_filled_base_green, R.drawable.immunization_icon_green, View.GONE);
                 break;
 
             case AppConstants.due:
 
-                holder.frameColorCode.setBackgroundColor(activity.getResources().getColor(R.color.base_amber));
-                holder.txtType.setBackgroundResource(R.drawable.rounded_box_filled_base_amber);
-                holder.btnupdateColorCode.setBackgroundResource(R.drawable.rounded_box_filled_base_amber);
-                holder.btnUpdate.setVisibility(View.VISIBLE);
+                setViews(holder, activity.getResources().getColor(R.color.base_amber), R.drawable.rounded_box_filled_base_amber, R.drawable.immunization_icon_amber, View.VISIBLE);
                 break;
 
             case AppConstants.over_due:
 
-                holder.frameColorCode.setBackgroundColor(activity.getResources().getColor(R.color.base_reddish));
-                holder.txtType.setBackgroundResource(R.drawable.rounded_box_filled_base_red);
-                holder.btnupdateColorCode.setBackgroundResource(R.drawable.rounded_box_filled_base_red);
+                setViews(holder, activity.getResources().getColor(R.color.base_reddish), R.drawable.rounded_box_filled_base_red, R.drawable.immunization_icon_red, View.VISIBLE);
                 break;
         }
 
         setListener(holder, model);
+    }
+
+    private void setViews(ViewHolder holder, int color, int rounded_box_filled_primary_color,  int circularimg,int visible) {
+        holder.frameColorCode.setBackgroundColor(color);
+        holder.txtType.setBackgroundResource(rounded_box_filled_primary_color);
+        holder.btnupdateColorCode.setBackgroundResource(rounded_box_filled_primary_color);
+        holder.imgUser.setImageResource(circularimg);
+        holder.btnUpdate.setVisibility(visible);
     }
 
     private void setListener(final ViewHolder holder, final ImmunizationModel model) {
@@ -138,7 +133,8 @@ public class ImmunizationAdapter extends RecyclerView.Adapter<ImmunizationAdapte
         CardView cardView2;
         @BindView(R.id.RLUpdate)
         RelativeLayout btnUpdate;
-
+        @BindView(R.id.imgIcon)
+        CircleImageView imgUser;
         @BindView(R.id.btnupdateColorCode)
         AnyTextView btnupdateColorCode;
 

@@ -6,7 +6,7 @@
         <!--android:color="@color/colorPrimary" />-->
 
     <solid
-        android:color="@color/base_amber" />
+        android:color="@color/base_amber1" />
 
 
     <corners android:radius="@dimen/x8dp" />

@@ -143,11 +143,11 @@ public class CardiolopulmonaryFragment extends BaseFragment implements View.OnCl
 
 
         switch (view.getId()) {
-            case R.id.btnShowGraph:
+            case R.id.RlGraph:
 
                 showGraphAPI(adapterCardio.getItem(position));
                 break;
-            case R.id.btnShowReport:
+            case R.id.RlReport:
                 showReportAPI(adapterCardio.getItem(position));
                 break;
         }

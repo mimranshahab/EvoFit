@@ -23,7 +23,6 @@ import edu.aku.akuh_health_first.views.AnyTextView;
 public class RadiologyAdapter extends RecyclerView.Adapter<RadiologyAdapter.ViewHolder> {
 
 
-
     private final AdapterView.OnItemClickListener onItemClick;
     private Activity activity;
     private ArrayList<RadiologyModel> arrayList;
@@ -47,10 +46,16 @@ public class RadiologyAdapter extends RecyclerView.Adapter<RadiologyAdapter.View
     public void onBindViewHolder(final ViewHolder holder, int i) {
 
         final RadiologyModel model = arrayList.get(holder.getAdapterPosition());
-        holder.txtExamDatetime.setText("Exam Date" + " - " + model.getExamdate());
-        holder.txtLocation.setText("Hospital Facility" + " - " + model.getVisitlocation());
-        holder.txtExam.setText("Exam" + " - " + model.getExam());
-        holder.txtStatus.setText("Status" + " - " + model.getStatus());
+        holder.txtExamDatetime.setText( model.getExamdate());
+        holder.txtLocation.setText(model.getVisitlocation());
+        holder.txtExam.setText(model.getExam());
+
+
+        if (model.getStatus().equalsIgnoreCase("F")) {
+            holder.txtStatus.setText("Finalized");
+        } else {
+            holder.txtStatus.setText("Pending");
+        }
 
         setListener(holder, model);
     }
@@ -71,9 +76,11 @@ public class RadiologyAdapter extends RecyclerView.Adapter<RadiologyAdapter.View
         });
 
     }
+
     public RadiologyModel getItem(int position) {
         return arrayList.get(position);
     }
+
     public void addItem(ArrayList<RadiologyModel> homeCategories) {
         this.arrayList = homeCategories;
         notifyDataSetChanged();
@@ -96,9 +103,9 @@ public class RadiologyAdapter extends RecyclerView.Adapter<RadiologyAdapter.View
         @BindView(R.id.txtStatus)
         AnyTextView txtStatus;
         @BindView(R.id.btnShowReport)
-        Button btnShowReport;
+        AnyTextView btnShowReport;
         @BindView(R.id.btnShowGraph)
-        Button btnShowGraph;
+        AnyTextView btnShowGraph;
         @BindView(R.id.contListItem)
         LinearLayout contListItem;
         @BindView(R.id.cardView2)

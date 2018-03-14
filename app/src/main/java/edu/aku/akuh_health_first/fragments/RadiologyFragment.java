@@ -203,7 +203,7 @@ public class RadiologyFragment extends BaseFragment implements View.OnClickListe
         SearchModel model = new SearchModel();
         model.setMRNumber(WebServiceConstants.tempMRN_RADIOLOGY1);
         if (isFromTimeline) {
-            model.setVisitID(String.valueOf(patientVisitAdmissionID));
+            model.setVisitID(patientVisitAdmissionID+"");
         } else {
             model.setVisitID(null);
         }

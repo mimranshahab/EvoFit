@@ -32,7 +32,6 @@ public class HomeActivity extends BaseActivity {
         super.onPostCreate(savedInstanceState);
         initFragments();
         navigationView = findViewById(R.id.nav_view);
-
         navigationView.getBackground().setColorFilter(0x80000000, PorterDuff.Mode.MULTIPLY);
     }
 

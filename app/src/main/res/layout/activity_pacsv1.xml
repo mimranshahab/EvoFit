@@ -10,9 +10,9 @@
 
 
     <edu.aku.akuh_health_first.helperclasses.ui.helper.TitleBar
-    android:id="@+id/titlebar"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content" />
+        android:id="@+id/titlebar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
 
 
     <LinearLayout
@@ -49,44 +49,54 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:gravity="center"
             android:orientation="horizontal">
 
-            <Button
+            <edu.aku.akuh_health_first.views.AnyTextView
 
-               android:id="@+id/btnPrevious"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:id="@+id/btnPrevious"
+                android:layout_width="@dimen/x100dp"
+                android:layout_height="match_parent"
                 android:layout_margin="@dimen/x2dp"
-                android:background="@drawable/rounded_box_filled_columbia_blue"
+                android:background="#475F79"
+                android:drawableLeft="@drawable/previous"
+                android:drawablePadding="@dimen/x5dp"
+                android:gravity="center_vertical"
+                android:padding="@dimen/x10dp"
                 android:text="Previous"
-                android:textAlignment="center"
                 android:textAllCaps="false"
-                android:textSize="@dimen/s10"
+                android:textColor="@color/c_white"
+                android:textSize="@dimen/s12"
                 android:tint="@color/c_black" />
 
             <edu.aku.akuh_health_first.views.AnyTextView
                 android:id="@+id/tv_progress"
-                android:layout_width="0dp"
+                android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_gravity="center_horizontal"
-                android:layout_weight="0.14"
                 android:gravity="bottom|center_horizontal"
+                android:padding="@dimen/x10dp"
                 android:text="0/0"
                 android:textColor="@color/c_white"
                 android:textSize="@dimen/s12"
 
                 app:typeface="@string/font_bold" />
 
-            <Button
+            <edu.aku.akuh_health_first.views.AnyTextView
                 android:id="@+id/btnNext"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="@dimen/x100dp"
+                android:layout_height="match_parent"
                 android:layout_margin="@dimen/x2dp"
-                android:background="@drawable/rounded_box_filled_columbia_blue"
+                android:background="#475F79"
+                android:drawableRight="@drawable/next"
+                android:gravity="center|right"
                 android:text="Next"
-                android:textAlignment="center"
+                android:drawablePadding="@dimen/x10dp"
+                android:paddingRight="@dimen/x20dp"
                 android:textAllCaps="false"
-                android:textSize="@dimen/s10"
+                android:textColor="@color/c_white"
+                android:textSize="@dimen/s12"
+
                 android:tint="@color/c_black" />
 
 
@@ -105,16 +115,21 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal">
 
-        <Button
+        <edu.aku.akuh_health_first.views.AnyTextView
             android:id="@+id/btnPreviousBatch"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="@dimen/x100dp"
+            android:layout_height="match_parent"
             android:layout_margin="@dimen/x2dp"
-            android:background="@drawable/rounded_box_filled_columbia_blue"
-            android:text="Previous Batch"
-            android:textAlignment="center"
+            android:background="#475F79"
+            android:drawableLeft="@drawable/previous_batch"
+            android:drawablePadding="@dimen/x5dp"
+            android:gravity="center_vertical"
+            android:padding="@dimen/x5dp"
+            android:text="Previous 30"
             android:textAllCaps="false"
-            android:textSize="@dimen/s10"
+            android:textColor="@color/c_white"
+            android:textSize="@dimen/s12"
+
             android:tint="@color/c_black" />
 
         <com.warkiz.widget.IndicatorSeekBar
@@ -147,16 +162,22 @@
             android:textSize="@dimen/s12"
             app:typeface="@string/font_bold" />
 
-        <Button
+        <edu.aku.akuh_health_first.views.AnyTextView
             android:id="@+id/btnNextBatch"
-            android:layout_width="wrap_content"
+            android:layout_width="@dimen/x100dp"
             android:layout_height="match_parent"
+            android:layout_gravity="left"
             android:layout_margin="@dimen/x2dp"
-            android:background="@drawable/rounded_box_filled_columbia_blue"
+            android:background="#475F79"
+            android:drawableRight="@drawable/next_batch"
+            android:drawablePadding="@dimen/x5dp"
+            android:gravity="center"
+            android:padding="@dimen/x14dp"
             android:src="@drawable/ic_fab_next"
-            android:text="Next Batch"
+            android:text="Next 30"
             android:textAllCaps="false"
-            android:textSize="@dimen/s10"
+            android:textColor="@color/c_white"
+            android:textSize="@dimen/s12"
             android:tint="@color/c_black" />
 
 

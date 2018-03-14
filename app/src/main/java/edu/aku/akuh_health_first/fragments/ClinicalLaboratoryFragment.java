@@ -7,6 +7,8 @@ import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -35,6 +37,7 @@ import edu.aku.akuh_health_first.managers.retrofit.WebServices;
 import edu.aku.akuh_health_first.models.LaboratoryModel;
 import edu.aku.akuh_health_first.models.SearchModel;
 import edu.aku.akuh_health_first.models.wrappers.WebResponse;
+import edu.aku.akuh_health_first.views.AnyEditTextView;
 import edu.aku.akuh_health_first.views.AnyTextView;
 
 
@@ -52,8 +55,10 @@ public class ClinicalLaboratoryFragment extends BaseFragment implements View.OnC
     Unbinder unbinder;
     @BindView(R.id.empty_view)
     AnyTextView emptyView;
+    @BindView(R.id.edtSearchBar)
+    AnyEditTextView edtSearchBar;
     private ArrayList<LaboratoryModel> arrClinicalLabLists;
-    private ClinicalLabAdapterV1 adaptNeuropysiology;
+    private ClinicalLabAdapterV1 clinicalLabAdapterV1;
     boolean isFromTimeline;
     int patientVisitAdmissionID;
 
@@ -61,7 +66,7 @@ public class ClinicalLaboratoryFragment extends BaseFragment implements View.OnC
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         arrClinicalLabLists = new ArrayList<LaboratoryModel>();
-        adaptNeuropysiology = new ClinicalLabAdapterV1(getBaseActivity(), arrClinicalLabLists, this);
+        clinicalLabAdapterV1 = new ClinicalLabAdapterV1(getBaseActivity(), arrClinicalLabLists, this);
     }
 
     public static ClinicalLaboratoryFragment newInstance(boolean isFromTimeline, int patientVisitAdmissionID) {
@@ -95,6 +100,24 @@ public class ClinicalLaboratoryFragment extends BaseFragment implements View.OnC
         super.onViewCreated(view, savedInstanceState);
         bindView();
         serviceCall();
+        edtSearchBar.setVisibility(View.VISIBLE);
+        edtSearchBar.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+                clinicalLabAdapterV1.getFilter().filter(charSequence);
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+
+            }
+        });
+
     }
 
     private void bindView() {
@@ -105,7 +128,8 @@ public class ClinicalLaboratoryFragment extends BaseFragment implements View.OnC
         int resId = R.anim.layout_animation_fall_bottom;
         LayoutAnimationController animation = AnimationUtils.loadLayoutAnimation(getContext(), resId);
         recyclerNeurophysiology.setLayoutAnimation(animation);
-        recyclerNeurophysiology.setAdapter(adaptNeuropysiology);
+        recyclerNeurophysiology.setAdapter(clinicalLabAdapterV1);
+
     }
 
     @Override
@@ -188,7 +212,7 @@ public class ClinicalLaboratoryFragment extends BaseFragment implements View.OnC
 
                                 arrClinicalLabLists.clear();
                                 arrClinicalLabLists.addAll(arrayList);
-                                adaptNeuropysiology.notifyDataSetChanged();
+                                clinicalLabAdapterV1.notifyDataSetChanged();
 
                                 if (arrClinicalLabLists.size() > 0) {
                                     showView();

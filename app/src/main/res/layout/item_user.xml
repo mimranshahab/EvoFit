@@ -40,7 +40,7 @@
 
 
                 <de.hdodenhof.circleimageview.CircleImageView
-                    android:id="@+id/imgUser"
+                    android:id="@+id/imgIcon"
                     android:layout_width="@dimen/x80dp"
                     android:layout_height="@dimen/x80dp"
                     android:layout_margin="@dimen/x5dp"

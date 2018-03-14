@@ -61,7 +61,7 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener, 
     AnyTextView txtGenderAge;
     @BindView(R.id.linearLayout)
     LinearLayout linearLayout;
-    @BindView(R.id.imgUser)
+    @BindView(R.id.imgIcon)
     CircleImageView imgUser;
     @BindView(R.id.contListItem)
     RelativeLayout contListItem;
@@ -76,7 +76,7 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener, 
         super.onCreate(savedInstanceState);
         arrUserLists.clear();
         adaptHome = new HomeAdapter(getBaseActivity(), arrUserLists, this);
-
+        subscriber = new UserDetailModel();
     }
 
     @Override
@@ -105,18 +105,21 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener, 
         recyclerHome.setLayoutAnimation(animation);
 //        recyclerHome.setItemAnimator(new DefaultItemAnimator());
         recyclerHome.setAdapter(adaptHome);
-
-
         serviceCall();
+
     }
 
     private void setData() {
+        imgUser =  view.findViewById(R.id.imgIcon);
         if (subscriber.getGender().equals("F")) {
-            // FIXME: 3/7/2018 crash.NullPointerException: Attempt to invoke virtual method 'void de.hdodenhof.circleimageview
-            imgUser.setImageResource(R.drawable.baby_photo2);
-        } else {
-            imgUser.setImageResource(R.drawable.male_icon_filled);
-        }
+//             FIXME: 3/7/2018 crash.NullPointerException: Attempt to invoke virtual method 'void de.hdodenhof.circleimageview
+
+            if (imgUser != null) {
+                imgUser.setImageResource(R.drawable.baby_photo2);
+            } else {
+                imgUser.setImageResource(R.drawable.male_icon_filled);
+            }
+        }else return;
 
         txtName.setText(subscriber.getName());
         txtGenderAge.setText(subscriber.getGenderDescription() + "/" + subscriber.getAge());
@@ -237,40 +240,41 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener, 
 
     @OnClick(R.id.contListItem)
     public void onViewClicked() {
+        getBaseActivity().addDockableFragment(HomeDetailFragment.newInstance());
 //                getBaseActivity().addDockableFragment(HomeDetailFragment.newInstance());
 
-        i++;
-        if (i > 6) {
-            i = 1;
-        }
-
-        switch (i) {
-            case 1:
-                contParentLayout.setBackgroundResource(R.drawable.test1);
-                break;
-
-            case 2:
-                contParentLayout.setBackgroundResource(R.drawable.test2);
-                break;
-
-            case 3:
-                contParentLayout.setBackgroundResource(R.drawable.test3);
-                break;
-
-            case 4:
-                contParentLayout.setBackgroundResource(R.drawable.test4);
-                break;
-
-            case 5:
-                contParentLayout.setBackgroundResource(R.drawable.test5);
-                break;
-
-            case 6:
-                contParentLayout.setBackgroundResource(R.drawable.test6);
-                break;
-        }
+//        i++;
+//        if (i > 6) {
+//            i = 1;
+//        }
+//
+//        switch (i) {
+//            case 1:
+//                contParentLayout.setBackgroundResource(R.drawable.test1);
+//                break;
+//
+//            case 2:
+//                contParentLayout.setBackgroundResource(R.drawable.test2);
+//                break;
+//
+//            case 3:
+//                contParentLayout.setBackgroundResource(R.drawable.test3);
+//                break;
+//
+//            case 4:
+//                contParentLayout.setBackgroundResource(R.drawable.test4);
+//                break;
+//
+//            case 5:
+//                contParentLayout.setBackgroundResource(R.drawable.test5);
+//                break;
+//
+//            case 6:
+//                contParentLayout.setBackgroundResource(R.drawable.test6);
+//                break;
+//        }
 
     }
 
-    int i = 1;
+//    int i = 1;
 }

@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:layout_gravity="center"
-    android:background="@drawable/test2"
+    android:background="@color/c_white"
     android:fillViewport="true"
     android:orientation="vertical"
     android:padding="@dimen/x5dp">

@@ -7,6 +7,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.Filter;
 import android.widget.FrameLayout;
 import android.widget.LinearLayout;
 
@@ -17,6 +18,7 @@ import butterknife.ButterKnife;
 import edu.aku.akuh_health_first.R;
 import edu.aku.akuh_health_first.callbacks.OnItemClickListener;
 import edu.aku.akuh_health_first.models.LaboratoryModel;
+import edu.aku.akuh_health_first.models.TimelineModel;
 import edu.aku.akuh_health_first.views.AnyTextView;
 
 /**
@@ -29,11 +31,14 @@ public class ClinicalLabAdapterV1 extends RecyclerView.Adapter<ClinicalLabAdapte
 
     private Activity activity;
     private ArrayList<LaboratoryModel> arrData;
+    private ArrayList<LaboratoryModel> filteredData = new ArrayList<>();
+    private Filter mFilter = new ItemFilter();
 
     public ClinicalLabAdapterV1(Activity activity, ArrayList<LaboratoryModel> arrayList, OnItemClickListener onItemClickListener) {
         this.arrData = arrayList;
         this.activity = activity;
         this.onItemClick = onItemClickListener;
+        this.filteredData = arrayList;
     }
 
     @Override
@@ -142,4 +147,79 @@ public class ClinicalLabAdapterV1 extends RecyclerView.Adapter<ClinicalLabAdapte
             ButterKnife.bind(this, view);
         }
     }
+    public Filter getFilter() {
+
+        return mFilter;
+    }
+
+    private class ItemFilter extends Filter {
+        @Override
+        protected FilterResults performFiltering(CharSequence constraint) {
+
+            String filterString = constraint.toString().toLowerCase();
+
+            FilterResults results = new FilterResults();
+
+            final ArrayList<LaboratoryModel> list = arrData;
+
+            int count = list.size();
+
+//            final ArrayList<String> nlist = new ArrayList<String>(count);
+            final ArrayList<LaboratoryModel> filterData = new ArrayList<LaboratoryModel>();
+
+            String filterableString1;
+            String filterableString2;
+            String filterableString3;
+            String filterableString4;
+
+            for (int i = 0; i < count; i++) {
+                filterableString1 = list.get(i).getSpecimenNumber();
+//                filterableString2 = list.get(i).getPrevResult2();
+//                filterableString3 = list.get(i).getPatientVisitHospitalLocation();
+//                filterableString4 = list.get(i).getPatientVisitLocation();
+                if (filterableString1.toLowerCase().contains(filterString))
+//                        || filterableString2.toLowerCase().contains(filterString)
+//                        || filterableString3.toLowerCase().contains(filterString)
+//                        || filterableString4.toLowerCase().contains(filterString))
+                {
+//                    nlist.add(filterableString);
+                    filterData.add(list.get(i));
+                }
+            }
+
+            results.values = filterData;
+            results.count = filterData.size();
+
+            return results;
+        }
+
+        @Override
+        protected void publishResults(CharSequence constraint, FilterResults results) {
+            filteredData = (ArrayList<LaboratoryModel>) results.values;
+            notifyDataSetChanged();
+        }
+
+    }
+
+
+    public int getCount() {
+        if (filteredData == null) {
+            return 0;
+        }
+        return filteredData.size();
+    }
+
+    public LaboratoryModel getItem(int position) {
+        return filteredData.get(position);
+    }
+
+    public long getItemId(int position) {
+        return position;
+    }
+
+
+
+
+
+
 }

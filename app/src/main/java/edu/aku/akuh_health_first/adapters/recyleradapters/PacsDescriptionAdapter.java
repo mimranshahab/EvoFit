@@ -6,16 +6,11 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
-import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-
-import com.nostra13.universalimageloader.core.ImageLoader;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -30,7 +25,6 @@ import edu.aku.akuh_health_first.libraries.fileloader.listener.FileRequestListen
 import edu.aku.akuh_health_first.libraries.fileloader.pojo.FileResponse;
 import edu.aku.akuh_health_first.libraries.fileloader.request.FileLoadRequest;
 import edu.aku.akuh_health_first.models.PacsDescriptionModel;
-import edu.aku.akuh_health_first.models.receiving_model.UserDetailModel;
 import edu.aku.akuh_health_first.views.AnyTextView;
 
 /**
@@ -39,6 +33,7 @@ public class PacsDescriptionAdapter extends RecyclerView.Adapter<PacsDescription
 
 
     private final OnItemClickListener onItemClick;
+
 
     private Activity activity;
     private ArrayList<PacsDescriptionModel> arrayList;
@@ -63,24 +58,17 @@ public class PacsDescriptionAdapter extends RecyclerView.Adapter<PacsDescription
     public void onBindViewHolder(final ViewHolder holder, int i) {
 
         final PacsDescriptionModel model = arrayList.get(holder.getAdapterPosition());
-        holder.txtpatientName.setText("Name : " + model.getPatient_Name());
-        holder.txtpatientDOB.setVisibility(View.GONE);
-//        holder.txtpatientDOB.setText("DOB : " + model.getPatientDOB());
-
-//        holder.txtPatientGender.setText("Gender : " + model.getPatientGender());
-        holder.txtPatientGender.setVisibility(View.GONE);
-        holder.txtpatientMRN.setText("MRNumber : " + model.getPatientMRN());
-        holder.txtstudyTitle.setText("Title : " + model.getStudyTitle());
+        holder.txtpatientMRN.setText( model.getPatientMRN());
         holder.txtstudyDataCount.setText(model.getStudyDataCount());
-//        holder.txtstudyDataDateTime.setText("Date & Time : " + model.getStudyDataDateTime());
-        holder.txtstudyDataDateTime.setVisibility(View.GONE);
+        holder.txtstudyDataDateTime.setText(model.getStudyDataDateTime());
+
         List<String> imageUri = model.getStudyDataString();
         loadImage(holder.imgPacs, imageUri.get(0), true);
 
         setListener(holder, model);
     }
 
-    private void setListener(final PacsDescriptionAdapter.ViewHolder holder, final PacsDescriptionModel pacsDescriptionModel) {
+    private void setListener(final ViewHolder holder, final PacsDescriptionModel pacsDescriptionModel) {
         holder.contListItem.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -122,27 +110,18 @@ public class PacsDescriptionAdapter extends RecyclerView.Adapter<PacsDescription
     }
 
     static class ViewHolder extends RecyclerView.ViewHolder {
+        @BindView(R.id.imgPacs)
+        ImageView imgPacs;
+        @BindView(R.id.txtpatientMRN)
+        AnyTextView txtpatientMRN;
         @BindView(R.id.txtstudyDataCount)
         AnyTextView txtstudyDataCount;
         @BindView(R.id.txtstudyDataDateTime)
         AnyTextView txtstudyDataDateTime;
-        @BindView(R.id.txtstudyTitle)
-        AnyTextView txtstudyTitle;
-        @BindView(R.id.txtpatient_Name)
-        AnyTextView txtpatientName;
-        @BindView(R.id.txtpatientMRN)
-        AnyTextView txtpatientMRN;
-        @BindView(R.id.txtPatientGender)
-        AnyTextView txtPatientGender;
-        @BindView(R.id.txtpatientDOB)
-        AnyTextView txtpatientDOB;
         @BindView(R.id.contListItem)
         LinearLayout contListItem;
         @BindView(R.id.cardView2)
         CardView cardView2;
-        @BindView(R.id.imgPacs)
-        ImageView imgPacs;
-
         ViewHolder(View view) {
             super(view);
             ButterKnife.bind(this, view);

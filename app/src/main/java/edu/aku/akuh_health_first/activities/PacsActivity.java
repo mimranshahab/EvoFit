@@ -7,7 +7,6 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
-import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 
@@ -35,14 +34,14 @@ public class PacsActivity extends AppCompatActivity {
     private static final String TAG = "MainActivity";
     TitleBar titlebar;
     ZoomageView image;
-    Button btnPrevious;
+    AnyTextView btnPrevious;
     AnyTextView tvProgress;
-    Button btnNext;
+    AnyTextView btnNext;
     ProgressBar progressbar;
-    Button btnPreviousBatch;
+    AnyTextView btnPreviousBatch;
     IndicatorSeekBar indicatorSeekBar;
     AnyTextView txttotalCount;
-    Button btnNextBatch;
+    AnyTextView btnNextBatch;
 
     private int pointer;
     private PacsDescriptionModel pacsModel;
@@ -79,7 +78,7 @@ public class PacsActivity extends AppCompatActivity {
             updateData(arrTupleModel.get(0));
         }
         setListeners();
-        txttotalCount.setText(pacsList.size()+"");
+        txttotalCount.setText("Total count "+pacsList.size()+"");
 
     }
 
