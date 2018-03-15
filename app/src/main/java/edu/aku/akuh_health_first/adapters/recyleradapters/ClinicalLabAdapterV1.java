@@ -53,7 +53,7 @@ public class ClinicalLabAdapterV1 extends RecyclerView.Adapter<ClinicalLabAdapte
     @Override
     public void onBindViewHolder(final ViewHolder holder, int i) {
 
-        final LaboratoryModel model = arrData.get(holder.getAdapterPosition());
+        final LaboratoryModel model = filteredData.get(holder.getAdapterPosition());
 
         holder.txtSpecimenNumber.setText(model.getSpecimenID());
         holder.txtStatusID.setText(model.getOrdered() + " (" + model.getSpecimenSectionID() + ")");
@@ -121,7 +121,7 @@ public class ClinicalLabAdapterV1 extends RecyclerView.Adapter<ClinicalLabAdapte
 
     @Override
     public int getItemCount() {
-        return arrData.size();
+        return filteredData.size();
     }
 
     static class ViewHolder extends RecyclerView.ViewHolder {
@@ -174,13 +174,14 @@ public class ClinicalLabAdapterV1 extends RecyclerView.Adapter<ClinicalLabAdapte
 
             for (int i = 0; i < count; i++) {
                 filterableString1 = list.get(i).getSpecimenNumber();
-//                filterableString2 = list.get(i).getPrevResult2();
-//                filterableString3 = list.get(i).getPatientVisitHospitalLocation();
+                filterableString2 = list.get(i).getSpecimenID();
+                filterableString3 = list.get(i).getSpecimenSectionID();
 //                filterableString4 = list.get(i).getPatientVisitLocation();
-                if (filterableString1.toLowerCase().contains(filterString))
-//                        || filterableString2.toLowerCase().contains(filterString)
-//                        || filterableString3.toLowerCase().contains(filterString)
-//                        || filterableString4.toLowerCase().contains(filterString))
+                if (filterableString1.toLowerCase().contains(filterString)
+                        || filterableString2.toLowerCase().contains(filterString)
+                        || filterableString3.toLowerCase().contains(filterString)
+//                        || filterableString4.toLowerCase().contains(filterString)
+                )
                 {
 //                    nlist.add(filterableString);
                     filterData.add(list.get(i));
