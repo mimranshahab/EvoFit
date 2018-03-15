@@ -45,8 +45,8 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_weight=".5"
-                        android:textSize="@dimen/s10"
-                        android:text="22 jan ,2018" />
+                        android:text="22 jan ,2018"
+                        android:textSize="@dimen/s10" />
 
 
                     <edu.aku.akuh_health_first.views.AnyTextView
@@ -120,6 +120,7 @@
                             android:id="@+id/txtFacility"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:drawableLeft="@drawable/location_visittimeline"
                             android:text="Stadium Road"
                             android:textColor="@color/text_color_grey_dark"
                             android:textSize="@dimen/s10"
@@ -158,8 +159,8 @@
                         android:layout_height="wrap_content"
                         android:alpha=".25"
                         android:background="@drawable/rounded_box_filled_base_red"
-                        android:padding="@dimen/x3dp"
                         android:gravity="center"
+                        android:padding="@dimen/x3dp"
                         android:textSize="@dimen/s10"
 
                         />
