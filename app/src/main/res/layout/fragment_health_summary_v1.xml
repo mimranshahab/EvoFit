@@ -58,14 +58,16 @@
                             android:layout_height="match_parent">
 
                             <ImageView
-                                android:layout_width="wrap_content"
+                                android:layout_width="0dp"
+                                android:layout_weight="0.5"
                                 android:layout_height="match_parent"
                                 android:scaleX="0.9"
                                 android:scaleY="0.9"
                                 android:src="@drawable/blood_type" />
 
                             <LinearLayout
-                                android:layout_width="match_parent"
+                                android:layout_width="0dp"
+                                android:layout_weight="0.6"
                                 android:layout_height="match_parent"
                                 android:orientation="vertical"
                                 android:padding="@dimen/x2dp">
@@ -78,7 +80,7 @@
                                     android:gravity="center_vertical"
                                     android:text="B+"
                                     android:textColor="@color/base_reddish"
-                                    android:textSize="@dimen/s18"
+                                    android:textSize="@dimen/s16"
                                     app:typeface="@string/font_bold" />
 
 
@@ -146,14 +148,16 @@
                             android:layout_height="match_parent">
 
                             <ImageView
-                                android:layout_width="wrap_content"
+                                android:layout_width="0dp"
+                                android:layout_weight="0.5"
                                 android:layout_height="match_parent"
                                 android:scaleX="0.9"
                                 android:scaleY="0.9"
                                 android:src="@drawable/height" />
 
                             <LinearLayout
-                                android:layout_width="match_parent"
+                                android:layout_width="0dp"
+                                android:layout_weight="0.6"
                                 android:layout_height="match_parent"
                                 android:orientation="vertical">
 
@@ -165,7 +169,7 @@
                                     android:gravity="center_vertical"
                                     android:text="166cm"
                                     android:textColor="@color/base_green"
-                                    android:textSize="@dimen/s18"
+                                    android:textSize="@dimen/s16"
                                     app:typeface="@string/font_bold" />
 
 
@@ -231,16 +235,17 @@
                             android:layout_width="match_parent"
                             android:layout_height="match_parent">
 
-
                             <ImageView
-                                android:layout_width="wrap_content"
+                                android:layout_width="0dp"
+                                android:layout_weight="0.5"
                                 android:layout_height="match_parent"
                                 android:scaleX="0.9"
                                 android:scaleY="0.9"
                                 android:src="@drawable/weight" />
 
                             <LinearLayout
-                                android:layout_width="match_parent"
+                                android:layout_width="0dp"
+                                android:layout_weight="0.6"
                                 android:layout_height="match_parent"
                                 android:orientation="vertical">
 
@@ -253,7 +258,7 @@
                                     android:gravity="center_vertical"
                                     android:text="100kg"
                                     android:textColor="@color/base_blue"
-                                    android:textSize="@dimen/s18"
+                                    android:textSize="@dimen/s16"
                                     app:typeface="@string/font_bold" />
 
 
