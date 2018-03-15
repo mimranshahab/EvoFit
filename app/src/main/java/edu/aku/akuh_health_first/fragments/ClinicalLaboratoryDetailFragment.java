@@ -16,7 +16,6 @@ import android.widget.AdapterView;
 import com.google.gson.JsonObject;
 
 import java.util.ArrayList;
-import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -43,17 +42,27 @@ import edu.aku.akuh_health_first.views.AnyTextView;
 
 public class ClinicalLaboratoryDetailFragment extends BaseFragment implements OnItemClickListener {
     private static final String SPECIMEN_NNUMBER = "specimenNumber";
-    @BindView(R.id.txtCollectionDate)
-    AnyTextView txtCollectionDate;
-    @BindView(R.id.txtReportedDateTime)
-    AnyTextView txtReportedDateTime;
+
 
     @BindView(R.id.listClinicalLabResult)
     RecyclerView listClinicalLabResult;
     Unbinder unbinder;
+    @BindView(R.id.txtSpecimenNumber)
+    AnyTextView txtSpecimenNumber;
+    @BindView(R.id.txtReqDatetime)
+    AnyTextView txtReqDatetime;
+    @BindView(R.id.txtPhysicianName)
+    AnyTextView txtPhysicianName;
+    @BindView(R.id.txtCollecDatetime)
+    AnyTextView txtCollecDatetime;
+    @BindView(R.id.txtLocation)
+    AnyTextView txtLocation;
+    @BindView(R.id.txtReportDatetime)
+    AnyTextView txtReportDatetime;
     private ArrayList<LstLaboratorySpecimenResults> arrClinicalLabLists;
     private ClinicalLabDetailAdapterv1 adapterClinicalLabDetail;
     private String specimenNumber;
+
 
 
     public static ClinicalLaboratoryDetailFragment newInstance(String specimenNumber) {
@@ -81,7 +90,7 @@ public class ClinicalLaboratoryDetailFragment extends BaseFragment implements On
         titleBar.resetViews();
         titleBar.setTitle("Lab Detail");
         titleBar.showBackButton(getBaseActivity());
-        titleBar.setUserDisplay( );
+        titleBar.setUserDisplay();
         titleBar.showHome(getBaseActivity());
     }
 
@@ -158,12 +167,12 @@ public class ClinicalLaboratoryDetailFragment extends BaseFragment implements On
                         new WebServices.IRequestJsonDataCallBack() {
                             @Override
                             public void requestDataResponse(WebResponse<JsonObject> webResponse) {
-                                LaboratoryUpdateModel laboratoryUpdateModel =
-                                        GsonFactory.getSimpleGson().fromJson(webResponse.result, LaboratoryUpdateModel.class);
+                                LaboratoryUpdateModel laboratoryUpdateModel = GsonFactory.getSimpleGson().fromJson(webResponse.result, LaboratoryUpdateModel.class);
                                 if (laboratoryUpdateModel.getLstLaboratorySpecimenResults() != null) {
                                     arrClinicalLabLists.clear();
                                     arrClinicalLabLists.addAll(laboratoryUpdateModel.getLstLaboratorySpecimenResults());
                                     adapterClinicalLabDetail.notifyDataSetChanged();
+                                    bindData(laboratoryUpdateModel);
                                 }
 
                             }
@@ -173,6 +182,16 @@ public class ClinicalLaboratoryDetailFragment extends BaseFragment implements On
                                 UIHelper.showShortToastInCenter(getContext(), "failure");
                             }
                         });
+
+    }
+
+    private void bindData(LaboratoryUpdateModel laboratoryUpdateModel) {
+        txtCollecDatetime.setText(laboratoryUpdateModel.getCollectionDttm());
+        txtReportDatetime.setText(laboratoryUpdateModel.getSignoutDttm());
+        txtReqDatetime.setText(laboratoryUpdateModel.getSortDttm());
+        txtPhysicianName.setText(laboratoryUpdateModel.getReferringDoctorID());
+        txtSpecimenNumber.setText(laboratoryUpdateModel.getSpecimenID());
+        txtLocation.setText(laboratoryUpdateModel.getVisitLocationID());
 
     }
 
