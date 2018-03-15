@@ -95,7 +95,7 @@ public class BaseApplication extends MultiDexApplication implements Application.
                 try {
                     t.join();
                 } catch (InterruptedException e) {
-
+                    Log.e("CRASH", "uncaughtException: " + e.getMessage());
                 }
 
 //                Log.d("Crash BaseApplication", "uncaughtException: " + SharedPreferenceManager.getInstance().isForcedRestart());

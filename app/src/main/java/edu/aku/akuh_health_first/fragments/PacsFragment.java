@@ -44,7 +44,6 @@ import edu.aku.akuh_health_first.views.AnyTextView;
 
 public class PacsFragment extends BaseFragment implements View.OnClickListener, OnItemClickListener {
 
-    private static final String RADIOLOGY_MODEL_KEY = "RADIOLOGY_MODEL_KEY";
     @BindView(R.id.recylerView)
     RecyclerView recyclerView;
     @BindView(R.id.refreshLayout)
@@ -173,7 +172,7 @@ public class PacsFragment extends BaseFragment implements View.OnClickListener, 
                 BaseURLTypes.PACS_VIEWER)
                 .webServiceRequestAPIForJsonObject(WebServiceConstants.METHOD_PACS_MANAGER,
                         // FIXME: 3/8/2018 .NullPointerException: Attempt to invoke virtual method 'java.lang.String edu.aku.akuh_health_first.models.RadiologyModel.getAccessionnumberwithComma()
-                        WebServiceConstants.METHOD_PACS_ACCESSIONS +radioModel.getAccessionnumberwithComma() + WebServiceConstants.METHOD_PACS_ACCESSIONS_end
+                        WebServiceConstants.METHOD_PACS_ACCESSIONS + radioModel.getAccessionnumberwithComma() + WebServiceConstants.METHOD_PACS_ACCESSIONS_end
                         ,
                         new WebServices.IRequestJsonDataCallBack() {
                             @Override

@@ -261,8 +261,8 @@ public class HealthSummaryFragment extends BaseFragment implements OnItemClickLi
                                                 , PatientHealthSummaryModel.class);
 
                                 txtBloodType.setText(patientHealthSummaryModel.getBloodtype());
-                                txtWeight.setText(patientHealthSummaryModel.getWeight() + " kg");
-                                txtHeight.setText(patientHealthSummaryModel.getHeight() + " in");
+                                txtWeight.setText(patientHealthSummaryModel.getWeight() + "kg");
+                                txtHeight.setText(patientHealthSummaryModel.getHeight() + "cm");
                                 txtHeightDate.setText(patientHealthSummaryModel.getHeightdate());
                                 txtWeightDate.setText(patientHealthSummaryModel.getWeightdate());
 
