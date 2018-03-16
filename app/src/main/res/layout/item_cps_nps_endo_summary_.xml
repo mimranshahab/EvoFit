@@ -104,6 +104,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:padding="@dimen/x2dp"
+                            android:maxLines="1"
                             android:text="Hepatitus A "
                             android:textColor="@color/text_color_grey_dark"
                             android:textSize="@dimen/s16"
@@ -116,6 +117,8 @@
                             android:layout_height="wrap_content"
                             android:padding="@dimen/x2dp"
                             android:text="Dr Abc"
+                            android:drawablePadding="@dimen/x5dp"
+                            android:drawableLeft="@drawable/cardiopulmonary_doctor"
                             android:textColor="@color/text_color_grey_dark"
                             android:textSize="@dimen/s14"
                             app:typeface="@string/font_regular" />

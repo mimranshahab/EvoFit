@@ -54,7 +54,7 @@
                             android:drawableLeft="@drawable/cardiopulmonary_doctor"
                             android:drawablePadding="@dimen/x5dp"
                             android:textSize="@dimen/s14"
-                            app:typeface="@string/font_regular" />
+                            app:typeface="@string/font_bold" />
 
 
 

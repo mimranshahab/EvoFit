@@ -76,19 +76,26 @@ public class TimelineAdapter extends RecyclerView.Adapter<TimelineAdapter.ViewHo
 
          */
         if (timelineModel.getPatientVisitType().equals("ER")) {
-            holder.frameColorCode.setBackgroundResource(R.color.c_brick_red);
-            holder.llColorCode.setBackgroundResource(R.color.c_brick_red);
+            holder.frameColorCode.setBackgroundResource(R.color.base_reddish);
+            holder.llColorCode.setBackgroundResource(R.color.base_reddish);
+            holder.txtDoctorName.setTextColor(activity.getResources().getColor(R.color.base_reddish));
         } else if (timelineModel.getPatientVisitType().equals("IN")) {
-            holder.frameColorCode.setBackgroundResource(R.color.base_dark_blue);
-            holder.llColorCode.setBackgroundResource(R.color.base_dark_blue);
+            holder.frameColorCode.setBackgroundResource(R.color.base_blue);
+            holder.llColorCode.setBackgroundResource(R.color.base_blue);
+            holder.txtDoctorName.setTextColor(activity.getResources().getColor(R.color.base_blue));
+
 
         } else if (timelineModel.getPatientVisitType().equals("CLI")) {
-            holder.frameColorCode.setBackgroundResource(R.color.c_dark_green);
-            holder.llColorCode.setBackgroundResource(R.color.c_dark_green);
+            holder.frameColorCode.setBackgroundResource(R.color.base_green);
+            holder.llColorCode.setBackgroundResource(R.color.base_green);
+            holder.txtDoctorName.setTextColor(activity.getResources().getColor(R.color.base_green));
+
 
         } else {
             holder.frameColorCode.setBackgroundResource(R.color.base_amber);
             holder.llColorCode.setBackgroundResource(R.color.base_amber);
+            holder.txtDoctorName.setTextColor(activity.getResources().getColor(R.color.base_amber));
+
 
         }
 

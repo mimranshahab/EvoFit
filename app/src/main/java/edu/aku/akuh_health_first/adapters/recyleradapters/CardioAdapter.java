@@ -51,7 +51,7 @@ public class CardioAdapter extends RecyclerView.Adapter<CardioAdapter.ViewHolder
 
         final CardioModel model = arrListCardioModel.get(holder.getAdapterPosition());
         holder.txtDateTime.setText(model.getRequestServiceDateTime());
-        holder.txtStatusType.setText(model.getStatus());
+
         holder.txtName.setText(model.getService());
 
         holder.RlReport.setVisibility(View.VISIBLE);
@@ -61,9 +61,12 @@ public class CardioAdapter extends RecyclerView.Adapter<CardioAdapter.ViewHolder
         setListener(holder, model);
 
         if (model.getStatus().equalsIgnoreCase("Signed")) {
+            holder.txtStatusType.setText("Finalised");
             setViews(holder, activity.getResources().getColor(R.color.base_green), R.drawable.rounded_box_filled_base_green, R.drawable.cardiopulmonary_green);
 
         } else {
+            holder.txtStatusType.setText("Pending");
+
             setViews(holder, activity.getResources().getColor(R.color.base_reddish), R.drawable.rounded_box_filled_base_red, R.drawable.cardiopulmonary_red);
         }
 

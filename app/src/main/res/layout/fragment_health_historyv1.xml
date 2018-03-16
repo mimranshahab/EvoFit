@@ -111,7 +111,7 @@
                             android:gravity="center_horizontal"
                             android:lines="2"
                             android:text="Clinical Laboratory"
-                            android:textColor="@color/c_black"
+                            android:textColor="@color/base_amber"
                             android:textSize="@dimen/s14"
                             app:typeface="@string/font_bold"
 
@@ -186,7 +186,7 @@
                             android:gravity="center_horizontal"
                             android:lines="2"
                             android:text="Radiology"
-                            android:textColor="@color/c_black"
+                            android:textColor="@color/base_blue"
                             android:textSize="@dimen/s14"
                             app:typeface="@string/font_bold"
 
@@ -271,7 +271,7 @@
                             android:gravity="center_horizontal"
                             android:lines="2"
                             android:text="Medication Profile"
-                            android:textColor="@color/c_black"
+                            android:textColor="#E2A349"
                             android:textSize="@dimen/s14"
                             app:typeface="@string/font_bold"
 
@@ -348,7 +348,7 @@
                             android:gravity="center_horizontal"
                             android:lines="2"
                             android:text="Immunization Profile"
-                            android:textColor="@color/c_black"
+                            android:textColor="#9DC105"
                             android:textSize="@dimen/s14"
                             app:typeface="@string/font_bold"
 
@@ -432,8 +432,8 @@
                             android:layout_height="wrap_content"
                             android:gravity="center_horizontal"
                             android:lines="2"
-                            android:text="Cardiopulmonary and Angiograms"
-                            android:textColor="@color/c_black"
+                            android:text="Cardiopulmonary"
+                            android:textColor="@color/base_reddish"
                             android:textSize="@dimen/s14"
                             app:typeface="@string/font_bold"
 
@@ -506,7 +506,7 @@
                             android:gravity="center_horizontal"
                             android:lines="2"
                             android:text="Neurophysiology"
-                            android:textColor="@color/c_black"
+                            android:textColor="#847A4E"
                             android:textSize="@dimen/s14"
                             app:typeface="@string/font_bold"
 
@@ -590,7 +590,7 @@
                             android:gravity="center_horizontal"
                             android:lines="2"
                             android:text="Endoscopy"
-                            android:textColor="@color/c_black"
+                            android:textColor="#33E4D3"
                             android:textSize="@dimen/s14"
                             app:typeface="@string/font_bold"
 
@@ -662,7 +662,7 @@
                             android:gravity="center_horizontal"
                             android:lines="2"
                             android:text="Discharge Summary"
-                            android:textColor="@color/c_black"
+                            android:textColor="#C67FDD"
                             android:textSize="@dimen/s14"
                             app:typeface="@string/font_bold" />
 
