@@ -64,9 +64,9 @@
             android:padding="@dimen/x8dp"
             android:src="@drawable/plus"
             android:visibility="gone"
-             app:fab_colorNormal="@color/colorPrimary"
-            app:fab_colorPressed="@color/colorPrimaryDark"
-            app:fab_colorRipple="@color/base_amber" />
+             app:fab_colorNormal="@color/colorPrimaryDark"
+            app:fab_colorPressed="@color/base_amber"
+            app:fab_colorRipple="@color/base_reddish" />
     </RelativeLayout>
 
 </LinearLayout>
