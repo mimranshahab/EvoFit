@@ -11,67 +11,76 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
-        android:layout_margin="@dimen/x5dp"
-
+        android:layout_marginLeft="@dimen/x20dp"
+        android:layout_marginRight="@dimen/x20dp"
+        android:layout_marginTop="@dimen/x10dp"
+        android:layout_marginBottom="@dimen/x10dp"
         android:animateLayoutChanges="true"
         app:cardCornerRadius="@dimen/x8dp"
-        app:cardElevation="@dimen/x3dp">
+        app:cardElevation="@dimen/x5dp"
+
+
+        >
 
         <LinearLayout
             android:id="@+id/contListItem"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-
-            android:padding="@dimen/x3dp">
+            android:padding="@dimen/x3dp"
+           >
 
             <edu.aku.akuh_health_first.views.AnyTextView
                 android:id="@+id/txtExam"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:drawableLeft="@drawable/password_icon"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:drawableLeft="@drawable/radiology_report_title"
                 android:drawablePadding="@dimen/x7dp"
+                android:gravity="center_vertical"
                 android:padding="@dimen/x5dp"
                 android:text="Exam"
-                android:textColor="@color/c_grayasparagus"
-                android:textSize="@dimen/s9"
+                android:textColor="@color/text_color_grey_dark"
+                android:textSize="@dimen/s11"
                 app:typeface="@string/font_regular" />
 
             <edu.aku.akuh_health_first.views.AnyTextView
                 android:id="@+id/txtLocation"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:drawableLeft="@drawable/password_icon"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:drawableLeft="@drawable/radiology_location"
                 android:drawablePadding="@dimen/x7dp"
+                android:gravity="center_vertical"
                 android:padding="@dimen/x5dp"
                 android:text="Exam Order Number"
-                android:textColor="@color/c_grayasparagus"
-                android:textSize="@dimen/s8"
+                android:textColor="@color/text_color_grey_dark"
+                android:textSize="@dimen/s11"
                 app:typeface="@string/font_regular" />
 
             <edu.aku.akuh_health_first.views.AnyTextView
                 android:id="@+id/txtReqDatetime"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:drawableLeft="@drawable/password_icon"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:drawableLeft="@drawable/radiology_reportdate"
                 android:drawablePadding="@dimen/x7dp"
+                android:gravity="center_vertical"
                 android:padding="@dimen/x5dp"
                 android:text="DateTime"
-                android:textColor="@color/c_grayasparagus"
-                android:textSize="@dimen/s8"
+                android:textColor="@color/text_color_grey_dark"
+                android:textSize="@dimen/s11"
                 app:typeface="@string/font_regular" />
 
 
             <edu.aku.akuh_health_first.views.AnyTextView
                 android:id="@+id/txtStatus"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:drawableLeft="@drawable/password_icon"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:drawableLeft="@drawable/radiology_report_approved"
                 android:drawablePadding="@dimen/x7dp"
+                android:gravity="center_vertical"
                 android:padding="@dimen/x5dp"
                 android:text="Status"
-                android:textColor="@color/c_grayasparagus"
-                android:textSize="@dimen/s8"
+                android:textColor="@color/text_color_grey_dark"
+                android:textSize="@dimen/s11"
                 app:typeface="@string/font_regular" />
 
             <LinearLayout
@@ -79,30 +88,37 @@
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
 
-                <Button
+                <edu.aku.akuh_health_first.views.AnyTextView
                     android:id="@+id/btnShowReport"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_margin="@dimen/x5dp"
                     android:layout_weight=".5"
                     android:background="@drawable/rounded_box_filled_primary_color"
+                    android:gravity="center"
+                    android:padding="@dimen/x7dp"
                     android:text="Report"
+                    app:typeface="@string/font_bold"
                     android:textAllCaps="false"
                     android:textColor="@color/c_white"
-                    android:textSize="@dimen/s8"
+                    android:textSize="@dimen/s11"
                     android:visibility="visible" />
 
-                <Button
+                <edu.aku.akuh_health_first.views.AnyTextView
                     android:id="@+id/btnShowGraph"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_margin="@dimen/x5dp"
                     android:layout_weight=".5"
                     android:background="@drawable/rounded_box_filled_base_amber"
+                    android:gravity="center"
+                    android:padding="@dimen/x7dp"
                     android:text="Images"
+                    app:typeface="@string/font_bold"
+
                     android:textAllCaps="false"
                     android:textColor="@color/c_white"
-                    android:textSize="@dimen/s8"
+                    android:textSize="@dimen/s11"
                     android:visibility="visible" />
 
 

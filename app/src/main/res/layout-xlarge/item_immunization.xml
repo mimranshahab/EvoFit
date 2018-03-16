@@ -11,7 +11,10 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
-        android:layout_margin="@dimen/x15dp"
+        android:layout_marginLeft="@dimen/x20dp"
+        android:layout_marginRight="@dimen/x20dp"
+        android:layout_marginTop="@dimen/x10dp"
+        android:layout_marginBottom="@dimen/x10dp"
         android:animateLayoutChanges="true"
         app:cardCornerRadius="@dimen/x8dp"
         app:cardElevation="@dimen/x3dp"
@@ -45,15 +48,15 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_weight=".5"
-                        android:textSize="@dimen/s10"
-                        android:text="22 jan ,2018" />
+                        android:text="22 jan ,2018"
+                        android:textSize="@dimen/s10" />
 
 
                     <edu.aku.akuh_health_first.views.AnyTextView
                         android:id="@+id/txtType"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginLeft="@dimen/x45dp"
+                        android:layout_marginLeft="@dimen/x65dp"
                         android:layout_weight=".5"
                         android:background="@drawable/rounded_box_filled_base_green"
                         android:gravity="center_horizontal"
@@ -120,6 +123,7 @@
                             android:id="@+id/txtFacility"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:drawableLeft="@drawable/location_visittimeline"
                             android:text="Stadium Road"
                             android:textColor="@color/text_color_grey_dark"
                             android:textSize="@dimen/s10"
@@ -131,10 +135,10 @@
 
                 <RelativeLayout
                     android:id="@+id/RLUpdate"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_marginLeft="@dimen/x30dp"
-                    android:layout_marginRight="@dimen/x30dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/x50dp"
+                    android:layout_marginRight="@dimen/x50dp"
 
 
                     >
@@ -146,6 +150,7 @@
                         android:background="@color/c_white"
                         android:gravity="center"
                         android:padding="@dimen/x3dp"
+                        android:textAlignment="center"
                         android:text="UPDATE"
                         android:textColor="@color/text_color_grey_dark"
                         android:textSize="@dimen/s10"
@@ -158,8 +163,8 @@
                         android:layout_height="wrap_content"
                         android:alpha=".25"
                         android:background="@drawable/rounded_box_filled_base_red"
-                        android:padding="@dimen/x3dp"
                         android:gravity="center"
+                        android:padding="@dimen/x3dp"
                         android:textSize="@dimen/s10"
 
                         />

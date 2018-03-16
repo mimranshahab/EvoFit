@@ -118,6 +118,19 @@ public class HealthHistoryFragment extends BaseFragment {
             contParentLayout.setVisibility(View.GONE);
             serviceCall();
         }
+        setViews();
+    }
+
+    private void setViews() {
+        txtClinicCount.setVisibility(View.INVISIBLE);
+        txtRadiology.setVisibility(View.INVISIBLE);
+        txtMedicationCount.setVisibility(View.INVISIBLE);
+        txtImmunizationCount.setVisibility(View.INVISIBLE);
+        txtCardioCount.setVisibility(View.INVISIBLE);
+        txtNeuroCount.setVisibility(View.INVISIBLE);
+
+        txtDischargeCount.setVisibility(View.INVISIBLE);
+        txtEndoscopyCount.setVisibility(View.INVISIBLE);
     }
 
     private void serviceCall() {
