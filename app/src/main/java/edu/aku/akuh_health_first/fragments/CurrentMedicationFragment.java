@@ -1,5 +1,6 @@
 package edu.aku.akuh_health_first.fragments;
 
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.widget.DrawerLayout;
@@ -31,6 +32,7 @@ import edu.aku.akuh_health_first.constatnts.WebServiceConstants;
 import edu.aku.akuh_health_first.enums.BaseURLTypes;
 import edu.aku.akuh_health_first.fragments.abstracts.BaseFragment;
 import edu.aku.akuh_health_first.helperclasses.ui.helper.TitleBar;
+import edu.aku.akuh_health_first.helperclasses.ui.helper.UIHelper;
 import edu.aku.akuh_health_first.managers.retrofit.GsonFactory;
 import edu.aku.akuh_health_first.managers.retrofit.WebServices;
 import edu.aku.akuh_health_first.models.MedicationProfileModel;
@@ -192,20 +194,35 @@ public class CurrentMedicationFragment extends BaseFragment implements View.OnCl
                                         .fromJson(GsonFactory.getSimpleGson().toJson(webResponse.result)
                                                 , type);
 
+                                if (arrayList.size() > 0) {
+                                    if (arrayList.get(0).getIspatientonboard()) {
+                                        showEmptyView("No Current Medication since patient is onBoard");
+                                        mFab.setVisibility(View.GONE);
+                                    } else if (arrayList.get(0).getMedicineexceedlimit()) {
+                                        showView();
+                                        mFab.setVisibility(View.VISIBLE);
+                                         mFab.setLabelVisibility(View.VISIBLE);
+                                        mFab.setEnabled(false);
+                                        UIHelper.showToast(getContext(), "Medication Limit Exceed.");
+                                    } else {
+                                        showView();
+                                        mFab.setVisibility(View.VISIBLE);
+                                        mFab.setEnabled(true);
+                                    }
+
+                                } else {
+                                    showEmptyView();
+                                }
+
+
                                 arrData.clear();
                                 arrData.addAll(arrayList);
                                 adapter.notifyDataSetChanged();
 
-                                if (arrData.size() > 0) {
-                                    showView();
-                                } else {
-                                    showEmptyView();
-                                }
                             }
 
                             @Override
                             public void onError() {
-//                                UIHelper.showShortToastInCenter(getContext(), "failure");
                                 showEmptyView();
                             }
                         });
@@ -215,6 +232,12 @@ public class CurrentMedicationFragment extends BaseFragment implements View.OnCl
     private void showEmptyView() {
         refreshLayout.setVisibility(View.GONE);
         emptyView.setVisibility(View.VISIBLE);
+    }
+
+    private void showEmptyView(String text) {
+        refreshLayout.setVisibility(View.GONE);
+        emptyView.setVisibility(View.VISIBLE);
+        emptyView.setText(text);
     }
 
     private void showView() {

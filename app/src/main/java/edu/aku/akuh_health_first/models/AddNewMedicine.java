@@ -43,6 +43,18 @@ public class AddNewMedicine {
     @SerializedName("LastFileTerminal")
     private String lastFileterminal;
 
+    @Expose
+    @SerializedName("LifetimeMedicine")
+    private boolean lifeTimeMedicine;
+
+    public boolean getLifeTimeMedicine() {
+        return lifeTimeMedicine;
+    }
+
+    public void setLifeTimeMedicine(boolean lifeTimeMedicine) {
+        this.lifeTimeMedicine = lifeTimeMedicine;
+    }
+
     public String getMrnumber() {
         return mrnumber;
     }

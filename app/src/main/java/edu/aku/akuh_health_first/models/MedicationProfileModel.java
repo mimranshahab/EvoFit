@@ -99,8 +99,13 @@ public class MedicationProfileModel {
     @SerializedName("RXMedRXnumber")
     private String rxmedrxnumber;
     @Expose
+    @SerializedName("LifetimeMedicine")
+    private boolean lifeTimeMedicin;
+    @Expose
     @SerializedName("RXMedcount")
     private int rxmedcount;
+
+
 
     public String getRecordmessage() {
         return recordmessage;
@@ -340,5 +345,21 @@ public class MedicationProfileModel {
 
     public void setRxmedcount(int rxmedcount) {
         this.rxmedcount = rxmedcount;
+    }
+
+    public boolean isIspatientonboard() {
+        return ispatientonboard;
+    }
+
+    public boolean isMedicineexceedlimit() {
+        return medicineexceedlimit;
+    }
+
+    public boolean getLifeTimeMedicin() {
+        return lifeTimeMedicin;
+    }
+
+    public void setLifeTimeMedicin(boolean lifeTimeMedicin) {
+        this.lifeTimeMedicin = lifeTimeMedicin;
     }
 }

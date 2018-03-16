@@ -355,8 +355,6 @@ public class HealthSummaryFragment extends BaseFragment implements OnItemClickLi
                 if (model.getDetailMessageMobileArray().isEmpty()) {
                     UIHelper.showToast(getContext(), "No Details available");
                 } else {
-
-                    UIHelper.showToast(getContext(), "Show popup");
                     showDetailDialog(model.getDetailMessageMobileArray(), model.getSummarytitle());
                 }
             }
