@@ -63,10 +63,8 @@ public class TimelineAdapter extends RecyclerView.Adapter<TimelineAdapter.ViewHo
 
         holder.txtFacility.setText(timelineModel.getPatientVisitLocation() + "," + timelineModel.getPatientVisitHospitalLocation());
         holder.txtVisitDateTime.setText(timelineModel.getPatientVisitDateTime());
-        holder.txtDoctorName.setText(timelineModel.getPatientVisitDoctorName());
+        holder.txtDoctorName.setText("Dr." + timelineModel.getPatientVisitDoctorName());
         holder.txtService.setText(timelineModel.getPatientVisitService());
-//        holder.txtVisitType.setText(timelineModel.getPatientVisitType());
-//        holder.txtVisitType.setVisibility(View.GONE);
         /*
         set banner color
         In-Patient ---->Blue
@@ -76,31 +74,26 @@ public class TimelineAdapter extends RecyclerView.Adapter<TimelineAdapter.ViewHo
 
          */
         if (timelineModel.getPatientVisitType().equals("ER")) {
-            holder.frameColorCode.setBackgroundResource(R.color.base_reddish);
-            holder.llColorCode.setBackgroundResource(R.color.base_reddish);
-            holder.txtDoctorName.setTextColor(activity.getResources().getColor(R.color.base_reddish));
+            setViews(holder, R.color.base_reddish, activity.getResources().getColor(R.color.base_reddish));
         } else if (timelineModel.getPatientVisitType().equals("IN")) {
-            holder.frameColorCode.setBackgroundResource(R.color.base_blue);
-            holder.llColorCode.setBackgroundResource(R.color.base_blue);
-            holder.txtDoctorName.setTextColor(activity.getResources().getColor(R.color.base_blue));
-
+            setViews(holder, R.color.base_blue, activity.getResources().getColor(R.color.base_blue));
 
         } else if (timelineModel.getPatientVisitType().equals("CLI")) {
-            holder.frameColorCode.setBackgroundResource(R.color.base_green);
-            holder.llColorCode.setBackgroundResource(R.color.base_green);
-            holder.txtDoctorName.setTextColor(activity.getResources().getColor(R.color.base_green));
-
+            setViews(holder, R.color.base_green, activity.getResources().getColor(R.color.base_green));
 
         } else {
-            holder.frameColorCode.setBackgroundResource(R.color.base_amber);
-            holder.llColorCode.setBackgroundResource(R.color.base_amber);
-            holder.txtDoctorName.setTextColor(activity.getResources().getColor(R.color.base_amber));
-
+            setViews(holder, R.color.base_amber, activity.getResources().getColor(R.color.base_amber));
 
         }
 
 
         setListener(holder, timelineModel);
+    }
+
+    private void setViews(ViewHolder holder, int base_color, int color) {
+        holder.frameColorCode.setBackgroundResource(base_color);
+        holder.llColorCode.setBackgroundResource(base_color);
+        holder.txtDoctorName.setTextColor(color);
     }
 
     private void setListener(final ViewHolder holder, final TimelineModel timelineModel) {

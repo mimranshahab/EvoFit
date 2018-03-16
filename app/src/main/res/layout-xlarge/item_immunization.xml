@@ -105,7 +105,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="Hepatitus A "
-                            android:textColor="@color/text_color_grey_dark"
+                            android:textColor="@color/txt_aku_blue"
                             android:textSize="@dimen/s12"
                             app:typeface="@string/font_bold" />
 
@@ -115,7 +115,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="CHC"
-                            android:textColor="@color/text_color_grey_dark"
+                            android:textColor="@color/txt_aku_blue"
                             android:textSize="@dimen/s10"
                             app:typeface="@string/font_regular" />
 
@@ -125,7 +125,7 @@
                             android:layout_height="wrap_content"
                             android:drawableLeft="@drawable/location_visittimeline"
                             android:text="Stadium Road"
-                            android:textColor="@color/text_color_grey_dark"
+                            android:textColor="@color/txt_aku_blue"
                             android:textSize="@dimen/s10"
                             app:typeface="@string/font_regular" />
 
@@ -152,7 +152,7 @@
                         android:padding="@dimen/x3dp"
                         android:textAlignment="center"
                         android:text="UPDATE"
-                        android:textColor="@color/text_color_grey_dark"
+                        android:textColor="@color/txt_aku_blue"
                         android:textSize="@dimen/s10"
 
                         />

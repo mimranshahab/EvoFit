@@ -33,7 +33,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="@dimen/x5dp"
                         android:text="Vacccine Name"
-                        android:textColor="@color/text_grey"
+                        android:textColor="@color/txt_aku_blue"
                         android:textSize="@dimen/s8"
                         app:typeface="@string/font_bold" />
 
@@ -44,12 +44,12 @@
                         android:layout_marginBottom="@dimen/x10dp"
                         android:layout_marginTop="@dimen/x10dp"
                         android:background="@drawable/rounded_box"
-                        android:drawableEnd="@drawable/ic_dropdown"
+                        android:drawableEnd="@drawable/dropdown_arrow"
                         android:gravity="center_vertical"
                         android:hint="Select Vaccine"
                         android:maxLines="1"
                         android:padding="@dimen/x5dp"
-                        android:textColor="@color/text_dark"
+                        android:textColor="@color/txt_aku_blue"
                         android:textColorHint="@color/text_hint"
                         android:textSize="@dimen/s10" />
 
@@ -58,7 +58,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="@dimen/x5dp"
                         android:text="Route"
-                        android:textColor="@color/text_grey"
+                        android:textColor="@color/txt_aku_blue"
                         android:textSize="@dimen/s8"
                         app:typeface="@string/font_bold" />
 
@@ -70,12 +70,12 @@
                         android:layout_marginBottom="@dimen/x10dp"
                         android:layout_marginTop="@dimen/x10dp"
                         android:background="@drawable/rounded_box"
-                        android:drawableRight="@drawable/ic_dropdown"
+                        android:drawableRight="@drawable/dropdown_arrow"
                         android:gravity="center_vertical"
                         android:hint="Select Route"
                         android:maxLines="1"
                         android:padding="@dimen/x5dp"
-                        android:textColor="@color/text_dark"
+                        android:textColor="@color/txt_aku_blue"
                         android:textColorHint="@color/text_hint"
                         android:textSize="@dimen/s10" />
 
@@ -84,7 +84,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="@dimen/x5dp"
                         android:text="Schedule Date"
-                        android:textColor="@color/text_grey"
+                        android:textColor="@color/txt_aku_blue"
                         android:textSize="@dimen/s8"
                         app:typeface="@string/font_bold" />
 
@@ -95,13 +95,13 @@
                         android:layout_marginBottom="@dimen/x10dp"
                         android:layout_marginTop="@dimen/x10dp"
                         android:background="@drawable/rounded_box"
-                        android:drawableRight="@drawable/ic_dropdown"
+                        android:drawableRight="@drawable/calendar_input_icon"
                         android:gravity="center_vertical"
                         android:hint="Tap to Select Schedule Date"
                         android:maxLines="1"
                         android:padding="@dimen/x5dp"
 
-                        android:textColor="@color/text_dark"
+                        android:textColor="@color/txt_aku_blue"
                         android:textColorHint="@color/text_hint"
                         android:textSize="@dimen/s10" />
 
@@ -110,7 +110,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="@dimen/x5dp"
                         android:text="Vaccination Date"
-                        android:textColor="@color/text_grey"
+                        android:textColor="@color/txt_aku_blue"
                         android:textSize="@dimen/s8"
                         app:typeface="@string/font_bold" />
 
@@ -122,13 +122,13 @@
 
                         android:layout_marginTop="@dimen/x10dp"
                         android:background="@drawable/rounded_box"
-                        android:drawableRight="@drawable/ic_dropdown"
+                        android:drawableRight="@drawable/calendar_input_icon"
                         android:gravity="center_vertical"
                         android:hint="Tap to Select Vaccination Date (if Vaccinated)"
                         android:maxLines="1"
                         android:padding="@dimen/x5dp"
                         android:singleLine="true"
-                        android:textColor="@color/text_dark"
+                        android:textColor="@color/txt_aku_blue"
                         android:textColorHint="@color/text_hint"
                         android:textSize="@dimen/s10" />
 
@@ -136,8 +136,8 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="@dimen/x5dp"
-                        android:text="Medicine Name"
-                        android:textColor="@color/text_grey"
+                        android:text="Hospital Location"
+                        android:textColor="@color/txt_aku_blue"
                         android:textSize="@dimen/s8"
                         app:typeface="@string/font_bold" />
 
@@ -148,13 +148,13 @@
                         android:layout_marginBottom="@dimen/x10dp"
                         android:layout_marginTop="@dimen/x10dp"
                         android:background="@drawable/rounded_box"
-                        android:drawableRight="@drawable/ic_dropdown"
+
                         android:gravity="center_vertical"
-                        android:hint="Enter Location"
+                        android:hint="Enter Hospital Location"
                         android:maxLength="50"
                         android:maxLines="1"
                         android:padding="@dimen/x5dp"
-                        android:textColor="@color/text_dark"
+                        android:textColor="@color/txt_aku_blue"
                         android:textColorHint="@color/text_hint"
                         android:textSize="@dimen/s10" />
 

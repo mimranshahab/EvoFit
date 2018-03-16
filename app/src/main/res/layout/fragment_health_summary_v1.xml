@@ -47,7 +47,7 @@
                             android:layout_height="wrap_content"
                             android:gravity="center"
                             android:text="Height Date"
-                            android:textColor="@color/text_color_grey_dark"
+                            android:textColor="@color/txt_aku_blue"
                             android:textSize="@dimen/s8"
                             android:visibility="invisible"
                             app:typeface="@string/font_regular" />
@@ -90,7 +90,7 @@
                                     android:gravity="bottom|end"
                                     android:paddingRight="@dimen/x5dp"
                                     android:text="Blood Type"
-                                    android:textColor="@color/text_color_grey_dark"
+                                    android:textColor="@color/txt_aku_blue"
                                     android:textSize="@dimen/s8"
                                     app:typeface="@string/font_regular" />
                             </LinearLayout>
@@ -138,7 +138,7 @@
                             android:layout_height="wrap_content"
                             android:gravity="center"
                             android:text="Height Date"
-                            android:textColor="@color/text_color_grey_dark"
+                            android:textColor="@color/txt_aku_blue"
                             android:textSize="@dimen/s8"
                             app:typeface="@string/font_regular" />
 
@@ -180,7 +180,7 @@
                                     android:paddingRight="@dimen/x5dp"
 
                                     android:text="Height"
-                                    android:textColor="@color/text_color_grey_dark"
+                                    android:textColor="@color/txt_aku_blue"
                                     android:textSize="@dimen/s8"
                                     app:typeface="@string/font_regular" />
 
@@ -226,7 +226,7 @@
                             android:layout_height="wrap_content"
                             android:gravity="center_horizontal"
                             android:text="Weight Date"
-                            android:textColor="@color/text_color_grey_dark"
+                            android:textColor="@color/txt_aku_blue"
                             android:textSize="@dimen/s8"
                             app:typeface="@string/font_regular" />
 
@@ -268,7 +268,7 @@
                                     android:gravity="bottom|end"
                                     android:paddingRight="@dimen/x5dp"
                                     android:text="Weight"
-                                    android:textColor="@color/text_color_grey_dark"
+                                    android:textColor="@color/txt_aku_blue"
                                     android:textSize="@dimen/s8"
                                     app:typeface="@string/font_regular" />
 

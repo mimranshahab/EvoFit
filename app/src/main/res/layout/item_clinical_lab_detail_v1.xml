@@ -41,7 +41,7 @@
                         android:layout_height="match_parent"
                         android:ellipsize="end"
                         android:text="Report Name:"
-                        android:textColor="@color/text_color_grey_dark"
+                        android:textColor="@color/txt_aku_blue"
                         android:textSize="@dimen/s14"
                         app:typeface="@string/font_regular" />
 
@@ -78,7 +78,7 @@
                         android:ellipsize="end"
                         android:text="NormalRange"
 
-                        android:textColor="@color/text_color_grey_dark"
+                        android:textColor="@color/txt_aku_blue"
                         android:textSize="@dimen/s14"
                         app:typeface="@string/font_regular" />
 
@@ -103,7 +103,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:text="Result"
-                        android:textColor="@color/text_color_grey_dark"
+                        android:textColor="@color/txt_aku_blue"
                         android:textSize="@dimen/s14"
                         app:typeface="@string/font_regular" />
 
@@ -112,7 +112,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:text=""
-                        android:textColor="@color/text_color_grey_dark"
+                        android:textColor="@color/txt_aku_blue"
                         android:textSize="@dimen/s14"
                         app:typeface="@string/font_bold" />
 
@@ -147,7 +147,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:text="date and time"
-                        android:textColor="@color/text_color_grey_dark"
+                        android:textColor="@color/txt_aku_blue"
                         android:textSize="@dimen/s14"
                         app:typeface="@string/font_bold" />
 

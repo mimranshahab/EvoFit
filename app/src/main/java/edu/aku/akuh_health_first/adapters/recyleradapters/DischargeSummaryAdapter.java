@@ -47,7 +47,6 @@ public class DischargeSummaryAdapter extends RecyclerView.Adapter<DischargeSumma
         return new ViewHolder(itemView);
     }
 
-    @SuppressLint("SetTextI18n")
     @Override
     public void onBindViewHolder(final ViewHolder holder, int i) {
 
@@ -58,10 +57,11 @@ public class DischargeSummaryAdapter extends RecyclerView.Adapter<DischargeSumma
         holder.txtDrName.setText(DischargeSummaryModel.getPhyName());
         holder.txtStatusType.setVisibility(View.INVISIBLE);
         setListener(holder, DischargeSummaryModel);
+        holder.RlReport.setVisibility(View.VISIBLE);
     }
 
     private void setListener(final ViewHolder holder, final DischargeSummaryModel DischargeSummaryModel) {
-        holder.cardView2.setOnClickListener(new View.OnClickListener() {
+        holder.RlReport.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 onItemClick.onItemClick(holder.getAdapterPosition(), DischargeSummaryModel);

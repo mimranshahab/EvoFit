@@ -55,7 +55,7 @@
                         android:drawablePadding="@dimen/x5dp"
                         android:padding="@dimen/x3dp"
                         android:text="Jan 22, 2018"
-                        android:textColor="@color/text_dark"
+                        android:textColor="@color/txt_aku_blue"
                         android:textSize="@dimen/s14"
                         app:typeface="@string/font_regular" />
 
@@ -68,7 +68,7 @@
                         android:drawablePadding="@dimen/x5dp"
                         android:padding="@dimen/x3dp"
                         android:text="Jan 22, 2018"
-                        android:textColor="@color/text_dark"
+                        android:textColor="@color/txt_aku_blue"
                         android:textSize="@dimen/s14"
                         app:typeface="@string/font_regular" />
 
@@ -80,7 +80,7 @@
                         android:drawablePadding="@dimen/x5dp"
                         android:padding="@dimen/x3dp"
                         android:text="Jan 22, 2018"
-                        android:textColor="@color/text_dark"
+                        android:textColor="@color/txt_aku_blue"
                         android:textSize="@dimen/s14"
                         app:typeface="@string/font_regular" />
 
@@ -93,7 +93,7 @@
                         android:drawablePadding="@dimen/x5dp"
                         android:padding="@dimen/x3dp"
                         android:text="Jan 22, 2018"
-                        android:textColor="@color/text_dark"
+                        android:textColor="@color/txt_aku_blue"
                         android:textSize="@dimen/s14"
                         app:typeface="@string/font_regular" />
 

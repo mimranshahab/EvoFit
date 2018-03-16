@@ -28,7 +28,7 @@
                 android:id="@+id/imgPacs"
                 android:layout_width="@dimen/x120dp"
                 android:layout_height="match_parent"
-                android:background="@color/text_color_grey_dark"
+                android:background="@color/txt_aku_blue"
                 android:scaleType="centerCrop"
                 android:padding="@dimen/x3dp"
 
@@ -53,7 +53,7 @@
                     android:gravity="center_vertical"
                     android:text="patientMRN"
                     android:padding="@dimen/x3dp"
-                    android:textColor="@color/text_color_grey_dark"
+                    android:textColor="@color/txt_aku_blue"
                     android:textSize="@dimen/s14"
                     app:typeface="@string/font_regular" />
 
@@ -65,7 +65,7 @@
                     android:drawablePadding="@dimen/x5dp"
                     android:gravity="center_vertical"
                     android:text="studyDataDateTime "
-                    android:textColor="@color/text_color_grey_dark"
+                    android:textColor="@color/txt_aku_blue"
                     android:textSize="@dimen/s14"
                     android:padding="@dimen/x3dp"
 
@@ -82,7 +82,7 @@
                     android:text="studyDataCount"
                     android:padding="@dimen/x3dp"
 
-                    android:textColor="@color/text_color_grey_dark"
+                    android:textColor="@color/txt_aku_blue"
                     android:textSize="@dimen/s14"
                     app:typeface="@string/font_regular" />
 

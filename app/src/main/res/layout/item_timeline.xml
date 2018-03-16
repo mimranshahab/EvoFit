@@ -15,7 +15,6 @@
         android:layout_weight="1"
         android:animateLayoutChanges="true"
         app:cardCornerRadius="@dimen/x10dp"
-        app:cardElevation="@dimen/x5dp"
 
 
         >
@@ -48,12 +47,12 @@
                             android:id="@+id/txtDoctorName"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:padding="@dimen/x3dp"
+                            android:padding="@dimen/x5dp"
                             android:text="Jan 22, 2018"
-                            android:textColor="@color/text_dark"
+                            android:textColor="@color/txt_aku_blue"
                             android:drawableLeft="@drawable/cardiopulmonary_doctor"
                             android:drawablePadding="@dimen/x5dp"
-                            android:textSize="@dimen/s14"
+                            android:textSize="@dimen/s15"
                             app:typeface="@string/font_bold" />
 
 
@@ -62,12 +61,12 @@
                             android:id="@+id/txtService"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:padding="@dimen/x3dp"
+                            android:padding="@dimen/x5dp"
                             android:text="Jan 22, 2018"
-                            android:textColor="@color/text_dark"
+                            android:textColor="@color/txt_aku_blue"
                             android:drawableLeft="@drawable/medkit"
                             android:drawablePadding="@dimen/x5dp"
-                            android:textSize="@dimen/s14"
+                            android:textSize="@dimen/s13"
                             app:typeface="@string/font_regular" />
 
                         <edu.aku.akuh_health_first.views.AnyTextView
@@ -76,10 +75,10 @@
                             android:drawablePadding="@dimen/x5dp"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:padding="@dimen/x3dp"
+                            android:padding="@dimen/x5dp"
                             android:text="Jan 22, 2018"
-                            android:textColor="@color/text_dark"
-                            android:textSize="@dimen/s14"
+                            android:textColor="@color/txt_aku_blue"
+                            android:textSize="@dimen/s13"
                             app:typeface="@string/font_regular" />
 
 
@@ -87,12 +86,12 @@
                             android:id="@+id/txtVisitDateTime"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:padding="@dimen/x3dp"
+                            android:padding="@dimen/x5dp"
                             android:text="Jan 22, 2018"
                             android:drawableLeft="@drawable/calendar_immunization"
                             android:drawablePadding="@dimen/x5dp"
-                            android:textColor="@color/text_dark"
-                            android:textSize="@dimen/s14"
+                            android:textColor="@color/text_color_grey"
+                            android:textSize="@dimen/s13"
                             app:typeface="@string/font_regular" />
 
                 </LinearLayout>
@@ -110,6 +109,5 @@
             </LinearLayout>
         </FrameLayout>
     </android.support.v7.widget.CardView>
-
 
 </LinearLayout>

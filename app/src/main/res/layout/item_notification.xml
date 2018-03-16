@@ -37,7 +37,7 @@
                     android:layout_height="wrap_content"
                     android:padding="@dimen/x5dp"
                     android:text="Notification Title"
-                    android:textColor="@color/text_color_grey_dark"
+                    android:textColor="@color/txt_aku_blue"
                     android:textSize="@dimen/s16"
                     app:typeface="@string/font_bold" />
 

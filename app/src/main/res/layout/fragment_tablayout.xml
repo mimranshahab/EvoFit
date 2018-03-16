@@ -17,7 +17,7 @@
         app:tabBackground="@drawable/tab_color_selector"
         app:tabSelectedTextColor="@color/base_reddish"
         app:tabTextAppearance="@android:style/TextAppearance.Widget.TabWidget"
-        app:tabTextColor="@color/text_dark" />
+        app:tabTextColor="@color/txt_aku_blue" />
 
     <edu.aku.akuh_health_first.helperclasses.ui.helper.CustomViewPager
         android:id="@+id/viewpager"

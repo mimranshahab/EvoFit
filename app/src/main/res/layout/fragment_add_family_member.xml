@@ -19,7 +19,7 @@
             android:layout_marginBottom="@dimen/x5dp"
             android:layout_marginTop="@dimen/x10dp"
             android:text="@string/full_name"
-            android:textColor="@color/text_color_grey_dark"
+            android:textColor="@color/txt_aku_blue"
             android:textSize="13sp"
             app:typeface="@string/font_bold" />
 
@@ -33,7 +33,7 @@
             android:inputType="textPersonName"
             android:maxLength="30"
             android:maxLines="1"
-            android:textColor="@color/text_dark"
+            android:textColor="@color/txt_aku_blue"
             android:textColorHint="@color/text_hint"
             android:textSize="16sp"
             app:testType="personFullName" />
@@ -44,7 +44,7 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="@dimen/x5dp"
             android:text="@string/date_of_birth"
-            android:textColor="@color/text_color_grey_dark"
+            android:textColor="@color/txt_aku_blue"
             android:textSize="13sp"
             app:typeface="@string/font_bold" />
 
@@ -58,7 +58,7 @@
             android:gravity="center_vertical"
             android:hint="Select Date of Birth"
             android:maxLines="1"
-            android:textColor="@color/text_dark"
+            android:textColor="@color/txt_aku_blue"
             android:textColorHint="@color/text_hint"
             android:textSize="16sp" />
 
@@ -68,7 +68,7 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="@dimen/x5dp"
             android:text="@string/gender"
-            android:textColor="@color/text_color_grey_dark"
+            android:textColor="@color/txt_aku_blue"
             android:textSize="13sp"
             app:typeface="@string/font_bold" />
 
@@ -82,7 +82,7 @@
             android:gravity="center_vertical"
             android:hint="Select Gender"
             android:maxLines="1"
-            android:textColor="@color/text_dark"
+            android:textColor="@color/txt_aku_blue"
             android:textColorHint="@color/text_hint"
             android:textSize="16sp" />
 
@@ -97,7 +97,7 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="@dimen/x5dp"
             android:text="@string/mr_number"
-            android:textColor="@color/text_color_grey_dark"
+            android:textColor="@color/txt_aku_blue"
             android:textSize="13sp"
             app:typeface="@string/font_bold" />
 
@@ -111,7 +111,7 @@
             android:inputType="number"
             android:maxLength="30"
             android:maxLines="1"
-            android:textColor="@color/text_dark"
+            android:textColor="@color/txt_aku_blue"
             android:textColorHint="@color/text_hint"
             android:textSize="16sp"
             app:testType="nocheck" />
@@ -122,7 +122,7 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="@dimen/x5dp"
             android:text="@string/relationship"
-            android:textColor="@color/text_color_grey_dark"
+            android:textColor="@color/txt_aku_blue"
             android:textSize="13sp"
             app:typeface="@string/font_bold" />
 
@@ -136,7 +136,7 @@
             android:gravity="center_vertical"
             android:hint="Select Relationship"
             android:maxLines="1"
-            android:textColor="@color/text_dark"
+            android:textColor="@color/txt_aku_blue"
             android:textColorHint="@color/text_hint"
             android:textSize="16sp" />
 
@@ -151,7 +151,7 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="@dimen/x5dp"
             android:text="@string/cnic_number"
-            android:textColor="@color/text_color_grey_dark"
+            android:textColor="@color/txt_aku_blue"
             android:textSize="13sp"
             app:typeface="@string/font_bold" />
 
@@ -165,7 +165,7 @@
             android:inputType="number"
             android:maxLength="15"
             android:maxLines="1"
-            android:textColor="@color/text_dark"
+            android:textColor="@color/txt_aku_blue"
             android:textColorHint="@color/text_hint"
             android:textSize="16sp"
             app:testType="nocheck" />
@@ -176,7 +176,7 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="@dimen/x5dp"
             android:text="@string/passport_number"
-            android:textColor="@color/text_color_grey_dark"
+            android:textColor="@color/txt_aku_blue"
             android:textSize="13sp"
             app:typeface="@string/font_bold" />
 
@@ -190,7 +190,7 @@
             android:inputType="numberDecimal"
             android:maxLength="9"
             android:maxLines="1"
-            android:textColor="@color/text_dark"
+            android:textColor="@color/txt_aku_blue"
             android:textColorHint="@color/text_hint"
             android:textSize="16sp"
             app:testType="alphaNumeric" />
@@ -203,7 +203,7 @@
             android:layout_marginBottom="@dimen/x5dp"
 
             android:text="@string/email_address"
-            android:textColor="@color/text_color_grey_dark"
+            android:textColor="@color/txt_aku_blue"
             android:textSize="13sp"
             app:typeface="@string/font_bold" />
 
@@ -217,7 +217,7 @@
             android:inputType="textEmailAddress"
             android:maxLength="30"
             android:maxLines="1"
-            android:textColor="@color/text_dark"
+            android:textColor="@color/txt_aku_blue"
             android:textColorHint="@color/text_hint"
             android:textSize="16sp"
             app:testType="email" />
@@ -229,7 +229,7 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="@dimen/x5dp"
             android:text="@string/mobile_number"
-            android:textColor="@color/text_color_grey_dark"
+            android:textColor="@color/txt_aku_blue"
             android:textSize="13sp"
             app:typeface="@string/font_bold" />
 
@@ -243,7 +243,7 @@
             android:inputType="number"
             android:maxLength="16"
             android:maxLines="1"
-            android:textColor="@color/text_dark"
+            android:textColor="@color/txt_aku_blue"
             android:textColorHint="@color/text_hint"
             android:textSize="16sp"
             app:testType="phone" />
@@ -254,7 +254,7 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="@dimen/x5dp"
             android:text="@string/landline_number"
-            android:textColor="@color/text_color_grey_dark"
+            android:textColor="@color/txt_aku_blue"
             android:textSize="13sp"
             app:typeface="@string/font_bold" />
 
@@ -268,7 +268,7 @@
             android:inputType="number"
             android:maxLength="16"
             android:maxLines="1"
-            android:textColor="@color/text_dark"
+            android:textColor="@color/txt_aku_blue"
             android:textColorHint="@color/text_hint"
             android:textSize="16sp"
             app:testType="phone" />
@@ -290,7 +290,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="@dimen/x5dp"
                     android:text="Attach CNIC Image"
-                    android:textColor="@color/text_color_grey_dark"
+                    android:textColor="@color/txt_aku_blue"
                     android:textSize="13sp"
                     app:typeface="@string/font_bold" />
 
@@ -300,7 +300,7 @@
                     android:layout_width="120dp"
                     android:layout_height="120dp"
                     android:layout_margin="@dimen/x5dp"
-                    android:background="@color/text_color_grey_dark"
+                    android:background="@color/txt_aku_blue"
                     android:scaleType="centerCrop"
                     android:src="@drawable/placeholder" />
 
@@ -312,7 +312,7 @@
                     android:ellipsize="end"
                     android:singleLine="true"
                     android:text=""
-                    android:textColor="@color/text_color_grey_dark"
+                    android:textColor="@color/txt_aku_blue"
                     android:textSize="13sp"
                     app:typeface="@string/font_bold" />
 
@@ -332,7 +332,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="@dimen/x5dp"
                     android:text="Attach Passport Image"
-                    android:textColor="@color/text_color_grey_dark"
+                    android:textColor="@color/txt_aku_blue"
                     android:textSize="13sp"
                     app:typeface="@string/font_bold" />
 
@@ -342,7 +342,7 @@
                     android:layout_width="120dp"
                     android:layout_height="120dp"
                     android:layout_margin="@dimen/x5dp"
-                    android:background="@color/text_color_grey_dark"
+                    android:background="@color/txt_aku_blue"
                     android:scaleType="centerCrop"
                     android:src="@drawable/placeholder" />
 
@@ -354,7 +354,7 @@
                     android:ellipsize="end"
                     android:singleLine="true"
                     android:text=""
-                    android:textColor="@color/text_color_grey_dark"
+                    android:textColor="@color/txt_aku_blue"
                     android:textSize="13sp"
                     app:typeface="@string/font_bold" />
 

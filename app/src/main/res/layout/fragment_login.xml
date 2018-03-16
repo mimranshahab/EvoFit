@@ -54,7 +54,7 @@
                 android:paddingRight="@dimen/x10dp"
                 android:paddingTop="@dimen/x8dp"
                 android:singleLine="true"
-                android:textColor="@color/text_color_grey_dark"
+                android:textColor="@color/txt_aku_blue"
                 android:textColorHint="@color/text_hint"
                 android:textSize="14sp"
                 app:testType="nocheck" />
@@ -76,7 +76,7 @@
                 android:paddingRight="@dimen/x10dp"
                 android:paddingTop="@dimen/x8dp"
                 android:singleLine="true"
-                android:textColor="@color/text_color_grey_dark"
+                android:textColor="@color/txt_aku_blue"
                 android:textColorHint="@color/text_hint"
                 android:textSize="14sp"
                 app:testType="nocheck" />

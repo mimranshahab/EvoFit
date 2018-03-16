@@ -28,7 +28,7 @@
                 android:gravity="center"
                 android:padding="@dimen/x5dp"
                 android:text="Displaying result for Visit ID: "
-                android:textColor="@color/text_dark"
+                android:textColor="@color/txt_aku_blue"
                 android:textSize="@dimen/s16"
                 app:typeface="@string/font_regular" />
 
@@ -57,7 +57,6 @@
                     android:animateLayoutChanges="true"
                     android:padding="@dimen/x7dp"
                     app:cardCornerRadius="@dimen/x10dp"
-                    app:cardElevation="@dimen/x5dp"
 
                     >
 
@@ -131,7 +130,6 @@
                     android:animateLayoutChanges="true"
                     android:padding="@dimen/x7dp"
                     app:cardCornerRadius="@dimen/x10dp"
-                    app:cardElevation="@dimen/x5dp"
 
                     >
 
@@ -207,7 +205,6 @@
                     android:animateLayoutChanges="true"
                     android:padding="@dimen/x7dp"
                     app:cardCornerRadius="@dimen/x10dp"
-                    app:cardElevation="@dimen/x5dp"
 
                     >
 
@@ -294,7 +291,6 @@
                     android:animateLayoutChanges="true"
                     android:padding="@dimen/x7dp"
                     app:cardCornerRadius="@dimen/x10dp"
-                    app:cardElevation="@dimen/x5dp"
 
                     >
 
@@ -370,7 +366,6 @@
                     android:animateLayoutChanges="true"
                     android:padding="@dimen/x7dp"
                     app:cardCornerRadius="@dimen/x10dp"
-                    app:cardElevation="@dimen/x5dp"
 
                     >
 
@@ -443,7 +438,6 @@
                     android:animateLayoutChanges="true"
                     android:padding="@dimen/x7dp"
                     app:cardCornerRadius="@dimen/x10dp"
-                    app:cardElevation="@dimen/x5dp"
 
                     >
 
@@ -529,7 +523,6 @@
                     android:animateLayoutChanges="true"
                     android:padding="@dimen/x7dp"
                     app:cardCornerRadius="@dimen/x10dp"
-                    app:cardElevation="@dimen/x5dp"
 
                     >
 
@@ -603,7 +596,6 @@
                     android:animateLayoutChanges="true"
                     android:padding="@dimen/x7dp"
                     app:cardCornerRadius="@dimen/x10dp"
-                    app:cardElevation="@dimen/x5dp"
 
                     >
 
@@ -672,7 +664,6 @@
                     android:padding="@dimen/x7dp"
                     android:visibility="invisible"
                     app:cardCornerRadius="@dimen/x10dp"
-                    app:cardElevation="@dimen/x5dp"
 
                     >
 
@@ -697,7 +688,6 @@
                     android:animateLayoutChanges="true"
                     android:padding="@dimen/x7dp"
                     app:cardCornerRadius="@dimen/x10dp"
-                    app:cardElevation="@dimen/x5dp"
 
                     >
 
@@ -769,7 +759,6 @@
                     android:animateLayoutChanges="true"
                     android:padding="@dimen/x7dp"
                     app:cardCornerRadius="@dimen/x10dp"
-                    app:cardElevation="@dimen/x5dp"
 
                     >
 
@@ -843,7 +832,6 @@
                     android:animateLayoutChanges="true"
                     android:padding="@dimen/x7dp"
                     app:cardCornerRadius="@dimen/x10dp"
-                    app:cardElevation="@dimen/x5dp"
 
                     >
 

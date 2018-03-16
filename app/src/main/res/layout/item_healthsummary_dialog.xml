@@ -44,7 +44,7 @@
                 android:layout_height="wrap_content"
                 android:padding="@dimen/x5dp"
                 android:text="Date"
-                android:textColor="@color/text_dark"
+                android:textColor="@color/txt_aku_blue"
                 android:textSize="14sp"
                 app:typeface="@string/font_regular" />
 

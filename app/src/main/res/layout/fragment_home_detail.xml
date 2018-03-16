@@ -13,8 +13,9 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:weightSum="4"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:weightSum="4">
+
         <android.support.v7.widget.CardView
             android:layout_width="match_parent"
 
@@ -24,7 +25,6 @@
             android:animateLayoutChanges="true"
             android:padding="@dimen/x7dp"
             app:cardCornerRadius="@dimen/x10dp"
-            app:cardElevation="@dimen/x5dp"
 
 
             >
@@ -43,8 +43,7 @@
                     android:background="@drawable/round_edges_white"
                     android:gravity="center_vertical"
                     android:orientation="horizontal"
-                    android:padding="@dimen/x5dp"
-                    >
+                    android:padding="@dimen/x5dp">
 
 
                     <ImageView
@@ -85,7 +84,6 @@
             android:animateLayoutChanges="true"
             android:padding="@dimen/x7dp"
             app:cardCornerRadius="@dimen/x10dp"
-            app:cardElevation="@dimen/x5dp"
 
             >
 
@@ -149,7 +147,6 @@
             android:animateLayoutChanges="true"
             android:padding="@dimen/x7dp"
             app:cardCornerRadius="@dimen/x10dp"
-            app:cardElevation="@dimen/x5dp"
 
             >
 
@@ -202,7 +199,6 @@
         </android.support.v7.widget.CardView>
 
 
-
         <android.support.v7.widget.CardView
             android:layout_width="match_parent"
 
@@ -212,7 +208,6 @@
             android:animateLayoutChanges="true"
             android:padding="@dimen/x7dp"
             app:cardCornerRadius="@dimen/x10dp"
-            app:cardElevation="@dimen/x5dp"
 
             >
 
