@@ -201,7 +201,7 @@ public class RadiologyFragment extends BaseFragment implements View.OnClickListe
 
     private void serviceCall() {
         SearchModel model = new SearchModel();
-        model.setMRNumber(WebServiceConstants.tempMRN_RADIOLOGY1);
+        model.setMRNumber(WebServiceConstants.tempMRN_RADIOLOGY);
         if (isFromTimeline) {
             model.setVisitID(patientVisitAdmissionID+"");
         } else {

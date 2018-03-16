@@ -11,7 +11,10 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
-        android:layout_margin="@dimen/x10dp"
+        android:layout_marginLeft="@dimen/x20dp"
+        android:layout_marginRight="@dimen/x20dp"
+        android:layout_marginTop="@dimen/x10dp"
+        android:layout_marginBottom="@dimen/x10dp"
         android:animateLayoutChanges="true"
         app:cardCornerRadius="@dimen/x8dp"
         app:cardElevation="@dimen/x3dp"
@@ -48,7 +51,7 @@
                         android:drawableLeft="@drawable/calendar_immunization"
                         android:drawablePadding="@dimen/x5dp"
                         android:text="22 jan ,2018"
-                        android:textSize="@dimen/s14" />
+                        android:textSize="@dimen/s11" />
 
 
                     <edu.aku.akuh_health_first.views.AnyTextView
@@ -62,7 +65,7 @@
                         android:padding="@dimen/x3dp"
                         android:text="Completed"
                         android:textColor="@color/c_white"
-                        android:textSize="@dimen/s16"
+                        android:textSize="@dimen/s13"
                         app:typeface="@string/font_bold" />
 
                 </LinearLayout>
@@ -105,7 +108,7 @@
                             android:padding="@dimen/x2dp"
                             android:text="Hepatitus A "
                             android:textColor="@color/text_color_grey_dark"
-                            android:textSize="@dimen/s16"
+                            android:textSize="@dimen/s13"
                             app:typeface="@string/font_bold" />
 
 
@@ -116,7 +119,7 @@
                             android:padding="@dimen/x2dp"
                             android:text="Dr Abc"
                             android:textColor="@color/text_color_grey_dark"
-                            android:textSize="@dimen/s14"
+                            android:textSize="@dimen/s11"
                             app:typeface="@string/font_regular" />
 
 
@@ -149,7 +152,7 @@
                             android:padding="@dimen/x7dp"
                             android:text="REPORT"
                             android:textColor="@color/c_white"
-                            android:textSize="@dimen/s14"
+                            android:textSize="@dimen/s11"
                             app:typeface="@string/font_bold"
 
                             />
@@ -186,7 +189,7 @@
                             android:padding="@dimen/x7dp"
                             android:text="GRAPH"
                             android:textColor="@color/c_white"
-                            android:textSize="@dimen/s14"
+                            android:textSize="@dimen/s11"
                             app:typeface="@string/font_bold"
 
                             />

@@ -11,7 +11,10 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
-        android:layout_margin="@dimen/x7dp"
+        android:layout_marginLeft="@dimen/x20dp"
+        android:layout_marginRight="@dimen/x20dp"
+        android:layout_marginTop="@dimen/x10dp"
+        android:layout_marginBottom="@dimen/x10dp"
         android:animateLayoutChanges="true"
         app:cardCornerRadius="@dimen/x8dp"
         app:cardElevation="@dimen/x5dp"
@@ -37,7 +40,7 @@
                 android:padding="@dimen/x5dp"
                 android:text="Exam"
                 android:textColor="@color/text_color_grey_dark"
-                android:textSize="@dimen/s14"
+                android:textSize="@dimen/s11"
                 app:typeface="@string/font_regular" />
 
             <edu.aku.akuh_health_first.views.AnyTextView
@@ -50,7 +53,7 @@
                 android:padding="@dimen/x5dp"
                 android:text="Exam Order Number"
                 android:textColor="@color/text_color_grey_dark"
-                android:textSize="@dimen/s14"
+                android:textSize="@dimen/s11"
                 app:typeface="@string/font_regular" />
 
             <edu.aku.akuh_health_first.views.AnyTextView
@@ -63,7 +66,7 @@
                 android:padding="@dimen/x5dp"
                 android:text="DateTime"
                 android:textColor="@color/text_color_grey_dark"
-                android:textSize="@dimen/s14"
+                android:textSize="@dimen/s11"
                 app:typeface="@string/font_regular" />
 
 
@@ -77,7 +80,7 @@
                 android:padding="@dimen/x5dp"
                 android:text="Status"
                 android:textColor="@color/text_color_grey_dark"
-                android:textSize="@dimen/s14"
+                android:textSize="@dimen/s11"
                 app:typeface="@string/font_regular" />
 
             <LinearLayout
@@ -98,7 +101,7 @@
                     app:typeface="@string/font_bold"
                     android:textAllCaps="false"
                     android:textColor="@color/c_white"
-                    android:textSize="@dimen/s14"
+                    android:textSize="@dimen/s11"
                     android:visibility="visible" />
 
                 <edu.aku.akuh_health_first.views.AnyTextView
@@ -115,7 +118,7 @@
 
                     android:textAllCaps="false"
                     android:textColor="@color/c_white"
-                    android:textSize="@dimen/s14"
+                    android:textSize="@dimen/s11"
                     android:visibility="visible" />
 
 

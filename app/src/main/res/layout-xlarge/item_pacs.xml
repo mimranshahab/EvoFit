@@ -11,7 +11,10 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_centerInParent="true"
-        android:layout_margin="@dimen/x5dp"
+        android:layout_marginLeft="@dimen/x20dp"
+        android:layout_marginRight="@dimen/x20dp"
+        android:layout_marginBottom="@dimen/x10dp"
+        android:layout_marginTop="@dimen/x10dp"
         android:animateLayoutChanges="true"
         android:padding="@dimen/x2dp"
         card_view:cardCornerRadius="5dp"
@@ -32,7 +35,7 @@
                 android:scaleType="centerCrop"
                 android:padding="@dimen/x3dp"
 
-                android:src="@drawable/male_icon" />
+                android:src="@drawable/placeholder" />
 
 
             <LinearLayout
@@ -53,7 +56,7 @@
                     android:gravity="center_vertical"
                     android:text="patientMRN"
                     android:padding="@dimen/x3dp"
-                    android:textColor="@color/c_grayasparagus"
+                    android:textColor="@color/text_color_grey_dark"
                     android:textSize="@dimen/s14"
                     app:typeface="@string/font_regular" />
 
@@ -65,7 +68,7 @@
                     android:drawablePadding="@dimen/x5dp"
                     android:gravity="center_vertical"
                     android:text="studyDataDateTime "
-                    android:textColor="@color/c_grayasparagus"
+                    android:textColor="@color/text_color_grey_dark"
                     android:textSize="@dimen/s14"
                     android:padding="@dimen/x3dp"
 
@@ -76,13 +79,13 @@
                     android:id="@+id/txtstudyDataCount"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:drawableLeft="@drawable/radiology_report_title"
+                    android:drawableLeft="@drawable/radiology_images"
                     android:drawablePadding="@dimen/x5dp"
                     android:gravity="center_vertical"
                     android:text="studyDataCount"
                     android:padding="@dimen/x3dp"
 
-                    android:textColor="@color/c_grayasparagus"
+                    android:textColor="@color/text_color_grey_dark"
                     android:textSize="@dimen/s14"
                     app:typeface="@string/font_regular" />
 
