@@ -9,6 +9,8 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.CheckBox;
+import android.widget.CompoundButton;
 import android.widget.Spinner;
 
 import com.google.gson.JsonObject;
@@ -64,6 +66,8 @@ public class AddUpdateMedicationFragment extends BaseFragment {
     AnyTextView txtStopDateTime;
     @BindView(R.id.btnSave)
     Button btnSave;
+    @BindView(R.id.chkLifeTimeMedication)
+    CheckBox chkLifeTimeMedication;
     Unbinder unbinder;
     private boolean isFromAdd;
     private ArrayList<String> arrFrequency;
@@ -163,6 +167,19 @@ public class AddUpdateMedicationFragment extends BaseFragment {
                 stopDateInMillis = calendar.getTimeInMillis();
             }
         };
+
+        chkLifeTimeMedication.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
+                if (b) {
+                    txtStartDateTime.setEnabled(false);
+                    txtStopDateTime.setEnabled(false);
+                } else {
+                    txtStartDateTime.setEnabled(true);
+                    txtStopDateTime.setEnabled(true);
+                }
+            }
+        });
 
     }
 
@@ -300,37 +317,10 @@ public class AddUpdateMedicationFragment extends BaseFragment {
             }
 
 
-            if (txtStartDateTime.getText().toString().isEmpty()) {
-                txtStartDateTime.setError("Please Select Start Date");
-                UIHelper.showToast(getContext(), "Please Select Start Date");
-
-                return;
+            if (chkLifeTimeMedication.isChecked()) {
+                addMedicineData(true);
             } else {
-                txtStartDateTime.setError(null);
-            }
-
-            if (txtStopDateTime.getText().toString().isEmpty()) {
-                txtStopDateTime.setError("Please Select Stop Date");
-                UIHelper.showToast(getContext(), "Please Select Stop Date");
-
-                return;
-            } else {
-                txtStopDateTime.setError(null);
-            }
-
-
-            if (startDateInMillis < stopDateInMillis) {
-                AddNewMedicine addNewMedicine = new AddNewMedicine();
-                addNewMedicine.setLastFileterminal("MOBILE");
-                addNewMedicine.setMrnumber(WebServiceConstants.tempMRN_immunization);
-                addNewMedicine.setRxmedfrequencyid(frequencyIDandDescriptions.get(txtFrequencyDesc.getStringTrimmed()));
-                addNewMedicine.setRxmedmedication(edtMedicineName.getStringTrimmed());
-                addNewMedicine.setRxmedroute(routeIDandDescriptions.get(txtRouteId.getStringTrimmed()));
-                addNewMedicine.setRxmedstartdatetime(txtStartDateTime.getStringTrimmed());
-                addNewMedicine.setRxmedstopdatetime(txtStopDateTime.getStringTrimmed());
-                addMedicineService(addNewMedicine.toString());
-            } else {
-                UIHelper.showToast(getContext(), "Start Date Time should be smaller than Stop Date Time.");
+                dateValidations();
             }
 
 
@@ -339,32 +329,56 @@ public class AddUpdateMedicationFragment extends BaseFragment {
 
     }
 
+    private void dateValidations() {
+        if (txtStartDateTime.getText().toString().isEmpty()) {
+            txtStartDateTime.setError("Please Select Start Date");
+            UIHelper.showToast(getContext(), "Please Select Start Date");
+
+            return;
+        } else {
+            txtStartDateTime.setError(null);
+        }
+
+        if (txtStopDateTime.getText().toString().isEmpty()) {
+            txtStopDateTime.setError("Please Select Stop Date");
+            UIHelper.showToast(getContext(), "Please Select Stop Date");
+
+            return;
+        } else {
+            txtStopDateTime.setError(null);
+        }
+
+
+        if (startDateInMillis < stopDateInMillis) {
+            addMedicineData(false);
+        } else {
+            UIHelper.showToast(getContext(), "Start Date Time should be smaller than Stop Date Time.");
+        }
+    }
+
+    private void addMedicineData(boolean isLifeTime) {
+        AddNewMedicine addNewMedicine = new AddNewMedicine();
+        addNewMedicine.setLastFileterminal("MOBILE");
+        addNewMedicine.setMrnumber(WebServiceConstants.tempMRN_immunization);
+        addNewMedicine.setRxmedfrequencyid(frequencyIDandDescriptions.get(txtFrequencyDesc.getStringTrimmed()));
+        addNewMedicine.setRxmedmedication(edtMedicineName.getStringTrimmed());
+        addNewMedicine.setRxmedroute(routeIDandDescriptions.get(txtRouteId.getStringTrimmed()));
+        addNewMedicine.setLifeTimeMedicine(isLifeTime);
+
+        if (isLifeTime) {
+            addNewMedicine.setRxmedstartdatetime("");
+            addNewMedicine.setRxmedstopdatetime("");
+        } else {
+            addNewMedicine.setRxmedstartdatetime(txtStartDateTime.getStringTrimmed());
+            addNewMedicine.setRxmedstopdatetime(txtStopDateTime.getStringTrimmed());
+        }
+        addMedicineService(addNewMedicine.toString());
+    }
+
 
     private void addMedicineService(String jsonData) {
         new WebServices(getBaseActivity(), WebServiceConstants.temporaryToken, BaseURLTypes.AHFA_BASE_URL)
                 .webServiceRequestAPIForJsonObject(WebServiceConstants.METHOD_ADD_MEDICINE,
-                        jsonData,
-                        new WebServices.IRequestJsonDataCallBack() {
-                            @Override
-                            public void requestDataResponse(WebResponse<JsonObject> webResponse) {
-                                AddUpdateVaccineModel addUpdateVaccineModel = GsonFactory.getSimpleGson().fromJson(webResponse.result, AddUpdateVaccineModel.class);
-                                if (addUpdateVaccineModel.getStatus()) {
-                                    popBackStack();
-                                }
-                                UIHelper.showToast(getContext(), addUpdateVaccineModel.getMessage());
-                            }
-
-                            @Override
-                            public void onError() {
-
-                            }
-                        });
-    }
-
-
-    private void updateVaccine(String jsonData) {
-        new WebServices(getBaseActivity(), WebServiceConstants.temporaryToken, BaseURLTypes.AHFA_BASE_URL)
-                .webServiceRequestAPIForJsonObject(WebServiceConstants.METHOD_IMMUNIZATION_UPDATE_VACCINE,
                         jsonData,
                         new WebServices.IRequestJsonDataCallBack() {
                             @Override

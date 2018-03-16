@@ -162,6 +162,17 @@
                         android:textSize="@dimen/s14" />
 
 
+                    <CheckBox
+                        android:id="@+id/chkLifeTimeMedication"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="@dimen/x10dp"
+                        android:layout_marginTop="@dimen/x10dp"
+                        android:text="Life Time Medication"
+                        android:textColor="@color/text_dark"
+                        android:textSize="@dimen/s14" />
+
+
                 </LinearLayout>
 
 
@@ -178,7 +189,7 @@
 
             <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/x30dp">
 
                 <Spinner
@@ -194,7 +205,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="0dp"
                     android:layout_centerHorizontal="true"
-                     android:layout_gravity="center_horizontal" />
+                    android:layout_gravity="center_horizontal" />
 
             </RelativeLayout>
 

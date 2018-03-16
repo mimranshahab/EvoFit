@@ -29,13 +29,14 @@
             android:id="@+id/empty_view"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@color/colorSheetDivider"
+            android:background="@color/c_ghost_white"
             android:gravity="center"
             android:text="No item Found"
             android:textColor="@color/c_black"
             android:textSize="@dimen/s22"
+            android:padding="@dimen/x10dp"
             android:visibility="gone"
-            app:typeface="@string/font_bold" />
+            app:typeface="@string/font_regular" />
 
         <edu.aku.akuh_health_first.views.AnyEditTextView
             android:id="@+id/edtSearchBar"
@@ -63,7 +64,7 @@
             android:padding="@dimen/x8dp"
             android:src="@drawable/plus"
             android:visibility="gone"
-            app:fab_colorNormal="@color/colorPrimary"
+             app:fab_colorNormal="@color/colorPrimary"
             app:fab_colorPressed="@color/colorPrimaryDark"
             app:fab_colorRipple="@color/base_amber" />
     </RelativeLayout>

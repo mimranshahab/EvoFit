@@ -35,7 +35,7 @@
                 android:background="@drawable/rounded_box_item_background"
                 android:gravity="center_vertical"
                 android:orientation="vertical"
-                android:padding="@dimen/x7dp">
+                android:padding="@dimen/x5dp">
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -51,7 +51,7 @@
                         android:drawableLeft="@drawable/calendar_immunization"
                         android:drawablePadding="@dimen/x5dp"
                         android:text="22 jan ,2018"
-                        android:textSize="@dimen/s11" />
+                        android:textSize="@dimen/s10" />
 
 
                     <edu.aku.akuh_health_first.views.AnyTextView
@@ -65,7 +65,7 @@
                         android:padding="@dimen/x3dp"
                         android:text="Completed"
                         android:textColor="@color/c_white"
-                        android:textSize="@dimen/s13"
+                        android:textSize="@dimen/s12"
                         app:typeface="@string/font_bold" />
 
                 </LinearLayout>
@@ -81,12 +81,12 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal"
-                    android:padding="@dimen/x5dp">
+                    android:padding="@dimen/x3dp">
 
                     <de.hdodenhof.circleimageview.CircleImageView
                         android:id="@+id/imgIcon"
-                        android:layout_width="@dimen/x70dp"
-                        android:layout_height="@dimen/x70dp"
+                        android:layout_width="@dimen/x55dp"
+                        android:layout_height="@dimen/x55dp"
                         android:layout_margin="@dimen/x5dp"
                         android:scaleType="centerCrop"
                         android:src="@drawable/cardiopulmonary_green" />
@@ -109,7 +109,7 @@
                             android:text="Hepatitus A "
                             android:maxLines="1"
                             android:textColor="@color/text_color_grey_dark"
-                            android:textSize="@dimen/s13"
+                            android:textSize="@dimen/s12"
                             app:typeface="@string/font_bold" />
 
 
@@ -122,7 +122,7 @@
                             android:drawableLeft="@drawable/cardiopulmonary_doctor"
                             android:text="Dr Abc"
                             android:textColor="@color/text_color_grey_dark"
-                            android:textSize="@dimen/s11"
+                            android:textSize="@dimen/s10"
                             app:typeface="@string/font_regular" />
 
 
