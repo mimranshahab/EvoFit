@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/contParentLayout"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/c_white"
+    android:orientation="vertical">
+
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/view_seperator_width"
+        android:background="@color/seperator_light_gray"
+        android:paddingLeft="@dimen/x10dp"
+        android:paddingRight="@dimen/x10dp" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="@dimen/x5dp"
+        android:padding="@dimen/x10dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <CheckBox
+                android:id="@+id/checkbox"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                 android:clickable="false"
+                android:padding="@dimen/x2dp" />
+
+            <edu.aku.akuh_health_first.views.AnyTextView
+                android:id="@+id/txtChoice"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:ellipsize="end"
+                android:gravity="center_vertical"
+                android:lines="2"
+                android:maxLines="2"
+                android:padding="@dimen/x5dp"
+                android:text="Choice"
+                android:textColor="@color/text_dark"
+                android:textSize="@dimen/s14"
+                app:typeface="@string/font_regular" />
+
+
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+
+</LinearLayout>

@@ -8,7 +8,7 @@
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@drawable/test2"
+        android:background="@color/c_white"
         android:fillViewport="true">
 
         <RelativeLayout
@@ -186,30 +186,6 @@
                     android:textColor="@color/c_white" />
 
             </LinearLayout>
-
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/x30dp">
-
-                <Spinner
-                    android:id="@+id/spFrequencyDesc"
-                    android:layout_width="wrap_content"
-                    android:layout_height="0dp"
-                    android:layout_centerHorizontal="true"
-                    android:layout_gravity="center_horizontal" />
-
-
-                <Spinner
-                    android:id="@+id/spRouteId"
-                    android:layout_width="wrap_content"
-                    android:layout_height="0dp"
-                    android:layout_centerHorizontal="true"
-                    android:layout_gravity="center_horizontal" />
-
-            </RelativeLayout>
-
-
         </RelativeLayout>
 
     </ScrollView>

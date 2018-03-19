@@ -16,7 +16,9 @@ import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 import android.widget.TextView;
 
+import edu.aku.akuh_health_first.R;
 import edu.aku.akuh_health_first.activities.BaseActivity;
+import edu.aku.akuh_health_first.adapters.MySpinnerAdapter;
 import edu.aku.akuh_health_first.callbacks.OnNewPacketReceivedListener;
 import edu.aku.akuh_health_first.constatnts.AppConstants;
 import edu.aku.akuh_health_first.helperclasses.ui.helper.KeyboardHide;
@@ -98,6 +100,8 @@ public abstract class BaseFragment extends Fragment implements View.OnClickListe
             }
         });
     }
+
+
 
 
     protected abstract int getFragmentLayout();

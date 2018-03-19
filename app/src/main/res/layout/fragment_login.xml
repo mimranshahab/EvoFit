@@ -96,75 +96,86 @@
                 android:textSize="17sp"
                 app:typeface="@string/font_bold" />
 
-
             <LinearLayout
+                android:id="@+id/contRegistration"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="@dimen/x10dp"
-                android:alpha="0.5"
-                android:gravity="center">
+                android:orientation="vertical"
+                android:gravity="center"
+                android:visibility="gone"
+                android:layout_height="wrap_content">
 
-                <ImageView
-                    android:layout_width="0dp"
-                    android:layout_height="2px"
-                    android:layout_weight="1"
-                    android:alpha="0.8"
-                    android:src="@color/c_black" />
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="@dimen/x10dp"
+                    android:alpha="0.5"
+                    android:gravity="center">
+
+                    <ImageView
+                        android:layout_width="0dp"
+                        android:layout_height="2px"
+                        android:layout_weight="1"
+                        android:alpha="0.8"
+                        android:src="@color/c_black" />
+
+                    <com.ctrlplusz.anytextview.AnyTextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:padding="@dimen/x10dp"
+                        android:text="OR"
+                        android:textColor="#004F72"
+                        android:textSize="16sp"
+                        app:typeface="@string/font_bold" />
+
+                    <ImageView
+                        android:layout_width="0dp"
+                        android:layout_height="2px"
+                        android:layout_weight="1"
+                        android:alpha="0.8"
+                        android:src="@color/c_black" />
+
+                </LinearLayout>
+
 
                 <com.ctrlplusz.anytextview.AnyTextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:padding="@dimen/x10dp"
-                    android:text="OR"
+                    android:layout_marginBottom="@dimen/x15dp"
+                    android:gravity="center_horizontal"
+                    android:text="Don't have an account?"
                     android:textColor="#004F72"
-                    android:textSize="16sp"
+                    android:textSize="@dimen/s14"
+                    app:typeface="@string/font_regular" />
+
+
+                <com.ctrlplusz.anytextview.AnyTextView
+                    android:id="@+id/txtSignUp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="@dimen/x15dp"
+                    android:drawablePadding="@dimen/x5dp"
+                    android:drawableRight="@drawable/signup"
+                    android:gravity="center"
+                    android:text="Sign Up"
+                    android:textColor="#004F72"
+                    android:textSize="@dimen/s23"
+                    android:visibility="gone"
                     app:typeface="@string/font_bold" />
 
-                <ImageView
-                    android:layout_width="0dp"
-                    android:layout_height="2px"
-                    android:layout_weight="1"
-                    android:alpha="0.8"
-                    android:src="@color/c_black" />
 
+                <com.ctrlplusz.anytextview.AnyTextView
+                    android:id="@+id/txtForgotPassword"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:alpha="0.8"
+                    android:text="@string/forgot_password"
+                    android:textColor="@color/c_white"
+                    android:textSize="@dimen/s14"
+                    app:typeface="@string/font_bold" />
             </LinearLayout>
 
-
-            <com.ctrlplusz.anytextview.AnyTextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="@dimen/x15dp"
-                android:gravity="center_horizontal"
-                android:text="Don't have an account?"
-                android:textColor="#004F72"
-                android:textSize="@dimen/s14"
-                app:typeface="@string/font_regular" />
-
-
-            <com.ctrlplusz.anytextview.AnyTextView
-                android:id="@+id/txtSignUp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="@dimen/x15dp"
-                android:drawablePadding="@dimen/x5dp"
-                android:drawableRight="@drawable/signup"
-                android:gravity="center"
-                android:text="Sign Up"
-                android:textColor="#004F72"
-                android:textSize="@dimen/s23"
-                android:visibility="gone"
-                app:typeface="@string/font_bold" />
-
-
-            <com.ctrlplusz.anytextview.AnyTextView
-                android:id="@+id/txtForgotPassword"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:alpha="0.8"
-                android:text="@string/forgot_password"
-                android:textColor="@color/c_white"
-                android:textSize="@dimen/s14"
-                app:typeface="@string/font_bold" />
 
         </LinearLayout>
 

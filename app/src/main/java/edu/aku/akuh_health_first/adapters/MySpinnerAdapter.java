@@ -43,7 +43,7 @@ public class MySpinnerAdapter extends ArrayAdapter<RegisterOptionsModel> {
     }
 
     private View initialSelection(boolean dropdown) {
-        // Just an example using a simple TextView. Create whatever default view 
+        // Just an example using a simple TextView. Create whatever default view
         // to suit your needs, inflating a separate layout if it's cleaner.
         TextView view = new TextView(getContext());
         view.setText("select please");

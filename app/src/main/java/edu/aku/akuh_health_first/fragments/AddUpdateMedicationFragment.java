@@ -3,6 +3,7 @@ package edu.aku.akuh_health_first.fragments;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.widget.DrawerLayout;
+import android.util.MutableInt;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -38,7 +39,9 @@ import edu.aku.akuh_health_first.managers.retrofit.WebServices;
 import edu.aku.akuh_health_first.models.AddNewMedicine;
 import edu.aku.akuh_health_first.models.FrequencyIDsModel;
 import edu.aku.akuh_health_first.models.ImmunizationModel;
+import edu.aku.akuh_health_first.models.IntWrapper;
 import edu.aku.akuh_health_first.models.MedicationProfileModel;
+import edu.aku.akuh_health_first.models.SpinnerModel;
 import edu.aku.akuh_health_first.models.receiving_model.AddUpdateVaccineModel;
 import edu.aku.akuh_health_first.models.wrappers.WebResponse;
 import edu.aku.akuh_health_first.views.AnyEditTextView;
@@ -54,12 +57,8 @@ public class AddUpdateMedicationFragment extends BaseFragment {
     AnyEditTextView edtMedicineName;
     @BindView(R.id.txtFrequencyDesc)
     AnyTextView txtFrequencyDesc;
-    @BindView(R.id.spFrequencyDesc)
-    Spinner spFrequencyDesc;
     @BindView(R.id.txtRouteId)
     AnyTextView txtRouteId;
-    @BindView(R.id.spRouteId)
-    Spinner spRouteId;
     @BindView(R.id.txtStartDateTime)
     AnyTextView txtStartDateTime;
     @BindView(R.id.txtStopDateTime)
@@ -70,9 +69,9 @@ public class AddUpdateMedicationFragment extends BaseFragment {
     CheckBox chkLifeTimeMedication;
     Unbinder unbinder;
     private boolean isFromAdd;
-    private ArrayList<String> arrFrequency;
-    private ArrayList<String> arrRouteIDs;
-    private ArrayAdapter adapterVaccine;
+    private ArrayList<SpinnerModel> arrFrequency;
+    private ArrayList<SpinnerModel> arrRouteIDs;
+    private ArrayAdapter adapterFrequency;
     private ArrayAdapter adapterRoute;
     private MedicationProfileModel medicationProfileModel;
 
@@ -84,6 +83,9 @@ public class AddUpdateMedicationFragment extends BaseFragment {
 
     long startDateInMillis;
     long stopDateInMillis;
+
+    private IntWrapper freqPosition = new IntWrapper(-1);
+    private IntWrapper routePosition = new IntWrapper(-1);
 
     public static AddUpdateMedicationFragment newInstance(boolean isFromAdd, MedicationProfileModel medicationProfileModel) {
 
@@ -101,8 +103,6 @@ public class AddUpdateMedicationFragment extends BaseFragment {
         super.onCreate(savedInstanceState);
         arrFrequency = new ArrayList<>();
         arrRouteIDs = new ArrayList<>();
-        adapterVaccine = new ArrayAdapter<String>(getBaseActivity(), android.R.layout.simple_list_item_1, arrFrequency);
-        adapterRoute = new ArrayAdapter<String>(getBaseActivity(), android.R.layout.simple_list_item_1, arrRouteIDs);
     }
 
     @Override
@@ -219,11 +219,9 @@ public class AddUpdateMedicationFragment extends BaseFragment {
 
                                 for (FrequencyIDsModel model : arrayList) {
                                     frequencyIDandDescriptions.put(model.getRxmedfrequencydescription(), model.getRxmedfrequencyid());
-                                    arrFrequency.add(model.getRxmedfrequencydescription());
+                                    arrFrequency.add(new SpinnerModel(model.getRxmedfrequencydescription()));
                                 }
 
-
-                                setSpinner(adapterVaccine, txtFrequencyDesc, spFrequencyDesc);
                             }
 
                             @Override
@@ -254,10 +252,9 @@ public class AddUpdateMedicationFragment extends BaseFragment {
 
                                 for (ImmunizationModel model : arrayList) {
                                     routeIDandDescriptions.put(model.getDescription(), model.getRouteID());
-                                    arrRouteIDs.add(model.getDescription());
+                                    arrRouteIDs.add(new SpinnerModel(model.getDescription()));
                                 }
 
-                                setSpinner(adapterRoute, txtRouteId, spRouteId);
                             }
 
                             @Override
@@ -273,11 +270,12 @@ public class AddUpdateMedicationFragment extends BaseFragment {
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.txtFrequencyDesc:
-                spFrequencyDesc.performClick();
+                UIHelper.showSpinnerDialog(this, arrFrequency, "Select Frequency", txtFrequencyDesc, null, freqPosition);
                 break;
 
             case R.id.txtRouteId:
-                spRouteId.performClick();
+                UIHelper.showSpinnerDialog(this, arrRouteIDs, "Select Route", txtRouteId, null, routePosition);
+
                 break;
             case R.id.txtStartDateTime:
                 DateManager.showDateTimePicker(getContext(), txtStartDateTime, onCalendarUpdateStartDate, false);
@@ -297,57 +295,27 @@ public class AddUpdateMedicationFragment extends BaseFragment {
     private void saveButtonPressed() {
         if (edtMedicineName.testValidity()) {
 
-            // FIXME: 3/7/2018 for time commenting this.
             if (txtFrequencyDesc.getText().toString().isEmpty()) {
-                txtFrequencyDesc.setError("Please Select Frequency");
                 UIHelper.showToast(getContext(), "Please Select Frequency");
-                return;
-            } else {
-                txtFrequencyDesc.setError(null);
-            }
-
-
-            if (txtRouteId.getText().toString().isEmpty()) {
-                txtRouteId.setError("Please Select Route");
+            } else if (txtRouteId.getText().toString().isEmpty()) {
                 UIHelper.showToast(getContext(), "Please Select Route");
-
-                return;
-            } else {
-                txtRouteId.setError(null);
-            }
-
-
-            if (chkLifeTimeMedication.isChecked()) {
+            } else if (chkLifeTimeMedication.isChecked()) {
                 addMedicineData(true);
             } else {
                 dateValidations();
             }
-
-
         }
-
-
     }
 
     private void dateValidations() {
         if (txtStartDateTime.getText().toString().isEmpty()) {
-            txtStartDateTime.setError("Please Select Start Date");
-            UIHelper.showToast(getContext(), "Please Select Start Date");
-
+             UIHelper.showToast(getContext(), "Please Select Start Date");
             return;
-        } else {
-            txtStartDateTime.setError(null);
         }
-
         if (txtStopDateTime.getText().toString().isEmpty()) {
-            txtStopDateTime.setError("Please Select Stop Date");
             UIHelper.showToast(getContext(), "Please Select Stop Date");
-
             return;
-        } else {
-            txtStopDateTime.setError(null);
         }
-
 
         if (startDateInMillis < stopDateInMillis) {
             addMedicineData(false);

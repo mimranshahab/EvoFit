@@ -494,10 +494,11 @@ public class WebServices {
                     @Override
                     public void onResponse(Call<Object> call, Response<Object> response) {
                         dismissDialog();
-                        if (response != null && response.body() != null) {
+                        if (response.body() != null) {
 //                            if (!response.body()) {
 //                                callBack.requestDataResponse(response.body());
 //                            }
+                            UIHelper.showToast(mContext, response.body().toString());
 
                         } else {
                             UIHelper.showToast(mContext, "Null Response");
