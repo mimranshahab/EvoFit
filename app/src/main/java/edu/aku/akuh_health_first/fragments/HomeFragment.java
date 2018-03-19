@@ -113,7 +113,7 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener, 
 
     private void setData() {
 
-ImageLoaderHelper.loadImageWithConstantHeaders(getContext(), imgUser, subscriber.);
+        ImageLoaderHelper.loadImageWithConstantHeaders(getContext(), imgUser, subscriber.getProfileImage());
         txtName.setText(subscriber.getName());
         txtGenderAge.setText(subscriber.getGenderDescription() + "/" + subscriber.getAge());
         txtMRN.setText(subscriber.getMRNumber());
