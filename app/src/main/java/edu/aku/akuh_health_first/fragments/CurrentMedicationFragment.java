@@ -38,6 +38,7 @@ import edu.aku.akuh_health_first.managers.retrofit.GsonFactory;
 import edu.aku.akuh_health_first.managers.retrofit.WebServices;
 import edu.aku.akuh_health_first.models.MedicationProfileModel;
 import edu.aku.akuh_health_first.models.SearchModel;
+import edu.aku.akuh_health_first.models.receiving_model.AddUpdateVaccineModel;
 import edu.aku.akuh_health_first.models.wrappers.WebResponse;
 import edu.aku.akuh_health_first.views.AnyTextView;
 
@@ -99,8 +100,15 @@ public class CurrentMedicationFragment extends BaseFragment implements View.OnCl
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         bindView();
-        serviceCall();
-        mFab.setVisibility(View.VISIBLE);
+
+        if (!sharedPreferenceManager.getCurrentUser().getVisitDetail().getIsPatientExists()) {
+            serviceCall();
+            mFab.setVisibility(View.VISIBLE);
+        } else {
+            showEmptyView("No Current Medication since patient is onBoard");
+            mFab.setVisibility(View.GONE);
+        }
+
     }
 
 
@@ -172,6 +180,7 @@ public class CurrentMedicationFragment extends BaseFragment implements View.OnCl
 
 
     private void serviceCall() {
+
         // FIXME: 1/18/2018 Use live data in future
         SearchModel model = new SearchModel();
         model.setMRNumber(WebServiceConstants.tempMRN_immunization);
@@ -203,7 +212,7 @@ public class CurrentMedicationFragment extends BaseFragment implements View.OnCl
                                     } else if (arrayList.get(0).getMedicineexceedlimit()) {
                                         showView();
                                         mFab.setVisibility(View.VISIBLE);
-                                         mFab.setLabelVisibility(View.VISIBLE);
+                                        mFab.setLabelVisibility(View.VISIBLE);
                                         mFab.setEnabled(false);
                                         UIHelper.showToast(getContext(), "Medication Limit Exceed.");
                                     } else {

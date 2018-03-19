@@ -101,6 +101,7 @@ public class WebServiceConstants {
     public static final String METHOD_PREVIOUS_MEDICATION = "PharmacyManager.GetPreviousProfileMedications";
     public static final String METHOD_ADD_MEDICINE = "PharmacyManager.AddMedicine";
     public static final String METHOD_FREQUENCY_IDS = "PharmacyManager.GetFrequencyIDs";
+    public static final String METHOD_PATIENT_ON_BOARD = "PatientManager.IsPatientOnBoard";
 
     public static final String METHOD_PATIENT_HEALTH_SUMMARY = "SharedManager.GetPatientHealthSummary";
     public static final String METHOD_DETAIL_HEALTH_SUMMARY = "SharedManager.GetHealthSummary";
