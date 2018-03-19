@@ -9,6 +9,7 @@ import com.nostra13.universalimageloader.core.DisplayImageOptions;
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.nostra13.universalimageloader.core.assist.ImageScaleType;
 import com.nostra13.universalimageloader.core.display.FadeInBitmapDisplayer;
+import com.nostra13.universalimageloader.core.display.RoundedBitmapDisplayer;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -17,6 +18,7 @@ import edu.aku.akuh_health_first.R;
 import edu.aku.akuh_health_first.activities.BaseActivity;
 import edu.aku.akuh_health_first.constatnts.WebServiceConstants;
 
+import static edu.aku.akuh_health_first.constatnts.WebServiceConstants.GETIMAGE_BASE_URL;
 import static edu.aku.akuh_health_first.constatnts.WebServiceConstants.METHOD_USER_GET_USER_IMAGE;
 
 /**
@@ -33,11 +35,11 @@ public class ImageLoaderHelper {
     }
 
     public static String getImageURL(String path, String requestMethod) {
-        return "http://ahfapidev.aku.edu/getimage?path=" + path + "&requestmethod=" + requestMethod;
+        return GETIMAGE_BASE_URL + path + "&requestmethod=" + requestMethod;
     }
 
     public static String getUserImageURL(String path) {
-        return "http://ahfapidev.aku.edu/getimage?path=" + path + "&requestmethod=" + METHOD_USER_GET_USER_IMAGE;
+        return GETIMAGE_BASE_URL + path + "&requestmethod=" + METHOD_USER_GET_USER_IMAGE;
     }
 
     public static DisplayImageOptions getOptionsSimple() {
@@ -66,7 +68,7 @@ public class ImageLoaderHelper {
                 .showImageForEmptyUri(R.color.base_grey)
                 .showImageOnFail(R.drawable.placeholder)
                 .showImageOnLoading(R.drawable.placeholder)
-                .imageScaleType(ImageScaleType.EXACTLY).displayer(new FadeInBitmapDisplayer(300)).build();
+                .imageScaleType(ImageScaleType.EXACTLY).displayer(new FadeInBitmapDisplayer(1000)).build();
     }
 
 
@@ -77,6 +79,6 @@ public class ImageLoaderHelper {
                 .showImageOnFail(R.drawable.placeholder)
                 .showImageOnLoading(R.drawable.placeholder)
                 .extraForDownloader(headers)
-                .imageScaleType(ImageScaleType.EXACTLY).displayer(new FadeInBitmapDisplayer(300)).build();
+                .imageScaleType(ImageScaleType.EXACTLY).displayer(new FadeInBitmapDisplayer(1000)).build();
     }
 }

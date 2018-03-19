@@ -35,13 +35,15 @@ import edu.aku.akuh_health_first.managers.DateManager;
 import edu.aku.akuh_health_first.managers.retrofit.GsonFactory;
 import edu.aku.akuh_health_first.managers.retrofit.WebServices;
 import edu.aku.akuh_health_first.models.ImmunizationModel;
+import edu.aku.akuh_health_first.models.IntWrapper;
+import edu.aku.akuh_health_first.models.SpinnerModel;
 import edu.aku.akuh_health_first.models.receiving_model.AddUpdateVaccineModel;
 import edu.aku.akuh_health_first.models.wrappers.WebResponse;
 import edu.aku.akuh_health_first.views.AnyEditTextView;
 import edu.aku.akuh_health_first.views.AnyTextView;
 
 /**
- * Created by aqsa.sarwar on 2/8/2018.
+ * Created by hamza.ahmed on 2/8/2018.
  */
 
 public class AddUpdateVaccineFragment extends BaseFragment {
@@ -49,11 +51,6 @@ public class AddUpdateVaccineFragment extends BaseFragment {
     AnyTextView txtVaccinatedDate;
     @BindView(R.id.txtVaccinationPlanDate)
     AnyTextView txtVaccinationPlanDate;
-    @BindView(R.id.spVaccine)
-    Spinner spVaccine;
-    @BindView(R.id.spRouteId)
-    Spinner spRouteId;
-    Unbinder unbinder;
     @BindView(R.id.txtVaccine)
     AnyTextView txtVaccine;
     @BindView(R.id.txtRouteId)
@@ -62,18 +59,24 @@ public class AddUpdateVaccineFragment extends BaseFragment {
     AnyEditTextView txtVaccineLocation;
     @BindView(R.id.btnSave)
     Button btnSave;
+
+    Unbinder unbinder;
+
     private boolean isFromAdd;
-    private ArrayList<String> arrVaccine;
-    private ArrayList<String> arrRouteIDs;
+    private ArrayList<SpinnerModel> arrVaccine;
+    private ArrayList<SpinnerModel> arrRouteIDs;
     private ArrayAdapter adapterVaccine;
     private ArrayAdapter adapterRoute;
     private ImmunizationModel immunizationModel;
 
     HashMap<String, String> vaccineIDandDescriptions = new HashMap<String, String>();
     HashMap<String, String> routeIDandDescriptions = new HashMap<String, String>();
-    private ArrayList<String> arrUsedVaccineDes;
+    private ArrayList<SpinnerModel> arrUsedVaccineDes;
 
-    public static AddUpdateVaccineFragment newInstance(boolean isFromAdd, ImmunizationModel immunizationModel, ArrayList<String> arrUsedVaccineDes) {
+    private IntWrapper vaccinePosition = new IntWrapper(-1);
+    private IntWrapper routePosition = new IntWrapper(-1);
+
+    public static AddUpdateVaccineFragment newInstance(boolean isFromAdd, ImmunizationModel immunizationModel, ArrayList<SpinnerModel> arrUsedVaccineDes) {
 
         Bundle args = new Bundle();
 
@@ -90,8 +93,6 @@ public class AddUpdateVaccineFragment extends BaseFragment {
         super.onCreate(savedInstanceState);
         arrVaccine = new ArrayList<>();
         arrRouteIDs = new ArrayList<>();
-        adapterVaccine = new ArrayAdapter<String>(getBaseActivity(), android.R.layout.simple_list_item_1, arrVaccine);
-        adapterRoute = new ArrayAdapter<String>(getBaseActivity(), android.R.layout.simple_list_item_1, arrRouteIDs);
     }
 
     @Override
@@ -185,11 +186,10 @@ public class AddUpdateVaccineFragment extends BaseFragment {
 
                                 for (ImmunizationModel model : arrayList) {
                                     vaccineIDandDescriptions.put(model.getDescription(), model.getVaccineID());
-                                    arrVaccine.add(model.getDescription());
+                                    arrVaccine.add(new SpinnerModel(model.getDescription()));
                                 }
 
                                 arrVaccine.removeAll(arrUsedVaccineDes);
-                                setSpinner(adapterVaccine, txtVaccine, spVaccine);
                             }
 
                             @Override
@@ -220,10 +220,9 @@ public class AddUpdateVaccineFragment extends BaseFragment {
 
                                 for (ImmunizationModel model : arrayList) {
                                     routeIDandDescriptions.put(model.getDescription(), model.getRouteID());
-                                    arrRouteIDs.add(model.getDescription());
+                                    arrRouteIDs.add(new SpinnerModel(model.getDescription()));
                                 }
 
-                                setSpinner(adapterRoute, txtRouteId, spRouteId);
                             }
 
                             @Override
@@ -239,11 +238,13 @@ public class AddUpdateVaccineFragment extends BaseFragment {
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.txtVaccine:
-                spVaccine.performClick();
+                UIHelper.showSpinnerDialog(this, arrVaccine, "Select Frequency", txtVaccine, null, vaccinePosition);
+
                 break;
 
             case R.id.txtRouteId:
-                spRouteId.performClick();
+                UIHelper.showSpinnerDialog(this, arrRouteIDs, "Select Route", txtRouteId, null, routePosition);
+
                 break;
             case R.id.txtVaccinatedDate:
                 DateManager.showDatePicker(getContext(), txtVaccinatedDate, null);
@@ -266,11 +267,19 @@ public class AddUpdateVaccineFragment extends BaseFragment {
     }
 
     private void saveButtonPressed() {
-        if (txtVaccinationPlanDate.getText().toString().isEmpty()) {
-            txtVaccinationPlanDate.setError("Please select Vaccination Plan Date");
+        if (txtVaccine.getStringTrimmed().isEmpty()) {
+            UIHelper.showToast(getContext(), "Please Select Vaccine");
             return;
-        } else {
-            txtVaccinationPlanDate.setError(null);
+        }
+
+        if (txtRouteId.getStringTrimmed().isEmpty()) {
+            UIHelper.showToast(getContext(), "Please Select Route");
+            return;
+        }
+
+        if (txtVaccinationPlanDate.getText().toString().isEmpty()) {
+            UIHelper.showToast(getContext(), "Please select Vaccination Schedule Date");
+            return;
         }
 
         if (txtVaccineLocation.testValidity()) {
@@ -284,17 +293,16 @@ public class AddUpdateVaccineFragment extends BaseFragment {
                 immunizationModel.setActive("Y");
 //                immunizationModel.setRouteID("PO");
                 immunizationModel.setLastFileTerminal("MOBILE");
+                immunizationModel.setSource("MOBILE");
 
                 immunizationModel.setVaccineID(vaccineIDandDescriptions.get(txtVaccine.getText().toString()));
                 immunizationModel.setRouteID(routeIDandDescriptions.get(txtRouteId.getText().toString()));
 
 
                 immunizationModel.setHospitalLocation(txtVaccineLocation.getStringTrimmed());
-//                        immunizationModel.setLastFileUser("mahrukh.mehmood@aku.edu");
                 immunizationModel.setVaccinePlanDate(txtVaccinationPlanDate.getStringTrimmed());
                 immunizationModel.setVaccinationDate(txtVaccinatedDate.getStringTrimmed());
 
-//                        UIHelper.showToast(getContext(), frequencyIDandDescriptions.get(txtVaccine.getText().toString()));
 
                 addVaccineService(immunizationModel.toString());
                 Log.d(TAG, "onViewClicked: " + immunizationModel.toString());

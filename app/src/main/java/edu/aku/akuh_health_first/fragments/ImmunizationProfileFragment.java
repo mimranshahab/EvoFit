@@ -35,6 +35,7 @@ import edu.aku.akuh_health_first.managers.retrofit.GsonFactory;
 import edu.aku.akuh_health_first.managers.retrofit.WebServices;
 import edu.aku.akuh_health_first.models.ImmunizationModel;
 import edu.aku.akuh_health_first.models.SearchModel;
+import edu.aku.akuh_health_first.models.SpinnerModel;
 import edu.aku.akuh_health_first.models.wrappers.WebResponse;
 import edu.aku.akuh_health_first.views.AnyTextView;
 
@@ -58,7 +59,7 @@ public class ImmunizationProfileFragment extends BaseFragment implements View.On
     private ImmunizationAdapter adapterImmunization;
     boolean isFromTimeline;
     int patientVisitAdmissionID;
-    private ArrayList<String> arrUsedVaccineDes = new ArrayList<>();
+    private ArrayList<SpinnerModel> arrUsedVaccineDes = new ArrayList<>();
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -203,7 +204,7 @@ public class ImmunizationProfileFragment extends BaseFragment implements View.On
 
                                 arrUsedVaccineDes.clear();
                                 for (ImmunizationModel immunizationModel : arrImmunization) {
-                                    arrUsedVaccineDes.add(immunizationModel.getDescription());
+                                    arrUsedVaccineDes.add(new SpinnerModel(immunizationModel.getDescription()));
                                 }
 
                                 if (arrImmunization.size() > 0) {

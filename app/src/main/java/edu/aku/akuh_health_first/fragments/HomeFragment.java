@@ -113,7 +113,16 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener, 
 
     private void setData() {
 
-        ImageLoaderHelper.loadImageWithConstantHeaders(getContext(), imgUser, subscriber.getProfileImage());
+        if (subscriber.getProfileImage() == null || subscriber.getProfileImage().isEmpty()) {
+            if (subscriber.getGender().equals("F")) {
+                imgUser.setImageResource(R.drawable.female_icon_filled);
+            } else {
+                imgUser.setImageResource(R.drawable.male_icon_filled);
+            }
+        } else {
+            ImageLoaderHelper.loadImageWithConstantHeaders(getContext(), imgUser, subscriber.getProfileImage());
+        }
+
         txtName.setText(subscriber.getName());
         txtGenderAge.setText(subscriber.getGenderDescription() + "/" + subscriber.getAge());
         txtMRN.setText(subscriber.getMRNumber());
