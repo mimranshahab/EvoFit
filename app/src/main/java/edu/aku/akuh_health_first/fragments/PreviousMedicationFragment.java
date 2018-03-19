@@ -87,7 +87,7 @@ public class PreviousMedicationFragment extends BaseFragment implements View.OnC
         titleBar.resetViews();
         titleBar.setTitle("Medication Profile");
         titleBar.showBackButton(getBaseActivity());
-        titleBar.setUserDisplay();
+        titleBar.setUserDisplay(sharedPreferenceManager.getCurrentUser(), getContext());
         titleBar.showHome(getBaseActivity());
     }
 

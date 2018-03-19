@@ -2,12 +2,14 @@ package edu.aku.akuh_health_first.libraries.imageloader;
 
 import android.app.Activity;
 import android.content.Context;
+import android.graphics.Color;
 import android.os.UserManager;
 import android.widget.ImageView;
 
 import com.nostra13.universalimageloader.core.DisplayImageOptions;
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.nostra13.universalimageloader.core.assist.ImageScaleType;
+import com.nostra13.universalimageloader.core.display.CircleBitmapDisplayer;
 import com.nostra13.universalimageloader.core.display.FadeInBitmapDisplayer;
 
 import java.util.HashMap;
@@ -77,6 +79,6 @@ public class ImageLoaderHelper {
                 .showImageOnFail(R.drawable.placeholder)
                 .showImageOnLoading(R.drawable.placeholder)
                 .extraForDownloader(headers)
-                .imageScaleType(ImageScaleType.EXACTLY).displayer(new FadeInBitmapDisplayer(300)).build();
+                .imageScaleType(ImageScaleType.EXACTLY).displayer(new FadeInBitmapDisplayer(1000)).build();
     }
 }

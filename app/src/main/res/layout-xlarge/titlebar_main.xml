@@ -28,7 +28,7 @@
         android:paddingRight="@dimen/x8dp">
 
 
-        <com.ctrlplusz.anytextview.AnyTextView
+        <edu.aku.akuh_health_first.views.AnyTextView
             android:id="@+id/txtTitle"
             android:layout_width="@dimen/x170dp"
             android:layout_height="match_parent"

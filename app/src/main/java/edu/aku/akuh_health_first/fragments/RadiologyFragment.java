@@ -84,7 +84,7 @@ public class RadiologyFragment extends BaseFragment implements View.OnClickListe
         titleBar.setVisibility(View.VISIBLE);
         titleBar.setTitle("Radiology");
         titleBar.showBackButton(getBaseActivity());
-        titleBar.setUserDisplay();
+        titleBar.setUserDisplay(sharedPreferenceManager.getCurrentUser(), getContext());
         titleBar.showHome(getBaseActivity());
     }
 

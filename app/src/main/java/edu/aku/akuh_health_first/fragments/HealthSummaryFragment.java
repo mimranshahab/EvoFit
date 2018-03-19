@@ -107,7 +107,7 @@ public class HealthSummaryFragment extends BaseFragment implements OnItemClickLi
         titleBar.resetViews();
         titleBar.setTitle("Health Summary");
         titleBar.showBackButton(getBaseActivity());
-        titleBar.setUserDisplay();
+        titleBar.setUserDisplay(sharedPreferenceManager.getCurrentUser(), getContext());
         titleBar.showHome(getBaseActivity());
     }
 

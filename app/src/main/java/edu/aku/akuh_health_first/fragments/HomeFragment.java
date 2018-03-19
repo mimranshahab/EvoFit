@@ -70,13 +70,15 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener, 
     @BindView(R.id.contParentLayout)
     LinearLayout contParentLayout;
     private HomeAdapter adaptHome;
-    private ArrayList<UserDetailModel> arrUserLists = new ArrayList<>();
+    private ArrayList<UserDetailModel> arrUserLists ;
     UserDetailModel subscriber;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        arrUserLists.clear();
+
+        arrUserLists = new ArrayList<>();
+
         adaptHome = new HomeAdapter(getBaseActivity(), arrUserLists, this);
         subscriber = new UserDetailModel();
     }
@@ -138,6 +140,7 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener, 
                         if (currentUser == null && arrUserLists.size() > 0) {
                             sharedPreferenceManager.putObject(AppConstants.KEY_CURRENT_USER_MODEL, arrUserLists.get(0));
                             arrUserLists.get(0).setSelected(true);
+
                         } else if (currentUser != null && arrUserLists.size() > 0) {
                             for (int i = 0; i < arrUserLists.size(); i++) {
                                 if (arrUserLists.get(i).getMRNumber().equals(currentUser.getMRNumber())) {
@@ -148,17 +151,16 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener, 
                         } else {
                             arrUserLists.get(0).setSelected(true);
                         }
-                        subscriber = arrUserLists.get(0);
-                        arrUserLists.remove(0);
 
-                        sharedPreferenceManager.putObject(AppConstants.KEY_CARD_MEMBER_DETAIL, cardMemberDetail);
-                        adaptHome.notifyDataSetChanged();
 
-                        if (subscriber != null) {
+                        if (arrUserLists.size() > 0) {
+                            subscriber = arrUserLists.get(0);
+                            arrUserLists.remove(0);
+                            sharedPreferenceManager.putObject(AppConstants.KEY_CARD_MEMBER_DETAIL, cardMemberDetail);
                             setData();
                         }
 
-
+                        adaptHome.notifyDataSetChanged();
                     }
 
                     @Override
@@ -235,6 +237,10 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener, 
 
     @OnClick(R.id.contListItem)
     public void onViewClicked() {
+        subscriber.setSelected(true);
+        sharedPreferenceManager.putObject(AppConstants.KEY_CURRENT_USER_MODEL, subscriber);
+        adaptHome.notifyDataSetChanged();
+        notifyToAll(Events.ON_CURRENT_USER_CHANGED, subscriber);
         getBaseActivity().addDockableFragment(HomeDetailFragment.newInstance());
 //                getBaseActivity().addDockableFragment(HomeDetailFragment.newInstance());
 

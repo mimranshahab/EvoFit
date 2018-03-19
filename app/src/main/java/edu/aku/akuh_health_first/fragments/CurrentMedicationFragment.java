@@ -1,6 +1,5 @@
 package edu.aku.akuh_health_first.fragments;
 
-import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.widget.DrawerLayout;
@@ -33,12 +32,10 @@ import edu.aku.akuh_health_first.enums.BaseURLTypes;
 import edu.aku.akuh_health_first.fragments.abstracts.BaseFragment;
 import edu.aku.akuh_health_first.helperclasses.ui.helper.TitleBar;
 import edu.aku.akuh_health_first.helperclasses.ui.helper.UIHelper;
-import edu.aku.akuh_health_first.libraries.imageloader.ImageLoaderHelper;
 import edu.aku.akuh_health_first.managers.retrofit.GsonFactory;
 import edu.aku.akuh_health_first.managers.retrofit.WebServices;
 import edu.aku.akuh_health_first.models.MedicationProfileModel;
 import edu.aku.akuh_health_first.models.SearchModel;
-import edu.aku.akuh_health_first.models.receiving_model.AddUpdateVaccineModel;
 import edu.aku.akuh_health_first.models.wrappers.WebResponse;
 import edu.aku.akuh_health_first.views.AnyTextView;
 
@@ -91,7 +88,7 @@ public class CurrentMedicationFragment extends BaseFragment implements View.OnCl
         titleBar.resetViews();
         titleBar.setTitle("Medication Profile");
         titleBar.showBackButton(getBaseActivity());
-        titleBar.setUserDisplay();
+        titleBar.setUserDisplay(sharedPreferenceManager.getCurrentUser(),getContext());
         titleBar.showHome(getBaseActivity());
     }
 

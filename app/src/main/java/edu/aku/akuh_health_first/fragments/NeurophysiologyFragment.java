@@ -84,7 +84,7 @@ public class NeurophysiologyFragment extends BaseFragment implements View.OnClic
         titleBar.resetViews();
         titleBar.setTitle("Neurophysiology");
         titleBar.showBackButton(getBaseActivity());
-        titleBar.setUserDisplay();
+        titleBar.setUserDisplay(sharedPreferenceManager.getCurrentUser(), getContext());
         titleBar.showHome(getBaseActivity());
     }
 

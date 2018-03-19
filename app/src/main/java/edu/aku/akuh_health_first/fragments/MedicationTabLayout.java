@@ -60,7 +60,7 @@ public class MedicationTabLayout extends BaseFragment {
         titleBar.setTitle("Medication Profile");
         titleBar.showHome(getBaseActivity());
         titleBar.showBackButton(getBaseActivity());
-        titleBar.setUserDisplay();
+        titleBar.setUserDisplay(sharedPreferenceManager.getCurrentUser(), getContext());
     }
 
     @Override

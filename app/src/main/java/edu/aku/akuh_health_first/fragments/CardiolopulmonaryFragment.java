@@ -83,7 +83,7 @@ public class CardiolopulmonaryFragment extends BaseFragment implements View.OnCl
         titleBar.resetViews();
         titleBar.setTitle("Cardiolopulmonary");
         titleBar.showBackButton(getBaseActivity());
-        titleBar.setUserDisplay();
+        titleBar.setUserDisplay(sharedPreferenceManager.getCurrentUser(),getContext());
         titleBar.showHome(getBaseActivity());
     }
 

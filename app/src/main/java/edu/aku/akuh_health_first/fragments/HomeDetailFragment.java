@@ -55,7 +55,7 @@ public class HomeDetailFragment extends BaseFragment {
         titleBar.resetViews();
         titleBar.setTitle("Home Detail");
         titleBar.showBackButton(getBaseActivity());
-        titleBar.setUserDisplay();
+        titleBar.setUserDisplay(sharedPreferenceManager.getCurrentUser(), getContext());
         titleBar.showHome(getBaseActivity());
     }
 
