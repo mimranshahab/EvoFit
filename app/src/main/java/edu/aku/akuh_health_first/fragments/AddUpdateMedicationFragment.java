@@ -300,7 +300,11 @@ public class AddUpdateMedicationFragment extends BaseFragment {
             } else if (txtRouteId.getText().toString().isEmpty()) {
                 UIHelper.showToast(getContext(), "Please Select Route");
             } else if (chkLifeTimeMedication.isChecked()) {
-                addMedicineData(true);
+                if (txtStartDateTime.getText().toString().isEmpty()) {
+                    UIHelper.showToast(getContext(), "Please Select Start Time");
+                } else {
+                    addMedicineData(true);
+                }
             } else {
                 dateValidations();
             }
@@ -332,9 +336,9 @@ public class AddUpdateMedicationFragment extends BaseFragment {
         addNewMedicine.setRxmedmedication(edtMedicineName.getStringTrimmed());
         addNewMedicine.setRxmedroute(routeIDandDescriptions.get(txtRouteId.getStringTrimmed()));
         addNewMedicine.setLifeTimeMedicine(isLifeTime);
+        addNewMedicine.setRxmedstartdatetime(txtStartDateTime.getStringTrimmed());
 
         if (isLifeTime) {
-            addNewMedicine.setRxmedstartdatetime("");
             addNewMedicine.setRxmedstopdatetime("");
         } else {
             addNewMedicine.setRxmedstartdatetime(txtStartDateTime.getStringTrimmed());

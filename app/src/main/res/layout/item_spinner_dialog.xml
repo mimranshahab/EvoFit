@@ -43,7 +43,7 @@
                 android:maxLines="2"
                 android:padding="@dimen/x5dp"
                 android:text="Choice"
-                android:textColor="@color/text_dark"
+                android:textColor="@color/txt_aku_blue"
                 android:textSize="@dimen/s14"
                 app:typeface="@string/font_regular" />
 
