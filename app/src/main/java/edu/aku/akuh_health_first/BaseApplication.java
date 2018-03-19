@@ -22,6 +22,7 @@ import com.nostra13.universalimageloader.core.display.FadeInBitmapDisplayer;
 
 import edu.aku.akuh_health_first.activities.SplashActivity;
 
+import edu.aku.akuh_health_first.libraries.imageloader.CustomImageDownaloder;
 import io.reactivex.subjects.PublishSubject;
 import io.realm.Realm;
 
@@ -73,8 +74,13 @@ public class BaseApplication extends MultiDexApplication implements Application.
 
     private void configImageLoader(Context context) {
         DisplayImageOptions defaultOptions = new DisplayImageOptions.Builder().cacheOnDisk(true).cacheInMemory(true).imageScaleType(ImageScaleType.EXACTLY).displayer(new FadeInBitmapDisplayer(300)).build();
-        // Create global configuration and initialize LazyLoading with this config
-        ImageLoaderConfiguration config = new ImageLoaderConfiguration.Builder(context).defaultDisplayImageOptions(defaultOptions).memoryCache(new WeakMemoryCache()).memoryCacheSize(2 * 1024 * 1024).build();
+        // Create global configuration and initialize ImageLoaderHelper with this config
+        ImageLoaderConfiguration config = new ImageLoaderConfiguration.Builder(context)
+                .imageDownloader(new CustomImageDownaloder(context))
+                .defaultDisplayImageOptions(defaultOptions)
+                .memoryCache(new WeakMemoryCache())
+                .memoryCacheSize(2 * 1024 * 1024)
+                .build();
         ImageLoader.getInstance().init(config);
     }
 

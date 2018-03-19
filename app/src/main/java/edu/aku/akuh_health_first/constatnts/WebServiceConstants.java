@@ -1,12 +1,29 @@
 package edu.aku.akuh_health_first.constatnts;
 
-import edu.aku.akuh_health_first.fragments.LoginFragment;
+import java.util.HashMap;
+import java.util.Map;
+
 
 /**
  * Created by khanhamza on 09-Mar-17.
  */
 
 public class WebServiceConstants {
+
+
+    private static Map<String, String> headers;
+
+    public static Map<String, String> getHeaders() {
+        if (headers == null) {
+            headers = new HashMap<>();
+            headers.put("_token", temporaryToken);
+        }
+        return headers;
+    }
+
+    public static void setHeaders(Map<String, String> headers) {
+        WebServiceConstants.headers = headers;
+    }
 
     String postmanLink = "https://www.getpostman.com/collections/1d39c488e283b95f6e23";
 
@@ -49,6 +66,7 @@ public class WebServiceConstants {
     public static final String METHOD_USER_GET_USER = "UserManager.Login";
     public static final String METHOD_CARD_MEMBER = "UserManager.GetRegisteredCardAndMembers";
     public static final String METHOD_USER_UPLOAD_REQUEST_FILE = "UserManager.UploadRequestFile";
+    public static final String METHOD_USER_GET_USER_IMAGE = "UserManager.GetUserImage";
 
 
     public static final String METHOD_GET_RADIOLOGY_EXAMS = "RadiologyManager.GetRadiologyExams";

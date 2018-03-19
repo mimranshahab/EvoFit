@@ -13,7 +13,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/c_white"
-        app:tabIndicatorColor="@color/colorPrimary"
+        app:tabIndicatorColor="@color/medication_light_red"
         app:tabIndicatorHeight="5px"
         app:tabMode="fixed"
         app:tabBackground="@drawable/tab_color_selector"

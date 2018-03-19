@@ -16,6 +16,7 @@ import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 
 import com.google.gson.JsonObject;
+import com.nostra13.universalimageloader.core.ImageLoader;
 
 import java.util.ArrayList;
 
@@ -34,6 +35,7 @@ import edu.aku.akuh_health_first.enums.BaseURLTypes;
 import edu.aku.akuh_health_first.fragments.abstracts.BaseFragment;
 import edu.aku.akuh_health_first.helperclasses.ui.helper.TitleBar;
 import edu.aku.akuh_health_first.helperclasses.ui.helper.UIHelper;
+import edu.aku.akuh_health_first.libraries.imageloader.ImageLoaderHelper;
 import edu.aku.akuh_health_first.managers.retrofit.GsonFactory;
 import edu.aku.akuh_health_first.managers.retrofit.WebServices;
 import edu.aku.akuh_health_first.models.receiving_model.CardMemberDetail;
@@ -110,17 +112,8 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener, 
     }
 
     private void setData() {
-        imgUser =  view.findViewById(R.id.imgIcon);
-        if (subscriber.getGender().equals("F")) {
-//             FIXME: 3/7/2018 crash.NullPointerException: Attempt to invoke virtual method 'void de.hdodenhof.circleimageview
 
-            if (imgUser != null) {
-                imgUser.setImageResource(R.drawable.baby_photo2);
-            } else {
-                imgUser.setImageResource(R.drawable.male_icon_filled);
-            }
-        }else return;
-
+ImageLoaderHelper.loadImageWithConstantHeaders(getContext(), imgUser, subscriber.);
         txtName.setText(subscriber.getName());
         txtGenderAge.setText(subscriber.getGenderDescription() + "/" + subscriber.getAge());
         txtMRN.setText(subscriber.getMRNumber());
@@ -161,7 +154,9 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener, 
                         sharedPreferenceManager.putObject(AppConstants.KEY_CARD_MEMBER_DETAIL, cardMemberDetail);
                         adaptHome.notifyDataSetChanged();
 
-                        setData();
+                        if (subscriber != null) {
+                            setData();
+                        }
 
 
                     }
