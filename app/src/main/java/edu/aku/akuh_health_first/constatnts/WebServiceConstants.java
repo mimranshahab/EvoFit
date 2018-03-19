@@ -27,8 +27,8 @@ public class WebServiceConstants {
     public static final String tempUserName = "mahrukh.mehmood";
     public static final String tempPacViews = "46015891";
     public static final String tempCardNumber = "0000-0000-0031";
-    public static final String tempMRN = "291-32-60";
-    public static final String tempMRN_LAB = "510-29-10";
+    public static final String tempMRN_Neuro = "291-32-60";
+    public static final String tempMRN = "510-29-10";
     public static final String tempMRN_ENDOSCOPY = "100-08-60";
     public static final String tempMRN_RADIOLOGY = "294-71-23";
     public static final String tempMRN_RADIOLOGY1 = "015-94-53";

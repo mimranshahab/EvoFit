@@ -188,7 +188,7 @@ public class ClinicalLaboratoryFragment extends BaseFragment implements View.OnC
     private void serviceCall() {
         // FIXME: 1/18/2018 Use live data in future
         SearchModel model = new SearchModel();
-        model.setMRNumber(WebServiceConstants.tempMRN_LAB);
+        model.setMRNumber(WebServiceConstants.tempMRN);
         if (isFromTimeline) {
             model.setVisitID(String.valueOf(patientVisitAdmissionID));
         } else {
