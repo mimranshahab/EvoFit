@@ -24,28 +24,28 @@ UserDetailModel implements Serializable {
     private String cardNumber;
     @SerializedName("_token")
     @Expose
-    private String token;
+    private Object token;
     @SerializedName("MemberURN")
     @Expose
-    private String memberURN;
+    private Object memberURN;
     @SerializedName("MembershipTypeID")
     @Expose
     private String membershipTypeID;
     @SerializedName("MembershipTypeDescription")
     @Expose
-    private String membershipTypeDescription;
+    private Object membershipTypeDescription;
     @SerializedName("Name")
     @Expose
     private String name;
     @SerializedName("FirstName")
     @Expose
-    private String firstName;
+    private Object firstName;
     @SerializedName("MiddleName")
     @Expose
-    private String middleName;
+    private Object middleName;
     @SerializedName("LastName")
     @Expose
-    private String lastName;
+    private Object lastName;
     @SerializedName("BirthDate")
     @Expose
     private String birthDate;
@@ -73,6 +73,12 @@ UserDetailModel implements Serializable {
     @SerializedName("NationalityDescription")
     @Expose
     private String nationalityDescription;
+    @SerializedName("NationalityTypeID")
+    @Expose
+    private Object nationalityTypeID;
+    @SerializedName("NationalityTypeDescription")
+    @Expose
+    private Object nationalityTypeDescription;
     @SerializedName("CNICNumber")
     @Expose
     private String cNICNumber;
@@ -121,27 +127,30 @@ UserDetailModel implements Serializable {
     @SerializedName("MRNumber")
     @Expose
     private String mRNumber;
-    @SerializedName("CardTypeID")
+    @SerializedName("ProfileImage")
     @Expose
-    private String cardTypeID;
-    @SerializedName("CardTypeDescription")
+    private String profileImage;
+    @SerializedName("ProfileImagePath")
     @Expose
-    private String cardTypeDescription;
-    @SerializedName("MotherName")
-    @Expose
-    private String motherName;
+    private Object profileImagePath;
     @SerializedName("SequenceNumber")
     @Expose
     private String sequenceNumber;
+    @SerializedName("AllowAccToPortal")
+    @Expose
+    private Object allowAccToPortal;
+    @SerializedName("AllowAccToPrivilege")
+    @Expose
+    private Object allowAccToPrivilege;
     @SerializedName("strBirthDate")
     @Expose
     private String strBirthDate;
-    @SerializedName("IsInpersonRegister")
-    @Expose
-    private String isInpersonRegister;
     @SerializedName("AttachmentList")
     @Expose
-    private String attachmentList;
+    private Object attachmentList;
+    @SerializedName("VisitDetail")
+    @Expose
+    private VisitDetail visitDetail;
     @SerializedName("LastFileDateTime")
     @Expose
     private String lastFileDateTime;
@@ -154,7 +163,13 @@ UserDetailModel implements Serializable {
     @SerializedName("Active")
     @Expose
     private String active;
-    private final static long serialVersionUID = -4758101598831128851L;
+    @SerializedName("RecordFound")
+    @Expose
+    private Object recordFound;
+    @SerializedName("RecordMessage")
+    @Expose
+    private Object recordMessage;
+    private final static long serialVersionUID = -9201088907195944131L;
 
     public String getCardNumber() {
         return cardNumber;
@@ -164,19 +179,19 @@ UserDetailModel implements Serializable {
         this.cardNumber = cardNumber;
     }
 
-    public String getToken() {
+    public Object getToken() {
         return token;
     }
 
-    public void setToken(String token) {
+    public void setToken(Object token) {
         this.token = token;
     }
 
-    public String getMemberURN() {
+    public Object getMemberURN() {
         return memberURN;
     }
 
-    public void setMemberURN(String memberURN) {
+    public void setMemberURN(Object memberURN) {
         this.memberURN = memberURN;
     }
 
@@ -188,11 +203,11 @@ UserDetailModel implements Serializable {
         this.membershipTypeID = membershipTypeID;
     }
 
-    public String getMembershipTypeDescription() {
+    public Object getMembershipTypeDescription() {
         return membershipTypeDescription;
     }
 
-    public void setMembershipTypeDescription(String membershipTypeDescription) {
+    public void setMembershipTypeDescription(Object membershipTypeDescription) {
         this.membershipTypeDescription = membershipTypeDescription;
     }
 
@@ -204,27 +219,27 @@ UserDetailModel implements Serializable {
         this.name = name;
     }
 
-    public String getFirstName() {
+    public Object getFirstName() {
         return firstName;
     }
 
-    public void setFirstName(String firstName) {
+    public void setFirstName(Object firstName) {
         this.firstName = firstName;
     }
 
-    public String getMiddleName() {
+    public Object getMiddleName() {
         return middleName;
     }
 
-    public void setMiddleName(String middleName) {
+    public void setMiddleName(Object middleName) {
         this.middleName = middleName;
     }
 
-    public String getLastName() {
+    public Object getLastName() {
         return lastName;
     }
 
-    public void setLastName(String lastName) {
+    public void setLastName(Object lastName) {
         this.lastName = lastName;
     }
 
@@ -298,6 +313,22 @@ UserDetailModel implements Serializable {
 
     public void setNationalityDescription(String nationalityDescription) {
         this.nationalityDescription = nationalityDescription;
+    }
+
+    public Object getNationalityTypeID() {
+        return nationalityTypeID;
+    }
+
+    public void setNationalityTypeID(Object nationalityTypeID) {
+        this.nationalityTypeID = nationalityTypeID;
+    }
+
+    public Object getNationalityTypeDescription() {
+        return nationalityTypeDescription;
+    }
+
+    public void setNationalityTypeDescription(Object nationalityTypeDescription) {
+        this.nationalityTypeDescription = nationalityTypeDescription;
     }
 
     public String getCNICNumber() {
@@ -428,28 +459,20 @@ UserDetailModel implements Serializable {
         this.mRNumber = mRNumber;
     }
 
-    public String getCardTypeID() {
-        return cardTypeID;
+    public String getProfileImage() {
+        return profileImage;
     }
 
-    public void setCardTypeID(String cardTypeID) {
-        this.cardTypeID = cardTypeID;
+    public void setProfileImage(String profileImage) {
+        this.profileImage = profileImage;
     }
 
-    public String getCardTypeDescription() {
-        return cardTypeDescription;
+    public Object getProfileImagePath() {
+        return profileImagePath;
     }
 
-    public void setCardTypeDescription(String cardTypeDescription) {
-        this.cardTypeDescription = cardTypeDescription;
-    }
-
-    public String getMotherName() {
-        return motherName;
-    }
-
-    public void setMotherName(String motherName) {
-        this.motherName = motherName;
+    public void setProfileImagePath(Object profileImagePath) {
+        this.profileImagePath = profileImagePath;
     }
 
     public String getSequenceNumber() {
@@ -460,6 +483,22 @@ UserDetailModel implements Serializable {
         this.sequenceNumber = sequenceNumber;
     }
 
+    public Object getAllowAccToPortal() {
+        return allowAccToPortal;
+    }
+
+    public void setAllowAccToPortal(Object allowAccToPortal) {
+        this.allowAccToPortal = allowAccToPortal;
+    }
+
+    public Object getAllowAccToPrivilege() {
+        return allowAccToPrivilege;
+    }
+
+    public void setAllowAccToPrivilege(Object allowAccToPrivilege) {
+        this.allowAccToPrivilege = allowAccToPrivilege;
+    }
+
     public String getStrBirthDate() {
         return strBirthDate;
     }
@@ -468,20 +507,20 @@ UserDetailModel implements Serializable {
         this.strBirthDate = strBirthDate;
     }
 
-    public String getIsInpersonRegister() {
-        return isInpersonRegister;
-    }
-
-    public void setIsInpersonRegister(String isInpersonRegister) {
-        this.isInpersonRegister = isInpersonRegister;
-    }
-
-    public String getAttachmentList() {
+    public Object getAttachmentList() {
         return attachmentList;
     }
 
-    public void setAttachmentList(String attachmentList) {
+    public void setAttachmentList(Object attachmentList) {
         this.attachmentList = attachmentList;
+    }
+
+    public VisitDetail getVisitDetail() {
+        return visitDetail;
+    }
+
+    public void setVisitDetail(VisitDetail visitDetail) {
+        this.visitDetail = visitDetail;
     }
 
     public String getLastFileDateTime() {
@@ -516,8 +555,19 @@ UserDetailModel implements Serializable {
         this.active = active;
     }
 
-
-    public String getMRNumberwithComma() {
-        return "\"" + mRNumber + "\"";
+    public Object getRecordFound() {
+        return recordFound;
     }
-}
+
+    public void setRecordFound(Object recordFound) {
+        this.recordFound = recordFound;
+    }
+
+    public Object getRecordMessage() {
+        return recordMessage;
+    }
+
+    public void setRecordMessage(Object recordMessage) {
+        this.recordMessage = recordMessage;
+    }
+   }
