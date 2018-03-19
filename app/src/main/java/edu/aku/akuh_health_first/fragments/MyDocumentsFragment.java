@@ -121,7 +121,7 @@ public class MyDocumentsFragment extends BaseFragment implements OnItemClickList
         titleBar.setTitle("My Documents");
         titleBar.showBackButton(getBaseActivity());
         titleBar.showHome(getBaseActivity());
-        titleBar.setUserDisplay();
+        titleBar.setUserDisplay(sharedPreferenceManager.getCurrentUser(), getContext());
 
     }
 

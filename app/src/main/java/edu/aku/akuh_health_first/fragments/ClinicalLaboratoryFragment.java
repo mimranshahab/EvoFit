@@ -90,7 +90,7 @@ public class ClinicalLaboratoryFragment extends BaseFragment implements View.OnC
         titleBar.resetViews();
         titleBar.setTitle("Clinical Laboratory");
         titleBar.showBackButton(getBaseActivity());
-        titleBar.setUserDisplay();
+        titleBar.setUserDisplay(sharedPreferenceManager.getCurrentUser(),getContext());
         titleBar.showHome(getBaseActivity());
     }
 

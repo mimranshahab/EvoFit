@@ -241,7 +241,7 @@ public class HealthHistoryFragment extends BaseFragment {
             titleBar.setTitle("Health History");
         }
         titleBar.showBackButton(getBaseActivity());
-        titleBar.setUserDisplay();
+        titleBar.setUserDisplay(sharedPreferenceManager.getCurrentUser(), getContext());
         titleBar.showHome(getBaseActivity());
     }
 

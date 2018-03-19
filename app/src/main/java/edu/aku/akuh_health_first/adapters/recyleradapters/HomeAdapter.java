@@ -15,6 +15,7 @@ import de.hdodenhof.circleimageview.CircleImageView;
 import edu.aku.akuh_health_first.R;
 import edu.aku.akuh_health_first.activities.BaseActivity;
 import edu.aku.akuh_health_first.callbacks.OnItemClickListener;
+import edu.aku.akuh_health_first.libraries.imageloader.ImageLoaderHelper;
 import edu.aku.akuh_health_first.models.receiving_model.UserDetailModel;
 import edu.aku.akuh_health_first.views.AnyTextView;
 
@@ -55,10 +56,16 @@ public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.ViewHolder> {
         holder.txtGenderAge.setText(user.getGenderDescription() + " / " + user.getAge());
         holder.txtRelation.setText("(" + user.getRelationshipDescription() + ")");
 
-        if (user.getGender().equals("F")) {
-            holder.imgUser.setImageResource(R.drawable.baby_photo1);
-        } else {
-            holder.imgUser.setImageResource(R.drawable.male_icon);
+        if (user.getProfileImage() == null || user.getProfileImage().isEmpty()) {
+            if (user.getGender().equals("F")) {
+
+                holder.imgUser.setImageResource(R.drawable.female_icon);
+            } else {
+                holder.imgUser.setImageResource(R.drawable.male_icon);
+            }
+
+        }        else{
+            ImageLoaderHelper.loadImageWithConstantHeaders(activity,holder.imgUser,user.getProfileImage());
         }
 
 //        if (user.isSelected()) {

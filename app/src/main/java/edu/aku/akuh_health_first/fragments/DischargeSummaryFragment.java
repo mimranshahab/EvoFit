@@ -146,7 +146,7 @@ public class DischargeSummaryFragment extends BaseFragment implements View.OnCli
         titleBar.resetViews();
         titleBar.setTitle("Discharge Summary");
         titleBar.showBackButton(getBaseActivity());
-        titleBar.setUserDisplay();
+        titleBar.setUserDisplay(sharedPreferenceManager.getCurrentUser(), getContext());
         titleBar.showHome(getBaseActivity());
     }
 

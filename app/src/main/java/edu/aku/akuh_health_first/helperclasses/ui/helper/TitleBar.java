@@ -12,13 +12,14 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
-import com.ctrlplusz.anytextview.AnyTextView;
 
-import butterknife.BindView;
 import de.hdodenhof.circleimageview.CircleImageView;
 import edu.aku.akuh_health_first.R;
 import edu.aku.akuh_health_first.activities.BaseActivity;
 import edu.aku.akuh_health_first.activities.HomeActivity;
+import edu.aku.akuh_health_first.libraries.imageloader.ImageLoaderHelper;
+import edu.aku.akuh_health_first.models.receiving_model.UserDetailModel;
+import edu.aku.akuh_health_first.views.AnyTextView;
 
 /**
  * Created by khanhamza on 02-Mar-17.
@@ -28,8 +29,9 @@ public class TitleBar extends RelativeLayout {
 
     public TextView txtCircle;
     CircleImageView circleImageView;
-    edu.aku.akuh_health_first.views.AnyTextView txtUserName;
-    edu.aku.akuh_health_first.views.AnyTextView txtMRN;
+    CircleImageView circleImageView2;
+    AnyTextView txtUserName;
+    AnyTextView txtMRN;
     RelativeLayout contDropDown;
 
 
@@ -71,19 +73,20 @@ public class TitleBar extends RelativeLayout {
     }
 
     private void bindViews() {
-        imgTitle = (ImageView) findViewById(R.id.imgTitle);
-        txtTitle = (AnyTextView) findViewById(R.id.txtTitle);
-        btnLeft1 = (ImageButton) findViewById(R.id.btnLeft1);
-        btnRight3 = (ImageButton) findViewById(R.id.btnRight3);
-        btnRight2 = (ImageButton) findViewById(R.id.btnRight2);
-        btnRight1 = (ImageView) findViewById(R.id.btnRight1);
-        txtClearAll = (TextView) findViewById(R.id.txtClearAll);
-        txtCircle = (TextView) findViewById(R.id.txtCircle);
-        circleImageView = (CircleImageView) findViewById(R.id.circleImageView);
-        containerTitlebar1 = (RelativeLayout) findViewById(R.id.containerTitlebar1);
-        contDropDown = (RelativeLayout) findViewById(R.id.contDropDown);
-        txtMRN = (edu.aku.akuh_health_first.views.AnyTextView) findViewById(R.id.txtMRN);
-        txtUserName = (edu.aku.akuh_health_first.views.AnyTextView) findViewById(R.id.txtUserName);
+        imgTitle = findViewById(R.id.imgTitle);
+        txtTitle = findViewById(R.id.txtTitle);
+        btnLeft1 = findViewById(R.id.btnLeft1);
+        btnRight3 = findViewById(R.id.btnRight3);
+        btnRight2 = findViewById(R.id.btnRight2);
+        btnRight1 = findViewById(R.id.btnRight1);
+        txtClearAll = findViewById(R.id.txtClearAll);
+        txtCircle = findViewById(R.id.txtCircle);
+        circleImageView = findViewById(R.id.circleImageView);
+        containerTitlebar1 = findViewById(R.id.containerTitlebar1);
+        contDropDown = findViewById(R.id.contDropDown);
+        txtMRN = findViewById(R.id.txtMRN);
+        txtUserName = findViewById(R.id.txtUserName);
+        circleImageView2 = findViewById(R.id.circleImageView2);
 
     }
 
@@ -144,6 +147,8 @@ public class TitleBar extends RelativeLayout {
 
 
     public void showSidebar(final BaseActivity mActivity) {
+
+
         this.btnLeft1.setVisibility(VISIBLE);
         this.btnLeft1.setImageResource(R.drawable.menu_icon);
         btnLeft1.setOnClickListener(new OnClickListener() {
@@ -170,13 +175,26 @@ public class TitleBar extends RelativeLayout {
         this.btnRight1.setOnClickListener(onClickListener);
     }
 
-    public void setUserDisplay() {
+    public void setUserDisplay(final UserDetailModel currentUser, Context context) {
         this.circleImageView.setVisibility(VISIBLE);
-        this.circleImageView.setImageResource(R.drawable.user_image);
+
+        if (currentUser.getProfileImage() == null || currentUser.getProfileImage().isEmpty()) {
+
+            circleImageView.setImageResource(R.drawable.male_icon);
+            circleImageView2.setImageResource(R.drawable.male_icon);
+
+
+        } else {
+            ImageLoaderHelper.loadImageWithConstantHeaders(context, circleImageView, currentUser.getProfileImage());
+            ImageLoaderHelper.loadImageWithConstantHeaders(context, circleImageView2, currentUser.getProfileImage());
+        }
+
         this.circleImageView.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View view) {
-                showAndHideDropDown();
+                txtMRN.setText(currentUser.getMRNumber());
+                txtUserName.setText(currentUser.getName());
+                showAndHideDropDown(currentUser);
             }
         });
     }
@@ -232,7 +250,7 @@ public class TitleBar extends RelativeLayout {
     }
 
 
-    public void showAndHideDropDown() {
+    public void showAndHideDropDown(final UserDetailModel currentUser) {
         int height = this.containerTitlebar1.getHeight();
 
         if (contDropDown.getVisibility() == View.VISIBLE) {

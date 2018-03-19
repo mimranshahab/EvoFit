@@ -84,7 +84,7 @@ public class PacsFragment extends BaseFragment implements View.OnClickListener, 
         titleBar.setVisibility(View.VISIBLE);
         titleBar.setTitle("Pacs Detail");
         titleBar.showBackButton(getBaseActivity());
-        titleBar.setUserDisplay();
+        titleBar.setUserDisplay(sharedPreferenceManager.getCurrentUser(), getContext());
         titleBar.showHome(getBaseActivity());
     }
 

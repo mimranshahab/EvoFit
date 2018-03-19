@@ -87,7 +87,7 @@ public class EndoscopyFragment extends BaseFragment implements View.OnClickListe
         titleBar.resetViews();
         titleBar.setTitle("Endoscopy");
         titleBar.showBackButton(getBaseActivity());
-        titleBar.setUserDisplay();
+        titleBar.setUserDisplay(sharedPreferenceManager.getCurrentUser(), getContext());
         titleBar.showHome(getBaseActivity());
     }
 
