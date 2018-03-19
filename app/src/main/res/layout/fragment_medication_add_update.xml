@@ -34,7 +34,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="@dimen/x5dp"
                         android:text="Medicine Name"
-                        android:textColor="@color/text_grey"
+                        android:textColor="@color/txt_aku_blue"
                         android:textSize="@dimen/s12"
                         app:typeface="@string/font_bold" />
 
@@ -45,13 +45,12 @@
                         android:layout_marginBottom="@dimen/x10dp"
                         android:layout_marginTop="@dimen/x10dp"
                         android:background="@drawable/rounded_box"
-                        android:drawableEnd="@drawable/ic_dropdown"
                         android:gravity="center_vertical"
                         android:hint="Enter Medicine Name"
                         android:maxLength="50"
                         android:maxLines="1"
                         android:padding="@dimen/x5dp"
-                        android:textColor="@color/text_dark"
+                        android:textColor="@color/txt_aku_blue"
                         android:textColorHint="@color/text_hint"
                         android:textSize="@dimen/s14" />
 
@@ -60,7 +59,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="@dimen/x5dp"
                         android:text="Frequency"
-                        android:textColor="@color/text_grey"
+                        android:textColor="@color/txt_aku_blue"
                         android:textSize="@dimen/s12"
                         app:typeface="@string/font_bold" />
 
@@ -71,12 +70,12 @@
                         android:layout_marginBottom="@dimen/x10dp"
                         android:layout_marginTop="@dimen/x10dp"
                         android:background="@drawable/rounded_box"
-                        android:drawableEnd="@drawable/ic_dropdown"
+                        android:drawableEnd="@drawable/dropdown_arrow"
                         android:gravity="center_vertical"
                         android:hint="Select Frequency"
                         android:maxLines="1"
                         android:padding="@dimen/x5dp"
-                        android:textColor="@color/text_dark"
+                        android:textColor="@color/txt_aku_blue"
                         android:textColorHint="@color/text_hint"
                         android:textSize="@dimen/s14" />
 
@@ -86,7 +85,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="@dimen/x5dp"
                         android:text="Route"
-                        android:textColor="@color/text_grey"
+                        android:textColor="@color/txt_aku_blue"
                         android:textSize="@dimen/s12"
                         app:typeface="@string/font_bold" />
 
@@ -97,12 +96,12 @@
                         android:layout_marginBottom="@dimen/x10dp"
                         android:layout_marginTop="@dimen/x10dp"
                         android:background="@drawable/rounded_box"
-                        android:drawableEnd="@drawable/ic_dropdown"
+                        android:drawableEnd="@drawable/dropdown_arrow"
                         android:gravity="center_vertical"
                         android:hint="Select Route"
                         android:maxLines="1"
                         android:padding="@dimen/x5dp"
-                        android:textColor="@color/text_dark"
+                        android:textColor="@color/txt_aku_blue"
                         android:textColorHint="@color/text_hint"
                         android:textSize="@dimen/s14" />
 
@@ -112,7 +111,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="@dimen/x5dp"
                         android:text="Start Date Time"
-                        android:textColor="@color/text_grey"
+                        android:textColor="@color/txt_aku_blue"
                         android:textSize="@dimen/s12"
                         app:typeface="@string/font_bold" />
 
@@ -124,13 +123,13 @@
                         android:layout_marginBottom="@dimen/x10dp"
                         android:layout_marginTop="@dimen/x10dp"
                         android:background="@drawable/rounded_box"
-                        android:drawableEnd="@drawable/ic_dropdown"
+                        android:drawableEnd="@drawable/calendar_input_icon"
 
                         android:gravity="center_vertical"
                         android:hint="tap to choose start date time"
                         android:maxLines="1"
                         android:padding="@dimen/x5dp"
-                        android:textColor="@color/text_dark"
+                        android:textColor="@color/txt_aku_blue"
                         android:textColorHint="@color/text_hint"
                         android:textSize="@dimen/s14" />
 
@@ -140,7 +139,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="@dimen/x5dp"
                         android:text="Stop Date Time"
-                        android:textColor="@color/text_grey"
+                        android:textColor="@color/txt_aku_blue"
                         android:textSize="@dimen/s12"
                         app:typeface="@string/font_bold" />
 
@@ -152,12 +151,12 @@
                         android:layout_marginBottom="@dimen/x10dp"
                         android:layout_marginTop="@dimen/x10dp"
                         android:background="@drawable/rounded_box"
-                        android:drawableEnd="@drawable/ic_dropdown"
+                        android:drawableEnd="@drawable/calendar_input_icon"
                         android:gravity="center_vertical"
                         android:hint="tap to choose stop date time"
                         android:maxLines="1"
                         android:padding="@dimen/x5dp"
-                        android:textColor="@color/text_dark"
+                        android:textColor="@color/txt_aku_blue"
                         android:textColorHint="@color/text_hint"
                         android:textSize="@dimen/s14" />
 
@@ -169,7 +168,7 @@
                         android:layout_marginBottom="@dimen/x10dp"
                         android:layout_marginTop="@dimen/x10dp"
                         android:text="Life Time Medication"
-                        android:textColor="@color/text_dark"
+                        android:textColor="@color/txt_aku_blue"
                         android:textSize="@dimen/s14" />
 
 

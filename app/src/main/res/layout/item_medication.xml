@@ -16,7 +16,6 @@
         android:layout_weight="1"
         android:animateLayoutChanges="true"
         app:cardCornerRadius="@dimen/x10dp"
-        app:cardElevation="@dimen/x5dp"
 
 
         >
@@ -26,7 +25,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
 
-            android:background="#FFE4E3">
+            android:background="#E74C3C">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -46,7 +45,7 @@
                         android:layout_height="wrap_content"
                         android:layout_alignParentLeft="true"
                         android:text="Start Date: "
-                        android:textColor="@color/text_color_grey_dark"
+                        android:textColor="@color/c_white"
                         android:textSize="@dimen/s14"
                         app:typeface="@string/font_regular" />
 
@@ -55,7 +54,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Start date"
-                        android:textColor="@color/text_color_grey_dark"
+                        android:textColor="@color/c_white"
                         android:textSize="@dimen/s12"
                         app:typeface="@string/font_regular" />
                 </LinearLayout>
@@ -72,7 +71,7 @@
                         android:layout_height="wrap_content"
                         android:layout_alignParentLeft="true"
                         android:text="Stop Date: "
-                        android:textColor="@color/text_color_grey_dark"
+                        android:textColor="@color/c_white"
                         android:textSize="@dimen/s14"
                         app:typeface="@string/font_regular" />
 
@@ -82,7 +81,7 @@
                         android:layout_height="wrap_content"
                         android:text="Stop Date"
 
-                        android:textColor="@color/text_color_grey_dark"
+                        android:textColor="@color/c_white"
 
                         android:textSize="@dimen/s12"
                         app:typeface="@string/font_regular" />
@@ -146,7 +145,7 @@
                                 android:padding="@dimen/x3dp"
                                 android:singleLine="true"
                                 android:text="MedicineName"
-                                android:textColor="@color/text_color_grey_dark"
+                                android:textColor="@color/txt_aku_blue"
                                 android:textSize="@dimen/s15"
                                 app:typeface="@string/font_bold" />
                         </LinearLayout>
@@ -172,7 +171,7 @@
                                 android:layout_height="wrap_content"
                                 android:padding="@dimen/x3dp"
                                 android:text="Frequency"
-                                android:textColor="@color/text_dark"
+                                android:textColor="@color/txt_aku_blue"
 
                                 android:textSize="@dimen/s12"
                                 app:typeface="@string/font_regular" />
@@ -200,7 +199,7 @@
                                 android:layout_height="wrap_content"
                                 android:padding="@dimen/x3dp"
                                 android:text="Route"
-                                android:textColor="@color/text_dark"
+                                android:textColor="@color/txt_aku_blue"
 
                                 android:textSize="@dimen/s12"
                                 app:typeface="@string/font_regular" />

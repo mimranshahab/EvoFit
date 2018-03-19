@@ -21,7 +21,6 @@
             android:layout_margin="@dimen/x5dp"
             android:animateLayoutChanges="true"
             app:cardCornerRadius="@dimen/x10dp"
-            app:cardElevation="@dimen/x5dp"
 
 
             >
@@ -80,7 +79,6 @@
             android:animateLayoutChanges="true"
             android:padding="@dimen/x7dp"
             app:cardCornerRadius="@dimen/x10dp"
-            app:cardElevation="@dimen/x5dp"
 
             >
 
@@ -142,7 +140,6 @@
             android:layout_margin="@dimen/x5dp"
             android:animateLayoutChanges="true"
             app:cardCornerRadius="@dimen/x10dp"
-            app:cardElevation="@dimen/x5dp"
 
             >
 
@@ -202,7 +199,6 @@
             android:layout_margin="@dimen/x5dp"
             android:animateLayoutChanges="true"
             app:cardCornerRadius="@dimen/x10dp"
-            app:cardElevation="@dimen/x5dp"
 
             >
 

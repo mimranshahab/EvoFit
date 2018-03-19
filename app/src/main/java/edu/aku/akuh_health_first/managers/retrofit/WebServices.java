@@ -612,6 +612,9 @@ public class WebServices {
 
 
     private void dismissDialog() {
+        // FIXME: 3/16/2018 java.lang.IllegalArgumentException: View=com.android.internal.policy.impl.
+        // PhoneWindow$DecorView{52e24b0 V.E..... R......D
+        // 0,0-668,322} not attached to window manager
         mDialog.dismiss();
     }
 

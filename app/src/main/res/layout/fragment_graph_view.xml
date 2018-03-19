@@ -33,7 +33,7 @@
                 android:layout_height="wrap_content"
                 android:text="Result Date: "
                 android:textSize="@dimen/s16"
-                android:textColor="@color/text_color_grey_dark"
+                android:textColor="@color/txt_aku_blue"
                 android:padding="@dimen/x10dp"/>
 
 
@@ -43,7 +43,7 @@
                 android:layout_height="wrap_content"
                 android:text="Result: "
                 android:textSize="@dimen/s16"
-                android:textColor="@color/text_color_grey_dark"
+                android:textColor="@color/txt_aku_blue"
                 android:padding="@dimen/x10dp"/>
 
 
@@ -53,7 +53,7 @@
                 android:layout_height="wrap_content"
                 android:text="Previous Result1 Date: "
                 android:textSize="@dimen/s16"
-                android:textColor="@color/text_color_grey_dark"
+                android:textColor="@color/txt_aku_blue"
                 android:padding="@dimen/x10dp"/>
 
             <edu.aku.akuh_health_first.views.AnyTextView
@@ -62,7 +62,7 @@
                 android:layout_height="wrap_content"
                 android:text="Previous Result1: "
                 android:textSize="@dimen/s16"
-                android:textColor="@color/text_color_grey_dark"
+                android:textColor="@color/txt_aku_blue"
                 android:padding="@dimen/x10dp"/>
 
             <edu.aku.akuh_health_first.views.AnyTextView
@@ -71,7 +71,7 @@
                 android:layout_height="wrap_content"
                 android:text="Previous Result2 Date: "
                 android:textSize="@dimen/s16"
-                android:textColor="@color/text_color_grey_dark"
+                android:textColor="@color/txt_aku_blue"
                 android:padding="@dimen/x10dp"/>
 
             <edu.aku.akuh_health_first.views.AnyTextView
@@ -80,7 +80,7 @@
                 android:layout_height="wrap_content"
                 android:text="Previous Result2: "
                 android:textSize="@dimen/s16"
-                android:textColor="@color/text_color_grey_dark"
+                android:textColor="@color/txt_aku_blue"
                 android:padding="@dimen/x10dp"/>
 
 

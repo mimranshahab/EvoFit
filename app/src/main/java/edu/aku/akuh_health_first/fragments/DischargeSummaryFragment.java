@@ -97,7 +97,7 @@ public class DischargeSummaryFragment extends BaseFragment implements View.OnCli
 
     private void serviceCall() {
         SearchModel model = new SearchModel();
-        model.setMRNumber(WebServiceConstants.tempMRN_LAB);
+        model.setMRNumber(WebServiceConstants.tempMRN);
         if (isFromTimeline) {
             model.setVisitID(String.valueOf(patientVisitAdmissionID));
         } else {

@@ -36,7 +36,7 @@
                 android:gravity="center_vertical"
                 android:padding="@dimen/x5dp"
                 android:text="Exam"
-                android:textColor="@color/text_color_grey_dark"
+                android:textColor="@color/txt_aku_blue"
                 android:textSize="@dimen/s14"
                 app:typeface="@string/font_regular" />
 
@@ -49,7 +49,7 @@
                 android:gravity="center_vertical"
                 android:padding="@dimen/x5dp"
                 android:text="Exam Order Number"
-                android:textColor="@color/text_color_grey_dark"
+                android:textColor="@color/txt_aku_blue"
                 android:textSize="@dimen/s14"
                 app:typeface="@string/font_regular" />
 
@@ -62,7 +62,7 @@
                 android:gravity="center_vertical"
                 android:padding="@dimen/x5dp"
                 android:text="DateTime"
-                android:textColor="@color/text_color_grey_dark"
+                android:textColor="@color/txt_aku_blue"
                 android:textSize="@dimen/s14"
                 app:typeface="@string/font_regular" />
 
@@ -76,7 +76,7 @@
                 android:gravity="center_vertical"
                 android:padding="@dimen/x5dp"
                 android:text="Status"
-                android:textColor="@color/text_color_grey_dark"
+                android:textColor="@color/txt_aku_blue"
                 android:textSize="@dimen/s14"
                 app:typeface="@string/font_regular" />
 

@@ -10,7 +10,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.LinearLayout;
-import android.widget.TextView;
 
 import com.google.gson.JsonObject;
 import com.google.gson.reflect.TypeToken;
@@ -66,21 +65,21 @@ public class HealthHistoryFragment extends BaseFragment {
     @BindView(R.id.contTimeLinebar)
     LinearLayout contTimeLinebar;
     @BindView(R.id.txtClinicCount)
-    TextView txtClinicCount;
+    AnyTextView txtClinicCount;
     @BindView(R.id.txtRadiology)
-    TextView txtRadiology;
+    AnyTextView txtRadiology;
     @BindView(R.id.txtMedicationCount)
-    TextView txtMedicationCount;
+    AnyTextView txtMedicationCount;
     @BindView(R.id.txtImmunizationCount)
-    TextView txtImmunizationCount;
+    AnyTextView txtImmunizationCount;
     @BindView(R.id.txtCardioCount)
-    TextView txtCardioCount;
+    AnyTextView txtCardioCount;
     @BindView(R.id.txtNeuroCount)
-    TextView txtNeuroCount;
+    AnyTextView txtNeuroCount;
     @BindView(R.id.txtEndoscopyCount)
-    TextView txtEndoscopyCount;
+    AnyTextView txtEndoscopyCount;
     @BindView(R.id.txtDischargeCount)
-    TextView txtDischargeCount;
+    AnyTextView txtDischargeCount;
     private boolean isVisitTimeline;
     private List<MenuModel> arrData;
     private ArrayList<String> tempArr;
@@ -135,7 +134,7 @@ public class HealthHistoryFragment extends BaseFragment {
 
     private void serviceCall() {
         SearchModel model = new SearchModel();
-        model.setMRNumber(WebServiceConstants.tempMRN_LAB);
+        model.setMRNumber(WebServiceConstants.tempMRN);
         model.setVisitID(patientVisitAdmissionID + "");
         new WebServices(getBaseActivity(),
                 WebServiceConstants.temporaryToken,

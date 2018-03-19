@@ -3,9 +3,8 @@
     <color name="colorPrimary">#19BBDE</color>
     <color name="colorPrimaryDark">#4C667F</color>
     <color name="colorAccent">#FF8200</color>
-    <color name="text_grey">#5C5C5B</color>
+
     <color name="text_hint">#8C8C8B</color>
-    <color name="text_dark">#333333</color>
     <color name="star_grey">#A3A3A3</color>
     <color name="line">#E5E5E5</color>
 
@@ -21,6 +20,7 @@
     <color name="base_dark_blue">#19BBDE</color>
     <color name="base_green">#63A509</color>
     <color name="pacs_blue">#475F78</color>
+    <color name="txt_aku_blue">#4C667F</color>
 
 
     <color name="base_amberSemiTransparent">#AAFF8200</color>
@@ -33,7 +33,7 @@
     <color name="title_bar_color">@color/colorPrimary</color>
 
     <color name="text_color_grey">#9396AB</color>
-    <color name="text_color_grey_dark">#2d2e37</color>
+
     <color name="text_color_black_transparent">#99000000</color>
     <color name="profile_username_hint_color">#9396AB</color>
     <color name="text_color_light_grey">#f0f1f3</color>

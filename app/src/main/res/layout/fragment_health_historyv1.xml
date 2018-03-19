@@ -10,15 +10,15 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-         android:orientation="vertical">
+        android:orientation="vertical">
 
 
         <LinearLayout
             android:id="@+id/contTimeLinebar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:visibility="gone"
-            android:background="@color/colorPrimaryHalfTransparent">
+            android:background="@color/colorPrimaryHalfTransparent"
+            android:visibility="gone">
 
             <edu.aku.akuh_health_first.views.AnyTextView
                 android:id="@+id/txtTimelineView"
@@ -28,8 +28,8 @@
                 android:gravity="center"
                 android:padding="@dimen/x5dp"
                 android:text="Displaying result for Visit ID: "
+                android:textColor="@color/txt_aku_blue"
                 android:textSize="@dimen/s16"
-                android:textColor="@color/text_dark"
                 app:typeface="@string/font_regular" />
 
         </LinearLayout>
@@ -58,7 +58,6 @@
                     android:animateLayoutChanges="true"
                     android:padding="@dimen/x7dp"
                     app:cardCornerRadius="@dimen/x10dp"
-                    app:cardElevation="@dimen/x5dp"
 
                     >
 
@@ -84,7 +83,7 @@
                                 android:scaleType="fitCenter"
                                 android:src="@drawable/clinical_labortaory" />
 
-                            <TextView
+                            <edu.aku.akuh_health_first.views.AnyTextView
                                 android:id="@+id/txtClinicCount"
                                 android:layout_width="@dimen/x25dp"
                                 android:layout_height="@dimen/x25dp"
@@ -98,7 +97,8 @@
                                 android:padding="@dimen/x5dp"
                                 android:text="99"
                                 android:textColor="@color/c_white"
-                                android:textSize="@dimen/s12" />
+                                android:textSize="@dimen/s12"
+                                app:typeface="@string/font_regular" />
 
 
                         </RelativeLayout>
@@ -111,7 +111,7 @@
                             android:gravity="center_horizontal"
                             android:lines="2"
                             android:text="Clinical Laboratory"
-                            android:textColor="@color/c_black"
+                            android:textColor="@color/base_amber"
                             android:textSize="@dimen/s14"
                             app:typeface="@string/font_bold"
 
@@ -132,7 +132,6 @@
                     android:animateLayoutChanges="true"
                     android:padding="@dimen/x7dp"
                     app:cardCornerRadius="@dimen/x10dp"
-                    app:cardElevation="@dimen/x5dp"
 
                     >
 
@@ -158,7 +157,7 @@
                                 android:scaleType="fitCenter"
                                 android:src="@drawable/radiology" />
 
-                            <TextView
+                            <edu.aku.akuh_health_first.views.AnyTextView
                                 android:id="@+id/txtRadiology"
                                 android:layout_width="@dimen/x25dp"
                                 android:layout_height="@dimen/x25dp"
@@ -172,7 +171,8 @@
                                 android:padding="@dimen/x5dp"
                                 android:text="99"
                                 android:textColor="@color/c_white"
-                                android:textSize="@dimen/s12" />
+                                android:textSize="@dimen/s12"
+                                app:typeface="@string/font_regular" />
 
 
                         </RelativeLayout>
@@ -186,7 +186,7 @@
                             android:gravity="center_horizontal"
                             android:lines="2"
                             android:text="Radiology"
-                            android:textColor="@color/c_black"
+                            android:textColor="@color/base_blue"
                             android:textSize="@dimen/s14"
                             app:typeface="@string/font_bold"
 
@@ -219,7 +219,6 @@
                     android:animateLayoutChanges="true"
                     android:padding="@dimen/x7dp"
                     app:cardCornerRadius="@dimen/x10dp"
-                    app:cardElevation="@dimen/x5dp"
 
                     >
 
@@ -246,7 +245,7 @@
                                 android:scaleType="fitCenter"
                                 android:src="@drawable/medication" />
 
-                            <TextView
+                            <edu.aku.akuh_health_first.views.AnyTextView
                                 android:id="@+id/txtMedicationCount"
                                 android:layout_width="@dimen/x25dp"
                                 android:layout_height="@dimen/x25dp"
@@ -260,7 +259,8 @@
                                 android:padding="@dimen/x5dp"
                                 android:text="99"
                                 android:textColor="@color/c_white"
-                                android:textSize="@dimen/s12" />
+                                android:textSize="@dimen/s12"
+                                app:typeface="@string/font_regular" />
 
                         </RelativeLayout>
 
@@ -271,7 +271,7 @@
                             android:gravity="center_horizontal"
                             android:lines="2"
                             android:text="Medication Profile"
-                            android:textColor="@color/c_black"
+                            android:textColor="#E2A349"
                             android:textSize="@dimen/s14"
                             app:typeface="@string/font_bold"
 
@@ -293,7 +293,6 @@
                     android:animateLayoutChanges="true"
                     android:padding="@dimen/x7dp"
                     app:cardCornerRadius="@dimen/x10dp"
-                    app:cardElevation="@dimen/x5dp"
 
                     >
 
@@ -321,7 +320,7 @@
                                 android:scaleType="fitCenter"
                                 android:src="@drawable/immunization" />
 
-                            <TextView
+                            <edu.aku.akuh_health_first.views.AnyTextView
                                 android:id="@+id/txtImmunizationCount"
                                 android:layout_width="@dimen/x25dp"
                                 android:layout_height="@dimen/x25dp"
@@ -335,7 +334,8 @@
                                 android:padding="@dimen/x5dp"
                                 android:text="99"
                                 android:textColor="@color/c_white"
-                                android:textSize="@dimen/s12" />
+                                android:textSize="@dimen/s12"
+                                app:typeface="@string/font_regular" />
 
                         </RelativeLayout>
 
@@ -348,7 +348,7 @@
                             android:gravity="center_horizontal"
                             android:lines="2"
                             android:text="Immunization Profile"
-                            android:textColor="@color/c_black"
+                            android:textColor="#9DC105"
                             android:textSize="@dimen/s14"
                             app:typeface="@string/font_bold"
 
@@ -380,7 +380,6 @@
                     android:animateLayoutChanges="true"
                     android:padding="@dimen/x7dp"
                     app:cardCornerRadius="@dimen/x10dp"
-                    app:cardElevation="@dimen/x5dp"
 
                     >
 
@@ -406,7 +405,7 @@
                                 android:scaleType="fitCenter"
                                 android:src="@drawable/cardiopulmonary" />
 
-                            <TextView
+                            <edu.aku.akuh_health_first.views.AnyTextView
                                 android:id="@+id/txtCardioCount"
                                 android:layout_width="@dimen/x25dp"
                                 android:layout_height="@dimen/x25dp"
@@ -420,7 +419,8 @@
                                 android:padding="@dimen/x5dp"
                                 android:text="99"
                                 android:textColor="@color/c_white"
-                                android:textSize="@dimen/s12" />
+                                android:textSize="@dimen/s12"
+                                app:typeface="@string/font_regular" />
 
                         </RelativeLayout>
 
@@ -432,8 +432,8 @@
                             android:layout_height="wrap_content"
                             android:gravity="center_horizontal"
                             android:lines="2"
-                            android:text="Cardiopulmonary and Angiograms"
-                            android:textColor="@color/c_black"
+                            android:text="Cardiopulmonary"
+                            android:textColor="@color/base_reddish"
                             android:textSize="@dimen/s14"
                             app:typeface="@string/font_bold"
 
@@ -453,7 +453,6 @@
                     android:animateLayoutChanges="true"
                     android:padding="@dimen/x7dp"
                     app:cardCornerRadius="@dimen/x10dp"
-                    app:cardElevation="@dimen/x5dp"
 
                     >
 
@@ -481,7 +480,7 @@
                                 android:scaleType="fitCenter"
                                 android:src="@drawable/neurophysiology" />
 
-                            <TextView
+                            <edu.aku.akuh_health_first.views.AnyTextView
                                 android:id="@+id/txtNeuroCount"
                                 android:layout_width="@dimen/x25dp"
                                 android:layout_height="@dimen/x25dp"
@@ -495,7 +494,8 @@
                                 android:padding="@dimen/x5dp"
                                 android:text="99"
                                 android:textColor="@color/c_white"
-                                android:textSize="@dimen/s12" />
+                                android:textSize="@dimen/s12"
+                                app:typeface="@string/font_regular" />
 
                         </RelativeLayout>
 
@@ -506,7 +506,7 @@
                             android:gravity="center_horizontal"
                             android:lines="2"
                             android:text="Neurophysiology"
-                            android:textColor="@color/c_black"
+                            android:textColor="#847A4E"
                             android:textSize="@dimen/s14"
                             app:typeface="@string/font_bold"
 
@@ -537,7 +537,6 @@
                     android:animateLayoutChanges="true"
                     android:padding="@dimen/x7dp"
                     app:cardCornerRadius="@dimen/x10dp"
-                    app:cardElevation="@dimen/x5dp"
 
                     >
 
@@ -565,7 +564,7 @@
                                 android:scaleType="fitCenter"
                                 android:src="@drawable/endoscopy" />
 
-                            <TextView
+                            <edu.aku.akuh_health_first.views.AnyTextView
                                 android:id="@+id/txtEndoscopyCount"
                                 android:layout_width="@dimen/x25dp"
                                 android:layout_height="@dimen/x25dp"
@@ -579,7 +578,8 @@
                                 android:padding="@dimen/x5dp"
                                 android:text="99"
                                 android:textColor="@color/c_white"
-                                android:textSize="@dimen/s12" />
+                                android:textSize="@dimen/s12"
+                                app:typeface="@string/font_regular" />
 
                         </RelativeLayout>
 
@@ -590,7 +590,7 @@
                             android:gravity="center_horizontal"
                             android:lines="2"
                             android:text="Endoscopy"
-                            android:textColor="@color/c_black"
+                            android:textColor="#33E4D3"
                             android:textSize="@dimen/s14"
                             app:typeface="@string/font_bold"
 
@@ -611,7 +611,6 @@
                     android:animateLayoutChanges="true"
                     android:padding="@dimen/x7dp"
                     app:cardCornerRadius="@dimen/x10dp"
-                    app:cardElevation="@dimen/x5dp"
 
                     >
 
@@ -637,7 +636,7 @@
                                 android:scaleType="fitCenter"
                                 android:src="@drawable/discharge_summary" />
 
-                            <TextView
+                            <edu.aku.akuh_health_first.views.AnyTextView
                                 android:id="@+id/txtDischargeCount"
                                 android:layout_width="@dimen/x25dp"
                                 android:layout_height="@dimen/x25dp"
@@ -651,7 +650,8 @@
                                 android:padding="@dimen/x5dp"
                                 android:text="99"
                                 android:textColor="@color/c_white"
-                                android:textSize="@dimen/s12" />
+                                android:textSize="@dimen/s12"
+                                app:typeface="@string/font_regular" />
 
                         </RelativeLayout>
 
@@ -662,7 +662,7 @@
                             android:gravity="center_horizontal"
                             android:lines="2"
                             android:text="Discharge Summary"
-                            android:textColor="@color/c_black"
+                            android:textColor="#C67FDD"
                             android:textSize="@dimen/s14"
                             app:typeface="@string/font_bold" />
 

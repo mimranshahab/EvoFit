@@ -83,16 +83,18 @@ public class ImmunizationAdapter extends RecyclerView.Adapter<ImmunizationAdapte
         setListener(holder, model);
     }
 
-    private void setViews(ViewHolder holder, int color, int rounded_box_filled_primary_color,  int circularimg,int visible) {
+    private void setViews(ViewHolder holder, int color, int rounded_box_filled_primary_color, int circularimg, int visible) {
         holder.frameColorCode.setBackgroundColor(color);
         holder.txtType.setBackgroundResource(rounded_box_filled_primary_color);
         holder.btnupdateColorCode.setBackgroundResource(rounded_box_filled_primary_color);
         holder.imgUser.setImageResource(circularimg);
-        holder.btnUpdate.setVisibility(visible);
+        holder.RLUpdate.setVisibility(visible);
+        holder.txtBtnColor.setTextColor(color);
+
     }
 
     private void setListener(final ViewHolder holder, final ImmunizationModel model) {
-        holder.btnUpdate.setOnClickListener(new View.OnClickListener() {
+        holder.RLUpdate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 onItemClick.onItemClick(holder.getAdapterPosition(), model);
@@ -127,12 +129,14 @@ public class ImmunizationAdapter extends RecyclerView.Adapter<ImmunizationAdapte
         FrameLayout frameColorCode;
         @BindView(R.id.txtLocation)
         AnyTextView txtLocation;
+        @BindView(R.id.txtBtnColor)
+        AnyTextView txtBtnColor;
         @BindView(R.id.contListItem)
         LinearLayout contListItem;
         @BindView(R.id.cardView2)
         CardView cardView2;
         @BindView(R.id.RLUpdate)
-        RelativeLayout btnUpdate;
+        RelativeLayout RLUpdate;
         @BindView(R.id.imgIcon)
         CircleImageView imgUser;
         @BindView(R.id.btnupdateColorCode)
