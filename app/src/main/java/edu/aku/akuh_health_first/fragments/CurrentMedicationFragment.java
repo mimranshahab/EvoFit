@@ -98,6 +98,11 @@ public class CurrentMedicationFragment extends BaseFragment implements View.OnCl
         super.onViewCreated(view, savedInstanceState);
         bindView();
 
+        updateData();
+
+    }
+
+    private void updateData() {
         if (!sharedPreferenceManager.getCurrentUser().getVisitDetail().getIsPatientExists()) {
             serviceCall();
             mFab.setVisibility(View.VISIBLE);
@@ -105,7 +110,6 @@ public class CurrentMedicationFragment extends BaseFragment implements View.OnCl
             showEmptyView("No Current Medication since patient is onBoard");
             mFab.setVisibility(View.GONE);
         }
-
     }
 
 
@@ -124,7 +128,7 @@ public class CurrentMedicationFragment extends BaseFragment implements View.OnCl
         refreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
-                serviceCall();
+                updateData();
                 refreshLayout.setRefreshing(false);
             }
         });
@@ -187,7 +191,7 @@ public class CurrentMedicationFragment extends BaseFragment implements View.OnCl
             model.setVisitID(null);
         }
 
-         new WebServices(getBaseActivity(),
+        new WebServices(getBaseActivity(),
                 WebServiceConstants.temporaryToken,
                 BaseURLTypes.AHFA_BASE_URL)
                 .webServiceRequestAPIForArray(WebServiceConstants.METHOD_CURRENT_MEDICATION,
@@ -203,25 +207,18 @@ public class CurrentMedicationFragment extends BaseFragment implements View.OnCl
                                                 , type);
 
                                 if (arrayList.size() > 0) {
-                                    if (arrayList.get(0).getIspatientonboard()) {
-                                        showEmptyView("No Current Medication since patient is onBoard");
-                                        mFab.setVisibility(View.GONE);
-                                    } else if (arrayList.get(0).getMedicineexceedlimit()) {
+                                    if (arrayList.get(0).getMedicineexceedlimit()) {
                                         showView();
-                                        mFab.setVisibility(View.VISIBLE);
-                                        mFab.setLabelVisibility(View.VISIBLE);
+
                                         mFab.setEnabled(false);
                                         UIHelper.showToast(getContext(), "Medication Limit Exceed.");
                                     } else {
                                         showView();
-                                        mFab.setVisibility(View.VISIBLE);
                                         mFab.setEnabled(true);
                                     }
-
                                 } else {
                                     showEmptyView();
                                 }
-
 
                                 arrData.clear();
                                 arrData.addAll(arrayList);

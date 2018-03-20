@@ -35,4 +35,12 @@ public class SpinnerModel {
     public String toString() {
         return text;
     }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (obj instanceof SpinnerModel) {
+            return ((SpinnerModel) obj).text.equals(text);
+        }
+        return super.equals(obj);
+    }
 }
