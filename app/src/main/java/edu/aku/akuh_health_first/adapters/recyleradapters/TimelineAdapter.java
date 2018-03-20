@@ -64,7 +64,11 @@ public class TimelineAdapter extends RecyclerView.Adapter<TimelineAdapter.ViewHo
         holder.txtFacility.setText(timelineModel.getPatientVisitLocation() + "," + timelineModel.getPatientVisitHospitalLocation());
         holder.txtVisitDateTime.setText(timelineModel.getPatientVisitDateTime());
         holder.txtDoctorName.setText("Dr." + timelineModel.getPatientVisitDoctorName());
-        holder.txtService.setText(timelineModel.getPatientVisitService());
+        if (timelineModel.getPatientVisitServiceDescription().isEmpty()) {
+            holder.txtService.setText(timelineModel.getPatientVisitService());
+        } else {
+            holder.txtService.setText(timelineModel.getPatientVisitServiceDescription());
+        }
         /*
         set banner color
         In-Patient ---->Blue

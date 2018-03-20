@@ -1,358 +1,183 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:card_view="http://schemas.android.com/tools"
+    android:id="@+id/contParent"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:id="@+id/contParent"
-    xmlns:card_view="http://schemas.android.com/tools"
-    android:background="@drawable/imgmainbg"
+    android:background="@color/c_white"
     android:orientation="vertical"
-    android:paddingTop="@dimen/x25dp">
+>
 
-    <RelativeLayout
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:padding="@dimen/x10dp">
+        android:layout_height="match_parent">
 
-        <de.hdodenhof.circleimageview.CircleImageView
-            android:id="@+id/circleImageView"
-            android:layout_width="@dimen/x135dp"
-            android:layout_height="@dimen/x135dp"
-            android:padding="@dimen/x10dp"
-            android:scaleType="centerCrop"
-            android:src="@drawable/user_image"
-            android:visibility="visible" />
-
-        <edu.aku.akuh_health_first.views.AnyTextView
-            android:id="@+id/txtUserName"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignTop="@+id/circleImageView"
-            android:layout_marginTop="@dimen/x15dp"
-            android:layout_toEndOf="@+id/circleImageView"
-            android:layout_toRightOf="@+id/circleImageView"
-            android:padding="@dimen/x1dp"
-            android:text="Name"
-            android:textColor="@color/c_black"
-            android:textSize="@dimen/s17"
-            app:typeface="@string/font_bold" />
-
-        <edu.aku.akuh_health_first.views.AnyTextView
-            android:id="@+id/txtMRN"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/txtUserName"
-            android:layout_toEndOf="@+id/circleImageView"
-            android:layout_toRightOf="@+id/circleImageView"
-            android:padding="@dimen/x1dp"
-            android:text="MR#: 178-11-22"
-            android:textColor="@color/c_black"
-            android:textSize="@dimen/s15"
-            app:typeface="@string/font_regular" />
-
-        <edu.aku.akuh_health_first.views.AnyTextView
-            android:id="@+id/txtEmailAddress"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/txtMRN"
-            android:layout_toEndOf="@+id/circleImageView"
-            android:layout_toRightOf="@+id/circleImageView"
-            android:padding="@dimen/x1dp"
-            android:text="sarah@gmail.com"
-            android:textColor="@color/c_black"
-            android:textSize="@dimen/s15"
-            app:typeface="@string/font_regular" />
-
-        <edu.aku.akuh_health_first.views.AnyTextView
-            android:id="@+id/txtAge"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/txtEmailAddress"
-            android:layout_toEndOf="@+id/circleImageView"
-            android:layout_toRightOf="@+id/circleImageView"
-            android:padding="@dimen/x1dp"
-            android:text="65 years | Male"
-            android:textColor="@color/c_black"
-            android:textSize="@dimen/s15"
-            app:typeface="@string/font_regular" />
-
-    </RelativeLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:padding="@dimen/x10dp">
-
-
-        <edu.aku.akuh_health_first.views.AnyTextView
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:layout_marginBottom="@dimen/x10dp"
-            android:background="@color/colorPrimaryDark"
-            android:gravity="center_horizontal"
-            android:padding="@dimen/x5dp"
-            android:text="CARD DETAIL"
-            android:textColor="@color/c_white"
-            android:textSize="17sp"
-            app:typeface="@string/font_bold" />
+            android:layout_height="match_parent"
+            android:orientation="vertical">
 
-        <!--<edu.aku.akuh_health_first.views.AnyTextView-->
-        <!--android:id="@+id/txtCardNum"-->
-        <!--android:layout_width="wrap_content"-->
-        <!--android:layout_height="wrap_content"-->
-        <!--android:padding="@dimen/x1dp"-->
-        <!--android:text="Card Number"-->
-        <!--android:textColor="@color/c_black"-->
-        <!--android:textSize="@dimen/s15"-->
-        <!--app:typeface="@string/font_regular" />-->
-
-        <!--<edu.aku.akuh_health_first.views.AnyTextView-->
-        <!--android:id="@+id/txtCardType"-->
-        <!--android:layout_width="wrap_content"-->
-        <!--android:layout_height="wrap_content"-->
-        <!--android:padding="@dimen/x1dp"-->
-        <!--android:text="Card Number"-->
-        <!--android:textColor="@color/c_black"-->
-        <!--android:textSize="@dimen/s15"-->
-        <!--app:typeface="@string/font_regular" />-->
-
-        <!--<edu.aku.akuh_health_first.views.AnyTextView-->
-        <!--android:id="@+id/txtIssueDate"-->
-        <!--android:layout_width="wrap_content"-->
-        <!--android:layout_height="wrap_content"-->
-        <!--android:padding="@dimen/x1dp"-->
-        <!--android:text="Issue Date"-->
-        <!--android:textColor="@color/c_black"-->
-        <!--android:textSize="@dimen/s15"-->
-        <!--app:typeface="@string/font_regular" />-->
-
-        <!--<edu.aku.akuh_health_first.views.AnyTextView-->
-        <!--android:id="@+id/txtExpDate"-->
-        <!--android:layout_width="wrap_content"-->
-        <!--android:layout_height="wrap_content"-->
-        <!--android:padding="@dimen/x1dp"-->
-        <!--android:text="Expiry Date"-->
-        <!--android:textColor="@color/c_black"-->
-        <!--android:textSize="@dimen/s15"-->
-        <!--app:typeface="@string/font_regular" />-->
-
-
-        <android.support.v7.widget.CardView
-            android:id="@+id/cardView2"
-            card_view:cardCornerRadius="5dp"
-            card_view:cardElevation="x15dp"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_centerInParent="true"
-            android:layout_gravity="center_horizontal"
-            android:layout_margin="@dimen/x3dp"
-            android:animateLayoutChanges="true"
-            android:padding="@dimen/x2dp">
-
-            <LinearLayout
+            <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@color/c_white">
-
-                <View
-                    android:layout_width="@dimen/x10dp"
-                    android:layout_height="match_parent"
-                    android:background="@color/colorPrimary" />
+                android:layout_marginTop="@dimen/x10dp"
+                android:gravity="center">
 
 
-                <LinearLayout
-                    android:id="@+id/contListItem"
-                    android:layout_width="0dp"
+                <de.hdodenhof.circleimageview.CircleImageView
+                    android:id="@+id/circleImageView"
+                    android:layout_width="@dimen/x255dp"
+                    android:layout_height="@dimen/x255dp"
+                    android:padding="@dimen/x15dp"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/user_image"
+                    android:visibility="visible" />
+
+                <ImageButton
+                    android:id="@+id/btnCamera"
+                    android:layout_width="@dimen/x40dp"
+                    android:layout_height="@dimen/x40dp"
+                    android:layout_alignBottom="@id/circleImageView"
+                    android:layout_alignRight="@id/circleImageView"
+                    android:layout_marginBottom="@dimen/x15dp"
+                    android:layout_marginRight="@dimen/x15dp"
+                    android:background="@drawable/imgcamera"
+                    />
+            </RelativeLayout>
+
+
+            <LinearLayout
+                android:id="@+id/refreshLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/x5dp"
+                android:gravity="center_horizontal"
+                android:orientation="vertical">
+
+
+                <edu.aku.akuh_health_first.views.AnyTextView
+                    android:id="@+id/txtUserName"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_weight="0.6"
-                    android:background="@color/base_grey"
-                    android:orientation="vertical"
-                    android:padding="@dimen/x8dp">
+                    android:layout_marginTop="@dimen/x5dp"
+                    android:hint="ABCDEFGH IJK"
+                    android:gravity="center"
 
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginBottom="@dimen/x10dp"
-                        android:gravity="center_vertical">
+                    android:padding="@dimen/x5dp"
+                    android:textColor="@color/txt_aku_blue"
+                    android:textSize="@dimen/s17"
+                    app:typeface="@string/font_bold" />
 
-                        <ImageView
-                            android:layout_width="@dimen/x20dp"
-                            android:layout_height="@dimen/x20dp"
-                            android:scaleType="centerCrop"
-                            android:src="@drawable/ic_action_add_person" />
+                <edu.aku.akuh_health_first.views.AnyTextView
+                    android:id="@+id/txtMRN"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="178-11-22"
+                    android:padding="@dimen/x5dp"
+                    android:gravity="center"
 
-                        <LinearLayout
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginLeft="@dimen/x10dp"
-                            android:orientation="vertical">
+                    android:textColor="@color/base_reddish"
+                    android:textSize="@dimen/s16"
+                    app:typeface="@string/font_regular" />
 
 
-                            <edu.aku.akuh_health_first.views.AnyTextView
-                                android:id="@+id/txtCardType"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="Card Type"
-                                android:textColor="@color/base_amber" />
-
-                        </LinearLayout>
-
-                    </LinearLayout>
-
-
-                    <LinearLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginBottom="@dimen/x10dp"
-                        android:gravity="center_vertical">
-
-                        <ImageView
-                            android:layout_width="@dimen/x20dp"
-                            android:layout_height="@dimen/x20dp"
-                            android:scaleType="centerCrop"
-                            android:src="@drawable/ic_action_compose" />
-
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginLeft="@dimen/x10dp"
-                            android:orientation="vertical">
+                <edu.aku.akuh_health_first.views.AnyTextView
+                    android:id="@+id/txtAge"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="@dimen/x15dp"
+                    android:hint="65 years | Male"
+                    android:padding="@dimen/x5dp"
+                    android:gravity="center"
+                    android:textColor="@color/c_gray"
+                    android:textSize="@dimen/s16"
+                    app:typeface="@string/font_regular" />
 
 
-                            <edu.aku.akuh_health_first.views.AnyTextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="Card Number"
-                                android:textColor="@color/c_white"
+                <edu.aku.akuh_health_first.views.AnyTextView
+                    android:id="@+id/txtCincNumber"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="@dimen/x3dp"
+                    android:background="@color/line"
+                    android:drawableLeft="@drawable/password_icon"
+                    android:drawablePadding="@dimen/x5dp"
+                    android:ellipsize="end"
+                    android:gravity="center_vertical"
+                    android:hint="xxxx-xxxx-xxxxx"
+                    android:padding="@dimen/x10dp"
+                    android:singleLine="true"
+                    android:textColor="@color/text_color_grey"
+                    android:textSize="@dimen/s15"
+                    app:typeface="@string/font_regular" />
 
-                                android:textSize="@dimen/s14" />
+                <edu.aku.akuh_health_first.views.AnyTextView
+                    android:id="@+id/txtPhoneNum"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="@dimen/x3dp"
+                    android:background="@color/line"
+                    android:drawableLeft="@drawable/password_icon"
+                    android:drawablePadding="@dimen/x5dp"
+                    android:ellipsize="end"
+                    android:gravity="center_vertical"
+                    android:hint="+923411111111"
+                    android:padding="@dimen/x10dp"
+                    android:singleLine="true"
+                    android:textColor="@color/text_color_grey"
+                    android:textSize="@dimen/s15"
+                    app:typeface="@string/font_regular" />
 
-                            <edu.aku.akuh_health_first.views.AnyTextView
-                                android:id="@+id/txtCardNum"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="card number here"
-                                android:textColor="@color/c_white"
-                                android:textSize="@dimen/s14" />
+                <edu.aku.akuh_health_first.views.AnyTextView
+                    android:id="@+id/txtAddress"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="@dimen/x3dp"
+                    android:background="@color/line"
+                    android:drawableLeft="@drawable/password_icon"
+                    android:drawablePadding="@dimen/x5dp"
+                    android:ellipsize="end"
+                    android:gravity="center_vertical"
+                    android:hint="abc house no abc\n hhahahahh "
+                    android:maxLines="2"
+                    android:padding="@dimen/x10dp"
+                    android:textColor="@color/text_color_grey"
+                    android:textSize="@dimen/s15"
+                    app:typeface="@string/font_regular" />
 
-                        </LinearLayout>
-
-                    </LinearLayout>
-
-
-                    <LinearLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginBottom="@dimen/x10dp"
-                        android:gravity="center_vertical">
-
-                        <ImageView
-                            android:layout_width="@dimen/x20dp"
-                            android:layout_height="@dimen/x20dp"
-                            android:scaleType="centerCrop"
-                            android:src="@drawable/ic_msg_clock"
-                            android:tint="@color/c_white" />
-
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginLeft="@dimen/x10dp"
-                            android:orientation="vertical">
-
-
-                            <edu.aku.akuh_health_first.views.AnyTextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="Creation Date"
-                                android:textColor="@color/c_white"
-
-                                android:textSize="@dimen/s14" />
-
-                            <edu.aku.akuh_health_first.views.AnyTextView
-                                android:id="@+id/txtCreationDate"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="creation date here"
-                                android:textColor="@color/c_white"
-                                android:textSize="@dimen/s14" />
-
-                        </LinearLayout>
-
-                    </LinearLayout>
-
-
-                    <LinearLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginBottom="@dimen/x10dp"
-                        android:gravity="center_vertical">
-
-                        <ImageView
-                            android:layout_width="@dimen/x20dp"
-                            android:layout_height="@dimen/x20dp"
-                            android:scaleType="centerCrop"
-                            android:src="@drawable/ic_msg_clock"
-                            android:tint="@color/c_white" />
-
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginLeft="@dimen/x10dp"
-                            android:orientation="vertical">
-
-
-                            <edu.aku.akuh_health_first.views.AnyTextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="Expiry Date"
-                                android:textColor="@color/c_white"
-
-                                android:textSize="@dimen/s14" />
-
-                            <edu.aku.akuh_health_first.views.AnyTextView
-                                android:id="@+id/txtExpirayDate"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="expiry date here"
-                                android:textColor="@color/c_white"
-                                android:textSize="@dimen/s14" />
-
-                        </LinearLayout>
-
-                    </LinearLayout>
-
-
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="0.2">
-
-                    <edu.aku.akuh_health_first.helperclasses.ui.helper.SquareImageView
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_gravity="center"
-                        android:alpha="0.7"
-                        android:background="@drawable/aku_logo"
-                        android:scaleType="centerCrop" />
-
-                </LinearLayout>
-
-                <View
-                    android:layout_width="@dimen/x10dp"
-                    android:layout_height="match_parent"
-                    android:background="@color/colorPrimary" />
-
-
+                <edu.aku.akuh_health_first.views.AnyTextView
+                    android:id="@+id/txtEmailAddress"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="@dimen/x3dp"
+                    android:background="@color/line"
+                    android:drawableLeft="@drawable/password_icon"
+                    android:drawablePadding="@dimen/x5dp"
+                    android:ellipsize="end"
+                    android:gravity="center_vertical"
+                    android:hint="abc@gmail.com"
+                    android:padding="@dimen/x10dp"
+                    android:singleLine="true"
+                    android:textColor="@color/text_color_grey"
+                    android:textSize="@dimen/s15"
+                    app:typeface="@string/font_regular" />
             </LinearLayout>
 
-
-        </android.support.v7.widget.CardView>
-
-
-    </LinearLayout>
-
+            <com.github.clans.fab.FloatingActionButton
+                android:id="@+id/fab"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_gravity="end|bottom"
+                android:layout_marginBottom="@dimen/x8dp"
+                android:layout_marginRight="@dimen/x8dp"
+                android:padding="@dimen/x8dp"
+                android:src="@drawable/ic_action_edit"
+                android:visibility="visible"
+                app:fab_colorNormal="@color/colorPrimaryDark"
+                app:fab_colorPressed="@color/base_amber"
+                app:fab_colorRipple="@color/base_reddish" />
+        </LinearLayout>
+    </ScrollView>
 </LinearLayout>
