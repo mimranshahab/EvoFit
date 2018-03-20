@@ -4,7 +4,8 @@ import android.content.Context;
 import android.support.v7.widget.AppCompatTextView;
 import android.util.AttributeSet;
 
-import com.ctrlplusz.anytextview.Util;
+
+import edu.aku.akuh_health_first.utils.utility.Utils;
 
 public class AnyTextView extends AppCompatTextView {
 
@@ -16,12 +17,12 @@ public class AnyTextView extends AppCompatTextView {
 
     public AnyTextView(Context context, AttributeSet attrs) {
         super(context, attrs);
-        Util.setTypeface(attrs, this);
+        Utils.setTypeface(attrs, this);
     }
 
     public AnyTextView(Context context, AttributeSet attrs, int defStyle) {
         super(context, attrs, defStyle);
-        Util.setTypeface(attrs, this);
+        Utils.setTypeface(attrs, this);
     }
 
 

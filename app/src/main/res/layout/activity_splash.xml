@@ -22,7 +22,7 @@
             android:scaleY="1.4"
             android:src="@drawable/login_logo" />
 
-        <com.ctrlplusz.anytextview.AnyTextView
+        <edu.aku.akuh_health_first.views.AnyTextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center"

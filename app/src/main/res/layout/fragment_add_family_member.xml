@@ -12,7 +12,7 @@
         android:orientation="vertical"
         android:padding="@dimen/x15dp">
 
-        <com.ctrlplusz.anytextview.AnyTextView
+        <edu.aku.akuh_health_first.views.AnyTextView
             android:id="@+id/txtFullName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -39,7 +39,7 @@
             app:testType="personFullName" />
 
 
-        <com.ctrlplusz.anytextview.AnyTextView
+        <edu.aku.akuh_health_first.views.AnyTextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="@dimen/x5dp"
@@ -48,7 +48,7 @@
             android:textSize="13sp"
             app:typeface="@string/font_bold" />
 
-        <com.ctrlplusz.anytextview.AnyTextView
+        <edu.aku.akuh_health_first.views.AnyTextView
             android:id="@+id/txtDateofBirth"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -63,7 +63,7 @@
             android:textSize="16sp" />
 
 
-        <com.ctrlplusz.anytextview.AnyTextView
+        <edu.aku.akuh_health_first.views.AnyTextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="@dimen/x5dp"
@@ -72,7 +72,7 @@
             android:textSize="13sp"
             app:typeface="@string/font_bold" />
 
-        <com.ctrlplusz.anytextview.AnyTextView
+        <edu.aku.akuh_health_first.views.AnyTextView
             android:id="@+id/txtGender"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -92,7 +92,7 @@
             android:layout_height="0dp" />
 
 
-        <com.ctrlplusz.anytextview.AnyTextView
+        <edu.aku.akuh_health_first.views.AnyTextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="@dimen/x5dp"
@@ -117,7 +117,7 @@
             app:testType="nocheck" />
 
 
-        <com.ctrlplusz.anytextview.AnyTextView
+        <edu.aku.akuh_health_first.views.AnyTextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="@dimen/x5dp"
@@ -126,7 +126,7 @@
             android:textSize="13sp"
             app:typeface="@string/font_bold" />
 
-        <com.ctrlplusz.anytextview.AnyTextView
+        <edu.aku.akuh_health_first.views.AnyTextView
             android:id="@+id/txtRelationship"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -146,7 +146,7 @@
             android:layout_height="0dp" />
 
 
-        <com.ctrlplusz.anytextview.AnyTextView
+        <edu.aku.akuh_health_first.views.AnyTextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="@dimen/x5dp"
@@ -171,7 +171,7 @@
             app:testType="nocheck" />
 
 
-        <com.ctrlplusz.anytextview.AnyTextView
+        <edu.aku.akuh_health_first.views.AnyTextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="@dimen/x5dp"
@@ -196,7 +196,7 @@
             app:testType="alphaNumeric" />
 
 
-        <com.ctrlplusz.anytextview.AnyTextView
+        <edu.aku.akuh_health_first.views.AnyTextView
             android:id="@+id/txtEmailAddress"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -223,7 +223,7 @@
             app:testType="email" />
 
 
-        <com.ctrlplusz.anytextview.AnyTextView
+        <edu.aku.akuh_health_first.views.AnyTextView
             android:id="@+id/txtMobileNumber"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -249,7 +249,7 @@
             app:testType="phone" />
 
 
-        <com.ctrlplusz.anytextview.AnyTextView
+        <edu.aku.akuh_health_first.views.AnyTextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="@dimen/x5dp"
@@ -285,7 +285,7 @@
                 android:orientation="vertical"
                 android:padding="@dimen/x10dp">
 
-                <com.ctrlplusz.anytextview.AnyTextView
+                <edu.aku.akuh_health_first.views.AnyTextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="@dimen/x5dp"
@@ -304,7 +304,7 @@
                     android:scaleType="centerCrop"
                     android:src="@drawable/placeholder" />
 
-                <com.ctrlplusz.anytextview.AnyTextView
+                <edu.aku.akuh_health_first.views.AnyTextView
                     android:id="@+id/txtCNICImageName"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -327,7 +327,7 @@
                 android:orientation="vertical"
                 android:padding="@dimen/x10dp">
 
-                <com.ctrlplusz.anytextview.AnyTextView
+                <edu.aku.akuh_health_first.views.AnyTextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="@dimen/x5dp"
@@ -346,7 +346,7 @@
                     android:scaleType="centerCrop"
                     android:src="@drawable/placeholder" />
 
-                <com.ctrlplusz.anytextview.AnyTextView
+                <edu.aku.akuh_health_first.views.AnyTextView
                     android:id="@+id/txtPassportImageName"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -364,7 +364,7 @@
         </LinearLayout>
 
 
-        <com.ctrlplusz.anytextview.AnyTextView
+        <edu.aku.akuh_health_first.views.AnyTextView
             android:id="@+id/btnAddMember"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -376,7 +376,7 @@
             android:text="@string/add"
             android:textColor="@color/c_white"
             android:textSize="17sp"
-            app:typeface="@string/font_regular"></com.ctrlplusz.anytextview.AnyTextView>
+            app:typeface="@string/font_regular"/>
 
 
     </LinearLayout>

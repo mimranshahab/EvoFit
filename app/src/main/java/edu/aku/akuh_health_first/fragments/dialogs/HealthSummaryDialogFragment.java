@@ -16,7 +16,7 @@ import android.view.animation.AnimationUtils;
 import android.view.animation.LayoutAnimationController;
 import android.widget.ImageView;
 
-import com.ctrlplusz.anytextview.AnyTextView;
+import edu.aku.akuh_health_first.views.AnyTextView;
 
 import java.util.ArrayList;
 

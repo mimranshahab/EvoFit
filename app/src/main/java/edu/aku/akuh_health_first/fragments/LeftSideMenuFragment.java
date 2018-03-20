@@ -10,7 +10,7 @@ import android.widget.AdapterView;
 import android.widget.ImageView;
 import android.widget.ScrollView;
 
-import com.ctrlplusz.anytextview.AnyTextView;
+import edu.aku.akuh_health_first.views.AnyTextView;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;

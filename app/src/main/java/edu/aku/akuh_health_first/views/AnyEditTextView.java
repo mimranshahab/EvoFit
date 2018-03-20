@@ -5,7 +5,8 @@ import android.util.AttributeSet;
 import android.view.KeyEvent;
 
 import com.andreabaccega.widget.FormEditText;
-import com.ctrlplusz.anytextview.Util;
+
+import edu.aku.akuh_health_first.utils.utility.Utils;
 
 public class AnyEditTextView extends FormEditText {
 
@@ -15,12 +16,12 @@ public class AnyEditTextView extends FormEditText {
 
     public AnyEditTextView(Context context, AttributeSet attrs) {
         super(context, attrs);
-        Util.setTypeface(attrs, this);
+        Utils.setTypeface(attrs, this);
     }
 
     public AnyEditTextView(Context context, AttributeSet attrs, int defStyle) {
         super(context, attrs, defStyle);
-        Util.setTypeface(attrs, this);
+        Utils.setTypeface(attrs, this);
     }
 
     @Override

@@ -33,7 +33,7 @@
         <!--android:src="@drawable/imgdone_bttn" />-->
 
 
-    <com.ctrlplusz.anytextview.AnyTextView
+    <edu.aku.akuh_health_first.views.AnyTextView
         android:id="@+id/btnDone"
         android:gravity="center"
         android:layout_width="wrap_content"

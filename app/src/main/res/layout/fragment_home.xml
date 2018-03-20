@@ -119,7 +119,7 @@
             android:layout_centerHorizontal="true"
             android:layout_gravity="center"
             android:scaleType="centerCrop"
-            android:src="@drawable/male_icon_filled"
+            android:src="@drawable/female_icon_filled"
             app:civ_border_color="@color/c_white"
             app:civ_border_width="@dimen/x3dp"
             />

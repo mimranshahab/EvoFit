@@ -31,7 +31,7 @@
             android:padding="3dp">
 
 
-            <com.ctrlplusz.anytextview.AnyTextView
+            <edu.aku.akuh_health_first.views.AnyTextView
                 android:id="@+id/txtTitle"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"

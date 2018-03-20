@@ -30,6 +30,12 @@ import static edu.aku.akuh_health_first.constatnts.WebServiceConstants.METHOD_US
 public class ImageLoaderHelper {
 
 
+    public static void loadImageWithConstantHeadersWithoutAnimation(Context context, ImageView imageView, String path) {
+        ImageLoader.getInstance().displayImage(ImageLoaderHelper.getUserImageURL(path),
+                imageView,
+                ImageLoaderHelper.getOptionsSimple(WebServiceConstants.getHeaders()));
+    }
+
     public static void loadImageWithConstantHeaders(Context context, ImageView imageView, String path) {
         ImageLoader.getInstance().displayImage(ImageLoaderHelper.getUserImageURL(path),
                 imageView,

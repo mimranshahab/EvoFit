@@ -82,7 +82,7 @@
                 app:testType="nocheck" />
 
 
-            <com.ctrlplusz.anytextview.AnyTextView
+            <edu.aku.akuh_health_first.views.AnyTextView
                 android:id="@+id/btnLogin"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -120,7 +120,7 @@
                         android:alpha="0.8"
                         android:src="@color/c_black" />
 
-                    <com.ctrlplusz.anytextview.AnyTextView
+                    <edu.aku.akuh_health_first.views.AnyTextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:padding="@dimen/x10dp"
@@ -139,7 +139,7 @@
                 </LinearLayout>
 
 
-                <com.ctrlplusz.anytextview.AnyTextView
+                <edu.aku.akuh_health_first.views.AnyTextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="@dimen/x15dp"
@@ -150,7 +150,7 @@
                     app:typeface="@string/font_regular" />
 
 
-                <com.ctrlplusz.anytextview.AnyTextView
+                <edu.aku.akuh_health_first.views.AnyTextView
                     android:id="@+id/txtSignUp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -165,7 +165,7 @@
                     app:typeface="@string/font_bold" />
 
 
-                <com.ctrlplusz.anytextview.AnyTextView
+                <edu.aku.akuh_health_first.views.AnyTextView
                     android:id="@+id/txtForgotPassword"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"

@@ -10,7 +10,7 @@ import android.view.Window;
 import android.widget.Button;
 import android.widget.TextView;
 
-import com.ctrlplusz.anytextview.AnyTextView;
+import edu.aku.akuh_health_first.views.AnyTextView;
 
 import edu.aku.akuh_health_first.R;
 import edu.aku.akuh_health_first.fragments.abstracts.GenericClickableInterface;

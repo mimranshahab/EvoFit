@@ -575,6 +575,8 @@ Enim vitae euismod eu velit pede eu, sodales malesuada sit fermentum ut dictum d
         ]]>
     </string>
 
+    <string name="typeface_not_found">Typeface %s not found, or could not be loaded. Showing default typeface. </string>
+    <string name="assets_fonts_folder">fonts/</string>
 
     <string name="activity_gallery_image_transition" translatable="false">%s[image]</string>
     <string name="activity_gallery_checkbox_transition" translatable="false">%s[checkbox]</string>
@@ -712,5 +714,6 @@ Enim vitae euismod eu velit pede eu, sodales malesuada sit fermentum ut dictum d
     <string name="requestNumber"><b>RequestNumber: </b></string>
     <string name="admissionNumber"><b>AdmissionNumber: </b></string>
     <string name="service"><b>Service: </b></string>
+
 
 </resources>

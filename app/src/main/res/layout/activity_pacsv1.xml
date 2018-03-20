@@ -79,7 +79,6 @@
                 android:text="0/0"
                 android:textColor="@color/c_white"
                 android:textSize="@dimen/s12"
-
                 app:typeface="@string/font_bold" />
 
             <edu.aku.akuh_health_first.views.AnyTextView

@@ -65,7 +65,7 @@ public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.ViewHolder> {
             }
 
         }        else{
-            ImageLoaderHelper.loadImageWithConstantHeaders(activity,holder.imgUser,user.getProfileImage());
+            ImageLoaderHelper.loadImageWithConstantHeadersWithoutAnimation(activity,holder.imgUser,user.getProfileImage());
         }
 
 //        if (user.isSelected()) {

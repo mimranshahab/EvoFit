@@ -185,8 +185,8 @@ public class TitleBar extends RelativeLayout {
 
 
         } else {
-            ImageLoaderHelper.loadImageWithConstantHeaders(context, circleImageView, currentUser.getProfileImage());
-            ImageLoaderHelper.loadImageWithConstantHeaders(context, circleImageView2, currentUser.getProfileImage());
+            ImageLoaderHelper.loadImageWithConstantHeadersWithoutAnimation(context, circleImageView, currentUser.getProfileImage());
+            ImageLoaderHelper.loadImageWithConstantHeadersWithoutAnimation(context, circleImageView2, currentUser.getProfileImage());
         }
 
         this.circleImageView.setOnClickListener(new OnClickListener() {
