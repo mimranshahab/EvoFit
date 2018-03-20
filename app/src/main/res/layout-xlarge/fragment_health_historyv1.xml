@@ -82,7 +82,7 @@
                                 android:scaleType="fitCenter"
                                 android:src="@drawable/clinical_labortaory" />
 
-                            <TextView
+                            <edu.aku.akuh_health_first.views.AnyTextView
                                 android:id="@+id/txtClinicCount"
                                 android:layout_width="@dimen/x20dp"
                                 android:layout_height="@dimen/x20dp"
@@ -155,7 +155,7 @@
                                 android:scaleType="fitCenter"
                                 android:src="@drawable/radiology" />
 
-                            <TextView
+                            <edu.aku.akuh_health_first.views.AnyTextView
                                 android:id="@+id/txtRadiology"
                                 android:layout_width="@dimen/x20dp"
                                 android:layout_height="@dimen/x20dp"
@@ -231,7 +231,7 @@
                                 android:scaleType="fitCenter"
                                 android:src="@drawable/medication" />
 
-                            <TextView
+                            <edu.aku.akuh_health_first.views.AnyTextView
                                 android:id="@+id/txtMedicationCount"
                                 android:layout_width="@dimen/x20dp"
                                 android:layout_height="@dimen/x20dp"
@@ -318,7 +318,7 @@
                                 android:scaleType="fitCenter"
                                 android:src="@drawable/immunization" />
 
-                            <TextView
+                            <edu.aku.akuh_health_first.views.AnyTextView
                                 android:id="@+id/txtImmunizationCount"
                                 android:layout_width="@dimen/x20dp"
                                 android:layout_height="@dimen/x20dp"
@@ -391,7 +391,7 @@
                                 android:scaleType="fitCenter"
                                 android:src="@drawable/cardiopulmonary" />
 
-                            <TextView
+                            <edu.aku.akuh_health_first.views.AnyTextView
                                 android:id="@+id/txtCardioCount"
                                 android:layout_width="@dimen/x20dp"
                                 android:layout_height="@dimen/x20dp"
@@ -465,7 +465,7 @@
                                 android:scaleType="fitCenter"
                                 android:src="@drawable/neurophysiology" />
 
-                            <TextView
+                            <edu.aku.akuh_health_first.views.AnyTextView
                                 android:id="@+id/txtNeuroCount"
                                 android:layout_width="@dimen/x20dp"
                                 android:layout_height="@dimen/x20dp"
@@ -550,7 +550,7 @@
                                 android:scaleType="fitCenter"
                                 android:src="@drawable/endoscopy" />
 
-                            <TextView
+                            <edu.aku.akuh_health_first.views.AnyTextView
                                 android:id="@+id/txtEndoscopyCount"
                                 android:layout_width="@dimen/x20dp"
                                 android:layout_height="@dimen/x20dp"
@@ -621,7 +621,7 @@
                                 android:scaleType="fitCenter"
                                 android:src="@drawable/discharge_summary" />
 
-                            <TextView
+                            <edu.aku.akuh_health_first.views.AnyTextView
                                 android:id="@+id/txtDischargeCount"
                                 android:layout_width="@dimen/x20dp"
                                 android:layout_height="@dimen/x20dp"
@@ -713,7 +713,7 @@
                                 android:scaleType="fitCenter"
                                 android:src="@drawable/clinical_labortaory" />
 
-                            <TextView
+                            <edu.aku.akuh_health_first.views.AnyTextView
                                 android:layout_width="@dimen/x20dp"
                                 android:layout_height="@dimen/x20dp"
                                 android:layout_alignParentRight="true"
@@ -784,7 +784,7 @@
                                 android:scaleType="fitCenter"
                                 android:src="@drawable/radiology" />
 
-                            <TextView
+                            <edu.aku.akuh_health_first.views.AnyTextView
                                 android:layout_width="@dimen/x20dp"
                                 android:layout_height="@dimen/x20dp"
                                 android:layout_alignParentRight="true"
@@ -858,7 +858,7 @@
                                 android:scaleType="fitCenter"
                                 android:src="@drawable/medication" />
 
-                            <TextView
+                            <edu.aku.akuh_health_first.views.AnyTextView
                                 android:layout_width="@dimen/x20dp"
                                 android:layout_height="@dimen/x20dp"
                                 android:layout_alignParentRight="true"
