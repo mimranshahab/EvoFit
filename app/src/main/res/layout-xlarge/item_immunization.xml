@@ -11,10 +11,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
-        android:layout_marginLeft="@dimen/x20dp"
-        android:layout_marginRight="@dimen/x20dp"
-        android:layout_marginTop="@dimen/x10dp"
-        android:layout_marginBottom="@dimen/x10dp"
+        android:layout_margin="@dimen/x7dp"
         android:animateLayoutChanges="true"
         app:cardCornerRadius="@dimen/x8dp"
         app:cardElevation="@dimen/x3dp"
@@ -35,35 +32,41 @@
                 android:background="@drawable/rounded_box"
                 android:gravity="center_vertical"
                 android:orientation="vertical"
-                android:padding="@dimen/x5dp">
+                android:padding="@dimen/x3dp">
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:orientation="horizontal"
-                    android:padding="@dimen/x3dp">
+                    android:padding="@dimen/x5dp">
 
                     <edu.aku.akuh_health_first.views.AnyTextView
                         android:id="@+id/txtDateTime"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_weight=".5"
+                        android:drawableLeft="@drawable/calendar_immunization"
+                        android:drawablePadding="@dimen/x5dp"
+                        android:ellipsize="end"
+                        android:singleLine="true"
                         android:text="22 jan ,2018"
-                        android:textSize="@dimen/s10" />
+                        android:textColor="@color/txt_aku_blue"
+                        android:textSize="@dimen/s14"
+                        app:typeface="@string/font_regular" />
 
 
                     <edu.aku.akuh_health_first.views.AnyTextView
                         android:id="@+id/txtType"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginLeft="@dimen/x65dp"
+                        android:layout_marginLeft="@dimen/x35dp"
                         android:layout_weight=".5"
                         android:background="@drawable/rounded_box_filled_base_green"
                         android:gravity="center_horizontal"
-                        android:padding="@dimen/x2dp"
+                        android:padding="@dimen/x3dp"
                         android:text="Vaccinated"
                         android:textColor="@color/c_white"
-                        android:textSize="@dimen/s10"
+                        android:textSize="@dimen/s16"
                         app:typeface="@string/font_bold" />
 
                 </LinearLayout>
@@ -83,12 +86,11 @@
 
                     <de.hdodenhof.circleimageview.CircleImageView
                         android:id="@+id/imgIcon"
-                        android:layout_width="@dimen/x60dp"
-                        android:layout_height="@dimen/x60dp"
+                        android:layout_width="@dimen/x70dp"
+                        android:layout_height="@dimen/x70dp"
                         android:layout_margin="@dimen/x5dp"
-                        android:background="@drawable/circle_stroke_gray"
                         android:scaleType="centerCrop"
-                        android:src="@drawable/male_icon" />
+                        android:src="@drawable/circle_green" />
 
 
                     <LinearLayout
@@ -102,31 +104,40 @@
 
                         <edu.aku.akuh_health_first.views.AnyTextView
                             android:id="@+id/txtName"
-                            android:layout_width="wrap_content"
+                            android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:text="Hepatitus A "
+                            android:ellipsize="end"
+                            android:padding="@dimen/x2dp"
+                            android:singleLine="true"
+                            android:text="Vaccine Name"
                             android:textColor="@color/txt_aku_blue"
-                            android:textSize="@dimen/s12"
+                            android:textSize="@dimen/s16"
                             app:typeface="@string/font_bold" />
 
 
                         <edu.aku.akuh_health_first.views.AnyTextView
-                            android:id="@+id/txtLocation"
-                            android:layout_width="wrap_content"
+                            android:id="@+id/txtRoute"
+                            android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:text="CHC"
+                            android:drawableLeft="@drawable/cardiopulmonary_doctor"
+                            android:ellipsize="end"
+                            android:padding="@dimen/x2dp"
+                            android:singleLine="true"
+                            android:text="Route"
                             android:textColor="@color/txt_aku_blue"
-                            android:textSize="@dimen/s10"
+                            android:textSize="@dimen/s14"
                             app:typeface="@string/font_regular" />
 
                         <edu.aku.akuh_health_first.views.AnyTextView
-                            android:id="@+id/txtFacility"
-                            android:layout_width="wrap_content"
+                            android:id="@+id/txtLocation"
+                            android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:drawableLeft="@drawable/location_visittimeline"
-                            android:text="Stadium Road"
+                            android:ellipsize="end"
+                            android:singleLine="true"
+                            android:text="Location"
                             android:textColor="@color/txt_aku_blue"
-                            android:textSize="@dimen/s10"
+                            android:textSize="@dimen/s14"
                             app:typeface="@string/font_regular" />
 
 
@@ -135,39 +146,35 @@
 
                 <RelativeLayout
                     android:id="@+id/RLUpdate"
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="@dimen/x50dp"
-                    android:layout_marginRight="@dimen/x50dp"
+                    android:layout_marginLeft="@dimen/x10dp"
+                    android:layout_marginRight="@dimen/x10dp"
+                    android:layout_marginTop="@dimen/x10dp"
 
 
                     >
 
 
                     <edu.aku.akuh_health_first.views.AnyTextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:background="@color/c_white"
-                        android:gravity="center"
-                        android:padding="@dimen/x3dp"
-                        android:textAlignment="center"
-                        android:text="UPDATE"
-                        android:textColor="@color/txt_aku_blue"
-                        android:textSize="@dimen/s10"
-
-                        />
-
-                    <edu.aku.akuh_health_first.views.AnyTextView
                         android:id="@+id/btnupdateColorCode"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:layout_alignBottom="@id/txtBtnColor"
+                        android:layout_alignTop="@id/txtBtnColor"
                         android:alpha=".25"
-                        android:background="@drawable/rounded_box_filled_base_red"
-                        android:gravity="center"
-                        android:padding="@dimen/x3dp"
-                        android:textSize="@dimen/s10"
+                        android:background="@drawable/rounded_box_filled_base_amber" />
 
-                        />
+                    <edu.aku.akuh_health_first.views.AnyTextView
+                        android:id="@+id/txtBtnColor"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:padding="@dimen/x5dp"
+                        android:text="UPDATE"
+                        android:textColor="@color/txt_aku_blue"
+                        android:textSize="@dimen/s14"
+                        app:typeface="@string/font_bold" />
 
 
                 </RelativeLayout>

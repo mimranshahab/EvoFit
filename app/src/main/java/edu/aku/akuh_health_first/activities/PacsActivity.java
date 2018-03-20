@@ -78,7 +78,7 @@ public class PacsActivity extends AppCompatActivity {
             updateData(arrTupleModel.get(0));
         }
         setListeners();
-        txttotalCount.setText("Total count "+pacsList.size()+"");
+        txttotalCount.setText("Total count " + pacsList.size() + "");
 
     }
 
@@ -150,8 +150,14 @@ public class PacsActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 if (pointer <= selectedTupleModel.getMin()) {
-                    return;
+                    btnPrevious.setEnabled(false);
+                    btnPrevious.setAlpha(0.4f);
                 } else {
+                    if (!btnNext.isEnabled()) {
+                        btnNext.setAlpha(1f);
+                        btnNext.setEnabled(true);
+                    }
+
                     pointer--;
                     if (pacsList.get(pointer) != null) {
                         loadImage(image, pacsList.get(pointer).toString(), true);
@@ -166,8 +172,14 @@ public class PacsActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 if (pointer > (selectedTupleModel.getMax() - 1)) {
-                    return;
+                    btnNext.setEnabled(false);
+                    btnNext.setAlpha(0.4f);
+
                 } else {
+                    if (!btnPrevious.isEnabled()) {
+                        btnPrevious.setAlpha(1f);
+                        btnPrevious.setEnabled(true);
+                    }
                     pointer++;
                     if (pacsList.get(pointer) != null) {
                         loadImage(image, pacsList.get(pointer).toString(), true);
@@ -226,6 +238,28 @@ public class PacsActivity extends AppCompatActivity {
         indicatorSeekBar.setOnSeekChangeListener(new IndicatorSeekBar.OnSeekBarChangeListener() {
             @Override
             public void onProgressChanged(IndicatorSeekBar seekBar, int progress, float progressFloat, boolean fromUserTouch) {
+
+                if (indicatorSeekBar.getMin() == progress) {
+                    btnPrevious.setEnabled(false);
+                    btnPrevious.setAlpha(0.4f);
+                } else {
+                    if (!btnPrevious.isEnabled()) {
+                        btnPrevious.setEnabled(true);
+                        btnPrevious.setAlpha(1f);
+                    }
+                }
+
+
+                if (indicatorSeekBar.getMax() == progress) {
+                    btnNext.setEnabled(false);
+                    btnNext.setAlpha(0.4f);
+                } else {
+                    if (!btnNext.isEnabled()) {
+                        btnNext.setEnabled(true);
+                        btnNext.setAlpha(1f);
+                    }
+                }
+
                 pointer = progress - 1;
                 loadImage(image, pacsList.get(progress - 1), true);
                 tvProgress.setText(progress + " of " + pacsList.size());

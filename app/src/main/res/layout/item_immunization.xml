@@ -47,8 +47,12 @@
                         android:layout_weight=".5"
                         android:drawableLeft="@drawable/calendar_immunization"
                         android:drawablePadding="@dimen/x5dp"
+                        android:ellipsize="end"
+                        android:singleLine="true"
                         android:text="22 jan ,2018"
-                        android:textSize="@dimen/s14" />
+                        android:textColor="@color/txt_aku_blue"
+                        android:textSize="@dimen/s14"
+                        app:typeface="@string/font_regular" />
 
 
                     <edu.aku.akuh_health_first.views.AnyTextView
@@ -100,31 +104,39 @@
 
                         <edu.aku.akuh_health_first.views.AnyTextView
                             android:id="@+id/txtName"
-                            android:layout_width="wrap_content"
+                            android:layout_width="match_parent"
                             android:layout_height="wrap_content"
+                            android:ellipsize="end"
                             android:padding="@dimen/x2dp"
-                            android:text="Hepatitus A "
+                            android:singleLine="true"
+                            android:text="Vaccine Name"
                             android:textColor="@color/txt_aku_blue"
                             android:textSize="@dimen/s16"
                             app:typeface="@string/font_bold" />
 
 
                         <edu.aku.akuh_health_first.views.AnyTextView
-                            android:id="@+id/txtLocation"
-                            android:layout_width="wrap_content"
+                            android:id="@+id/txtRoute"
+                            android:layout_width="match_parent"
                             android:layout_height="wrap_content"
+                            android:drawableLeft="@drawable/cardiopulmonary_doctor"
+                            android:ellipsize="end"
                             android:padding="@dimen/x2dp"
-                            android:text="CHC"
+                            android:singleLine="true"
+                            android:gravity="center_vertical"
+                            android:text="Route"
                             android:textColor="@color/txt_aku_blue"
                             android:textSize="@dimen/s14"
                             app:typeface="@string/font_regular" />
 
                         <edu.aku.akuh_health_first.views.AnyTextView
-                            android:id="@+id/txtFacility"
-                            android:layout_width="wrap_content"
+                            android:id="@+id/txtLocation"
+                            android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:drawableLeft="@drawable/location_visittimeline"
-                            android:text="Stadium Road"
+                            android:ellipsize="end"
+                            android:singleLine="true"
+                            android:text="Location"
                             android:textColor="@color/txt_aku_blue"
                             android:textSize="@dimen/s14"
                             app:typeface="@string/font_regular" />
@@ -158,11 +170,10 @@
                         android:id="@+id/btnupdateColorCode"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:layout_alignBottom="@id/txtBtnColor"
+                        android:layout_alignTop="@id/txtBtnColor"
                         android:alpha=".25"
-                        android:background="@drawable/rounded_box_filled_base_amber"
-                        android:padding="@dimen/x5dp"
-
-                        />
+                        android:background="@drawable/rounded_box_filled_base_amber" />
 
                     <edu.aku.akuh_health_first.views.AnyTextView
                         android:id="@+id/txtBtnColor"

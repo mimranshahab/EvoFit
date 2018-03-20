@@ -45,9 +45,9 @@
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight=".7"
-                        android:gravity="center_vertical"
                         android:drawableLeft="@drawable/cardiopulmonary_report_date_green"
                         android:drawablePadding="@dimen/x5dp"
+                        android:gravity="center_vertical"
                         android:text="22 jan ,2018"
                         android:textSize="@dimen/s14" />
 
@@ -57,9 +57,9 @@
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="@dimen/x5dp"
+                        android:layout_weight=".3"
                         android:background="@drawable/rounded_box_filled_base_green"
                         android:gravity="center"
-                        android:layout_weight=".3"
                         android:padding="@dimen/x3dp"
                         android:text="Completed"
                         android:textColor="@color/c_white"
@@ -103,8 +103,8 @@
                             android:id="@+id/txtName"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:padding="@dimen/x2dp"
                             android:maxLines="1"
+                            android:padding="@dimen/x2dp"
                             android:text="Hepatitus A "
                             android:textColor="@color/txt_aku_blue"
                             android:textSize="@dimen/s16"
@@ -115,10 +115,10 @@
                             android:id="@+id/txtDrName"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:drawableLeft="@drawable/cardiopulmonary_doctor"
+                            android:drawablePadding="@dimen/x5dp"
                             android:padding="@dimen/x2dp"
                             android:text="Dr Abc"
-                            android:drawablePadding="@dimen/x5dp"
-                            android:drawableLeft="@drawable/cardiopulmonary_doctor"
                             android:textColor="@color/txt_aku_blue"
                             android:textSize="@dimen/s14"
                             app:typeface="@string/font_regular" />
@@ -180,9 +180,10 @@
                         android:layout_marginRight="@dimen/x5dp"
                         android:layout_weight=".5"
                         android:gravity="center"
-                        android:visibility="gone">
+                        android:visibility="visible">
 
                         <edu.aku.akuh_health_first.views.AnyTextView
+                            android:id="@+id/txtGraph"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:background="@drawable/rounded_box_filled_base_amber"
@@ -200,10 +201,10 @@
                             android:id="@+id/btnGraphColorCode"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
+                            android:layout_alignBottom="@id/txtGraph"
+                            android:layout_alignTop="@id/txtGraph"
                             android:alpha=".25"
                             android:gravity="center"
-
-                            android:padding="@dimen/x7dp"
                             android:textColor="@color/c_white"
 
                             />

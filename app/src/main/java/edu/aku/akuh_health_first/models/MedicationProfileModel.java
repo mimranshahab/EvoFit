@@ -104,8 +104,21 @@ public class MedicationProfileModel {
     @Expose
     @SerializedName("RXMedcount")
     private int rxmedcount;
+    @Expose
+    @SerializedName("NextDoseDttm")
+    private String nextDoseDttm;
 
+    public boolean isLifeTimeMedicin() {
+        return lifeTimeMedicin;
+    }
 
+    public String getNextDoseDttm() {
+        return nextDoseDttm;
+    }
+
+    public void setNextDoseDttm(String nextDoseDttm) {
+        this.nextDoseDttm = nextDoseDttm;
+    }
 
     public String getRecordmessage() {
         return recordmessage;

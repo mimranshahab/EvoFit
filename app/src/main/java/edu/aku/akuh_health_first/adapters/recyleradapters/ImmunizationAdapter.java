@@ -57,6 +57,7 @@ public class ImmunizationAdapter extends RecyclerView.Adapter<ImmunizationAdapte
         holder.txtDateTime.setText(model.getVaccinePlanDate());
         holder.txtLocation.setText(model.getHospitalLocation());
         holder.txtName.setText(model.getDescription());
+        holder.txtRoute.setText(model.getRouteDescription());
 
         switch (model.getVaccinationStatus()) {
             case AppConstants.schedule:
@@ -87,7 +88,7 @@ public class ImmunizationAdapter extends RecyclerView.Adapter<ImmunizationAdapte
         holder.frameColorCode.setBackgroundColor(color);
         holder.txtType.setBackgroundResource(rounded_box_filled_primary_color);
         holder.btnupdateColorCode.setBackgroundResource(rounded_box_filled_primary_color);
-        holder.imgUser.setImageResource(circularimg);
+        holder.imgIcon.setImageResource(circularimg);
         holder.RLUpdate.setVisibility(visible);
         holder.txtBtnColor.setTextColor(color);
 
@@ -119,28 +120,30 @@ public class ImmunizationAdapter extends RecyclerView.Adapter<ImmunizationAdapte
 
 
     static class ViewHolder extends RecyclerView.ViewHolder {
-        @BindView(R.id.txtType)
-        AnyTextView txtType;
-        @BindView(R.id.txtName)
-        AnyTextView txtName;
         @BindView(R.id.txtDateTime)
         AnyTextView txtDateTime;
-        @BindView(R.id.frameColorCode)
-        FrameLayout frameColorCode;
+        @BindView(R.id.txtType)
+        AnyTextView txtType;
+        @BindView(R.id.imgIcon)
+        CircleImageView imgIcon;
+        @BindView(R.id.txtName)
+        AnyTextView txtName;
+        @BindView(R.id.txtRoute)
+        AnyTextView txtRoute;
         @BindView(R.id.txtLocation)
         AnyTextView txtLocation;
-        @BindView(R.id.txtBtnColor)
-        AnyTextView txtBtnColor;
         @BindView(R.id.contListItem)
         LinearLayout contListItem;
-        @BindView(R.id.cardView2)
-        CardView cardView2;
-        @BindView(R.id.RLUpdate)
-        RelativeLayout RLUpdate;
-        @BindView(R.id.imgIcon)
-        CircleImageView imgUser;
         @BindView(R.id.btnupdateColorCode)
         AnyTextView btnupdateColorCode;
+        @BindView(R.id.txtBtnColor)
+        AnyTextView txtBtnColor;
+        @BindView(R.id.RLUpdate)
+        RelativeLayout RLUpdate;
+        @BindView(R.id.frameColorCode)
+        FrameLayout frameColorCode;
+        @BindView(R.id.cardView2)
+        CardView cardView2;
 
 
         ViewHolder(View view) {
