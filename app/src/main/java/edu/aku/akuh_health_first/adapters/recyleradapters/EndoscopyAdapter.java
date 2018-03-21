@@ -28,6 +28,7 @@ public class EndoscopyAdapter extends RecyclerView.Adapter<EndoscopyAdapter.View
     private final OnItemClickListener onItemClick;
 
 
+
     private Activity activity;
     private ArrayList<EndoscopyModel> arrData;
 
@@ -55,10 +56,22 @@ public class EndoscopyAdapter extends RecyclerView.Adapter<EndoscopyAdapter.View
         holder.txtName.setText(model.getProcedures());
         holder.txtDateTime.setText(model.getProceduredatetime());
         holder.txtDrName.setText("Dr." + model.getPhysicianname());
-//        holder.txtReportTypeId.setText(model.getReporttypeid());
         holder.txtStatusType.setVisibility(View.INVISIBLE);
         setListener(holder, model);
         holder.RlReport.setVisibility(View.VISIBLE);
+
+
+        setListener(holder, model);
+        holder.txtStatusType.setText("Finalised");
+        setViews(holder, activity.getResources().getColor(R.color.base_green), R.drawable.rounded_box_filled_base_green, R.drawable.a_endoscopy_green);
+
+
+    }
+
+    private void setViews(ViewHolder holder, int color, int backgroundResource, int circular_background) {
+        holder.frameColorCode.setBackgroundColor(color);
+        holder.txtStatusType.setBackgroundResource(backgroundResource);
+        holder.imgIcon.setImageResource(circular_background);
     }
 
     private void setListener(final ViewHolder holder, final EndoscopyModel endoscopyModel) {
@@ -88,7 +101,7 @@ public class EndoscopyAdapter extends RecyclerView.Adapter<EndoscopyAdapter.View
         @BindView(R.id.txtStatusType)
         AnyTextView txtStatusType;
         @BindView(R.id.imgIcon)
-        CircleImageView imgUser;
+        CircleImageView imgIcon;
         @BindView(R.id.txtName)
         AnyTextView txtName;
         @BindView(R.id.txtDrName)
@@ -99,7 +112,10 @@ public class EndoscopyAdapter extends RecyclerView.Adapter<EndoscopyAdapter.View
         AnyTextView btnReportColorCode1;
         @BindView(R.id.RlReport)
         RelativeLayout RlReport;
-
+        @BindView(R.id.btnGraphColorCode)
+        AnyTextView btnGraphColorCode;
+        @BindView(R.id.RlGraph)
+        RelativeLayout RlGraph;
         @BindView(R.id.frameColorCode)
         FrameLayout frameColorCode;
         @BindView(R.id.cardView2)

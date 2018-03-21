@@ -9,15 +9,17 @@ import android.view.ViewGroup;
 import android.widget.Filter;
 import android.widget.FrameLayout;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 
 import java.util.ArrayList;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import de.hdodenhof.circleimageview.CircleImageView;
 import edu.aku.akuh_health_first.R;
 import edu.aku.akuh_health_first.callbacks.OnItemClickListener;
 import edu.aku.akuh_health_first.models.LaboratoryModel;
-import edu.aku.akuh_health_first.widget.AnyTextView;
+import edu.aku.akuh_health_first.views.AnyTextView;
 
 /**
  */
@@ -59,6 +61,14 @@ public class ClinicalLabAdapterV1 extends RecyclerView.Adapter<ClinicalLabAdapte
         holder.txtStatus.setText(model.getStatusID());
         holder.btnShowDetail.setText("SHOW " + model.getSpecimenType() + " DETAILS");
         setListener(holder, model);
+        if (model.getStatusID().equalsIgnoreCase("Completed")) {
+            holder.txtStatus.setBackgroundResource(R.drawable.rounded_box_filled_base_green);
+        } else if (model.getStatusID().equalsIgnoreCase("Pending")) {
+            holder.txtStatus.setBackgroundResource(R.drawable.rounded_box_filled_base_amber);
+        } else {
+            holder.txtStatus.setBackgroundResource(R.drawable.rounded_box_filled_base_red);
+        }
+
 
         /*
         6 color codes
@@ -72,34 +82,52 @@ public class ClinicalLabAdapterV1 extends RecyclerView.Adapter<ClinicalLabAdapte
 
 
         if (model.getSpecimenSectionID().equals("HAEM")) {
-            colorCodes(holder, R.color.c_brick_red, R.drawable.rounded_box_filled_base_red);
+            colorCodes(holder,
+                    R.color.c_brick_red,
+                    R.drawable.rounded_box_filled_base_red,
+                    R.drawable.a_clinicallab_red);
 
         } else if (model.getSpecimenSectionID().equals("MICRO")) {
-            colorCodes(holder, R.color.base_blue, R.drawable.rounded_box_filled_primary_color);
+            colorCodes(holder,
+                    R.color.base_blue,
+                    R.drawable.rounded_box_filled_primary_color,
+                    R.drawable.a_clinicallab_green);
 
 
         } else if (model.getSpecimenSectionID().equals("BIO")) {
-            colorCodes(holder, R.color.c_dark_green, R.drawable.rounded_box_filled_base_green);
+            colorCodes(holder,
+                    R.color.base_green,
+                    R.drawable.rounded_box_filled_base_green,
+                    R.drawable.a_clinicallab_green);
 
         } else if (model.getSpecimenSectionID().equals("HISTO")) {
-            colorCodes(holder, R.color.base_amber, R.drawable.rounded_box_filled_base_amber);
+            colorCodes(holder,
+                    R.color.base_amber,
+                    R.drawable.rounded_box_filled_base_amber,
+                    R.drawable.a_clinicallab_green);
 
         } else if (model.getSpecimenSectionID().equals("MMP")) {
-            colorCodes(holder, R.color.c_dark_turquoise, R.drawable.rounded_box_filled_primary_color);
+            colorCodes(holder,
+                    R.color.c_dark_turquoise,
+                    R.drawable.rounded_box_filled_primary_color,
+                    R.drawable.a_clinicallab_green);
 
         } else {
-            colorCodes(holder, R.color.c_orange_red, R.drawable.rounded_box_filled_base_amber);
+            colorCodes(holder,
+                    R.color.c_orange_red,
+                    R.drawable.rounded_box_filled_base_amber,
+                    R.drawable.a_clinicallab_green);
         }
 
     }
 
-    private void colorCodes(ViewHolder holder, int framecolor, int btnbackground) {
+    private void colorCodes(ViewHolder holder, int framecolor, int btnbackground, int a_clinicallab_green) {
         holder.frameColorCode.setBackgroundResource(framecolor);
-        holder.llColorCode.setBackgroundResource(framecolor);
         holder.btnShowDetail.setBackgroundResource(btnbackground);
-
-        holder.txtStatus.setTextColor(activity.getResources().getColor(framecolor));
+        holder.imgIcon.setImageResource(a_clinicallab_green);
     }
+
+
 
     private void setListener(final ViewHolder holder, final LaboratoryModel neurophysiology) {
         holder.btnShowDetail.setOnClickListener(new View.OnClickListener() {
@@ -123,28 +151,39 @@ public class ClinicalLabAdapterV1 extends RecyclerView.Adapter<ClinicalLabAdapte
     }
 
     static class ViewHolder extends RecyclerView.ViewHolder {
+        @BindView(R.id.txtDateTime)
+        AnyTextView txtDateTime;
+        @BindView(R.id.txtStatus)
+        AnyTextView txtStatus;
+        @BindView(R.id.imgIcon)
+        CircleImageView imgIcon;
         @BindView(R.id.txtSpecimenNumber)
         AnyTextView txtSpecimenNumber;
         @BindView(R.id.txtStatusID)
         AnyTextView txtStatusID;
-        @BindView(R.id.txtDateTime)
-        AnyTextView txtDateTime;
         @BindView(R.id.btnShowDetail)
         AnyTextView btnShowDetail;
-        @BindView(R.id.txtStatus)
-        AnyTextView txtStatus;
-        @BindView(R.id.cardView2)
-        CardView cardView2;
-        @BindView(R.id.llColorCode)
-        LinearLayout llColorCode;
+        @BindView(R.id.contListItem)
+        LinearLayout contListItem;
+        @BindView(R.id.btnReportColorCode1)
+        AnyTextView btnReportColorCode1;
+        @BindView(R.id.RlReport)
+        RelativeLayout RlReport;
+        @BindView(R.id.btnGraphColorCode)
+        AnyTextView btnGraphColorCode;
+        @BindView(R.id.RlGraph)
+        RelativeLayout RlGraph;
         @BindView(R.id.frameColorCode)
         FrameLayout frameColorCode;
+        @BindView(R.id.cardView2)
+        CardView cardView2;
 
         ViewHolder(View view) {
             super(view);
             ButterKnife.bind(this, view);
         }
     }
+
     public Filter getFilter() {
 
         return mFilter;
@@ -179,8 +218,7 @@ public class ClinicalLabAdapterV1 extends RecyclerView.Adapter<ClinicalLabAdapte
                         || filterableString2.toLowerCase().contains(filterString)
                         || filterableString3.toLowerCase().contains(filterString)
 //                        || filterableString4.toLowerCase().contains(filterString)
-                )
-                {
+                        ) {
 //                    nlist.add(filterableString);
                     filterData.add(list.get(i));
                 }
@@ -215,10 +253,6 @@ public class ClinicalLabAdapterV1 extends RecyclerView.Adapter<ClinicalLabAdapte
     public long getItemId(int position) {
         return position;
     }
-
-
-
-
 
 
 }

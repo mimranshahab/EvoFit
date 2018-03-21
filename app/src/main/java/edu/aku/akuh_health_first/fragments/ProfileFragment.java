@@ -3,20 +3,24 @@ package edu.aku.akuh_health_first.fragments;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.widget.DrawerLayout;
-import android.support.v7.widget.CardView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
+import android.widget.ImageButton;
 import android.widget.LinearLayout;
+
+import com.github.clans.fab.FloatingActionButton;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 import butterknife.Unbinder;
 import de.hdodenhof.circleimageview.CircleImageView;
 import edu.aku.akuh_health_first.R;
 import edu.aku.akuh_health_first.fragments.abstracts.BaseFragment;
 import edu.aku.akuh_health_first.helperclasses.ui.helper.TitleBar;
+import edu.aku.akuh_health_first.libraries.imageloader.ImageLoaderHelper;
 import edu.aku.akuh_health_first.models.receiving_model.CardMemberDetail;
 import edu.aku.akuh_health_first.models.receiving_model.UserDetailModel;
 import edu.aku.akuh_health_first.widget.AnyTextView;
@@ -30,28 +34,29 @@ public class ProfileFragment extends BaseFragment {
     Unbinder unbinder;
     @BindView(R.id.circleImageView)
     CircleImageView circleImageView;
+    @BindView(R.id.btnCamera)
+    ImageButton btnCamera;
     @BindView(R.id.txtUserName)
     AnyTextView txtUserName;
     @BindView(R.id.txtMRN)
     AnyTextView txtMRN;
-    @BindView(R.id.txtEmailAddress)
-    AnyTextView txtEmailAddress;
     @BindView(R.id.txtAge)
     AnyTextView txtAge;
-    @BindView(R.id.txtCardNum)
-    AnyTextView txtCardNum;
-    @BindView(R.id.txtCreationDate)
-    AnyTextView txtCreationDate;
-    @BindView(R.id.txtExpirayDate)
-    AnyTextView txtExpirayDate;
-    @BindView(R.id.contListItem)
-    LinearLayout contListItem;
-    @BindView(R.id.cardView2)
-    CardView cardView2;
-    @BindView(R.id.txtCardType)
-    AnyTextView txtCardType;
+    @BindView(R.id.txtCincNumber)
+    AnyTextView txtCincNumber;
+    @BindView(R.id.txtPhoneNum)
+    AnyTextView txtPhoneNum;
+    @BindView(R.id.txtAddress)
+    AnyTextView txtAddress;
+    @BindView(R.id.txtEmailAddress)
+    AnyTextView txtEmailAddress;
+    @BindView(R.id.refreshLayout)
+    LinearLayout refreshLayout;
+    @BindView(R.id.fab)
+    FloatingActionButton fab;
     @BindView(R.id.contParent)
     LinearLayout contParent;
+
 
     @Override
     protected int getFragmentLayout() {
@@ -82,15 +87,23 @@ public class ProfileFragment extends BaseFragment {
         UserDetailModel currentUser = sharedPreferenceManager.getCurrentUser();
         CardMemberDetail cardMemberDetail = sharedPreferenceManager.getCardMemberDetail();
         txtUserName.setText(currentUser.getName());
-        txtAge.setText("Age " + currentUser.getAge() + "  Gender " + currentUser.getGender());
+        txtAge.setText(currentUser.getAge() + " Y Old | " + currentUser.getGenderDescription());
         txtEmailAddress.setText(currentUser.getEmailAddress());
-//        txtExpDate.setText(sharedPreferenceManager.getCurrentUser().);
         txtMRN.setText(currentUser.getMRNumber());
-//        txtIssueDate.setText(sharedPreferenceManager.getCurrentUser());
-        txtCardType.setText("CardType: " + cardMemberDetail.getCardTypeDescription());
-        txtCardNum.setText("CardNumber: " + cardMemberDetail.getCardNumber());
-        txtExpirayDate.setText("Expiry date: " + cardMemberDetail.getCardExpiryDateTime());
-        txtCreationDate.setText("Issue date: " + cardMemberDetail.getCardCreationDateTime());
+        txtCincNumber.setText(currentUser.getCNICNumber());
+        txtAddress.setText(currentUser.getCurrentAddress());
+        txtPhoneNum.setText(currentUser.getCellPhoneNumber());
+        if (currentUser.getProfileImage() == null || currentUser.getProfileImage().isEmpty()) {
+            if (currentUser.getGender().equals("F")) {
+
+                circleImageView.setImageResource(R.drawable.female_icon);
+            } else {
+                circleImageView.setImageResource(R.drawable.male_icon);
+            }
+
+        } else {
+            ImageLoaderHelper.loadImageWithConstantHeadersWithoutAnimation(getContext(), circleImageView, currentUser.getProfileImage());
+        }
     }
 
     @Override
@@ -102,7 +115,6 @@ public class ProfileFragment extends BaseFragment {
         titleBar.showHome(getBaseActivity());
 
     }
-
 
 
     @Override
@@ -139,5 +151,17 @@ public class ProfileFragment extends BaseFragment {
     public void onDestroyView() {
         super.onDestroyView();
         unbinder.unbind();
+    }
+
+    @OnClick({R.id.btnCamera, R.id.fab})
+    public void onViewClicked(View view) {
+        switch (view.getId()) {
+            case R.id.btnCamera:
+
+                break;
+            case R.id.fab:
+
+                break;
+        }
     }
 }

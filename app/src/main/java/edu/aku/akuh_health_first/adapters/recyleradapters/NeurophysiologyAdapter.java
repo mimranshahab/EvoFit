@@ -58,27 +58,26 @@ public class NeurophysiologyAdapter extends RecyclerView.Adapter<Neurophysiology
         holder.RlGraph.setVisibility(View.GONE);
 
         setListener(holder, model);
-
+//
         if (model.getStatus().equalsIgnoreCase("S")) {
             holder.txtStatusType.setText("Signed");
-            setViews(holder, activity.getResources().getColor(R.color.base_green), R.drawable.rounded_box_filled_base_green);
+
+        setViews(holder, activity.getResources().getColor(R.color.base_green), R.drawable.rounded_box_filled_base_green, R.drawable.a_neurophysiology_green);
 
         } else {
-            setViews(holder, activity.getResources().getColor(R.color.base_reddish), R.drawable.rounded_box_filled_base_red);
+            setViews(holder, activity.getResources().getColor(R.color.base_reddish), R.drawable.rounded_box_filled_base_red, R.drawable.a_neurophysiology_red);
             holder.txtStatusType.setText(model.getStatus());
         }
 
     }
-
-    private void setViews(ViewHolder holder, int color, int backgroundResource) {
-
+    private void setViews(ViewHolder holder, int color, int backgroundResource, int circular_background) {
         holder.frameColorCode.setBackgroundColor(color);
         holder.txtStatusType.setBackgroundResource(backgroundResource);
-//        holder.btnReportColorCode1.setBackgroundResource(backgroundResource);
+        holder.imgIcon.setImageResource(circular_background);
     }
 
     private void setListener(final ViewHolder holder, final Neurophysiology neurophysiology) {
-        holder.btnReportColorCode1.setOnClickListener(new View.OnClickListener() {
+        holder.RlReport.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 onItemClick.onItemClick(holder.getAdapterPosition(), neurophysiology);
@@ -105,7 +104,7 @@ public class NeurophysiologyAdapter extends RecyclerView.Adapter<Neurophysiology
         @BindView(R.id.txtStatusType)
         AnyTextView txtStatusType;
         @BindView(R.id.imgIcon)
-        CircleImageView imgUser;
+        CircleImageView imgIcon;
         @BindView(R.id.txtName)
         AnyTextView txtName;
         @BindView(R.id.txtDrName)
