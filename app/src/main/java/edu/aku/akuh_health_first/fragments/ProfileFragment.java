@@ -1,8 +1,11 @@
 package edu.aku.akuh_health_first.fragments;
 
+import android.content.Intent;
+import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.widget.DrawerLayout;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,6 +14,13 @@ import android.widget.ImageButton;
 import android.widget.LinearLayout;
 
 import com.github.clans.fab.FloatingActionButton;
+import com.google.gson.JsonObject;
+import com.nostra13.universalimageloader.core.ImageLoader;
+import com.theartofdev.edmodo.cropper.CropImage;
+import com.theartofdev.edmodo.cropper.CropImageView;
+
+import java.io.File;
+import java.io.IOException;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -18,12 +28,28 @@ import butterknife.OnClick;
 import butterknife.Unbinder;
 import de.hdodenhof.circleimageview.CircleImageView;
 import edu.aku.akuh_health_first.R;
+import edu.aku.akuh_health_first.activities.BaseActivity;
+import edu.aku.akuh_health_first.constatnts.WebServiceConstants;
+import edu.aku.akuh_health_first.enums.BaseURLTypes;
+import edu.aku.akuh_health_first.enums.FileType;
 import edu.aku.akuh_health_first.fragments.abstracts.BaseFragment;
 import edu.aku.akuh_health_first.helperclasses.ui.helper.TitleBar;
+import edu.aku.akuh_health_first.helperclasses.ui.helper.UIHelper;
 import edu.aku.akuh_health_first.libraries.imageloader.ImageLoaderHelper;
+import edu.aku.akuh_health_first.managers.FileManager;
+import edu.aku.akuh_health_first.managers.retrofit.GsonFactory;
+import edu.aku.akuh_health_first.managers.retrofit.WebServices;
+import edu.aku.akuh_health_first.models.DummyModel;
+import edu.aku.akuh_health_first.models.LaboratoryUpdateModel;
 import edu.aku.akuh_health_first.models.receiving_model.CardMemberDetail;
 import edu.aku.akuh_health_first.models.receiving_model.UserDetailModel;
+import edu.aku.akuh_health_first.models.wrappers.WebResponse;
 import edu.aku.akuh_health_first.widget.AnyTextView;
+import okhttp3.MediaType;
+import okhttp3.MultipartBody;
+import okhttp3.RequestBody;
+
+import static android.app.Activity.RESULT_OK;
 
 /**
  * Created by aqsa.sarwar on 1/19/2018.
@@ -57,6 +83,7 @@ public class ProfileFragment extends BaseFragment {
     @BindView(R.id.contParent)
     LinearLayout contParent;
 
+    private File fileTemporaryProfilePicture;
 
     @Override
     protected int getFragmentLayout() {
@@ -157,11 +184,101 @@ public class ProfileFragment extends BaseFragment {
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.btnCamera:
-
+                cropImagePicker();
                 break;
             case R.id.fab:
-
+                getBaseActivity().addDockableFragment(EditProfileFragment.newInstance());
                 break;
         }
     }
+
+
+    private void cropImagePicker() {
+        CropImage.activity()
+                .setGuidelines(CropImageView.Guidelines.ON)
+                .setCropShape(CropImageView.CropShape.RECTANGLE)
+                .setMinCropWindowSize(192, 192)
+                .setMinCropResultSize(192, 192)
+                .setMultiTouchEnabled(false)
+                .setOutputCompressFormat(Bitmap.CompressFormat.JPEG)
+                // FIXME: 15-Jul-17 Fix Quality if required
+                .setRequestedSize(640, 640, CropImageView.RequestSizeOptions.RESIZE_FIT)
+                .setOutputCompressQuality(80)
+                .start(getContext(), this);
+    }
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+
+        if (requestCode == CropImage.CROP_IMAGE_ACTIVITY_REQUEST_CODE) {
+            CropImage.ActivityResult result = CropImage.getActivityResult(data);
+            if (resultCode == RESULT_OK) {
+                fileTemporaryProfilePicture = new File(result.getUri().getPath());
+                uploadImageFile(fileTemporaryProfilePicture.getPath(), result.getUri().toString());
+            } else if (resultCode == CropImage.CROP_IMAGE_ACTIVITY_RESULT_ERROR_CODE) {
+                Exception error = result.getError();
+                error.printStackTrace();
+            }
+        }
+    }
+
+    private void setImageAfterResult(final String uploadFilePath) {
+        getActivity().runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                try {
+                    setAndUploadImage(uploadFilePath);
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        });
+    }
+
+    private void setAndUploadImage(String uploadFilePath) throws IOException {
+        Log.d("PICTURE", FileManager.getFileSize(uploadFilePath));
+
+
+        ImageLoader.getInstance().displayImage(uploadFilePath, circleImageView);
+//        txtCNICImageName.setText(namePassportUploadedFile);
+
+    }
+
+    private void uploadImageFile(final String uploadFilePath, final String uploadFileUriPath) {
+        DummyModel dummyModel = new DummyModel();
+
+
+        dummyModel.setCardNumber(WebServiceConstants.tempCardNumber);
+        dummyModel.setMRNumber("148-90-51");
+
+        new WebServices(getBaseActivity(),
+                WebServiceConstants.temporaryToken, BaseURLTypes.AHFA_BASE_URL)
+                .webServiceUploadFileAPI(WebServiceConstants.METHOD_USER_UPLOAD_PROFILE_PICTURE,
+                        uploadFilePath,
+                        FileType.IMAGE,
+                        dummyModel.toString(),
+                        new WebServices.IRequestJsonDataCallBack() {
+                            @Override
+                            public void requestDataResponse(WebResponse<JsonObject> webResponse) {
+//                                if (webResponse.result.isEmpty()) {
+//                                    UIHelper.showToast(getContext(), "Failed to upload file. Please try again.");
+//                                } else {
+
+//                                    String namePassportUploadedFile = webResponse.result;
+//
+//                                    UIHelper.showShortToastInCenter(getContext(), webResponse.message);
+//                                    setImageAfterResult(uploadFileUriPath);
+//                                }
+                            }
+
+                            @Override
+                            public void onError() {
+
+                            }
+                        });
+
+
+    }
+
+
 }

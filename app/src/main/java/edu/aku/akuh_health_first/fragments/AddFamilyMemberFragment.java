@@ -17,9 +17,13 @@ import android.widget.Spinner;
 
 import com.andreabaccega.widget.FormEditText;
 import edu.aku.akuh_health_first.widget.AnyTextView;
+
+import com.google.gson.JsonObject;
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.theartofdev.edmodo.cropper.CropImage;
 import com.theartofdev.edmodo.cropper.CropImageView;
+
+import org.json.JSONObject;
 
 import java.io.File;
 import java.io.IOException;
@@ -282,27 +286,30 @@ public class AddFamilyMemberFragment extends BaseFragment {
 
     private void uploadImageFile(final String uploadFilePath, final String uploadFileUriPath) {
         new WebServices(getBaseActivity(), WebServiceConstants.temporaryToken, BaseURLTypes.AHFA_BASE_URL)
-                .webServiceUploadFileAPI(WebServiceConstants.METHOD_USER_UPLOAD_REQUEST_FILE, uploadFilePath, FileType.IMAGE, new WebServices.IRequestWebResponseWithStringDataCallBack() {
-                    @Override
-                    public void requestDataResponse(WebResponse<String> webResponse) {
-                        if (webResponse.result.isEmpty()) {
-                            UIHelper.showToast(getContext(), "Failed to upload file. Please try again.");
-                        } else {
-                            if (isSelectingCNICPic) {
-                                nameCNICUploadedFile = webResponse.result;
-                            } else {
-                                namePassportUploadedFile = webResponse.result;
+                .webServiceUploadFileAPI(WebServiceConstants.METHOD_USER_UPLOAD_REQUEST_FILE,
+                        uploadFilePath, FileType.IMAGE,
+                        // FIXME: 3/21/2018 putlivedata
+                        "",
+                        new WebServices.IRequestJsonDataCallBack() {
+                            @Override
+                            public void requestDataResponse(WebResponse<JsonObject> webResponse) {
+//                                if (webResponse.result.isEmpty()) {
+//                                    UIHelper.showToast(getContext(), "Failed to upload file. Please try again.");
+//                                } else {
+
+//                                    String namePassportUploadedFile = webResponse.result;
+//
+//                                    UIHelper.showShortToastInCenter(getContext(), webResponse.message);
+//                                    setImageAfterResult(uploadFileUriPath);
+//                                }
                             }
-                            UIHelper.showShortToastInCenter(getContext(), webResponse.message);
-                            setImageAfterResult(uploadFileUriPath);
-                        }
-                    }
 
-                    @Override
-                    public void onError() {
+                            @Override
+                            public void onError() {
 
-                    }
-                });
+                            }
+                        });
+
     }
 
 
