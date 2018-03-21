@@ -45,10 +45,13 @@ public interface WebServiceProxy {
 
     @Multipart
     @POST("./")
-    Call<WebResponse<String>> uploadFileRequestApi(
+    Call<WebResponse<JsonObject>> uploadFileRequestApi(
             @Part(WebServiceConstants.PARAMS_REQUEST_METHOD) RequestBody requestMethod,
-            @Part MultipartBody.Part requestData
+            @Part(WebServiceConstants.PARAMS_REQUEST_DATA) RequestBody requestData,
+            @Part MultipartBody.Part body
+
     );
+
 
 
     @Headers(WebServiceConstants.WS_KEY_GET_REQUESTOR)

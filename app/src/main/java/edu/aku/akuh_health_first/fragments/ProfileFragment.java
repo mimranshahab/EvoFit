@@ -14,6 +14,7 @@ import android.widget.ImageButton;
 import android.widget.LinearLayout;
 
 import com.github.clans.fab.FloatingActionButton;
+import com.google.gson.JsonObject;
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.theartofdev.edmodo.cropper.CropImage;
 import com.theartofdev.edmodo.cropper.CropImageView;
@@ -36,11 +37,17 @@ import edu.aku.akuh_health_first.helperclasses.ui.helper.TitleBar;
 import edu.aku.akuh_health_first.helperclasses.ui.helper.UIHelper;
 import edu.aku.akuh_health_first.libraries.imageloader.ImageLoaderHelper;
 import edu.aku.akuh_health_first.managers.FileManager;
+import edu.aku.akuh_health_first.managers.retrofit.GsonFactory;
 import edu.aku.akuh_health_first.managers.retrofit.WebServices;
+import edu.aku.akuh_health_first.models.DummyModel;
+import edu.aku.akuh_health_first.models.LaboratoryUpdateModel;
 import edu.aku.akuh_health_first.models.receiving_model.CardMemberDetail;
 import edu.aku.akuh_health_first.models.receiving_model.UserDetailModel;
 import edu.aku.akuh_health_first.models.wrappers.WebResponse;
-import edu.aku.akuh_health_first.views.AnyTextView;
+import edu.aku.akuh_health_first.widget.AnyTextView;
+import okhttp3.MediaType;
+import okhttp3.MultipartBody;
+import okhttp3.RequestBody;
 
 import static android.app.Activity.RESULT_OK;
 
@@ -238,27 +245,39 @@ public class ProfileFragment extends BaseFragment {
     }
 
     private void uploadImageFile(final String uploadFilePath, final String uploadFileUriPath) {
+        DummyModel dummyModel = new DummyModel();
+
+
+        dummyModel.setCardNumber(WebServiceConstants.tempCardNumber);
+        dummyModel.setMRNumber("148-90-51");
+
         new WebServices(getBaseActivity(),
                 WebServiceConstants.temporaryToken, BaseURLTypes.AHFA_BASE_URL)
-                .webServiceUploadFileAPI(WebServiceConstants.METHOD_USER_UPLOAD_REQUEST_FILE, uploadFilePath, FileType.IMAGE, new WebServices.IRequestWebResponseWithStringDataCallBack() {
-                    @Override
-                    public void requestDataResponse(WebResponse<String> webResponse) {
-                        if (webResponse.result.isEmpty()) {
-                            UIHelper.showToast(getContext(), "Failed to upload file. Please try again.");
-                        } else {
+                .webServiceUploadFileAPI(WebServiceConstants.METHOD_USER_UPLOAD_PROFILE_PICTURE,
+                        uploadFilePath,
+                        FileType.IMAGE,
+                        dummyModel.toString(),
+                        new WebServices.IRequestJsonDataCallBack() {
+                            @Override
+                            public void requestDataResponse(WebResponse<JsonObject> webResponse) {
+//                                if (webResponse.result.isEmpty()) {
+//                                    UIHelper.showToast(getContext(), "Failed to upload file. Please try again.");
+//                                } else {
 
-                            String namePassportUploadedFile = webResponse.result;
+//                                    String namePassportUploadedFile = webResponse.result;
+//
+//                                    UIHelper.showShortToastInCenter(getContext(), webResponse.message);
+//                                    setImageAfterResult(uploadFileUriPath);
+//                                }
+                            }
 
-                            UIHelper.showShortToastInCenter(getContext(), webResponse.message);
-                            setImageAfterResult(uploadFileUriPath);
-                        }
-                    }
+                            @Override
+                            public void onError() {
 
-                    @Override
-                    public void onError() {
+                            }
+                        });
 
-                    }
-                });
+
     }
 
 

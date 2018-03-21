@@ -1,35 +1,23 @@
 package edu.aku.akuh_health_first.fragments;
 
-import android.content.Intent;
-import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.widget.DrawerLayout;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 
-import com.nostra13.universalimageloader.core.ImageLoader;
-import com.theartofdev.edmodo.cropper.CropImage;
-import com.theartofdev.edmodo.cropper.CropImageView;
-
-import java.io.File;
-import java.io.IOException;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
-import butterknife.OnClick;
 import butterknife.Unbinder;
 import edu.aku.akuh_health_first.R;
 import edu.aku.akuh_health_first.fragments.abstracts.BaseFragment;
 import edu.aku.akuh_health_first.helperclasses.ui.helper.TitleBar;
-import edu.aku.akuh_health_first.managers.FileManager;
-import edu.aku.akuh_health_first.views.AnyEditTextView;
-import edu.aku.akuh_health_first.views.AnyTextView;
+import edu.aku.akuh_health_first.widget.AnyEditTextView;
+import edu.aku.akuh_health_first.widget.AnyTextView;
 
-import static android.app.Activity.RESULT_OK;
 
 /**
  * Created by aqsa.sarwar on 1/19/2018.

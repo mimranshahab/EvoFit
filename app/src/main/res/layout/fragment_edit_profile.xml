@@ -14,7 +14,7 @@
 
 
 
-        <edu.aku.akuh_health_first.views.AnyEditTextView
+        <edu.aku.akuh_health_first.widget.AnyEditTextView
             android:id="@+id/edMobileNumber"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -35,7 +35,7 @@
             app:typeface="@string/font_regular" />
 
 
-        <edu.aku.akuh_health_first.views.AnyEditTextView
+        <edu.aku.akuh_health_first.widget.AnyEditTextView
             android:id="@+id/edtLandlineNumber"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -58,7 +58,7 @@
 
 
 
-        <edu.aku.akuh_health_first.views.AnyEditTextView
+        <edu.aku.akuh_health_first.widget.AnyEditTextView
             android:id="@+id/edtCurrentAddress"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -78,7 +78,7 @@
             app:typeface="@string/font_regular" />
 
 
-        <edu.aku.akuh_health_first.views.AnyEditTextView
+        <edu.aku.akuh_health_first.widget.AnyEditTextView
             android:id="@+id/edtCurrentCity"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -99,7 +99,7 @@
             app:typeface="@string/font_regular" />
 
 
-        <edu.aku.akuh_health_first.views.AnyTextView
+        <edu.aku.akuh_health_first.widget.AnyTextView
             android:id="@+id/txtCurrentCountry"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -118,7 +118,7 @@
 
 
 
-        <edu.aku.akuh_health_first.views.AnyEditTextView
+        <edu.aku.akuh_health_first.widget.AnyEditTextView
             android:id="@+id/edtPermanentAddress"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -136,7 +136,7 @@
             app:typeface="@string/font_regular" />
 
 
-        <edu.aku.akuh_health_first.views.AnyEditTextView
+        <edu.aku.akuh_health_first.widget.AnyEditTextView
             android:id="@+id/edtPermanentCity"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -157,7 +157,7 @@
             app:typeface="@string/font_regular" />
 
 
-        <edu.aku.akuh_health_first.views.AnyTextView
+        <edu.aku.akuh_health_first.widget.AnyTextView
             android:id="@+id/txtPermanentCountry"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -177,7 +177,7 @@
 
 
 
-        <edu.aku.akuh_health_first.views.AnyTextView
+        <edu.aku.akuh_health_first.widget.AnyTextView
             android:id="@+id/btnUpdate"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

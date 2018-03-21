@@ -4,66 +4,17 @@ import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
 import edu.aku.akuh_health_first.managers.retrofit.GsonFactory;
+import okhttp3.MultipartBody;
+import okhttp3.RequestBody;
 
 /**
  * Created by aqsa.sarwar on 2/19/2018.
  */
 
-public class SearchModel implements IsRecordFound {
+public class DummyModel {
 
-    @Expose
-    @SerializedName("RecordMessage")
-    private String recordmessage;
-    @Expose
-    @SerializedName("RecordFound")
-    private String recordfound;
-
-    @Override
-    public boolean isRecordFound() {
-        return getRecordfound().equals("true");
-    }
-
-    public String getRecordmessage() {
-        return recordmessage;
-    }
-
-    public void setRecordmessage(String recordmessage) {
-        this.recordmessage = recordmessage;
-    }
-
-    public String getRecordfound() {
-        return recordfound;
-    }
-
-    public void setRecordfound(String recordfound) {
-        this.recordfound = recordfound;
-    }
-
-    @Expose
-    @SerializedName("VisitID")
-    private String VisitID;
-    @Expose
     @SerializedName("MRNumber")
     private String MRNumber;
-    @Expose
-    @SerializedName("RecordID")
-    private String RecordID;
-
-    public String getRecordID() {
-        return RecordID;
-    }
-
-    public void setRecordID(String recordID) {
-        RecordID = recordID;
-    }
-
-    public String getVisitID() {
-        return VisitID;
-    }
-
-    public void setVisitID(String VisitID) {
-        this.VisitID = VisitID;
-    }
 
     public String getMRNumber() {
         return MRNumber;
@@ -72,6 +23,18 @@ public class SearchModel implements IsRecordFound {
     public void setMRNumber(String MRNumber) {
         this.MRNumber = MRNumber;
     }
+
+    public String getCardNumber() {
+        return CardNumber;
+    }
+
+    public void setCardNumber(String cardNumber) {
+        this.CardNumber = cardNumber;
+    }
+
+    @SerializedName("CardNumber")
+    private String CardNumber;
+
 
     @Override
     public String toString() {

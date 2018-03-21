@@ -5,7 +5,6 @@ import android.app.ProgressDialog;
 import android.content.Context;
 import android.support.annotation.NonNull;
 
-import com.google.gson.JsonNull;
 import com.google.gson.JsonObject;
 
 import java.lang.String;
@@ -133,13 +132,13 @@ public class WebServices {
             //for testing
 //            return true;
 
-                if (response.body().result.get(0).get("RecordFound") == null) {
-                    return false;
-                } else if (response.body().result.get(0).get("RecordFound").isJsonNull()) {
-                    return false;
-                } else {
-                    return response.body().result.get(0).get("RecordFound").getAsString().equals("true");
-                }
+            if (response.body().result.get(0).get("RecordFound") == null) {
+                return false;
+            } else if (response.body().result.get(0).get("RecordFound").isJsonNull()) {
+                return false;
+            } else {
+                return response.body().result.get(0).get("RecordFound").getAsString().equals("true");
+            }
 
 
         } else {
@@ -150,11 +149,13 @@ public class WebServices {
     private boolean hasValidStatusForStringResult(Response<WebResponse<String>> response) {
         return response != null && response.body() != null && response.body().isSuccess();
     }
-
-    public void webServiceUploadFileAPI(String requestMethod, String filePath, FileType fileType, final IRequestWebResponseWithStringDataCallBack callBack) {
+    public void webServiceUploadFileAPI(String requestMethod, String filePath, FileType fileType,String reqBody,
+                                        final IRequestJsonDataCallBack callBack) {
 
         RequestBody bodyRequestMethod = getRequestBody(okhttp3.MultipartBody.FORM, requestMethod);
-        MultipartBody.Part bodyRequestData;
+        RequestBody requestBody = getRequestBody(okhttp3.MultipartBody.FORM, reqBody);
+
+        MultipartBody.Part part;
         if (filePath == null || !FileManager.isFileExits(filePath)) {
             dismissDialog();
             UIHelper.showShortToastInCenter(mContext, "File path is empty.");
@@ -163,16 +164,22 @@ public class WebServices {
 
         File file = new File(filePath);
 
-        bodyRequestData =
-                MultipartBody.Part.createFormData(WebServiceConstants.PARAMS_REQUEST_DATA, file.getName(),
-                        RequestBody.create(MediaType.parse(fileType.canonicalForm() + "/" + FileManager.getExtension(file.getName())), file));
+        part =
+                MultipartBody.Part.createFormData(WebServiceConstants.PARAMS_REQUEST_DATA,file.getName(),
+                        RequestBody.create(MediaType.parse(fileType.canonicalForm() + "/" + FileManager.getExtension(file.getName())), file)
+                );
+
+
+
+
         try {
             if (Helper.isNetworkConnected(mContext, true)) {
-                apiService.uploadFileRequestApi(bodyRequestMethod, bodyRequestData).enqueue(new Callback<WebResponse<String>>() {
+                apiService.uploadFileRequestApi(bodyRequestMethod, requestBody ,part).enqueue(
+                        new Callback<WebResponse<JsonObject>>() {
                     @Override
-                    public void onResponse(Call<WebResponse<String>> call, Response<WebResponse<String>> response) {
+                    public void onResponse(Call<WebResponse<JsonObject>> call, Response<WebResponse<JsonObject>> response) {
                         dismissDialog();
-                        if (!IsResponseErrorForStringResult(response)) {
+                        if (!IsResponseError(response)) {
                             String errorBody;
                             try {
                                 errorBody = response.errorBody().string();
@@ -184,7 +191,7 @@ public class WebServices {
                             return;
                         }
 
-                        if (hasValidStatusForStringResult(response))
+                        if (hasValidStatus(response))
                             callBack.requestDataResponse(response.body());
                         else {
                             String message = response.body().message != null ? response.body().message : response.errorBody().toString();
@@ -193,7 +200,7 @@ public class WebServices {
                     }
 
                     @Override
-                    public void onFailure(Call<WebResponse<String>> call, Throwable t) {
+                    public void onFailure(Call<WebResponse<JsonObject>> call, Throwable t) {
                         UIHelper.showShortToastInCenter(mContext, "Something went wrong, Please check your internet connection.");
                         dismissDialog();
                         callBack.onError();
@@ -348,7 +355,8 @@ public class WebServices {
 
         try {
             if (Helper.isNetworkConnected(mContext, true)) {
-                Call<WebResponse<ArrayList<JsonObject>>> webResponseCall = apiService.webServiceRequestAPIForArray(bodyRequestMethod, bodyRequestData);
+                Call<WebResponse<ArrayList<JsonObject>>> webResponseCall =
+                        apiService.webServiceRequestAPIForArray(bodyRequestMethod, bodyRequestData);
 //                webResponseCall.request().newBuilder().addHeader("name", "hkhkhkhkhk").build();
                 webResponseCall.enqueue(new Callback<WebResponse<ArrayList<JsonObject>>>() {
                     @Override
@@ -618,6 +626,7 @@ public class WebServices {
         mDialog.dismiss();
     }
 
+
     public interface IRequestJsonDataCallBack {
         void requestDataResponse(WebResponse<JsonObject> webResponse);
 
@@ -640,6 +649,66 @@ public class WebServices {
         void requestDataResponse(String webResponse);
 
         void onError();
+    }
+
+
+
+
+
+    public void webServiceUploadFileAPIV1(String requestMethod, final IRequestWebResponseWithStringDataCallBack callBack) {
+
+        RequestBody bodyRequestMethod = getRequestBody(okhttp3.MultipartBody.FORM, requestMethod);
+        RequestBody bodyRequestData = getRequestBody(okhttp3.MultipartBody.FORM, requestMethod);
+
+
+
+
+
+
+        try {
+            if (Helper.isNetworkConnected(mContext, true)) {
+                apiService.webServiceRequestAPI(bodyRequestMethod, bodyRequestData).
+                        enqueue(new Callback<WebResponse<JsonObject>>() {
+                    @Override
+                    public void onResponse(Call<WebResponse<JsonObject>> call, Response<WebResponse<JsonObject>> response) {
+                        dismissDialog();
+                        if (!IsResponseError(response)) {
+//                            String errorBody;
+//                            try {
+//                                errorBody = response.errorBody().string();
+//                                UIHelper.showShortToastInCenter(mContext, errorBody);
+//                                callBack.onError();
+//                            } catch (IOException e) {
+//                                e.printStackTrace();
+//                            }
+//                            return;
+//                        }
+
+//                        if (hasValidStatusForStringResult(response))
+//                            callBack.requestDataResponse(response.body());
+//                        else {
+//                            String message = response.body().message != null ? response.body().message : response.errorBody().toString();
+//                            UIHelper.showShortToastInCenter(mContext, message);
+                        }
+                    }
+
+                    @Override
+                    public void onFailure(Call<WebResponse<JsonObject>> call, Throwable t) {
+                        UIHelper.showShortToastInCenter(mContext, "Something went wrong, Please check your internet connection.");
+                        dismissDialog();
+                        callBack.onError();
+                    }
+                });
+            } else {
+                dismissDialog();
+                callBack.onError();
+            }
+
+        } catch (Exception e) {
+            dismissDialog();
+            e.printStackTrace();
+
+        }
     }
 
 
