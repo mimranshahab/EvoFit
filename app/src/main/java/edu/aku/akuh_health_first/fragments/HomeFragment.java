@@ -16,7 +16,6 @@ import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 
 import com.google.gson.JsonObject;
-import com.nostra13.universalimageloader.core.ImageLoader;
 
 import java.util.ArrayList;
 
@@ -41,7 +40,7 @@ import edu.aku.akuh_health_first.managers.retrofit.WebServices;
 import edu.aku.akuh_health_first.models.receiving_model.CardMemberDetail;
 import edu.aku.akuh_health_first.models.receiving_model.UserDetailModel;
 import edu.aku.akuh_health_first.models.wrappers.WebResponse;
-import edu.aku.akuh_health_first.views.AnyTextView;
+import edu.aku.akuh_health_first.widget.AnyTextView;
 
 /**
  * Created by aqsa.sarwar on 1/16/2018.
@@ -187,12 +186,12 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener, 
         titleBar.setVisibility(View.VISIBLE);
         titleBar.showSidebar(getBaseActivity());
         titleBar.setTitle("Home");
-        titleBar.setRightButton(R.drawable.notification_icon, new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                getBaseActivity().addDockableFragment(NotificationFragment.newInstance());
-            }
-        });
+//        titleBar.setRightButton(R.drawable.notification_icon, new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                getBaseActivity().addDockableFragment(NotificationFragment.newInstance());
+//            }
+//        });
 
     }
 

@@ -3,7 +3,6 @@ package edu.aku.akuh_health_first.fragments;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.widget.DrawerLayout;
-import android.util.MutableInt;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,7 +11,6 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
-import android.widget.Spinner;
 
 import com.google.gson.JsonObject;
 import com.google.gson.reflect.TypeToken;
@@ -44,8 +42,8 @@ import edu.aku.akuh_health_first.models.MedicationProfileModel;
 import edu.aku.akuh_health_first.models.SpinnerModel;
 import edu.aku.akuh_health_first.models.receiving_model.AddUpdateVaccineModel;
 import edu.aku.akuh_health_first.models.wrappers.WebResponse;
-import edu.aku.akuh_health_first.views.AnyEditTextView;
-import edu.aku.akuh_health_first.views.AnyTextView;
+import edu.aku.akuh_health_first.widget.AnyEditTextView;
+import edu.aku.akuh_health_first.widget.AnyTextView;
 
 /**
  * Created by aqsa.sarwar on 2/8/2018.

@@ -27,7 +27,7 @@
             </android.support.v7.widget.RecyclerView>
         </android.support.v4.widget.SwipeRefreshLayout>
 
-        <edu.aku.akuh_health_first.views.AnyTextView
+        <edu.aku.akuh_health_first.widget.AnyTextView
             android:id="@+id/empty_view"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -40,7 +40,7 @@
             android:visibility="gone"
             app:typeface="@string/font_regular" />
 
-        <edu.aku.akuh_health_first.views.AnyEditTextView
+        <edu.aku.akuh_health_first.widget.AnyEditTextView
             android:id="@+id/edtSearchBar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -48,7 +48,7 @@
             android:layout_margin="@dimen/x5dp"
             android:background="@drawable/searchbar"
             android:drawablePadding="@dimen/x5dp"
-            android:drawableRight="@drawable/ic_search"
+            android:drawableRight="@drawable/search2"
             android:hint="@string/search"
             android:padding="@dimen/x5dp"
             android:maxLines="1"

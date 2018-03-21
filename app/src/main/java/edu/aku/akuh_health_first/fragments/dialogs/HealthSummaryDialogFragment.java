@@ -16,7 +16,7 @@ import android.view.animation.AnimationUtils;
 import android.view.animation.LayoutAnimationController;
 import android.widget.ImageView;
 
-import edu.aku.akuh_health_first.views.AnyTextView;
+import edu.aku.akuh_health_first.widget.AnyTextView;
 
 import java.util.ArrayList;
 
@@ -27,7 +27,7 @@ import butterknife.Unbinder;
 import edu.aku.akuh_health_first.R;
 import edu.aku.akuh_health_first.adapters.recyleradapters.HealthSummaryDialogAdapter;
 import edu.aku.akuh_health_first.models.Shortmessagemobile;
-import edu.aku.akuh_health_first.views.recyclerview_layout.CustomLayoutManager;
+import edu.aku.akuh_health_first.widget.recyclerview_layout.CustomLayoutManager;
 
 /**
  * Created by khanhamza on 21-Feb-17.

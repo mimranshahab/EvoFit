@@ -40,7 +40,7 @@
                 android:orientation="vertical"
             >
 
-                <edu.aku.akuh_health_first.views.AnyTextView
+                <edu.aku.akuh_health_first.widget.AnyTextView
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:ellipsize="end"
@@ -50,7 +50,7 @@
                     android:textSize="@dimen/s12"
                     app:typeface="@string/font_regular" />
 
-                <edu.aku.akuh_health_first.views.AnyTextView
+                <edu.aku.akuh_health_first.widget.AnyTextView
                     android:id="@+id/txtSpecimenNumber"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
@@ -70,7 +70,7 @@
                 android:orientation="vertical"
               >
 
-                <edu.aku.akuh_health_first.views.AnyTextView
+                <edu.aku.akuh_health_first.widget.AnyTextView
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:text="Request Date:"
@@ -78,7 +78,7 @@
                     android:textSize="@dimen/s12"
                     app:typeface="@string/font_regular" />
 
-                <edu.aku.akuh_health_first.views.AnyTextView
+                <edu.aku.akuh_health_first.widget.AnyTextView
                     android:id="@+id/txtReqDatetime"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
@@ -106,7 +106,7 @@
                 android:orientation="vertical"
                >
 
-                <edu.aku.akuh_health_first.views.AnyTextView
+                <edu.aku.akuh_health_first.widget.AnyTextView
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:ellipsize="end"
@@ -116,7 +116,7 @@
                     android:textSize="@dimen/s12"
                     app:typeface="@string/font_regular" />
 
-                <edu.aku.akuh_health_first.views.AnyTextView
+                <edu.aku.akuh_health_first.widget.AnyTextView
                     android:id="@+id/txtPhysicianName"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
@@ -136,7 +136,7 @@
                 android:orientation="vertical"
               >
 
-                <edu.aku.akuh_health_first.views.AnyTextView
+                <edu.aku.akuh_health_first.widget.AnyTextView
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:text="Collection Date:"
@@ -144,7 +144,7 @@
                     android:textSize="@dimen/s12"
                     app:typeface="@string/font_regular" />
 
-                <edu.aku.akuh_health_first.views.AnyTextView
+                <edu.aku.akuh_health_first.widget.AnyTextView
                     android:id="@+id/txtCollecDatetime"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
@@ -170,7 +170,7 @@
                 android:orientation="vertical"
                >
 
-                <edu.aku.akuh_health_first.views.AnyTextView
+                <edu.aku.akuh_health_first.widget.AnyTextView
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:ellipsize="end"
@@ -180,7 +180,7 @@
                     android:textSize="@dimen/s12"
                     app:typeface="@string/font_regular" />
 
-                <edu.aku.akuh_health_first.views.AnyTextView
+                <edu.aku.akuh_health_first.widget.AnyTextView
                     android:id="@+id/txtLocation"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
@@ -199,7 +199,7 @@
                 android:orientation="vertical"
              >
 
-                <edu.aku.akuh_health_first.views.AnyTextView
+                <edu.aku.akuh_health_first.widget.AnyTextView
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:text="Report Date:"
@@ -207,7 +207,7 @@
                     android:textSize="@dimen/s12"
                     app:typeface="@string/font_regular" />
 
-                <edu.aku.akuh_health_first.views.AnyTextView
+                <edu.aku.akuh_health_first.widget.AnyTextView
                     android:id="@+id/txtReportDatetime"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"

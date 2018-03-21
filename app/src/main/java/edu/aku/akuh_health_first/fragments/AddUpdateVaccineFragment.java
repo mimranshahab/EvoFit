@@ -10,15 +10,12 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.Spinner;
 
 import com.google.gson.JsonObject;
 import com.google.gson.reflect.TypeToken;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Collections;
 import java.util.HashMap;
 
 import butterknife.BindView;
@@ -39,8 +36,8 @@ import edu.aku.akuh_health_first.models.IntWrapper;
 import edu.aku.akuh_health_first.models.SpinnerModel;
 import edu.aku.akuh_health_first.models.receiving_model.AddUpdateVaccineModel;
 import edu.aku.akuh_health_first.models.wrappers.WebResponse;
-import edu.aku.akuh_health_first.views.AnyEditTextView;
-import edu.aku.akuh_health_first.views.AnyTextView;
+import edu.aku.akuh_health_first.widget.AnyEditTextView;
+import edu.aku.akuh_health_first.widget.AnyTextView;
 
 /**
  * Created by hamza.ahmed on 2/8/2018.

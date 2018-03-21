@@ -52,7 +52,7 @@
             android:gravity="center"
             android:orientation="horizontal">
 
-            <edu.aku.akuh_health_first.views.AnyTextView
+            <edu.aku.akuh_health_first.widget.AnyTextView
 
                 android:id="@+id/btnPrevious"
                 android:layout_width="@dimen/x100dp"
@@ -69,7 +69,7 @@
                 android:textSize="@dimen/s12"
                 android:tint="@color/c_black" />
 
-            <edu.aku.akuh_health_first.views.AnyTextView
+            <edu.aku.akuh_health_first.widget.AnyTextView
                 android:id="@+id/tv_progress"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
@@ -81,7 +81,7 @@
                 android:textSize="@dimen/s12"
                 app:typeface="@string/font_bold" />
 
-            <edu.aku.akuh_health_first.views.AnyTextView
+            <edu.aku.akuh_health_first.widget.AnyTextView
                 android:id="@+id/btnNext"
                 android:layout_width="@dimen/x100dp"
                 android:layout_height="match_parent"
@@ -114,7 +114,7 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal">
 
-        <edu.aku.akuh_health_first.views.AnyTextView
+        <edu.aku.akuh_health_first.widget.AnyTextView
             android:id="@+id/btnPreviousBatch"
             android:layout_width="@dimen/x100dp"
             android:layout_height="match_parent"
@@ -150,7 +150,7 @@
             app:isb_tick_type="oval"
             app:isb_track_progress_bar_color="@color/colorPrimary" />
 
-        <edu.aku.akuh_health_first.views.AnyTextView
+        <edu.aku.akuh_health_first.widget.AnyTextView
             android:id="@+id/txttotalCount"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
@@ -161,7 +161,7 @@
             android:textSize="@dimen/s12"
             app:typeface="@string/font_bold" />
 
-        <edu.aku.akuh_health_first.views.AnyTextView
+        <edu.aku.akuh_health_first.widget.AnyTextView
             android:id="@+id/btnNextBatch"
             android:layout_width="@dimen/x100dp"
             android:layout_height="match_parent"

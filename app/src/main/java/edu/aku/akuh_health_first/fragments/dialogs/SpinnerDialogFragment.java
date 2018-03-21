@@ -16,7 +16,7 @@ import android.view.animation.AnimationUtils;
 import android.view.animation.LayoutAnimationController;
 import android.widget.ImageView;
 
-import edu.aku.akuh_health_first.views.AnyTextView;
+import edu.aku.akuh_health_first.widget.AnyTextView;
 
 import java.util.ArrayList;
 
@@ -28,7 +28,7 @@ import edu.aku.akuh_health_first.R;
 import edu.aku.akuh_health_first.adapters.recyleradapters.SpinnerDialogAdapter;
 import edu.aku.akuh_health_first.callbacks.OnSpinnerItemClickListener;
 import edu.aku.akuh_health_first.models.SpinnerModel;
-import edu.aku.akuh_health_first.views.recyclerview_layout.CustomLayoutManager;
+import edu.aku.akuh_health_first.widget.recyclerview_layout.CustomLayoutManager;
 
 /**
  * Created by khanhamza on 21-Feb-17.
@@ -47,7 +47,7 @@ public class SpinnerDialogFragment extends DialogFragment {
     @BindView(R.id.recyclerView)
     RecyclerView recyclerView;
     @BindView(R.id.txtOK)
-    edu.aku.akuh_health_first.views.AnyTextView txtOK;
+    edu.aku.akuh_health_first.widget.AnyTextView txtOK;
 
     private ArrayList<SpinnerModel> arrData;
     private OnSpinnerItemClickListener onItemClickListener;

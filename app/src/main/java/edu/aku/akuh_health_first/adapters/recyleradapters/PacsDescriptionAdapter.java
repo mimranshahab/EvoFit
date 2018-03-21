@@ -25,7 +25,7 @@ import edu.aku.akuh_health_first.libraries.fileloader.listener.FileRequestListen
 import edu.aku.akuh_health_first.libraries.fileloader.pojo.FileResponse;
 import edu.aku.akuh_health_first.libraries.fileloader.request.FileLoadRequest;
 import edu.aku.akuh_health_first.models.PacsDescriptionModel;
-import edu.aku.akuh_health_first.views.AnyTextView;
+import edu.aku.akuh_health_first.widget.AnyTextView;
 
 /**
  */

@@ -35,7 +35,7 @@ import edu.aku.akuh_health_first.models.PacsDescriptionModel;
 import edu.aku.akuh_health_first.models.PacsModel;
 import edu.aku.akuh_health_first.models.RadiologyModel;
 import edu.aku.akuh_health_first.models.wrappers.WebResponse;
-import edu.aku.akuh_health_first.views.AnyTextView;
+import edu.aku.akuh_health_first.widget.AnyTextView;
 
 
 /**

@@ -20,12 +20,11 @@ import java.util.Date;
 
 import edu.aku.akuh_health_first.R;
 import edu.aku.akuh_health_first.constatnts.AppConstants;
-import edu.aku.akuh_health_first.helperclasses.DateHelper;
 import edu.aku.akuh_health_first.helperclasses.ui.helper.TitleBar;
 import edu.aku.akuh_health_first.helperclasses.ui.helper.UIHelper;
 import edu.aku.akuh_health_first.managers.DateManager;
 import edu.aku.akuh_health_first.models.LaboratoryModel;
-import edu.aku.akuh_health_first.views.AnyTextView;
+import edu.aku.akuh_health_first.widget.AnyTextView;
 
 
 public class GraphActivity extends BaseActivity {

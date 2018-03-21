@@ -19,7 +19,6 @@ import java.util.ArrayList;
 import edu.aku.akuh_health_first.R;
 import edu.aku.akuh_health_first.helperclasses.Helper;
 import edu.aku.akuh_health_first.helperclasses.ui.helper.TitleBar;
-import edu.aku.akuh_health_first.helperclasses.ui.helper.UIHelper;
 import edu.aku.akuh_health_first.libraries.fileloader.FileLoader;
 import edu.aku.akuh_health_first.libraries.fileloader.listener.FileRequestListener;
 import edu.aku.akuh_health_first.libraries.fileloader.pojo.FileResponse;
@@ -28,7 +27,7 @@ import edu.aku.akuh_health_first.managers.SharedPreferenceManager;
 import edu.aku.akuh_health_first.managers.retrofit.GsonFactory;
 import edu.aku.akuh_health_first.models.PacsDescriptionModel;
 import edu.aku.akuh_health_first.models.TupleModel;
-import edu.aku.akuh_health_first.views.AnyTextView;
+import edu.aku.akuh_health_first.widget.AnyTextView;
 
 public class PacsActivity extends AppCompatActivity {
     private static final String TAG = "MainActivity";
@@ -128,7 +127,7 @@ public class PacsActivity extends AppCompatActivity {
 
         for (int j = size; j > 0; j = j - 30) {
             if (j > 30) {
-                min = max + 0;
+                min = max;
                 max = max + 30;
                 TupleModel tupleModel = new TupleModel();
                 tupleModel.setMin(min);
@@ -160,7 +159,7 @@ public class PacsActivity extends AppCompatActivity {
 
                     pointer--;
                     if (pacsList.get(pointer) != null) {
-                        loadImage(image, pacsList.get(pointer).toString(), true);
+                        loadImage(image, pacsList.get(pointer), true);
                         tvProgress.setText(pointer + 1 + " of " + pacsList.size());
                         indicatorSeekBar.setProgress(pointer + 1);
                     }
@@ -207,8 +206,14 @@ public class PacsActivity extends AppCompatActivity {
                         updateData(selectedTupleModel);
                     }
 
+                    if (!btnPreviousBatch.isEnabled()) {
+                        btnPreviousBatch.setAlpha(1f);
+                        btnPreviousBatch.setEnabled(true);
+                    }
+
                 } else {
-                    UIHelper.showToast(PacsActivity.this, "No further batch");
+                    btnNextBatch.setEnabled(false);
+                    btnNextBatch.setAlpha(0.4f);
                 }
             }
         });
@@ -227,6 +232,13 @@ public class PacsActivity extends AppCompatActivity {
                         selectedTupleModel = arrTupleModel.get(selectedTupleIndex);
                         updateData(selectedTupleModel);
                     }
+                    if (!btnNextBatch.isEnabled()) {
+                        btnNextBatch.setAlpha(1f);
+                        btnNextBatch.setEnabled(true);
+                    }
+                } else {
+                    btnPreviousBatch.setEnabled(false);
+                    btnPreviousBatch.setAlpha(0.4f);
                 }
             }
         });

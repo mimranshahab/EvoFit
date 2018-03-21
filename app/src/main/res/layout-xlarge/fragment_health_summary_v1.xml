@@ -25,13 +25,13 @@
                 android:animateLayoutChanges="true"
                 app:cardCornerRadius="@dimen/x10dp"
                 app:cardElevation="@dimen/x5dp"
+                app:cardBackgroundColor="@color/base_reddish"
 
                 >
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:background="@color/base_reddish">
+                    android:layout_height="match_parent" >
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -42,7 +42,7 @@
                         android:orientation="vertical"
                         android:padding="@dimen/x5dp">
 
-                        <edu.aku.akuh_health_first.views.AnyTextView
+                        <edu.aku.akuh_health_first.widget.AnyTextView
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:gravity="center"
@@ -70,19 +70,19 @@
                                 android:orientation="vertical"
                                 android:padding="@dimen/x2dp">
 
-                                <edu.aku.akuh_health_first.views.AnyTextView
+                                <edu.aku.akuh_health_first.widget.AnyTextView
                                     android:id="@+id/txtBloodType"
                                     android:layout_width="match_parent"
                                     android:layout_height="0dp"
                                     android:layout_weight="1"
                                     android:gravity="center_vertical"
-                                    android:text="B+"
+                                    android:text="-"
                                     android:textColor="@color/base_reddish"
                                     android:textSize="@dimen/s18"
                                     app:typeface="@string/font_bold" />
 
 
-                                <edu.aku.akuh_health_first.views.AnyTextView
+                                <edu.aku.akuh_health_first.widget.AnyTextView
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
                                     android:gravity="bottom|end"
@@ -112,13 +112,13 @@
                 android:animateLayoutChanges="true"
                 app:cardCornerRadius="@dimen/x10dp"
                 app:cardElevation="@dimen/x5dp"
+                app:cardBackgroundColor="@color/base_green"
 
                 >
 
                 <FrameLayout
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:background="@color/base_green">
+                    android:layout_height="match_parent" >
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -130,7 +130,7 @@
                         android:padding="@dimen/x5dp">
 
 
-                        <edu.aku.akuh_health_first.views.AnyTextView
+                        <edu.aku.akuh_health_first.widget.AnyTextView
                             android:id="@+id/txtHeightDate"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
@@ -157,19 +157,19 @@
                                 android:layout_height="match_parent"
                                 android:orientation="vertical">
 
-                                <edu.aku.akuh_health_first.views.AnyTextView
+                                <edu.aku.akuh_health_first.widget.AnyTextView
                                     android:id="@+id/txtHeight"
                                     android:layout_width="match_parent"
                                     android:layout_height="0dp"
                                     android:layout_weight="1"
                                     android:gravity="center_vertical"
-                                    android:text="166cm"
+                                    android:text="-"
                                     android:textColor="@color/base_green"
                                     android:textSize="@dimen/s18"
                                     app:typeface="@string/font_bold" />
 
 
-                                <edu.aku.akuh_health_first.views.AnyTextView
+                                <edu.aku.akuh_health_first.widget.AnyTextView
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
                                     android:gravity="bottom|end"
@@ -200,12 +200,12 @@
                 android:layout_weight="1"
                 android:animateLayoutChanges="true"
                 app:cardCornerRadius="@dimen/x10dp"
+                app:cardBackgroundColor="@color/base_blue"
                 app:cardElevation="@dimen/x5dp">
 
                 <FrameLayout
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:background="@color/base_blue">
+                    android:layout_height="match_parent" >
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -216,7 +216,7 @@
                         android:orientation="vertical"
                         android:padding="@dimen/x5dp">
 
-                        <edu.aku.akuh_health_first.views.AnyTextView
+                        <edu.aku.akuh_health_first.widget.AnyTextView
                             android:id="@+id/txtWeightDate"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
@@ -245,19 +245,19 @@
                                 android:orientation="vertical">
 
 
-                                <edu.aku.akuh_health_first.views.AnyTextView
+                                <edu.aku.akuh_health_first.widget.AnyTextView
                                     android:id="@+id/txtWeight"
                                     android:layout_width="match_parent"
                                     android:layout_height="0dp"
                                     android:layout_weight="1"
                                     android:gravity="center_vertical"
-                                    android:text="100kg"
+                                    android:text="-"
                                     android:textColor="@color/base_blue"
                                     android:textSize="@dimen/s18"
                                     app:typeface="@string/font_bold" />
 
 
-                                <edu.aku.akuh_health_first.views.AnyTextView
+                                <edu.aku.akuh_health_first.widget.AnyTextView
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
                                     android:gravity="bottom|end"
