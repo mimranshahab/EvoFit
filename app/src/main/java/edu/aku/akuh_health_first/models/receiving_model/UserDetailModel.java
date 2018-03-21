@@ -5,6 +5,7 @@ import java.io.Serializable;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
+import edu.aku.akuh_health_first.managers.retrofit.GsonFactory;
 import io.realm.annotations.Ignore;
 
 public class
@@ -546,7 +547,10 @@ UserDetailModel implements Serializable {
     public void setLastFileTerminal(String lastFileTerminal) {
         this.lastFileTerminal = lastFileTerminal;
     }
-
+    @Override
+    public String toString() {
+        return GsonFactory.getSimpleGson().toJson(this);
+    }
     public String getActive() {
         return active;
     }

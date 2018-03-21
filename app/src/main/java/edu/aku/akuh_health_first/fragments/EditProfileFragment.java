@@ -8,13 +8,20 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 
+import com.google.gson.JsonObject;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 import butterknife.Unbinder;
 import edu.aku.akuh_health_first.R;
+import edu.aku.akuh_health_first.constatnts.WebServiceConstants;
+import edu.aku.akuh_health_first.enums.BaseURLTypes;
 import edu.aku.akuh_health_first.fragments.abstracts.BaseFragment;
 import edu.aku.akuh_health_first.helperclasses.ui.helper.TitleBar;
+import edu.aku.akuh_health_first.managers.retrofit.WebServices;
+import edu.aku.akuh_health_first.models.receiving_model.UserDetailModel;
+import edu.aku.akuh_health_first.models.wrappers.WebResponse;
 import edu.aku.akuh_health_first.widget.AnyEditTextView;
 import edu.aku.akuh_health_first.widget.AnyTextView;
 
@@ -63,14 +70,61 @@ public class EditProfileFragment extends BaseFragment {
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+        setData();
+    }
 
+    private void setData() {
+        UserDetailModel user = sharedPreferenceManager.getCurrentUser();
+
+        edMobileNumber.setText(user.getCellPhoneNumber());
+        edtLandlineNumber.setText(user.getLandlineNumber());
+
+        edtCurrentAddress.setText(user.getCurrentAddress());
+        edtCurrentCity.setText(user.getCurrentCity());
+        txtCurrentCountry.setText(user.getCurrentCountryID());
+
+        edtPermanentCity.setText(user.getPermanentCity());
+        edtPermanentAddress.setText(user.getPermanentAddress());
+        txtPermanentCountry.setText(user.getPermanentCountryID());
+
+
+    }
+
+    private void webServiceCall(UserDetailModel user) {
+
+        user.setCellPhoneNumber(edMobileNumber.getStringTrimmed());
+        user.setLandlineNumber(edtLandlineNumber.getStringTrimmed());
+
+        user.setCurrentAddress(edtCurrentAddress.getStringTrimmed());
+        user.setCurrentCity(edtCurrentCity.getStringTrimmed());
+        user.setCurrentCountryID(txtCurrentCountry.getStringTrimmed());
+
+        user.setPermanentAddress(edtPermanentAddress.getStringTrimmed());
+        user.setPermanentCity(edtPermanentCity.getStringTrimmed());
+        user.setPermanentCountryID(txtPermanentCountry.getStringTrimmed());
+
+        new WebServices(getBaseActivity(),
+                WebServiceConstants.temporaryToken,
+                BaseURLTypes.AHFA_BASE_URL)
+                .webServiceRequestAPIForJsonObject(WebServiceConstants.METHOD_UPDATE_PROFILE,
+                        user.toString(),
+                        new WebServices.IRequestJsonDataCallBack() {
+                            @Override
+                            public void requestDataResponse(WebResponse<JsonObject> webResponse) {
+//                                getBaseActivity().openActivity(HomeActivity.class);
+                            }
+
+                            @Override
+                            public void onError() {
+
+                            }
+                        });
     }
 
     @Override
     public int getDrawerLockMode() {
         return DrawerLayout.LOCK_MODE_LOCKED_CLOSED;
     }
-
 
 
     @Override
@@ -115,5 +169,8 @@ public class EditProfileFragment extends BaseFragment {
     }
 
 
-
+    @OnClick(R.id.btnUpdate)
+    public void onViewClicked() {
+        webServiceCall(sharedPreferenceManager.getCurrentUser());
+    }
 }
