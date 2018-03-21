@@ -11,10 +11,10 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
+        android:layout_marginBottom="@dimen/x10dp"
         android:layout_marginLeft="@dimen/x20dp"
         android:layout_marginRight="@dimen/x20dp"
         android:layout_marginTop="@dimen/x10dp"
-        android:layout_marginBottom="@dimen/x10dp"
         android:animateLayoutChanges="true"
         app:cardCornerRadius="@dimen/x8dp"
         app:cardElevation="@dimen/x3dp"
@@ -105,9 +105,9 @@
                             android:id="@+id/txtName"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:maxLines="1"
                             android:padding="@dimen/x2dp"
                             android:text="Hepatitus A "
-                            android:maxLines="1"
                             android:textColor="@color/txt_aku_blue"
                             android:textSize="@dimen/s12"
                             app:typeface="@string/font_bold" />
@@ -117,9 +117,9 @@
                             android:id="@+id/txtDrName"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:padding="@dimen/x2dp"
-                            android:drawablePadding="@dimen/x5dp"
                             android:drawableLeft="@drawable/cardiopulmonary_doctor"
+                            android:drawablePadding="@dimen/x5dp"
+                            android:padding="@dimen/x2dp"
                             android:text="Dr Abc"
                             android:textColor="@color/txt_aku_blue"
                             android:textSize="@dimen/s10"
@@ -185,6 +185,8 @@
                         android:visibility="gone">
 
                         <edu.aku.akuh_health_first.views.AnyTextView
+                            android:id="@+id/txtGraph"
+
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:background="@drawable/rounded_box_filled_base_amber"
@@ -202,10 +204,10 @@
                             android:id="@+id/btnGraphColorCode"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
+                            android:layout_alignBottom="@id/txtGraph"
+                            android:layout_alignTop="@id/txtGraph"
                             android:alpha=".25"
                             android:gravity="center"
-
-                            android:padding="@dimen/x7dp"
                             android:textColor="@color/c_white"
 
                             />
