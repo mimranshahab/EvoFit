@@ -15,6 +15,7 @@
         android:animateLayoutChanges="true"
         app:cardCornerRadius="@dimen/x8dp"
         app:cardElevation="@dimen/x3dp"
+        app:cardPreventCornerOverlap = "false"
 
         >
 

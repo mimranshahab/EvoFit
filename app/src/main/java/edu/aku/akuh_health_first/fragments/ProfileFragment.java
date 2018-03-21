@@ -14,6 +14,7 @@ import com.github.clans.fab.FloatingActionButton;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 import butterknife.Unbinder;
 import de.hdodenhof.circleimageview.CircleImageView;
 import edu.aku.akuh_health_first.R;
@@ -86,12 +87,12 @@ public class ProfileFragment extends BaseFragment {
         UserDetailModel currentUser = sharedPreferenceManager.getCurrentUser();
         CardMemberDetail cardMemberDetail = sharedPreferenceManager.getCardMemberDetail();
         txtUserName.setText(currentUser.getName());
-        txtAge.setText( currentUser.getAge() + " Y Old | "+ currentUser.getGenderDescription());
+        txtAge.setText(currentUser.getAge() + " Y Old | " + currentUser.getGenderDescription());
         txtEmailAddress.setText(currentUser.getEmailAddress());
         txtMRN.setText(currentUser.getMRNumber());
-        txtCincNumber.setText(currentUser.getCNICNumber()+"");
-        txtAddress.setText(currentUser.getCurrentAddress()+"");
-        txtPhoneNum.setText(currentUser.getCellPhoneNumber()+"");
+        txtCincNumber.setText(currentUser.getCNICNumber());
+        txtAddress.setText(currentUser.getCurrentAddress());
+        txtPhoneNum.setText(currentUser.getCellPhoneNumber());
         if (currentUser.getProfileImage() == null || currentUser.getProfileImage().isEmpty()) {
             if (currentUser.getGender().equals("F")) {
 
@@ -100,8 +101,8 @@ public class ProfileFragment extends BaseFragment {
                 circleImageView.setImageResource(R.drawable.male_icon);
             }
 
-        }        else{
-            ImageLoaderHelper.loadImageWithConstantHeadersWithoutAnimation(getContext(),circleImageView,currentUser.getProfileImage());
+        } else {
+            ImageLoaderHelper.loadImageWithConstantHeadersWithoutAnimation(getContext(), circleImageView, currentUser.getProfileImage());
         }
     }
 
@@ -150,5 +151,17 @@ public class ProfileFragment extends BaseFragment {
     public void onDestroyView() {
         super.onDestroyView();
         unbinder.unbind();
+    }
+
+    @OnClick({R.id.btnCamera, R.id.fab})
+    public void onViewClicked(View view) {
+        switch (view.getId()) {
+            case R.id.btnCamera:
+
+                break;
+            case R.id.fab:
+
+                break;
+        }
     }
 }

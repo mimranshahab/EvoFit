@@ -21,6 +21,8 @@
             android:layout_margin="@dimen/x5dp"
             android:animateLayoutChanges="true"
             app:cardCornerRadius="@dimen/x10dp"
+            app:cardPreventCornerOverlap = "false"
+
 
 
             >
@@ -79,6 +81,8 @@
             android:animateLayoutChanges="true"
             android:padding="@dimen/x7dp"
             app:cardCornerRadius="@dimen/x10dp"
+            app:cardPreventCornerOverlap = "false"
+
 
             >
 
@@ -136,6 +140,7 @@
         <android.support.v7.widget.CardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            app:cardPreventCornerOverlap = "false"
 
             android:layout_margin="@dimen/x5dp"
             android:animateLayoutChanges="true"
@@ -194,6 +199,7 @@
 
         <android.support.v7.widget.CardView
             android:layout_width="match_parent"
+            app:cardPreventCornerOverlap = "false"
 
             android:layout_height="wrap_content"
             android:layout_margin="@dimen/x5dp"

@@ -1,6 +1,5 @@
 package edu.aku.akuh_health_first.adapters.recyleradapters;
 
-import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
@@ -27,6 +26,7 @@ public class DischargeSummaryAdapter extends RecyclerView.Adapter<DischargeSumma
 
 
     private final OnItemClickListener onItemClick;
+
 
 
     private Activity activity;
@@ -58,6 +58,15 @@ public class DischargeSummaryAdapter extends RecyclerView.Adapter<DischargeSumma
         holder.txtStatusType.setVisibility(View.INVISIBLE);
         setListener(holder, DischargeSummaryModel);
         holder.RlReport.setVisibility(View.VISIBLE);
+        setViews(holder, activity.getResources().getColor(R.color.base_green), R.drawable.rounded_box_filled_base_green, R.drawable.a_dischargesummary_green);
+
+
+    }
+
+    private void setViews(ViewHolder holder, int color, int backgroundResource, int circular_background) {
+        holder.frameColorCode.setBackgroundColor(color);
+        holder.txtStatusType.setBackgroundResource(backgroundResource);
+        holder.imgIcon.setImageResource(circular_background);
     }
 
     private void setListener(final ViewHolder holder, final DischargeSummaryModel DischargeSummaryModel) {
@@ -88,7 +97,7 @@ public class DischargeSummaryAdapter extends RecyclerView.Adapter<DischargeSumma
         @BindView(R.id.txtStatusType)
         AnyTextView txtStatusType;
         @BindView(R.id.imgIcon)
-        CircleImageView imgUser;
+        CircleImageView imgIcon;
         @BindView(R.id.txtName)
         AnyTextView txtName;
         @BindView(R.id.txtDrName)
