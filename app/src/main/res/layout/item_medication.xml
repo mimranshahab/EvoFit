@@ -16,7 +16,7 @@
         android:layout_weight="1"
         android:animateLayoutChanges="true"
         app:cardCornerRadius="@dimen/x10dp"
-
+        app:cardBackgroundColor="@color/medication_light_red"
 
         >
 
@@ -25,7 +25,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
 
-            android:background="@color/medication_light_red">
+           >
 
             <LinearLayout
                 android:layout_width="match_parent"

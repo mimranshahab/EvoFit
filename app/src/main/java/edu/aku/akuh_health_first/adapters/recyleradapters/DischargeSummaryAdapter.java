@@ -28,7 +28,6 @@ public class DischargeSummaryAdapter extends RecyclerView.Adapter<DischargeSumma
     private final OnItemClickListener onItemClick;
 
 
-
     private Activity activity;
     private ArrayList<DischargeSummaryModel> arrdischargeSummaryModels;
 
@@ -64,7 +63,7 @@ public class DischargeSummaryAdapter extends RecyclerView.Adapter<DischargeSumma
     }
 
     private void setViews(ViewHolder holder, int color, int backgroundResource, int circular_background) {
-        holder.frameColorCode.setBackgroundColor(color);
+        holder.cardView2.setCardBackgroundColor(color);
         holder.txtStatusType.setBackgroundResource(backgroundResource);
         holder.imgIcon.setImageResource(circular_background);
     }

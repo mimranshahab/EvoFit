@@ -5,8 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_marginBottom="@dimen/x10dp"
-    android:orientation="vertical"
->
+    android:orientation="vertical">
 
     <android.support.v7.widget.CardView
         android:id="@+id/cardView2"
@@ -15,6 +14,7 @@
         android:layout_margin="@dimen/x6dp"
         android:layout_weight="1"
         android:animateLayoutChanges="true"
+        app:cardBackgroundColor="@color/base_blue"
         app:cardCornerRadius="@dimen/x10dp"
         app:cardElevation="@dimen/x5dp"
         card_view:cardCornerRadius="@dimen/x10dp"
@@ -23,8 +23,7 @@
         <FrameLayout
             android:id="@+id/frameColorCode"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:background="@color/base_blue">
+            android:layout_height="match_parent">
 
 
             <LinearLayout
@@ -36,10 +35,7 @@
                 android:background="@drawable/round_edges_two_sides"
                 android:gravity="center_vertical"
                 android:orientation="vertical"
-                android:padding="@dimen/x5dp"
-
-
-                >
+                android:padding="@dimen/x5dp">
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -52,9 +48,9 @@
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight=".7"
-                        android:gravity="center_vertical"
                         android:drawableLeft="@drawable/cardiopulmonary_report_date_green"
                         android:drawablePadding="@dimen/x5dp"
+                        android:gravity="center_vertical"
                         android:text="22 jan ,2018"
                         android:textSize="@dimen/s14" />
 
@@ -64,9 +60,9 @@
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="@dimen/x5dp"
+                        android:layout_weight=".3"
                         android:background="@drawable/rounded_box_filled_base_green"
                         android:gravity="center"
-                        android:layout_weight=".3"
                         android:padding="@dimen/x3dp"
                         android:text="Completed"
                         android:textColor="@color/c_white"
@@ -92,9 +88,9 @@
                         android:id="@+id/imgIcon"
                         android:layout_width="@dimen/x70dp"
                         android:layout_height="@dimen/x70dp"
+                        android:layout_gravity="center"
                         android:layout_margin="@dimen/x5dp"
                         android:scaleType="centerCrop"
-                        android:layout_gravity="center"
                         android:src="@drawable/cardiopulmonary_green" />
 
 
@@ -108,84 +104,84 @@
 
 
                         <!--<LinearLayout-->
-                            <!--android:layout_width="match_parent"-->
-                            <!--android:layout_height="wrap_content"-->
-                            <!--android:orientation="horizontal"-->
-                            <!--&gt;-->
+                        <!--android:layout_width="match_parent"-->
+                        <!--android:layout_height="wrap_content"-->
+                        <!--android:orientation="horizontal"-->
+                        <!--&gt;-->
 
-                            <!--<edu.aku.akuh_health_first.widget.AnyTextView-->
-                                <!--android:layout_width="wrap_content"-->
-                                <!--android:layout_height="match_parent"-->
-                                <!--android:ellipsize="end"-->
-                                <!--android:padding="@dimen/x5dp"-->
-                                <!--android:text="SpecimenID:"-->
-                                <!--android:textSize="@dimen/s14"-->
-                                <!--app:typeface="@string/font_regular" />-->
+                        <!--<edu.aku.akuh_health_first.widget.AnyTextView-->
+                        <!--android:layout_width="wrap_content"-->
+                        <!--android:layout_height="match_parent"-->
+                        <!--android:ellipsize="end"-->
+                        <!--android:padding="@dimen/x5dp"-->
+                        <!--android:text="SpecimenID:"-->
+                        <!--android:textSize="@dimen/s14"-->
+                        <!--app:typeface="@string/font_regular" />-->
 
-                            <edu.aku.akuh_health_first.widget.AnyTextView
-                                android:id="@+id/txtSpecimenNumber"
-                                android:layout_width="wrap_content"
-                                android:layout_height="match_parent"
-                                android:ellipsize="end"
-                                android:padding="@dimen/x5dp"
-                                android:text="41225000"
-                                android:textSize="@dimen/s14"
-                                app:typeface="@string/font_bold" />
+                        <edu.aku.akuh_health_first.widget.AnyTextView
+                            android:id="@+id/txtSpecimenNumber"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:ellipsize="end"
+                            android:padding="@dimen/x5dp"
+                            android:text="41225000"
+                            android:textSize="@dimen/s14"
+                            app:typeface="@string/font_bold" />
 
                         <!--</LinearLayout>-->
 
                         <!--<LinearLayout-->
-                            <!--android:layout_width="match_parent"-->
-                            <!--android:layout_height="wrap_content"-->
-                            <!--android:orientation="horizontal"-->
-                            <!--android:padding="@dimen/x5dp">-->
+                        <!--android:layout_width="match_parent"-->
+                        <!--android:layout_height="wrap_content"-->
+                        <!--android:orientation="horizontal"-->
+                        <!--android:padding="@dimen/x5dp">-->
 
-                            <!--<edu.aku.akuh_health_first.widget.AnyTextView-->
-                                <!--android:layout_width="wrap_content"-->
-                                <!--android:layout_height="match_parent"-->
-                                <!--android:ellipsize="end"-->
-                                <!--android:padding="@dimen/x5dp"-->
-                                <!--android:text="SpecimenSectionID"-->
-                                <!--android:textSize="@dimen/s14"-->
-                                <!--app:typeface="@string/font_regular" />-->
+                        <!--<edu.aku.akuh_health_first.widget.AnyTextView-->
+                        <!--android:layout_width="wrap_content"-->
+                        <!--android:layout_height="match_parent"-->
+                        <!--android:ellipsize="end"-->
+                        <!--android:padding="@dimen/x5dp"-->
+                        <!--android:text="SpecimenSectionID"-->
+                        <!--android:textSize="@dimen/s14"-->
+                        <!--app:typeface="@string/font_regular" />-->
 
-                            <edu.aku.akuh_health_first.widget.AnyTextView
-                                android:id="@+id/txtStatusID"
-                                android:layout_width="match_parent"
-                                android:layout_height="match_parent"
-                                android:ellipsize="end"
-                                android:padding="@dimen/x5dp"
-                                android:text="BIO,RECD"
-                                android:textSize="@dimen/s14"
-                                app:typeface="@string/font_bold" />
+                        <edu.aku.akuh_health_first.widget.AnyTextView
+                            android:id="@+id/txtStatusID"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:ellipsize="end"
+                            android:padding="@dimen/x5dp"
+                            android:text="BIO,RECD"
+                            android:textSize="@dimen/s14"
+                            app:typeface="@string/font_bold" />
 
                         <!--</LinearLayout>-->
 
 
                         <!--<LinearLayout-->
-                            <!--android:layout_width="match_parent"-->
-                            <!--android:layout_height="wrap_content"-->
-                            <!--android:orientation="horizontal"-->
-                            <!--android:padding="@dimen/x5dp">-->
+                        <!--android:layout_width="match_parent"-->
+                        <!--android:layout_height="wrap_content"-->
+                        <!--android:orientation="horizontal"-->
+                        <!--android:padding="@dimen/x5dp">-->
 
-                            <!--<edu.aku.akuh_health_first.widget.AnyTextView-->
-                                <!--android:layout_width="wrap_content"-->
-                                <!--android:layout_height="match_parent"-->
-                                <!--android:ellipsize="end"-->
-                                <!--android:padding="@dimen/x5dp"-->
-                                <!--android:text="SpecimenSectionID"-->
-                                <!--android:textSize="@dimen/s14"-->
-                                <!--app:typeface="@string/font_regular" />-->
+                        <!--<edu.aku.akuh_health_first.widget.AnyTextView-->
+                        <!--android:layout_width="wrap_content"-->
+                        <!--android:layout_height="match_parent"-->
+                        <!--android:ellipsize="end"-->
+                        <!--android:padding="@dimen/x5dp"-->
+                        <!--android:text="SpecimenSectionID"-->
+                        <!--android:textSize="@dimen/s14"-->
+                        <!--app:typeface="@string/font_regular" />-->
 
-                            <!--<edu.aku.akuh_health_first.widget.AnyTextView-->
-                                <!--android:id="@+id/txtDateTime"-->
-                                <!--android:layout_width="match_parent"-->
-                                <!--android:layout_height="match_parent"-->
-                                <!--android:ellipsize="end"-->
-                                <!--android:padding="@dimen/x5dp"-->
-                                <!--android:text="xx-xx-xx"-->
-                                <!--android:textSize="@dimen/s14"-->
-                                <!--app:typeface="@string/font_bold" />-->
+                        <!--<edu.aku.akuh_health_first.widget.AnyTextView-->
+                        <!--android:id="@+id/txtDateTime"-->
+                        <!--android:layout_width="match_parent"-->
+                        <!--android:layout_height="match_parent"-->
+                        <!--android:ellipsize="end"-->
+                        <!--android:padding="@dimen/x5dp"-->
+                        <!--android:text="xx-xx-xx"-->
+                        <!--android:textSize="@dimen/s14"-->
+                        <!--app:typeface="@string/font_bold" />-->
 
                         <!--</LinearLayout>-->
 
