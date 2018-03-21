@@ -85,7 +85,7 @@ public class ImmunizationAdapter extends RecyclerView.Adapter<ImmunizationAdapte
     }
 
     private void setViews(ViewHolder holder, int color, int rounded_box_filled_primary_color, int circularimg, int visible) {
-        holder.frameColorCode.setBackgroundColor(color);
+        holder.cardView2.setCardBackgroundColor(color);
         holder.txtType.setBackgroundResource(rounded_box_filled_primary_color);
         holder.btnupdateColorCode.setBackgroundResource(rounded_box_filled_primary_color);
         holder.imgIcon.setImageResource(circularimg);

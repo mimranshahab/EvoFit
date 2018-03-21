@@ -16,7 +16,7 @@
         android:layout_weight="1"
         android:animateLayoutChanges="true"
         app:cardCornerRadius="@dimen/x10dp"
-
+        app:cardBackgroundColor="@color/medication_light_red"
 
         >
 
@@ -25,7 +25,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
 
-            android:background="@color/medication_light_red">
+           >
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -127,7 +127,7 @@
                             android:layout_height="wrap_content"
                             android:orientation="horizontal">
 
-                            <!--<edu.aku.akuh_health_first.views.AnyTextView-->
+                            <!--<edu.aku.akuh_health_first.widget.AnyTextView-->
                             <!--android:layout_width="wrap_content"-->
                             <!--android:layout_height="wrap_content"-->
                             <!--android:layout_alignParentLeft="true"-->
@@ -155,7 +155,7 @@
                             android:layout_height="wrap_content"
                             android:orientation="horizontal">
 
-                            <!--<edu.aku.akuh_health_first.views.AnyTextView-->
+                            <!--<edu.aku.akuh_health_first.widget.AnyTextView-->
                             <!--android:layout_width="wrap_content"-->
                             <!--android:layout_height="wrap_content"-->
                             <!--android:layout_alignParentLeft="true"-->
@@ -183,7 +183,7 @@
                             android:layout_height="wrap_content"
                             android:orientation="horizontal">
 
-                            <!--<edu.aku.akuh_health_first.views.AnyTextView-->
+                            <!--<edu.aku.akuh_health_first.widget.AnyTextView-->
                             <!--android:layout_width="wrap_content"-->
                             <!--android:layout_height="wrap_content"-->
                             <!--android:layout_alignParentLeft="true"-->

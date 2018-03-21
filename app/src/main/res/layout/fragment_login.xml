@@ -24,9 +24,9 @@
 
             <ImageView
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="@dimen/x84dp"
                 android:scaleType="fitCenter"
-                android:src="@drawable/login_logo" />
+                android:src="@drawable/a_family_hifazat_logo" />
 
             <edu.aku.akuh_health_first.widget.AnyTextView
                 android:layout_width="match_parent"

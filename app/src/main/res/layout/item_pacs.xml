@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:card_view="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical">
@@ -10,12 +9,11 @@
         android:id="@+id/cardView2"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_centerInParent="true"
         android:layout_margin="@dimen/x5dp"
         android:animateLayoutChanges="true"
         android:padding="@dimen/x2dp"
-        card_view:cardCornerRadius="5dp"
-        card_view:cardElevation="x15dp">
+        app:cardCornerRadius="@dimen/x5dp"
+        app:cardElevation="@dimen/x5dp">
 
 
         <LinearLayout
@@ -28,10 +26,9 @@
                 android:id="@+id/imgPacs"
                 android:layout_width="@dimen/x120dp"
                 android:layout_height="match_parent"
-                android:background="@color/txt_aku_blue"
-                android:scaleType="centerCrop"
+                android:background="@color/c_black"
                 android:padding="@dimen/x3dp"
-
+                android:scaleType="centerCrop"
                 android:src="@drawable/placeholder" />
 
 
@@ -39,7 +36,6 @@
                 android:id="@+id/contListItem"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-
                 android:layout_gravity="center_vertical"
                 android:orientation="vertical">
 
@@ -51,8 +47,8 @@
                     android:drawableLeft="@drawable/radiology_report_title"
                     android:drawablePadding="@dimen/x5dp"
                     android:gravity="center_vertical"
-                    android:text="patientMRN"
                     android:padding="@dimen/x3dp"
+                    android:text="patientMRN"
                     android:textColor="@color/txt_aku_blue"
                     android:textSize="@dimen/s14"
                     app:typeface="@string/font_regular" />
@@ -64,10 +60,10 @@
                     android:drawableLeft="@drawable/radiology_reportdate"
                     android:drawablePadding="@dimen/x5dp"
                     android:gravity="center_vertical"
+                    android:padding="@dimen/x3dp"
                     android:text="studyDataDateTime "
                     android:textColor="@color/txt_aku_blue"
                     android:textSize="@dimen/s14"
-                    android:padding="@dimen/x3dp"
 
                     app:typeface="@string/font_regular" />
 
@@ -79,8 +75,8 @@
                     android:drawableLeft="@drawable/radiology_images"
                     android:drawablePadding="@dimen/x5dp"
                     android:gravity="center_vertical"
-                    android:text="studyDataCount"
                     android:padding="@dimen/x3dp"
+                    android:text="studyDataCount"
 
                     android:textColor="@color/txt_aku_blue"
                     android:textSize="@dimen/s14"

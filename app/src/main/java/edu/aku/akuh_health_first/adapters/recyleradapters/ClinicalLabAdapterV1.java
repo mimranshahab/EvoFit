@@ -1,5 +1,6 @@
 package edu.aku.akuh_health_first.adapters.recyleradapters;
 
+
 import android.app.Activity;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
@@ -19,7 +20,7 @@ import de.hdodenhof.circleimageview.CircleImageView;
 import edu.aku.akuh_health_first.R;
 import edu.aku.akuh_health_first.callbacks.OnItemClickListener;
 import edu.aku.akuh_health_first.models.LaboratoryModel;
-import edu.aku.akuh_health_first.views.AnyTextView;
+import edu.aku.akuh_health_first.widget.AnyTextView;
 
 /**
  */
@@ -27,6 +28,7 @@ public class ClinicalLabAdapterV1 extends RecyclerView.Adapter<ClinicalLabAdapte
 
 
     private final OnItemClickListener onItemClick;
+
 
 
     private Activity activity;
@@ -122,11 +124,10 @@ public class ClinicalLabAdapterV1 extends RecyclerView.Adapter<ClinicalLabAdapte
     }
 
     private void colorCodes(ViewHolder holder, int framecolor, int btnbackground, int a_clinicallab_green) {
-        holder.frameColorCode.setBackgroundResource(framecolor);
+        holder.cardView2.setCardBackgroundColor(activity.getResources().getColor(framecolor));
         holder.btnShowDetail.setBackgroundResource(btnbackground);
         holder.imgIcon.setImageResource(a_clinicallab_green);
     }
-
 
 
     private void setListener(final ViewHolder holder, final LaboratoryModel neurophysiology) {

@@ -13,7 +13,7 @@
         android:padding="@dimen/x15dp">
 
 
-        <!--<edu.aku.akuh_health_first.views.AnyTextView-->
+        <!--<edu.aku.akuh_health_first.widget.AnyTextView-->
         <!--android:id="@+id/txtMobileNumber"-->
         <!--android:layout_width="match_parent"-->
         <!--android:layout_height="wrap_content"-->
@@ -43,7 +43,7 @@
             app:typeface="@string/font_regular" />
 
 
-        <!--<edu.aku.akuh_health_first.views.AnyTextView-->
+        <!--<edu.aku.akuh_health_first.widget.AnyTextView-->
         <!--android:layout_width="wrap_content"-->
         <!--android:layout_height="wrap_content"-->
         <!--android:layout_marginBottom="@dimen/x5dp"-->
@@ -73,7 +73,7 @@
             app:typeface="@string/font_regular" />
 
 
-        <!--<edu.aku.akuh_health_first.views.AnyTextView-->
+        <!--<edu.aku.akuh_health_first.widget.AnyTextView-->
         <!--android:layout_width="wrap_content"-->
         <!--android:layout_height="wrap_content"-->
         <!--android:layout_marginBottom="@dimen/x5dp"-->
@@ -102,7 +102,7 @@
             app:typeface="@string/font_regular" />
 
 
-        <!--<edu.aku.akuh_health_first.views.AnyTextView-->
+        <!--<edu.aku.akuh_health_first.widget.AnyTextView-->
         <!--android:layout_width="wrap_content"-->
         <!--android:layout_height="wrap_content"-->
         <!--android:layout_marginBottom="@dimen/x5dp"-->
@@ -132,7 +132,7 @@
             app:typeface="@string/font_regular" />
 
 
-        <!--<edu.aku.akuh_health_first.views.AnyTextView-->
+        <!--<edu.aku.akuh_health_first.widget.AnyTextView-->
         <!--android:layout_width="wrap_content"-->
         <!--android:layout_height="wrap_content"-->
         <!--android:layout_marginBottom="@dimen/x5dp"-->
@@ -141,7 +141,7 @@
         <!--android:textSize="13sp"-->
         <!--app:typeface="@string/font_bold" />-->
 
-        <edu.aku.akuh_health_first.views.AnyTextView
+        <edu.aku.akuh_health_first.widget.AnyTextView
             android:id="@+id/txtCurrentCountry"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -164,7 +164,7 @@
             android:layout_height="0dp" />
 
 
-        <!--<edu.aku.akuh_health_first.views.AnyTextView-->
+        <!--<edu.aku.akuh_health_first.widget.AnyTextView-->
         <!--android:layout_width="wrap_content"-->
         <!--android:layout_height="wrap_content"-->
         <!--android:layout_marginBottom="@dimen/x5dp"-->
@@ -191,7 +191,7 @@
             app:typeface="@string/font_regular" />
 
 
-        <!--<edu.aku.akuh_health_first.views.AnyTextView-->
+        <!--<edu.aku.akuh_health_first.widget.AnyTextView-->
         <!--android:layout_width="wrap_content"-->
         <!--android:layout_height="wrap_content"-->
         <!--android:layout_marginBottom="@dimen/x5dp"-->
@@ -221,7 +221,7 @@
             app:typeface="@string/font_regular" />
 
 
-        <!--<edu.aku.akuh_health_first.views.AnyTextView-->
+        <!--<edu.aku.akuh_health_first.widget.AnyTextView-->
         <!--android:layout_width="wrap_content"-->
         <!--android:layout_height="wrap_content"-->
         <!--android:layout_marginBottom="@dimen/x5dp"-->
@@ -230,7 +230,7 @@
         <!--android:textSize="13sp"-->
         <!--app:typeface="@string/font_bold" />-->
 
-        <edu.aku.akuh_health_first.views.AnyTextView
+        <edu.aku.akuh_health_first.widget.AnyTextView
             android:id="@+id/txtPermanentCountry"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -256,7 +256,7 @@
             android:layout_height="0dp" />
 
 
-        <edu.aku.akuh_health_first.views.AnyTextView
+        <edu.aku.akuh_health_first.widget.AnyTextView
             android:id="@+id/btnUpdate"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

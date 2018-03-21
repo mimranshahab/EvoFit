@@ -13,20 +13,19 @@
         android:orientation="vertical">
 
         <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/x125dp"
             android:layout_gravity="center_horizontal"
-            android:padding="@dimen/x10dp"
+            android:layout_marginLeft="@dimen/x10dp"
+            android:layout_marginRight="@dimen/x10dp"
             android:scaleType="fitCenter"
-            android:scaleX="1.4"
-            android:scaleY="1.4"
-              />
+            android:src="@drawable/a_family_hifazat_logo" />
 
         <edu.aku.akuh_health_first.widget.AnyTextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center"
-            android:padding="@dimen/x20dp"
+            android:padding="@dimen/x10dp"
             android:text="Access to Medical Information"
             android:textColor="@color/base_amber"
             android:textSize="22sp" />

@@ -31,9 +31,9 @@
                 android:id="@+id/imgPacs"
                 android:layout_width="@dimen/x120dp"
                 android:layout_height="match_parent"
-                android:background="@color/txt_aku_blue"
-                android:scaleType="centerCrop"
+                android:background="@color/c_black"
                 android:padding="@dimen/x3dp"
+                android:scaleType="centerCrop"
 
                 android:src="@drawable/placeholder" />
 

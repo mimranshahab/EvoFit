@@ -95,7 +95,7 @@ public class TimelineAdapter extends RecyclerView.Adapter<TimelineAdapter.ViewHo
     }
 
     private void setViews(ViewHolder holder, int base_color, int color) {
-        holder.cardView.setCardBackgroundColor(base_color);
+        holder.cardView.setCardBackgroundColor(color);
         holder.llColorCode.setBackgroundResource(base_color);
         holder.txtDoctorName.setTextColor(color);
     }
