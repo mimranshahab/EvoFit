@@ -28,7 +28,7 @@
                 android:scaleType="fitCenter"
                 android:src="@drawable/login_logo" />
 
-            <edu.aku.akuh_health_first.views.AnyTextView
+            <edu.aku.akuh_health_first.widget.AnyTextView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_marginBottom="@dimen/x30dp"
@@ -38,7 +38,7 @@
                 android:textSize="@dimen/s16"
                 app:typeface="@string/font_bold" />
 
-            <edu.aku.akuh_health_first.views.AnyEditTextView
+            <edu.aku.akuh_health_first.widget.AnyEditTextView
                 android:id="@+id/edtUserName"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -82,7 +82,7 @@
                 app:testType="nocheck" />
 
 
-            <edu.aku.akuh_health_first.views.AnyTextView
+            <edu.aku.akuh_health_first.widget.AnyTextView
                 android:id="@+id/btnLogin"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -120,7 +120,7 @@
                         android:alpha="0.8"
                         android:src="@color/c_black" />
 
-                    <edu.aku.akuh_health_first.views.AnyTextView
+                    <edu.aku.akuh_health_first.widget.AnyTextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:padding="@dimen/x10dp"
@@ -139,7 +139,7 @@
                 </LinearLayout>
 
 
-                <edu.aku.akuh_health_first.views.AnyTextView
+                <edu.aku.akuh_health_first.widget.AnyTextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="@dimen/x15dp"
@@ -150,7 +150,7 @@
                     app:typeface="@string/font_regular" />
 
 
-                <edu.aku.akuh_health_first.views.AnyTextView
+                <edu.aku.akuh_health_first.widget.AnyTextView
                     android:id="@+id/txtSignUp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -165,7 +165,7 @@
                     app:typeface="@string/font_bold" />
 
 
-                <edu.aku.akuh_health_first.views.AnyTextView
+                <edu.aku.akuh_health_first.widget.AnyTextView
                     android:id="@+id/txtForgotPassword"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"

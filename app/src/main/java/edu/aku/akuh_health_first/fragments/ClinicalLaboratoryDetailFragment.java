@@ -34,7 +34,7 @@ import edu.aku.akuh_health_first.models.LaboratoryUpdateModel;
 import edu.aku.akuh_health_first.models.LstLaboratorySpecimenResults;
 import edu.aku.akuh_health_first.models.SearchModel;
 import edu.aku.akuh_health_first.models.wrappers.WebResponse;
-import edu.aku.akuh_health_first.views.AnyTextView;
+import edu.aku.akuh_health_first.widget.AnyTextView;
 
 /**
  * Created by aqsa.sarwar on 1/25/2018.

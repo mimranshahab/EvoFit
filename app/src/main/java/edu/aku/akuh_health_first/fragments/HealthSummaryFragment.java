@@ -40,8 +40,8 @@ import edu.aku.akuh_health_first.models.PatientHealthSummaryModel;
 import edu.aku.akuh_health_first.models.SearchModel;
 import edu.aku.akuh_health_first.models.Shortmessagemobile;
 import edu.aku.akuh_health_first.models.wrappers.WebResponse;
-import edu.aku.akuh_health_first.views.AnyTextView;
-import edu.aku.akuh_health_first.views.recyclerview_layout.CustomLayoutManager;
+import edu.aku.akuh_health_first.widget.AnyTextView;
+import edu.aku.akuh_health_first.widget.recyclerview_layout.CustomLayoutManager;
 
 /**
  * Created by aqsa.sarwar on 1/26/2018.

@@ -38,7 +38,7 @@
                 android:orientation="vertical">
 
 
-                <edu.aku.akuh_health_first.views.AnyTextView
+                <edu.aku.akuh_health_first.widget.AnyTextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:padding="@dimen/x5dp"
@@ -47,7 +47,7 @@
                     android:textSize="@dimen/s16"
                     app:typeface="@string/font_bold" />
 
-                <edu.aku.akuh_health_first.views.AnyTextView
+                <edu.aku.akuh_health_first.widget.AnyTextView
                     android:id="@+id/txtFileName"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"

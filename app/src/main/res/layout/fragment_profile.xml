@@ -23,7 +23,7 @@
             android:src="@drawable/user_image"
             android:visibility="visible" />
 
-        <edu.aku.akuh_health_first.views.AnyTextView
+        <edu.aku.akuh_health_first.widget.AnyTextView
             android:id="@+id/txtUserName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -37,7 +37,7 @@
             android:textSize="@dimen/s17"
             app:typeface="@string/font_bold" />
 
-        <edu.aku.akuh_health_first.views.AnyTextView
+        <edu.aku.akuh_health_first.widget.AnyTextView
             android:id="@+id/txtMRN"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -50,7 +50,7 @@
             android:textSize="@dimen/s15"
             app:typeface="@string/font_regular" />
 
-        <edu.aku.akuh_health_first.views.AnyTextView
+        <edu.aku.akuh_health_first.widget.AnyTextView
             android:id="@+id/txtEmailAddress"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -63,7 +63,7 @@
             android:textSize="@dimen/s15"
             app:typeface="@string/font_regular" />
 
-        <edu.aku.akuh_health_first.views.AnyTextView
+        <edu.aku.akuh_health_first.widget.AnyTextView
             android:id="@+id/txtAge"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -85,7 +85,7 @@
         android:padding="@dimen/x10dp">
 
 
-        <edu.aku.akuh_health_first.views.AnyTextView
+        <edu.aku.akuh_health_first.widget.AnyTextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
@@ -190,7 +190,7 @@
                             android:orientation="vertical">
 
 
-                            <edu.aku.akuh_health_first.views.AnyTextView
+                            <edu.aku.akuh_health_first.widget.AnyTextView
                                 android:id="@+id/txtCardType"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
@@ -221,7 +221,7 @@
                             android:orientation="vertical">
 
 
-                            <edu.aku.akuh_health_first.views.AnyTextView
+                            <edu.aku.akuh_health_first.widget.AnyTextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="Card Number"
@@ -229,7 +229,7 @@
 
                                 android:textSize="@dimen/s14" />
 
-                            <edu.aku.akuh_health_first.views.AnyTextView
+                            <edu.aku.akuh_health_first.widget.AnyTextView
                                 android:id="@+id/txtCardNum"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
@@ -262,7 +262,7 @@
                             android:orientation="vertical">
 
 
-                            <edu.aku.akuh_health_first.views.AnyTextView
+                            <edu.aku.akuh_health_first.widget.AnyTextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="Creation Date"
@@ -270,7 +270,7 @@
 
                                 android:textSize="@dimen/s14" />
 
-                            <edu.aku.akuh_health_first.views.AnyTextView
+                            <edu.aku.akuh_health_first.widget.AnyTextView
                                 android:id="@+id/txtCreationDate"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
@@ -303,7 +303,7 @@
                             android:orientation="vertical">
 
 
-                            <edu.aku.akuh_health_first.views.AnyTextView
+                            <edu.aku.akuh_health_first.widget.AnyTextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="Expiry Date"
@@ -311,7 +311,7 @@
 
                                 android:textSize="@dimen/s14" />
 
-                            <edu.aku.akuh_health_first.views.AnyTextView
+                            <edu.aku.akuh_health_first.widget.AnyTextView
                                 android:id="@+id/txtExpirayDate"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"

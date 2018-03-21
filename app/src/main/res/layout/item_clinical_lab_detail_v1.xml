@@ -36,7 +36,7 @@
                     android:orientation="vertical"
                     android:padding="@dimen/x5dp">
 
-                    <edu.aku.akuh_health_first.views.AnyTextView
+                    <edu.aku.akuh_health_first.widget.AnyTextView
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:ellipsize="end"
@@ -45,7 +45,7 @@
                         android:textSize="@dimen/s14"
                         app:typeface="@string/font_regular" />
 
-                    <edu.aku.akuh_health_first.views.AnyTextView
+                    <edu.aku.akuh_health_first.widget.AnyTextView
                         android:id="@+id/txtReportName"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
@@ -72,7 +72,7 @@
                     android:orientation="vertical"
                     android:padding="@dimen/x5dp">
 
-                    <edu.aku.akuh_health_first.views.AnyTextView
+                    <edu.aku.akuh_health_first.widget.AnyTextView
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:ellipsize="end"
@@ -82,7 +82,7 @@
                         android:textSize="@dimen/s14"
                         app:typeface="@string/font_regular" />
 
-                    <edu.aku.akuh_health_first.views.AnyTextView
+                    <edu.aku.akuh_health_first.widget.AnyTextView
                         android:id="@+id/txtNormalRangeFormatted"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
@@ -99,7 +99,7 @@
                     android:orientation="vertical"
                     android:padding="@dimen/x5dp">
 
-                    <edu.aku.akuh_health_first.views.AnyTextView
+                    <edu.aku.akuh_health_first.widget.AnyTextView
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:text="Result"
@@ -107,7 +107,7 @@
                         android:textSize="@dimen/s14"
                         app:typeface="@string/font_regular" />
 
-                    <edu.aku.akuh_health_first.views.AnyTextView
+                    <edu.aku.akuh_health_first.widget.AnyTextView
                         android:id="@+id/txtResult"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
@@ -134,7 +134,7 @@
                     android:orientation="vertical"
                     android:padding="@dimen/x5dp">
 
-                    <edu.aku.akuh_health_first.views.AnyTextView
+                    <edu.aku.akuh_health_first.widget.AnyTextView
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:ellipsize="end"
@@ -142,7 +142,7 @@
                         android:textSize="@dimen/s14"
                         app:typeface="@string/font_regular" />
 
-                    <edu.aku.akuh_health_first.views.AnyTextView
+                    <edu.aku.akuh_health_first.widget.AnyTextView
                         android:id="@+id/txtGraph"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"

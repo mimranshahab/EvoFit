@@ -32,7 +32,7 @@
                  android:clickable="false"
                 android:padding="@dimen/x2dp" />
 
-            <edu.aku.akuh_health_first.views.AnyTextView
+            <edu.aku.akuh_health_first.widget.AnyTextView
                 android:id="@+id/txtChoice"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"

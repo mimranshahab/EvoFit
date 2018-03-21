@@ -30,7 +30,7 @@
             android:padding="@dimen/x3dp"
            >
 
-            <edu.aku.akuh_health_first.views.AnyTextView
+            <edu.aku.akuh_health_first.widget.AnyTextView
                 android:id="@+id/txtExam"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
@@ -43,7 +43,7 @@
                 android:textSize="@dimen/s11"
                 app:typeface="@string/font_regular" />
 
-            <edu.aku.akuh_health_first.views.AnyTextView
+            <edu.aku.akuh_health_first.widget.AnyTextView
                 android:id="@+id/txtLocation"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
@@ -56,7 +56,7 @@
                 android:textSize="@dimen/s11"
                 app:typeface="@string/font_regular" />
 
-            <edu.aku.akuh_health_first.views.AnyTextView
+            <edu.aku.akuh_health_first.widget.AnyTextView
                 android:id="@+id/txtReqDatetime"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
@@ -70,7 +70,7 @@
                 app:typeface="@string/font_regular" />
 
 
-            <edu.aku.akuh_health_first.views.AnyTextView
+            <edu.aku.akuh_health_first.widget.AnyTextView
                 android:id="@+id/txtStatus"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
@@ -88,7 +88,7 @@
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
 
-                <edu.aku.akuh_health_first.views.AnyTextView
+                <edu.aku.akuh_health_first.widget.AnyTextView
                     android:id="@+id/btnShowReport"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
@@ -104,7 +104,7 @@
                     android:textSize="@dimen/s11"
                     android:visibility="visible" />
 
-                <edu.aku.akuh_health_first.views.AnyTextView
+                <edu.aku.akuh_health_first.widget.AnyTextView
                     android:id="@+id/btnShowGraph"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"

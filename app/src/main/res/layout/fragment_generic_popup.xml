@@ -10,7 +10,7 @@
     android:padding="@dimen/x15dp">
 
 
-    <edu.aku.akuh_health_first.views.AnyTextView
+    <edu.aku.akuh_health_first.widget.AnyTextView
         android:id="@+id/txtTitle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -30,7 +30,7 @@
         android:background="#E2E2E2" />
 
 
-    <edu.aku.akuh_health_first.views.AnyTextView
+    <edu.aku.akuh_health_first.widget.AnyTextView
         android:id="@+id/txtMessage"
         android:layout_width="@dimen/x300dp"
         android:layout_height="match_parent"

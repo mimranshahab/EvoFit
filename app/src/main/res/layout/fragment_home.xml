@@ -9,17 +9,6 @@
     android:orientation="vertical"
     android:padding="@dimen/x5dp">
 
-    <!--<android.support.v7.widget.CardView-->
-    <!--android:id="@+id/cardView2"-->
-    <!--android:layout_width="match_parent"-->
-    <!--android:layout_height="wrap_content"-->
-    <!--android:layout_centerInParent="true"-->
-    <!---->
-    <!--android:animateLayoutChanges="true"-->
-    <!--app:cardCornerRadius="@dimen/x10dp"-->
-    <!--app:cardElevation="@dimen/x5dp"-->
-
-    <!--&gt;-->
 
 
     <RelativeLayout
@@ -53,7 +42,7 @@
                     android:padding="@dimen/x3dp">
 
 
-                    <edu.aku.akuh_health_first.views.AnyTextView
+                    <edu.aku.akuh_health_first.widget.AnyTextView
                         android:id="@+id/txtName"
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
@@ -65,7 +54,7 @@
                         app:typeface="@string/font_bold" />
 
 
-                    <edu.aku.akuh_health_first.views.AnyTextView
+                    <edu.aku.akuh_health_first.widget.AnyTextView
                         android:id="@+id/txtRelation"
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
@@ -89,7 +78,7 @@
 
             </RelativeLayout>
 
-            <edu.aku.akuh_health_first.views.AnyTextView
+            <edu.aku.akuh_health_first.widget.AnyTextView
                 android:id="@+id/txtMRN"
 
                 android:layout_width="wrap_content"
@@ -100,7 +89,7 @@
                 android:textSize="@dimen/s14"
                 app:typeface="@string/font_regular" />
 
-            <edu.aku.akuh_health_first.views.AnyTextView
+            <edu.aku.akuh_health_first.widget.AnyTextView
                 android:id="@+id/txtGender_age"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -129,7 +118,7 @@
 
     <!--</android.support.v7.widget.CardView>-->
 
-    <edu.aku.akuh_health_first.views.AnyTextView
+    <edu.aku.akuh_health_first.widget.AnyTextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="@dimen/x5dp"

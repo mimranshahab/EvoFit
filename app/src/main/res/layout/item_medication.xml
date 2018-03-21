@@ -40,7 +40,7 @@
                     android:layout_weight=".5"
                     android:orientation="vertical">
 
-                    <edu.aku.akuh_health_first.views.AnyTextView
+                    <edu.aku.akuh_health_first.widget.AnyTextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_alignParentLeft="true"
@@ -49,7 +49,7 @@
                         android:textSize="@dimen/s14"
                         app:typeface="@string/font_regular" />
 
-                    <edu.aku.akuh_health_first.views.AnyTextView
+                    <edu.aku.akuh_health_first.widget.AnyTextView
                         android:id="@+id/txtStartDate"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -66,7 +66,7 @@
                     android:gravity="end"
                     android:orientation="vertical">
 
-                    <edu.aku.akuh_health_first.views.AnyTextView
+                    <edu.aku.akuh_health_first.widget.AnyTextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_alignParentLeft="true"
@@ -75,7 +75,7 @@
                         android:textSize="@dimen/s14"
                         app:typeface="@string/font_regular" />
 
-                    <edu.aku.akuh_health_first.views.AnyTextView
+                    <edu.aku.akuh_health_first.widget.AnyTextView
                         android:id="@+id/txtStopDate"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -137,7 +137,7 @@
                             <!--android:textSize="@dimen/s14"-->
                             <!--app:typeface="@string/font_bold" />-->
 
-                            <edu.aku.akuh_health_first.views.AnyTextView
+                            <edu.aku.akuh_health_first.widget.AnyTextView
                                 android:id="@+id/txtMedicineName"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
@@ -165,7 +165,7 @@
                             <!--android:textSize="@dimen/s14"-->
                             <!--app:typeface="@string/font_regular" />-->
 
-                            <edu.aku.akuh_health_first.views.AnyTextView
+                            <edu.aku.akuh_health_first.widget.AnyTextView
                                 android:id="@+id/txtFrequency"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
@@ -193,7 +193,7 @@
                             <!--android:textSize="@dimen/s14"-->
                             <!--app:typeface="@string/font_regular" />-->
 
-                            <edu.aku.akuh_health_first.views.AnyTextView
+                            <edu.aku.akuh_health_first.widget.AnyTextView
                                 android:id="@+id/txtRoute"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"

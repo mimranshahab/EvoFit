@@ -24,15 +24,14 @@
             android:layout_weight="1"
             android:animateLayoutChanges="true"
             android:padding="@dimen/x7dp"
+            app:cardBackgroundColor="@color/base_blue"
             app:cardCornerRadius="@dimen/x10dp"
-
 
             >
 
             <FrameLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:background="@color/base_blue">
+                android:layout_height="match_parent">
 
                 <LinearLayout
                     android:id="@+id/contProfile"
@@ -54,7 +53,7 @@
                         android:scaleType="centerCrop"
                         android:src="@drawable/my_profile" />
 
-                    <edu.aku.akuh_health_first.views.AnyTextView
+                    <edu.aku.akuh_health_first.widget.AnyTextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
@@ -83,14 +82,14 @@
             android:layout_weight="1"
             android:animateLayoutChanges="true"
             android:padding="@dimen/x7dp"
+            app:cardBackgroundColor="@color/base_reddish"
             app:cardCornerRadius="@dimen/x10dp"
 
             >
 
             <FrameLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:background="@color/base_reddish">
+                android:layout_height="match_parent">
 
 
                 <LinearLayout
@@ -114,7 +113,7 @@
                         android:scaleType="centerCrop"
                         android:src="@drawable/health_summary" />
 
-                    <edu.aku.akuh_health_first.views.AnyTextView
+                    <edu.aku.akuh_health_first.widget.AnyTextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
@@ -145,15 +144,14 @@
             android:layout_margin="@dimen/x10dp"
             android:layout_weight="1"
             android:animateLayoutChanges="true"
-            android:padding="@dimen/x7dp"
+            app:cardBackgroundColor="@color/base_green"
             app:cardCornerRadius="@dimen/x10dp"
 
             >
 
             <FrameLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:background="@color/base_green">
+                android:layout_height="match_parent">
 
                 <LinearLayout
                     android:id="@+id/contHistory"
@@ -176,7 +174,7 @@
                         android:scaleType="centerCrop"
                         android:src="@drawable/health_history" />
 
-                    <edu.aku.akuh_health_first.views.AnyTextView
+                    <edu.aku.akuh_health_first.widget.AnyTextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
@@ -207,16 +205,14 @@
             android:layout_weight="1"
             android:animateLayoutChanges="true"
             android:padding="@dimen/x7dp"
+            app:cardBackgroundColor="@color/base_amber"
             app:cardCornerRadius="@dimen/x10dp"
 
             >
 
             <FrameLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:background="@color/base_amber"
-
-                >
+                android:layout_height="match_parent">
 
                 <LinearLayout
                     android:id="@+id/contTimeline"
@@ -239,7 +235,7 @@
                         android:scaleType="centerCrop"
                         android:src="@drawable/visit_timeline" />
 
-                    <edu.aku.akuh_health_first.views.AnyTextView
+                    <edu.aku.akuh_health_first.widget.AnyTextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"

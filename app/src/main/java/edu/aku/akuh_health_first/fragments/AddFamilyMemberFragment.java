@@ -16,7 +16,7 @@ import android.widget.DatePicker;
 import android.widget.Spinner;
 
 import com.andreabaccega.widget.FormEditText;
-import edu.aku.akuh_health_first.views.AnyTextView;
+import edu.aku.akuh_health_first.widget.AnyTextView;
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.theartofdev.edmodo.cropper.CropImage;
 import com.theartofdev.edmodo.cropper.CropImageView;
@@ -25,7 +25,6 @@ import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 
-import edu.aku.akuh_health_first.constatnts.AppConstants;
 import edu.aku.akuh_health_first.constatnts.WebServiceConstants;
 import edu.aku.akuh_health_first.enums.BaseURLTypes;
 import edu.aku.akuh_health_first.enums.FileType;
@@ -49,7 +48,6 @@ import edu.aku.akuh_health_first.fragments.dialogs.SuccessDialogFragment;
 import edu.aku.akuh_health_first.helperclasses.validator.MRValidation;
 import edu.aku.akuh_health_first.helperclasses.validator.PassportValidation;
 import edu.aku.akuh_health_first.managers.FileManager;
-import edu.aku.akuh_health_first.managers.SharedPreferenceManager;
 import edu.aku.akuh_health_first.managers.retrofit.WebServices;
 import edu.aku.akuh_health_first.models.receiving_model.RegisterOptionsModel;
 import edu.aku.akuh_health_first.models.receiving_model.RegisterVM;
