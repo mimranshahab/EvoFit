@@ -3,7 +3,6 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/colorPrimaryDarkSemiTransparent"
     android:orientation="vertical"
     android:scrollbars="none">
 
@@ -15,36 +14,32 @@
             android:id="@+id/imgBackground"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:alpha="0.85"
+            android:alpha="0.9"
             android:scaleType="centerCrop"
-            android:src="@drawable/test6"
-            android:visibility="gone" />
+            android:src="@drawable/test1"
+            android:visibility="visible" />
 
         <ScrollView
             android:id="@+id/scrollView"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:fillViewport="true">
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:orientation="vertical">
 
 
-                <LinearLayout
+                <ImageView
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="@dimen/x30dp"
-                    android:layout_marginTop="@dimen/x50dp">
-
-                    <ImageView
-                        android:layout_width="match_parent"
-                        android:layout_height="@dimen/x84dp"
-                        android:scaleType="fitCenter"
-                        android:src="@drawable/a_family_hifazat_logo" />
-
-
-                </LinearLayout>
+                    android:layout_height="@dimen/x84dp"
+                    android:layout_marginBottom="@dimen/x50dp"
+                    android:layout_marginLeft="@dimen/x20dp"
+                    android:layout_marginRight="@dimen/x20dp"
+                    android:layout_marginTop="@dimen/x50dp"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/a_family_hifazat_logo" />
 
 
                 <edu.aku.akuh_health_first.widget.AnyTextView
@@ -52,19 +47,20 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
-                    android:background="@color/c_quarter_transparent"
+                    android:drawablePadding="@dimen/x5dp"
+                    android:drawableStart="@drawable/ic_action_home"
                     android:gravity="center_vertical"
                     android:padding="@dimen/x15dp"
                     android:singleLine="true"
                     android:text="Home"
                     android:textColor="@color/c_white"
-                    android:textSize="14sp"
+                    android:textSize="16sp"
                     app:typeface="@string/font_bold" />
 
                 <View
                     android:layout_width="match_parent"
                     android:layout_height="2px"
-                    android:background="@color/base_amberSemiTransparent" />
+                    android:background="@color/c_white" />
 
 
                 <edu.aku.akuh_health_first.widget.AnyTextView
@@ -72,20 +68,21 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
-                    android:background="@color/c_quarter_transparent"
+                    android:drawablePadding="@dimen/x5dp"
+                    android:drawableStart="@drawable/ic_action_home"
                     android:gravity="center_vertical"
                     android:padding="@dimen/x15dp"
                     android:singleLine="true"
                     android:text="Card Subscription"
                     android:textColor="@color/c_white"
 
-                    android:textSize="14sp"
+                    android:textSize="16sp"
                     app:typeface="@string/font_bold" />
 
                 <View
                     android:layout_width="match_parent"
                     android:layout_height="2px"
-                    android:background="@color/base_amberSemiTransparent" />
+                    android:background="@color/c_white" />
 
 
                 <edu.aku.akuh_health_first.widget.AnyTextView
@@ -93,36 +90,64 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
-                    android:background="@color/c_quarter_transparent"
+                    android:drawablePadding="@dimen/x5dp"
+                    android:drawableStart="@drawable/ic_action_home"
                     android:gravity="center_vertical"
                     android:padding="@dimen/x15dp"
                     android:singleLine="true"
                     android:text="About"
                     android:textColor="@color/c_white"
 
-                    android:textSize="14sp"
+                    android:textSize="16sp"
                     app:typeface="@string/font_bold" />
 
                 <View
                     android:layout_width="match_parent"
                     android:layout_height="2px"
-                    android:background="@color/base_amberSemiTransparent" />
+                    android:background="@color/c_white" />
 
 
-                <edu.aku.akuh_health_first.widget.AnyTextView
-                    android:id="@+id/txtLogout"
+                <RelativeLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_vertical"
-                    android:layout_marginBottom="@dimen/x25dp"
-                    android:background="@color/c_quarter_transparent"
-                    android:gravity="center_vertical"
-                    android:padding="@dimen/x15dp"
-                    android:singleLine="true"
-                    android:text="@string/logout"
-                    android:textColor="@color/c_white"
-                    android:textSize="14sp"
-                    app:typeface="@string/font_bold" />
+                    android:layout_height="match_parent">
+
+                    <edu.aku.akuh_health_first.widget.AnyTextView
+                        android:id="@+id/txtSubscriberName"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_above="@+id/txtLogout"
+                        android:layout_centerHorizontal="true"
+                        android:layout_marginBottom="30dp"
+                        android:layout_marginLeft="@dimen/x20dp"
+                        android:layout_marginRight="@dimen/x20dp"
+                        android:ellipsize="end"
+                        android:padding="@dimen/x5dp"
+                        android:singleLine="true"
+                        android:text="Subscriber Name"
+                        android:textColor="@color/c_white"
+                        android:textSize="18sp"
+                        app:typeface="@string/font_bold" />
+
+
+                    <edu.aku.akuh_health_first.widget.AnyTextView
+                        android:id="@+id/txtLogout"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentBottom="true"
+                        android:layout_marginBottom="@dimen/x25dp"
+                        android:layout_marginLeft="@dimen/x20dp"
+                        android:layout_marginRight="@dimen/x20dp"
+                        android:background="@drawable/rounded_box_semi_transparent_grey"
+                        android:gravity="center"
+                        android:padding="@dimen/x15dp"
+                        android:singleLine="true"
+                        android:text="@string/logout"
+                        android:textColor="@color/c_white"
+                        android:textSize="16sp"
+                        app:typeface="@string/font_bold" />
+
+
+                </RelativeLayout>
 
 
             </LinearLayout>

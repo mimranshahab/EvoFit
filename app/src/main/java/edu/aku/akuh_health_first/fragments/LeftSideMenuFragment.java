@@ -10,6 +10,7 @@ import android.widget.AdapterView;
 import android.widget.ImageView;
 import android.widget.ScrollView;
 
+import edu.aku.akuh_health_first.managers.SharedPreferenceManager;
 import edu.aku.akuh_health_first.widget.AnyTextView;
 
 import butterknife.BindView;
@@ -40,6 +41,8 @@ public class LeftSideMenuFragment extends BaseFragment {
     AnyTextView txtAbout;
     @BindView(R.id.txtLogout)
     AnyTextView txtLogout;
+    @BindView(R.id.txtSubscriberName)
+    AnyTextView txtSubscriberName;
     @BindView(R.id.scrollView)
     ScrollView scrollView;
     @BindView(R.id.imgBackground)
@@ -63,7 +66,8 @@ public class LeftSideMenuFragment extends BaseFragment {
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-
+        String cardHolderName = SharedPreferenceManager.getInstance(getContext()).getCardMemberDetail().getCardHolderName();
+        txtSubscriberName.setText(cardHolderName);
 //        subscribeToNewPacket(this);
 ////        scrollToTop();
     }
