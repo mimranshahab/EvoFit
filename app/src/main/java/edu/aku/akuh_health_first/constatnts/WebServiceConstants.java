@@ -48,8 +48,8 @@ public class WebServiceConstants {
     public static final String tempMRN_Neuro = "291-32-60";
     public static final String tempMRN = "510-29-10";
     public static final String tempMRN_ENDOSCOPY = "100-08-60";
-    public static final String tempMRN_RADIOLOGY = "294-71-23";
-    public static final String tempMRN_RADIOLOGY1 = "015-94-53";
+//    public static final String tempMRN_RADIOLOGY = "294-71-23";
+    public static final String tempMRN_RADIOLOGY = "015-94-53";
     public static final String tempMRN_immunization = "269-14-57";
     public static final String temp_Specimen_Num = "56070141";
     public static final String tempPassword = "user123";

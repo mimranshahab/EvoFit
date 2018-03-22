@@ -79,7 +79,7 @@
 
         <de.hdodenhof.circleimageview.CircleImageView
             android:id="@+id/circleImageView"
-            android:layout_width="@dimen/x30dp"
+            android:layout_width="@dimen/x25dp"
             android:layout_height="match_parent"
             android:layout_alignParentRight="true"
             android:layout_alignParentTop="true"
@@ -113,7 +113,7 @@
             android:layout_toLeftOf="@id/btnRight1"
             android:background="@color/colorPrimary"
             android:padding="@dimen/x5dp"
-            android:src="@drawable/ic_action_home" />
+            android:src="@drawable/b_home_icon" />
 
 
         <ImageButton

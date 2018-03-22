@@ -27,19 +27,28 @@
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
                 android:orientation="vertical">
 
 
                 <ImageView
                     android:layout_width="match_parent"
-                    android:layout_height="@dimen/x84dp"
-                    android:layout_marginBottom="@dimen/x50dp"
-                    android:layout_marginLeft="@dimen/x20dp"
-                    android:layout_marginRight="@dimen/x20dp"
-                    android:layout_marginTop="@dimen/x50dp"
+                    android:layout_height="@dimen/x60dp"
+                    android:layout_marginLeft="@dimen/x40dp"
+                    android:layout_marginRight="@dimen/x40dp"
+                    android:layout_marginTop="@dimen/x20dp"
                     android:scaleType="fitCenter"
-                    android:src="@drawable/a_family_hifazat_logo" />
+                    android:src="@drawable/akuh_logo" />
+
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/x60dp"
+                    android:layout_marginBottom="@dimen/x20dp"
+                    android:layout_marginLeft="@dimen/x40dp"
+                    android:layout_marginRight="@dimen/x40dp"
+                    android:scaleType="centerInside"
+                    android:src="@drawable/family_hifazat_logo_no_padding" />
 
 
                 <edu.aku.akuh_health_first.widget.AnyTextView
@@ -48,7 +57,7 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
                     android:drawablePadding="@dimen/x5dp"
-                    android:drawableStart="@drawable/ic_action_home"
+                    android:drawableStart="@drawable/b_home_icon"
                     android:gravity="center_vertical"
                     android:padding="@dimen/x15dp"
                     android:singleLine="true"
@@ -69,7 +78,7 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
                     android:drawablePadding="@dimen/x5dp"
-                    android:drawableStart="@drawable/ic_action_home"
+                    android:drawableStart="@drawable/b_home_icon"
                     android:gravity="center_vertical"
                     android:padding="@dimen/x15dp"
                     android:singleLine="true"
@@ -91,7 +100,7 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
                     android:drawablePadding="@dimen/x5dp"
-                    android:drawableStart="@drawable/ic_action_home"
+                    android:drawableStart="@drawable/b_home_icon"
                     android:gravity="center_vertical"
                     android:padding="@dimen/x15dp"
                     android:singleLine="true"
@@ -110,24 +119,6 @@
                 <RelativeLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent">
-
-                    <edu.aku.akuh_health_first.widget.AnyTextView
-                        android:id="@+id/txtSubscriberName"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_above="@+id/txtLogout"
-                        android:layout_centerHorizontal="true"
-                        android:layout_marginBottom="30dp"
-                        android:layout_marginLeft="@dimen/x20dp"
-                        android:layout_marginRight="@dimen/x20dp"
-                        android:ellipsize="end"
-                        android:padding="@dimen/x5dp"
-                        android:singleLine="true"
-                        android:text="Subscriber Name"
-                        android:textColor="@color/c_white"
-                        android:textSize="18sp"
-                        app:typeface="@string/font_bold" />
-
 
                     <edu.aku.akuh_health_first.widget.AnyTextView
                         android:id="@+id/txtLogout"

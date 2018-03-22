@@ -138,6 +138,7 @@ public class ProfileFragment extends BaseFragment {
         titleBar.setTitle("My profile");
         titleBar.showBackButton(getBaseActivity());
         titleBar.showHome(getBaseActivity());
+        titleBar.setUserDisplay(sharedPreferenceManager.getCurrentUser(), getContext());
     }
 
 
