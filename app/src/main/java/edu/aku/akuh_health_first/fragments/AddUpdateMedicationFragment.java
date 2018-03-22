@@ -40,7 +40,7 @@ import edu.aku.akuh_health_first.models.ImmunizationModel;
 import edu.aku.akuh_health_first.models.IntWrapper;
 import edu.aku.akuh_health_first.models.MedicationProfileModel;
 import edu.aku.akuh_health_first.models.SpinnerModel;
-import edu.aku.akuh_health_first.models.receiving_model.AddUpdateVaccineModel;
+import edu.aku.akuh_health_first.models.receiving_model.AddUpdateModel;
 import edu.aku.akuh_health_first.models.wrappers.WebResponse;
 import edu.aku.akuh_health_first.widget.AnyEditTextView;
 import edu.aku.akuh_health_first.widget.AnyTextView;
@@ -353,11 +353,11 @@ public class AddUpdateMedicationFragment extends BaseFragment {
                         new WebServices.IRequestJsonDataCallBack() {
                             @Override
                             public void requestDataResponse(WebResponse<JsonObject> webResponse) {
-                                AddUpdateVaccineModel addUpdateVaccineModel = GsonFactory.getSimpleGson().fromJson(webResponse.result, AddUpdateVaccineModel.class);
-                                if (addUpdateVaccineModel.getStatus()) {
+                                AddUpdateModel addUpdateModel = GsonFactory.getSimpleGson().fromJson(webResponse.result, AddUpdateModel.class);
+                                if (addUpdateModel.getStatus()) {
                                     popBackStack();
                                 }
-                                UIHelper.showToast(getContext(), addUpdateVaccineModel.getMessage());
+                                UIHelper.showToast(getContext(), addUpdateModel.getMessage());
                             }
 
                             @Override
