@@ -249,7 +249,7 @@ public class ProfileFragment extends BaseFragment {
 
 
         dummyModel.setCardNumber(WebServiceConstants.tempCardNumber);
-        dummyModel.setMRNumber("148-90-51");
+        dummyModel.setMRNumber(sharedPreferenceManager.getCurrentUser().getMRNumber());
 
         new WebServices(getBaseActivity(),
                 WebServiceConstants.temporaryToken, BaseURLTypes.AHFA_BASE_URL)

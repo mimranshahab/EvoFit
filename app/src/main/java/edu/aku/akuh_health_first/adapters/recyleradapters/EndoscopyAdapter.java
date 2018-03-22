@@ -72,6 +72,7 @@ public class EndoscopyAdapter extends RecyclerView.Adapter<EndoscopyAdapter.View
         holder.cardView2.setCardBackgroundColor(color);
         holder.txtStatusType.setBackgroundResource(backgroundResource);
         holder.imgIcon.setImageResource(circular_background);
+        holder.btnReportColorCode1.setBackgroundResource(backgroundResource);
     }
 
     private void setListener(final ViewHolder holder, final EndoscopyModel endoscopyModel) {

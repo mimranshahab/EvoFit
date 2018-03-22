@@ -60,7 +60,7 @@ public class NeurophysiologyAdapter extends RecyclerView.Adapter<Neurophysiology
         setListener(holder, model);
 //
         if (model.getStatus().equalsIgnoreCase("S")) {
-            holder.txtStatusType.setText("Signed");
+            holder.txtStatusType.setText("Finalized");
 
         setViews(holder, activity.getResources().getColor(R.color.base_green), R.drawable.rounded_box_filled_base_green, R.drawable.a_neurophysiology_green);
 
@@ -74,6 +74,7 @@ public class NeurophysiologyAdapter extends RecyclerView.Adapter<Neurophysiology
         holder.cardView2.setCardBackgroundColor(color);
         holder.txtStatusType.setBackgroundResource(backgroundResource);
         holder.imgIcon.setImageResource(circular_background);
+        holder.btnReportColorCode1.setBackgroundResource(backgroundResource);
     }
 
     private void setListener(final ViewHolder holder, final Neurophysiology neurophysiology) {

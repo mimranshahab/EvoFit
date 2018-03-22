@@ -65,6 +65,7 @@ public class DischargeSummaryAdapter extends RecyclerView.Adapter<DischargeSumma
     private void setViews(ViewHolder holder, int color, int backgroundResource, int circular_background) {
         holder.cardView2.setCardBackgroundColor(color);
         holder.txtStatusType.setBackgroundResource(backgroundResource);
+        holder.btnReportColorCode1.setBackgroundResource(backgroundResource);
         holder.imgIcon.setImageResource(circular_background);
     }
 
