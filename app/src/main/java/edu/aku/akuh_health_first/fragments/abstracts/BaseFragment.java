@@ -237,7 +237,11 @@ public abstract class BaseFragment extends Fragment implements View.OnClickListe
             case ON_SELECTED_USER_UPDATE:
                 if (data instanceof UserDetailModel) {
                     UserDetailModel userDetailModel = (UserDetailModel) data;
-                    getBaseActivity().getTitleBar().setUserDisplay(userDetailModel, getContext());
+                    if (getBaseActivity().getTitleBar() != null
+                            && getBaseActivity().getTitleBar().circleImageView != null
+                            && getBaseActivity().getTitleBar().circleImageView.getVisibility() == View.VISIBLE) {
+                        getBaseActivity().getTitleBar().setUserDisplay(userDetailModel, getContext());
+                    }
                 }
                 break;
         }

@@ -46,8 +46,8 @@
     <color name="seperator_light_gray">#F2F0F6</color>
 
 
-    <color name="transparent_grey">#44847D6E</color>d
-    <color name="transparent">#00000000</color>d
+    <color name="transparent_grey">#44847D6E</color>
+    <color name="transparent">#00000000</color>
     <color name="active_icon_color">#8A000000</color>
 
     <color name="colorSheetText">#DE000000</color>

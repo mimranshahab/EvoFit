@@ -76,7 +76,7 @@ public class ImageLoaderHelper {
                 .showImageForEmptyUri(R.color.base_grey)
                 .showImageOnFail(R.drawable.placeholder)
                 .showImageOnLoading(R.drawable.placeholder)
-                .imageScaleType(ImageScaleType.EXACTLY).displayer(new FadeInBitmapDisplayer(1000)).build();
+                .imageScaleType(ImageScaleType.EXACTLY).displayer(new FadeInBitmapDisplayer(500)).build();
     }
 
 
@@ -87,6 +87,6 @@ public class ImageLoaderHelper {
                 .showImageOnFail(R.drawable.placeholder)
                 .showImageOnLoading(R.drawable.placeholder)
                 .extraForDownloader(headers)
-                .imageScaleType(ImageScaleType.EXACTLY).displayer(new FadeInBitmapDisplayer(1000)).build();
+                .imageScaleType(ImageScaleType.EXACTLY).displayer(new FadeInBitmapDisplayer(500)).build();
     }
 }

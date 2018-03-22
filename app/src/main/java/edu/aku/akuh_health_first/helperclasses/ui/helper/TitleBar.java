@@ -28,7 +28,7 @@ import edu.aku.akuh_health_first.widget.AnyTextView;
 public class TitleBar extends RelativeLayout {
 
     public TextView txtCircle;
-    CircleImageView circleImageView;
+    public CircleImageView circleImageView;
     CircleImageView circleImageView2;
     AnyTextView txtUserName;
     AnyTextView txtMRN;
@@ -236,7 +236,7 @@ public class TitleBar extends RelativeLayout {
 
     public void showHome(final BaseActivity activity) {
         this.btnRight2.setVisibility(VISIBLE);
-        btnRight2.setImageResource(R.drawable.ic_action_home);
+        btnRight2.setImageResource(R.drawable.b_home_icon);
         this.btnRight2.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View view) {

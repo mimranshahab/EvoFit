@@ -117,6 +117,9 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener, 
     }
 
     private void setData() {
+        if (imgUser == null || txtName == null || txtGenderAge == null || txtMRN == null) {
+            return;
+        }
 
         if (subscriber.getProfileImage() == null || subscriber.getProfileImage().isEmpty()) {
             if (subscriber.getGender().equals("F")) {

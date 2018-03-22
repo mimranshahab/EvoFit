@@ -70,7 +70,7 @@ public class NotificationFragment extends BaseFragment implements View.OnClickLi
 
     @Override
     protected int getFragmentLayout() {
-        return R.layout.fragment_timeline;
+        return R.layout.fragment_general_recyler_view;
     }
 
     @Override

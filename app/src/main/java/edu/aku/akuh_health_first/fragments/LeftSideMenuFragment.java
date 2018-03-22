@@ -180,8 +180,10 @@ public class LeftSideMenuFragment extends BaseFragment implements OnNewPacketRec
         switch (event) {
             case Events.ON_CARD_MODEL_GET:
             case Events.ON_CARD_MODEL_UPDATE:
-                CardMemberDetail cardMemberDetail = (CardMemberDetail) data;
-                txtSubscriberName.setText(cardMemberDetail.getCardHolderName());
+                if (txtSubscriberName != null) {
+                    CardMemberDetail cardMemberDetail = (CardMemberDetail) data;
+                    txtSubscriberName.setText(cardMemberDetail.getCardHolderName());
+                }
                 break;
         }
 

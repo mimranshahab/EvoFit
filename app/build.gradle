@@ -1,4 +1,19 @@
+buildscript {
+    repositories {
+        maven { url 'https://maven.fabric.io/public' }
+    }
+
+    dependencies {
+        classpath 'io.fabric.tools:gradle:1.+'
+    }
+}
 apply plugin: 'com.android.application'
+apply plugin: 'io.fabric'
+
+repositories {
+    maven { url 'https://maven.fabric.io/public' }
+}
+
 apply plugin: 'realm-android'
 
 android {
@@ -71,6 +86,7 @@ dependencies {
     compile 'com.google.android.gms:play-services-places:11.8.0'
     compile 'com.google.firebase:firebase-messaging:11.8.0'
     compile 'com.google.firebase:firebase-core:11.8.0'
+    compile 'com.google.firebase:firebase-core:11.8.0'
     compile 'com.squareup.picasso:picasso:2.3.+'
     compile 'com.github.apache:commons-io:2.5'
     compile 'com.jjoe64:graphview:4.2.1'
@@ -79,6 +95,9 @@ dependencies {
     compile 'org.zakariya.stickyheaders:stickyheaders:0.7.6'
     compile 'com.github.warkiz.widget:indicatorseekbar:1.2.9'
     compile 'com.jsibbold:zoomage:1.1.0'
+    compile('com.crashlytics.sdk.android:crashlytics:2.9.1@aar') {
+        transitive = true;
+    }
 
 }
 

@@ -13,6 +13,7 @@ import android.support.multidex.MultiDexApplication;
 import android.util.Log;
 import android.util.Pair;
 
+import com.crashlytics.android.Crashlytics;
 import com.nostra13.universalimageloader.cache.memory.impl.WeakMemoryCache;
 import com.nostra13.universalimageloader.core.DisplayImageOptions;
 import com.nostra13.universalimageloader.core.ImageLoader;
@@ -23,6 +24,7 @@ import com.nostra13.universalimageloader.core.display.FadeInBitmapDisplayer;
 import edu.aku.akuh_health_first.activities.SplashActivity;
 
 import edu.aku.akuh_health_first.libraries.imageloader.CustomImageDownaloder;
+import io.fabric.sdk.android.Fabric;
 import io.reactivex.subjects.PublishSubject;
 import io.realm.Realm;
 
@@ -48,8 +50,8 @@ public class BaseApplication extends MultiDexApplication implements Application.
 //        configureCalligraphyLibrary();
 
         // TODO: 11/1/2017 Enable Crash Lytics and Never Crash feature before releasing the app
-//        Fabric.with(this, new Crashlytics());
-//        neverCrash();
+        Fabric.with(this, new Crashlytics());
+        neverCrash();
     }
 
 
@@ -94,7 +96,7 @@ public class BaseApplication extends MultiDexApplication implements Application.
                     @Override
                     public void run() {
 //                        SharedPreferenceManager.getInstance().setForcedRestart(true);
-//                        Crashlytics.logException(paramThrowable);
+                        Crashlytics.logException(paramThrowable);
                     }
                 });
                 t.start();
@@ -181,3 +183,4 @@ public class BaseApplication extends MultiDexApplication implements Application.
 
 
 }
+
