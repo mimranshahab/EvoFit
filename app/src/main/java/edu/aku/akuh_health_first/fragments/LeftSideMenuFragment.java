@@ -10,7 +10,11 @@ import android.widget.AdapterView;
 import android.widget.ImageView;
 import android.widget.ScrollView;
 
+import edu.aku.akuh_health_first.callbacks.OnNewPacketReceivedListener;
+import edu.aku.akuh_health_first.constatnts.Events;
 import edu.aku.akuh_health_first.managers.SharedPreferenceManager;
+import edu.aku.akuh_health_first.models.receiving_model.CardMemberDetail;
+import edu.aku.akuh_health_first.models.receiving_model.UserDetailModel;
 import edu.aku.akuh_health_first.widget.AnyTextView;
 
 import butterknife.BindView;
@@ -30,7 +34,7 @@ import edu.aku.akuh_health_first.helperclasses.ui.helper.TitleBar;
  * Created by khanhamza on 09-May-17.
  */
 
-public class LeftSideMenuFragment extends BaseFragment {
+public class LeftSideMenuFragment extends BaseFragment implements OnNewPacketReceivedListener {
 
     Unbinder unbinder;
     @BindView(R.id.txtHome)
@@ -66,9 +70,8 @@ public class LeftSideMenuFragment extends BaseFragment {
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        String cardHolderName = SharedPreferenceManager.getInstance(getContext()).getCardMemberDetail().getCardHolderName();
-        txtSubscriberName.setText(cardHolderName);
-//        subscribeToNewPacket(this);
+
+        subscribeToNewPacket(this);
 ////        scrollToTop();
     }
 
@@ -168,58 +171,20 @@ public class LeftSideMenuFragment extends BaseFragment {
                 break;
             case R.id.txtLogout:
                 logoutClick();
-
-//                imageChanger();
-
                 break;
         }
     }
 
-    private void imageChanger() {
-        i++;
-        if (i > 6) {
-            i = 1;
-        }
-
-
-        switch (i) {
-            case 1:
-                imgBackground.setImageResource(R.drawable.test1);
-                break;
-
-            case 2:
-                imgBackground.setImageResource(R.drawable.test2);
-                break;
-
-            case 3:
-                imgBackground.setImageResource(R.drawable.test3);
-                break;
-
-            case 4:
-                imgBackground.setImageResource(R.drawable.test4);
-                break;
-
-            case 5:
-                imgBackground.setImageResource(R.drawable.test5);
-                break;
-
-            case 6:
-                imgBackground.setImageResource(R.drawable.test6);
+    @Override
+    public void onNewPacket(int event, Object data) {
+        switch (event) {
+            case Events.ON_CARD_MODEL_GET:
+            case Events.ON_CARD_MODEL_UPDATE:
+                CardMemberDetail cardMemberDetail = (CardMemberDetail) data;
+                txtSubscriberName.setText(cardMemberDetail.getCardHolderName());
                 break;
         }
+
     }
-
-    int i = 1;
-
-//    @Override
-//    public void onNewPacket(int event, Object data) {
-//        switch (event) {
-//            case Events.ON_CURRENT_USER_CHANGED:
-//                UserDetailModel userDetailModel = (UserDetailModel) data;
-//                txtUserName.setText(userDetailModel.getName());
-//                break;
-//        }
-//
-//    }
 
 }

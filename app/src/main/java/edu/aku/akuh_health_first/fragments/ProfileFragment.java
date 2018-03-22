@@ -28,7 +28,8 @@ import butterknife.OnClick;
 import butterknife.Unbinder;
 import de.hdodenhof.circleimageview.CircleImageView;
 import edu.aku.akuh_health_first.R;
-import edu.aku.akuh_health_first.activities.BaseActivity;
+import edu.aku.akuh_health_first.constatnts.AppConstants;
+import edu.aku.akuh_health_first.constatnts.Events;
 import edu.aku.akuh_health_first.constatnts.WebServiceConstants;
 import edu.aku.akuh_health_first.enums.BaseURLTypes;
 import edu.aku.akuh_health_first.enums.FileType;
@@ -37,17 +38,15 @@ import edu.aku.akuh_health_first.helperclasses.ui.helper.TitleBar;
 import edu.aku.akuh_health_first.helperclasses.ui.helper.UIHelper;
 import edu.aku.akuh_health_first.libraries.imageloader.ImageLoaderHelper;
 import edu.aku.akuh_health_first.managers.FileManager;
+import edu.aku.akuh_health_first.managers.SharedPreferenceManager;
 import edu.aku.akuh_health_first.managers.retrofit.GsonFactory;
 import edu.aku.akuh_health_first.managers.retrofit.WebServices;
-import edu.aku.akuh_health_first.models.DummyModel;
-import edu.aku.akuh_health_first.models.LaboratoryUpdateModel;
+import edu.aku.akuh_health_first.models.RequestModel;
+import edu.aku.akuh_health_first.models.receiving_model.AddUpdateModel;
 import edu.aku.akuh_health_first.models.receiving_model.CardMemberDetail;
 import edu.aku.akuh_health_first.models.receiving_model.UserDetailModel;
 import edu.aku.akuh_health_first.models.wrappers.WebResponse;
 import edu.aku.akuh_health_first.widget.AnyTextView;
-import okhttp3.MediaType;
-import okhttp3.MultipartBody;
-import okhttp3.RequestBody;
 
 import static android.app.Activity.RESULT_OK;
 
@@ -138,9 +137,7 @@ public class ProfileFragment extends BaseFragment {
         titleBar.resetViews();
         titleBar.setTitle("My profile");
         titleBar.showBackButton(getBaseActivity());
-        titleBar.setUserDisplay(sharedPreferenceManager.getCurrentUser(), getContext());
         titleBar.showHome(getBaseActivity());
-
     }
 
 
@@ -245,30 +242,28 @@ public class ProfileFragment extends BaseFragment {
     }
 
     private void uploadImageFile(final String uploadFilePath, final String uploadFileUriPath) {
-        DummyModel dummyModel = new DummyModel();
+        RequestModel requestModel = new RequestModel();
 
 
-        dummyModel.setCardNumber(WebServiceConstants.tempCardNumber);
-        dummyModel.setMRNumber("148-90-51");
+        requestModel.setCardNumber(sharedPreferenceManager.getCardMemberDetail().getCardNumber());
+        requestModel.setMRNumber(sharedPreferenceManager.getCurrentUser().getMRNumber());
 
         new WebServices(getBaseActivity(),
                 WebServiceConstants.temporaryToken, BaseURLTypes.AHFA_BASE_URL)
                 .webServiceUploadFileAPI(WebServiceConstants.METHOD_USER_UPLOAD_PROFILE_PICTURE,
                         uploadFilePath,
                         FileType.IMAGE,
-                        dummyModel.toString(),
+                        requestModel.toString(),
                         new WebServices.IRequestJsonDataCallBack() {
                             @Override
                             public void requestDataResponse(WebResponse<JsonObject> webResponse) {
-//                                if (webResponse.result.isEmpty()) {
-//                                    UIHelper.showToast(getContext(), "Failed to upload file. Please try again.");
-//                                } else {
+                                AddUpdateModel addUpdateModel = GsonFactory.getSimpleGson().fromJson(webResponse.result, AddUpdateModel.class);
+                                if (addUpdateModel.getStatus()) {
+                                    setImageAfterResult(uploadFileUriPath);
+                                    getCardDetailService();
+                                }
 
-//                                    String namePassportUploadedFile = webResponse.result;
-//
-//                                    UIHelper.showShortToastInCenter(getContext(), webResponse.message);
-//                                    setImageAfterResult(uploadFileUriPath);
-//                                }
+                                UIHelper.showToast(getContext(), addUpdateModel.getMessage());
                             }
 
                             @Override
@@ -277,6 +272,29 @@ public class ProfileFragment extends BaseFragment {
                             }
                         });
 
+
+    }
+
+
+    private void getCardDetailService() {
+        CardMemberDetail cardMemberDetail = new CardMemberDetail(WebServiceConstants.tempCardNumber);
+
+        new WebServices(getBaseActivity(),
+                WebServiceConstants.temporaryToken,
+                BaseURLTypes.AHFA_BASE_URL).webServiceRequestAPIForJsonObject(WebServiceConstants.METHOD_CARD_MEMBER,
+                cardMemberDetail.toString(),
+                new WebServices.IRequestJsonDataCallBack() {
+                    @Override
+                    public void requestDataResponse(WebResponse<JsonObject> webResponse) {
+                        CardMemberDetail cardMemberDetail = GsonFactory.getSimpleGson().fromJson(webResponse.result, CardMemberDetail.class);
+                        notifyToAll(Events.ON_CARD_MODEL_UPDATE, cardMemberDetail);
+                    }
+
+                    @Override
+                    public void onError() {
+                        UIHelper.showShortToastInCenter(getContext(), "Something went wrong!");
+                    }
+                });
 
     }
 

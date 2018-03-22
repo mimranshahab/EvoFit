@@ -27,6 +27,7 @@ import de.hdodenhof.circleimageview.CircleImageView;
 import edu.aku.akuh_health_first.R;
 import edu.aku.akuh_health_first.adapters.recyleradapters.HomeAdapter;
 import edu.aku.akuh_health_first.callbacks.OnItemClickListener;
+import edu.aku.akuh_health_first.callbacks.OnNewPacketReceivedListener;
 import edu.aku.akuh_health_first.constatnts.AppConstants;
 import edu.aku.akuh_health_first.constatnts.Events;
 import edu.aku.akuh_health_first.constatnts.WebServiceConstants;
@@ -46,7 +47,7 @@ import edu.aku.akuh_health_first.widget.AnyTextView;
  * Created by aqsa.sarwar on 1/16/2018.
  */
 
-public class HomeFragment extends BaseFragment implements View.OnClickListener, OnItemClickListener {
+public class HomeFragment extends BaseFragment implements View.OnClickListener, OnItemClickListener, OnNewPacketReceivedListener {
 
 
     @BindView(R.id.listFamilyMembers)
@@ -69,7 +70,7 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener, 
     @BindView(R.id.contParentLayout)
     LinearLayout contParentLayout;
     private HomeAdapter adaptHome;
-    private ArrayList<UserDetailModel> arrUserLists ;
+    private ArrayList<UserDetailModel> arrUserLists;
     UserDetailModel subscriber;
 
     @Override
@@ -100,6 +101,8 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener, 
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+        subscribeToNewPacket(this);
+
         RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getBaseActivity());
         recyclerHome.setLayoutManager(mLayoutManager);
         ((DefaultItemAnimator) recyclerHome.getItemAnimator()).setSupportsChangeAnimations(false);
@@ -109,6 +112,7 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener, 
 //        recyclerHome.setItemAnimator(new DefaultItemAnimator());
         recyclerHome.setAdapter(adaptHome);
         serviceCall();
+
 
     }
 
@@ -140,35 +144,8 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener, 
                     @Override
                     public void requestDataResponse(WebResponse<JsonObject> webResponse) {
                         CardMemberDetail cardMemberDetail = GsonFactory.getSimpleGson().fromJson(webResponse.result, CardMemberDetail.class);
-                        arrUserLists.clear();
-//                        arrUserLists.add(cardMemberDetail.getSubscriber());
-                        arrUserLists.addAll(cardMemberDetail.getFamilyMembersList());
-
-                        UserDetailModel currentUser = sharedPreferenceManager.getCurrentUser();
-                        if (currentUser == null && arrUserLists.size() > 0) {
-                            sharedPreferenceManager.putObject(AppConstants.KEY_CURRENT_USER_MODEL, arrUserLists.get(0));
-                            arrUserLists.get(0).setSelected(true);
-
-                        } else if (currentUser != null && arrUserLists.size() > 0) {
-                            for (int i = 0; i < arrUserLists.size(); i++) {
-                                if (arrUserLists.get(i).getMRNumber().equals(currentUser.getMRNumber())) {
-                                    arrUserLists.get(i).setSelected(true);
-                                    break;
-                                }
-                            }
-                        } else {
-                            arrUserLists.get(0).setSelected(true);
-                        }
-
-
-                        if (arrUserLists.size() > 0) {
-                            subscriber = arrUserLists.get(0);
-                            arrUserLists.remove(0);
-                            sharedPreferenceManager.putObject(AppConstants.KEY_CARD_MEMBER_DETAIL, cardMemberDetail);
-                            setData();
-                        }
-
-                        adaptHome.notifyDataSetChanged();
+                        notifyToAll(Events.ON_CARD_MODEL_GET, cardMemberDetail);
+                        onGetCardSuccessfully(cardMemberDetail);
                     }
 
                     @Override
@@ -177,6 +154,41 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener, 
                     }
                 });
 
+    }
+
+    private void onGetCardSuccessfully(CardMemberDetail cardMemberDetail) {
+        arrUserLists.clear();
+//                        arrUserLists.add(cardMemberDetail.getSubscriber());
+        arrUserLists.addAll(cardMemberDetail.getFamilyMembersList());
+
+        UserDetailModel selectedUser = sharedPreferenceManager.getCurrentUser();
+        if (selectedUser == null && arrUserLists.size() > 0) {
+            sharedPreferenceManager.putObject(AppConstants.KEY_CURRENT_USER_MODEL, arrUserLists.get(0));
+            arrUserLists.get(0).setSelected(true);
+
+        } else if (selectedUser != null && arrUserLists.size() > 0) {
+            for (int i = 0; i < arrUserLists.size(); i++) {
+                if (arrUserLists.get(i).getMRNumber().equals(selectedUser.getMRNumber())) {
+                    arrUserLists.get(i).setSelected(true);
+                    selectedUser = arrUserLists.get(i);
+                    sharedPreferenceManager.putObject(AppConstants.KEY_CURRENT_USER_MODEL, selectedUser);
+                    break;
+                }
+            }
+        } else {
+            arrUserLists.get(0).setSelected(true);
+        }
+
+
+        if (arrUserLists.size() > 0) {
+            subscriber = arrUserLists.get(0);
+            arrUserLists.remove(0);
+            sharedPreferenceManager.putObject(AppConstants.KEY_CARD_MEMBER_DETAIL, cardMemberDetail);
+            setData();
+        }
+
+        notifyToAll(Events.ON_SELECTED_USER_UPDATE, selectedUser);
+        adaptHome.notifyDataSetChanged();
     }
 
 
@@ -238,7 +250,6 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener, 
             arrUserLists.get(position).setSelected(true);
             sharedPreferenceManager.putObject(AppConstants.KEY_CURRENT_USER_MODEL, object);
             adaptHome.notifyDataSetChanged();
-            notifyToAll(Events.ON_CURRENT_USER_CHANGED, object);
             getBaseActivity().addDockableFragment(HomeDetailFragment.newInstance());
         }
     }
@@ -248,42 +259,15 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener, 
         subscriber.setSelected(true);
         sharedPreferenceManager.putObject(AppConstants.KEY_CURRENT_USER_MODEL, subscriber);
         adaptHome.notifyDataSetChanged();
-        notifyToAll(Events.ON_CURRENT_USER_CHANGED, subscriber);
         getBaseActivity().addDockableFragment(HomeDetailFragment.newInstance());
-//                getBaseActivity().addDockableFragment(HomeDetailFragment.newInstance());
-
-//        i++;
-//        if (i > 6) {
-//            i = 1;
-//        }
-//
-//        switch (i) {
-//            case 1:
-//                contParentLayout.setBackgroundResource(R.drawable.test1);
-//                break;
-//
-//            case 2:
-//                contParentLayout.setBackgroundResource(R.drawable.test2);
-//                break;
-//
-//            case 3:
-//                contParentLayout.setBackgroundResource(R.drawable.test3);
-//                break;
-//
-//            case 4:
-//                contParentLayout.setBackgroundResource(R.drawable.test4);
-//                break;
-//
-//            case 5:
-//                contParentLayout.setBackgroundResource(R.drawable.test5);
-//                break;
-//
-//            case 6:
-//                contParentLayout.setBackgroundResource(R.drawable.test6);
-//                break;
-//        }
-
     }
 
-//    int i = 1;
+    @Override
+    public void onNewPacket(int event, Object data) {
+        switch (event) {
+            case Events.ON_CARD_MODEL_UPDATE:
+                onGetCardSuccessfully((CardMemberDetail) data);
+                break;
+        }
+    }
 }

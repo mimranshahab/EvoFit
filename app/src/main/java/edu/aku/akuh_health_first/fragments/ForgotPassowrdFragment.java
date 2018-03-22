@@ -3,16 +3,10 @@ package edu.aku.akuh_health_first.fragments;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.widget.DrawerLayout;
-import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 
 import com.google.gson.JsonObject;
-
-import java.io.UnsupportedEncodingException;
-import java.security.InvalidKeyException;
-import java.security.NoSuchAlgorithmException;
-import java.util.HashMap;
 
 import edu.aku.akuh_health_first.R;
 import edu.aku.akuh_health_first.constatnts.WebServiceConstants;
@@ -24,7 +18,6 @@ import edu.aku.akuh_health_first.helperclasses.ui.helper.UIHelper;
 import edu.aku.akuh_health_first.managers.retrofit.GsonFactory;
 import edu.aku.akuh_health_first.managers.retrofit.WebServices;
 import edu.aku.akuh_health_first.models.PaymentRequestModel;
-import edu.aku.akuh_health_first.models.receiving_model.AddUpdateVaccineModel;
 import edu.aku.akuh_health_first.models.wrappers.Parameters;
 import edu.aku.akuh_health_first.models.wrappers.PaymentModel;
 import edu.aku.akuh_health_first.models.wrappers.WebResponse;

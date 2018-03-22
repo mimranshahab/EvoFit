@@ -27,9 +27,9 @@
 
                 <de.hdodenhof.circleimageview.CircleImageView
                     android:id="@+id/circleImageView"
-                    android:layout_width="@dimen/x255dp"
-                    android:layout_height="@dimen/x255dp"
-                    android:padding="@dimen/x15dp"
+                    android:layout_width="@dimen/x245dp"
+                    android:layout_height="@dimen/x245dp"
+                    android:layout_margin="@dimen/x15dp"
                     android:scaleType="centerCrop"
                     android:src="@drawable/user_image"
                     android:visibility="visible" />
@@ -38,12 +38,11 @@
                     android:id="@+id/btnCamera"
                     android:layout_width="@dimen/x40dp"
                     android:layout_height="@dimen/x40dp"
-                    android:layout_alignBottom="@id/circleImageView"
-                    android:layout_alignRight="@id/circleImageView"
-                    android:layout_marginBottom="@dimen/x15dp"
-                    android:layout_marginRight="@dimen/x15dp"
-                    android:background="@drawable/imgcamera"
-                    />
+                    android:layout_alignBottom="@+id/circleImageView"
+                    android:layout_alignEnd="@+id/circleImageView"
+                    android:layout_marginBottom="8dp"
+                    android:layout_marginEnd="9dp"
+                    android:background="@drawable/imgcamera" />
             </RelativeLayout>
 
 
@@ -61,7 +60,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/x5dp"
-                    android:hint="ABCDEFGH IJK"
+                    android:hint="User name"
                     android:gravity="center"
 
                     android:padding="@dimen/x5dp"
@@ -73,7 +72,7 @@
                     android:id="@+id/txtMRN"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="178-11-22"
+                    android:hint="MR #"
                     android:padding="@dimen/x5dp"
                     android:gravity="center"
 
@@ -87,7 +86,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="@dimen/x15dp"
-                    android:hint="65 years | Male"
+                    android:hint="Age and Gender"
                     android:padding="@dimen/x5dp"
                     android:gravity="center"
                     android:textColor="@color/c_gray"

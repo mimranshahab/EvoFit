@@ -39,12 +39,14 @@ import io.reactivex.annotations.NonNull;
 import io.reactivex.disposables.Disposable;
 import io.reactivex.functions.Consumer;
 
+import static edu.aku.akuh_health_first.constatnts.Events.ON_SELECTED_USER_UPDATE;
+
 
 /**
  * Created by khanhamza on 10-Feb-17.
  */
 
-public abstract class BaseFragment extends Fragment implements View.OnClickListener, AdapterView.OnItemClickListener {
+public abstract class BaseFragment extends Fragment implements View.OnClickListener, AdapterView.OnItemClickListener, OnNewPacketReceivedListener {
 
     protected View view;
     public SharedPreferenceManager sharedPreferenceManager;
@@ -69,6 +71,9 @@ public abstract class BaseFragment extends Fragment implements View.OnClickListe
         getBaseActivity().getTitleBar().resetViews();
         getBaseActivity().getDrawerLayout().setDrawerLockMode(getDrawerLockMode());
         getBaseActivity().getDrawerLayout().closeDrawer(Gravity.LEFT);
+
+        subscribeToNewPacket(this);
+
     }
 
     public UserDetailModel getCurrentUser() {
@@ -100,8 +105,6 @@ public abstract class BaseFragment extends Fragment implements View.OnClickListe
             }
         });
     }
-
-
 
 
     protected abstract int getFragmentLayout();
@@ -214,7 +217,7 @@ public abstract class BaseFragment extends Fragment implements View.OnClickListe
     public void saveAndOpenFile(WebResponse<String> webResponse) {
         String fileName = AppConstants.FILE_NAME + DateManager.getTime(DateManager.getCurrentMillis()) + ".pdf";
 
-        String path = FileManager.writeResponseBodyToDisk(getContext(), webResponse.result, fileName, AppConstants.getUserFolderPath(getContext()), true , true);
+        String path = FileManager.writeResponseBodyToDisk(getContext(), webResponse.result, fileName, AppConstants.getUserFolderPath(getContext()), true, true);
 
 //                                final File file = new File(AppConstants.getUserFolderPath(getContext())
 //                                        + "/" + fileName + ".pdf");
@@ -226,6 +229,18 @@ public abstract class BaseFragment extends Fragment implements View.OnClickListe
                 FileManager.openFile(getContext(), file);
             }
         }, 100);
+    }
+
+    @Override
+    public void onNewPacket(int event, Object data) {
+        switch (event) {
+            case ON_SELECTED_USER_UPDATE:
+                if (data instanceof UserDetailModel) {
+                    UserDetailModel userDetailModel = (UserDetailModel) data;
+                    getBaseActivity().getTitleBar().setUserDisplay(userDetailModel, getContext());
+                }
+                break;
+        }
     }
 
 //    public ResideMenu getResideMenu() {
