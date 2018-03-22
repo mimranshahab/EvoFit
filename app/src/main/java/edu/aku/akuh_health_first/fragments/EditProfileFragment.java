@@ -19,6 +19,7 @@ import edu.aku.akuh_health_first.constatnts.WebServiceConstants;
 import edu.aku.akuh_health_first.enums.BaseURLTypes;
 import edu.aku.akuh_health_first.fragments.abstracts.BaseFragment;
 import edu.aku.akuh_health_first.helperclasses.ui.helper.TitleBar;
+import edu.aku.akuh_health_first.helperclasses.ui.helper.UIHelper;
 import edu.aku.akuh_health_first.managers.retrofit.WebServices;
 import edu.aku.akuh_health_first.models.receiving_model.UserDetailModel;
 import edu.aku.akuh_health_first.models.wrappers.WebResponse;
@@ -102,6 +103,7 @@ public class EditProfileFragment extends BaseFragment {
         user.setPermanentAddress(edtPermanentAddress.getStringTrimmed());
         user.setPermanentCity(edtPermanentCity.getStringTrimmed());
         user.setPermanentCountryID(txtPermanentCountry.getStringTrimmed());
+        user.setLastFileDateTime(null);
 
         new WebServices(getBaseActivity(),
                 WebServiceConstants.temporaryToken,
@@ -112,6 +114,7 @@ public class EditProfileFragment extends BaseFragment {
                             @Override
                             public void requestDataResponse(WebResponse<JsonObject> webResponse) {
 //                                getBaseActivity().openActivity(HomeActivity.class);
+                                UIHelper.showToast(getContext(),webResponse.message);
                             }
 
                             @Override

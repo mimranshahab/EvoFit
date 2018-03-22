@@ -9,6 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Filter;
 import android.widget.FrameLayout;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 
@@ -16,7 +17,6 @@ import java.util.ArrayList;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
-import de.hdodenhof.circleimageview.CircleImageView;
 import edu.aku.akuh_health_first.R;
 import edu.aku.akuh_health_first.callbacks.OnItemClickListener;
 import edu.aku.akuh_health_first.models.LaboratoryModel;
@@ -63,11 +63,23 @@ public class ClinicalLabAdapterV1 extends RecyclerView.Adapter<ClinicalLabAdapte
         holder.txtStatus.setText(model.getStatusID());
         holder.btnShowDetail.setText("SHOW " + model.getSpecimenType() + " DETAILS");
         setListener(holder, model);
+
         if (model.getStatusID().equalsIgnoreCase("Completed")) {
+//            colorCodes(holder,
+//                    R.color.base_green,
+//                    R.drawable.rounded_box_filled_base_green);
             holder.txtStatus.setBackgroundResource(R.drawable.rounded_box_filled_base_green);
+
         } else if (model.getStatusID().equalsIgnoreCase("Pending")) {
+//            colorCodes(holder,
+//                    R.color.base_green,
+//                    R.drawable.rounded_box_filled_base_amber);
             holder.txtStatus.setBackgroundResource(R.drawable.rounded_box_filled_base_amber);
+
         } else {
+//            colorCodes(holder,
+//                    R.color.base_green,
+//                    R.drawable.rounded_box_filled_base_red);
             holder.txtStatus.setBackgroundResource(R.drawable.rounded_box_filled_base_red);
         }
 
@@ -85,48 +97,59 @@ public class ClinicalLabAdapterV1 extends RecyclerView.Adapter<ClinicalLabAdapte
 
         if (model.getSpecimenSectionID().equals("HAEM")) {
             colorCodes(holder,
-                    R.color.c_brick_red,
-                    R.drawable.rounded_box_filled_base_red,
-                    R.drawable.a_clinicallab_red);
+                    R.color.base_reddish,
+                    R.drawable.rounded_box_filled_base_red, activity.getResources().getColor(R.color.base_reddish));
+//            holder.imgIcon.setColorFilter(activity.getResources().getColor(R.color.base_reddish));
 
         } else if (model.getSpecimenSectionID().equals("MICRO")) {
             colorCodes(holder,
                     R.color.base_blue,
-                    R.drawable.rounded_box_filled_primary_color,
-                    R.drawable.a_clinicallab_green);
+                    R.drawable.rounded_box_filled_primary_color, activity.getResources().getColor(R.color.base_blue));
+//                    R.drawable.a_clinicallab_green);
+//            holder.imgIcon.setColorFilter(activity.getResources().getColor(R.color.base_reddish));
 
 
         } else if (model.getSpecimenSectionID().equals("BIO")) {
             colorCodes(holder,
                     R.color.base_green,
-                    R.drawable.rounded_box_filled_base_green,
-                    R.drawable.a_clinicallab_green);
+                    R.drawable.rounded_box_filled_base_green, activity.getResources().getColor(R.color.base_green));
+//                    R.drawable.a_clinicallab_green);
+
 
         } else if (model.getSpecimenSectionID().equals("HISTO")) {
             colorCodes(holder,
                     R.color.base_amber,
-                    R.drawable.rounded_box_filled_base_amber,
-                    R.drawable.a_clinicallab_green);
+                    R.drawable.rounded_box_filled_base_amber, activity.getResources().getColor(R.color.base_amber));
+//                    R.drawable.a_clinicallab_green);
+
 
         } else if (model.getSpecimenSectionID().equals("MMP")) {
             colorCodes(holder,
                     R.color.c_dark_turquoise,
                     R.drawable.rounded_box_filled_primary_color,
-                    R.drawable.a_clinicallab_green);
+                    activity.getResources().getColor(R.color.c_dark_turquoise));
+//                    R.drawable.a_clinicallab_green);
+
 
         } else {
             colorCodes(holder,
                     R.color.c_orange_red,
-                    R.drawable.rounded_box_filled_base_amber,
-                    R.drawable.a_clinicallab_green);
+                    R.drawable.rounded_box_filled_base_amber, activity.getResources().getColor(R.color.c_orange_red));
+//                    R.drawable.a_clinicallab_green);
+//
         }
 
     }
 
-    private void colorCodes(ViewHolder holder, int framecolor, int btnbackground, int a_clinicallab_green) {
+    private void aa(ViewHolder holder, int color) {
+        holder.imgIcon.setColorFilter(color);
+    }
+
+    private void colorCodes(ViewHolder holder, int framecolor, int btnbackground, int color) {
         holder.cardView2.setCardBackgroundColor(activity.getResources().getColor(framecolor));
         holder.btnShowDetail.setBackgroundResource(btnbackground);
-        holder.imgIcon.setImageResource(a_clinicallab_green);
+//        holder.txtStatus.setBackgroundResource(btnbackground);
+        holder.imgIcon.setColorFilter(color);
     }
 
 
@@ -157,7 +180,7 @@ public class ClinicalLabAdapterV1 extends RecyclerView.Adapter<ClinicalLabAdapte
         @BindView(R.id.txtStatus)
         AnyTextView txtStatus;
         @BindView(R.id.imgIcon)
-        CircleImageView imgIcon;
+        ImageView imgIcon;
         @BindView(R.id.txtSpecimenNumber)
         AnyTextView txtSpecimenNumber;
         @BindView(R.id.txtStatusID)
