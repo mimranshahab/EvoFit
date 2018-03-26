@@ -24,9 +24,20 @@
 
             <ImageView
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/x84dp"
+                android:layout_height="@dimen/x90dp"
+                android:layout_marginLeft="@dimen/x30dp"
+                android:layout_marginRight="@dimen/x30dp"
                 android:scaleType="fitCenter"
-                android:src="@drawable/a_family_hifazat_logo" />
+                android:src="@drawable/akuh_logo" />
+
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/x90dp"
+                android:layout_marginLeft="@dimen/x30dp"
+                android:layout_marginRight="@dimen/x30dp"
+                android:scaleType="fitCenter"
+                android:src="@drawable/family_hifazat_logo_no_padding" />
 
             <edu.aku.akuh_health_first.widget.AnyTextView
                 android:layout_width="match_parent"
