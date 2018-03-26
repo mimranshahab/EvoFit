@@ -1,5 +1,6 @@
 package edu.aku.akuh_health_first.fragments;
 
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.widget.DrawerLayout;
@@ -15,12 +16,16 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 import butterknife.Unbinder;
 import edu.aku.akuh_health_first.R;
+import edu.aku.akuh_health_first.constatnts.AppConstants;
+import edu.aku.akuh_health_first.constatnts.Events;
 import edu.aku.akuh_health_first.constatnts.WebServiceConstants;
 import edu.aku.akuh_health_first.enums.BaseURLTypes;
 import edu.aku.akuh_health_first.fragments.abstracts.BaseFragment;
 import edu.aku.akuh_health_first.helperclasses.ui.helper.TitleBar;
 import edu.aku.akuh_health_first.helperclasses.ui.helper.UIHelper;
+import edu.aku.akuh_health_first.managers.retrofit.GsonFactory;
 import edu.aku.akuh_health_first.managers.retrofit.WebServices;
+import edu.aku.akuh_health_first.models.receiving_model.CardMemberDetail;
 import edu.aku.akuh_health_first.models.receiving_model.UserDetailModel;
 import edu.aku.akuh_health_first.models.wrappers.WebResponse;
 import edu.aku.akuh_health_first.widget.AnyEditTextView;
@@ -91,7 +96,7 @@ public class EditProfileFragment extends BaseFragment {
 
     }
 
-    private void webServiceCall(UserDetailModel user) {
+    private void webServiceCall(final UserDetailModel user) {
 
         user.setCellPhoneNumber(edMobileNumber.getStringTrimmed());
         user.setLandlineNumber(edtLandlineNumber.getStringTrimmed());
@@ -114,7 +119,9 @@ public class EditProfileFragment extends BaseFragment {
                             @Override
                             public void requestDataResponse(WebResponse<JsonObject> webResponse) {
 //                                getBaseActivity().openActivity(HomeActivity.class);
-                                UIHelper.showToast(getContext(),webResponse.message);
+                                UIHelper.showToast(getContext(), webResponse.message);
+
+                                getCardDetailService(user);
                             }
 
                             @Override
@@ -175,5 +182,31 @@ public class EditProfileFragment extends BaseFragment {
     @OnClick(R.id.btnUpdate)
     public void onViewClicked() {
         webServiceCall(sharedPreferenceManager.getCurrentUser());
+    }
+
+
+    private void getCardDetailService(final UserDetailModel user) {
+        CardMemberDetail cardMemberDetail = new CardMemberDetail(WebServiceConstants.tempCardNumber);
+
+        new WebServices(getBaseActivity(),
+                WebServiceConstants.temporaryToken,
+                BaseURLTypes.AHFA_BASE_URL).webServiceRequestAPIForJsonObject(WebServiceConstants.METHOD_CARD_MEMBER,
+                cardMemberDetail.toString(),
+                new WebServices.IRequestJsonDataCallBack() {
+                    @Override
+                    public void requestDataResponse(WebResponse<JsonObject> webResponse) {
+                        CardMemberDetail cardMemberDetail = GsonFactory.getSimpleGson().fromJson(webResponse.result, CardMemberDetail.class);
+                        notifyToAll(Events.ON_CARD_MODEL_UPDATE, cardMemberDetail);
+                        notifyToAll(Events.ON_EDIT_PROFILE_INFO, user);
+                        popBackStack();
+
+                    }
+
+                    @Override
+                    public void onError() {
+                        UIHelper.showShortToastInCenter(getContext(), "Something went wrong!");
+                    }
+                });
+
     }
 }

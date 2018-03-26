@@ -63,10 +63,10 @@ public class NeurophysiologyAdapter extends RecyclerView.Adapter<Neurophysiology
         if (model.getStatus().equalsIgnoreCase("S")) {
             holder.txtStatusType.setText("Finalized");
 
-        setViews(holder, activity.getResources().getColor(R.color.base_green), R.drawable.rounded_box_filled_base_green, R.drawable.a_neurophysiology_green);
+        setViews(holder, activity.getResources().getColor(R.color.base_green), R.drawable.rounded_box_filled_base_green, R.drawable.b_neurophysiology_transparent);
 
         } else {
-            setViews(holder, activity.getResources().getColor(R.color.base_reddish), R.drawable.rounded_box_filled_base_red, R.drawable.a_neurophysiology_red);
+            setViews(holder, activity.getResources().getColor(R.color.base_reddish), R.drawable.rounded_box_filled_base_red, R.drawable.b_neurophysiology_transparent);
             holder.txtStatusType.setText(model.getStatus());
         }
 
@@ -74,8 +74,9 @@ public class NeurophysiologyAdapter extends RecyclerView.Adapter<Neurophysiology
     private void setViews(ViewHolder holder, int color, int backgroundResource, int circular_background) {
         holder.cardView2.setCardBackgroundColor(color);
         holder.txtStatusType.setBackgroundResource(backgroundResource);
-        holder.imgIcon.setImageResource(circular_background);
+        holder.imgTransparent.setImageResource(circular_background);
         holder.btnReportColorCode1.setBackgroundResource(backgroundResource);
+        holder.imgIcon.setColorFilter(color);
     }
 
     private void setListener(final ViewHolder holder, final Neurophysiology neurophysiology) {

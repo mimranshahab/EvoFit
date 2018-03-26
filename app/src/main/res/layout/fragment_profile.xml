@@ -42,7 +42,7 @@
                     android:layout_alignEnd="@+id/circleImageView"
                     android:layout_marginBottom="8dp"
                     android:layout_marginEnd="9dp"
-                    android:background="@drawable/imgcamera" />
+                    android:background="@drawable/c_upload_photo" />
             </RelativeLayout>
 
 
@@ -100,7 +100,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="@dimen/x3dp"
                     android:background="@color/line"
-                    android:drawableLeft="@drawable/password_icon"
+                    android:drawableLeft="@drawable/c_card_icon"
                     android:drawablePadding="@dimen/x5dp"
                     android:ellipsize="end"
                     android:gravity="center_vertical"
@@ -117,7 +117,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="@dimen/x3dp"
                     android:background="@color/line"
-                    android:drawableLeft="@drawable/password_icon"
+                    android:drawableLeft="@drawable/c_phone"
                     android:drawablePadding="@dimen/x5dp"
                     android:ellipsize="end"
                     android:gravity="center_vertical"
@@ -134,7 +134,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="@dimen/x3dp"
                     android:background="@color/line"
-                    android:drawableLeft="@drawable/password_icon"
+                    android:drawableLeft="@drawable/c_location"
                     android:drawablePadding="@dimen/x5dp"
                     android:ellipsize="end"
                     android:gravity="center_vertical"
@@ -151,7 +151,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="@dimen/x3dp"
                     android:background="@color/line"
-                    android:drawableLeft="@drawable/password_icon"
+                    android:drawableLeft="@drawable/c_email"
                     android:drawablePadding="@dimen/x5dp"
                     android:ellipsize="end"
                     android:gravity="center_vertical"

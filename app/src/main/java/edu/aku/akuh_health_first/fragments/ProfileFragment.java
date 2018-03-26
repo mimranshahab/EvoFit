@@ -28,6 +28,7 @@ import butterknife.OnClick;
 import butterknife.Unbinder;
 import de.hdodenhof.circleimageview.CircleImageView;
 import edu.aku.akuh_health_first.R;
+import edu.aku.akuh_health_first.callbacks.OnNewPacketReceivedListener;
 import edu.aku.akuh_health_first.constatnts.AppConstants;
 import edu.aku.akuh_health_first.constatnts.Events;
 import edu.aku.akuh_health_first.constatnts.WebServiceConstants;
@@ -54,7 +55,7 @@ import static android.app.Activity.RESULT_OK;
  * Created by aqsa.sarwar on 1/19/2018.
  */
 
-public class ProfileFragment extends BaseFragment {
+public class ProfileFragment extends BaseFragment implements OnNewPacketReceivedListener {
 
     Unbinder unbinder;
     @BindView(R.id.circleImageView)
@@ -101,7 +102,8 @@ public class ProfileFragment extends BaseFragment {
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        setData();
+        subscribeToNewPacket(this);
+        setData(null);
     }
 
     @Override
@@ -109,9 +111,17 @@ public class ProfileFragment extends BaseFragment {
         return DrawerLayout.LOCK_MODE_LOCKED_CLOSED;
     }
 
-    private void setData() {
-        UserDetailModel currentUser = sharedPreferenceManager.getCurrentUser();
-        CardMemberDetail cardMemberDetail = sharedPreferenceManager.getCardMemberDetail();
+    private void setData(UserDetailModel userDetailModel) {
+        UserDetailModel currentUser;
+        if (userDetailModel == null) {
+            currentUser = sharedPreferenceManager.getCurrentUser();
+        } else {
+            currentUser = userDetailModel;
+        }
+
+
+        if (txtUserName == null) return;
+
         txtUserName.setText(currentUser.getName());
         txtAge.setText(currentUser.getAge() + " Y Old | " + currentUser.getGenderDescription());
         txtEmailAddress.setText(currentUser.getEmailAddress());
@@ -297,6 +307,15 @@ public class ProfileFragment extends BaseFragment {
                     }
                 });
 
+    }
+
+    @Override
+    public void onNewPacket(int event, Object data) {
+        switch (event) {
+            case Events.ON_EDIT_PROFILE_INFO:
+                setData((UserDetailModel) data);
+                break;
+        }
     }
 
 
