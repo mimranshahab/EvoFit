@@ -178,7 +178,7 @@ public class ProfileFragment extends BaseFragment {
         unbinder.unbind();
     }
 
-    @OnClick({R.id.btnCamera, R.id.fab})
+    @OnClick({R.id.btnCamera, R.id.fab, R.id.circleImageView})
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.btnCamera:
@@ -186,6 +186,9 @@ public class ProfileFragment extends BaseFragment {
                 break;
             case R.id.fab:
                 getBaseActivity().addDockableFragment(EditProfileFragment.newInstance());
+                break;
+            case R.id.circleImageView:
+                getBaseActivity().openImagePreviewActivity(getCurrentUser().getProfileImage(), getCurrentUser().getName());
                 break;
         }
     }

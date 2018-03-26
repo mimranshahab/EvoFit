@@ -54,6 +54,8 @@ public class AppConstants {
     /*************** INTENT DATA KEYS **************/
     public static final String LABORATORY_MODEL = "laboratoryModel";
     public static final String JSON_STRING_KEY = "JSON_STRING_KEY";
+    public static final String IMAGE_PREVIEW_URL = "url";
+    public static final String IMAGE_PREVIEW_TITLE = "title";
 
 
     /*******************Preferences KEYS******************/
