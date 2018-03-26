@@ -103,13 +103,31 @@
                     android:background="@color/c_white"
                     android:orientation="horizontal">
 
-                    <de.hdodenhof.circleimageview.CircleImageView
-                        android:id="@+id/imgIcon"
-                        android:layout_width="@dimen/x70dp"
-                        android:layout_height="@dimen/x70dp"
-                        android:layout_margin="@dimen/x5dp"
-                        android:scaleType="centerCrop"
-                        android:src="@drawable/medication2" />
+                    <RelativeLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
+
+                        <ImageView
+                            android:id="@+id/imgIcon"
+                            android:layout_width="@dimen/x70dp"
+                            android:layout_height="@dimen/x70dp"
+                            android:layout_centerInParent="true"
+                            android:layout_margin="@dimen/x5dp"
+                            android:scaleType="centerCrop"
+                            android:src="@drawable/shape_circle"
+                            android:tint="@color/base_green"
+                            />
+
+                        <ImageView
+                            android:layout_width="@dimen/x70dp"
+                            android:layout_height="@dimen/x70dp"
+                            android:layout_centerInParent="true"
+                            android:layout_margin="@dimen/x5dp"
+                            android:scaleType="centerCrop"
+                            android:src="@drawable/b_clinicallab_transparent" />
+
+
+                    </RelativeLayout>
 
 
                     <LinearLayout

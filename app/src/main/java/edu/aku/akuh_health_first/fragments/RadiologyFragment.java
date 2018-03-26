@@ -151,11 +151,11 @@ public class RadiologyFragment extends BaseFragment implements View.OnClickListe
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
         switch (view.getId()) {
-            case R.id.btnShowGraph:
+            case R.id.RlGraph:
 
                 showPacsImages(adapterRadiology.getItem(position));
                 break;
-            case R.id.btnShowReport:
+            case R.id.RlReport:
                 RadiologyModel object = adapterRadiology.getItem(position);
                 if (object != null) {
                     RadiologyModel radiologyModel = (RadiologyModel) object;

@@ -7,6 +7,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 
@@ -62,33 +63,33 @@ public class ImmunizationAdapter extends RecyclerView.Adapter<ImmunizationAdapte
         switch (model.getVaccinationStatus()) {
             case AppConstants.schedule:
 
-                setViews(holder, activity.getResources().getColor(R.color.base_blue), R.drawable.rounded_box_filled_primary_color, R.drawable.immunization_icon_blue, View.VISIBLE);
+                setViews(holder, activity.getResources().getColor(R.color.base_blue), R.drawable.rounded_box_filled_primary_color, View.VISIBLE);
                 break;
 
             case AppConstants.vaccinated:
 
-                setViews(holder, activity.getResources().getColor(R.color.c_green), R.drawable.rounded_box_filled_base_green, R.drawable.immunization_icon_green, View.GONE);
+                setViews(holder, activity.getResources().getColor(R.color.base_green), R.drawable.rounded_box_filled_base_green, View.GONE);
                 break;
 
             case AppConstants.due:
 
-                setViews(holder, activity.getResources().getColor(R.color.base_amber), R.drawable.rounded_box_filled_base_amber, R.drawable.immunization_icon_amber, View.VISIBLE);
+                setViews(holder, activity.getResources().getColor(R.color.base_amber), R.drawable.rounded_box_filled_base_amber,  View.VISIBLE);
                 break;
 
             case AppConstants.over_due:
 
-                setViews(holder, activity.getResources().getColor(R.color.base_reddish), R.drawable.rounded_box_filled_base_red, R.drawable.immunization_icon_red, View.VISIBLE);
+                setViews(holder, activity.getResources().getColor(R.color.base_reddish), R.drawable.rounded_box_filled_base_red, View.VISIBLE);
                 break;
         }
 
         setListener(holder, model);
     }
 
-    private void setViews(ViewHolder holder, int color, int rounded_box_filled_primary_color, int circularimg, int visible) {
+    private void setViews(ViewHolder holder, int color, int rounded_box_filled_primary_color,  int visible) {
         holder.cardView2.setCardBackgroundColor(color);
         holder.txtType.setBackgroundResource(rounded_box_filled_primary_color);
         holder.btnupdateColorCode.setBackgroundResource(rounded_box_filled_primary_color);
-        holder.imgIcon.setImageResource(circularimg);
+        holder.imgIcon.setColorFilter(color);
         holder.RLUpdate.setVisibility(visible);
         holder.txtBtnColor.setTextColor(color);
 
@@ -125,7 +126,9 @@ public class ImmunizationAdapter extends RecyclerView.Adapter<ImmunizationAdapte
         @BindView(R.id.txtType)
         AnyTextView txtType;
         @BindView(R.id.imgIcon)
-        CircleImageView imgIcon;
+        ImageView imgIcon;
+        @BindView(R.id.imgTransparent)
+        ImageView imgTransparent;
         @BindView(R.id.txtName)
         AnyTextView txtName;
         @BindView(R.id.txtRoute)

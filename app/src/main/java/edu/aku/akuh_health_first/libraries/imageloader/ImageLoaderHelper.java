@@ -1,23 +1,16 @@
 package edu.aku.akuh_health_first.libraries.imageloader;
 
-import android.app.Activity;
 import android.content.Context;
-import android.graphics.Color;
-import android.os.UserManager;
 import android.widget.ImageView;
 
 import com.nostra13.universalimageloader.core.DisplayImageOptions;
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.nostra13.universalimageloader.core.assist.ImageScaleType;
-import com.nostra13.universalimageloader.core.display.CircleBitmapDisplayer;
 import com.nostra13.universalimageloader.core.display.FadeInBitmapDisplayer;
-import com.nostra13.universalimageloader.core.display.RoundedBitmapDisplayer;
 
-import java.util.HashMap;
 import java.util.Map;
 
 import edu.aku.akuh_health_first.R;
-import edu.aku.akuh_health_first.activities.BaseActivity;
 import edu.aku.akuh_health_first.constatnts.WebServiceConstants;
 
 import static edu.aku.akuh_health_first.constatnts.WebServiceConstants.GETIMAGE_BASE_URL;
@@ -53,7 +46,7 @@ public class ImageLoaderHelper {
     public static DisplayImageOptions getOptionsSimple() {
 
         return new DisplayImageOptions.Builder().cacheInMemory(true).cacheOnDisk(true)
-                .showImageForEmptyUri(R.color.base_grey)
+                .showImageForEmptyUri(R.color.base_dark_gray)
                 .showImageOnFail(R.drawable.placeholder)
                 .showImageOnLoading(R.drawable.placeholder)
                 .build();
@@ -63,7 +56,7 @@ public class ImageLoaderHelper {
     public static DisplayImageOptions getOptionsSimple(Map<String, String> headers) {
 
         return new DisplayImageOptions.Builder().cacheInMemory(true).cacheOnDisk(true)
-                .showImageForEmptyUri(R.color.base_grey)
+                .showImageForEmptyUri(R.color.base_dark_gray)
                 .showImageOnFail(R.drawable.placeholder)
                 .showImageOnLoading(R.drawable.placeholder)
                 .extraForDownloader(headers)
@@ -73,7 +66,7 @@ public class ImageLoaderHelper {
     public static DisplayImageOptions getOptionsWithAnimation() {
 
         return new DisplayImageOptions.Builder().cacheInMemory(true).cacheOnDisk(true)
-                .showImageForEmptyUri(R.color.base_grey)
+                .showImageForEmptyUri(R.color.base_dark_gray)
                 .showImageOnFail(R.drawable.placeholder)
                 .showImageOnLoading(R.drawable.placeholder)
                 .imageScaleType(ImageScaleType.EXACTLY).displayer(new FadeInBitmapDisplayer(500)).build();
@@ -83,7 +76,7 @@ public class ImageLoaderHelper {
     public static DisplayImageOptions getOptionsWithAnimation(Map<String, String> headers) {
 
         return new DisplayImageOptions.Builder().cacheInMemory(true).cacheOnDisk(true)
-                .showImageForEmptyUri(R.color.base_grey)
+                .showImageForEmptyUri(R.color.base_dark_gray)
                 .showImageOnFail(R.drawable.placeholder)
                 .showImageOnLoading(R.drawable.placeholder)
                 .extraForDownloader(headers)

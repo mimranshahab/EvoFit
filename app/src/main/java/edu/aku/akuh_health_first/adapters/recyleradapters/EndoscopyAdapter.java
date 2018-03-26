@@ -7,6 +7,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 
@@ -63,15 +64,18 @@ public class EndoscopyAdapter extends RecyclerView.Adapter<EndoscopyAdapter.View
 
         setListener(holder, model);
         holder.txtStatusType.setText("Finalised");
-        setViews(holder, activity.getResources().getColor(R.color.base_green), R.drawable.rounded_box_filled_base_green, R.drawable.a_endoscopy_green);
+//        setViews(holder, activity.getResources().getColor(R.color.base_green), R.drawable.rounded_box_filled_base_green, R.drawable.a_endoscopy_green);
 
+        setViews(holder, activity.getResources().getColor(R.color.base_dark_gray),R.drawable.rounded_box_filled_base_grey ,R.drawable.b_endoscopy_transparent);
 
     }
 
     private void setViews(ViewHolder holder, int color, int backgroundResource, int circular_background) {
         holder.cardView2.setCardBackgroundColor(color);
         holder.txtStatusType.setBackgroundResource(backgroundResource);
-        holder.imgIcon.setImageResource(circular_background);
+
+        holder.imgIcon.setColorFilter(color);
+        holder.imgTransparent.setBackgroundResource(circular_background);
         holder.btnReportColorCode1.setBackgroundResource(backgroundResource);
     }
 
@@ -102,7 +106,9 @@ public class EndoscopyAdapter extends RecyclerView.Adapter<EndoscopyAdapter.View
         @BindView(R.id.txtStatusType)
         AnyTextView txtStatusType;
         @BindView(R.id.imgIcon)
-        CircleImageView imgIcon;
+        ImageView imgIcon;
+        @BindView(R.id.imgTransparent)
+        ImageView imgTransparent;
         @BindView(R.id.txtName)
         AnyTextView txtName;
         @BindView(R.id.txtDrName)

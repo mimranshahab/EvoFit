@@ -7,6 +7,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 
@@ -14,7 +15,6 @@ import java.util.ArrayList;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
-import de.hdodenhof.circleimageview.CircleImageView;
 import edu.aku.akuh_health_first.R;
 import edu.aku.akuh_health_first.callbacks.OnItemClickListener;
 import edu.aku.akuh_health_first.models.DischargeSummaryModel;
@@ -26,6 +26,7 @@ public class DischargeSummaryAdapter extends RecyclerView.Adapter<DischargeSumma
 
 
     private final OnItemClickListener onItemClick;
+
 
 
     private Activity activity;
@@ -57,16 +58,17 @@ public class DischargeSummaryAdapter extends RecyclerView.Adapter<DischargeSumma
         holder.txtStatusType.setVisibility(View.INVISIBLE);
         setListener(holder, DischargeSummaryModel);
         holder.RlReport.setVisibility(View.VISIBLE);
-        setViews(holder, activity.getResources().getColor(R.color.base_green), R.drawable.rounded_box_filled_base_green, R.drawable.a_dischargesummary_green);
+        setViews(holder, activity.getResources().getColor(R.color.base_dark_gray),R.drawable.rounded_box_filled_base_grey ,R.drawable.b_dischargesummary_transparent);
 
 
     }
 
-    private void setViews(ViewHolder holder, int color, int backgroundResource, int circular_background) {
+    private void setViews(ViewHolder holder, int color,int backgroundResource, int img_transparent) {
         holder.cardView2.setCardBackgroundColor(color);
         holder.txtStatusType.setBackgroundResource(backgroundResource);
         holder.btnReportColorCode1.setBackgroundResource(backgroundResource);
-        holder.imgIcon.setImageResource(circular_background);
+        holder.imgIcon.setColorFilter(color);
+        holder.imgTransparent.setImageResource(img_transparent);
     }
 
     private void setListener(final ViewHolder holder, final DischargeSummaryModel DischargeSummaryModel) {
@@ -97,7 +99,9 @@ public class DischargeSummaryAdapter extends RecyclerView.Adapter<DischargeSumma
         @BindView(R.id.txtStatusType)
         AnyTextView txtStatusType;
         @BindView(R.id.imgIcon)
-        CircleImageView imgIcon;
+        ImageView imgIcon;
+        @BindView(R.id.imgTransparent)
+        ImageView imgTransparent;
         @BindView(R.id.txtName)
         AnyTextView txtName;
         @BindView(R.id.txtDrName)
@@ -108,7 +112,12 @@ public class DischargeSummaryAdapter extends RecyclerView.Adapter<DischargeSumma
         AnyTextView btnReportColorCode1;
         @BindView(R.id.RlReport)
         RelativeLayout RlReport;
-
+        @BindView(R.id.txtGraph)
+        AnyTextView txtGraph;
+        @BindView(R.id.btnGraphColorCode)
+        AnyTextView btnGraphColorCode;
+        @BindView(R.id.RlGraph)
+        RelativeLayout RlGraph;
         @BindView(R.id.frameColorCode)
         FrameLayout frameColorCode;
         @BindView(R.id.cardView2)

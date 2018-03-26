@@ -7,7 +7,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
+import android.widget.FrameLayout;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 
 import java.util.ArrayList;
 
@@ -23,6 +26,7 @@ public class RadiologyAdapter extends RecyclerView.Adapter<RadiologyAdapter.View
 
 
     private final AdapterView.OnItemClickListener onItemClick;
+
     private Activity activity;
     private ArrayList<RadiologyModel> arrayList;
 
@@ -37,7 +41,8 @@ public class RadiologyAdapter extends RecyclerView.Adapter<RadiologyAdapter.View
 
         View itemView = null;
         itemView = LayoutInflater.from(activity)
-                .inflate(R.layout.item_radiology, parent, false);
+//                .inflate(R.layout.item_radiology, parent, false);
+                .inflate(R.layout.item_cps_nps_endo_summary_, parent, false);
         return new ViewHolder(itemView);
     }
 
@@ -45,29 +50,45 @@ public class RadiologyAdapter extends RecyclerView.Adapter<RadiologyAdapter.View
     public void onBindViewHolder(final ViewHolder holder, int i) {
 
         final RadiologyModel model = arrayList.get(holder.getAdapterPosition());
-        holder.txtExamDatetime.setText( model.getExamdate());
-        holder.txtLocation.setText(model.getVisitlocation());
-        holder.txtExam.setText(model.getExam());
+        holder.txtDateTime.setText(model.getExamdate());
+        holder.txtDrName.setText(model.getVisitlocation());
+        holder.txtName.setText(model.getExam());
 
-
+        holder.RlReport.setVisibility(View.VISIBLE);
+        holder.RlGraph.setVisibility(View.VISIBLE);
+        holder.txtGraph.setText("Images");
         if (model.getStatus().equalsIgnoreCase("F")) {
-            holder.txtStatus.setText("Finalized");
+            holder.txtStatusType.setText("Finalized");
+            setViews(holder, activity.getResources().getColor(R.color.base_green),R.drawable.rounded_box_filled_base_green ,R.drawable.b_dischargesummary_transparent);
+
         } else {
-            holder.txtStatus.setText("Pending");
+            holder.txtStatusType.setText("Pending");
+            setViews(holder, activity.getResources().getColor(R.color.base_amber),R.drawable.rounded_box_filled_base_amber ,R.drawable.b_dischargesummary_transparent);
+
         }
 
         setListener(holder, model);
+
+
     }
 
-    private void setListener(final RadiologyAdapter.ViewHolder holder, final RadiologyModel cardioModel) {
-        holder.btnShowGraph.setOnClickListener(new View.OnClickListener() {
+    private void setViews(ViewHolder holder, int color, int backgroundResource, int img_transparent) {
+        holder.cardView2.setCardBackgroundColor(color);
+        holder.txtStatusType.setBackgroundResource(backgroundResource);
+//        holder.btnReportColorCode1.setBackgroundResource(backgroundResource);
+        holder.imgIcon.setColorFilter(color);
+        holder.imgTransparent.setImageResource(img_transparent);
+    }
+
+    private void setListener(final ViewHolder holder, final RadiologyModel cardioModel) {
+        holder.RlGraph.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 onItemClick.onItemClick(null, v, holder.getAdapterPosition(), 0);
             }
         });
 
-        holder.btnShowReport.setOnClickListener(new View.OnClickListener() {
+        holder.RlReport.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 onItemClick.onItemClick(null, v, holder.getAdapterPosition(), 0);
@@ -92,21 +113,49 @@ public class RadiologyAdapter extends RecyclerView.Adapter<RadiologyAdapter.View
     }
 
     static class ViewHolder extends RecyclerView.ViewHolder {
-        @BindView(R.id.txtReqDatetime)
-        AnyTextView txtExamDatetime;
-        @BindView(R.id.txtLocation)
-        AnyTextView txtLocation;
-
-        @BindView(R.id.txtExam)
-        AnyTextView txtExam;
-        @BindView(R.id.txtStatus)
-        AnyTextView txtStatus;
-        @BindView(R.id.btnShowReport)
-        AnyTextView btnShowReport;
-        @BindView(R.id.btnShowGraph)
-        AnyTextView btnShowGraph;
+        //        @BindView(R.id.txtReqDatetime)
+//        AnyTextView txtExamDatetime;
+//        @BindView(R.id.txtLocation)
+//        AnyTextView txtLocation;
+//
+//        @BindView(R.id.txtExam)
+//        AnyTextView txtExam;
+//        @BindView(R.id.txtStatus)
+//        AnyTextView txtStatus;
+//        @BindView(R.id.btnShowReport)
+//        AnyTextView btnShowReport;
+//        @BindView(R.id.btnShowGraph)
+//        AnyTextView btnShowGraph;
+//        @BindView(R.id.contListItem)
+//        LinearLayout contListItem;
+//        @BindView(R.id.cardView2)
+//        CardView cardView2;
+        @BindView(R.id.txtDateTime)
+        AnyTextView txtDateTime;
+        @BindView(R.id.txtStatusType)
+        AnyTextView txtStatusType;
+        @BindView(R.id.imgIcon)
+        ImageView imgIcon;
+        @BindView(R.id.imgTransparent)
+        ImageView imgTransparent;
+        @BindView(R.id.txtName)
+        AnyTextView txtName;
+        @BindView(R.id.txtDrName)
+        AnyTextView txtDrName;
         @BindView(R.id.contListItem)
         LinearLayout contListItem;
+        @BindView(R.id.btnReportColorCode1)
+        AnyTextView btnReportColorCode1;
+        @BindView(R.id.RlReport)
+        RelativeLayout RlReport;
+        @BindView(R.id.txtGraph)
+        AnyTextView txtGraph;
+        @BindView(R.id.btnGraphColorCode)
+        AnyTextView btnGraphColorCode;
+        @BindView(R.id.RlGraph)
+        RelativeLayout RlGraph;
+        @BindView(R.id.frameColorCode)
+        FrameLayout frameColorCode;
         @BindView(R.id.cardView2)
         CardView cardView2;
 

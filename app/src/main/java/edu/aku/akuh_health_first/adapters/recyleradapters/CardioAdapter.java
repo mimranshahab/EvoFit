@@ -8,6 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.FrameLayout;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 
@@ -63,22 +64,24 @@ public class CardioAdapter extends RecyclerView.Adapter<CardioAdapter.ViewHolder
         if (model.getStatus().equalsIgnoreCase("Signed")) {
             holder.txtStatusType.setText("Finalised");
             setViews(holder, activity.getResources().getColor(R.color.base_green),
-                    R.drawable.rounded_box_filled_base_green, R.drawable.cardiopulmonary_green);
+                    R.drawable.rounded_box_filled_base_green, R.drawable.cardiopulmonary_green, R.drawable.b_cardiopulmonary_transparent);
 
         } else {
             holder.txtStatusType.setText("Pending");
 
             setViews(holder, activity.getResources().getColor(R.color.base_amber),
-                    R.drawable.rounded_box_filled_base_amber, R.drawable.cardiopulmonary_amber);
+                    R.drawable.rounded_box_filled_base_amber, R.drawable.cardiopulmonary_amber, R.drawable.b_cardiopulmonary_transparent);
         }
 
 
     }
 
-    private void setViews(ViewHolder holder, int color, int backgroundResource, int circular_background) {
+    private void setViews(ViewHolder holder, int color, int backgroundResource, int circular_background, int img_transparent) {
         holder.cardView2.setCardBackgroundColor(color);
         holder.txtStatusType.setBackgroundResource(backgroundResource);
         holder.imgIcon.setImageResource(circular_background);
+        holder.imgTransparent.setImageResource(img_transparent);
+        holder.imgIcon.setColorFilter(color);
     }
 
     private void setEnability(ViewHolder holder, CardioModel cardioModel) {
@@ -135,7 +138,9 @@ public class CardioAdapter extends RecyclerView.Adapter<CardioAdapter.ViewHolder
         @BindView(R.id.txtStatusType)
         AnyTextView txtStatusType;
         @BindView(R.id.imgIcon)
-        CircleImageView imgIcon;
+        ImageView imgIcon;
+        @BindView(R.id.imgTransparent)
+        ImageView imgTransparent;
         @BindView(R.id.txtName)
         AnyTextView txtName;
         @BindView(R.id.txtDrName)
