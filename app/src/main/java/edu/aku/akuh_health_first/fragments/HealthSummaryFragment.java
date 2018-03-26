@@ -31,6 +31,7 @@ import edu.aku.akuh_health_first.enums.BaseURLTypes;
 import edu.aku.akuh_health_first.enums.HealthSummaryTypes;
 import edu.aku.akuh_health_first.fragments.abstracts.BaseFragment;
 import edu.aku.akuh_health_first.fragments.dialogs.HealthSummaryDialogFragment;
+import edu.aku.akuh_health_first.helperclasses.StringHelper;
 import edu.aku.akuh_health_first.helperclasses.ui.helper.TitleBar;
 import edu.aku.akuh_health_first.helperclasses.ui.helper.UIHelper;
 import edu.aku.akuh_health_first.managers.retrofit.GsonFactory;
@@ -261,8 +262,18 @@ public class HealthSummaryFragment extends BaseFragment implements OnItemClickLi
                                                 , PatientHealthSummaryModel.class);
 
                                 txtBloodType.setText(patientHealthSummaryModel.getBloodtype());
-                                txtWeight.setText(patientHealthSummaryModel.getWeight() + "kg");
-                                txtHeight.setText(patientHealthSummaryModel.getHeight() + "cm");
+
+                                if (StringHelper.IsInt_ByJonas(patientHealthSummaryModel.getWeight()) || StringHelper.IsDecimal_ByCompiledRegex(patientHealthSummaryModel.getWeight())) {
+                                    txtWeight.setText(patientHealthSummaryModel.getWeight() + "kg");
+                                } else {
+                                    txtWeight.setText(patientHealthSummaryModel.getWeight());
+                                }
+
+                                if (StringHelper.IsInt_ByJonas(patientHealthSummaryModel.getHeight()) || StringHelper.IsDecimal_ByCompiledRegex(patientHealthSummaryModel.getHeight())) {
+                                    txtHeight.setText(patientHealthSummaryModel.getHeight() + "cm");
+                                } else {
+                                    txtHeight.setText(patientHealthSummaryModel.getHeight());
+                                }
                                 txtHeightDate.setText(patientHealthSummaryModel.getHeightdate());
                                 txtWeightDate.setText(patientHealthSummaryModel.getWeightdate());
 

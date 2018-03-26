@@ -20,12 +20,11 @@
         app:cardBackgroundColor="@color/base_amber"
         app:cardCornerRadius="@dimen/x8dp"
         app:cardElevation="@dimen/x3dp"
-
         >
 
         <FrameLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:padding="@dimen/x1dp">
 
             <LinearLayout
@@ -33,7 +32,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginRight="@dimen/x5dp"
-                android:background="@drawable/round_edges_two_sides"
+                android:background="@drawable/selected_user_transition"
                 android:gravity="center_vertical"
                 android:orientation="horizontal"
                 android:padding="@dimen/x7dp">
@@ -108,6 +107,7 @@
                 </LinearLayout>
 
                 <ImageView
+                    android:id="@+id/imgNext"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:src="@drawable/img_go"
@@ -115,6 +115,7 @@
 
 
             </LinearLayout>
+
 
         </FrameLayout>
     </android.support.v7.widget.CardView>

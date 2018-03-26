@@ -1,10 +1,12 @@
 package edu.aku.akuh_health_first.adapters.recyleradapters;
 
+import android.graphics.drawable.TransitionDrawable;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 
 import java.util.ArrayList;
@@ -15,6 +17,7 @@ import de.hdodenhof.circleimageview.CircleImageView;
 import edu.aku.akuh_health_first.R;
 import edu.aku.akuh_health_first.activities.BaseActivity;
 import edu.aku.akuh_health_first.callbacks.OnItemClickListener;
+import edu.aku.akuh_health_first.helperclasses.ui.helper.AnimationHelper;
 import edu.aku.akuh_health_first.libraries.imageloader.ImageLoaderHelper;
 import edu.aku.akuh_health_first.models.receiving_model.UserDetailModel;
 import edu.aku.akuh_health_first.widget.AnyTextView;
@@ -64,15 +67,30 @@ public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.ViewHolder> {
                 holder.imgUser.setImageResource(R.drawable.male_icon);
             }
 
-        }        else{
-            ImageLoaderHelper.loadImageWithConstantHeadersWithoutAnimation(activity,holder.imgUser,user.getProfileImage());
+        } else {
+            ImageLoaderHelper.loadImageWithConstantHeadersWithoutAnimation(activity, holder.imgUser, user.getProfileImage());
         }
+        TransitionDrawable transition = (TransitionDrawable) holder.contListItem.getBackground();
 
-//        if (user.isSelected()) {
-//            holder.contListItem.setBackgroundColor(activity.getResources().getColor(R.color.colorPrimaryHalfTransparent));
-//        } else {
-//            holder.contListItem.setBackgroundColor(activity.getResources().getColor(R.color.c_white));
-//        }
+        if (user.isSelected()) {
+//            holder.contListItem.setBackgroundResource(R.drawable.round_edges_two_sides_selected);
+            transition.startTransition(1000);
+            holder.txtMRN.setTextColor(activity.getResources().getColor(R.color.c_white));
+            holder.txtGenderAge.setTextColor(activity.getResources().getColor(R.color.c_white));
+            holder.cardView2.setCardBackgroundColor(activity.getResources().getColor(R.color.colorPrimaryDark));
+            holder.txtName.setTextColor(activity.getResources().getColor(R.color.c_white));
+            holder.txtRelation.setTextColor(activity.getResources().getColor(R.color.c_white));
+            holder.imgNext.setColorFilter(activity.getResources().getColor(R.color.c_white));
+        } else {
+//            holder.contListItem.setBackgroundResource(R.drawable.selected_user_transition);
+             transition.resetTransition();
+            holder.imgNext.setColorFilter(activity.getResources().getColor(R.color.base_amber));
+            holder.txtName.setTextColor(activity.getResources().getColor(R.color.base_amber));
+            holder.txtRelation.setTextColor(activity.getResources().getColor(R.color.base_amber));
+            holder.cardView2.setCardBackgroundColor(activity.getResources().getColor(R.color.base_amber));
+            holder.txtMRN.setTextColor(activity.getResources().getColor(R.color.txt_aku_blue));
+            holder.txtGenderAge.setTextColor(activity.getResources().getColor(R.color.txt_aku_blue));
+        }
         setListener(holder, user);
     }
 
@@ -83,7 +101,6 @@ public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.ViewHolder> {
                 onItemClick.onItemClick(holder.getAdapterPosition(), user);
             }
         });
-
     }
 
     public void addItem(ArrayList<UserDetailModel> homeCategories) {
@@ -113,6 +130,8 @@ public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.ViewHolder> {
         LinearLayout contListItem;
         @BindView(R.id.cardView2)
         CardView cardView2;
+        @BindView(R.id.imgNext)
+        ImageView imgNext;
 
         ViewHolder(View view) {
             super(view);

@@ -11,7 +11,8 @@
         android:id="@+id/contDropDown"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:visibility="gone">
+        android:layout_below="@id/containerTitlebar1"
+        android:visibility="visible">
 
         <include layout="@layout/drop_down_user_info" />
 
@@ -79,7 +80,7 @@
 
         <de.hdodenhof.circleimageview.CircleImageView
             android:id="@+id/circleImageView"
-            android:layout_width="@dimen/x25dp"
+            android:layout_width="@dimen/x22dp"
             android:layout_height="match_parent"
             android:layout_alignParentRight="true"
             android:layout_alignParentTop="true"
@@ -100,6 +101,7 @@
             android:clickable="false"
             android:gravity="center"
             android:text="00"
+            android:visibility="gone"
             android:textColor="#f00"
             android:textSize="8sp" />
 
