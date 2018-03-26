@@ -1,6 +1,7 @@
 package edu.aku.akuh_health_first.fragments;
 
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.annotation.Nullable;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.widget.DefaultItemAnimator;
@@ -112,8 +113,6 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener, 
 //        recyclerHome.setItemAnimator(new DefaultItemAnimator());
         recyclerHome.setAdapter(adaptHome);
         serviceCall();
-
-
     }
 
     private void setData() {
@@ -147,7 +146,6 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener, 
                     @Override
                     public void requestDataResponse(WebResponse<JsonObject> webResponse) {
                         CardMemberDetail cardMemberDetail = GsonFactory.getSimpleGson().fromJson(webResponse.result, CardMemberDetail.class);
-                        notifyToAll(Events.ON_CARD_MODEL_GET, cardMemberDetail);
                         onGetCardSuccessfully(cardMemberDetail);
                     }
 
@@ -161,7 +159,6 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener, 
 
     private void onGetCardSuccessfully(CardMemberDetail cardMemberDetail) {
         arrUserLists.clear();
-//                        arrUserLists.add(cardMemberDetail.getSubscriber());
         arrUserLists.addAll(cardMemberDetail.getFamilyMembersList());
 
         UserDetailModel selectedUser = sharedPreferenceManager.getCurrentUser();
@@ -185,9 +182,8 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener, 
 
         if (arrUserLists.size() > 0) {
             subscriber = arrUserLists.get(0);
-            arrUserLists.remove(0);
             sharedPreferenceManager.putObject(AppConstants.KEY_CARD_MEMBER_DETAIL, cardMemberDetail);
-            setData();
+//            setData();
         }
 
         notifyToAll(Events.ON_SELECTED_USER_UPDATE, selectedUser);
@@ -253,7 +249,14 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener, 
             arrUserLists.get(position).setSelected(true);
             sharedPreferenceManager.putObject(AppConstants.KEY_CURRENT_USER_MODEL, object);
             adaptHome.notifyDataSetChanged();
-            getBaseActivity().addDockableFragment(HomeDetailFragment.newInstance());
+
+            new Handler().postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                    getBaseActivity().addDockableFragment(HomeDetailFragment.newInstance());
+                }
+            }, 1000);
+
         }
     }
 

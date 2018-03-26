@@ -29,7 +29,6 @@ public class TitleBar extends RelativeLayout {
 
     public TextView txtCircle;
     public CircleImageView circleImageView;
-    CircleImageView circleImageView2;
     AnyTextView txtUserName;
     AnyTextView txtMRN;
     RelativeLayout contDropDown;
@@ -86,7 +85,6 @@ public class TitleBar extends RelativeLayout {
         contDropDown = findViewById(R.id.contDropDown);
         txtMRN = findViewById(R.id.txtMRN);
         txtUserName = findViewById(R.id.txtUserName);
-        circleImageView2 = findViewById(R.id.circleImageView2);
 
     }
 
@@ -178,25 +176,31 @@ public class TitleBar extends RelativeLayout {
     public void setUserDisplay(final UserDetailModel currentUser, Context context) {
         this.circleImageView.setVisibility(VISIBLE);
 
-        if (currentUser.getProfileImage() == null || currentUser.getProfileImage().isEmpty()) {
-
-            circleImageView.setImageResource(R.drawable.male_icon);
-            circleImageView2.setImageResource(R.drawable.male_icon);
-
-
-        } else {
-            ImageLoaderHelper.loadImageWithConstantHeadersWithoutAnimation(context, circleImageView, currentUser.getProfileImage());
-            ImageLoaderHelper.loadImageWithConstantHeadersWithoutAnimation(context, circleImageView2, currentUser.getProfileImage());
+        if (currentUser == null) {
+            contDropDown.setVisibility(GONE);
+            UIHelper.showToast(context, "No user selected.");
+            return;
         }
 
-        this.circleImageView.setOnClickListener(new OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                txtMRN.setText(currentUser.getMRNumber());
-                txtUserName.setText(currentUser.getName());
-                showAndHideDropDown(currentUser);
-            }
-        });
+        if (currentUser.getProfileImage() == null || currentUser.getProfileImage().isEmpty()) {
+            circleImageView.setImageResource(R.drawable.male_icon);
+        } else {
+            ImageLoaderHelper.loadImageWithConstantHeadersWithoutAnimation(context, circleImageView, currentUser.getProfileImage());
+        }
+
+
+        txtUserName.setText(currentUser.getName());
+        txtMRN.setText("MR#" + currentUser.getMRNumber());
+        contDropDown.setVisibility(VISIBLE);
+
+//        this.circleImageView.setOnClickListener(new OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                txtMRN.setText(currentUser.getMRNumber());
+//                txtUserName.setText(currentUser.getName());
+//                showAndHideDropDown();
+//            }
+//        });
     }
 
 
@@ -250,9 +254,8 @@ public class TitleBar extends RelativeLayout {
     }
 
 
-    public void showAndHideDropDown(final UserDetailModel currentUser) {
+    public void showAndHideDropDown() {
         int height = this.containerTitlebar1.getHeight();
-
         if (contDropDown.getVisibility() == View.VISIBLE) {
 
             contDropDown.animate()
