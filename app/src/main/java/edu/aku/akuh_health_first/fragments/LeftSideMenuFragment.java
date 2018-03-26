@@ -45,8 +45,6 @@ public class LeftSideMenuFragment extends BaseFragment implements OnNewPacketRec
     AnyTextView txtAbout;
     @BindView(R.id.txtLogout)
     AnyTextView txtLogout;
-    @BindView(R.id.txtSubscriberName)
-    AnyTextView txtSubscriberName;
     @BindView(R.id.scrollView)
     ScrollView scrollView;
     @BindView(R.id.imgBackground)
@@ -71,8 +69,7 @@ public class LeftSideMenuFragment extends BaseFragment implements OnNewPacketRec
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        subscribeToNewPacket(this);
-////        scrollToTop();
+        ////        scrollToTop();
     }
 
     @Override
@@ -175,18 +172,5 @@ public class LeftSideMenuFragment extends BaseFragment implements OnNewPacketRec
         }
     }
 
-    @Override
-    public void onNewPacket(int event, Object data) {
-        switch (event) {
-            case Events.ON_CARD_MODEL_GET:
-            case Events.ON_CARD_MODEL_UPDATE:
-                if (txtSubscriberName != null) {
-                    CardMemberDetail cardMemberDetail = (CardMemberDetail) data;
-                    txtSubscriberName.setText(cardMemberDetail.getCardHolderName());
-                }
-                break;
-        }
-
-    }
 
 }

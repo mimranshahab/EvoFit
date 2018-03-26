@@ -18,9 +18,9 @@ public class PaymentRequestModel {
     private String Signature;
     private String AccessKey = "5584828bcca73288a5b758619b9e299b";
     private String ProfileID = "3700ABA3-08F4-4D24-9730-08E949C82044";
-//    private String TransactionUUID = UUID.randomUUID().toString();
-    private String TransactionUUID = "HFM-636558589041890204";
-    private String ReferenceNo = "168-636558589041890204";
+    private String TransactionUUID = UUID.randomUUID().toString();
+//    private String TransactionUUID = "HFM-636558589041890204";
+    private String ReferenceNo = "168-" + TransactionUUID;
 
     private String SignedFieldNames = "reference_number,transaction_type,currency,amount,locale,access_key," +
             "profile_id,transaction_uuid,signed_date_time,signed_field_names,unsigned_field_names,payment_method," +
