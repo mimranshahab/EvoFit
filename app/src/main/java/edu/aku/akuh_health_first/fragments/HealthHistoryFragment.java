@@ -238,7 +238,7 @@ public class HealthHistoryFragment extends BaseFragment {
         if (isVisitTimeline) {
             titleBar.setTitle("Visit Menu");
         } else {
-            titleBar.setTitle("Health History");
+            titleBar.setTitle("Health Profile");
         }
         titleBar.showBackButton(getBaseActivity());
         titleBar.setUserDisplay(sharedPreferenceManager.getCurrentUser(), getContext());

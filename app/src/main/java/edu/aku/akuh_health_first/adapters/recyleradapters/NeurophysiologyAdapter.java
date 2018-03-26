@@ -7,6 +7,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 
@@ -105,7 +106,9 @@ public class NeurophysiologyAdapter extends RecyclerView.Adapter<Neurophysiology
         @BindView(R.id.txtStatusType)
         AnyTextView txtStatusType;
         @BindView(R.id.imgIcon)
-        CircleImageView imgIcon;
+        ImageView imgIcon;
+        @BindView(R.id.imgTransparent)
+        ImageView imgTransparent;
         @BindView(R.id.txtName)
         AnyTextView txtName;
         @BindView(R.id.txtDrName)
