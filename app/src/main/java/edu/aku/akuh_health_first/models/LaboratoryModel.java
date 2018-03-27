@@ -171,10 +171,10 @@ public class LaboratoryModel implements Serializable, IsRecordFound {
     private Object active;
     @SerializedName("isExternalReport")
     @Expose
-    private Boolean isExternalReport;
+    private boolean isExternalReport;
     @SerializedName("ExternalPath")
     @Expose
-    private Object externalPath;
+    private String externalPath;
     @SerializedName("ExternalFile")
     @Expose
     private Object externalFile;
@@ -666,7 +666,7 @@ public class LaboratoryModel implements Serializable, IsRecordFound {
         return externalPath;
     }
 
-    public void setExternalPath(Object externalPath) {
+    public void setExternalPath(String externalPath) {
         this.externalPath = externalPath;
     }
 

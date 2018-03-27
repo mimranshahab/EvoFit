@@ -21,6 +21,7 @@
             android:orientation="vertical">
 
             <LinearLayout
+                android:id="@+id/contHeader"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
@@ -45,9 +46,9 @@
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:background="@drawable/rounded_box_gradient_gray"
+                android:layout_height="wrap_content"
                 android:layout_margin="@dimen/x2dp"
-                android:layout_height="wrap_content">
+                android:background="@drawable/rounded_box">
 
 
                 <LinearLayout
@@ -61,8 +62,8 @@
                         android:id="@+id/txtShortMessage"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Glucose Random"
                         android:padding="@dimen/x5dp"
+                        android:text="Glucose Random"
                         android:textColor="@color/base_reddish"
                         android:textSize="@dimen/s10"
                         app:typeface="@string/font_bold" />
@@ -71,8 +72,8 @@
                         android:id="@+id/txtDate"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Date"
                         android:padding="@dimen/x5dp"
+                        android:text="Date"
 
                         android:textColor="@color/txt_aku_blue"
                         android:textSize="@dimen/s8"

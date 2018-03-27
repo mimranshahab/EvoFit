@@ -32,9 +32,11 @@ import edu.aku.akuh_health_first.constatnts.WebServiceConstants;
 import edu.aku.akuh_health_first.enums.BaseURLTypes;
 import edu.aku.akuh_health_first.fragments.abstracts.BaseFragment;
 import edu.aku.akuh_health_first.helperclasses.ui.helper.TitleBar;
+import edu.aku.akuh_health_first.helperclasses.ui.helper.UIHelper;
 import edu.aku.akuh_health_first.managers.retrofit.GsonFactory;
 import edu.aku.akuh_health_first.managers.retrofit.WebServices;
 import edu.aku.akuh_health_first.models.LaboratoryModel;
+import edu.aku.akuh_health_first.models.LaboratoryDetailModel;
 import edu.aku.akuh_health_first.models.SearchModel;
 import edu.aku.akuh_health_first.models.wrappers.WebResponse;
 import edu.aku.akuh_health_first.widget.AnyEditTextView;
@@ -90,7 +92,7 @@ public class ClinicalLaboratoryFragment extends BaseFragment implements View.OnC
         titleBar.resetViews();
         titleBar.setTitle("Clinical Laboratory");
         titleBar.showBackButton(getBaseActivity());
-        titleBar.setUserDisplay(sharedPreferenceManager.getCurrentUser(),getContext());
+        titleBar.setUserDisplay(sharedPreferenceManager.getCurrentUser(), getContext());
         titleBar.showHome(getBaseActivity());
     }
 
@@ -176,9 +178,8 @@ public class ClinicalLaboratoryFragment extends BaseFragment implements View.OnC
     @Override
     public void onItemClick(int position, Object object) {
         if (object instanceof LaboratoryModel) {
-            LaboratoryModel modelLaboratoryModel = (LaboratoryModel) object;
-            if(modelLaboratoryModel != null){
-            getBaseActivity().addDockableFragment(ClinicalLaboratoryDetailFragment.newInstance());}
+            LaboratoryModel model = (LaboratoryModel) object;
+            labDetailService(model.getSpecimenNumber());
         }
 
     }
@@ -224,10 +225,47 @@ public class ClinicalLaboratoryFragment extends BaseFragment implements View.OnC
 
                             @Override
                             public void onError() {
-//                                UIHelper.showShortToastInCenter(getContext(), "failure");
                                 showEmptyView();
                             }
 
+                        });
+
+    }
+
+    private void labDetailService(String specimenNumber) {
+        SearchModel searchModel = new SearchModel();
+        // FIXME: 1/18/2018 Hardcoded Value for MIC
+        searchModel.setRecordID("56070141");
+        searchModel.setVisitID(null);
+        new WebServices(getBaseActivity(),
+                WebServiceConstants.temporaryToken,
+                BaseURLTypes.AHFA_BASE_URL)
+                .webServiceRequestAPIForJsonObject(WebServiceConstants.METHOD_CLINICAL_LAB_DETAILS,
+                        searchModel.toString(),
+
+//                        WebServiceConstants.temp_Specimen_Num,
+                        new WebServices.IRequestJsonDataCallBack() {
+                            @Override
+                            public void requestDataResponse(WebResponse<JsonObject> webResponse) {
+                                LaboratoryDetailModel laboratoryDetailModel = GsonFactory.getSimpleGson().fromJson(webResponse.result, LaboratoryDetailModel.class);
+
+                                if (laboratoryDetailModel.getIsExternalReport()) {
+                                    UIHelper.showToast(getContext(), "This is report");
+                                } else if (laboratoryDetailModel.getSpecimenType().equals("LAB")) {
+                                    getBaseActivity().addDockableFragment(ClinicalLaboratoryDetailFragment.newInstance(laboratoryDetailModel));
+                                } else if (laboratoryDetailModel.getSpecimenType().equals("MIC")) {
+                                    getBaseActivity().addDockableFragment(ClinicalLaboratoryMICDetailFragment.newInstance(laboratoryDetailModel));
+                                } else {
+                                    showEmptyView();
+                                }
+
+                            }
+
+                            @Override
+                            public void onError() {
+                                showEmptyView();
+                                UIHelper.showShortToastInCenter(getContext(), "something went wrong");
+                            }
                         });
 
     }

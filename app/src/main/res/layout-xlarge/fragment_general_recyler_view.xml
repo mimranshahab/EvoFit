@@ -31,12 +31,12 @@
             android:id="@+id/empty_view"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@color/c_ghost_white"
+            android:background="@color/c_light_grey"
             android:gravity="center"
-            android:text="No item Found"
+            android:text="No Item Found"
             android:padding="@dimen/x10dp"
-            android:textColor="@color/c_black"
-            android:textSize="@dimen/s15"
+            android:textColor="@color/txt_aku_blue"
+            android:textSize="@dimen/s14"
             android:visibility="gone"
             app:typeface="@string/font_regular" />
 
