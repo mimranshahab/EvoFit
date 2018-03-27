@@ -243,6 +243,12 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener, 
     @Override
     public void onItemClick(int position, Object object) {
         if (object instanceof UserDetailModel) {
+
+            if (getCurrentUser().getMRNumber().equals(((UserDetailModel) object).getMRNumber())) {
+                getBaseActivity().addDockableFragment(HomeDetailFragment.newInstance());
+                return;
+            }
+
             for (UserDetailModel userDetailModel : arrUserLists) {
                 userDetailModel.setSelected(false);
             }
