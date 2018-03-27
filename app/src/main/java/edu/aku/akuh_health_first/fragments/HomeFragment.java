@@ -261,7 +261,7 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener, 
                 public void run() {
                     getBaseActivity().addDockableFragment(HomeDetailFragment.newInstance());
                 }
-            }, 1000);
+            }, 800);
 
         }
     }

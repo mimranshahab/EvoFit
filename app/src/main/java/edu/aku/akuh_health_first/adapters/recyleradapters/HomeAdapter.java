@@ -74,7 +74,7 @@ public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.ViewHolder> {
 
         if (user.isSelected()) {
 //            holder.contListItem.setBackgroundResource(R.drawable.round_edges_two_sides_selected);
-            transition.startTransition(1000);
+            transition.startTransition(800);
             holder.txtMRN.setTextColor(activity.getResources().getColor(R.color.c_white));
             holder.txtGenderAge.setTextColor(activity.getResources().getColor(R.color.c_white));
             holder.cardView2.setCardBackgroundColor(activity.getResources().getColor(R.color.colorPrimaryDark));
@@ -83,7 +83,7 @@ public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.ViewHolder> {
             holder.imgNext.setColorFilter(activity.getResources().getColor(R.color.c_white));
         } else {
 //            holder.contListItem.setBackgroundResource(R.drawable.selected_user_transition);
-             transition.resetTransition();
+            transition.resetTransition();
             holder.imgNext.setColorFilter(activity.getResources().getColor(R.color.base_amber));
             holder.txtName.setTextColor(activity.getResources().getColor(R.color.base_amber));
             holder.txtRelation.setTextColor(activity.getResources().getColor(R.color.base_amber));
