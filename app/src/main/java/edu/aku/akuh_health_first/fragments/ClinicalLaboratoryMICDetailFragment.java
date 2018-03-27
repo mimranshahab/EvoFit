@@ -20,10 +20,13 @@ import butterknife.ButterKnife;
 import butterknife.Unbinder;
 import edu.aku.akuh_health_first.R;
 import edu.aku.akuh_health_first.adapters.recyleradapters.ClinicalLabDetailAdapterv1;
+import edu.aku.akuh_health_first.adapters.recyleradapters.ClinicalLabMICDetailAdapter;
 import edu.aku.akuh_health_first.callbacks.OnItemClickListener;
 import edu.aku.akuh_health_first.fragments.abstracts.BaseFragment;
 import edu.aku.akuh_health_first.helperclasses.ui.helper.TitleBar;
+import edu.aku.akuh_health_first.models.BannerModel;
 import edu.aku.akuh_health_first.models.LaboratoryDetailModel;
+import edu.aku.akuh_health_first.models.LstLaboratoryMicspecimenOrderedProc;
 import edu.aku.akuh_health_first.models.LstLaboratorySpecimenResults;
 import edu.aku.akuh_health_first.widget.AnyTextView;
 
@@ -31,7 +34,7 @@ import edu.aku.akuh_health_first.widget.AnyTextView;
  * Created by aqsa.sarwar on 1/25/2018.
  */
 
-public class ClinicalLaboratoryDetailFragment extends BaseFragment implements OnItemClickListener {
+public class ClinicalLaboratoryMICDetailFragment extends BaseFragment implements OnItemClickListener {
 
     @BindView(R.id.listClinicalLabResult)
     RecyclerView listClinicalLabResult;
@@ -48,15 +51,15 @@ public class ClinicalLaboratoryDetailFragment extends BaseFragment implements On
     AnyTextView txtLocation;
     @BindView(R.id.txtReportDatetime)
     AnyTextView txtReportDatetime;
-    private ArrayList<LstLaboratorySpecimenResults> arrLabDetail;
+    private ArrayList arrLabDetail;
     private LaboratoryDetailModel laboratoryDetailModel;
-    private ClinicalLabDetailAdapterv1 adapterClinicalLabDetail;
+    private ClinicalLabMICDetailAdapter adapter;
 
-    public static ClinicalLaboratoryDetailFragment newInstance(LaboratoryDetailModel laboratoryDetailModel) {
+    public static ClinicalLaboratoryMICDetailFragment newInstance(LaboratoryDetailModel laboratoryDetailModel) {
 
         Bundle args = new Bundle();
 
-        ClinicalLaboratoryDetailFragment fragment = new ClinicalLaboratoryDetailFragment();
+        ClinicalLaboratoryMICDetailFragment fragment = new ClinicalLaboratoryMICDetailFragment();
         fragment.laboratoryDetailModel = laboratoryDetailModel;
         fragment.setArguments(args);
         return fragment;
@@ -85,8 +88,8 @@ public class ClinicalLaboratoryDetailFragment extends BaseFragment implements On
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        arrLabDetail = new ArrayList<LstLaboratorySpecimenResults>();
-        adapterClinicalLabDetail = new ClinicalLabDetailAdapterv1(getBaseActivity(), arrLabDetail, this);
+        arrLabDetail = new ArrayList();
+        adapter = new ClinicalLabMICDetailAdapter(getBaseActivity(), arrLabDetail, this);
     }
 
     @Override
@@ -96,8 +99,13 @@ public class ClinicalLaboratoryDetailFragment extends BaseFragment implements On
 
 
         arrLabDetail.clear();
-        arrLabDetail.addAll(laboratoryDetailModel.getLstLaboratorySpecimenResults());
-        adapterClinicalLabDetail.notifyDataSetChanged();
+
+        for (LstLaboratoryMicspecimenOrderedProc lstLaboratoryMicspecimenOrderedProc : laboratoryDetailModel.getLstLaboratoryMicSpecimenOrderedProc()) {
+            arrLabDetail.add(new BannerModel(lstLaboratoryMicspecimenOrderedProc.getPROCEDUREDESCRIPTION(), laboratoryDetailModel.getSourceMnemonic()));
+            arrLabDetail.addAll(lstLaboratoryMicspecimenOrderedProc.getLstLaboratoryMicSpecimenResults());
+        }
+
+        adapter.notifyDataSetChanged();
         bindData();
     }
 
@@ -109,7 +117,7 @@ public class ClinicalLaboratoryDetailFragment extends BaseFragment implements On
         int resId = R.anim.layout_animation_fall_bottom;
         LayoutAnimationController animation = AnimationUtils.loadLayoutAnimation(getContext(), resId);
         listClinicalLabResult.setLayoutAnimation(animation);
-        listClinicalLabResult.setAdapter(adapterClinicalLabDetail);
+        listClinicalLabResult.setAdapter(adapter);
     }
 
     @Override

@@ -7,7 +7,7 @@ import com.google.gson.annotations.SerializedName;
 import java.io.Serializable;
 import java.util.List;
 
-public class LaboratoryUpdateModel
+public class LaboratoryDetailModel
 
         implements Serializable, IsRecordFound {
 
@@ -45,7 +45,7 @@ public class LaboratoryUpdateModel
         private List<LstLaboratorySpecimenResults> lstLaboratorySpecimenResults;
         @SerializedName("lstLaboratoryMicSpecimenOrderedProc")
         @Expose
-        private List<LstLaboratoryMicspecimenOrderedProc> lstLaboratoryMicSpecimenOrderedProc = null;
+        private List<LstLaboratoryMicspecimenOrderedProc> lstLaboratoryMicSpecimenOrderedProc;
         @SerializedName("SpecimenID")
         @Expose
         private String specimenID;
@@ -123,7 +123,7 @@ public class LaboratoryUpdateModel
         private Boolean isExternalReport;
         @SerializedName("ExternalPath")
         @Expose
-        private Object externalPath;
+        private String externalPath;
         @SerializedName("SpecimenNumber")
         @Expose
         private Object specimenNumber;
@@ -350,7 +350,7 @@ public class LaboratoryUpdateModel
         this.specimenType = specimenType;
     }
 
-    public Boolean getIsExternalReport() {
+    public boolean getIsExternalReport() {
         return isExternalReport;
     }
 
@@ -358,11 +358,11 @@ public class LaboratoryUpdateModel
         this.isExternalReport = isExternalReport;
     }
 
-    public Object getExternalPath() {
+    public String getExternalPath() {
         return externalPath;
     }
 
-    public void setExternalPath(Object externalPath) {
+    public void setExternalPath(String externalPath) {
         this.externalPath = externalPath;
     }
 

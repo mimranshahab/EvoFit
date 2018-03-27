@@ -14,16 +14,6 @@ private List<LstMicSpecParaResult> lstMicSpecParaResult = null;
 @SerializedName("lstMicSpecQueryResult")
 @Expose
 private List<LstMicSpecQueryResult> lstMicSpecQueryResult = null;
-@SerializedName("isExternalReport")
-@Expose
-private Boolean isExternalReport;
-@SerializedName("ExternalPath")
-@Expose
-private Object externalPath;
-@SerializedName("ExternalFile")
-@Expose
-private Object externalFile;
-@SerializedName("SpecimenNumber")
 @Expose
 private String specimenNumber;
 @SerializedName("PerformedProcedureId")
@@ -72,30 +62,6 @@ return lstMicSpecQueryResult;
 
 public void setLstMicSpecQueryResult(List<LstMicSpecQueryResult> lstMicSpecQueryResult) {
 this.lstMicSpecQueryResult = lstMicSpecQueryResult;
-}
-
-public Boolean getIsExternalReport() {
-return isExternalReport;
-}
-
-public void setIsExternalReport(Boolean isExternalReport) {
-this.isExternalReport = isExternalReport;
-}
-
-public Object getExternalPath() {
-return externalPath;
-}
-
-public void setExternalPath(Object externalPath) {
-this.externalPath = externalPath;
-}
-
-public Object getExternalFile() {
-return externalFile;
-}
-
-public void setExternalFile(Object externalFile) {
-this.externalFile = externalFile;
 }
 
 public String getSpecimenNumber() {
