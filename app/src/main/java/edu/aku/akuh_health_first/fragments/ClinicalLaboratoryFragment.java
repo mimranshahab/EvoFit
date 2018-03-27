@@ -235,7 +235,7 @@ public class ClinicalLaboratoryFragment extends BaseFragment implements View.OnC
     private void labDetailService(String specimenNumber) {
         SearchModel searchModel = new SearchModel();
         // FIXME: 1/18/2018 Hardcoded Value for MIC
-        searchModel.setRecordID("56070141");
+        searchModel.setRecordID(specimenNumber);
         searchModel.setVisitID(null);
         new WebServices(getBaseActivity(),
                 WebServiceConstants.temporaryToken,
