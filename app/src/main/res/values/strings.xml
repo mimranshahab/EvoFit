@@ -704,7 +704,9 @@ Enim vitae euismod eu velit pede eu, sodales malesuada sit fermentum ut dictum d
     <string name="current_address">Current Address</string>
     <string name="permanent_address">Permanent Address</string>
     <string name="current_city">Current City</string>
+    <string name="current_country">Current Country</string>
     <string name="permanent_country">Permanent Country</string>
+    <string name="permanent_city">Permanent City</string>
     <string name="mother_name">Mother Name</string>
     <string name="mr_number">MR Number</string>
     <string name="card_type">Card Type</string>
@@ -714,6 +716,7 @@ Enim vitae euismod eu velit pede eu, sodales malesuada sit fermentum ut dictum d
     <string name="requestNumber"><b>RequestNumber: </b></string>
     <string name="admissionNumber"><b>AdmissionNumber: </b></string>
     <string name="service"><b>Service: </b></string>
+    <string name="cell_phone_number">Cell Phone Number</string>
 
 
 </resources>

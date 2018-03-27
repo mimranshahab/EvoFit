@@ -11,10 +11,10 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="@dimen/x7dp"
+        app:cardCornerRadius="@dimen/x8dp"
         android:animateLayoutChanges="true"
         app:cardBackgroundColor="@color/base_green"
-        app:cardCornerRadius="@dimen/x8dp"
-        app:cardElevation="@dimen/x3dp">
+        app:cardElevation="@dimen/x1dp">
 
         <FrameLayout
             android:id="@+id/frameColorCode"

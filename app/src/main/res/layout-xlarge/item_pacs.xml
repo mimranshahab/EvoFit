@@ -11,14 +11,11 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_centerInParent="true"
-        android:layout_marginLeft="@dimen/x20dp"
-        android:layout_marginRight="@dimen/x20dp"
-        android:layout_marginBottom="@dimen/x10dp"
-        android:layout_marginTop="@dimen/x10dp"
+        android:layout_margin="@dimen/x15dp"
+        app:cardCornerRadius="@dimen/x8dp"
         android:animateLayoutChanges="true"
         android:padding="@dimen/x2dp"
-        card_view:cardCornerRadius="5dp"
-        card_view:cardElevation="x15dp">
+        card_view:cardElevation="x1dp">
 
 
         <LinearLayout

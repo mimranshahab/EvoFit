@@ -9,10 +9,10 @@
         android:id="@+id/cardView2"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_margin="@dimen/x5dp"
+        android:layout_margin="@dimen/x10dp"
         android:animateLayoutChanges="true"
         android:padding="@dimen/x2dp"
-        app:cardCornerRadius="@dimen/x5dp"
+        app:cardCornerRadius="@dimen/x8dp"
         app:cardElevation="@dimen/x5dp">
 
 
