@@ -3,7 +3,6 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="@color/base_amber"
     android:orientation="vertical">
 
 
@@ -11,28 +10,27 @@
         android:id="@+id/txtProcedureDesc"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="@dimen/x5dp"
         android:ellipsize="end"
-        android:gravity="center"
+        android:gravity="left"
         android:padding="@dimen/x5dp"
         android:singleLine="true"
         android:text="Procedure Description"
-        android:textColor="@color/c_white"
-        android:textSize="@dimen/s16"
-        app:typeface="@string/font_regular" />
+        android:textColor="@color/base_amber"
+        android:textSize="16sp"
+        app:typeface="@string/font_bold" />
 
     <edu.aku.akuh_health_first.widget.AnyTextView
         android:id="@+id/txtSource"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="@dimen/x5dp"
+        android:background="@color/c_white"
         android:ellipsize="end"
         android:gravity="left"
         android:padding="@dimen/x5dp"
         android:singleLine="true"
         android:text="Source: Name"
-        android:textColor="@color/c_white"
-        android:textSize="@dimen/s14"
+        android:textColor="@color/base_amber"
+        android:textSize="14sp"
         app:typeface="@string/font_regular" />
 
 </LinearLayout>

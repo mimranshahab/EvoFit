@@ -31,6 +31,7 @@ import edu.aku.akuh_health_first.callbacks.OnItemClickListener;
 import edu.aku.akuh_health_first.constatnts.WebServiceConstants;
 import edu.aku.akuh_health_first.enums.BaseURLTypes;
 import edu.aku.akuh_health_first.fragments.abstracts.BaseFragment;
+import edu.aku.akuh_health_first.helperclasses.Helper;
 import edu.aku.akuh_health_first.helperclasses.ui.helper.TitleBar;
 import edu.aku.akuh_health_first.helperclasses.ui.helper.UIHelper;
 import edu.aku.akuh_health_first.managers.retrofit.GsonFactory;
@@ -235,7 +236,9 @@ public class ClinicalLaboratoryFragment extends BaseFragment implements View.OnC
     private void labDetailService(String specimenNumber) {
         SearchModel searchModel = new SearchModel();
         // FIXME: 1/18/2018 Hardcoded Value for MIC
-        searchModel.setRecordID("56070141");
+        searchModel.setRecordID("56070141"); // MIC
+//        searchModel.setRecordID("57380695"); // Report
+//        searchModel.setRecordID(specimenNumber); // Original Data
         searchModel.setVisitID(null);
         new WebServices(getBaseActivity(),
                 WebServiceConstants.temporaryToken,
@@ -250,7 +253,13 @@ public class ClinicalLaboratoryFragment extends BaseFragment implements View.OnC
                                 LaboratoryDetailModel laboratoryDetailModel = GsonFactory.getSimpleGson().fromJson(webResponse.result, LaboratoryDetailModel.class);
 
                                 if (laboratoryDetailModel.getIsExternalReport()) {
-                                    UIHelper.showToast(getContext(), "This is report");
+                                    WebResponse<String> webResponse1 = new WebResponse<String>();
+                                    if (laboratoryDetailModel.getExternalFile() == null || laboratoryDetailModel.getExternalFile().isEmpty()) {
+                                        UIHelper.showToast(getContext(), "No file data");
+                                        return;
+                                    }
+                                    webResponse1.result = laboratoryDetailModel.getExternalFile();
+                                    saveAndOpenFile(webResponse1);
                                 } else if (laboratoryDetailModel.getSpecimenType().equals("LAB")) {
                                     getBaseActivity().addDockableFragment(ClinicalLaboratoryDetailFragment.newInstance(laboratoryDetailModel));
                                 } else if (laboratoryDetailModel.getSpecimenType().equals("MIC")) {

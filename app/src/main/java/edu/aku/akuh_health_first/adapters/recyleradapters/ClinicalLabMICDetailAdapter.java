@@ -63,7 +63,7 @@ public class ClinicalLabMICDetailAdapter extends RecyclerView.Adapter<RecyclerVi
         } else {
             //inflate your layout and pass it to view holder
             return new ViewHolderItem(LayoutInflater.from(parent.getContext())
-                    .inflate(R.layout.item_healthsummary, parent, false));
+                    .inflate(R.layout.item_mic_detail, parent, false));
         }
     }
 

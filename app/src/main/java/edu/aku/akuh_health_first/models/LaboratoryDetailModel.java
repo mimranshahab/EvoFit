@@ -40,109 +40,112 @@ public class LaboratoryDetailModel
     }
 
 
-        @SerializedName("lstLaboratorySpecimenResults")
-        @Expose
-        private List<LstLaboratorySpecimenResults> lstLaboratorySpecimenResults;
-        @SerializedName("lstLaboratoryMicSpecimenOrderedProc")
-        @Expose
-        private List<LstLaboratoryMicspecimenOrderedProc> lstLaboratoryMicSpecimenOrderedProc;
-        @SerializedName("SpecimenID")
-        @Expose
-        private String specimenID;
-        @SerializedName("OrderedTests")
-        @Expose
-        private String orderedTests;
-        @SerializedName("CollectedBy")
-        @Expose
-        private String collectedBy;
-        @SerializedName("ReceivedBy")
-        @Expose
-        private String receivedBy;
-        @SerializedName("ForwardedBy")
-        @Expose
-        private String forwardedBy;
-        @SerializedName("SignoutBy")
-        @Expose
-        private String signoutBy;
-        @SerializedName("SpecimenComments")
-        @Expose
-        private String specimenComments;
-        @SerializedName("SignoutDttm")
-        @Expose
-        private String signoutDttm;
-        @SerializedName("StatusID")
-        @Expose
-        private String statusID;
-        @SerializedName("SpecimenSectionID")
-        @Expose
-        private String specimenSectionID;
-        @SerializedName("ReportDispatchUser")
-        @Expose
-        private String reportDispatchUser;
-        @SerializedName("PerformedAtSTATLocation")
-        @Expose
-        private String performedAtSTATLocation;
-        @SerializedName("SortDttm")
-        @Expose
-        private String sortDttm;
-        @SerializedName("OrderedTestDisplayList")
-        @Expose
-        private String orderedTestDisplayList;
-        @SerializedName("CollectionDttm")
-        @Expose
-        private String collectionDttm;
-        @SerializedName("ReceivedOnFloorBy")
-        @Expose
-        private String receivedOnFloorBy;
-        @SerializedName("ReceivedOnFloorDttm")
-        @Expose
-        private String receivedOnFloorDttm;
-        @SerializedName("ForwardedDttm")
-        @Expose
-        private String forwardedDttm;
-        @SerializedName("SpecimenCancelComments")
-        @Expose
-        private String specimenCancelComments;
-        @SerializedName("SourceMnemonic")
-        @Expose
-        private String sourceMnemonic;
-        @SerializedName("PatientUnitNumber")
-        @Expose
-        private String patientUnitNumber;
-        @SerializedName("VisitLocationID")
-        @Expose
-        private String visitLocationID;
-        @SerializedName("ReferringDoctorID")
-        @Expose
-        private String referringDoctorID;
-        @SerializedName("SpecimenType")
-        @Expose
-        private String specimenType;
-        @SerializedName("isExternalReport")
-        @Expose
-        private Boolean isExternalReport;
-        @SerializedName("ExternalPath")
-        @Expose
-        private String externalPath;
-        @SerializedName("SpecimenNumber")
-        @Expose
-        private Object specimenNumber;
-        @SerializedName("LastFileDateTime")
-        @Expose
-        private Object lastFileDateTime;
-        @SerializedName("LastFileUser")
-        @Expose
-        private Object lastFileUser;
-        @SerializedName("LastFileTerminal")
-        @Expose
-        private Object lastFileTerminal;
-        @SerializedName("Active")
-        @Expose
-        private Object active;
+    @SerializedName("lstLaboratorySpecimenResults")
+    @Expose
+    private List<LstLaboratorySpecimenResults> lstLaboratorySpecimenResults;
+    @SerializedName("lstLaboratoryMicSpecimenOrderedProc")
+    @Expose
+    private List<LstLaboratoryMicspecimenOrderedProc> lstLaboratoryMicSpecimenOrderedProc;
+    @SerializedName("SpecimenID")
+    @Expose
+    private String specimenID;
+    @SerializedName("OrderedTests")
+    @Expose
+    private String orderedTests;
+    @SerializedName("CollectedBy")
+    @Expose
+    private String collectedBy;
+    @SerializedName("ReceivedBy")
+    @Expose
+    private String receivedBy;
+    @SerializedName("ForwardedBy")
+    @Expose
+    private String forwardedBy;
+    @SerializedName("SignoutBy")
+    @Expose
+    private String signoutBy;
+    @SerializedName("SpecimenComments")
+    @Expose
+    private String specimenComments;
+    @SerializedName("SignoutDttm")
+    @Expose
+    private String signoutDttm;
+    @SerializedName("StatusID")
+    @Expose
+    private String statusID;
+    @SerializedName("SpecimenSectionID")
+    @Expose
+    private String specimenSectionID;
+    @SerializedName("ReportDispatchUser")
+    @Expose
+    private String reportDispatchUser;
+    @SerializedName("PerformedAtSTATLocation")
+    @Expose
+    private String performedAtSTATLocation;
+    @SerializedName("SortDttm")
+    @Expose
+    private String sortDttm;
+    @SerializedName("OrderedTestDisplayList")
+    @Expose
+    private String orderedTestDisplayList;
+    @SerializedName("CollectionDttm")
+    @Expose
+    private String collectionDttm;
+    @SerializedName("ReceivedOnFloorBy")
+    @Expose
+    private String receivedOnFloorBy;
+    @SerializedName("ReceivedOnFloorDttm")
+    @Expose
+    private String receivedOnFloorDttm;
+    @SerializedName("ForwardedDttm")
+    @Expose
+    private String forwardedDttm;
+    @SerializedName("SpecimenCancelComments")
+    @Expose
+    private String specimenCancelComments;
+    @SerializedName("SourceMnemonic")
+    @Expose
+    private String sourceMnemonic;
+    @SerializedName("PatientUnitNumber")
+    @Expose
+    private String patientUnitNumber;
+    @SerializedName("VisitLocationID")
+    @Expose
+    private String visitLocationID;
+    @SerializedName("ReferringDoctorID")
+    @Expose
+    private String referringDoctorID;
+    @SerializedName("SpecimenType")
+    @Expose
+    private String specimenType;
+    @SerializedName("isExternalReport")
+    @Expose
+    private Boolean isExternalReport;
+    @SerializedName("ExternalPath")
+    @Expose
+    private String externalPath;
+    @SerializedName("ExternalFile")
+    @Expose
+    private String externalFile;
+    @SerializedName("SpecimenNumber")
+    @Expose
+    private Object specimenNumber;
+    @SerializedName("LastFileDateTime")
+    @Expose
+    private Object lastFileDateTime;
+    @SerializedName("LastFileUser")
+    @Expose
+    private Object lastFileUser;
+    @SerializedName("LastFileTerminal")
+    @Expose
+    private Object lastFileTerminal;
+    @SerializedName("Active")
+    @Expose
+    private Object active;
 
-        private final static long serialVersionUID = -792760789047274044L;
+    private final static long serialVersionUID = -792760789047274044L;
 
-    public  List<LstLaboratorySpecimenResults> getLstLaboratorySpecimenResults() {
+    public List<LstLaboratorySpecimenResults> getLstLaboratorySpecimenResults() {
         return lstLaboratorySpecimenResults;
     }
 
@@ -406,6 +409,13 @@ public class LaboratoryDetailModel
         this.active = active;
     }
 
+    public String getExternalFile() {
+        return externalFile;
+    }
+
+    public void setExternalFile(String externalFile) {
+        this.externalFile = externalFile;
+    }
 
 
 }
