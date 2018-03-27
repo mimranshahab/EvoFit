@@ -181,9 +181,7 @@ public class PacsFragment extends BaseFragment implements View.OnClickListener, 
                                 ArrayList arrayList = new ArrayList<PacsDescriptionAdapter>();
 //                                if (pacsModel != null) {
                                 for (int i = 0; i < pacsModel.getPatient_Name().size(); i++) {
-
                                     PacsDescriptionModel pacsDescriptionModel = new PacsDescriptionModel();
-
                                     pacsDescriptionModel.setPatient_Name(pacsModel.getPatient_Name().get(i));
                                     pacsDescriptionModel.setPatientDOB(pacsModel.getPatientDOB().get(i));
                                     pacsDescriptionModel.setPatientAge(pacsModel.getPatientAge().get(i));
@@ -216,7 +214,7 @@ public class PacsFragment extends BaseFragment implements View.OnClickListener, 
 
                             @Override
                             public void onError() {
-
+                                showEmptyView();
                             }
                         });
 

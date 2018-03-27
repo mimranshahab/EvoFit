@@ -1,6 +1,5 @@
 package edu.aku.akuh_health_first.fragments;
 
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.widget.DrawerLayout;
@@ -11,12 +10,14 @@ import android.widget.AdapterView;
 
 import com.google.gson.JsonObject;
 
+import java.util.ArrayList;
+
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import butterknife.Unbinder;
 import edu.aku.akuh_health_first.R;
-import edu.aku.akuh_health_first.constatnts.AppConstants;
+import edu.aku.akuh_health_first.activities.HomeActivity;
 import edu.aku.akuh_health_first.constatnts.Events;
 import edu.aku.akuh_health_first.constatnts.WebServiceConstants;
 import edu.aku.akuh_health_first.enums.BaseURLTypes;
@@ -25,8 +26,12 @@ import edu.aku.akuh_health_first.helperclasses.ui.helper.TitleBar;
 import edu.aku.akuh_health_first.helperclasses.ui.helper.UIHelper;
 import edu.aku.akuh_health_first.managers.retrofit.GsonFactory;
 import edu.aku.akuh_health_first.managers.retrofit.WebServices;
+import edu.aku.akuh_health_first.models.IntWrapper;
+import edu.aku.akuh_health_first.models.SpinnerModel;
 import edu.aku.akuh_health_first.models.receiving_model.CardMemberDetail;
+import edu.aku.akuh_health_first.models.receiving_model.RegisterVM;
 import edu.aku.akuh_health_first.models.receiving_model.UserDetailModel;
+import edu.aku.akuh_health_first.models.sending_model.EditCardModel;
 import edu.aku.akuh_health_first.models.wrappers.WebResponse;
 import edu.aku.akuh_health_first.widget.AnyEditTextView;
 import edu.aku.akuh_health_first.widget.AnyTextView;
@@ -57,7 +62,8 @@ public class EditProfileFragment extends BaseFragment {
     AnyTextView txtPermanentCountry;
     @BindView(R.id.btnUpdate)
     AnyTextView btnUpdate;
-
+//    private IntWrapper freqPosition = new IntWrapper(-1);
+//    private IntWrapper routePosition = new IntWrapper(-1);
 
     @Override
     protected int getFragmentLayout() {
@@ -74,10 +80,42 @@ public class EditProfileFragment extends BaseFragment {
     }
 
     @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        arrPermanentCountry = new ArrayList<>();
+        arrCurrentCountry = new ArrayList<>();
+    }
+
+    @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         setData();
+//        serviceCallGetMember();
     }
+
+    private void serviceCallGetMember() {
+        EditCardModel editCardModel = new EditCardModel();
+        editCardModel.setMrnNumber(getCurrentUser().getMRNumber());
+        editCardModel.setCardNumber(getCurrentUser().getCardNumber());
+        new WebServices(getBaseActivity(),
+                WebServiceConstants.temporaryToken,
+                BaseURLTypes.AHFA_BASE_URL)
+                .webServiceRequestAPIForJsonObject(WebServiceConstants.METHOD_GET_EDIT_CARD,
+                        editCardModel.toString(),
+                        new WebServices.IRequestJsonDataCallBack() {
+                            @Override
+                            public void requestDataResponse(WebResponse<JsonObject> webResponse) {
+
+
+                            }
+
+                            @Override
+                            public void onError() {
+
+                            }
+                        });
+    }
+
 
     private void setData() {
         UserDetailModel user = sharedPreferenceManager.getCurrentUser();
@@ -188,12 +226,6 @@ public class EditProfileFragment extends BaseFragment {
     }
 
 
-    @OnClick(R.id.btnUpdate)
-    public void onViewClicked() {
-        webServiceCall(sharedPreferenceManager.getCurrentUser());
-    }
-
-
     private void getCardDetailService(final UserDetailModel user) {
         CardMemberDetail cardMemberDetail = new CardMemberDetail(WebServiceConstants.tempCardNumber);
 
@@ -217,5 +249,25 @@ public class EditProfileFragment extends BaseFragment {
                     }
                 });
 
+    }
+
+    private ArrayList<SpinnerModel> arrPermanentCountry;
+    private ArrayList<SpinnerModel> arrCurrentCountry;
+
+    @OnClick({R.id.txtCurrentCountry, R.id.txtPermanentCountry, R.id.btnUpdate})
+    public void onViewClicked(View view) {
+        switch (view.getId()) {
+            case R.id.txtCurrentCountry:
+//                UIHelper.showSpinnerDialog(this, arrCurrentCountry, "Select Current Country", txtCurrentCountry, null, routePosition);
+
+                break;
+            case R.id.txtPermanentCountry:
+//                UIHelper.showSpinnerDialog(this, arrPermanentCountry, "Select Permanent Country", txtPermanentCountry, null, routePosition);
+
+                break;
+            case R.id.btnUpdate:
+                webServiceCall(sharedPreferenceManager.getCurrentUser());
+                break;
+        }
     }
 }
