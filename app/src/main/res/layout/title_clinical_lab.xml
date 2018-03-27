@@ -11,8 +11,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
          android:animateLayoutChanges="true"
-        app:cardCornerRadius="@dimen/x8dp"
-        app:cardElevation="@dimen/x3dp"
+        app:cardElevation="@dimen/x5dp"
 
         >
 
@@ -65,6 +64,7 @@
                 android:ellipsize="end"
                 android:hint="Location"
                 android:text=""
+                android:drawableLeft="@drawable/location"
                 android:textColor="@color/txt_aku_blue"
                 android:textSize="@dimen/s12"
                 app:typeface="@string/font_regular" />
