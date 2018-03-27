@@ -67,18 +67,24 @@ public class ClinicalLabAdapterV1 extends RecyclerView.Adapter<ClinicalLabAdapte
             colorCodes(holder,
                     R.color.base_green,
                     R.drawable.rounded_box_filled_base_green);
+            holder.btnShowDetail.setVisibility(View.VISIBLE);
+
 //            holder.txtStatus.setBackgroundResource(R.drawable.rounded_box_filled_base_green);
+
 
         } else if (model.getStatusID().equalsIgnoreCase("Pending")) {
             colorCodes(holder,
                     R.color.base_amber,
                     R.drawable.rounded_box_filled_base_amber);
+            holder.btnShowDetail.setVisibility(View.GONE);
 //            holder.txtStatus.setBackgroundResource(R.drawable.rounded_box_filled_base_amber);
 
         } else {
             colorCodes(holder,
                     R.color.base_reddish,
                     R.drawable.rounded_box_filled_base_red);
+            holder.btnShowDetail.setVisibility(View.GONE);
+
 //            holder.txtStatus.setBackgroundResource(R.drawable.rounded_box_filled_base_red);
         }
 
