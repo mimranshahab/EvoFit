@@ -13,6 +13,14 @@
         android:padding="@dimen/x15dp">
 
 
+        <edu.aku.akuh_health_first.widget.AnyTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/x10dp"
+            android:text="@string/cell_phone_number"
+            android:textColor="@color/txt_aku_blue"
+            android:textSize="@dimen/s14"
+            app:typeface="@string/font_regular" />
 
         <edu.aku.akuh_health_first.widget.AnyEditTextView
             android:id="@+id/edMobileNumber"
@@ -34,7 +42,15 @@
             app:testType="phone"
             app:typeface="@string/font_regular" />
 
-
+        <edu.aku.akuh_health_first.widget.AnyTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/x7dp"
+            android:layout_marginLeft="@dimen/x10dp"
+            android:text="@string/landline_number"
+            android:textColor="@color/txt_aku_blue"
+            android:textSize="@dimen/s14"
+            app:typeface="@string/font_regular" />
         <edu.aku.akuh_health_first.widget.AnyEditTextView
             android:id="@+id/edtLandlineNumber"
             android:layout_width="match_parent"
@@ -55,9 +71,15 @@
             app:testType="phone"
             app:typeface="@string/font_regular" />
 
-
-
-
+        <edu.aku.akuh_health_first.widget.AnyTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/x7dp"
+            android:layout_marginLeft="@dimen/x10dp"
+            android:text="@string/current_address"
+            android:textColor="@color/txt_aku_blue"
+            android:textSize="@dimen/s14"
+            app:typeface="@string/font_regular" />
         <edu.aku.akuh_health_first.widget.AnyEditTextView
             android:id="@+id/edtCurrentAddress"
             android:layout_width="match_parent"
@@ -76,7 +98,15 @@
             android:textSize="@dimen/s15"
             app:testType="nocheck"
             app:typeface="@string/font_regular" />
-
+        <edu.aku.akuh_health_first.widget.AnyTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/x7dp"
+            android:layout_marginLeft="@dimen/x10dp"
+            android:text="@string/current_city"
+            android:textColor="@color/txt_aku_blue"
+            android:textSize="@dimen/s14"
+            app:typeface="@string/font_regular" />
 
         <edu.aku.akuh_health_first.widget.AnyEditTextView
             android:id="@+id/edtCurrentCity"
@@ -98,7 +128,15 @@
             app:testType="nocheck"
             app:typeface="@string/font_regular" />
 
-
+        <edu.aku.akuh_health_first.widget.AnyTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/x7dp"
+            android:layout_marginLeft="@dimen/x10dp"
+            android:text="@string/current_country"
+            android:textColor="@color/txt_aku_blue"
+            android:textSize="@dimen/s14"
+            app:typeface="@string/font_regular" />
         <edu.aku.akuh_health_first.widget.AnyTextView
             android:id="@+id/txtCurrentCountry"
             android:layout_width="match_parent"
@@ -116,8 +154,15 @@
             android:textSize="@dimen/s15"
             app:typeface="@string/font_regular" />
 
-
-
+        <edu.aku.akuh_health_first.widget.AnyTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/x7dp"
+            android:layout_marginLeft="@dimen/x10dp"
+            android:text="@string/permanent_address"
+            android:textColor="@color/txt_aku_blue"
+            android:textSize="@dimen/s14"
+            app:typeface="@string/font_regular" />
         <edu.aku.akuh_health_first.widget.AnyEditTextView
             android:id="@+id/edtPermanentAddress"
             android:layout_width="match_parent"
@@ -128,6 +173,7 @@
             android:hint="Enter Permanent Address"
             android:inputType="textMultiLine"
             android:maxLines="1"
+
             android:padding="@dimen/x10dp"
             android:textColor="@color/txt_aku_blue"
             android:textColorHint="@color/text_hint"
@@ -135,7 +181,15 @@
             app:testType="nocheck"
             app:typeface="@string/font_regular" />
 
-
+        <edu.aku.akuh_health_first.widget.AnyTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/x7dp"
+            android:layout_marginLeft="@dimen/x10dp"
+            android:text="@string/permanent_city"
+            android:textColor="@color/txt_aku_blue"
+            android:textSize="@dimen/s14"
+            app:typeface="@string/font_regular" />
         <edu.aku.akuh_health_first.widget.AnyEditTextView
             android:id="@+id/edtPermanentCity"
             android:layout_width="match_parent"
@@ -156,7 +210,15 @@
             app:testType="nocheck"
             app:typeface="@string/font_regular" />
 
-
+        <edu.aku.akuh_health_first.widget.AnyTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/x7dp"
+            android:layout_marginLeft="@dimen/x10dp"
+            android:text="@string/permanent_country"
+            android:textColor="@color/txt_aku_blue"
+            android:textSize="@dimen/s14"
+            app:typeface="@string/font_regular" />
         <edu.aku.akuh_health_first.widget.AnyTextView
             android:id="@+id/txtPermanentCountry"
             android:layout_width="match_parent"
@@ -172,9 +234,6 @@
             android:textColorHint="@color/text_hint"
             android:textSize="@dimen/s15"
             app:typeface="@string/font_regular" />
-
-
-
 
 
         <edu.aku.akuh_health_first.widget.AnyTextView

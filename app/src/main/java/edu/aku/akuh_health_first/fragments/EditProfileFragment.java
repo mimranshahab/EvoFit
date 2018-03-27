@@ -87,11 +87,11 @@ public class EditProfileFragment extends BaseFragment {
 
         edtCurrentAddress.setText(user.getCurrentAddress());
         edtCurrentCity.setText(user.getCurrentCity());
-        txtCurrentCountry.setText(user.getCurrentCountryID());
+        txtCurrentCountry.setText(user.getCurrentCountryDescription());
 
         edtPermanentCity.setText(user.getPermanentCity());
         edtPermanentAddress.setText(user.getPermanentAddress());
-        txtPermanentCountry.setText(user.getPermanentCountryID());
+        txtPermanentCountry.setText(user.getPermanentCountryDescription());
 
 
     }
@@ -109,26 +109,35 @@ public class EditProfileFragment extends BaseFragment {
         user.setPermanentCity(edtPermanentCity.getStringTrimmed());
         user.setPermanentCountryID(txtPermanentCountry.getStringTrimmed());
         user.setLastFileDateTime(null);
-
-        new WebServices(getBaseActivity(),
-                WebServiceConstants.temporaryToken,
-                BaseURLTypes.AHFA_BASE_URL)
-                .webServiceRequestAPIForJsonObject(WebServiceConstants.METHOD_UPDATE_PROFILE,
-                        user.toString(),
-                        new WebServices.IRequestJsonDataCallBack() {
-                            @Override
-                            public void requestDataResponse(WebResponse<JsonObject> webResponse) {
+        if (edMobileNumber.getStringTrimmed() != "" &&
+                edtCurrentAddress.getStringTrimmed() != "" &&
+                edtCurrentCity.getStringTrimmed() != "" &&
+                txtCurrentCountry.getStringTrimmed() != "" &&
+                edtPermanentAddress.getStringTrimmed() != "" &&
+                txtPermanentCountry.getStringTrimmed() != "" &&
+                edtPermanentCity.getStringTrimmed() != "") {
+            new WebServices(getBaseActivity(),
+                    WebServiceConstants.temporaryToken,
+                    BaseURLTypes.AHFA_BASE_URL)
+                    .webServiceRequestAPIForJsonObject(WebServiceConstants.METHOD_UPDATE_PROFILE,
+                            user.toString(),
+                            new WebServices.IRequestJsonDataCallBack() {
+                                @Override
+                                public void requestDataResponse(WebResponse<JsonObject> webResponse) {
 //                                getBaseActivity().openActivity(HomeActivity.class);
-                                UIHelper.showToast(getContext(), webResponse.message);
+                                    UIHelper.showToast(getContext(), webResponse.message);
 
-                                getCardDetailService(user);
-                            }
+                                    getCardDetailService(user);
+                                }
 
-                            @Override
-                            public void onError() {
+                                @Override
+                                public void onError() {
 
-                            }
-                        });
+                                }
+                            });
+        } else {
+            UIHelper.showToast(getBaseActivity(), "Fields cannot be empty");
+        }
     }
 
     @Override

@@ -6,8 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/c_white"
-    android:orientation="vertical"
->
+    android:orientation="vertical">
 
     <ScrollView
         android:layout_width="match_parent"
@@ -27,8 +26,8 @@
 
                 <de.hdodenhof.circleimageview.CircleImageView
                     android:id="@+id/circleImageView"
-                    android:layout_width="@dimen/x245dp"
-                    android:layout_height="@dimen/x245dp"
+                    android:layout_width="@dimen/x225dp"
+                    android:layout_height="@dimen/x225dp"
                     android:layout_margin="@dimen/x15dp"
                     android:scaleType="centerCrop"
                     android:src="@drawable/user_image"
@@ -45,138 +44,144 @@
                     android:background="@drawable/c_upload_photo" />
             </RelativeLayout>
 
-
-            <LinearLayout
-                android:id="@+id/refreshLayout"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="@dimen/x5dp"
-                android:gravity="center_horizontal"
-                android:orientation="vertical">
-
-
-                <edu.aku.akuh_health_first.widget.AnyTextView
-                    android:id="@+id/txtUserName"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/x5dp"
-                    android:hint="User name"
-                    android:gravity="center"
-
-                    android:padding="@dimen/x5dp"
-                    android:textColor="@color/txt_aku_blue"
-                    android:textSize="@dimen/s17"
-                    app:typeface="@string/font_bold" />
-
-                <edu.aku.akuh_health_first.widget.AnyTextView
-                    android:id="@+id/txtMRN"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:hint="MR #"
-                    android:padding="@dimen/x5dp"
-                    android:gravity="center"
-
-                    android:textColor="@color/base_reddish"
-                    android:textSize="@dimen/s16"
-                    app:typeface="@string/font_regular" />
-
-
-                <edu.aku.akuh_health_first.widget.AnyTextView
-                    android:id="@+id/txtAge"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="@dimen/x15dp"
-                    android:hint="Age and Gender"
-                    android:padding="@dimen/x5dp"
-                    android:gravity="center"
-                    android:textColor="@color/c_gray"
-                    android:textSize="@dimen/s16"
-                    app:typeface="@string/font_regular" />
-
-
-                <edu.aku.akuh_health_first.widget.AnyTextView
-                    android:id="@+id/txtCincNumber"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="@dimen/x3dp"
-                    android:background="@color/line"
-                    android:drawableLeft="@drawable/c_card_icon"
-                    android:drawablePadding="@dimen/x5dp"
-                    android:ellipsize="end"
-                    android:gravity="center_vertical"
-                    android:hint="Cinic Number"
-                    android:padding="@dimen/x10dp"
-                    android:singleLine="true"
-                    android:textColor="@color/text_color_grey"
-                    android:textSize="@dimen/s15"
-                    app:typeface="@string/font_regular" />
-
-                <edu.aku.akuh_health_first.widget.AnyTextView
-                    android:id="@+id/txtPhoneNum"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="@dimen/x3dp"
-                    android:background="@color/line"
-                    android:drawableLeft="@drawable/c_phone"
-                    android:drawablePadding="@dimen/x5dp"
-                    android:ellipsize="end"
-                    android:gravity="center_vertical"
-                    android:hint="Contact number...."
-                    android:padding="@dimen/x10dp"
-                    android:singleLine="true"
-                    android:textColor="@color/text_color_grey"
-                    android:textSize="@dimen/s15"
-                    app:typeface="@string/font_regular" />
-
-                <edu.aku.akuh_health_first.widget.AnyTextView
-                    android:id="@+id/txtAddress"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="@dimen/x3dp"
-                    android:background="@color/line"
-                    android:drawableLeft="@drawable/c_location"
-                    android:drawablePadding="@dimen/x5dp"
-                    android:ellipsize="end"
-                    android:gravity="center_vertical"
-                    android:hint=" address.... "
-                    android:maxLines="2"
-                    android:padding="@dimen/x10dp"
-                    android:textColor="@color/text_color_grey"
-                    android:textSize="@dimen/s15"
-                    app:typeface="@string/font_regular" />
-
-                <edu.aku.akuh_health_first.widget.AnyTextView
-                    android:id="@+id/txtEmailAddress"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="@dimen/x3dp"
-                    android:background="@color/line"
-                    android:drawableLeft="@drawable/c_email"
-                    android:drawablePadding="@dimen/x5dp"
-                    android:ellipsize="end"
-                    android:gravity="center_vertical"
-                    android:hint=" email address..."
-                    android:padding="@dimen/x10dp"
-                    android:singleLine="true"
-                    android:textColor="@color/text_color_grey"
-                    android:textSize="@dimen/s15"
-                    app:typeface="@string/font_regular" />
-            </LinearLayout>
-
-            <com.github.clans.fab.FloatingActionButton
-                android:id="@+id/fab"
+            <RelativeLayout
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentRight="true"
-                android:layout_gravity="end|bottom"
-                android:layout_marginBottom="@dimen/x8dp"
-                android:layout_marginRight="@dimen/x8dp"
-                android:padding="@dimen/x8dp"
-                android:src="@drawable/ic_action_edit"
-                android:visibility="visible"
-                app:fab_colorNormal="@color/colorPrimaryDark"
-                app:fab_colorPressed="@color/base_amber"
-                app:fab_colorRipple="@color/base_reddish" />
+                android:layout_height="wrap_content">
+
+
+                <LinearLayout
+                    android:id="@+id/refreshLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/x5dp"
+                    android:gravity="center_horizontal"
+                    android:orientation="vertical">
+
+
+                    <edu.aku.akuh_health_first.widget.AnyTextView
+                        android:id="@+id/txtUserName"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/x5dp"
+                        android:gravity="center"
+                        android:hint="User name"
+
+                        android:padding="@dimen/x5dp"
+                        android:textColor="@color/txt_aku_blue"
+                        android:textSize="@dimen/s17"
+                        app:typeface="@string/font_bold" />
+
+                    <edu.aku.akuh_health_first.widget.AnyTextView
+                        android:id="@+id/txtMRN"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:hint="MR #"
+                        android:padding="@dimen/x5dp"
+
+                        android:textColor="@color/base_reddish"
+                        android:textSize="@dimen/s16"
+                        app:typeface="@string/font_regular" />
+
+
+                    <edu.aku.akuh_health_first.widget.AnyTextView
+                        android:id="@+id/txtAge"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="@dimen/x15dp"
+                        android:gravity="center"
+                        android:hint="Age and Gender"
+                        android:padding="@dimen/x5dp"
+                        android:textColor="@color/c_gray"
+                        android:textSize="@dimen/s16"
+                        app:typeface="@string/font_regular" />
+
+
+                    <edu.aku.akuh_health_first.widget.AnyTextView
+                        android:id="@+id/txtCincNumber"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="@dimen/x3dp"
+                        android:background="@color/line"
+                        android:drawableLeft="@drawable/c_card_icon"
+                        android:drawablePadding="@dimen/x5dp"
+                        android:ellipsize="end"
+                        android:gravity="center_vertical"
+                        android:hint="Cinic Number"
+                        android:padding="@dimen/x10dp"
+                        android:singleLine="true"
+                        android:textColor="@color/text_color_grey"
+                        android:textSize="@dimen/s15"
+                        app:typeface="@string/font_regular" />
+
+                    <edu.aku.akuh_health_first.widget.AnyTextView
+                        android:id="@+id/txtPhoneNum"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="@dimen/x3dp"
+                        android:background="@color/line"
+                        android:drawableLeft="@drawable/c_phone"
+                        android:drawablePadding="@dimen/x5dp"
+                        android:ellipsize="end"
+                        android:gravity="center_vertical"
+                        android:hint="Contact number...."
+                        android:padding="@dimen/x10dp"
+                        android:singleLine="true"
+                        android:textColor="@color/text_color_grey"
+                        android:textSize="@dimen/s15"
+                        app:typeface="@string/font_regular" />
+
+                    <edu.aku.akuh_health_first.widget.AnyTextView
+                        android:id="@+id/txtAddress"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="@dimen/x3dp"
+                        android:background="@color/line"
+                        android:drawableLeft="@drawable/c_location"
+                        android:drawablePadding="@dimen/x5dp"
+                        android:ellipsize="end"
+                        android:gravity="center_vertical"
+                        android:hint=" address.... "
+                        android:maxLines="2"
+                        android:padding="@dimen/x10dp"
+                        android:textColor="@color/text_color_grey"
+                        android:textSize="@dimen/s15"
+                        app:typeface="@string/font_regular" />
+
+                    <edu.aku.akuh_health_first.widget.AnyTextView
+                        android:id="@+id/txtEmailAddress"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="@dimen/x3dp"
+                        android:background="@color/line"
+                        android:drawableLeft="@drawable/c_email"
+                        android:drawablePadding="@dimen/x5dp"
+                        android:ellipsize="end"
+                        android:gravity="center_vertical"
+                        android:hint=" email address..."
+                        android:padding="@dimen/x10dp"
+                        android:singleLine="true"
+                        android:textColor="@color/text_color_grey"
+                        android:textSize="@dimen/s15"
+                        app:typeface="@string/font_regular" />
+                </LinearLayout>
+
+                <com.github.clans.fab.FloatingActionButton
+                    android:id="@+id/fab"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignBottom="@id/refreshLayout"
+                    android:layout_alignParentRight="true"
+                    android:layout_gravity="end|bottom"
+                    android:layout_marginRight="@dimen/x8dp"
+                    android:padding="@dimen/x8dp"
+                    android:src="@drawable/ic_action_edit"
+                    android:visibility="visible"
+                    app:fab_colorNormal="@color/colorPrimaryDark"
+                    app:fab_colorPressed="@color/base_amber"
+                    app:fab_colorRipple="@color/base_reddish" />
+            </RelativeLayout>
+
         </LinearLayout>
     </ScrollView>
 </LinearLayout>
