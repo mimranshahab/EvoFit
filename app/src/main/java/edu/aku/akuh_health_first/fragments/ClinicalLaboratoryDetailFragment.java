@@ -61,9 +61,15 @@ public class ClinicalLaboratoryDetailFragment extends BaseFragment implements On
     AnyTextView txtReportDatetime;
     private ArrayList<LstLaboratorySpecimenResults> arrClinicalLabLists;
     private ClinicalLabDetailAdapterv1 adapterClinicalLabDetail;
-    private String specimenNumber;
 
-
+    public static ClinicalLaboratoryDetailFragment newInstance() {
+        
+        Bundle args = new Bundle();
+        
+        ClinicalLaboratoryDetailFragment fragment = new ClinicalLaboratoryDetailFragment();
+        fragment.setArguments(args);
+        return fragment;
+    }
 
     public static ClinicalLaboratoryDetailFragment newInstance(String specimenNumber) {
 
@@ -100,8 +106,7 @@ public class ClinicalLaboratoryDetailFragment extends BaseFragment implements On
         super.onCreate(savedInstanceState);
         arrClinicalLabLists = new ArrayList<LstLaboratorySpecimenResults>();
         adapterClinicalLabDetail = new ClinicalLabDetailAdapterv1(getBaseActivity(), arrClinicalLabLists, this);
-        specimenNumber = getArguments().getString(SPECIMEN_NNUMBER);
-    }
+     }
 
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
@@ -171,8 +176,8 @@ public class ClinicalLaboratoryDetailFragment extends BaseFragment implements On
                                 if (laboratoryUpdateModel.getLstLaboratorySpecimenResults() != null) {
                                     arrClinicalLabLists.clear();
                                     arrClinicalLabLists.addAll(laboratoryUpdateModel.getLstLaboratorySpecimenResults());
-                                    adapterClinicalLabDetail.notifyDataSetChanged();
                                     bindData(laboratoryUpdateModel);
+                                    adapterClinicalLabDetail.notifyDataSetChanged();
                                 }
 
                             }

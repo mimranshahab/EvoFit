@@ -177,9 +177,8 @@ public class ClinicalLaboratoryFragment extends BaseFragment implements View.OnC
     public void onItemClick(int position, Object object) {
         if (object instanceof LaboratoryModel) {
             LaboratoryModel modelLaboratoryModel = (LaboratoryModel) object;
-            getBaseActivity().addDockableFragment(ClinicalLaboratoryDetailFragment.newInstance(modelLaboratoryModel.getSpecimenNumber()));
-
-
+            if(modelLaboratoryModel != null){
+            getBaseActivity().addDockableFragment(ClinicalLaboratoryDetailFragment.newInstance());}
         }
 
     }
