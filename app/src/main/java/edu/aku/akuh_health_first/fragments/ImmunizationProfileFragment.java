@@ -107,8 +107,6 @@ public class ImmunizationProfileFragment extends BaseFragment implements View.On
 
     private void bindView() {
         RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getBaseActivity());
-        // FIXME: 2/28/2018 NullPointerException:
-        // FIXME: Attempt to invoke virtual method 'void android.support.v7.widget.RecyclerView.setLayoutManager
         recyclerView.setLayoutManager(mLayoutManager);
         ((DefaultItemAnimator) recyclerView.getItemAnimator()).setSupportsChangeAnimations(false);
         int resId = R.anim.layout_animation_fall_bottom;
@@ -175,16 +173,15 @@ public class ImmunizationProfileFragment extends BaseFragment implements View.On
 
 
     private void serviceCall() {
-        // FIXME: 1/18/2018 Use live data in future
         SearchModel model = new SearchModel();
-        model.setMRNumber(WebServiceConstants.tempMRN_immunization);
+        model.setMRNumber(getCurrentUser().getMRNumber());
         if (isFromTimeline) {
             model.setVisitID(String.valueOf(patientVisitAdmissionID));
         } else {
             model.setVisitID(null);
         }
         new WebServices(getBaseActivity(),
-                WebServiceConstants.temporaryToken,
+                getToken(),
                 BaseURLTypes.AHFA_BASE_URL)
                 .webServiceRequestAPIForArray(WebServiceConstants.METHOD_IMMUNIZATION_VACCINE_SCHEDULE,
                         model.toString(),

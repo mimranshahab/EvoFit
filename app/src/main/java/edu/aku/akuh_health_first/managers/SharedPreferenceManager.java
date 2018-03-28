@@ -39,11 +39,11 @@ public class SharedPreferenceManager {
         return factory;
     }
 
-    public static void clearDB() {
+    public void clearDB() {
         pref.edit().clear().commit();
     }
 
-    public static void clearKey(String key) {
+    public void clearKey(String key) {
         pref.edit().remove(key).commit();
     }
 
@@ -140,8 +140,8 @@ public class SharedPreferenceManager {
         putValue(FORCED_RESTART, isForcedRestart);
     }
 
-    protected void removePreference(Context context, String prefsName,
-                                    String key) {
+    public void removePreference(Context context, String prefsName,
+                                 String key) {
 
         SharedPreferences preferences = context.getSharedPreferences(
                 prefsName, Activity.MODE_PRIVATE);

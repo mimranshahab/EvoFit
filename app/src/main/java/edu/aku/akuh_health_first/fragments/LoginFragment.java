@@ -9,7 +9,9 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 
 import com.andreabaccega.widget.FormEditText;
+
 import edu.aku.akuh_health_first.widget.AnyTextView;
+
 import com.google.gson.JsonObject;
 
 import edu.aku.akuh_health_first.R;
@@ -31,6 +33,8 @@ import edu.aku.akuh_health_first.models.sending_model.LoginApiModel;
 import edu.aku.akuh_health_first.models.wrappers.WebResponse;
 
 import static edu.aku.akuh_health_first.constatnts.AppConstants.CARD_MASK;
+import static edu.aku.akuh_health_first.constatnts.AppConstants.KEY_CARD_NUMBER;
+import static edu.aku.akuh_health_first.constatnts.AppConstants.KEY_TOKEN;
 
 /**
  * Created by khanhamza on 08-May-17.
@@ -101,8 +105,6 @@ public class LoginFragment extends BaseFragment {
         edtCardNumber.addValidator(new CardNumberValidation());
         edtCardNumber.addTextChangedListener(new MaskFormatter(CARD_MASK, edtCardNumber, '-'));
 
-//        setClickableSpan(txtSignUp);
-//        serviceCallToken();
 
     }
 
@@ -111,35 +113,6 @@ public class LoginFragment extends BaseFragment {
         return DrawerLayout.LOCK_MODE_LOCKED_CLOSED;
     }
 
-
-//    private void serviceCallToken() {
-//
-//        new WebServices(getContext()).webServiceGetToken(new WebServices.IRequestStringCallBack() {
-//            @Override
-//            public void requestDataResponse(String webResponse) {
-//                WebServices.setBearerToken(webResponse);
-//            }
-//
-//            @Override
-//            public void onError() {
-//
-//            }
-//        });
-//    }
-
-
-//    private void setClickableSpan(TextView textView) {
-//        GenericClickableSpan text1 = new GenericClickableSpan(getBaseActivity(), new GenericClickableInterface() {
-//            @Override
-//            public void click() {
-//                getBaseActivity().addDockableFragment(RegisterFragment.newInstance());
-//            }
-//        });
-//        text1.setSpannableStringValue(textView, getString(R.string.register_an_account), new SpannableString(textView.getText().toString().trim()));
-//        text1.setSpan(1.2f);
-//        text1.setUnderline(true);
-//        text1.setTextViewWithColor(getResources().getColor(R.color.colorPrimary));
-//    }
 
     @Override
     public void onDestroyView() {
@@ -154,9 +127,8 @@ public class LoginFragment extends BaseFragment {
                 getBaseActivity().addDockableFragment(ForgotPassowrdFragment.newInstance());
                 break;
             case R.id.btnLogin:
-                // FIXME: 1/2/2018 enter live data
-                edtCardNumber.setText(WebServiceConstants.tempCardNumber);
-                edtPassword.setText(WebServiceConstants.tempPassword);
+//                edtCardNumber.setText(WebServiceConstants.tempCardNumber);
+//                edtPassword.setText(WebServiceConstants.tempPassword);
                 if (edtCardNumber.testValidity() && edtPassword.testValidity()) {
                     LoginApiModel loginApiModel = new LoginApiModel(edtCardNumber.getText().toString(), edtPassword.getText().toString());
                     loginCall(loginApiModel);
@@ -170,14 +142,19 @@ public class LoginFragment extends BaseFragment {
 
     private void loginCall(LoginApiModel loginApiModel) {
         new WebServices(getBaseActivity(),
-                WebServiceConstants.temporaryToken,
+                getToken(),
                 BaseURLTypes.AHFA_BASE_URL)
                 .webServiceRequestAPIForJsonObject(WebServiceConstants.METHOD_USER_GET_USER,
                         loginApiModel.toString(),
                         new WebServices.IRequestJsonDataCallBack() {
                             @Override
                             public void requestDataResponse(WebResponse<JsonObject> webResponse) {
+                                String token = webResponse.result.get("_token").getAsString();
+                                String cardNumber = webResponse.result.get("CardNumber").getAsString();
+                                sharedPreferenceManager.putValue(KEY_TOKEN, token);
+                                sharedPreferenceManager.putValue(KEY_CARD_NUMBER, cardNumber);
                                 getBaseActivity().openActivity(HomeActivity.class);
+                                getBaseActivity().finish();
                             }
 
                             @Override

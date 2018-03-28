@@ -80,6 +80,10 @@ public abstract class BaseFragment extends Fragment implements View.OnClickListe
         return sharedPreferenceManager.getCurrentUser();
     }
 
+    public String getToken() {
+        return sharedPreferenceManager.getString(AppConstants.KEY_TOKEN);
+    }
+
     public abstract int getDrawerLockMode();
 
     public void setSpinner(ArrayAdapter adaptSpinner, final TextView textView, final Spinner spinner) {
@@ -210,7 +214,8 @@ public abstract class BaseFragment extends Fragment implements View.OnClickListe
 
 
     public void showNextBuildToast() {
-        UIHelper.showToast(getContext(), "This feature will be implemented in next build");
+//        UIHelper.showToast(getContext(), "This feature will be implemented in next build");
+        UIHelper.showToast(getContext(), "This feature is in progress");
     }
 
 

@@ -162,10 +162,8 @@ public class EndoscopyFragment extends BaseFragment implements View.OnClickListe
 
 
     private void serviceCall() {
-        // FIXME: 1/18/2018 Use live data in future
-
         SearchModel model = new SearchModel();
-        model.setMRNumber(WebServiceConstants.tempMRN_ENDOSCOPY);
+        model.setMRNumber(getCurrentUser().getMRNumber());
         if (isFromTimeline) {
             model.setVisitID(String.valueOf(patientVisitAdmissionID));
         } else {
@@ -173,7 +171,7 @@ public class EndoscopyFragment extends BaseFragment implements View.OnClickListe
         }
 
         new WebServices(getBaseActivity(),
-                WebServiceConstants.temporaryToken,
+                getToken(),
                 BaseURLTypes.AHFA_BASE_URL)
                 .webServiceRequestAPIForArray(WebServiceConstants.METHOD_GET_ENDOSCOPY_LIST,
                         model.toString(),
@@ -209,7 +207,7 @@ public class EndoscopyFragment extends BaseFragment implements View.OnClickListe
 
 
     private void showReportAPI(final EndoscopyModel model) {
-        new WebServices(getBaseActivity(), WebServiceConstants.temporaryToken, BaseURLTypes.AHFA_BASE_URL)
+        new WebServices(getBaseActivity(), getToken(), BaseURLTypes.AHFA_BASE_URL)
                 .webServiceRequestAPIForWebResponseWithString(WebServiceConstants.METHOD_GET_ENDOSCOPY_REPORT,
                         JSONObject.quote(model.getReportpath()), new WebServices.IRequestWebResponseWithStringDataCallBack() {
                             @Override

@@ -134,10 +134,10 @@ public class HealthHistoryFragment extends BaseFragment {
 
     private void serviceCall() {
         SearchModel model = new SearchModel();
-        model.setMRNumber(WebServiceConstants.tempMRN);
+        model.setMRNumber(getCurrentUser().getMRNumber());
         model.setVisitID(patientVisitAdmissionID + "");
         new WebServices(getBaseActivity(),
-                WebServiceConstants.temporaryToken,
+                getToken(),
                 BaseURLTypes.AHFA_BASE_URL)
                 .webServiceRequestAPIForArray(WebServiceConstants.METHOD_VISIT_MENU,
                         model.toString(),

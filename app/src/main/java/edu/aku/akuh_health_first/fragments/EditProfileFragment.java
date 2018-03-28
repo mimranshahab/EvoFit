@@ -117,7 +117,7 @@ public class EditProfileFragment extends BaseFragment {
                 txtPermanentCountry.getStringTrimmed() != "" &&
                 edtPermanentCity.getStringTrimmed() != "") {
             new WebServices(getBaseActivity(),
-                    WebServiceConstants.temporaryToken,
+                    getToken(),
                     BaseURLTypes.AHFA_BASE_URL)
                     .webServiceRequestAPIForJsonObject(WebServiceConstants.METHOD_UPDATE_PROFILE,
                             user.toString(),
@@ -195,10 +195,10 @@ public class EditProfileFragment extends BaseFragment {
 
 
     private void getCardDetailService(final UserDetailModel user) {
-        CardMemberDetail cardMemberDetail = new CardMemberDetail(WebServiceConstants.tempCardNumber);
+        CardMemberDetail cardMemberDetail = new CardMemberDetail(sharedPreferenceManager.getString(AppConstants.KEY_CARD_NUMBER));
 
         new WebServices(getBaseActivity(),
-                WebServiceConstants.temporaryToken,
+                getToken(),
                 BaseURLTypes.AHFA_BASE_URL).webServiceRequestAPIForJsonObject(WebServiceConstants.METHOD_CARD_MEMBER,
                 cardMemberDetail.toString(),
                 new WebServices.IRequestJsonDataCallBack() {

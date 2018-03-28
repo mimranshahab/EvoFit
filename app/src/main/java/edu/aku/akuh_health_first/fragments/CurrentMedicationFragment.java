@@ -181,10 +181,8 @@ public class CurrentMedicationFragment extends BaseFragment implements View.OnCl
 
 
     private void serviceCall() {
-
-        // FIXME: 1/18/2018 Use live data in future
         SearchModel model = new SearchModel();
-        model.setMRNumber(WebServiceConstants.tempMRN_immunization);
+        model.setMRNumber(getCurrentUser().getMRNumber());
         if (isFromTimeline) {
             model.setVisitID(String.valueOf(patientVisitAdmissionID));
         } else {
@@ -192,7 +190,7 @@ public class CurrentMedicationFragment extends BaseFragment implements View.OnCl
         }
 
         new WebServices(getBaseActivity(),
-                WebServiceConstants.temporaryToken,
+                getToken(),
                 BaseURLTypes.AHFA_BASE_URL)
                 .webServiceRequestAPIForArray(WebServiceConstants.METHOD_CURRENT_MEDICATION,
                         model.toString(),

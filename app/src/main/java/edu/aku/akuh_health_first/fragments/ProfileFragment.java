@@ -263,7 +263,7 @@ public class ProfileFragment extends BaseFragment implements OnNewPacketReceived
         requestModel.setMRNumber(sharedPreferenceManager.getCurrentUser().getMRNumber());
 
         new WebServices(getBaseActivity(),
-                WebServiceConstants.temporaryToken, BaseURLTypes.AHFA_BASE_URL)
+                getToken(), BaseURLTypes.AHFA_BASE_URL)
                 .webServiceUploadFileAPI(WebServiceConstants.METHOD_USER_UPLOAD_PROFILE_PICTURE,
                         uploadFilePath,
                         FileType.IMAGE,
@@ -291,10 +291,10 @@ public class ProfileFragment extends BaseFragment implements OnNewPacketReceived
 
 
     private void getCardDetailService() {
-        CardMemberDetail cardMemberDetail = new CardMemberDetail(WebServiceConstants.tempCardNumber);
+        CardMemberDetail cardMemberDetail = new CardMemberDetail(sharedPreferenceManager.getString(AppConstants.KEY_CARD_NUMBER));
 
         new WebServices(getBaseActivity(),
-                WebServiceConstants.temporaryToken,
+                getToken(),
                 BaseURLTypes.AHFA_BASE_URL).webServiceRequestAPIForJsonObject(WebServiceConstants.METHOD_CARD_MEMBER,
                 cardMemberDetail.toString(),
                 new WebServices.IRequestJsonDataCallBack() {

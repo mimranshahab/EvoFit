@@ -201,7 +201,7 @@ public class AddUpdateMedicationFragment extends BaseFragment {
     private void getFrequencyIds() {
 
         new WebServices(getBaseActivity(),
-                WebServiceConstants.temporaryToken,
+                getToken(),
                 BaseURLTypes.AHFA_BASE_URL)
                 .webServiceRequestAPIForArray(WebServiceConstants.METHOD_FREQUENCY_IDS,
                         "",
@@ -233,7 +233,7 @@ public class AddUpdateMedicationFragment extends BaseFragment {
     private void getRouteIdsService() {
 
         new WebServices(getBaseActivity(),
-                WebServiceConstants.temporaryToken,
+                getToken(),
                 BaseURLTypes.AHFA_BASE_URL)
                 .webServiceRequestAPIForArray(WebServiceConstants.METHOD_IMMUNIZATION_ROUTE_IDS,
                         "",
@@ -329,7 +329,7 @@ public class AddUpdateMedicationFragment extends BaseFragment {
     private void addMedicineData(boolean isLifeTime) {
         AddNewMedicine addNewMedicine = new AddNewMedicine();
         addNewMedicine.setLastFileterminal("MOBILE");
-        addNewMedicine.setMrnumber(WebServiceConstants.tempMRN_immunization);
+        addNewMedicine.setMrnumber(getCurrentUser().getMRNumber());
         addNewMedicine.setRxmedfrequencyid(frequencyIDandDescriptions.get(txtFrequencyDesc.getStringTrimmed()));
         addNewMedicine.setRxmedmedication(edtMedicineName.getStringTrimmed());
         addNewMedicine.setRxmedroute(routeIDandDescriptions.get(txtRouteId.getStringTrimmed()));
@@ -347,7 +347,7 @@ public class AddUpdateMedicationFragment extends BaseFragment {
 
 
     private void addMedicineService(String jsonData) {
-        new WebServices(getBaseActivity(), WebServiceConstants.temporaryToken, BaseURLTypes.AHFA_BASE_URL)
+        new WebServices(getBaseActivity(), getToken(), BaseURLTypes.AHFA_BASE_URL)
                 .webServiceRequestAPIForJsonObject(WebServiceConstants.METHOD_ADD_MEDICINE,
                         jsonData,
                         new WebServices.IRequestJsonDataCallBack() {

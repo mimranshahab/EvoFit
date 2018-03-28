@@ -122,9 +122,9 @@ public class LeftSideMenuFragment extends BaseFragment implements OnNewPacketRec
             @Override
             public void click() {
                 genericDialogFragment.getDialog().dismiss();
+                sharedPreferenceManager.clearDB();
                 getBaseActivity().clearAllActivitiesExceptThis(MainActivity.class);
-//                emptyBackStack();
-//                getBaseActivity().addDockableFragment(LoginFragment.newInstance());
+
             }
         });
 
@@ -160,7 +160,8 @@ public class LeftSideMenuFragment extends BaseFragment implements OnNewPacketRec
                 break;
 
             case R.id.txtCardSubscription:
-                getBaseActivity().addDockableFragment(CardSubscriptionFragment.newInstance());
+//                getBaseActivity().addDockableFragment(CardSubscriptionFragment.newInstance());
+                showNextBuildToast();
                 break;
 
             case R.id.txtAbout:

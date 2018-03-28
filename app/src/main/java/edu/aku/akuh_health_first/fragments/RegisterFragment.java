@@ -231,7 +231,7 @@ public class RegisterFragment extends BaseFragment {
 
     private void getRegisterVM() {
         new WebServices(getBaseActivity(),
-                WebServiceConstants.temporaryToken, BaseURLTypes.AHFA_BASE_URL)
+                getToken(), BaseURLTypes.AHFA_BASE_URL)
                 .webServiceRequestAPIForJsonObject(WebServiceConstants.METHOD_USER_GET_REGISTER_VM, "", new WebServices.IRequestJsonDataCallBack() {
                     @Override
                     public void requestDataResponse(WebResponse<JsonObject> webResponse) {
@@ -349,7 +349,7 @@ public class RegisterFragment extends BaseFragment {
 
     private void uploadImageFile(final String uploadFilePath, final String uploadFileUriPath) {
         new WebServices(getBaseActivity(),
-                WebServiceConstants.temporaryToken, BaseURLTypes.AHFA_BASE_URL)
+                getToken(), BaseURLTypes.AHFA_BASE_URL)
                 .webServiceUploadFileAPI(WebServiceConstants.METHOD_USER_UPLOAD_REQUEST_FILE,
                         uploadFilePath, FileType.IMAGE,
                         // FIXME: 3/21/2018 putlivedata

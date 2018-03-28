@@ -167,7 +167,7 @@ public class AddUpdateVaccineFragment extends BaseFragment {
     private void getVaccineIdsService() {
 
         new WebServices(getBaseActivity(),
-                WebServiceConstants.temporaryToken,
+                getToken(),
                 BaseURLTypes.AHFA_BASE_URL)
                 .webServiceRequestAPIForArray(WebServiceConstants.METHOD_IMMUNIZATION_VACCINE_IDS,
                         "",
@@ -200,7 +200,7 @@ public class AddUpdateVaccineFragment extends BaseFragment {
     private void getRouteIdsService() {
 
         new WebServices(getBaseActivity(),
-                WebServiceConstants.temporaryToken,
+                getToken(),
                 BaseURLTypes.AHFA_BASE_URL)
                 .webServiceRequestAPIForArray(WebServiceConstants.METHOD_IMMUNIZATION_ROUTE_IDS,
                         "",
@@ -284,7 +284,7 @@ public class AddUpdateVaccineFragment extends BaseFragment {
 
             if (isFromAdd) {
                 ImmunizationModel immunizationModel = new ImmunizationModel();
-                immunizationModel.setMRN(WebServiceConstants.tempMRN_immunization);
+                immunizationModel.setMRN(getCurrentUser().getMRNumber());
                 immunizationModel.setScheduleID("U");
                 immunizationModel.setVisitID("U");
                 immunizationModel.setActive("Y");
@@ -305,7 +305,7 @@ public class AddUpdateVaccineFragment extends BaseFragment {
                 Log.d(TAG, "onViewClicked: " + immunizationModel.toString());
 
             } else {
-                immunizationModel.setMRN(WebServiceConstants.tempMRN_immunization);
+                immunizationModel.setMRN(getCurrentUser().getMRNumber());
                 immunizationModel.setActive("Y");
                 immunizationModel.setLastFileTerminal("MOBILE");
                 immunizationModel.setSource("MOBILE");
@@ -319,7 +319,7 @@ public class AddUpdateVaccineFragment extends BaseFragment {
     }
 
     private void addVaccineService(String jsonData) {
-        new WebServices(getBaseActivity(), WebServiceConstants.temporaryToken, BaseURLTypes.AHFA_BASE_URL)
+        new WebServices(getBaseActivity(), getToken(), BaseURLTypes.AHFA_BASE_URL)
                 .webServiceRequestAPIForJsonObject(WebServiceConstants.METHOD_IMMUNIZATION_ADD_VACCINE,
                         jsonData,
                         new WebServices.IRequestJsonDataCallBack() {
@@ -341,7 +341,7 @@ public class AddUpdateVaccineFragment extends BaseFragment {
 
 
     private void updateVaccine(String jsonData) {
-        new WebServices(getBaseActivity(), WebServiceConstants.temporaryToken, BaseURLTypes.AHFA_BASE_URL)
+        new WebServices(getBaseActivity(), getToken(), BaseURLTypes.AHFA_BASE_URL)
                 .webServiceRequestAPIForJsonObject(WebServiceConstants.METHOD_IMMUNIZATION_UPDATE_VACCINE,
                         jsonData,
                         new WebServices.IRequestJsonDataCallBack() {

@@ -103,7 +103,7 @@ public class RadiologyFragment extends BaseFragment implements View.OnClickListe
 
 
     private void bearerTokenCall() {
-        new WebServices(getContext()).webServiceGetToken(new WebServices.IRequestStringCallBack() {
+        new WebServices(getContext()).webServicegetToken(new WebServices.IRequestStringCallBack() {
             @Override
             public void requestDataResponse(String webResponse) {
                 WebServices.setBearerToken(webResponse);
@@ -201,15 +201,15 @@ public class RadiologyFragment extends BaseFragment implements View.OnClickListe
 
     private void serviceCall() {
         SearchModel model = new SearchModel();
-        model.setMRNumber(WebServiceConstants.tempMRN_RADIOLOGY);
+        model.setMRNumber(getCurrentUser().getMRNumber());
         if (isFromTimeline) {
-            model.setMRNumber(WebServiceConstants.tempMRN);
+            model.setMRNumber(getCurrentUser().getMRNumber());
             model.setVisitID(patientVisitAdmissionID+"");
         } else {
             model.setVisitID(null);
         }
         new WebServices(getBaseActivity(),
-                WebServiceConstants.temporaryToken,
+                getToken(),
                 BaseURLTypes.AHFA_BASE_URL)
                 .webServiceRequestAPIForArray(WebServiceConstants.METHOD_GET_RADIOLOGY_EXAMS,
                         model.toString(),

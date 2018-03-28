@@ -81,7 +81,7 @@ public class RadiologyDescriptionFragment extends BaseFragment {
     }
 
     private void apiService() {
-        new WebServices(getBaseActivity(), WebServiceConstants.temporaryToken, BaseURLTypes.AHFA_BASE_URL)
+        new WebServices(getBaseActivity(), getToken(), BaseURLTypes.AHFA_BASE_URL)
                 .webServiceRequestAPIForJsonObject(WebServiceConstants.METHOD_GET_RADIOLOGY_GET_EXAM_DETAIL,
                         jsonData,
                         new WebServices.IRequestJsonDataCallBack() {
