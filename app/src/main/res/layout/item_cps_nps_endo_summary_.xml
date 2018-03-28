@@ -46,6 +46,8 @@
                         android:layout_weight=".7"
                         android:drawableLeft="@drawable/cardiopulmonary_report_date_green"
                         android:drawablePadding="@dimen/x5dp"
+                        android:ellipsize="end"
+                        android:maxLines="1"
                         android:gravity="center_vertical"
                         android:text="22 jan ,2018"
                         android:textSize="@dimen/s14" />
@@ -79,6 +81,7 @@
                     android:layout_height="wrap_content"
                     android:orientation="horizontal"
                     android:padding="@dimen/x5dp">
+
                     <RelativeLayout
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content">
@@ -99,12 +102,10 @@
                             android:layout_height="@dimen/x70dp"
                             android:layout_centerInParent="true"
                             android:layout_margin="@dimen/x5dp"
-                            android:scaleType="centerCrop"
-                             />
+                            android:scaleType="centerCrop" />
 
 
                     </RelativeLayout>
-
 
 
                     <LinearLayout
@@ -120,6 +121,7 @@
                             android:id="@+id/txtName"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:ellipsize="end"
                             android:maxLines="1"
                             android:padding="@dimen/x2dp"
                             android:text="Hepatitus A "
@@ -134,8 +136,10 @@
                             android:layout_height="wrap_content"
                             android:drawableLeft="@drawable/cardiopulmonary_doctor"
                             android:drawablePadding="@dimen/x5dp"
+                            android:ellipsize="end"
+                            android:maxLines="1"
                             android:padding="@dimen/x2dp"
-                            android:text="Dr Abc"
+                            android:text="Dr Name"
                             android:textColor="@color/txt_aku_blue"
                             android:textSize="@dimen/s14"
                             app:typeface="@string/font_regular" />

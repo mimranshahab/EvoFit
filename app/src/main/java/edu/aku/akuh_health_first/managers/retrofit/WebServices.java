@@ -382,11 +382,14 @@ public class WebServices {
                                 if (response.body().isSuccess()) {
                                     if (response.body().result.get(0).get("RecordMessage") == null) {
                                         errorToastForArray(response);
+                                        callBack.onError();
                                     } else if (response.body().result.get(0).get("RecordMessage").isJsonNull()) {
                                         errorToastForArray(response);
+                                        callBack.onError();
                                     } else {
                                         String message = response.body().result.get(0).get("RecordMessage").toString();
                                         UIHelper.showShortToastInCenter(mContext, message);
+                                        callBack.onError();
                                     }
 
                                 } else {

@@ -12,16 +12,16 @@
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
         android:layout_margin="@dimen/x10dp"
-        app:cardCornerRadius="@dimen/x8dp"
         android:animateLayoutChanges="true"
         app:cardBackgroundColor="@color/base_green"
+        app:cardCornerRadius="@dimen/x8dp"
         app:cardElevation="@dimen/x3dp">
 
         <FrameLayout
             android:id="@+id/frameColorCode"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-             android:padding="1dp">
+            android:padding="1dp">
 
 
             <LinearLayout
@@ -81,6 +81,7 @@
                     android:layout_height="wrap_content"
                     android:orientation="horizontal"
                     android:padding="@dimen/x5dp">
+
                     <RelativeLayout
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content">
@@ -102,8 +103,7 @@
                             android:layout_centerInParent="true"
                             android:layout_margin="@dimen/x5dp"
                             android:scaleType="centerCrop"
-                            android:src="@drawable/b_immunization_icon_transparent"
-                            />
+                            android:src="@drawable/b_immunization_icon_transparent" />
 
 
                     </RelativeLayout>

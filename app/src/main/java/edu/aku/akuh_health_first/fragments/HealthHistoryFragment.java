@@ -115,21 +115,23 @@ public class HealthHistoryFragment extends BaseFragment {
             contTimeLinebar.setVisibility(View.VISIBLE);
             txtTimelineView.setText("Displaying results for Visit Admission ID: " + patientVisitAdmissionID);
             contParentLayout.setVisibility(View.GONE);
+            setViews();
             serviceCall();
+
         }
-        setViews();
+
     }
 
     private void setViews() {
-        txtClinicCount.setVisibility(View.INVISIBLE);
-        txtRadiology.setVisibility(View.INVISIBLE);
-        txtMedicationCount.setVisibility(View.INVISIBLE);
-        txtImmunizationCount.setVisibility(View.INVISIBLE);
-        txtCardioCount.setVisibility(View.INVISIBLE);
-        txtNeuroCount.setVisibility(View.INVISIBLE);
+        txtClinicCount.setVisibility(View.VISIBLE);
+        txtRadiology.setVisibility(View.VISIBLE);
+        txtMedicationCount.setVisibility(View.VISIBLE);
+        txtImmunizationCount.setVisibility(View.VISIBLE);
+        txtCardioCount.setVisibility(View.VISIBLE);
+        txtNeuroCount.setVisibility(View.VISIBLE);
+        txtDischargeCount.setVisibility(View.VISIBLE);
+        txtEndoscopyCount.setVisibility(View.VISIBLE);
 
-        txtDischargeCount.setVisibility(View.INVISIBLE);
-        txtEndoscopyCount.setVisibility(View.INVISIBLE);
     }
 
     private void serviceCall() {
@@ -139,7 +141,7 @@ public class HealthHistoryFragment extends BaseFragment {
         new WebServices(getBaseActivity(),
                 getToken(),
                 BaseURLTypes.AHFA_BASE_URL)
-                .webServiceRequestAPIForArray(WebServiceConstants.METHOD_VISIT_MENU,
+                .webServiceRequestAPIForArray(WebServiceConstants.SHARED_MANAGER_GET_VISIT_MENU_LIST,
                         model.toString(),
                         new WebServices.IRequestArrayDataCallBack() {
                             @Override
@@ -152,7 +154,10 @@ public class HealthHistoryFragment extends BaseFragment {
                                         .fromJson(GsonFactory.getSimpleGson().toJson(webResponse.result)
                                                 , type);
 
-                                bindViewsVisitTimeline();
+                                for (int i = 0; i < arrData.size(); i++) {
+                                    setCounts(i);
+                                }
+//                                bindViewsVisitTimeline();
                             }
 
                             @Override
@@ -165,34 +170,42 @@ public class HealthHistoryFragment extends BaseFragment {
     }
 
     private void bindViewsVisitTimeline() {
+
         contParentLayout.setVisibility(View.VISIBLE);
         tempArray();
         if (arrData.size() > 0) {
             contImmunization.setEnabled(false);
             contImmunization.setAlpha(.15f);
             for (int i = 0; i < arrData.size(); i++) {
-//                if (tempArr.contains(arrData.get(i).getTitle())) {
+
                 if (arrData.get(i).getTotalCount() < 1) {
+
                     switch (arrData.get(i).getTitle()) {
+
                         case "Discharge Summary":
                             contSummary.setEnabled(false);
                             contSummary.setAlpha(.15f);
                             Log.d(TAG, "bindViewsVisitTimeline: DS ");
+
                             break;
                         case "Clinical Laboratory":
                             contLab.setEnabled(false);
                             contLab.setAlpha(.15f);
                             Log.d(TAG, "bindViewsVisitTimeline: CL ");
+
                             break;
                         case "Radiology":
+
                             contRadiology.setEnabled(false);
                             contRadiology.setAlpha(.15f);
                             Log.d(TAG, "bindViewsVisitTimeline: Rad");
+
                             break;
 
                         case "Medication Profile":
                             contMedicalProfile.setEnabled(false);
                             contMedicalProfile.setAlpha(.15f);
+
                             break;
                         case "Cardiopulmonary":
                             contCardio.setEnabled(false);
@@ -202,17 +215,34 @@ public class HealthHistoryFragment extends BaseFragment {
                         case "Neurophysiology":
                             contNeuroPhysiology.setEnabled(false);
                             contNeuroPhysiology.setAlpha(.15f);
+
+
                             break;
                         case "Endoscopy":
                             contEndo.setEnabled(false);
                             contEndo.setAlpha(.15f);
+
                             break;
                     }
+
+
                 }
 
 
             }
         }
+
+    }
+
+    private void setCounts(int i) {
+        txtNeuroCount.setText(arrData.get(i).getTotalCount());
+
+        txtClinicCount.setText(arrData.get(i).getTotalCount());
+        txtRadiology.setText(arrData.get(i).getTotalCount());
+        txtImmunizationCount.setText(arrData.get(i).getTotalCount());
+        txtMedicationCount.setText(arrData.get(i).getTotalCount());
+        txtDischargeCount.setText(arrData.get(i).getTotalCount());
+        txtCardioCount.setText(arrData.get(i).getTotalCount());
     }
 
     private void tempArray() {
