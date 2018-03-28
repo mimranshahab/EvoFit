@@ -17,7 +17,9 @@ import android.widget.DatePicker;
 import android.widget.Spinner;
 
 import com.andreabaccega.widget.FormEditText;
+
 import edu.aku.akuh_health_first.widget.AnyTextView;
+
 import com.google.gson.JsonObject;
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.theartofdev.edmodo.cropper.CropImage;
@@ -193,7 +195,6 @@ public class RegisterFragment extends BaseFragment {
     }
 
 
-
     @Override
     public void setListeners() {
 
@@ -239,7 +240,7 @@ public class RegisterFragment extends BaseFragment {
                         UIHelper.showShortToastInCenter(getContext(), webResponse.message);
                         SharedPreferenceManager.getInstance(getContext()).putObject(AppConstants.KEY_REGISTER_VM, webResponse.result);
                         setSpinnerData(registerVM);
-                     }
+                    }
 
                     @Override
                     public void onError() {
@@ -284,7 +285,7 @@ public class RegisterFragment extends BaseFragment {
                     public void onDateSet(DatePicker datePicker, int i, int i1, int i2) {
 
                     }
-                });
+                }, false);
 
                 break;
             case R.id.imgCNIC:
@@ -470,7 +471,6 @@ public class RegisterFragment extends BaseFragment {
             txtCNICImageName.setText(namePassportUploadedFile);
         }
     }
-
 
 
     @NonNull

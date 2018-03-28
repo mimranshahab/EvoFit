@@ -244,13 +244,13 @@ public class AddUpdateVaccineFragment extends BaseFragment {
 
                 break;
             case R.id.txtVaccinatedDate:
-                DateManager.showDatePicker(getContext(), txtVaccinatedDate, null);
+                DateManager.showDatePicker(getContext(), txtVaccinatedDate, null, true);
                 break;
 
 
             case R.id.txtVaccinationPlanDate:
                 if (isFromAdd) {
-                    DateManager.showDatePicker(getContext(), txtVaccinationPlanDate, null);
+                    DateManager.showDatePicker(getContext(), txtVaccinationPlanDate, null, false);
                 } else {
                     UIHelper.showToast(getContext(), "You can't update previous plan date");
                 }

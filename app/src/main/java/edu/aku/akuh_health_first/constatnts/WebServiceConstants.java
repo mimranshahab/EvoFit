@@ -24,12 +24,13 @@ public class WebServiceConstants {
      */
 //    public static String BASE_URL = "http://ahfapidev.aku.edu/api/";
     public static String BASE_URL = "https://familyhifazatmobileapiuat.aku.edu/api/";
+    public static String GETIMAGE_BASE_URL = "https://familyhifazatmobileapiuat.aku.edu/getimage?path=";
+
     public static String PACS_VIEWER_URL = "https://pacsviewer.aku.edu/api/PACSViewer/";
     public static String PACS_URL_DOWNLOAD = "https://pacsviewer.aku.edu/";
     public static String PACS_URL = "https://pacsviewer.aku.edu/api/";
     //    public static String PAYMENT_GATEWAY_URL = "https://testsecureacceptance.cybersource.com/pay/";
     public static String PAYMENT_GATEWAY_URL = "https://testsecureacceptance.cybersource.com/token/create/";
-    public static String GETIMAGE_BASE_URL = "https://familyhifazatmobileapiuat.aku.edu/getimage?path=";
 
     public static final String WS_KEY_GET_TOKEN = "getToken";
     public static final String Secret_token_paymentGatway = "96643d5010c848c6a0e7c6f2e2b342eb94c04052923d4d4697972e60a2b208439aed1efae87e4be8b4a1ed8232cc68f0e78dd08e030a4613bd86f01daeebd6996bb7eed245b1461a8a52bec74704e15aa11aba065ff4412bbd1ef9127b5d4e956c32a5b78b3d4a738cbcba64ae3ef13c7d09132df3474e209c4404e5a3c328c9";
@@ -108,7 +109,6 @@ public class WebServiceConstants {
 
     public static final String METHOD_VISIT_MENU = "SharedManager.GetVisitMenuList";
     public static final String METHOD_UPDATE_PROFILE = "UserManager.UpdateCardMemberVM";
-    public static final String METHOD_GET_EDIT_CARD= "UserManager.GetEditCardMemberVM";
+    public static final String METHOD_GET_EDIT_CARD = "UserManager.GetEditCardMemberVM";
 
-//    public static final String Secret_token_paymentGatway = "96643d5010c848c6a0e7c6f2e2b342eb94c04052923d4d4697972e60a2b208439aed1efae87e4be8b4a1ed8232cc68f0e78dd08e030a4613bd86f01daeebd6996bb7eed245b1461a8a52bec74704e15aa11aba065ff4412bbd1ef9127b5d4e956c32a5b78b3d4a738cbcba64ae3ef13c7d09132df3474e209c4404e5a3c328c9";
 }

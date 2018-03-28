@@ -236,7 +236,7 @@ public class AddFamilyMemberFragment extends BaseFragment {
                     public void onDateSet(DatePicker datePicker, int i, int i1, int i2) {
 
                     }
-                });
+                }, false);
 
                 break;
             case R.id.imgCNIC:
