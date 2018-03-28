@@ -125,7 +125,6 @@ public class ClinicalLaboratoryFragment extends BaseFragment implements View.OnC
 
     private void bindView() {
         RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getBaseActivity());
-        // FIXME: 2/28/2018 Crash
         recyclerNeurophysiology.setLayoutManager(mLayoutManager);
         ((DefaultItemAnimator) recyclerNeurophysiology.getItemAnimator()).setSupportsChangeAnimations(false);
         int resId = R.anim.layout_animation_fall_bottom;
@@ -187,9 +186,8 @@ public class ClinicalLaboratoryFragment extends BaseFragment implements View.OnC
 
 
     private void serviceCall() {
-        // FIXME: 1/18/2018 Use live data in future
         SearchModel model = new SearchModel();
-        model.setMRNumber(WebServiceConstants.tempMRN);
+        model.setMRNumber(getCurrentUser().getMRNumber());
         if (isFromTimeline) {
             model.setVisitID(String.valueOf(patientVisitAdmissionID));
         } else {
@@ -197,7 +195,7 @@ public class ClinicalLaboratoryFragment extends BaseFragment implements View.OnC
         }
 
         new WebServices(getBaseActivity(),
-                WebServiceConstants.temporaryToken,
+                getToken(),
                 BaseURLTypes.AHFA_BASE_URL)
                 .webServiceRequestAPIForArray(WebServiceConstants.METHOD_CLINICAL_LAB,
                         model.toString(),
@@ -235,13 +233,12 @@ public class ClinicalLaboratoryFragment extends BaseFragment implements View.OnC
 
     private void labDetailService(String specimenNumber) {
         SearchModel searchModel = new SearchModel();
-        // FIXME: 1/18/2018 Hardcoded Value for MIC
-        searchModel.setRecordID("56070141"); // MIC
+//        searchModel.setRecordID("56070141"); // MIC
 //        searchModel.setRecordID("57380695"); // Report
-//        searchModel.setRecordID(specimenNumber); // Original Data
+        searchModel.setRecordID(specimenNumber); // Original Data
         searchModel.setVisitID(null);
         new WebServices(getBaseActivity(),
-                WebServiceConstants.temporaryToken,
+                getToken(),
                 BaseURLTypes.AHFA_BASE_URL)
                 .webServiceRequestAPIForJsonObject(WebServiceConstants.METHOD_CLINICAL_LAB_DETAILS,
                         searchModel.toString(),

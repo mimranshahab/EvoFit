@@ -168,10 +168,9 @@ public class PacsFragment extends BaseFragment implements View.OnClickListener, 
 
     private void serviceCall(RadiologyModel radioModel) {
         new WebServices(getBaseActivity(),
-                WebServiceConstants.temporaryToken,
+                getToken(),
                 BaseURLTypes.PACS_VIEWER)
                 .webServiceRequestAPIForJsonObject(WebServiceConstants.METHOD_PACS_MANAGER,
-                        // FIXME: 3/8/2018 .NullPointerException: Attempt to invoke virtual method 'java.lang.String edu.aku.akuh_health_first.models.RadiologyModel.getAccessionnumberwithComma()
                         WebServiceConstants.METHOD_PACS_ACCESSIONS + radioModel.getAccessionnumberwithComma() + WebServiceConstants.METHOD_PACS_ACCESSIONS_end
                         ,
                         new WebServices.IRequestJsonDataCallBack() {

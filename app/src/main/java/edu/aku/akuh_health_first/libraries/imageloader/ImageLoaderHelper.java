@@ -11,7 +11,9 @@ import com.nostra13.universalimageloader.core.display.FadeInBitmapDisplayer;
 import java.util.Map;
 
 import edu.aku.akuh_health_first.R;
+import edu.aku.akuh_health_first.constatnts.AppConstants;
 import edu.aku.akuh_health_first.constatnts.WebServiceConstants;
+import edu.aku.akuh_health_first.managers.SharedPreferenceManager;
 
 import static edu.aku.akuh_health_first.constatnts.WebServiceConstants.GETIMAGE_BASE_URL;
 import static edu.aku.akuh_health_first.constatnts.WebServiceConstants.METHOD_USER_GET_USER_IMAGE;
@@ -26,13 +28,15 @@ public class ImageLoaderHelper {
     public static void loadImageWithConstantHeadersWithoutAnimation(Context context, ImageView imageView, String path) {
         ImageLoader.getInstance().displayImage(ImageLoaderHelper.getUserImageURL(path),
                 imageView,
-                ImageLoaderHelper.getOptionsSimple(WebServiceConstants.getHeaders()));
+                ImageLoaderHelper.getOptionsSimple(WebServiceConstants
+                        .getHeaders(SharedPreferenceManager.getInstance(context).getString(AppConstants.KEY_TOKEN))));
     }
 
     public static void loadImageWithConstantHeaders(Context context, ImageView imageView, String path) {
         ImageLoader.getInstance().displayImage(ImageLoaderHelper.getUserImageURL(path),
                 imageView,
-                ImageLoaderHelper.getOptionsWithAnimation(WebServiceConstants.getHeaders()));
+                ImageLoaderHelper.getOptionsWithAnimation(WebServiceConstants
+                        .getHeaders(SharedPreferenceManager.getInstance(context).getString(AppConstants.KEY_TOKEN))));
     }
 
     public static String getImageURL(String path, String requestMethod) {

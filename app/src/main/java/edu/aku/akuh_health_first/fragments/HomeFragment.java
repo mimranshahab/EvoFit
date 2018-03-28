@@ -94,7 +94,7 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener, 
         Bundle args = new Bundle();
 
         HomeFragment fragment = new HomeFragment();
-        fragment.setArguments(args);
+         fragment.setArguments(args);
         return fragment;
     }
 
@@ -136,10 +136,10 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener, 
     }
 
     private void serviceCall() {
-        CardMemberDetail cardMemberDetail = new CardMemberDetail(WebServiceConstants.tempCardNumber);
+        CardMemberDetail cardMemberDetail = new CardMemberDetail(sharedPreferenceManager.getString(AppConstants.KEY_CARD_NUMBER));
 
         new WebServices(getBaseActivity(),
-                WebServiceConstants.temporaryToken,
+                getToken(),
                 BaseURLTypes.AHFA_BASE_URL).webServiceRequestAPIForJsonObject(WebServiceConstants.METHOD_CARD_MEMBER,
                 cardMemberDetail.toString(),
                 new WebServices.IRequestJsonDataCallBack() {

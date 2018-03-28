@@ -22,8 +22,7 @@ import edu.aku.akuh_health_first.widget.AnyTextView;
  */
 public class VaccineAdapter extends RecyclerView.Adapter<VaccineAdapter.ViewHolder> {
 
-
-    private final AdapterView.OnItemClickListener onItemClick;
+     private final AdapterView.OnItemClickListener onItemClick;
 
 
     private Activity activity;

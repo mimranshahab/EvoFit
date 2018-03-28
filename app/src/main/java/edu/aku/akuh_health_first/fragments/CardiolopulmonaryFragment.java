@@ -83,7 +83,7 @@ public class CardiolopulmonaryFragment extends BaseFragment implements View.OnCl
         titleBar.resetViews();
         titleBar.setTitle("Cardiolopulmonary");
         titleBar.showBackButton(getBaseActivity());
-        titleBar.setUserDisplay(sharedPreferenceManager.getCurrentUser(),getContext());
+        titleBar.setUserDisplay(sharedPreferenceManager.getCurrentUser(), getContext());
         titleBar.showHome(getBaseActivity());
     }
 
@@ -176,7 +176,7 @@ public class CardiolopulmonaryFragment extends BaseFragment implements View.OnCl
     private void showGraphAPI(final CardioModel cardiolopulmonary) {
 
 
-        new WebServices(getBaseActivity(), WebServiceConstants.temporaryToken, BaseURLTypes.AHFA_BASE_URL)
+        new WebServices(getBaseActivity(), getToken(), BaseURLTypes.AHFA_BASE_URL)
                 .webServiceRequestAPIForWebResponseWithString(WebServiceConstants.METHOD_CARDIO_SHOW_GRAPH,
                         cardiolopulmonary.toString(), new WebServices.IRequestWebResponseWithStringDataCallBack() {
                             @Override
@@ -208,7 +208,7 @@ public class CardiolopulmonaryFragment extends BaseFragment implements View.OnCl
 //            }, 300);
 //        } else {
 
-        new WebServices(getBaseActivity(), WebServiceConstants.temporaryToken, BaseURLTypes.AHFA_BASE_URL)
+        new WebServices(getBaseActivity(), getToken(), BaseURLTypes.AHFA_BASE_URL)
                 .webServiceRequestAPIForWebResponseWithString(WebServiceConstants.METHOD_CARDIO_SHOW_REPORT,
                         cardiolopulmonary.toString(), new WebServices.IRequestWebResponseWithStringDataCallBack() {
                             @Override
@@ -226,16 +226,15 @@ public class CardiolopulmonaryFragment extends BaseFragment implements View.OnCl
     }
 
     private void serviceCall() {
-        // FIXME: 1/18/2018 Use live data in future
-        SearchModel model = new SearchModel();
-        model.setMRNumber(WebServiceConstants.tempMRN_Cardio);
+         SearchModel model = new SearchModel();
+        model.setMRNumber(getCurrentUser().getMRNumber());
         if (isFromTimeline) {
             model.setVisitID(String.valueOf(patientVisitAdmissionID));
         } else {
             model.setVisitID(null);
         }
         new WebServices(getBaseActivity(),
-                WebServiceConstants.temporaryToken,
+                getToken(),
                 BaseURLTypes.AHFA_BASE_URL)
                 .webServiceRequestAPIForArray(WebServiceConstants.METHOD_CARDIO,
                         model.toString(),

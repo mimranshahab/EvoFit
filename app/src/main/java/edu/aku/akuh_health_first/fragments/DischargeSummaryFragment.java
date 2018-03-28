@@ -97,13 +97,13 @@ public class DischargeSummaryFragment extends BaseFragment implements View.OnCli
 
     private void serviceCall() {
         SearchModel model = new SearchModel();
-        model.setMRNumber(WebServiceConstants.tempMRN);
+        model.setMRNumber(getCurrentUser().getMRNumber());
         if (isFromTimeline) {
             model.setVisitID(String.valueOf(patientVisitAdmissionID));
         } else {
             model.setVisitID(null);
         }
-        new WebServices(getBaseActivity(), WebServiceConstants.temporaryToken, BaseURLTypes.AHFA_BASE_URL)
+        new WebServices(getBaseActivity(), getToken(), BaseURLTypes.AHFA_BASE_URL)
                 .webServiceRequestAPIForArray(WebServiceConstants.METHOD_DISCHARGE_SUMMARY_LIST,
                         model.toString(),
                         new WebServices.IRequestArrayDataCallBack() {
@@ -181,7 +181,7 @@ public class DischargeSummaryFragment extends BaseFragment implements View.OnCli
 
 
     private void showReportAPI(final DischargeSummaryModel summaryModel) {
-        new WebServices(getBaseActivity(), WebServiceConstants.temporaryToken, BaseURLTypes.AHFA_BASE_URL)
+        new WebServices(getBaseActivity(), getToken(), BaseURLTypes.AHFA_BASE_URL)
                 .webServiceRequestAPIForWebResponseWithString(WebServiceConstants.METHOD_SHOW_REPORT_DS,
                         summaryModel.toString(), new WebServices.IRequestWebResponseWithStringDataCallBack() {
                             @Override

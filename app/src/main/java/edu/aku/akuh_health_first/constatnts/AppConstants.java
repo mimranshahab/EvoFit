@@ -61,11 +61,13 @@ public class AppConstants {
     /*******************Preferences KEYS******************/
     public static final String KEY_CURRENT_USER_MODEL = "userModel";
     public static final String KEY_CARD_MEMBER_DETAIL = "cardMemberDetail";
+    public static final String KEY_CARD_NUMBER = "card_number";
     public static final String USER_NOTIFICATION_DATA = "USER_NOTIFICATION_DATA";
     public static String PROFILE_REGISTRATION = "profile_registration";
     public static String FORCED_RESTART = "forced_restart";
     public static final String KEY_REGISTER_VM = "register_vm";
     public static final String KEY_FIREBASE_TOKEN = "firebase_token";
+    public static final String KEY_TOKEN = "getToken";
 
 
     public static final String schedule = "Scheduled";

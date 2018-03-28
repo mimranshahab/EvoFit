@@ -169,16 +169,15 @@ public class PreviousMedicationFragment extends BaseFragment implements View.OnC
 
 
     private void serviceCall() {
-        // FIXME: 1/18/2018 Use live data in future
         SearchModel model = new SearchModel();
-        model.setMRNumber(WebServiceConstants.tempMRN_immunization);
+        model.setMRNumber(getCurrentUser().getMRNumber());
         if (isFromTimeline) {
             model.setVisitID(String.valueOf(patientVisitAdmissionID));
         } else {
             model.setVisitID(null);
         }
         new WebServices(getBaseActivity(),
-                WebServiceConstants.temporaryToken,
+                getToken(),
                 BaseURLTypes.AHFA_BASE_URL)
                 .webServiceRequestAPIForArray(WebServiceConstants.METHOD_PREVIOUS_MEDICATION,
                         model.toString(),

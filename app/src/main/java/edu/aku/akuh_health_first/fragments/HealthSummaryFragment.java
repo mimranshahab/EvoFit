@@ -245,11 +245,11 @@ public class HealthSummaryFragment extends BaseFragment implements OnItemClickLi
     private void serviceCallBasicHealthSummary() {
 
         SearchModel model = new SearchModel();
-        model.setMRNumber(WebServiceConstants.tempMRN_RADIOLOGY);
+        model.setMRNumber(getCurrentUser().getMRNumber());
 
 
         new WebServices(getBaseActivity(),
-                WebServiceConstants.temporaryToken,
+                getToken(),
                 BaseURLTypes.AHFA_BASE_URL)
                 .webServiceRequestAPIForJsonObject(WebServiceConstants.METHOD_PATIENT_HEALTH_SUMMARY,
                         model.toString(),
@@ -291,11 +291,11 @@ public class HealthSummaryFragment extends BaseFragment implements OnItemClickLi
     private void serviceCallDetailedHealthSummary() {
 
         SearchModel model = new SearchModel();
-        model.setMRNumber(WebServiceConstants.tempMRN_RADIOLOGY);
+        model.setMRNumber(getCurrentUser().getMRNumber());
 
 
         new WebServices(getBaseActivity(),
-                WebServiceConstants.temporaryToken,
+                getToken(),
                 BaseURLTypes.AHFA_BASE_URL)
                 .webServiceRequestAPIForArray(WebServiceConstants.METHOD_DETAIL_HEALTH_SUMMARY,
                         model.toString(),

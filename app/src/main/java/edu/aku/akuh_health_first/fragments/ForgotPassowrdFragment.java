@@ -141,7 +141,7 @@ public class ForgotPassowrdFragment extends BaseFragment {
 
 
     private void getCyberSignatureService(final PaymentModel paymentModel) {
-        new WebServices(getBaseActivity(), WebServiceConstants.temporaryToken, BaseURLTypes.AHFA_BASE_URL)
+        new WebServices(getBaseActivity(), getToken(), BaseURLTypes.AHFA_BASE_URL)
                 .webServiceGetCyberSignature("PaymentManager.GetCybersourceSignature", paymentModel.toString(), new WebServices.IRequestJsonDataCallBack() {
                     @Override
                     public void requestDataResponse(WebResponse<JsonObject> webResponse) {

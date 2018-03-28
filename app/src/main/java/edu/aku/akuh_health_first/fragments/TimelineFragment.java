@@ -175,12 +175,11 @@ public class TimelineFragment extends BaseFragment implements View.OnClickListen
     }
 
     private void serviceCall() {
-        // FIXME: 1/18/2018 Use live data in future
         SearchModel model = new SearchModel();
-        model.setMRNumber(WebServiceConstants.tempMRN);
+        model.setMRNumber(getCurrentUser().getMRNumber());
         model.setVisitID(null);
         new WebServices(getBaseActivity(),
-                WebServiceConstants.temporaryToken,
+                getToken(),
                 BaseURLTypes.AHFA_BASE_URL)
                 .webServiceRequestAPIForArray(WebServiceConstants.METHOD_GET_PATIENT_VISIT,
                         model.toString(),
