@@ -97,8 +97,7 @@
                             android:layout_margin="@dimen/x5dp"
                             android:scaleType="centerCrop"
                             android:src="@drawable/shape_circle"
-                            android:tint="@color/base_green"
-                          />
+                            android:tint="@color/base_green" />
 
                         <ImageView
                             android:layout_width="@dimen/x70dp"
@@ -126,20 +125,22 @@
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:ellipsize="end"
+                            android:maxLines="1"
                             android:padding="@dimen/x5dp"
                             android:text="BIO,RECD"
                             android:textSize="@dimen/s14"
                             app:typeface="@string/font_bold" />
+
                         <edu.aku.akuh_health_first.widget.AnyTextView
                             android:id="@+id/txtSpecimenNumber"
                             android:layout_width="wrap_content"
                             android:layout_height="match_parent"
                             android:ellipsize="end"
+                            android:maxLines="1"
                             android:padding="@dimen/x5dp"
                             android:text="41225000"
                             android:textSize="@dimen/s14"
                             app:typeface="@string/font_regular" />
-
 
 
                         <edu.aku.akuh_health_first.widget.AnyTextView

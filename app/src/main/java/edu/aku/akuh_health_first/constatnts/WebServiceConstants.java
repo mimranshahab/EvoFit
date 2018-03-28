@@ -107,7 +107,7 @@ public class WebServiceConstants {
     public static final String METHOD_PACS_ACCESSIONS = "{\"PACS_Accessions\":[";
     public static final String METHOD_PACS_ACCESSIONS_end = "]}";
 
-    public static final String METHOD_VISIT_MENU = "SharedManager.GetVisitMenuList";
+    public static final String SHARED_MANAGER_GET_VISIT_MENU_LIST = "SharedManager.GetVisitMenuList";
     public static final String METHOD_UPDATE_PROFILE = "UserManager.UpdateCardMemberVM";
     public static final String METHOD_GET_EDIT_CARD = "UserManager.GetEditCardMemberVM";
 

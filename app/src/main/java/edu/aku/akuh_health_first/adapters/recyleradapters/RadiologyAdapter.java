@@ -64,7 +64,8 @@ public class RadiologyAdapter extends RecyclerView.Adapter<RadiologyAdapter.View
         } else {
             holder.txtStatusType.setText("Pending");
             setViews(holder, activity.getResources().getColor(R.color.base_amber),R.drawable.rounded_box_filled_base_amber ,R.drawable.b_dischargesummary_transparent);
-
+            holder.RlReport.setVisibility(View.GONE);
+            holder.RlGraph.setVisibility(View.GONE);
         }
 
         setListener(holder, model);

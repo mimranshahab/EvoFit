@@ -67,7 +67,7 @@ public class NeurophysiologyAdapter extends RecyclerView.Adapter<Neurophysiology
             setViews(holder, activity.getResources().getColor(R.color.base_green), R.drawable.rounded_box_filled_base_green, R.drawable.b_neurophysiology_transparent);
 
         } else {
-            setViews(holder, activity.getResources().getColor(R.color.base_reddish), R.drawable.rounded_box_filled_base_red, R.drawable.b_neurophysiology_transparent);
+            setViews(holder, activity.getResources().getColor(R.color.base_amber), R.drawable.rounded_box_filled_base_amber, R.drawable.b_neurophysiology_transparent);
             holder.txtStatusType.setText("Pending");
             holder.RlReport.setVisibility(View.GONE);
 

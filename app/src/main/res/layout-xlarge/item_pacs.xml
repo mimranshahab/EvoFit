@@ -12,9 +12,9 @@
         android:layout_height="match_parent"
         android:layout_centerInParent="true"
         android:layout_margin="@dimen/x15dp"
-        app:cardCornerRadius="@dimen/x8dp"
         android:animateLayoutChanges="true"
         android:padding="@dimen/x2dp"
+        app:cardCornerRadius="@dimen/x8dp"
         card_view:cardElevation="x1dp">
 
 
@@ -50,9 +50,11 @@
                     android:layout_height="wrap_content"
                     android:drawableLeft="@drawable/radiology_report_title"
                     android:drawablePadding="@dimen/x5dp"
+                    android:ellipsize="end"
                     android:gravity="center_vertical"
-                    android:text="patientMRN"
+                    android:maxLines="1"
                     android:padding="@dimen/x3dp"
+                    android:text="patientMRN"
                     android:textColor="@color/txt_aku_blue"
                     android:textSize="@dimen/s14"
                     app:typeface="@string/font_regular" />
@@ -63,11 +65,13 @@
                     android:layout_height="wrap_content"
                     android:drawableLeft="@drawable/radiology_reportdate"
                     android:drawablePadding="@dimen/x5dp"
+                    android:ellipsize="end"
                     android:gravity="center_vertical"
+                    android:maxLines="1"
+                    android:padding="@dimen/x3dp"
                     android:text="studyDataDateTime "
                     android:textColor="@color/txt_aku_blue"
                     android:textSize="@dimen/s14"
-                    android:padding="@dimen/x3dp"
 
                     app:typeface="@string/font_regular" />
 
@@ -78,10 +82,11 @@
                     android:layout_height="wrap_content"
                     android:drawableLeft="@drawable/radiology_images"
                     android:drawablePadding="@dimen/x5dp"
+                    android:ellipsize="end"
                     android:gravity="center_vertical"
-                    android:text="studyDataCount"
+                    android:maxLines="1"
                     android:padding="@dimen/x3dp"
-
+                    android:text="studyDataCount"
                     android:textColor="@color/txt_aku_blue"
                     android:textSize="@dimen/s14"
                     app:typeface="@string/font_regular" />

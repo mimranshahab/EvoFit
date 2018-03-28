@@ -123,6 +123,7 @@
                             android:layout_height="match_parent"
                             android:ellipsize="end"
                             android:padding="@dimen/x5dp"
+                            android:maxLines="1"
                             android:text="BIO,RECD"
                             android:textSize="@dimen/s14"
                             app:typeface="@string/font_bold" />
@@ -132,6 +133,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="match_parent"
                             android:ellipsize="end"
+                            android:maxLines="1"
                             android:padding="@dimen/x5dp"
                             android:text="41225000"
                             android:textSize="@dimen/s14"

@@ -55,9 +55,8 @@
                             android:layout_width="wrap_content"
                             android:layout_height="match_parent"
                             android:ellipsize="end"
-                            android:hint="Test Name"
                             android:maxLines="1"
-                            android:text=""
+                            android:text="Test Name"
                             android:textColor="@color/txt_aku_blue"
                             android:textSize="@dimen/s16"
                             app:typeface="@string/font_bold" />
@@ -67,9 +66,8 @@
                             android:layout_width="wrap_content"
                             android:layout_height="match_parent"
                             android:ellipsize="end"  android:maxLines="1"
-                            android:hint="Normal range"
                             android:paddingLeft="@dimen/x4dp"
-                            android:text=""
+                            android:text="Normal range"
                             android:textSize="@dimen/s14"
                             app:typeface="@string/font_regular" />
 
@@ -81,9 +79,9 @@
                         android:id="@+id/txtResult"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:hint="Result"
                         android:maxLines="1"
                         android:ellipsize="end"
+                        android:text="Result"
                         android:textColor="@color/text_color_grey"
                         android:textSize="@dimen/s16"
                         app:typeface="@string/font_regular" />
@@ -138,7 +136,6 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:gravity="center_vertical"
-                        android:hint="valuedatetime"
                         android:ellipsize="end"
                         android:maxLines="1"
                         android:textColor="@color/text_color_grey"
@@ -176,7 +173,6 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:gravity="center_vertical"
-                        android:hint="valuedatetime"
                         android:ellipsize="end"
                         android:maxLines="1"
                         android:textColor="@color/text_color_grey"
