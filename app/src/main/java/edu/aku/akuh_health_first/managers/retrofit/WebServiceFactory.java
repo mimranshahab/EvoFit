@@ -23,13 +23,15 @@ public class WebServiceFactory {
     private static Retrofit retrofitPACSViewer;
     private static Retrofit retrofitPaymentGateway;
     private static Retrofit retrofitPACSToken;
+    private static String staticToken = "";
 
     /***
      *      SINGLETON Design Pattern
      */
     public static WebServiceProxy getInstanceBaseURL(final String _token) {
 
-        if (retrofitBase == null) {
+        if (retrofitBase == null || staticToken.isEmpty()) {
+            staticToken = _token;
 
 //            Gson gson = new GsonBuilder()
 //                    .setDateFormat("yyyy-MM-dd'T'HH:mm:ssZ")
@@ -52,7 +54,7 @@ public class WebServiceFactory {
                 public Response intercept(Chain chain) throws IOException {
                     Request original = chain.request();
                     Request.Builder requestBuilder = original.newBuilder();
-                    requestBuilder.addHeader("_token", _token + "");
+                    requestBuilder.addHeader("_token", staticToken + "");
 
                     // Request customization: add request headers
 

@@ -385,7 +385,7 @@ public class DateManager {
     }
 
 
-    public static void showDatePicker(final Context context, final TextView textView, final DatePickerDialog.OnDateSetListener onDateSetListener) {
+    public static void showDatePicker(final Context context, final TextView textView, final DatePickerDialog.OnDateSetListener onDateSetListener, boolean isCurrentDateMaxiumum) {
 
         if (textView != null) {
             final Calendar myCalendar = Calendar.getInstance();
@@ -406,7 +406,11 @@ public class DateManager {
                 }
 
             };
-            new DatePickerDialog(context, date, myCalendar.get(Calendar.YEAR), myCalendar.get(Calendar.MONTH), myCalendar.get(Calendar.DAY_OF_MONTH)).show();
+            DatePickerDialog datePickerDialog = new DatePickerDialog(context, date, myCalendar.get(Calendar.YEAR), myCalendar.get(Calendar.MONTH), myCalendar.get(Calendar.DAY_OF_MONTH));
+            if (isCurrentDateMaxiumum) {
+                datePickerDialog.getDatePicker().setMaxDate(myCalendar.getTimeInMillis());
+            }
+            datePickerDialog.show();
         } else {
             UIHelper.showLongToastInCenter(context, "Unable to show Date picker");
         }

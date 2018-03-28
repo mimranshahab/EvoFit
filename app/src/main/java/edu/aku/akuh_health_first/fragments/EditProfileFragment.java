@@ -18,6 +18,7 @@ import butterknife.OnClick;
 import butterknife.Unbinder;
 import edu.aku.akuh_health_first.R;
 import edu.aku.akuh_health_first.activities.HomeActivity;
+import edu.aku.akuh_health_first.constatnts.AppConstants;
 import edu.aku.akuh_health_first.constatnts.Events;
 import edu.aku.akuh_health_first.constatnts.WebServiceConstants;
 import edu.aku.akuh_health_first.enums.BaseURLTypes;
@@ -98,7 +99,7 @@ public class EditProfileFragment extends BaseFragment {
         editCardModel.setMrnNumber(getCurrentUser().getMRNumber());
         editCardModel.setCardNumber(getCurrentUser().getCardNumber());
         new WebServices(getBaseActivity(),
-                WebServiceConstants.temporaryToken,
+                getToken(),
                 BaseURLTypes.AHFA_BASE_URL)
                 .webServiceRequestAPIForJsonObject(WebServiceConstants.METHOD_GET_EDIT_CARD,
                         editCardModel.toString(),
