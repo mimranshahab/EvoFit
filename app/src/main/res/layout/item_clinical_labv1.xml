@@ -150,7 +150,7 @@
                             android:background="@drawable/rounded_box_filled_primary_color"
                             android:gravity="center"
                             android:padding="@dimen/x7dp"
-                            android:text="SHOW LAB/MIC DETAILS"
+                            android:text="VIEW DETAILS"
                             android:textColor="@color/c_white" />
 
 

@@ -30,14 +30,16 @@ public class ClinicalLabMICDetailAdapter extends RecyclerView.Adapter<RecyclerVi
 
     private static final int TYPE_HEADER = 1;
     private static final int TYPE_ITEM = 0;
+    private final String source;
 
     private Activity activity;
     private ArrayList arrData;
 
-    public ClinicalLabMICDetailAdapter(Activity activity, ArrayList arrayList, OnItemClickListener onItemClickListener) {
+    public ClinicalLabMICDetailAdapter(Activity activity, ArrayList arrayList, OnItemClickListener onItemClickListener, String source) {
         this.arrData = arrayList;
         this.activity = activity;
         this.onItemClick = onItemClickListener;
+        this.source = source;
     }
 
 
@@ -82,7 +84,7 @@ public class ClinicalLabMICDetailAdapter extends RecyclerView.Adapter<RecyclerVi
             holderItem.contHeader.setVisibility(View.GONE);
             LstLaboratoryMicspecimenResults lstLaboratoryMicspecimenResults = (LstLaboratoryMicspecimenResults) arrData.get(holder.getAdapterPosition());
             holderItem.txtShortMessage.setText(lstLaboratoryMicspecimenResults.getProcedureDescription());
-            holderItem.txtDate.setText(lstLaboratoryMicspecimenResults.getMnemonic());
+            holderItem.txtDate.setText(source);
         }
 
 

@@ -60,7 +60,6 @@ public class ClinicalLabAdapterV1 extends RecyclerView.Adapter<ClinicalLabAdapte
         holder.txtStatusID.setText(model.getOrdered() + " (" + model.getSpecimenSectionID() + ")");
         holder.txtDateTime.setText(model.getEnteredDTTM());
         holder.txtStatus.setText(model.getStatusID());
-        holder.btnShowDetail.setText("SHOW " + model.getSpecimenType() + " DETAILS");
         setListener(holder, model);
 
         if (model.getStatusID().equalsIgnoreCase("Completed")) {
@@ -145,7 +144,6 @@ public class ClinicalLabAdapterV1 extends RecyclerView.Adapter<ClinicalLabAdapte
 //        }
 
     }
-
 
 
     private void colorCodes(ViewHolder holder, int framecolor, int btnbackground/*, int color*/) {

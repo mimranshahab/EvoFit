@@ -58,7 +58,7 @@
                             <ImageView
                                 android:layout_width="0dp"
                                 android:layout_height="match_parent"
-                                android:layout_weight="0.5"
+                                android:layout_weight="0.4"
                                 android:scaleX="0.9"
                                 android:scaleY="0.9"
                                 android:src="@drawable/blood_type" />
@@ -87,7 +87,7 @@
                                     android:layout_height="wrap_content"
                                     android:gravity="bottom|end"
                                     android:paddingRight="@dimen/x5dp"
-                                    android:text="Blood Type"
+                                    android:text="Blood Group"
                                     android:textColor="@color/txt_aku_blue"
                                     android:textSize="@dimen/s8"
                                     app:typeface="@string/font_regular" />
@@ -146,7 +146,7 @@
                             <ImageView
                                 android:layout_width="0dp"
                                 android:layout_height="match_parent"
-                                android:layout_weight="0.5"
+                                android:layout_weight="0.4"
                                 android:scaleX="0.9"
                                 android:scaleY="0.9"
                                 android:src="@drawable/height" />
@@ -234,7 +234,7 @@
                             <ImageView
                                 android:layout_width="0dp"
                                 android:layout_height="match_parent"
-                                android:layout_weight="0.5"
+                                android:layout_weight="0.4"
                                 android:scaleX="0.9"
                                 android:scaleY="0.9"
                                 android:src="@drawable/weight" />

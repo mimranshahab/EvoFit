@@ -7,21 +7,15 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
-        import android.app.Activity;
-        import android.support.v7.widget.CardView;
-        import android.support.v7.widget.RecyclerView;
-        import android.view.LayoutInflater;
-        import android.view.View;
-        import android.view.ViewGroup;
 
-        import java.util.ArrayList;
+import java.util.ArrayList;
 
-        import butterknife.BindView;
-        import butterknife.ButterKnife;
-        import edu.aku.akuh_health_first.R;
-        import edu.aku.akuh_health_first.callbacks.OnItemClickListener;
-        import edu.aku.akuh_health_first.models.LstLaboratorySpecimenResults;
-        import edu.aku.akuh_health_first.widget.AnyTextView;
+import butterknife.BindView;
+import butterknife.ButterKnife;
+import edu.aku.akuh_health_first.R;
+import edu.aku.akuh_health_first.callbacks.OnItemClickListener;
+import edu.aku.akuh_health_first.models.LstLaboratorySpecimenResults;
+import edu.aku.akuh_health_first.widget.AnyTextView;
 
 /**
  */
@@ -60,9 +54,6 @@ public class ClinicalLabDetailAdapterv1 extends RecyclerView.Adapter<ClinicalLab
 
         holder.txtResultPrevious1.setText(model.getPrevResult1());
         holder.txtResultPrevious2.setText(model.getPrevResult2());
-        holder.txtResultPrevious3.setText(model.getPrevResult3());
-
-        holder.txtResultPrevious3Date.setText(model.getPrevResult3Dttm());
         holder.txtResultPrevious1Date.setText(model.getPrevResult1Dttm());
         holder.txtResultPrevious2Date.setText(model.getPrevResult2Dttm());
 
@@ -93,7 +84,6 @@ public class ClinicalLabDetailAdapterv1 extends RecyclerView.Adapter<ClinicalLab
     }
 
     static class ViewHolder extends RecyclerView.ViewHolder {
-
         @BindView(R.id.imgIcon)
         ImageView imgIcon;
         @BindView(R.id.txtReportName)
@@ -102,10 +92,6 @@ public class ClinicalLabDetailAdapterv1 extends RecyclerView.Adapter<ClinicalLab
         AnyTextView txtNormalRangeFormatted;
         @BindView(R.id.txtResult)
         AnyTextView txtResult;
-        @BindView(R.id.txtResultPrevious3)
-        AnyTextView txtResultPrevious3;
-        @BindView(R.id.txtResultPrevious3Date)
-        AnyTextView txtResultPrevious3Date;
         @BindView(R.id.txtResultPrevious1)
         AnyTextView txtResultPrevious1;
         @BindView(R.id.txtResultPrevious1Date)
@@ -116,7 +102,6 @@ public class ClinicalLabDetailAdapterv1 extends RecyclerView.Adapter<ClinicalLab
         AnyTextView txtResultPrevious2Date;
         @BindView(R.id.cardView2)
         CardView cardView2;
-
 
         ViewHolder(View view) {
             super(view);

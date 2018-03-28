@@ -356,7 +356,7 @@ public class HealthSummaryFragment extends BaseFragment implements OnItemClickLi
                         getBaseActivity().addDockableFragment(ImmunizationProfileFragment.newInstance(false, -1));
                         break;
                     case LastVisit:
-                        UIHelper.showToast(getContext(), "No Redirection Available");
+                        getBaseActivity().addDockableFragment(TimelineFragment.newInstance());
                         break;
                     case FutureAppointment:
                         UIHelper.showToast(getContext(), "No Redirection Available");

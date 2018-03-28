@@ -89,7 +89,7 @@ public class ClinicalLaboratoryMICDetailFragment extends BaseFragment implements
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         arrLabDetail = new ArrayList();
-        adapter = new ClinicalLabMICDetailAdapter(getBaseActivity(), arrLabDetail, this);
+        adapter = new ClinicalLabMICDetailAdapter(getBaseActivity(), arrLabDetail, this, laboratoryDetailModel.getSourceDescription());
     }
 
     @Override

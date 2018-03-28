@@ -50,8 +50,22 @@ public class HealthSummaryAdapter extends RecyclerView.Adapter<HealthSummaryAdap
 
         final DetailHealthSummaryModel model = arrData.get(holder.getAdapterPosition());
 
-        holder.txtShortMessage.setText(model.getShortmessagemobile().getTitle());
-        holder.txtDate.setText(model.getShortmessagemobile().getMessage());
+        if (model.getShortmessagemobile().getTitle() == null || model.getShortmessagemobile().getTitle().isEmpty()) {
+            holder.txtShortMessage.setVisibility(View.GONE);
+        } else {
+            holder.txtShortMessage.setVisibility(View.VISIBLE);
+            holder.txtShortMessage.setText(model.getShortmessagemobile().getTitle());
+        }
+
+        if (model.getShortmessagemobile().getMessage() == null || model.getShortmessagemobile().getMessage().isEmpty()) {
+
+            holder.txtDate.setVisibility(View.GONE);
+            holder.txtDate.setText(model.getShortmessagemobile().getMessage());
+        } else {
+            holder.txtDate.setVisibility(View.VISIBLE);
+            holder.txtDate.setText(model.getShortmessagemobile().getMessage());
+        }
+
         holder.txtTitle.setText(model.getSummarytitle());
 
         HealthSummaryTypes state = HealthSummaryTypes.fromStringForm(model.getWebandmobilemodel().getLink());
@@ -59,25 +73,25 @@ public class HealthSummaryAdapter extends RecyclerView.Adapter<HealthSummaryAdap
         if (!(state == null)) {
             switch (state) {
                 case Allergies:
-                    holder.imgTitle.setImageResource(R.drawable.lab_report);
+                    holder.imgTitle.setImageResource(R.drawable.a_allergies);
                     break;
                 case ClinicalLaboratory:
-                    holder.imgTitle.setImageResource(R.drawable.lab_report);
+                    holder.imgTitle.setImageResource(R.drawable.a_lab_report);
                     break;
                 case Radiology:
-                    holder.imgTitle.setImageResource(R.drawable.lab_report);
+                    holder.imgTitle.setImageResource(R.drawable.a_radiology);
                     break;
                 case ActiveMedication:
-                    holder.imgTitle.setImageResource(R.drawable.active_medication);
+                    holder.imgTitle.setImageResource(R.drawable.a_active_medication);
                     break;
                 case ImmunizationProfile:
-                    holder.imgTitle.setImageResource(R.drawable.lab_report);
+                    holder.imgTitle.setImageResource(R.drawable.a_immunization);
                     break;
                 case LastVisit:
-                    holder.imgTitle.setImageResource(R.drawable.last_visits);
+                    holder.imgTitle.setImageResource(R.drawable.a_last_visits);
                     break;
                 case FutureAppointment:
-                    holder.imgTitle.setImageResource(R.drawable.lab_report);
+                    holder.imgTitle.setImageResource(R.drawable.a_futureappointment);
                     break;
             }
         }

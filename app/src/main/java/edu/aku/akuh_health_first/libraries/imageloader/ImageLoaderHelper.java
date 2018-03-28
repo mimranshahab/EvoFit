@@ -51,8 +51,8 @@ public class ImageLoaderHelper {
 
         return new DisplayImageOptions.Builder().cacheInMemory(true).cacheOnDisk(true)
                 .showImageForEmptyUri(R.color.base_dark_gray)
-                .showImageOnFail(R.drawable.placeholder)
-                .showImageOnLoading(R.drawable.placeholder)
+                .showImageOnFail(R.drawable.profile_placeholder)
+                .showImageOnLoading(R.drawable.profile_placeholder)
                 .build();
     }
 
@@ -61,8 +61,8 @@ public class ImageLoaderHelper {
 
         return new DisplayImageOptions.Builder().cacheInMemory(true).cacheOnDisk(true)
                 .showImageForEmptyUri(R.color.base_dark_gray)
-                .showImageOnFail(R.drawable.placeholder)
-                .showImageOnLoading(R.drawable.placeholder)
+                .showImageOnFail(R.drawable.profile_placeholder)
+                .showImageOnLoading(R.drawable.profile_placeholder)
                 .extraForDownloader(headers)
                 .build();
     }
@@ -71,8 +71,8 @@ public class ImageLoaderHelper {
 
         return new DisplayImageOptions.Builder().cacheInMemory(true).cacheOnDisk(true)
                 .showImageForEmptyUri(R.color.base_dark_gray)
-                .showImageOnFail(R.drawable.placeholder)
-                .showImageOnLoading(R.drawable.placeholder)
+                .showImageOnFail(R.drawable.profile_placeholder)
+                .showImageOnLoading(R.drawable.profile_placeholder)
                 .imageScaleType(ImageScaleType.EXACTLY).displayer(new FadeInBitmapDisplayer(500)).build();
     }
 
@@ -81,8 +81,8 @@ public class ImageLoaderHelper {
 
         return new DisplayImageOptions.Builder().cacheInMemory(true).cacheOnDisk(true)
                 .showImageForEmptyUri(R.color.base_dark_gray)
-                .showImageOnFail(R.drawable.placeholder)
-                .showImageOnLoading(R.drawable.placeholder)
+                .showImageOnFail(R.drawable.profile_placeholder)
+                .showImageOnLoading(R.drawable.profile_placeholder)
                 .extraForDownloader(headers)
                 .imageScaleType(ImageScaleType.EXACTLY).displayer(new FadeInBitmapDisplayer(500)).build();
     }
