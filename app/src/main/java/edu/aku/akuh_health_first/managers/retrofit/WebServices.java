@@ -263,7 +263,8 @@ public class WebServices {
                                         errorToastForObject(response);
                                     } else {
                                         String message = response.body().result.get("RecordMessage").toString();
-                                        UIHelper.showShortToastInCenter(mContext, message);
+//                                        UIHelper.showShortToastInCenter(mContext, message);
+                                        callBack.onError();
                                     }
 
                                 } else {

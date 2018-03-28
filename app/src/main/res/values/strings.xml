@@ -43,16 +43,16 @@
     <!--SignUp/Edit Profile-->
 
     <!--Login/SignUP-->
-    <string name="password">Password</string>
+    <string name="mrnNumber">Password</string>
     <string name="enter_password">Enter Password</string>
     <string name="email_address">Email Address</string>
     <string name="enter_email_address">Enter Email Address</string>
     <!--Common in Login/SignUP-->
 
-    <!--Forget password -->
+    <!--FormrnNumberword -->
     <string name="tvEmailAdress">Enter E-mail Address</string>
     <string name="submit_button_image">submit Button Image</string>
-    <!--Forget password-->
+    <!--FormrnNumberword-->
 
     <!--verify Number-->
     <string name="country">Country</string>
@@ -78,7 +78,7 @@
     <string name="change_password">Change Password</string>
     <!--settings-->
 
-    <!--common in change password/forget password-->
+    <!--common in chamrnNumberword/formrnNumberword-->
     <string name="confirm_password">Confirm Password</string>
     <!---->
     <!--About us -->
@@ -107,10 +107,10 @@
     <string name="estimated_delivery_time">Estimated delivery time</string>
     <!--Instant order detail-->
 
-    <!--change password-->
+    <!--chamrnNumberword-->
     <string name="enter_current_password">Enter Current Password</string>
     <string name="new_password">New Password</string>
-    <!--change password-->
+    <!--chamrnNumberword-->
 
     <!--Line-->
     <string name="line">Line</string>
@@ -287,7 +287,7 @@ Enim vitae euismod eu velit pede eu, sodales malesuada sit fermentum ut dictum d
     <string name="removerOrder">Remove Order</string>
     <string name="doYouWantToRemove">Do you want to remove this order?</string>
     <string name="reset">Reset</string>
-    <string name="anEmailHasBeenSent">An email has been sent to your account with password reset link</string>
+    <string name="anEmailHasBeenSent">An email has been sent to your account with mrnNumber reset link</string>
     <string name="areYouSureToLogout">Are you sure to Logout?</string>
     <string name="delete">Delete</string>
     <string name="warning">Warning</string>

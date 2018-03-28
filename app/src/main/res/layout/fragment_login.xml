@@ -79,7 +79,7 @@
                 android:background="@drawable/rounded_box"
                 android:drawableLeft="@drawable/password_icon"
                 android:drawablePadding="@dimen/x5dp"
-                android:hint="@string/password"
+                android:hint="@string/mrnNumber"
                 android:inputType="textPassword"
                 android:maxLength="30"
                 android:paddingBottom="@dimen/x8dp"

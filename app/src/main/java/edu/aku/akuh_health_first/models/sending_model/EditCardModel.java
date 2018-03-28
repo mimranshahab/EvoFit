@@ -8,13 +8,13 @@ import edu.aku.akuh_health_first.managers.retrofit.GsonFactory;
  * Created by aqsa.sarwar on 1/2/2018.
  */
 
-public class LoginApiModel {
+public class EditCardModel {
 
 
     @SerializedName("CardNumber")
     private String cardNumber;
-    @SerializedName("Password")
-    private String password;
+    @SerializedName("MRNumber")
+    private String mrnNumber;
 
     public String getToken() {
         return token;
@@ -27,10 +27,10 @@ public class LoginApiModel {
     private String token;
 
 
-    public LoginApiModel(String userid, String password) {
-        this.cardNumber = userid;
-        this.password = password;
-    }
+//    public EditCardModel(String cardNumber, String mrnNumber) {
+//        this.cardNumber = cardNumber;
+//        this.mrnNumber = mrnNumber;
+//    }
 
     public String getCardNumber() {
         return cardNumber;
@@ -40,12 +40,12 @@ public class LoginApiModel {
         this.cardNumber = cardNumber;
     }
 
-    public String getPassword() {
-        return password;
+    public String getMrnNumber() {
+        return mrnNumber;
     }
 
-    public void setPassword(String password) {
-        this.password = password;
+    public void setMrnNumber(String mrnNumber) {
+        this.mrnNumber = mrnNumber;
     }
 
     @Override
