@@ -98,12 +98,15 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
+                    android:gravity="left"
+
                     android:orientation="vertical">
 
                     <edu.aku.akuh_health_first.widget.AnyTextView
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:text="Collection Date:"
+                        android:gravity="left"
                         android:textColor="@color/base_amber"
                         android:textSize="@dimen/s12"
                         app:typeface="@string/font_bold" />
@@ -114,6 +117,7 @@
                         android:layout_height="match_parent"
                         android:padding="@dimen/x2dp"
                         android:text=""
+                        android:gravity="left"
 
                         android:textColor="@color/txt_aku_blue"
                         android:textSize="@dimen/s12"
@@ -131,6 +135,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:text="Report Date:"
+                        android:gravity="center"
                         android:textColor="@color/base_blue"
                         android:textSize="@dimen/s12"
                         app:typeface="@string/font_bold" />
@@ -140,6 +145,8 @@
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:padding="@dimen/x2dp"
+                        android:gravity="center"
+
                         android:text=""
                         android:textColor="@color/txt_aku_blue"
                         android:textSize="@dimen/s12"
@@ -151,12 +158,15 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
+                    android:gravity="right"
                     android:orientation="vertical">
 
                     <edu.aku.akuh_health_first.widget.AnyTextView
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:text="Request Date:"
+                        android:gravity="right"
+
                         android:textColor="@color/base_green"
                         android:textSize="@dimen/s12"
                         app:typeface="@string/font_bold" />
@@ -167,6 +177,7 @@
                         android:layout_height="match_parent"
                         android:padding="@dimen/x2dp"
                         android:text=""
+                        android:gravity="right"
 
                         android:textColor="@color/txt_aku_blue"
                         android:textSize="@dimen/s12"

@@ -55,20 +55,26 @@ public class CardioAdapter extends RecyclerView.Adapter<CardioAdapter.ViewHolder
 
         holder.txtName.setText(model.getService());
 
+
         holder.RlReport.setVisibility(View.VISIBLE);
         holder.RlGraph.setVisibility(View.VISIBLE);
-
         setEnability(holder, model);
         setListener(holder, model);
 
         if (model.getStatus().equalsIgnoreCase("Signed")) {
             holder.txtStatusType.setText("Finalised");
+
+            holder.RlReport.setVisibility(View.VISIBLE);
+            holder.RlGraph.setVisibility(View.VISIBLE);
+
             setViews(holder, activity.getResources().getColor(R.color.base_green),
                     R.drawable.rounded_box_filled_base_green, R.drawable.cardiopulmonary_green, R.drawable.b_cardiopulmonary_transparent);
 
         } else {
             holder.txtStatusType.setText("Pending");
 
+            holder.RlReport.setVisibility(View.GONE);
+            holder.RlGraph.setVisibility(View.GONE);
             setViews(holder, activity.getResources().getColor(R.color.base_amber),
                     R.drawable.rounded_box_filled_base_amber, R.drawable.cardiopulmonary_amber, R.drawable.b_cardiopulmonary_transparent);
         }
