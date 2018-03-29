@@ -15,7 +15,7 @@
         android:layout_height="wrap_content" />
 
 
-    <LinearLayout
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
@@ -38,7 +38,15 @@
             app:zoomage_zoomable="true" />
 
 
-    </LinearLayout>
+        <ProgressBar
+            android:id="@+id/progressBar"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+             android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true" />
+
+
+    </RelativeLayout>
 
 
     <LinearLayout
@@ -46,22 +54,43 @@
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
+
+        <com.warkiz.widget.IndicatorSeekBar
+            android:id="@+id/indSeekbar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            android:padding="@dimen/x10dp"
+            app:isb_indicator_color="@color/colorPrimary"
+            app:isb_indicator_text_color="@color/c_white"
+            app:isb_indicator_type="circular_bubble"
+            app:isb_max="20"
+            app:isb_min="1"
+            app:isb_seek_bar_type="continuous_texts_ends"
+            app:isb_show_indicator="true"
+            app:isb_text_color="@color/colorPrimary"
+            app:isb_thumb_color="@color/colorPrimary"
+            app:isb_tick_type="oval"
+            app:isb_track_progress_bar_color="@color/colorPrimary" />
+
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            android:padding="@dimen/x5dp">
 
             <edu.aku.akuh_health_first.widget.AnyTextView
 
                 android:id="@+id/btnPrevious"
                 android:layout_width="@dimen/x100dp"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
                 android:layout_margin="@dimen/x2dp"
                 android:background="@drawable/rounded_box_filled_columbia_blue"
                 android:drawableLeft="@drawable/previous"
                 android:drawablePadding="@dimen/x5dp"
-                android:gravity="center_vertical"
+                android:gravity="center"
                 android:padding="@dimen/x10dp"
                 android:text="Previous"
                 android:textAllCaps="false"
@@ -71,9 +100,10 @@
 
             <edu.aku.akuh_health_first.widget.AnyTextView
                 android:id="@+id/tv_progress"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_gravity="center_horizontal"
+                android:layout_weight="1"
                 android:gravity="bottom|center_horizontal"
                 android:padding="@dimen/x10dp"
                 android:text="0/0"
@@ -84,14 +114,14 @@
             <edu.aku.akuh_health_first.widget.AnyTextView
                 android:id="@+id/btnNext"
                 android:layout_width="@dimen/x100dp"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
                 android:layout_margin="@dimen/x2dp"
                 android:background="@drawable/rounded_box_filled_columbia_blue"
+                android:drawablePadding="@dimen/x5dp"
                 android:drawableRight="@drawable/next"
-                android:gravity="center|right"
+                android:gravity="center"
+                android:padding="@dimen/x10dp"
                 android:text="Next"
-                android:drawablePadding="@dimen/x10dp"
-                android:paddingRight="@dimen/x20dp"
                 android:textAllCaps="false"
                 android:textColor="@color/c_white"
                 android:textSize="@dimen/s12"
@@ -111,67 +141,50 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:padding="@dimen/x5dp">
 
         <edu.aku.akuh_health_first.widget.AnyTextView
             android:id="@+id/btnPreviousBatch"
-            android:layout_width="@dimen/x100dp"
-            android:layout_height="match_parent"
+            android:layout_width="@dimen/x115dp"
+            android:layout_height="wrap_content"
             android:layout_margin="@dimen/x2dp"
             android:background="@drawable/rounded_box_filled_columbia_blue"
             android:drawableLeft="@drawable/previous_batch"
             android:drawablePadding="@dimen/x5dp"
-            android:gravity="center_vertical"
-            android:padding="@dimen/x5dp"
+            android:gravity="center"
+            android:padding="@dimen/x10dp"
+            android:singleLine="true"
             android:text="Previous 30"
-            android:textAllCaps="false"
             android:textColor="@color/c_white"
             android:textSize="@dimen/s12"
 
             android:tint="@color/c_black" />
 
-        <com.warkiz.widget.IndicatorSeekBar
-            android:id="@+id/indSeekbar"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_gravity="bottom"
-            android:layout_weight="0.9"
-            app:isb_indicator_color="@color/colorPrimary"
-            app:isb_indicator_text_color="@color/c_white"
-            app:isb_indicator_type="circular_bubble"
-            app:isb_max="20"
-            app:isb_min="1"
-
-            app:isb_seek_bar_type="continuous_texts_ends"
-            app:isb_show_indicator="true"
-            app:isb_text_color="@color/colorPrimary"
-            app:isb_thumb_color="@color/colorPrimary"
-            app:isb_tick_type="oval"
-            app:isb_track_progress_bar_color="@color/colorPrimary" />
 
         <edu.aku.akuh_health_first.widget.AnyTextView
             android:id="@+id/txttotalCount"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="match_parent"
+            android:layout_weight="1"
             android:gravity="center"
             android:padding="@dimen/x5dp"
-            android:text="1400"
+            android:text="Total count ----"
             android:textColor="@color/c_white"
-            android:textSize="@dimen/s12"
+            android:textSize="12sp"
             app:typeface="@string/font_bold" />
 
         <edu.aku.akuh_health_first.widget.AnyTextView
             android:id="@+id/btnNextBatch"
-            android:layout_width="@dimen/x100dp"
-            android:layout_height="match_parent"
+            android:layout_width="@dimen/x115dp"
+            android:layout_height="wrap_content"
             android:layout_gravity="left"
             android:layout_margin="@dimen/x2dp"
             android:background="@drawable/rounded_box_filled_columbia_blue"
-            android:drawableRight="@drawable/next_batch"
             android:drawablePadding="@dimen/x5dp"
+            android:drawableRight="@drawable/next_batch"
             android:gravity="center"
-            android:padding="@dimen/x14dp"
-            android:src="@drawable/ic_fab_next"
+            android:padding="@dimen/x10dp"
             android:text="Next 30"
             android:textAllCaps="false"
             android:textColor="@color/c_white"

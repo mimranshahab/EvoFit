@@ -110,7 +110,6 @@ public class HealthHistoryFragment extends BaseFragment {
         super.onViewCreated(view, savedInstanceState);
         setListeners();
 
-
         if (isVisitTimeline) {
             contTimeLinebar.setVisibility(View.VISIBLE);
             txtTimelineView.setText("Displaying results for Visit Admission ID: " + patientVisitAdmissionID);

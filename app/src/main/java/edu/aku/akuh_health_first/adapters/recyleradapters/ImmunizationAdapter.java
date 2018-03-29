@@ -56,7 +56,12 @@ public class ImmunizationAdapter extends RecyclerView.Adapter<ImmunizationAdapte
         holder.txtType.setText(model.getVaccinationStatus());
 
         holder.txtDateTime.setText(model.getVaccinePlanDate());
-        holder.txtLocation.setText(model.getHospitalLocation());
+        if (model.getHospitalLocation() == null || model.getHospitalLocation().isEmpty()) {
+            holder.txtLocation.setText("N/A");
+        } else {
+            holder.txtLocation.setText("External " + model.getHospitalLocation());
+
+        }
         holder.txtName.setText(model.getDescription());
         holder.txtRoute.setText(model.getRouteDescription());
 
@@ -73,7 +78,7 @@ public class ImmunizationAdapter extends RecyclerView.Adapter<ImmunizationAdapte
 
             case AppConstants.due:
 
-                setViews(holder, activity.getResources().getColor(R.color.base_amber), R.drawable.rounded_box_filled_base_amber,  View.VISIBLE);
+                setViews(holder, activity.getResources().getColor(R.color.base_amber), R.drawable.rounded_box_filled_base_amber, View.VISIBLE);
                 break;
 
             case AppConstants.over_due:
@@ -85,7 +90,7 @@ public class ImmunizationAdapter extends RecyclerView.Adapter<ImmunizationAdapte
         setListener(holder, model);
     }
 
-    private void setViews(ViewHolder holder, int color, int rounded_box_filled_primary_color,  int visible) {
+    private void setViews(ViewHolder holder, int color, int rounded_box_filled_primary_color, int visible) {
         holder.cardView2.setCardBackgroundColor(color);
         holder.txtType.setBackgroundResource(rounded_box_filled_primary_color);
         holder.btnupdateColorCode.setBackgroundResource(rounded_box_filled_primary_color);

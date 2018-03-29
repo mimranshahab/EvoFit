@@ -21,6 +21,7 @@ import edu.aku.akuh_health_first.helperclasses.Helper;
 import edu.aku.akuh_health_first.helperclasses.ui.helper.TitleBar;
 import edu.aku.akuh_health_first.libraries.fileloader.FileLoader;
 import edu.aku.akuh_health_first.libraries.fileloader.listener.FileRequestListener;
+import edu.aku.akuh_health_first.libraries.fileloader.listener.MultiFileDownloadListener;
 import edu.aku.akuh_health_first.libraries.fileloader.pojo.FileResponse;
 import edu.aku.akuh_health_first.libraries.fileloader.request.FileLoadRequest;
 import edu.aku.akuh_health_first.managers.SharedPreferenceManager;
@@ -41,6 +42,7 @@ public class PacsActivity extends AppCompatActivity {
     IndicatorSeekBar indicatorSeekBar;
     AnyTextView txttotalCount;
     AnyTextView btnNextBatch;
+    ProgressBar progressBar;
 
     private int pointer;
     private PacsDescriptionModel pacsModel;
@@ -93,13 +95,15 @@ public class PacsActivity extends AppCompatActivity {
         indicatorSeekBar = findViewById(R.id.indSeekbar);
         txttotalCount = findViewById(R.id.txttotalCount);
         btnNextBatch = findViewById(R.id.btnNextBatch);
-
+        progressbar = findViewById(R.id.progressBar);
 
     }
 
 
     private void updateData(TupleModel tupleModel) {
         loader.show();
+
+//        loadMultipleFiles(pacsList.subList(tupleModel.getMin(), tupleModel.getMax()).toArray(new String[0]));
         for (int i = tupleModel.getMin(); i <= tupleModel.getMax(); i++) {
             if (pacsList.get(i) != null) {
                 loadImage(image, pacsList.get(i), false);
@@ -299,12 +303,12 @@ public class PacsActivity extends AppCompatActivity {
     private void loadImage(final ImageView iv, String imageUrl, final boolean isShowImage) {
         FileLoader.with(this)
                 .load(imageUrl)
-                .asFile(new FileRequestListener<File>() {
+                .asBitmap(new FileRequestListener<Bitmap>() {
                     @Override
-                    public void onLoad(FileLoadRequest request, FileResponse<File> response) {
-                        Bitmap bitmap = BitmapFactory.decodeFile(response.getDownloadedFile().getPath());
+                    public void onLoad(FileLoadRequest request, FileResponse<Bitmap> response) {
+//                        Bitmap bitmap = BitmapFactory.decodeFile(response.getDownloadedFile().getPath());
                         if (isShowImage) {
-                            iv.setImageBitmap(bitmap);
+                            iv.setImageBitmap(response.getBody());
                         }
                     }
 
@@ -313,6 +317,18 @@ public class PacsActivity extends AppCompatActivity {
                         Log.d(TAG, "onError: " + t.getMessage());
                     }
                 });
+    }
+
+    private void loadMultipleFiles(String... uris) {
+
+        loader.show();
+        FileLoader.multiFileDownload(this).progressListener(new MultiFileDownloadListener() {
+            @Override
+            public void onProgress(File downloadedFile, int progress, int totalFiles) {
+                Log.d(TAG, "onProgress: progress: " + progress);
+                loader.dismiss();
+            }
+        }).loadMultiple(uris);
     }
 
 //
