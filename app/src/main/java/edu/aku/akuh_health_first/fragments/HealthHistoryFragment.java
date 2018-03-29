@@ -123,14 +123,14 @@ public class HealthHistoryFragment extends BaseFragment {
     }
 
     private void setViews() {
-        txtClinicCount.setVisibility(View.VISIBLE);
-        txtRadiology.setVisibility(View.VISIBLE);
-        txtMedicationCount.setVisibility(View.VISIBLE);
-        txtImmunizationCount.setVisibility(View.VISIBLE);
-        txtCardioCount.setVisibility(View.VISIBLE);
-        txtNeuroCount.setVisibility(View.VISIBLE);
-        txtDischargeCount.setVisibility(View.VISIBLE);
-        txtEndoscopyCount.setVisibility(View.VISIBLE);
+//        txtClinicCount.setVisibility(View.VISIBLE);
+//        txtRadiology.setVisibility(View.VISIBLE);
+//        txtMedicationCount.setVisibility(View.VISIBLE);
+//        txtImmunizationCount.setVisibility(View.VISIBLE);
+//        txtCardioCount.setVisibility(View.VISIBLE);
+//        txtNeuroCount.setVisibility(View.VISIBLE);
+//        txtDischargeCount.setVisibility(View.VISIBLE);
+//        txtEndoscopyCount.setVisibility(View.VISIBLE);
 
     }
 
@@ -154,10 +154,10 @@ public class HealthHistoryFragment extends BaseFragment {
                                         .fromJson(GsonFactory.getSimpleGson().toJson(webResponse.result)
                                                 , type);
 
-                                for (int i = 0; i < arrData.size(); i++) {
-                                    setCounts(i);
-                                }
-//                                bindViewsVisitTimeline();
+
+//                                    setCounts(i);
+
+                                bindViewsVisitTimeline();
                             }
 
                             @Override
@@ -176,6 +176,7 @@ public class HealthHistoryFragment extends BaseFragment {
         if (arrData.size() > 0) {
             contImmunization.setEnabled(false);
             contImmunization.setAlpha(.15f);
+            txtImmunizationCount.setVisibility(View.INVISIBLE);
             for (int i = 0; i < arrData.size(); i++) {
 
                 if (arrData.get(i).getTotalCount() < 1) {
@@ -186,18 +187,18 @@ public class HealthHistoryFragment extends BaseFragment {
                             contSummary.setEnabled(false);
                             contSummary.setAlpha(.15f);
                             Log.d(TAG, "bindViewsVisitTimeline: DS ");
-
+                            txtDischargeCount.setVisibility(View.INVISIBLE);
                             break;
                         case "Clinical Laboratory":
                             contLab.setEnabled(false);
                             contLab.setAlpha(.15f);
                             Log.d(TAG, "bindViewsVisitTimeline: CL ");
-
+                            txtClinicCount.setVisibility(View.INVISIBLE);
                             break;
                         case "Radiology":
-
                             contRadiology.setEnabled(false);
                             contRadiology.setAlpha(.15f);
+                            txtRadiology.setVisibility(View.INVISIBLE);
                             Log.d(TAG, "bindViewsVisitTimeline: Rad");
 
                             break;
@@ -205,24 +206,30 @@ public class HealthHistoryFragment extends BaseFragment {
                         case "Medication Profile":
                             contMedicalProfile.setEnabled(false);
                             contMedicalProfile.setAlpha(.15f);
+                            txtMedicationCount.setVisibility(View.INVISIBLE);
 
                             break;
                         case "Cardiopulmonary":
                             contCardio.setEnabled(false);
                             contCardio.setAlpha(.15f);
-
+                            txtCardioCount.setVisibility(View.INVISIBLE);
                             break;
                         case "Neurophysiology":
                             contNeuroPhysiology.setEnabled(false);
                             contNeuroPhysiology.setAlpha(.15f);
-
+                            txtNeuroCount.setVisibility(View.INVISIBLE);
 
                             break;
                         case "Endoscopy":
                             contEndo.setEnabled(false);
                             contEndo.setAlpha(.15f);
-
+                            txtEndoscopyCount.setVisibility(View.INVISIBLE);
                             break;
+
+                        default:
+                            setCounts(i);
+                            break;
+
                     }
 
 
@@ -236,7 +243,6 @@ public class HealthHistoryFragment extends BaseFragment {
 
     private void setCounts(int i) {
         txtNeuroCount.setText(arrData.get(i).getTotalCount());
-
         txtClinicCount.setText(arrData.get(i).getTotalCount());
         txtRadiology.setText(arrData.get(i).getTotalCount());
         txtImmunizationCount.setText(arrData.get(i).getTotalCount());
