@@ -3,10 +3,13 @@ package edu.aku.akuh_health_first.adapters.recyleradapters;
 import android.app.Activity;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
+import android.text.style.AbsoluteSizeSpan;
+import android.text.style.ForegroundColorSpan;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 
 import java.util.ArrayList;
 
@@ -14,8 +17,10 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import edu.aku.akuh_health_first.R;
 import edu.aku.akuh_health_first.callbacks.OnItemClickListener;
+import edu.aku.akuh_health_first.helperclasses.Spanny;
 import edu.aku.akuh_health_first.models.LstLaboratorySpecimenResults;
 import edu.aku.akuh_health_first.widget.AnyTextView;
+import edu.aku.akuh_health_first.widget.CustomTypefaceSpan;
 
 /**
  */
@@ -49,16 +54,31 @@ public class ClinicalLabDetailAdapterv1 extends RecyclerView.Adapter<ClinicalLab
         final LstLaboratorySpecimenResults model = arrData.get(holder.getAdapterPosition());
 
         holder.txtReportName.setText(model.getReportName());
-        holder.txtNormalRangeFormatted.setText(model.getNormalRangeFormatted());
-        holder.txtResult.setText(model.getResult() + " " + model.getUnit());
+//        holder.txtNormalRangeFormatted.setText("Range " + model.getNormalRangeFormatted() + "\n Unit" + model.getUnit());
 
+        if (model.getAbnormalFlag().isEmpty()) {
+            holder.txtResult.setTextColor(activity.getResources().getColor(R.color.text_color_grey));
+
+
+        } else if (model.getAbnormalFlag().equalsIgnoreCase("Low")) {
+            holder.txtResult.setTextColor(activity.getResources().getColor(R.color.panic_blue));
+        } else if (model.getAbnormalFlag().equalsIgnoreCase("High")) {
+            holder.txtResult.setTextColor(activity.getResources().getColor(R.color.base_reddish));
+        }
+        holder.txtResult.setText("Result " + model.getResult());
         holder.txtResultPrevious1.setText(model.getPrevResult1());
         holder.txtResultPrevious2.setText(model.getPrevResult2());
         holder.txtResultPrevious1Date.setText(model.getPrevResult1Dttm());
         holder.txtResultPrevious2Date.setText(model.getPrevResult2Dttm());
 
+        if (model.getPrevResult2() == null && model.getPrevResult3() == null) {
+            holder.contHistoryResults.setVisibility(View.GONE);
+            holder.txthistorytag.setVisibility(View.GONE);
+        }
 //        setListener(holder, model);
 
+        Spanny spanny = new Spanny("Range " + model.getNormalRangeFormatted()).append("\n" + "Unit " + model.getUnit());
+        holder.txtNormalRangeFormatted.setText(spanny);
 
     }
 
@@ -100,6 +120,11 @@ public class ClinicalLabDetailAdapterv1 extends RecyclerView.Adapter<ClinicalLab
         AnyTextView txtResultPrevious2;
         @BindView(R.id.txtResultPrevious2Date)
         AnyTextView txtResultPrevious2Date;
+
+        @BindView(R.id.txthistorytag)
+        AnyTextView txthistorytag;
+        @BindView(R.id.contHistoryResults)
+        LinearLayout contHistoryResults;
         @BindView(R.id.cardView2)
         CardView cardView2;
 
