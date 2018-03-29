@@ -57,9 +57,9 @@ public class ImmunizationAdapter extends RecyclerView.Adapter<ImmunizationAdapte
 
         holder.txtDateTime.setText(model.getVaccinePlanDate());
         if (model.getHospitalLocation() == null || model.getHospitalLocation().isEmpty()) {
-            holder.txtLocation.setText("N/A");
+            holder.txtLocation.setText("Not Available");
         } else {
-            holder.txtLocation.setText("External " + model.getHospitalLocation());
+            holder.txtLocation.setText("External: " + model.getHospitalLocation());
 
         }
         holder.txtName.setText(model.getDescription());

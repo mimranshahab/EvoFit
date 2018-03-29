@@ -170,21 +170,23 @@ public class ClinicalLaboratoryMICDetailFragment extends BaseFragment implements
     @Override
     public void onItemClick(int position, Object object) {
         if (object instanceof LstLaboratoryMicspecimenResults) {
-            if (((LstLaboratoryMicspecimenResults) object).getProcedureTypeId().equals("Q")) {
-                ClinicalLaboratoryMICQueryFragment clinicalLaboratoryMICQueryFragment = ClinicalLaboratoryMICQueryFragment.newInstance(((LstLaboratoryMicspecimenResults) object).getLstMicSpecQueryResult(),
-                        ((LstLaboratoryMicspecimenResults) object).getProcedureName(), ((LstLaboratoryMicspecimenResults) object).getProcedureDescription());
+            // FIXME: 3/29/2018 Enable Later
 
-                getBaseActivity().addDockableFragment(clinicalLaboratoryMICQueryFragment);
-            } else {
-                if (((LstLaboratoryMicspecimenResults) object).getLstMicSpecParaResult().isEmpty()) {
-                    UIHelper.showToast(getContext(), "No Para Result Exists");
-                } else {
-                    ClinicalParaResultFragment clinicalParaFragment = ClinicalParaResultFragment.newInstance(((LstLaboratoryMicspecimenResults) object).getLstMicSpecParaResult().get(0),
-                            ((LstLaboratoryMicspecimenResults) object).getProcedureName(), ((LstLaboratoryMicspecimenResults) object).getProcedureDescription());
-                    getBaseActivity().addDockableFragment(clinicalParaFragment);
-                }
-
-            }
+//            if (((LstLaboratoryMicspecimenResults) object).getProcedureTypeId().equals("Q")) {
+//                ClinicalLaboratoryMICQueryFragment clinicalLaboratoryMICQueryFragment = ClinicalLaboratoryMICQueryFragment.newInstance(((LstLaboratoryMicspecimenResults) object).getLstMicSpecQueryResult(),
+//                        ((LstLaboratoryMicspecimenResults) object).getProcedureName(), ((LstLaboratoryMicspecimenResults) object).getProcedureDescription());
+//
+//                getBaseActivity().addDockableFragment(clinicalLaboratoryMICQueryFragment);
+//            } else {
+//                if (((LstLaboratoryMicspecimenResults) object).getLstMicSpecParaResult().isEmpty()) {
+//                    UIHelper.showToast(getContext(), "No Para Result Exists");
+//                } else {
+//                    ClinicalParaResultFragment clinicalParaFragment = ClinicalParaResultFragment.newInstance(((LstLaboratoryMicspecimenResults) object).getLstMicSpecParaResult().get(0),
+//                            ((LstLaboratoryMicspecimenResults) object).getProcedureName(), ((LstLaboratoryMicspecimenResults) object).getProcedureDescription());
+//                    getBaseActivity().addDockableFragment(clinicalParaFragment);
+//                }
+//
+//            }
         }
     }
 }

@@ -103,6 +103,7 @@ public class PacsDescriptionAdapter extends RecyclerView.Adapter<PacsDescription
                     @Override
                     public void onError(FileLoadRequest request, Throwable t) {
                         iv.setImageResource(R.drawable.radiology);
+                        viewHolder.progressBar.setVisibility(View.GONE);
                     }
                 });
     }

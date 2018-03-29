@@ -4,6 +4,7 @@ import android.app.ProgressDialog;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
@@ -42,16 +43,18 @@ public class PacsActivity extends AppCompatActivity {
     IndicatorSeekBar indicatorSeekBar;
     AnyTextView txttotalCount;
     AnyTextView btnNextBatch;
+    AnyTextView txtUserName;
+
+    AnyTextView txtMRnumber;
     ProgressBar progressBar;
 
     private int pointer;
     private PacsDescriptionModel pacsModel;
-
     private ArrayList<String> pacsList;
     private int min = 0, max = 0;
+
     ProgressDialog loader;
     private ArrayList<TupleModel> arrTupleModel;
-
     TupleModel selectedTupleModel;
     int selectedTupleIndex;
 
@@ -81,6 +84,17 @@ public class PacsActivity extends AppCompatActivity {
         setListeners();
         txttotalCount.setText("Total count " + pacsList.size() + "");
 
+
+    }
+
+    @Override
+    protected void onPostCreate(@Nullable Bundle savedInstanceState) {
+        super.onPostCreate(savedInstanceState);
+        String name = SharedPreferenceManager.getInstance(this).getCurrentUser().getName();
+        String mrNumber = SharedPreferenceManager.getInstance(this).getCurrentUser().getMRNumber();
+
+        txtUserName.setText(name);
+        txtMRnumber.setText(mrNumber);
     }
 
     private void bindViews() {
@@ -96,6 +110,8 @@ public class PacsActivity extends AppCompatActivity {
         txttotalCount = findViewById(R.id.txttotalCount);
         btnNextBatch = findViewById(R.id.btnNextBatch);
         progressbar = findViewById(R.id.progressBar);
+        txtUserName = findViewById(R.id.txtUserName);
+        txtMRnumber = findViewById(R.id.txtMRN);
 
     }
 

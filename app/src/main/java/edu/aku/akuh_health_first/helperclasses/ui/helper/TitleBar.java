@@ -188,9 +188,8 @@ public class TitleBar extends RelativeLayout {
             ImageLoaderHelper.loadImageWithConstantHeadersWithoutAnimation(context, circleImageView, currentUser.getProfileImage());
         }
 
-
         txtUserName.setText(currentUser.getName());
-        txtMRN.setText("MR#" + currentUser.getMRNumber());
+        txtMRN.setText(currentUser.getMRNumber());
         contDropDown.setVisibility(VISIBLE);
 
 //        this.circleImageView.setOnClickListener(new OnClickListener() {
