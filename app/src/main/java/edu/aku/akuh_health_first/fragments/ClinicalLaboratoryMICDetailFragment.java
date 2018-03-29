@@ -24,6 +24,7 @@ import edu.aku.akuh_health_first.adapters.recyleradapters.ClinicalLabMICDetailAd
 import edu.aku.akuh_health_first.callbacks.OnItemClickListener;
 import edu.aku.akuh_health_first.fragments.abstracts.BaseFragment;
 import edu.aku.akuh_health_first.helperclasses.ui.helper.TitleBar;
+import edu.aku.akuh_health_first.helperclasses.ui.helper.UIHelper;
 import edu.aku.akuh_health_first.models.BannerModel;
 import edu.aku.akuh_health_first.models.LaboratoryDetailModel;
 import edu.aku.akuh_health_first.models.LstLaboratoryMicspecimenOrderedProc;
@@ -103,7 +104,12 @@ public class ClinicalLaboratoryMICDetailFragment extends BaseFragment implements
 
         for (LstLaboratoryMicspecimenOrderedProc lstLaboratoryMicspecimenOrderedProc : laboratoryDetailModel.getLstLaboratoryMicSpecimenOrderedProc()) {
             arrLabDetail.add(new BannerModel(lstLaboratoryMicspecimenOrderedProc.getPROCEDUREDESCRIPTION(), laboratoryDetailModel.getSourceDescription()));
-            arrLabDetail.addAll(lstLaboratoryMicspecimenOrderedProc.getLstLaboratoryMicSpecimenResults());
+
+            for (LstLaboratoryMicspecimenResults lstLaboratoryMicspecimenResults : lstLaboratoryMicspecimenOrderedProc.getLstLaboratoryMicSpecimenResults()) {
+                lstLaboratoryMicspecimenResults.setProcedureName(lstLaboratoryMicspecimenOrderedProc.getPROCEDUREDESCRIPTION());
+                arrLabDetail.add(lstLaboratoryMicspecimenResults);
+            }
+
         }
 
         adapter.notifyDataSetChanged();
@@ -165,9 +171,18 @@ public class ClinicalLaboratoryMICDetailFragment extends BaseFragment implements
     public void onItemClick(int position, Object object) {
         if (object instanceof LstLaboratoryMicspecimenResults) {
             if (((LstLaboratoryMicspecimenResults) object).getProcedureTypeId().equals("Q")) {
-                ClinicalLaboratoryMICQueryFragment.newInstance(((LstLaboratoryMicspecimenResults) object).getLstMicSpecQueryResult(),
-                        "",((LstLaboratoryMicspecimenResults) object).getProcedureDescription())
+                ClinicalLaboratoryMICQueryFragment clinicalLaboratoryMICQueryFragment = ClinicalLaboratoryMICQueryFragment.newInstance(((LstLaboratoryMicspecimenResults) object).getLstMicSpecQueryResult(),
+                        ((LstLaboratoryMicspecimenResults) object).getProcedureName(), ((LstLaboratoryMicspecimenResults) object).getProcedureDescription());
+
+                getBaseActivity().addDockableFragment(clinicalLaboratoryMICQueryFragment);
             } else {
+                if (((LstLaboratoryMicspecimenResults) object).getLstMicSpecParaResult().isEmpty()) {
+                    UIHelper.showToast(getContext(), "No Para Result Exists");
+                } else {
+                    ClinicalParaResultFragment clinicalParaFragment = ClinicalParaResultFragment.newInstance(((LstLaboratoryMicspecimenResults) object).getLstMicSpecParaResult().get(0),
+                            ((LstLaboratoryMicspecimenResults) object).getProcedureName(), ((LstLaboratoryMicspecimenResults) object).getProcedureDescription());
+                    getBaseActivity().addDockableFragment(clinicalParaFragment);
+                }
 
             }
         }

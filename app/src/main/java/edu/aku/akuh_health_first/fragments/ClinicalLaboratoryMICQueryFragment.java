@@ -14,19 +14,19 @@ import android.view.animation.LayoutAnimationController;
 import android.widget.AdapterView;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
 import edu.aku.akuh_health_first.R;
 import edu.aku.akuh_health_first.adapters.recyleradapters.ClinicalLabMICDetailAdapter;
+import edu.aku.akuh_health_first.adapters.recyleradapters.ClinicalLabQeuryResultAdapter;
 import edu.aku.akuh_health_first.callbacks.OnItemClickListener;
 import edu.aku.akuh_health_first.fragments.abstracts.BaseFragment;
 import edu.aku.akuh_health_first.helperclasses.ui.helper.TitleBar;
 import edu.aku.akuh_health_first.models.BannerModel;
-import edu.aku.akuh_health_first.models.LaboratoryDetailModel;
-import edu.aku.akuh_health_first.models.LstLaboratoryMicspecimenOrderedProc;
-import edu.aku.akuh_health_first.models.LstLaboratorySpecimenResults;
+import edu.aku.akuh_health_first.models.LstMicSpecQueryResult;
 import edu.aku.akuh_health_first.widget.AnyTextView;
 
 /**
@@ -36,23 +36,25 @@ import edu.aku.akuh_health_first.widget.AnyTextView;
 public class ClinicalLaboratoryMICQueryFragment extends BaseFragment implements OnItemClickListener {
 
     Unbinder unbinder;
-    @BindView(R.id.txtProcedure)
-    AnyTextView txtProcedure;
     @BindView(R.id.txtProcedureDesc)
     AnyTextView txtProcedureDesc;
     @BindView(R.id.recyclerView)
     RecyclerView recyclerView;
 
-    private ArrayList arrLabDetail;
-    private LaboratoryDetailModel laboratoryDetailModel;
-    private ClinicalLabMICDetailAdapter adapter;
+    private ArrayList<BannerModel> arrData;
+    private ClinicalLabQeuryResultAdapter adapter;
+    private List<LstMicSpecQueryResult> lstMicSpecQueryResult;
+    private String procedureName;
+    private String procedureDescription;
 
-    public static ClinicalLaboratoryMICQueryFragment newInstance() {
+    public static ClinicalLaboratoryMICQueryFragment newInstance(List<LstMicSpecQueryResult> lstMicSpecQueryResult, String procedureName, String procedureDescription) {
 
         Bundle args = new Bundle();
 
         ClinicalLaboratoryMICQueryFragment fragment = new ClinicalLaboratoryMICQueryFragment();
-        fragment.laboratoryDetailModel = laboratoryDetailModel;
+        fragment.lstMicSpecQueryResult = lstMicSpecQueryResult;
+        fragment.procedureName = procedureName;
+        fragment.procedureDescription = procedureDescription;
         fragment.setArguments(args);
         return fragment;
     }
@@ -70,7 +72,7 @@ public class ClinicalLaboratoryMICQueryFragment extends BaseFragment implements 
     @Override
     public void setTitlebar(TitleBar titleBar) {
         titleBar.resetViews();
-        titleBar.setTitle("Lab Detail");
+        titleBar.setTitle(procedureName);
         titleBar.showBackButton(getBaseActivity());
         titleBar.setUserDisplay(sharedPreferenceManager.getCurrentUser(), getContext());
         titleBar.showHome(getBaseActivity());
@@ -80,8 +82,8 @@ public class ClinicalLaboratoryMICQueryFragment extends BaseFragment implements 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        arrLabDetail = new ArrayList();
-        adapter = new ClinicalLabMICDetailAdapter(getBaseActivity(), arrLabDetail, this);
+        arrData = new ArrayList<BannerModel>();
+        adapter = new ClinicalLabQeuryResultAdapter(getBaseActivity(), arrData, this);
     }
 
     @Override
@@ -90,15 +92,16 @@ public class ClinicalLaboratoryMICQueryFragment extends BaseFragment implements 
         bindView();
 
 
-        arrLabDetail.clear();
+        txtProcedureDesc.setText(procedureDescription);
 
-        for (LstLaboratoryMicspecimenOrderedProc lstLaboratoryMicspecimenOrderedProc : laboratoryDetailModel.getLstLaboratoryMicSpecimenOrderedProc()) {
-            arrLabDetail.add(new BannerModel(lstLaboratoryMicspecimenOrderedProc.getPROCEDUREDESCRIPTION(), laboratoryDetailModel.getSourceDescription()));
-            arrLabDetail.addAll(lstLaboratoryMicspecimenOrderedProc.getLstLaboratoryMicSpecimenResults());
+        arrData.clear();
+
+        for (LstMicSpecQueryResult micSpecQueryResult : lstMicSpecQueryResult) {
+            arrData.add(new BannerModel(micSpecQueryResult.getQUERYSTRING(), micSpecQueryResult.getQUERYRESULT()));
         }
 
+
         adapter.notifyDataSetChanged();
-        bindData();
     }
 
     private void bindView() {

@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+<LinearLayout
+    android:id="@+id/contParentLayout"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <edu.aku.akuh_health_first.widget.AnyTextView
+        android:id="@+id/txtQueryString"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:ellipsize="end"
+        android:gravity="center"
+        android:maxLength="15"
+        android:padding="@dimen/x5dp"
+        android:singleLine="true"
+        android:text="Query String"
+        android:textColor="@color/txt_aku_blue"
+        android:textSize="@dimen/s15" />
+
+    <edu.aku.akuh_health_first.widget.AnyTextView
+        android:id="@+id/txtQueryResult"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:ellipsize="end"
+        android:maxLength="15"
+        android:padding="@dimen/x5dp"
+        android:gravity="center"
+        android:singleLine="true"
+        android:text="Query Result"
+        android:textColor="@color/txt_aku_blue"
+        android:textSize="@dimen/s15" />
+</LinearLayout>
+
+
+</LinearLayout>
