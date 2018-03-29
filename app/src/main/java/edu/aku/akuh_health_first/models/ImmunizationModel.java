@@ -66,6 +66,18 @@ public class ImmunizationModel implements IsRecordFound {
     @SerializedName("RouteDescription")
     @Expose
     private String routeDescription;
+
+    public boolean isImmunizationRecordFound() {
+        return immunizationRecordFound;
+    }
+
+    public void setImmunizationRecordFound(boolean immunizationRecordFound) {
+        this.immunizationRecordFound = immunizationRecordFound;
+    }
+
+    @SerializedName("ImmunizationRecordFound")
+    @Expose
+    private boolean immunizationRecordFound;
     @SerializedName("SiteOfInjectionID")
     @Expose
     private Object siteOfInjectionID;

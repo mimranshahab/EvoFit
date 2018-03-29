@@ -62,14 +62,11 @@ public class ClinicalLabAdapterV1 extends RecyclerView.Adapter<ClinicalLabAdapte
         holder.txtStatus.setText(model.getStatusID());
         setListener(holder, model);
 
-        if (model.getStatusID().equalsIgnoreCase("Completed")) {
+        if (model.getStatusID().equalsIgnoreCase("Completed") || model.getStatusID().equalsIgnoreCase("Partially Completed")) {
             colorCodes(holder,
                     R.color.base_green,
                     R.drawable.rounded_box_filled_base_green);
             holder.btnShowDetail.setVisibility(View.VISIBLE);
-
-//            holder.txtStatus.setBackgroundResource(R.drawable.rounded_box_filled_base_green);
-
 
         } else if (model.getStatusID().equalsIgnoreCase("Pending")) {
             colorCodes(holder,

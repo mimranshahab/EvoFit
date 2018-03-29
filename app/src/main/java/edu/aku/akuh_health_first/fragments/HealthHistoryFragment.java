@@ -66,8 +66,8 @@ public class HealthHistoryFragment extends BaseFragment {
     LinearLayout contTimeLinebar;
     @BindView(R.id.txtClinicCount)
     AnyTextView txtClinicCount;
-    @BindView(R.id.txtRadiology)
-    AnyTextView txtRadiology;
+    @BindView(R.id.txtRadiologyCount)
+    AnyTextView txtRadiologyCount;
     @BindView(R.id.txtMedicationCount)
     AnyTextView txtMedicationCount;
     @BindView(R.id.txtImmunizationCount)
@@ -115,26 +115,26 @@ public class HealthHistoryFragment extends BaseFragment {
             contTimeLinebar.setVisibility(View.VISIBLE);
             txtTimelineView.setText("Displaying results for Visit Admission ID: " + patientVisitAdmissionID);
             contParentLayout.setVisibility(View.GONE);
-            setViews();
-            serviceCall();
-
+            timelineServiceCall();
+        } else {
+            setViewsInvisible();
         }
 
     }
 
-    private void setViews() {
-        txtClinicCount.setVisibility(View.VISIBLE);
-        txtRadiology.setVisibility(View.VISIBLE);
-        txtMedicationCount.setVisibility(View.VISIBLE);
-        txtImmunizationCount.setVisibility(View.VISIBLE);
-        txtCardioCount.setVisibility(View.VISIBLE);
-        txtNeuroCount.setVisibility(View.VISIBLE);
-        txtDischargeCount.setVisibility(View.VISIBLE);
-        txtEndoscopyCount.setVisibility(View.VISIBLE);
+    private void setViewsInvisible() {
+        txtClinicCount.setVisibility(View.INVISIBLE);
+        txtRadiologyCount.setVisibility(View.INVISIBLE);
+        txtMedicationCount.setVisibility(View.INVISIBLE);
+        txtImmunizationCount.setVisibility(View.INVISIBLE);
+        txtCardioCount.setVisibility(View.INVISIBLE);
+        txtNeuroCount.setVisibility(View.INVISIBLE);
+        txtDischargeCount.setVisibility(View.INVISIBLE);
+        txtEndoscopyCount.setVisibility(View.INVISIBLE);
 
     }
 
-    private void serviceCall() {
+    private void timelineServiceCall() {
         SearchModel model = new SearchModel();
         model.setMRNumber(getCurrentUser().getMRNumber());
         model.setVisitID(patientVisitAdmissionID + "");
@@ -157,7 +157,7 @@ public class HealthHistoryFragment extends BaseFragment {
                                 for (int i = 0; i < arrData.size(); i++) {
                                     setCounts(i);
                                 }
-//                                bindViewsVisitTimeline();
+                                bindViewsVisitTimeline();
                             }
 
                             @Override
@@ -175,6 +175,7 @@ public class HealthHistoryFragment extends BaseFragment {
         tempArray();
         if (arrData.size() > 0) {
             contImmunization.setEnabled(false);
+            txtImmunizationCount.setVisibility(View.INVISIBLE);
             contImmunization.setAlpha(.15f);
             for (int i = 0; i < arrData.size(); i++) {
 
@@ -186,12 +187,14 @@ public class HealthHistoryFragment extends BaseFragment {
                             contSummary.setEnabled(false);
                             contSummary.setAlpha(.15f);
                             Log.d(TAG, "bindViewsVisitTimeline: DS ");
+                            txtDischargeCount.setVisibility(View.INVISIBLE);
 
                             break;
                         case "Clinical Laboratory":
                             contLab.setEnabled(false);
                             contLab.setAlpha(.15f);
                             Log.d(TAG, "bindViewsVisitTimeline: CL ");
+                            txtClinicCount.setVisibility(View.INVISIBLE);
 
                             break;
                         case "Radiology":
@@ -199,28 +202,33 @@ public class HealthHistoryFragment extends BaseFragment {
                             contRadiology.setEnabled(false);
                             contRadiology.setAlpha(.15f);
                             Log.d(TAG, "bindViewsVisitTimeline: Rad");
+                            txtRadiologyCount.setVisibility(View.INVISIBLE);
 
                             break;
 
                         case "Medication Profile":
                             contMedicalProfile.setEnabled(false);
                             contMedicalProfile.setAlpha(.15f);
+                            txtMedicationCount.setVisibility(View.INVISIBLE);
 
                             break;
                         case "Cardiopulmonary":
                             contCardio.setEnabled(false);
                             contCardio.setAlpha(.15f);
+                            txtCardioCount.setVisibility(View.INVISIBLE);
 
                             break;
                         case "Neurophysiology":
                             contNeuroPhysiology.setEnabled(false);
                             contNeuroPhysiology.setAlpha(.15f);
+                            txtNeuroCount.setVisibility(View.INVISIBLE);
 
 
                             break;
                         case "Endoscopy":
                             contEndo.setEnabled(false);
                             contEndo.setAlpha(.15f);
+                            txtEndoscopyCount.setVisibility(View.INVISIBLE);
 
                             break;
                     }
@@ -230,19 +238,20 @@ public class HealthHistoryFragment extends BaseFragment {
 
 
             }
+        } else {
+            setViewsInvisible();
         }
 
     }
 
     private void setCounts(int i) {
-        txtNeuroCount.setText(arrData.get(i).getTotalCount());
-
-        txtClinicCount.setText(arrData.get(i).getTotalCount());
-        txtRadiology.setText(arrData.get(i).getTotalCount());
-        txtImmunizationCount.setText(arrData.get(i).getTotalCount());
-        txtMedicationCount.setText(arrData.get(i).getTotalCount());
-        txtDischargeCount.setText(arrData.get(i).getTotalCount());
-        txtCardioCount.setText(arrData.get(i).getTotalCount());
+        txtNeuroCount.setText(String.valueOf(arrData.get(i).getNotificationCount()));
+        txtClinicCount.setText(String.valueOf(arrData.get(i).getNotificationCount()));
+        txtRadiologyCount.setText(String.valueOf(arrData.get(i).getNotificationCount()));
+        txtImmunizationCount.setText(String.valueOf(arrData.get(i).getNotificationCount()));
+        txtMedicationCount.setText(String.valueOf(arrData.get(i).getNotificationCount()));
+        txtDischargeCount.setText(String.valueOf(arrData.get(i).getNotificationCount()));
+        txtCardioCount.setText(String.valueOf(arrData.get(i).getNotificationCount()));
     }
 
     private void tempArray() {

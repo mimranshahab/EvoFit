@@ -98,12 +98,8 @@ public class ImmunizationProfileFragment extends BaseFragment implements View.On
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         bindView();
-        serviceCall();
-        mFab.setVisibility(View.VISIBLE);
-
-
+        isImmunizationRecordExistServce();
     }
-
 
     private void bindView() {
         RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getBaseActivity());
@@ -120,7 +116,7 @@ public class ImmunizationProfileFragment extends BaseFragment implements View.On
         refreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
-                serviceCall();
+                isImmunizationRecordExistServce();
                 refreshLayout.setRefreshing(false);
             }
         });
@@ -166,13 +162,11 @@ public class ImmunizationProfileFragment extends BaseFragment implements View.On
     public void onItemClick(int position, Object object) {
         if (object instanceof ImmunizationModel) {
             getBaseActivity().addDockableFragment(AddUpdateVaccineFragment.newInstance(false, (ImmunizationModel) object, arrUsedVaccineDes));
-
         }
-
     }
 
 
-    private void serviceCall() {
+    private void getVaccineScheduleService() {
         SearchModel model = new SearchModel();
         model.setMRNumber(getCurrentUser().getMRNumber());
         if (isFromTimeline) {
@@ -219,6 +213,50 @@ public class ImmunizationProfileFragment extends BaseFragment implements View.On
                         });
 
     }
+
+
+    private void isImmunizationRecordExistServce() {
+        SearchModel model = new SearchModel();
+        model.setMRNumber(getCurrentUser().getMRNumber());
+        model.setVisitID(null);
+
+        new WebServices(getBaseActivity(),
+                getToken(),
+                BaseURLTypes.AHFA_BASE_URL)
+                .webServiceRequestAPIForJsonObject(WebServiceConstants.METHOD_IMMUNIZATION_RECORD_EXIST,
+                        model.toString(),
+                        new WebServices.IRequestJsonDataCallBack() {
+                            @Override
+                            public void requestDataResponse(WebResponse<JsonObject> webResponse) {
+
+                                ImmunizationModel immunizationModel = GsonFactory.getSimpleGson()
+                                        .fromJson(GsonFactory.getSimpleGson().toJson(webResponse.result)
+                                                , ImmunizationModel.class);
+
+                                if (immunizationModel.isImmunizationRecordFound()) {
+                                    mFab.setVisibility(View.VISIBLE);
+                                    getVaccineScheduleService();
+                                } else {
+                                    mFab.setVisibility(View.GONE);
+                                    showEmptyView("No Immunization Record Found");
+                                }
+                            }
+
+                            @Override
+                            public void onError() {
+                                mFab.setVisibility(View.GONE);
+                                showEmptyView("No Immunization Record Found");
+                            }
+                        });
+
+    }
+
+    private void showEmptyView(String text) {
+        refreshLayout.setVisibility(View.GONE);
+        emptyView.setVisibility(View.VISIBLE);
+        emptyView.setText(text);
+    }
+
 
     private void showEmptyView() {
         refreshLayout.setVisibility(View.GONE);

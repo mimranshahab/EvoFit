@@ -22,7 +22,6 @@ public class GenericContentFragment extends BaseFragment {
 
     private String key = "";
     private String title = "";
-    private TextView txtViewContent;
 
 
     public static GenericContentFragment newInstance(String key, String mTitle) {
@@ -59,7 +58,7 @@ public class GenericContentFragment extends BaseFragment {
     }
 
     private void bindViews(View view) {
-        txtViewContent = (TextView) view.findViewById(R.id.txtViewContent_generic_content);
+        TextView txtViewContent = (TextView) view.findViewById(R.id.txtViewContent_generic_content);
         txtViewContent.setText(key);
     }
 

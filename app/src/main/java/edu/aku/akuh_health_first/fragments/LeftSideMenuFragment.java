@@ -165,7 +165,7 @@ public class LeftSideMenuFragment extends BaseFragment implements OnNewPacketRec
                 break;
 
             case R.id.txtAbout:
-                getBaseActivity().addDockableFragment(GenericContentFragment.newInstance(getString(R.string.generic), "About"));
+                getBaseActivity().addDockableFragment(GenericContentFragment.newInstance(getString(R.string.about_us), "About"));
                 break;
             case R.id.txtLogout:
                 logoutClick();

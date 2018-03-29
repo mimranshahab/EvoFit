@@ -19,7 +19,6 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
 import edu.aku.akuh_health_first.R;
-import edu.aku.akuh_health_first.adapters.recyleradapters.ClinicalLabDetailAdapterv1;
 import edu.aku.akuh_health_first.adapters.recyleradapters.ClinicalLabMICDetailAdapter;
 import edu.aku.akuh_health_first.callbacks.OnItemClickListener;
 import edu.aku.akuh_health_first.fragments.abstracts.BaseFragment;
@@ -27,39 +26,31 @@ import edu.aku.akuh_health_first.helperclasses.ui.helper.TitleBar;
 import edu.aku.akuh_health_first.models.BannerModel;
 import edu.aku.akuh_health_first.models.LaboratoryDetailModel;
 import edu.aku.akuh_health_first.models.LstLaboratoryMicspecimenOrderedProc;
-import edu.aku.akuh_health_first.models.LstLaboratorySpecimenResults;
 import edu.aku.akuh_health_first.widget.AnyTextView;
 
 /**
  * Created by aqsa.sarwar on 1/25/2018.
  */
 
-public class ClinicalLaboratoryMICDetailFragment extends BaseFragment implements OnItemClickListener {
+public class ClinicalLaboratoryMICQueryFragment extends BaseFragment implements OnItemClickListener {
 
-    @BindView(R.id.listClinicalLabResult)
-    RecyclerView listClinicalLabResult;
     Unbinder unbinder;
-    @BindView(R.id.txtSpecimenNumber)
-    AnyTextView txtSpecimenNumber;
-    @BindView(R.id.txtReqDatetime)
-    AnyTextView txtReqDatetime;
-    @BindView(R.id.txtPhysicianName)
-    AnyTextView txtPhysicianName;
-    @BindView(R.id.txtCollecDatetime)
-    AnyTextView txtCollecDatetime;
-    @BindView(R.id.txtLocation)
-    AnyTextView txtLocation;
-    @BindView(R.id.txtReportDatetime)
-    AnyTextView txtReportDatetime;
+    @BindView(R.id.txtProcedure)
+    AnyTextView txtProcedure;
+    @BindView(R.id.txtProcedureDesc)
+    AnyTextView txtProcedureDesc;
+    @BindView(R.id.recyclerView)
+    RecyclerView recyclerView;
+
     private ArrayList arrLabDetail;
     private LaboratoryDetailModel laboratoryDetailModel;
     private ClinicalLabMICDetailAdapter adapter;
 
-    public static ClinicalLaboratoryMICDetailFragment newInstance(LaboratoryDetailModel laboratoryDetailModel) {
+    public static ClinicalLaboratoryMICQueryFragment newInstance(LaboratoryDetailModel laboratoryDetailModel) {
 
         Bundle args = new Bundle();
 
-        ClinicalLaboratoryMICDetailFragment fragment = new ClinicalLaboratoryMICDetailFragment();
+        ClinicalLaboratoryMICQueryFragment fragment = new ClinicalLaboratoryMICQueryFragment();
         fragment.laboratoryDetailModel = laboratoryDetailModel;
         fragment.setArguments(args);
         return fragment;
@@ -72,7 +63,7 @@ public class ClinicalLaboratoryMICDetailFragment extends BaseFragment implements
 
     @Override
     protected int getFragmentLayout() {
-        return R.layout.fragment_clinical_lab_detail;
+        return R.layout.fragment_lab_mic_query_result;
     }
 
     @Override
@@ -112,12 +103,12 @@ public class ClinicalLaboratoryMICDetailFragment extends BaseFragment implements
     private void bindView() {
         RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getBaseActivity());
 
-        listClinicalLabResult.setLayoutManager(mLayoutManager);
-        ((DefaultItemAnimator) listClinicalLabResult.getItemAnimator()).setSupportsChangeAnimations(false);
+        recyclerView.setLayoutManager(mLayoutManager);
+        ((DefaultItemAnimator) recyclerView.getItemAnimator()).setSupportsChangeAnimations(false);
         int resId = R.anim.layout_animation_fall_bottom;
         LayoutAnimationController animation = AnimationUtils.loadLayoutAnimation(getContext(), resId);
-        listClinicalLabResult.setLayoutAnimation(animation);
-        listClinicalLabResult.setAdapter(adapter);
+        recyclerView.setLayoutAnimation(animation);
+        recyclerView.setAdapter(adapter);
     }
 
     @Override
@@ -151,12 +142,12 @@ public class ClinicalLaboratoryMICDetailFragment extends BaseFragment implements
 
 
     private void bindData() {
-        txtCollecDatetime.setText(laboratoryDetailModel.getCollectionDttm());
-        txtReportDatetime.setText(laboratoryDetailModel.getSignoutDttm());
-        txtReqDatetime.setText(laboratoryDetailModel.getSortDttm());
-        txtPhysicianName.setText(laboratoryDetailModel.getReferringDoctorID());
-        txtSpecimenNumber.setText(laboratoryDetailModel.getSpecimenID());
-        txtLocation.setText(laboratoryDetailModel.getVisitLocationID());
+//        txtCollecDatetime.setText(laboratoryDetailModel.getCollectionDttm());
+//        txtReportDatetime.setText(laboratoryDetailModel.getSignoutDttm());
+//        txtReqDatetime.setText(laboratoryDetailModel.getSortDttm());
+//        txtPhysicianName.setText(laboratoryDetailModel.getReferringDoctorID());
+//        txtSpecimenNumber.setText(laboratoryDetailModel.getSpecimenID());
+//        txtLocation.setText(laboratoryDetailModel.getVisitLocationID());
 
     }
 

@@ -273,6 +273,18 @@ public class CardioModel
         this.active = active;
     }
 
+    public String getReportURN() {
+        return reportURN;
+    }
+
+    public void setReportURN(String reportURN) {
+        this.reportURN = reportURN;
+    }
+
+    @SerializedName("ReportURN")
+    @Expose
+    private String reportURN;
+
 
     @Override
     public String toString() {

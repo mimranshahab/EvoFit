@@ -58,6 +58,8 @@ public class CardioAdapter extends RecyclerView.Adapter<CardioAdapter.ViewHolder
 
         holder.RlReport.setVisibility(View.VISIBLE);
         holder.RlGraph.setVisibility(View.VISIBLE);
+        holder.txtDrName.setText(model.getLastFileUser());
+
         setEnability(holder, model);
         setListener(holder, model);
 

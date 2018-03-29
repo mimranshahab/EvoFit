@@ -149,7 +149,8 @@ public class WebServices {
     private boolean hasValidStatusForStringResult(Response<WebResponse<String>> response) {
         return response != null && response.body() != null && response.body().isSuccess();
     }
-    public void webServiceUploadFileAPI(String requestMethod, String filePath, FileType fileType,String reqBody,
+
+    public void webServiceUploadFileAPI(String requestMethod, String filePath, FileType fileType, String reqBody,
                                         final IRequestJsonDataCallBack callBack) {
 
         RequestBody bodyRequestMethod = getRequestBody(okhttp3.MultipartBody.FORM, requestMethod);
@@ -165,47 +166,45 @@ public class WebServices {
         File file = new File(filePath);
 
         part =
-                MultipartBody.Part.createFormData(WebServiceConstants.PARAMS_REQUEST_DATA,file.getName(),
+                MultipartBody.Part.createFormData(WebServiceConstants.PARAMS_REQUEST_DATA, file.getName(),
                         RequestBody.create(MediaType.parse(fileType.canonicalForm() + "/" + FileManager.getExtension(file.getName())), file)
                 );
 
 
-
-
         try {
             if (Helper.isNetworkConnected(mContext, true)) {
-                apiService.uploadFileRequestApi(bodyRequestMethod, requestBody ,part).enqueue(
+                apiService.uploadFileRequestApi(bodyRequestMethod, requestBody, part).enqueue(
                         new Callback<WebResponse<JsonObject>>() {
-                    @Override
-                    public void onResponse(Call<WebResponse<JsonObject>> call, Response<WebResponse<JsonObject>> response) {
-                        dismissDialog();
-                        if (!IsResponseError(response)) {
-                            String errorBody;
-                            try {
-                                errorBody = response.errorBody().string();
-                                UIHelper.showShortToastInCenter(mContext, errorBody);
-                                callBack.onError();
-                            } catch (IOException e) {
-                                e.printStackTrace();
+                            @Override
+                            public void onResponse(Call<WebResponse<JsonObject>> call, Response<WebResponse<JsonObject>> response) {
+                                dismissDialog();
+                                if (!IsResponseError(response)) {
+                                    String errorBody;
+                                    try {
+                                        errorBody = response.errorBody().string();
+                                        UIHelper.showShortToastInCenter(mContext, errorBody);
+                                        callBack.onError();
+                                    } catch (IOException e) {
+                                        e.printStackTrace();
+                                    }
+                                    return;
+                                }
+
+                                if (hasValidStatus(response))
+                                    callBack.requestDataResponse(response.body());
+                                else {
+                                    String message = response.body().message != null ? response.body().message : response.errorBody().toString();
+                                    UIHelper.showShortToastInCenter(mContext, message);
+                                }
                             }
-                            return;
-                        }
 
-                        if (hasValidStatus(response))
-                            callBack.requestDataResponse(response.body());
-                        else {
-                            String message = response.body().message != null ? response.body().message : response.errorBody().toString();
-                            UIHelper.showShortToastInCenter(mContext, message);
-                        }
-                    }
-
-                    @Override
-                    public void onFailure(Call<WebResponse<JsonObject>> call, Throwable t) {
-                        UIHelper.showShortToastInCenter(mContext, "Something went wrong, Please check your internet connection.");
-                        dismissDialog();
-                        callBack.onError();
-                    }
-                });
+                            @Override
+                            public void onFailure(Call<WebResponse<JsonObject>> call, Throwable t) {
+                                UIHelper.showShortToastInCenter(mContext, "Something went wrong, Please check your internet connection.");
+                                dismissDialog();
+                                callBack.onError();
+                            }
+                        });
             } else {
                 dismissDialog();
                 callBack.onError();
@@ -358,7 +357,6 @@ public class WebServices {
             if (Helper.isNetworkConnected(mContext, true)) {
                 Call<WebResponse<ArrayList<JsonObject>>> webResponseCall =
                         apiService.webServiceRequestAPIForArray(bodyRequestMethod, bodyRequestData);
-//                webResponseCall.request().newBuilder().addHeader("name", "hkhkhkhkhk").build();
                 webResponseCall.enqueue(new Callback<WebResponse<ArrayList<JsonObject>>>() {
                     @Override
                     public void onResponse(Call<WebResponse<ArrayList<JsonObject>>> call, Response<WebResponse<ArrayList<JsonObject>>> response) {
@@ -653,27 +651,20 @@ public class WebServices {
     }
 
 
-
-
-
     public void webServiceUploadFileAPIV1(String requestMethod, final IRequestWebResponseWithStringDataCallBack callBack) {
 
         RequestBody bodyRequestMethod = getRequestBody(okhttp3.MultipartBody.FORM, requestMethod);
         RequestBody bodyRequestData = getRequestBody(okhttp3.MultipartBody.FORM, requestMethod);
 
 
-
-
-
-
         try {
             if (Helper.isNetworkConnected(mContext, true)) {
                 apiService.webServiceRequestAPI(bodyRequestMethod, bodyRequestData).
                         enqueue(new Callback<WebResponse<JsonObject>>() {
-                    @Override
-                    public void onResponse(Call<WebResponse<JsonObject>> call, Response<WebResponse<JsonObject>> response) {
-                        dismissDialog();
-                        if (!IsResponseError(response)) {
+                            @Override
+                            public void onResponse(Call<WebResponse<JsonObject>> call, Response<WebResponse<JsonObject>> response) {
+                                dismissDialog();
+                                if (!IsResponseError(response)) {
 //                            String errorBody;
 //                            try {
 //                                errorBody = response.errorBody().string();
@@ -690,16 +681,16 @@ public class WebServices {
 //                        else {
 //                            String message = response.body().message != null ? response.body().message : response.errorBody().toString();
 //                            UIHelper.showShortToastInCenter(mContext, message);
-                        }
-                    }
+                                }
+                            }
 
-                    @Override
-                    public void onFailure(Call<WebResponse<JsonObject>> call, Throwable t) {
-                        UIHelper.showShortToastInCenter(mContext, "Something went wrong, Please check your internet connection.");
-                        dismissDialog();
-                        callBack.onError();
-                    }
-                });
+                            @Override
+                            public void onFailure(Call<WebResponse<JsonObject>> call, Throwable t) {
+                                UIHelper.showShortToastInCenter(mContext, "Something went wrong, Please check your internet connection.");
+                                dismissDialog();
+                                callBack.onError();
+                            }
+                        });
             } else {
                 dismissDialog();
                 callBack.onError();

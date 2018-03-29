@@ -66,6 +66,18 @@ public class Neurophysiology implements IsRecordFound {
     @SerializedName("DetailReportID")
     @Expose
     private String detailReportID;
+
+    public String getReportURN() {
+        return reportURN;
+    }
+
+    public void setReportURN(String reportURN) {
+        this.reportURN = reportURN;
+    }
+
+    @SerializedName("ReportURN")
+    @Expose
+    private String reportURN;
     @SerializedName("exists")
     @Expose
     private String exists;
@@ -74,7 +86,7 @@ public class Neurophysiology implements IsRecordFound {
     private Object lastFileDateTime;
     @SerializedName("LastFileUser")
     @Expose
-    private Object lastFileUser;
+    private String lastFileUser;
     @SerializedName("LastFileTerminal")
     @Expose
     private Object lastFileTerminal;
@@ -183,11 +195,11 @@ public class Neurophysiology implements IsRecordFound {
         this.lastFileDateTime = lastFileDateTime;
     }
 
-    public Object getLastFileUser() {
+    public String getLastFileUser() {
         return lastFileUser;
     }
 
-    public void setLastFileUser(Object lastFileUser) {
+    public void setLastFileUser(String lastFileUser) {
         this.lastFileUser = lastFileUser;
     }
 

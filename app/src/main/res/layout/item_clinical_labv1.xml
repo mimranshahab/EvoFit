@@ -63,6 +63,8 @@
                         android:layout_weight=".3"
                         android:background="@drawable/rounded_box_filled_base_green"
                         android:gravity="center"
+                        android:maxLines="2"
+                        android:ellipsize="end"
                         android:padding="@dimen/x3dp"
                         android:text="Completed"
                         android:textColor="@color/c_white"

@@ -57,13 +57,14 @@ public class RadiologyAdapter extends RecyclerView.Adapter<RadiologyAdapter.View
         holder.RlReport.setVisibility(View.VISIBLE);
         holder.RlGraph.setVisibility(View.VISIBLE);
         holder.txtGraph.setText("Images");
+
         if (model.getStatus().equalsIgnoreCase("F")) {
             holder.txtStatusType.setText("Finalized");
-            setViews(holder, activity.getResources().getColor(R.color.base_green),R.drawable.rounded_box_filled_base_green ,R.drawable.b_dischargesummary_transparent);
+            setViews(holder, activity.getResources().getColor(R.color.base_green), R.drawable.rounded_box_filled_base_green, R.drawable.radiology_transparent);
 
         } else {
             holder.txtStatusType.setText("Pending");
-            setViews(holder, activity.getResources().getColor(R.color.base_amber),R.drawable.rounded_box_filled_base_amber ,R.drawable.b_dischargesummary_transparent);
+            setViews(holder, activity.getResources().getColor(R.color.base_amber), R.drawable.rounded_box_filled_base_amber, R.drawable.radiology_transparent);
             holder.RlReport.setVisibility(View.GONE);
             holder.RlGraph.setVisibility(View.GONE);
         }
@@ -79,6 +80,7 @@ public class RadiologyAdapter extends RecyclerView.Adapter<RadiologyAdapter.View
 //        holder.btnReportColorCode1.setBackgroundResource(backgroundResource);
         holder.imgIcon.setColorFilter(color);
         holder.imgTransparent.setImageResource(img_transparent);
+        holder.imgTransparent.setPadding(5, 5, 5, 5);
     }
 
     private void setListener(final ViewHolder holder, final RadiologyModel cardioModel) {
