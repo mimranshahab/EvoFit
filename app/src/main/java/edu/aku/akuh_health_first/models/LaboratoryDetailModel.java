@@ -132,7 +132,7 @@ public class LaboratoryDetailModel
     private String externalFile;
     @SerializedName("SpecimenNumber")
     @Expose
-    private Object specimenNumber;
+    private String specimenNumber;
     @SerializedName("LastFileDateTime")
     @Expose
     private Object lastFileDateTime;
@@ -372,11 +372,11 @@ public class LaboratoryDetailModel
         this.externalPath = externalPath;
     }
 
-    public Object getSpecimenNumber() {
+    public String getSpecimenNumber() {
         return specimenNumber;
     }
 
-    public void setSpecimenNumber(Object specimenNumber) {
+    public void setSpecimenNumber(String specimenNumber) {
         this.specimenNumber = specimenNumber;
     }
 

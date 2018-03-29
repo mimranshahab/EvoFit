@@ -23,17 +23,18 @@
             android:layout_margin="@dimen/x2dp"
             android:background="@color/c_white"
             android:orientation="vertical"
-            android:padding="@dimen/x8dp">
+            android:padding="@dimen/x10dp">
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal">
+                android:orientation="horizontal"
+                android:padding="@dimen/x10dp">
 
                 <ImageView
                     android:id="@+id/imgIcon"
-                    android:layout_width="@dimen/x60dp"
-                    android:layout_height="@dimen/x60dp"
+                    android:layout_width="@dimen/x70dp"
+                    android:layout_height="@dimen/x70dp"
                     android:scaleType="centerCrop"
                     android:src="@drawable/b_clinicallab_green" />
 
@@ -44,74 +45,78 @@
                     android:orientation="vertical"
                     android:padding="@dimen/x5dp">
 
-                    <LinearLayout
+                    <edu.aku.akuh_health_first.widget.AnyTextView
+                        android:id="@+id/txtReportName"
                         android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:ellipsize="end"
+                        android:maxLines="1"
+                        android:text="Test Name"
+                        android:textColor="@color/txt_aku_blue"
+                        android:textSize="@dimen/s16"
+                        app:typeface="@string/font_bold" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:orientation="horizontal">
 
-
-                        <edu.aku.akuh_health_first.widget.AnyTextView
-                            android:id="@+id/txtReportName"
-                            android:layout_width="wrap_content"
-                            android:layout_height="match_parent"
-                            android:ellipsize="end"
-                            android:hint="Test Name"
-                            android:maxLines="1"
-                            android:text=""
-                            android:textColor="@color/txt_aku_blue"
-                            android:textSize="@dimen/s14"
-                            app:typeface="@string/font_bold" />
-
                         <edu.aku.akuh_health_first.widget.AnyTextView
                             android:id="@+id/txtNormalRangeFormatted"
-                            android:layout_width="wrap_content"
+                            android:layout_width="0dp"
                             android:layout_height="match_parent"
-                            android:ellipsize="end"  android:maxLines="1"
-                            android:hint="Normal range"
-                            android:paddingLeft="@dimen/x4dp"
-                            android:text=""
-                            android:textSize="@dimen/s14"
+                            android:layout_weight="1"
+                            android:ellipsize="end"
+                            android:maxLines="1"
+                            android:text="Normal range"
+                            android:textSize="@dimen/s13"
                             app:typeface="@string/font_regular" />
+
+                        <edu.aku.akuh_health_first.widget.AnyTextView
+                            android:id="@+id/txtResult"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginRight="@dimen/x20dp"
+                            android:layout_weight="1"
+                            android:ellipsize="end"
+                            android:gravity="end"
+
+                            android:maxLines="1"
+                            android:text="Result"
+                            android:textColor="@color/text_color_grey"
+                            android:textSize="@dimen/s16"
+                            app:typeface="@string/font_bold" />
 
 
                     </LinearLayout>
 
 
-                    <edu.aku.akuh_health_first.widget.AnyTextView
-                        android:id="@+id/txtResult"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:hint="Result"
-                        android:maxLines="1"
-                        android:ellipsize="end"
-                        android:textColor="@color/text_color_grey"
-                        android:textSize="@dimen/s14"
-                        app:typeface="@string/font_regular" />
                 </LinearLayout>
 
             </LinearLayout>
 
 
             <edu.aku.akuh_health_first.widget.AnyTextView
+                android:id="@+id/txthistorytag"
+
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_marginTop="@dimen/x10dp"
-                android:maxLines="1"
                 android:ellipsize="end"
                 android:gravity="center_vertical"
-                android:paddingLeft="@dimen/x10dp"
-                android:text="Last 2 Lab Results"
-                android:textSize="@dimen/s12"
+                android:maxLines="1"
+                android:paddingLeft="@dimen/x20dp"
+                android:text="History"
+                android:textSize="@dimen/s14"
                 app:typeface="@string/font_regular" />
 
             <LinearLayout
+                android:id="@+id/contHistoryResults"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
-                android:orientation="horizontal">
-
-
-
+                android:orientation="horizontal"
+                android:padding="@dimen/x5dp">
 
 
                 <LinearLayout
@@ -126,8 +131,8 @@
                         android:id="@+id/txtResultPrevious1"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:gravity="center_vertical"
                         android:ellipsize="end"
+                        android:gravity="center_vertical"
                         android:maxLines="1"
                         android:textColor="@color/base_amber"
                         android:textSize="@dimen/s15"
@@ -137,20 +142,21 @@
                         android:id="@+id/txtResultPrevious1Date"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:gravity="center_vertical"
-                        android:hint="valuedatetime"
                         android:ellipsize="end"
+                        android:gravity="center_vertical"
                         android:maxLines="1"
                         android:textColor="@color/text_color_grey"
                         android:textSize="@dimen/s12"
                         app:typeface="@string/font_regular" />
                 </LinearLayout>
+
                 <View
                     android:layout_width="1dp"
                     android:layout_height="match_parent"
                     android:alpha="0.2"
                     android:background="@color/base_gray"
                     android:padding="1dp" />
+
                 <LinearLayout
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
@@ -164,8 +170,8 @@
                         android:id="@+id/txtResultPrevious2"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:gravity="center_vertical"
                         android:ellipsize="end"
+                        android:gravity="center_vertical"
                         android:maxLines="1"
                         android:textColor="@color/base_amber"
                         android:textSize="@dimen/s15"
@@ -175,20 +181,14 @@
                         android:id="@+id/txtResultPrevious2Date"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:gravity="center_vertical"
-                        android:hint="valuedatetime"
                         android:ellipsize="end"
+                        android:gravity="center_vertical"
                         android:maxLines="1"
                         android:textColor="@color/text_color_grey"
                         android:textSize="@dimen/s12"
                         app:typeface="@string/font_regular" />
                 </LinearLayout>
-                <View
-                    android:layout_width="1dp"
-                    android:layout_height="match_parent"
-                    android:alpha="0.2"
-                    android:background="@color/base_gray"
-                    android:padding="1dp" />
+
 
             </LinearLayout>
 

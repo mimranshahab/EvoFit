@@ -9,7 +9,9 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 
 import com.google.gson.JsonObject;
+import com.google.gson.reflect.TypeToken;
 
+import java.lang.reflect.Type;
 import java.util.ArrayList;
 
 import butterknife.BindView;
@@ -17,7 +19,6 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 import butterknife.Unbinder;
 import edu.aku.akuh_health_first.R;
-import edu.aku.akuh_health_first.activities.HomeActivity;
 import edu.aku.akuh_health_first.constatnts.AppConstants;
 import edu.aku.akuh_health_first.constatnts.Events;
 import edu.aku.akuh_health_first.constatnts.WebServiceConstants;
@@ -27,10 +28,12 @@ import edu.aku.akuh_health_first.helperclasses.ui.helper.TitleBar;
 import edu.aku.akuh_health_first.helperclasses.ui.helper.UIHelper;
 import edu.aku.akuh_health_first.managers.retrofit.GsonFactory;
 import edu.aku.akuh_health_first.managers.retrofit.WebServices;
+import edu.aku.akuh_health_first.models.CountryListModel;
+import edu.aku.akuh_health_first.models.FrequencyIDsModel;
 import edu.aku.akuh_health_first.models.IntWrapper;
 import edu.aku.akuh_health_first.models.SpinnerModel;
 import edu.aku.akuh_health_first.models.receiving_model.CardMemberDetail;
-import edu.aku.akuh_health_first.models.receiving_model.RegisterVM;
+import edu.aku.akuh_health_first.models.receiving_model.RegisterOptionsModel;
 import edu.aku.akuh_health_first.models.receiving_model.UserDetailModel;
 import edu.aku.akuh_health_first.models.sending_model.EditCardModel;
 import edu.aku.akuh_health_first.models.wrappers.WebResponse;
@@ -63,8 +66,8 @@ public class EditProfileFragment extends BaseFragment {
     AnyTextView txtPermanentCountry;
     @BindView(R.id.btnUpdate)
     AnyTextView btnUpdate;
-//    private IntWrapper freqPosition = new IntWrapper(-1);
-//    private IntWrapper routePosition = new IntWrapper(-1);
+    private IntWrapper freqPosition = new IntWrapper(-1);
+    private IntWrapper routePosition = new IntWrapper(-1);
 
     @Override
     protected int getFragmentLayout() {
@@ -94,28 +97,7 @@ public class EditProfileFragment extends BaseFragment {
 //        serviceCallGetMember();
     }
 
-    private void serviceCallGetMember() {
-        EditCardModel editCardModel = new EditCardModel();
-        editCardModel.setMrnNumber(getCurrentUser().getMRNumber());
-        editCardModel.setCardNumber(getCurrentUser().getCardNumber());
-        new WebServices(getBaseActivity(),
-                getToken(),
-                BaseURLTypes.AHFA_BASE_URL)
-                .webServiceRequestAPIForJsonObject(WebServiceConstants.METHOD_GET_EDIT_CARD,
-                        editCardModel.toString(),
-                        new WebServices.IRequestJsonDataCallBack() {
-                            @Override
-                            public void requestDataResponse(WebResponse<JsonObject> webResponse) {
 
-
-                            }
-
-                            @Override
-                            public void onError() {
-
-                            }
-                        });
-    }
 
 
     private void setData() {
@@ -135,49 +117,7 @@ public class EditProfileFragment extends BaseFragment {
 
     }
 
-    private void webServiceCall(final UserDetailModel user) {
 
-        user.setCellPhoneNumber(edMobileNumber.getStringTrimmed());
-        user.setLandlineNumber(edtLandlineNumber.getStringTrimmed());
-
-        user.setCurrentAddress(edtCurrentAddress.getStringTrimmed());
-        user.setCurrentCity(edtCurrentCity.getStringTrimmed());
-        user.setCurrentCountryID(txtCurrentCountry.getStringTrimmed());
-
-        user.setPermanentAddress(edtPermanentAddress.getStringTrimmed());
-        user.setPermanentCity(edtPermanentCity.getStringTrimmed());
-        user.setPermanentCountryID(txtPermanentCountry.getStringTrimmed());
-        user.setLastFileDateTime(null);
-        if (edMobileNumber.getStringTrimmed() != "" &&
-                edtCurrentAddress.getStringTrimmed() != "" &&
-                edtCurrentCity.getStringTrimmed() != "" &&
-                txtCurrentCountry.getStringTrimmed() != "" &&
-                edtPermanentAddress.getStringTrimmed() != "" &&
-                txtPermanentCountry.getStringTrimmed() != "" &&
-                edtPermanentCity.getStringTrimmed() != "") {
-            new WebServices(getBaseActivity(),
-                    getToken(),
-                    BaseURLTypes.AHFA_BASE_URL)
-                    .webServiceRequestAPIForJsonObject(WebServiceConstants.METHOD_UPDATE_PROFILE,
-                            user.toString(),
-                            new WebServices.IRequestJsonDataCallBack() {
-                                @Override
-                                public void requestDataResponse(WebResponse<JsonObject> webResponse) {
-//                                getBaseActivity().openActivity(HomeActivity.class);
-                                    UIHelper.showToast(getContext(), webResponse.message);
-
-                                    getCardDetailService(user);
-                                }
-
-                                @Override
-                                public void onError() {
-
-                                }
-                            });
-        } else {
-            UIHelper.showToast(getBaseActivity(), "Fields cannot be empty");
-        }
-    }
 
     @Override
     public int getDrawerLockMode() {
@@ -227,6 +167,70 @@ public class EditProfileFragment extends BaseFragment {
     }
 
 
+
+
+    private ArrayList<SpinnerModel> arrPermanentCountry;
+    private ArrayList<SpinnerModel> arrCurrentCountry;
+
+    @OnClick({R.id.txtCurrentCountry, R.id.txtPermanentCountry, R.id.btnUpdate})
+    public void onViewClicked(View view) {
+        switch (view.getId()) {
+            case R.id.txtCurrentCountry:
+                UIHelper.showSpinnerDialog(this, arrCurrentCountry, "Select Current Country", txtCurrentCountry, null, routePosition);
+
+                break;
+            case R.id.txtPermanentCountry:
+                UIHelper.showSpinnerDialog(this, arrPermanentCountry, "Select Permanent Country", txtPermanentCountry, null, routePosition);
+
+                break;
+            case R.id.btnUpdate:
+                webServiceCall(sharedPreferenceManager.getCurrentUser());
+                break;
+        }
+    }
+    private void webServiceCall(final UserDetailModel user) {
+
+        user.setCellPhoneNumber(edMobileNumber.getStringTrimmed());
+        user.setLandlineNumber(edtLandlineNumber.getStringTrimmed());
+
+        user.setCurrentAddress(edtCurrentAddress.getStringTrimmed());
+        user.setCurrentCity(edtCurrentCity.getStringTrimmed());
+        user.setCurrentCountryID(txtCurrentCountry.getStringTrimmed());
+
+        user.setPermanentAddress(edtPermanentAddress.getStringTrimmed());
+        user.setPermanentCity(edtPermanentCity.getStringTrimmed());
+        user.setPermanentCountryID(txtPermanentCountry.getStringTrimmed());
+        user.setLastFileDateTime(null);
+        if (edMobileNumber.getStringTrimmed() != "" &&
+                edtCurrentAddress.getStringTrimmed() != "" &&
+                edtCurrentCity.getStringTrimmed() != "" &&
+                txtCurrentCountry.getStringTrimmed() != "" &&
+                edtPermanentAddress.getStringTrimmed() != "" &&
+                txtPermanentCountry.getStringTrimmed() != "" &&
+                edtPermanentCity.getStringTrimmed() != "") {
+            new WebServices(getBaseActivity(),
+                    getToken(),
+                    BaseURLTypes.AHFA_BASE_URL)
+                    .webServiceRequestAPIForJsonObject(WebServiceConstants.METHOD_UPDATE_PROFILE,
+                            user.toString(),
+                            new WebServices.IRequestJsonDataCallBack() {
+                                @Override
+                                public void requestDataResponse(WebResponse<JsonObject> webResponse) {
+//                                getBaseActivity().openActivity(HomeActivity.class);
+                                    UIHelper.showToast(getContext(), webResponse.message);
+
+                                    getCardDetailService(user);
+                                }
+
+                                @Override
+                                public void onError() {
+
+                                }
+                            });
+        } else {
+            UIHelper.showToast(getBaseActivity(), "Fields cannot be empty");
+        }
+    }
     private void getCardDetailService(final UserDetailModel user) {
         CardMemberDetail cardMemberDetail = new CardMemberDetail(sharedPreferenceManager.getString(AppConstants.KEY_CARD_NUMBER));
 
@@ -251,24 +255,36 @@ public class EditProfileFragment extends BaseFragment {
                 });
 
     }
+    private void serviceCallGetMember() {
+        EditCardModel editCardModel = new EditCardModel();
+        editCardModel.setMrnNumber(getCurrentUser().getMRNumber());
+        editCardModel.setCardNumber(getCurrentUser().getCardNumber());
+        new WebServices(getBaseActivity(),
+                getToken(),
+                BaseURLTypes.AHFA_BASE_URL)
+                .webServiceRequestAPIForJsonObject(WebServiceConstants.METHOD_GET_EDIT_CARD,
+                        editCardModel.toString(),
+                        new WebServices.IRequestJsonDataCallBack() {
+                            @Override
+                            public void requestDataResponse(WebResponse<JsonObject> webResponse) {
 
-    private ArrayList<SpinnerModel> arrPermanentCountry;
-    private ArrayList<SpinnerModel> arrCurrentCountry;
+                                CountryListModel countryListModel = GsonFactory.getSimpleGson().fromJson(webResponse.result, CountryListModel.class);
 
-    @OnClick({R.id.txtCurrentCountry, R.id.txtPermanentCountry, R.id.btnUpdate})
-    public void onViewClicked(View view) {
-        switch (view.getId()) {
-            case R.id.txtCurrentCountry:
-//                UIHelper.showSpinnerDialog(this, arrCurrentCountry, "Select Current Country", txtCurrentCountry, null, routePosition);
 
-                break;
-            case R.id.txtPermanentCountry:
-//                UIHelper.showSpinnerDialog(this, arrPermanentCountry, "Select Permanent Country", txtPermanentCountry, null, routePosition);
+                                for (int i = 0; i < countryListModel.getCurrentCountryList().size(); i++) {
+                                    arrCurrentCountry.add(new SpinnerModel(countryListModel.getCurrentCountryList().get(i).getText()));
+                                }
+                                for (int i = 0; i < countryListModel.getPermanentCountryList().size(); i++) {
 
-                break;
-            case R.id.btnUpdate:
-                webServiceCall(sharedPreferenceManager.getCurrentUser());
-                break;
-        }
+                                    arrPermanentCountry.add(new SpinnerModel(countryListModel.getPermanentCountryList().get(i).getText()));
+                                }
+
+                            }
+
+                            @Override
+                            public void onError() {
+
+                            }
+                        });
     }
 }

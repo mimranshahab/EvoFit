@@ -11,10 +11,6 @@ import android.widget.ImageView;
 import android.widget.ScrollView;
 
 import edu.aku.akuh_health_first.callbacks.OnNewPacketReceivedListener;
-import edu.aku.akuh_health_first.constatnts.Events;
-import edu.aku.akuh_health_first.managers.SharedPreferenceManager;
-import edu.aku.akuh_health_first.models.receiving_model.CardMemberDetail;
-import edu.aku.akuh_health_first.models.receiving_model.UserDetailModel;
 import edu.aku.akuh_health_first.widget.AnyTextView;
 
 import butterknife.BindView;

@@ -112,6 +112,7 @@ public class HealthHistoryFragment extends BaseFragment {
 
         if (isVisitTimeline) {
             contTimeLinebar.setVisibility(View.VISIBLE);
+            // FIXME: 3/29/2018 change tag line similar to web
             txtTimelineView.setText("Displaying results for Visit Admission ID: " + patientVisitAdmissionID);
             contParentLayout.setVisibility(View.GONE);
             timelineServiceCall();
