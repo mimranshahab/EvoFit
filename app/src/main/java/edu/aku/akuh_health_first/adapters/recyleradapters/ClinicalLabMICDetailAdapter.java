@@ -83,28 +83,27 @@ public class ClinicalLabMICDetailAdapter extends RecyclerView.Adapter<RecyclerVi
             LstLaboratoryMicspecimenResults lstLaboratoryMicspecimenResults = (LstLaboratoryMicspecimenResults) arrData.get(holder.getAdapterPosition());
 
             holderItem.txtShortMessage.setText(lstLaboratoryMicspecimenResults.getProcedureDescription());
+
             if (lstLaboratoryMicspecimenResults.getProcedureTypeId().equals("P") && lstLaboratoryMicspecimenResults.getLstMicSpecParaResult() != null && !lstLaboratoryMicspecimenResults.getLstMicSpecParaResult().isEmpty()) {
                 holderItem.txtDate.setVisibility(View.VISIBLE);
                 holderItem.txtDate.setText(lstLaboratoryMicspecimenResults.getLstMicSpecParaResult().get(0).getPARATYPE());
             } else {
                 holderItem.txtDate.setVisibility(View.GONE);
-
             }
+            setListener(holderItem, lstLaboratoryMicspecimenResults);
+
         }
-
-
-//        setListener(holder, model);
 
 
     }
 
-    private void setListener(final RecyclerView.ViewHolder holder, final LstLaboratorySpecimenResults neurophysiology) {
-//        holder.cardView2.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                onItemClick.onItemClick(holder.getAdapterPosition(), neurophysiology);
-//            }
-//        });
+    private void setListener(final ViewHolderItem holder, final Object object) {
+        holder.contLastLab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onItemClick.onItemClick(holder.getAdapterPosition(), object);
+            }
+        });
     }
 
 
@@ -113,7 +112,7 @@ public class ClinicalLabMICDetailAdapter extends RecyclerView.Adapter<RecyclerVi
         return arrData.size();
     }
 
-    public static class ViewHolderHeader extends RecyclerView.ViewHolder {
+    static class ViewHolderHeader extends RecyclerView.ViewHolder {
 
         @BindView(R.id.txtProcedureDesc)
         AnyTextView txtProcedureDesc;
@@ -126,7 +125,7 @@ public class ClinicalLabMICDetailAdapter extends RecyclerView.Adapter<RecyclerVi
         }
     }
 
-    public static class ViewHolderItem extends RecyclerView.ViewHolder {
+    static class ViewHolderItem extends RecyclerView.ViewHolder {
 
         @BindView(R.id.imgTitle)
         ImageView imgTitle;
