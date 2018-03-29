@@ -81,7 +81,7 @@ public class HealthSummaryAdapter extends RecyclerView.Adapter<HealthSummaryAdap
                 case Radiology:
                     holder.imgTitle.setImageResource(R.drawable.a_radiology);
                     break;
-                case ActiveMedication:
+                case MedicationProfile:
                     holder.imgTitle.setImageResource(R.drawable.a_active_medication);
                     break;
                 case ImmunizationProfile:
@@ -101,16 +101,14 @@ public class HealthSummaryAdapter extends RecyclerView.Adapter<HealthSummaryAdap
 
         if (isLinkToHistory) {
             holder.imgClick.setVisibility(View.VISIBLE);
-            setListener(holder, model);
         } else {
             if (model.getDetailMessageMobileArray().isEmpty()) {
                 holder.imgClick.setVisibility(View.GONE);
             } else {
                 holder.imgClick.setVisibility(View.VISIBLE);
-                setListener(holder, model);
             }
         }
-
+        setListener(holder, model);
 
     }
 

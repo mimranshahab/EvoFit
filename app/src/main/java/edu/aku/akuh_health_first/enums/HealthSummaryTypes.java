@@ -13,7 +13,7 @@ public enum HealthSummaryTypes {
     Allergies,
     ClinicalLaboratory,
     Radiology,
-    ActiveMedication,
+    MedicationProfile,
     ImmunizationProfile,
     LastVisit,
     FutureAppointment;
