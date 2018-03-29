@@ -27,6 +27,7 @@ import edu.aku.akuh_health_first.helperclasses.ui.helper.TitleBar;
 import edu.aku.akuh_health_first.models.BannerModel;
 import edu.aku.akuh_health_first.models.LaboratoryDetailModel;
 import edu.aku.akuh_health_first.models.LstLaboratoryMicspecimenOrderedProc;
+import edu.aku.akuh_health_first.models.LstLaboratoryMicspecimenResults;
 import edu.aku.akuh_health_first.models.LstLaboratorySpecimenResults;
 import edu.aku.akuh_health_first.widget.AnyTextView;
 
@@ -162,6 +163,13 @@ public class ClinicalLaboratoryMICDetailFragment extends BaseFragment implements
 
     @Override
     public void onItemClick(int position, Object object) {
+        if (object instanceof LstLaboratoryMicspecimenResults) {
+            if (((LstLaboratoryMicspecimenResults) object).getProcedureTypeId().equals("Q")) {
+                ClinicalLaboratoryMICQueryFragment.newInstance(((LstLaboratoryMicspecimenResults) object).getLstMicSpecQueryResult(),
+                        "",((LstLaboratoryMicspecimenResults) object).getProcedureDescription())
+            } else {
 
+            }
+        }
     }
 }

@@ -26,6 +26,7 @@ import edu.aku.akuh_health_first.helperclasses.ui.helper.TitleBar;
 import edu.aku.akuh_health_first.models.BannerModel;
 import edu.aku.akuh_health_first.models.LaboratoryDetailModel;
 import edu.aku.akuh_health_first.models.LstLaboratoryMicspecimenOrderedProc;
+import edu.aku.akuh_health_first.models.LstLaboratorySpecimenResults;
 import edu.aku.akuh_health_first.widget.AnyTextView;
 
 /**
@@ -46,7 +47,7 @@ public class ClinicalLaboratoryMICQueryFragment extends BaseFragment implements 
     private LaboratoryDetailModel laboratoryDetailModel;
     private ClinicalLabMICDetailAdapter adapter;
 
-    public static ClinicalLaboratoryMICQueryFragment newInstance(LaboratoryDetailModel laboratoryDetailModel) {
+    public static ClinicalLaboratoryMICQueryFragment newInstance() {
 
         Bundle args = new Bundle();
 
