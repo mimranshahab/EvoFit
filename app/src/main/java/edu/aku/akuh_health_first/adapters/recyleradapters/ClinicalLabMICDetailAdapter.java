@@ -81,8 +81,15 @@ public class ClinicalLabMICDetailAdapter extends RecyclerView.Adapter<RecyclerVi
             ViewHolderItem holderItem = (ViewHolderItem) holder;
             holderItem.contHeader.setVisibility(View.GONE);
             LstLaboratoryMicspecimenResults lstLaboratoryMicspecimenResults = (LstLaboratoryMicspecimenResults) arrData.get(holder.getAdapterPosition());
+
             holderItem.txtShortMessage.setText(lstLaboratoryMicspecimenResults.getProcedureDescription());
-            holderItem.txtDate.setText(lstLaboratoryMicspecimenResults.getMnemonic());
+            if (lstLaboratoryMicspecimenResults.getProcedureTypeId().equals("P") && lstLaboratoryMicspecimenResults.getLstMicSpecParaResult() != null && !lstLaboratoryMicspecimenResults.getLstMicSpecParaResult().isEmpty()) {
+                holderItem.txtDate.setVisibility(View.VISIBLE);
+                holderItem.txtDate.setText(lstLaboratoryMicspecimenResults.getLstMicSpecParaResult().get(0).getPARATYPE());
+            } else {
+                holderItem.txtDate.setVisibility(View.GONE);
+
+            }
         }
 
 

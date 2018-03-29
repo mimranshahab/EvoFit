@@ -349,14 +349,14 @@ public class HealthSummaryFragment extends BaseFragment implements OnItemClickLi
                     case Radiology:
                         getBaseActivity().addDockableFragment(RadiologyFragment.newInstance(false, -1));
                         break;
-                    case ActiveMedication:
+                    case MedicationProfile:
                         getBaseActivity().addDockableFragment(MedicationTabLayout.newInstance(false, -1));
                         break;
                     case ImmunizationProfile:
                         getBaseActivity().addDockableFragment(ImmunizationProfileFragment.newInstance(false, -1));
                         break;
                     case LastVisit:
-                        UIHelper.showToast(getContext(), "No Redirection Available");
+                        getBaseActivity().addDockableFragment(TimelineFragment.newInstance());
                         break;
                     case FutureAppointment:
                         UIHelper.showToast(getContext(), "No Redirection Available");

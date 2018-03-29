@@ -156,7 +156,7 @@
                                 android:src="@drawable/radiology" />
 
                             <edu.aku.akuh_health_first.widget.AnyTextView
-                                android:id="@+id/txtRadiology"
+                                android:id="@+id/txtRadiologyCount"
                                 android:layout_width="@dimen/x20dp"
                                 android:layout_height="@dimen/x20dp"
                                 android:layout_alignParentRight="true"

@@ -94,6 +94,7 @@ public class WebServiceConstants {
     public static final String METHOD_IMMUNIZATION_ADD_VACCINE = "PharmacyManager.AddVaccine";
     public static final String METHOD_IMMUNIZATION_VACCINE_IDS = "PharmacyManager.GetVaccineIDs";
     public static final String METHOD_IMMUNIZATION_ROUTE_IDS = "PharmacyManager.GetRouteIDs";
+    public static final String METHOD_IMMUNIZATION_RECORD_EXIST = "PharmacyManager.ImmunizationRecordExists";
 
     public static final String METHOD_CURRENT_MEDICATION = "PharmacyManager.GetCurrentMedicine";
     public static final String METHOD_PREVIOUS_MEDICATION = "PharmacyManager.GetPreviousProfileMedications";

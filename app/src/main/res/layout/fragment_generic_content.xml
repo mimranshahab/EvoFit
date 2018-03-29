@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/imgmainbg"
+    android:background="@color/background_gray"
     android:orientation="vertical"
     android:padding="@dimen/x10dp">
 
@@ -11,8 +11,10 @@
     <edu.aku.akuh_health_first.widget.AnyTextView
         android:id="@+id/txtViewContent_generic_content"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text=""
+        android:layout_height="wrap_content"
+        android:text="content"
+        android:textSize="@dimen/s15"
+        android:textColor="@color/txt_aku_blue"
         app:typeface="@string/font_regular" />
 
 </ScrollView>

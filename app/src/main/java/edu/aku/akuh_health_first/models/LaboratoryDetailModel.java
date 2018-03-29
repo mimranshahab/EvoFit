@@ -106,6 +106,9 @@ public class LaboratoryDetailModel
     @SerializedName("SourceMnemonic")
     @Expose
     private String sourceMnemonic;
+    @SerializedName("SourceDescription")
+    @Expose
+    private String sourceDescription;
     @SerializedName("PatientUnitNumber")
     @Expose
     private String patientUnitNumber;
@@ -416,6 +419,23 @@ public class LaboratoryDetailModel
     public void setExternalFile(String externalFile) {
         this.externalFile = externalFile;
     }
+
+    public String getSourceDescription() {
+        return sourceDescription;
+    }
+
+    public void setSourceDescription(String sourceDescription) {
+        this.sourceDescription = sourceDescription;
+    }
+
+    public Boolean getExternalReport() {
+        return isExternalReport;
+    }
+
+    public void setExternalReport(Boolean externalReport) {
+        isExternalReport = externalReport;
+    }
+
 
 
 }

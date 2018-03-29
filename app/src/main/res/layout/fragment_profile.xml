@@ -10,11 +10,12 @@
 
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:fillViewport="true">
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:orientation="vertical">
 
             <RelativeLayout
@@ -30,7 +31,7 @@
                     android:layout_height="@dimen/x225dp"
                     android:layout_margin="@dimen/x15dp"
                     android:scaleType="centerCrop"
-                    android:src="@drawable/user_image"
+                    android:src="@drawable/profile_placeholder"
                     android:visibility="visible" />
 
                 <ImageButton
@@ -46,7 +47,8 @@
 
             <RelativeLayout
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content">
+                android:layout_height="0dp"
+                android:layout_weight="1">
 
 
                 <LinearLayout
@@ -170,10 +172,11 @@
                     android:id="@+id/fab"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_alignBottom="@id/refreshLayout"
-                    android:layout_alignParentRight="true"
+                    android:layout_alignEnd="@+id/refreshLayout"
+                    android:layout_alignParentBottom="true"
                     android:layout_gravity="end|bottom"
-                    android:layout_marginRight="@dimen/x8dp"
+                    android:layout_marginBottom="10dp"
+                    android:layout_marginEnd="10dp"
                     android:padding="@dimen/x8dp"
                     android:src="@drawable/ic_action_edit"
                     android:visibility="visible"

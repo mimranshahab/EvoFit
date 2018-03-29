@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/background_gray"
+    android:orientation="vertical">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <edu.aku.akuh_health_first.widget.AnyTextView
+            android:id="@+id/txtProcedure"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/colorPrimaryDark"
+            android:ellipsize="end"
+            android:gravity="center"
+            android:padding="10dp"
+            android:singleLine="true"
+            android:text="procedure"
+            android:textColor="@color/c_white"
+            android:textSize="16sp"
+            app:typeface="@string/font_bold"
+
+            />
+
+        <edu.aku.akuh_health_first.widget.AnyTextView
+            android:id="@+id/txtProcedureDesc"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/colorPrimary"
+            android:ellipsize="end"
+            android:gravity="left"
+            android:padding="10dp"
+            android:singleLine="true"
+            android:text="procedure"
+            android:textColor="@color/c_white"
+            android:textSize="14sp"
+            app:typeface="@string/font_bold"
+
+            />
+
+    </LinearLayout>
+
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/recyclerView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="@dimen/x5dp">
+
+    </android.support.v7.widget.RecyclerView>
+</LinearLayout>

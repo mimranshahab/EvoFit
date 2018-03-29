@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/imgmainbg">
+    android:background="@color/background_gray">
 
 
     <LinearLayout
@@ -19,8 +19,9 @@
             android:gravity="center"
             android:padding="@dimen/x5dp"
             android:text=""
+            android:textColor="@color/txt_aku_blue"
             android:textSize="@dimen/s16"
-            app:typeface="@string/font_regular" />
+            app:typeface="@string/font_bold" />
 
         <edu.aku.akuh_health_first.widget.AnyTextView
             android:id="@+id/txtExamDate"
@@ -30,8 +31,9 @@
             android:gravity="center"
             android:padding="@dimen/x5dp"
             android:text="Nothing to Display"
+            android:textColor="@color/txt_aku_blue"
             android:textSize="@dimen/s16"
-            app:typeface="@string/font_regular" />
+            app:typeface="@string/font_bold" />
 
 
         <edu.aku.akuh_health_first.widget.AnyTextView
@@ -40,6 +42,7 @@
             android:layout_height="wrap_content"
             android:padding="@dimen/x5dp"
             android:text=""
+            android:textColor="@color/txt_aku_blue"
             android:textSize="@dimen/s16"
             app:typeface="@string/font_regular" />
 

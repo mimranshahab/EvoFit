@@ -101,7 +101,7 @@ public class ClinicalLaboratoryMICDetailFragment extends BaseFragment implements
         arrLabDetail.clear();
 
         for (LstLaboratoryMicspecimenOrderedProc lstLaboratoryMicspecimenOrderedProc : laboratoryDetailModel.getLstLaboratoryMicSpecimenOrderedProc()) {
-            arrLabDetail.add(new BannerModel(lstLaboratoryMicspecimenOrderedProc.getPROCEDUREDESCRIPTION(), laboratoryDetailModel.getSourceMnemonic()));
+            arrLabDetail.add(new BannerModel(lstLaboratoryMicspecimenOrderedProc.getPROCEDUREDESCRIPTION(), laboratoryDetailModel.getSourceDescription()));
             arrLabDetail.addAll(lstLaboratoryMicspecimenOrderedProc.getLstLaboratoryMicSpecimenResults());
         }
 

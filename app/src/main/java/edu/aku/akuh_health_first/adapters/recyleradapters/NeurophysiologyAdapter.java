@@ -57,6 +57,8 @@ public class NeurophysiologyAdapter extends RecyclerView.Adapter<Neurophysiology
 
         holder.RlGraph.setVisibility(View.GONE);
 
+        holder.txtDrName.setText(model.getLastFileUser());
+
         setListener(holder, model);
 //
         if (model.getStatus().equalsIgnoreCase("Signed")) {

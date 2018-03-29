@@ -62,7 +62,9 @@
                         android:layout_marginLeft="@dimen/x5dp"
                         android:layout_weight=".3"
                         android:background="@drawable/rounded_box_filled_base_green"
+                        android:ellipsize="end"
                         android:gravity="center"
+                        android:maxLines="2"
                         android:padding="@dimen/x3dp"
                         android:text="Completed"
                         android:textColor="@color/c_white"
@@ -122,8 +124,8 @@
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:ellipsize="end"
-                            android:padding="@dimen/x5dp"
                             android:maxLines="1"
+                            android:padding="@dimen/x5dp"
                             android:text="BIO,RECD"
                             android:textSize="@dimen/s14"
                             app:typeface="@string/font_bold" />
@@ -212,7 +214,7 @@
                             android:background="@drawable/rounded_box_filled_primary_color"
                             android:gravity="center"
                             android:padding="@dimen/x7dp"
-                            android:text="SHOW LAB/MIC DETAILS"
+                            android:text="VIEW DETAILS"
                             android:textColor="@color/c_white" />
 
 

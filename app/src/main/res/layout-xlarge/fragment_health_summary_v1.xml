@@ -87,7 +87,7 @@
                                     android:layout_height="wrap_content"
                                     android:gravity="bottom|end"
                                     android:paddingRight="@dimen/x5dp"
-                                    android:text="Blood Type"
+                                    android:text="Blood Group"
                                     android:textColor="@color/txt_aku_blue"
                                     android:textSize="@dimen/s8"
                                     app:typeface="@string/font_regular" />

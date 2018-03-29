@@ -13,7 +13,7 @@ public enum HealthSummaryTypes {
     Allergies,
     ClinicalLaboratory,
     Radiology,
-    ActiveMedication,
+    MedicationProfile,
     ImmunizationProfile,
     LastVisit,
     FutureAppointment;
@@ -36,7 +36,10 @@ public enum HealthSummaryTypes {
         try {
             return valueOf(HealthSummaryTypes.class, canonical);
         } catch (IllegalArgumentException a) {
-            Log.e(TAG, "fromStringForm: " + a.getMessage());
+            Log.e(TAG, "health summary enum IllegalArgumentException: " + a.getMessage());
+            return null;
+        } catch (NullPointerException e) {
+            Log.e(TAG, "health summary enum null: " + e.getMessage());
             return null;
         }
     }
