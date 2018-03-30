@@ -65,13 +65,13 @@ public class PacsDescriptionAdapter extends RecyclerView.Adapter<PacsDescription
 
         List<String> imageUri = model.getStudyDataString();
         holder.progressBar.setVisibility(View.VISIBLE);
-        loadImage(holder.imgPacs, imageUri.get(0), holder);
+        loadImage(imageUri.get(0), holder);
 
         setListener(holder, model);
     }
 
     private void setListener(final ViewHolder holder, final PacsDescriptionModel pacsDescriptionModel) {
-        holder.contListItem.setOnClickListener(new View.OnClickListener() {
+        holder.cardView2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 onItemClick.onItemClick(holder.getAdapterPosition(), pacsDescriptionModel);
@@ -88,21 +88,23 @@ public class PacsDescriptionAdapter extends RecyclerView.Adapter<PacsDescription
         notifyDataSetChanged();
     }
 
-    private void loadImage(final ImageView iv, String imageUrl, final ViewHolder viewHolder) {
+    private void loadImage(String imageUrl, final ViewHolder viewHolder) {
         FileLoader.with(activity)
                 .load(imageUrl)
                 .asBitmap(new FileRequestListener<Bitmap>() {
                     @Override
                     public void onLoad(FileLoadRequest request, FileResponse<Bitmap> response) {
 //                        Bitmap bitmap = BitmapFactory.decodeFile(response.getDownloadedFile().getPath());
-                        iv.setImageBitmap(response.getBody());
+                        if (viewHolder == null) {
+                            return;
+                        }
+                        viewHolder.imgPacs.setImageBitmap(response.getBody());
                         viewHolder.progressBar.setVisibility(View.GONE);
 
                     }
 
                     @Override
                     public void onError(FileLoadRequest request, Throwable t) {
-                        iv.setImageResource(R.drawable.radiology);
                         viewHolder.progressBar.setVisibility(View.GONE);
                     }
                 });

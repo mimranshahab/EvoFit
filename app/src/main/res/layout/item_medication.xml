@@ -15,8 +15,8 @@
         android:layout_margin="@dimen/x5dp"
         android:layout_weight="1"
         android:animateLayoutChanges="true"
-        app:cardCornerRadius="@dimen/x10dp"
         app:cardBackgroundColor="@color/medication_light_red"
+        app:cardCornerRadius="@dimen/x10dp"
 
         >
 
@@ -25,7 +25,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
 
-           >
+            >
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -103,8 +103,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:background="@color/c_white"
-                    android:orientation="horizontal"
-                 >
+                    android:orientation="horizontal">
 
                     <RelativeLayout
                         android:layout_width="wrap_content"
@@ -118,8 +117,7 @@
                             android:layout_margin="@dimen/x5dp"
                             android:scaleType="centerCrop"
                             android:src="@drawable/shape_circle"
-                            android:tint="#D7DCE1"
-                            />
+                            android:tint="#D7DCE1" />
 
                         <ImageView
                             android:layout_width="@dimen/x70dp"
@@ -200,15 +198,6 @@
                             android:layout_height="wrap_content"
                             android:orientation="horizontal">
 
-                            <!--<edu.aku.akuh_health_first.widget.AnyTextView-->
-                            <!--android:layout_width="wrap_content"-->
-                            <!--android:layout_height="wrap_content"-->
-                            <!--android:layout_alignParentLeft="true"-->
-                            <!--android:padding="@dimen/x3dp"-->
-                            <!--android:text="Route: "-->
-                            <!--android:textColor="@color/primary_text_color_selector"-->
-                            <!--android:textSize="@dimen/s14"-->
-                            <!--app:typeface="@string/font_regular" />-->
 
                             <edu.aku.akuh_health_first.widget.AnyTextView
                                 android:id="@+id/txtRoute"
@@ -220,10 +209,24 @@
 
                                 android:textSize="@dimen/s12"
                                 app:typeface="@string/font_regular" />
+
                         </LinearLayout>
 
 
+                        <edu.aku.akuh_health_first.widget.AnyTextView
+                            android:id="@+id/txtNextDose"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:padding="@dimen/x3dp"
+                            android:text="Next Dose"
+                            android:textColor="@color/txt_aku_blue"
+                            android:textSize="@dimen/s12"
+                            android:visibility="gone"
+                            app:typeface="@string/font_regular" />
+
+
                     </LinearLayout>
+
                 </LinearLayout>
             </LinearLayout>
 

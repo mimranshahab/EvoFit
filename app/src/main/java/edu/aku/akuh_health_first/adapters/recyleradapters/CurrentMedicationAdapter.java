@@ -57,6 +57,12 @@ public class CurrentMedicationAdapter extends RecyclerView.Adapter<CurrentMedica
         holder.txtRoute.setText(model.getRxmedroutedescription()); // Null in History
         holder.txtStartDate.setText(model.getRxmedstartdatetime());
         holder.txtStopDate.setText(model.getRxmedstopdatetime());
+        holder.txtNextDose.setVisibility(View.VISIBLE);
+        if (model.isLifeTimeMedicin()) {
+            holder.txtNextDose.setText("Next Dose: Life Long");
+        } else {
+            holder.txtNextDose.setText("Next Dose: " + model.getNextDoseDttm());
+        }
 
 
 //        setListener(holder, timelineModel);
@@ -88,6 +94,8 @@ public class CurrentMedicationAdapter extends RecyclerView.Adapter<CurrentMedica
 
         @BindView(R.id.txtMedicineName)
         AnyTextView txtMedicineName;
+        @BindView(R.id.txtNextDose)
+        AnyTextView txtNextDose;
         @BindView(R.id.txtFrequency)
         AnyTextView txtFrequency;
         @BindView(R.id.txtRoute)

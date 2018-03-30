@@ -75,7 +75,7 @@
                         android:drawableLeft="@drawable/location"
                         android:drawablePadding="@dimen/x5dp"
                         android:ellipsize="end"
-                        android:gravity="left"
+                        android:gravity="center_vertical"
                         android:hint="Location"
                         android:padding="@dimen/x5dp"
                         android:text=""
@@ -85,14 +85,12 @@
 
                     <edu.aku.akuh_health_first.widget.AnyTextView
                         android:id="@+id/btnDownload"
-                        android:layout_width="0dp"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginLeft="@dimen/x150dp"
-                        android:layout_weight="1"
                         android:background="@drawable/rounded_box_filled_base_green"
                         android:gravity="center"
-                        android:padding="@dimen/x5dp"
-                        android:text="Report"
+                        android:padding="@dimen/x7dp"
+                        android:text="Download Report"
                         android:textColor="@color/c_white"
                         android:textSize="@dimen/s15"
                         app:typeface="@string/font_bold" />

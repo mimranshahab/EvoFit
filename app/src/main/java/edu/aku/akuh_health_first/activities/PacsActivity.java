@@ -49,9 +49,8 @@ public class PacsActivity extends AppCompatActivity {
     ProgressBar progressBar;
 
     private int pointer;
-    private PacsDescriptionModel pacsModel;
     private ArrayList<String> pacsList;
-    private int min = 0, max = 0;
+    private int max = 0;
 
     ProgressDialog loader;
     private ArrayList<TupleModel> arrTupleModel;
@@ -70,31 +69,27 @@ public class PacsActivity extends AppCompatActivity {
         settitlebar();
 
 
-        String fromJson = SharedPreferenceManager.getInstance(this).getString("JSON_STRING_KEY");
-        pacsModel = GsonFactory.getSimpleGson().fromJson(fromJson, PacsDescriptionModel.class);
+        SharedPreferenceManager sharedPreferenceManager = SharedPreferenceManager.getInstance(this);
+        String fromJson = sharedPreferenceManager.getString("JSON_STRING_KEY");
+
+        PacsDescriptionModel pacsModel = GsonFactory.getSimpleGson().fromJson(fromJson, PacsDescriptionModel.class);
         pacsList = (ArrayList<String>) pacsModel.getStudyDataString();
+
+
+        txttotalCount.setText("Total count " + pacsList.size() + "");
+        txtUserName.setText(pacsModel.getPatient_Name());
+        txtMRnumber.setText(pacsModel.getPatientMRN());
 
         uriArrToTuple(pacsList.size());
         selectedTupleModel = arrTupleModel.get(0);
         selectedTupleIndex = 0;
 
+
         if (Helper.isNetworkConnected(this, true)) {
             updateData(arrTupleModel.get(0));
         }
         setListeners();
-        txttotalCount.setText("Total count " + pacsList.size() + "");
 
-
-    }
-
-    @Override
-    protected void onPostCreate(@Nullable Bundle savedInstanceState) {
-        super.onPostCreate(savedInstanceState);
-        String name = SharedPreferenceManager.getInstance(this).getCurrentUser().getName();
-        String mrNumber = SharedPreferenceManager.getInstance(this).getCurrentUser().getMRNumber();
-
-        txtUserName.setText(name);
-        txtMRnumber.setText(mrNumber);
     }
 
     private void bindViews() {
@@ -110,8 +105,8 @@ public class PacsActivity extends AppCompatActivity {
         txttotalCount = findViewById(R.id.txttotalCount);
         btnNextBatch = findViewById(R.id.btnNextBatch);
         progressbar = findViewById(R.id.progressBar);
-        txtUserName = findViewById(R.id.txtUserName);
-        txtMRnumber = findViewById(R.id.txtMRN);
+        txtUserName = findViewById(R.id.txtNamePacs);
+        txtMRnumber = findViewById(R.id.txtMRNPacs);
 
     }
 
@@ -147,7 +142,7 @@ public class PacsActivity extends AppCompatActivity {
 
         for (int j = size; j > 0; j = j - 30) {
             if (j > 30) {
-                min = max;
+                int min = max;
                 max = max + 30;
                 TupleModel tupleModel = new TupleModel();
                 tupleModel.setMin(min);

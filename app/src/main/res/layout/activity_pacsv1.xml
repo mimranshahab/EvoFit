@@ -40,20 +40,21 @@
 
 
         <edu.aku.akuh_health_first.widget.AnyTextView
-            android:id="@+id/txtUserName"
-            android:layout_width="wrap_content"
+            android:id="@+id/txtNamePacs"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:paddingLeft="@dimen/x15dp"
+            android:paddingTop="@dimen/x5dp"
             android:text=""
             android:textColor="@color/c_white"
             android:textSize="14sp"
             app:typeface="@string/font_regular" />
 
         <edu.aku.akuh_health_first.widget.AnyTextView
-            android:id="@+id/txtMRN"
-            android:layout_width="wrap_content"
+            android:id="@+id/txtMRNPacs"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@id/txtUserName"
+            android:layout_below="@id/txtNamePacs"
             android:paddingLeft="@dimen/x15dp"
             android:text=""
             android:textColor="@color/c_white"

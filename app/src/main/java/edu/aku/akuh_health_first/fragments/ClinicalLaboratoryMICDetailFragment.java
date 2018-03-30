@@ -3,6 +3,7 @@ package edu.aku.akuh_health_first.fragments;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.widget.DrawerLayout;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -19,7 +20,6 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
 import edu.aku.akuh_health_first.R;
-import edu.aku.akuh_health_first.adapters.recyleradapters.ClinicalLabDetailAdapterv1;
 import edu.aku.akuh_health_first.adapters.recyleradapters.ClinicalLabMICDetailAdapter;
 import edu.aku.akuh_health_first.callbacks.OnItemClickListener;
 import edu.aku.akuh_health_first.fragments.abstracts.BaseFragment;
@@ -29,7 +29,6 @@ import edu.aku.akuh_health_first.models.BannerModel;
 import edu.aku.akuh_health_first.models.LaboratoryDetailModel;
 import edu.aku.akuh_health_first.models.LstLaboratoryMicspecimenOrderedProc;
 import edu.aku.akuh_health_first.models.LstLaboratoryMicspecimenResults;
-import edu.aku.akuh_health_first.models.LstLaboratorySpecimenResults;
 import edu.aku.akuh_health_first.widget.AnyTextView;
 
 /**
@@ -170,23 +169,22 @@ public class ClinicalLaboratoryMICDetailFragment extends BaseFragment implements
     @Override
     public void onItemClick(int position, Object object) {
         if (object instanceof LstLaboratoryMicspecimenResults) {
-            // FIXME: 3/29/2018 Enable Later
 
-//            if (((LstLaboratoryMicspecimenResults) object).getProcedureTypeId().equals("Q")) {
-//                ClinicalLaboratoryMICQueryFragment clinicalLaboratoryMICQueryFragment = ClinicalLaboratoryMICQueryFragment.newInstance(((LstLaboratoryMicspecimenResults) object).getLstMicSpecQueryResult(),
-//                        ((LstLaboratoryMicspecimenResults) object).getProcedureName(), ((LstLaboratoryMicspecimenResults) object).getProcedureDescription());
-//
-//                getBaseActivity().addDockableFragment(clinicalLaboratoryMICQueryFragment);
-//            } else {
-//                if (((LstLaboratoryMicspecimenResults) object).getLstMicSpecParaResult().isEmpty()) {
-//                    UIHelper.showToast(getContext(), "No Para Result Exists");
-//                } else {
-//                    ClinicalParaResultFragment clinicalParaFragment = ClinicalParaResultFragment.newInstance(((LstLaboratoryMicspecimenResults) object).getLstMicSpecParaResult().get(0),
-//                            ((LstLaboratoryMicspecimenResults) object).getProcedureName(), ((LstLaboratoryMicspecimenResults) object).getProcedureDescription());
-//                    getBaseActivity().addDockableFragment(clinicalParaFragment);
-//                }
-//
-//            }
+            if (((LstLaboratoryMicspecimenResults) object).getProcedureTypeId().equals("Q")) {
+                ClinicalLaboratoryMICQueryFragment clinicalLaboratoryMICQueryFragment = ClinicalLaboratoryMICQueryFragment.newInstance(((LstLaboratoryMicspecimenResults) object).getLstMicSpecQueryResult(),
+                        ((LstLaboratoryMicspecimenResults) object).getProcedureName(), ((LstLaboratoryMicspecimenResults) object).getProcedureDescription());
+
+                getBaseActivity().addDockableFragment(clinicalLaboratoryMICQueryFragment);
+            } else {
+                if (((LstLaboratoryMicspecimenResults) object).getLstMicSpecParaResult().isEmpty()) {
+                    UIHelper.showToast(getContext(), "No Para Result Exists");
+                } else {
+                    ClinicalParaResultFragment clinicalParaFragment = ClinicalParaResultFragment.newInstance(((LstLaboratoryMicspecimenResults) object).getLstMicSpecParaResult().get(0),
+                            ((LstLaboratoryMicspecimenResults) object).getProcedureName(), ((LstLaboratoryMicspecimenResults) object).getProcedureDescription());
+                    getBaseActivity().addDockableFragment(clinicalParaFragment);
+                }
+
+            }
         }
     }
 }
