@@ -100,6 +100,7 @@
                     android:id="@+id/contListItem"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
+                    android:padding="@dimen/x5dp"
                     android:background="@color/c_white"
                     android:orientation="horizontal">
 
@@ -115,7 +116,7 @@
                             android:layout_margin="@dimen/x5dp"
                             android:scaleType="centerCrop"
                             android:src="@drawable/shape_circle"
-                            android:tint="@color/base_green"
+                            android:tint="@color/txt_aku_blue"
                             />
 
                         <ImageView
@@ -123,8 +124,9 @@
                             android:layout_height="@dimen/x70dp"
                             android:layout_centerInParent="true"
                             android:layout_margin="@dimen/x5dp"
+                            android:padding="@dimen/x2dp"
                             android:scaleType="centerCrop"
-                            android:src="@drawable/b_clinicallab_transparent" />
+                            android:src="@drawable/medication_transparent" />
 
 
                     </RelativeLayout>
@@ -214,7 +216,7 @@
                                 android:layout_height="wrap_content"
                                 android:padding="@dimen/x3dp"
                                 android:text="Route"
-                                android:textColor="@color/txt_aku_blue"
+                                android:textColor="@color/text_color_grey"
 
                                 android:textSize="@dimen/s10"
                                 app:typeface="@string/font_regular" />

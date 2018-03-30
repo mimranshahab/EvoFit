@@ -1,6 +1,7 @@
 package edu.aku.akuh_health_first.adapters.recyleradapters;
 
 import android.app.Activity;
+import android.graphics.Typeface;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.text.style.AbsoluteSizeSpan;
@@ -29,6 +30,7 @@ public class ClinicalLabDetailAdapterv1 extends RecyclerView.Adapter<ClinicalLab
 
     private final OnItemClickListener onItemClick;
 
+    Typeface bold;
 
     private Activity activity;
     private ArrayList<LstLaboratorySpecimenResults> arrData;
@@ -37,6 +39,8 @@ public class ClinicalLabDetailAdapterv1 extends RecyclerView.Adapter<ClinicalLab
         this.arrData = arrayList;
         this.activity = activity;
         this.onItemClick = onItemClickListener;
+        bold = Typeface.createFromAsset(activity.getAssets(), "fonts/HelveticaNeue Medium.ttf");
+
     }
 
     @Override
@@ -52,29 +56,41 @@ public class ClinicalLabDetailAdapterv1 extends RecyclerView.Adapter<ClinicalLab
     public void onBindViewHolder(final ViewHolder holder, int i) {
 
         final LstLaboratorySpecimenResults model = arrData.get(holder.getAdapterPosition());
-
         holder.txtReportName.setText(model.getReportName());
-//        holder.txtNormalRangeFormatted.setText("Range " + model.getNormalRangeFormatted() + "\n Unit" + model.getUnit());
 
-        if (model.getAbnormalFlag().isEmpty()) {
+        /**
+         *
+         * Colors of Result accordingly
+         * Panic High ---- > Red color with bold font
+         * High       ---- > Red
+         * Panic low  ---- > Blue color with bold font
+         * Low        ---- > Blue
+         **/
+        if (model.getAbnormalFlag().isEmpty() || model.getAbnormalFlag() == null) {
             holder.txtResult.setTextColor(activity.getResources().getColor(R.color.text_color_grey));
-
-
         } else if (model.getAbnormalFlag().equalsIgnoreCase("Low")) {
             holder.txtResult.setTextColor(activity.getResources().getColor(R.color.panic_blue));
         } else if (model.getAbnormalFlag().equalsIgnoreCase("High")) {
             holder.txtResult.setTextColor(activity.getResources().getColor(R.color.base_reddish));
+        } else if (model.getAbnormalFlag().equalsIgnoreCase("Panic High")) {
+            holder.txtResult.setTextColor(activity.getResources().getColor(R.color.base_reddish));
+            new CustomTypefaceSpan(bold);
+        } else {
+            holder.txtResult.setTextColor(activity.getResources().getColor(R.color.panic_blue));
+            new CustomTypefaceSpan(bold);
         }
-        holder.txtResult.setText("Result " + model.getResult());
+
+        holder.txtResult.setText("Result: " + model.getResult());
         holder.txtResultPrevious1.setText(model.getPrevResult1());
         holder.txtResultPrevious2.setText(model.getPrevResult2());
         holder.txtResultPrevious1Date.setText(model.getPrevResult1Dttm());
         holder.txtResultPrevious2Date.setText(model.getPrevResult2Dttm());
-        if (model.getComments().isEmpty() && model.getComments().isEmpty()) {
+        if (model.getComments().isEmpty() && model.getResultComments().isEmpty()) {
             holder.txtComments.setVisibility(View.GONE);
-        }else{
-        holder.txtComments.setText("Comments:" +
-                "\n\n" + model.getComments().toString().trim() + "\n" + model.getComments().toString().trim());}
+        } else {
+            holder.txtComments.setText("Comments:" +
+                    "\n\n" + model.getComments().toString().trim() + "\n" + model.getResultComments().toString().trim());
+        }
 
         if (model.getPrevResult2() == null && model.getPrevResult3() == null) {
             holder.contHistoryResults.setVisibility(View.GONE);
@@ -87,11 +103,11 @@ public class ClinicalLabDetailAdapterv1 extends RecyclerView.Adapter<ClinicalLab
 
     }
 
-    private void setListener(final ViewHolder holder, final LstLaboratorySpecimenResults neurophysiology) {
+    private void setListener(final ViewHolder holder, final LstLaboratorySpecimenResults lstLaboratorySpecimenResults) {
         holder.cardView2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                onItemClick.onItemClick(holder.getAdapterPosition(), neurophysiology);
+                onItemClick.onItemClick(holder.getAdapterPosition(), lstLaboratorySpecimenResults);
             }
         });
     }
