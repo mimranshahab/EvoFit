@@ -15,8 +15,8 @@
         android:layout_margin="@dimen/x5dp"
         android:layout_weight="1"
         android:animateLayoutChanges="true"
-        app:cardBackgroundColor="@color/medication_light_red"
         app:cardCornerRadius="@dimen/x10dp"
+        app:cardBackgroundColor="@color/txt_aku_blue"
 
         >
 
@@ -46,8 +46,8 @@
                         android:layout_alignParentLeft="true"
                         android:text="Start Date: "
                         android:textColor="@color/c_white"
-                        android:textSize="@dimen/s14"
-                        app:typeface="@string/font_regular" />
+                        android:textSize="@dimen/s13"
+                        app:typeface="@string/font_bold" />
 
                     <edu.aku.akuh_health_first.widget.AnyTextView
                         android:id="@+id/txtStartDate"
@@ -72,8 +72,8 @@
                         android:layout_alignParentLeft="true"
                         android:text="Stop Date: "
                         android:textColor="@color/c_white"
-                        android:textSize="@dimen/s14"
-                        app:typeface="@string/font_regular" />
+                        android:textSize="@dimen/s13"
+                        app:typeface="@string/font_bold" />
 
                     <edu.aku.akuh_health_first.widget.AnyTextView
                         android:id="@+id/txtStopDate"
@@ -103,7 +103,9 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:background="@color/c_white"
-                    android:orientation="horizontal">
+                    android:padding="@dimen/x5dp"
+                    android:orientation="horizontal"
+                 >
 
                     <RelativeLayout
                         android:layout_width="wrap_content"
@@ -117,15 +119,17 @@
                             android:layout_margin="@dimen/x5dp"
                             android:scaleType="centerCrop"
                             android:src="@drawable/shape_circle"
-                            android:tint="#D7DCE1" />
+                            android:tint="@color/txt_aku_blue"
+                            />
 
                         <ImageView
                             android:layout_width="@dimen/x70dp"
                             android:layout_height="@dimen/x70dp"
                             android:layout_centerInParent="true"
                             android:layout_margin="@dimen/x5dp"
+                            android:padding="@dimen/x2dp"
                             android:scaleType="centerCrop"
-                            android:src="@drawable/b_medication_transparent" />
+                            android:src="@drawable/medication_transparent" />
 
 
                     </RelativeLayout>
@@ -205,7 +209,7 @@
                                 android:layout_height="wrap_content"
                                 android:padding="@dimen/x3dp"
                                 android:text="Route"
-                                android:textColor="@color/txt_aku_blue"
+                                android:textColor="@color/text_color_grey"
 
                                 android:textSize="@dimen/s12"
                                 app:typeface="@string/font_regular" />

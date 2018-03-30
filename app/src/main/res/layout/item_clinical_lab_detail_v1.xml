@@ -190,6 +190,18 @@
 
             </LinearLayout>
 
+            <edu.aku.akuh_health_first.widget.AnyTextView
+                android:id="@+id/txtComments"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:maxLength="200"
+                android:paddingLeft="@dimen/x10dp"
+                android:textColor="@color/text_color_grey"
+                android:textSize="@dimen/s13"
+                app:typeface="@string/font_regular"
+                android:text="Comments "/>
+
         </LinearLayout>
     </android.support.v7.widget.CardView>
 
