@@ -20,7 +20,7 @@
             android:layout_height="match_parent"
             android:gravity="center"
             android:orientation="vertical"
-            android:padding="@dimen/x50dp">
+            android:padding="@dimen/x60dp">
 
             <ImageView
                 android:layout_width="match_parent"
@@ -46,7 +46,7 @@
                 android:gravity="center"
                 android:text="@string/tag_line"
                 android:textColor="@color/base_amber"
-                android:textSize="@dimen/s16"
+                android:textSize="16sp"
                 app:typeface="@string/font_bold" />
 
             <edu.aku.akuh_health_first.widget.AnyEditTextView

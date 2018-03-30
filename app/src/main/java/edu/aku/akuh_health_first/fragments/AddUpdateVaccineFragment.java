@@ -250,7 +250,7 @@ public class AddUpdateVaccineFragment extends BaseFragment {
 
             case R.id.txtVaccinationPlanDate:
                 if (isFromAdd) {
-                    DateManager.showDatePicker(getContext(), txtVaccinationPlanDate, null, true);
+                    DateManager.showDatePicker(getContext(), txtVaccinationPlanDate, null, false);
                 } else {
                     UIHelper.showToast(getContext(), "You can't update previous plan date");
                 }
@@ -278,9 +278,6 @@ public class AddUpdateVaccineFragment extends BaseFragment {
             UIHelper.showToast(getContext(), "Please select Vaccination Schedule Date");
             return;
         }
-
-        if (txtVaccineLocation.testValidity()) {
-
 
             if (isFromAdd) {
                 ImmunizationModel immunizationModel = new ImmunizationModel();
@@ -315,7 +312,6 @@ public class AddUpdateVaccineFragment extends BaseFragment {
                 Log.d(TAG, "onViewClicked: " + immunizationModel.toString());
             }
 
-        }
     }
 
     private void addVaccineService(String jsonData) {

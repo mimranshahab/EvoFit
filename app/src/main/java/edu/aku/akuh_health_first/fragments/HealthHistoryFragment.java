@@ -110,7 +110,6 @@ public class HealthHistoryFragment extends BaseFragment {
         super.onViewCreated(view, savedInstanceState);
         setListeners();
 
-
         if (isVisitTimeline) {
             contTimeLinebar.setVisibility(View.VISIBLE);
             // FIXME: 3/29/2018 change tag line similar to web
