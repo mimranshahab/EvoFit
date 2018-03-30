@@ -70,6 +70,11 @@ public class ClinicalLabDetailAdapterv1 extends RecyclerView.Adapter<ClinicalLab
         holder.txtResultPrevious2.setText(model.getPrevResult2());
         holder.txtResultPrevious1Date.setText(model.getPrevResult1Dttm());
         holder.txtResultPrevious2Date.setText(model.getPrevResult2Dttm());
+        if (model.getComments().isEmpty() && model.getComments().isEmpty()) {
+            holder.txtComments.setVisibility(View.GONE);
+        }else{
+        holder.txtComments.setText("Comments:" +
+                "\n\n" + model.getComments().toString().trim() + "\n" + model.getComments().toString().trim());}
 
         if (model.getPrevResult2() == null && model.getPrevResult3() == null) {
             holder.contHistoryResults.setVisibility(View.GONE);
@@ -92,11 +97,11 @@ public class ClinicalLabDetailAdapterv1 extends RecyclerView.Adapter<ClinicalLab
     }
 
 
-    public void addItem(ArrayList<LstLaboratorySpecimenResults> homeCategories) {
-        this.arrData = homeCategories;
-        notifyDataSetChanged();
-    }
-
+//    public void addItem(ArrayList<LstLaboratorySpecimenResults> homeCategories) {
+//        this.arrData = homeCategories;
+//        notifyDataSetChanged();
+//    }
+//
 
     @Override
     public int getItemCount() {
@@ -120,6 +125,8 @@ public class ClinicalLabDetailAdapterv1 extends RecyclerView.Adapter<ClinicalLab
         AnyTextView txtResultPrevious2;
         @BindView(R.id.txtResultPrevious2Date)
         AnyTextView txtResultPrevious2Date;
+        @BindView(R.id.txtComments)
+        AnyTextView txtComments;
 
         @BindView(R.id.txthistorytag)
         AnyTextView txthistorytag;

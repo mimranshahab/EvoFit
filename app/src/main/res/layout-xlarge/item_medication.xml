@@ -15,7 +15,7 @@
         android:layout_margin="@dimen/x10dp"
         android:layout_weight="1"
         android:animateLayoutChanges="true"
-        app:cardBackgroundColor="@color/medication_light_red"
+        app:cardBackgroundColor="@color/txt_aku_blue"
         app:cardCornerRadius="@dimen/x10dp"
         app:cardElevation="@dimen/x5dp">
 
