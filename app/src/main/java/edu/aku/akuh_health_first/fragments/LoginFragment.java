@@ -2,24 +2,23 @@ package edu.aku.akuh_health_first.fragments;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.text.SpannableString;
+import android.support.v4.widget.DrawerLayout;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
-import android.widget.TextView;
 
 import com.andreabaccega.widget.FormEditText;
-import com.ctrlplusz.anytextview.AnyTextView;
+
+import edu.aku.akuh_health_first.widget.AnyTextView;
+
 import com.google.gson.JsonObject;
 
 import edu.aku.akuh_health_first.R;
+import edu.aku.akuh_health_first.activities.HomeActivity;
 import edu.aku.akuh_health_first.constatnts.WebServiceConstants;
 import edu.aku.akuh_health_first.enums.BaseURLTypes;
 import edu.aku.akuh_health_first.fragments.abstracts.BaseFragment;
-import edu.aku.akuh_health_first.fragments.abstracts.GenericClickableInterface;
-import edu.aku.akuh_health_first.fragments.abstracts.GenericClickableSpan;
-import edu.aku.akuh_health_first.helperclasses.ui.helper.UIHelper;
 import edu.aku.akuh_health_first.helperclasses.validator.CardNumberValidation;
 import edu.aku.akuh_health_first.helperclasses.validator.PasswordValidation;
 import edu.aku.akuh_health_first.helperclasses.ui.helper.TitleBar;
@@ -29,13 +28,13 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 import butterknife.Unbinder;
 import edu.aku.akuh_health_first.libraries.maskformatter.MaskFormatter;
-import edu.aku.akuh_health_first.managers.retrofit.GsonFactory;
 import edu.aku.akuh_health_first.managers.retrofit.WebServices;
-import edu.aku.akuh_health_first.models.UserModel;
 import edu.aku.akuh_health_first.models.sending_model.LoginApiModel;
 import edu.aku.akuh_health_first.models.wrappers.WebResponse;
 
 import static edu.aku.akuh_health_first.constatnts.AppConstants.CARD_MASK;
+import static edu.aku.akuh_health_first.constatnts.AppConstants.KEY_CARD_NUMBER;
+import static edu.aku.akuh_health_first.constatnts.AppConstants.KEY_TOKEN;
 
 /**
  * Created by khanhamza on 08-May-17.
@@ -71,8 +70,7 @@ public class LoginFragment extends BaseFragment {
     @Override
     public void setTitlebar(TitleBar titleBar) {
         titleBar.resetViews();
-        titleBar.setVisibility(View.VISIBLE);
-        titleBar.showSidebar(getBaseActivity());
+        titleBar.setVisibility(View.GONE);
     }
 
 
@@ -107,41 +105,14 @@ public class LoginFragment extends BaseFragment {
         edtCardNumber.addValidator(new CardNumberValidation());
         edtCardNumber.addTextChangedListener(new MaskFormatter(CARD_MASK, edtCardNumber, '-'));
 
-        setClickableSpan(txtSignUp);
-
-//        serviceCallToken();
 
     }
 
-
-    private void serviceCallToken() {
-
-        new WebServices(getContext()).webServiceGetToken(new WebServices.IRequestStringCallBack() {
-            @Override
-            public void requestDataResponse(String webResponse) {
-                WebServices.setBearerToken(webResponse);
-            }
-
-            @Override
-            public void onError() {
-
-            }
-        });
+    @Override
+    public int getDrawerLockMode() {
+        return DrawerLayout.LOCK_MODE_LOCKED_CLOSED;
     }
 
-
-    private void setClickableSpan(TextView textView) {
-        GenericClickableSpan text1 = new GenericClickableSpan(getBaseActivity(), new GenericClickableInterface() {
-            @Override
-            public void click() {
-                getBaseActivity().addDockableFragment(RegisterFragment.newInstance());
-            }
-        });
-        text1.setSpannableStringValue(textView, getString(R.string.register_an_account), new SpannableString(textView.getText().toString().trim()));
-        text1.setSpan(1.2f);
-        text1.setUnderline(true);
-        text1.setTextViewWithColor(getResources().getColor(R.color.colorPrimary));
-    }
 
     @Override
     public void onDestroyView() {
@@ -149,46 +120,48 @@ public class LoginFragment extends BaseFragment {
         unbinder.unbind();
     }
 
-    @OnClick({R.id.txtForgotPassword, R.id.btnLogin})
+    @OnClick({R.id.txtForgotPassword, R.id.btnLogin, R.id.txtSignUp})
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.txtForgotPassword:
-//                getBaseActivity().addDockableFragment(SlideShowFragment.newInstance());
-//               getBaseActivity().openActivity(getBaseActivity(), PacsActivity.class);
-
+                getBaseActivity().addDockableFragment(ForgotPassowrdFragment.newInstance());
                 break;
             case R.id.btnLogin:
-                // FIXME: 1/2/2018 enter live data
-                edtCardNumber.setText(WebServiceConstants.tempCardNumber);
-                edtPassword.setText(WebServiceConstants.tempPassword);
+//                edtCardNumber.setText(WebServiceConstants.tempCardNumber);
+//                edtPassword.setText(WebServiceConstants.tempPassword);
                 if (edtCardNumber.testValidity() && edtPassword.testValidity()) {
                     LoginApiModel loginApiModel = new LoginApiModel(edtCardNumber.getText().toString(), edtPassword.getText().toString());
                     loginCall(loginApiModel);
                 }
                 break;
+
+            case R.id.txtSignUp:
+                getBaseActivity().addDockableFragment(RegisterFragment.newInstance());
         }
     }
 
     private void loginCall(LoginApiModel loginApiModel) {
         new WebServices(getBaseActivity(),
-                WebServiceConstants.temporaryToken,
-                BaseURLTypes.AHFA_BASE_URL).webServiceRequestAPI(WebServiceConstants.METHOD_USER_GET_USER,
-                loginApiModel.toString(),
-                new WebServices.IRequestJsonDataCallBack() {
-                    @Override
-                    public void requestDataResponse(WebResponse<JsonObject> webResponse) {
-                        UserModel userModel = GsonFactory.getSimpleGson().fromJson(webResponse.result, UserModel.class);
-                        UIHelper.showShortToastInCenter(getContext(), webResponse.message);
+                getToken(),
+                BaseURLTypes.AHFA_BASE_URL)
+                .webServiceRequestAPIForJsonObject(WebServiceConstants.METHOD_USER_GET_USER,
+                        loginApiModel.toString(),
+                        new WebServices.IRequestJsonDataCallBack() {
+                            @Override
+                            public void requestDataResponse(WebResponse<JsonObject> webResponse) {
+                                String token = webResponse.result.get("_token").getAsString();
+                                String cardNumber = webResponse.result.get("CardNumber").getAsString();
+                                sharedPreferenceManager.putValue(KEY_TOKEN, token);
+                                sharedPreferenceManager.putValue(KEY_CARD_NUMBER, cardNumber);
+                                getBaseActivity().openActivity(HomeActivity.class);
+                                getBaseActivity().finish();
+                            }
 
-                        // FIXME: 1/16/2018 AQSA call HomeActivity here
-                        getBaseActivity().addDockableFragment(HomeFragment.newInstance());
-                    }
+                            @Override
+                            public void onError() {
 
-                    @Override
-                    public void onError() {
-                        UIHelper.showShortToastInCenter(getContext(), "failure");
-                    }
-                });
+                            }
+                        });
     }
 
 }

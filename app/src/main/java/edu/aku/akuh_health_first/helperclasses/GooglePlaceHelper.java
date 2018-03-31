@@ -75,7 +75,7 @@ public class GooglePlaceHelper {
                 intent = new PlacePicker.IntentBuilder()
                         .build(activity);
             } else {
-                // FIXME: 17-Jun-17 Change to popup -> CHOOSE MODE_FULLSCREEN OR OVERLAY for Popup
+                // TODO: 17-Jun-17 Change to popup -> CHOOSE MODE_FULLSCREEN OR OVERLAY for Popup
                 intent = new PlaceAutocomplete.IntentBuilder(PlaceAutocomplete.MODE_FULLSCREEN).build(activity);
             }
 

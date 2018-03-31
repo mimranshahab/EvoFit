@@ -1,5 +1,7 @@
 package edu.aku.akuh_health_first.helperclasses.ui.helper;
 
+import android.animation.Animator;
+import android.app.Activity;
 import android.content.Context;
 import android.support.v4.view.GravityCompat;
 import android.util.AttributeSet;
@@ -10,13 +12,15 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
-import com.ctrlplusz.anytextview.AnyEditTextView;
-import com.ctrlplusz.anytextview.AnyTextView;
 
+import de.hdodenhof.circleimageview.CircleImageView;
 import edu.aku.akuh_health_first.R;
- import edu.aku.akuh_health_first.activities.BaseActivity;
-
-import butterknife.BindView;
+import edu.aku.akuh_health_first.activities.BaseActivity;
+import edu.aku.akuh_health_first.activities.HomeActivity;
+import edu.aku.akuh_health_first.libraries.imageloader.ImageLoaderHelper;
+import edu.aku.akuh_health_first.models.TimelineModel;
+import edu.aku.akuh_health_first.models.receiving_model.UserDetailModel;
+import edu.aku.akuh_health_first.widget.AnyTextView;
 
 /**
  * Created by khanhamza on 02-Mar-17.
@@ -24,8 +28,11 @@ import butterknife.BindView;
 
 public class TitleBar extends RelativeLayout {
 
-    @BindView(R.id.txtCircle)
     public TextView txtCircle;
+    public CircleImageView circleImageView;
+    AnyTextView txtUserName;
+    AnyTextView txtMRN;
+    RelativeLayout contDropDown;
 
 
     private ImageView imgTitle;
@@ -35,16 +42,12 @@ public class TitleBar extends RelativeLayout {
     private ImageButton btnRight3;
     private ImageButton btnRight2;
     //change Right button
-    public ImageButton btnRight1;
+    public ImageView btnRight1;
 
 
-    private AnyEditTextView edtSearchField;
-    private ImageButton btnLeftSearchField;
-    private ImageButton btnRightSearchField;
     private TextView txtClearAll;
 
     private RelativeLayout containerTitlebar1;
-    private RelativeLayout containerTitlebar2;
 
 
     public TitleBar(Context context) {
@@ -67,59 +70,47 @@ public class TitleBar extends RelativeLayout {
         LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         inflater.inflate(R.layout.titlebar_main, this);
         bindViews();
-        containerTitlebar2.setVisibility(GONE);
     }
 
     private void bindViews() {
-        imgTitle = (ImageView) findViewById(R.id.imgTitle);
-        txtTitle = (AnyTextView) findViewById(R.id.txtTitle);
-        edtSearchField = (AnyEditTextView) findViewById(R.id.edtSearchField);
-        btnLeft1 = (ImageButton) findViewById(R.id.btnLeft1);
-        btnRight3 = (ImageButton) findViewById(R.id.btnRight3);
-        btnRight2 = (ImageButton) findViewById(R.id.btnRight2);
-        btnRight1 = (ImageButton) findViewById(R.id.btnRight1);
-        btnLeftSearchField = (ImageButton) findViewById(R.id.btnLeftSearchField);
-        btnRightSearchField = (ImageButton) findViewById(R.id.btnRightSearchField);
-        txtClearAll = (TextView) findViewById(R.id.txtClearAll);
-        txtCircle = (TextView) findViewById(R.id.txtCircle);
+        imgTitle = findViewById(R.id.imgTitle);
+        txtTitle = findViewById(R.id.txtTitle);
+        btnLeft1 = findViewById(R.id.btnLeft1);
+        btnRight3 = findViewById(R.id.btnRight3);
+        btnRight2 = findViewById(R.id.btnRight2);
+        btnRight1 = findViewById(R.id.btnRight1);
+        txtClearAll = findViewById(R.id.txtClearAll);
+        txtCircle = findViewById(R.id.txtCircle);
+        circleImageView = findViewById(R.id.circleImageView);
+        containerTitlebar1 = findViewById(R.id.containerTitlebar1);
+        contDropDown = findViewById(R.id.contDropDown);
+        txtMRN = findViewById(R.id.txtMRN);
+        txtUserName = findViewById(R.id.txtUserName);
 
-        containerTitlebar1 = (RelativeLayout) findViewById(R.id.containerTitlebar1);
-        containerTitlebar2 = (RelativeLayout) findViewById(R.id.containerTitlebar2);
     }
 
     public void resetViews() {
         imgTitle.setVisibility(GONE);
-        edtSearchField.setVisibility(GONE);
+        circleImageView.setVisibility(GONE);
         txtTitle.setVisibility(GONE);
         btnLeft1.setVisibility(GONE);
         btnRight3.setVisibility(GONE);
         btnRight2.setVisibility(GONE);
-        btnRight1.setVisibility(GONE);
+        btnRight1.setVisibility(INVISIBLE);
         txtClearAll.setVisibility(GONE);
-        btnLeftSearchField.setVisibility(GONE);
-        btnRightSearchField.setVisibility(GONE);
-        containerTitlebar2.setVisibility(GONE);
         containerTitlebar1.setVisibility(VISIBLE);
         txtCircle.setVisibility(GONE);
+        contDropDown.setVisibility(GONE);
     }
 
     public void setSearchField(final BaseActivity mActivity, TextView.OnEditorActionListener onEditorActionListener) {
         containerTitlebar1.setVisibility(GONE);
-        containerTitlebar2.setVisibility(VISIBLE);
-        edtSearchField.setVisibility(VISIBLE);
-        edtSearchField.setOnEditorActionListener(onEditorActionListener);
-    }
-
-    public String getEdtSearchFieldText() {
-        return edtSearchField.getText().toString();
     }
 
 
     public void closeSearchField(final BaseActivity mActivity) {
         containerTitlebar1.setVisibility(VISIBLE);
 
-        containerTitlebar2.setVisibility(GONE);
-        edtSearchField.setVisibility(GONE);
         if (mActivity != null) {
             mActivity.getSupportFragmentManager().popBackStack();
         }
@@ -132,14 +123,15 @@ public class TitleBar extends RelativeLayout {
     }
 
 
-    public void showBackButton(final BaseActivity mActivity) {
+    public void showBackButton(final Activity mActivity) {
         this.btnLeft1.setVisibility(VISIBLE);
-        this.btnLeft1.setImageResource(R.drawable.imgback);
+        this.btnLeft1.setImageResource(R.drawable.ic_back);
         btnLeft1.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
                 if (mActivity != null) {
-                    mActivity.getSupportFragmentManager().popBackStack();
+//                    mActivity.getSupportFragmentManager().popBackStack();
+                    mActivity.onBackPressed();
                 }
 
             }
@@ -154,13 +146,14 @@ public class TitleBar extends RelativeLayout {
 
 
     public void showSidebar(final BaseActivity mActivity) {
+
+
         this.btnLeft1.setVisibility(VISIBLE);
-        this.btnLeft1.setImageResource(R.drawable.imgside_nav);
+        this.btnLeft1.setImageResource(R.drawable.menu_icon);
         btnLeft1.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
                 if (mActivity != null) {
-//                    mActivity.getResideMenu().openMenu(ResideMenu.DIRECTION_LEFT);
                     mActivity.getDrawerLayout().openDrawer(GravityCompat.START);
                 }
 
@@ -178,6 +171,76 @@ public class TitleBar extends RelativeLayout {
     public void setRightButton(int drawable, OnClickListener onClickListener) {
         this.btnRight1.setVisibility(VISIBLE);
         this.btnRight1.setImageResource(drawable);
+        this.btnRight1.setOnClickListener(onClickListener);
+    }
+
+    public void setUserDisplay(final UserDetailModel currentUser, Context context) {
+        this.circleImageView.setVisibility(VISIBLE);
+
+        if (currentUser == null) {
+            contDropDown.setVisibility(GONE);
+            UIHelper.showToast(context, "No user selected.");
+            return;
+        }
+
+        if (currentUser.getProfileImage() == null || currentUser.getProfileImage().isEmpty()) {
+            circleImageView.setImageResource(R.drawable.male_icon);
+        } else {
+            ImageLoaderHelper.loadImageWithConstantHeadersWithoutAnimation(context, circleImageView, currentUser.getProfileImage());
+        }
+
+        txtUserName.setText(currentUser.getName());
+        txtMRN.setText(currentUser.getMRNumber());
+        contDropDown.setVisibility(VISIBLE);
+
+//        this.circleImageView.setOnClickListener(new OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                txtMRN.setText(currentUser.getMRNumber());
+//                txtUserName.setText(currentUser.getName());
+//                showAndHideDropDown();
+//            }
+//        });
+    }
+
+
+    public void setUserTimeLineDisplay(final UserDetailModel currentUser, Context context, TimelineModel timelineModel) {
+        this.circleImageView.setVisibility(VISIBLE);
+
+        if (currentUser == null) {
+            contDropDown.setVisibility(GONE);
+            UIHelper.showToast(context, "No user selected.");
+            return;
+        }
+
+        if (currentUser.getProfileImage() == null || currentUser.getProfileImage().isEmpty()) {
+            circleImageView.setImageResource(R.drawable.male_icon);
+        } else {
+            ImageLoaderHelper.loadImageWithConstantHeadersWithoutAnimation(context, circleImageView, currentUser.getProfileImage());
+        }
+
+        txtUserName.setText(currentUser.getName() + " (" + currentUser.getMRNumber() + ") " + "visited " + "Dr." + timelineModel.getPatientVisitDoctorName() +
+                " on " + timelineModel.getPatientVisitDateTime() + " at " + timelineModel.getPatientVisitHospitalLocation()
+                + " (" + timelineModel.getPatientVisitLocation() + ")");
+
+        txtMRN.setVisibility(GONE);
+        contDropDown.setVisibility(VISIBLE);
+
+//        this.circleImageView.setOnClickListener(new OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                txtMRN.setText(currentUser.getMRNumber());
+//                txtUserName.setText(currentUser.getName());
+//                showAndHideDropDown();
+//            }
+//        });
+    }
+
+
+    public void setRightButton(int drawable, OnClickListener onClickListener, int colorToTint) {
+        this.btnRight1.setVisibility(VISIBLE);
+        this.btnRight1.setImageResource(drawable);
+        this.btnRight1.setColorFilter(colorToTint);
         this.btnRight1.setOnClickListener(onClickListener);
     }
 
@@ -207,18 +270,61 @@ public class TitleBar extends RelativeLayout {
         this.btnRight2.setOnClickListener(onClickListener);
     }
 
-    public void setLeftButtonSearchBar(int drawable, OnClickListener onClickListener) {
-        this.btnLeftSearchField.setVisibility(VISIBLE);
-        this.btnLeftSearchField.setImageResource(drawable);
-        this.btnLeftSearchField.setOnClickListener(onClickListener);
+
+    public void showHome(final BaseActivity activity) {
+        this.btnRight2.setVisibility(VISIBLE);
+        btnRight2.setImageResource(R.drawable.b_home_icon);
+        this.btnRight2.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (activity instanceof HomeActivity) {
+                    activity.reload();
+                } else {
+                    activity.clearAllActivitiesExceptThis(HomeActivity.class);
+                }
+            }
+        });
     }
 
-    public void setRightButtonSearchBar(int drawable, OnClickListener onClickListener) {
-        this.btnRightSearchField.setVisibility(VISIBLE);
-        this.btnRightSearchField.setImageResource(drawable);
-        this.btnRightSearchField.setOnClickListener(onClickListener);
-        edtSearchField.setText("");
-    }
 
+    public void showAndHideDropDown() {
+        int height = this.containerTitlebar1.getHeight();
+        if (contDropDown.getVisibility() == View.VISIBLE) {
+
+            contDropDown.animate()
+                    .translationY(-height)
+                    .setDuration(300)
+                    .setListener(new Animator.AnimatorListener() {
+                        @Override
+                        public void onAnimationStart(Animator animation) {
+
+                        }
+
+                        @Override
+                        public void onAnimationEnd(Animator animation) {
+                            contDropDown.setVisibility(View.GONE);
+                        }
+
+                        @Override
+                        public void onAnimationCancel(Animator animation) {
+
+                        }
+
+                        @Override
+                        public void onAnimationRepeat(Animator animation) {
+
+                        }
+                    })
+                    .start();
+        } else {
+            contDropDown.setVisibility(View.VISIBLE);
+            contDropDown.animate()
+                    .translationY(height)
+                    .setDuration(300)
+                    .setListener(null)
+                    .start();
+        }
+
+    }
 
 }

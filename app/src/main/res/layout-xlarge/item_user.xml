@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:gravity="center_horizontal"
+    android:orientation="vertical"
+    android:padding="@dimen/x3dp">
+
+
+    <android.support.v7.widget.CardView
+        android:id="@+id/cardView2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:layout_marginLeft="@dimen/x5dp"
+        android:layout_marginRight="@dimen/x5dp"
+        android:layout_marginTop="@dimen/x5dp"
+        android:animateLayoutChanges="true"
+        app:cardBackgroundColor="@color/base_amber"
+        app:cardCornerRadius="@dimen/x8dp"
+        app:cardElevation="@dimen/x3dp"
+
+        >
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:padding="@dimen/x1dp">
+
+            <LinearLayout
+                android:id="@+id/contListItem"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="@dimen/x5dp"
+                android:background="@drawable/selected_user_transition"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:padding="@dimen/x5dp">
+
+
+                <de.hdodenhof.circleimageview.CircleImageView
+                    android:id="@+id/imgIcon"
+                    android:layout_width="@dimen/x40dp"
+                    android:layout_height="@dimen/x40dp"
+                    android:layout_margin="@dimen/x5dp"
+                    android:background="@drawable/circle_stroke_gray"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/male_icon" />
+
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_margin="@dimen/x5dp"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <edu.aku.akuh_health_first.widget.AnyTextView
+                            android:id="@+id/txtName"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:layout_marginRight="@dimen/x5dp"
+                            android:gravity="center_vertical"
+                            android:text="Asma Ali"
+                            android:textColor="@color/base_amber"
+                            android:textSize="@dimen/s10"
+                            app:typeface="@string/font_bold" />
+
+
+                        <edu.aku.akuh_health_first.widget.AnyTextView
+                            android:id="@+id/txtRelation"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:gravity="center_vertical"
+                            android:text="(Daughter)"
+                            android:textColor="@color/base_amber"
+                            android:textSize="@dimen/s10"
+                            app:typeface="@string/font_regular" />
+
+                    </LinearLayout>
+
+                    <edu.aku.akuh_health_first.widget.AnyTextView
+                        android:id="@+id/txtMRN"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="178-88-90"
+                        android:textColor="@color/colorPrimaryDark"
+                        android:textSize="@dimen/s8"
+                        app:typeface="@string/font_regular" />
+
+                    <edu.aku.akuh_health_first.widget.AnyTextView
+                        android:id="@+id/txtGender_age"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Female / 40"
+                        android:textColor="@color/c_grayasparagus"
+                        android:textSize="@dimen/s8"
+                        app:typeface="@string/font_regular" />
+
+
+                </LinearLayout>
+
+                <ImageView
+                    android:id="@+id/imgNext"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/img_go"
+                    android:tint="@color/base_amber" />
+
+
+            </LinearLayout>
+
+        </FrameLayout>
+    </android.support.v7.widget.CardView>
+
+</RelativeLayout>

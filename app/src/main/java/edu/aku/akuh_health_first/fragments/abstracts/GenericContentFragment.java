@@ -2,6 +2,7 @@ package edu.aku.akuh_health_first.fragments.abstracts;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v4.widget.DrawerLayout;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.TextView;
@@ -21,7 +22,6 @@ public class GenericContentFragment extends BaseFragment {
 
     private String key = "";
     private String title = "";
-    private TextView txtViewContent;
 
 
     public static GenericContentFragment newInstance(String key, String mTitle) {
@@ -58,7 +58,8 @@ public class GenericContentFragment extends BaseFragment {
     }
 
     private void bindViews(View view) {
-        txtViewContent = (TextView) view.findViewById(R.id.txtViewContent_generic_content);
+        TextView txtViewContent = (TextView) view.findViewById(R.id.txtViewContent_generic_content);
+        txtViewContent.setText(key);
     }
 
     @Override
@@ -69,10 +70,17 @@ public class GenericContentFragment extends BaseFragment {
         titleBar.showBackButton(getBaseActivity());
     }
 
+
     @Override
     public void setListeners() {
 
     }
+
+    @Override
+    public int getDrawerLockMode() {
+        return DrawerLayout.LOCK_MODE_LOCKED_CLOSED;
+    }
+
 
 //    private void bindData(String key) {
 //

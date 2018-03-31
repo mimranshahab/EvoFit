@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+     android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <FrameLayout
+        android:id="@+id/frameColorCode"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="@dimen/x3dp">
+
+
+        <LinearLayout
+            android:id="@+id/contLastLab"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/x5dp"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:id="@+id/contHeader"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <ImageView
+                    android:id="@+id/imgTitle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:padding="@dimen/x2dp"
+                    android:src="@drawable/lab_report" />
+
+                <edu.aku.akuh_health_first.widget.AnyTextView
+                    android:id="@+id/txtTitle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="@dimen/x5dp"
+                    android:text="Summary Title"
+                    android:textColor="@color/base_amber"
+                    android:textSize="@dimen/s18"
+                    app:typeface="@string/font_bold" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:background="@drawable/rounded_box"
+                android:layout_margin="@dimen/x5dp"
+                android:layout_height="wrap_content">
+
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical"
+                    android:padding="@dimen/x5dp">
+
+                    <edu.aku.akuh_health_first.widget.AnyTextView
+                        android:id="@+id/txtShortMessage"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Glucose Random"
+                        android:padding="@dimen/x5dp"
+                        android:textColor="@color/base_reddish"
+                        android:textSize="@dimen/s16"
+                        app:typeface="@string/font_bold" />
+
+                    <edu.aku.akuh_health_first.widget.AnyTextView
+                        android:id="@+id/txtDate"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Date"
+                        android:padding="@dimen/x5dp"
+
+                        android:textColor="@color/txt_aku_blue"
+                        android:textSize="@dimen/s12"
+                        app:typeface="@string/font_regular" />
+
+                </LinearLayout>
+
+
+                <ImageView
+                    android:id="@+id/imgClick"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:padding="@dimen/x10dp"
+                    android:src="@drawable/img_go"
+                    android:tint="@color/base_reddish" />
+            </LinearLayout>
+
+
+        </LinearLayout>
+
+
+        <!--<LinearLayout-->
+        <!--android:id="@+id/llColorCode"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="match_parent"-->
+        <!--android:alpha="0.1"-->
+        <!--android:background="@color/base_blue"-->
+        <!--android:orientation="horizontal">-->
+
+        <!--</LinearLayout>-->
+    </FrameLayout>
+
+
+</LinearLayout>

@@ -1,0 +1,191 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/c_white"
+        android:fillViewport="true">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:orientation="vertical"
+                    android:padding="@dimen/x15dp">
+
+                    <edu.aku.akuh_health_first.widget.AnyTextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/x5dp"
+                        android:text="Medicine Name"
+                        android:textColor="@color/txt_aku_blue"
+                        android:textSize="@dimen/s12"
+                        app:typeface="@string/font_bold" />
+
+                    <edu.aku.akuh_health_first.widget.AnyEditTextView
+                        android:id="@+id/edtMedicineName"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="@dimen/x10dp"
+                        android:layout_marginTop="@dimen/x10dp"
+                        android:background="@drawable/rounded_box"
+                        android:gravity="center_vertical"
+                        android:hint="Enter Medicine Name"
+                        android:maxLength="50"
+                        android:maxLines="1"
+                        android:padding="@dimen/x5dp"
+                        android:textColor="@color/txt_aku_blue"
+                        android:textColorHint="@color/text_hint"
+                        android:textSize="@dimen/s14" />
+
+                    <edu.aku.akuh_health_first.widget.AnyTextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/x5dp"
+                        android:text="Frequency"
+                        android:textColor="@color/txt_aku_blue"
+                        android:textSize="@dimen/s12"
+                        app:typeface="@string/font_bold" />
+
+                    <edu.aku.akuh_health_first.widget.AnyTextView
+                        android:id="@+id/txtFrequencyDesc"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="@dimen/x10dp"
+                        android:layout_marginTop="@dimen/x10dp"
+                        android:background="@drawable/rounded_box"
+                        android:drawableEnd="@drawable/dropdown_arrow"
+                        android:gravity="center_vertical"
+                        android:hint="Select Frequency"
+                        android:maxLines="1"
+                        android:padding="@dimen/x5dp"
+                        android:textColor="@color/txt_aku_blue"
+                        android:textColorHint="@color/text_hint"
+                        android:textSize="@dimen/s14" />
+
+
+                    <edu.aku.akuh_health_first.widget.AnyTextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/x5dp"
+                        android:text="Route"
+                        android:textColor="@color/txt_aku_blue"
+                        android:textSize="@dimen/s12"
+                        app:typeface="@string/font_bold" />
+
+                    <edu.aku.akuh_health_first.widget.AnyTextView
+                        android:id="@+id/txtRouteId"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="@dimen/x10dp"
+                        android:layout_marginTop="@dimen/x10dp"
+                        android:background="@drawable/rounded_box"
+                        android:drawableEnd="@drawable/dropdown_arrow"
+                        android:gravity="center_vertical"
+                        android:hint="Select Route"
+                        android:maxLines="1"
+                        android:padding="@dimen/x5dp"
+                        android:textColor="@color/txt_aku_blue"
+                        android:textColorHint="@color/text_hint"
+                        android:textSize="@dimen/s14" />
+
+
+                    <edu.aku.akuh_health_first.widget.AnyTextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/x5dp"
+                        android:text="Start Date Time"
+                        android:textColor="@color/txt_aku_blue"
+                        android:textSize="@dimen/s12"
+                        app:typeface="@string/font_bold" />
+
+
+                    <edu.aku.akuh_health_first.widget.AnyTextView
+                        android:id="@+id/txtStartDateTime"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="@dimen/x10dp"
+                        android:layout_marginTop="@dimen/x10dp"
+                        android:background="@drawable/rounded_box"
+                        android:drawableEnd="@drawable/calendar_input_icon"
+
+                        android:gravity="center_vertical"
+                        android:hint="tap to choose start date time"
+                        android:maxLines="1"
+                        android:padding="@dimen/x5dp"
+                        android:textColor="@color/txt_aku_blue"
+                        android:textColorHint="@color/text_hint"
+                        android:textSize="@dimen/s14" />
+
+
+                    <edu.aku.akuh_health_first.widget.AnyTextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/x5dp"
+                        android:text="Stop Date Time"
+                        android:textColor="@color/txt_aku_blue"
+                        android:textSize="@dimen/s12"
+                        app:typeface="@string/font_bold" />
+
+
+                    <edu.aku.akuh_health_first.widget.AnyTextView
+                        android:id="@+id/txtStopDateTime"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="@dimen/x10dp"
+                        android:layout_marginTop="@dimen/x10dp"
+                        android:background="@drawable/rounded_box"
+                        android:drawableEnd="@drawable/calendar_input_icon"
+                        android:gravity="center_vertical"
+                        android:hint="tap to choose stop date time"
+                        android:maxLines="1"
+                        android:padding="@dimen/x5dp"
+                        android:textColor="@color/txt_aku_blue"
+                        android:textColorHint="@color/text_hint"
+                        android:textSize="@dimen/s14" />
+
+
+                    <CheckBox
+                        android:id="@+id/chkLifeTimeMedication"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="@dimen/x10dp"
+                        android:layout_marginTop="@dimen/x10dp"
+                        android:text="Life Time Medication"
+                        android:textColor="@color/txt_aku_blue"
+                        android:textSize="@dimen/s14" />
+
+
+                </LinearLayout>
+
+
+                <Button
+                    android:id="@+id/btnSave"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/x20dp"
+                    android:background="@drawable/rounded_box_filled_base_amber"
+                    android:text="Add New Medicine"
+                    android:textColor="@color/c_white" />
+
+            </LinearLayout>
+        </RelativeLayout>
+
+    </ScrollView>
+</LinearLayout>

@@ -1,10 +1,14 @@
 package edu.aku.akuh_health_first.managers;
 
 import android.app.DatePickerDialog;
+import android.app.TimePickerDialog;
 import android.content.Context;
+import android.text.format.DateUtils;
 import android.widget.DatePicker;
 import android.widget.TextView;
+import android.widget.TimePicker;
 
+import edu.aku.akuh_health_first.callbacks.OnCalendarUpdate;
 import edu.aku.akuh_health_first.constatnts.AppConstants;
 import edu.aku.akuh_health_first.helperclasses.ui.helper.UIHelper;
 
@@ -24,9 +28,18 @@ public class DateManager {
 
     private static SimpleDateFormat sdfDateInput = new SimpleDateFormat(AppConstants.INPUT_DATE_FORMAT);
     private static SimpleDateFormat sdfDateInputAmPm = new SimpleDateFormat(AppConstants.INPUT_DATE_FORMAT_AM_PM);
-    private static SimpleDateFormat sdfDateOuput = new SimpleDateFormat(AppConstants.OUTPUT_DATE_FORMAT);
+    private static SimpleDateFormat sdfLabDateInputAmPm = new SimpleDateFormat(AppConstants.INPUT_LAB_DATE_FORMAT_AM_PM);
+    private static SimpleDateFormat sdfDateOuput = new SimpleDateFormat(AppConstants.OUTPUT_DATE_TIME_FORMAT);
     private static SimpleDateFormat sdfTimeInput = new SimpleDateFormat(AppConstants.INPUT_TIME_FORMAT);
     private static SimpleDateFormat sdfTimeOuput = new SimpleDateFormat(AppConstants.OUTPUT_TIME_FORMAT);
+    private static SimpleDateFormat sdfUTCOutput = new SimpleDateFormat(AppConstants.OUTPUT_UTC);
+
+
+    // Custom FOR AKUH
+    public static SimpleDateFormat sdfDateInputImmunization = new SimpleDateFormat(AppConstants.INPUT_DATE_FORMAT_IMMUNIZATION);
+
+
+    // Methods
 
     public static Date getDate(long millisecond) {
         return new Date(millisecond);
@@ -34,7 +47,7 @@ public class DateManager {
 
     public static Date getDate(String date) {
         try {
-            return sdfDateInputAmPm.parse(date);
+            return sdfLabDateInputAmPm.parse(date);
         } catch (ParseException e) {
             e.printStackTrace();
         }
@@ -59,7 +72,13 @@ public class DateManager {
     }
 
     public static String getTime(long millisecond) {
-        return sdfTimeOuput.format(new Date(millisecond));
+        return sdfUTCOutput.format(new Date(millisecond));
+    }
+
+
+    public static String getCurrentUTCDateTime() {
+        sdfUTCOutput.setTimeZone(TimeZone.getTimeZone("gmt"));
+        return sdfUTCOutput.format(new Date());
     }
 
     public static String getFormattedDate(String inputDate) {
@@ -365,7 +384,8 @@ public class DateManager {
         return mDesiredString;
     }
 
-    public static void showDatePicker(final Context context, final TextView textView, final DatePickerDialog.OnDateSetListener onDateSetListener) {
+
+    public static void showDatePicker(final Context context, final TextView textView, final DatePickerDialog.OnDateSetListener onDateSetListener, boolean isCurrentDateMaxiumum) {
 
         if (textView != null) {
             final Calendar myCalendar = Calendar.getInstance();
@@ -376,7 +396,7 @@ public class DateManager {
                     myCalendar.set(Calendar.YEAR, year);
                     myCalendar.set(Calendar.MONTH, monthOfYear);
                     myCalendar.set(Calendar.DAY_OF_MONTH, dayOfMonth);
-                    String myFormat = "MM/dd/yy"; // In which you need put here
+                    String myFormat = "MM/dd/yyyy"; // In which you need put here
                     SimpleDateFormat sdf = new SimpleDateFormat(myFormat, Locale.US);
                     //UIHelper.showLongToastInCenter(context, sdf.format(myCalendar.getTime()));
                     textView.setText(sdf.format(myCalendar.getTime()));
@@ -386,9 +406,77 @@ public class DateManager {
                 }
 
             };
-            new DatePickerDialog(context, date, myCalendar.get(Calendar.YEAR), myCalendar.get(Calendar.MONTH), myCalendar.get(Calendar.DAY_OF_MONTH)).show();
+            DatePickerDialog datePickerDialog = new DatePickerDialog(context, date, myCalendar.get(Calendar.YEAR), myCalendar.get(Calendar.MONTH), myCalendar.get(Calendar.DAY_OF_MONTH));
+            if (isCurrentDateMaxiumum) {
+                datePickerDialog.getDatePicker().setMaxDate(myCalendar.getTimeInMillis());
+            }
+            datePickerDialog.show();
         } else {
             UIHelper.showLongToastInCenter(context, "Unable to show Date picker");
         }
     }
+
+
+    public static void showDateTimePicker(final Context context, final TextView textView, final OnCalendarUpdate onCalendarUpdate, boolean setCurrentDateMinimum) {
+
+        if (textView != null) {
+            final Calendar myCalendar = Calendar.getInstance();
+
+            final TimePickerDialog.OnTimeSetListener timeSetListener = new TimePickerDialog.OnTimeSetListener() {
+                @Override
+                public void onTimeSet(TimePicker timePicker, int i, int i1) {
+                    myCalendar.set(Calendar.HOUR_OF_DAY, i);
+                    myCalendar.set(Calendar.MINUTE, i1);
+
+                    String myFormat = "MMMM dd, yyyy HH:mm"; // In which you need put here
+                    SimpleDateFormat sdf = new SimpleDateFormat(myFormat, Locale.US);
+
+                    textView.setText(sdf.format(myCalendar.getTime()));
+
+                    if (onCalendarUpdate != null) {
+                        onCalendarUpdate.onCalendarUpdate(myCalendar);
+                    }
+                }
+            };
+
+
+            DatePickerDialog.OnDateSetListener date = new DatePickerDialog.OnDateSetListener() {
+                @Override
+                public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
+
+
+                    // TODO Auto-generated method stub
+                    myCalendar.set(Calendar.YEAR, year);
+                    myCalendar.set(Calendar.MONTH, monthOfYear);
+                    myCalendar.set(Calendar.DAY_OF_MONTH, dayOfMonth);
+
+                    TimePickerDialog timePickerDialog = new TimePickerDialog(context, timeSetListener, myCalendar.get(Calendar.HOUR_OF_DAY), myCalendar.get(Calendar.MINUTE), false);
+                    timePickerDialog.show();
+
+
+                }
+
+            };
+
+            DatePickerDialog datePickerDialog = new DatePickerDialog(context, date, myCalendar.get(Calendar.YEAR), myCalendar.get(Calendar.MONTH), myCalendar.get(Calendar.DAY_OF_MONTH));
+            if (setCurrentDateMinimum) {
+                datePickerDialog.getDatePicker().setMinDate(myCalendar.getTimeInMillis());
+            }
+            datePickerDialog.show();
+        } else {
+            UIHelper.showLongToastInCenter(context, "Unable to show Date picker");
+        }
+    }
+
+
+    public static long getTimeInMillis(SimpleDateFormat simpleDateFormat, String date) {
+        try {
+            return simpleDateFormat.parse(date).getTime();
+        } catch (ParseException e) {
+
+            e.printStackTrace();
+        }
+        return 0;
+    }
+
 }

@@ -2,23 +2,27 @@ package edu.aku.akuh_health_first.fragments;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v4.widget.DrawerLayout;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
-import android.widget.LinearLayout;
+import android.widget.ImageView;
 import android.widget.ScrollView;
 
-import com.ctrlplusz.anytextview.AnyTextView;
+import edu.aku.akuh_health_first.callbacks.OnNewPacketReceivedListener;
+import edu.aku.akuh_health_first.widget.AnyTextView;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import butterknife.Unbinder;
-import de.hdodenhof.circleimageview.CircleImageView;
 import edu.aku.akuh_health_first.R;
+import edu.aku.akuh_health_first.activities.HomeActivity;
+import edu.aku.akuh_health_first.activities.MainActivity;
 import edu.aku.akuh_health_first.fragments.abstracts.BaseFragment;
 import edu.aku.akuh_health_first.fragments.abstracts.GenericClickableInterface;
+import edu.aku.akuh_health_first.fragments.abstracts.GenericContentFragment;
 import edu.aku.akuh_health_first.fragments.abstracts.GenericDialogFragment;
 import edu.aku.akuh_health_first.helperclasses.ui.helper.TitleBar;
 
@@ -26,31 +30,21 @@ import edu.aku.akuh_health_first.helperclasses.ui.helper.TitleBar;
  * Created by khanhamza on 09-May-17.
  */
 
-public class LeftSideMenuFragment extends BaseFragment {
+public class LeftSideMenuFragment extends BaseFragment implements OnNewPacketReceivedListener {
 
     Unbinder unbinder;
-    @BindView(R.id.imgProfile)
-    CircleImageView imgProfile;
-    @BindView(R.id.txtUserName)
-    AnyTextView txtUserName;
-    @BindView(R.id.contUserName)
-    LinearLayout contUserName;
     @BindView(R.id.txtHome)
     AnyTextView txtHome;
-    @BindView(R.id.txtHealthHistory)
-    AnyTextView txtHealthHistory;
-    @BindView(R.id.txtVisitTimeline)
-    AnyTextView txtVisitTimeline;
     @BindView(R.id.txtCardSubscription)
     AnyTextView txtCardSubscription;
-    @BindView(R.id.txtMyProfile)
-    AnyTextView txtMyProfile;
     @BindView(R.id.txtAbout)
     AnyTextView txtAbout;
     @BindView(R.id.txtLogout)
     AnyTextView txtLogout;
     @BindView(R.id.scrollView)
     ScrollView scrollView;
+    @BindView(R.id.imgBackground)
+    ImageView imgBackground;
 
 
     public static LeftSideMenuFragment newInstance() {
@@ -71,17 +65,7 @@ public class LeftSideMenuFragment extends BaseFragment {
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-
-//        if (prefHelper.getUser() != null) {
-//            txtUserName.setText(prefHelper.getUser().userName);
-//
-//            if (prefHelper.getUser().userProfilePictureURL != null) {
-//                ImageLoader.getInstance().displayImage(prefHelper.getUser().userProfilePictureURL, imgProfile, LazyLoading.options);
-//            }
-////        ImageLoader.getInstance().displayImage("drawable://" + R.drawable.user_image, imgProfile, LazyLoading.options);
-//        }
-//
-////        scrollToTop();
+        ////        scrollToTop();
     }
 
     @Override
@@ -113,6 +97,12 @@ public class LeftSideMenuFragment extends BaseFragment {
     }
 
     @Override
+    public int getDrawerLockMode() {
+        return DrawerLayout.LOCK_MODE_UNDEFINED;
+    }
+
+
+    @Override
     public void onDestroyView() {
         super.onDestroyView();
         unbinder.unbind();
@@ -128,8 +118,9 @@ public class LeftSideMenuFragment extends BaseFragment {
             @Override
             public void click() {
                 genericDialogFragment.getDialog().dismiss();
-                emptyBackStack();
-                getBaseActivity().addDockableFragment(LoginFragment.newInstance());
+                sharedPreferenceManager.clearDB();
+                getBaseActivity().clearAllActivitiesExceptThis(MainActivity.class);
+
             }
         });
 
@@ -152,27 +143,31 @@ public class LeftSideMenuFragment extends BaseFragment {
     }
 
 
-    @OnClick({R.id.contUserName, R.id.txtHome, R.id.txtHealthHistory, R.id.txtVisitTimeline, R.id.txtCardSubscription, R.id.txtMyProfile, R.id.txtAbout, R.id.txtLogout})
+    @OnClick({R.id.txtHome, R.id.txtCardSubscription, R.id.txtAbout, R.id.txtLogout})
     public void onViewClicked(View view) {
         switch (view.getId()) {
-            case R.id.contUserName:
+
+            case R.id.txtHome:
+                if (getActivity() instanceof HomeActivity) {
+                    getBaseActivity().reload();
+                } else {
+                    getBaseActivity().clearAllActivitiesExceptThis(HomeActivity.class);
+                }
+                break;
+
+            case R.id.txtCardSubscription:
+//                getBaseActivity().addDockableFragment(CardSubscriptionFragment.newInstance());
                 showNextBuildToast();
                 break;
-            case R.id.txtHome:
-                break;
-            case R.id.txtHealthHistory:
-                break;
-            case R.id.txtVisitTimeline:
-                break;
-            case R.id.txtCardSubscription:
-                break;
-            case R.id.txtMyProfile:
-                break;
+
             case R.id.txtAbout:
+                getBaseActivity().addDockableFragment(GenericContentFragment.newInstance(getString(R.string.about_us), "About"));
                 break;
             case R.id.txtLogout:
                 logoutClick();
                 break;
         }
     }
+
+
 }

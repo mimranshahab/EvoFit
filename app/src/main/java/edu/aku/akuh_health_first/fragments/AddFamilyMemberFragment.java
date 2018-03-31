@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v4.widget.DrawerLayout;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -15,16 +16,19 @@ import android.widget.DatePicker;
 import android.widget.Spinner;
 
 import com.andreabaccega.widget.FormEditText;
-import com.ctrlplusz.anytextview.AnyTextView;
+import edu.aku.akuh_health_first.widget.AnyTextView;
+
+import com.google.gson.JsonObject;
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.theartofdev.edmodo.cropper.CropImage;
 import com.theartofdev.edmodo.cropper.CropImageView;
+
+import org.json.JSONObject;
 
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 
-import edu.aku.akuh_health_first.constatnts.AppConstants;
 import edu.aku.akuh_health_first.constatnts.WebServiceConstants;
 import edu.aku.akuh_health_first.enums.BaseURLTypes;
 import edu.aku.akuh_health_first.enums.FileType;
@@ -48,7 +52,6 @@ import edu.aku.akuh_health_first.fragments.dialogs.SuccessDialogFragment;
 import edu.aku.akuh_health_first.helperclasses.validator.MRValidation;
 import edu.aku.akuh_health_first.helperclasses.validator.PassportValidation;
 import edu.aku.akuh_health_first.managers.FileManager;
-import edu.aku.akuh_health_first.managers.SharedPreferenceManager;
 import edu.aku.akuh_health_first.managers.retrofit.WebServices;
 import edu.aku.akuh_health_first.models.receiving_model.RegisterOptionsModel;
 import edu.aku.akuh_health_first.models.receiving_model.RegisterVM;
@@ -143,9 +146,9 @@ public class AddFamilyMemberFragment extends BaseFragment {
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        registerVM = SharedPreferenceManager.getInstance(getContext()).getObject(AppConstants.KEY_REGISTER_VM, RegisterVM.class);
+//        registerVM = SharedPreferenceManager.getInstance(getContext()).getObject(AppConstants.KEY_REGISTER_VM, RegisterVM.class);
         setValidations();
-        setSpinnerData();
+//        setSpinnerData();
     }
 
     private void setSpinnerData() {
@@ -180,6 +183,9 @@ public class AddFamilyMemberFragment extends BaseFragment {
         titleBar.showBackButton(getBaseActivity());
     }
 
+
+
+
     @Override
     public void setListeners() {
 
@@ -194,6 +200,12 @@ public class AddFamilyMemberFragment extends BaseFragment {
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
     }
+
+    @Override
+    public int getDrawerLockMode() {
+        return DrawerLayout.LOCK_MODE_LOCKED_CLOSED;
+    }
+
 
 
     private void setValidations() {
@@ -224,7 +236,7 @@ public class AddFamilyMemberFragment extends BaseFragment {
                     public void onDateSet(DatePicker datePicker, int i, int i1, int i2) {
 
                     }
-                });
+                }, false);
 
                 break;
             case R.id.imgCNIC:
@@ -273,28 +285,31 @@ public class AddFamilyMemberFragment extends BaseFragment {
     }
 
     private void uploadImageFile(final String uploadFilePath, final String uploadFileUriPath) {
-        new WebServices(getBaseActivity(), WebServiceConstants.temporaryToken, BaseURLTypes.AHFA_BASE_URL)
-                .webServiceUploadFileAPI(WebServiceConstants.METHOD_USER_UPLOAD_REQUEST_FILE, uploadFilePath, FileType.IMAGE, new WebServices.IRequestJsonDataCallBackForStringResult() {
-                    @Override
-                    public void requestDataResponse(WebResponse<String> webResponse) {
-                        if (webResponse.result.isEmpty()) {
-                            UIHelper.showToast(getContext(), "Failed to upload file. Please try again.");
-                        } else {
-                            if (isSelectingCNICPic) {
-                                nameCNICUploadedFile = webResponse.result;
-                            } else {
-                                namePassportUploadedFile = webResponse.result;
+        new WebServices(getBaseActivity(), getToken(), BaseURLTypes.AHFA_BASE_URL)
+                .webServiceUploadFileAPI(WebServiceConstants.METHOD_USER_UPLOAD_REQUEST_FILE,
+                        uploadFilePath, FileType.IMAGE,
+                        // FIXME: 3/21/2018 putlivedata
+                        "",
+                        new WebServices.IRequestJsonDataCallBack() {
+                            @Override
+                            public void requestDataResponse(WebResponse<JsonObject> webResponse) {
+//                                if (webResponse.result.isEmpty()) {
+//                                    UIHelper.showToast(getContext(), "Failed to upload file. Please try again.");
+//                                } else {
+
+//                                    String namePassportUploadedFile = webResponse.result;
+//
+//                                    UIHelper.showShortToastInCenter(getContext(), webResponse.message);
+//                                    setImageAfterResult(uploadFileUriPath);
+//                                }
                             }
-                            UIHelper.showShortToastInCenter(getContext(), webResponse.message);
-                            setImageAfterResult(uploadFileUriPath);
-                        }
-                    }
 
-                    @Override
-                    public void onError() {
+                            @Override
+                            public void onError() {
 
-                    }
-                });
+                            }
+                        });
+
     }
 
 

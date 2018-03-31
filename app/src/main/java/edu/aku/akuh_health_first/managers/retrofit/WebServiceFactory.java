@@ -21,14 +21,17 @@ public class WebServiceFactory {
 
     private static Retrofit retrofitBase;
     private static Retrofit retrofitPACSViewer;
-    private static Retrofit retrofitPACSDownload;
+    private static Retrofit retrofitPaymentGateway;
+    private static Retrofit retrofitPACSToken;
+    private static String staticToken = "";
 
     /***
      *      SINGLETON Design Pattern
      */
     public static WebServiceProxy getInstanceBaseURL(final String _token) {
 
-        if (retrofitBase == null) {
+        if (retrofitBase == null || staticToken.isEmpty()) {
+            staticToken = _token;
 
 //            Gson gson = new GsonBuilder()
 //                    .setDateFormat("yyyy-MM-dd'T'HH:mm:ssZ")
@@ -51,7 +54,7 @@ public class WebServiceFactory {
                 public Response intercept(Chain chain) throws IOException {
                     Request original = chain.request();
                     Request.Builder requestBuilder = original.newBuilder();
-                    requestBuilder.addHeader("_token", _token + "");
+                    requestBuilder.addHeader("_token", staticToken + "");
 
                     // Request customization: add request headers
 
@@ -76,6 +79,56 @@ public class WebServiceFactory {
         return retrofitBase.create(WebServiceProxy.class);
     }
 
+    public static WebServiceProxy getInstancePaymentGateway(final String _token) {
+
+        if (retrofitPaymentGateway == null) {
+
+//            Gson gson = new GsonBuilder()
+//                    .setDateFormat("yyyy-MM-dd'T'HH:mm:ssZ")
+//                    .create();
+
+
+            HttpLoggingInterceptor interceptor = new HttpLoggingInterceptor();
+            // set your desired log level
+            interceptor.setLevel(HttpLoggingInterceptor.Level.BODY);
+
+            OkHttpClient.Builder httpClient = new OkHttpClient.Builder();
+            httpClient.connectTimeout(120, TimeUnit.SECONDS);
+            httpClient.readTimeout(121, TimeUnit.SECONDS);
+
+
+//             add your other interceptors …
+            httpClient.addInterceptor(new Interceptor() {
+
+                @Override
+                public Response intercept(Chain chain) throws IOException {
+                    Request original = chain.request();
+                    Request.Builder requestBuilder = original.newBuilder();
+//                    requestBuilder.addHeader("access_token", _token + "00add7ee-9523-45b6-ac52-90f3e86962dd");
+//                    requestBuilder.addHeader("Authorization", "Bearer " + "5584828bcca73288a5b758619b9e299b");
+
+                    // Request customization: add request headers
+
+                    Request request = requestBuilder.build();
+                    return chain.proceed(request);
+
+                }
+            });
+
+
+            // add logging as last interceptor
+//            httpClient.addNetworkInterceptor(interceptor).addInterceptor(interceptor);  // <-- this is the important line!
+            httpClient.addInterceptor(interceptor);  // <-- this is the important line!
+            retrofitPaymentGateway = new Retrofit.Builder()
+                    .baseUrl(WebServiceConstants.PAYMENT_GATEWAY_URL)
+                    .addConverterFactory(GsonConverterFactory.create(GsonFactory.getSimpleGson()))
+                    .client(httpClient.build())
+                    .build();
+
+        }
+
+        return retrofitPaymentGateway.create(WebServiceProxy.class);
+    }
 
     public static WebServiceProxy getInstancePACSURL(final String _token, final String bearerToken) {
 
@@ -104,7 +157,7 @@ public class WebServiceFactory {
                     Request.Builder requestBuilder = original.newBuilder();
 
                     requestBuilder.addHeader("_token", _token + "");
-                    requestBuilder.addHeader("Authorization", "Bearer " + bearerToken);
+                    requestBuilder.addHeader("Authorization", "Bearer " + WebServices.getBearerToken());
                     requestBuilder.addHeader("Requestor", "aku.edu");
 
                     // Request customization: add request headers
@@ -130,28 +183,28 @@ public class WebServiceFactory {
         return retrofitPACSViewer.create(WebServiceProxy.class);
     }
 
+    public static WebServiceProxy getInstance() {
 
-    public static WebServiceProxy getInstancePACImageDownload(final String bearerToken) throws IOException {
+        if (retrofitPACSToken == null) {
 
-        if (retrofitPACSDownload == null) {
 
             HttpLoggingInterceptor interceptor = new HttpLoggingInterceptor();
             // set your desired log level
             interceptor.setLevel(HttpLoggingInterceptor.Level.BODY);
 
             OkHttpClient.Builder httpClient = new OkHttpClient.Builder();
-            httpClient.connectTimeout(1000, TimeUnit.SECONDS);
-            httpClient.readTimeout(1000, TimeUnit.SECONDS);
+            httpClient.connectTimeout(120, TimeUnit.SECONDS);
+            httpClient.readTimeout(121, TimeUnit.SECONDS);
+
+
+//             add your other interceptors …
             httpClient.addInterceptor(new Interceptor() {
 
                 @Override
                 public Response intercept(Chain chain) throws IOException {
                     Request original = chain.request();
                     Request.Builder requestBuilder = original.newBuilder();
-                    requestBuilder.addHeader("Authorization", "Bearer " + bearerToken);
-                    requestBuilder.addHeader("Requestor", "aku.edu");
-                    requestBuilder.addHeader("Accept", "image/jpeg");
-
+//                    requestBuilder.addHeader("_token", _token + "");
 
                     // Request customization: add request headers
 
@@ -162,20 +215,18 @@ public class WebServiceFactory {
             });
 
 
+            // add logging as last interceptor
+//            httpClient.addNetworkInterceptor(interceptor).addInterceptor(interceptor);  // <-- this is the important line!
             httpClient.addInterceptor(interceptor);  // <-- this is the important line!
-            retrofitPACSDownload = new Retrofit.Builder()
-                    .baseUrl(WebServiceConstants.PACS_URL_DOWNLOAD)
+            retrofitPACSToken = new Retrofit.Builder()
+                    .baseUrl(WebServiceConstants.PACS_URL)
                     .addConverterFactory(GsonConverterFactory.create(GsonFactory.getSimpleGson()))
                     .client(httpClient.build())
                     .build();
 
-
         }
 
-        return retrofitPACSDownload.create(WebServiceProxy.class);
-
-
+        return retrofitPACSToken.create(WebServiceProxy.class);
     }
-
 
 }

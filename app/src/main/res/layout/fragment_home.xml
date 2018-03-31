@@ -1,120 +1,143 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/contParentLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_gravity="center_vertical"
-    android:background="@drawable/imgmainbg"
+    android:layout_gravity="center_horizontal"
+    android:background="@color/c_white"
     android:orientation="vertical"
-    android:padding="@dimen/x10dp">
+    android:padding="@dimen/x5dp">
 
-    <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="@dimen/x75dp"
-        android:layout_marginRight="@dimen/x75dp"
-        android:scaleType="centerInside"
-        android:src="@drawable/logo_healthfirst" />
 
-    <LinearLayout
+
+    <RelativeLayout
+        android:id="@+id/contListItem"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:padding="@dimen/x5dp">
-
-
-        <ImageView
-            android:id="@+id/imgUser"
-            android:layout_width="@dimen/x100dp"
-            android:layout_height="@dimen/x100dp"
-            android:layout_margin="@dimen/x5dp"
-            android:scaleType="centerCrop"
-            android:src="@drawable/profile_bg" />
-
+        android:layout_marginLeft="@dimen/x5dp"
+        android:layout_marginRight="@dimen/x5dp"
+        android:visibility="gone"
+        android:padding="@dimen/x3dp">
 
         <LinearLayout
+            android:id="@+id/linearLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="@dimen/x5dp"
-            android:orientation="vertical">
+            android:layout_marginTop="@dimen/x50dp"
+            android:background="@drawable/rounded_box_filled_columbia_blue"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:padding="@dimen/x15dp">
 
-            <LinearLayout
+            <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginTop="@dimen/x40dp"
                 android:orientation="horizontal">
 
-                <edu.aku.akuh_health_first.views.AnyTextView
-                    android:id="@+id/txtName"
+                <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_weight=".5"
-                    android:gravity="center_vertical"
-                    android:text="Sarah Albert"
-                    android:textColor="@color/c_grayasparagus"
-                    android:textSize="@dimen/x14dp"
-                    app:typeface="@string/font_bold" />
+                    android:layout_centerInParent="true"
+                    android:padding="@dimen/x3dp">
 
-                <edu.aku.akuh_health_first.views.AnyTextView
-                    android:id="@+id/txtViewProfile"
+
+                    <edu.aku.akuh_health_first.widget.AnyTextView
+                        android:id="@+id/txtName"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_marginRight="@dimen/x5dp"
+                        android:gravity="center_vertical"
+                        android:text="Name"
+                        android:textColor="@color/c_white"
+                        android:textSize="@dimen/s16"
+                        app:typeface="@string/font_bold" />
+
+
+                    <edu.aku.akuh_health_first.widget.AnyTextView
+                        android:id="@+id/txtRelation"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="center"
+                        android:gravity="center_vertical"
+                        android:text="(SUBSCRIBER)"
+                        android:textColor="@color/c_white"
+                        android:textSize="@dimen/s16"
+                        app:typeface="@string/font_regular" />
+
+
+                </LinearLayout>
+
+
+                <ImageView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_weight=".5"
-                    android:gravity="end|center_vertical"
-                    android:text="View Profile"
-                    android:textColor="@color/base_blue"
-                    android:textSize="@dimen/x12dp"
-                    app:typeface="@string/font_regular" />
+                    android:layout_alignParentEnd="true"
+                    android:layout_centerVertical="true"
+                    android:src="@drawable/img_go" />
 
+            </RelativeLayout>
 
-            </LinearLayout>
-
-            <edu.aku.akuh_health_first.views.AnyTextView
+            <edu.aku.akuh_health_first.widget.AnyTextView
                 android:id="@+id/txtMRN"
+
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="111-11-11"
-                android:textColor="@color/c_cadmium_red"
-                android:textSize="@dimen/x12dp"
+                android:padding="@dimen/x3dp"
+                android:text="178-88-90"
+                android:textColor="@color/c_white"
+                android:textSize="@dimen/s14"
                 app:typeface="@string/font_regular" />
 
-            <edu.aku.akuh_health_first.views.AnyTextView
-                android:id="@+id/txtGender"
+            <edu.aku.akuh_health_first.widget.AnyTextView
+                android:id="@+id/txtGender_age"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="female"
-                android:textColor="@color/c_grayasparagus"
-                android:textSize="@dimen/x12dp"
-                app:typeface="@string/font_regular" />
-
-            <edu.aku.akuh_health_first.views.AnyTextView
-                android:id="@+id/txtAge"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="23 years"
-                android:textColor="@color/c_grayasparagus"
-                android:textSize="@dimen/x12dp"
-                app:typeface="@string/font_regular" />
-
-            <edu.aku.akuh_health_first.views.AnyTextView
-                android:id="@+id/txtEmailAddress"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="sarah.albert@gmail.com"
-                android:textColor="@color/c_grayasparagus"
-                android:textSize="@dimen/x12dp"
+                android:text="Female / 40"
+                android:textColor="@color/c_white"
+                android:textSize="@dimen/s14"
                 app:typeface="@string/font_regular" />
 
 
         </LinearLayout>
 
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/imgIcon"
+            android:layout_width="@dimen/x100dp"
+            android:layout_height="@dimen/x100dp"
+            android:layout_centerHorizontal="true"
+            android:layout_gravity="center"
+            android:scaleType="centerCrop"
+            android:src="@drawable/female_icon_filled"
+            app:civ_border_color="@color/c_white"
+            app:civ_border_width="@dimen/x3dp"
+            />
 
-    </LinearLayout>
+
+    </RelativeLayout>
+
+    <!--</android.support.v7.widget.CardView>-->
+
+    <edu.aku.akuh_health_first.widget.AnyTextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/x5dp"
+        android:layout_marginRight="@dimen/x5dp"
+        android:layout_marginTop="@dimen/x7dp"
+        android:drawableLeft="@drawable/family_icon"
+        android:drawablePadding="@dimen/x5dp"
+        android:padding="@dimen/x5dp"
+        android:text="Family Members"
+        android:textColor="@color/colorPrimary"
+        android:textSize="16sp"
+        app:typeface="@string/font_bold"
+        />
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/listFamilyMembers"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
-
     </android.support.v7.widget.RecyclerView>
 
 

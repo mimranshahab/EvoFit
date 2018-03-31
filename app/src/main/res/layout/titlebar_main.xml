@@ -1,11 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical">
 
+
+    <RelativeLayout
+        android:id="@+id/contDropDown"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/containerTitlebar1"
+        android:visibility="visible">
+
+        <include layout="@layout/drop_down_user_info" />
+
+    </RelativeLayout>
 
     <RelativeLayout
         android:id="@+id/containerTitlebar1"
@@ -18,20 +29,20 @@
         android:paddingRight="@dimen/x8dp">
 
 
-        <com.ctrlplusz.anytextview.AnyTextView
-        android:id="@+id/txtTitle"
-        android:layout_width="@dimen/x170dp"
-        android:layout_height="match_parent"
-        android:layout_centerHorizontal="true"
-        android:layout_centerVertical="true"
-        android:gravity="center"
-        android:maxLength="21"
-        android:text="Title"
-        android:singleLine="true"
-        android:ellipsize="end"
-        android:textColor="#fff"
-        android:textSize="18sp"
-        app:typeface="@string/font_bold" />
+        <edu.aku.akuh_health_first.widget.AnyTextView
+            android:id="@+id/txtTitle"
+            android:layout_width="@dimen/x170dp"
+            android:layout_height="match_parent"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:ellipsize="end"
+            android:gravity="center"
+            android:maxLength="21"
+            android:singleLine="true"
+            android:text="Title"
+            android:textColor="#fff"
+            android:textSize="18sp"
+            app:typeface="@string/font_bold" />
 
 
         <ImageView
@@ -40,9 +51,9 @@
             android:layout_height="match_parent"
             android:layout_centerHorizontal="true"
             android:layout_centerVertical="true"
-            android:src="@drawable/imglogoname"
             android:gravity="center"
-            />
+            android:src="@drawable/imglogoname"
+            android:visibility="gone" />
 
 
         <ImageButton
@@ -52,19 +63,21 @@
             android:layout_alignParentLeft="true"
             android:layout_centerVertical="true"
             android:background="@color/colorPrimary"
-            android:padding="@dimen/x5dp"
-            android:src="@drawable/imgback" />
+            android:padding="@dimen/x10dp"
+            android:src="@drawable/ic_back" />
 
-        <ImageButton
-            android:id="@+id/btnRight1"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_alignParentRight="true"
-            android:layout_alignParentTop="true"
-            android:layout_marginLeft="@dimen/x8dp"
-            android:background="@color/colorPrimary"
-            android:padding="@dimen/x5dp"
-            android:src="@drawable/imgcart" />
+
+        <!--<de.hdodenhof.circleimageview.CircleImageView-->
+        <!--android:id="@+id/circleImageView"-->
+        <!--android:layout_width="@dimen/x22dp"-->
+        <!--android:layout_height="match_parent"-->
+        <!--android:layout_alignParentRight="true"-->
+        <!--android:layout_alignParentTop="true"-->
+        <!--android:layout_centerVertical="true"-->
+        <!--android:layout_margin="@dimen/x5dp"-->
+        <!--android:scaleType="centerCrop"-->
+        <!--android:src="@drawable/user_image"-->
+        <!--android:visibility="visible" />-->
 
         <TextView
             android:id="@+id/txtCircle"
@@ -74,15 +87,31 @@
             android:layout_alignParentRight="true"
             android:layout_marginTop="@dimen/x9dp"
             android:background="@drawable/cart_circle"
-            android:gravity="center"
-            android:textSize="8sp"
             android:clickable="false"
+            android:gravity="center"
+            android:text="00"
             android:textColor="#f00"
-            android:text="00" />
+            android:textSize="8sp"
+            android:visibility="gone" />
 
 
         <ImageButton
             android:id="@+id/btnRight2"
+
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginLeft="@dimen/x8dp"
+            android:background="@color/colorPrimary"
+            android:padding="@dimen/x5dp"
+            android:src="@drawable/b_home_icon"
+            android:visibility="visible" />
+
+
+        <ImageButton
+            android:id="@+id/btnRight1"
+
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_centerVertical="true"
@@ -90,8 +119,7 @@
             android:layout_toLeftOf="@id/btnRight1"
             android:background="@color/colorPrimary"
             android:padding="@dimen/x5dp"
-            android:src="@drawable/imgsearch" />
-
+            android:src="@drawable/b_home_icon" />
 
 
         <ImageButton
@@ -104,10 +132,6 @@
             android:background="@color/colorPrimary"
             android:padding="@dimen/x5dp"
             android:src="@drawable/imgsearch" />
-
-
-
-
 
 
         <TextView
@@ -125,60 +149,4 @@
     </RelativeLayout>
 
 
-    <RelativeLayout
-        android:id="@+id/containerTitlebar2"
-        android:layout_width="match_parent"
-        android:layout_height="?android:attr/actionBarSize"
-        android:background="@color/colorPrimary"
-        android:gravity="bottom"
-        android:paddingLeft="@dimen/x8dp"
-        android:paddingRight="@dimen/x8dp">
-
-
-        <com.ctrlplusz.anytextview.AnyEditTextView
-            android:id="@+id/edtSearchField"
-            android:layout_width="match_parent"
-            android:paddingRight="@dimen/x30dp"
-            android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true"
-            android:layout_centerVertical="true"
-            android:background="@drawable/imgninepatch2"
-            android:gravity="center_vertical"
-            android:hint="@string/type_here"
-            android:imeOptions="actionSearch"
-            android:inputType="text"
-            android:maxLength="21"
-            android:paddingLeft="@dimen/x30dp"
-            android:singleLine="true"
-            android:textColor="@color/c_white"
-            android:textColorHint="@color/c_white"
-            android:textSize="18sp"
-            app:typeface="@string/font_bold" />
-
-
-
-        <ImageButton
-            android:id="@+id/btnLeftSearchField"
-            android:layout_width="@dimen/x30dp"
-            android:layout_height="match_parent"
-            android:layout_alignParentLeft="true"
-            android:layout_centerVertical="true"
-            android:background="@color/colorPrimary"
-            android:padding="@dimen/x5dp"
-            android:src="@drawable/imgsearch" />
-
-        <ImageButton
-            android:id="@+id/btnRightSearchField"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_alignParentEnd="true"
-            android:layout_alignParentRight="true"
-            android:layout_alignParentTop="true"
-            android:layout_marginLeft="@dimen/x25dp"
-            android:background="@color/colorPrimary"
-            android:padding="@dimen/x5dp"
-            android:src="@drawable/imgcancel" />
-
-    </RelativeLayout>
-
-</LinearLayout>
+</RelativeLayout>

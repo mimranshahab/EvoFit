@@ -2,13 +2,14 @@ package edu.aku.akuh_health_first.fragments;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v4.widget.DrawerLayout;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.EditText;
 
-import com.ctrlplusz.anytextview.AnyTextView;
+import edu.aku.akuh_health_first.widget.AnyTextView;
 
 import edu.aku.akuh_health_first.fragments.abstracts.BaseFragment;
 import edu.aku.akuh_health_first.helperclasses.ui.helper.TitleBar;
@@ -55,6 +56,7 @@ public class FeedbackFragment extends BaseFragment {
         titleBar.showBackButton(getBaseActivity());
     }
 
+
     @Override
     public void setListeners() {
 
@@ -72,6 +74,11 @@ public class FeedbackFragment extends BaseFragment {
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
+    }
+
+    @Override
+    public int getDrawerLockMode() {
+        return DrawerLayout.LOCK_MODE_LOCKED_CLOSED;
     }
 
     @Override

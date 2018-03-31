@@ -1,0 +1,678 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#E7ECF0"
+    android:fillViewport="true"
+    android:padding="@dimen/x5dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+
+        <LinearLayout
+            android:id="@+id/contTimeLinebar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/colorPrimaryHalfTransparent"
+            android:visibility="gone">
+
+            <edu.aku.akuh_health_first.widget.AnyTextView
+                android:id="@+id/txtTimelineView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ellipsize="marquee"
+                android:gravity="center"
+                android:padding="@dimen/x5dp"
+                android:text="Displaying result for Visit ID: "
+                android:textColor="@color/txt_aku_blue"
+                android:textSize="@dimen/s16"
+                app:typeface="@string/font_regular" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/contParentLayout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:padding="@dimen/x4dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:orientation="horizontal">
+
+
+                <android.support.v7.widget.CardView
+                    android:id="@+id/contLab"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_centerInParent="true"
+                    android:layout_margin="@dimen/x5dp"
+                    android:layout_weight="1"
+                    android:animateLayoutChanges="true"
+                    android:padding="@dimen/x7dp"
+                    app:cardCornerRadius="@dimen/x10dp"
+
+                    >
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:gravity="bottom"
+                        android:orientation="vertical"
+                        android:padding="@dimen/x5dp">
+
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="0dp"
+                            android:layout_weight="1">
+
+
+                            <ImageView
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:layout_gravity="center"
+                                android:layout_weight="1"
+                                android:padding="@dimen/x3dp"
+                                android:scaleType="fitCenter"
+                                android:src="@drawable/clinical_labortaory" />
+
+                            <edu.aku.akuh_health_first.widget.AnyTextView
+                                android:id="@+id/txtClinicCount"
+                                android:layout_width="@dimen/x25dp"
+                                android:layout_height="@dimen/x25dp"
+                                android:layout_alignParentRight="true"
+                                android:layout_alignParentTop="true"
+                                android:layout_marginRight="@dimen/x25dp"
+                                android:layout_marginTop="@dimen/x5dp"
+                                android:background="@drawable/circle_green"
+                                android:gravity="center"
+                                android:maxLines="1"
+                                android:padding="@dimen/x5dp"
+                                android:text="99"
+                                android:textColor="@color/c_white"
+                                android:textSize="@dimen/s12"
+                                app:typeface="@string/font_regular" />
+
+
+                        </RelativeLayout>
+
+
+                        <edu.aku.akuh_health_first.widget.AnyTextView
+
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center_horizontal"
+                            android:lines="2"
+                            android:text="Clinical Laboratory"
+                            android:textColor="@color/base_amber"
+                            android:textSize="@dimen/s14"
+                            app:typeface="@string/font_bold"
+
+
+                            />
+                    </LinearLayout>
+
+                </android.support.v7.widget.CardView>
+
+
+                <android.support.v7.widget.CardView
+                    android:id="@+id/contRadiology"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_centerInParent="true"
+                    android:layout_margin="@dimen/x5dp"
+                    android:layout_weight="1"
+                    android:animateLayoutChanges="true"
+                    android:padding="@dimen/x7dp"
+                    app:cardCornerRadius="@dimen/x10dp"
+
+                    >
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:gravity="center_horizontal"
+                        android:orientation="vertical"
+                        android:padding="@dimen/x5dp">
+
+
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="0dp"
+                            android:layout_weight="1">
+
+                            <ImageView
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:layout_gravity="center"
+                                android:layout_weight="1"
+                                android:padding="@dimen/x3dp"
+                                android:scaleType="fitCenter"
+                                android:src="@drawable/radiology" />
+
+                            <edu.aku.akuh_health_first.widget.AnyTextView
+                                android:id="@+id/txtRadiologyCount"
+                                android:layout_width="@dimen/x25dp"
+                                android:layout_height="@dimen/x25dp"
+                                android:layout_alignParentRight="true"
+                                android:layout_alignParentTop="true"
+                                android:layout_marginRight="@dimen/x25dp"
+                                android:layout_marginTop="@dimen/x5dp"
+                                android:background="@drawable/circle_green"
+                                android:gravity="center"
+                                android:maxLines="1"
+                                android:padding="@dimen/x5dp"
+                                android:text="99"
+                                android:textColor="@color/c_white"
+                                android:textSize="@dimen/s12"
+                                app:typeface="@string/font_regular" />
+
+
+                        </RelativeLayout>
+
+                        <edu.aku.akuh_health_first.widget.AnyTextView
+
+                            android:layout_width="match_parent"
+
+
+                            android:layout_height="wrap_content"
+                            android:gravity="center_horizontal"
+                            android:lines="2"
+                            android:text="Radiology"
+                            android:textColor="@color/base_blue"
+                            android:textSize="@dimen/s14"
+                            app:typeface="@string/font_bold"
+
+                            />
+
+                    </LinearLayout>
+
+                </android.support.v7.widget.CardView>
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+
+                android:layout_weight="1"
+                android:orientation="horizontal"
+
+                >
+
+
+                <android.support.v7.widget.CardView
+                    android:id="@+id/contMedicalProfile"
+
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_centerInParent="true"
+                    android:layout_margin="@dimen/x5dp"
+                    android:layout_weight="1"
+                    android:animateLayoutChanges="true"
+                    android:padding="@dimen/x7dp"
+                    app:cardCornerRadius="@dimen/x10dp"
+
+                    >
+
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:gravity="center_horizontal"
+                        android:orientation="vertical"
+                        android:padding="@dimen/x5dp">
+
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="0dp"
+                            android:layout_weight="1">
+
+
+                            <ImageView
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:layout_gravity="center"
+                                android:layout_weight="1"
+                                android:padding="@dimen/x3dp"
+                                android:scaleType="fitCenter"
+                                android:src="@drawable/medication" />
+
+                            <edu.aku.akuh_health_first.widget.AnyTextView
+                                android:id="@+id/txtMedicationCount"
+                                android:layout_width="@dimen/x25dp"
+                                android:layout_height="@dimen/x25dp"
+                                android:layout_alignParentRight="true"
+                                android:layout_alignParentTop="true"
+                                android:layout_marginRight="@dimen/x25dp"
+                                android:layout_marginTop="@dimen/x5dp"
+                                android:background="@drawable/circle_green"
+                                android:gravity="center"
+                                android:maxLines="1"
+                                android:padding="@dimen/x5dp"
+                                android:text="99"
+                                android:textColor="@color/c_white"
+                                android:textSize="@dimen/s12"
+                                app:typeface="@string/font_regular" />
+
+                        </RelativeLayout>
+
+                        <edu.aku.akuh_health_first.widget.AnyTextView
+
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center_horizontal"
+                            android:lines="2"
+                            android:text="Medication Profile"
+                            android:textColor="#E2A349"
+                            android:textSize="@dimen/s14"
+                            app:typeface="@string/font_bold"
+
+
+                            />
+
+                    </LinearLayout>
+
+                </android.support.v7.widget.CardView>
+
+                <android.support.v7.widget.CardView
+                    android:id="@+id/contImmunization"
+
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_centerInParent="true"
+                    android:layout_margin="@dimen/x5dp"
+                    android:layout_weight="1"
+                    android:animateLayoutChanges="true"
+                    android:padding="@dimen/x7dp"
+                    app:cardCornerRadius="@dimen/x10dp"
+
+                    >
+
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:gravity="center_horizontal"
+                        android:orientation="vertical"
+                        android:padding="@dimen/x5dp">
+
+
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="0dp"
+                            android:layout_weight="1">
+
+
+                            <ImageView
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:layout_gravity="center"
+                                android:layout_weight="1"
+                                android:padding="@dimen/x3dp"
+                                android:scaleType="fitCenter"
+                                android:src="@drawable/immunization" />
+
+                            <edu.aku.akuh_health_first.widget.AnyTextView
+                                android:id="@+id/txtImmunizationCount"
+                                android:layout_width="@dimen/x25dp"
+                                android:layout_height="@dimen/x25dp"
+                                android:layout_alignParentRight="true"
+                                android:layout_alignParentTop="true"
+                                android:layout_marginRight="@dimen/x25dp"
+                                android:layout_marginTop="@dimen/x5dp"
+                                android:background="@drawable/circle_green"
+                                android:gravity="center"
+                                android:maxLines="1"
+                                android:padding="@dimen/x5dp"
+                                android:text="99"
+                                android:textColor="@color/c_white"
+                                android:textSize="@dimen/s12"
+                                app:typeface="@string/font_regular" />
+
+                        </RelativeLayout>
+
+                        <edu.aku.akuh_health_first.widget.AnyTextView
+
+                            android:layout_width="match_parent"
+
+
+                            android:layout_height="wrap_content"
+                            android:gravity="center_horizontal"
+                            android:lines="2"
+                            android:text="Immunization Profile"
+                            android:textColor="#9DC105"
+                            android:textSize="@dimen/s14"
+                            app:typeface="@string/font_bold"
+
+
+                            />
+                    </LinearLayout>
+
+                </android.support.v7.widget.CardView>
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+
+                android:layout_weight="1"
+                android:orientation="horizontal"
+
+                >
+
+                <android.support.v7.widget.CardView
+                    android:id="@+id/contCardio"
+
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_centerInParent="true"
+                    android:layout_margin="@dimen/x5dp"
+                    android:layout_weight="1"
+                    android:animateLayoutChanges="true"
+                    android:padding="@dimen/x7dp"
+                    app:cardCornerRadius="@dimen/x10dp"
+
+                    >
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:gravity="center_horizontal"
+                        android:orientation="vertical"
+                        android:padding="@dimen/x5dp">
+
+
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="0dp"
+                            android:layout_weight="1">
+
+                            <ImageView
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:layout_gravity="center"
+                                android:layout_weight="1"
+                                android:padding="@dimen/x3dp"
+                                android:scaleType="fitCenter"
+                                android:src="@drawable/cardiopulmonary" />
+
+                            <edu.aku.akuh_health_first.widget.AnyTextView
+                                android:id="@+id/txtCardioCount"
+                                android:layout_width="@dimen/x25dp"
+                                android:layout_height="@dimen/x25dp"
+                                android:layout_alignParentRight="true"
+                                android:layout_alignParentTop="true"
+                                android:layout_marginRight="@dimen/x25dp"
+                                android:layout_marginTop="@dimen/x5dp"
+                                android:background="@drawable/circle_green"
+                                android:gravity="center"
+                                android:maxLines="1"
+                                android:padding="@dimen/x5dp"
+                                android:text="99"
+                                android:textColor="@color/c_white"
+                                android:textSize="@dimen/s12"
+                                app:typeface="@string/font_regular" />
+
+                        </RelativeLayout>
+
+                        <edu.aku.akuh_health_first.widget.AnyTextView
+
+                            android:layout_width="match_parent"
+
+
+                            android:layout_height="wrap_content"
+                            android:gravity="center_horizontal"
+                            android:lines="2"
+                            android:text="Cardiopulmonary"
+                            android:textColor="@color/base_reddish"
+                            android:textSize="@dimen/s14"
+                            app:typeface="@string/font_bold"
+
+                            />
+
+                    </LinearLayout>
+
+                </android.support.v7.widget.CardView>
+
+                <android.support.v7.widget.CardView
+                    android:id="@+id/contNeuroPhysiology"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_centerInParent="true"
+                    android:layout_margin="@dimen/x5dp"
+                    android:layout_weight="1"
+                    android:animateLayoutChanges="true"
+                    android:padding="@dimen/x7dp"
+                    app:cardCornerRadius="@dimen/x10dp"
+
+                    >
+
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:gravity="center_horizontal"
+                        android:orientation="vertical"
+                        android:padding="@dimen/x5dp">
+
+
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="0dp"
+                            android:layout_weight="1">
+
+
+                            <ImageView
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:layout_gravity="center"
+                                android:layout_weight="1"
+                                android:padding="@dimen/x3dp"
+                                android:scaleType="fitCenter"
+                                android:src="@drawable/neurophysiology" />
+
+                            <edu.aku.akuh_health_first.widget.AnyTextView
+                                android:id="@+id/txtNeuroCount"
+                                android:layout_width="@dimen/x25dp"
+                                android:layout_height="@dimen/x25dp"
+                                android:layout_alignParentRight="true"
+                                android:layout_alignParentTop="true"
+                                android:layout_marginRight="@dimen/x25dp"
+                                android:layout_marginTop="@dimen/x5dp"
+                                android:background="@drawable/circle_green"
+                                android:gravity="center"
+                                android:maxLines="1"
+                                android:padding="@dimen/x5dp"
+                                android:text="99"
+                                android:textColor="@color/c_white"
+                                android:textSize="@dimen/s12"
+                                app:typeface="@string/font_regular" />
+
+                        </RelativeLayout>
+
+                        <edu.aku.akuh_health_first.widget.AnyTextView
+
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center_horizontal"
+                            android:lines="2"
+                            android:text="Neurophysiology"
+                            android:textColor="#847A4E"
+                            android:textSize="@dimen/s14"
+                            app:typeface="@string/font_bold"
+
+
+                            />
+
+                    </LinearLayout>
+
+                </android.support.v7.widget.CardView>
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+
+                android:layout_weight="1"
+                android:orientation="horizontal">
+
+
+                <android.support.v7.widget.CardView
+                    android:id="@+id/contEndo"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_centerInParent="true"
+                    android:layout_margin="@dimen/x5dp"
+                    android:layout_weight="1"
+                    android:animateLayoutChanges="true"
+                    android:padding="@dimen/x7dp"
+                    app:cardCornerRadius="@dimen/x10dp"
+
+                    >
+
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:gravity="center_horizontal"
+                        android:orientation="vertical"
+                        android:padding="@dimen/x5dp">
+
+
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="0dp"
+                            android:layout_weight="1">
+
+
+                            <ImageView
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:layout_gravity="center"
+                                android:layout_weight="1"
+                                android:padding="@dimen/x3dp"
+                                android:scaleType="fitCenter"
+                                android:src="@drawable/endoscopy" />
+
+                            <edu.aku.akuh_health_first.widget.AnyTextView
+                                android:id="@+id/txtEndoscopyCount"
+                                android:layout_width="@dimen/x25dp"
+                                android:layout_height="@dimen/x25dp"
+                                android:layout_alignParentRight="true"
+                                android:layout_alignParentTop="true"
+                                android:layout_marginRight="@dimen/x25dp"
+                                android:layout_marginTop="@dimen/x5dp"
+                                android:background="@drawable/circle_green"
+                                android:gravity="center"
+                                android:maxLines="1"
+                                android:padding="@dimen/x5dp"
+                                android:text="99"
+                                android:textColor="@color/c_white"
+                                android:textSize="@dimen/s12"
+                                app:typeface="@string/font_regular" />
+
+                        </RelativeLayout>
+
+                        <edu.aku.akuh_health_first.widget.AnyTextView
+
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center_horizontal"
+                            android:lines="2"
+                            android:text="Endoscopy"
+                            android:textColor="#33E4D3"
+                            android:textSize="@dimen/s14"
+                            app:typeface="@string/font_bold"
+
+
+                            />
+
+                    </LinearLayout>
+                </android.support.v7.widget.CardView>
+
+
+                <android.support.v7.widget.CardView
+                    android:id="@+id/contSummary"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_centerInParent="true"
+                    android:layout_margin="@dimen/x5dp"
+                    android:layout_weight="1"
+                    android:animateLayoutChanges="true"
+                    android:padding="@dimen/x7dp"
+                    app:cardCornerRadius="@dimen/x10dp"
+
+                    >
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:gravity="center_horizontal"
+                        android:orientation="vertical"
+                        android:padding="@dimen/x5dp">
+
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="0dp"
+                            android:layout_weight="1">
+
+
+                            <ImageView
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:layout_gravity="center"
+                                android:layout_weight="1"
+                                android:padding="@dimen/x3dp"
+                                android:scaleType="fitCenter"
+                                android:src="@drawable/discharge_summary" />
+
+                            <edu.aku.akuh_health_first.widget.AnyTextView
+                                android:id="@+id/txtDischargeCount"
+                                android:layout_width="@dimen/x25dp"
+                                android:layout_height="@dimen/x25dp"
+                                android:layout_alignParentRight="true"
+                                android:layout_alignParentTop="true"
+                                android:layout_marginRight="@dimen/x25dp"
+                                android:layout_marginTop="@dimen/x5dp"
+                                android:background="@drawable/circle_green"
+                                android:gravity="center"
+                                android:maxLines="1"
+                                android:padding="@dimen/x5dp"
+                                android:text="99"
+                                android:textColor="@color/c_white"
+                                android:textSize="@dimen/s12"
+                                app:typeface="@string/font_regular" />
+
+                        </RelativeLayout>
+
+                        <edu.aku.akuh_health_first.widget.AnyTextView
+
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center_horizontal"
+                            android:lines="2"
+                            android:text="Discharge Summary"
+                            android:textColor="#C67FDD"
+                            android:textSize="@dimen/s14"
+                            app:typeface="@string/font_bold" />
+
+
+                    </LinearLayout>
+                </android.support.v7.widget.CardView>
+
+            </LinearLayout>
+
+        </LinearLayout>
+    </LinearLayout>
+
+</ScrollView>

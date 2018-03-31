@@ -9,7 +9,7 @@
     android:orientation="vertical"
     android:paddingTop="@dimen/x15dp">
 
-    <com.ctrlplusz.anytextview.AnyTextView
+    <edu.aku.akuh_health_first.widget.AnyTextView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginBottom="@dimen/x5dp"
@@ -17,11 +17,11 @@
         android:minLines="2"
         android:padding="@dimen/x5dp"
         android:text="@string/do_you_want_to_rate_your_last_nshopping_experience"
-        android:textColor="@color/text_dark"
+        android:textColor="@color/txt_aku_blue"
         android:textSize="18sp"
         app:typeface="@string/font_bold" />
 
-    <com.ctrlplusz.anytextview.AnyTextView
+    <edu.aku.akuh_health_first.widget.AnyTextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
@@ -42,7 +42,7 @@
         android:rating="0"
         android:stepSize="1" />
 
-    <com.ctrlplusz.anytextview.AnyTextView
+    <edu.aku.akuh_health_first.widget.AnyTextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center"

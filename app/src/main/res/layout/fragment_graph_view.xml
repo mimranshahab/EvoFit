@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/imgmainbg"
+    android:orientation="vertical"
+    android:layout_gravity="center_horizontal">
+
+    <com.jjoe64.graphview.GraphView
+        android:id="@+id/graph"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/x200dp" />
+
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_margin="@dimen/x10dp"
+        android:layout_weight="1">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+
+
+            <edu.aku.akuh_health_first.widget.AnyTextView
+                android:id="@+id/txtResultDate"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Result Date: "
+                android:textSize="@dimen/s16"
+                android:textColor="@color/txt_aku_blue"
+                android:padding="@dimen/x10dp"/>
+
+
+            <edu.aku.akuh_health_first.widget.AnyTextView
+                android:id="@+id/txtResult"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Result: "
+                android:textSize="@dimen/s16"
+                android:textColor="@color/txt_aku_blue"
+                android:padding="@dimen/x10dp"/>
+
+
+            <edu.aku.akuh_health_first.widget.AnyTextView
+                android:id="@+id/txtPrevReuslt1Date"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Previous Result1 Date: "
+                android:textSize="@dimen/s16"
+                android:textColor="@color/txt_aku_blue"
+                android:padding="@dimen/x10dp"/>
+
+            <edu.aku.akuh_health_first.widget.AnyTextView
+                android:id="@+id/txtPrevReuslt1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Previous Result1: "
+                android:textSize="@dimen/s16"
+                android:textColor="@color/txt_aku_blue"
+                android:padding="@dimen/x10dp"/>
+
+            <edu.aku.akuh_health_first.widget.AnyTextView
+                android:id="@+id/txtPrevReuslt2Date"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Previous Result2 Date: "
+                android:textSize="@dimen/s16"
+                android:textColor="@color/txt_aku_blue"
+                android:padding="@dimen/x10dp"/>
+
+            <edu.aku.akuh_health_first.widget.AnyTextView
+                android:id="@+id/txtPrevReuslt2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Previous Result2: "
+                android:textSize="@dimen/s16"
+                android:textColor="@color/txt_aku_blue"
+                android:padding="@dimen/x10dp"/>
+
+
+
+
+        </LinearLayout>
+
+
+
+
+    </ScrollView>
+</LinearLayout>

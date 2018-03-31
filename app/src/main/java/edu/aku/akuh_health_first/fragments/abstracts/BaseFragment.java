@@ -1,13 +1,10 @@
 package edu.aku.akuh_health_first.fragments.abstracts;
 
-import android.Manifest;
-import android.app.Activity;
-import android.app.ProgressDialog;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
-import android.support.v4.widget.DrawerLayout;
 import android.util.Log;
 import android.util.Pair;
 import android.view.Gravity;
@@ -19,33 +16,46 @@ import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 import android.widget.TextView;
 
+import edu.aku.akuh_health_first.R;
 import edu.aku.akuh_health_first.activities.BaseActivity;
+import edu.aku.akuh_health_first.adapters.MySpinnerAdapter;
 import edu.aku.akuh_health_first.callbacks.OnNewPacketReceivedListener;
+import edu.aku.akuh_health_first.constatnts.AppConstants;
 import edu.aku.akuh_health_first.helperclasses.ui.helper.KeyboardHide;
 import edu.aku.akuh_health_first.helperclasses.ui.helper.TitleBar;
 import edu.aku.akuh_health_first.helperclasses.ui.helper.UIHelper;
 import edu.aku.akuh_health_first.BaseApplication;
-import edu.aku.akuh_health_first.activities.MainActivity;
 
+import java.io.File;
 import java.text.NumberFormat;
 
+import edu.aku.akuh_health_first.managers.DateManager;
+import edu.aku.akuh_health_first.managers.FileManager;
+import edu.aku.akuh_health_first.managers.SharedPreferenceManager;
+import edu.aku.akuh_health_first.models.receiving_model.UserDetailModel;
+import edu.aku.akuh_health_first.models.wrappers.WebResponse;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.annotations.NonNull;
 import io.reactivex.disposables.Disposable;
 import io.reactivex.functions.Consumer;
+
+import static edu.aku.akuh_health_first.constatnts.Events.ON_SELECTED_USER_UPDATE;
 
 
 /**
  * Created by khanhamza on 10-Feb-17.
  */
 
-public abstract class BaseFragment extends Fragment implements View.OnClickListener, AdapterView.OnItemClickListener {
+public abstract class BaseFragment extends Fragment implements View.OnClickListener, AdapterView.OnItemClickListener, OnNewPacketReceivedListener {
 
     protected View view;
+    public SharedPreferenceManager sharedPreferenceManager;
+    public String TAG = "Logging Tag";
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        sharedPreferenceManager = SharedPreferenceManager.getInstance(getContext());
     }
 
     @Override
@@ -59,14 +69,28 @@ public abstract class BaseFragment extends Fragment implements View.OnClickListe
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         getBaseActivity().getTitleBar().resetViews();
-        getBaseActivity().getDrawerLayout().setDrawerLockMode(DrawerLayout.LOCK_MODE_UNLOCKED);
+        getBaseActivity().getDrawerLayout().setDrawerLockMode(getDrawerLockMode());
         getBaseActivity().getDrawerLayout().closeDrawer(Gravity.LEFT);
+
+        subscribeToNewPacket(this);
+
     }
+
+    public UserDetailModel getCurrentUser() {
+        return sharedPreferenceManager.getCurrentUser();
+    }
+
+    public String getToken() {
+        return sharedPreferenceManager.getString(AppConstants.KEY_TOKEN);
+    }
+
+    public abstract int getDrawerLockMode();
 
     public void setSpinner(ArrayAdapter adaptSpinner, final TextView textView, final Spinner spinner) {
         if (adaptSpinner == null || spinner == null)
             return;
         //selected item will look like a spinner set from XML
+//        simple_list_item_single_choice
         adaptSpinner.setDropDownViewResource(android.R.layout.simple_list_item_single_choice);
         spinner.setAdapter(adaptSpinner);
 
@@ -113,6 +137,7 @@ public abstract class BaseFragment extends Fragment implements View.OnClickListe
     }
 
     public abstract void setTitlebar(TitleBar titleBar);
+
 
     public abstract void setListeners();
 
@@ -189,9 +214,43 @@ public abstract class BaseFragment extends Fragment implements View.OnClickListe
 
 
     public void showNextBuildToast() {
-        UIHelper.showToast(getContext(), "This feature will be implemented in next build");
+//        UIHelper.showToast(getContext(), "This feature will be implemented in next build");
+        UIHelper.showToast(getContext(), "This feature is in progress");
     }
 
+
+    public void saveAndOpenFile(WebResponse<String> webResponse) {
+        String fileName = AppConstants.FILE_NAME + DateManager.getTime(DateManager.getCurrentMillis()) + ".pdf";
+
+        String path = FileManager.writeResponseBodyToDisk(getContext(), webResponse.result, fileName, AppConstants.getUserFolderPath(getContext()), true, true);
+
+//                                final File file = new File(AppConstants.getUserFolderPath(getContext())
+//                                        + "/" + fileName + ".pdf");
+        final File file = new File(path);
+
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                FileManager.openFile(getContext(), file);
+            }
+        }, 100);
+    }
+
+    @Override
+    public void onNewPacket(int event, Object data) {
+        switch (event) {
+            case ON_SELECTED_USER_UPDATE:
+                if (data instanceof UserDetailModel) {
+                    UserDetailModel userDetailModel = (UserDetailModel) data;
+                    if (getBaseActivity().getTitleBar() != null
+                            && getBaseActivity().getTitleBar().circleImageView != null
+                            && getBaseActivity().getTitleBar().circleImageView.getVisibility() == View.VISIBLE) {
+                        getBaseActivity().getTitleBar().setUserDisplay(userDetailModel, getContext());
+                    }
+                }
+                break;
+        }
+    }
 
 //    public ResideMenu getResideMenu() {
 //        return getBaseActivity().getResideMenu();

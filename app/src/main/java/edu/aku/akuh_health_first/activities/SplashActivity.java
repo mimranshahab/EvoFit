@@ -8,10 +8,12 @@ import android.os.Handler;
 import android.view.View;
 import android.widget.LinearLayout;
 
+import edu.aku.akuh_health_first.constatnts.AppConstants;
 import edu.aku.akuh_health_first.helperclasses.ui.helper.AnimationHelper;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import edu.aku.akuh_health_first.R;
+import edu.aku.akuh_health_first.managers.SharedPreferenceManager;
 
 import static android.view.View.VISIBLE;
 
@@ -65,9 +67,10 @@ public class SplashActivity extends Activity {
                     @Override
                     public void run() {
 
+                        Intent i;
                         // This method will be executed once the timer is over
                         // Start your app main activity
-                        Intent i = new Intent(SplashActivity.this, MainActivity.class);
+                        i = new Intent(SplashActivity.this, MainActivity.class);
                         startActivity(i);
 
                         // close this activity

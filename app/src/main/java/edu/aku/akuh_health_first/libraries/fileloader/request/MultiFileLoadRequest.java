@@ -10,7 +10,7 @@ public class MultiFileLoadRequest {
     private int directoryType;
     private boolean forceLoadFromNetwork;
 
-    public MultiFileLoadRequest(String uri, String directoryName, int directoryType, boolean forceLoadFromNetwork) {
+    public MultiFileLoadRequest(String uri/*, String directoryName, int directoryType, boolean forceLoadFromNetwork*/) {
         this.uri = uri;
         this.directoryName = directoryName;
         this.directoryType = directoryType;

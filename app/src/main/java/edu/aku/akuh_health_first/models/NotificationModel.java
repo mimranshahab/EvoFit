@@ -8,40 +8,9 @@ import com.google.gson.annotations.SerializedName;
 
 public class NotificationModel {
 
-    @SerializedName("order_id")
-    private int orderID;
+    public NotificationModel( ) {
 
-    @SerializedName("notification_text")
-    private String notificationText;
-
-    @SerializedName("order_status")
-    private String orderStatus;
-
-
-    public NotificationModel(int orderID, String notificationText) {
-        this.orderID = orderID;
-        this.notificationText = notificationText;
     }
 
 
-    public int getOrderID() {
-        return orderID;
-    }
-
-    public void setOrderID(int orderID) {
-        this.orderID = orderID;
-    }
-
-    public String getNotificationText() {
-        return notificationText;
-    }
-
-    public String getOrderStatus() {
-
-        return orderStatus;
-    }
-
-    public void setNotificationText(String notificationText) {
-        this.notificationText = notificationText;
-    }
 }

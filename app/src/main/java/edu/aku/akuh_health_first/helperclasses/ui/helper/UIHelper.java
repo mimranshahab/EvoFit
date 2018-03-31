@@ -17,11 +17,13 @@ import android.graphics.Paint;
 import android.graphics.Rect;
 import android.media.ExifInterface;
 import android.os.Environment;
+import android.os.Handler;
 import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
 import android.support.v4.graphics.ColorUtils;
 import android.text.TextUtils;
 import android.util.Log;
+import android.util.MutableInt;
 import android.view.Gravity;
 import android.view.View;
 import android.view.ViewGroup;
@@ -29,6 +31,7 @@ import android.view.ViewParent;
 import android.view.WindowManager;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
+import android.widget.SpinnerAdapter;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -40,6 +43,18 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.util.ArrayList;
+
+import edu.aku.akuh_health_first.activities.BaseActivity;
+import edu.aku.akuh_health_first.adapters.recyleradapters.SpinnerDialogAdapter;
+import edu.aku.akuh_health_first.callbacks.OnItemClickListener;
+import edu.aku.akuh_health_first.callbacks.OnSpinnerItemClickListener;
+import edu.aku.akuh_health_first.fragments.abstracts.BaseFragment;
+import edu.aku.akuh_health_first.fragments.dialogs.HealthSummaryDialogFragment;
+import edu.aku.akuh_health_first.fragments.dialogs.SpinnerDialogFragment;
+import edu.aku.akuh_health_first.models.IntWrapper;
+import edu.aku.akuh_health_first.models.Shortmessagemobile;
+import edu.aku.akuh_health_first.models.SpinnerModel;
 
 /**
  * Created by khanhamza on 09-Mar-17.
@@ -601,6 +616,33 @@ public class UIHelper {
         Log.d(TAG_PIC_INFO, "saveToInternalSorage: mypath.getAbsolutePath()    ->" + mypath.getAbsolutePath());
 
         return mypath;
+    }
+
+
+    public static void showSpinnerDialog(BaseFragment fragment, final ArrayList<SpinnerModel> arrData, String title, final TextView textView,
+                                         OnSpinnerItemClickListener onItemClickListener, final IntWrapper positionToScroll) {
+        final SpinnerDialogFragment dialogFragment;
+
+
+        if (onItemClickListener == null) {
+            dialogFragment = SpinnerDialogFragment.newInstance(title, arrData, new OnSpinnerItemClickListener() {
+                @Override
+                public void onItemClick(int position, Object object, SpinnerDialogAdapter adapter) {
+                    if (object instanceof SpinnerModel) {
+                        textView.setText(((SpinnerModel) object).getText());
+                        for (SpinnerModel arrDatum : arrData) {
+                            arrDatum.setSelected(false);
+                        }
+                        arrData.get(position).setSelected(true);
+                        adapter.notifyDataSetChanged();
+                        positionToScroll.value = position;
+                    }
+                }
+            }, positionToScroll.value);
+        } else {
+            dialogFragment = SpinnerDialogFragment.newInstance(title, arrData, onItemClickListener, positionToScroll.value);
+        }
+        dialogFragment.show(fragment.getFragmentManager(), null);
     }
 
 }

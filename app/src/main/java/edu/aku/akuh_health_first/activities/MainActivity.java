@@ -1,5 +1,7 @@
 package edu.aku.akuh_health_first.activities;
 
+import android.content.Intent;
+import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.os.PersistableBundle;
 import android.support.annotation.Nullable;
@@ -10,11 +12,14 @@ import android.view.Gravity;
 import android.view.View;
 
 import edu.aku.akuh_health_first.R;
+import edu.aku.akuh_health_first.constatnts.AppConstants;
+import edu.aku.akuh_health_first.fragments.HomeFragment;
 import edu.aku.akuh_health_first.fragments.LeftSideMenuFragment;
 import edu.aku.akuh_health_first.fragments.LoginFragment;
 import edu.aku.akuh_health_first.fragments.abstracts.GenericClickableInterface;
 import edu.aku.akuh_health_first.fragments.abstracts.GenericDialogFragment;
 import edu.aku.akuh_health_first.helperclasses.ui.helper.TitleBar;
+import edu.aku.akuh_health_first.managers.SharedPreferenceManager;
 
 
 public class MainActivity extends BaseActivity {
@@ -31,8 +36,6 @@ public class MainActivity extends BaseActivity {
         initFragments();
     }
 
-
-
     @Override
     protected int getViewId() {
         return R.layout.activity_main;
@@ -42,6 +45,7 @@ public class MainActivity extends BaseActivity {
     protected int getTitlebarLayoutId() {
         return R.id.titlebar;
     }
+
 
     @Override
     protected int getDrawerLayoutId() {
@@ -58,9 +62,22 @@ public class MainActivity extends BaseActivity {
         return R.id.contDrawer;
     }
 
+    @Override
+    protected int getPermanentViewId() {
+        return 0;
+    }
+
 
     private void initFragments() {
-        addDockableFragment(LoginFragment.newInstance());
+
+        if (SharedPreferenceManager.getInstance(getApplicationContext()).getString(AppConstants.KEY_CARD_NUMBER) == null
+                || SharedPreferenceManager.getInstance(getApplicationContext()).getString(AppConstants.KEY_CARD_NUMBER).isEmpty()) {
+            addDockableFragment(LoginFragment.newInstance());
+         } else {
+            openActivity(HomeActivity.class);
+            this.finish();
+        }
+
     }
 
 

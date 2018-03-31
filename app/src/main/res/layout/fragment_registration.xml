@@ -12,14 +12,14 @@
         android:orientation="vertical"
         android:padding="@dimen/x15dp">
 
-        <com.ctrlplusz.anytextview.AnyTextView
+        <edu.aku.akuh_health_first.widget.AnyTextView
             android:id="@+id/txtFullName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="@dimen/x5dp"
             android:layout_marginTop="@dimen/x10dp"
             android:text="@string/full_name"
-            android:textColor="@color/text_color_grey_dark"
+            android:textColor="@color/txt_aku_blue"
             android:textSize="13sp"
             app:typeface="@string/font_bold" />
 
@@ -33,22 +33,22 @@
             android:inputType="textPersonName"
             android:maxLength="30"
             android:maxLines="1"
-            android:textColor="@color/text_dark"
+            android:textColor="@color/txt_aku_blue"
             android:textColorHint="@color/text_hint"
             android:textSize="16sp"
             app:testType="personFullName" />
 
 
-        <com.ctrlplusz.anytextview.AnyTextView
+        <edu.aku.akuh_health_first.widget.AnyTextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="@dimen/x5dp"
             android:text="@string/date_of_birth"
-            android:textColor="@color/text_color_grey_dark"
+            android:textColor="@color/txt_aku_blue"
             android:textSize="13sp"
             app:typeface="@string/font_bold" />
 
-        <com.ctrlplusz.anytextview.AnyTextView
+        <edu.aku.akuh_health_first.widget.AnyTextView
             android:id="@+id/txtDateofBirth"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -58,21 +58,21 @@
             android:gravity="center_vertical"
             android:hint="Select Date of Birth"
             android:maxLines="1"
-            android:textColor="@color/text_dark"
+            android:textColor="@color/txt_aku_blue"
             android:textColorHint="@color/text_hint"
             android:textSize="16sp" />
 
 
-        <com.ctrlplusz.anytextview.AnyTextView
+        <edu.aku.akuh_health_first.widget.AnyTextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="@dimen/x5dp"
             android:text="@string/gender"
-            android:textColor="@color/text_color_grey_dark"
+            android:textColor="@color/txt_aku_blue"
             android:textSize="13sp"
             app:typeface="@string/font_bold" />
 
-        <com.ctrlplusz.anytextview.AnyTextView
+        <edu.aku.akuh_health_first.widget.AnyTextView
             android:id="@+id/txtGender"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -82,7 +82,7 @@
             android:gravity="center_vertical"
             android:hint="Select Gender"
             android:maxLines="1"
-            android:textColor="@color/text_dark"
+            android:textColor="@color/txt_aku_blue"
             android:textColorHint="@color/text_hint"
             android:textSize="16sp" />
 
@@ -92,12 +92,12 @@
             android:layout_height="0dp" />
 
 
-        <com.ctrlplusz.anytextview.AnyTextView
+        <edu.aku.akuh_health_first.widget.AnyTextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="@dimen/x5dp"
             android:text="@string/cnic_number"
-            android:textColor="@color/text_color_grey_dark"
+            android:textColor="@color/txt_aku_blue"
             android:textSize="13sp"
             app:typeface="@string/font_bold" />
 
@@ -111,18 +111,18 @@
             android:inputType="number"
             android:maxLength="15"
             android:maxLines="1"
-            android:textColor="@color/text_dark"
+            android:textColor="@color/txt_aku_blue"
             android:textColorHint="@color/text_hint"
             android:textSize="16sp"
             app:testType="nocheck" />
 
 
-        <com.ctrlplusz.anytextview.AnyTextView
+        <edu.aku.akuh_health_first.widget.AnyTextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="@dimen/x5dp"
             android:text="@string/passport_number"
-            android:textColor="@color/text_color_grey_dark"
+            android:textColor="@color/txt_aku_blue"
             android:textSize="13sp"
             app:typeface="@string/font_bold" />
 
@@ -136,20 +136,20 @@
             android:inputType="numberDecimal"
             android:maxLength="9"
             android:maxLines="1"
-            android:textColor="@color/text_dark"
+            android:textColor="@color/txt_aku_blue"
             android:textColorHint="@color/text_hint"
             android:textSize="16sp"
             app:testType="alphaNumeric" />
 
 
-        <com.ctrlplusz.anytextview.AnyTextView
+        <edu.aku.akuh_health_first.widget.AnyTextView
             android:id="@+id/txtEmailAddress"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="@dimen/x5dp"
 
             android:text="@string/email_address"
-            android:textColor="@color/text_color_grey_dark"
+            android:textColor="@color/txt_aku_blue"
             android:textSize="13sp"
             app:typeface="@string/font_bold" />
 
@@ -163,19 +163,19 @@
             android:inputType="textEmailAddress"
             android:maxLength="30"
             android:maxLines="1"
-            android:textColor="@color/text_dark"
+            android:textColor="@color/txt_aku_blue"
             android:textColorHint="@color/text_hint"
             android:textSize="16sp"
             app:testType="email" />
 
 
-        <com.ctrlplusz.anytextview.AnyTextView
+        <edu.aku.akuh_health_first.widget.AnyTextView
             android:id="@+id/txtMobileNumber"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="@dimen/x5dp"
             android:text="@string/mobile_number"
-            android:textColor="@color/text_color_grey_dark"
+            android:textColor="@color/txt_aku_blue"
             android:textSize="13sp"
             app:typeface="@string/font_bold" />
 
@@ -189,18 +189,18 @@
             android:inputType="number"
             android:maxLength="16"
             android:maxLines="1"
-            android:textColor="@color/text_dark"
+            android:textColor="@color/txt_aku_blue"
             android:textColorHint="@color/text_hint"
             android:textSize="16sp"
             app:testType="phone" />
 
 
-        <com.ctrlplusz.anytextview.AnyTextView
+        <edu.aku.akuh_health_first.widget.AnyTextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="@dimen/x5dp"
             android:text="@string/landline_number"
-            android:textColor="@color/text_color_grey_dark"
+            android:textColor="@color/txt_aku_blue"
             android:textSize="13sp"
             app:typeface="@string/font_bold" />
 
@@ -214,18 +214,18 @@
             android:inputType="number"
             android:maxLength="16"
             android:maxLines="1"
-            android:textColor="@color/text_dark"
+            android:textColor="@color/txt_aku_blue"
             android:textColorHint="@color/text_hint"
             android:textSize="16sp"
             app:testType="phone" />
 
 
-        <com.ctrlplusz.anytextview.AnyTextView
+        <edu.aku.akuh_health_first.widget.AnyTextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="@dimen/x5dp"
             android:text="@string/current_address"
-            android:textColor="@color/text_color_grey_dark"
+            android:textColor="@color/txt_aku_blue"
             android:textSize="13sp"
             app:typeface="@string/font_bold" />
 
@@ -240,18 +240,18 @@
             android:lines="2"
             android:maxLength="100"
             android:maxLines="3"
-            android:textColor="@color/text_dark"
+            android:textColor="@color/txt_aku_blue"
             android:textColorHint="@color/text_hint"
             android:textSize="16sp"
             app:testType="nocheck" />
 
 
-        <com.ctrlplusz.anytextview.AnyTextView
+        <edu.aku.akuh_health_first.widget.AnyTextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="@dimen/x5dp"
             android:text="@string/current_city"
-            android:textColor="@color/text_color_grey_dark"
+            android:textColor="@color/txt_aku_blue"
             android:textSize="13sp"
             app:typeface="@string/font_bold" />
 
@@ -266,22 +266,22 @@
             android:lines="1"
             android:maxLength="15"
             android:maxLines="1"
-            android:textColor="@color/text_dark"
+            android:textColor="@color/txt_aku_blue"
             android:textColorHint="@color/text_hint"
             android:textSize="16sp"
             app:testType="nocheck" />
 
 
-        <com.ctrlplusz.anytextview.AnyTextView
+        <edu.aku.akuh_health_first.widget.AnyTextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="@dimen/x5dp"
             android:text="Current Country"
-            android:textColor="@color/text_color_grey_dark"
+            android:textColor="@color/txt_aku_blue"
             android:textSize="13sp"
             app:typeface="@string/font_bold" />
 
-        <com.ctrlplusz.anytextview.AnyTextView
+        <edu.aku.akuh_health_first.widget.AnyTextView
             android:id="@+id/txtCurrentCountry"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -291,7 +291,7 @@
             android:gravity="center_vertical"
             android:hint="Select Current Country"
             android:maxLines="1"
-            android:textColor="@color/text_dark"
+            android:textColor="@color/txt_aku_blue"
             android:textColorHint="@color/text_hint"
             android:textSize="16sp" />
 
@@ -301,12 +301,12 @@
             android:layout_height="0dp" />
 
 
-        <com.ctrlplusz.anytextview.AnyTextView
+        <edu.aku.akuh_health_first.widget.AnyTextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="@dimen/x5dp"
             android:text="@string/permanent_address"
-            android:textColor="@color/text_color_grey_dark"
+            android:textColor="@color/txt_aku_blue"
             android:textSize="13sp"
             app:typeface="@string/font_bold" />
 
@@ -321,18 +321,18 @@
             android:lines="2"
             android:maxLength="100"
             android:maxLines="3"
-            android:textColor="@color/text_dark"
+            android:textColor="@color/txt_aku_blue"
             android:textColorHint="@color/text_hint"
             android:textSize="16sp"
             app:testType="nocheck" />
 
 
-        <com.ctrlplusz.anytextview.AnyTextView
+        <edu.aku.akuh_health_first.widget.AnyTextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="@dimen/x5dp"
             android:text="Permanent City"
-            android:textColor="@color/text_color_grey_dark"
+            android:textColor="@color/txt_aku_blue"
             android:textSize="13sp"
             app:typeface="@string/font_bold" />
 
@@ -347,22 +347,22 @@
             android:lines="1"
             android:maxLength="15"
             android:maxLines="1"
-            android:textColor="@color/text_dark"
+            android:textColor="@color/txt_aku_blue"
             android:textColorHint="@color/text_hint"
             android:textSize="16sp"
             app:testType="nocheck" />
 
 
-        <com.ctrlplusz.anytextview.AnyTextView
+        <edu.aku.akuh_health_first.widget.AnyTextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="@dimen/x5dp"
             android:text="@string/permanent_country"
-            android:textColor="@color/text_color_grey_dark"
+            android:textColor="@color/txt_aku_blue"
             android:textSize="13sp"
             app:typeface="@string/font_bold" />
 
-        <com.ctrlplusz.anytextview.AnyTextView
+        <edu.aku.akuh_health_first.widget.AnyTextView
             android:id="@+id/txtPermanentCountry"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -372,7 +372,7 @@
             android:gravity="center_vertical"
             android:hint="Select Permanent Country"
             android:maxLines="1"
-            android:textColor="@color/text_dark"
+            android:textColor="@color/txt_aku_blue"
             android:textColorHint="@color/text_hint"
             android:textSize="16sp" />
 
@@ -382,12 +382,12 @@
             android:layout_height="0dp" />
 
 
-        <com.ctrlplusz.anytextview.AnyTextView
+        <edu.aku.akuh_health_first.widget.AnyTextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="@dimen/x5dp"
             android:text="@string/mr_number"
-            android:textColor="@color/text_color_grey_dark"
+            android:textColor="@color/txt_aku_blue"
             android:textSize="13sp"
             app:typeface="@string/font_bold" />
 
@@ -401,17 +401,17 @@
             android:inputType="textPersonName"
             android:maxLength="9"
             android:maxLines="1"
-            android:textColor="@color/text_dark"
+            android:textColor="@color/txt_aku_blue"
             android:textColorHint="@color/text_hint"
             android:textSize="16sp"
             app:testType="nocheck" />
 
-        <com.ctrlplusz.anytextview.AnyTextView
+        <edu.aku.akuh_health_first.widget.AnyTextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="@dimen/x5dp"
             android:text="@string/mother_name"
-            android:textColor="@color/text_color_grey_dark"
+            android:textColor="@color/txt_aku_blue"
             android:textSize="13sp"
             app:typeface="@string/font_bold" />
 
@@ -425,22 +425,22 @@
             android:inputType="textPersonName"
             android:maxLength="30"
             android:maxLines="1"
-            android:textColor="@color/text_dark"
+            android:textColor="@color/txt_aku_blue"
             android:textColorHint="@color/text_hint"
             android:textSize="16sp"
             app:testType="personFullName" />
 
 
-        <com.ctrlplusz.anytextview.AnyTextView
+        <edu.aku.akuh_health_first.widget.AnyTextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="@dimen/x5dp"
             android:text="@string/card_type"
-            android:textColor="@color/text_color_grey_dark"
+            android:textColor="@color/txt_aku_blue"
             android:textSize="13sp"
             app:typeface="@string/font_bold" />
 
-        <com.ctrlplusz.anytextview.AnyTextView
+        <edu.aku.akuh_health_first.widget.AnyTextView
             android:id="@+id/txtCardType"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -451,7 +451,7 @@
             android:gravity="center_vertical"
             android:maxLines="1"
             android:text="Select Card Type"
-            android:textColor="@color/text_dark"
+            android:textColor="@color/txt_aku_blue"
             android:textColorHint="@color/text_hint"
             android:textSize="16sp" />
 
@@ -473,12 +473,12 @@
                 android:orientation="vertical"
                 android:padding="@dimen/x10dp">
 
-                <com.ctrlplusz.anytextview.AnyTextView
+                <edu.aku.akuh_health_first.widget.AnyTextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="@dimen/x5dp"
                     android:text="Attach CNIC Image"
-                    android:textColor="@color/text_color_grey_dark"
+                    android:textColor="@color/txt_aku_blue"
                     android:textSize="13sp"
                     app:typeface="@string/font_bold" />
 
@@ -488,11 +488,11 @@
                     android:layout_width="120dp"
                     android:layout_height="120dp"
                     android:layout_margin="@dimen/x5dp"
-                    android:background="@color/text_color_grey_dark"
+                    android:background="@color/txt_aku_blue"
                     android:scaleType="centerCrop"
                     android:src="@drawable/placeholder" />
 
-                <com.ctrlplusz.anytextview.AnyTextView
+                <edu.aku.akuh_health_first.widget.AnyTextView
                     android:id="@+id/txtCNICImageName"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -500,7 +500,7 @@
                     android:ellipsize="end"
                     android:singleLine="true"
                     android:text=""
-                    android:textColor="@color/text_color_grey_dark"
+                    android:textColor="@color/txt_aku_blue"
                     android:textSize="13sp"
                     app:typeface="@string/font_bold" />
 
@@ -515,12 +515,12 @@
                 android:orientation="vertical"
                 android:padding="@dimen/x10dp">
 
-                <com.ctrlplusz.anytextview.AnyTextView
+                <edu.aku.akuh_health_first.widget.AnyTextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="@dimen/x5dp"
                     android:text="Attach Passport Image"
-                    android:textColor="@color/text_color_grey_dark"
+                    android:textColor="@color/txt_aku_blue"
                     android:textSize="13sp"
                     app:typeface="@string/font_bold" />
 
@@ -530,11 +530,11 @@
                     android:layout_width="120dp"
                     android:layout_height="120dp"
                     android:layout_margin="@dimen/x5dp"
-                    android:background="@color/text_color_grey_dark"
+                    android:background="@color/txt_aku_blue"
                     android:scaleType="centerCrop"
                     android:src="@drawable/placeholder" />
 
-                <com.ctrlplusz.anytextview.AnyTextView
+                <edu.aku.akuh_health_first.widget.AnyTextView
                     android:id="@+id/txtPassportImageName"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -542,7 +542,7 @@
                     android:ellipsize="end"
                     android:singleLine="true"
                     android:text=""
-                    android:textColor="@color/text_color_grey_dark"
+                    android:textColor="@color/txt_aku_blue"
                     android:textSize="13sp"
                     app:typeface="@string/font_bold" />
 
@@ -552,7 +552,7 @@
         </LinearLayout>
 
 
-        <com.ctrlplusz.anytextview.AnyTextView
+        <edu.aku.akuh_health_first.widget.AnyTextView
             android:id="@+id/btnSignUp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

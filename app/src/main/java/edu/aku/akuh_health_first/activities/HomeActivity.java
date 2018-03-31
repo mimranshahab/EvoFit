@@ -1,27 +1,40 @@
 package edu.aku.akuh_health_first.activities;
 
+import android.graphics.PorterDuff;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.design.widget.NavigationView;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
 import android.view.Gravity;
 
+import java.util.List;
+
 import edu.aku.akuh_health_first.R;
+import edu.aku.akuh_health_first.fragments.HomeFragment;
 import edu.aku.akuh_health_first.fragments.LoginFragment;
+import edu.aku.akuh_health_first.fragments.abstracts.BaseFragment;
 
 
 public class HomeActivity extends BaseActivity {
+
+
+    NavigationView navigationView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 //        setContentView(R.layout.activity_main);
+
     }
 
     @Override
     protected void onPostCreate(@Nullable Bundle savedInstanceState) {
         super.onPostCreate(savedInstanceState);
         initFragments();
+        navigationView = findViewById(R.id.nav_view);
+        navigationView.getBackground().setColorFilter(0x80000000, PorterDuff.Mode.MULTIPLY);
     }
-
 
 
     @Override
@@ -33,6 +46,7 @@ public class HomeActivity extends BaseActivity {
     protected int getTitlebarLayoutId() {
         return R.id.titlebar;
     }
+
 
     @Override
     protected int getDrawerLayoutId() {
@@ -49,9 +63,13 @@ public class HomeActivity extends BaseActivity {
         return R.id.contDrawer;
     }
 
+    @Override
+    protected int getPermanentViewId() {
+        return R.id.contPermanent;
+    }
 
     private void initFragments() {
-        addDockableFragment(LoginFragment.newInstance());
+        replacePermanentFramgment(HomeFragment.newInstance());
     }
 
 
@@ -63,8 +81,14 @@ public class HomeActivity extends BaseActivity {
                 drawerLayout.closeDrawer(Gravity.START);
             } else {
                 super.onBackPressed();
-            }
+                List<Fragment> fragments = getSupportFragmentManager().getFragments();
+                BaseFragment fragment = (BaseFragment) fragments.get(fragments.size() - 1);
 
+//                FragmentManager.BackStackEntry backStackEntryAt = getSupportFragmentManager().getBackStackEntryAt(getSupportFragmentManager().getBackStackEntryCount() - 1);
+//                String fragmentName  = backStackEntryAt.getName();
+//                getSupportFragmentManager().getFragment()
+                fragment.setTitlebar(titleBar);
+            }
         } else {
             closeApp();
         }

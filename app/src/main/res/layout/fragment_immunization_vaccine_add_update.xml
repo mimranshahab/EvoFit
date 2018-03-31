@@ -1,0 +1,183 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/c_white">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true">
+
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_margin="@dimen/x15dp"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <edu.aku.akuh_health_first.widget.AnyTextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/x5dp"
+                        android:text="Vacccine Name"
+                        android:textColor="@color/txt_aku_blue"
+                        android:textSize="@dimen/s12"
+                        app:typeface="@string/font_bold" />
+
+                    <edu.aku.akuh_health_first.widget.AnyTextView
+                        android:id="@+id/txtVaccine"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="@dimen/x10dp"
+                        android:layout_marginTop="@dimen/x10dp"
+                        android:background="@drawable/rounded_box"
+                        android:drawableEnd="@drawable/dropdown_arrow"
+                        android:gravity="center_vertical"
+                        android:hint="Select Vaccine"
+                        android:maxLines="1"
+                        android:padding="@dimen/x5dp"
+                        android:textColor="@color/txt_aku_blue"
+                        android:textColorHint="@color/text_hint"
+                        android:textSize="@dimen/s14" />
+
+                    <edu.aku.akuh_health_first.widget.AnyTextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/x5dp"
+                        android:text="Route"
+                        android:textColor="@color/txt_aku_blue"
+                        android:textSize="@dimen/s12"
+                        app:typeface="@string/font_bold" />
+
+
+                    <edu.aku.akuh_health_first.widget.AnyTextView
+                        android:id="@+id/txtRouteId"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="@dimen/x10dp"
+                        android:layout_marginTop="@dimen/x10dp"
+                        android:background="@drawable/rounded_box"
+                        android:drawableRight="@drawable/dropdown_arrow"
+                        android:gravity="center_vertical"
+                        android:hint="Select Route"
+                        android:maxLines="1"
+                        android:padding="@dimen/x5dp"
+                        android:textColor="@color/txt_aku_blue"
+                        android:textColorHint="@color/text_hint"
+                        android:textSize="@dimen/s14" />
+
+                    <edu.aku.akuh_health_first.widget.AnyTextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/x5dp"
+                        android:text="Schedule Date"
+                        android:textColor="@color/txt_aku_blue"
+                        android:textSize="@dimen/s12"
+                        app:typeface="@string/font_bold" />
+
+                    <edu.aku.akuh_health_first.widget.AnyTextView
+                        android:id="@+id/txtVaccinationPlanDate"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="@dimen/x10dp"
+                        android:layout_marginTop="@dimen/x10dp"
+                        android:background="@drawable/rounded_box"
+                        android:drawableRight="@drawable/calendar_input_icon"
+                        android:gravity="center_vertical"
+                        android:hint="Tap to Select Schedule Date"
+                        android:maxLines="1"
+                        android:padding="@dimen/x5dp"
+
+                        android:textColor="@color/txt_aku_blue"
+                        android:textColorHint="@color/text_hint"
+                        android:textSize="@dimen/s14" />
+
+                    <edu.aku.akuh_health_first.widget.AnyTextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/x5dp"
+                        android:text="Vaccination Date"
+                        android:textColor="@color/txt_aku_blue"
+                        android:textSize="@dimen/s12"
+                        app:typeface="@string/font_bold" />
+
+                    <edu.aku.akuh_health_first.widget.AnyTextView
+                        android:id="@+id/txtVaccinatedDate"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="@dimen/x10dp"
+
+                        android:layout_marginTop="@dimen/x10dp"
+                        android:background="@drawable/rounded_box"
+                        android:drawableRight="@drawable/calendar_input_icon"
+                        android:gravity="center_vertical"
+                        android:hint="Tap to Select Vaccination Date (if Vaccinated)"
+                        android:maxLines="1"
+                        android:padding="@dimen/x5dp"
+                        android:singleLine="true"
+                        android:textColor="@color/txt_aku_blue"
+                        android:textColorHint="@color/text_hint"
+                        android:textSize="@dimen/s14" />
+
+                    <edu.aku.akuh_health_first.widget.AnyTextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/x5dp"
+                        android:text="Hospital Loaction"
+                        android:textColor="@color/txt_aku_blue"
+                        android:textSize="@dimen/s12"
+                        app:typeface="@string/font_bold" />
+
+                    <edu.aku.akuh_health_first.widget.AnyEditTextView
+                        android:id="@+id/txtVaccineLocation"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="@dimen/x10dp"
+                        android:layout_marginTop="@dimen/x10dp"
+                        android:background="@drawable/rounded_box"
+                        android:gravity="center_vertical"
+                        android:hint="Enter Hospital Location"
+                        android:maxLength="50"
+                        android:maxLines="1"
+                        android:padding="@dimen/x5dp"
+                        android:textColor="@color/txt_aku_blue"
+                        android:textColorHint="@color/text_hint"
+                        android:textSize="@dimen/s14" />
+
+
+                </LinearLayout>
+
+                <Button
+                    android:id="@+id/btnSave"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/x20dp"
+                    android:background="@drawable/rounded_box_filled_base_amber"
+                    android:gravity="center"
+                    android:text="Save"
+                    android:textColor="@color/c_white"
+                    android:textStyle="bold" />
+
+            </LinearLayout>
+
+
+        </RelativeLayout>
+
+
+    </ScrollView>
+
+
+</LinearLayout>

@@ -6,6 +6,7 @@ import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.support.v4.widget.DrawerLayout;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -16,7 +17,9 @@ import android.widget.DatePicker;
 import android.widget.Spinner;
 
 import com.andreabaccega.widget.FormEditText;
-import com.ctrlplusz.anytextview.AnyTextView;
+
+import edu.aku.akuh_health_first.widget.AnyTextView;
+
 import com.google.gson.JsonObject;
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.theartofdev.edmodo.cropper.CropImage;
@@ -40,8 +43,6 @@ import edu.aku.akuh_health_first.helperclasses.validator.CnicValidation;
 import edu.aku.akuh_health_first.helperclasses.validator.MobileNumberValidation;
 import edu.aku.akuh_health_first.libraries.maskformatter.MaskFormatter;
 import edu.aku.akuh_health_first.managers.DateManager;
-import edu.aku.akuh_health_first.managers.retrofit.WebServiceFactory;
-import edu.aku.akuh_health_first.models.PacsView;
 import edu.aku.akuh_health_first.models.receiving_model.RegisterVM;
 import edu.aku.akuh_health_first.models.wrappers.WebResponse;
 import butterknife.BindView;
@@ -60,9 +61,6 @@ import edu.aku.akuh_health_first.managers.retrofit.WebServices;
 import edu.aku.akuh_health_first.models.receiving_model.RegisterOptionsModel;
 import okhttp3.MediaType;
 import okhttp3.RequestBody;
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
 
 import static android.app.Activity.RESULT_OK;
 import static edu.aku.akuh_health_first.constatnts.AppConstants.CNIC_MASK;
@@ -196,6 +194,7 @@ public class RegisterFragment extends BaseFragment {
         titleBar.showBackButton(getBaseActivity());
     }
 
+
     @Override
     public void setListeners() {
 
@@ -213,6 +212,12 @@ public class RegisterFragment extends BaseFragment {
 
 
     @Override
+    public int getDrawerLockMode() {
+        return DrawerLayout.LOCK_MODE_LOCKED_CLOSED;
+    }
+
+
+    @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         edMobileNumber.addValidator(new MobileNumberValidation());
@@ -221,14 +226,14 @@ public class RegisterFragment extends BaseFragment {
         edtPassportNumber.addValidator(new PassportValidation());
         edtCNICNumber.addTextChangedListener(new MaskFormatter(CNIC_MASK, edtCNICNumber, '-'));
         edtMRNumber.addTextChangedListener(new MaskFormatter(MR_NUMBER_MASK, edtMRNumber, '-'));
-        getRegisterVM();
+//        getRegisterVM();
 //        CallPacManager();
     }
 
     private void getRegisterVM() {
         new WebServices(getBaseActivity(),
-                WebServiceConstants.temporaryToken, BaseURLTypes.AHFA_BASE_URL)
-                .webServiceRequestAPI(WebServiceConstants.METHOD_USER_GET_REGISTER_VM, "", new WebServices.IRequestJsonDataCallBack() {
+                getToken(), BaseURLTypes.AHFA_BASE_URL)
+                .webServiceRequestAPIForJsonObject(WebServiceConstants.METHOD_USER_GET_REGISTER_VM, "", new WebServices.IRequestJsonDataCallBack() {
                     @Override
                     public void requestDataResponse(WebResponse<JsonObject> webResponse) {
                         RegisterVM registerVM = GsonFactory.getSimpleGson().fromJson(webResponse.result, RegisterVM.class);
@@ -280,7 +285,7 @@ public class RegisterFragment extends BaseFragment {
                     public void onDateSet(DatePicker datePicker, int i, int i1, int i2) {
 
                     }
-                });
+                }, false);
 
                 break;
             case R.id.imgCNIC:
@@ -318,10 +323,11 @@ public class RegisterFragment extends BaseFragment {
 //                }
 
 
-                if (edtCNICNumber.testValidity() && edtMRNumber.testValidity()) {
-                    getBaseActivity().addDockableFragment(MyFamilyFragment.newInstance());
-                }
+//                if (edtCNICNumber.testValidity() && edtMRNumber.testValidity()) {
+//                    getBaseActivity().addDockableFragment(MyFamilyFragment.newInstance());
+//                }
 
+                getBaseActivity().addDockableFragment(MyFamilyFragment.newInstance());
                 break;
 
             case R.id.txtGender:
@@ -344,35 +350,31 @@ public class RegisterFragment extends BaseFragment {
 
     private void uploadImageFile(final String uploadFilePath, final String uploadFileUriPath) {
         new WebServices(getBaseActivity(),
-                WebServiceConstants.temporaryToken, BaseURLTypes.AHFA_BASE_URL)
-                .webServiceUploadFileAPI(WebServiceConstants.METHOD_USER_UPLOAD_REQUEST_FILE, uploadFilePath, FileType.IMAGE, new WebServices.IRequestJsonDataCallBackForStringResult() {
-                    @Override
-                    public void requestDataResponse(WebResponse<String> webResponse) {
-                        if (webResponse.result.isEmpty()) {
-                            UIHelper.showToast(getContext(), "Failed to upload file. Please try again.");
-                        } else {
-//                            String[] strings = webResponse.result.split("-");
-//                            isFileUploaded = strings[0].equals("true");
-//                            if (isFileUploaded) {
-//                                if (isSelectingCNICPic) nameCNICUploadedFile = strings[1];
-//                                else namePassportUploadedFile = strings[1];
-//                            }
+                getToken(), BaseURLTypes.AHFA_BASE_URL)
+                .webServiceUploadFileAPI(WebServiceConstants.METHOD_USER_UPLOAD_REQUEST_FILE,
+                        uploadFilePath, FileType.IMAGE,
+                        // FIXME: 3/21/2018 putlivedata
+                        "",
+                        new WebServices.IRequestJsonDataCallBack() {
+                            @Override
+                            public void requestDataResponse(WebResponse<JsonObject> webResponse) {
+//                                if (webResponse.result.isEmpty()) {
+//                                    UIHelper.showToast(getContext(), "Failed to upload file. Please try again.");
+//                                } else {
 
-                            if (isSelectingCNICPic) {
-                                nameCNICUploadedFile = webResponse.result;
-                            } else {
-                                namePassportUploadedFile = webResponse.result;
+//                                    String namePassportUploadedFile = webResponse.result;
+//
+//                                    UIHelper.showShortToastInCenter(getContext(), webResponse.message);
+//                                    setImageAfterResult(uploadFileUriPath);
+//                                }
                             }
-                            UIHelper.showShortToastInCenter(getContext(), webResponse.message);
-                            setImageAfterResult(uploadFileUriPath);
-                        }
-                    }
 
-                    @Override
-                    public void onError() {
+                            @Override
+                            public void onError() {
 
-                    }
-                });
+                            }
+                        });
+
     }
 
     @Override
@@ -470,34 +472,6 @@ public class RegisterFragment extends BaseFragment {
         }
     }
 
-
-    private void CallPacManager() {
-        ArrayList<String> item = new ArrayList<String>();
-        item.add(WebServiceConstants.tempPacViews.toString());
-
-        PacsView pacViews = new PacsView(item);
-
-
-        new WebServices(getBaseActivity(), WebServiceConstants.temporaryToken, BaseURLTypes.PACS_VIEWER)
-                .webServiceRequestAPI(WebServiceConstants.METHOD_PACMANAGER, pacViews.toString(),
-                        new WebServices.IRequestJsonDataCallBack() {
-                            @Override
-                            public void requestDataResponse(WebResponse<JsonObject> webResponse) {
-
-                                PacsView entity = GsonFactory.getSimpleGson().fromJson(webResponse.result, PacsView.class);
-
-                                UIHelper.showToast(getContext(), entity.toString());
-                            }
-
-                            @Override
-                            public void onError() {
-
-                            }
-                        });
-
-
-
-    }
 
     @NonNull
     public RequestBody getRequestBody(MediaType form, String trim) {

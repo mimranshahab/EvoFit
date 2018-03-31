@@ -4,22 +4,22 @@ import android.graphics.Paint;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.support.annotation.Nullable;
+import android.support.v4.widget.DrawerLayout;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 
 import com.andreabaccega.widget.FormEditText;
-import com.ctrlplusz.anytextview.AnyTextView;
+import edu.aku.akuh_health_first.widget.AnyTextView;
 
 import edu.aku.akuh_health_first.fragments.abstracts.BaseFragment;
 import edu.aku.akuh_health_first.helperclasses.CountDownTimerHelper;
 import edu.aku.akuh_health_first.helperclasses.ui.helper.KeyboardHide;
 import edu.aku.akuh_health_first.helperclasses.ui.helper.TitleBar;
+import edu.aku.akuh_health_first.models.CardModel;
 import edu.aku.akuh_health_first.models.wrappers.WebResponse;
 import edu.aku.akuh_health_first.R;
-
-import edu.aku.akuh_health_first.models.UserModel;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -49,7 +49,7 @@ public class VerifyNumberCodeFragment extends BaseFragment {
     Unbinder unbinder;
 
     private CountDownTimer countDownTimer;
-    private Call<WebResponse<UserModel>> callCodeVerification;
+    private Call<WebResponse<CardModel>> callCodeVerification;
     private Call<WebResponse<Object>> callSendVerifyCode;
     private String phoneNumber;
     private String countryCode;
@@ -78,6 +78,7 @@ public class VerifyNumberCodeFragment extends BaseFragment {
         titleBar.showBackButton(getBaseActivity());
     }
 
+
     @Override
     public void onPause() {
         countDownTimer.cancel();
@@ -93,6 +94,12 @@ public class VerifyNumberCodeFragment extends BaseFragment {
     public void onClick(View v) {
 
     }
+
+    @Override
+    public int getDrawerLockMode() {
+        return DrawerLayout.LOCK_MODE_LOCKED_CLOSED;
+    }
+
 
 
     @Override

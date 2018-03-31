@@ -2,6 +2,7 @@ package edu.aku.akuh_health_first.fragments;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v4.widget.DrawerLayout;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,7 +11,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 
 import com.andreabaccega.widget.FormEditText;
-import com.ctrlplusz.anytextview.AnyTextView;
+import edu.aku.akuh_health_first.widget.AnyTextView;
 
 import edu.aku.akuh_health_first.fragments.abstracts.BaseFragment;
 import edu.aku.akuh_health_first.helperclasses.ui.helper.KeyboardHide;
@@ -74,6 +75,8 @@ public class VerifyYourNumberFragment extends BaseFragment {
         titleBar.showBackButton(getBaseActivity());
     }
 
+
+
     @Override
     public void setListeners() {
     }
@@ -81,6 +84,12 @@ public class VerifyYourNumberFragment extends BaseFragment {
     @Override
     public void onClick(View v) {
     }
+
+    @Override
+    public int getDrawerLockMode() {
+        return DrawerLayout.LOCK_MODE_LOCKED_CLOSED;
+    }
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {

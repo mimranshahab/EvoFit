@@ -12,7 +12,7 @@
 //
 //import com.nostra13.universalimageloader.core.ImageLoader;
 //import edu.aku.R;
-//import edu.aku.libraries.imageloader.LazyLoading;
+//import edu.aku.libraries.imageloader.ImageLoaderHelper;
 //import edu.aku.models.Category;
 //
 //import java.util.ArrayList;
@@ -74,7 +74,7 @@
 //
 //        ImageLoader imageLoader = ImageLoader.getInstance();
 //        ImageView iconView = viewHolder.imgViewGridItem;
-//        imageLoader.displayImage(currentItem.image, iconView, LazyLoading.options);
+//        imageLoader.displayImage(currentItem.image, iconView, ImageLoaderHelper.options);
 //    }
 //
 //    private void bindViews(View gridItemView, ViewHolder viewHolder) {

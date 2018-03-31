@@ -13,6 +13,7 @@ import android.support.multidex.MultiDexApplication;
 import android.util.Log;
 import android.util.Pair;
 
+import com.crashlytics.android.Crashlytics;
 import com.nostra13.universalimageloader.cache.memory.impl.WeakMemoryCache;
 import com.nostra13.universalimageloader.core.DisplayImageOptions;
 import com.nostra13.universalimageloader.core.ImageLoader;
@@ -22,9 +23,10 @@ import com.nostra13.universalimageloader.core.display.FadeInBitmapDisplayer;
 
 import edu.aku.akuh_health_first.activities.SplashActivity;
 
+import edu.aku.akuh_health_first.libraries.imageloader.CustomImageDownaloder;
+import io.fabric.sdk.android.Fabric;
 import io.reactivex.subjects.PublishSubject;
 import io.realm.Realm;
-import uk.co.chrisjenx.calligraphy.CalligraphyConfig;
 
 /**
  * Created by khanhamza on 09-Mar-17.
@@ -48,8 +50,8 @@ public class BaseApplication extends MultiDexApplication implements Application.
 //        configureCalligraphyLibrary();
 
         // TODO: 11/1/2017 Enable Crash Lytics and Never Crash feature before releasing the app
-//        Fabric.with(this, new Crashlytics());
-//        neverCrash();
+        Fabric.with(this, new Crashlytics());
+        neverCrash();
     }
 
 
@@ -63,19 +65,24 @@ public class BaseApplication extends MultiDexApplication implements Application.
         return stringId == 0 ? applicationInfo.nonLocalizedLabel.toString() : context.getString(stringId);
     }
 
-    private void configureCalligraphyLibrary() {
-        CalligraphyConfig.initDefault(new CalligraphyConfig.Builder()
-                .setDefaultFontPath("fonts/SanFranciscoRegular.ttf")
-                .setFontAttrId(R.attr.fontPath)
-                .build()
-        );
-
-    }
+//    private void configureCalligraphyLibrary() {
+//        CalligraphyConfig.initDefault(new CalligraphyConfig.Builder()
+//                .setDefaultFontPath("fonts/SanFranciscoRegular.ttf")
+//                .setFontAttrId(R.attr.fontPath)
+//                .build()
+//        );
+//
+//    }
 
     private void configImageLoader(Context context) {
         DisplayImageOptions defaultOptions = new DisplayImageOptions.Builder().cacheOnDisk(true).cacheInMemory(true).imageScaleType(ImageScaleType.EXACTLY).displayer(new FadeInBitmapDisplayer(300)).build();
-        // Create global configuration and initialize LazyLoading with this config
-        ImageLoaderConfiguration config = new ImageLoaderConfiguration.Builder(context).defaultDisplayImageOptions(defaultOptions).memoryCache(new WeakMemoryCache()).memoryCacheSize(2 * 1024 * 1024).build();
+        // Create global configuration and initialize ImageLoaderHelper with this config
+        ImageLoaderConfiguration config = new ImageLoaderConfiguration.Builder(context)
+                .imageDownloader(new CustomImageDownaloder(context))
+                .defaultDisplayImageOptions(defaultOptions)
+                .memoryCache(new WeakMemoryCache())
+                .memoryCacheSize(2 * 1024 * 1024)
+                .build();
         ImageLoader.getInstance().init(config);
     }
 
@@ -89,14 +96,14 @@ public class BaseApplication extends MultiDexApplication implements Application.
                     @Override
                     public void run() {
 //                        SharedPreferenceManager.getInstance().setForcedRestart(true);
-//                        Crashlytics.logException(paramThrowable);
+                        Crashlytics.logException(paramThrowable);
                     }
                 });
                 t.start();
                 try {
                     t.join();
                 } catch (InterruptedException e) {
-
+                    Log.e("CRASH", "uncaughtException: " + e.getMessage());
                 }
 
 //                Log.d("Crash BaseApplication", "uncaughtException: " + SharedPreferenceManager.getInstance().isForcedRestart());
@@ -176,3 +183,4 @@ public class BaseApplication extends MultiDexApplication implements Application.
 
 
 }
+

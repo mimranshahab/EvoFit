@@ -1,6 +1,5 @@
 package edu.aku.akuh_health_first.models.sending_model;
 
-import com.google.gson.Gson;
 import com.google.gson.annotations.SerializedName;
 
 import edu.aku.akuh_health_first.managers.retrofit.GsonFactory;
@@ -12,8 +11,8 @@ import edu.aku.akuh_health_first.managers.retrofit.GsonFactory;
 public class LoginApiModel {
 
 
-    @SerializedName("Userid")
-    private String userid;
+    @SerializedName("CardNumber")
+    private String cardNumber;
     @SerializedName("Password")
     private String password;
 
@@ -29,16 +28,16 @@ public class LoginApiModel {
 
 
     public LoginApiModel(String userid, String password) {
-        this.userid = userid;
+        this.cardNumber = userid;
         this.password = password;
     }
 
-    public String getUserid() {
-        return userid;
+    public String getCardNumber() {
+        return cardNumber;
     }
 
-    public void setUserid(String userid) {
-        this.userid = userid;
+    public void setCardNumber(String cardNumber) {
+        this.cardNumber = cardNumber;
     }
 
     public String getPassword() {

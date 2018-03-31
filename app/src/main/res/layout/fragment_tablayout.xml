@@ -11,13 +11,14 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/c_white"
-        app:tabIndicatorColor="@color/colorPrimary"
+        app:tabIndicatorColor="@color/txt_aku_blue"
         app:tabIndicatorHeight="5px"
-        app:tabMode="scrollable"
+        app:tabMode="fixed"
+
         app:tabBackground="@drawable/tab_color_selector"
-        app:tabSelectedTextColor="@color/colorPrimary"
+        app:tabSelectedTextColor="@color/c_white"
         app:tabTextAppearance="@android:style/TextAppearance.Widget.TabWidget"
-        app:tabTextColor="@color/text_dark" />
+        app:tabTextColor="@color/c_white" />
 
     <edu.aku.akuh_health_first.helperclasses.ui.helper.CustomViewPager
         android:id="@+id/viewpager"

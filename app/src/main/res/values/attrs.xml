@@ -24,4 +24,9 @@
             </attr>
             <attr name="transitionDuration" format="integer" />
         </declare-styleable>
+
+
+    <declare-styleable name="AnyTextView">
+        <attr name="typeface" format="string"/>
+    </declare-styleable>
 </resources>

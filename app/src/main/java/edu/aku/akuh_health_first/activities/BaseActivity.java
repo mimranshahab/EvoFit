@@ -1,20 +1,27 @@
 package edu.aku.akuh_health_first.activities;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.design.widget.NavigationView;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
-import android.view.Gravity;
 import android.view.View;
+
 
 import edu.aku.akuh_health_first.R;
 import edu.aku.akuh_health_first.fragments.LeftSideMenuFragment;
-import edu.aku.akuh_health_first.fragments.LoginFragment;
 import edu.aku.akuh_health_first.fragments.abstracts.GenericClickableInterface;
 import edu.aku.akuh_health_first.fragments.abstracts.GenericDialogFragment;
 import edu.aku.akuh_health_first.helperclasses.ui.helper.TitleBar;
+import edu.aku.akuh_health_first.models.LaboratoryModel;
+
+
+import static edu.aku.akuh_health_first.constatnts.AppConstants.IMAGE_PREVIEW_TITLE;
+import static edu.aku.akuh_health_first.constatnts.AppConstants.IMAGE_PREVIEW_URL;
+import static edu.aku.akuh_health_first.constatnts.AppConstants.JSON_STRING_KEY;
+import static edu.aku.akuh_health_first.constatnts.AppConstants.LABORATORY_MODEL;
 
 
 public abstract class BaseActivity extends AppCompatActivity {
@@ -65,9 +72,12 @@ public abstract class BaseActivity extends AppCompatActivity {
 
     protected abstract int getDrawerFragmentId();
 
+    protected abstract int getPermanentViewId();
+
     public DrawerLayout getDrawerLayout() {
         return drawerLayout;
     }
+
 
     public void addDrawerFragment() {
         leftSideMenuFragment = LeftSideMenuFragment.newInstance();
@@ -81,20 +91,20 @@ public abstract class BaseActivity extends AppCompatActivity {
         titleBar.resetViews();
     }
 
-    @Override
-    public void onBackPressed() {
-        if (getSupportFragmentManager().getBackStackEntryCount() > 1) {
-
-            if (drawerLayout.isDrawerOpen(Gravity.LEFT)) {
-                drawerLayout.closeDrawer(Gravity.LEFT);
-            } else {
-                super.onBackPressed();
-            }
-
-        } else {
-            closeApp();
-        }
-    }
+//    @Override
+//    public void onBackPressed() {
+//        if (getSupportFragmentManager().getBackStackEntryCount() > 1) {
+//
+//            if (drawerLayout.isDrawerOpen(Gravity.LEFT)) {
+//                drawerLayout.closeDrawer(Gravity.LEFT);
+//            } else {
+//                super.onBackPressed();
+//            }
+//
+//        } else {
+//            closeApp();
+//        }
+//    }
 
 
     public void closeApp() {
@@ -120,7 +130,17 @@ public abstract class BaseActivity extends AppCompatActivity {
     }
 
     public void addDockableFragment(Fragment fragment) {
-        getSupportFragmentManager().beginTransaction().replace(getDockableFragmentId(), fragment).addToBackStack(fragment.getClass().getSimpleName())
+        FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
+        fragmentTransaction.setCustomAnimations(R.anim.slide_in_right, R.anim.slide_out_left);
+        fragmentTransaction.replace(getDockableFragmentId(), fragment).addToBackStack(fragment.getClass().getSimpleName())
+                .commit();
+    }
+
+    public void replacePermanentFramgment(Fragment fragment) {
+        FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
+        fragmentTransaction.setCustomAnimations(R.anim.slide_in_right, R.anim.slide_out_left);
+
+        fragmentTransaction.replace(getPermanentViewId(), fragment).addToBackStack(fragment.getClass().getSimpleName())
                 .commit();
     }
 
@@ -128,12 +148,48 @@ public abstract class BaseActivity extends AppCompatActivity {
         return titleBar;
     }
 
-    public void openActivity(Activity activity , Class<?> tClass) {
-        Intent i = new Intent(activity, tClass);
+    public void openActivity(Class<?> tClass) {
+        Intent i = new Intent(this, tClass);
         startActivity(i);
     }
 
-// RESIDE MENU ->
+
+    public void openImagePreviewActivity(String url, String title) {
+        Intent i = new Intent(this, ImagePreviewActivity.class);
+        i.putExtra(IMAGE_PREVIEW_TITLE, title);
+        i.putExtra(IMAGE_PREVIEW_URL, url);
+        startActivity(i);
+    }
+
+    public void openActivity(Class<?> tClass, String object) {
+        Intent i = new Intent(this, tClass);
+        i.putExtra(JSON_STRING_KEY, object);
+        startActivity(i);
+    }
+
+
+    public LeftSideMenuFragment getLeftSideMenuFragment() {
+        return leftSideMenuFragment;
+    }
+
+    public void reload() {
+        Intent intent = getIntent();
+        overridePendingTransition(0, 0);
+        intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
+        finish();
+        overridePendingTransition(0, 0);
+        startActivity(intent);
+    }
+
+    public void clearAllActivitiesExceptThis(Class<?> cls) {
+        Intent intents = new Intent(this, cls);
+        intents.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK
+                | Intent.FLAG_ACTIVITY_CLEAR_TOP
+                | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+        startActivity(intents);
+        finish();
+    }
+    // RESIDE MENU ->
 
 
 //    public void setSideMenu(int direction) {

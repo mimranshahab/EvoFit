@@ -13,7 +13,7 @@
     android:paddingBottom="@dimen/x2dp">
 
 
-    <com.ctrlplusz.anytextview.AnyTextView
+    <edu.aku.akuh_health_first.widget.AnyTextView
         android:id="@+id/txtTitle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -27,18 +27,18 @@
 
 
 
-    <com.ctrlplusz.anytextview.AnyTextView
+    <edu.aku.akuh_health_first.widget.AnyTextView
         android:id="@+id/txtMessage"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
         android:text="@string/you_are_all_signed_up"
-        android:textColor="@color/text_dark"
+        android:textColor="@color/txt_aku_blue"
         android:textSize="15sp"
         app:typeface="@string/font_regular" />
 
 
-    <com.ctrlplusz.anytextview.AnyTextView
+    <edu.aku.akuh_health_first.widget.AnyTextView
         android:id="@+id/txtUserName"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -49,14 +49,14 @@
         app:typeface="@string/font_bold" />
 
 
-    <com.ctrlplusz.anytextview.AnyTextView
+    <edu.aku.akuh_health_first.widget.AnyTextView
         android:id="@+id/txtMessage2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="@dimen/x20dp"
         android:gravity="center"
         android:text="@string/we_re_glad_you_re_here"
-        android:textColor="@color/text_dark"
+        android:textColor="@color/txt_aku_blue"
         android:textSize="15sp"
         app:typeface="@string/font_regular" />
 

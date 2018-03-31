@@ -1,0 +1,253 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:card_view="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="@dimen/x10dp"
+    android:orientation="vertical">
+
+    <android.support.v7.widget.CardView
+        android:id="@+id/cardView2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/x6dp"
+        android:layout_weight="1"
+        android:animateLayoutChanges="true"
+        app:cardBackgroundColor="@color/base_blue"
+        app:cardCornerRadius="@dimen/x10dp"
+        app:cardElevation="@dimen/x5dp"
+        card_view:cardCornerRadius="@dimen/x10dp"
+        card_view:cardElevation="x15dp">
+
+        <FrameLayout
+            android:id="@+id/frameColorCode"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+
+            <LinearLayout
+
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginRight="@dimen/x4dp"
+                android:background="@drawable/round_edges_two_sides"
+                android:gravity="center_vertical"
+                android:orientation="vertical"
+                android:padding="@dimen/x5dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal"
+                    android:padding="@dimen/x5dp">
+
+                    <edu.aku.akuh_health_first.widget.AnyTextView
+                        android:id="@+id/txtDateTime"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight=".7"
+                        android:drawableLeft="@drawable/cardiopulmonary_report_date_green"
+                        android:drawablePadding="@dimen/x5dp"
+                        android:gravity="center_vertical"
+                        android:text="22 jan ,2018"
+                        android:textSize="@dimen/s14" />
+
+
+                    <edu.aku.akuh_health_first.widget.AnyTextView
+                        android:id="@+id/txtStatus"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/x5dp"
+                        android:layout_weight=".3"
+                        android:background="@drawable/rounded_box_filled_base_green"
+                        android:gravity="center"
+                        android:maxLines="2"
+                        android:ellipsize="end"
+                        android:padding="@dimen/x3dp"
+                        android:text="Completed"
+                        android:textColor="@color/c_white"
+                        android:textSize="@dimen/s16"
+                        app:typeface="@string/font_regular" />
+
+                </LinearLayout>
+
+                <View
+                    android:layout_width="fill_parent"
+                    android:layout_height="@dimen/x1dp"
+                    android:alpha=".3"
+                    android:background="@color/c_black" />
+
+                <LinearLayout
+                    android:id="@+id/contListItem"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:padding="@dimen/x5dp">
+
+
+                    <RelativeLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
+
+                        <ImageView
+                            android:id="@+id/imgIcon"
+                            android:layout_width="@dimen/x70dp"
+                            android:layout_height="@dimen/x70dp"
+                            android:layout_centerInParent="true"
+                            android:layout_margin="@dimen/x5dp"
+                            android:scaleType="centerCrop"
+                            android:src="@drawable/shape_circle"
+                            android:tint="@color/base_green" />
+
+                        <ImageView
+                            android:layout_width="@dimen/x70dp"
+                            android:layout_height="@dimen/x70dp"
+                            android:layout_centerInParent="true"
+                            android:layout_margin="@dimen/x5dp"
+                            android:scaleType="centerCrop"
+                            android:src="@drawable/b_clinicallab_transparent" />
+
+
+                    </RelativeLayout>
+
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:layout_margin="@dimen/x5dp"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+
+                        <edu.aku.akuh_health_first.widget.AnyTextView
+                            android:id="@+id/txtStatusID"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:ellipsize="end"
+                            android:maxLines="1"
+                            android:padding="@dimen/x5dp"
+                            android:text="BIO,RECD"
+                            android:textSize="@dimen/s14"
+                            app:typeface="@string/font_bold" />
+
+                        <edu.aku.akuh_health_first.widget.AnyTextView
+                            android:id="@+id/txtSpecimenNumber"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:ellipsize="end"
+                            android:maxLines="1"
+                            android:padding="@dimen/x5dp"
+                            android:text="41225000"
+                            android:textSize="@dimen/s14"
+                            app:typeface="@string/font_regular" />
+
+
+                        <edu.aku.akuh_health_first.widget.AnyTextView
+                            android:id="@+id/btnShowDetail"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/x5dp"
+                            android:background="@drawable/rounded_box_filled_primary_color"
+                            android:gravity="center"
+                            android:padding="@dimen/x7dp"
+                            app:typeface="@string/font_bold"
+                            android:text="View Results"
+                            android:textColor="@color/c_white" />
+
+
+                    </LinearLayout>
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <RelativeLayout
+                        android:id="@+id/RlReport"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+
+                        android:layout_gravity="center"
+                        android:layout_marginLeft="@dimen/x5dp"
+                        android:layout_marginRight="@dimen/x15dp"
+                        android:layout_weight=".5"
+                        android:gravity="center"
+                        android:visibility="gone">
+
+                        <edu.aku.akuh_health_first.widget.AnyTextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="@drawable/rounded_box_filled_primary_color"
+                            android:gravity="center"
+                            android:padding="@dimen/x7dp"
+                            android:text="REPORT"
+                            android:textColor="@color/c_white"
+                            android:textSize="@dimen/s14"
+                            app:typeface="@string/font_bold"
+
+                            />
+
+                        <edu.aku.akuh_health_first.widget.AnyTextView
+                            android:id="@+id/btnReportColorCode1"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:alpha=".25"
+
+                            android:gravity="center"
+                            android:padding="@dimen/x7dp"
+
+                            />
+
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:id="@+id/RlGraph"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginLeft="@dimen/x15dp"
+                        android:layout_marginRight="@dimen/x5dp"
+                        android:layout_weight=".5"
+                        android:gravity="center"
+                        android:visibility="gone">
+
+                        <edu.aku.akuh_health_first.widget.AnyTextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="@drawable/rounded_box_filled_base_amber"
+                            android:gravity="center"
+                            android:padding="@dimen/x7dp"
+                            android:text="GRAPH"
+                            android:textColor="@color/c_white"
+                            android:textSize="@dimen/s14"
+                            app:typeface="@string/font_bold"
+
+                            />
+
+
+                        <edu.aku.akuh_health_first.widget.AnyTextView
+                            android:id="@+id/btnGraphColorCode"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:alpha=".25"
+                            android:gravity="center"
+
+                            android:padding="@dimen/x7dp"
+                            android:textColor="@color/c_white"
+
+                            />
+
+
+                    </RelativeLayout>
+                </LinearLayout>
+
+            </LinearLayout>
+
+        </FrameLayout>
+    </android.support.v7.widget.CardView>
+</LinearLayout>
