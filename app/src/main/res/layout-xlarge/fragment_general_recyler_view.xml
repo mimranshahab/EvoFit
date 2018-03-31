@@ -34,10 +34,10 @@
             android:layout_height="match_parent"
             android:background="@color/background_gray"
             android:gravity="center"
-            android:text="No Item Found"
+            android:text="No Record Found"
             android:padding="@dimen/x10dp"
             android:textColor="@color/txt_aku_blue"
-            android:textSize="@dimen/s14"
+            android:textSize="@dimen/s15"
             android:visibility="gone"
             app:typeface="@string/font_regular" />
 

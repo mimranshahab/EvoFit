@@ -58,7 +58,6 @@
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="@dimen/x35dp"
                         android:layout_weight=".5"
-                        android:background="@drawable/rounded_box_filled_base_green"
                         android:gravity="center_horizontal"
                         android:padding="@dimen/x3dp"
                         android:text="Vaccinated"

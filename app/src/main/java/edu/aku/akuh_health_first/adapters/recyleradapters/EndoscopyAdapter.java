@@ -63,7 +63,7 @@ public class EndoscopyAdapter extends RecyclerView.Adapter<EndoscopyAdapter.View
 
 
         setListener(holder, model);
-        holder.txtStatusType.setText("Finalised");
+        holder.txtStatusType.setText("Finalized");
 //        setViews(holder, activity.getResources().getColor(R.color.base_green), R.drawable.rounded_box_filled_base_green, R.drawable.a_endoscopy_green);
 
         setViews(holder, activity.getResources().getColor(R.color.base_dark_gray),R.drawable.rounded_box_filled_base_grey ,R.drawable.b_endoscopy_transparent);

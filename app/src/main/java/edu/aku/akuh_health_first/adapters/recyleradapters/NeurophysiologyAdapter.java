@@ -79,7 +79,7 @@ public class NeurophysiologyAdapter extends RecyclerView.Adapter<Neurophysiology
 
     private void setViews(ViewHolder holder, int color, int backgroundResource, int circular_background) {
         holder.cardView2.setCardBackgroundColor(color);
-        holder.txtStatusType.setBackgroundResource(backgroundResource);
+        holder.txtStatusType.setTextColor(color);
         holder.imgTransparent.setImageResource(circular_background);
         holder.btnReportColorCode1.setBackgroundResource(backgroundResource);
         holder.imgIcon.setColorFilter(color);

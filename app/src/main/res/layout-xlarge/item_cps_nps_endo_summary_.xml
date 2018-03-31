@@ -54,13 +54,12 @@
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="@dimen/x55dp"
                         android:layout_weight=".5"
-                        android:background="@drawable/rounded_box_filled_base_green"
                         android:gravity="center"
                         android:padding="@dimen/x3dp"
                         android:text="Completed"
                         android:textColor="@color/c_white"
                         android:textSize="@dimen/s12"
-                        app:typeface="@string/font_regular" />
+                        app:typeface="@string/font_bold" />
 
                 </LinearLayout>
 
@@ -83,8 +82,8 @@
 
                         <ImageView
                             android:id="@+id/imgIcon"
-                            android:layout_width="@dimen/x70dp"
-                            android:layout_height="@dimen/x70dp"
+                            android:layout_width="@dimen/x45dp"
+                            android:layout_height="@dimen/x45dp"
                             android:layout_centerInParent="true"
                             android:layout_margin="@dimen/x5dp"
                             android:scaleType="centerCrop"
@@ -93,8 +92,8 @@
 
                         <ImageView
                             android:id="@+id/imgTransparent"
-                            android:layout_width="@dimen/x70dp"
-                            android:layout_height="@dimen/x70dp"
+                            android:layout_width="@dimen/x45dp"
+                            android:layout_height="@dimen/x45dp"
                             android:layout_centerInParent="true"
                             android:layout_margin="@dimen/x5dp"
                             android:scaleType="centerCrop"
