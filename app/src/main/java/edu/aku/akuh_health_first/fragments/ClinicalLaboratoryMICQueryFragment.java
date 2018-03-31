@@ -91,15 +91,18 @@ public class ClinicalLaboratoryMICQueryFragment extends BaseFragment implements 
         super.onViewCreated(view, savedInstanceState);
         bindView();
 
+        if (lstMicSpecQueryResult != null) {
+            if (!lstMicSpecQueryResult.isEmpty()) {
+                procedureDescription = procedureDescription.concat(" (" + lstMicSpecQueryResult.get(0).getParatype() + ")");
+            }
+        }
 
         txtProcedureDesc.setText(procedureDescription);
-
         arrData.clear();
 
         for (LstMicSpecQueryResult micSpecQueryResult : lstMicSpecQueryResult) {
             arrData.add(new BannerModel(micSpecQueryResult.getQUERYSTRING(), micSpecQueryResult.getQUERYRESULT()));
         }
-
 
         adapter.notifyDataSetChanged();
     }
