@@ -67,20 +67,26 @@ public class ClinicalLabDetailAdapterv1 extends RecyclerView.Adapter<ClinicalLab
          * Low        ---- > Blue
          **/
         if (model.getAbnormalFlag().isEmpty() || model.getAbnormalFlag() == null) {
-            holder.txtResult.setTextColor(activity.getResources().getColor(R.color.text_color_grey));
+            resultStates(holder, activity.getResources().getColor(R.color.text_color_grey), "Result: " + model.getResult());
+
         } else if (model.getAbnormalFlag().equalsIgnoreCase("Low")) {
-            holder.txtResult.setTextColor(activity.getResources().getColor(R.color.panic_blue));
+            resultStates(holder, activity.getResources().getColor(R.color.panic_blue), "Result: " + model.getResult());
+
+
         } else if (model.getAbnormalFlag().equalsIgnoreCase("High")) {
-            holder.txtResult.setTextColor(activity.getResources().getColor(R.color.base_reddish));
+            resultStates(holder, activity.getResources().getColor(R.color.base_reddish), "Result: " + model.getResult());
+
         } else if (model.getAbnormalFlag().equalsIgnoreCase("Panic High")) {
+            Spanny spanny = new Spanny("Result: " + model.getResult(), new CustomTypefaceSpan(bold));
+            holder.txtResult.setText(spanny);
             holder.txtResult.setTextColor(activity.getResources().getColor(R.color.base_reddish));
-            new CustomTypefaceSpan(bold);
         } else {
             holder.txtResult.setTextColor(activity.getResources().getColor(R.color.panic_blue));
+            Spanny spanny = new Spanny("Result: " + model.getResult(), new CustomTypefaceSpan(bold));
+            holder.txtResult.setText(spanny);
             new CustomTypefaceSpan(bold);
         }
 
-        holder.txtResult.setText("Result: " + model.getResult());
         holder.txtResultPrevious1.setText(model.getPrevResult1());
         holder.txtResultPrevious2.setText(model.getPrevResult2());
         holder.txtResultPrevious1Date.setText(model.getPrevResult1Dttm());
@@ -98,9 +104,14 @@ public class ClinicalLabDetailAdapterv1 extends RecyclerView.Adapter<ClinicalLab
         }
 //        setListener(holder, model);
 
-        Spanny spanny = new Spanny("Range " + model.getNormalRangeFormatted()).append("\n" + "Unit " + model.getUnit());
+        Spanny spanny = new Spanny("Range: " + model.getNormalRangeFormatted()).append("\n" + "Unit: " + model.getUnit());
         holder.txtNormalRangeFormatted.setText(spanny);
 
+    }
+
+    private void resultStates(ViewHolder holder, int color, String text) {
+        holder.txtResult.setTextColor(color);
+        holder.txtResult.setText(text);
     }
 
     private void setListener(final ViewHolder holder, final LstLaboratorySpecimenResults lstLaboratorySpecimenResults) {
