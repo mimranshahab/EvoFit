@@ -34,9 +34,9 @@
             android:background="@color/background_gray"
             android:gravity="center"
             android:padding="@dimen/x10dp"
-            android:text="No Item Found"
+            android:text="No Record Found"
             android:textColor="@color/txt_aku_blue"
-            android:textSize="@dimen/s16"
+            android:textSize="@dimen/s18"
             android:visibility="gone"
             app:typeface="@string/font_regular" />
 

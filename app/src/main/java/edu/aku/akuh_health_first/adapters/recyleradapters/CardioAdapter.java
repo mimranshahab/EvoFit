@@ -64,7 +64,7 @@ public class CardioAdapter extends RecyclerView.Adapter<CardioAdapter.ViewHolder
         setListener(holder, model);
 
         if (model.getStatus().equalsIgnoreCase("Signed")) {
-            holder.txtStatusType.setText("Finalised");
+            holder.txtStatusType.setText("Finalized");
 
             holder.RlReport.setVisibility(View.VISIBLE);
             holder.RlGraph.setVisibility(View.VISIBLE);
@@ -86,7 +86,7 @@ public class CardioAdapter extends RecyclerView.Adapter<CardioAdapter.ViewHolder
 
     private void setViews(ViewHolder holder, int color, int backgroundResource, int circular_background, int img_transparent) {
         holder.cardView2.setCardBackgroundColor(color);
-        holder.txtStatusType.setBackgroundResource(backgroundResource);
+        holder.txtStatusType.setTextColor(color);
         holder.imgIcon.setImageResource(circular_background);
         holder.imgTransparent.setImageResource(img_transparent);
         holder.imgIcon.setColorFilter(color);

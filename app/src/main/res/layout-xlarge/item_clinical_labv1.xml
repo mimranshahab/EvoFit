@@ -61,7 +61,6 @@
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="@dimen/x5dp"
                         android:layout_weight=".3"
-                        android:background="@drawable/rounded_box_filled_base_green"
                         android:ellipsize="end"
                         android:gravity="center"
                         android:maxLines="2"
@@ -92,8 +91,8 @@
 
                         <ImageView
                             android:id="@+id/imgIcon"
-                            android:layout_width="@dimen/x70dp"
-                            android:layout_height="@dimen/x70dp"
+                            android:layout_width="@dimen/x45dp"
+                            android:layout_height="@dimen/x45dp"
                             android:layout_centerInParent="true"
                             android:layout_margin="@dimen/x5dp"
                             android:scaleType="centerCrop"
@@ -101,8 +100,8 @@
                             android:tint="@color/base_amber" />
 
                         <ImageView
-                            android:layout_width="@dimen/x70dp"
-                            android:layout_height="@dimen/x70dp"
+                            android:layout_width="@dimen/x45dp"
+                            android:layout_height="@dimen/x45dp"
                             android:layout_centerInParent="true"
                             android:layout_margin="@dimen/x5dp"
                             android:scaleType="centerCrop"

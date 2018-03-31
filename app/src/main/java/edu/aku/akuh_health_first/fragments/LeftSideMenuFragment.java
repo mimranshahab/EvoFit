@@ -47,7 +47,7 @@ public class LeftSideMenuFragment extends BaseFragment implements OnNewPacketRec
     ScrollView scrollView;
     @BindView(R.id.imgBackground)
     ImageView imgBackground;
-
+    String b = " \"<H2>Milk</H2><Br /><P>Jul 26, 2017 11:49</P>\",";
 
     public static LeftSideMenuFragment newInstance() {
 

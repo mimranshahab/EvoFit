@@ -134,7 +134,7 @@ public class PacsActivity extends AppCompatActivity {
         titlebar.resetViews();
         titlebar.setVisibility(View.VISIBLE);
         titlebar.showBackButton(this);
-        titlebar.setTitle("PACS Viewer");
+        titlebar.setTitle("Radiology Images");
 
     }
 

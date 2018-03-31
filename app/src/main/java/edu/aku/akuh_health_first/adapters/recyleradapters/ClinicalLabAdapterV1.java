@@ -64,20 +64,27 @@ public class ClinicalLabAdapterV1 extends RecyclerView.Adapter<ClinicalLabAdapte
 
         if (model.getStatusID().equalsIgnoreCase("Completed") || model.getStatusID().equalsIgnoreCase("Partially Completed")) {
             colorCodes(holder,
-                    R.color.base_green,
+
+                    activity.getResources().getColor(R.color.base_green),
+
+                    //                    R.color.base_green,
                     R.drawable.rounded_box_filled_base_green);
             holder.btnShowDetail.setVisibility(View.VISIBLE);
 
         } else if (model.getStatusID().equalsIgnoreCase("Pending")) {
             colorCodes(holder,
-                    R.color.base_amber,
+                    activity.getResources().getColor(R.color.base_amber),
+
+//                    R.color.base_amber,
                     R.drawable.rounded_box_filled_base_amber);
             holder.btnShowDetail.setVisibility(View.GONE);
 //            holder.txtStatus.setBackgroundResource(R.drawable.rounded_box_filled_base_amber);
 
         } else {
             colorCodes(holder,
-                    R.color.base_reddish,
+                    activity.getResources().getColor(R.color.base_reddish),
+
+//                    R.color.base_reddish,
                     R.drawable.rounded_box_filled_base_red);
             holder.btnShowDetail.setVisibility(View.GONE);
 
@@ -144,10 +151,10 @@ public class ClinicalLabAdapterV1 extends RecyclerView.Adapter<ClinicalLabAdapte
 
 
     private void colorCodes(ViewHolder holder, int framecolor, int btnbackground/*, int color*/) {
-        holder.cardView2.setCardBackgroundColor(activity.getResources().getColor(framecolor));
+        holder.cardView2.setCardBackgroundColor(framecolor);
         holder.btnShowDetail.setBackgroundResource(btnbackground);
-        holder.txtStatus.setBackgroundResource(btnbackground);
-        holder.imgIcon.setColorFilter(activity.getResources().getColor(framecolor));
+        holder.txtStatus.setTextColor(framecolor);
+        holder.imgIcon.setColorFilter(framecolor);
     }
 
 
@@ -233,13 +240,13 @@ public class ClinicalLabAdapterV1 extends RecyclerView.Adapter<ClinicalLabAdapte
 
             for (int i = 0; i < count; i++) {
                 filterableString1 = list.get(i).getSpecimenNumber();
-                filterableString2 = list.get(i).getSpecimenID();
+                filterableString2 = list.get(i).getEnteredDTTM();
                 filterableString3 = list.get(i).getSpecimenSectionID();
-//                filterableString4 = list.get(i).getPatientVisitLocation();
+                filterableString4 = list.get(i).getOrdered();
                 if (filterableString1.toLowerCase().contains(filterString)
                         || filterableString2.toLowerCase().contains(filterString)
                         || filterableString3.toLowerCase().contains(filterString)
-//                        || filterableString4.toLowerCase().contains(filterString)
+                        || filterableString4.toLowerCase().contains(filterString)
                         ) {
 //                    nlist.add(filterableString);
                     filterData.add(list.get(i));

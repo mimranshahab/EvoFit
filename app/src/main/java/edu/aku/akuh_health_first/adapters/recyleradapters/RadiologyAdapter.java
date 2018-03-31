@@ -76,7 +76,7 @@ public class RadiologyAdapter extends RecyclerView.Adapter<RadiologyAdapter.View
 
     private void setViews(ViewHolder holder, int color, int backgroundResource, int img_transparent) {
         holder.cardView2.setCardBackgroundColor(color);
-        holder.txtStatusType.setBackgroundResource(backgroundResource);
+        holder.txtStatusType.setTextColor(color);
 //        holder.btnReportColorCode1.setBackgroundResource(backgroundResource);
         holder.imgIcon.setColorFilter(color);
         holder.imgTransparent.setImageResource(img_transparent);

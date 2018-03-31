@@ -12,7 +12,7 @@
     <edu.aku.akuh_health_first.helperclasses.ui.helper.TitleBar
         android:id="@+id/titlebar"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="@dimen/x35dp" />
 
 
     <RelativeLayout

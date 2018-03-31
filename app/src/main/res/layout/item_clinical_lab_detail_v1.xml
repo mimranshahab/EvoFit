@@ -45,21 +45,20 @@
                         android:paddingLeft="@dimen/x4dp"
                         android:text="Test Name"
                         android:textColor="@color/txt_aku_blue"
-                        android:textSize="@dimen/s16"
+                        android:textSize="@dimen/s17"
                         app:typeface="@string/font_bold" />
 
                     <edu.aku.akuh_health_first.widget.AnyTextView
                         android:id="@+id/txtResult"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginRight="@dimen/x5dp"
                         android:ellipsize="end"
                         android:gravity="center_vertical"
                         android:maxLines="2"
                         android:paddingLeft="@dimen/x4dp"
                         android:text="Result"
                         android:textColor="@color/text_color_grey"
-                        android:textSize="@dimen/s16"
+                        android:textSize="@dimen/s17"
                         app:typeface="@string/font_regular" />
 
                     <edu.aku.akuh_health_first.widget.AnyTextView
