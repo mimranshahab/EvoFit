@@ -217,7 +217,7 @@ public class WebServices {
         }
     }
 
-    public void webServiceRequestAPIForJsonObject(String requestMethod, String requestData, final IRequestJsonDataCallBack callBack) {
+    public void webServiceRequestAPIForJsonObject(final String requestMethod, String requestData, final IRequestJsonDataCallBack callBack) {
 
         RequestBody bodyRequestMethod = getRequestBody(okhttp3.MultipartBody.FORM, requestMethod);
         RequestBody bodyRequestData = getRequestBody(okhttp3.MultipartBody.FORM, requestData);
@@ -255,14 +255,22 @@ public class WebServices {
                                             errorToastForObject(response);
                                         } else {
                                             String message = response.body().result.get("Message").toString();
+                                            if (requestMethod.equals(WebServiceConstants.METHOD_USER_LOGIN)) {
+                                                UIHelper.showShortToastInCenter(mContext, message);
+                                            } else {
 //                                            UIHelper.showShortToastInCenter(mContext, message);
+                                            }
                                         }
 
                                     } else if (response.body().result.get("RecordMessage").isJsonNull()) {
                                         errorToastForObject(response);
                                     } else {
                                         String message = response.body().result.get("RecordMessage").toString();
-//                                        UIHelper.showShortToastInCenter(mContext, message);
+                                        if (requestMethod.equals(WebServiceConstants.METHOD_USER_LOGIN)) {
+                                            UIHelper.showShortToastInCenter(mContext, message);
+                                        } else {
+//                                            UIHelper.showShortToastInCenter(mContext, message);
+                                        }
                                         callBack.onError();
                                     }
 
@@ -287,7 +295,10 @@ public class WebServices {
                 callBack.onError();
             }
 
-        } catch (Exception e) {
+        } catch (
+                Exception e)
+
+        {
             dismissDialog();
             e.printStackTrace();
 
@@ -648,6 +659,7 @@ public class WebServices {
         void requestDataResponse(String webResponse);
 
         void onError();
+
     }
 
 

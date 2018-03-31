@@ -144,7 +144,7 @@ public class LoginFragment extends BaseFragment {
         new WebServices(getBaseActivity(),
                 getToken(),
                 BaseURLTypes.AHFA_BASE_URL)
-                .webServiceRequestAPIForJsonObject(WebServiceConstants.METHOD_USER_GET_USER,
+                .webServiceRequestAPIForJsonObject(WebServiceConstants.METHOD_USER_LOGIN,
                         loginApiModel.toString(),
                         new WebServices.IRequestJsonDataCallBack() {
                             @Override

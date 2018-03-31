@@ -81,8 +81,8 @@ public class DischargeSummaryFragment extends BaseFragment implements View.OnCli
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        serviceCall();
         bindView();
+        serviceCall();
     }
 
     private void bindView() {
@@ -131,7 +131,7 @@ public class DischargeSummaryFragment extends BaseFragment implements View.OnCli
 
                             @Override
                             public void onError() {
-
+                                showEmptyView();
                             }
                         });
     }
@@ -152,7 +152,13 @@ public class DischargeSummaryFragment extends BaseFragment implements View.OnCli
 
     @Override
     public void setListeners() {
-
+        refreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                serviceCall();
+                refreshLayout.setRefreshing(false);
+            }
+        });
     }
 
     @Override
@@ -208,13 +214,10 @@ public class DischargeSummaryFragment extends BaseFragment implements View.OnCli
     }
 
     private void showEmptyView() {
-        refreshLayout.setVisibility(View.GONE);
-        emptyView.setVisibility(View.VISIBLE);
+         emptyView.setVisibility(View.VISIBLE);
     }
 
     private void showView() {
-        bindView();
-        emptyView.setVisibility(View.GONE);
-        refreshLayout.setVisibility(View.VISIBLE);
-    }
+         emptyView.setVisibility(View.GONE);
+     }
 }
