@@ -68,7 +68,8 @@ public class ClinicalParaResultFragment extends BaseFragment {
         if (micSpecParaResult.getLstMicSpecOrganism() == null || micSpecParaResult.getLstMicSpecOrganism().isEmpty()) {
             txtViewResult.setVisibility(View.GONE);
         } else {
-            txtViewResult.setVisibility(View.VISIBLE);
+            // FIXME: 3/31/2018 Cross Tab Remaining
+            txtViewResult.setVisibility(View.GONE);
         }
 
     }

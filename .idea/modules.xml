@@ -2,10 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://C:\Users\hamza.ahmed\Desktop\AKUH_Projects - Laptop\AKUH_HealthFirst_Android\AKUHHealthFirst-Android.iml" filepath="C:\Users\hamza.ahmed\Desktop\AKUH_Projects - Laptop\AKUH_HealthFirst_Android\AKUHHealthFirst-Android.iml" />
       <module fileurl="file://$PROJECT_DIR$/AKUH_HealthFirst_Android.iml" filepath="$PROJECT_DIR$/AKUH_HealthFirst_Android.iml" />
-      <module fileurl="file://$PROJECT_DIR$/AKUHHealthFirst-Android.iml" filepath="$PROJECT_DIR$/AKUHHealthFirst-Android.iml" />
-      <module fileurl="file://C:\Users\aqsa.sarwar\AndroidStudioProjects\AKUHHealthFirst-Android\AKUHHealthFirst-Android.iml" filepath="C:\Users\aqsa.sarwar\AndroidStudioProjects\AKUHHealthFirst-Android\AKUHHealthFirst-Android.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
     </modules>
   </component>

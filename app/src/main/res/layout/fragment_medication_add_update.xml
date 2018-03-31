@@ -21,6 +21,8 @@
                 android:layout_height="match_parent"
                 android:orientation="vertical">
 
+                <include layout="@layout/item_note" />
+
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -167,7 +169,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="@dimen/x10dp"
                         android:layout_marginTop="@dimen/x10dp"
-                        android:text="Life Time Medication"
+                        android:text="Lifelong Medication(10 Years)"
                         android:textColor="@color/txt_aku_blue"
                         android:textSize="@dimen/s14" />
 

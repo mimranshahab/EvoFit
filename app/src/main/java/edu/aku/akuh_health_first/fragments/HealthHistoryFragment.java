@@ -118,13 +118,14 @@ public class HealthHistoryFragment extends BaseFragment {
 //            txtTimelineView.setText("Displaying results for Visit Admission ID: " + patientVisitAdmissionID);
             contParentLayout.setVisibility(View.GONE);
             timelineServiceCall();
+            setBadgesInvisible();
         } else {
-            setViewsInvisible();
+            setBadgesInvisible();
         }
 
     }
 
-    private void setViewsInvisible() {
+    private void setBadgesInvisible() {
         txtClinicCount.setVisibility(View.INVISIBLE);
         txtRadiologyCount.setVisibility(View.INVISIBLE);
         txtMedicationCount.setVisibility(View.INVISIBLE);
@@ -234,14 +235,10 @@ public class HealthHistoryFragment extends BaseFragment {
 
                             break;
                     }
-
-
                 }
-
-
             }
         } else {
-            setViewsInvisible();
+            setBadgesInvisible();
         }
 
     }
