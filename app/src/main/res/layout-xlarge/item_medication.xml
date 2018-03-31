@@ -223,6 +223,18 @@
                         </LinearLayout>
 
 
+                        <edu.aku.akuh_health_first.widget.AnyTextView
+                            android:id="@+id/txtNextDose"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:padding="@dimen/x3dp"
+                            android:text="Next Dose"
+                            android:textColor="@color/txt_aku_blue"
+                            android:textSize="@dimen/s12"
+                            android:visibility="gone"
+                            app:typeface="@string/font_regular" />
+
+
                     </LinearLayout>
                 </LinearLayout>
             </LinearLayout>

@@ -56,7 +56,7 @@ public class RadiologyAdapter extends RecyclerView.Adapter<RadiologyAdapter.View
 
         holder.RlReport.setVisibility(View.VISIBLE);
         holder.RlGraph.setVisibility(View.VISIBLE);
-        holder.txtGraph.setText("IMAGES");
+        holder.txtGraph.setText("Images");
 
         if (model.getStatus().equalsIgnoreCase("F")) {
             holder.txtStatusType.setText("Finalized");

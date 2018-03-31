@@ -128,7 +128,7 @@ public class ClinicalLaboratoryDetailFragment extends BaseFragment implements On
 
     @Override
     public void setListeners() {
-
+        cardView2.setOnClickListener(this);
     }
 
     @Override
@@ -180,17 +180,17 @@ public class ClinicalLaboratoryDetailFragment extends BaseFragment implements On
         new WebServices(getBaseActivity(), getToken(), BaseURLTypes.AHFA_BASE_URL)
                 .webServiceRequestAPIForWebResponseWithString(WebServiceConstants.METHOD_CLINICAL_LAB_REPORT,
                         searchModel.toString(), new WebServices.IRequestWebResponseWithStringDataCallBack() {
-            @Override
-            public void requestDataResponse(WebResponse<String> webResponse) {
-                saveAndOpenFile(webResponse);
-            }
+                            @Override
+                            public void requestDataResponse(WebResponse<String> webResponse) {
+                                saveAndOpenFile(webResponse);
+                            }
 
-            @Override
-            public void onError() {
+                            @Override
+                            public void onError() {
 
-            }
-        }
-                    );
+                            }
+                        }
+                );
 
 
     }

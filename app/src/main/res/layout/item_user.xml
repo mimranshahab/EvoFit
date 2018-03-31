@@ -69,7 +69,7 @@
                             android:gravity="center_vertical"
                             android:text="Asma Ali"
                             android:textColor="@color/base_amber"
-                            android:textSize="@dimen/s16"
+                            android:textSize="@dimen/s14"
                             app:typeface="@string/font_bold" />
 
 
@@ -80,7 +80,7 @@
                             android:gravity="center_vertical"
                             android:text="(Daughter)"
                             android:textColor="@color/base_amber"
-                            android:textSize="@dimen/x12dp"
+                            android:textSize="@dimen/s14"
                             app:typeface="@string/font_regular" />
 
                     </LinearLayout>
@@ -91,7 +91,7 @@
                         android:layout_height="wrap_content"
                         android:text="178-88-90"
                         android:textColor="@color/colorPrimaryDark"
-                        android:textSize="@dimen/x12dp"
+                        android:textSize="@dimen/s12"
                         app:typeface="@string/font_regular" />
 
                     <edu.aku.akuh_health_first.widget.AnyTextView
@@ -100,7 +100,7 @@
                         android:layout_height="wrap_content"
                         android:text="Female / 40"
                         android:textColor="@color/c_grayasparagus"
-                        android:textSize="@dimen/x12dp"
+                        android:textSize="@dimen/s12"
                         app:typeface="@string/font_regular" />
 
 

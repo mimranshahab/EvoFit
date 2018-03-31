@@ -5,7 +5,6 @@ import android.graphics.Typeface;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.text.style.AbsoluteSizeSpan;
-import android.text.style.ForegroundColorSpan;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -31,6 +30,7 @@ public class ClinicalLabDetailAdapterv1 extends RecyclerView.Adapter<ClinicalLab
     private final OnItemClickListener onItemClick;
 
     Typeface bold;
+    Typeface regular;
 
     private Activity activity;
     private ArrayList<LstLaboratorySpecimenResults> arrData;
@@ -40,6 +40,7 @@ public class ClinicalLabDetailAdapterv1 extends RecyclerView.Adapter<ClinicalLab
         this.activity = activity;
         this.onItemClick = onItemClickListener;
         bold = Typeface.createFromAsset(activity.getAssets(), "fonts/HelveticaNeue Medium.ttf");
+        regular = Typeface.createFromAsset(activity.getAssets(), "fonts/HelveticaNeue Light.ttf");
 
     }
 
@@ -57,6 +58,7 @@ public class ClinicalLabDetailAdapterv1 extends RecyclerView.Adapter<ClinicalLab
 
         final LstLaboratorySpecimenResults model = arrData.get(holder.getAdapterPosition());
         holder.txtReportName.setText(model.getReportName());
+        CustomTypefaceSpan customTypefaceSpan;
 
         /**
          *
@@ -66,52 +68,61 @@ public class ClinicalLabDetailAdapterv1 extends RecyclerView.Adapter<ClinicalLab
          * Panic low  ---- > Blue color with bold font
          * Low        ---- > Blue
          **/
-        if (model.getAbnormalFlag().isEmpty() || model.getAbnormalFlag() == null) {
-            resultStates(holder, activity.getResources().getColor(R.color.text_color_grey), "Result: " + model.getResult());
-
+        if (model.getAbnormalFlag() == null || model.getAbnormalFlag().isEmpty()) {
+            holder.txtResult.setTextColor(activity.getResources().getColor(R.color.text_color_grey));
+            customTypefaceSpan = new CustomTypefaceSpan(regular);
         } else if (model.getAbnormalFlag().equalsIgnoreCase("Low")) {
-            resultStates(holder, activity.getResources().getColor(R.color.panic_blue), "Result: " + model.getResult());
-
-
+            customTypefaceSpan = new CustomTypefaceSpan(regular);
+            holder.txtResult.setTextColor(activity.getResources().getColor(R.color.panic_blue));
         } else if (model.getAbnormalFlag().equalsIgnoreCase("High")) {
-            resultStates(holder, activity.getResources().getColor(R.color.base_reddish), "Result: " + model.getResult());
-
-        } else if (model.getAbnormalFlag().equalsIgnoreCase("Panic High")) {
-            Spanny spanny = new Spanny("Result: " + model.getResult(), new CustomTypefaceSpan(bold));
-            holder.txtResult.setText(spanny);
+            customTypefaceSpan = new CustomTypefaceSpan(regular);
             holder.txtResult.setTextColor(activity.getResources().getColor(R.color.base_reddish));
+        } else if (model.getAbnormalFlag().equalsIgnoreCase("Panic High") || model.getAbnormalFlag().equalsIgnoreCase("ph")) {
+            holder.txtResult.setTextColor(activity.getResources().getColor(R.color.base_reddish));
+            customTypefaceSpan = new CustomTypefaceSpan(bold);
         } else {
             holder.txtResult.setTextColor(activity.getResources().getColor(R.color.panic_blue));
-            Spanny spanny = new Spanny("Result: " + model.getResult(), new CustomTypefaceSpan(bold));
-            holder.txtResult.setText(spanny);
-            new CustomTypefaceSpan(bold);
+            customTypefaceSpan = new CustomTypefaceSpan(bold);
         }
 
-        holder.txtResultPrevious1.setText(model.getPrevResult1());
-        holder.txtResultPrevious2.setText(model.getPrevResult2());
-        holder.txtResultPrevious1Date.setText(model.getPrevResult1Dttm());
-        holder.txtResultPrevious2Date.setText(model.getPrevResult2Dttm());
-        if (model.getComments().isEmpty() && model.getResultComments().isEmpty()) {
+        Spanny resultSpanny = new Spanny("Result: " + model.getResult(), customTypefaceSpan).append(" " + model.getAbnormalFlag(), new AbsoluteSizeSpan(activity.getResources().getDimensionPixelSize(R.dimen.s10)));
+
+        holder.txtResult.setText(resultSpanny);
+
+
+        if ((model.getComments() == null || model.getComments().isEmpty()) && (model.getResultComments() == null || model.getResultComments().isEmpty())) {
             holder.txtComments.setVisibility(View.GONE);
         } else {
+            holder.txtComments.setVisibility(View.VISIBLE);
             holder.txtComments.setText("Comments:" +
                     "\n\n" + model.getComments().toString().trim() + "\n" + model.getResultComments().toString().trim());
         }
 
-        if (model.getPrevResult2() == null && model.getPrevResult3() == null) {
+        if ((model.getPrevResult1() == null || model.getPrevResult1().isEmpty()) && (model.getPrevResult2() == null || model.getPrevResult2().isEmpty())) {
             holder.contHistoryResults.setVisibility(View.GONE);
             holder.txthistorytag.setVisibility(View.GONE);
+            holder.historySeperator.setVisibility(View.GONE);
+        } else {
+            holder.contHistoryResults.setVisibility(View.VISIBLE);
+            holder.historySeperator.setVisibility(View.VISIBLE);
+            holder.txthistorytag.setVisibility(View.VISIBLE);
+            holder.txtResultPrevious1.setText(model.getPrevResult1());
+            holder.txtResultPrevious2.setText(model.getPrevResult2());
+            holder.txtResultPrevious1Date.setText(model.getPrevResult1Dttm());
+            holder.txtResultPrevious2Date.setText(model.getPrevResult2Dttm());
         }
 //        setListener(holder, model);
 
-        Spanny spanny = new Spanny("Range: " + model.getNormalRangeFormatted()).append("\n" + "Unit: " + model.getUnit());
-        holder.txtNormalRangeFormatted.setText(spanny);
 
-    }
+        if ((model.getNormalRangeFormatted() == null || model.getNormalRangeFormatted().isEmpty()) && (model.getUnit() == null || model.getUnit().isEmpty())) {
+            holder.txtNormalRangeFormatted.setVisibility(View.GONE);
+        } else {
+            Spanny spanny = new Spanny("Range: " + model.getNormalRangeFormatted()).append("\n" + "Unit: " + model.getUnit());
+            holder.txtNormalRangeFormatted.setText(spanny);
+            holder.txtNormalRangeFormatted.setVisibility(View.VISIBLE);
+        }
 
-    private void resultStates(ViewHolder holder, int color, String text) {
-        holder.txtResult.setTextColor(color);
-        holder.txtResult.setText(text);
+
     }
 
     private void setListener(final ViewHolder holder, final LstLaboratorySpecimenResults lstLaboratorySpecimenResults) {
@@ -136,8 +147,6 @@ public class ClinicalLabDetailAdapterv1 extends RecyclerView.Adapter<ClinicalLab
     }
 
     static class ViewHolder extends RecyclerView.ViewHolder {
-        @BindView(R.id.imgIcon)
-        ImageView imgIcon;
         @BindView(R.id.txtReportName)
         AnyTextView txtReportName;
         @BindView(R.id.txtNormalRangeFormatted)
@@ -154,13 +163,14 @@ public class ClinicalLabDetailAdapterv1 extends RecyclerView.Adapter<ClinicalLab
         AnyTextView txtResultPrevious2Date;
         @BindView(R.id.txtComments)
         AnyTextView txtComments;
-
         @BindView(R.id.txthistorytag)
         AnyTextView txthistorytag;
         @BindView(R.id.contHistoryResults)
         LinearLayout contHistoryResults;
         @BindView(R.id.cardView2)
         CardView cardView2;
+        @BindView(R.id.historySeperator)
+        ImageView historySeperator;
 
         ViewHolder(View view) {
             super(view);

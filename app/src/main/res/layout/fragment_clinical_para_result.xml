@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/background_gray"
+    android:background="@color/c_white"
     android:orientation="vertical">
 
 
@@ -11,41 +11,26 @@
         android:id="@+id/txtProcedureDesc"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/colorPrimaryDark"
+        android:background="@color/base_blue"
         android:ellipsize="end"
         android:gravity="left"
         android:padding="10dp"
         android:singleLine="true"
         android:text="procedure desc"
         android:textColor="@color/c_white"
-        android:textSize="14sp"
+        android:textSize="15sp"
         app:typeface="@string/font_bold" />
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:paddingBottom="@dimen/x15dp"
-        android:paddingLeft="@dimen/x15dp"
-        android:paddingRight="@dimen/x15dp">
+        android:orientation="vertical">
 
-
-        <edu.aku.akuh_health_first.widget.AnyTextView
-            android:id="@+id/txtViewResult"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="@dimen/x20dp"
-            android:background="@drawable/rounded_box_filled_base_amber"
-            android:gravity="center"
-            android:padding="@dimen/x10dp"
-            android:text="View Results"
-            android:textColor="@color/c_white" />
 
         <ScrollView
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="1"
-            android:background="@drawable/rounded_box"
             android:fillViewport="true">
 
             <edu.aku.akuh_health_first.widget.AnyTextView
@@ -55,9 +40,21 @@
                 android:padding="@dimen/x10dp"
                 android:text="Para result"
                 android:textColor="@color/txt_aku_blue"
-                android:textSize="15sp"
+                android:textSize="14sp"
                 app:typeface="@string/font_regular" />
         </ScrollView>
+
+
+        <edu.aku.akuh_health_first.widget.AnyTextView
+            android:id="@+id/txtViewResult"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/x30dp"
+            android:background="@drawable/rounded_box_filled_base_amber"
+            android:gravity="center"
+            android:padding="@dimen/x10dp"
+            android:text="View Sensitivities"
+            android:textColor="@color/c_white" />
 
 
     </LinearLayout>
