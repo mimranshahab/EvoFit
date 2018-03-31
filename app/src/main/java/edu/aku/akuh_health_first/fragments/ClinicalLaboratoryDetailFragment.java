@@ -93,7 +93,7 @@ public class ClinicalLaboratoryDetailFragment extends BaseFragment implements On
     @Override
     public void setTitlebar(TitleBar titleBar) {
         titleBar.resetViews();
-        titleBar.setTitle("Lab Detail");
+        titleBar.setTitle("Lab Results");
         titleBar.showBackButton(getBaseActivity());
         titleBar.setUserDisplay(sharedPreferenceManager.getCurrentUser(), getContext());
         titleBar.showHome(getBaseActivity());

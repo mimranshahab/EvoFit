@@ -56,8 +56,13 @@ public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.ViewHolder> {
 //        ImageLoader.getInstance().displayImage(users.get(i).getImageUrl(), holder.imgIcon);
         holder.txtName.setText(user.getName());
         holder.txtMRN.setText(user.getMRNumber());
-        holder.txtGenderAge.setText(user.getGenderDescription() + " / " + user.getAge());
-        holder.txtRelation.setText("(" + user.getRelationshipDescription() + ")");
+        holder.txtGenderAge.setText(user.getGenderDescription() + " / " + user.getAge() + " Y");
+
+        if (user.getRelationshipDescription().equalsIgnoreCase("Self")) {
+            holder.txtRelation.setText(null);
+        } else {
+            holder.txtRelation.setText("(" + user.getRelationshipDescription() + ")");
+        }
 
         if (user.getProfileImage() == null || user.getProfileImage().isEmpty()) {
             if (user.getGender().equals("F")) {

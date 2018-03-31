@@ -86,7 +86,7 @@ public class CurrentMedicationFragment extends BaseFragment implements View.OnCl
     @Override
     public void setTitlebar(TitleBar titleBar) {
         titleBar.resetViews();
-        titleBar.setTitle("Medication Profile");
+        titleBar.setTitle("Medicines");
         titleBar.showBackButton(getBaseActivity());
         titleBar.setUserDisplay(sharedPreferenceManager.getCurrentUser(),getContext());
         titleBar.showHome(getBaseActivity());

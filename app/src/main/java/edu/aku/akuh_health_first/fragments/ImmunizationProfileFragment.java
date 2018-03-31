@@ -87,7 +87,7 @@ public class ImmunizationProfileFragment extends BaseFragment implements View.On
     @Override
     public void setTitlebar(TitleBar titleBar) {
         titleBar.resetViews();
-        titleBar.setTitle("Immunization");
+        titleBar.setTitle("Vaccines");
         titleBar.showBackButton(getBaseActivity());
         titleBar.setUserDisplay(sharedPreferenceManager.getCurrentUser(), getContext());
         titleBar.showHome(getBaseActivity());

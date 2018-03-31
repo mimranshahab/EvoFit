@@ -194,7 +194,7 @@ public class WebServices {
                                     callBack.requestDataResponse(response.body());
                                 else {
                                     String message = response.body().message != null ? response.body().message : response.errorBody().toString();
-                                    UIHelper.showShortToastInCenter(mContext, message);
+//                                    UIHelper.showShortToastInCenter(mContext, message);
                                 }
                             }
 
@@ -255,7 +255,7 @@ public class WebServices {
                                             errorToastForObject(response);
                                         } else {
                                             String message = response.body().result.get("Message").toString();
-                                            UIHelper.showShortToastInCenter(mContext, message);
+//                                            UIHelper.showShortToastInCenter(mContext, message);
                                         }
 
                                     } else if (response.body().result.get("RecordMessage").isJsonNull()) {
@@ -268,7 +268,7 @@ public class WebServices {
 
                                 } else {
                                     String message = response.body().message != null ? response.body().message : response.errorBody().toString();
-                                    UIHelper.showToast(mContext, message);
+//                                    UIHelper.showToast(mContext, message);
                                 }
                             }
 
@@ -386,13 +386,13 @@ public class WebServices {
                                         callBack.onError();
                                     } else {
                                         String message = response.body().result.get(0).get("RecordMessage").toString();
-                                        UIHelper.showShortToastInCenter(mContext, message);
+//                                        UIHelper.showShortToastInCenter(mContext, message);
                                         callBack.onError();
                                     }
 
                                 } else {
                                     String message = response.body().message != null ? response.body().message : response.errorBody().toString();
-                                    UIHelper.showToast(mContext, message);
+//                                    UIHelper.showToast(mContext, message);
                                 }
                             }
 
@@ -420,12 +420,12 @@ public class WebServices {
     }
 
     private void errorToastForArray(Response<WebResponse<ArrayList<JsonObject>>> response) {
-        UIHelper.showShortToastInCenter(mContext, "API Error in RecordFound");
+//        UIHelper.showShortToastInCenter(mContext, "API Error in RecordFound");
     }
 
     private void errorToastForObject(Response<WebResponse<JsonObject>> response) {
 //        String message = response.body().message != null ? response.body().message : response.errorBody().toString();
-        UIHelper.showShortToastInCenter(mContext, "API Error in RecordFound");
+//        UIHelper.showShortToastInCenter(mContext, "API Error in RecordFound");
     }
 
 
@@ -574,14 +574,14 @@ public class WebServices {
                                             errorToastForObject(response);
                                         } else {
                                             String message = response.body().result.get("Message").toString();
-                                            UIHelper.showShortToastInCenter(mContext, message);
+//                                            UIHelper.showShortToastInCenter(mContext, message);
                                         }
 
                                     } else if (response.body().result.get("RecordMessage").isJsonNull()) {
                                         errorToastForObject(response);
                                     } else {
                                         String message = response.body().result.get("RecordMessage").toString();
-                                        UIHelper.showShortToastInCenter(mContext, message);
+//                                        UIHelper.showShortToastInCenter(mContext, message);
                                     }
 
                                 } else {

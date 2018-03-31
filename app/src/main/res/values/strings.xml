@@ -84,6 +84,8 @@ Enim vitae euismod eu velit pede eu, sodales malesuada sit fermentum ut dictum d
     <string name="about_us"><b>Family Hifazat</b> is a product of Aga Khan University Hospital Karachi. It provides discounts on medical services as well as patients’ access to their personal health records through web portal and mobile applications.
         The Family Hifazat <b>“Patient Portal”</b> is secure, confidential and easy to use web portal &amp; mobile apps to provide AKUH patients 24 hour access to their personal health records including diagnostic results, imaging, medications, vaccines and discharge summaries.
 </string>
+
+
     <string name="done">Done</string>
     <string name="feedback_and_suggestions">Feedback and Suggestions</string>
     <string name="submit">Submit</string>

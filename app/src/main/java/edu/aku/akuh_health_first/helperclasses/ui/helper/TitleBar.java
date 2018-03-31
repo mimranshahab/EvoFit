@@ -176,6 +176,7 @@ public class TitleBar extends RelativeLayout {
 
     public void setUserDisplay(final UserDetailModel currentUser, Context context) {
         this.circleImageView.setVisibility(VISIBLE);
+        this.txtMRN.setVisibility(VISIBLE);
 
         if (currentUser == null) {
             contDropDown.setVisibility(GONE);
@@ -190,6 +191,7 @@ public class TitleBar extends RelativeLayout {
         }
 
         txtUserName.setText(currentUser.getName());
+
         txtMRN.setText(currentUser.getMRNumber());
         contDropDown.setVisibility(VISIBLE);
 

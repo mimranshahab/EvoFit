@@ -26,6 +26,8 @@ import edu.aku.akuh_health_first.fragments.abstracts.GenericContentFragment;
 import edu.aku.akuh_health_first.fragments.abstracts.GenericDialogFragment;
 import edu.aku.akuh_health_first.helperclasses.ui.helper.TitleBar;
 
+import static edu.aku.akuh_health_first.constatnts.AppConstants.AboutUs;
+
 /**
  * Created by khanhamza on 09-May-17.
  */
@@ -161,7 +163,7 @@ public class LeftSideMenuFragment extends BaseFragment implements OnNewPacketRec
                 break;
 
             case R.id.txtAbout:
-                getBaseActivity().addDockableFragment(GenericContentFragment.newInstance(getString(R.string.about_us), "About"));
+                getBaseActivity().addDockableFragment(GenericContentFragment.newInstance("About", AboutUs));
                 break;
             case R.id.txtLogout:
                 logoutClick();

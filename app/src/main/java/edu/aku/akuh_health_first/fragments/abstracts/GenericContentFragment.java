@@ -3,12 +3,14 @@ package edu.aku.akuh_health_first.fragments.abstracts;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.widget.DrawerLayout;
+import android.text.Html;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.TextView;
 
 import edu.aku.akuh_health_first.R;
 import edu.aku.akuh_health_first.helperclasses.ui.helper.TitleBar;
+import edu.aku.akuh_health_first.widget.AnyTextView;
 
 
 /**
@@ -17,19 +19,15 @@ import edu.aku.akuh_health_first.helperclasses.ui.helper.TitleBar;
 
 public class GenericContentFragment extends BaseFragment {
 
-    public static final String KEY_DATA = "data";
-    public static final String KEY_TITLE = "title";
-
-    private String key = "";
+    private String content = "";
     private String title = "";
 
 
-    public static GenericContentFragment newInstance(String key, String mTitle) {
+    public static GenericContentFragment newInstance(String title, String content) {
         Bundle args = new Bundle();
         GenericContentFragment fragment = new GenericContentFragment();
-        args.putString(KEY_DATA, key);
-        args.putString(KEY_TITLE, mTitle);
-
+        fragment.title = title;
+        fragment.content = content;
         fragment.setArguments(args);
         return fragment;
     }
@@ -43,8 +41,7 @@ public class GenericContentFragment extends BaseFragment {
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        key = getArguments().getString(KEY_DATA);
-        title = getArguments().getString(KEY_TITLE);
+
     }
 
 
@@ -53,13 +50,14 @@ public class GenericContentFragment extends BaseFragment {
         super.onViewCreated(view, savedInstanceState);
 
         bindViews(view);
-
-//        bindData(key);
     }
 
     private void bindViews(View view) {
-        TextView txtViewContent = (TextView) view.findViewById(R.id.txtViewContent_generic_content);
-        txtViewContent.setText(key);
+        AnyTextView txtViewContent = (AnyTextView) view.findViewById(R.id.txtViewContent_generic_content);
+
+        txtViewContent.setText(Html.fromHtml(content), TextView.BufferType.SPANNABLE);
+
+//        txtViewContent.setText(content);
     }
 
     @Override

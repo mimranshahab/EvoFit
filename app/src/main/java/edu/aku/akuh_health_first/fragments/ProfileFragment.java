@@ -123,7 +123,7 @@ public class ProfileFragment extends BaseFragment implements OnNewPacketReceived
         if (txtUserName == null) return;
 
         txtUserName.setText(currentUser.getName());
-        txtAge.setText(currentUser.getAge() + " Y Old | " + currentUser.getGenderDescription());
+        txtAge.setText(currentUser.getGenderDescription() + " | " + currentUser.getAge() + " Y");
         txtEmailAddress.setText(currentUser.getEmailAddress());
         txtMRN.setText(currentUser.getMRNumber());
         txtCincNumber.setText(currentUser.getCNICNumber());

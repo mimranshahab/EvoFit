@@ -83,7 +83,7 @@ public class TimelineFragment extends BaseFragment implements View.OnClickListen
     @Override
     public void setTitlebar(TitleBar titleBar) {
         titleBar.resetViews();
-        titleBar.setTitle("Timeline");
+        titleBar.setTitle("Visit Timeline");
         titleBar.showBackButton(getBaseActivity());
         titleBar.setUserDisplay(sharedPreferenceManager.getCurrentUser(), getContext());
         titleBar.showHome(getBaseActivity());

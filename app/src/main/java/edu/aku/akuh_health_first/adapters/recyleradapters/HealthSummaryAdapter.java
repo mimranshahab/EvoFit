@@ -88,7 +88,7 @@ public class HealthSummaryAdapter extends RecyclerView.Adapter<HealthSummaryAdap
                     holder.imgTitle.setImageResource(R.drawable.a_immunization);
                     break;
                 case LastVisit:
-                    holder.imgTitle.setImageResource(R.drawable.a_last_visits);
+                    holder.imgTitle.setImageResource(R.drawable.a_futureappointment);
                     break;
                 case FutureAppointment:
                     holder.imgTitle.setImageResource(R.drawable.a_futureappointment);
