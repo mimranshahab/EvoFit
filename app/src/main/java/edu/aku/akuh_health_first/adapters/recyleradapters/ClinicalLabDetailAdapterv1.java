@@ -17,6 +17,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import edu.aku.akuh_health_first.R;
 import edu.aku.akuh_health_first.callbacks.OnItemClickListener;
+import edu.aku.akuh_health_first.fragments.dialogs.CommentsDialogFragment;
 import edu.aku.akuh_health_first.helperclasses.Spanny;
 import edu.aku.akuh_health_first.models.LstLaboratorySpecimenResults;
 import edu.aku.akuh_health_first.widget.AnyTextView;
@@ -95,8 +96,9 @@ public class ClinicalLabDetailAdapterv1 extends RecyclerView.Adapter<ClinicalLab
             holder.txtComments.setVisibility(View.GONE);
         } else {
             holder.txtComments.setVisibility(View.VISIBLE);
-            holder.txtComments.setText("Comments:" +
-                    "\n\n" + model.getComments().toString().trim() + "\n" + model.getResultComments().toString().trim());
+
+//            holder.txtComments.setText("Comments:" +
+//                    "\n\n" + model.getComments().toString().trim() + "\n" + model.getResultComments().toString().trim());
         }
 
         if ((model.getPrevResult1() == null || model.getPrevResult1().isEmpty()) && (model.getPrevResult2() == null || model.getPrevResult2().isEmpty())) {
@@ -113,7 +115,8 @@ public class ClinicalLabDetailAdapterv1 extends RecyclerView.Adapter<ClinicalLab
             holder.txtResultPrevious1Date.setText(model.getPrevResult1Dttm());
             holder.txtResultPrevious2Date.setText(model.getPrevResult2Dttm());
         }
-//        setListener(holder, model);
+        setListener(holder, model);
+//        showComments(model);
 
 
         if ((model.getNormalRangeFormatted() == null || model.getNormalRangeFormatted().isEmpty()) && (model.getUnit() == null || model.getUnit().isEmpty())) {
@@ -128,7 +131,7 @@ public class ClinicalLabDetailAdapterv1 extends RecyclerView.Adapter<ClinicalLab
     }
 
     private void setListener(final ViewHolder holder, final LstLaboratorySpecimenResults lstLaboratorySpecimenResults) {
-        holder.cardView2.setOnClickListener(new View.OnClickListener() {
+        holder.txtComments.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 onItemClick.onItemClick(holder.getAdapterPosition(), lstLaboratorySpecimenResults);
@@ -142,6 +145,7 @@ public class ClinicalLabDetailAdapterv1 extends RecyclerView.Adapter<ClinicalLab
 //        notifyDataSetChanged();
 //    }
 //
+
 
     @Override
     public int getItemCount() {

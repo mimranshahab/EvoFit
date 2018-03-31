@@ -28,10 +28,14 @@ import edu.aku.akuh_health_first.callbacks.OnItemClickListener;
 import edu.aku.akuh_health_first.constatnts.WebServiceConstants;
 import edu.aku.akuh_health_first.enums.BaseURLTypes;
 import edu.aku.akuh_health_first.fragments.abstracts.BaseFragment;
+import edu.aku.akuh_health_first.fragments.abstracts.GenericClickableInterface;
+import edu.aku.akuh_health_first.fragments.dialogs.CommentsDialogFragment;
+import edu.aku.akuh_health_first.fragments.dialogs.SuccessDialogFragment;
 import edu.aku.akuh_health_first.helperclasses.ui.helper.TitleBar;
 import edu.aku.akuh_health_first.managers.retrofit.WebServices;
 import edu.aku.akuh_health_first.models.EndoscopyModel;
 import edu.aku.akuh_health_first.models.LaboratoryDetailModel;
+import edu.aku.akuh_health_first.models.LaboratoryModel;
 import edu.aku.akuh_health_first.models.LstLaboratorySpecimenResults;
 import edu.aku.akuh_health_first.models.SearchModel;
 import edu.aku.akuh_health_first.models.wrappers.WebResponse;
@@ -168,7 +172,15 @@ public class ClinicalLaboratoryDetailFragment extends BaseFragment implements On
 
     @Override
     public void onItemClick(int position, Object object) {
+        if (object instanceof LstLaboratorySpecimenResults) {
+            LstLaboratorySpecimenResults model = (LstLaboratorySpecimenResults) object;
 
+            final CommentsDialogFragment commentsDialogFragment = CommentsDialogFragment.newInstance();
+            commentsDialogFragment.setResultComments(model.getResultComments());
+            commentsDialogFragment.setTestComments(model.getComments());
+            commentsDialogFragment.show(getFragmentManager(), null);
+
+        }
     }
 
     @OnClick(R.id.btnDownload)
@@ -194,4 +206,7 @@ public class ClinicalLaboratoryDetailFragment extends BaseFragment implements On
 
 
     }
+
+
+
 }

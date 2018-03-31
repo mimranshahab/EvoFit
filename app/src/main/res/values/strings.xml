@@ -6,6 +6,8 @@
 
     <string name="font_regular">HelveticaNeue Light.ttf</string>
     <string name="font_bold">HelveticaNeue Medium.ttf</string>
+    <string name="font_micross">micross.ttf</string>
+    <string name="font_san_regular">911Fonts.com_MicrosoftSansSerifRegular__-_911fonts.com_fonts_oLOS.ttf</string>
 
     <!--<string name="font_regular">Roboto-Light_D.ttf</string>-->
     <!--<string name="font_bold">Roboto-Regular_1B.ttf</string>-->
