@@ -91,7 +91,7 @@ public class ClinicalLaboratoryFragment extends BaseFragment implements View.OnC
     @Override
     public void setTitlebar(TitleBar titleBar) {
         titleBar.resetViews();
-        titleBar.setTitle("Clinical Laboratory");
+        titleBar.setTitle("Laboratory");
         titleBar.showBackButton(getBaseActivity());
         titleBar.setUserDisplay(sharedPreferenceManager.getCurrentUser(), getContext());
         titleBar.showHome(getBaseActivity());

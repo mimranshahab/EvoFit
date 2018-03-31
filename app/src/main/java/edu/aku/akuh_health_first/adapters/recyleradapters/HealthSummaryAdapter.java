@@ -82,7 +82,7 @@ public class HealthSummaryAdapter extends RecyclerView.Adapter<HealthSummaryAdap
                     holder.imgTitle.setImageResource(R.drawable.a_radiology);
                     break;
                 case MedicationProfile:
-                    holder.imgTitle.setImageResource(R.drawable.a_active_medication);
+                    holder.imgTitle.setImageResource(R.drawable.a_activemedications);
                     break;
                 case ImmunizationProfile:
                     holder.imgTitle.setImageResource(R.drawable.a_immunization);

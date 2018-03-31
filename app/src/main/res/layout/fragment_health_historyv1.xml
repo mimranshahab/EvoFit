@@ -110,7 +110,7 @@
                             android:layout_height="wrap_content"
                             android:gravity="center_horizontal"
                             android:lines="2"
-                            android:text="Clinical Laboratory"
+                            android:text="Laboratory"
                             android:textColor="@color/base_amber"
                             android:textSize="@dimen/s14"
                             app:typeface="@string/font_bold"
