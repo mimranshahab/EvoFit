@@ -39,12 +39,12 @@ public class ClinicalParaResultFragment extends BaseFragment {
     private String procedureName;
     private String procedureDescription;
 
-    public static ClinicalParaResultFragment newInstance(LstMicSpecParaResult lstMicSpecParaResult, String procedureName, String procedureDescription) {
+    public static ClinicalParaResultFragment newInstance(LstMicSpecParaResult micSpecParaResult, String procedureName, String procedureDescription) {
 
         Bundle args = new Bundle();
 
         ClinicalParaResultFragment fragment = new ClinicalParaResultFragment();
-        fragment.micSpecParaResult = lstMicSpecParaResult;
+        fragment.micSpecParaResult = micSpecParaResult;
         fragment.procedureName = procedureName;
         fragment.procedureDescription = procedureDescription;
         fragment.setArguments(args);
@@ -57,6 +57,13 @@ public class ClinicalParaResultFragment extends BaseFragment {
         super.onViewCreated(view, savedInstanceState);
         txtParaResult.setText(Html.fromHtml(micSpecParaResult.getPARARESULT()), TextView.BufferType.SPANNABLE);
         txtProcedureDesc.setText(procedureDescription);
+
+        if (micSpecParaResult.getLstMicSpecOrganism() == null || micSpecParaResult.getLstMicSpecOrganism().isEmpty()) {
+            txtViewResult.setVisibility(View.GONE);
+        } else {
+            txtViewResult.setVisibility(View.GONE);
+        }
+
     }
 
     @Override
