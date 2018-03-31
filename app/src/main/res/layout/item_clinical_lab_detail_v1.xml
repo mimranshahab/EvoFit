@@ -182,15 +182,17 @@
 
             <edu.aku.akuh_health_first.widget.AnyTextView
                 android:id="@+id/txtComments"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="center_vertical"
-                android:maxLength="200"
-                android:paddingLeft="@dimen/x10dp"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:background="@drawable/rounded_box_filled_columbia_blue"
                 android:text="Comments "
-                android:textColor="@color/text_color_grey"
-                android:textSize="@dimen/s13"
-                app:typeface="@string/font_regular" />
+                android:padding="@dimen/x5dp"
+                android:textAlignment="center"
+                android:layout_marginLeft="@dimen/x10dp"
+                android:textColor="@color/c_white"
+                android:textSize="@dimen/s12"
+                app:typeface="@string/font_bold" />
 
         </LinearLayout>
     </android.support.v7.widget.CardView>

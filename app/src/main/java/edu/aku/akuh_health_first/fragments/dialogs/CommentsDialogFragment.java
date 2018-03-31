@@ -1,7 +1,8 @@
 package edu.aku.akuh_health_first.fragments.dialogs;
 
 
-
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.DialogFragment;
@@ -9,61 +10,40 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
-import android.widget.Button;
-import android.widget.TextView;
+import android.widget.ImageView;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
 import edu.aku.akuh_health_first.R;
-import edu.aku.akuh_health_first.fragments.abstracts.GenericClickableInterface;
 import edu.aku.akuh_health_first.widget.AnyTextView;
-
-import static android.view.View.GONE;
-import static android.view.View.VISIBLE;
 
 /**
  * Created by khanhamza on 21-Feb-17.
  */
 
-public class CommentsFragment extends DialogFragment implements View.OnClickListener {
+public class CommentsDialogFragment extends DialogFragment {
 
-    GenericClickableInterface genericClickableInterfaceBtn1;
-    GenericClickableInterface genericClickableInterfaceBtn2;
 
-    public static final String KEY_TITLE = "title";
-    public static final String KEY_MESSAGE = "message";
-
-    int VISIBILITY_BTN1 = GONE;
-    int VISIBILITY_BTN2 = VISIBLE;
-    @BindView(R.id.txtMessage)
-    AnyTextView txtMessage;
-    @BindView(R.id.txtUserName)
-    AnyTextView txtUserName;
-    @BindView(R.id.txtMessage2)
-    AnyTextView txtMessage2;
     Unbinder unbinder;
+    //    @BindView(R.id.txtTitleResultComments)
+//    AnyTextView txtTitleResultComments;
+    @BindView(R.id.txtResultComments)
+    AnyTextView txtResultComments;
+    @BindView(R.id.separator)
+    ImageView separator;
+    //    @BindView(R.id.txtTitleTestComments)
+//    AnyTextView txtTitleTestComments;
+    @BindView(R.id.txtTestComments)
+    AnyTextView txtTestComments;
 
+    String  /*TitleResultComments*/ ResultComments, TestComments/*TitleTestComments*/;
 
-    private String title;
-    private String message;
-
-    private Button btn1;
-    private Button btn2;
-
-    String btn1Caption = "";
-    String btn2Caption = "";
-
-
-    public TextView txtViewMessage;
-    TextView txtViewTitle;
-
-
-    public CommentsFragment() {
+    public CommentsDialogFragment() {
     }
 
-    public static CommentsFragment newInstance() {
-        CommentsFragment frag = new CommentsFragment();
+    public static CommentsDialogFragment newInstance() {
+        CommentsDialogFragment frag = new CommentsDialogFragment();
 
         Bundle args = new Bundle();
 //        args.putString(KEY_TITLE, title);
@@ -86,78 +66,58 @@ public class CommentsFragment extends DialogFragment implements View.OnClickList
         return view;
     }
 
-    public void setTitle(String title) {
-        this.title = title;
-    }
-
-    public void setMessage(String message) {
-        this.message = message;
-    }
-
 
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        txtViewMessage = (TextView) view.findViewById(R.id.txtMessage);
-        txtViewTitle = (TextView) view.findViewById(R.id.txtTitle);
 
-        btn1 = (Button) view.findViewById(R.id.btnButton1);
-        btn2 = (Button) view.findViewById(R.id.btnButton2);
+        bindData(/*TitleResultComments, */ResultComments, TestComments /*TitleTestComments*/);
 
-
-        bindData(title, message);
-        setListeners();
-
+        getDialog().getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+//        getDialog().getWindow().setBackgroundDrawable(getResources().getDrawable(R.drawable.rounded_box_white));
         getDialog().getWindow().requestFeature(Window.FEATURE_NO_TITLE);
-    }
 
-    private void setListeners() {
-        btn1.setOnClickListener(this);
-        btn2.setOnClickListener(this);
     }
 
 
-    private void bindData(String title, String message) {
-        txtViewTitle.setText(title);
-        txtUserName.setText(message);
+    private void bindData(String resultComments, String testComments/*,String titleTest, String testComments*/) {
+        txtResultComments.setVisibility(View.VISIBLE);
+        txtTestComments.setVisibility(View.VISIBLE);
+        separator.setVisibility(View.VISIBLE);
+        if ((resultComments == null || resultComments.trim().isEmpty())) {
+            txtResultComments.setVisibility(View.GONE);
+            separator.setVisibility(View.GONE);
+        } else {
+            txtResultComments.setText("Result Comments: \n" + resultComments.trim());
+        }
 
-        btn1.setText(btn1Caption);
-        btn1.setVisibility(VISIBILITY_BTN1);
+        if ((testComments == null || testComments.trim().isEmpty())) {
+            txtTestComments.setVisibility(View.GONE);
+            separator.setVisibility(View.GONE);
+        } else {
+            txtTestComments.setText("Test Comments: \n" + testComments.trim());
 
-        btn2.setText(btn2Caption);
-        btn2.setVisibility(VISIBILITY_BTN2);
-    }
-
-    public void setButton1(String caption, GenericClickableInterface genericClickableInterface) {
-        this.genericClickableInterfaceBtn1 = genericClickableInterface;
-        btn1Caption = caption;
-        VISIBILITY_BTN1 = VISIBLE;
-    }
-
-
-    public void setButton2(String caption, GenericClickableInterface genericClickableInterface) {
-        this.genericClickableInterfaceBtn2 = genericClickableInterface;
-        btn2Caption = caption;
-        VISIBILITY_BTN2 = VISIBLE;
-    }
-
-
-    @Override
-    public void onClick(View v) {
-        switch (v.getId()) {
-            case R.id.btnButton1: {
-                genericClickableInterfaceBtn1.click();
-                break;
-            }
-
-            case R.id.btnButton2: {
-                genericClickableInterfaceBtn2.click();
-                break;
-            }
         }
 
 
+    }
+
+
+    public String getResultComments() {
+        return ResultComments;
+    }
+
+    public void setResultComments(String resultComments) {
+        ResultComments = resultComments;
+    }
+
+    public String getTestComments() {
+        return TestComments;
+    }
+
+    public void setTestComments(String testComments) {
+        TestComments = testComments;
     }
 
 
