@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     android:background="@color/background_gray"
     android:orientation="vertical"
-    android:padding="@dimen/x10dp">
+    android:padding="@dimen/x5dp">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -20,7 +20,7 @@
             <android.support.v7.widget.CardView
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:layout_margin="@dimen/x5dp"
+                android:layout_margin="@dimen/x2dp"
                 android:layout_weight="1"
                 android:animateLayoutChanges="true"
                 app:cardBackgroundColor="@color/base_reddish"
@@ -58,7 +58,8 @@
                             <ImageView
                                 android:layout_width="0dp"
                                 android:layout_height="match_parent"
-                                android:layout_weight="0.4"
+                                android:layout_weight="0.3"
+                                android:scaleType="centerInside"
                                 android:scaleX="0.9"
                                 android:scaleY="0.9"
                                 android:src="@drawable/blood_type" />
@@ -66,9 +67,9 @@
                             <LinearLayout
                                 android:layout_width="0dp"
                                 android:layout_height="match_parent"
-                                android:layout_weight="0.6"
+                                android:layout_weight="0.65"
                                 android:orientation="vertical"
-                                android:padding="@dimen/x2dp">
+                                 >
 
                                 <edu.aku.akuh_health_first.widget.AnyTextView
                                     android:id="@+id/txtBloodType"
@@ -76,9 +77,9 @@
                                     android:layout_height="0dp"
                                     android:layout_weight="1"
                                     android:gravity="center_vertical"
-                                    android:text="-"
+                                    android:text="unknown"
                                     android:textColor="@color/base_reddish"
-                                    android:textSize="@dimen/s16"
+                                    android:textSize="14sp"
                                     app:typeface="@string/font_bold" />
 
 
@@ -89,7 +90,7 @@
                                     android:paddingRight="@dimen/x5dp"
                                     android:text="Blood Group"
                                     android:textColor="@color/txt_aku_blue"
-                                    android:textSize="@dimen/s8"
+                                    android:textSize="@dimen/s10"
                                     app:typeface="@string/font_regular" />
                             </LinearLayout>
 
@@ -107,7 +108,7 @@
             <android.support.v7.widget.CardView
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:layout_margin="@dimen/x5dp"
+                android:layout_margin="@dimen/x2dp"
                 android:layout_weight="1"
                 android:animateLayoutChanges="true"
                 app:cardBackgroundColor="@color/base_green"
@@ -135,7 +136,7 @@
                             android:gravity="center"
                             android:text="Height Date"
                             android:textColor="@color/txt_aku_blue"
-                            android:textSize="@dimen/s8"
+                            android:textSize="@dimen/s9"
                             app:typeface="@string/font_regular" />
 
 
@@ -146,7 +147,8 @@
                             <ImageView
                                 android:layout_width="0dp"
                                 android:layout_height="match_parent"
-                                android:layout_weight="0.4"
+                                android:layout_weight="0.3"
+                                android:scaleType="centerInside"
                                 android:scaleX="0.9"
                                 android:scaleY="0.9"
                                 android:src="@drawable/height" />
@@ -154,7 +156,7 @@
                             <LinearLayout
                                 android:layout_width="0dp"
                                 android:layout_height="match_parent"
-                                android:layout_weight="0.6"
+                                android:layout_weight="0.65"
                                 android:orientation="vertical">
 
                                 <edu.aku.akuh_health_first.widget.AnyTextView
@@ -163,9 +165,9 @@
                                     android:layout_height="0dp"
                                     android:layout_weight="1"
                                     android:gravity="center_vertical"
-                                    android:text="-"
+                                    android:text="unknown"
                                     android:textColor="@color/base_green"
-                                    android:textSize="@dimen/s16"
+                                    android:textSize="14sp"
                                     app:typeface="@string/font_bold" />
 
 
@@ -174,10 +176,9 @@
                                     android:layout_height="wrap_content"
                                     android:gravity="bottom|end"
                                     android:paddingRight="@dimen/x5dp"
-
                                     android:text="Height"
                                     android:textColor="@color/txt_aku_blue"
-                                    android:textSize="@dimen/s8"
+                                    android:textSize="@dimen/s10"
                                     app:typeface="@string/font_regular" />
 
 
@@ -196,7 +197,7 @@
             <android.support.v7.widget.CardView
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:layout_margin="@dimen/x5dp"
+                android:layout_margin="@dimen/x2dp"
                 android:layout_weight="1"
                 android:animateLayoutChanges="true"
                 app:cardBackgroundColor="@color/base_blue"
@@ -223,7 +224,7 @@
                             android:gravity="center_horizontal"
                             android:text="Weight Date"
                             android:textColor="@color/txt_aku_blue"
-                            android:textSize="@dimen/s8"
+                            android:textSize="@dimen/s9"
                             app:typeface="@string/font_regular" />
 
 
@@ -234,7 +235,8 @@
                             <ImageView
                                 android:layout_width="0dp"
                                 android:layout_height="match_parent"
-                                android:layout_weight="0.4"
+                                android:layout_weight="0.3"
+                                android:scaleType="centerInside"
                                 android:scaleX="0.9"
                                 android:scaleY="0.9"
                                 android:src="@drawable/weight" />
@@ -242,7 +244,7 @@
                             <LinearLayout
                                 android:layout_width="0dp"
                                 android:layout_height="match_parent"
-                                android:layout_weight="0.6"
+                                android:layout_weight="0.65"
                                 android:orientation="vertical">
 
 
@@ -252,9 +254,9 @@
                                     android:layout_height="0dp"
                                     android:layout_weight="1"
                                     android:gravity="center_vertical"
-                                    android:text="-"
+                                    android:text="unknown"
                                     android:textColor="@color/base_blue"
-                                    android:textSize="@dimen/s16"
+                                    android:textSize="14sp"
                                     app:typeface="@string/font_bold" />
 
 
@@ -265,7 +267,7 @@
                                     android:paddingRight="@dimen/x5dp"
                                     android:text="Weight"
                                     android:textColor="@color/txt_aku_blue"
-                                    android:textSize="@dimen/s8"
+                                    android:textSize="@dimen/s10"
                                     app:typeface="@string/font_regular" />
 
 
@@ -289,76 +291,13 @@
             android:id="@+id/contLastLab"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/x5dp"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:padding="@dimen/x5dp">
 
             <android.support.v7.widget.RecyclerView
                 android:id="@+id/recylerView"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-
-
-            </android.support.v7.widget.RecyclerView>
-
-
+                android:layout_height="wrap_content" />
         </LinearLayout>
-
-
     </LinearLayout>
 </ScrollView>
-
-
-    <!--<LinearLayout--><!--android:layout_width="match_parent"--><!--android:layout_height="wrap_content"--><!--android:orientation="vertical">-->
-
-
-    <!--<edu.aku.akuh_health_first.widget.AnyTextView--><!--android:layout_width="match_parent"--><!--android:layout_height="wrap_content"--><!--android:drawableLeft="@drawable/lab_report"--><!--android:drawablePadding="@dimen/x5dp"--><!--android:padding="@dimen/x5dp"--><!--android:text="Last Lab Reports"--><!--android:textColor="@color/base_amber"--><!--android:textSize="@dimen/s18"--><!--app:typeface="@string/font_bold" />-->
-
-    <!--<LinearLayout--><!--android:layout_width="match_parent"--><!--android:layout_height="match_parent"--><!--android:layout_margin="@dimen/x5dp"--><!--android:background="@drawable/rounded_box_gradient_gray"--><!--android:orientation="vertical"--><!--android:padding="@dimen/x10dp">-->
-
-    <!--<edu.aku.akuh_health_first.widget.AnyTextView--><!--android:id="@+id/txtTestName"--><!--android:layout_width="match_parent"--><!--android:layout_height="wrap_content"--><!--android:text="Glucose Random"--><!--android:textColor="@color/base_reddish"--><!--android:textSize="@dimen/s16"--><!--app:typeface="@string/font_bold" />-->
-
-    <!--<edu.aku.akuh_health_first.widget.AnyTextView--><!--android:id="@+id/txtResult"--><!--android:layout_width="match_parent"--><!--android:layout_height="wrap_content"--><!--android:text="302 mg/dl (Panic High)"--><!--android:textColor="@color/c_charcoal"--><!--android:textSize="@dimen/s14"--><!--app:typeface="@string/font_regular" />-->
-
-    <!--<edu.aku.akuh_health_first.widget.AnyTextView--><!--android:id="@+id/txtDate"--><!--android:layout_width="match_parent"--><!--android:layout_height="wrap_content"--><!--android:gravity="bottom|end"--><!--android:text="Mar 04,2017 12:20"--><!--android:textColor="@color/c_charcoal"--><!--android:textSize="@dimen/s14"--><!--app:typeface="@string/font_regular" />--><!--</LinearLayout>-->
-
-    <!--<LinearLayout--><!--android:layout_width="match_parent"--><!--android:layout_height="match_parent"--><!--android:layout_margin="@dimen/x5dp"--><!--android:background="@drawable/rounded_box_gradient_gray"--><!--android:orientation="vertical"-->
-
-    <!--android:padding="@dimen/x10dp">-->
-
-    <!--<edu.aku.akuh_health_first.widget.AnyTextView--><!--android:layout_width="match_parent"--><!--android:layout_height="wrap_content"--><!--android:text="Glucose Random"--><!--android:textColor="@color/base_reddish"--><!--android:textSize="@dimen/s16"--><!--app:typeface="@string/font_bold" />-->
-
-    <!--<edu.aku.akuh_health_first.widget.AnyTextView--><!--android:layout_width="match_parent"--><!--android:layout_height="wrap_content"--><!--android:text="302 mg/dl (Panic High)"--><!--android:textColor="@color/c_charcoal"--><!--android:textSize="@dimen/s14"--><!--app:typeface="@string/font_regular" />-->
-
-    <!--<edu.aku.akuh_health_first.widget.AnyTextView--><!--android:layout_width="match_parent"--><!--android:layout_height="wrap_content"--><!--android:gravity="bottom|end"--><!--android:text="Mar 04,2017 12:20"--><!--android:textColor="@color/c_charcoal"--><!--android:textSize="@dimen/s14"--><!--app:typeface="@string/font_regular" />--><!--</LinearLayout>-->
-
-    <!--<LinearLayout--><!--android:layout_width="match_parent"--><!--android:layout_height="match_parent"--><!--android:layout_margin="@dimen/x5dp"--><!--android:background="@drawable/rounded_box_gradient_gray"--><!--android:orientation="vertical"--><!--android:padding="@dimen/x10dp">-->
-
-    <!--<edu.aku.akuh_health_first.widget.AnyTextView--><!--android:layout_width="match_parent"--><!--android:layout_height="wrap_content"--><!--android:text="Glucose Random"--><!--android:textColor="@color/base_reddish"--><!--android:textSize="@dimen/s16"--><!--app:typeface="@string/font_bold" />-->
-
-    <!--<edu.aku.akuh_health_first.widget.AnyTextView--><!--android:layout_width="match_parent"--><!--android:layout_height="wrap_content"--><!--android:text="302 mg/dl (Panic High)"--><!--android:textColor="@color/c_charcoal"--><!--android:textSize="@dimen/s14"--><!--app:typeface="@string/font_regular" />-->
-
-    <!--<edu.aku.akuh_health_first.widget.AnyTextView--><!--android:layout_width="match_parent"--><!--android:layout_height="wrap_content"--><!--android:gravity="bottom|end"--><!--android:text="Mar 04,2017 12:20"--><!--android:textColor="@color/c_charcoal"--><!--android:textSize="@dimen/s14"--><!--app:typeface="@string/font_regular" />--><!--</LinearLayout>-->
-
-
-    <!--<edu.aku.akuh_health_first.widget.AnyTextView--><!--android:layout_width="match_parent"--><!--android:layout_height="wrap_content"--><!--android:layout_marginBottom="@dimen/x10dp"--><!--android:drawableLeft="@drawable/last_visits"--><!--android:drawablePadding="@dimen/x5dp"--><!--android:padding="@dimen/x5dp"--><!--android:text="Last Visits"--><!--android:textColor="@color/base_amber"--><!--android:textSize="@dimen/s18"--><!--app:typeface="@string/font_bold" />-->
-
-    <!--<LinearLayout--><!--android:layout_width="match_parent"--><!--android:layout_height="match_parent"--><!--android:layout_margin="@dimen/x5dp"--><!--android:background="@drawable/rounded_box_gradient_gray"--><!--android:orientation="vertical"--><!--android:padding="@dimen/x10dp">-->
-
-    <!--<edu.aku.akuh_health_first.widget.AnyTextView--><!--android:id="@+id/txtDrName"--><!--android:layout_width="match_parent"--><!--android:layout_height="wrap_content"--><!--android:drawableLeft="@drawable/doctor"--><!--android:drawablePadding="@dimen/x5dp"--><!--android:drawableTint="@color/base_reddish"--><!--android:text="Dr.Rabia Hassan Shaikh"--><!--android:textColor="@color/base_reddish"--><!--android:textSize="@dimen/s16"--><!--app:typeface="@string/font_bold" />-->
-
-    <!--<edu.aku.akuh_health_first.widget.AnyTextView--><!--android:id="@+id/txtLoc"--><!--android:layout_width="match_parent"--><!--android:layout_height="wrap_content"--><!--android:text="@string/location"--><!--android:textColor="@color/c_charcoal"--><!--android:textSize="@dimen/s14"--><!--app:typeface="@string/font_regular" />-->
-
-    <!--<edu.aku.akuh_health_first.widget.AnyTextView--><!--android:id="@+id/txtDateLastVisit"--><!--android:layout_width="match_parent"--><!--android:layout_height="wrap_content"--><!--android:gravity="bottom|end"--><!--android:text="Mar 04,2017 12:20"--><!--android:textColor="@color/c_charcoal"--><!--android:textSize="@dimen/s14"--><!--app:typeface="@string/font_regular" />--><!--</LinearLayout>-->
-
-
-    <!--<edu.aku.akuh_health_first.widget.AnyTextView--><!--android:layout_width="match_parent"--><!--android:layout_height="wrap_content"--><!--android:drawableLeft="@drawable/last_visits"--><!--android:drawablePadding="@dimen/x5dp"--><!--android:padding="@dimen/x5dp"--><!--android:text="Active Medication"--><!--android:textColor="@color/base_amber"--><!--android:textSize="@dimen/s18"--><!--app:typeface="@string/font_bold" />-->
-
-    <!--<LinearLayout--><!--android:layout_width="match_parent"--><!--android:layout_height="match_parent"--><!--android:layout_margin="@dimen/x5dp"--><!--android:background="@drawable/rounded_box_gradient_gray"--><!--android:orientation="vertical"--><!--android:padding="@dimen/x10dp">-->
-
-    <!--<edu.aku.akuh_health_first.widget.AnyTextView--><!--android:layout_width="match_parent"--><!--android:layout_height="wrap_content"--><!--android:drawableLeft="@drawable/doctor"--><!--android:drawablePadding="@dimen/x5dp"--><!--android:drawableTint="@color/base_reddish"--><!--android:text="Active Medication"--><!--android:textColor="@color/base_reddish"--><!--android:textSize="@dimen/s16"--><!--app:typeface="@string/font_bold" />-->
-
-    <!--<edu.aku.akuh_health_first.widget.AnyTextView--><!--android:layout_width="match_parent"--><!--android:layout_height="wrap_content"--><!--android:text="@string/location"--><!--android:textColor="@color/c_charcoal"--><!--android:textSize="@dimen/s14"--><!--app:typeface="@string/font_regular" />-->
-
-    <!--<edu.aku.akuh_health_first.widget.AnyTextView--><!--android:layout_width="match_parent"--><!--android:layout_height="wrap_content"--><!--android:gravity="bottom|end"--><!--android:text="Mar 04,2017 12:20"--><!--android:textColor="@color/c_charcoal"--><!--android:textSize="@dimen/s14"--><!--app:typeface="@string/font_regular" />--><!--</LinearLayout>-->
-
-    <!--</LinearLayout>-->

@@ -66,7 +66,7 @@ public class EndoscopyFragment extends BaseFragment implements View.OnClickListe
         adapterEndoscopy = new EndoscopyAdapter(getBaseActivity(), arrEndoscopy, this);
     }
 
-    public static EndoscopyFragment newInstance(boolean isFromTimeline,  int patientVisitAdmissionID) {
+    public static EndoscopyFragment newInstance(boolean isFromTimeline, int patientVisitAdmissionID) {
 
         Bundle args = new Bundle();
 
@@ -190,7 +190,6 @@ public class EndoscopyFragment extends BaseFragment implements View.OnClickListe
 
                                 if (arrEndoscopy.size() > 0) {
                                     showView();
-
                                 } else {
                                     showEmptyView();
                                 }
@@ -224,14 +223,11 @@ public class EndoscopyFragment extends BaseFragment implements View.OnClickListe
     }
 
     private void showEmptyView() {
-        refreshLayout.setVisibility(View.GONE);
         emptyView.setVisibility(View.VISIBLE);
     }
 
     private void showView() {
-        bindView();
         emptyView.setVisibility(View.GONE);
-        refreshLayout.setVisibility(View.VISIBLE);
     }
 
 }

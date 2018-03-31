@@ -22,14 +22,31 @@
             android:orientation="horizontal"
             android:padding="@dimen/x5dp">
 
-            <ImageView
-                android:id="@+id/imgPacs"
-                android:layout_width="@dimen/x120dp"
-                android:layout_height="match_parent"
-                android:background="@color/c_black"
-                android:padding="@dimen/x3dp"
-                android:scaleType="centerCrop"
-                android:src="@drawable/placeholder" />
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent">
+
+                <ImageView
+                    android:id="@+id/imgPacs"
+                    android:layout_width="@dimen/x120dp"
+                    android:layout_height="match_parent"
+                    android:background="@color/c_black"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/place_holder" />
+
+                <ProgressBar
+                    android:id="@+id/progressBar"
+                    style="?android:attr/progressBarStyleLarge"
+                    android:layout_width="@dimen/x35dp"
+                    android:layout_height="@dimen/x35dp"
+                    android:layout_centerHorizontal="true"
+                    android:layout_centerVertical="true"
+                    android:indeterminate="true"
+                    android:indeterminateTint="@color/colorPrimary"
+                    android:indeterminateTintMode="src_atop"
+                    android:visibility="visible" />
+
+            </RelativeLayout>
 
 
             <LinearLayout

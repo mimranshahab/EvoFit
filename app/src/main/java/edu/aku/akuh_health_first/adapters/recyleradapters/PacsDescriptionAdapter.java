@@ -11,6 +11,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.ProgressBar;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -58,18 +59,19 @@ public class PacsDescriptionAdapter extends RecyclerView.Adapter<PacsDescription
     public void onBindViewHolder(final ViewHolder holder, int i) {
 
         final PacsDescriptionModel model = arrayList.get(holder.getAdapterPosition());
-        holder.txtpatientMRN.setText( model.getPatientMRN());
+        holder.txtpatientMRN.setText(model.getPatientMRN());
         holder.txtstudyDataCount.setText(model.getStudyDataCount());
         holder.txtstudyDataDateTime.setText(model.getStudyDataDateTime());
 
         List<String> imageUri = model.getStudyDataString();
-        loadImage(holder.imgPacs, imageUri.get(0), true);
+        holder.progressBar.setVisibility(View.VISIBLE);
+        loadImage(imageUri.get(0), holder);
 
         setListener(holder, model);
     }
 
     private void setListener(final ViewHolder holder, final PacsDescriptionModel pacsDescriptionModel) {
-        holder.contListItem.setOnClickListener(new View.OnClickListener() {
+        holder.cardView2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 onItemClick.onItemClick(holder.getAdapterPosition(), pacsDescriptionModel);
@@ -86,20 +88,24 @@ public class PacsDescriptionAdapter extends RecyclerView.Adapter<PacsDescription
         notifyDataSetChanged();
     }
 
-    private void loadImage(final ImageView iv, String imageUrl, final boolean isShowImage) {
+    private void loadImage(String imageUrl, final ViewHolder viewHolder) {
         FileLoader.with(activity)
                 .load(imageUrl)
-                .asFile(new FileRequestListener<File>() {
+                .asBitmap(new FileRequestListener<Bitmap>() {
                     @Override
-                    public void onLoad(FileLoadRequest request, FileResponse<File> response) {
-                        Bitmap bitmap = BitmapFactory.decodeFile(response.getDownloadedFile().getPath());
-                        if (isShowImage) {
-                            iv.setImageBitmap(bitmap);
+                    public void onLoad(FileLoadRequest request, FileResponse<Bitmap> response) {
+//                        Bitmap bitmap = BitmapFactory.decodeFile(response.getDownloadedFile().getPath());
+                        if (viewHolder == null) {
+                            return;
                         }
+                        viewHolder.imgPacs.setImageBitmap(response.getBody());
+                        viewHolder.progressBar.setVisibility(View.GONE);
+
                     }
 
                     @Override
                     public void onError(FileLoadRequest request, Throwable t) {
+                        viewHolder.progressBar.setVisibility(View.GONE);
                     }
                 });
     }
@@ -122,6 +128,9 @@ public class PacsDescriptionAdapter extends RecyclerView.Adapter<PacsDescription
         LinearLayout contListItem;
         @BindView(R.id.cardView2)
         CardView cardView2;
+        @BindView(R.id.progressBar)
+        ProgressBar progressBar;
+
         ViewHolder(View view) {
             super(view);
             ButterKnife.bind(this, view);

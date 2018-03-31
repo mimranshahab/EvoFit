@@ -3,14 +3,14 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="@color/c_white"
     android:orientation="vertical">
 
     <FrameLayout
         android:id="@+id/frameColorCode"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_margin="@dimen/x3dp">
+        android:layout_margin="@dimen/x2dp"
+         >
 
 
         <LinearLayout
@@ -49,7 +49,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="@dimen/x5dp"
-                android:background="@drawable/rounded_box_gradient_gray">
+                android:background="@drawable/rounded_box">
 
 
                 <LinearLayout
@@ -65,7 +65,7 @@
                         android:layout_height="wrap_content"
                         android:padding="@dimen/x5dp"
                         android:text="Glucose Random"
-                        android:textColor="@color/base_dark_blue"
+                        android:textColor="@color/txt_aku_blue"
                         android:textSize="@dimen/s16"
                         app:typeface="@string/font_bold" />
 
@@ -75,9 +75,8 @@
                         android:layout_height="wrap_content"
                         android:padding="@dimen/x5dp"
                         android:text="Date"
-
                         android:textColor="@color/txt_aku_blue"
-                        android:textSize="@dimen/s12"
+                        android:textSize="15sp"
                         app:typeface="@string/font_regular" />
 
                 </LinearLayout>
@@ -90,7 +89,7 @@
                     android:layout_gravity="center_vertical"
                     android:padding="@dimen/x10dp"
                     android:src="@drawable/img_go"
-                    android:tint="@color/base_dark_blue" />
+                    android:tint="@color/base_amber" />
             </LinearLayout>
 
 

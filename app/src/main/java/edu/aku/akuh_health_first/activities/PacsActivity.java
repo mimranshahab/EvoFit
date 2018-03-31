@@ -4,6 +4,7 @@ import android.app.ProgressDialog;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
@@ -21,6 +22,7 @@ import edu.aku.akuh_health_first.helperclasses.Helper;
 import edu.aku.akuh_health_first.helperclasses.ui.helper.TitleBar;
 import edu.aku.akuh_health_first.libraries.fileloader.FileLoader;
 import edu.aku.akuh_health_first.libraries.fileloader.listener.FileRequestListener;
+import edu.aku.akuh_health_first.libraries.fileloader.listener.MultiFileDownloadListener;
 import edu.aku.akuh_health_first.libraries.fileloader.pojo.FileResponse;
 import edu.aku.akuh_health_first.libraries.fileloader.request.FileLoadRequest;
 import edu.aku.akuh_health_first.managers.SharedPreferenceManager;
@@ -41,15 +43,17 @@ public class PacsActivity extends AppCompatActivity {
     IndicatorSeekBar indicatorSeekBar;
     AnyTextView txttotalCount;
     AnyTextView btnNextBatch;
+    AnyTextView txtUserName;
+
+    AnyTextView txtMRnumber;
+    ProgressBar progressBar;
 
     private int pointer;
-    private PacsDescriptionModel pacsModel;
-
     private ArrayList<String> pacsList;
-    private int min = 0, max = 0;
+    private int max = 0;
+
     ProgressDialog loader;
     private ArrayList<TupleModel> arrTupleModel;
-
     TupleModel selectedTupleModel;
     int selectedTupleIndex;
 
@@ -65,19 +69,26 @@ public class PacsActivity extends AppCompatActivity {
         settitlebar();
 
 
-        String fromJson = SharedPreferenceManager.getInstance(this).getString("JSON_STRING_KEY");
-        pacsModel = GsonFactory.getSimpleGson().fromJson(fromJson, PacsDescriptionModel.class);
+        SharedPreferenceManager sharedPreferenceManager = SharedPreferenceManager.getInstance(this);
+        String fromJson = sharedPreferenceManager.getString("JSON_STRING_KEY");
+
+        PacsDescriptionModel pacsModel = GsonFactory.getSimpleGson().fromJson(fromJson, PacsDescriptionModel.class);
         pacsList = (ArrayList<String>) pacsModel.getStudyDataString();
+
+
+        txttotalCount.setText("Total count " + pacsList.size() + "");
+        txtUserName.setText(pacsModel.getPatient_Name());
+        txtMRnumber.setText(pacsModel.getPatientMRN());
 
         uriArrToTuple(pacsList.size());
         selectedTupleModel = arrTupleModel.get(0);
         selectedTupleIndex = 0;
 
+
         if (Helper.isNetworkConnected(this, true)) {
             updateData(arrTupleModel.get(0));
         }
         setListeners();
-        txttotalCount.setText("Total count " + pacsList.size() + "");
 
     }
 
@@ -93,13 +104,17 @@ public class PacsActivity extends AppCompatActivity {
         indicatorSeekBar = findViewById(R.id.indSeekbar);
         txttotalCount = findViewById(R.id.txttotalCount);
         btnNextBatch = findViewById(R.id.btnNextBatch);
-
+        progressbar = findViewById(R.id.progressBar);
+        txtUserName = findViewById(R.id.txtNamePacs);
+        txtMRnumber = findViewById(R.id.txtMRNPacs);
 
     }
 
 
     private void updateData(TupleModel tupleModel) {
         loader.show();
+
+//        loadMultipleFiles(pacsList.subList(tupleModel.getMin(), tupleModel.getMax()).toArray(new String[0]));
         for (int i = tupleModel.getMin(); i <= tupleModel.getMax(); i++) {
             if (pacsList.get(i) != null) {
                 loadImage(image, pacsList.get(i), false);
@@ -127,7 +142,7 @@ public class PacsActivity extends AppCompatActivity {
 
         for (int j = size; j > 0; j = j - 30) {
             if (j > 30) {
-                min = max;
+                int min = max;
                 max = max + 30;
                 TupleModel tupleModel = new TupleModel();
                 tupleModel.setMin(min);
@@ -299,12 +314,12 @@ public class PacsActivity extends AppCompatActivity {
     private void loadImage(final ImageView iv, String imageUrl, final boolean isShowImage) {
         FileLoader.with(this)
                 .load(imageUrl)
-                .asFile(new FileRequestListener<File>() {
+                .asBitmap(new FileRequestListener<Bitmap>() {
                     @Override
-                    public void onLoad(FileLoadRequest request, FileResponse<File> response) {
-                        Bitmap bitmap = BitmapFactory.decodeFile(response.getDownloadedFile().getPath());
+                    public void onLoad(FileLoadRequest request, FileResponse<Bitmap> response) {
+//                        Bitmap bitmap = BitmapFactory.decodeFile(response.getDownloadedFile().getPath());
                         if (isShowImage) {
-                            iv.setImageBitmap(bitmap);
+                            iv.setImageBitmap(response.getBody());
                         }
                     }
 
@@ -313,6 +328,18 @@ public class PacsActivity extends AppCompatActivity {
                         Log.d(TAG, "onError: " + t.getMessage());
                     }
                 });
+    }
+
+    private void loadMultipleFiles(String... uris) {
+
+        loader.show();
+        FileLoader.multiFileDownload(this).progressListener(new MultiFileDownloadListener() {
+            @Override
+            public void onProgress(File downloadedFile, int progress, int totalFiles) {
+                Log.d(TAG, "onProgress: progress: " + progress);
+                loader.dismiss();
+            }
+        }).loadMultiple(uris);
     }
 
 //

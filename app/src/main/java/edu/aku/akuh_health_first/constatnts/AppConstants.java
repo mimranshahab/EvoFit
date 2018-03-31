@@ -68,6 +68,7 @@ public class AppConstants {
     public static final String KEY_REGISTER_VM = "register_vm";
     public static final String KEY_FIREBASE_TOKEN = "firebase_token";
     public static final String KEY_TOKEN = "getToken";
+    public static final String KEY_CROSS_TAB_DATA = "cross_tab";
 
 
     public static final String schedule = "Scheduled";

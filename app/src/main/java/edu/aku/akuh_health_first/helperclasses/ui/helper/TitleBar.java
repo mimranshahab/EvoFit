@@ -18,6 +18,7 @@ import edu.aku.akuh_health_first.R;
 import edu.aku.akuh_health_first.activities.BaseActivity;
 import edu.aku.akuh_health_first.activities.HomeActivity;
 import edu.aku.akuh_health_first.libraries.imageloader.ImageLoaderHelper;
+import edu.aku.akuh_health_first.models.TimelineModel;
 import edu.aku.akuh_health_first.models.receiving_model.UserDetailModel;
 import edu.aku.akuh_health_first.widget.AnyTextView;
 
@@ -188,9 +189,41 @@ public class TitleBar extends RelativeLayout {
             ImageLoaderHelper.loadImageWithConstantHeadersWithoutAnimation(context, circleImageView, currentUser.getProfileImage());
         }
 
-
         txtUserName.setText(currentUser.getName());
-        txtMRN.setText("MR#" + currentUser.getMRNumber());
+        txtMRN.setText(currentUser.getMRNumber());
+        contDropDown.setVisibility(VISIBLE);
+
+//        this.circleImageView.setOnClickListener(new OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                txtMRN.setText(currentUser.getMRNumber());
+//                txtUserName.setText(currentUser.getName());
+//                showAndHideDropDown();
+//            }
+//        });
+    }
+
+
+    public void setUserTimeLineDisplay(final UserDetailModel currentUser, Context context, TimelineModel timelineModel) {
+        this.circleImageView.setVisibility(VISIBLE);
+
+        if (currentUser == null) {
+            contDropDown.setVisibility(GONE);
+            UIHelper.showToast(context, "No user selected.");
+            return;
+        }
+
+        if (currentUser.getProfileImage() == null || currentUser.getProfileImage().isEmpty()) {
+            circleImageView.setImageResource(R.drawable.male_icon);
+        } else {
+            ImageLoaderHelper.loadImageWithConstantHeadersWithoutAnimation(context, circleImageView, currentUser.getProfileImage());
+        }
+
+        txtUserName.setText(currentUser.getName() + " (" + currentUser.getMRNumber() + ") " + "visited " + "Dr." + timelineModel.getPatientVisitDoctorName() +
+                " on " + timelineModel.getPatientVisitDateTime() + " at " + timelineModel.getPatientVisitHospitalLocation()
+                + " (" + timelineModel.getPatientVisitLocation() + ")");
+
+        txtMRN.setVisibility(GONE);
         contDropDown.setVisibility(VISIBLE);
 
 //        this.circleImageView.setOnClickListener(new OnClickListener() {

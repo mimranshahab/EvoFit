@@ -47,8 +47,8 @@
                         android:drawableLeft="@drawable/cardiopulmonary_report_date_green"
                         android:drawablePadding="@dimen/x5dp"
                         android:ellipsize="end"
-                        android:maxLines="1"
                         android:gravity="center_vertical"
+                        android:maxLines="1"
                         android:text="22 jan ,2018"
                         android:textSize="@dimen/s14" />
 
@@ -174,7 +174,7 @@
                             android:background="@drawable/rounded_box_filled_primary_color"
                             android:gravity="center"
                             android:padding="@dimen/x7dp"
-                            android:text="REPORT"
+                            android:text="Report"
                             android:textColor="@color/c_white"
                             android:textSize="@dimen/s14"
                             app:typeface="@string/font_bold"
@@ -188,7 +188,6 @@
 
                             android:gravity="center"
                             android:padding="@dimen/x7dp"
-
                             />
 
                     </RelativeLayout>
@@ -211,7 +210,7 @@
                             android:background="@drawable/rounded_box_filled_base_amber"
                             android:gravity="center"
                             android:padding="@dimen/x7dp"
-                            android:text="GRAPH"
+                            android:text="Graph"
                             android:textColor="@color/c_white"
                             android:textSize="@dimen/s14"
                             app:typeface="@string/font_bold"

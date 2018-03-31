@@ -23,6 +23,18 @@ public class LstMicSpecQueryResult {
     @SerializedName("SPECIMENNUMBER")
     private String SPECIMENNUMBER;
 
+    @SerializedName("PARATYPE")
+    @Expose
+    private String paratype;
+
+    public String getParatype() {
+        return paratype;
+    }
+
+    public void setParatype(String paratype) {
+        this.paratype = paratype;
+    }
+
     public String getQUERYRESULT() {
         return QUERYRESULT;
     }

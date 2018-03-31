@@ -38,7 +38,7 @@
             android:padding="@dimen/x10dp"
             android:text="@string/tag_line"
             android:textColor="@color/base_amber"
-            android:textSize="22sp" />
+            android:textSize="14sp" />
 
     </LinearLayout>
 

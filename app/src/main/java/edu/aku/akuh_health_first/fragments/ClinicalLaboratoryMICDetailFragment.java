@@ -3,6 +3,7 @@ package edu.aku.akuh_health_first.fragments;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.widget.DrawerLayout;
+import android.support.v7.widget.CardView;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -17,19 +18,23 @@ import java.util.ArrayList;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 import butterknife.Unbinder;
 import edu.aku.akuh_health_first.R;
-import edu.aku.akuh_health_first.adapters.recyleradapters.ClinicalLabDetailAdapterv1;
 import edu.aku.akuh_health_first.adapters.recyleradapters.ClinicalLabMICDetailAdapter;
 import edu.aku.akuh_health_first.callbacks.OnItemClickListener;
+import edu.aku.akuh_health_first.constatnts.WebServiceConstants;
+import edu.aku.akuh_health_first.enums.BaseURLTypes;
 import edu.aku.akuh_health_first.fragments.abstracts.BaseFragment;
 import edu.aku.akuh_health_first.helperclasses.ui.helper.TitleBar;
 import edu.aku.akuh_health_first.helperclasses.ui.helper.UIHelper;
+import edu.aku.akuh_health_first.managers.retrofit.WebServices;
 import edu.aku.akuh_health_first.models.BannerModel;
 import edu.aku.akuh_health_first.models.LaboratoryDetailModel;
 import edu.aku.akuh_health_first.models.LstLaboratoryMicspecimenOrderedProc;
 import edu.aku.akuh_health_first.models.LstLaboratoryMicspecimenResults;
-import edu.aku.akuh_health_first.models.LstLaboratorySpecimenResults;
+import edu.aku.akuh_health_first.models.SearchModel;
+import edu.aku.akuh_health_first.models.wrappers.WebResponse;
 import edu.aku.akuh_health_first.widget.AnyTextView;
 
 /**
@@ -53,6 +58,8 @@ public class ClinicalLaboratoryMICDetailFragment extends BaseFragment implements
     AnyTextView txtLocation;
     @BindView(R.id.txtReportDatetime)
     AnyTextView txtReportDatetime;
+    @BindView(R.id.cardView2)
+    CardView cardView2;
     private ArrayList arrLabDetail;
     private LaboratoryDetailModel laboratoryDetailModel;
     private ClinicalLabMICDetailAdapter adapter;
@@ -129,7 +136,7 @@ public class ClinicalLaboratoryMICDetailFragment extends BaseFragment implements
 
     @Override
     public void setListeners() {
-
+        cardView2.setOnClickListener(this);
     }
 
     @Override
@@ -170,6 +177,7 @@ public class ClinicalLaboratoryMICDetailFragment extends BaseFragment implements
     @Override
     public void onItemClick(int position, Object object) {
         if (object instanceof LstLaboratoryMicspecimenResults) {
+
             if (((LstLaboratoryMicspecimenResults) object).getProcedureTypeId().equals("Q")) {
                 ClinicalLaboratoryMICQueryFragment clinicalLaboratoryMICQueryFragment = ClinicalLaboratoryMICQueryFragment.newInstance(((LstLaboratoryMicspecimenResults) object).getLstMicSpecQueryResult(),
                         ((LstLaboratoryMicspecimenResults) object).getProcedureName(), ((LstLaboratoryMicspecimenResults) object).getProcedureDescription());
@@ -186,5 +194,28 @@ public class ClinicalLaboratoryMICDetailFragment extends BaseFragment implements
 
             }
         }
+    }
+
+    @OnClick(R.id.btnDownload)
+    public void onViewClicked() {
+        SearchModel searchModel = new SearchModel();
+
+        searchModel.setRecordID(laboratoryDetailModel.getSpecimenNumber());
+        new WebServices(getBaseActivity(), getToken(), BaseURLTypes.AHFA_BASE_URL)
+                .webServiceRequestAPIForWebResponseWithString(WebServiceConstants.METHOD_CLINICAL_LAB_REPORT,
+                        searchModel.toString(), new WebServices.IRequestWebResponseWithStringDataCallBack() {
+                            @Override
+                            public void requestDataResponse(WebResponse<String> webResponse) {
+                                saveAndOpenFile(webResponse);
+                            }
+
+                            @Override
+                            public void onError() {
+
+                            }
+                        }
+                );
+
+
     }
 }

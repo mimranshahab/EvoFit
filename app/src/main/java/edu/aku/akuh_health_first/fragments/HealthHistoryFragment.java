@@ -31,6 +31,7 @@ import edu.aku.akuh_health_first.helperclasses.ui.helper.UIHelper;
 import edu.aku.akuh_health_first.managers.retrofit.GsonFactory;
 import edu.aku.akuh_health_first.managers.retrofit.WebServices;
 import edu.aku.akuh_health_first.models.SearchModel;
+import edu.aku.akuh_health_first.models.TimelineModel;
 import edu.aku.akuh_health_first.models.wrappers.MenuModel;
 import edu.aku.akuh_health_first.models.wrappers.WebResponse;
 import edu.aku.akuh_health_first.widget.AnyTextView;
@@ -84,13 +85,15 @@ public class HealthHistoryFragment extends BaseFragment {
     private List<MenuModel> arrData;
     private ArrayList<String> tempArr;
     private int patientVisitAdmissionID;
+    private TimelineModel timelineModel;
 
-    public static HealthHistoryFragment newInstance(boolean isVisitTimeline, int patientVisitAdmissionID) {
+    public static HealthHistoryFragment newInstance(boolean isVisitTimeline, int patientVisitAdmissionID, TimelineModel timelineModel) {
 
         Bundle args = new Bundle();
 
         HealthHistoryFragment fragment = new HealthHistoryFragment();
         fragment.setArguments(args);
+        fragment.timelineModel = timelineModel;
         args.putBoolean(IS_FROM_VISIT_TIMELINE, isVisitTimeline);
         args.putInt(VISIT_ID, patientVisitAdmissionID);
         return fragment;
@@ -110,10 +113,9 @@ public class HealthHistoryFragment extends BaseFragment {
         super.onViewCreated(view, savedInstanceState);
         setListeners();
 
-
         if (isVisitTimeline) {
-            contTimeLinebar.setVisibility(View.VISIBLE);
-            txtTimelineView.setText("Displaying results for Visit Admission ID: " + patientVisitAdmissionID);
+//            contTimeLinebar.setVisibility(View.VISIBLE);
+//            txtTimelineView.setText("Displaying results for Visit Admission ID: " + patientVisitAdmissionID);
             contParentLayout.setVisibility(View.GONE);
             timelineServiceCall();
         } else {
@@ -276,11 +278,13 @@ public class HealthHistoryFragment extends BaseFragment {
         titleBar.setVisibility(View.VISIBLE);
         if (isVisitTimeline) {
             titleBar.setTitle("Visit Menu");
+            titleBar.setUserTimeLineDisplay(sharedPreferenceManager.getCurrentUser(), getContext(), timelineModel);
         } else {
             titleBar.setTitle("Health Profile");
+            titleBar.setUserDisplay(sharedPreferenceManager.getCurrentUser(), getContext());
         }
         titleBar.showBackButton(getBaseActivity());
-        titleBar.setUserDisplay(sharedPreferenceManager.getCurrentUser(), getContext());
+
         titleBar.showHome(getBaseActivity());
     }
 

@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center"
+    android:background="@color/transparent"
+    android:orientation="vertical"
+    android:padding="@dimen/x15dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/rounded_box_white"
+        android:orientation="vertical">
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:padding="3dp"
+            android:visibility="invisible">
+
+
+            <edu.aku.akuh_health_first.widget.AnyTextView
+                android:id="@+id/txtTitle"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:ellipsize="end"
+                android:gravity="center_vertical"
+                android:padding="10dp"
+                android:singleLine="true"
+                android:text="@string/title"
+                android:textColor="@color/base_amber"
+                android:textSize="18sp"
+                app:typeface="@string/font_bold" />
+
+            <ImageView
+                android:id="@+id/btnClose"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:padding="10dp"
+                android:scaleX="1.5"
+                android:scaleY="1.5"
+                android:src="@drawable/ic_select_cross"
+                android:tint="@color/base_amber" />
+
+
+        </LinearLayout>
+
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:padding="@dimen/x5dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <edu.aku.akuh_health_first.widget.AnyTextView
+                    android:id="@+id/txtResultComments"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center_vertical"
+                    android:padding="@dimen/x10dp"
+                    android:text="txtResultComments"
+                    android:textColor="@color/txt_aku_blue"
+                    android:textSize="@dimen/s13"
+                    app:typeface="@string/font_san_regular" />
+
+                <ImageView
+                    android:id="@+id/separator"
+                    android:layout_width="match_parent"
+                    android:layout_height="1px"
+                    android:background="@color/base_amber" />
+
+
+                <edu.aku.akuh_health_first.widget.AnyTextView
+                    android:id="@+id/txtTestComments"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center_vertical"
+                    android:padding="@dimen/x10dp"
+
+                    android:text="txtTestComments"
+                    android:textColor="@color/txt_aku_blue"
+                    android:textSize="@dimen/s13"
+                    app:typeface="@string/font_san_regular" />
+            </LinearLayout>
+        </ScrollView>
+
+
+    </LinearLayout>
+
+
+</LinearLayout>
+
+

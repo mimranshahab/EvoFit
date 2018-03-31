@@ -5,9 +5,18 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_gravity="center_horizontal"
-     android:background="@color/colorPrimary"
+    android:background="@color/colorPrimaryDark"
     android:orientation="horizontal"
-    android:padding="@dimen/x8dp">
+    android:padding="@dimen/x5dp">
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/circleImageView"
+        android:layout_width="@dimen/x26dp"
+        android:layout_height="@dimen/x26dp"
+        android:layout_margin="@dimen/x5dp"
+        android:scaleType="centerCrop"
+        android:src="@drawable/user_image"
+        android:visibility="visible" />
 
 
     <edu.aku.akuh_health_first.widget.AnyTextView
@@ -17,11 +26,11 @@
         android:layout_gravity="center_vertical"
         android:layout_weight="1"
         android:ellipsize="end"
+        android:maxLines="3"
         android:padding="@dimen/x5dp"
-        android:singleLine="true"
         android:text="Dummy User"
         android:textColor="@color/c_white"
-        android:textSize="@dimen/s12"
+        android:textSize="@dimen/s14"
         app:typeface="@string/font_bold" />
 
     <edu.aku.akuh_health_first.widget.AnyTextView
@@ -31,9 +40,9 @@
         android:layout_below="@+id/txtUserName"
         android:layout_gravity="center_vertical|right"
         android:padding="@dimen/x5dp"
-        android:text="MR#: 111-22-33"
+        android:text="MR number"
         android:textColor="@color/c_white"
-        android:textSize="@dimen/s12"
+        android:textSize="@dimen/s14"
         app:typeface="@string/font_bold" />
 
 

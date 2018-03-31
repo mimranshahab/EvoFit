@@ -37,13 +37,17 @@
     </style>
 
 
+    <style name="MyTabLayoutTextAppearance" parent="@android:style/TextAppearance.Widget.TabWidget">
+        <item name="android:textSize">14sp</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
     <!--Rating Bar-->
 
     <!--<style name="RatingBar" parent="Theme.AppCompat">-->
-        <!--<item name="android:progressDrawable">@drawable/imgstar_rated</item>-->
-        <!--<item name="android:indeterminate">@drawable/imgstar_unrated</item>-->
+    <!--<item name="android:progressDrawable">@drawable/imgstar_rated</item>-->
+    <!--<item name="android:indeterminate">@drawable/imgstar_unrated</item>-->
     <!--</style>-->
-
 
 
 </resources>

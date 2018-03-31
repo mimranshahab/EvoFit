@@ -96,7 +96,7 @@ public class HomeDetailFragment extends BaseFragment {
                 getBaseActivity().addDockableFragment(HealthSummaryFragment.newInstance());
                 break;
             case R.id.contHistory:
-                getBaseActivity().addDockableFragment(HealthHistoryFragment.newInstance(false, -1));
+                getBaseActivity().addDockableFragment(HealthHistoryFragment.newInstance(false, -1, null));
                 break;
             case R.id.contProfile:
                 getBaseActivity().addDockableFragment(ProfileFragment.newInstance());

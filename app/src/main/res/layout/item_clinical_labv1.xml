@@ -153,7 +153,8 @@
                             android:background="@drawable/rounded_box_filled_primary_color"
                             android:gravity="center"
                             android:padding="@dimen/x7dp"
-                            android:text="VIEW DETAILS"
+                            app:typeface="@string/font_bold"
+                            android:text="View Results"
                             android:textColor="@color/c_white" />
 
 

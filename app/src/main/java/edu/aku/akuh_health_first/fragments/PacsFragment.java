@@ -1,5 +1,6 @@
 package edu.aku.akuh_health_first.fragments;
 
+import android.app.ProgressDialog;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.widget.DrawerLayout;
@@ -28,6 +29,7 @@ import edu.aku.akuh_health_first.callbacks.OnItemClickListener;
 import edu.aku.akuh_health_first.constatnts.WebServiceConstants;
 import edu.aku.akuh_health_first.enums.BaseURLTypes;
 import edu.aku.akuh_health_first.fragments.abstracts.BaseFragment;
+import edu.aku.akuh_health_first.helperclasses.Helper;
 import edu.aku.akuh_health_first.helperclasses.ui.helper.TitleBar;
 import edu.aku.akuh_health_first.managers.retrofit.GsonFactory;
 import edu.aku.akuh_health_first.managers.retrofit.WebServices;
@@ -93,9 +95,6 @@ public class PacsFragment extends BaseFragment implements View.OnClickListener, 
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-             /*
-        //////////Get Bearer token
-         */
         bindView();
         serviceCall(radioModel);
     }
@@ -156,11 +155,11 @@ public class PacsFragment extends BaseFragment implements View.OnClickListener, 
     public void onItemClick(int position, Object object) {
 
         if (object instanceof PacsDescriptionModel) {
-            PacsDescriptionModel pacsDescriptionModel = (PacsDescriptionModel) object;
-
-            sharedPreferenceManager.putValue("JSON_STRING_KEY", pacsDescriptionModel.toString());
-
-            getBaseActivity().openActivity(PacsActivity.class, "");
+            ProgressDialog loader = Helper.getLoader(getContext());
+            loader.show();
+            sharedPreferenceManager.putValue("JSON_STRING_KEY", ((PacsDescriptionModel) object).toString());
+            loader.dismiss();
+            getBaseActivity().openActivity(PacsActivity.class);
 
         }
     }
@@ -177,7 +176,7 @@ public class PacsFragment extends BaseFragment implements View.OnClickListener, 
                             @Override
                             public void requestDataResponse(WebResponse<JsonObject> webResponse) {
                                 PacsModel pacsModel = GsonFactory.getSimpleGson().fromJson(webResponse.result, PacsModel.class);
-                                ArrayList arrayList = new ArrayList<PacsDescriptionAdapter>();
+                                ArrayList<PacsDescriptionModel> arrayList = new ArrayList<PacsDescriptionModel>();
 //                                if (pacsModel != null) {
                                 for (int i = 0; i < pacsModel.getPatient_Name().size(); i++) {
                                     PacsDescriptionModel pacsDescriptionModel = new PacsDescriptionModel();
@@ -191,9 +190,7 @@ public class PacsFragment extends BaseFragment implements View.OnClickListener, 
                                     pacsDescriptionModel.setStudyDataString(pacsModel.getStudyDataString().get(i));
                                     pacsDescriptionModel.setStudyDataDateTime(pacsModel.getStudyDataDateTime().get(i));
 
-
                                     arrayList.add(pacsDescriptionModel);
-
                                 }
 
                                 arrData.clear();
@@ -207,8 +204,6 @@ public class PacsFragment extends BaseFragment implements View.OnClickListener, 
                                 } else {
                                     showEmptyView();
                                 }
-
-
                             }
 
                             @Override

@@ -85,7 +85,7 @@ public class TimelineFragment extends BaseFragment implements View.OnClickListen
         titleBar.resetViews();
         titleBar.setTitle("Timeline");
         titleBar.showBackButton(getBaseActivity());
-        titleBar.setUserDisplay(sharedPreferenceManager.getCurrentUser(),getContext());
+        titleBar.setUserDisplay(sharedPreferenceManager.getCurrentUser(), getContext());
         titleBar.showHome(getBaseActivity());
     }
 
@@ -169,9 +169,8 @@ public class TimelineFragment extends BaseFragment implements View.OnClickListen
     @Override
     public void onItemClick(int position, Object object) {
         if (object instanceof TimelineModel) {
-            getBaseActivity().addDockableFragment(HealthHistoryFragment.newInstance(true,((TimelineModel) object).getPatientVisitAdmissionID()));
+            getBaseActivity().addDockableFragment(HealthHistoryFragment.newInstance(true, ((TimelineModel) object).getPatientVisitAdmissionID(), (TimelineModel) object));
         }
-
     }
 
     private void serviceCall() {
@@ -217,13 +216,10 @@ public class TimelineFragment extends BaseFragment implements View.OnClickListen
 
 
     private void showEmptyView() {
-        refreshLayout.setVisibility(View.GONE);
         emptyView.setVisibility(View.VISIBLE);
     }
 
     private void showView() {
-        bindView();
         emptyView.setVisibility(View.GONE);
-        refreshLayout.setVisibility(View.VISIBLE);
     }
 }
