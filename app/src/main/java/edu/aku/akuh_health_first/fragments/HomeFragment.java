@@ -10,20 +10,17 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ImageView;
-
 import com.google.gson.JsonObject;
-
 import java.util.ArrayList;
-
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 import butterknife.Unbinder;
 import edu.aku.akuh_health_first.R;
 import edu.aku.akuh_health_first.adapters.recyleradapters.FamilyMembersAdapter;
 import edu.aku.akuh_health_first.callbacks.OnItemClickListener;
 import edu.aku.akuh_health_first.constatnts.WebServiceConstants;
 import edu.aku.akuh_health_first.enums.BaseURLTypes;
-import edu.aku.akuh_health_first.enums.WebServiceTypes;
 import edu.aku.akuh_health_first.fragments.abstracts.BaseFragment;
 import edu.aku.akuh_health_first.helperclasses.ui.helper.TitleBar;
 import edu.aku.akuh_health_first.helperclasses.ui.helper.UIHelper;
@@ -98,8 +95,7 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener, 
 
         new WebServices(getBaseActivity(),
                 WebServiceConstants.temporaryToken,
-                WebServiceTypes.ONLY_TOKEN,
-                BaseURLTypes.AHFA).webServiceRequestAPI(WebServiceConstants.METHOD_CARD_MEMBER,
+                BaseURLTypes.AHFA_BASE_URL).webServiceRequestAPI(WebServiceConstants.METHOD_CARD_MEMBER,
                 cardMemberDetail.toString(),
                 new WebServices.IRequestJsonDataCallBack() {
                     @Override
@@ -171,5 +167,10 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener, 
             getBaseActivity().addDockableFragment(HealthHistoryFragment.newInstance());
 
         }
+    }
+
+    @OnClick(R.id.txtViewProfile)
+    public void onViewClicked() {
+            getBaseActivity().addDockableFragment(HealthHistoryFragment.newInstance());
     }
 }
