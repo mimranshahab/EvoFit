@@ -15,11 +15,14 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 import butterknife.Unbinder;
 import edu.aku.akuh_health_first.R;
+import edu.aku.akuh_health_first.activities.TableViewActivity;
 import edu.aku.akuh_health_first.fragments.abstracts.BaseFragment;
 import edu.aku.akuh_health_first.helperclasses.ui.helper.TitleBar;
 import edu.aku.akuh_health_first.helperclasses.ui.helper.UIHelper;
 import edu.aku.akuh_health_first.models.LstMicSpecParaResult;
 import edu.aku.akuh_health_first.widget.AnyTextView;
+
+import static edu.aku.akuh_health_first.constatnts.AppConstants.KEY_CROSS_TAB_DATA;
 
 /**
  * Created by hamza.ahmed on 3/29/2018.
@@ -56,12 +59,16 @@ public class ClinicalParaResultFragment extends BaseFragment {
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         txtParaResult.setText(Html.fromHtml(micSpecParaResult.getPARARESULT()), TextView.BufferType.SPANNABLE);
+
+        if (micSpecParaResult != null) {
+            procedureDescription = procedureDescription.concat(" (" + micSpecParaResult.getPARATYPE() + ")");
+        }
         txtProcedureDesc.setText(procedureDescription);
 
         if (micSpecParaResult.getLstMicSpecOrganism() == null || micSpecParaResult.getLstMicSpecOrganism().isEmpty()) {
             txtViewResult.setVisibility(View.GONE);
         } else {
-            txtViewResult.setVisibility(View.GONE);
+            txtViewResult.setVisibility(View.VISIBLE);
         }
 
     }
@@ -117,6 +124,7 @@ public class ClinicalParaResultFragment extends BaseFragment {
 
     @OnClick(R.id.txtViewResult)
     public void onViewClicked() {
-        UIHelper.showToast(getContext(), "in progress");
+        sharedPreferenceManager.putObject(KEY_CROSS_TAB_DATA, micSpecParaResult);
+        getBaseActivity().openActivity(TableViewActivity.class);
     }
 }

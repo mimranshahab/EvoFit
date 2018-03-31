@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">Family Hifazat</string>
 
-
+    <string name="table_name">Table</string>
     <!--FONTS-->
 
     <string name="font_regular">HelveticaNeue Light.ttf</string>
