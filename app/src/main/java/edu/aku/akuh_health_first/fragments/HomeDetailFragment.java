@@ -53,7 +53,7 @@ public class HomeDetailFragment extends BaseFragment {
     @Override
     public void setTitlebar(final TitleBar titleBar) {
         titleBar.resetViews();
-        titleBar.setTitle("Detail");
+        titleBar.setTitle("AKUH Family Hifazat");
         titleBar.showBackButton(getBaseActivity());
         titleBar.setUserDisplay(sharedPreferenceManager.getCurrentUser(), getContext());
         titleBar.showHome(getBaseActivity());

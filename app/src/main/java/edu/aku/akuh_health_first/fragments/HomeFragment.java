@@ -94,7 +94,7 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener, 
         Bundle args = new Bundle();
 
         HomeFragment fragment = new HomeFragment();
-         fragment.setArguments(args);
+        fragment.setArguments(args);
         return fragment;
     }
 
@@ -196,7 +196,7 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener, 
         titleBar.resetViews();
         titleBar.setVisibility(View.VISIBLE);
         titleBar.showSidebar(getBaseActivity());
-        titleBar.setTitle("Home");
+        titleBar.setTitle("AKUH Family Hifazat");
 //        titleBar.setRightButton(R.drawable.notification_icon, new View.OnClickListener() {
 //            @Override
 //            public void onClick(View v) {

@@ -21,7 +21,7 @@
     <RelativeLayout
         android:id="@+id/containerTitlebar1"
         android:layout_width="match_parent"
-        android:layout_height="?android:attr/actionBarSize"
+        android:layout_height="@dimen/x45dp"
         android:layout_alignParentTop="true"
         android:background="@color/colorPrimary"
         android:gravity="center_vertical"
