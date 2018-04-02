@@ -727,7 +727,8 @@ public class TableView extends View
             //Draw row header
             if (rowIndex >= drawRange.getTop() && rowIndex <= drawRange.getBottom()) {
                 headerRect.set(0, top, mHeaderWidth, top + getRowHeight(rowIndex));
-                drawHeader(canvas, Integer.toString(rowIndex + 1), headerRect, headerPaint);
+//                drawHeader(canvas, Integer.toString(rowIndex + 1), headerRect, headerPaint);
+                drawHeader(canvas,title.getLstMicSpecAntibiotics().get(rowIndex).getABBREVIATION(),headerRect,headerPaint);
             }
 
             bottom += getRowHeight(rowIndex);
