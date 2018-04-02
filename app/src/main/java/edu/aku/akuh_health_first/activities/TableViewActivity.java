@@ -15,12 +15,11 @@ import edu.aku.akuh_health_first.managers.SharedPreferenceManager;
 import edu.aku.akuh_health_first.models.LstMicSpecParaResult;
 import edu.aku.akuh_health_first.models.SheetTemplate1;
 
-/**
- * Created by hamza.ahmed on 3/31/2018.
- */
 
 public class TableViewActivity extends AppCompatActivity {
     TableView mTableView;
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,7 +49,7 @@ public class TableViewActivity extends AppCompatActivity {
 
 
         ISheetData sheet = SheetTemplate1.get(this, lstMicSpecParaResult);
-
+//        ISheetData sheet = SheetTemplate1.get(this, rowCount, colCount);
         mTableView.setSheetData(sheet);
         TableViewConfigure configure = new TableViewConfigure();
         configure.setShowHeaders(true);
@@ -58,6 +57,8 @@ public class TableViewActivity extends AppCompatActivity {
         configure.setEnableResizeColumn(false);
         configure.setEnableSelection(false);
         mTableView.setConfigure(configure);
+
+        mTableView.setString(lstMicSpecParaResult);
     }
 
     private void calcRowHeight(DefaultSheetData sheet) {
@@ -76,3 +77,4 @@ public class TableViewActivity extends AppCompatActivity {
     }
 
 }
+

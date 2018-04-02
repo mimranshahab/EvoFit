@@ -38,6 +38,7 @@ import edu.aku.akuh_health_first.libraries.table.util.DrawableStateWrapper;
 import edu.aku.akuh_health_first.libraries.table.util.ExcelUtils;
 import edu.aku.akuh_health_first.libraries.table.util.TableViewConfigure;
 import edu.aku.akuh_health_first.libraries.table.util.UnitsConverter;
+import edu.aku.akuh_health_first.models.LstMicSpecParaResult;
 
 public class TableView extends View
         implements GestureDetector.OnGestureListener, GestureDetector.OnDoubleTapListener,
@@ -84,6 +85,11 @@ public class TableView extends View
     private LayoutChagneListener layoutChagneListener;
     private ScrollListener scrollListener;
     private Rect clipBounds;
+    private LstMicSpecParaResult title;
+
+    public void setString(LstMicSpecParaResult title ) {
+        this.title = title;
+    }
 
     public interface LayoutChagneListener {
         void onLayoutChange(View v, boolean changed, int left, int top, int right, int bottom);
@@ -681,7 +687,9 @@ public class TableView extends View
                 //Draw column header
                 if (j >= drawRange.getLeft() && j <= drawRange.getRight()) {
                     headerRect.set(left, 0, left + getColumnWidth(j), mHeaderHeight);
-                    String str = "abcdefqwertyuio";
+
+//                    String str = "abcdefqwertyuio";
+                    String str = title.getLstMicSpecOrganism().get(j).getABBREVIATION();
 //                    String str = ExcelUtils.columnToString(j);
 //                    String arrOrganisms =
                     drawHeader(canvas, str, headerRect, headerPaint);
@@ -757,7 +765,8 @@ public class TableView extends View
             if (colIndex >= drawRange.getLeft() && colIndex <= drawRange.getRight()) {
                 headerRect.set(left, 0, left + getColumnWidth(colIndex), mHeaderHeight);
 //                String str = ExcelUtils.columnToString(colIndex);
-                String str = "abcdefqwertyuio";
+//                String str = "abcdefqwertyuio";
+                String str = title.getLstMicSpecOrganism().get(colIndex).getABBREVIATION();
                 drawHeader(canvas, str, headerRect, headerPaint);
             }
 

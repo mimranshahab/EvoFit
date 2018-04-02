@@ -69,7 +69,7 @@ public class ClinicalParaResultFragment extends BaseFragment {
             txtViewResult.setVisibility(View.GONE);
         } else {
             // FIXME: 3/31/2018 Cross Tab Remaining
-            txtViewResult.setVisibility(View.GONE);
+            txtViewResult.setVisibility(View.VISIBLE);
         }
 
     }
