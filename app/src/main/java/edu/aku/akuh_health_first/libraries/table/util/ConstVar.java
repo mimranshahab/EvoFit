@@ -5,7 +5,7 @@ public class ConstVar {
     public final static int MAXROWCOUNT = 32768;
     public final static int MAXCOLUMNCOUNT = 256;
 
-    public final static int HEADERWIDTH = 80;
+    public final static int HEADERWIDTH = 450;
     public final static int HEADERHEIGHT = 60;
 
     public final static int DRAWCELL_BG = 0x1;

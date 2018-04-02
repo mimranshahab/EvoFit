@@ -1,6 +1,7 @@
 package edu.aku.akuh_health_first.models;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
@@ -10,7 +11,7 @@ public class LstMicSpecParaResult implements Serializable
 
 @SerializedName("lstMicSpecOrganism")
 @Expose
-private List<LstMicSpecOrganism> lstMicSpecOrganism = null;
+private ArrayList<LstMicSpecOrganism> lstMicSpecOrganism = null;
 @SerializedName("lstMicSpecOrgSensiProc")
 @Expose
 private List<LstMicSpecOrgSensiProc> lstMicSpecOrgSensiProc = null;
@@ -43,11 +44,11 @@ private String pARARESULT;
 private String pARATYPE;
 private final static long serialVersionUID = 3353171977678905030L;
 
-public List<LstMicSpecOrganism> getLstMicSpecOrganism() {
+public ArrayList<LstMicSpecOrganism> getLstMicSpecOrganism() {
 return lstMicSpecOrganism;
 }
 
-public void setLstMicSpecOrganism(List<LstMicSpecOrganism> lstMicSpecOrganism) {
+public void setLstMicSpecOrganism(ArrayList<LstMicSpecOrganism> lstMicSpecOrganism) {
 this.lstMicSpecOrganism = lstMicSpecOrganism;
 }
 

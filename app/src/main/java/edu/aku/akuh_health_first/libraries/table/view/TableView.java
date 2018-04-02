@@ -23,6 +23,7 @@ import android.widget.Scroller;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.util.ArrayList;
 
 import edu.aku.akuh_health_first.libraries.table.model.CellPosition;
 import edu.aku.akuh_health_first.libraries.table.model.ICellData;
@@ -38,6 +39,8 @@ import edu.aku.akuh_health_first.libraries.table.util.DrawableStateWrapper;
 import edu.aku.akuh_health_first.libraries.table.util.ExcelUtils;
 import edu.aku.akuh_health_first.libraries.table.util.TableViewConfigure;
 import edu.aku.akuh_health_first.libraries.table.util.UnitsConverter;
+import edu.aku.akuh_health_first.models.LstMicSpecAntibiotic;
+import edu.aku.akuh_health_first.models.LstMicSpecOrganism;
 import edu.aku.akuh_health_first.models.LstMicSpecParaResult;
 
 public class TableView extends View
@@ -55,7 +58,7 @@ public class TableView extends View
     private int mScrollX, mScrollY;
     private ISheetData mSheetData;
     private UnitsConverter mUnitsConverter;
-//    private int mCharacterWidth = 0;
+    //    private int mCharacterWidth = 0;
     private int mHeaderWidth = 0;
     private int mHeaderHeight = 0;
     private Scroller mScroller;
@@ -67,7 +70,7 @@ public class TableView extends View
     private int mOldWidth, mNewWidth;
     private int mOldHeight, mNewHeight;
     private boolean mCanScroll = true;
-//    private boolean mIsShowHeaders = true;
+    //    private boolean mIsShowHeaders = true;
     private int mCurRowIndex = -1, mCurColIndex = -1;
     private Range mSelection;
     private CellPosition mCurrentSelectedCell;
@@ -85,10 +88,12 @@ public class TableView extends View
     private LayoutChagneListener layoutChagneListener;
     private ScrollListener scrollListener;
     private Rect clipBounds;
-    private LstMicSpecParaResult title;
+    private ArrayList<LstMicSpecOrganism> arrHeaderCols;
+    private ArrayList<LstMicSpecAntibiotic> arrHeaderRows;
 
-    public void setString(LstMicSpecParaResult title ) {
-        this.title = title;
+    public void setData(ArrayList<LstMicSpecOrganism> arrHeaderCols, ArrayList<LstMicSpecAntibiotic> arrHeaderRows) {
+        this.arrHeaderCols = arrHeaderCols;
+        this.arrHeaderRows = arrHeaderRows;
     }
 
     public interface LayoutChagneListener {
@@ -161,11 +166,11 @@ public class TableView extends View
 
     @Override
     protected void onLayout(boolean changed, int left, int top, int right, int bottom) {
-        if(DEBUG) {
+        if (DEBUG) {
             Log.i(TAG, "onLayout: changed = " + changed);
         }
         super.onLayout(changed, left, top, right, bottom);
-        if(layoutChagneListener != null) {
+        if (layoutChagneListener != null) {
             layoutChagneListener.onLayoutChange(this, changed, left, top, right, bottom);
         }
     }
@@ -180,7 +185,7 @@ public class TableView extends View
         int heightMode = MeasureSpec.getMode(heightMeasureSpec);
         int widthSize = MeasureSpec.getSize(widthMeasureSpec);
         int heightSize = MeasureSpec.getSize(heightMeasureSpec);
-        if(DEBUG) {
+        if (DEBUG) {
             Log.i(TAG, "onMeasure widthMode = " + getMeasureModeString(widthMode) + ", widthSize = " + widthSize);
             Log.i(TAG, "onMeasure heightMode = " + getMeasureModeString(heightMode) + ", heightSize = " + heightSize);
         }
@@ -233,14 +238,14 @@ public class TableView extends View
     @Override
     public void onDraw(Canvas canvas) {
         canvas.getClipBounds(clipBounds);
-        if(DEBUG) {
+        if (DEBUG) {
             Log.i(TAG, "onDraw");
             Log.i(TAG, "onDraw clipbounds: " + clipBounds.toShortString());
         }
 
         super.onDraw(canvas);
 
-        if(mSheetData == null || mSheetData.isEmpty()) {
+        if (mSheetData == null || mSheetData.isEmpty()) {
             return;
         }
         Range drawRange = getRangeFromRect(clipBounds);
@@ -251,10 +256,10 @@ public class TableView extends View
         if (configure.isShowHeaders()) {
             drawHeaders(canvas, drawRange);
         }
-        if(configure.isShowFreezeLines()) {
+        if (configure.isShowFreezeLines()) {
             drawFreezeLines(canvas);
         }
-        if(configure.isEnableSelection()) {
+        if (configure.isEnableSelection()) {
             drawSelection(canvas);
         }
     }
@@ -270,7 +275,7 @@ public class TableView extends View
         float y = event.getY();
         if ((action & MotionEvent.ACTION_MASK) == MotionEvent.ACTION_DOWN) {
             mHitArea = hitTest((int) x, (int) y);
-            if(DEBUG) {
+            if (DEBUG) {
                 Log.i(TAG, "hitTest=" + mHitArea + ", row=" + mCurRowIndex + ", col=" + mCurColIndex);
             }
         }
@@ -293,7 +298,7 @@ public class TableView extends View
             mInSelected = true;
         }
 
-        if(configure.isEnableZoom()) {
+        if (configure.isEnableZoom()) {
             mScaleGestureDetector.onTouchEvent(event);
         }
 
@@ -315,7 +320,7 @@ public class TableView extends View
             case MotionEvent.ACTION_POINTER_DOWN:
                 break;
             case MotionEvent.ACTION_MOVE:
-                if(configure.isEnableSelection()) {
+                if (configure.isEnableSelection()) {
                     if (mInSelected) {
                         selectRange(event);
                     }
@@ -427,11 +432,11 @@ public class TableView extends View
     @Override
     public void computeScroll() {
         if (mScroller != null) {
-            if(DEBUG) {
+            if (DEBUG) {
                 Log.d(TAG, "computeScroll ");
             }
             if (mScroller.computeScrollOffset()) {
-                if(DEBUG) {
+                if (DEBUG) {
                     Log.d(TAG, "computeScroll computeScrollOffset ");
                 }
                 int x = mScroller.getCurrX();
@@ -526,7 +531,7 @@ public class TableView extends View
                 top += getRowHeight(i);
                 bottom = top;
             }
-            if(!configure.isShowFreezeLines()) {
+            if (!configure.isShowFreezeLines()) {
                 canvas.drawLine(left, top, right, bottom, gridlinePaint);
             }
             freezeY = top;
@@ -550,7 +555,7 @@ public class TableView extends View
                 left += getColumnWidth(j);
                 right = left;
             }
-            if(!configure.isShowFreezeLines()) {
+            if (!configure.isShowFreezeLines()) {
                 canvas.drawLine(left, top, right, bottom, gridlinePaint);
             }
             freezeX = left;
@@ -574,7 +579,7 @@ public class TableView extends View
             int maxRowCount = mSheetData.getMaxRowCount();
             if (rowIndex >= maxRowCount) {
                 //Draw last line
-                if(rowIndex == maxRowCount) {
+                if (rowIndex == maxRowCount) {
 //                    top -= 1;
                     bottom = top;
                     canvas.drawLine(left, top, right, bottom, gridlinePaint);
@@ -617,7 +622,7 @@ public class TableView extends View
             int maxColCount = mSheetData.getMaxColumnCount();
             if (colIndex >= maxColCount) {
                 //Draw last line
-                if(colIndex == maxColCount) {
+                if (colIndex == maxColCount) {
 //                    left -= 1;
                     right = left;
                     canvas.drawLine(left, top, right, bottom, gridlinePaint);
@@ -689,7 +694,7 @@ public class TableView extends View
                     headerRect.set(left, 0, left + getColumnWidth(j), mHeaderHeight);
 
 //                    String str = "abcdefqwertyuio";
-                    String str = title.getLstMicSpecOrganism().get(j).getABBREVIATION();
+                    String str = arrHeaderCols.get(j).getABBREVIATION();
 //                    String str = ExcelUtils.columnToString(j);
 //                    String arrOrganisms =
                     drawHeader(canvas, str, headerRect, headerPaint);
@@ -728,7 +733,7 @@ public class TableView extends View
             if (rowIndex >= drawRange.getTop() && rowIndex <= drawRange.getBottom()) {
                 headerRect.set(0, top, mHeaderWidth, top + getRowHeight(rowIndex));
 //                drawHeader(canvas, Integer.toString(rowIndex + 1), headerRect, headerPaint);
-                drawHeader(canvas,title.getLstMicSpecAntibiotics().get(rowIndex).getABBREVIATION(),headerRect,headerPaint);
+                drawHeader(canvas, arrHeaderRows.get(rowIndex).getABBREVIATION(), headerRect, headerPaint);
             }
 
             bottom += getRowHeight(rowIndex);
@@ -767,7 +772,7 @@ public class TableView extends View
                 headerRect.set(left, 0, left + getColumnWidth(colIndex), mHeaderHeight);
 //                String str = ExcelUtils.columnToString(colIndex);
 //                String str = "abcdefqwertyuio";
-                String str = title.getLstMicSpecOrganism().get(colIndex).getABBREVIATION();
+                String str = arrHeaderCols.get(colIndex).getABBREVIATION();
                 drawHeader(canvas, str, headerRect, headerPaint);
             }
 
@@ -1204,7 +1209,7 @@ public class TableView extends View
     }
 
     public void smoothScrollTo(int x, int y) {
-        if(mCanScroll) {
+        if (mCanScroll) {
             int dx = getTableScrollX() - x;
             int dy = getTableScrollY() - y;
             mLastFlingX = 0;
@@ -1230,7 +1235,7 @@ public class TableView extends View
         try {
             scrollX(distanceX);
             scrollY(distanceY);
-            if(scrollListener != null) {
+            if (scrollListener != null) {
                 scrollListener.onScroll();
             }
             invalidate();
@@ -1250,7 +1255,7 @@ public class TableView extends View
 
 
     private void scrollX(float distanceX) {
-        if(getTableWidth() <= getWidth()) {
+        if (getTableWidth() <= getWidth()) {
             return;
         }
 
@@ -1262,7 +1267,7 @@ public class TableView extends View
             int lastColPositionX = getColumnPositionX(lastVisibleColId);
             int lastColWidth = getColumnWidth(lastVisibleColId);
             int lastColRemainW = lastColPositionX + lastColWidth - getWidth();
-            if(DEBUG) {
+            if (DEBUG) {
                 Log.i(TAG, "mFirstVisibleCol = " + mFirstVisibleCol + ", lastVisibleColId = " + lastVisibleColId + ", lastColPositionX = " + lastColPositionX + ", lastColRemainW = " + lastColRemainW);
             }
 
@@ -1274,8 +1279,8 @@ public class TableView extends View
                 if (dx < scrollDelta) {
                     break;
                 }
-                if( i != maxColCount - 1) {
-                    scrollDelta += getColumnWidth(i+1);
+                if (i != maxColCount - 1) {
+                    scrollDelta += getColumnWidth(i + 1);
                 }
             }
             if (i == maxColCount) {
@@ -1297,8 +1302,8 @@ public class TableView extends View
             //TODO: where to reset it?
             mLastVisibleCol = -1;
         } else {
-            mScrollX +=dx;
-            if(mScrollX < 0) {
+            mScrollX += dx;
+            if (mScrollX < 0) {
                 mScrollX = 0;
             }
             //Scroll left
@@ -1327,7 +1332,7 @@ public class TableView extends View
     }
 
     private void scrollY(float distanceY) {
-        if(getTableHeight() <= getHeight()) {
+        if (getTableHeight() <= getHeight()) {
             return;
         }
 
@@ -1348,7 +1353,7 @@ public class TableView extends View
                 if (dy < scrollDelta) {
                     break;
                 }
-                if(i != maxRowCount - 1) {
+                if (i != maxRowCount - 1) {
                     scrollDelta += getRowHeight(i);
                 }
             }
@@ -1374,7 +1379,7 @@ public class TableView extends View
             mLastVisibleRow = -1;
         } else {
             mScrollY += dy;
-            if(mScrollY < 0) {
+            if (mScrollY < 0) {
                 mScrollY = 0;
             }
             //Scroll down
@@ -1405,24 +1410,24 @@ public class TableView extends View
     @Override
     public boolean canScrollVertically(int direction) {
         boolean ret = true;
-        if(direction < 0) {
-            if(mRowScrollY == 0 &&
+        if (direction < 0) {
+            if (mRowScrollY == 0 &&
                     mFirstVisibleRow == mSheetData.getFirstVisibleRow()) {
                 ret = false;
             }
         } else {
             int lastVisibleRowId = findLastVisibleRow();
-            if(lastVisibleRowId == mSheetData.getMaxRowCount() - 1) {
+            if (lastVisibleRowId == mSheetData.getMaxRowCount() - 1) {
                 int lastRowPositionY = getRowPositionY(lastVisibleRowId);
                 int lastRowHeight = getRowHeight(lastVisibleRowId);
                 int lastRowRemainHeight = lastRowPositionY + lastRowHeight - getHeight();
-                if(lastRowRemainHeight <= 0) {
+                if (lastRowRemainHeight <= 0) {
                     ret = false;
                 }
             }
         }
 
-        if(DEBUG) {
+        if (DEBUG) {
             Log.d(TAG, "canScrollVertically direction=" + direction + ", ret = " + ret);
         }
         return ret;
@@ -1432,24 +1437,24 @@ public class TableView extends View
     public boolean canScrollHorizontally(int direction) {
 
         boolean ret = true;
-        if(direction < 0) {
-            if(mColumnScrollX == 0 &&
+        if (direction < 0) {
+            if (mColumnScrollX == 0 &&
                     mFirstVisibleCol == mSheetData.getFirstVisibleColumn()) {
                 ret = false;
             }
         } else {
             int lastVisibleColId = findLastVisibleColumn();
-            if(lastVisibleColId == mSheetData.getMaxColumnCount() - 1) {
+            if (lastVisibleColId == mSheetData.getMaxColumnCount() - 1) {
                 int lastColPositionX = getColumnPositionX(lastVisibleColId);
                 int lastColWidth = getColumnWidth(lastVisibleColId);
                 int lastColRemainW = lastColPositionX + lastColWidth - getWidth();
-                if(lastColRemainW <= 0) {
+                if (lastColRemainW <= 0) {
                     ret = false;
                 }
             }
         }
 
-        if(DEBUG) {
+        if (DEBUG) {
             Log.d(TAG, "canScrollHorizontally direction=" + direction + ", ret = " + ret);
         }
 
@@ -1481,7 +1486,7 @@ public class TableView extends View
 
     @Override
     public boolean onSingleTapConfirmed(MotionEvent e) {
-        if(DEBUG) {
+        if (DEBUG) {
             Log.i(TAG, "onSingleTapConfirmed. mCurRowIndex=" + mCurRowIndex + ", mCurColIndex=" + mCurColIndex);
         }
 
@@ -1494,27 +1499,27 @@ public class TableView extends View
 
     private void actionOnCell(MotionEvent event, int rowId, int colId) {
         ICellData cellData = mSheetData.getCellData(rowId, colId);
-        if(cellData == null) {
+        if (cellData == null) {
             return;
         }
 
-        if(actionOnCellObject(event, rowId, colId)) {
+        if (actionOnCellObject(event, rowId, colId)) {
             return;
         }
 
-        if(actionOnCellText(event, rowId, colId)) {
+        if (actionOnCellText(event, rowId, colId)) {
             return;
         }
 
         Action action = cellData.getAction();
-        if(action != null) {
+        if (action != null) {
             action.onAction(cellData);
         }
     }
 
     private boolean actionOnCellText(MotionEvent event, int rowId, int colId) {
         ICellData cellData = mSheetData.getCellData(rowId, colId);
-        if(cellData == null) {
+        if (cellData == null) {
             return false;
         }
 
@@ -1582,7 +1587,7 @@ public class TableView extends View
 
     private boolean actionOnCellObject(MotionEvent event, int rowId, int colId) {
         ICellData cell = mSheetData.getCellData(rowId, colId);
-        if(cell == null) {
+        if (cell == null) {
             return false;
         }
         int cellWidth = getCellWidth(rowId, colId, true);
@@ -1591,16 +1596,16 @@ public class TableView extends View
         int yInCell = (int) event.getY() - getRowPositionY(rowId);
 
         int count = cell.getObjectCount();
-        for(int i = count - 1; i >= 0; i--) {
+        for (int i = count - 1; i >= 0; i--) {
             CellObject dObject = cell.getObject(i);
 
             Point point = CellObject.getPositionInRect(dObject, cellWidth, cellHeight);
             int left = point.x;
             int top = point.y;
 
-            Rect rect = new Rect(left, top, left+dObject.getWidth(), top + dObject.getHeight());
-            if(rect.contains(xInCell, yInCell)) {
-                if(dObject.onClick()) {
+            Rect rect = new Rect(left, top, left + dObject.getWidth(), top + dObject.getHeight());
+            if (rect.contains(xInCell, yInCell)) {
+                if (dObject.onClick()) {
                     return true;
                 }
             }
@@ -1615,7 +1620,7 @@ public class TableView extends View
     }
 
     public void setZoom(float zoom) {
-        if(!configure.isEnableZoom()) {
+        if (!configure.isEnableZoom()) {
             return;
         }
 
@@ -1670,7 +1675,7 @@ public class TableView extends View
 
         float zoom = 100;
         if (rowHeights > 0) {
-            rowHeights =  mUnitsConverter.getOriginValue(rowHeights + mHeaderHeight);
+            rowHeights = mUnitsConverter.getOriginValue(rowHeights + mHeaderHeight);
             zoom = viewHeight * 100.0f / rowHeights;
         }
         return zoom;
@@ -2026,7 +2031,7 @@ public class TableView extends View
                 if (posY <= top) {
                     mCurRowIndex = i;
                     if ((top - posY) <= ConstVar.RESIZE_AREA) {
-                        if(configure.isEnableResizeRow()) {
+                        if (configure.isEnableResizeRow()) {
                             return ConstVar.HIT_ROWHEADER_RESIZE;
                         } else {
                             return ConstVar.HIT_ROWHEADER;
@@ -2056,7 +2061,7 @@ public class TableView extends View
             if (posY <= top) {
                 mCurRowIndex = rowIndex;
                 if ((top - posY) <= ConstVar.RESIZE_AREA) {
-                    if(configure.isEnableResizeRow()) {
+                    if (configure.isEnableResizeRow()) {
                         return ConstVar.HIT_ROWHEADER_RESIZE;
                     } else {
                         return ConstVar.HIT_ROWHEADER;
@@ -2086,7 +2091,7 @@ public class TableView extends View
                 if (posX <= left) {
                     mCurColIndex = i;
                     if ((left - posX) <= ConstVar.RESIZE_AREA) {
-                        if(configure.isEnableResizeColumn()) {
+                        if (configure.isEnableResizeColumn()) {
                             return ConstVar.HIT_COLUMNHEADER_RESIZE;
                         } else {
                             return ConstVar.HIT_COLUMNHEADER;
@@ -2116,7 +2121,7 @@ public class TableView extends View
             if (posX <= left) {
                 mCurColIndex = colIndex;
                 if ((left - posX) <= ConstVar.RESIZE_AREA) {
-                    if(configure.isEnableResizeColumn()) {
+                    if (configure.isEnableResizeColumn()) {
                         return ConstVar.HIT_COLUMNHEADER_RESIZE;
                     } else {
                         return ConstVar.HIT_COLUMNHEADER;
@@ -2135,7 +2140,7 @@ public class TableView extends View
     private int hitTestTable(int x, int y) {
         hitTestColumnHeader(x);
         hitTestRowHeader(y);
-        if(configure.isEnableSelection()) {
+        if (configure.isEnableSelection()) {
             if (mSelection != null && mSelection.isInRange(mCurRowIndex, mCurColIndex)) {
                 return ConstVar.HIT_SELECTION;
             }
@@ -2281,7 +2286,7 @@ public class TableView extends View
     }
 
     public void setConfigure(TableViewConfigure tableViewConfigure) {
-        if(tableViewConfigure != null) {
+        if (tableViewConfigure != null) {
             configure = tableViewConfigure;
             calcZoomedValues();
         }
@@ -2381,7 +2386,7 @@ public class TableView extends View
         int left = findColumnByPosition(rect.left);
         int right = findColumnByPosition(rect.right);
         Range range = new Range(left, top, right, bottom);
-        if(DEBUG) {
+        if (DEBUG) {
             Log.i(TAG, "getRangeFromRect: " + range.toString());
         }
         return range;
@@ -2507,7 +2512,7 @@ public class TableView extends View
         }
 
         int rowHeight = 0;
-        if(!mSheetData.isRowHidden(rowIndex)) {
+        if (!mSheetData.isRowHidden(rowIndex)) {
             rowHeight = mCacheRowHeights[rowIndex];
         }
         return rowHeight;
@@ -2523,14 +2528,14 @@ public class TableView extends View
         }
 
         int colWidth = 0;
-        if(!mSheetData.isColumnHidden(colIndex)) {
+        if (!mSheetData.isColumnHidden(colIndex)) {
             colWidth = mCacheColumnWidths[colIndex];
         }
         return colWidth;
     }
 
     private int getTableHeight() {
-        if(mCacheTableHeight == -1) {
+        if (mCacheTableHeight == -1) {
             int height = 0;
             for (int i = 0; i < mSheetData.getMaxRowCount(); i++) {
                 height += getRowHeight(i);
@@ -2541,7 +2546,7 @@ public class TableView extends View
     }
 
     private int getTableWidth() {
-        if(mCacheTableWidth == -1) {
+        if (mCacheTableWidth == -1) {
             int width = 0;
             for (int i = 0; i < mSheetData.getMaxColumnCount(); i++) {
                 width += getColumnWidth(i);
