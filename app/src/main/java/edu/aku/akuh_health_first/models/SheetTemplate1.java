@@ -3,6 +3,7 @@ package edu.aku.akuh_health_first.models;
 
 import android.content.Context;
 
+import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -21,16 +22,21 @@ import edu.aku.akuh_health_first.libraries.table.model.style.TableConst;
 public class SheetTemplate1 {
 
     public static ISheetData get(final Context context, LstMicSpecParaResult lstMicSpecParaResult) {
+
+//    public static ISheetData get(final Context context, int rowCount, int colCount) {
         DefaultSheetData sheet = new DefaultSheetData(context);
+//        int rowCount = treesetList.size();
+
 
         Set<LstMicSpecAntibiotic> treesetList = new HashSet<>(lstMicSpecParaResult.getLstMicSpecAntibiotics());
-        int rowCount = 10;
-        int colCount = 5;
-
-//        int rowCount = treesetList.size();
+        ArrayList<LstMicSpecAntibiotic> anti = new ArrayList<LstMicSpecAntibiotic>(treesetList);
+        int rowCount = anti.size();
+        int colCount = lstMicSpecParaResult.getLstMicSpecOrganism().size();
+        sheet.setMaxRowCount(rowCount);
+        sheet.setMaxColumnCount(colCount);
 //        int colCount = lstMicSpecParaResult.getLstMicSpecOrganism().size();
 
-        sheet.setMaxColumnCount(lstMicSpecParaResult.getLstMicSpecOrganism().size());
+//        sheet.setMaxColumnCount(lstMicSpecParaResult.getLstMicSpecOrganism().size());
 //        sheet.setFreezedRowCount(1);
 
 
@@ -43,63 +49,52 @@ public class SheetTemplate1 {
         blackFontColor.setColor(context.getResources().getColor(R.color.c_black));
         int blackFontIndex = sheet.getFontManager().addFont(blackFontColor);
 
-
-//        CellStyle firstRowStyle = new CellStyle();
-//        firstRowStyle.setBgColor(0xffff8c5d);// cell color selected
-//        firstRowStyle.setAlignment(TableConst.ALIGNMENT_CENTER);
-//        firstRowStyle.setVerticalAlignment(TableConst.VERTICAL_ALIGNMENT_CENTRE);
-//
-//        Font firstRowFont = Font.createDefault(context);
-//        firstRowFont.setColor(0xfffbe8d4); // text color of row 2
-//        int frIndex = sheet.getFontManager().addFont(firstRowFont);
-//        firstRowStyle.setFontIndex(frIndex);
-//        int frStyleIndex = sheet.getCellStyleManager().addCellStyle(firstRowStyle);
-//
         CellStyle cellStyle = new CellStyle();
-        cellStyle.setBgColor(0xffffffff); // odd cells color
+        cellStyle.setBgColor(context.getResources().getColor(R.color.c_white)); // odd cells color
         cellStyle.setAlignment(TableConst.ALIGNMENT_CENTER);
         cellStyle.setVerticalAlignment(TableConst.VERTICAL_ALIGNMENT_CENTRE);
         cellStyle.setFontIndex(blackFontIndex);
         int whiteStyle = sheet.getCellStyleManager().addCellStyle(cellStyle);
 
         CellStyle cellStyle1 = new CellStyle();
-        cellStyle1.setBgColor(0xffff8c5d); // odd cells color
+        cellStyle1.setBgColor(context.getResources().getColor(R.color.blue_sensitive)); // odd cells color
         cellStyle1.setAlignment(TableConst.ALIGNMENT_CENTER);
         cellStyle1.setVerticalAlignment(TableConst.VERTICAL_ALIGNMENT_CENTRE);
         cellStyle1.setFontIndex(whiteFontIndex);
-
-        int amberStyle = sheet.getCellStyleManager().addCellStyle(cellStyle1);
+        int blueStyle = sheet.getCellStyleManager().addCellStyle(cellStyle1);
 
         CellStyle cellStyle2 = new CellStyle();
-        cellStyle2.setBgColor(0xff0f8c4d); // odd cells color
+        cellStyle2.setBgColor(context.getResources().getColor(R.color.green_intermediate)); // odd cells color
         cellStyle2.setAlignment(TableConst.ALIGNMENT_CENTER);
         cellStyle2.setVerticalAlignment(TableConst.VERTICAL_ALIGNMENT_CENTRE);
         cellStyle2.setFontIndex(whiteFontIndex);
         int greenStyle = sheet.getCellStyleManager().addCellStyle(cellStyle2);
+
+        CellStyle cellStyle3 = new CellStyle();
+        cellStyle3.setBgColor(context.getResources().getColor(R.color.red_resistant)); // odd cells color
+        cellStyle3.setAlignment(TableConst.ALIGNMENT_CENTER);
+        cellStyle3.setVerticalAlignment(TableConst.VERTICAL_ALIGNMENT_CENTRE);
+        cellStyle3.setFontIndex(whiteFontIndex);
+        int redStyle = sheet.getCellStyleManager().addCellStyle(cellStyle3);
 
 
         for (int i = 0; i < rowCount; i++) {
             for (int j = 0; j < colCount; j++) {
                 DefaultCellData cell = new DefaultCellData(sheet);
                 RichText richText = new RichText();
-//                if (i == 1 && j == 3 || i == 2 && j == 2 || i == 8 && j == 1
-//                        || i == 1 && j == 0
-//                        || i == 3 && j == 0
-//                        || i == 5 && j == 0
-//                        || i == 0 && j == 1 || i == 9 && j == 3) {
-                    cell.setStyleIndex(greenStyle);
-                    richText.setText("hey-" + i + "-" + j);
 
-//
-//                } else if (i == 4 && j == 4 || i == 2 && j == 6 || i == 2 && j == 1
-//                        || i == 4 && j == 1 || i == 6 && j == 1
-//                        || i == 5 && j == 8 || i == 1 && j == 0 || i == 0 && j == 1) {
-//                    cell.setStyleIndex(amberStyle);
-//                    richText.setText("hell000000o-" + i + "-" + j);
-//                } else {
-//                    cell.setStyleIndex(whiteStyle);
-//                    richText.setText("-");
-//                }
+                richText.setText(lstMicSpecParaResult.getLstMicSpecAntibiotics().get(j).getREACTION() + i + "-" + j);
+
+                if (lstMicSpecParaResult.getLstMicSpecAntibiotics().get(j).getREACTION().contains("Resistant")) {
+                    cell.setStyleIndex(redStyle);
+
+                } else if (lstMicSpecParaResult.getLstMicSpecAntibiotics().get(j).getREACTION().contains("Intermediate")) {
+                    cell.setStyleIndex(greenStyle);
+                } else if (lstMicSpecParaResult.getLstMicSpecAntibiotics().get(j).getREACTION().contains("Sensitive")) {
+                    cell.setStyleIndex(blueStyle);
+                } else {
+                    cell.setStyleIndex(whiteStyle);
+                }
                 cell.setCellValue(richText);
                 sheet.setCellData(cell, i, j);
             }

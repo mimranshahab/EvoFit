@@ -23,6 +23,9 @@
     <!--<color name="medication_light_red">#E74C3C</color>-->
     <!--<color name="base_gray">#72777A</color>-->
     <color name="base_gray">#BDBDBD</color>
+    <color name="red_resistant">#FFA28C</color>
+    <color name="blue_sensitive">#94CFEF</color>
+    <color name="green_intermediate">#7BDFDE</color>
 
 
 
