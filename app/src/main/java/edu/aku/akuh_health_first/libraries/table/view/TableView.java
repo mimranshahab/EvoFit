@@ -23,6 +23,9 @@ import android.widget.Scroller;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.Set;
 
 import edu.aku.akuh_health_first.libraries.table.model.CellPosition;
 import edu.aku.akuh_health_first.libraries.table.model.ICellData;
@@ -38,6 +41,7 @@ import edu.aku.akuh_health_first.libraries.table.util.DrawableStateWrapper;
 import edu.aku.akuh_health_first.libraries.table.util.ExcelUtils;
 import edu.aku.akuh_health_first.libraries.table.util.TableViewConfigure;
 import edu.aku.akuh_health_first.libraries.table.util.UnitsConverter;
+import edu.aku.akuh_health_first.models.LstMicSpecAntibiotic;
 import edu.aku.akuh_health_first.models.LstMicSpecParaResult;
 
 public class TableView extends View
@@ -728,7 +732,14 @@ public class TableView extends View
             if (rowIndex >= drawRange.getTop() && rowIndex <= drawRange.getBottom()) {
                 headerRect.set(0, top, mHeaderWidth, top + getRowHeight(rowIndex));
 //                drawHeader(canvas, Integer.toString(rowIndex + 1), headerRect, headerPaint);
-                drawHeader(canvas,title.getLstMicSpecAntibiotics().get(rowIndex).getABBREVIATION(),headerRect,headerPaint);
+
+
+                Set<LstMicSpecAntibiotic> treesetList = new HashSet<>(title.getLstMicSpecAntibiotics());
+                ArrayList<LstMicSpecAntibiotic> anti = new ArrayList<LstMicSpecAntibiotic>(treesetList);
+
+
+
+                drawHeader(canvas,anti.get(rowIndex).getABBREVIATION(),headerRect,headerPaint);
             }
 
             bottom += getRowHeight(rowIndex);

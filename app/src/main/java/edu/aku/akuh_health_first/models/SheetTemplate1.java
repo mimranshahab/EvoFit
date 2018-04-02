@@ -30,14 +30,13 @@ public class SheetTemplate1 {
 
         Set<LstMicSpecAntibiotic> treesetList = new HashSet<>(lstMicSpecParaResult.getLstMicSpecAntibiotics());
         ArrayList<LstMicSpecAntibiotic> anti = new ArrayList<LstMicSpecAntibiotic>(treesetList);
+
+
         int rowCount = anti.size();
         int colCount = lstMicSpecParaResult.getLstMicSpecOrganism().size();
         sheet.setMaxRowCount(rowCount);
         sheet.setMaxColumnCount(colCount);
-//        int colCount = lstMicSpecParaResult.getLstMicSpecOrganism().size();
 
-//        sheet.setMaxColumnCount(lstMicSpecParaResult.getLstMicSpecOrganism().size());
-//        sheet.setFreezedRowCount(1);
 
 
         Font whiteFontColor = Font.createDefault(context);
