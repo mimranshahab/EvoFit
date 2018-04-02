@@ -3,7 +3,10 @@ package edu.aku.akuh_health_first.models;
 
 import android.content.Context;
 
+import com.google.common.collect.ImmutableSet;
+
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -21,22 +24,26 @@ import edu.aku.akuh_health_first.libraries.table.model.style.TableConst;
 
 public class SheetTemplate1 {
 
-    public static ISheetData get(final Context context, LstMicSpecParaResult lstMicSpecParaResult) {
+    //    public static ISheetData get(final Context context, LstMicSpecParaResult lstMicSpecParaResult) {
 
-//    public static ISheetData get(final Context context, int rowCount, int colCount) {
+
+    public static ISheetData get(final Context context, String[][] string2DArray) {
         DefaultSheetData sheet = new DefaultSheetData(context);
-//        int rowCount = treesetList.size();
 
-
-        Set<LstMicSpecAntibiotic> treesetList = new HashSet<>(lstMicSpecParaResult.getLstMicSpecAntibiotics());
-        ArrayList<LstMicSpecAntibiotic> anti = new ArrayList<LstMicSpecAntibiotic>(treesetList);
-
-
-        int rowCount = anti.size();
-        int colCount = lstMicSpecParaResult.getLstMicSpecOrganism().size();
+        int rowCount;
+        int colCount;
+        if (string2DArray[0] == null) {
+            rowCount = 0;
+            colCount = 0;
+        } else {
+            rowCount = string2DArray[0].length;
+            colCount = string2DArray.length;
+        }
         sheet.setMaxRowCount(rowCount);
         sheet.setMaxColumnCount(colCount);
 
+//        sheet.setMaxColumnCount(lstMicSpecParaResult.getLstMicSpecOrganism().size());
+//        sheet.setFreezedRowCount(1);
 
 
         Font whiteFontColor = Font.createDefault(context);
@@ -82,18 +89,18 @@ public class SheetTemplate1 {
                 DefaultCellData cell = new DefaultCellData(sheet);
                 RichText richText = new RichText();
 
-                richText.setText(lstMicSpecParaResult.getLstMicSpecAntibiotics().get(j).getREACTION() + i + "-" + j);
-
-                if (lstMicSpecParaResult.getLstMicSpecAntibiotics().get(j).getREACTION().contains("Resistant")) {
-                    cell.setStyleIndex(redStyle);
-
-                } else if (lstMicSpecParaResult.getLstMicSpecAntibiotics().get(j).getREACTION().contains("Intermediate")) {
-                    cell.setStyleIndex(greenStyle);
-                } else if (lstMicSpecParaResult.getLstMicSpecAntibiotics().get(j).getREACTION().contains("Sensitive")) {
-                    cell.setStyleIndex(blueStyle);
-                } else {
-                    cell.setStyleIndex(whiteStyle);
-                }
+//                richText.setText(lstMicSpecParaResult.getLstMicSpecAntibiotics().get(j).getREACTION() + i + "-" + j);
+//
+//                if (lstMicSpecParaResult.getLstMicSpecAntibiotics().get(j).getREACTION().contains("Resistant")) {
+//                    cell.setStyleIndex(redStyle);
+//
+//                } else if (lstMicSpecParaResult.getLstMicSpecAntibiotics().get(j).getREACTION().contains("Intermediate")) {
+//                    cell.setStyleIndex(greenStyle);
+//                } else if (lstMicSpecParaResult.getLstMicSpecAntibiotics().get(j).getREACTION().contains("Sensitive")) {
+//                    cell.setStyleIndex(blueStyle);
+//                } else {
+//                    cell.setStyleIndex(whiteStyle);
+//                }
                 cell.setCellValue(richText);
                 sheet.setCellData(cell, i, j);
             }

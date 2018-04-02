@@ -1,5 +1,7 @@
 package edu.aku.akuh_health_first.models;
 
+import android.support.annotation.NonNull;
+
 import java.io.Serializable;
 
 import com.google.gson.annotations.Expose;
@@ -231,11 +233,6 @@ public class LstMicSpecAntibiotic implements Serializable {
 
     @Override
     public String toString() {
-        return getABBREVIATION();
-    }
-
-    @Override
-    public boolean equals(Object obj) {
-        return getABBREVIATION().equals(obj.toString());
+        return this.getABBREVIATION();
     }
 }

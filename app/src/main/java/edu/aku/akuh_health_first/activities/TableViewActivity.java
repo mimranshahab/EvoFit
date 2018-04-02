@@ -4,6 +4,8 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 
+import java.util.ArrayList;
+
 import edu.aku.akuh_health_first.R;
 import edu.aku.akuh_health_first.constatnts.AppConstants;
 import edu.aku.akuh_health_first.libraries.table.model.BaseCellData;
@@ -12,13 +14,13 @@ import edu.aku.akuh_health_first.libraries.table.model.ISheetData;
 import edu.aku.akuh_health_first.libraries.table.util.TableViewConfigure;
 import edu.aku.akuh_health_first.libraries.table.view.TableView;
 import edu.aku.akuh_health_first.managers.SharedPreferenceManager;
+import edu.aku.akuh_health_first.models.LstMicSpecAntibiotic;
 import edu.aku.akuh_health_first.models.LstMicSpecParaResult;
 import edu.aku.akuh_health_first.models.SheetTemplate1;
 
 
 public class TableViewActivity extends AppCompatActivity {
     TableView mTableView;
-
 
 
     @Override
@@ -48,8 +50,27 @@ public class TableViewActivity extends AppCompatActivity {
         });
 
 
-        ISheetData sheet = SheetTemplate1.get(this, lstMicSpecParaResult);
-//        ISheetData sheet = SheetTemplate1.get(this, rowCount, colCount);
+        ArrayList<LstMicSpecAntibiotic> anti = new ArrayList<>();
+        for (LstMicSpecAntibiotic lstMicSpecAntibiotic : lstMicSpecParaResult.getLstMicSpecAntibiotics()) {
+            if (anti.isEmpty()) {
+                anti.add(lstMicSpecAntibiotic);
+            } else {
+                boolean toAddItem = true;
+                for (LstMicSpecAntibiotic micSpecAntibiotic : anti) {
+                    if (micSpecAntibiotic.getABBREVIATION().equals(lstMicSpecAntibiotic.getABBREVIATION())) {
+                        toAddItem = false;
+                    }
+                }
+                if (toAddItem) {
+                    anti.add(lstMicSpecAntibiotic);
+                }
+            }
+        }
+
+        String[][] table = new String[5][10];
+
+
+        ISheetData sheet = SheetTemplate1.get(this, table);
         mTableView.setSheetData(sheet);
         TableViewConfigure configure = new TableViewConfigure();
         configure.setShowHeaders(true);
@@ -58,7 +79,7 @@ public class TableViewActivity extends AppCompatActivity {
         configure.setEnableSelection(false);
         mTableView.setConfigure(configure);
 
-        mTableView.setString(lstMicSpecParaResult);
+        mTableView.setData(lstMicSpecParaResult.getLstMicSpecOrganism(), anti);
     }
 
     private void calcRowHeight(DefaultSheetData sheet) {
