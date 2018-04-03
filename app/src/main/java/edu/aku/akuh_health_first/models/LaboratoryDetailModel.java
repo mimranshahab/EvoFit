@@ -10,7 +10,17 @@ import java.util.List;
 public class LaboratoryDetailModel
 
         implements Serializable, IsRecordFound {
+    public String getOrdered() {
+        return ordered;
+    }
 
+    public void setOrdered(String ordered) {
+        this.ordered = ordered;
+    }
+
+    @SerializedName("Ordered")
+    @Expose
+    private String ordered;
     @Expose
     @SerializedName("RecordMessage")
     private String recordmessage;

@@ -64,6 +64,7 @@ public class ClinicalLaboratoryFragment extends BaseFragment implements View.OnC
     private ClinicalLabAdapterV1 clinicalLabAdapterV1;
     boolean isFromTimeline;
     int patientVisitAdmissionID;
+    private String testname;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -180,6 +181,8 @@ public class ClinicalLaboratoryFragment extends BaseFragment implements View.OnC
         if (object instanceof LaboratoryModel) {
             LaboratoryModel model = (LaboratoryModel) object;
             labDetailService(model.getSpecimenNumber());
+
+            testname = (model.getOrdered());
         }
 
     }
@@ -233,7 +236,7 @@ public class ClinicalLaboratoryFragment extends BaseFragment implements View.OnC
 
     private void labDetailService(String specimenNumber) {
         SearchModel searchModel = new SearchModel();
- //        searchModel.setRecordID("56070141"); // MIC
+        //        searchModel.setRecordID("56070141"); // MIC
 //        searchModel.setRecordID("57380695"); // Report
         searchModel.setRecordID(specimenNumber); // Original Data
         searchModel.setVisitID(null);
@@ -248,7 +251,7 @@ public class ClinicalLaboratoryFragment extends BaseFragment implements View.OnC
                             @Override
                             public void requestDataResponse(WebResponse<JsonObject> webResponse) {
                                 LaboratoryDetailModel laboratoryDetailModel = GsonFactory.getSimpleGson().fromJson(webResponse.result, LaboratoryDetailModel.class);
-
+                                laboratoryDetailModel.setOrdered(testname);
                                 if (laboratoryDetailModel.getIsExternalReport()) {
                                     WebResponse<String> webResponse1 = new WebResponse<String>();
                                     if (laboratoryDetailModel.getExternalFile() == null || laboratoryDetailModel.getExternalFile().isEmpty()) {

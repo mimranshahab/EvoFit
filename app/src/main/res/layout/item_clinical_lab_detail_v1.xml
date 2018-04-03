@@ -68,7 +68,7 @@
                         android:ellipsize="end"
                         android:gravity="center_vertical"
                         android:paddingLeft="@dimen/x4dp"
-                        android:text="Normal rangea"
+                        android:text="Normal range"
                         android:textSize="@dimen/s12"
                         app:typeface="@string/font_regular" />
                     <!--</LinearLayout>-->
@@ -86,115 +86,45 @@
                 android:layout_margin="@dimen/x5dp"
                 android:background="@color/text_color_grey" />
 
-            <edu.aku.akuh_health_first.widget.AnyTextView
-                android:id="@+id/txthistorytag"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:ellipsize="end"
-                android:gravity="center_vertical"
-                android:maxLines="1"
-                android:paddingLeft="@dimen/x10dp"
-                android:text="History:"
-                android:textSize="@dimen/s14"
-                app:typeface="@string/font_regular" />
+
 
             <LinearLayout
-                android:id="@+id/contHistoryResults"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center_vertical"
+                android:layout_gravity="end"
+                android:layout_margin="@dimen/x2dp"
                 android:orientation="horizontal">
 
-
-                <LinearLayout
+                <edu.aku.akuh_health_first.widget.AnyTextView
+                    android:id="@+id/txtComments"
                     android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:gravity="center"
-                    android:orientation="vertical"
-                    android:padding="@dimen/x10dp">
-
-                    <edu.aku.akuh_health_first.widget.AnyTextView
-                        android:id="@+id/txtResultPrevious1"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:ellipsize="end"
-                        android:gravity="center_vertical"
-                        android:maxLines="1"
-                        android:textColor="@color/text_color_grey"
-                        android:textSize="@dimen/s15"
-                        app:typeface="@string/font_regular" />
-
-                    <edu.aku.akuh_health_first.widget.AnyTextView
-                        android:id="@+id/txtResultPrevious1Date"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:ellipsize="end"
-                        android:gravity="center_vertical"
-                        android:maxLines="1"
-                        android:textColor="@color/text_color_grey"
-                        android:textSize="@dimen/s12"
-                        app:typeface="@string/font_regular" />
-                </LinearLayout>
-
-                <View
-                    android:layout_width="1dp"
                     android:layout_height="match_parent"
-                    android:alpha="0.2"
-                    android:background="@color/base_gray"
-                    android:padding="1dp" />
-
-                <LinearLayout
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:gravity="center"
+                    android:layout_margin="@dimen/x2dp"
+                    android:background="@drawable/rounded_box_filled_base_green"
+                    android:padding="@dimen/x7dp"
+                    android:text="View Comments"
 
-                    android:orientation="vertical"
-                    android:padding="@dimen/x10dp">
+                    android:textAlignment="center"
+                    android:textColor="@color/c_white"
+                    android:textSize="@dimen/s12"
+                    app:typeface="@string/font_bold" />
 
-                    <edu.aku.akuh_health_first.widget.AnyTextView
-                        android:id="@+id/txtResultPrevious2"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:ellipsize="end"
-                        android:gravity="center_vertical"
-                        android:maxLines="1"
-                        android:textColor="@color/text_color_grey"
-                        android:textSize="@dimen/s15"
-                        app:typeface="@string/font_regular" />
-
-                    <edu.aku.akuh_health_first.widget.AnyTextView
-                        android:id="@+id/txtResultPrevious2Date"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:ellipsize="end"
-                        android:gravity="center_vertical"
-                        android:maxLines="1"
-                        android:textColor="@color/text_color_grey"
-                        android:textSize="@dimen/s12"
-                        app:typeface="@string/font_regular" />
-                </LinearLayout>
-
-
+                <edu.aku.akuh_health_first.widget.AnyTextView
+                    android:id="@+id/btnHistory"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:background="@drawable/rounded_box_filled_base_green"
+                    android:layout_margin="@dimen/x2dp"
+                    android:padding="@dimen/x7dp"
+                    android:text="View History"
+                    android:visibility="gone"
+                    android:textAlignment="center"
+                    android:textColor="@color/c_white"
+                    android:textSize="@dimen/s12"
+                    app:typeface="@string/font_bold" />
             </LinearLayout>
-
-            <edu.aku.akuh_health_first.widget.AnyTextView
-                android:id="@+id/txtComments"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_marginBottom="@dimen/x5dp"
-                android:layout_marginLeft="@dimen/x30dp"
-                android:layout_marginRight="@dimen/x30dp"
-                android:layout_marginTop="@dimen/x5dp"
-                android:background="@drawable/rounded_box_filled_base_green"
-                android:gravity="center"
-                android:padding="@dimen/x10dp"
-                android:text="View Comments"
-                android:textAlignment="center"
-                android:textColor="@color/c_white"
-                android:textSize="@dimen/s12"
-                app:typeface="@string/font_bold" />
 
         </LinearLayout>
     </android.support.v7.widget.CardView>

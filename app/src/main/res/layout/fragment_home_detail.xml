@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:layout_gravity="center"
     android:background="@color/c_white"
-    android:fillViewport="true"
+    android:fillViewport="false"
     android:orientation="vertical"
     android:padding="@dimen/x5dp">
 

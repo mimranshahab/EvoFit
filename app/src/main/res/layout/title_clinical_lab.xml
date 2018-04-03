@@ -31,10 +31,20 @@
                     android:orientation="vertical"
                     android:padding="@dimen/x5dp">
 
-                    <LinearLayout
+                    <edu.aku.akuh_health_first.widget.AnyTextView
+                        android:id="@+id/txtReportName"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="vertical">
+                        android:layout_height="match_parent"
+                        android:layout_marginLeft="@dimen/x3dp"
+                        android:ellipsize="end"
+                        android:paddingLeft="@dimen/x5dp"
+                        android:text=""
+                        android:maxLines="1"
+                        android:textColor="@color/txt_aku_blue"
+                        android:textSize="@dimen/s16"
+                        app:typeface="@string/font_bold" />
+
+
 
 
                         <edu.aku.akuh_health_first.widget.AnyTextView
@@ -43,16 +53,14 @@
                             android:layout_height="match_parent"
                             android:layout_marginLeft="@dimen/x3dp"
                             android:ellipsize="end"
-                            android:hint="Specimen ID"
-                            android:padding="@dimen/x5dp"
                             android:text=""
+                            android:paddingLeft="@dimen/x5dp"
 
                             android:textColor="@color/txt_aku_blue"
                             android:textSize="@dimen/s14"
                             app:typeface="@string/font_bold" />
 
 
-                    </LinearLayout>
 
 
                     <edu.aku.akuh_health_first.widget.AnyTextView
@@ -62,36 +70,30 @@
                         android:drawableLeft="@drawable/cardiopulmonary_doctor"
                         android:drawablePadding="@dimen/x5dp"
                         android:ellipsize="end"
-                        android:hint="Physician Name"
-                        android:padding="@dimen/x5dp"
-                        android:text=""
+                        android:paddingLeft="@dimen/x5dp"
+
+                        android:text="Physician Name"
                         android:textColor="@color/txt_aku_blue"
                         android:textSize="@dimen/s12"
                         app:typeface="@string/font_regular" />
 
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:orientation="horizontal">
 
                         <edu.aku.akuh_health_first.widget.AnyTextView
                             android:id="@+id/txtLocation"
-                            android:layout_width="0dp"
+                            android:layout_width="match_parent"
                             android:layout_height="match_parent"
-                            android:layout_weight="1"
                             android:drawableLeft="@drawable/location"
                             android:drawablePadding="@dimen/x5dp"
                             android:ellipsize="end"
                             android:gravity="center_vertical"
-                            android:hint="Location"
-                            android:padding="@dimen/x5dp"
-                            android:text=""
+                            android:paddingLeft="@dimen/x5dp"
+                            android:text="Location"
                             android:textColor="@color/txt_aku_blue"
                             android:textSize="@dimen/s12"
                             app:typeface="@string/font_regular" />
 
 
-                    </LinearLayout>
+
 
                 </LinearLayout>
 
@@ -99,8 +101,8 @@
                     android:id="@+id/btnDownload"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:layout_margin="@dimen/x3dp"
+                    android:layout_gravity="top"
+                    android:layout_margin="@dimen/x5dp"
                     android:background="@drawable/rounded_box_filled_base_green"
                     android:gravity="center"
                     android:padding="@dimen/x7dp"
@@ -122,6 +124,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="horizontal"
+                android:layout_marginLeft="@dimen/x5dp"
+                android:layout_marginRight="@dimen/x5dp"
                 android:padding="@dimen/x5dp">
 
                 <LinearLayout
@@ -133,7 +137,7 @@
                     <edu.aku.akuh_health_first.widget.AnyTextView
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:text="Request Date:"
+                        android:text="Requested on"
 
                         android:textColor="@color/base_green"
                         android:textSize="@dimen/s12"
@@ -163,7 +167,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:gravity="center"
-                        android:text="Collection Date:"
+                        android:text="Collected on"
                         android:textColor="@color/base_amber"
                         android:textSize="@dimen/s12"
                         app:typeface="@string/font_bold" />
@@ -192,7 +196,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:gravity="right"
-                        android:text="Report Date:"
+                        android:text="Reported on"
                         android:textColor="@color/base_blue"
                         android:textSize="@dimen/s12"
                         app:typeface="@string/font_bold" />

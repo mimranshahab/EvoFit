@@ -48,7 +48,7 @@
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight=".7"
-                        android:drawableLeft="@drawable/cardiopulmonary_report_date_green"
+                        android:drawableLeft="@drawable/calendar_immunization"
                         android:drawablePadding="@dimen/x5dp"
                         android:gravity="center_vertical"
                         android:text="22 jan ,2018"
@@ -61,9 +61,9 @@
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="@dimen/x5dp"
                         android:layout_weight=".3"
+                        android:ellipsize="end"
                         android:gravity="center"
                         android:maxLines="2"
-                        android:ellipsize="end"
                         android:padding="@dimen/x3dp"
                         android:text="Completed"
                         android:textColor="@color/c_white"
@@ -152,12 +152,22 @@
                             android:background="@drawable/rounded_box_filled_primary_color"
                             android:gravity="center"
                             android:padding="@dimen/x7dp"
-                            app:typeface="@string/font_bold"
                             android:text="View Results"
-                            android:textColor="@color/c_white" />
+                            android:textColor="@color/c_white"
+                            app:typeface="@string/font_bold" />
 
 
                     </LinearLayout>
+
+                    <ImageView
+                        android:id="@+id/imgNext"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/x10dp"
+                        android:padding="@dimen/x5dp"
+                        android:src="@drawable/img_go"
+                        android:tint="@color/base_green"
+                        android:visibility="visible" />
                 </LinearLayout>
 
 

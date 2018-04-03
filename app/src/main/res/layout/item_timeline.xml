@@ -95,6 +95,7 @@
                         android:ellipsize="end"
                         android:maxLines="1"
                         android:padding="@dimen/x5dp"
+                        android:drawableTint="@color/txt_aku_blue"
                         android:text="Jan 22, 2018"
                         android:textColor="@color/text_color_grey"
                         android:textSize="@dimen/s13"

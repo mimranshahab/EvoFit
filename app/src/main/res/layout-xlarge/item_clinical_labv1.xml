@@ -48,7 +48,9 @@
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight=".7"
-                        android:drawableLeft="@drawable/cardiopulmonary_report_date_green"
+                        android:drawableLeft="@drawable/calendar_immunization"
+                        android:drawableTint="@color/txt_aku_blue"
+                        android:drawableTintMode="@color/txt_aku_blue"
                         android:drawablePadding="@dimen/x5dp"
                         android:gravity="center_vertical"
                         android:text="22 jan ,2018"
@@ -219,6 +221,16 @@
 
 
                     </LinearLayout>
+
+                    <ImageView
+                        android:id="@+id/imgNext"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/x10dp"
+                        android:padding="@dimen/x5dp"
+                        android:src="@drawable/img_go"
+                        android:tint="@color/base_green"
+                        android:visibility="gone" />
                 </LinearLayout>
 
 
