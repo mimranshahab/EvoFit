@@ -14,6 +14,8 @@
         android:layout_width="@dimen/x26dp"
         android:layout_height="@dimen/x26dp"
         android:layout_margin="@dimen/x5dp"
+        android:layout_marginLeft="@dimen/x3dp"
+
         android:scaleType="centerCrop"
         android:src="@drawable/user_image"
         android:visibility="visible" />
@@ -30,7 +32,7 @@
         android:padding="@dimen/x5dp"
         android:text="Dummy User"
         android:textColor="@color/c_white"
-        android:textSize="@dimen/s14"
+        android:textSize="@dimen/s16"
         app:typeface="@string/font_bold" />
 
     <edu.aku.akuh_health_first.widget.AnyTextView
@@ -39,10 +41,11 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/txtUserName"
         android:layout_gravity="center_vertical|right"
+        android:layout_marginRight="@dimen/x3dp"
         android:padding="@dimen/x5dp"
         android:text="MR number"
         android:textColor="@color/c_white"
-        android:textSize="@dimen/s14"
+        android:textSize="@dimen/s16"
         app:typeface="@string/font_bold" />
 
 

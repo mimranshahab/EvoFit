@@ -38,9 +38,9 @@
                     android:layout_height="wrap_content"
                     android:padding="@dimen/x5dp"
                     android:text="Summary Title"
-                    android:textColor="@color/base_amber"
+                    android:textColor="@color/txt_aku_blue"
                     android:textSize="@dimen/s10"
-                    app:typeface="@string/font_bold" />
+                    app:typeface="@string/font_regular" />
 
             </LinearLayout>
 
@@ -48,7 +48,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="@dimen/x2dp"
-                android:background="@drawable/rounded_box">
+                android:background="@drawable/rounded_box_gradient_gray">
 
 
                 <LinearLayout
@@ -64,8 +64,8 @@
                         android:layout_height="wrap_content"
                         android:padding="@dimen/x5dp"
                         android:text="Glucose Random"
-                        android:textColor="@color/base_reddish"
-                        android:textSize="@dimen/s10"
+                        android:textColor="@color/txt_aku_blue"
+                        android:textSize="@dimen/s12"
                         app:typeface="@string/font_bold" />
 
                     <edu.aku.akuh_health_first.widget.AnyTextView

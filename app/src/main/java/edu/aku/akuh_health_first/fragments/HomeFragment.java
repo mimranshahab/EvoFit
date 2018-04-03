@@ -197,6 +197,12 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener, 
         titleBar.setVisibility(View.VISIBLE);
         titleBar.showSidebar(getBaseActivity());
         titleBar.setTitle("AKUH Family Hifazat");
+        titleBar.setTextButton("Logout", new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                LeftSideMenuFragment.logoutClick(HomeFragment.this);
+            }
+        });
 //        titleBar.setRightButton(R.drawable.notification_icon, new View.OnClickListener() {
 //            @Override
 //            public void onClick(View v) {

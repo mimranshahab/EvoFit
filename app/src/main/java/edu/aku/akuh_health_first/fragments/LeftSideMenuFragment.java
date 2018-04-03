@@ -110,29 +110,29 @@ public class LeftSideMenuFragment extends BaseFragment implements OnNewPacketRec
         unbinder.unbind();
     }
 
-    private void logoutClick() {
+    public static void logoutClick(final BaseFragment baseFragment) {
         final GenericDialogFragment genericDialogFragment = GenericDialogFragment.newInstance();
 
-        genericDialogFragment.setTitle(getString(R.string.logout));
-        genericDialogFragment.setMessage(getString(R.string.areYouSureToLogout));
+        genericDialogFragment.setTitle(baseFragment.getString(R.string.logout));
+        genericDialogFragment.setMessage(baseFragment.getString(R.string.areYouSureToLogout));
 
-        genericDialogFragment.setButton1(getString(R.string.yes), new GenericClickableInterface() {
+        genericDialogFragment.setButton1(baseFragment.getString(R.string.yes), new GenericClickableInterface() {
             @Override
             public void click() {
                 genericDialogFragment.getDialog().dismiss();
-                sharedPreferenceManager.clearDB();
-                getBaseActivity().clearAllActivitiesExceptThis(MainActivity.class);
+                baseFragment.sharedPreferenceManager.clearDB();
+                baseFragment.getBaseActivity().clearAllActivitiesExceptThis(MainActivity.class);
 
             }
         });
 
-        genericDialogFragment.setButton2(getString(R.string.no), new GenericClickableInterface() {
+        genericDialogFragment.setButton2(baseFragment.getString(R.string.no), new GenericClickableInterface() {
             @Override
             public void click() {
                 genericDialogFragment.getDialog().dismiss();
             }
         });
-        genericDialogFragment.show(getFragmentManager(), null);
+        genericDialogFragment.show(baseFragment.getFragmentManager(), null);
     }
 
     public void scrollToTop() {
@@ -166,7 +166,7 @@ public class LeftSideMenuFragment extends BaseFragment implements OnNewPacketRec
                 getBaseActivity().addDockableFragment(GenericContentFragment.newInstance("About", AboutUs));
                 break;
             case R.id.txtLogout:
-                logoutClick();
+                logoutClick(this);
                 break;
         }
     }

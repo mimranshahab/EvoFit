@@ -9,6 +9,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
@@ -38,16 +39,16 @@ public class TitleBar extends RelativeLayout {
     private ImageView imgTitle;
 
     private AnyTextView txtTitle;
-    private ImageButton btnLeft1;
+    private TextView btnLeft1;
     private ImageButton btnRight3;
-    private ImageButton btnRight2;
+    private TextView btnRight2;
     //change Right button
     public ImageView btnRight1;
 
 
     private TextView txtClearAll;
 
-    private RelativeLayout containerTitlebar1;
+    private LinearLayout containerTitlebar1;
 
 
     public TitleBar(Context context) {
@@ -96,7 +97,7 @@ public class TitleBar extends RelativeLayout {
         btnLeft1.setVisibility(GONE);
         btnRight3.setVisibility(GONE);
         btnRight2.setVisibility(GONE);
-        btnRight1.setVisibility(INVISIBLE);
+        btnRight1.setVisibility(GONE);
         txtClearAll.setVisibility(GONE);
         containerTitlebar1.setVisibility(VISIBLE);
         txtCircle.setVisibility(GONE);
@@ -125,7 +126,8 @@ public class TitleBar extends RelativeLayout {
 
     public void showBackButton(final Activity mActivity) {
         this.btnLeft1.setVisibility(VISIBLE);
-        this.btnLeft1.setImageResource(R.drawable.ic_back);
+        this.btnLeft1.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_back, 0, 0, 0);
+        this.btnLeft1.setText("Back");
         btnLeft1.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -147,9 +149,9 @@ public class TitleBar extends RelativeLayout {
 
     public void showSidebar(final BaseActivity mActivity) {
 
-
         this.btnLeft1.setVisibility(VISIBLE);
-        this.btnLeft1.setImageResource(R.drawable.menu_icon);
+        this.btnLeft1.setCompoundDrawablesWithIntrinsicBounds(R.drawable.menu_icon, 0, 0, 0);
+        this.btnLeft1.setText(null);
         btnLeft1.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -266,16 +268,18 @@ public class TitleBar extends RelativeLayout {
         this.btnRight3.setOnClickListener(onClickListener);
     }
 
-    public void setRightButton2(int drawable, OnClickListener onClickListener) {
+    public void setRightButton2(Activity activity, int drawable, String text, OnClickListener onClickListener) {
         this.btnRight2.setVisibility(VISIBLE);
-        btnRight2.setImageResource(drawable);
+        this.btnRight2.setText(text);
+        btnRight2.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_back, 0, 0, 0);
         this.btnRight2.setOnClickListener(onClickListener);
     }
 
 
     public void showHome(final BaseActivity activity) {
         this.btnRight2.setVisibility(VISIBLE);
-        btnRight2.setImageResource(R.drawable.b_home_icon);
+        btnRight2.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.ic_back, 0);
+        btnRight2.setText("Home");
         this.btnRight2.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View view) {
