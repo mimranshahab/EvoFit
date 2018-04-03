@@ -62,7 +62,7 @@ public class ClinicalLabDetailAdapterv1 extends RecyclerView.Adapter<ClinicalLab
         final LstLaboratorySpecimenResults model = arrData.get(holder.getAdapterPosition());
         holder.txtReportName.setText(model.getReportName());
         CustomTypefaceSpan customTypefaceSpan;
-
+        holder.txtunit.setText(model.getUnit());
         /**
          *
          * Colors of Result accordingly
@@ -88,10 +88,11 @@ public class ClinicalLabDetailAdapterv1 extends RecyclerView.Adapter<ClinicalLab
             customTypefaceSpan = new CustomTypefaceSpan(bold);
         }
 
-        Spanny resultSpanny = new Spanny("Result: " + model.getResult(), customTypefaceSpan).append(" " + model.getAbnormalFlag(),
+        Spanny resultSpanny = new Spanny( model.getResult(), customTypefaceSpan).append(" " + model.getAbnormalFlag(),
                 new AbsoluteSizeSpan(activity.getResources().getDimensionPixelSize(R.dimen.s10)));
 
         holder.txtResult.setText(resultSpanny);
+
 
 
         if ((model.getComments() == null || model.getComments().isEmpty()) && (model.getResultComments() == null || model.getResultComments().isEmpty())) {
@@ -124,7 +125,7 @@ public class ClinicalLabDetailAdapterv1 extends RecyclerView.Adapter<ClinicalLab
         if ((model.getNormalRangeFormatted() == null || model.getNormalRangeFormatted().isEmpty()) && (model.getUnit() == null || model.getUnit().isEmpty())) {
             holder.txtNormalRangeFormatted.setVisibility(View.GONE);
         } else {
-            Spanny spanny = new Spanny("Range " + model.getNormalRangeFormatted()).append("\n" + "Unit " + model.getUnit());
+            Spanny spanny = new Spanny("Range " + model.getNormalRangeFormatted());
             holder.txtNormalRangeFormatted.setText(spanny);
             holder.txtNormalRangeFormatted.setVisibility(View.VISIBLE);
         }
@@ -186,6 +187,10 @@ public class ClinicalLabDetailAdapterv1 extends RecyclerView.Adapter<ClinicalLab
         AnyTextView txtComments;
         @BindView(R.id.btnHistory)
         AnyTextView btnHistory;
+        @BindView(R.id.txtunit)
+
+
+        AnyTextView txtunit;
         @BindView(R.id.cardView2)
         CardView cardView2;
 
