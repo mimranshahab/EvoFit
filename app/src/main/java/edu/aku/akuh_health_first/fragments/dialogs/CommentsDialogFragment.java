@@ -14,8 +14,10 @@ import android.widget.ImageView;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 import butterknife.Unbinder;
 import edu.aku.akuh_health_first.R;
+import edu.aku.akuh_health_first.models.LstLaboratorySpecimenResults;
 import edu.aku.akuh_health_first.widget.AnyTextView;
 
 /**
@@ -37,15 +39,21 @@ public class CommentsDialogFragment extends DialogFragment {
     @BindView(R.id.txtTestComments)
     AnyTextView txtTestComments;
 
-    String  /*TitleResultComments*/ ResultComments, TestComments/*TitleTestComments*/;
+    @BindView(R.id.txtTitle)
+    AnyTextView txtTitle;
+    @BindView(R.id.txtOK)
+    edu.aku.akuh_health_first.widget.AnyTextView txtOK;
+
+    private LstLaboratorySpecimenResults model;
 
     public CommentsDialogFragment() {
     }
 
-    public static CommentsDialogFragment newInstance() {
+    public static CommentsDialogFragment newInstance(LstLaboratorySpecimenResults model) {
         CommentsDialogFragment frag = new CommentsDialogFragment();
 
         Bundle args = new Bundle();
+        frag.model = model;
 //        args.putString(KEY_TITLE, title);
 //        args.putString(KEY_MESSAGE,message);
         frag.setArguments(args);
@@ -72,7 +80,7 @@ public class CommentsDialogFragment extends DialogFragment {
         super.onViewCreated(view, savedInstanceState);
 
 
-        bindData(/*TitleResultComments, */ResultComments, TestComments /*TitleTestComments*/);
+        bindData();
 
         getDialog().getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
 //        getDialog().getWindow().setBackgroundDrawable(getResources().getDrawable(R.drawable.rounded_box_white));
@@ -81,43 +89,28 @@ public class CommentsDialogFragment extends DialogFragment {
     }
 
 
-    private void bindData(String resultComments, String testComments/*,String titleTest, String testComments*/) {
+    private void bindData() {
+
+        txtTitle.setText(model.getReportName());
         txtResultComments.setVisibility(View.VISIBLE);
         txtTestComments.setVisibility(View.VISIBLE);
         separator.setVisibility(View.VISIBLE);
-        if ((resultComments == null || resultComments.trim().isEmpty())) {
+        if ((model.getResultComments() == null || model.getResultComments().trim().isEmpty())) {
             txtResultComments.setVisibility(View.GONE);
             separator.setVisibility(View.GONE);
         } else {
-            txtResultComments.setText("Result Comments: \n" + resultComments.trim());
+            txtResultComments.setText("Result Comments: \n" + model.getResultComments().trim());
         }
 
-        if ((testComments == null || testComments.trim().isEmpty())) {
+        if ((model.getComments() == null || model.getComments().trim().isEmpty())) {
             txtTestComments.setVisibility(View.GONE);
             separator.setVisibility(View.GONE);
         } else {
-            txtTestComments.setText("Test Comments: \n" + testComments.trim());
+            txtTestComments.setText("Test Comments: \n" + model.getComments().trim());
 
         }
 
 
-    }
-
-
-    public String getResultComments() {
-        return ResultComments;
-    }
-
-    public void setResultComments(String resultComments) {
-        ResultComments = resultComments;
-    }
-
-    public String getTestComments() {
-        return TestComments;
-    }
-
-    public void setTestComments(String testComments) {
-        TestComments = testComments;
     }
 
 
@@ -125,6 +118,15 @@ public class CommentsDialogFragment extends DialogFragment {
     public void onDestroyView() {
         super.onDestroyView();
         unbinder.unbind();
+    }
+
+    @OnClick({R.id.txtOK})
+    public void onViewClicked(View view) {
+        switch (view.getId()) {
+            case R.id.txtOK:
+                this.dismiss();
+                break;
+        }
     }
 }
 

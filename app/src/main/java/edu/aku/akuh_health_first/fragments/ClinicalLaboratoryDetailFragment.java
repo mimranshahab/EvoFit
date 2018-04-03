@@ -189,19 +189,17 @@ public class ClinicalLaboratoryDetailFragment extends BaseFragment implements Vi
         historyDialogFrag.setTitle(model.getReportName());
         historyDialogFrag.setResultPrevious1(model.getPrevResult1());
         historyDialogFrag.setResultPrevious2(model.getPrevResult2());
-        historyDialogFrag.setResultPrevious3(model.getPrevResult3());
         historyDialogFrag.setResultPrevious1Date(model.getPrevResult1Dttm());
         historyDialogFrag.setResultPrevious2Date(model.getPrevResult2Dttm());
-        historyDialogFrag.setResultPrevious3Date(model.getPrevResult3Dttm());
+        historyDialogFrag.setCurrentResult(model.getResult());
+        historyDialogFrag.setCurrentDate(model.getResultEntryDttm());
 
 
         historyDialogFrag.show(getFragmentManager(), null);
     }
 
     private void commentsDialog(LstLaboratorySpecimenResults model) {
-        final CommentsDialogFragment commentsDialogFragment = CommentsDialogFragment.newInstance();
-        commentsDialogFragment.setResultComments(model.getResultComments());
-        commentsDialogFragment.setTestComments(model.getComments());
+        final CommentsDialogFragment commentsDialogFragment = CommentsDialogFragment.newInstance(model);
         commentsDialogFragment.show(getFragmentManager(), null);
     }
 

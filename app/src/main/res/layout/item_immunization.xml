@@ -43,7 +43,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_weight=".5"
-                        android:drawableLeft="@drawable/calendar_immunization"
+                        android:drawableLeft="@drawable/a_icons8_calendar_filled2"
                         android:drawableTint="@color/txt_aku_blue"                        android:drawablePadding="@dimen/x5dp"
                         android:ellipsize="end"
                         android:singleLine="true"

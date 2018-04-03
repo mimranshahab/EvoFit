@@ -62,7 +62,6 @@ public class ClinicalLabDetailAdapterv1 extends RecyclerView.Adapter<ClinicalLab
         final LstLaboratorySpecimenResults model = arrData.get(holder.getAdapterPosition());
         holder.txtReportName.setText(model.getReportName());
         CustomTypefaceSpan customTypefaceSpan;
-        holder.txtunit.setText(model.getUnit());
         /**
          *
          * Colors of Result accordingly
@@ -73,26 +72,34 @@ public class ClinicalLabDetailAdapterv1 extends RecyclerView.Adapter<ClinicalLab
          **/
         if (model.getAbnormalFlag() == null || model.getAbnormalFlag().isEmpty()) {
             holder.txtResult.setTextColor(activity.getResources().getColor(R.color.text_color_grey));
+            holder.txtState.setTextColor(activity.getResources().getColor(R.color.text_color_grey));
             customTypefaceSpan = new CustomTypefaceSpan(regular);
         } else if (model.getAbnormalFlag().equalsIgnoreCase("Low")) {
             customTypefaceSpan = new CustomTypefaceSpan(regular);
             holder.txtResult.setTextColor(activity.getResources().getColor(R.color.panic_blue));
+            holder.txtState.setTextColor(activity.getResources().getColor(R.color.panic_blue));
         } else if (model.getAbnormalFlag().equalsIgnoreCase("High")) {
             customTypefaceSpan = new CustomTypefaceSpan(regular);
+            holder.txtState.setTextColor(activity.getResources().getColor(R.color.base_reddish));
             holder.txtResult.setTextColor(activity.getResources().getColor(R.color.base_reddish));
         } else if (model.getAbnormalFlag().equalsIgnoreCase("Panic High") || model.getAbnormalFlag().equalsIgnoreCase("ph")) {
+            holder.txtState.setTextColor(activity.getResources().getColor(R.color.base_reddish));
             holder.txtResult.setTextColor(activity.getResources().getColor(R.color.base_reddish));
+            model.setAbnormalFlag("High");
             customTypefaceSpan = new CustomTypefaceSpan(bold);
         } else {
+            holder.txtState.setTextColor(activity.getResources().getColor(R.color.panic_blue));
             holder.txtResult.setTextColor(activity.getResources().getColor(R.color.panic_blue));
             customTypefaceSpan = new CustomTypefaceSpan(bold);
+            model.setAbnormalFlag("Low");
         }
 
-        Spanny resultSpanny = new Spanny( model.getResult(), customTypefaceSpan).append(" " + model.getAbnormalFlag(),
-                new AbsoluteSizeSpan(activity.getResources().getDimensionPixelSize(R.dimen.s10)));
-
+//        Spanny resultSpanny = new Spanny(model.getResult(), customTypefaceSpan).append(" " + model.getAbnormalFlag(),
+//                new AbsoluteSizeSpan(activity.getResources().getDimensionPixelSize(R.dimen.s10)));
+        Spanny resultSpanny = new Spanny(model.getResult(), customTypefaceSpan);
+        Spanny stateSpanny = new Spanny(model.getAbnormalFlag(), customTypefaceSpan);
         holder.txtResult.setText(resultSpanny);
-
+        holder.txtState.setText(stateSpanny);
 
 
         if ((model.getComments() == null || model.getComments().isEmpty()) && (model.getResultComments() == null || model.getResultComments().isEmpty())) {
@@ -119,21 +126,22 @@ public class ClinicalLabDetailAdapterv1 extends RecyclerView.Adapter<ClinicalLab
 //            holder.txtResultPrevious2Date.setText(model.getPrevResult2Dttm());
         }
         setListener(holder, model);
-//        showComments(model);
 
 
         if ((model.getNormalRangeFormatted() == null || model.getNormalRangeFormatted().isEmpty()) && (model.getUnit() == null || model.getUnit().isEmpty())) {
             holder.txtNormalRangeFormatted.setVisibility(View.GONE);
+
         } else {
             Spanny spanny = new Spanny("Range " + model.getNormalRangeFormatted());
             holder.txtNormalRangeFormatted.setText(spanny);
             holder.txtNormalRangeFormatted.setVisibility(View.VISIBLE);
         }
 
+        holder.txtunit.setText(model.getUnit());
 
     }
 
-//    private void setListener(final ViewHolder holder, final LstLaboratorySpecimenResults lstLaboratorySpecimenResults) {
+    //    private void setListener(final ViewHolder holder, final LstLaboratorySpecimenResults lstLaboratorySpecimenResults) {
 //        holder.txtComments.setOnClickListener(new View.OnClickListener() {
 //            @Override
 //            public void onClick(View v) {
@@ -151,7 +159,7 @@ public class ClinicalLabDetailAdapterv1 extends RecyclerView.Adapter<ClinicalLab
         holder.txtComments.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                onItemClick.onItemClick(null, v,holder.getAdapterPosition(), 0);
+                onItemClick.onItemClick(null, v, holder.getAdapterPosition(), 0);
             }
         });
 
@@ -188,9 +196,9 @@ public class ClinicalLabDetailAdapterv1 extends RecyclerView.Adapter<ClinicalLab
         @BindView(R.id.btnHistory)
         AnyTextView btnHistory;
         @BindView(R.id.txtunit)
-
-
         AnyTextView txtunit;
+        @BindView(R.id.txtState)
+        AnyTextView txtState;
         @BindView(R.id.cardView2)
         CardView cardView2;
 

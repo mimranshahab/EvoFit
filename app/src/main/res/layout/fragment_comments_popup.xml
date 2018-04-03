@@ -14,43 +14,6 @@
         android:background="@drawable/rounded_box_white"
         android:orientation="vertical">
 
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:gravity="center_vertical"
-            android:orientation="horizontal"
-            android:visibility="invisible">
-
-
-            <edu.aku.akuh_health_first.widget.AnyTextView
-                android:id="@+id/txtTitle"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:ellipsize="end"
-                android:gravity="center_vertical"
-                android:padding="10dp"
-                android:singleLine="true"
-                android:text="@string/title"
-                android:textColor="@color/base_amber"
-                android:textSize="18sp"
-                app:typeface="@string/font_bold" />
-
-            <ImageView
-                android:id="@+id/btnClose"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:padding="10dp"
-                android:scaleX="1.5"
-                android:scaleY="1.5"
-                android:src="@drawable/ic_select_cross"
-                android:tint="@color/base_amber" />
-
-
-        </LinearLayout>
-
-
         <ScrollView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -60,6 +23,33 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:padding="3dp">
+
+
+                    <edu.aku.akuh_health_first.widget.AnyTextView
+                        android:id="@+id/txtTitle"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:ellipsize="end"
+                        android:gravity="center"
+                        android:padding="10dp"
+                        android:singleLine="true"
+                        android:text="@string/title"
+                        android:textColor="@color/base_amber"
+                        android:textSize="16sp"
+                        app:typeface="@string/font_bold" />
+
+
+                </LinearLayout>
+
 
                 <edu.aku.akuh_health_first.widget.AnyTextView
                     android:id="@+id/txtResultComments"
@@ -90,7 +80,26 @@
                     android:textColor="@color/txt_aku_blue"
                     android:textSize="@dimen/s13"
                     app:typeface="@string/font_san_regular" />
+
+
+                <edu.aku.akuh_health_first.widget.AnyTextView
+                    android:id="@+id/txtOK"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="10dp"
+                    android:layout_marginLeft="60dp"
+                    android:layout_marginRight="60dp"
+                    android:layout_marginTop="15dp"
+                    android:background="@drawable/rounded_box_filled_base_amber"
+                    android:gravity="center"
+                    android:padding="10dp"
+                    android:text="@string/Ok"
+                    android:textColor="@color/c_white"
+                    android:textSize="14sp" />
+
             </LinearLayout>
+
+
         </ScrollView>
 
 

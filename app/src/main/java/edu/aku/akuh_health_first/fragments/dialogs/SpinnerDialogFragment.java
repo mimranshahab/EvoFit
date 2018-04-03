@@ -44,10 +44,10 @@ public class SpinnerDialogFragment extends DialogFragment {
     AnyTextView txtTitle;
     @BindView(R.id.btnClose)
     ImageView btnClose;
-    @BindView(R.id.recyclerView)
-    RecyclerView recyclerView;
     @BindView(R.id.txtOK)
     edu.aku.akuh_health_first.widget.AnyTextView txtOK;
+    @BindView(R.id.recyclerView)
+    RecyclerView recyclerView;
 
     private ArrayList<SpinnerModel> arrData;
     private OnSpinnerItemClickListener onItemClickListener;

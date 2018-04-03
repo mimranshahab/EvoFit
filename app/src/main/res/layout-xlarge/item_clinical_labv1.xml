@@ -48,7 +48,7 @@
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight=".7"
-                        android:drawableLeft="@drawable/calendar_immunization"
+                        android:drawableLeft="@drawable/a_icons8_calendar_filled2"
                         android:drawableTint="@color/txt_aku_blue"
                         android:drawableTintMode="@color/txt_aku_blue"
                         android:drawablePadding="@dimen/x5dp"

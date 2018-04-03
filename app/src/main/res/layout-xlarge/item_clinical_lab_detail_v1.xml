@@ -50,16 +50,41 @@
                         app:typeface="@string/font_bold" />
 
 
-                    <edu.aku.akuh_health_first.widget.AnyTextView
-                        android:id="@+id/txtNormalRangeFormatted"
+                    <LinearLayout
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        android:ellipsize="end"
-                        android:maxLines="1"
-                        android:text="Normal range"
-                        android:textSize="@dimen/s13"
-                        app:typeface="@string/font_regular" />
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/x3dp">
+
+                        <edu.aku.akuh_health_first.widget.AnyTextView
+                            android:id="@+id/txtNormalRangeFormatted"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="7"
+                            android:ellipsize="end"
+                            android:maxLines="1"
+                            android:singleLine="true"
+
+                            android:text="Range"
+                            android:textColor="@color/base_dark_gray"
+                            android:textSize="@dimen/s13"
+                            app:typeface="@string/font_regular" />
+
+                        <edu.aku.akuh_health_first.widget.AnyTextView
+                            android:id="@+id/txtState"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="4"
+                            android:ellipsize="end"
+                            android:maxLines="1"
+                            android:singleLine="true"
+
+                            android:text="Range"
+                            android:textColor="@color/base_dark_gray"
+                            android:textSize="@dimen/s13"
+                            app:typeface="@string/font_regular" />
+
+
+                    </LinearLayout>
 
                     <!--</LinearLayout>-->
 
@@ -79,12 +104,14 @@
                         android:id="@+id/txtResult"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginRight="@dimen/x20dp"
+                        android:layout_marginRight="@dimen/x5dp"
+                        android:layout_marginTop="@dimen/x3dp"
                         android:layout_weight="1"
                         android:ellipsize="end"
+                        android:gravity="end"
                         android:maxLines="2"
                         android:text="Result"
-                        android:textColor="@color/text_color_grey"
+                        android:textColor="@color/txt_aku_blue"
                         android:textSize="@dimen/s17"
                         app:typeface="@string/font_regular" />
 
@@ -92,10 +119,13 @@
                         android:id="@+id/txtunit"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
+                        android:layout_marginRight="@dimen/x5dp"
                         android:layout_weight="1"
                         android:ellipsize="end"
+                        android:gravity="end"
                         android:maxLines="1"
                         android:text="Normal range"
+                        android:textColor="@color/base_dark_gray"
                         android:textSize="@dimen/s13"
                         app:typeface="@string/font_regular" />
 
@@ -110,44 +140,44 @@
                 android:id="@+id/historySeperator"
                 android:layout_width="match_parent"
                 android:layout_height="2px"
-                android:layout_margin="@dimen/x5dp"
-                android:background="@color/text_color_grey" />
+                android:layout_margin="@dimen/x3dp"
+                android:background="@color/c_light_grey" />
 
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_gravity="end"
-                android:layout_marginRight="@dimen/x10dp"
-                android:gravity="end"
-                android:orientation="horizontal">
+                android:gravity="right"
+                android:orientation="horizontal"
+                android:padding="@dimen/x3dp">
 
                 <edu.aku.akuh_health_first.widget.AnyTextView
                     android:id="@+id/txtComments"
-                    android:layout_width="@dimen/x100dp"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_margin="@dimen/x2dp"
                     android:background="@drawable/rounded_box_filled_base_green"
+                    android:minWidth="@dimen/x120dp"
                     android:padding="@dimen/x7dp"
                     android:text="View Comments"
-
                     android:textAlignment="center"
                     android:textColor="@color/c_white"
-                    android:textSize="@dimen/s8"
+                    android:textSize="@dimen/s10"
                     app:typeface="@string/font_bold" />
 
                 <edu.aku.akuh_health_first.widget.AnyTextView
                     android:id="@+id/btnHistory"
-                    android:layout_width="@dimen/x100dp"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_margin="@dimen/x2dp"
                     android:background="@drawable/rounded_box_filled_base_green"
+                    android:minWidth="@dimen/x120dp"
                     android:padding="@dimen/x7dp"
                     android:text="View History"
                     android:textAlignment="center"
                     android:textColor="@color/c_white"
-                    android:textSize="@dimen/s8"
-                    android:visibility="gone"
+                    android:textSize="@dimen/s10"
+                    android:visibility="visible"
                     app:typeface="@string/font_bold" />
             </LinearLayout>
 

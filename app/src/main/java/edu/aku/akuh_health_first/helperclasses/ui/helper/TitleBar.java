@@ -127,7 +127,7 @@ public class TitleBar extends RelativeLayout {
     public void showBackButton(final Activity mActivity) {
         this.btnLeft1.setVisibility(VISIBLE);
         this.btnLeft1.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_back, 0, 0, 0);
-        this.btnLeft1.setText("Back");
+        this.btnLeft1.setText(null);
         btnLeft1.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -278,8 +278,8 @@ public class TitleBar extends RelativeLayout {
 
     public void showHome(final BaseActivity activity) {
         this.btnRight2.setVisibility(VISIBLE);
-        btnRight2.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.ic_back, 0);
-        btnRight2.setText("Home");
+        btnRight2.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.b_home_icon, 0);
+        btnRight2.setText(null);
         this.btnRight2.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View view) {

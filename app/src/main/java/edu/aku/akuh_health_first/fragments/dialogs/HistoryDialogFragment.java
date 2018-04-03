@@ -11,10 +11,10 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 import butterknife.Unbinder;
 import edu.aku.akuh_health_first.R;
 import edu.aku.akuh_health_first.widget.AnyTextView;
@@ -27,32 +27,32 @@ public class HistoryDialogFragment extends DialogFragment {
 
 
     Unbinder unbinder;
-    @BindView(R.id.txtTitle)
-    AnyTextView txtTitle;
-    @BindView(R.id.btnClose)
-    ImageView btnClose;
-    @BindView(R.id.txtResultPrevious1)
-    AnyTextView txtResultPrevious1;
-    @BindView(R.id.txtResultPrevious1Date)
-    AnyTextView txtResultPrevious1Date;
-    @BindView(R.id.txtResultPrevious2)
-    AnyTextView txtResultPrevious2;
-    @BindView(R.id.txtResultPrevious2Date)
-    AnyTextView txtResultPrevious2Date;
-    @BindView(R.id.txtResultPrevious3)
-    AnyTextView txtResultPrevious3;
-    @BindView(R.id.txtResultPrevious3Date)
-    AnyTextView txtResultPrevious3Date;
-    @BindView(R.id.contHistoryResults)
-    LinearLayout contHistoryResults;
-
     String Title,
             ResultPrevious1,
             ResultPrevious1Date,
             ResultPrevious2,
             ResultPrevious2Date,
-            ResultPrevious3,
-            ResultPrevious3Date;
+            CurrentResult,
+            CurrentDate;
+
+    @BindView(R.id.txtTitle)
+    AnyTextView txtTitle;
+    @BindView(R.id.separator)
+    ImageView separator;
+    @BindView(R.id.txtCurrentDate)
+    AnyTextView txtCurrentDate;
+    @BindView(R.id.txtCurrentResult)
+    AnyTextView txtCurrentResult;
+    @BindView(R.id.txtPrevDate1)
+    AnyTextView txtPrevDate1;
+    @BindView(R.id.txtPrevResult1)
+    AnyTextView txtPrevResult1;
+    @BindView(R.id.txtPrevDate2)
+    AnyTextView txtPrevDate2;
+    @BindView(R.id.txtPrevResult2)
+    AnyTextView txtPrevResult2;
+    @BindView(R.id.txtOK)
+    AnyTextView txtOK;
 
     public HistoryDialogFragment() {
     }
@@ -97,14 +97,12 @@ public class HistoryDialogFragment extends DialogFragment {
 
         txtTitle.setText(getTitle());
 
-        txtResultPrevious1.setText(getResultPrevious1());
-        txtResultPrevious2.setText(getResultPrevious2());
-        txtResultPrevious3.setText(getResultPrevious3());
-        txtResultPrevious1Date.setText(getResultPrevious1Date());
-        txtResultPrevious2Date.setText(getResultPrevious2Date());
-        txtResultPrevious3Date.setText(getResultPrevious3Date());
-
-
+        txtPrevResult1.setText(getResultPrevious1());
+        txtPrevResult2.setText(getResultPrevious2());
+        txtPrevDate1.setText(getResultPrevious1Date());
+        txtPrevDate2.setText(getResultPrevious2Date());
+        txtCurrentResult.setText(getCurrentResult());
+        txtCurrentDate.setText(getCurrentDate());
     }
 
     public String getTitle() {
@@ -114,6 +112,7 @@ public class HistoryDialogFragment extends DialogFragment {
     public void setTitle(String title) {
         Title = title;
     }
+
 
     public String getResultPrevious1() {
         return ResultPrevious1;
@@ -147,26 +146,35 @@ public class HistoryDialogFragment extends DialogFragment {
         ResultPrevious2Date = resultPrevious2Date;
     }
 
-    public String getResultPrevious3() {
-        return ResultPrevious3;
+    public String getCurrentResult() {
+        return CurrentResult;
     }
 
-    public void setResultPrevious3(String resultPrevious3) {
-        ResultPrevious3 = resultPrevious3;
+    public void setCurrentResult(String currentResult) {
+        CurrentResult = currentResult;
     }
 
-    public String getResultPrevious3Date() {
-        return ResultPrevious3Date;
+    public String getCurrentDate() {
+        return CurrentDate;
     }
 
-    public void setResultPrevious3Date(String resultPrevious3Date) {
-        ResultPrevious3Date = resultPrevious3Date;
+    public void setCurrentDate(String currentDAte) {
+        CurrentDate = currentDAte;
     }
 
     @Override
     public void onDestroyView() {
         super.onDestroyView();
         unbinder.unbind();
+    }
+
+    @OnClick({R.id.txtOK})
+    public void onViewClicked(View view) {
+        switch (view.getId()) {
+            case R.id.txtOK:
+                this.dismiss();
+                break;
+        }
     }
 }
 
