@@ -25,7 +25,7 @@
 
             <ImageView
                 android:layout_width="240dp"
-                android:layout_height="@dimen/x80dp"
+                android:layout_height="@dimen/x60dp"
                 android:layout_marginLeft="@dimen/x10dp"
                 android:layout_marginRight="@dimen/x10dp"
                 android:padding="@dimen/x2dp"
@@ -35,8 +35,8 @@
 
             <ImageView
                 android:layout_width="240dp"
-                android:layout_height="@dimen/x80dp"
-                android:layout_marginBottom="@dimen/x20dp"
+                android:layout_height="@dimen/x60dp"
+                android:layout_marginBottom="@dimen/x15dp"
                 android:layout_marginLeft="@dimen/x10dp"
                 android:layout_marginRight="@dimen/x10dp"
                 android:padding="@dimen/x2dp"
