@@ -163,7 +163,8 @@ public class ClinicalLaboratoryMICDetailFragment extends BaseFragment implements
         unbinder.unbind();
     }
 
-
+    @BindView(R.id.txtReportName)
+    AnyTextView txtReportName;
     private void bindData() {
         txtCollecDatetime.setText(laboratoryDetailModel.getCollectionDttm());
         txtReportDatetime.setText(laboratoryDetailModel.getSignoutDttm());
@@ -171,6 +172,7 @@ public class ClinicalLaboratoryMICDetailFragment extends BaseFragment implements
         txtPhysicianName.setText(laboratoryDetailModel.getReferringDoctorID());
         txtSpecimenNumber.setText(laboratoryDetailModel.getSpecimenID());
         txtLocation.setText(laboratoryDetailModel.getVisitLocationID());
+        txtReportName.setText(laboratoryDetailModel.getOrdered());
 
     }
 

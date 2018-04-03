@@ -60,35 +60,30 @@ public class ClinicalLabAdapterV1 extends RecyclerView.Adapter<ClinicalLabAdapte
         holder.txtStatusID.setText(model.getOrdered());
         holder.txtDateTime.setText(model.getEnteredDTTM());
         holder.txtStatus.setText(model.getStatusID());
+        holder.btnShowDetail.setVisibility(View.GONE);
+
         setListener(holder, model);
 
         if (model.getStatusID().equalsIgnoreCase("Completed") || model.getStatusID().equalsIgnoreCase("Partially Completed")) {
             colorCodes(holder,
 
                     activity.getResources().getColor(R.color.base_green),
-
-                    //                    R.color.base_green,
                     R.drawable.rounded_box_filled_base_green);
-            holder.btnShowDetail.setVisibility(View.VISIBLE);
+            holder.imgNext.setVisibility(View.VISIBLE);
+
 
         } else if (model.getStatusID().equalsIgnoreCase("Pending")) {
             colorCodes(holder,
                     activity.getResources().getColor(R.color.base_amber),
-
-//                    R.color.base_amber,
                     R.drawable.rounded_box_filled_base_amber);
-            holder.btnShowDetail.setVisibility(View.GONE);
-//            holder.txtStatus.setBackgroundResource(R.drawable.rounded_box_filled_base_amber);
+            holder.imgNext.setVisibility(View.GONE);
 
         } else {
             colorCodes(holder,
                     activity.getResources().getColor(R.color.base_reddish),
-
-//                    R.color.base_reddish,
                     R.drawable.rounded_box_filled_base_red);
-            holder.btnShowDetail.setVisibility(View.GONE);
+            holder.imgNext.setVisibility(View.GONE);
 
-//            holder.txtStatus.setBackgroundResource(R.drawable.rounded_box_filled_base_red);
         }
 
 
@@ -152,17 +147,17 @@ public class ClinicalLabAdapterV1 extends RecyclerView.Adapter<ClinicalLabAdapte
 
     private void colorCodes(ViewHolder holder, int framecolor, int btnbackground/*, int color*/) {
         holder.cardView2.setCardBackgroundColor(framecolor);
-        holder.btnShowDetail.setBackgroundResource(btnbackground);
+//        holder.btnShowDetail.setBackgroundResource(btnbackground);
         holder.txtStatus.setTextColor(framecolor);
         holder.imgIcon.setColorFilter(framecolor);
     }
 
 
-    private void setListener(final ViewHolder holder, final LaboratoryModel neurophysiology) {
-        holder.btnShowDetail.setOnClickListener(new View.OnClickListener() {
+    private void setListener(final ViewHolder holder, final LaboratoryModel laboratoryModel) {
+        holder.cardView2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                onItemClick.onItemClick(holder.getAdapterPosition(), neurophysiology);
+                onItemClick.onItemClick(holder.getAdapterPosition(), laboratoryModel);
             }
         });
     }
@@ -206,6 +201,8 @@ public class ClinicalLabAdapterV1 extends RecyclerView.Adapter<ClinicalLabAdapte
         FrameLayout frameColorCode;
         @BindView(R.id.cardView2)
         CardView cardView2;
+        @BindView(R.id.imgNext)
+        ImageView imgNext;
 
         ViewHolder(View view) {
             super(view);

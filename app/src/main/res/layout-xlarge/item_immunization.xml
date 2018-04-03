@@ -43,7 +43,7 @@
                         android:layout_height="wrap_content"
                         android:layout_weight=".5"
                         android:drawableLeft="@drawable/calendar_immunization"
-                        android:drawablePadding="@dimen/x5dp"
+                        android:drawableTint="@color/txt_aku_blue"                        android:drawablePadding="@dimen/x5dp"
                         android:ellipsize="end"
                         android:singleLine="true"
                         android:text="22 jan ,2018"

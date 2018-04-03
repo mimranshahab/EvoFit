@@ -14,8 +14,6 @@ import android.view.animation.AnimationUtils;
 import android.view.animation.LayoutAnimationController;
 import android.widget.AdapterView;
 
-import org.json.JSONObject;
-
 import java.util.ArrayList;
 
 import butterknife.BindView;
@@ -28,14 +26,11 @@ import edu.aku.akuh_health_first.callbacks.OnItemClickListener;
 import edu.aku.akuh_health_first.constatnts.WebServiceConstants;
 import edu.aku.akuh_health_first.enums.BaseURLTypes;
 import edu.aku.akuh_health_first.fragments.abstracts.BaseFragment;
-import edu.aku.akuh_health_first.fragments.abstracts.GenericClickableInterface;
 import edu.aku.akuh_health_first.fragments.dialogs.CommentsDialogFragment;
-import edu.aku.akuh_health_first.fragments.dialogs.SuccessDialogFragment;
+import edu.aku.akuh_health_first.fragments.dialogs.HistoryDialogFragment;
 import edu.aku.akuh_health_first.helperclasses.ui.helper.TitleBar;
 import edu.aku.akuh_health_first.managers.retrofit.WebServices;
-import edu.aku.akuh_health_first.models.EndoscopyModel;
 import edu.aku.akuh_health_first.models.LaboratoryDetailModel;
-import edu.aku.akuh_health_first.models.LaboratoryModel;
 import edu.aku.akuh_health_first.models.LstLaboratorySpecimenResults;
 import edu.aku.akuh_health_first.models.SearchModel;
 import edu.aku.akuh_health_first.models.wrappers.WebResponse;
@@ -45,7 +40,7 @@ import edu.aku.akuh_health_first.widget.AnyTextView;
  * Created by aqsa.sarwar on 1/25/2018.
  */
 
-public class ClinicalLaboratoryDetailFragment extends BaseFragment implements OnItemClickListener {
+public class ClinicalLaboratoryDetailFragment extends BaseFragment implements View.OnClickListener, OnItemClickListener {
 
     @BindView(R.id.listClinicalLabResult)
     RecyclerView listClinicalLabResult;
@@ -66,9 +61,12 @@ public class ClinicalLaboratoryDetailFragment extends BaseFragment implements On
     AnyTextView btnDownload;
     @BindView(R.id.cardView2)
     CardView cardView2;
+    @BindView(R.id.txtReportName)
+    AnyTextView txtReportName;
     private ArrayList<LstLaboratorySpecimenResults> arrLabDetail;
     private LaboratoryDetailModel laboratoryDetailModel;
     private ClinicalLabDetailAdapterv1 adapterClinicalLabDetail;
+
 
     public static ClinicalLaboratoryDetailFragment newInstance(LaboratoryDetailModel laboratoryDetailModel) {
 
@@ -93,7 +91,7 @@ public class ClinicalLaboratoryDetailFragment extends BaseFragment implements On
     @Override
     public void setTitlebar(TitleBar titleBar) {
         titleBar.resetViews();
-        titleBar.setTitle("Lab Results");
+        titleBar.setTitle("Laboratory Results");
         titleBar.showBackButton(getBaseActivity());
         titleBar.setUserDisplay(sharedPreferenceManager.getCurrentUser(), getContext());
         titleBar.showHome(getBaseActivity());
@@ -140,10 +138,6 @@ public class ClinicalLaboratoryDetailFragment extends BaseFragment implements On
 
     }
 
-    @Override
-    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-
-    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -167,6 +161,7 @@ public class ClinicalLaboratoryDetailFragment extends BaseFragment implements On
         txtPhysicianName.setText(laboratoryDetailModel.getReferringDoctorID());
         txtSpecimenNumber.setText(laboratoryDetailModel.getSpecimenID());
         txtLocation.setText(laboratoryDetailModel.getVisitLocationID());
+        txtReportName.setText(laboratoryDetailModel.getOrdered());
 
     }
 
@@ -174,13 +169,40 @@ public class ClinicalLaboratoryDetailFragment extends BaseFragment implements On
     public void onItemClick(int position, Object object) {
         if (object instanceof LstLaboratorySpecimenResults) {
             LstLaboratorySpecimenResults model = (LstLaboratorySpecimenResults) object;
+            switch (view.getId()) {
+                case R.id.txtComments:
+                    commentsDialog(model);
 
-            final CommentsDialogFragment commentsDialogFragment = CommentsDialogFragment.newInstance();
-            commentsDialogFragment.setResultComments(model.getResultComments());
-            commentsDialogFragment.setTestComments(model.getComments());
-            commentsDialogFragment.show(getFragmentManager(), null);
+                    break;
+                case R.id.btnHistory:
+                    historydialog(model);
+                    break;
+            }
+
 
         }
+
+    }
+
+    private void historydialog(LstLaboratorySpecimenResults model) {
+        final HistoryDialogFragment historyDialogFrag = HistoryDialogFragment.newInstance();
+        historyDialogFrag.setTitle(model.getReportName());
+        historyDialogFrag.setResultPrevious1(model.getPrevResult1());
+        historyDialogFrag.setResultPrevious2(model.getPrevResult2());
+        historyDialogFrag.setResultPrevious3(model.getPrevResult3());
+        historyDialogFrag.setResultPrevious1Date(model.getPrevResult1Dttm());
+        historyDialogFrag.setResultPrevious2Date(model.getPrevResult2Dttm());
+        historyDialogFrag.setResultPrevious3Date(model.getPrevResult3Dttm());
+
+
+        historyDialogFrag.show(getFragmentManager(), null);
+    }
+
+    private void commentsDialog(LstLaboratorySpecimenResults model) {
+        final CommentsDialogFragment commentsDialogFragment = CommentsDialogFragment.newInstance();
+        commentsDialogFragment.setResultComments(model.getResultComments());
+        commentsDialogFragment.setTestComments(model.getComments());
+        commentsDialogFragment.show(getFragmentManager(), null);
     }
 
     @OnClick(R.id.btnDownload)
@@ -208,5 +230,20 @@ public class ClinicalLaboratoryDetailFragment extends BaseFragment implements On
     }
 
 
+    @Override
+    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
+        LstLaboratorySpecimenResults model = adapterClinicalLabDetail.getItem(position);
+        switch (view.getId()) {
+            case R.id.txtComments:
+
+                commentsDialog(model);
+
+                break;
+            case R.id.btnHistory:
+                historydialog(model);
+                break;
+        }
+
+    }
 }

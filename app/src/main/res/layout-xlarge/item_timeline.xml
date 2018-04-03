@@ -89,10 +89,12 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:drawableLeft="@drawable/calendar_immunization"
+                        android:drawableTint="@color/txt_aku_blue"
                         android:drawablePadding="@dimen/x5dp"
                         android:ellipsize="end"
                         android:maxLines="1"
                         android:padding="@dimen/x3dp"
+
                         android:text="date"
                         android:textColor="@color/txt_aku_blue"
                         android:textSize="@dimen/s14"
