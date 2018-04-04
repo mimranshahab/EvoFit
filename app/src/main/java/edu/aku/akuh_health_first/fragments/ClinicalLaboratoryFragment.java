@@ -31,7 +31,6 @@ import edu.aku.akuh_health_first.callbacks.OnItemClickListener;
 import edu.aku.akuh_health_first.constatnts.WebServiceConstants;
 import edu.aku.akuh_health_first.enums.BaseURLTypes;
 import edu.aku.akuh_health_first.fragments.abstracts.BaseFragment;
-import edu.aku.akuh_health_first.helperclasses.Helper;
 import edu.aku.akuh_health_first.helperclasses.ui.helper.TitleBar;
 import edu.aku.akuh_health_first.helperclasses.ui.helper.UIHelper;
 import edu.aku.akuh_health_first.managers.retrofit.GsonFactory;
@@ -180,9 +179,10 @@ public class ClinicalLaboratoryFragment extends BaseFragment implements View.OnC
     public void onItemClick(int position, Object object) {
         if (object instanceof LaboratoryModel) {
             LaboratoryModel model = (LaboratoryModel) object;
-            labDetailService(model.getSpecimenNumber());
-
-            testname = (model.getOrdered());
+            if (model.getStatusID().equalsIgnoreCase("Completed") || model.getStatusID().equalsIgnoreCase("Partially Completed")) {
+                testname = (model.getOrdered());
+                labDetailService(model.getSpecimenNumber());
+            }
         }
 
     }

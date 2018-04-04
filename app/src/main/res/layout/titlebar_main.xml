@@ -44,7 +44,8 @@
             android:gravity="center"
             android:textColor="@color/c_white"
             android:text="Back"
-            android:padding="@dimen/x10dp"
+            android:drawablePadding="@dimen/x5dp"
+            android:padding="@dimen/x5dp"
             android:drawableStart="@drawable/ic_back" />
 
 
@@ -121,7 +122,7 @@
             android:gravity="center"
             android:textColor="@color/c_white"
             android:drawablePadding="@dimen/x5dp"
-            android:drawableRight="@drawable/b_home_icon"
+            android:drawableEnd="@drawable/b_home_icon"
             android:visibility="visible" />
 
 

@@ -57,11 +57,17 @@ public class CurrentMedicationAdapter extends RecyclerView.Adapter<CurrentMedica
         holder.txtRoute.setText(model.getRxmedroutedescription()); // Null in History
         holder.txtStartDate.setText(model.getRxmedstartdatetime());
         holder.txtStopDate.setText(model.getRxmedstopdatetime());
-        holder.txtNextDose.setVisibility(View.VISIBLE);
+
         if (model.isLifeTimeMedicin()) {
             holder.txtNextDose.setText("Next Dose: Life Long");
+            holder.txtNextDose.setVisibility(View.VISIBLE);
         } else {
-            holder.txtNextDose.setText("Next Dose: " + model.getNextDoseDttm());
+            if (model.getNextDoseDttm() == null || model.getNextDoseDttm().isEmpty()) {
+                holder.txtNextDose.setVisibility(View.GONE);
+            } else {
+                holder.txtNextDose.setVisibility(View.VISIBLE);
+                holder.txtNextDose.setText("Next Dose: " + model.getNextDoseDttm());
+            }
         }
 
 
