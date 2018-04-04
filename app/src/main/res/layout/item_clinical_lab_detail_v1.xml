@@ -46,7 +46,7 @@
                         android:paddingLeft="@dimen/x4dp"
                         android:text="Test Name"
                         android:textColor="@color/txt_aku_blue"
-                        android:textSize="@dimen/s17"
+                        android:textSize="@dimen/s15"
                         app:typeface="@string/font_bold" />
 
                     <LinearLayout

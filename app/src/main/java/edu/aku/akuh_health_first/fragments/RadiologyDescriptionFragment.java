@@ -88,8 +88,8 @@ public class RadiologyDescriptionFragment extends BaseFragment {
                             @Override
                             public void requestDataResponse(WebResponse<JsonObject> webResponse) {
                                 RadiologyDetailModel radiologyDetailModel = GsonFactory.getSimpleGson().fromJson(webResponse.result, RadiologyDetailModel.class);
-                                txtExamName.setText("Exam - " + radiologyDetailModel.getExam());
-                                txtExamDate.setText("Date - " + radiologyDetailModel.getExamdate());
+                                txtExamName.setText(radiologyDetailModel.getExam());
+                                txtExamDate.setText(radiologyDetailModel.getExamdate());
                                 txtDescription.setText(Html.fromHtml(radiologyDetailModel.getReporttext()), TextView.BufferType.SPANNABLE);
                             }
 

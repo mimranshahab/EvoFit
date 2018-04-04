@@ -46,7 +46,7 @@
                         android:maxLines="1"
                         android:text="Test Name"
                         android:textColor="@color/txt_aku_blue"
-                        android:textSize="@dimen/s16"
+                        android:textSize="@dimen/s14"
                         app:typeface="@string/font_bold" />
 
 
