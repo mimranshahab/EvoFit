@@ -58,6 +58,9 @@ public class CardioAdapter extends RecyclerView.Adapter<CardioAdapter.ViewHolder
 
         holder.RlReport.setVisibility(View.VISIBLE);
         holder.RlGraph.setVisibility(View.VISIBLE);
+        holder.txtStatusType.setVisibility(View.VISIBLE);
+        holder.imgStatus.setVisibility(View.VISIBLE);
+
         holder.txtDrName.setText(model.getLastFileUser());
 
         setEnability(holder, model);
@@ -90,6 +93,7 @@ public class CardioAdapter extends RecyclerView.Adapter<CardioAdapter.ViewHolder
         holder.imgIcon.setImageResource(circular_background);
         holder.imgTransparent.setImageResource(img_transparent);
         holder.imgIcon.setColorFilter(color);
+        holder.imgStatus.setColorFilter(color);
     }
 
     private void setEnability(ViewHolder holder, CardioModel cardioModel) {
@@ -146,7 +150,8 @@ public class CardioAdapter extends RecyclerView.Adapter<CardioAdapter.ViewHolder
         @BindView(R.id.txtStatusType)
         AnyTextView txtStatusType;
         @BindView(R.id.imgIcon)
-        ImageView imgIcon;
+        ImageView imgIcon;  @BindView(R.id.imgStatus)
+        ImageView imgStatus;
         @BindView(R.id.imgTransparent)
         ImageView imgTransparent;
         @BindView(R.id.txtName)

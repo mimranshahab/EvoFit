@@ -40,9 +40,9 @@
 
                     <edu.aku.akuh_health_first.widget.AnyTextView
                         android:id="@+id/txtDateTime"
-                        android:layout_width="match_parent"
+                        android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:layout_weight=".5"
+                        android:layout_weight=".6"
                         android:drawableLeft="@drawable/a_icons8_calendar_filled2"
                         android:drawableTint="@color/txt_aku_blue"                        android:drawablePadding="@dimen/x5dp"
                         android:ellipsize="end"
@@ -53,18 +53,41 @@
                         app:typeface="@string/font_regular" />
 
 
-                    <edu.aku.akuh_health_first.widget.AnyTextView
-                        android:id="@+id/txtType"
-                        android:layout_width="match_parent"
+
+                    <LinearLayout
+                        android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:layout_marginLeft="@dimen/x35dp"
-                        android:layout_weight=".5"
-                        android:gravity="center_horizontal"
-                        android:padding="@dimen/x3dp"
-                        android:text="Vaccinated"
-                        android:textColor="@color/c_white"
-                        android:textSize="@dimen/s16"
-                        app:typeface="@string/font_bold" />
+                        android:layout_marginRight="@dimen/x5dp"
+                        android:layout_weight=".4"
+
+                        android:gravity="center_vertical|end"
+                        android:orientation="horizontal">
+
+                        <ImageView
+                            android:id="@+id/imgStatus"
+                            android:layout_width="@dimen/x10dp"
+                            android:layout_height="@dimen/x10dp"
+                            android:layout_marginRight="@dimen/x5dp"
+                            android:scaleType="centerCrop"
+                            android:visibility="gone"
+
+                            android:src="@drawable/shape_circle"
+                            android:tint="@color/base_amber" />
+
+
+                        <edu.aku.akuh_health_first.widget.AnyTextView
+                            android:id="@+id/txtStatusType"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:gravity="center_horizontal"
+                            android:padding="@dimen/x3dp"
+                            android:text="Completed"
+                            android:visibility="gone"
+
+                            android:textColor="@color/base_amber"
+                            android:textSize="@dimen/s15"
+                            app:typeface="@string/font_bold" />
+                    </LinearLayout>
 
                 </LinearLayout>
 

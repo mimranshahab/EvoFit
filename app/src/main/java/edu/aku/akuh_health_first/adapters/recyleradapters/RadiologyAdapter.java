@@ -56,6 +56,8 @@ public class RadiologyAdapter extends RecyclerView.Adapter<RadiologyAdapter.View
 
         holder.RlReport.setVisibility(View.VISIBLE);
         holder.RlGraph.setVisibility(View.VISIBLE);
+        holder.txtStatusType.setVisibility(View.VISIBLE);
+        holder.imgStatus.setVisibility(View.VISIBLE);
         holder.txtGraph.setText("Images");
 
         if (model.getStatus().equalsIgnoreCase("F")) {
@@ -79,6 +81,7 @@ public class RadiologyAdapter extends RecyclerView.Adapter<RadiologyAdapter.View
         holder.txtStatusType.setTextColor(color);
 //        holder.btnReportColorCode1.setBackgroundResource(backgroundResource);
         holder.imgIcon.setColorFilter(color);
+        holder.imgStatus.setColorFilter(color);
         holder.imgTransparent.setImageResource(img_transparent);
         holder.imgTransparent.setPadding(5, 5, 5, 5);
     }
@@ -116,29 +119,15 @@ public class RadiologyAdapter extends RecyclerView.Adapter<RadiologyAdapter.View
     }
 
     static class ViewHolder extends RecyclerView.ViewHolder {
-        //        @BindView(R.id.txtReqDatetime)
-//        AnyTextView txtExamDatetime;
-//        @BindView(R.id.txtLocation)
-//        AnyTextView txtLocation;
-//
-//        @BindView(R.id.txtExam)
-//        AnyTextView txtExam;
-//        @BindView(R.id.txtStatus)
-//        AnyTextView txtStatus;
-//        @BindView(R.id.btnShowReport)
-//        AnyTextView btnShowReport;
-//        @BindView(R.id.btnShowGraph)
-//        AnyTextView btnShowGraph;
-//        @BindView(R.id.contListItem)
-//        LinearLayout contListItem;
-//        @BindView(R.id.cardView2)
-//        CardView cardView2;
+
         @BindView(R.id.txtDateTime)
         AnyTextView txtDateTime;
         @BindView(R.id.txtStatusType)
         AnyTextView txtStatusType;
         @BindView(R.id.imgIcon)
         ImageView imgIcon;
+        @BindView(R.id.imgStatus)
+        ImageView imgStatus;
         @BindView(R.id.imgTransparent)
         ImageView imgTransparent;
         @BindView(R.id.txtName)
