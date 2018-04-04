@@ -69,6 +69,7 @@ public class PacsActivity extends AppCompatActivity {
         settitlebar();
 
 
+
         SharedPreferenceManager sharedPreferenceManager = SharedPreferenceManager.getInstance(this);
         String fromJson = sharedPreferenceManager.getString("JSON_STRING_KEY");
 
@@ -89,6 +90,8 @@ public class PacsActivity extends AppCompatActivity {
             updateData(arrTupleModel.get(0));
         }
         setListeners();
+        indicatorSeekBar.setProgress(0);
+
 
     }
 
