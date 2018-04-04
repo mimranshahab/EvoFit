@@ -59,9 +59,10 @@ public class ClinicalLabAdapterV1 extends RecyclerView.Adapter<ClinicalLabAdapte
         holder.txtSpecimenNumber.setText(model.getSpecimenID());
         holder.txtStatusID.setText(model.getOrdered());
         holder.txtDateTime.setText(model.getEnteredDTTM());
-        holder.txtStatus.setText(model.getStatusID());
+        holder.txtStatusType.setText(model.getStatusID());
         holder.btnShowDetail.setVisibility(View.GONE);
-
+        holder.txtStatusType.setVisibility(View.VISIBLE);
+        holder.imgStatus.setVisibility(View.VISIBLE);
         setListener(holder, model);
 
         if (model.getStatusID().equalsIgnoreCase("Completed") || model.getStatusID().equalsIgnoreCase("Partially Completed")) {
@@ -148,8 +149,9 @@ public class ClinicalLabAdapterV1 extends RecyclerView.Adapter<ClinicalLabAdapte
     private void colorCodes(ViewHolder holder, int framecolor, int btnbackground/*, int color*/) {
         holder.cardView2.setCardBackgroundColor(framecolor);
 //        holder.btnShowDetail.setBackgroundResource(btnbackground);
-        holder.txtStatus.setTextColor(framecolor);
+        holder.txtStatusType.setTextColor(framecolor);
         holder.imgIcon.setColorFilter(framecolor);
+        holder.imgStatus.setColorFilter(framecolor);
     }
 
 
@@ -177,10 +179,12 @@ public class ClinicalLabAdapterV1 extends RecyclerView.Adapter<ClinicalLabAdapte
     static class ViewHolder extends RecyclerView.ViewHolder {
         @BindView(R.id.txtDateTime)
         AnyTextView txtDateTime;
-        @BindView(R.id.txtStatus)
-        AnyTextView txtStatus;
+        @BindView(R.id.txtStatusType)
+        AnyTextView txtStatusType;
         @BindView(R.id.imgIcon)
         ImageView imgIcon;
+        @BindView(R.id.imgStatus)
+        ImageView imgStatus;
         @BindView(R.id.txtSpecimenNumber)
         AnyTextView txtSpecimenNumber;
         @BindView(R.id.txtStatusID)

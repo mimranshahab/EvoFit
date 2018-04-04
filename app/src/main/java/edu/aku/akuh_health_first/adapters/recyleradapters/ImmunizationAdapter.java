@@ -15,7 +15,6 @@ import java.util.ArrayList;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
-import de.hdodenhof.circleimageview.CircleImageView;
 import edu.aku.akuh_health_first.R;
 import edu.aku.akuh_health_first.callbacks.OnItemClickListener;
 import edu.aku.akuh_health_first.constatnts.AppConstants;
@@ -28,6 +27,7 @@ public class ImmunizationAdapter extends RecyclerView.Adapter<ImmunizationAdapte
 
 
     private final OnItemClickListener onItemClick;
+
 
 
     private Activity activity;
@@ -53,7 +53,9 @@ public class ImmunizationAdapter extends RecyclerView.Adapter<ImmunizationAdapte
 
         final ImmunizationModel model = arrImmunization.get(holder.getAdapterPosition());
 
-        holder.txtType.setText(model.getVaccinationStatus());
+        holder.txtStatusType.setVisibility(View.VISIBLE);
+        holder.imgStatus.setVisibility(View.VISIBLE);
+        holder.txtStatusType.setText(model.getVaccinationStatus());
 
         holder.txtDateTime.setText(model.getVaccinePlanDate());
         if (model.getHospitalLocation() == null || model.getHospitalLocation().isEmpty()) {
@@ -92,9 +94,10 @@ public class ImmunizationAdapter extends RecyclerView.Adapter<ImmunizationAdapte
 
     private void setViews(ViewHolder holder, int color, int rounded_box_filled_primary_color, int visible) {
         holder.cardView2.setCardBackgroundColor(color);
-        holder.txtType.setTextColor(color);
+        holder.txtStatusType.setTextColor(color);
         holder.btnupdateColorCode.setBackgroundResource(rounded_box_filled_primary_color);
         holder.imgIcon.setColorFilter(color);
+        holder.imgStatus.setColorFilter(color);
         holder.RLUpdate.setVisibility(visible);
         holder.txtBtnColor.setTextColor(color);
 
@@ -128,8 +131,10 @@ public class ImmunizationAdapter extends RecyclerView.Adapter<ImmunizationAdapte
     static class ViewHolder extends RecyclerView.ViewHolder {
         @BindView(R.id.txtDateTime)
         AnyTextView txtDateTime;
-        @BindView(R.id.txtType)
-        AnyTextView txtType;
+        @BindView(R.id.imgStatus)
+        ImageView imgStatus;
+        @BindView(R.id.txtStatusType)
+        AnyTextView txtStatusType;
         @BindView(R.id.imgIcon)
         ImageView imgIcon;
         @BindView(R.id.imgTransparent)

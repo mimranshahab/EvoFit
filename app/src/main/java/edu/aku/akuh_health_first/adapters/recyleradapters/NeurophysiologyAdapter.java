@@ -56,7 +56,8 @@ public class NeurophysiologyAdapter extends RecyclerView.Adapter<Neurophysiology
         holder.txtName.setText(model.getService());
 
         holder.RlGraph.setVisibility(View.GONE);
-
+        holder.txtStatusType.setVisibility(View.VISIBLE);
+        holder.imgStatus.setVisibility(View.VISIBLE);
         holder.txtDrName.setText(model.getLastFileUser());
 
         setListener(holder, model);
@@ -83,6 +84,7 @@ public class NeurophysiologyAdapter extends RecyclerView.Adapter<Neurophysiology
         holder.imgTransparent.setImageResource(circular_background);
         holder.btnReportColorCode1.setBackgroundResource(backgroundResource);
         holder.imgIcon.setColorFilter(color);
+        holder.imgStatus.setColorFilter(color);
     }
 
     private void setListener(final ViewHolder holder, final Neurophysiology neurophysiology) {
@@ -114,6 +116,8 @@ public class NeurophysiologyAdapter extends RecyclerView.Adapter<Neurophysiology
         AnyTextView txtStatusType;
         @BindView(R.id.imgIcon)
         ImageView imgIcon;
+        @BindView(R.id.imgStatus)
+        ImageView imgStatus;
         @BindView(R.id.imgTransparent)
         ImageView imgTransparent;
         @BindView(R.id.txtName)
