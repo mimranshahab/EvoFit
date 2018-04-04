@@ -184,7 +184,6 @@ public class ClinicalLaboratoryFragment extends BaseFragment implements View.OnC
                 labDetailService(model.getSpecimenNumber());
             }
         }
-
     }
 
 

@@ -175,7 +175,7 @@ public class ClinicalLaboratoryDetailFragment extends BaseFragment implements Vi
 
                     break;
                 case R.id.btnHistory:
-                    historydialog(model);
+                    historyDialog(model);
                     break;
             }
 
@@ -184,7 +184,7 @@ public class ClinicalLaboratoryDetailFragment extends BaseFragment implements Vi
 
     }
 
-    private void historydialog(LstLaboratorySpecimenResults model) {
+    private void historyDialog(LstLaboratorySpecimenResults model) {
         final HistoryDialogFragment historyDialogFrag = HistoryDialogFragment.newInstance();
         historyDialogFrag.setTitle(model.getReportName());
         historyDialogFrag.setResultPrevious1(model.getPrevResult1());
@@ -192,7 +192,7 @@ public class ClinicalLaboratoryDetailFragment extends BaseFragment implements Vi
         historyDialogFrag.setResultPrevious1Date(model.getPrevResult1Dttm());
         historyDialogFrag.setResultPrevious2Date(model.getPrevResult2Dttm());
         historyDialogFrag.setCurrentResult(model.getResult());
-        historyDialogFrag.setCurrentDate(model.getResultEntryDttm());
+        historyDialogFrag.setCurrentDate(model.getResultVerifyDttm());
 
 
         historyDialogFrag.show(getFragmentManager(), null);
@@ -239,7 +239,7 @@ public class ClinicalLaboratoryDetailFragment extends BaseFragment implements Vi
 
                 break;
             case R.id.btnHistory:
-                historydialog(model);
+                historyDialog(model);
                 break;
         }
 

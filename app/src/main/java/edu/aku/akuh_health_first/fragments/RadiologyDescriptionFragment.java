@@ -14,6 +14,7 @@ import com.google.gson.JsonObject;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 import butterknife.Unbinder;
 import edu.aku.akuh_health_first.R;
 import edu.aku.akuh_health_first.constatnts.WebServiceConstants;
@@ -38,6 +39,8 @@ public class RadiologyDescriptionFragment extends BaseFragment {
     @BindView(R.id.txtDescription)
     AnyTextView txtDescription;
     Unbinder unbinder;
+    @BindView(R.id.btnDownload)
+    AnyTextView btnDownload;
     private String jsonData;
 
 
@@ -127,5 +130,10 @@ public class RadiologyDescriptionFragment extends BaseFragment {
     public void onDestroyView() {
         super.onDestroyView();
         unbinder.unbind();
+    }
+
+    @OnClick(R.id.btnDownload)
+    public void onViewClicked() {
+        showNextBuildToast();
     }
 }
