@@ -21,6 +21,7 @@ import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
 import com.nostra13.universalimageloader.core.assist.ImageScaleType;
 import com.nostra13.universalimageloader.core.display.FadeInBitmapDisplayer;
 
+import edu.aku.akuh_health_first.activities.MainActivity;
 import edu.aku.akuh_health_first.activities.SplashActivity;
 
 import edu.aku.akuh_health_first.libraries.imageloader.CustomImageDownaloder;
@@ -109,7 +110,7 @@ public class BaseApplication extends MultiDexApplication implements Application.
 //                Log.d("Crash BaseApplication", "uncaughtException: " + SharedPreferenceManager.getInstance().isForcedRestart());
                 Log.e("Error" + Thread.currentThread().getStackTrace()[2], paramThrowable.getLocalizedMessage());
 
-                PendingIntent pendingIntent = PendingIntent.getActivity(getApplicationContext(), 293, new Intent(getApplicationContext(), SplashActivity.class), 0);
+                PendingIntent pendingIntent = PendingIntent.getActivity(getApplicationContext(), 293, new Intent(getApplicationContext(), MainActivity.class), 0);
                 AlarmManager mgr = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
                 mgr.set(AlarmManager.RTC, System.currentTimeMillis() + 30, pendingIntent);
                 System.exit(1);
