@@ -43,9 +43,10 @@
                         android:layout_height="wrap_content"
                         android:layout_weight=".6"
                         android:drawableLeft="@drawable/a_icons8_calendar_filled2"
-                        android:drawableTint="@color/txt_aku_blue"                        android:drawablePadding="@dimen/x5dp"
+                        android:drawablePadding="@dimen/x5dp"
+                        android:drawableTint="@color/txt_aku_blue"
                         android:text="22 jan ,2018"
-                        android:textSize="@dimen/s10" />
+                        android:textSize="@dimen/s12" />
 
 
                     <LinearLayout
@@ -57,13 +58,13 @@
 
                         <ImageView
                             android:id="@+id/imgStatus"
-                            android:layout_width="@dimen/x10dp"
-                            android:layout_height="@dimen/x10dp"
-                            android:scaleType="centerCrop"
+                            android:layout_width="@dimen/x8dp"
+                            android:layout_height="@dimen/x8dp"
                             android:layout_marginRight="@dimen/x5dp"
-                            android:visibility="gone"
+                            android:scaleType="centerCrop"
                             android:src="@drawable/shape_circle"
-                            android:tint="@color/base_amber" />
+                            android:tint="@color/base_amber"
+                            android:visibility="gone" />
 
 
                         <edu.aku.akuh_health_first.widget.AnyTextView
@@ -73,9 +74,9 @@
                             android:gravity="center_horizontal"
                             android:padding="@dimen/x3dp"
                             android:text="Completed"
-                            android:visibility="gone"
                             android:textColor="@color/base_amber"
-                            android:textSize="@dimen/s15"
+                            android:textSize="@dimen/s12"
+                            android:visibility="gone"
                             app:typeface="@string/font_bold" />
                     </LinearLayout>
 
@@ -114,12 +115,10 @@
                             android:layout_height="@dimen/x45dp"
                             android:layout_centerInParent="true"
                             android:layout_margin="@dimen/x5dp"
-                            android:scaleType="centerCrop"
-                            />
+                            android:scaleType="centerCrop" />
 
 
                     </RelativeLayout>
-
 
 
                     <LinearLayout
@@ -135,8 +134,8 @@
                             android:id="@+id/txtName"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:maxLines="1"
                             android:ellipsize="end"
+                            android:maxLines="1"
                             android:padding="@dimen/x2dp"
                             android:text="Hepatitus A "
                             android:textColor="@color/txt_aku_blue"
@@ -150,9 +149,9 @@
                             android:layout_height="wrap_content"
                             android:drawableLeft="@drawable/cardiopulmonary_doctor"
                             android:drawablePadding="@dimen/x5dp"
-                            android:padding="@dimen/x2dp"
-                            android:maxLines="1"
                             android:ellipsize="end"
+                            android:maxLines="1"
+                            android:padding="@dimen/x2dp"
                             android:text="Dr Abc"
                             android:textColor="@color/txt_aku_blue"
                             android:textSize="@dimen/s10"
@@ -181,6 +180,7 @@
                         android:visibility="gone">
 
                         <edu.aku.akuh_health_first.widget.AnyTextView
+                            android:id="@+id/btnReportColorCode1"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:background="@drawable/rounded_box_filled_primary_color"
@@ -194,11 +194,9 @@
                             />
 
                         <edu.aku.akuh_health_first.widget.AnyTextView
-                            android:id="@+id/btnReportColorCode1"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:alpha=".25"
-
                             android:gravity="center"
                             android:padding="@dimen/x7dp"
 

@@ -94,7 +94,6 @@
                         android:ellipsize="end"
                         android:maxLines="1"
                         android:padding="@dimen/x3dp"
-
                         android:text="date"
                         android:textColor="@color/txt_aku_blue"
                         android:textSize="@dimen/s14"

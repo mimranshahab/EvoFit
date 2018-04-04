@@ -57,7 +57,7 @@
                 android:background="@drawable/rounded_box"
                 android:drawableLeft="@drawable/user_icon"
                 android:drawablePadding="@dimen/x5dp"
-                android:hint="@string/user_id"
+                android:hint="Card Number"
                 android:inputType="text"
                 android:maxLength="30"
                 android:paddingBottom="@dimen/x8dp"

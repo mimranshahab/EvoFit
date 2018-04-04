@@ -8,10 +8,6 @@
     android:background="@color/c_white"
     android:orientation="vertical">
 
-    <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:fillViewport="true">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -21,28 +17,27 @@
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/x10dp"
+                android:layout_marginTop="@dimen/x5dp"
                 android:gravity="center">
 
 
                 <de.hdodenhof.circleimageview.CircleImageView
                     android:id="@+id/circleImageView"
-                    android:layout_width="@dimen/x225dp"
-                    android:layout_height="@dimen/x225dp"
-                    android:layout_margin="@dimen/x15dp"
+                    android:layout_width="@dimen/x150dp"
+                    android:layout_height="@dimen/x150dp"
+                    android:layout_margin="@dimen/x10dp"
                     android:scaleType="centerCrop"
                     android:src="@drawable/profile_placeholder"
                     android:visibility="visible" />
 
                 <ImageButton
                     android:id="@+id/btnCamera"
-                    android:layout_width="@dimen/x40dp"
-                    android:layout_height="@dimen/x40dp"
+                    android:layout_width="@dimen/x45dp"
+                    android:layout_height="@dimen/x45dp"
                     android:layout_alignBottom="@+id/circleImageView"
                     android:layout_alignEnd="@+id/circleImageView"
-                    android:layout_marginBottom="8dp"
-                    android:layout_marginEnd="9dp"
-                    android:background="@drawable/c_upload_photo" />
+                    android:background="@drawable/c_upload_photo"
+                    android:padding="@dimen/x10dp" />
             </RelativeLayout>
 
             <RelativeLayout
@@ -186,5 +181,7 @@
             </RelativeLayout>
 
         </LinearLayout>
-    </ScrollView>
+
+
+
 </LinearLayout>
