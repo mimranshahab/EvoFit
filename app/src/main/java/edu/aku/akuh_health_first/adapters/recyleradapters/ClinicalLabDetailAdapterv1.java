@@ -103,17 +103,23 @@ public class ClinicalLabDetailAdapterv1 extends RecyclerView.Adapter<ClinicalLab
 
 
         if ((model.getComments() == null || model.getComments().isEmpty()) && (model.getResultComments() == null || model.getResultComments().isEmpty())) {
-            holder.txtComments.setVisibility(View.GONE);
+//            holder.txtComments.setVisibility(View.GONE);
+            holder.txtComments.setEnabled(false);
+            holder.txtComments.setAlpha(.15f);
+
         } else {
             holder.txtComments.setVisibility(View.VISIBLE);
+            holder.txtComments.setEnabled(true);
 
         }
 
         if ((model.getPrevResult1() == null || model.getPrevResult1().isEmpty()) && (model.getPrevResult2() == null || model.getPrevResult2().isEmpty())) {
-            holder.btnHistory.setVisibility(View.GONE);
-
+//            holder.btnHistory.setVisibility(View.GONE);
+            holder.btnHistory.setEnabled(false);
+            holder.btnHistory.setAlpha(.15f);
         } else {
             holder.btnHistory.setVisibility(View.VISIBLE);
+            holder.btnHistory.setEnabled(true);
         }
 
         if (holder.btnHistory.getVisibility() == View.GONE && holder.txtComments.getVisibility() == View.GONE) {
