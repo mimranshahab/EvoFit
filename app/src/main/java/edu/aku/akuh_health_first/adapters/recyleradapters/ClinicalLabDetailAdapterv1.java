@@ -4,7 +4,6 @@ import android.app.Activity;
 import android.graphics.Typeface;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
-import android.text.style.AbsoluteSizeSpan;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,9 +16,7 @@ import java.util.ArrayList;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import edu.aku.akuh_health_first.R;
-import edu.aku.akuh_health_first.callbacks.OnItemClickListener;
 import edu.aku.akuh_health_first.helperclasses.Spanny;
-import edu.aku.akuh_health_first.models.CardioModel;
 import edu.aku.akuh_health_first.models.LstLaboratorySpecimenResults;
 import edu.aku.akuh_health_first.widget.AnyTextView;
 import edu.aku.akuh_health_first.widget.CustomTypefaceSpan;
@@ -103,13 +100,13 @@ public class ClinicalLabDetailAdapterv1 extends RecyclerView.Adapter<ClinicalLab
 
 
         if ((model.getComments() == null || model.getComments().isEmpty()) && (model.getResultComments() == null || model.getResultComments().isEmpty())) {
-//            holder.txtComments.setVisibility(View.GONE);
-            holder.txtComments.setEnabled(false);
-            holder.txtComments.setAlpha(.15f);
+//            holder.btnComment.setVisibility(View.GONE);
+            holder.btnComment.setEnabled(false);
+            holder.btnComment.setAlpha(.15f);
 
         } else {
-            holder.txtComments.setVisibility(View.VISIBLE);
-            holder.txtComments.setEnabled(true);
+            holder.btnComment.setVisibility(View.VISIBLE);
+            holder.btnComment.setEnabled(true);
 
         }
 
@@ -122,9 +119,11 @@ public class ClinicalLabDetailAdapterv1 extends RecyclerView.Adapter<ClinicalLab
             holder.btnHistory.setEnabled(true);
         }
 
-        if (holder.btnHistory.getVisibility() == View.GONE && holder.txtComments.getVisibility() == View.GONE) {
+        if ((!holder.btnHistory.isEnabled()) && (!holder.btnComment.isEnabled())) {
             holder.historySeperator.setVisibility(View.GONE);
+            holder.contButtonLayout.setVisibility(View.GONE);
         } else {
+            holder.contButtonLayout.setVisibility(View.VISIBLE);
             holder.historySeperator.setVisibility(View.VISIBLE);
         }
         setListener(holder, model);
@@ -144,7 +143,7 @@ public class ClinicalLabDetailAdapterv1 extends RecyclerView.Adapter<ClinicalLab
     }
 
     //    private void setListener(final ViewHolder holder, final LstLaboratorySpecimenResults lstLaboratorySpecimenResults) {
-//        holder.txtComments.setOnClickListener(new View.OnClickListener() {
+//        holder.btnComment.setOnClickListener(new View.OnClickListener() {
 //            @Override
 //            public void onClick(View v) {
 //                onItemClick.onItemClick(holder.getAdapterPosition(), lstLaboratorySpecimenResults);
@@ -158,7 +157,7 @@ public class ClinicalLabDetailAdapterv1 extends RecyclerView.Adapter<ClinicalLab
 //        });
 //    }
     private void setListener(final ViewHolder holder, final LstLaboratorySpecimenResults lstLaboratorySpecimenResults) {
-        holder.txtComments.setOnClickListener(new View.OnClickListener() {
+        holder.btnComment.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 onItemClick.onItemClick(null, v, holder.getAdapterPosition(), 0);
@@ -194,7 +193,7 @@ public class ClinicalLabDetailAdapterv1 extends RecyclerView.Adapter<ClinicalLab
         @BindView(R.id.historySeperator)
         ImageView historySeperator;
         @BindView(R.id.txtComments)
-        AnyTextView txtComments;
+        AnyTextView btnComment;
         @BindView(R.id.btnHistory)
         AnyTextView btnHistory;
         @BindView(R.id.txtunit)
@@ -203,6 +202,8 @@ public class ClinicalLabDetailAdapterv1 extends RecyclerView.Adapter<ClinicalLab
         AnyTextView txtState;
         @BindView(R.id.cardView2)
         CardView cardView2;
+        @BindView(R.id.contButtonLayout)
+        LinearLayout contButtonLayout;
 
         ViewHolder(View view) {
             super(view);
