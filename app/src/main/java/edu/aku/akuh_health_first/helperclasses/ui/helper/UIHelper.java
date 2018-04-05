@@ -17,13 +17,11 @@ import android.graphics.Paint;
 import android.graphics.Rect;
 import android.media.ExifInterface;
 import android.os.Environment;
-import android.os.Handler;
 import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
 import android.support.v4.graphics.ColorUtils;
 import android.text.TextUtils;
 import android.util.Log;
-import android.util.MutableInt;
 import android.view.Gravity;
 import android.view.View;
 import android.view.ViewGroup;
@@ -31,7 +29,6 @@ import android.view.ViewParent;
 import android.view.WindowManager;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
-import android.widget.SpinnerAdapter;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -45,15 +42,11 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.ArrayList;
 
-import edu.aku.akuh_health_first.activities.BaseActivity;
 import edu.aku.akuh_health_first.adapters.recyleradapters.SpinnerDialogAdapter;
-import edu.aku.akuh_health_first.callbacks.OnItemClickListener;
 import edu.aku.akuh_health_first.callbacks.OnSpinnerItemClickListener;
 import edu.aku.akuh_health_first.fragments.abstracts.BaseFragment;
-import edu.aku.akuh_health_first.fragments.dialogs.HealthSummaryDialogFragment;
 import edu.aku.akuh_health_first.fragments.dialogs.SpinnerDialogFragment;
 import edu.aku.akuh_health_first.models.IntWrapper;
-import edu.aku.akuh_health_first.models.Shortmessagemobile;
 import edu.aku.akuh_health_first.models.SpinnerModel;
 
 /**

@@ -13,7 +13,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import edu.aku.akuh_health_first.R;
 import edu.aku.akuh_health_first.callbacks.OnItemClickListener;
-import edu.aku.akuh_health_first.models.Shortmessagemobile;
+import edu.aku.akuh_health_first.models.ShortMessageMobile;
 import edu.aku.akuh_health_first.widget.AnyTextView;
 
 /**
@@ -26,9 +26,9 @@ public class HealthSummaryDialogAdapter extends RecyclerView.Adapter<HealthSumma
 
 
     private Activity activity;
-    private ArrayList<Shortmessagemobile> arrData;
+    private ArrayList<ShortMessageMobile> arrData;
 
-    public HealthSummaryDialogAdapter(Activity activity, ArrayList<Shortmessagemobile> arrayList, OnItemClickListener onItemClickListener) {
+    public HealthSummaryDialogAdapter(Activity activity, ArrayList<ShortMessageMobile> arrayList, OnItemClickListener onItemClickListener) {
         this.arrData = arrayList;
         this.activity = activity;
         this.onItemClick = onItemClickListener;
@@ -46,14 +46,14 @@ public class HealthSummaryDialogAdapter extends RecyclerView.Adapter<HealthSumma
     @Override
     public void onBindViewHolder(final ViewHolder holder, int i) {
 
-        final Shortmessagemobile model = arrData.get(holder.getAdapterPosition());
+        final ShortMessageMobile model = arrData.get(holder.getAdapterPosition());
 
         holder.txtShortMessage.setText(model.getTitle());
         holder.txtDate.setText(model.getMessage());
 
     }
 
-    public void addItem(ArrayList<Shortmessagemobile> homeCategories) {
+    public void addItem(ArrayList<ShortMessageMobile> homeCategories) {
         this.arrData = homeCategories;
         notifyDataSetChanged();
     }

@@ -3,7 +3,7 @@ package edu.aku.akuh_health_first.models;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-public class Shortmessagemobile {
+public class ShortMessageMobile {
     @Expose
     @SerializedName("MoreMessage")
     private String moremessage;

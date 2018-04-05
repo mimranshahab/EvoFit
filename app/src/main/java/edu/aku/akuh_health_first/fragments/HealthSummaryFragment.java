@@ -39,7 +39,7 @@ import edu.aku.akuh_health_first.managers.retrofit.WebServices;
 import edu.aku.akuh_health_first.models.DetailHealthSummaryModel;
 import edu.aku.akuh_health_first.models.PatientHealthSummaryModel;
 import edu.aku.akuh_health_first.models.SearchModel;
-import edu.aku.akuh_health_first.models.Shortmessagemobile;
+import edu.aku.akuh_health_first.models.ShortMessageMobile;
 import edu.aku.akuh_health_first.models.wrappers.WebResponse;
 import edu.aku.akuh_health_first.widget.AnyTextView;
 import edu.aku.akuh_health_first.widget.recyclerview_layout.CustomLayoutManager;
@@ -329,11 +329,11 @@ public class HealthSummaryFragment extends BaseFragment implements OnItemClickLi
         if (object instanceof DetailHealthSummaryModel) {
             DetailHealthSummaryModel model = (DetailHealthSummaryModel) object;
 
-            boolean isLinkToHistory = Boolean.parseBoolean(model.getLinktohistory());
+            boolean isLinkToHistory = Boolean.parseBoolean(model.getLinkToHistory());
 
 
             if (isLinkToHistory) {
-                HealthSummaryTypes state = HealthSummaryTypes.fromStringForm(model.getWebandmobilemodel().getLink());
+                HealthSummaryTypes state = HealthSummaryTypes.fromStringForm(model.getWebandMobileModel().getLink());
 
                 if (state == null) {
                     UIHelper.showToast(getContext(), "No Redirection Available");
@@ -363,10 +363,10 @@ public class HealthSummaryFragment extends BaseFragment implements OnItemClickLi
                         break;
                 }
             } else {
-                if (model.getDetailMessageMobileArray().isEmpty()) {
+                if (model.getDetailedMessageMobile().isEmpty()) {
                     UIHelper.showToast(getContext(), "No Details available");
                 } else {
-                    showDetailDialog(model.getDetailMessageMobileArray(), model.getSummarytitle());
+                    showDetailDialog(model.getDetailedMessageMobile(), model.getSummaryTitle());
                 }
             }
 
@@ -375,7 +375,7 @@ public class HealthSummaryFragment extends BaseFragment implements OnItemClickLi
     }
 
 
-    public void showDetailDialog(ArrayList<Shortmessagemobile> arrData, String title) {
+    public void showDetailDialog(ArrayList<ShortMessageMobile> arrData, String title) {
         final HealthSummaryDialogFragment dialogFragment = HealthSummaryDialogFragment.newInstance(title);
         dialogFragment.setArrData(arrData);
         dialogFragment.show(getFragmentManager(), null);

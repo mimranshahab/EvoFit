@@ -22,7 +22,7 @@ public class WebServiceConstants {
     /**
      * URLs
      */
-//    public static String BASE_URL = "http://ahfapidev.aku.edu/api/";
+    public static String BASE_URL_DUMMY = "http://ahfapidev.aku.edu/api/";
     public static String BASE_URL = "https://familyhifazatmobileapiuat.aku.edu/api/";
     public static String GETIMAGE_BASE_URL = "https://familyhifazatmobileapiuat.aku.edu/getimage?path=";
 
