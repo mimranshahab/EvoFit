@@ -44,12 +44,12 @@
     <color name="transparent">#00000000</color>
 
     <color name="c_light_grey">#D3D3D3</color>
-    <color name="c_black">#000000</color>
+     <color name="c_black">#000000</color>
     <color name="c_gray">#808080</color>
     <color name="c_gray_x11gray">#BEBEBE</color>
     <color name="c_grayasparagus">#465945</color>
     <color name="c_white">#FFFFFF</color>
-    <color name="c_white_smoke">#F5F5F5</color>
+    <color name="c_white_smoke">#E5E5E5</color>
 
 
 </resources>

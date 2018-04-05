@@ -6,8 +6,11 @@ import android.view.View;
 
 import java.util.ArrayList;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
 import edu.aku.akuh_health_first.R;
 import edu.aku.akuh_health_first.constatnts.AppConstants;
+import edu.aku.akuh_health_first.helperclasses.ui.helper.TitleBar;
 import edu.aku.akuh_health_first.libraries.table.model.BaseCellData;
 import edu.aku.akuh_health_first.libraries.table.model.DefaultSheetData;
 import edu.aku.akuh_health_first.libraries.table.model.ISheetData;
@@ -15,44 +18,41 @@ import edu.aku.akuh_health_first.libraries.table.util.TableViewConfigure;
 import edu.aku.akuh_health_first.libraries.table.view.TableView;
 import edu.aku.akuh_health_first.managers.SharedPreferenceManager;
 import edu.aku.akuh_health_first.models.LstMicSpecAntibiotic;
-import edu.aku.akuh_health_first.models.LstMicSpecOrganism;
 import edu.aku.akuh_health_first.models.LstMicSpecParaResult;
 import edu.aku.akuh_health_first.models.SheetTemplate1;
+
+import static edu.aku.akuh_health_first.constatnts.AppConstants.JSON_STRING_KEY;
 
 
 public class TableViewActivity extends AppCompatActivity {
     TableView mTableView;
+    @BindView(R.id.titlebar_tableview)
+    TitleBar titlebarTableview;
+    // Converting List to Set
+    ArrayList<LstMicSpecAntibiotic> antibioticSet = new ArrayList<>();
+    // Declare 2D Array (Organism, Antibiotic Set)
+    String[][] tableData;
+
+    LstMicSpecParaResult lstMicSpecParaResult;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_table_view);
+        ButterKnife.bind(this);
 
-        LstMicSpecParaResult lstMicSpecParaResult = SharedPreferenceManager.getInstance(this).getObject(AppConstants.KEY_CROSS_TAB_DATA, LstMicSpecParaResult.class);
+        String title = getIntent().getStringExtra(JSON_STRING_KEY);
+        lstMicSpecParaResult = SharedPreferenceManager.getInstance(this).getObject(AppConstants.KEY_CROSS_TAB_DATA, LstMicSpecParaResult.class);
+        convertToSetAntibiotics();
+        tableData = new String[lstMicSpecParaResult.getLstMicSpecOrganism().size()][antibioticSet.size()];
+        setTitleBar(title);
+        setTableViewCellWidth();
+        setData();
+        setTableView();
+    }
 
-
-        mTableView = (TableView) findViewById(R.id.table_view);
-        mTableView.setLayoutChagneListener(new TableView.LayoutChagneListener() {
-            @Override
-            public void onLayoutChange(View v, boolean changed, int left, int top, int right, int bottom) {
-                if (changed) {
-                    int tableViewWidth = mTableView.getWidth();
-                    int colWidth = (int) (tableViewWidth / 3.3);
-//                    colWidth = colWidth * 2;
-                    DefaultSheetData sheetData = (DefaultSheetData) mTableView.getSheet();
-                    for (int i = 0; i < sheetData.getMaxColumnCount(); i++) {
-                        sheetData.setColumnWidth(i, colWidth);
-                    }
-                    calcRowHeight(sheetData);
-                    mTableView.clearCacheData();
-                }
-            }
-        });
-
-
-        // Converting List to Set
-        ArrayList<LstMicSpecAntibiotic> antibioticSet = new ArrayList<>();
+    private void convertToSetAntibiotics() {
         for (LstMicSpecAntibiotic lstMicSpecAntibiotic : lstMicSpecParaResult.getLstMicSpecAntibiotics()) {
             if (antibioticSet.isEmpty()) {
                 antibioticSet.add(lstMicSpecAntibiotic);
@@ -68,10 +68,22 @@ public class TableViewActivity extends AppCompatActivity {
                 }
             }
         }
+    }
 
-        // Declare 2D Array (Organism, Antibiotic Set)
-        String[][] tableData = new String[lstMicSpecParaResult.getLstMicSpecOrganism().size()][antibioticSet.size()];
+    private void setTableView() {
+        ISheetData sheet = SheetTemplate1.get(this, tableData);
+        mTableView.setSheetData(sheet);
+        TableViewConfigure configure = new TableViewConfigure();
+        configure.setShowHeaders(true);
+        configure.setEnableResizeRow(false);
+        configure.setEnableResizeColumn(false);
+        configure.setEnableSelection(false);
+        mTableView.setConfigure(configure);
 
+        mTableView.setData(lstMicSpecParaResult.getLstMicSpecOrganism(), antibioticSet);
+    }
+
+    private void setData() {
 
         // Set constant data "-"
         for (int x = 0; x < tableData.length; x++) {
@@ -102,18 +114,33 @@ public class TableViewActivity extends AppCompatActivity {
             }
 
         }
+    }
 
+    private void setTableViewCellWidth() {
+        mTableView = (TableView) findViewById(R.id.table_view);
+        mTableView.setLayoutChagneListener(new TableView.LayoutChagneListener() {
+            @Override
+            public void onLayoutChange(View v, boolean changed, int left, int top, int right, int bottom) {
+                if (changed) {
+                    int tableViewWidth = mTableView.getWidth();
+                    int colWidth = (int) (tableViewWidth / 3.6);
+//                    colWidth = colWidth * 2;
+                    DefaultSheetData sheetData = (DefaultSheetData) mTableView.getSheet();
+                    for (int i = 0; i < sheetData.getMaxColumnCount(); i++) {
+                        sheetData.setColumnWidth(i, colWidth);
+                    }
+                    calcRowHeight(sheetData);
+                    mTableView.clearCacheData();
+                }
+            }
+        });
+    }
 
-        ISheetData sheet = SheetTemplate1.get(this, tableData);
-        mTableView.setSheetData(sheet);
-        TableViewConfigure configure = new TableViewConfigure();
-        configure.setShowHeaders(true);
-        configure.setEnableResizeRow(false);
-        configure.setEnableResizeColumn(false);
-        configure.setEnableSelection(false);
-        mTableView.setConfigure(configure);
-
-        mTableView.setData(lstMicSpecParaResult.getLstMicSpecOrganism(), antibioticSet);
+    private void setTitleBar(String title) {
+        titlebarTableview.resetViews();
+        titlebarTableview.setVisibility(View.VISIBLE);
+        titlebarTableview.showBackButton(this);
+        titlebarTableview.setTitle(title);
     }
 
     private void calcRowHeight(DefaultSheetData sheet) {

@@ -92,13 +92,15 @@ public class RadiologyDescriptionFragment extends BaseFragment {
                             public void requestDataResponse(WebResponse<JsonObject> webResponse) {
                                 RadiologyDetailModel radiologyDetailModel = GsonFactory.getSimpleGson().fromJson(webResponse.result, RadiologyDetailModel.class);
                                 txtExamName.setText(radiologyDetailModel.getExam());
-                                txtExamDate.setText(radiologyDetailModel.getExamdate());
+                                // FIXME: 4/5/2018 Date Format
+                                txtExamDate.setText(radiologyDetailModel.getReportdate());
                                 txtDescription.setText(Html.fromHtml(radiologyDetailModel.getReporttext()), TextView.BufferType.SPANNABLE);
                             }
 
                             @Override
                             public void onError() {
-
+                                txtExamName.setText(null);
+                                txtExamDate.setText(null);
                             }
                         });
     }

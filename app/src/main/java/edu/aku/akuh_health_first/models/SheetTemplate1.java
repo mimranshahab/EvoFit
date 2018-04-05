@@ -56,11 +56,11 @@ public class SheetTemplate1 {
         int blackFontIndex = sheet.getFontManager().addFont(blackFontColor);
 
         CellStyle cellStyle = new CellStyle();
-        cellStyle.setBgColor(context.getResources().getColor(R.color.c_white)); // odd cells color
+        cellStyle.setBgColor(context.getResources().getColor(R.color.c_white_smoke)); // odd cells color
         cellStyle.setAlignment(TableConst.ALIGNMENT_CENTER);
         cellStyle.setVerticalAlignment(TableConst.VERTICAL_ALIGNMENT_CENTRE);
         cellStyle.setFontIndex(blackFontIndex);
-        int whiteStyle = sheet.getCellStyleManager().addCellStyle(cellStyle);
+        int lightGreyStyle = sheet.getCellStyleManager().addCellStyle(cellStyle);
 
         CellStyle cellStyle1 = new CellStyle();
         cellStyle1.setBgColor(context.getResources().getColor(R.color.yellow_sensitive)); // odd cells color
@@ -101,7 +101,7 @@ public class SheetTemplate1 {
                 } else if (tableData[i][j].contains("Sensitive")) {
                     cell.setStyleIndex(greenStyle);
                 } else {
-                    cell.setStyleIndex(whiteStyle);
+                    cell.setStyleIndex(lightGreyStyle);
                 }
                 cell.setCellValue(richText);
                 sheet.setCellData(cell, j, i);

@@ -1,12 +1,23 @@
 package edu.aku.akuh_health_first.libraries.table.util;
 
+import edu.aku.akuh_health_first.BaseApplication;
+import edu.aku.akuh_health_first.R;
+
 public class ConstVar {
 
     public final static int MAXROWCOUNT = 32768;
     public final static int MAXCOLUMNCOUNT = 256;
 
-    public final static int HEADERWIDTH = 450;
-    public final static int HEADERHEIGHT = 90;
+//    public final static int HEADERWIDTH = 475;
+//    public final static int HEADERHEIGHT = 95;
+
+    public final static int HEADERWIDTH = (int) BaseApplication.getContext().getResources().getDimension(R.dimen.x180dp);
+    public final static int HEADERHEIGHT = (int) BaseApplication.getContext().getResources().getDimension(R.dimen.x40dp);
+    public final static int DEFAULTTEXTSIZE = (int) BaseApplication.getContext().getResources().getDimension(R.dimen.s12);
+    public final static int HEADER_LEFT_PADDING = (int) BaseApplication.getContext().getResources().getDimension(R.dimen.x5dp);
+
+//    public final static int DEFAULTTEXTSIZE = 35;
+//    public final static int HEADER_LEFT_PADDING = 15;
 
     public final static int DRAWCELL_BG = 0x1;
     public final static int DRAWCELL_BORDER = 0x2;
@@ -20,7 +31,6 @@ public class ConstVar {
     public final static int FITWIDTH = -1;
     public final static int FITHEIGHT = -2;
 
-    public final static int DEFAULTTEXTSIZE = 30;
 
     public final static int HIT_NONE = 0;
     public final static int HIT_RCHEADER = 1;

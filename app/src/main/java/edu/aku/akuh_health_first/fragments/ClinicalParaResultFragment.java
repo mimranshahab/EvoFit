@@ -126,6 +126,6 @@ public class ClinicalParaResultFragment extends BaseFragment {
     @OnClick(R.id.txtViewResult)
     public void onViewClicked() {
         sharedPreferenceManager.putObject(KEY_CROSS_TAB_DATA, micSpecParaResult);
-        getBaseActivity().openActivity(TableViewActivity.class);
+        getBaseActivity().openActivity(TableViewActivity.class, procedureName);
     }
 }

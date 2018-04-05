@@ -51,7 +51,7 @@ public class HealthSummaryAdapter extends RecyclerView.Adapter<HealthSummaryAdap
         final DetailHealthSummaryModel model = arrData.get(holder.getAdapterPosition());
 
         if (model.getShortMessageMobile().getTitle() == null || model.getShortMessageMobile().getTitle().isEmpty()) {
-            holder.txtShortMessage.setVisibility(View.GONE);
+            holder.txtShortMessage.setVisibility(View.INVISIBLE);
         } else {
             holder.txtShortMessage.setVisibility(View.VISIBLE);
             holder.txtShortMessage.setText(model.getShortMessageMobile().getTitle());
@@ -126,6 +126,13 @@ public class HealthSummaryAdapter extends RecyclerView.Adapter<HealthSummaryAdap
                 holder.imgClick.setVisibility(View.VISIBLE);
             }
         }
+
+
+        if (holder.txtShortMessage.getVisibility() == View.INVISIBLE && holder.txtStatusType.getVisibility() == View.GONE) {
+            holder.contShortMessageAndStatus.setVisibility(View.GONE);
+        } else {
+            holder.contShortMessageAndStatus.setVisibility(View.VISIBLE);
+        }
         setListener(holder, model);
 
     }
@@ -175,6 +182,8 @@ public class HealthSummaryAdapter extends RecyclerView.Adapter<HealthSummaryAdap
         ImageView imgClick;
         @BindView(R.id.imgStatus)
         ImageView imgStatus;
+        @BindView(R.id.contShortMessageAndStatus)
+        LinearLayout contShortMessageAndStatus;
 
         ViewHolder(View view) {
             super(view);

@@ -39,16 +39,16 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
-                    android:layout_weight=".7"
+                    android:layout_weight="1"
                     android:orientation="vertical"
                     android:padding="@dimen/x5dp">
 
                     <edu.aku.akuh_health_first.widget.AnyTextView
                         android:id="@+id/txtReportName"
-                        android:layout_width="wrap_content"
+                        android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:ellipsize="end"
-                        android:maxLines="1"
+                        android:maxLines="2"
                         android:paddingLeft="@dimen/x4dp"
                         android:text="Test Name"
                         android:textColor="@color/txt_aku_blue"
@@ -96,11 +96,10 @@
                 </LinearLayout>
 
                 <LinearLayout
-                    android:layout_width="0dp"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="end"
-                    android:layout_weight=".3"
-                    android:gravity="end"
+                     android:gravity="end"
                     android:orientation="vertical"
                     android:padding="@dimen/x5dp">
 
@@ -115,7 +114,7 @@
                         android:paddingLeft="@dimen/x4dp"
                         android:text="Result"
                         android:textColor="@color/txt_aku_blue"
-                        android:textSize="@dimen/s17"
+                        android:textSize="@dimen/s16"
                         app:typeface="@string/font_regular" />
 
 
@@ -157,7 +156,7 @@
                     android:id="@+id/btnHistory"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginRight="@dimen/x4dp"
+                    android:layout_marginRight="@dimen/x10dp"
                     android:background="@drawable/rounded_box_filled_primary_color"
                     android:minWidth="@dimen/x90dp"
                     android:padding="@dimen/x8dp"
@@ -171,7 +170,7 @@
                     android:id="@+id/txtComments"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="@dimen/x4dp"
+                    android:layout_marginLeft="@dimen/x10dp"
                     android:background="@drawable/rounded_box_filled_base_amber"
                     android:minWidth="@dimen/x90dp"
                     android:padding="@dimen/x8dp"

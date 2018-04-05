@@ -136,7 +136,7 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener, 
     }
 
     private void serviceCall() {
-        CardMemberDetail cardMemberDetail = new CardMemberDetail(sharedPreferenceManager.getString(AppConstants.KEY_CARD_NUMBER));
+        final CardMemberDetail cardMemberDetail = new CardMemberDetail(sharedPreferenceManager.getString(AppConstants.KEY_CARD_NUMBER));
 
         new WebServices(getBaseActivity(),
                 getToken(),
@@ -151,13 +151,20 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener, 
 
                     @Override
                     public void onError() {
-                        UIHelper.showShortToastInCenter(getContext(), "Something went wrong!");
+                        if (sharedPreferenceManager.getCardMemberDetail() == null) {
+                            UIHelper.showShortToastInCenter(getContext(), "Something went wrong!");
+                        } else {
+                            onGetCardSuccessfully(sharedPreferenceManager.getCardMemberDetail());
+                        }
                     }
                 });
 
     }
 
     private void onGetCardSuccessfully(CardMemberDetail cardMemberDetail) {
+
+        sharedPreferenceManager.putObject(AppConstants.KEY_CARD_MEMBER_DETAIL, cardMemberDetail);
+
         arrUserLists.clear();
         arrUserLists.addAll(cardMemberDetail.getFamilyMembersList());
 
@@ -183,7 +190,7 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener, 
         if (arrUserLists.size() > 0) {
             subscriber = arrUserLists.get(0);
             sharedPreferenceManager.putObject(AppConstants.KEY_CARD_MEMBER_DETAIL, cardMemberDetail);
-//            setData();
+
         }
 
         notifyToAll(Events.ON_SELECTED_USER_UPDATE, selectedUser);
