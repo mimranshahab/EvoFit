@@ -66,9 +66,8 @@
 
                             <edu.aku.akuh_health_first.widget.AnyTextView
                                 android:id="@+id/txtNormalRangeFormatted"
-                                android:layout_width="0dp"
+                                android:layout_width="wrap_content"
                                 android:layout_height="match_parent"
-                                android:layout_weight="7"
                                 android:ellipsize="end"
                                 android:maxLines="1"
                                 android:singleLine="true"
@@ -85,9 +84,10 @@
                                 android:layout_weight="4"
                                 android:ellipsize="end"
                                 android:maxLines="1"
+                                android:paddingLeft="@dimen/x5dp"
+                                android:paddingRight="@dimen/x5dp"
                                 android:singleLine="true"
-
-                                android:text="Range"
+                                android:text="State"
                                 android:textColor="@color/base_dark_gray"
                                 android:textSize="@dimen/s13"
                                 app:typeface="@string/font_regular" />
@@ -104,7 +104,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center_vertical"
-                         android:orientation="vertical"
+                        android:orientation="vertical"
                         android:padding="@dimen/x5dp">
 
 

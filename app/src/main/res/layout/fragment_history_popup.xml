@@ -11,8 +11,8 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:minWidth="280dp"
         android:background="@drawable/rounded_box_white"
+        android:minWidth="280dp"
         android:orientation="vertical">
 
         <ScrollView
@@ -204,7 +204,7 @@
 
                 <edu.aku.akuh_health_first.widget.AnyTextView
                     android:id="@+id/txtOK"
-                    android:layout_width="match_parent"
+                    android:layout_width="@dimen/x120dp"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="10dp"
                     android:layout_marginLeft="60dp"
