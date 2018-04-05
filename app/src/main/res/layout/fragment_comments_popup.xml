@@ -14,6 +14,7 @@
         android:background="@drawable/rounded_box_white"
         android:orientation="vertical">
 
+
         <ScrollView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -49,7 +50,6 @@
 
 
                 </LinearLayout>
-
 
                 <edu.aku.akuh_health_first.widget.AnyTextView
                     android:id="@+id/txtResultComments"
@@ -99,9 +99,7 @@
                     android:textSize="14sp" />
 
             </LinearLayout>
-
-
-        </ScrollView>
+    </ScrollView>
 
 
     </LinearLayout>
