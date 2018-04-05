@@ -3,8 +3,6 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/AKUHHealthFirst-Android.iml" filepath="$PROJECT_DIR$/AKUHHealthFirst-Android.iml" />
-      <module fileurl="file://C:\Users\aqsa.sarwar\Desktop\master (10)\master\AKUHHealthFirst-Android\AKUH_HealthFirst_Android.iml" filepath="C:\Users\aqsa.sarwar\Desktop\master (10)\master\AKUHHealthFirst-Android\AKUH_HealthFirst_Android.iml" />
-      <module fileurl="file://C:\Users\hamza.ahmed\Desktop\AKU_Projects\AKUHHealthFirst-Android\AKUH_HealthFirst_Android.iml" filepath="C:\Users\hamza.ahmed\Desktop\AKU_Projects\AKUHHealthFirst-Android\AKUH_HealthFirst_Android.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
     </modules>
   </component>
