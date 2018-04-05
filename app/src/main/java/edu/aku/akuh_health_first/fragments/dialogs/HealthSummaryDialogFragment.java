@@ -26,7 +26,7 @@ import butterknife.OnClick;
 import butterknife.Unbinder;
 import edu.aku.akuh_health_first.R;
 import edu.aku.akuh_health_first.adapters.recyleradapters.HealthSummaryDialogAdapter;
-import edu.aku.akuh_health_first.models.Shortmessagemobile;
+import edu.aku.akuh_health_first.models.ShortMessageMobile;
 import edu.aku.akuh_health_first.widget.recyclerview_layout.CustomLayoutManager;
 
 /**
@@ -48,7 +48,7 @@ public class HealthSummaryDialogFragment extends DialogFragment {
     @BindView(R.id.recyclerView)
     RecyclerView recyclerView;
 
-    private ArrayList<Shortmessagemobile> arrData;
+    private ArrayList<ShortMessageMobile> arrData;
 
     public HealthSummaryDialogFragment() {
     }
@@ -120,11 +120,11 @@ public class HealthSummaryDialogFragment extends DialogFragment {
     }
 
 
-    public ArrayList<Shortmessagemobile> getArrData() {
+    public ArrayList<ShortMessageMobile> getArrData() {
         return arrData;
     }
 
-    public void setArrData(ArrayList<Shortmessagemobile> arrData) {
+    public void setArrData(ArrayList<ShortMessageMobile> arrData) {
         this.arrData = arrData;
     }
 

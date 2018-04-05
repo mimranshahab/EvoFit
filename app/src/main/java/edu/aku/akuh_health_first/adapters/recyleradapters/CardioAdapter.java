@@ -89,10 +89,10 @@ public class CardioAdapter extends RecyclerView.Adapter<CardioAdapter.ViewHolder
 
     private void setViews(ViewHolder holder, int color, int backgroundResource, int circular_background, int img_transparent) {
         holder.cardView2.setCardBackgroundColor(color);
-        holder.txtStatusType.setTextColor(color);
         holder.imgIcon.setImageResource(circular_background);
         holder.imgTransparent.setImageResource(img_transparent);
         holder.imgIcon.setColorFilter(color);
+        holder.txtStatusType.setTextColor(color);
         holder.imgStatus.setColorFilter(color);
     }
 

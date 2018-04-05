@@ -50,25 +50,43 @@ public class HealthSummaryAdapter extends RecyclerView.Adapter<HealthSummaryAdap
 
         final DetailHealthSummaryModel model = arrData.get(holder.getAdapterPosition());
 
-        if (model.getShortmessagemobile().getTitle() == null || model.getShortmessagemobile().getTitle().isEmpty()) {
+        if (model.getShortMessageMobile().getTitle() == null || model.getShortMessageMobile().getTitle().isEmpty()) {
             holder.txtShortMessage.setVisibility(View.GONE);
         } else {
             holder.txtShortMessage.setVisibility(View.VISIBLE);
-            holder.txtShortMessage.setText(model.getShortmessagemobile().getTitle());
+            holder.txtShortMessage.setText(model.getShortMessageMobile().getTitle());
         }
 
-        if (model.getShortmessagemobile().getMessage() == null || model.getShortmessagemobile().getMessage().isEmpty()) {
+        if (model.getShortMessageMobile().getMessage() == null || model.getShortMessageMobile().getMessage().isEmpty()) {
 
             holder.txtDate.setVisibility(View.GONE);
-            holder.txtDate.setText(model.getShortmessagemobile().getMessage());
+            holder.txtDate.setText(model.getShortMessageMobile().getMessage());
         } else {
             holder.txtDate.setVisibility(View.VISIBLE);
-            holder.txtDate.setText(model.getShortmessagemobile().getMessage());
+            holder.txtDate.setText(model.getShortMessageMobile().getMessage());
         }
 
-        holder.txtTitle.setText(model.getSummarytitle());
+        if (model.getStatus() == null || model.getStatus().isEmpty()) {
 
-        HealthSummaryTypes state = HealthSummaryTypes.fromStringForm(model.getWebandmobilemodel().getLink());
+            holder.txtStatusType.setVisibility(View.GONE);
+            holder.imgStatus.setVisibility(View.GONE);
+
+        } else {
+            holder.txtStatusType.setVisibility(View.VISIBLE);
+            holder.imgStatus.setVisibility(View.VISIBLE);
+            holder.txtStatusType.setText(model.getStatus());
+
+            if (model.getStatus().equalsIgnoreCase("Completed")) {
+                colorCodes(holder, activity.getResources().getColor(R.color.base_green));
+            } else if (model.getStatus().equalsIgnoreCase("Pending")) {
+                colorCodes(holder, activity.getResources().getColor(R.color.base_amber));
+            } else {
+                colorCodes(holder, activity.getResources().getColor(R.color.base_reddish));
+            }
+        }
+        holder.txtTitle.setText(model.getSummaryTitle());
+
+        HealthSummaryTypes state = HealthSummaryTypes.fromStringForm(model.getWebandMobileModel().getLink());
 
         if (!(state == null)) {
             switch (state) {
@@ -97,12 +115,12 @@ public class HealthSummaryAdapter extends RecyclerView.Adapter<HealthSummaryAdap
         }
 
 
-        boolean isLinkToHistory = Boolean.parseBoolean(model.getLinktohistory());
+        boolean isLinkToHistory = Boolean.parseBoolean(model.getLinkToHistory());
 
         if (isLinkToHistory) {
             holder.imgClick.setVisibility(View.VISIBLE);
         } else {
-            if (model.getDetailMessageMobileArray().isEmpty()) {
+            if (model.getDetailedMessageMobile().isEmpty()) {
                 holder.imgClick.setVisibility(View.GONE);
             } else {
                 holder.imgClick.setVisibility(View.VISIBLE);
@@ -110,6 +128,11 @@ public class HealthSummaryAdapter extends RecyclerView.Adapter<HealthSummaryAdap
         }
         setListener(holder, model);
 
+    }
+
+    private void colorCodes(ViewHolder holder, int color) {
+        holder.txtStatusType.setTextColor(color);
+        holder.imgStatus.setColorFilter(color);
     }
 
     private void setListener(final ViewHolder holder, final DetailHealthSummaryModel model) {
@@ -142,12 +165,16 @@ public class HealthSummaryAdapter extends RecyclerView.Adapter<HealthSummaryAdap
         AnyTextView txtShortMessage;
         @BindView(R.id.txtDate)
         AnyTextView txtDate;
+        @BindView(R.id.txtStatusType)
+        AnyTextView txtStatusType;
         @BindView(R.id.contLastLab)
         LinearLayout contLastLab;
         @BindView(R.id.frameColorCode)
         FrameLayout frameColorCode;
         @BindView(R.id.imgClick)
         ImageView imgClick;
+        @BindView(R.id.imgStatus)
+        ImageView imgStatus;
 
         ViewHolder(View view) {
             super(view);
