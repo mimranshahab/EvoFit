@@ -25,6 +25,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.ArrayList;
 
+import edu.aku.akuh_health_first.R;
 import edu.aku.akuh_health_first.libraries.table.model.CellPosition;
 import edu.aku.akuh_health_first.libraries.table.model.ICellData;
 import edu.aku.akuh_health_first.libraries.table.model.ISheetData;
@@ -1071,7 +1072,7 @@ public class TableView extends View
     private void drawHeader(Canvas canvas, String text, Rect rect, Paint paint) {
         paint.setAntiAlias(false);
         paint.setStyle(Style.FILL);
-        paint.setColor(0xfffbe8d4);
+        paint.setColor(getContext().getResources().getColor(R.color.colorPrimaryDark));
         canvas.drawRect(rect, paint); //use fill to draw background
 
         paint.setStyle(Style.STROKE);
