@@ -8,10 +8,6 @@ public class TableBorderLines {
     public BorderLineStyle topBorderLine;
     public BorderLineStyle rightBorderLine;
     public BorderLineStyle bottomBorderLine;
-//    public BorderLineStyle insideHBorderLine;
-//    public BorderLineStyle insideVBorderLine;
-//    public BorderLineStyle lt2rbBorderLine;
-//    public BorderLineStyle lb2rtBorderLine;
 
     @Override
     public String toString() {
@@ -36,26 +32,6 @@ public class TableBorderLines {
             buf.append(bottomBorderLine.getColor() + ",");
             buf.append(bottomBorderLine.getWidth() + ";");
         }
-//        if (insideHBorderLine != null) {
-//            buf.append("insideHBorderLine:" + insideHBorderLine.getType() + ",");
-//            buf.append(insideHBorderLine.getColor() + ",");
-//            buf.append(insideHBorderLine.getWidth() + ";");
-//        }
-//        if (insideVBorderLine != null) {
-//            buf.append("insideVBorderLine:" + insideVBorderLine.getType() + ",");
-//            buf.append(insideVBorderLine.getColor() + ",");
-//            buf.append(insideVBorderLine.getWidth() + ";");
-//        }
-//        if (lt2rbBorderLine != null) {
-//            buf.append("lt2rbBorderLine:" + lt2rbBorderLine.getType() + ",");
-//            buf.append(lt2rbBorderLine.getColor() + ",");
-//            buf.append(lt2rbBorderLine.getWidth() + ";");
-//        }
-//        if (lb2rtBorderLine != null) {
-//            buf.append("lb2rtBorderLine:" + lb2rtBorderLine.getType() + ",");
-//            buf.append(lb2rtBorderLine.getColor() + ",");
-//            buf.append(lb2rtBorderLine.getWidth() + ";");
-//        }
 
         return buf.toString();
     }
