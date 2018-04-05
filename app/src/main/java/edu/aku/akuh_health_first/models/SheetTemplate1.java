@@ -27,17 +27,17 @@ public class SheetTemplate1 {
     //    public static ISheetData get(final Context context, LstMicSpecParaResult lstMicSpecParaResult) {
 
 
-    public static ISheetData get(final Context context, String[][] string2DArray) {
+    public static ISheetData get(final Context context, String[][] tableData) {
         DefaultSheetData sheet = new DefaultSheetData(context);
 
         int rowCount;
         int colCount;
-        if (string2DArray[0] == null) {
+        if (tableData[0] == null) {
             rowCount = 0;
             colCount = 0;
         } else {
-            rowCount = string2DArray[0].length;
-            colCount = string2DArray.length;
+            rowCount = tableData[0].length;
+            colCount = tableData.length;
         }
         sheet.setMaxRowCount(rowCount);
         sheet.setMaxColumnCount(colCount);
@@ -63,11 +63,11 @@ public class SheetTemplate1 {
         int whiteStyle = sheet.getCellStyleManager().addCellStyle(cellStyle);
 
         CellStyle cellStyle1 = new CellStyle();
-        cellStyle1.setBgColor(context.getResources().getColor(R.color.blue_sensitive)); // odd cells color
+        cellStyle1.setBgColor(context.getResources().getColor(R.color.yellow_sensitive)); // odd cells color
         cellStyle1.setAlignment(TableConst.ALIGNMENT_CENTER);
         cellStyle1.setVerticalAlignment(TableConst.VERTICAL_ALIGNMENT_CENTRE);
         cellStyle1.setFontIndex(whiteFontIndex);
-        int blueStyle = sheet.getCellStyleManager().addCellStyle(cellStyle1);
+        int yellowStyle = sheet.getCellStyleManager().addCellStyle(cellStyle1);
 
         CellStyle cellStyle2 = new CellStyle();
         cellStyle2.setBgColor(context.getResources().getColor(R.color.green_intermediate)); // odd cells color
@@ -84,26 +84,28 @@ public class SheetTemplate1 {
         int redStyle = sheet.getCellStyleManager().addCellStyle(cellStyle3);
 
 
-        for (int i = 0; i < rowCount; i++) {
-            for (int j = 0; j < colCount; j++) {
+        for (int i = 0; i < colCount; i++) {
+            for (int j = 0; j < rowCount; j++) {
                 DefaultCellData cell = new DefaultCellData(sheet);
                 RichText richText = new RichText();
 
-//                richText.setText(lstMicSpecParaResult.getLstMicSpecAntibiotics().get(j).getREACTION() + i + "-" + j);
-//
-//                if (lstMicSpecParaResult.getLstMicSpecAntibiotics().get(j).getREACTION().contains("Resistant")) {
-//                    cell.setStyleIndex(redStyle);
-//
-//                } else if (lstMicSpecParaResult.getLstMicSpecAntibiotics().get(j).getREACTION().contains("Intermediate")) {
-//                    cell.setStyleIndex(greenStyle);
-//                } else if (lstMicSpecParaResult.getLstMicSpecAntibiotics().get(j).getREACTION().contains("Sensitive")) {
-//                    cell.setStyleIndex(blueStyle);
-//                } else {
-//                    cell.setStyleIndex(whiteStyle);
-//                }
+
+                richText.setText(tableData[i][j]);
+
+                if (tableData[i][j].contains("Resistant")) {
+                    cell.setStyleIndex(redStyle);
+
+                } else if (tableData[i][j].contains("Intermediate")) {
+                    cell.setStyleIndex(yellowStyle);
+
+                } else if (tableData[i][j].contains("Sensitive")) {
+                    cell.setStyleIndex(greenStyle);
+                } else {
+                    cell.setStyleIndex(whiteStyle);
+                }
                 cell.setCellValue(richText);
-                sheet.setCellData(cell, i, j);
-            }
+                sheet.setCellData(cell, j, i);
+             }
         }
 
 

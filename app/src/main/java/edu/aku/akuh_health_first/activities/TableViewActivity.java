@@ -15,6 +15,7 @@ import edu.aku.akuh_health_first.libraries.table.util.TableViewConfigure;
 import edu.aku.akuh_health_first.libraries.table.view.TableView;
 import edu.aku.akuh_health_first.managers.SharedPreferenceManager;
 import edu.aku.akuh_health_first.models.LstMicSpecAntibiotic;
+import edu.aku.akuh_health_first.models.LstMicSpecOrganism;
 import edu.aku.akuh_health_first.models.LstMicSpecParaResult;
 import edu.aku.akuh_health_first.models.SheetTemplate1;
 
@@ -50,27 +51,60 @@ public class TableViewActivity extends AppCompatActivity {
         });
 
 
-        ArrayList<LstMicSpecAntibiotic> anti = new ArrayList<>();
+        // Converting List to Set
+        ArrayList<LstMicSpecAntibiotic> antibioticSet = new ArrayList<>();
         for (LstMicSpecAntibiotic lstMicSpecAntibiotic : lstMicSpecParaResult.getLstMicSpecAntibiotics()) {
-            if (anti.isEmpty()) {
-                anti.add(lstMicSpecAntibiotic);
+            if (antibioticSet.isEmpty()) {
+                antibioticSet.add(lstMicSpecAntibiotic);
             } else {
                 boolean toAddItem = true;
-                for (LstMicSpecAntibiotic micSpecAntibiotic : anti) {
+                for (LstMicSpecAntibiotic micSpecAntibiotic : antibioticSet) {
                     if (micSpecAntibiotic.getABBREVIATION().equals(lstMicSpecAntibiotic.getABBREVIATION())) {
                         toAddItem = false;
                     }
                 }
                 if (toAddItem) {
-                    anti.add(lstMicSpecAntibiotic);
+                    antibioticSet.add(lstMicSpecAntibiotic);
                 }
             }
         }
 
-        String[][] table = new String[5][10];
+        // Declare 2D Array (Organism, Antibiotic Set)
+        String[][] tableData = new String[lstMicSpecParaResult.getLstMicSpecOrganism().size()][antibioticSet.size()];
 
 
-        ISheetData sheet = SheetTemplate1.get(this, table);
+        // Set constant data "-"
+        for (int x = 0; x < tableData.length; x++) {
+            for (int y = 0; y < tableData[x].length; y++) {
+                tableData[x][y] = "-";
+            }
+        }
+
+
+        // Iterate for Organism
+        for (int i = 0; i < lstMicSpecParaResult.getLstMicSpecOrganism().size(); i++) {
+
+            // Iterate for Original Antibiotics
+            for (int j = 0; j < lstMicSpecParaResult.getLstMicSpecAntibiotics().size(); j++) {
+                if (lstMicSpecParaResult.getLstMicSpecAntibiotics().get(j).getORGANISMID().equals(lstMicSpecParaResult.getLstMicSpecOrganism().get(i).getORGANISMID())) {
+
+                    // Checking the index of this antibiotic from Original antibiotic list
+                    for (LstMicSpecAntibiotic lstMicSpecAntibiotic : antibioticSet) {
+                        if (lstMicSpecAntibiotic.getABBREVIATION().equals(lstMicSpecParaResult.getLstMicSpecAntibiotics().get(j).getABBREVIATION())) {
+
+                            // Adding data to 2D Array (x- index of Organism List, y- index of Antibiotics Set)
+                            tableData[i][antibioticSet.indexOf(lstMicSpecAntibiotic)] = lstMicSpecParaResult.getLstMicSpecAntibiotics().get(j).getREACTION();
+                            break;
+                        }
+                    }
+
+                }
+            }
+
+        }
+
+
+        ISheetData sheet = SheetTemplate1.get(this, tableData);
         mTableView.setSheetData(sheet);
         TableViewConfigure configure = new TableViewConfigure();
         configure.setShowHeaders(true);
@@ -79,7 +113,7 @@ public class TableViewActivity extends AppCompatActivity {
         configure.setEnableSelection(false);
         mTableView.setConfigure(configure);
 
-        mTableView.setData(lstMicSpecParaResult.getLstMicSpecOrganism(), anti);
+        mTableView.setData(lstMicSpecParaResult.getLstMicSpecOrganism(), antibioticSet);
     }
 
     private void calcRowHeight(DefaultSheetData sheet) {
@@ -92,7 +126,8 @@ public class TableViewActivity extends AppCompatActivity {
                 int cellHeight = cell.calcTextHeightByWidth(sheet.getColumnWidth(j));
                 rowHeight = Math.max(rowHeight, cellHeight);
             }
-            sheet.setRowHeight(i, rowHeight);
+            // FIXME: 4/4/2018 increase height manually
+            sheet.setRowHeight(i, rowHeight + 30);
         }
 
     }
