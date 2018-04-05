@@ -94,7 +94,7 @@ public class EditProfileFragment extends BaseFragment {
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         setData();
-//        serviceCallGetMember();
+        serviceCallGetMember();
     }
 
 

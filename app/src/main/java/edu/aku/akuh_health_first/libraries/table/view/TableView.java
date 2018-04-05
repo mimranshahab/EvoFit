@@ -44,6 +44,8 @@ import edu.aku.akuh_health_first.models.LstMicSpecAntibiotic;
 import edu.aku.akuh_health_first.models.LstMicSpecOrganism;
 import edu.aku.akuh_health_first.models.LstMicSpecParaResult;
 
+import static edu.aku.akuh_health_first.libraries.table.util.ConstVar.HEADER_LEFT_PADDING;
+
 public class TableView extends View
         implements GestureDetector.OnGestureListener, GestureDetector.OnDoubleTapListener,
         ScaleGestureDetector.OnScaleGestureListener {
@@ -676,7 +678,7 @@ public class TableView extends View
                 //Fixme
                 if (i >= drawRange.getTop() && i <= drawRange.getBottom()) {
                     headerRect.set(0, top, mHeaderWidth, top + getRowHeight(i));
-                    drawHeader(canvas, Integer.toString(i + 1), headerRect, headerPaint);
+                    drawHeader(canvas, Integer.toString(i + 1), headerRect, headerPaint, true);
                 }
 
                 top += getRowHeight(i);
@@ -698,7 +700,7 @@ public class TableView extends View
                     String str = arrHeaderCols.get(j).getABBREVIATION();
 //                    String str = ExcelUtils.columnToString(j);
 //                    String arrOrganisms =
-                    drawHeader(canvas, str, headerRect, headerPaint);
+                    drawHeader(canvas, str, headerRect, headerPaint, false);
                 }
 
                 left += getColumnWidth(j);
@@ -734,7 +736,7 @@ public class TableView extends View
             if (rowIndex >= drawRange.getTop() && rowIndex <= drawRange.getBottom()) {
                 headerRect.set(0, top, mHeaderWidth, top + getRowHeight(rowIndex));
 //                drawHeader(canvas, Integer.toString(rowIndex + 1), headerRect, headerPaint);
-                drawHeader(canvas, arrHeaderRows.get(rowIndex).getABBREVIATION(), headerRect, headerPaint);
+                drawHeader(canvas, arrHeaderRows.get(rowIndex).getABBREVIATION(), headerRect, headerPaint, true);
             }
 
             bottom += getRowHeight(rowIndex);
@@ -774,7 +776,7 @@ public class TableView extends View
 //                String str = ExcelUtils.columnToString(colIndex);
 //                String str = "abcdefqwertyuio";
                 String str = arrHeaderCols.get(colIndex).getABBREVIATION();
-                drawHeader(canvas, str, headerRect, headerPaint);
+                drawHeader(canvas, str, headerRect, headerPaint, false);
             }
 
             right += getColumnWidth(colIndex);
@@ -785,7 +787,7 @@ public class TableView extends View
         canvas.restoreToCount(saveCount);
 
         //Draw left-top header
-        drawHeader(canvas, null, new Rect(0, 0, mHeaderWidth, mHeaderHeight), headerPaint);
+        drawHeader(canvas, "ANTIBIOTICS", new Rect(0, 0, mHeaderWidth, mHeaderHeight), headerPaint, false);
     }
 
     private void drawFreezeLines(Canvas canvas) {
@@ -1069,10 +1071,14 @@ public class TableView extends View
         }
     }
 
-    private void drawHeader(Canvas canvas, String text, Rect rect, Paint paint) {
+    private void drawHeader(Canvas canvas, String text, Rect rect, Paint paint, boolean isRowHeader) {
         paint.setAntiAlias(false);
         paint.setStyle(Style.FILL);
-        paint.setColor(getContext().getResources().getColor(R.color.colorPrimaryDark));
+        if (isRowHeader) {
+            paint.setColor(getContext().getResources().getColor(R.color.c_white));
+        } else {
+            paint.setColor(getContext().getResources().getColor(R.color.colorPrimaryDark));
+        }
         canvas.drawRect(rect, paint); //use fill to draw background
 
         paint.setStyle(Style.STROKE);
@@ -1080,15 +1086,24 @@ public class TableView extends View
         rect.set(rect.left, rect.top, rect.right, rect.bottom/*+1*/);
         canvas.drawRect(rect, paint); //use stroke to draw border
 
-        int x = rect.centerX();
+        int x = 0; // text Alignment
+        if (isRowHeader) {
+            x = rect.left + HEADER_LEFT_PADDING;
+        } else {
+            x = rect.centerX();
+        }
         int y = rect.centerY();
         paint.setStyle(Style.STROKE);
-        paint.setColor(Color.BLACK);
+        if (isRowHeader) {
+            paint.setColor(Color.BLACK); // text color
+        } else {
+            paint.setColor(Color.WHITE); // text color
+        }
         paint.setAntiAlias(true);
         if (text != null && text.length() > 0) {
             int textWidth = Math.round(paint.measureText(text));
             x -= textWidth / 2;
-            x = Math.max(x, rect.left);
+            x = Math.max(x, rect.left+ HEADER_LEFT_PADDING);
             int textHeight = Math.round(paint.getTextSize());
             y += textHeight / 2;
             y = Math.min(y, rect.bottom);

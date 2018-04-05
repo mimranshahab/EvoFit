@@ -38,12 +38,14 @@ public class BaseApplication extends MultiDexApplication implements Application.
     private static PublishSubject<Pair> publishSubject = PublishSubject.create();
     private static boolean isInBackground = true;
     private static String applicationName;
+    private static Context mContext;
 
     @Override
     public void onCreate() {
         super.onCreate();
         configImageLoader(this);
 
+        mContext = this;
         applicationName = getApplicationName(this);
         // TODO: 12/20/2017 Enable it to use Realm
 //        initRealm();
@@ -51,10 +53,13 @@ public class BaseApplication extends MultiDexApplication implements Application.
 //        configureCalligraphyLibrary();
 
         // TODO: 11/1/2017 Enable Crash Lytics and Never Crash feature before releasing the app
-//        Fabric.with(this, new Crashlytics());
-//        neverCrash();
+        Fabric.with(this, new Crashlytics());
+        neverCrash();
     }
 
+    public static Context getContext(){
+        return mContext;
+    }
 
     private void initRealm() {
         Realm.init(getApplicationContext());

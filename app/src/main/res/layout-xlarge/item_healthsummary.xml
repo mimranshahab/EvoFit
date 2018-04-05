@@ -59,6 +59,7 @@
                     android:padding="@dimen/x2dp">
 
                     <LinearLayout
+                        android:id="@+id/contShortMessageAndStatus"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:orientation="horizontal">
@@ -69,7 +70,7 @@
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
                             android:padding="@dimen/x5dp"
-                            android:text="Glucose Random"
+                            android:text="Short Message"
                             android:textColor="@color/txt_aku_blue"
                             android:textSize="@dimen/s12"
                             app:typeface="@string/font_bold" />
