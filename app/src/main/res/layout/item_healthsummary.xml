@@ -100,7 +100,7 @@
                                 android:gravity="center_horizontal"
                                 android:text="Completed"
                                 android:textColor="@color/base_amber"
-                                android:textSize="@dimen/s13"
+                                android:textSize="@dimen/s15"
                                 android:visibility="visible"
                                 app:typeface="@string/font_bold" />
                         </LinearLayout>

@@ -120,17 +120,17 @@ public class ClinicalLabDetailAdapterv1 extends RecyclerView.Adapter<ClinicalLab
         }
 
         if ((!holder.btnHistory.isEnabled()) && (!holder.btnComment.isEnabled())) {
-            holder.historySeperator.setVisibility(View.GONE);
-            holder.contButtonLayout.setVisibility(View.GONE);
+//            holder.historySeperator.setVisibility(View.GONE);
+            holder.contButtonLayout.setVisibility(View.INVISIBLE);
         } else {
             holder.contButtonLayout.setVisibility(View.VISIBLE);
-            holder.historySeperator.setVisibility(View.VISIBLE);
+//            holder.historySeperator.setVisibility(View.VISIBLE);
         }
         setListener(holder, model);
 
 
         if ((model.getNormalRangeFormatted() == null || model.getNormalRangeFormatted().isEmpty()) && (model.getUnit() == null || model.getUnit().isEmpty())) {
-            holder.txtNormalRangeFormatted.setVisibility(View.GONE);
+            holder.txtNormalRangeFormatted.setVisibility(View.INVISIBLE);
 
         } else {
             Spanny spanny = new Spanny("Range " + model.getNormalRangeFormatted());
@@ -190,8 +190,8 @@ public class ClinicalLabDetailAdapterv1 extends RecyclerView.Adapter<ClinicalLab
         AnyTextView txtResult;
         @BindView(R.id.txtNormalRangeFormatted)
         AnyTextView txtNormalRangeFormatted;
-        @BindView(R.id.historySeperator)
-        ImageView historySeperator;
+//        @BindView(R.id.historySeperator)
+//        ImageView historySeperator;
         @BindView(R.id.txtComments)
         AnyTextView btnComment;
         @BindView(R.id.btnHistory)

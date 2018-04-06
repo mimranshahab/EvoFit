@@ -49,8 +49,8 @@ public class ClinicalLaboratoryDetailFragment extends BaseFragment implements Vi
     AnyTextView txtSpecimenNumber;
     @BindView(R.id.txtReqDatetime)
     AnyTextView txtReqDatetime;
-    @BindView(R.id.txtPhysicianName)
-    AnyTextView txtPhysicianName;
+//    @BindView(R.id.txtPhysicianName)
+//    AnyTextView txtPhysicianName;
     @BindView(R.id.txtCollecDatetime)
     AnyTextView txtCollecDatetime;
     @BindView(R.id.txtLocation)
@@ -158,7 +158,7 @@ public class ClinicalLaboratoryDetailFragment extends BaseFragment implements Vi
         txtCollecDatetime.setText(laboratoryDetailModel.getCollectionDttm());
         txtReportDatetime.setText(laboratoryDetailModel.getSignoutDttm());
         txtReqDatetime.setText(laboratoryDetailModel.getSortDttm());
-        txtPhysicianName.setText(laboratoryDetailModel.getReferringDoctorID());
+//        txtPhysicianName.setText(laboratoryDetailModel.getReferringDoctorID());
         txtSpecimenNumber.setText(laboratoryDetailModel.getSpecimenID());
         txtLocation.setText(laboratoryDetailModel.getVisitLocationID());
         txtReportName.setText(laboratoryDetailModel.getOrdered());

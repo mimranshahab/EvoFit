@@ -115,6 +115,7 @@
                             android:layout_height="@dimen/x45dp"
                             android:layout_centerInParent="true"
                             android:layout_margin="@dimen/x5dp"
+                            android:src="@drawable/b_cardiopulmonary_transparent"
                             android:scaleType="centerCrop" />
 
 
@@ -165,22 +166,19 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:gravity="end"
                     android:orientation="horizontal">
 
                     <RelativeLayout
                         android:id="@+id/RlReport"
-                        android:layout_width="0dp"
+                        android:layout_width="120dp"
                         android:layout_height="wrap_content"
-
-                        android:layout_gravity="center"
-                        android:layout_marginLeft="@dimen/x5dp"
-                        android:layout_marginRight="@dimen/x15dp"
-                        android:layout_weight=".5"
-                        android:gravity="center"
+                        android:layout_margin="@dimen/x5dp"
                         android:visibility="gone">
 
                         <edu.aku.akuh_health_first.widget.AnyTextView
                             android:id="@+id/btnReportColorCode1"
+
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:background="@drawable/rounded_box_filled_primary_color"
@@ -188,7 +186,7 @@
                             android:padding="@dimen/x7dp"
                             android:text="Report"
                             android:textColor="@color/c_white"
-                            android:textSize="@dimen/s11"
+                            android:textSize="@dimen/s14"
                             app:typeface="@string/font_bold"
 
                             />
@@ -197,27 +195,22 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:alpha=".25"
-                            android:gravity="center"
-                            android:padding="@dimen/x7dp"
 
-                            />
+                            android:gravity="center"
+                            android:padding="@dimen/x7dp" />
 
                     </RelativeLayout>
 
                     <RelativeLayout
                         android:id="@+id/RlGraph"
-                        android:layout_width="0dp"
+                        android:layout_width="120dp"
                         android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:layout_marginLeft="@dimen/x15dp"
-                        android:layout_marginRight="@dimen/x5dp"
-                        android:layout_weight=".5"
-                        android:gravity="center"
+                        android:layout_margin="@dimen/x5dp"
+
                         android:visibility="gone">
 
                         <edu.aku.akuh_health_first.widget.AnyTextView
                             android:id="@+id/txtGraph"
-
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:background="@drawable/rounded_box_filled_base_amber"
@@ -225,7 +218,7 @@
                             android:padding="@dimen/x7dp"
                             android:text="Graph"
                             android:textColor="@color/c_white"
-                            android:textSize="@dimen/s11"
+                            android:textSize="@dimen/s14"
                             app:typeface="@string/font_bold"
 
                             />
@@ -233,19 +226,23 @@
 
                         <edu.aku.akuh_health_first.widget.AnyTextView
                             android:id="@+id/btnGraphColorCode"
+
+
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_alignBottom="@id/txtGraph"
-                            android:layout_alignTop="@id/txtGraph"
                             android:alpha=".25"
+
                             android:gravity="center"
-                            android:textColor="@color/c_white"
+                            android:padding="@dimen/x7dp"
+
+
 
                             />
 
 
                     </RelativeLayout>
                 </LinearLayout>
+
             </LinearLayout>
 
         </FrameLayout>
