@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_gravity="center"
-    android:padding="@dimen/x20dp"
+    android:layout_margin="@dimen/x10dp"
     android:background="@color/transparent"
     android:fitsSystemWindows="true"
     android:orientation="vertical">
@@ -14,7 +14,7 @@
         android:layout_height="wrap_content"
         android:background="@drawable/rounded_box_white"
         android:minHeight="450dp"
-        android:minWidth="@dimen/x350dp"
+        android:minWidth="@dimen/x400dp"
         android:orientation="vertical">
 
 

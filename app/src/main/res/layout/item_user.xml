@@ -65,10 +65,12 @@
                         <edu.aku.akuh_health_first.widget.AnyTextView
                             android:id="@+id/txtName"
                             android:layout_width="wrap_content"
-                            android:layout_height="match_parent"
+                            android:layout_height="wrap_content"
                             android:layout_marginRight="@dimen/x5dp"
+                            android:ellipsize="end"
                             android:gravity="center_vertical"
-                            android:text="Asma Ali"
+                            android:singleLine="true"
+                            android:text="User Name"
                             android:textColor="@color/base_amber"
                             android:textSize="@dimen/s16"
                             app:typeface="@string/font_bold" />
@@ -76,9 +78,12 @@
 
                         <edu.aku.akuh_health_first.widget.AnyTextView
                             android:id="@+id/txtRelation"
-                            android:layout_width="wrap_content"
+                            android:layout_width="0dp"
                             android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:ellipsize="end"
                             android:gravity="center_vertical"
+                            android:singleLine="true"
                             android:text="(Daughter)"
                             android:textColor="@color/base_amber"
                             android:textSize="@dimen/s16"

@@ -15,7 +15,7 @@
         android:background="@drawable/rounded_box_white"
         android:gravity="center_horizontal"
         android:minHeight="200dp"
-        android:minWidth="@dimen/x350dp"
+        android:minWidth="300dp"
         android:orientation="vertical">
 
 
@@ -50,8 +50,8 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:padding="@dimen/x5dp">
+                android:padding="@dimen/x5dp"
+                android:orientation="vertical">
 
                 <LinearLayout
                     android:layout_width="match_parent"

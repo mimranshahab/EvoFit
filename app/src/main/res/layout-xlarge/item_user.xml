@@ -60,15 +60,17 @@
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:padding="@dimen/x3dp"
                         android:gravity="center_vertical"
-                        android:orientation="horizontal">
+                        android:orientation="horizontal"
+                        android:padding="@dimen/x3dp">
 
                         <edu.aku.akuh_health_first.widget.AnyTextView
                             android:id="@+id/txtName"
                             android:layout_width="wrap_content"
-                            android:layout_height="match_parent"
+                            android:layout_height="wrap_content"
                             android:layout_marginRight="@dimen/x5dp"
+                            android:singleLine="true"
+                            android:ellipsize="end"
                             android:gravity="center_vertical"
                             android:text="Asma Ali"
                             android:textColor="@color/base_amber"
@@ -78,10 +80,13 @@
 
                         <edu.aku.akuh_health_first.widget.AnyTextView
                             android:id="@+id/txtRelation"
-                            android:layout_width="wrap_content"
+                            android:layout_width="0dp"
                             android:layout_height="match_parent"
+                            android:layout_weight="1"
                             android:gravity="center_vertical"
                             android:text="(Daughter)"
+                            android:singleLine="true"
+                            android:ellipsize="end"
                             android:textColor="@color/base_amber"
                             android:textSize="@dimen/s12"
                             app:typeface="@string/font_regular" />
@@ -92,8 +97,8 @@
                         android:id="@+id/txtMRN"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="MR Number"
                         android:padding="@dimen/x3dp"
+                        android:text="MR Number"
                         android:textColor="@color/colorPrimaryDark"
                         android:textSize="@dimen/s10"
                         app:typeface="@string/font_regular" />
@@ -102,8 +107,8 @@
                         android:id="@+id/txtGender_age"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Gender and Age"
                         android:padding="@dimen/x3dp"
+                        android:text="Gender and Age"
                         android:textColor="@color/txt_aku_blue"
                         android:textSize="@dimen/s10"
                         app:typeface="@string/font_regular" />
@@ -115,9 +120,9 @@
                     android:id="@+id/imgNext"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:scaleType="center"
                     android:scaleX="1.4"
                     android:scaleY="1.4"
-                    android:scaleType="center"
                     android:src="@drawable/img_go"
                     android:tint="@color/base_amber" />
 

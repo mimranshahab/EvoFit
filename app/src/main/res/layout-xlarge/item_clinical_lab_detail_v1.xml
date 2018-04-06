@@ -152,7 +152,9 @@
                     android:background="@color/c_light_grey" />
 
 
+
                 <LinearLayout
+                    android:id="@+id/contButtonLayout"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:gravity="center_horizontal"
