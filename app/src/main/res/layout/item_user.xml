@@ -69,6 +69,7 @@
                             android:layout_marginRight="@dimen/x5dp"
                             android:gravity="center_vertical"
                             android:text="Asma Ali"
+                            android:ellipsize="middle"
                             android:textColor="@color/base_amber"
                             android:textSize="@dimen/s16"
                             app:typeface="@string/font_bold" />
