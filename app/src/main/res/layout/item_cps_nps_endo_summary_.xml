@@ -114,13 +114,14 @@
                             android:layout_margin="@dimen/x5dp"
                             android:scaleType="centerCrop"
                             android:src="@drawable/shape_circle"
-                            android:tint="@color/base_amber" />
+                            android:tint="@color/base_green" />
 
                         <ImageView
                             android:id="@+id/imgTransparent"
                             android:layout_width="@dimen/x45dp"
                             android:layout_height="@dimen/x45dp"
                             android:layout_centerInParent="true"
+                            android:src="@drawable/b_cardiopulmonary_transparent"
                             android:layout_margin="@dimen/x5dp"
                             android:scaleType="centerCrop" />
 
@@ -172,20 +173,15 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:gravity="end"
                     android:orientation="horizontal">
 
                     <RelativeLayout
                         android:id="@+id/RlReport"
-                        android:layout_width="0dp"
+                        android:layout_width="100dp"
                         android:layout_height="wrap_content"
-
-                        android:layout_gravity="center"
-                        android:layout_marginLeft="@dimen/x15dp"
-                        android:layout_marginRight="@dimen/x15dp"
-                        android:layout_weight=".5"
-                        android:gravity="center"
+                    android:layout_margin="@dimen/x5dp"
                         android:visibility="gone">
-
                         <edu.aku.akuh_health_first.widget.AnyTextView
                             android:id="@+id/btnReportColorCode1"
 
@@ -213,13 +209,10 @@
 
                     <RelativeLayout
                         android:id="@+id/RlGraph"
-                        android:layout_width="0dp"
+                        android:layout_width="100dp"
                         android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:layout_marginLeft="@dimen/x15dp"
-                        android:layout_marginRight="@dimen/x15dp"
-                        android:layout_weight=".5"
-                        android:gravity="center"
+                        android:layout_margin="@dimen/x5dp"
+
                         android:visibility="gone">
 
                         <edu.aku.akuh_health_first.widget.AnyTextView

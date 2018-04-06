@@ -4,7 +4,6 @@
     xmlns:card_view="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_marginBottom="@dimen/x10dp"
     android:orientation="vertical">
 
     <android.support.v7.widget.CardView
@@ -12,7 +11,7 @@
         android:id="@+id/cardView2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="@dimen/x10dp"
+        android:layout_margin="@dimen/x8dp"
         android:animateLayoutChanges="true"
         app:cardBackgroundColor="@color/base_green"
         app:cardCornerRadius="@dimen/x8dp"
@@ -149,7 +148,7 @@
                             android:layout_height="match_parent"
                             android:ellipsize="end"
                             android:maxLines="1"
-                            android:padding="@dimen/x5dp"
+                            android:paddingLeft="@dimen/x3dp"
                             android:text="BIO,RECD"
                             android:textColor="@color/txt_aku_blue"
                             android:textSize="@dimen/s14"
@@ -161,7 +160,7 @@
                             android:layout_height="match_parent"
                             android:ellipsize="end"
                             android:maxLines="1"
-                            android:padding="@dimen/x5dp"
+                            android:paddingLeft="@dimen/x3dp"
                             android:text="41225000"
                             android:textColor="@color/txt_aku_blue"
                             android:textSize="@dimen/s14"
@@ -176,6 +175,7 @@
                             android:background="@drawable/rounded_box_filled_primary_color"
                             android:gravity="center"
                             android:padding="@dimen/x7dp"
+                            android:visibility="gone"
                             android:text="View Results"
                             android:textColor="@color/c_white"
                             app:typeface="@string/font_bold" />
@@ -187,8 +187,8 @@
                         android:id="@+id/imgNext"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="@dimen/x10dp"
                         android:padding="@dimen/x5dp"
+                        android:layout_gravity="bottom"
                         android:src="@drawable/img_go"
                         android:tint="@color/base_green"
                         android:visibility="visible" />
