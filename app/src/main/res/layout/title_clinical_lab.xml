@@ -64,21 +64,6 @@
 
 
 
-                    <edu.aku.akuh_health_first.widget.AnyTextView
-                        android:id="@+id/txtPhysicianName"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:drawableLeft="@drawable/cardiopulmonary_doctor"
-                        android:drawablePadding="@dimen/x5dp"
-                        android:ellipsize="end"
-                        android:paddingLeft="@dimen/x5dp"
-
-                        android:text="Physician Name"
-                        android:textColor="@color/txt_aku_blue"
-                        android:textSize="@dimen/s12"
-                        app:typeface="@string/font_regular" />
-
-
                         <edu.aku.akuh_health_first.widget.AnyTextView
                             android:id="@+id/txtLocation"
                             android:layout_width="match_parent"
@@ -150,10 +135,9 @@
                         android:layout_height="match_parent"
                         android:padding="@dimen/x2dp"
                         android:text=""
-
                         android:textColor="@color/txt_aku_blue"
-                        android:textSize="@dimen/s12"
-                        app:typeface="@string/font_regular" />
+                        android:textSize="@dimen/s11"
+                        app:typeface="@string/font_bold" />
 
                 </LinearLayout>
 
@@ -182,8 +166,8 @@
                         android:text=""
 
                         android:textColor="@color/txt_aku_blue"
-                        android:textSize="@dimen/s12"
-                        app:typeface="@string/font_regular" />
+                        android:textSize="@dimen/s11"
+                        app:typeface="@string/font_bold" />
 
                 </LinearLayout>
 
@@ -211,8 +195,8 @@
 
                         android:text=""
                         android:textColor="@color/txt_aku_blue"
-                        android:textSize="@dimen/s12"
-                        app:typeface="@string/font_regular" />
+                        android:textSize="@dimen/s11"
+                        app:typeface="@string/font_bold" />
 
                 </LinearLayout>
 

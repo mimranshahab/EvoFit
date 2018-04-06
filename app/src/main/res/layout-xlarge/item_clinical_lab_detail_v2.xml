@@ -75,7 +75,8 @@
 
                         <edu.aku.akuh_health_first.widget.AnyTextView
                             android:id="@+id/txtState"
-                            android:layout_width="wrap_content"
+                            android:layout_width="0dp"
+                            android:layout_weight="1"
                             android:layout_height="match_parent"
                             android:ellipsize="end"
                             android:gravity="center_vertical"

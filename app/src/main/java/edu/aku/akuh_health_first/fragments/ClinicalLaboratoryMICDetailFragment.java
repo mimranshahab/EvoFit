@@ -50,8 +50,8 @@ public class ClinicalLaboratoryMICDetailFragment extends BaseFragment implements
     AnyTextView txtSpecimenNumber;
     @BindView(R.id.txtReqDatetime)
     AnyTextView txtReqDatetime;
-    @BindView(R.id.txtPhysicianName)
-    AnyTextView txtPhysicianName;
+//    @BindView(R.id.txtPhysicianName)
+//    AnyTextView txtPhysicianName;
     @BindView(R.id.txtCollecDatetime)
     AnyTextView txtCollecDatetime;
     @BindView(R.id.txtLocation)
@@ -169,7 +169,7 @@ public class ClinicalLaboratoryMICDetailFragment extends BaseFragment implements
         txtCollecDatetime.setText(laboratoryDetailModel.getCollectionDttm());
         txtReportDatetime.setText(laboratoryDetailModel.getSignoutDttm());
         txtReqDatetime.setText(laboratoryDetailModel.getSortDttm());
-        txtPhysicianName.setText(laboratoryDetailModel.getReferringDoctorID());
+//        txtPhysicianName.setText(laboratoryDetailModel.getReferringDoctorID());
         txtSpecimenNumber.setText(laboratoryDetailModel.getSpecimenID());
         txtLocation.setText(laboratoryDetailModel.getVisitLocationID());
         txtReportName.setText(laboratoryDetailModel.getOrdered());
