@@ -69,7 +69,7 @@ public class HomeActivity extends BaseActivity {
     }
 
     private void initFragments() {
-        replacePermanentFramgment(HomeFragment.newInstance());
+        replacePermanentFramgment(HomeFragment.newInstance(), true);
     }
 
 

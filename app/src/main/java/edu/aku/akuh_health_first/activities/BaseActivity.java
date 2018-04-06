@@ -136,10 +136,11 @@ public abstract class BaseActivity extends AppCompatActivity {
                 .commit();
     }
 
-    public void replacePermanentFramgment(Fragment fragment) {
+    public void replacePermanentFramgment(Fragment fragment, boolean isTransition) {
         FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
-        fragmentTransaction.setCustomAnimations(R.anim.slide_in_right, R.anim.slide_out_left);
-
+        if (isTransition) {
+            fragmentTransaction.setCustomAnimations(R.anim.slide_in_right, R.anim.slide_out_left);
+        }
         fragmentTransaction.replace(getPermanentViewId(), fragment).addToBackStack(fragment.getClass().getSimpleName())
                 .commit();
     }

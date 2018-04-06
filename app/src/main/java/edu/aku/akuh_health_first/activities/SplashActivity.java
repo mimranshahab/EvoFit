@@ -8,12 +8,10 @@ import android.os.Handler;
 import android.view.View;
 import android.widget.LinearLayout;
 
-import edu.aku.akuh_health_first.constatnts.AppConstants;
 import edu.aku.akuh_health_first.helperclasses.ui.helper.AnimationHelper;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import edu.aku.akuh_health_first.R;
-import edu.aku.akuh_health_first.managers.SharedPreferenceManager;
 
 import static android.view.View.VISIBLE;
 

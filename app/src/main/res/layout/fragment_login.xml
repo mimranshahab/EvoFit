@@ -64,140 +64,150 @@
             </LinearLayout>
 
 
-            <edu.aku.akuh_health_first.widget.AnyEditTextView
-                android:id="@+id/edtUserName"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="@dimen/x15dp"
-                android:background="@drawable/rounded_box"
-                android:drawableLeft="@drawable/user_icon"
-                android:drawablePadding="@dimen/x5dp"
-                android:hint="Card Number"
-                android:inputType="text"
-                android:maxLength="30"
-                android:paddingBottom="@dimen/x8dp"
-                android:paddingLeft="@dimen/x10dp"
-                android:paddingRight="@dimen/x10dp"
-                android:paddingTop="@dimen/x8dp"
-                android:singleLine="true"
-                android:textColor="@color/txt_aku_blue"
-                android:textColorHint="@color/text_hint"
-                android:textSize="14sp"
-                app:testType="nocheck" />
-
-
-            <com.andreabaccega.widget.FormEditText
-                android:id="@+id/edtPassword"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="@dimen/x20dp"
-                android:background="@drawable/rounded_box"
-                android:drawableLeft="@drawable/password_icon"
-                android:drawablePadding="@dimen/x5dp"
-                android:hint="@string/mrnNumber"
-                android:inputType="textPassword"
-                android:maxLength="30"
-                android:paddingBottom="@dimen/x8dp"
-                android:paddingLeft="@dimen/x10dp"
-                android:paddingRight="@dimen/x10dp"
-                android:paddingTop="@dimen/x8dp"
-                android:singleLine="true"
-                android:textColor="@color/txt_aku_blue"
-                android:textColorHint="@color/text_hint"
-                android:textSize="14sp"
-                app:testType="nocheck" />
-
-
-            <edu.aku.akuh_health_first.widget.AnyTextView
-                android:id="@+id/btnLogin"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal"
-                android:layout_marginBottom="@dimen/x20dp"
-                android:background="@drawable/rounded_box_filled_base_amber"
-                android:gravity="center"
-                android:padding="@dimen/x8dp"
-                android:text="@string/login"
-                android:textColor="@color/c_white"
-                android:textSize="17sp"
-                app:typeface="@string/font_bold" />
-
             <LinearLayout
+                android:id="@+id/contContent"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center"
-                android:orientation="vertical"
-                android:visibility="gone">
+                android:orientation="vertical">
 
+                <edu.aku.akuh_health_first.widget.AnyEditTextView
+                    android:id="@+id/edtUserName"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="@dimen/x15dp"
+                    android:background="@drawable/rounded_box"
+                    android:drawableLeft="@drawable/user_icon"
+                    android:drawablePadding="@dimen/x5dp"
+                    android:hint="Card Number"
+                    android:inputType="text"
+                    android:maxLength="30"
+                    android:paddingBottom="@dimen/x8dp"
+                    android:paddingLeft="@dimen/x10dp"
+                    android:paddingRight="@dimen/x10dp"
+                    android:paddingTop="@dimen/x8dp"
+                    android:singleLine="true"
+                    android:textColor="@color/txt_aku_blue"
+                    android:textColorHint="@color/text_hint"
+                    android:textSize="14sp"
+                    app:testType="nocheck" />
+
+
+                <com.andreabaccega.widget.FormEditText
+                    android:id="@+id/edtPassword"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="@dimen/x20dp"
+                    android:background="@drawable/rounded_box"
+                    android:drawableLeft="@drawable/password_icon"
+                    android:drawablePadding="@dimen/x5dp"
+                    android:hint="@string/mrnNumber"
+                    android:inputType="textPassword"
+                    android:maxLength="30"
+                    android:paddingBottom="@dimen/x8dp"
+                    android:paddingLeft="@dimen/x10dp"
+                    android:paddingRight="@dimen/x10dp"
+                    android:paddingTop="@dimen/x8dp"
+                    android:singleLine="true"
+                    android:textColor="@color/txt_aku_blue"
+                    android:textColorHint="@color/text_hint"
+                    android:textSize="14sp"
+                    app:testType="nocheck" />
+
+
+                <edu.aku.akuh_health_first.widget.AnyTextView
+                    android:id="@+id/btnLogin"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginBottom="@dimen/x20dp"
+                    android:background="@drawable/rounded_box_filled_base_amber"
+                    android:gravity="center"
+                    android:padding="@dimen/x8dp"
+                    android:text="@string/login"
+                    android:textColor="@color/c_white"
+                    android:textSize="17sp"
+                    app:typeface="@string/font_bold" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginBottom="@dimen/x10dp"
-                    android:alpha="0.5"
-                    android:gravity="center">
+                    android:gravity="center"
+                    android:orientation="vertical"
+                    android:visibility="gone">
 
-                    <ImageView
-                        android:layout_width="0dp"
-                        android:layout_height="2px"
-                        android:layout_weight="1"
-                        android:alpha="0.8"
-                        android:src="@color/c_black" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="@dimen/x10dp"
+                        android:alpha="0.5"
+                        android:gravity="center">
+
+                        <ImageView
+                            android:layout_width="0dp"
+                            android:layout_height="2px"
+                            android:layout_weight="1"
+                            android:alpha="0.8"
+                            android:src="@color/c_black" />
+
+                        <edu.aku.akuh_health_first.widget.AnyTextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:padding="@dimen/x10dp"
+                            android:text="OR"
+                            android:textColor="#004F72"
+                            android:textSize="16sp"
+                            app:typeface="@string/font_bold" />
+
+                        <ImageView
+                            android:layout_width="0dp"
+                            android:layout_height="2px"
+                            android:layout_weight="1"
+                            android:alpha="0.8"
+                            android:src="@color/c_black" />
+
+                    </LinearLayout>
+
 
                     <edu.aku.akuh_health_first.widget.AnyTextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:padding="@dimen/x10dp"
-                        android:text="OR"
+                        android:layout_marginBottom="@dimen/x15dp"
+                        android:gravity="center_horizontal"
+                        android:text="Don't have an account?"
                         android:textColor="#004F72"
-                        android:textSize="16sp"
+                        android:textSize="@dimen/s14"
+                        app:typeface="@string/font_regular" />
+
+
+                    <edu.aku.akuh_health_first.widget.AnyTextView
+                        android:id="@+id/txtSignUp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="@dimen/x15dp"
+                        android:drawablePadding="@dimen/x5dp"
+                        android:drawableRight="@drawable/signup"
+                        android:gravity="center"
+                        android:text="Sign Up"
+                        android:textColor="#004F72"
+                        android:textSize="@dimen/s23"
+                        android:visibility="gone"
                         app:typeface="@string/font_bold" />
 
-                    <ImageView
-                        android:layout_width="0dp"
-                        android:layout_height="2px"
-                        android:layout_weight="1"
-                        android:alpha="0.8"
-                        android:src="@color/c_black" />
 
+                    <edu.aku.akuh_health_first.widget.AnyTextView
+                        android:id="@+id/txtForgotPassword"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:alpha="0.8"
+                        android:text="@string/forgot_password"
+                        android:textColor="@color/c_white"
+                        android:textSize="@dimen/s14"
+                        app:typeface="@string/font_bold" />
                 </LinearLayout>
 
 
-                <edu.aku.akuh_health_first.widget.AnyTextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="@dimen/x15dp"
-                    android:gravity="center_horizontal"
-                    android:text="Don't have an account?"
-                    android:textColor="#004F72"
-                    android:textSize="@dimen/s14"
-                    app:typeface="@string/font_regular" />
-
-
-                <edu.aku.akuh_health_first.widget.AnyTextView
-                    android:id="@+id/txtSignUp"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="@dimen/x15dp"
-                    android:drawablePadding="@dimen/x5dp"
-                    android:drawableRight="@drawable/signup"
-                    android:gravity="center"
-                    android:text="Sign Up"
-                    android:textColor="#004F72"
-                    android:textSize="@dimen/s23"
-                    android:visibility="gone"
-                    app:typeface="@string/font_bold" />
-
-
-                <edu.aku.akuh_health_first.widget.AnyTextView
-                    android:id="@+id/txtForgotPassword"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:alpha="0.8"
-                    android:text="@string/forgot_password"
-                    android:textColor="@color/c_white"
-                    android:textSize="@dimen/s14"
-                    app:typeface="@string/font_bold" />
             </LinearLayout>
 
 
