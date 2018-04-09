@@ -100,6 +100,7 @@ public class CardioAdapter extends RecyclerView.Adapter<CardioAdapter.ViewHolder
 
         if (cardioModel.getGraphAvailable().equalsIgnoreCase("false")) {
             holder.RlGraph.setEnabled(false);
+
             holder.RlGraph.setAlpha(.15f);
         }
 

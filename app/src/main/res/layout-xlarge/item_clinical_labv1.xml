@@ -72,7 +72,7 @@
                             android:scaleType="centerCrop"
                             android:visibility="gone"
 
-                            android:src="@drawable/shape_circle"
+                            android:src="@drawable/curve_edges_square_bullet"
                             android:tint="@color/base_amber" />
 
 
