@@ -1,24 +1,12 @@
 package edu.aku.akuh_health_first.activities;
 
-import android.content.Intent;
-import android.content.pm.ActivityInfo;
 import android.os.Bundle;
-import android.os.PersistableBundle;
 import android.support.annotation.Nullable;
-import android.support.v4.app.Fragment;
-import android.support.v4.widget.DrawerLayout;
-import android.support.v7.app.AppCompatActivity;
 import android.view.Gravity;
-import android.view.View;
 
 import edu.aku.akuh_health_first.R;
 import edu.aku.akuh_health_first.constatnts.AppConstants;
-import edu.aku.akuh_health_first.fragments.HomeFragment;
-import edu.aku.akuh_health_first.fragments.LeftSideMenuFragment;
 import edu.aku.akuh_health_first.fragments.LoginFragment;
-import edu.aku.akuh_health_first.fragments.abstracts.GenericClickableInterface;
-import edu.aku.akuh_health_first.fragments.abstracts.GenericDialogFragment;
-import edu.aku.akuh_health_first.helperclasses.ui.helper.TitleBar;
 import edu.aku.akuh_health_first.managers.SharedPreferenceManager;
 
 
@@ -64,7 +52,7 @@ public class MainActivity extends BaseActivity {
 
     @Override
     protected int getPermanentViewId() {
-        return 0;
+        return R.id.contPermanent;
     }
 
 
@@ -72,7 +60,7 @@ public class MainActivity extends BaseActivity {
 
         if (SharedPreferenceManager.getInstance(getApplicationContext()).getString(AppConstants.KEY_CARD_NUMBER) == null
                 || SharedPreferenceManager.getInstance(getApplicationContext()).getString(AppConstants.KEY_CARD_NUMBER).isEmpty()) {
-            addDockableFragment(LoginFragment.newInstance());
+            replacePermanentFramgment(LoginFragment.newInstance(),false);
          } else {
             openActivity(HomeActivity.class);
             this.finish();
@@ -95,6 +83,5 @@ public class MainActivity extends BaseActivity {
             closeApp();
         }
     }
-
 
 }

@@ -106,6 +106,7 @@ public class LoginFragment extends BaseFragment {
         edtCardNumber.addTextChangedListener(new MaskFormatter(CARD_MASK, edtCardNumber, '-'));
 
 
+
     }
 
     @Override

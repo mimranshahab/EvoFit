@@ -22,10 +22,8 @@ import com.nostra13.universalimageloader.core.assist.ImageScaleType;
 import com.nostra13.universalimageloader.core.display.FadeInBitmapDisplayer;
 
 import edu.aku.akuh_health_first.activities.MainActivity;
-import edu.aku.akuh_health_first.activities.SplashActivity;
 
 import edu.aku.akuh_health_first.libraries.imageloader.CustomImageDownaloder;
-import io.fabric.sdk.android.Fabric;
 import io.reactivex.subjects.PublishSubject;
 import io.realm.Realm;
 
@@ -53,8 +51,8 @@ public class BaseApplication extends MultiDexApplication implements Application.
 //        configureCalligraphyLibrary();
 
         // TODO: 11/1/2017 Enable Crash Lytics and Never Crash feature before releasing the app
-        Fabric.with(this, new Crashlytics());
-        neverCrash();
+//        Fabric.with(this, new Crashlytics());
+//        neverCrash();
     }
 
     public static Context getContext(){
