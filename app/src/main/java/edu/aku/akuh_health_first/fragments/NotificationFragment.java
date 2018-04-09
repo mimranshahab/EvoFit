@@ -96,7 +96,7 @@ public class NotificationFragment extends BaseFragment implements View.OnClickLi
         ((DefaultItemAnimator) recyclerTimeline.getItemAnimator()).setSupportsChangeAnimations(false);
         int resId = R.anim.layout_animation_fall_bottom;
         LayoutAnimationController animation = AnimationUtils.loadLayoutAnimation(getContext(), resId);
-        recyclerTimeline.setLayoutAnimation(animation);
+//        recyclerTimeline.setLayoutAnimation(animation);
         recyclerTimeline.setAdapter(notificationsAdapter);
     }
 

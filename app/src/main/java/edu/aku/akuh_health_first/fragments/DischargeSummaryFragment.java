@@ -90,7 +90,7 @@ public class DischargeSummaryFragment extends BaseFragment implements View.OnCli
         ((DefaultItemAnimator) recylerViewDischageSummary.getItemAnimator()).setSupportsChangeAnimations(false);
         int resId = R.anim.layout_animation_fall_bottom;
         LayoutAnimationController animation = AnimationUtils.loadLayoutAnimation(getContext(), resId);
-        recylerViewDischageSummary.setLayoutAnimation(animation);
+//        recylerViewDischageSummary.setLayoutAnimation(animation);
         recylerViewDischageSummary.setAdapter(adapterDischargesummary);
     }
 

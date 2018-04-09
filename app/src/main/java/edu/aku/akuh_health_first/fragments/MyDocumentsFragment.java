@@ -104,7 +104,7 @@ public class MyDocumentsFragment extends BaseFragment implements OnItemClickList
         ((DefaultItemAnimator) recylerView.getItemAnimator()).setSupportsChangeAnimations(false);
         int resId = R.anim.layout_animation_fall_bottom;
         LayoutAnimationController animation = AnimationUtils.loadLayoutAnimation(getContext(), resId);
-        recylerView.setLayoutAnimation(animation);
+//        recylerView.setLayoutAnimation(animation);
         recylerView.setAdapter(adapterFileDownloded);
     }
 

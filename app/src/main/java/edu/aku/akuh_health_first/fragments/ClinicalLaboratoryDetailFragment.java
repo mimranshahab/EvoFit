@@ -124,7 +124,7 @@ public class ClinicalLaboratoryDetailFragment extends BaseFragment implements Vi
         ((DefaultItemAnimator) listClinicalLabResult.getItemAnimator()).setSupportsChangeAnimations(false);
         int resId = R.anim.layout_animation_fall_bottom;
         LayoutAnimationController animation = AnimationUtils.loadLayoutAnimation(getContext(), resId);
-        listClinicalLabResult.setLayoutAnimation(animation);
+//        listClinicalLabResult.setLayoutAnimation(animation);
         listClinicalLabResult.setAdapter(adapterClinicalLabDetail);
     }
 

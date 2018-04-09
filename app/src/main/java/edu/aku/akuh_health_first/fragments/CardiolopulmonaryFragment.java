@@ -110,7 +110,7 @@ public class CardiolopulmonaryFragment extends BaseFragment implements View.OnCl
         ((DefaultItemAnimator) recyclerCardio.getItemAnimator()).setSupportsChangeAnimations(false);
         int resId = R.anim.layout_animation_fall_bottom;
         LayoutAnimationController animation = AnimationUtils.loadLayoutAnimation(getContext(), resId);
-        recyclerCardio.setLayoutAnimation(animation);
+//        recyclerCardio.setLayoutAnimation(animation);
         recyclerCardio.setAdapter(adapterCardio);
     }
 

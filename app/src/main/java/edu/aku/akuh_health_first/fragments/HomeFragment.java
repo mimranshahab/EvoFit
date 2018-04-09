@@ -109,8 +109,7 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener, 
         ((DefaultItemAnimator) recyclerHome.getItemAnimator()).setSupportsChangeAnimations(false);
         int resId = R.anim.layout_animation_fall_bottom;
         LayoutAnimationController animation = AnimationUtils.loadLayoutAnimation(getContext(), resId);
-        recyclerHome.setLayoutAnimation(animation);
-//        recyclerHome.setItemAnimator(new DefaultItemAnimator());
+//        recyclerHome.setLayoutAnimation(animation);
         recyclerHome.setAdapter(adaptHome);
         serviceCall();
     }
