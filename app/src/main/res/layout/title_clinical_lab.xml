@@ -124,7 +124,6 @@
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:text="Requested on"
-
                         android:textColor="@color/base_green"
                         android:textSize="@dimen/s12"
                         app:typeface="@string/font_bold" />

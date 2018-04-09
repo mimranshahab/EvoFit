@@ -65,7 +65,7 @@
                         android:gravity="center_vertical"
                         android:padding="@dimen/x5dp"
                         android:singleLine="true"
-                        android:text="Result Date(s)"
+                        android:text="Date(s)"
                         android:textColor="@color/txt_aku_blue"
                         android:textSize="@dimen/s13"
                         app:typeface="@string/font_bold" />
@@ -87,7 +87,7 @@
                 </LinearLayout>
 
                 <ImageView
-                    android:id="@+id/separator"
+                    android:id="@+id/separator0"
                     android:layout_width="match_parent"
                     android:layout_height="1px"
                     android:background="@color/base_amber" />
@@ -106,7 +106,7 @@
                         android:gravity="center_vertical"
                         android:padding="@dimen/x5dp"
                         android:singleLine="true"
-                        android:text="Current Date"
+                        android:text="Current"
                         android:textColor="@color/txt_aku_blue"
                         android:textSize="@dimen/s13"
                         app:typeface="@string/font_bold" />
@@ -128,6 +128,11 @@
 
                 </LinearLayout>
 
+                <ImageView
+                    android:id="@+id/separator1"
+                    android:layout_width="match_parent"
+                    android:layout_height="1px"
+                    android:background="@color/base_gray" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -164,6 +169,11 @@
 
                 </LinearLayout>
 
+                <ImageView
+                    android:id="@+id/separator2"
+                    android:layout_width="match_parent"
+                    android:layout_height="1px"
+                    android:background="@color/base_gray" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -199,6 +209,13 @@
 
 
                 </LinearLayout>
+
+                <ImageView
+                    android:id="@+id/separator"
+                    android:layout_width="match_parent"
+                    android:layout_height="1px"
+                    android:background="@color/base_gray" />
+
             </LinearLayout>
 
 
@@ -206,7 +223,7 @@
 
         <edu.aku.akuh_health_first.widget.AnyTextView
             android:id="@+id/txtOK"
-            android:layout_width="@dimen/x120dp"
+            android:layout_width="@dimen/x90dp"
             android:layout_height="wrap_content"
             android:layout_marginBottom="10dp"
             android:layout_marginLeft="60dp"

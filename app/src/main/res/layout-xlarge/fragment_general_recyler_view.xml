@@ -4,7 +4,7 @@
     xmlns:fab="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/c_white"
+    android:background="@color/background_gray"
     android:orientation="vertical">
 
     <!--android:background="@drawable/test2"-->
@@ -14,19 +14,13 @@
         android:layout_height="wrap_content">
 
 
-        <android.support.v4.widget.SwipeRefreshLayout
-            android:id="@+id/refreshLayout"
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/recylerView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@id/edtSearchBar">
 
-            <android.support.v7.widget.RecyclerView
-                android:id="@+id/recylerView"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-
-            </android.support.v7.widget.RecyclerView>
-        </android.support.v4.widget.SwipeRefreshLayout>
+        </android.support.v7.widget.RecyclerView>
 
         <edu.aku.akuh_health_first.widget.AnyTextView
             android:id="@+id/empty_view"
@@ -34,8 +28,8 @@
             android:layout_height="match_parent"
             android:background="@color/background_gray"
             android:gravity="center"
-            android:text="No Record Found"
             android:padding="@dimen/x10dp"
+            android:text="No Report Found"
             android:textColor="@color/txt_aku_blue"
             android:textSize="@dimen/s15"
             android:visibility="gone"
@@ -48,13 +42,23 @@
             android:layout_alignParentTop="true"
             android:layout_margin="@dimen/x5dp"
             android:background="@drawable/searchbar"
-            android:drawablePadding="@dimen/x5dp"
-            android:drawableRight="@drawable/search2"
             android:hint="@string/search"
-            android:padding="@dimen/x5dp"
             android:maxLines="1"
+            android:padding="@dimen/x5dp"
             android:textSize="@dimen/s10"
             android:visibility="gone" />
+
+        <ImageView
+            android:id="@+id/imgSearch"
+            android:layout_width="@dimen/x25dp"
+            android:layout_height="@dimen/x25dp"
+            android:layout_alignParentRight="true"
+            android:layout_gravity="center"
+            android:layout_margin="@dimen/x4dp"
+            android:padding="@dimen/x7dp"
+            android:visibility="gone"
+            android:tint="@color/txt_aku_blue"
+            android:src="@drawable/search2" />
 
         <com.github.clans.fab.FloatingActionButton
             android:id="@+id/fab"

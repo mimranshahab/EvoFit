@@ -187,6 +187,8 @@
                         android:padding="@dimen/x5dp"
                         android:layout_gravity="bottom"
                         android:src="@drawable/img_go"
+                        android:scaleX="1.4"
+                        android:scaleY="1.4"
                         android:tint="@color/base_green"
                         android:visibility="visible" />
                 </LinearLayout>

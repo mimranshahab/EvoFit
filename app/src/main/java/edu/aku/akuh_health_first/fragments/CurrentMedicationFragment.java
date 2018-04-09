@@ -3,7 +3,7 @@ package edu.aku.akuh_health_first.fragments;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.widget.DrawerLayout;
-import android.support.v4.widget.SwipeRefreshLayout;
+
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -49,8 +49,7 @@ public class CurrentMedicationFragment extends BaseFragment implements View.OnCl
     @BindView(R.id.recylerView)
     RecyclerView recyclerView;
     Unbinder unbinder;
-    @BindView(R.id.refreshLayout)
-    SwipeRefreshLayout refreshLayout;
+
     @BindView(R.id.fab)
     FloatingActionButton mFab;
     @BindView(R.id.empty_view)
@@ -125,13 +124,6 @@ public class CurrentMedicationFragment extends BaseFragment implements View.OnCl
 
     @Override
     public void setListeners() {
-        refreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
-            @Override
-            public void onRefresh() {
-                updateData();
-                refreshLayout.setRefreshing(false);
-            }
-        });
 
         mFab.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -233,12 +225,12 @@ public class CurrentMedicationFragment extends BaseFragment implements View.OnCl
     }
 
     private void showEmptyView() {
-        refreshLayout.setVisibility(View.GONE);
+
         emptyView.setVisibility(View.VISIBLE);
     }
 
     private void showEmptyView(String text) {
-        refreshLayout.setVisibility(View.GONE);
+
         emptyView.setVisibility(View.VISIBLE);
         emptyView.setText(text);
     }
@@ -246,6 +238,6 @@ public class CurrentMedicationFragment extends BaseFragment implements View.OnCl
     private void showView() {
         bindView();
         emptyView.setVisibility(View.GONE);
-        refreshLayout.setVisibility(View.VISIBLE);
+
     }
 }

@@ -3,7 +3,6 @@ package edu.aku.akuh_health_first.fragments;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.widget.DrawerLayout;
-import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -15,6 +14,7 @@ import android.view.ViewGroup;
 import android.view.animation.AnimationUtils;
 import android.view.animation.LayoutAnimationController;
 import android.widget.AdapterView;
+import android.widget.ImageView;
 
 import com.google.gson.JsonObject;
 import com.google.gson.reflect.TypeToken;
@@ -24,6 +24,7 @@ import java.util.ArrayList;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 import butterknife.Unbinder;
 import edu.aku.akuh_health_first.R;
 import edu.aku.akuh_health_first.adapters.recyleradapters.ClinicalLabAdapterV1;
@@ -35,8 +36,8 @@ import edu.aku.akuh_health_first.helperclasses.ui.helper.TitleBar;
 import edu.aku.akuh_health_first.helperclasses.ui.helper.UIHelper;
 import edu.aku.akuh_health_first.managers.retrofit.GsonFactory;
 import edu.aku.akuh_health_first.managers.retrofit.WebServices;
-import edu.aku.akuh_health_first.models.LaboratoryModel;
 import edu.aku.akuh_health_first.models.LaboratoryDetailModel;
+import edu.aku.akuh_health_first.models.LaboratoryModel;
 import edu.aku.akuh_health_first.models.SearchModel;
 import edu.aku.akuh_health_first.models.wrappers.WebResponse;
 import edu.aku.akuh_health_first.widget.AnyEditTextView;
@@ -51,14 +52,14 @@ public class ClinicalLaboratoryFragment extends BaseFragment implements View.OnC
 
     @BindView(R.id.recylerView)
     RecyclerView recyclerNeurophysiology;
-    @BindView(R.id.refreshLayout)
-    SwipeRefreshLayout refreshLayout;
 
     Unbinder unbinder;
     @BindView(R.id.empty_view)
     AnyTextView emptyView;
     @BindView(R.id.edtSearchBar)
     AnyEditTextView edtSearchBar;
+    @BindView(R.id.imgSearch)
+    ImageView imgSearch;
     private ArrayList<LaboratoryModel> arrClinicalLabLists;
     private ClinicalLabAdapterV1 clinicalLabAdapterV1;
     boolean isFromTimeline;
@@ -104,6 +105,7 @@ public class ClinicalLaboratoryFragment extends BaseFragment implements View.OnC
         bindView();
         serviceCall();
         edtSearchBar.setVisibility(View.VISIBLE);
+        imgSearch.setVisibility(View.VISIBLE);
         edtSearchBar.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
@@ -113,6 +115,13 @@ public class ClinicalLaboratoryFragment extends BaseFragment implements View.OnC
             @Override
             public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
                 clinicalLabAdapterV1.getFilter().filter(charSequence);
+                if(edtSearchBar.getStringTrimmed().equalsIgnoreCase("")){
+
+                    imgSearch.setImageResource(R.drawable.search2);
+
+                } else {
+                    imgSearch.setImageResource(R.drawable.ic_select_cross);
+                }
             }
 
             @Override
@@ -139,13 +148,7 @@ public class ClinicalLaboratoryFragment extends BaseFragment implements View.OnC
 
     @Override
     public void setListeners() {
-        refreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
-            @Override
-            public void onRefresh() {
-                serviceCall();
-                refreshLayout.setRefreshing(false);
-            }
-        });
+
     }
 
     @Override
@@ -282,13 +285,16 @@ public class ClinicalLaboratoryFragment extends BaseFragment implements View.OnC
     }
 
     private void showEmptyView() {
-        refreshLayout.setVisibility(View.GONE);
         emptyView.setVisibility(View.VISIBLE);
     }
 
     private void showView() {
         bindView();
         emptyView.setVisibility(View.GONE);
-        refreshLayout.setVisibility(View.VISIBLE);
+    }
+
+    @OnClick(R.id.imgSearch)
+    public void onViewClicked() {
+        edtSearchBar.setText("");
     }
 }
