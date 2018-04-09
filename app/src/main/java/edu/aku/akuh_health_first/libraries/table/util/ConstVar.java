@@ -11,10 +11,10 @@ public class ConstVar {
 //    public final static int HEADERWIDTH = 475;
 //    public final static int HEADERHEIGHT = 95;
 
-    public final static int HEADERWIDTH = (int) BaseApplication.getContext().getResources().getDimension(R.dimen.x180dp);
+    public final static int HEADERWIDTH = (int) BaseApplication.getContext().getResources().getDimension(R.dimen.x140dp);
     public final static int HEADERHEIGHT = (int) BaseApplication.getContext().getResources().getDimension(R.dimen.x40dp);
-    public final static int DEFAULTTEXTSIZE = (int) BaseApplication.getContext().getResources().getDimension(R.dimen.s12);
-    public final static int HEADER_LEFT_PADDING = (int) BaseApplication.getContext().getResources().getDimension(R.dimen.x5dp);
+    public final static int DEFAULTTEXTSIZE = (int) BaseApplication.getContext().getResources().getDimension(R.dimen.s10);
+    public final static int HEADER_LEFT_PADDING = (int) BaseApplication.getContext().getResources().getDimension(R.dimen.x3dp);
 
 //    public final static int DEFAULTTEXTSIZE = 35;
 //    public final static int HEADER_LEFT_PADDING = 15;
