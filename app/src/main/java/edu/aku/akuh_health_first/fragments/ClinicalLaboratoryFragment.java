@@ -103,32 +103,14 @@ public class ClinicalLaboratoryFragment extends BaseFragment implements View.OnC
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         bindView();
-        serviceCall();
+
         edtSearchBar.setVisibility(View.VISIBLE);
         imgSearch.setVisibility(View.VISIBLE);
-        edtSearchBar.addTextChangedListener(new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
 
-            }
-
-            @Override
-            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-                clinicalLabAdapterV1.getFilter().filter(charSequence);
-                if(edtSearchBar.getStringTrimmed().equalsIgnoreCase("")){
-
-                    imgSearch.setImageResource(R.drawable.search2);
-
-                } else {
-                    imgSearch.setImageResource(R.drawable.ic_select_cross);
-                }
-            }
-
-            @Override
-            public void afterTextChanged(Editable editable) {
-
-            }
-        });
+        if (onCreated) {
+            return;
+        }
+        serviceCall();
 
     }
 
@@ -148,6 +130,29 @@ public class ClinicalLaboratoryFragment extends BaseFragment implements View.OnC
 
     @Override
     public void setListeners() {
+        edtSearchBar.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+                clinicalLabAdapterV1.getFilter().filter(charSequence);
+                if (edtSearchBar.getStringTrimmed().equalsIgnoreCase("")) {
+
+                    imgSearch.setImageResource(R.drawable.search2);
+
+                } else {
+                    imgSearch.setImageResource(R.drawable.ic_select_cross);
+                }
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+
+            }
+        });
 
     }
 

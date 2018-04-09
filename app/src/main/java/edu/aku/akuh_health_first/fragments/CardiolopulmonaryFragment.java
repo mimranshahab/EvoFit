@@ -91,6 +91,10 @@ public class CardiolopulmonaryFragment extends BaseFragment implements View.OnCl
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         bindView();
+
+        if (onCreated) {
+            return;
+        }
         serviceCall();
 
     }

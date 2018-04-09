@@ -70,7 +70,6 @@ public class CardSubscriptionFragment extends BaseFragment {
     }
 
 
-
     @Override
     public void setListeners() {
         contParent.setOnClickListener(new View.OnClickListener() {
@@ -102,8 +101,6 @@ public class CardSubscriptionFragment extends BaseFragment {
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-
-
         setData();
     }
 

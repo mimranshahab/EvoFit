@@ -62,7 +62,7 @@ public class RadiologyFragment extends BaseFragment implements View.OnClickListe
         adapterRadiology = new RadiologyAdapter(getBaseActivity(), arrData, this);
     }
 
-    public static RadiologyFragment newInstance(boolean isFromTimeline,  int patientVisitAdmissionID) {
+    public static RadiologyFragment newInstance(boolean isFromTimeline, int patientVisitAdmissionID) {
 
         Bundle args = new Bundle();
         RadiologyFragment fragment = new RadiologyFragment();
@@ -95,6 +95,10 @@ public class RadiologyFragment extends BaseFragment implements View.OnClickListe
 
         bearerTokenCall();
         bindView();
+
+        if (onCreated) {
+            return;
+        }
         serviceCall();
 
 
@@ -197,7 +201,7 @@ public class RadiologyFragment extends BaseFragment implements View.OnClickListe
         model.setMRNumber(getCurrentUser().getMRNumber());
         if (isFromTimeline) {
             model.setMRNumber(getCurrentUser().getMRNumber());
-            model.setVisitID(patientVisitAdmissionID+"");
+            model.setVisitID(patientVisitAdmissionID + "");
         } else {
             model.setVisitID(null);
         }

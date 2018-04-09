@@ -99,31 +99,12 @@ public class TimelineFragment extends BaseFragment implements View.OnClickListen
         edtSearchBar.setVisibility(View.VISIBLE);
         imgSearch.setVisibility(View.VISIBLE);
         bindView();
+
+        if (onCreated) {
+            return;
+        }
         serviceCall();
 
-        edtSearchBar.addTextChangedListener(new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-
-            }
-
-            @Override
-            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-                adapter.getFilter().filter(charSequence);
-                if(edtSearchBar.getStringTrimmed().equalsIgnoreCase("")){
-
-                    imgSearch.setImageResource(R.drawable.search2);
-
-                } else {
-                    imgSearch.setImageResource(R.drawable.ic_select_cross);
-                }
-            }
-
-            @Override
-            public void afterTextChanged(Editable editable) {
-
-            }
-        });
     }
 
     private void bindView() {
@@ -138,6 +119,31 @@ public class TimelineFragment extends BaseFragment implements View.OnClickListen
 
     @Override
     public void setListeners() {
+
+
+        edtSearchBar.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+                adapter.getFilter().filter(charSequence);
+                if (edtSearchBar.getStringTrimmed().equalsIgnoreCase("")) {
+
+                    imgSearch.setImageResource(R.drawable.search2);
+
+                } else {
+                    imgSearch.setImageResource(R.drawable.ic_select_cross);
+                }
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+
+            }
+        });
 
     }
 
@@ -218,6 +224,7 @@ public class TimelineFragment extends BaseFragment implements View.OnClickListen
                         });
 
     }
+
     @OnClick(R.id.imgSearch)
     public void onViewClicked() {
         edtSearchBar.setText("");

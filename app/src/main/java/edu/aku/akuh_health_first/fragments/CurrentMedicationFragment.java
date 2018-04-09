@@ -87,7 +87,7 @@ public class CurrentMedicationFragment extends BaseFragment implements View.OnCl
         titleBar.resetViews();
         titleBar.setTitle("Medicines");
         titleBar.showBackButton(getBaseActivity());
-        titleBar.setUserDisplay(sharedPreferenceManager.getCurrentUser(),getContext());
+        titleBar.setUserDisplay(sharedPreferenceManager.getCurrentUser(), getContext());
         titleBar.showHome(getBaseActivity());
     }
 
@@ -103,8 +103,11 @@ public class CurrentMedicationFragment extends BaseFragment implements View.OnCl
 
     private void updateData() {
         if (!sharedPreferenceManager.getCurrentUser().getVisitDetail().getIsPatientExists()) {
-            serviceCall();
             mFab.setVisibility(View.VISIBLE);
+            if (onCreated) {
+                return;
+            }
+            serviceCall();
         } else {
             showEmptyView("No Current Medication since patient is onBoard");
             mFab.setVisibility(View.GONE);

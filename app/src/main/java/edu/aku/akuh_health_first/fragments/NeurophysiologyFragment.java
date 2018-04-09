@@ -62,7 +62,7 @@ public class NeurophysiologyFragment extends BaseFragment implements View.OnClic
         adaptNeuropysiology = new NeurophysiologyAdapter(getBaseActivity(), arrNeuropysiologyLists, this);
     }
 
-    public static NeurophysiologyFragment newInstance(boolean isFromTimeline,  int patientVisitAdmissionID) {
+    public static NeurophysiologyFragment newInstance(boolean isFromTimeline, int patientVisitAdmissionID) {
 
         Bundle args = new Bundle();
 
@@ -92,6 +92,9 @@ public class NeurophysiologyFragment extends BaseFragment implements View.OnClic
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         bindView();
+        if (onCreated) {
+            return;
+        }
         serviceCall();
     }
 
@@ -169,7 +172,6 @@ public class NeurophysiologyFragment extends BaseFragment implements View.OnClic
     }
 
 
-
     private void serviceCall() {
         SearchModel model = new SearchModel();
         model.setMRNumber(getCurrentUser().getMRNumber());
@@ -177,7 +179,8 @@ public class NeurophysiologyFragment extends BaseFragment implements View.OnClic
             model.setVisitID(String.valueOf(patientVisitAdmissionID));
         } else {
             model.setVisitID(null);
-        }        new WebServices(getBaseActivity(),
+        }
+        new WebServices(getBaseActivity(),
                 getToken(),
                 BaseURLTypes.AHFA_BASE_URL)
                 .webServiceRequestAPIForArray(WebServiceConstants.METHOD_NEUROPHIOLOGY,
