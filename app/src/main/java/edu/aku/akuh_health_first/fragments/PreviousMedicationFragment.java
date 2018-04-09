@@ -95,8 +95,10 @@ public class PreviousMedicationFragment extends BaseFragment implements View.OnC
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         bindView();
+        if (onCreated) {
+            return;
+        }
         serviceCall();
-//        mFab.setVisibility(View.VISIBLE);
     }
 
 

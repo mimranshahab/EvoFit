@@ -92,8 +92,10 @@ public class PacsFragment extends BaseFragment implements View.OnClickListener, 
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-
         bindView();
+        if (onCreated) {
+            return;
+        }
         serviceCall(radioModel);
     }
 

@@ -119,6 +119,9 @@ public class HealthSummaryFragment extends BaseFragment implements OnItemClickLi
 //        setSpannyText();
 
         bindView();
+        if (onCreated) {
+            return;
+        }
         serviceCallBasicHealthSummary();
         serviceCallDetailedHealthSummary();
 
