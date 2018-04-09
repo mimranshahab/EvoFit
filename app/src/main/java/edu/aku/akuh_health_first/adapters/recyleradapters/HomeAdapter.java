@@ -61,7 +61,7 @@ public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.ViewHolder> {
         if (user.getRelationshipDescription().equalsIgnoreCase("Self")) {
             holder.txtRelation.setText(null);
         } else {
-            holder.txtRelation.setText("(" + user.getRelationshipDescription() + ")");
+            holder.txtRelation.setText(user.getRelationshipDescription());
         }
 
         if (user.getProfileImage() == null || user.getProfileImage().isEmpty()) {

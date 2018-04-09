@@ -45,6 +45,9 @@ public class TableViewActivity extends AppCompatActivity {
         String title = getIntent().getStringExtra(JSON_STRING_KEY);
         lstMicSpecParaResult = SharedPreferenceManager.getInstance(this).getObject(AppConstants.KEY_CROSS_TAB_DATA, LstMicSpecParaResult.class);
         convertToSetAntibiotics();
+        antibioticSet.addAll(antibioticSet);
+        antibioticSet.addAll(antibioticSet);
+        antibioticSet.addAll(antibioticSet);
         tableData = new String[lstMicSpecParaResult.getLstMicSpecOrganism().size()][antibioticSet.size()];
         setTitleBar(title);
         setTableViewCellWidth();
@@ -79,6 +82,7 @@ public class TableViewActivity extends AppCompatActivity {
         configure.setEnableResizeColumn(false);
         configure.setEnableSelection(false);
         mTableView.setConfigure(configure);
+        mTableView.setVerticalScrollBarEnabled(false);
 
         mTableView.setData(lstMicSpecParaResult.getLstMicSpecOrganism(), antibioticSet);
     }

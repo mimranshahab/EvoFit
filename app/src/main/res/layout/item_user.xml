@@ -34,7 +34,7 @@
                 android:background="@drawable/selected_user_transition"
                 android:gravity="center_vertical"
                 android:orientation="horizontal"
-                android:padding="@dimen/x3dp">
+                android:padding="@dimen/x2dp">
 
 
                 <de.hdodenhof.circleimageview.CircleImageView
@@ -88,9 +88,9 @@
                     </LinearLayout>
 
                     <LinearLayout
-                        android:layout_marginRight="@dimen/x15dp"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content">
+                        android:layout_height="wrap_content"
+                        android:layout_marginRight="@dimen/x25dp">
 
 
                         <edu.aku.akuh_health_first.widget.AnyTextView
@@ -119,7 +119,7 @@
                             android:layout_width="0dp"
                             android:layout_height="match_parent"
                             android:layout_weight="1"
-                             android:ellipsize="end"
+                            android:ellipsize="end"
                             android:gravity="right"
                             android:singleLine="true"
                             android:text="Daughter"
