@@ -3,7 +3,7 @@ package edu.aku.akuh_health_first.fragments;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.widget.DrawerLayout;
-import android.support.v4.widget.SwipeRefreshLayout;
+
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -35,8 +35,6 @@ public class NotificationFragment extends BaseFragment implements View.OnClickLi
     @BindView(R.id.recylerView)
     RecyclerView recyclerTimeline;
 
-    @BindView(R.id.refreshLayout)
-    SwipeRefreshLayout refreshLayout;
     Unbinder unbinder;
     private ArrayList<NotificationModel> arrNotifications;
     private NotificationsAdapter notificationsAdapter;
@@ -104,13 +102,7 @@ public class NotificationFragment extends BaseFragment implements View.OnClickLi
 
     @Override
     public void setListeners() {
-        refreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
-            @Override
-            public void onRefresh() {
-                bindView();
-                refreshLayout.setRefreshing(false);
-            }
-        });
+
 
     }
 

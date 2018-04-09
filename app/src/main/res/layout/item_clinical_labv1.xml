@@ -13,7 +13,7 @@
         android:layout_height="wrap_content"
         android:layout_margin="@dimen/x8dp"
         android:animateLayoutChanges="true"
-        app:cardBackgroundColor="@color/base_green"
+        app:cardBackgroundColor="@color/colorPrimaryDark"
         app:cardCornerRadius="@dimen/x8dp"
         app:cardElevation="@dimen/x3dp"
         card_view:cardCornerRadius="@dimen/x10dp"
@@ -189,6 +189,8 @@
                         android:layout_height="wrap_content"
                         android:layout_gravity="bottom"
                         android:padding="@dimen/x8dp"
+                        android:scaleX="1.4"
+                        android:scaleY="1.4"
                         android:src="@drawable/img_go"
                         android:tint="@color/base_green"
                         android:visibility="visible" />

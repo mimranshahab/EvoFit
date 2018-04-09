@@ -4,7 +4,7 @@ import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.widget.DrawerLayout;
-import android.support.v4.widget.SwipeRefreshLayout;
+
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -40,8 +40,7 @@ public class MyDocumentsFragment extends BaseFragment implements OnItemClickList
 
 
     RecyclerView recylerView;
-    @BindView(R.id.refreshLayout)
-    SwipeRefreshLayout refreshLayout;
+
     Unbinder unbinder;
     @BindView(R.id.empty_view)
     AnyTextView emptyView;
@@ -82,14 +81,14 @@ public class MyDocumentsFragment extends BaseFragment implements OnItemClickList
     }
 
     private void showEmptyView() {
-        refreshLayout.setVisibility(View.GONE);
+
         emptyView.setVisibility(View.VISIBLE);
     }
 
     private void showView() {
         bindView();
         emptyView.setVisibility(View.GONE);
-        refreshLayout.setVisibility(View.VISIBLE);
+
     }
 
     @Override
@@ -127,12 +126,7 @@ public class MyDocumentsFragment extends BaseFragment implements OnItemClickList
 
     @Override
     public void setListeners() {
-        refreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
-            @Override
-            public void onRefresh() {
-                refreshLayout.setRefreshing(false);
-            }
-        });
+
     }
 
     @Override

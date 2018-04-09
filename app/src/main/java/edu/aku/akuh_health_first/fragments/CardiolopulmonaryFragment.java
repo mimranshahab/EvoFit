@@ -3,7 +3,7 @@ package edu.aku.akuh_health_first.fragments;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.widget.DrawerLayout;
-import android.support.v4.widget.SwipeRefreshLayout;
+
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -46,8 +46,7 @@ public class CardiolopulmonaryFragment extends BaseFragment implements View.OnCl
     @BindView(R.id.recylerView)
     RecyclerView recyclerCardio;
     Unbinder unbinder;
-    @BindView(R.id.refreshLayout)
-    SwipeRefreshLayout refreshLayout;
+
     @BindView(R.id.empty_view)
     AnyTextView emptyView;
     private ArrayList<CardioModel> arrCardioModelLists;
@@ -97,14 +96,12 @@ public class CardiolopulmonaryFragment extends BaseFragment implements View.OnCl
     }
 
     private void showEmptyView() {
-        refreshLayout.setVisibility(View.GONE);
         emptyView.setVisibility(View.VISIBLE);
     }
 
     private void showView() {
         bindView();
         emptyView.setVisibility(View.GONE);
-        refreshLayout.setVisibility(View.VISIBLE);
     }
 
     private void bindView() {
@@ -119,13 +116,7 @@ public class CardiolopulmonaryFragment extends BaseFragment implements View.OnCl
 
     @Override
     public void setListeners() {
-        refreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
-            @Override
-            public void onRefresh() {
-                serviceCall();
-                refreshLayout.setRefreshing(false);
-            }
-        });
+
     }
 
     @Override
