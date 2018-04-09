@@ -186,9 +186,7 @@
                         android:layout_height="wrap_content"
                         android:padding="@dimen/x5dp"
                         android:layout_gravity="bottom"
-                        android:src="@drawable/img_go"
-                        android:scaleX="1.4"
-                        android:scaleY="1.4"
+                        android:src="@drawable/ic_next_arrow"
                         android:tint="@color/base_green"
                         android:visibility="visible" />
                 </LinearLayout>

@@ -101,7 +101,7 @@ public class NeurophysiologyFragment extends BaseFragment implements View.OnClic
         ((DefaultItemAnimator) recyclerNeurophysiology.getItemAnimator()).setSupportsChangeAnimations(false);
         int resId = R.anim.layout_animation_fall_bottom;
         LayoutAnimationController animation = AnimationUtils.loadLayoutAnimation(getContext(), resId);
-        recyclerNeurophysiology.setLayoutAnimation(animation);
+//        recyclerNeurophysiology.setLayoutAnimation(animation);
         recyclerNeurophysiology.setAdapter(adaptNeuropysiology);
     }
 

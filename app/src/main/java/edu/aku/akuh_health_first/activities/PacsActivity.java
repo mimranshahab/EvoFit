@@ -69,7 +69,6 @@ public class PacsActivity extends AppCompatActivity {
         settitlebar();
 
 
-
         SharedPreferenceManager sharedPreferenceManager = SharedPreferenceManager.getInstance(this);
         String fromJson = sharedPreferenceManager.getString("JSON_STRING_KEY");
 
@@ -90,8 +89,21 @@ public class PacsActivity extends AppCompatActivity {
             updateData(arrTupleModel.get(0));
         }
         setListeners();
+
+
         indicatorSeekBar.setProgress(0);
 
+        if (arrTupleModel.size() <= 1) {
+            btnNextBatch.setEnabled(false);
+            btnPreviousBatch.setEnabled(false);
+            btnNextBatch.setAlpha(0.4f);
+            btnPreviousBatch.setAlpha(0.4f);
+        } else {
+            btnNextBatch.setEnabled(true);
+            btnPreviousBatch.setEnabled(false);
+            btnNextBatch.setAlpha(1f);
+            btnPreviousBatch.setAlpha(1f);
+        }
 
     }
 

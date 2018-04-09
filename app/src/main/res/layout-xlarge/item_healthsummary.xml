@@ -129,7 +129,7 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
                     android:padding="@dimen/x10dp"
-                    android:src="@drawable/img_go"
+                    android:src="@drawable/ic_next_arrow"
                     android:tint="@color/base_reddish" />
             </LinearLayout>
 

@@ -3,6 +3,7 @@ package edu.aku.akuh_health_first.helperclasses.ui.helper;
 import android.animation.Animator;
 import android.app.Activity;
 import android.content.Context;
+import android.support.v4.app.Fragment;
 import android.support.v4.view.GravityCompat;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
@@ -14,14 +15,19 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 
+import java.util.List;
+
 import de.hdodenhof.circleimageview.CircleImageView;
 import edu.aku.akuh_health_first.R;
 import edu.aku.akuh_health_first.activities.BaseActivity;
 import edu.aku.akuh_health_first.activities.HomeActivity;
+import edu.aku.akuh_health_first.fragments.abstracts.BaseFragment;
 import edu.aku.akuh_health_first.libraries.imageloader.ImageLoaderHelper;
 import edu.aku.akuh_health_first.models.TimelineModel;
 import edu.aku.akuh_health_first.models.receiving_model.UserDetailModel;
 import edu.aku.akuh_health_first.widget.AnyTextView;
+
+import static edu.aku.akuh_health_first.constatnts.Events.ON_HOME_PRESSED;
 
 /**
  * Created by khanhamza on 02-Mar-17.
@@ -284,7 +290,10 @@ public class TitleBar extends RelativeLayout {
             @Override
             public void onClick(View view) {
                 if (activity instanceof HomeActivity) {
-                    activity.reload();
+//                    activity.reload();
+                    activity.baseFragment.popStackTill(1);
+                    activity.baseFragment.notifyToAll(ON_HOME_PRESSED, TitleBar.this);
+
                 } else {
                     activity.clearAllActivitiesExceptThis(HomeActivity.class);
                 }
