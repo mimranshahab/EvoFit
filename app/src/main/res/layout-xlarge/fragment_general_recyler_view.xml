@@ -33,7 +33,7 @@
             android:textColor="@color/txt_aku_blue"
             android:textSize="@dimen/s15"
             android:visibility="gone"
-            app:typeface="@string/font_regular" />
+            app:typeface="@string/font_bold" />
 
         <edu.aku.akuh_health_first.widget.AnyEditTextView
             android:id="@+id/edtSearchBar"

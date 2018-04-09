@@ -24,6 +24,7 @@ import com.nostra13.universalimageloader.core.display.FadeInBitmapDisplayer;
 import edu.aku.akuh_health_first.activities.MainActivity;
 
 import edu.aku.akuh_health_first.libraries.imageloader.CustomImageDownaloder;
+import io.fabric.sdk.android.Fabric;
 import io.reactivex.subjects.PublishSubject;
 import io.realm.Realm;
 
