@@ -51,11 +51,13 @@ public abstract class BaseFragment extends Fragment implements View.OnClickListe
     protected View view;
     public SharedPreferenceManager sharedPreferenceManager;
     public String TAG = "Logging Tag";
+    public boolean onCreated = false;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         sharedPreferenceManager = SharedPreferenceManager.getInstance(getContext());
+        onCreated = false;
     }
 
     @Override
@@ -150,6 +152,7 @@ public abstract class BaseFragment extends Fragment implements View.OnClickListe
     @Override
     public void onResume() {
         super.onResume();
+        onCreated = true;
         setListeners();
 
         if (getBaseActivity() != null) {

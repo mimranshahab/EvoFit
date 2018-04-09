@@ -109,8 +109,6 @@ public class ClinicalLaboratoryDetailFragment extends BaseFragment implements Vi
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         bindView();
-
-
         arrLabDetail.clear();
         arrLabDetail.addAll(laboratoryDetailModel.getLstLaboratorySpecimenResults());
         adapterClinicalLabDetail.notifyDataSetChanged();

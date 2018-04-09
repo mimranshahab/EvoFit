@@ -106,7 +106,6 @@ public class ClinicalLaboratoryMICDetailFragment extends BaseFragment implements
         super.onViewCreated(view, savedInstanceState);
         bindView();
 
-
         arrLabDetail.clear();
 
         for (LstLaboratoryMicspecimenOrderedProc lstLaboratoryMicspecimenOrderedProc : laboratoryDetailModel.getLstLaboratoryMicSpecimenOrderedProc()) {

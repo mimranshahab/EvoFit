@@ -58,6 +58,7 @@ public class ClinicalParaResultFragment extends BaseFragment {
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+
         txtParaResult.setText(Html.fromHtml(micSpecParaResult.getPARARESULT()), TextView.BufferType.SPANNABLE);
 
         if (micSpecParaResult != null) {
@@ -68,7 +69,6 @@ public class ClinicalParaResultFragment extends BaseFragment {
         if (micSpecParaResult.getLstMicSpecOrganism() == null || micSpecParaResult.getLstMicSpecOrganism().isEmpty()) {
             txtViewResult.setVisibility(View.GONE);
         } else {
-            // FIXME: 3/31/2018 Cross Tab Remaining
             txtViewResult.setVisibility(View.VISIBLE);
         }
 
