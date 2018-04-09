@@ -13,11 +13,11 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
-        android:layout_marginLeft="@dimen/x5dp"
-        android:layout_marginRight="@dimen/x5dp"
+        android:layout_marginLeft="@dimen/x2dp"
+        android:layout_marginRight="@dimen/x2dp"
         android:layout_marginTop="@dimen/x5dp"
         android:animateLayoutChanges="true"
-        app:cardBackgroundColor="@color/base_amber"
+        app:cardBackgroundColor="@color/colorPrimaryDark"
         app:cardCornerRadius="@dimen/x8dp"
         app:cardElevation="@dimen/x3dp">
 
@@ -34,13 +34,13 @@
                 android:background="@drawable/selected_user_transition"
                 android:gravity="center_vertical"
                 android:orientation="horizontal"
-                android:padding="@dimen/x7dp">
+                android:padding="@dimen/x3dp">
 
 
                 <de.hdodenhof.circleimageview.CircleImageView
                     android:id="@+id/imgIcon"
-                    android:layout_width="@dimen/x80dp"
-                    android:layout_height="@dimen/x80dp"
+                    android:layout_width="@dimen/x50dp"
+                    android:layout_height="@dimen/x50dp"
                     android:layout_margin="@dimen/x5dp"
                     android:background="@drawable/circle_stroke_gray"
                     android:scaleType="centerCrop"
@@ -58,68 +58,80 @@
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:layout_marginBottom="@dimen/x4dp"
                         android:gravity="center_vertical"
-                        android:orientation="horizontal"
-                        android:padding="@dimen/x5dp">
+                        android:orientation="horizontal">
 
                         <edu.aku.akuh_health_first.widget.AnyTextView
                             android:id="@+id/txtName"
-                            android:layout_width="wrap_content"
+                            android:layout_width="@dimen/x0dp"
                             android:layout_height="wrap_content"
                             android:layout_marginRight="@dimen/x5dp"
+                            android:layout_weight="1"
                             android:ellipsize="end"
                             android:gravity="center_vertical"
                             android:singleLine="true"
                             android:text="User Name"
-                            android:textColor="@color/base_amber"
+                            android:textColor="@color/colorPrimaryDark"
                             android:textSize="@dimen/s16"
                             app:typeface="@string/font_bold" />
 
+
+                        <ImageView
+                            android:id="@+id/imgNext"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:src="@drawable/img_go"
+                            android:tint="@color/colorPrimaryDark" />
+
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_marginRight="@dimen/x15dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+
+                        <edu.aku.akuh_health_first.widget.AnyTextView
+                            android:id="@+id/txtMRN"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="MR Number"
+                            android:textColor="@color/txt_aku_blue"
+                            android:textSize="@dimen/s11"
+                            app:typeface="@string/font_bold" />
+
+                        <edu.aku.akuh_health_first.widget.AnyTextView
+                            android:id="@+id/txtGender_age"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:text="Gender and Age"
+                            android:textColor="@color/txt_aku_blue"
+                            android:textSize="@dimen/s11"
+                            app:typeface="@string/font_bold" />
 
                         <edu.aku.akuh_health_first.widget.AnyTextView
                             android:id="@+id/txtRelation"
                             android:layout_width="0dp"
                             android:layout_height="match_parent"
                             android:layout_weight="1"
-                            android:ellipsize="end"
-                            android:gravity="center_vertical"
+                             android:ellipsize="end"
+                            android:gravity="right"
                             android:singleLine="true"
-                            android:text="(Daughter)"
-                            android:textColor="@color/base_amber"
-                            android:textSize="@dimen/s16"
-                            app:typeface="@string/font_regular" />
+                            android:text="Daughter"
+                            android:textColor="@color/colorPrimaryDark"
+                            android:textSize="@dimen/s11"
+                            app:typeface="@string/font_bold" />
+
 
                     </LinearLayout>
 
-                    <edu.aku.akuh_health_first.widget.AnyTextView
-                        android:id="@+id/txtMRN"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:padding="@dimen/x5dp"
-                        android:text="MR Number"
-                        android:textColor="@color/txt_aku_blue"
-                        android:textSize="@dimen/s14"
-                        app:typeface="@string/font_regular" />
-
-                    <edu.aku.akuh_health_first.widget.AnyTextView
-                        android:id="@+id/txtGender_age"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:padding="@dimen/x5dp"
-                        android:text="Gender and Age"
-                        android:textColor="@color/txt_aku_blue"
-                        android:textSize="@dimen/s14"
-                        app:typeface="@string/font_regular" />
-
 
                 </LinearLayout>
-
-                <ImageView
-                    android:id="@+id/imgNext"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:src="@drawable/img_go"
-                    android:tint="@color/base_amber" />
 
 
             </LinearLayout>

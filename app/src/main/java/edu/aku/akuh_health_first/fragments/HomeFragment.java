@@ -203,7 +203,7 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener, 
         titleBar.resetViews();
         titleBar.setVisibility(View.VISIBLE);
         titleBar.showSidebar(getBaseActivity());
-        titleBar.setTitle("AKUH Family Hifazat");
+        titleBar.setTitle("Family Hifazat");
         titleBar.setRightButton(R.drawable.logout_icon, new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -273,7 +273,7 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener, 
                 public void run() {
                     getBaseActivity().addDockableFragment(HomeDetailFragment.newInstance());
                 }
-            }, 800);
+            }, 500);
 
         }
     }
