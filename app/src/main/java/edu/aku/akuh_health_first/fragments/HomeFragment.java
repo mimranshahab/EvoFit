@@ -291,6 +291,9 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener, 
             case Events.ON_CARD_MODEL_UPDATE:
                 onGetCardSuccessfully((CardMemberDetail) data);
                 break;
+            case Events.ON_HOME_PRESSED:
+                setTitlebar((TitleBar) data);
+                break;
         }
     }
 }
