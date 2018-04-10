@@ -158,8 +158,7 @@ public class LeftSideMenuFragment extends BaseFragment implements OnNewPacketRec
                 break;
 
             case R.id.txtCardSubscription:
-//                getBaseActivity().addDockableFragment(CardSubscriptionFragment.newInstance());
-                showNextBuildToast();
+                getBaseActivity().addDockableFragment(CardSubscriptionFragment.newInstance());
                 break;
 
             case R.id.txtAbout:

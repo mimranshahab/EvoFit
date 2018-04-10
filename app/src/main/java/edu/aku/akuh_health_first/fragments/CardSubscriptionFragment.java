@@ -11,36 +11,27 @@ import android.widget.LinearLayout;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 import butterknife.Unbinder;
 import edu.aku.akuh_health_first.R;
-import edu.aku.akuh_health_first.constatnts.AppConstants;
 import edu.aku.akuh_health_first.fragments.abstracts.BaseFragment;
 import edu.aku.akuh_health_first.helperclasses.ui.helper.TitleBar;
-import edu.aku.akuh_health_first.models.receiving_model.CardMemberDetail;
-import edu.aku.akuh_health_first.widget.AnyTextView;
 
 /**
  * Created by hamza.ahmed on 1/19/2018.
  */
 
 public class CardSubscriptionFragment extends BaseFragment {
-    @BindView(R.id.txtUserName)
-    AnyTextView txtUserName;
-    @BindView(R.id.txtCardType)
-    AnyTextView txtCardType;
-    @BindView(R.id.txtCardNum)
-    AnyTextView txtCardNum;
-    @BindView(R.id.txtCreationDate)
-    AnyTextView txtCreationDate;
-    @BindView(R.id.txtExpirayDate)
-    AnyTextView txtExpirayDate;
-    @BindView(R.id.txtEmailAddress)
-    AnyTextView txtEmailAddress;
-    @BindView(R.id.contListItem)
-    LinearLayout contListItem;
-    @BindView(R.id.contParent)
-    LinearLayout contParent;
+
     Unbinder unbinder;
+    @BindView(R.id.contBasic)
+    LinearLayout contBasic;
+    @BindView(R.id.contSilver)
+    LinearLayout contSilver;
+    @BindView(R.id.contGold)
+    LinearLayout contGold;
+    @BindView(R.id.contPlatinum)
+    LinearLayout contPlatinum;
 
     public static CardSubscriptionFragment newInstance() {
 
@@ -58,7 +49,7 @@ public class CardSubscriptionFragment extends BaseFragment {
 
     @Override
     protected int getFragmentLayout() {
-        return R.layout.fragment_card_subscription;
+        return R.layout.fragment_card_subscription_v1;
     }
 
     @Override
@@ -72,12 +63,12 @@ public class CardSubscriptionFragment extends BaseFragment {
 
     @Override
     public void setListeners() {
-        contParent.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                int a = 0;
-            }
-        });
+//        contParent.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                int a = 0;
+//            }
+//        });
     }
 
     @Override
@@ -101,19 +92,8 @@ public class CardSubscriptionFragment extends BaseFragment {
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        setData();
     }
 
-    private void setData() {
-        CardMemberDetail cardMemberDetail = sharedPreferenceManager.getObject(AppConstants.KEY_CARD_MEMBER_DETAIL, CardMemberDetail.class);
-
-        txtUserName.setText(cardMemberDetail.getCardHolderName().toUpperCase());
-        txtCardType.setText(cardMemberDetail.getCardTypeDescription());
-        txtCardNum.setText(cardMemberDetail.getCardNumber());
-        txtCreationDate.setText(cardMemberDetail.getCardCreationDateTime());
-        txtExpirayDate.setText(cardMemberDetail.getCardExpiryDateTime());
-        txtEmailAddress.setText(cardMemberDetail.getCardEmailAddress());
-    }
 
     @Override
     public void onDestroyView() {
@@ -122,4 +102,18 @@ public class CardSubscriptionFragment extends BaseFragment {
     }
 
 
+    @OnClick({R.id.contBasic, R.id.contSilver, R.id.contGold, R.id.contPlatinum})
+    public void onViewClicked(View view) {
+        switch (view.getId()) {
+            case R.id.contBasic:
+
+                break;
+            case R.id.contSilver:
+                break;
+            case R.id.contGold:
+                break;
+            case R.id.contPlatinum:
+                break;
+        }
+    }
 }
