@@ -111,6 +111,8 @@ public class AddUpdateVaccineFragment extends BaseFragment {
 //            txtVaccineLocation.setClickable(false);
             txtRouteId.setFocusable(false);
             txtRouteId.setClickable(false);
+            txtVaccine.setClickable(false);
+            txtVaccine.setFocusable(false);
         } else {
             getVaccineIdsService();
             getRouteIdsService();
@@ -279,38 +281,38 @@ public class AddUpdateVaccineFragment extends BaseFragment {
             return;
         }
 
-            if (isFromAdd) {
-                ImmunizationModel immunizationModel = new ImmunizationModel();
-                immunizationModel.setMRN(getCurrentUser().getMRNumber());
-                immunizationModel.setScheduleID("U");
-                immunizationModel.setVisitID("U");
-                immunizationModel.setActive("Y");
+        if (isFromAdd) {
+            ImmunizationModel immunizationModel = new ImmunizationModel();
+            immunizationModel.setMRN(getCurrentUser().getMRNumber());
+            immunizationModel.setScheduleID("U");
+            immunizationModel.setVisitID("U");
+            immunizationModel.setActive("Y");
 //                immunizationModel.setRouteID("PO");
-                immunizationModel.setLastFileTerminal("MOBILE");
-                immunizationModel.setSource("MOBILE");
+            immunizationModel.setLastFileTerminal("MOBILE");
+            immunizationModel.setSource("MOBILE");
 
-                immunizationModel.setVaccineID(vaccineIDandDescriptions.get(txtVaccine.getText().toString()));
-                immunizationModel.setRouteID(routeIDandDescriptions.get(txtRouteId.getText().toString()));
-
-
-                immunizationModel.setHospitalLocation(txtVaccineLocation.getStringTrimmed());
-                immunizationModel.setVaccinePlanDate(txtVaccinationPlanDate.getStringTrimmed());
-                immunizationModel.setVaccinationDate(txtVaccinatedDate.getStringTrimmed());
+            immunizationModel.setVaccineID(vaccineIDandDescriptions.get(txtVaccine.getText().toString()));
+            immunizationModel.setRouteID(routeIDandDescriptions.get(txtRouteId.getText().toString()));
 
 
-                addVaccineService(immunizationModel.toString());
-                Log.d(TAG, "onViewClicked: " + immunizationModel.toString());
+            immunizationModel.setHospitalLocation(txtVaccineLocation.getStringTrimmed());
+            immunizationModel.setVaccinePlanDate(txtVaccinationPlanDate.getStringTrimmed());
+            immunizationModel.setVaccinationDate(txtVaccinatedDate.getStringTrimmed());
 
-            } else {
-                immunizationModel.setMRN(getCurrentUser().getMRNumber());
-                immunizationModel.setActive("Y");
-                immunizationModel.setLastFileTerminal("MOBILE");
-                immunizationModel.setSource("MOBILE");
-                immunizationModel.setVaccinationDate(txtVaccinatedDate.getStringTrimmed());
-                immunizationModel.setHospitalLocation(txtVaccineLocation.getStringTrimmed());
-                updateVaccine(immunizationModel.toString());
-                Log.d(TAG, "onViewClicked: " + immunizationModel.toString());
-            }
+
+            addVaccineService(immunizationModel.toString());
+            Log.d(TAG, "onViewClicked: " + immunizationModel.toString());
+
+        } else {
+            immunizationModel.setMRN(getCurrentUser().getMRNumber());
+            immunizationModel.setActive("Y");
+            immunizationModel.setLastFileTerminal("MOBILE");
+            immunizationModel.setSource("MOBILE");
+            immunizationModel.setVaccinationDate(txtVaccinatedDate.getStringTrimmed());
+            immunizationModel.setHospitalLocation(txtVaccineLocation.getStringTrimmed());
+            updateVaccine(immunizationModel.toString());
+            Log.d(TAG, "onViewClicked: " + immunizationModel.toString());
+        }
 
     }
 

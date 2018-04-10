@@ -19,9 +19,9 @@
         <FrameLayout
             android:id="@+id/frameColorCode"
             android:layout_width="match_parent"
-            android:padding="@dimen/x1dp"
+            android:layout_height="match_parent"
 
-            android:layout_height="match_parent">
+            android:padding="@dimen/x1dp">
 
 
             <LinearLayout
@@ -46,13 +46,12 @@
                         android:layout_height="wrap_content"
                         android:layout_weight=".7"
                         android:drawableLeft="@drawable/a_icons8_calendar_filled2"
+                        android:drawablePadding="@dimen/x5dp"
                         android:drawableTint="@color/txt_aku_blue"
                         android:drawableTintMode="@color/txt_aku_blue"
-                        android:drawablePadding="@dimen/x5dp"
                         android:gravity="center_vertical"
                         android:text="22 jan ,2018"
                         android:textSize="@dimen/s14" />
-
 
 
                     <LinearLayout
@@ -70,10 +69,10 @@
                             android:layout_height="@dimen/x10dp"
                             android:layout_marginRight="@dimen/x5dp"
                             android:scaleType="centerCrop"
-                            android:visibility="gone"
-
                             android:src="@drawable/curve_edges_square_bullet"
-                            android:tint="@color/base_amber" />
+
+                            android:tint="@color/base_amber"
+                            android:visibility="gone" />
 
 
                         <edu.aku.akuh_health_first.widget.AnyTextView
@@ -83,10 +82,10 @@
                             android:gravity="center_horizontal"
                             android:padding="@dimen/x3dp"
                             android:text="Completed"
-                            android:visibility="gone"
-
                             android:textColor="@color/base_amber"
+
                             android:textSize="@dimen/s15"
+                            android:visibility="gone"
                             app:typeface="@string/font_bold" />
                     </LinearLayout>
                 </LinearLayout>
@@ -143,9 +142,9 @@
                             android:layout_height="match_parent"
                             android:ellipsize="end"
                             android:maxLines="1"
-                            android:textColor="@color/txt_aku_blue"
                             android:paddingLeft="@dimen/x3dp"
                             android:text="BIO,RECD"
+                            android:textColor="@color/txt_aku_blue"
                             android:textSize="@dimen/s14"
                             app:typeface="@string/font_bold" />
 
@@ -155,13 +154,11 @@
                             android:layout_height="match_parent"
                             android:ellipsize="end"
                             android:maxLines="1"
-                            android:textColor="@color/txt_aku_blue"
                             android:paddingLeft="@dimen/x3dp"
                             android:text="41225000"
+                            android:textColor="@color/txt_aku_blue"
                             android:textSize="@dimen/s14"
                             app:typeface="@string/font_regular" />
-
-
 
 
                         <edu.aku.akuh_health_first.widget.AnyTextView
@@ -171,11 +168,11 @@
                             android:layout_marginTop="@dimen/x5dp"
                             android:background="@drawable/rounded_box_filled_primary_color"
                             android:gravity="center"
-                            android:visibility="gone"
                             android:padding="@dimen/x7dp"
-                            app:typeface="@string/font_bold"
                             android:text="View Results"
-                            android:textColor="@color/c_white" />
+                            android:textColor="@color/c_white"
+                            android:visibility="gone"
+                            app:typeface="@string/font_bold" />
 
 
                     </LinearLayout>
@@ -184,7 +181,6 @@
                         android:id="@+id/imgNext"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:padding="@dimen/x5dp"
                         android:layout_gravity="bottom"
                         android:src="@drawable/ic_next_arrow"
                         android:tint="@color/base_green"

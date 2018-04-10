@@ -5,9 +5,9 @@
     android:layout_height="wrap_content"
     android:layout_gravity="center"
     android:layout_margin="@dimen/x20dp"
-    android:background="#F3f3f3"
+    android:background="@drawable/rounded_box_white"
     android:orientation="vertical"
-    android:padding="@dimen/x15dp">
+    android:padding="@dimen/x10dp">
 
 
     <edu.aku.akuh_health_first.widget.AnyTextView
@@ -15,11 +15,11 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
-        android:layout_marginBottom="@dimen/x10dp"
+        android:layout_marginBottom="@dimen/x5dp"
         android:gravity="center"
         android:text="Title"
         android:textColor="#414141"
-        android:textSize="22sp"
+        android:textSize="@dimen/s16"
         app:typeface="@string/font_bold" />
 
 
@@ -32,15 +32,15 @@
 
     <edu.aku.akuh_health_first.widget.AnyTextView
         android:id="@+id/txtMessage"
-        android:layout_width="@dimen/x300dp"
+        android:layout_width="@dimen/x250dp"
         android:layout_height="match_parent"
-        android:layout_marginBottom="@dimen/x20dp"
+        android:layout_marginBottom="@dimen/x10dp"
         android:ellipsize="end"
         android:gravity="center"
         android:maxLines="4"
         android:minLines="2"
         android:text="Message"
-        android:textSize="14sp"
+        android:textSize="@dimen/s14"
         app:typeface="@string/font_regular" />
 
     <LinearLayout
@@ -59,9 +59,8 @@
             android:background="@drawable/rounded_box_filled_primary_color"
             android:padding="@dimen/x8dp"
             android:textAlignment="center"
-            android:textAllCaps="true"
             android:textColor="#fff"
-            android:textSize="@dimen/s15"
+            android:textSize="@dimen/s14"
             android:visibility="visible"
             app:typeface="@string/font_bold" />
 
@@ -75,11 +74,8 @@
             android:background="@drawable/rounded_box_filled_base_grey"
             android:padding="@dimen/x8dp"
             android:textAlignment="center"
-            android:textAllCaps="true"
-
             android:textColor="#fff"
-            android:textSize="@dimen/s15"
-
+            android:textSize="@dimen/s14"
             android:visibility="visible"
             app:typeface="@string/font_bold" />
 

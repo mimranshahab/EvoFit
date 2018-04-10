@@ -22,6 +22,7 @@
     <color name="txt_aku_blue">#4C667F</color>
     <!--<color name="medication_light_red">#E74C3C</color>-->
     <!--<color name="base_gray">#72777A</color>-->
+    <color name="query_grey">#E3E3E3</color>
     <color name="base_gray">#BDBDBD</color>
     <color name="red_resistant">#DF5138</color>
     <color name="yellow_sensitive">#FFCE55</color>

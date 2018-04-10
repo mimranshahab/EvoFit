@@ -97,9 +97,6 @@ public class ImmunizationProfileFragment extends BaseFragment implements View.On
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         bindView();
-        if (onCreated) {
-            return;
-        }
         isImmunizationRecordExistServce();
     }
 

@@ -29,14 +29,13 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:background="@drawable/rounded_box_item_background"
-                android:orientation="vertical"
-                >
+                android:orientation="vertical">
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:padding="@dimen/x5dp"
-                    android:orientation="horizontal">
+                    android:orientation="horizontal"
+                    android:padding="@dimen/x5dp">
 
                     <LinearLayout
                         android:layout_width="wrap_content"
@@ -53,8 +52,9 @@
 
                             <LinearLayout
                                 android:layout_width="0dp"
-                                android:layout_weight="1"
-                                android:layout_height="wrap_content">
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1">
+
                                 <edu.aku.akuh_health_first.widget.AnyTextView
                                     android:id="@+id/txtReportName"
                                     android:layout_width="wrap_content"
@@ -68,7 +68,6 @@
                                     app:typeface="@string/font_bold" />
 
                             </LinearLayout>
-
 
 
                             <LinearLayout
@@ -113,11 +112,13 @@
                             <edu.aku.akuh_health_first.widget.AnyTextView
                                 android:id="@+id/txtState"
                                 android:layout_width="wrap_content"
-                                android:layout_height="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:layout_marginLeft="@dimen/x5dp"
+                                android:background="@drawable/rounded_stroke_red"
                                 android:ellipsize="end"
                                 android:gravity="center_vertical"
-                                android:paddingLeft="@dimen/x10dp"
-                                android:paddingRight="@dimen/x4dp"
+                                android:padding="@dimen/x5dp"
                                 android:singleLine="true"
                                 android:text="State"
                                 android:textColor="@color/base_dark_gray"
@@ -176,9 +177,9 @@
                                     android:layout_width="wrap_content"
                                     android:layout_height="match_parent"
                                     android:ellipsize="end"
-                                    android:minWidth="@dimen/x200dp"
-
                                     android:gravity="center_vertical|end"
+
+                                    android:minWidth="@dimen/x200dp"
                                     android:text="unit"
                                     android:textColor="@color/base_dark_gray"
                                     android:textSize="@dimen/s12"

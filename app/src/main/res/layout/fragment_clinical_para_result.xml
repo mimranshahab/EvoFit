@@ -27,15 +27,16 @@
             app:typeface="@string/font_bold" />
 
         <ScrollView
+            android:id="@+id/scrollView"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="4"
+            android:layout_weight="3"
             android:fillViewport="true">
 
             <edu.aku.akuh_health_first.widget.AnyTextView
                 android:id="@+id/txtParaResult"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
                 android:layout_marginBottom="@dimen/x5dp"
                 android:padding="@dimen/x5dp"
                 android:text="Para result"
@@ -48,6 +49,7 @@
 
 
         <LinearLayout
+            android:id="@+id/contTable"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="6"

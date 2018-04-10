@@ -70,23 +70,31 @@ public class ClinicalLabDetailAdapterv1 extends RecyclerView.Adapter<ClinicalLab
         if (model.getAbnormalFlag() == null || model.getAbnormalFlag().isEmpty()) {
             holder.txtResult.setTextColor(activity.getResources().getColor(R.color.text_color_grey));
             holder.txtState.setTextColor(activity.getResources().getColor(R.color.text_color_grey));
-            customTypefaceSpan = new CustomTypefaceSpan(regular);
+            holder.txtState.setBackground(activity.getResources().getDrawable(R.drawable.rounded_stroke_white));
+            customTypefaceSpan = new CustomTypefaceSpan(bold);
         } else if (model.getAbnormalFlag().equalsIgnoreCase("Low")) {
-            customTypefaceSpan = new CustomTypefaceSpan(regular);
+            customTypefaceSpan = new CustomTypefaceSpan(bold);
             holder.txtResult.setTextColor(activity.getResources().getColor(R.color.panic_blue));
             holder.txtState.setTextColor(activity.getResources().getColor(R.color.panic_blue));
+            holder.txtState.setBackground(activity.getResources().getDrawable(R.drawable.rounded_stroke_blue));
+
         } else if (model.getAbnormalFlag().equalsIgnoreCase("High")) {
-            customTypefaceSpan = new CustomTypefaceSpan(regular);
+            customTypefaceSpan = new CustomTypefaceSpan(bold);
             holder.txtState.setTextColor(activity.getResources().getColor(R.color.base_reddish));
             holder.txtResult.setTextColor(activity.getResources().getColor(R.color.base_reddish));
+            holder.txtState.setBackground(activity.getResources().getDrawable(R.drawable.rounded_stroke_red));
+
         } else if (model.getAbnormalFlag().equalsIgnoreCase("Panic High") || model.getAbnormalFlag().equalsIgnoreCase("ph")) {
             holder.txtState.setTextColor(activity.getResources().getColor(R.color.base_reddish));
             holder.txtResult.setTextColor(activity.getResources().getColor(R.color.base_reddish));
+            holder.txtState.setBackground(activity.getResources().getDrawable(R.drawable.rounded_stroke_red));
+
             model.setAbnormalFlag("High");
             customTypefaceSpan = new CustomTypefaceSpan(bold);
         } else {
             holder.txtState.setTextColor(activity.getResources().getColor(R.color.panic_blue));
             holder.txtResult.setTextColor(activity.getResources().getColor(R.color.panic_blue));
+            holder.txtState.setBackground(activity.getResources().getDrawable(R.drawable.rounded_stroke_blue));
             customTypefaceSpan = new CustomTypefaceSpan(bold);
             model.setAbnormalFlag("Low");
         }
@@ -190,7 +198,7 @@ public class ClinicalLabDetailAdapterv1 extends RecyclerView.Adapter<ClinicalLab
         AnyTextView txtResult;
         @BindView(R.id.txtNormalRangeFormatted)
         AnyTextView txtNormalRangeFormatted;
-//        @BindView(R.id.historySeperator)
+        //        @BindView(R.id.historySeperator)
 //        ImageView historySeperator;
         @BindView(R.id.txtComments)
         AnyTextView btnComment;

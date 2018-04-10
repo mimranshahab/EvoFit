@@ -1,6 +1,7 @@
 package edu.aku.akuh_health_first.activities;
 
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
@@ -105,6 +106,13 @@ public class PacsActivity extends AppCompatActivity {
             btnPreviousBatch.setAlpha(1f);
         }
 
+        if (pacsList.size() <= 1) {
+            indicatorSeekBar.setVisibility(View.GONE);
+        } else {
+            indicatorSeekBar.setVisibility(View.VISIBLE);
+        }
+
+
     }
 
     private void bindViews() {
@@ -150,7 +158,22 @@ public class PacsActivity extends AppCompatActivity {
         titlebar.setVisibility(View.VISIBLE);
         titlebar.showBackButton(this);
         titlebar.setTitle("Radiology Images");
+        titlebar.setRightButton2(this, R.drawable.b_home_icon, null, new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                clearAllActivitiesExceptThis(HomeActivity.class);
+            }
+        });
 
+    }
+
+    public void clearAllActivitiesExceptThis(Class<?> cls) {
+        Intent intents = new Intent(this, cls);
+        intents.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK
+                | Intent.FLAG_ACTIVITY_CLEAR_TOP
+                | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+        startActivity(intents);
+        finish();
     }
 
     private void uriArrToTuple(int size) {

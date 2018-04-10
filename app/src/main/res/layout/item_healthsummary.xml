@@ -29,8 +29,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:padding="@dimen/x2dp"
-                    android:tint="@color/colorPrimaryDark"
-                    android:src="@drawable/lab_report" />
+                    android:src="@drawable/lab_report"
+                    android:tint="@color/colorPrimaryDark" />
 
                 <edu.aku.akuh_health_first.widget.AnyTextView
                     android:id="@+id/txtTitle"
@@ -126,7 +126,6 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
-                    android:padding="@dimen/x10dp"
                     android:src="@drawable/ic_next_arrow"
                     android:tint="@color/colorPrimaryDark" />
             </LinearLayout>

@@ -277,7 +277,7 @@ public class TitleBar extends RelativeLayout {
     public void setRightButton2(Activity activity, int drawable, String text, OnClickListener onClickListener) {
         this.btnRight2.setVisibility(VISIBLE);
         this.btnRight2.setText(text);
-        btnRight2.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_back, 0, 0, 0);
+        btnRight2.setCompoundDrawablesWithIntrinsicBounds(drawable, 0, 0, 0);
         this.btnRight2.setOnClickListener(onClickListener);
     }
 
@@ -291,8 +291,8 @@ public class TitleBar extends RelativeLayout {
             public void onClick(View view) {
                 if (activity instanceof HomeActivity) {
 //                    activity.reload();
-                    activity.baseFragment.popStackTill(1);
-                    activity.baseFragment.notifyToAll(ON_HOME_PRESSED, TitleBar.this);
+                    activity.popStackTill(1);
+                    activity.notifyToAll(ON_HOME_PRESSED, TitleBar.this);
 
                 } else {
                     activity.clearAllActivitiesExceptThis(HomeActivity.class);
@@ -300,6 +300,7 @@ public class TitleBar extends RelativeLayout {
             }
         });
     }
+
 
 
     public void showAndHideDropDown() {

@@ -8,6 +8,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
+import android.widget.LinearLayout;
+import android.widget.ScrollView;
 import android.widget.TextView;
 
 import java.util.ArrayList;
@@ -38,6 +40,9 @@ public class ClinicalParaResultFragment extends BaseFragment {
     AnyTextView txtProcedureDesc;
     @BindView(R.id.txtParaResult)
     AnyTextView txtParaResult;
+
+    @BindView(R.id.contTable)
+    LinearLayout contTable;
     Unbinder unbinder;
     @BindView(R.id.table_view)
     TableView mTableView;
@@ -78,7 +83,9 @@ public class ClinicalParaResultFragment extends BaseFragment {
 
         if (micSpecParaResult.getLstMicSpecOrganism() == null || micSpecParaResult.getLstMicSpecOrganism().isEmpty()) {
             mTableView.setVisibility(View.GONE);
+            contTable.setVisibility(View.GONE);
         } else {
+            contTable.setVisibility(View.VISIBLE);
             mTableView.setVisibility(View.VISIBLE);
             convertToSetAntibiotics();
             tableData = new String[micSpecParaResult.getLstMicSpecOrganism().size()][antibioticSet.size()];

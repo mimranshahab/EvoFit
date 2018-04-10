@@ -1,5 +1,6 @@
 package edu.aku.akuh_health_first.activities;
 
+import android.app.FragmentManager;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
@@ -7,9 +8,11 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Pair;
 import android.view.View;
 
 
+import edu.aku.akuh_health_first.BaseApplication;
 import edu.aku.akuh_health_first.R;
 import edu.aku.akuh_health_first.fragments.LeftSideMenuFragment;
 import edu.aku.akuh_health_first.fragments.abstracts.BaseFragment;
@@ -178,6 +181,44 @@ public abstract class BaseActivity extends AppCompatActivity {
         startActivity(intents);
         finish();
     }
+
+
+
+    public void emptyBackStack() {
+        android.support.v4.app.FragmentManager fm = getSupportFragmentManager();
+        if (fm == null) return;
+        for (int i = 0; i < fm.getBackStackEntryCount(); i++) {
+            fm.popBackStack();
+        }
+    }
+
+    public void popBackStack() {
+        if (getSupportFragmentManager() == null) {
+            return;
+        } else {
+            getSupportFragmentManager().popBackStack();
+        }
+    }
+
+    public void popStackTill(int stackNumber) {
+        android.support.v4.app.FragmentManager fm = getSupportFragmentManager();
+        if (fm == null) return;
+        for (int i = stackNumber; i < fm.getBackStackEntryCount(); i++) {
+            fm.popBackStack();
+        }
+    }
+
+    public void notifyToAll(int event, Object data) {
+        BaseApplication.getPublishSubject().onNext(new Pair<>(event, data));
+    }
+
+
+
+
+
+
+
+
     // RESIDE MENU ->
 
 

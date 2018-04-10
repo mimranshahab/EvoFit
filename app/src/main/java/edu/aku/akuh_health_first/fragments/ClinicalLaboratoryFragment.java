@@ -32,6 +32,7 @@ import edu.aku.akuh_health_first.callbacks.OnItemClickListener;
 import edu.aku.akuh_health_first.constatnts.WebServiceConstants;
 import edu.aku.akuh_health_first.enums.BaseURLTypes;
 import edu.aku.akuh_health_first.fragments.abstracts.BaseFragment;
+import edu.aku.akuh_health_first.helperclasses.ui.helper.KeyboardHide;
 import edu.aku.akuh_health_first.helperclasses.ui.helper.TitleBar;
 import edu.aku.akuh_health_first.helperclasses.ui.helper.UIHelper;
 import edu.aku.akuh_health_first.managers.retrofit.GsonFactory;
@@ -301,5 +302,6 @@ public class ClinicalLaboratoryFragment extends BaseFragment implements View.OnC
     @OnClick(R.id.imgSearch)
     public void onViewClicked() {
         edtSearchBar.setText("");
+        KeyboardHide.hideSoftKeyboard(getContext(), edtSearchBar);
     }
 }

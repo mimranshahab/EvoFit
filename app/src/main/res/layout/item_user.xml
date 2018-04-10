@@ -24,7 +24,7 @@
         <FrameLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:padding="@dimen/x1dp">
+             android:padding="1dp">
 
             <LinearLayout
                 android:id="@+id/contListItem"
@@ -34,7 +34,7 @@
                 android:background="@drawable/selected_user_transition"
                 android:gravity="center_vertical"
                 android:orientation="horizontal"
-                android:padding="@dimen/x2dp">
+                >
 
 
                 <de.hdodenhof.circleimageview.CircleImageView
@@ -42,7 +42,7 @@
                     android:layout_width="@dimen/x50dp"
                     android:layout_height="@dimen/x50dp"
                     android:layout_margin="@dimen/x5dp"
-                    android:background="@drawable/circle_stroke_gray"
+                     android:background="@drawable/circle_stroke_gray"
                     android:scaleType="centerCrop"
                     android:src="@drawable/male_icon" />
 
@@ -50,9 +50,9 @@
                 <LinearLayout
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/x1dp"
                     android:layout_gravity="center_vertical"
-                    android:layout_margin="@dimen/x5dp"
-                    android:layout_weight="1"
+                     android:layout_weight="1"
                     android:orientation="vertical">
 
                     <LinearLayout

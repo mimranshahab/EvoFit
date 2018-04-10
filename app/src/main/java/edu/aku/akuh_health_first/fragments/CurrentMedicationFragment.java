@@ -104,9 +104,6 @@ public class CurrentMedicationFragment extends BaseFragment implements View.OnCl
     private void updateData() {
         if (!sharedPreferenceManager.getCurrentUser().getVisitDetail().getIsPatientExists()) {
             mFab.setVisibility(View.VISIBLE);
-            if (onCreated) {
-                return;
-            }
             serviceCall();
         } else {
             showEmptyView("No Current Medication since patient is onBoard");

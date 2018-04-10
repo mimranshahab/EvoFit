@@ -13,8 +13,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@drawable/rounded_box_white"
-        android:minHeight="450dp"
-        android:minWidth="@dimen/x400dp"
+        android:minHeight="550dp"
+        android:minWidth="500dp"
         android:orientation="vertical">
 
 
