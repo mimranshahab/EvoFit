@@ -14,26 +14,19 @@ import java.util.ArrayList;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
-import butterknife.OnClick;
 import butterknife.Unbinder;
 import edu.aku.akuh_health_first.R;
-import edu.aku.akuh_health_first.activities.TableViewActivity;
-import edu.aku.akuh_health_first.constatnts.AppConstants;
 import edu.aku.akuh_health_first.fragments.abstracts.BaseFragment;
 import edu.aku.akuh_health_first.helperclasses.ui.helper.TitleBar;
-import edu.aku.akuh_health_first.helperclasses.ui.helper.UIHelper;
 import edu.aku.akuh_health_first.libraries.table.model.BaseCellData;
 import edu.aku.akuh_health_first.libraries.table.model.DefaultSheetData;
 import edu.aku.akuh_health_first.libraries.table.model.ISheetData;
 import edu.aku.akuh_health_first.libraries.table.util.TableViewConfigure;
 import edu.aku.akuh_health_first.libraries.table.view.TableView;
-import edu.aku.akuh_health_first.managers.SharedPreferenceManager;
 import edu.aku.akuh_health_first.models.LstMicSpecAntibiotic;
 import edu.aku.akuh_health_first.models.LstMicSpecParaResult;
 import edu.aku.akuh_health_first.models.SheetTemplate1;
 import edu.aku.akuh_health_first.widget.AnyTextView;
-
-import static edu.aku.akuh_health_first.constatnts.AppConstants.KEY_CROSS_TAB_DATA;
 
 /**
  * Created by hamza.ahmed on 3/29/2018.
@@ -41,15 +34,13 @@ import static edu.aku.akuh_health_first.constatnts.AppConstants.KEY_CROSS_TAB_DA
 
 public class ClinicalParaResultFragment extends BaseFragment {
 
-    TableView mTableView;
-
     @BindView(R.id.txtProcedureDesc)
     AnyTextView txtProcedureDesc;
-    @BindView(R.id.txtViewResult)
-    AnyTextView txtViewResult;
     @BindView(R.id.txtParaResult)
     AnyTextView txtParaResult;
     Unbinder unbinder;
+    @BindView(R.id.table_view)
+    TableView mTableView;
     private LstMicSpecParaResult micSpecParaResult;
     private String procedureName;
     private String procedureDescription;
@@ -59,7 +50,6 @@ public class ClinicalParaResultFragment extends BaseFragment {
     ArrayList<LstMicSpecAntibiotic> antibioticSet = new ArrayList<>();
     // Declare 2D Array (Organism, Antibiotic Set)
     String[][] tableData;
-
 
 
     public static ClinicalParaResultFragment newInstance(LstMicSpecParaResult micSpecParaResult, String procedureName, String procedureDescription) {
@@ -78,8 +68,6 @@ public class ClinicalParaResultFragment extends BaseFragment {
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        mTableView = (TableView) view.findViewById(R.id.table_view);
-
 
         txtParaResult.setText(Html.fromHtml(micSpecParaResult.getPARARESULT()), TextView.BufferType.SPANNABLE);
 
@@ -89,22 +77,15 @@ public class ClinicalParaResultFragment extends BaseFragment {
         txtProcedureDesc.setText(procedureDescription);
 
         if (micSpecParaResult.getLstMicSpecOrganism() == null || micSpecParaResult.getLstMicSpecOrganism().isEmpty()) {
-            txtViewResult.setVisibility(View.GONE);
+            mTableView.setVisibility(View.GONE);
         } else {
-            txtViewResult.setVisibility(View.VISIBLE);
+            mTableView.setVisibility(View.VISIBLE);
+            convertToSetAntibiotics();
+            tableData = new String[micSpecParaResult.getLstMicSpecOrganism().size()][antibioticSet.size()];
+            setTableViewCellWidth();
+            setData();
+            setTableView();
         }
-
-
-         convertToSetAntibiotics();
-        antibioticSet.addAll(antibioticSet);
-        antibioticSet.addAll(antibioticSet);
-        antibioticSet.addAll(antibioticSet);
-        tableData = new String[micSpecParaResult.getLstMicSpecOrganism().size()][antibioticSet.size()];
-        setTableViewCellWidth();
-        setData();
-        setTableView();
-
-
     }
 
 
@@ -181,7 +162,7 @@ public class ClinicalParaResultFragment extends BaseFragment {
             public void onLayoutChange(View v, boolean changed, int left, int top, int right, int bottom) {
                 if (changed) {
                     int tableViewWidth = mTableView.getWidth();
-                    int colWidth = (int) (tableViewWidth / 3.6);
+                    int colWidth = (int) (tableViewWidth / 3.8);
 //                    colWidth = colWidth * 2;
                     DefaultSheetData sheetData = (DefaultSheetData) mTableView.getSheet();
                     for (int i = 0; i < sheetData.getMaxColumnCount(); i++) {

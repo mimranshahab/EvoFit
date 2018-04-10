@@ -7,74 +7,59 @@
     android:orientation="vertical">
 
 
-    <edu.aku.akuh_health_first.widget.AnyTextView
-        android:id="@+id/txtProcedureDesc"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="#F0F6E7"
-        android:ellipsize="end"
-        android:gravity="left"
-        android:padding="10dp"
-        android:singleLine="true"
-        android:text="procedure desc"
-        android:textColor="@color/txt_aku_blue"
-        android:textSize="15sp"
-        app:typeface="@string/font_bold" />
-
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
 
+        <edu.aku.akuh_health_first.widget.AnyTextView
+            android:id="@+id/txtProcedureDesc"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#F0F6E7"
+            android:ellipsize="end"
+            android:gravity="left"
+            android:padding="10dp"
+            android:singleLine="true"
+            android:text="procedure desc"
+            android:textColor="@color/txt_aku_blue"
+            android:textSize="15sp"
+            app:typeface="@string/font_bold" />
 
         <ScrollView
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="1"
+            android:layout_weight="4"
             android:fillViewport="true">
 
-
-            <LinearLayout
+            <edu.aku.akuh_health_first.widget.AnyTextView
+                android:id="@+id/txtParaResult"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical">
-
-                <edu.aku.akuh_health_first.widget.AnyTextView
-                    android:id="@+id/txtParaResult"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="@dimen/x5dp"
-                    android:padding="@dimen/x10dp"
-                    android:text="Para result"
-                    android:textColor="@color/txt_aku_blue"
-                    android:textSize="14sp"
-                    app:typeface="@string/font_regular" />
-
-
-                <edu.aku.akuh_health_first.libraries.table.view.TableView
-                    android:id="@+id/table_view"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content" />
-
-
-            </LinearLayout>
+                android:layout_height="match_parent"
+                android:layout_marginBottom="@dimen/x5dp"
+                android:padding="@dimen/x5dp"
+                android:text="Para result"
+                android:textColor="@color/txt_aku_blue"
+                android:textSize="14sp"
+                app:typeface="@string/font_regular" />
 
 
         </ScrollView>
 
 
-        <edu.aku.akuh_health_first.widget.AnyTextView
-            android:id="@+id/txtViewResult"
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="@dimen/x30dp"
-            android:background="@drawable/rounded_box_filled_base_amber"
-            android:gravity="center"
-            android:padding="@dimen/x10dp"
-            android:text="View Sensitivities"
-            android:textColor="@color/c_white"
-            android:visibility="gone" />
+            android:layout_height="0dp"
+            android:layout_weight="6"
+            android:orientation="vertical">
 
+            <edu.aku.akuh_health_first.libraries.table.view.TableView
+                android:id="@+id/table_view"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+
+
+        </LinearLayout>
 
     </LinearLayout>
 
