@@ -15,7 +15,7 @@
         android:animateLayoutChanges="true"
         app:cardBackgroundColor="@color/base_blue"
         app:cardCornerRadius="@dimen/x10dp"
-        app:cardElevation="@dimen/x5dp">
+      >
 
         <FrameLayout
             android:id="@+id/frameColorCode"
