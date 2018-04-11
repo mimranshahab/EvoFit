@@ -8,10 +8,12 @@ import android.os.Handler;
 import android.view.View;
 import android.widget.LinearLayout;
 
+import edu.aku.akuh_health_first.constatnts.AppConstants;
 import edu.aku.akuh_health_first.helperclasses.ui.helper.AnimationHelper;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import edu.aku.akuh_health_first.R;
+import edu.aku.akuh_health_first.managers.SharedPreferenceManager;
 
 import static android.view.View.VISIBLE;
 
@@ -37,17 +39,31 @@ public class SplashActivity extends Activity {
 
         contParentLayout.setVisibility(View.GONE);
 
-        new Handler().postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                animateLayout();
-            }
-        }, ANIMATIONS_DELAY);
+
+        if (SharedPreferenceManager.getInstance(getApplicationContext()).getString(AppConstants.KEY_CARD_NUMBER) == null
+                || SharedPreferenceManager.getInstance(getApplicationContext()).getString(AppConstants.KEY_CARD_NUMBER).isEmpty()) {
+
+            new Handler().postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                    animateSplashLayout(true);
+                }
+            }, ANIMATIONS_DELAY);
+
+        } else {
+            new Handler().postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                    animateSplashLayout(false);
+                }
+            }, ANIMATIONS_DELAY);
+
+        }
 
 
     }
 
-    private void animateLayout() {
+    private void animateSplashLayout(final boolean isSplasAnimation) {
 
         contParentLayout.setTranslationY(500);
 
@@ -59,7 +75,11 @@ public class SplashActivity extends Activity {
 
             @Override
             public void onAnimationEnd(Animator animator) {
-                translateAnimation();
+                if (isSplasAnimation) {
+                    translateAnimation();
+                } else {
+                    changeActivity(HomeActivity.class);
+                }
             }
 
             @Override
@@ -90,8 +110,8 @@ public class SplashActivity extends Activity {
                     @Override
                     public void onAnimationEnd(Animator animator) {
                         contParentLayout.setTranslationY(0);
-                         contParentLayout.setAlpha(1);
-                        changeActivity();
+                        contParentLayout.setAlpha(1);
+                        changeActivity(MainActivity.class);
                     }
 
                     @Override
@@ -110,7 +130,7 @@ public class SplashActivity extends Activity {
                 .start();
     }
 
-    private void changeActivity() {
+    private void changeActivity(final Class activityClass) {
         new Handler().postDelayed(new Runnable() {
 
     /*
@@ -125,7 +145,7 @@ public class SplashActivity extends Activity {
                 Intent i;
                 // This method will be executed once the timer is over
                 // Start your app main activity
-                i = new Intent(SplashActivity.this, MainActivity.class);
+                i = new Intent(SplashActivity.this, activityClass);
 
                 startActivity(i);
                 overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
