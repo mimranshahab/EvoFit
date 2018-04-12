@@ -12,6 +12,8 @@ import android.widget.TextView;
 
 import com.google.gson.JsonObject;
 
+import org.json.JSONObject;
+
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
@@ -23,6 +25,7 @@ import edu.aku.akuh_health_first.fragments.abstracts.BaseFragment;
 import edu.aku.akuh_health_first.helperclasses.ui.helper.TitleBar;
 import edu.aku.akuh_health_first.managers.retrofit.GsonFactory;
 import edu.aku.akuh_health_first.managers.retrofit.WebServices;
+import edu.aku.akuh_health_first.models.EndoscopyModel;
 import edu.aku.akuh_health_first.models.RadiologyDetailModel;
 import edu.aku.akuh_health_first.models.wrappers.WebResponse;
 import edu.aku.akuh_health_first.widget.AnyTextView;
@@ -139,6 +142,25 @@ public class RadiologyDescriptionFragment extends BaseFragment {
 
     @OnClick(R.id.btnDownload)
     public void onViewClicked() {
-        showNextBuildToast();
+        showReportAPI();
+//        showNextBuildToast();
+    }
+
+
+    private void showReportAPI() {
+        new WebServices(getBaseActivity(), getToken(), BaseURLTypes.AHFA_BASE_URL)
+                .webServiceRequestAPIForWebResponseWithString(WebServiceConstants.METHOD_GET_RADIOLOGY_GET_REPORT,
+                        jsonData, new WebServices.IRequestWebResponseWithStringDataCallBack() {
+                            @Override
+                            public void requestDataResponse(WebResponse<String> webResponse) {
+                                saveAndOpenFile(webResponse);
+                            }
+
+                            @Override
+                            public void onError() {
+
+                            }
+                        }
+                );
     }
 }
