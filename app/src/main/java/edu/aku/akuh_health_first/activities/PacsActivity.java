@@ -47,6 +47,7 @@ public class PacsActivity extends AppCompatActivity {
     AnyTextView txtUserName;
 
     AnyTextView txtMRnumber;
+    AnyTextView txtStudyTitle;
     ProgressBar progressBar;
 
     private int pointer;
@@ -80,6 +81,7 @@ public class PacsActivity extends AppCompatActivity {
         txttotalCount.setText("Total count " + pacsList.size() + "");
         txtUserName.setText(pacsModel.getPatient_Name());
         txtMRnumber.setText(pacsModel.getPatientMRN());
+        txtStudyTitle.setText(pacsModel.getStudyTitle());
 
         uriArrToTuple(pacsList.size());
         selectedTupleModel = arrTupleModel.get(0);
@@ -130,6 +132,7 @@ public class PacsActivity extends AppCompatActivity {
         progressbar = findViewById(R.id.progressBar);
         txtUserName = findViewById(R.id.txtNamePacs);
         txtMRnumber = findViewById(R.id.txtMRNPacs);
+        txtStudyTitle = findViewById(R.id.txtStudyTitle);
 
     }
 
