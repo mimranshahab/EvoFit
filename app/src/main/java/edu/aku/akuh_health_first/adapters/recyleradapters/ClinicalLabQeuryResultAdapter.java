@@ -52,7 +52,7 @@ public class ClinicalLabQeuryResultAdapter extends RecyclerView.Adapter<Clinical
             if (position % 2 == 0) {
                holder.contParentLayout.setBackgroundColor(activity.getResources().getColor(R.color.c_white));
             } else {
-               holder.contParentLayout.setBackgroundColor(activity.getResources().getColor(R.color.base_gray));
+               holder.contParentLayout.setBackgroundColor(activity.getResources().getColor(R.color.query_grey));
             }
 
     }

@@ -59,6 +59,7 @@ public class ImmunizationProfileFragment extends BaseFragment implements View.On
     boolean isFromTimeline;
     int patientVisitAdmissionID;
     private ArrayList<SpinnerModel> arrUsedVaccineDes = new ArrayList<>();
+    String IMMUNIZATION_RECORD = "No Record Found";
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -193,14 +194,14 @@ public class ImmunizationProfileFragment extends BaseFragment implements View.On
                                 if (arrImmunization.size() > 0) {
                                     showView();
                                 } else {
-                                    showEmptyView();
+                                    showEmptyView(IMMUNIZATION_RECORD);
                                 }
                             }
 
                             @Override
                             public void onError() {
 //                                UIHelper.showShortToastInCenter(getContext(), "failure");
-                                showEmptyView();
+                                showEmptyView(IMMUNIZATION_RECORD);
                             }
                         });
 
@@ -230,14 +231,15 @@ public class ImmunizationProfileFragment extends BaseFragment implements View.On
                                     getVaccineScheduleService();
                                 } else {
                                     mFab.setVisibility(View.GONE);
-                                    showEmptyView("No Immunization Record Found");
+
+                                    showEmptyView(IMMUNIZATION_RECORD);
                                 }
                             }
 
                             @Override
                             public void onError() {
                                 mFab.setVisibility(View.GONE);
-                                showEmptyView("No Immunization Record Found");
+                                showEmptyView(IMMUNIZATION_RECORD);
                             }
                         });
 
@@ -249,11 +251,6 @@ public class ImmunizationProfileFragment extends BaseFragment implements View.On
         emptyView.setText(text);
     }
 
-
-    private void showEmptyView() {
-
-        emptyView.setVisibility(View.VISIBLE);
-    }
 
     private void showView() {
         bindView();

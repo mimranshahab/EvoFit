@@ -27,6 +27,7 @@ import butterknife.Unbinder;
 import edu.aku.akuh_health_first.R;
 import edu.aku.akuh_health_first.adapters.recyleradapters.CurrentMedicationAdapter;
 import edu.aku.akuh_health_first.callbacks.OnItemClickListener;
+import edu.aku.akuh_health_first.constatnts.AppConstants;
 import edu.aku.akuh_health_first.constatnts.WebServiceConstants;
 import edu.aku.akuh_health_first.enums.BaseURLTypes;
 import edu.aku.akuh_health_first.fragments.abstracts.BaseFragment;
@@ -193,21 +194,21 @@ public class PreviousMedicationFragment extends BaseFragment implements View.OnC
                                 if (arrData.size() > 0) {
                                     showView();
                                 } else {
-                                    showEmptyView();
+                                    showEmptyView(AppConstants.NO_RECORD_FOUND);
                                 }
                             }
 
                             @Override
                             public void onError() {
 //                                UIHelper.showShortToastInCenter(getContext(), "failure");
-                                showEmptyView();
+                                showEmptyView(AppConstants.NO_RECORD_FOUND);
                             }
                         });
 
     }
 
-    private void showEmptyView() {
-
+    private void showEmptyView(String text) {
+        emptyView.setText(text);
         emptyView.setVisibility(View.VISIBLE);
     }
 

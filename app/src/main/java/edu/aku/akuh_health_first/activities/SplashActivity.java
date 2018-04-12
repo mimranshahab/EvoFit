@@ -5,6 +5,7 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
+import android.util.DisplayMetrics;
 import android.view.View;
 import android.widget.LinearLayout;
 
@@ -37,7 +38,7 @@ public class SplashActivity extends Activity {
         ButterKnife.bind(this);
 
 
-        contParentLayout.setVisibility(View.GONE);
+        contParentLayout.setVisibility(View.INVISIBLE);
 
 
         if (SharedPreferenceManager.getInstance(getApplicationContext()).getString(AppConstants.KEY_CARD_NUMBER) == null
@@ -64,7 +65,13 @@ public class SplashActivity extends Activity {
 
     private void animateSplashLayout(final boolean isSplasAnimation) {
 
-        contParentLayout.setTranslationY(contParentLayout.getHeight()/2);
+
+        DisplayMetrics displayMetrics = new DisplayMetrics();
+        getWindowManager().getDefaultDisplay().getMetrics(displayMetrics);
+        int height = displayMetrics.heightPixels;
+
+//        contParentLayout.setTranslationY(height/2 - 100);
+        contParentLayout.setTranslationY(500);
 
         AnimationHelper.fade(contParentLayout, 0, VISIBLE, VISIBLE, 0.7f, FADING_TIME, new Animator.AnimatorListener() {
             @Override

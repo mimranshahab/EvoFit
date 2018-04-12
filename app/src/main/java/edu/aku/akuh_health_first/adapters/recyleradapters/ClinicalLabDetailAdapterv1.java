@@ -106,7 +106,7 @@ public class ClinicalLabDetailAdapterv1 extends RecyclerView.Adapter<ClinicalLab
 
         if ((model.getComments() == null || model.getComments().isEmpty()) && (model.getResultComments() == null || model.getResultComments().isEmpty())) {
             holder.btnComment.setEnabled(false);
-            holder.btnComment.setAlpha(.15f);
+            holder.btnComment.setAlpha(.1f);
 
         } else {
             holder.btnComment.setAlpha(1f);
@@ -118,7 +118,7 @@ public class ClinicalLabDetailAdapterv1 extends RecyclerView.Adapter<ClinicalLab
         if ((model.getPrevResult1() == null || model.getPrevResult1().isEmpty())) {
 //            holder.btnHistory.setVisibility(View.GONE);
             holder.btnHistory.setEnabled(false);
-            holder.btnHistory.setAlpha(.15f);
+            holder.btnHistory.setAlpha(.1f);
         } else {
             holder.btnHistory.setAlpha(1f);
             holder.btnHistory.setVisibility(View.VISIBLE);
@@ -127,14 +127,14 @@ public class ClinicalLabDetailAdapterv1 extends RecyclerView.Adapter<ClinicalLab
 
         if ((!holder.btnHistory.isEnabled()) && (!holder.btnComment.isEnabled())) {
 //            holder.historySeperator.setVisibility(View.GONE);
-            holder.contButtonLayout.setVisibility(View.INVISIBLE);
+//            holder.contButtonLayout.setVisibility(View.INVISIBLE);
         } else {
             holder.contButtonLayout.setVisibility(View.VISIBLE);
             setListener(holder, model);
         }
 
 
-        if ((model.getNormalRangeFormatted() == null || model.getNormalRangeFormatted().isEmpty()) && (model.getUnit() == null || model.getUnit().isEmpty())) {
+        if ((model.getNormalRangeFormatted() == null || model.getNormalRangeFormatted().isEmpty())) {
             holder.txtNormalRangeFormatted.setVisibility(View.INVISIBLE);
 
         } else {
@@ -147,20 +147,7 @@ public class ClinicalLabDetailAdapterv1 extends RecyclerView.Adapter<ClinicalLab
 
     }
 
-    //    private void setListener(final ViewHolder holder, final LstLaboratorySpecimenResults lstLaboratorySpecimenResults) {
-//        holder.btnComment.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                onItemClick.onItemClick(holder.getAdapterPosition(), lstLaboratorySpecimenResults);
-//            }
-//        });
-//        holder.btnHistory.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                onItemClick.onItemClick(holder.getAdapterPosition(), lstLaboratorySpecimenResults);
-//            }
-//        });
-//    }
+
     private void setListener(final ViewHolder holder, final LstLaboratorySpecimenResults lstLaboratorySpecimenResults) {
         holder.btnComment.setOnClickListener(new View.OnClickListener() {
             @Override
