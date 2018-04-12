@@ -98,9 +98,6 @@ public class ClinicalLabDetailAdapterv1 extends RecyclerView.Adapter<ClinicalLab
             customTypefaceSpan = new CustomTypefaceSpan(bold);
             model.setAbnormalFlag("Low");
         }
-
-//        Spanny resultSpanny = new Spanny(model.getResult(), customTypefaceSpan).append(" " + model.getAbnormalFlag(),
-//                new AbsoluteSizeSpan(activity.getResources().getDimensionPixelSize(R.dimen.s10)));
         Spanny resultSpanny = new Spanny(model.getResult(), customTypefaceSpan);
         Spanny stateSpanny = new Spanny(model.getAbnormalFlag(), customTypefaceSpan);
         holder.txtResult.setText(resultSpanny);
@@ -108,7 +105,6 @@ public class ClinicalLabDetailAdapterv1 extends RecyclerView.Adapter<ClinicalLab
 
 
         if ((model.getComments() == null || model.getComments().isEmpty()) && (model.getResultComments() == null || model.getResultComments().isEmpty())) {
-//            holder.btnComment.setVisibility(View.GONE);
             holder.btnComment.setEnabled(false);
             holder.btnComment.setAlpha(.15f);
 
