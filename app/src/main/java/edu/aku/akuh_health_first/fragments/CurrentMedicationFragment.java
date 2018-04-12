@@ -98,7 +98,6 @@ public class CurrentMedicationFragment extends BaseFragment implements View.OnCl
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         bindView();
-
         updateData();
 
     }
@@ -110,7 +109,6 @@ public class CurrentMedicationFragment extends BaseFragment implements View.OnCl
         } else {
             mFab.setVisibility(View.VISIBLE);
             serviceCall();
-
         }
     }
 
@@ -204,7 +202,7 @@ public class CurrentMedicationFragment extends BaseFragment implements View.OnCl
                                     }
                                 } else {
                                     showEmptyView(NO_RECORD_FOUND);
-                                }
+                                 }
 
                                 arrData.clear();
                                 arrData.addAll(arrayList);
@@ -224,5 +222,13 @@ public class CurrentMedicationFragment extends BaseFragment implements View.OnCl
 
         emptyView.setVisibility(View.VISIBLE);
         emptyView.setText(text);
+
+        switchTab();
+    }
+
+    private void switchTab() {
+        if (((MedicationTabLayout)getParentFragment()) != null) {
+            ((MedicationTabLayout)getParentFragment()).viewpager.setCurrentItem(1, true);
+        }
     }
 }
