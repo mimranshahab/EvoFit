@@ -41,7 +41,7 @@ public class HealthSummaryAdapter extends RecyclerView.Adapter<HealthSummaryAdap
 
         View itemView;
         itemView = LayoutInflater.from(activity)
-                .inflate(R.layout.item_healthsummary, parent, false);
+                .inflate(R.layout.item_healthsummary_v2, parent, false);
         return new ViewHolder(itemView);
     }
 
@@ -51,19 +51,26 @@ public class HealthSummaryAdapter extends RecyclerView.Adapter<HealthSummaryAdap
         final DetailHealthSummaryModel model = arrData.get(holder.getAdapterPosition());
 
         if (model.getShortMessageMobile().getTitle() == null || model.getShortMessageMobile().getTitle().isEmpty()) {
-            holder.txtShortMessage.setVisibility(View.INVISIBLE);
+            holder.txtShortMessage.setVisibility(View.GONE);
         } else {
             holder.txtShortMessage.setVisibility(View.VISIBLE);
             holder.txtShortMessage.setText(model.getShortMessageMobile().getTitle());
         }
 
         if (model.getShortMessageMobile().getMessage() == null || model.getShortMessageMobile().getMessage().isEmpty()) {
-
             holder.txtDate.setVisibility(View.GONE);
             holder.txtDate.setText(model.getShortMessageMobile().getMessage());
         } else {
-            holder.txtDate.setVisibility(View.VISIBLE);
-            holder.txtDate.setText(model.getShortMessageMobile().getMessage());
+            // setting date in title if title is empty and date exist
+            if (model.getShortMessageMobile().getTitle() == null || model.getShortMessageMobile().getTitle().isEmpty()) {
+                holder.txtShortMessage.setVisibility(View.VISIBLE);
+                holder.txtDate.setVisibility(View.INVISIBLE);
+                holder.txtShortMessage.setText(model.getShortMessageMobile().getMessage());
+            } else {
+                holder.txtDate.setVisibility(View.VISIBLE);
+                holder.txtDate.setText(model.getShortMessageMobile().getMessage());
+            }
+
         }
 
         if (model.getStatus() == null || model.getStatus().isEmpty()) {
@@ -77,11 +84,11 @@ public class HealthSummaryAdapter extends RecyclerView.Adapter<HealthSummaryAdap
             holder.txtStatusType.setText(model.getStatus());
 
             if (model.getStatus().equalsIgnoreCase("Completed")) {
-                colorCodes(holder, activity.getResources().getColor(R.color.base_green));
+                colorCodes(holder, activity.getResources().getColor(R.color.summary_green));
             } else if (model.getStatus().equalsIgnoreCase("Pending")) {
-                colorCodes(holder, activity.getResources().getColor(R.color.base_amber));
+                colorCodes(holder, activity.getResources().getColor(R.color.summary_orange));
             } else {
-                colorCodes(holder, activity.getResources().getColor(R.color.base_reddish));
+                colorCodes(holder, activity.getResources().getColor(R.color.summary_blue));
             }
         }
         holder.txtTitle.setText(model.getSummaryTitle());
@@ -128,11 +135,11 @@ public class HealthSummaryAdapter extends RecyclerView.Adapter<HealthSummaryAdap
         }
 
 
-        if (holder.txtShortMessage.getVisibility() == View.INVISIBLE && holder.txtStatusType.getVisibility() == View.GONE) {
-            holder.contShortMessageAndStatus.setVisibility(View.GONE);
-        } else {
-            holder.contShortMessageAndStatus.setVisibility(View.VISIBLE);
-        }
+//        if (holder.txtShortMessage.getVisibility() == View.INVISIBLE && holder.txtStatusType.getVisibility() == View.GONE) {
+//            holder.contShortMessageAndStatus.setVisibility(View.GONE);
+//        } else {
+//            holder.contShortMessageAndStatus.setVisibility(View.VISIBLE);
+//        }
         setListener(holder, model);
 
     }

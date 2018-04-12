@@ -16,7 +16,7 @@
         android:layout_weight="1"
         android:animateLayoutChanges="true"
         app:cardCornerRadius="@dimen/x10dp"
-        app:cardBackgroundColor="@color/txt_aku_blue"
+        app:cardBackgroundColor="@color/summary_blue"
 
         >
 
@@ -119,7 +119,7 @@
                             android:layout_margin="@dimen/x5dp"
                             android:scaleType="centerCrop"
                             android:src="@drawable/shape_circle"
-                            android:tint="@color/txt_aku_blue"
+                            android:tint="@color/medicine_green"
                             />
 
                         <ImageView
