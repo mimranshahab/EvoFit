@@ -57,7 +57,6 @@ public class SplashActivity extends Activity {
                     animateSplashLayout(false);
                 }
             }, ANIMATIONS_DELAY);
-
         }
 
 

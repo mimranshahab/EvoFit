@@ -27,6 +27,11 @@
     <color name="red_resistant">#DF5138</color>
     <color name="yellow_sensitive">#FFCE55</color>
     <color name="green_intermediate">#8CC474</color>
+    <color name="medicine_blue">#44A6F1</color>
+    <color name="medicine_green">#82BE6B</color>
+    <color name="summary_blue">#3F97C1</color>
+    <color name="summary_green">#A4FFB8</color>
+    <color name="summary_orange">#FFCB9C</color>
 
 
 

@@ -114,7 +114,7 @@ public class ClinicalLabDetailAdapterv1 extends RecyclerView.Adapter<ClinicalLab
 
         }
 
-        if ((model.getPrevResult1() == null || model.getPrevResult1().isEmpty()) && (model.getPrevResult2() == null || model.getPrevResult2().isEmpty())) {
+        if ((model.getPrevResult1() == null || model.getPrevResult1().isEmpty())) {
 //            holder.btnHistory.setVisibility(View.GONE);
             holder.btnHistory.setEnabled(false);
             holder.btnHistory.setAlpha(.15f);
