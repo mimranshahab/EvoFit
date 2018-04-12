@@ -60,6 +60,16 @@
             android:textColor="@color/c_white"
             android:textSize="14sp"
             app:typeface="@string/font_regular" />
+        <edu.aku.akuh_health_first.widget.AnyTextView
+            android:id="@+id/txtStudyTitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/txtMRNPacs"
+            android:paddingLeft="@dimen/x15dp"
+            android:text=""
+            android:textColor="@color/c_white"
+            android:textSize="14sp"
+            app:typeface="@string/font_regular" />
 
 
         <ProgressBar
