@@ -18,11 +18,11 @@
     <edu.aku.akuh_health_first.widget.AnyTextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="#F0F6E7"
+        android:background="@color/txt_aku_blue"
         android:gravity="center_horizontal"
-        android:padding="@dimen/x3dp"
-        android:text="RESULTS"
-        android:textColor="@color/base_amber"
+        android:padding="@dimen/x5dp"
+        android:text="Result"
+        android:textColor="@color/c_white"
         android:textSize="@dimen/s14"
         app:typeface="@string/font_bold" />
 

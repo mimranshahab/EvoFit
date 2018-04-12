@@ -10,6 +10,6 @@
     <!--android:endColor="#F2F2F2"-->
     <!--android:type="linear" />-->
 
-    <corners android:radius="@dimen/x5dp" />
+    <corners android:radius="@dimen/x6dp" />
     />
 </shape>

@@ -182,7 +182,7 @@
                             android:layout_alignBottom="@id/btnReportColorCode1"
                             android:layout_alignTop="@id/btnReportColorCode1"
                             android:alpha=".8"
-                            android:background="@drawable/rounded_box_filled_primary_color"
+                            android:background="@drawable/rounded_box_filled_btn_blue"
                             android:gravity="center"
                             android:padding="@dimen/x5dp" />
 
@@ -220,7 +220,7 @@
                             android:alpha=".8"
                             android:gravity="center"
                             android:padding="@dimen/x5dp"
-                            android:background="@drawable/rounded_box_filled_base_amber"
+                            android:background="@drawable/rounded_box_filled_btn_amber"
                             />
 
                         <edu.aku.akuh_health_first.widget.AnyTextView

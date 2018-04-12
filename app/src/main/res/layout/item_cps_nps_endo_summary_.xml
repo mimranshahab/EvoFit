@@ -188,7 +188,7 @@
                             android:layout_height="wrap_content"
                             android:layout_alignBottom="@id/btnReportColorCode1"
                             android:layout_alignTop="@id/btnReportColorCode1"
-                            android:background="@drawable/rounded_box_filled_primary_color"
+                            android:background="@drawable/rounded_box_filled_btn_blue"
                             android:alpha="0.8"
                             android:gravity="center"
                             android:padding="@dimen/x5dp" />
@@ -229,7 +229,7 @@
                             android:layout_alignTop="@id/txtGraph"
                             android:alpha=".8"
                             android:gravity="center"
-                            android:background="@drawable/rounded_box_filled_base_amber"
+                            android:background="@drawable/rounded_box_filled_btn_amber"
                             android:textColor="@color/c_white"
                             android:padding="@dimen/x5dp"
 
