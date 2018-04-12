@@ -66,7 +66,7 @@ public class ClinicalLaboratoryFragment extends BaseFragment implements View.OnC
     boolean isFromTimeline;
     int patientVisitAdmissionID;
     private String testname;
-
+    private boolean isSearchBarEmpty = true;
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -83,6 +83,15 @@ public class ClinicalLaboratoryFragment extends BaseFragment implements View.OnC
         fragment.patientVisitAdmissionID = patientVisitAdmissionID;
         fragment.setArguments(args);
         return fragment;
+    }
+    @Override
+    public void onResume() {
+        super.onResume();
+        if (isSearchBarEmpty) {
+            imgSearch.setImageResource(R.drawable.search2);
+        } else {
+            imgSearch.setImageResource(R.drawable.ic_select_cross);
+        }
     }
 
     @Override
@@ -141,10 +150,11 @@ public class ClinicalLaboratoryFragment extends BaseFragment implements View.OnC
             public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
                 clinicalLabAdapterV1.getFilter().filter(charSequence);
                 if (edtSearchBar.getStringTrimmed().equalsIgnoreCase("")) {
-
+                    isSearchBarEmpty = true;
                     imgSearch.setImageResource(R.drawable.search2);
 
                 } else {
+                    isSearchBarEmpty = false;
                     imgSearch.setImageResource(R.drawable.ic_select_cross);
                 }
             }

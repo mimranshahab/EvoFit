@@ -36,7 +36,7 @@
                         android:layout_marginTop="@dimen/x5dp"
                         android:text="Vaccine*"
                         android:textColor="@color/txt_aku_blue"
-                        android:textSize="@dimen/s8"
+                        android:textSize="@dimen/s10"
                         app:typeface="@string/font_bold" />
 
                     <edu.aku.akuh_health_first.widget.AnyTextView
@@ -61,7 +61,7 @@
                         android:layout_marginTop="@dimen/x5dp"
                         android:text="Route ID*"
                         android:textColor="@color/txt_aku_blue"
-                        android:textSize="@dimen/s8"
+                        android:textSize="@dimen/s10"
                         app:typeface="@string/font_bold" />
 
 
@@ -87,7 +87,7 @@
                         android:layout_marginTop="@dimen/x5dp"
                         android:text="Schedule Date*"
                         android:textColor="@color/txt_aku_blue"
-                        android:textSize="@dimen/s8"
+                        android:textSize="@dimen/s10"
                         app:typeface="@string/font_bold" />
 
                     <edu.aku.akuh_health_first.widget.AnyTextView
@@ -113,7 +113,7 @@
                         android:layout_marginTop="@dimen/x5dp"
                         android:text="Vaccination Date"
                         android:textColor="@color/txt_aku_blue"
-                        android:textSize="@dimen/s8"
+                        android:textSize="@dimen/s10"
                         app:typeface="@string/font_bold" />
 
                     <edu.aku.akuh_health_first.widget.AnyTextView
@@ -140,7 +140,7 @@
                         android:layout_marginTop="@dimen/x5dp"
                         android:text="Hospital Location"
                         android:textColor="@color/txt_aku_blue"
-                        android:textSize="@dimen/s8"
+                        android:textSize="@dimen/s10"
                         app:typeface="@string/font_bold" />
 
                     <edu.aku.akuh_health_first.widget.AnyEditTextView

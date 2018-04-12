@@ -61,6 +61,7 @@ public class TimelineFragment extends BaseFragment implements View.OnClickListen
     AnyEditTextView edtSearchBar;
     private ArrayList<TimelineModel> arrData;
     private TimelineAdapter adapter;
+    private boolean isSearchBarEmpty = true;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -98,6 +99,7 @@ public class TimelineFragment extends BaseFragment implements View.OnClickListen
         super.onViewCreated(view, savedInstanceState);
         edtSearchBar.setVisibility(View.VISIBLE);
         imgSearch.setVisibility(View.VISIBLE);
+
         bindView();
 
         if (onCreated) {
@@ -105,6 +107,16 @@ public class TimelineFragment extends BaseFragment implements View.OnClickListen
         }
         serviceCall();
 
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        if (isSearchBarEmpty) {
+            imgSearch.setImageResource(R.drawable.search2);
+        } else {
+            imgSearch.setImageResource(R.drawable.ic_select_cross);
+        }
     }
 
     private void bindView() {
@@ -115,6 +127,20 @@ public class TimelineFragment extends BaseFragment implements View.OnClickListen
         LayoutAnimationController animation = AnimationUtils.loadLayoutAnimation(getContext(), resId);
 //        recyclerView.setLayoutAnimation(animation);
         recyclerView.setAdapter(adapter);
+
+
+    }
+
+    private void searchImage() {
+
+        if (edtSearchBar.getStringTrimmed().equalsIgnoreCase("")) {
+            isSearchBarEmpty = true;
+            imgSearch.setImageResource(R.drawable.search2);
+
+        } else {
+            isSearchBarEmpty = false;
+            imgSearch.setImageResource(R.drawable.ic_select_cross);
+        }
     }
 
     @Override
@@ -130,13 +156,7 @@ public class TimelineFragment extends BaseFragment implements View.OnClickListen
             @Override
             public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
                 adapter.getFilter().filter(charSequence);
-                if (edtSearchBar.getStringTrimmed().equalsIgnoreCase("")) {
-
-                    imgSearch.setImageResource(R.drawable.search2);
-
-                } else {
-                    imgSearch.setImageResource(R.drawable.ic_select_cross);
-                }
+                searchImage();
             }
 
             @Override

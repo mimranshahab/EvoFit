@@ -4,11 +4,9 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_gravity="center"
-    android:layout_margin="@dimen/x20dp"
     android:background="@color/transparent"
-    android:fitsSystemWindows="true"
     android:orientation="vertical"
-    android:padding="@dimen/x20dp">
+    android:padding="@dimen/x25dp">
 
     <!--<TextView-->
     <!--android:layout_width="match_parent"-->
@@ -35,7 +33,7 @@
 
             <edu.aku.akuh_health_first.widget.AnyTextView
                 android:id="@+id/txtTitle"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:ellipsize="end"
@@ -65,8 +63,8 @@
             android:id="@+id/recyclerView"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_marginBottom="10dp"
-            android:layout_weight="1">
+            android:layout_weight="1"
+            android:layout_marginBottom="10dp">
 
         </android.support.v7.widget.RecyclerView>
 
@@ -76,15 +74,16 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
             android:layout_marginBottom="5dp"
+            android:layout_marginTop="5dp"
             android:layout_marginLeft="60dp"
             android:layout_marginRight="60dp"
-            android:layout_marginTop="5dp"
-            android:background="@drawable/rounded_box_filled_base_amber"
+            android:background="@drawable/rounded_box_filled_btn_amber"
             android:gravity="center"
             android:padding="10dp"
             android:text="@string/Ok"
             android:textColor="@color/c_white"
             android:textSize="14sp" />
+
 
 
     </LinearLayout>

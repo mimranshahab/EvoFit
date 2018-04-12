@@ -228,7 +228,7 @@
             android:layout_marginLeft="60dp"
             android:layout_marginRight="60dp"
             android:layout_marginTop="10dp"
-            android:background="@drawable/rounded_box_filled_base_amber"
+            android:background="@drawable/rounded_box_filled_btn_amber"
             android:gravity="center"
             android:padding="10dp"
             android:text="@string/Ok"
