@@ -36,7 +36,7 @@
                         android:layout_marginTop="@dimen/x5dp"
                         android:text="Medicine Name*"
                         android:textColor="@color/txt_aku_blue"
-                        android:textSize="@dimen/s8"
+                        android:textSize="@dimen/s10"
                         app:typeface="@string/font_bold" />
 
                     <edu.aku.akuh_health_first.widget.AnyEditTextView
@@ -61,7 +61,7 @@
                         android:layout_marginTop="@dimen/x5dp"
                         android:text="Frequency*"
                         android:textColor="@color/txt_aku_blue"
-                        android:textSize="@dimen/s8"
+                        android:textSize="@dimen/s10"
                         app:typeface="@string/font_bold" />
 
                     <edu.aku.akuh_health_first.widget.AnyTextView
@@ -87,7 +87,7 @@
                         android:layout_marginTop="@dimen/x5dp"
                         android:text="Route*"
                         android:textColor="@color/txt_aku_blue"
-                        android:textSize="@dimen/s8"
+                        android:textSize="@dimen/s10"
                         app:typeface="@string/font_bold" />
 
                     <edu.aku.akuh_health_first.widget.AnyTextView
@@ -113,7 +113,7 @@
                         android:layout_marginTop="@dimen/x5dp"
                         android:text="Start Date Time*"
                         android:textColor="@color/txt_aku_blue"
-                        android:textSize="@dimen/s8"
+                        android:textSize="@dimen/s10"
                         app:typeface="@string/font_bold" />
 
 
@@ -141,7 +141,7 @@
                         android:layout_marginTop="@dimen/x5dp"
                         android:text="Stop Date Time*"
                         android:textColor="@color/txt_aku_blue"
-                        android:textSize="@dimen/s8"
+                        android:textSize="@dimen/s10"
                         app:typeface="@string/font_bold" />
 
 
