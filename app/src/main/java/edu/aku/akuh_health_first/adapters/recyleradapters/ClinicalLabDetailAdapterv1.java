@@ -133,8 +133,8 @@ public class ClinicalLabDetailAdapterv1 extends RecyclerView.Adapter<ClinicalLab
         } else {
             holder.contButtonLayout.setVisibility(View.VISIBLE);
 //            holder.historySeperator.setVisibility(View.VISIBLE);
+            setListener(holder, model);
         }
-        setListener(holder, model);
 
 
         if ((model.getNormalRangeFormatted() == null || model.getNormalRangeFormatted().isEmpty()) && (model.getUnit() == null || model.getUnit().isEmpty())) {
