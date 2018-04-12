@@ -26,7 +26,7 @@ public class MedicationTabLayout extends BaseFragment {
     @BindView(R.id.tabs)
     TabLayout tabs;
     @BindView(R.id.viewpager)
-    CustomViewPager viewpager;
+    public CustomViewPager viewpager;
     Unbinder unbinder;
     MedicationProfileTabPagerAdapter tabPagerAdapter;
     private boolean isFromTimeline;

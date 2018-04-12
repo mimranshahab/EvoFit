@@ -41,7 +41,7 @@
                 android:padding="@dimen/x5dp"
                 android:text="Para result"
                 android:textColor="@color/txt_aku_blue"
-                android:textSize="14sp"
+                android:textSize="@dimen/s15"
                 app:typeface="@string/font_regular" />
 
 

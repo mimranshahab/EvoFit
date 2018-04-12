@@ -44,10 +44,10 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_alignParentLeft="true"
-                        android:text="Start Date: "
+                        android:text="Start Date"
                         android:textColor="@color/c_white"
                         android:textSize="@dimen/s13"
-                        app:typeface="@string/font_bold" />
+                        app:typeface="@string/font_regular" />
 
                     <edu.aku.akuh_health_first.widget.AnyTextView
                         android:id="@+id/txtStartDate"
@@ -70,10 +70,10 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_alignParentLeft="true"
-                        android:text="Stop Date: "
+                        android:text="Stop Date"
                         android:textColor="@color/c_white"
                         android:textSize="@dimen/s13"
-                        app:typeface="@string/font_bold" />
+                        app:typeface="@string/font_regular" />
 
                     <edu.aku.akuh_health_first.widget.AnyTextView
                         android:id="@+id/txtStopDate"
