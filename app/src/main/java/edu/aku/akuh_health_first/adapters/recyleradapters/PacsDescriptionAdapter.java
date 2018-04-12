@@ -14,8 +14,11 @@ import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 
 import java.io.File;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
+import java.util.TimeZone;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -54,14 +57,31 @@ public class PacsDescriptionAdapter extends RecyclerView.Adapter<PacsDescription
         return new ViewHolder(itemView);
     }
 
-    @SuppressLint("SetTextI18n")
     @Override
     public void onBindViewHolder(final ViewHolder holder, int i) {
 
         final PacsDescriptionModel model = arrayList.get(holder.getAdapterPosition());
-        holder.txtpatientMRN.setText(model.getPatientMRN());
+        holder.txtpatientMRN.setText(model.getStudyTitle());
         holder.txtstudyDataCount.setText(model.getStudyDataCount());
+
+//        try {
+//
+////            2017-04-14 12:02:22
+//            SimpleDateFormat df = new SimpleDateFormat("dd-MM-yyyy");
+//            df.setTimeZone(TimeZone.getTimeZone("UTC"));
+//            Date date = df.parse(model.getStudyDataDateTime());
+//            df.setTimeZone(TimeZone.getDefault());
+//
+//            SimpleDateFormat df2 = new SimpleDateFormat("MMM dd, yyyy");
+//            df2.setTimeZone(TimeZone.getDefault());
+//            holder.txtstudyDataDateTime.setText(df2.format(date));
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//        }
+
+
         holder.txtstudyDataDateTime.setText(model.getStudyDataDateTime());
+
 
         List<String> imageUri = model.getStudyDataString();
         holder.progressBar.setVisibility(View.VISIBLE);

@@ -64,7 +64,7 @@ public class SplashActivity extends Activity {
 
     private void animateSplashLayout(final boolean isSplasAnimation) {
 
-        contParentLayout.setTranslationY(contParentLayout.getHeight()/2);
+        contParentLayout.setTranslationY(contParentLayout.getHeight());
 
         AnimationHelper.fade(contParentLayout, 0, VISIBLE, VISIBLE, 0.7f, FADING_TIME, new Animator.AnimatorListener() {
             @Override

@@ -183,12 +183,10 @@
 
                 <RelativeLayout
                     android:id="@+id/RLUpdate"
-                    android:layout_width="wrap_content"
+                    android:layout_width="@dimen/x120dp"
+                    android:layout_gravity="end"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="@dimen/x30dp"
-                    android:layout_marginRight="@dimen/x30dp"
-                    android:layout_marginTop="@dimen/x10dp"
-
+                    android:layout_margin="@dimen/x3dp"
 
                     >
 
