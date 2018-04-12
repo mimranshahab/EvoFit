@@ -116,6 +116,7 @@ public class ClinicalLabDetailAdapterv1 extends RecyclerView.Adapter<ClinicalLab
         }
 
         if ((model.getPrevResult1() == null || model.getPrevResult1().isEmpty())) {
+//            holder.btnHistory.setVisibility(View.GONE);
             holder.btnHistory.setEnabled(false);
             holder.btnHistory.setAlpha(.15f);
         } else {
@@ -125,13 +126,12 @@ public class ClinicalLabDetailAdapterv1 extends RecyclerView.Adapter<ClinicalLab
         }
 
         if ((!holder.btnHistory.isEnabled()) && (!holder.btnComment.isEnabled())) {
+//            holder.historySeperator.setVisibility(View.GONE);
             holder.contButtonLayout.setVisibility(View.INVISIBLE);
         } else {
             holder.contButtonLayout.setVisibility(View.VISIBLE);
+            setListener(holder, model);
         }
-
-
-        setListener(holder, model);
 
 
         if ((model.getNormalRangeFormatted() == null || model.getNormalRangeFormatted().isEmpty()) && (model.getUnit() == null || model.getUnit().isEmpty())) {
