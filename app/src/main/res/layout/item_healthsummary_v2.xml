@@ -10,7 +10,10 @@
         android:id="@+id/cardView2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="@dimen/x8dp"
+        android:layout_marginBottom="@dimen/x8dp"
+        android:layout_marginLeft="@dimen/x5dp"
+        android:layout_marginRight="@dimen/x5dp"
+        android:layout_marginTop="@dimen/x8dp"
         android:animateLayoutChanges="true"
         app:cardBackgroundColor="@color/summary_blue"
         app:cardCornerRadius="@dimen/x8dp"
@@ -32,9 +35,9 @@
 
                 <LinearLayout
                     android:id="@+id/contHeader"
-                    android:padding="@dimen/x5dp"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
+                    android:layout_height="wrap_content"
+                    android:padding="@dimen/x5dp">
 
                     <ImageView
                         android:id="@+id/imgTitle"

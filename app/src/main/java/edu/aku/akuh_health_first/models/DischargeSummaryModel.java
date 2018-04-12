@@ -9,18 +9,19 @@ import edu.aku.akuh_health_first.managers.retrofit.GsonFactory;
 
 public class DischargeSummaryModel implements Serializable
 
-    , IsRecordFound {
+        , IsRecordFound {
 
-        @Expose
-        @SerializedName("RecordMessage")
-        private String recordmessage;
-        @Expose
-        @SerializedName("RecordFound")
-        private String recordfound;
-        @Override
-        public boolean isRecordFound() {
-            return getRecordfound().equals("true");
-        }
+    @Expose
+    @SerializedName("RecordMessage")
+    private String recordmessage;
+    @Expose
+    @SerializedName("RecordFound")
+    private String recordfound;
+
+    @Override
+    public boolean isRecordFound() {
+        return getRecordfound().equals("true");
+    }
 
     public String getRecordmessage() {
         return recordmessage;
@@ -73,6 +74,15 @@ public class DischargeSummaryModel implements Serializable
     @Expose
     private String exists;
     private final static long serialVersionUID = 146432562002565302L;
+
+    @SerializedName("DischargeDateTime")
+    @Expose
+    private String dischargeDateTime;
+
+    @SerializedName("DischargeDisposition")
+    @Expose
+    private String dischargeDisposition;
+
 
     @Override
     public String toString() {
@@ -168,4 +178,19 @@ public class DischargeSummaryModel implements Serializable
     }
 
 
+    public String getDischargeDateTime() {
+        return dischargeDateTime;
+    }
+
+    public void setDischargeDateTime(String dischargeDateTime) {
+        this.dischargeDateTime = dischargeDateTime;
+    }
+
+    public String getDischargeDisposition() {
+        return dischargeDisposition;
+    }
+
+    public void setDischargeDisposition(String dischargeDisposition) {
+        this.dischargeDisposition = dischargeDisposition;
+    }
 }

@@ -1,0 +1,254 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:card_view="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="@dimen/x3dp">
+
+
+    <android.support.v7.widget.CardView
+        android:id="@+id/cardView"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_margin="@dimen/x5dp"
+        android:layout_weight="1"
+        android:animateLayoutChanges="true"
+        app:cardBackgroundColor="#26C6DA"
+        app:cardCornerRadius="@dimen/x5dp"
+
+        >
+
+        <FrameLayout
+            android:id="@+id/frameColorCode"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:padding="@dimen/x1dp"
+
+            >
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:padding="@dimen/x5dp">
+
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight=".5"
+                    android:orientation="vertical">
+
+                    <edu.aku.akuh_health_first.widget.AnyTextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentLeft="true"
+                        android:text="Admission Date"
+                        android:textColor="@color/c_white"
+                        android:textSize="@dimen/s13"
+                        app:typeface="@string/font_regular" />
+
+                    <edu.aku.akuh_health_first.widget.AnyTextView
+                        android:id="@+id/txtAdmissionDate"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Start date"
+                        android:textColor="@color/c_white"
+                        android:textSize="@dimen/s12"
+                        app:typeface="@string/font_regular" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/contDischargeDate"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight=".5"
+                    android:gravity="end"
+                    android:orientation="vertical">
+
+                    <edu.aku.akuh_health_first.widget.AnyTextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentLeft="true"
+                        android:text="Discharge Date"
+                        android:textColor="@color/c_white"
+                        android:textSize="@dimen/s13"
+                        app:typeface="@string/font_regular" />
+
+                    <edu.aku.akuh_health_first.widget.AnyTextView
+                        android:id="@+id/txtDischargeDate"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Stop Date"
+
+                        android:textColor="@color/c_white"
+
+                        android:textSize="@dimen/s12"
+                        app:typeface="@string/font_regular" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/contProfile"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="@dimen/x45dp"
+                android:background="@drawable/round_edges_topview"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:id="@+id/contListItem"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@color/c_white"
+                    android:orientation="horizontal"
+                    android:padding="@dimen/x5dp">
+
+                    <RelativeLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
+
+                        <ImageView
+                            android:id="@+id/imgIcon"
+                            android:layout_width="@dimen/x45dp"
+                            android:layout_height="@dimen/x45dp"
+                            android:layout_centerInParent="true"
+                            android:layout_margin="@dimen/x5dp"
+                            android:scaleType="centerCrop"
+                            android:src="@drawable/shape_circle"
+                            android:tint="#26C6DA" />
+
+                        <ImageView
+                            android:layout_width="@dimen/x45dp"
+                            android:layout_height="@dimen/x45dp"
+                            android:layout_centerInParent="true"
+                            android:layout_margin="@dimen/x5dp"
+                            android:padding="@dimen/x2dp"
+                            android:scaleType="centerCrop"
+                            android:src="@drawable/b_dischargesummary_transparent" />
+
+
+                    </RelativeLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@color/c_white"
+                        android:orientation="vertical"
+                        android:padding="@dimen/x5dp">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal">
+
+                            <edu.aku.akuh_health_first.widget.AnyTextView
+                                android:id="@+id/txtReportName"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:ellipsize="end"
+                                android:padding="@dimen/x3dp"
+                                android:singleLine="true"
+                                android:text="Service Name"
+                                android:textColor="@color/txt_aku_blue"
+                                android:textSize="@dimen/s15"
+                                app:typeface="@string/font_bold" />
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal">
+
+                            <!--<edu.aku.akuh_health_first.widget.AnyTextView-->
+                            <!--android:layout_width="wrap_content"-->
+                            <!--android:layout_height="wrap_content"-->
+                            <!--android:layout_alignParentLeft="true"-->
+                            <!--android:padding="@dimen/x3dp"-->
+                            <!--android:text="Frequency: "-->
+                            <!--android:textColor="@color/primary_text_color_selector"-->
+                            <!--android:textSize="@dimen/s14"-->
+                            <!--app:typeface="@string/font_regular" />-->
+
+                            <edu.aku.akuh_health_first.widget.AnyTextView
+                                android:id="@+id/txtDrName"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:ellipsize="end"
+                                android:padding="@dimen/x3dp"
+                                android:singleLine="true"
+                                android:text="Doctor Name"
+                                android:textColor="@color/txt_aku_blue"
+                                android:textSize="@dimen/s12"
+                                app:typeface="@string/font_regular" />
+                        </LinearLayout>
+
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal">
+
+
+                            <edu.aku.akuh_health_first.widget.AnyTextView
+                                android:id="@+id/txtDischargeDisposition"
+                                android:layout_width="0dp"
+                                android:layout_weight="1"
+                                android:layout_height="wrap_content"
+                                android:padding="@dimen/x3dp"
+                                android:singleLine="true"
+                                android:ellipsize="end"
+                                android:text="DischargeDisposition"
+                                android:textColor="@color/txt_aku_blue"
+                                android:textSize="@dimen/s12"
+                                app:typeface="@string/font_regular" />
+
+
+                            <edu.aku.akuh_health_first.widget.AnyTextView
+                                android:id="@+id/btnSummary"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="end"
+                                android:background="@drawable/rounded_box_filled_btn_amber"
+                                android:gravity="end"
+                                android:maxWidth="@dimen/x80dp"
+                                android:paddingBottom="@dimen/x7dp"
+                                android:paddingLeft="@dimen/x10dp"
+                                android:paddingRight="@dimen/x10dp"
+                                android:paddingTop="@dimen/x7dp"
+                                android:text="Summary"
+                                android:textAlignment="center"
+                                android:textColor="@color/c_white"
+                                android:textSize="@dimen/s13"
+                                app:typeface="@string/font_bold" />
+
+
+
+                        </LinearLayout>
+
+
+                    </LinearLayout>
+
+                </LinearLayout>
+            </LinearLayout>
+
+
+            <!--<LinearLayout-->
+            <!--android:id="@+id/llColorCode"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="match_parent"-->
+            <!--android:alpha="0.1"-->
+            <!--android:background="@color/base_green"-->
+            <!--android:orientation="horizontal">-->
+
+            <!--</LinearLayout>-->
+        </FrameLayout>
+    </android.support.v7.widget.CardView>
+
+
+</LinearLayout>
