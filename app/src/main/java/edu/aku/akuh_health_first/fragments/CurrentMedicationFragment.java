@@ -129,7 +129,7 @@ public class CurrentMedicationFragment extends BaseFragment implements View.OnCl
         mFab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                getBaseActivity().addDockableFragment(AddUpdateMedicationFragment.newInstance(true, null));
+                getBaseActivity().addDockableFragment(AddUpdateMedicationFragment.newInstance(true, null), false);
             }
         });
     }

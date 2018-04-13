@@ -160,7 +160,7 @@ public class RadiologyFragment extends BaseFragment implements View.OnClickListe
 //                    radiologyModel.setExamorderexamnumber("1");
 //                    radiologyModel.setVisitlocation("Stadium Road");
 //                    radiologyModel.setReportid("15779861");
-                    getBaseActivity().addDockableFragment(RadiologyDescriptionFragment.newInstance(radiologyModel.toString()));
+                    getBaseActivity().addDockableFragment(RadiologyDescriptionFragment.newInstance(radiologyModel.toString()), false);
                 }
 
 
@@ -171,7 +171,7 @@ public class RadiologyFragment extends BaseFragment implements View.OnClickListe
     private void showPacsImages(final RadiologyModel item) {
 
 
-        getBaseActivity().addDockableFragment(PacsFragment.newInstance(item));
+        getBaseActivity().addDockableFragment(PacsFragment.newInstance(item), false);
 
 
     }

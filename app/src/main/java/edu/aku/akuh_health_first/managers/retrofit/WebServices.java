@@ -131,6 +131,9 @@ public class WebServices {
 
             //for testing
 //            return true;
+            if (response.body().result != null && response.body().result.get(0) != null) {
+                return false;
+            }
 
             if (response.body().result.get(0).get("RecordFound") == null) {
                 return false;

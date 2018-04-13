@@ -349,7 +349,7 @@ public class AddFamilyMemberFragment extends BaseFragment {
         successDialogFragment.setButton1(getString(R.string.Ok), new GenericClickableInterface() {
             @Override
             public void click() {
-                getBaseActivity().addDockableFragment(VerifyYourNumberFragment.newInstance());
+                getBaseActivity().addDockableFragment(VerifyYourNumberFragment.newInstance(), false);
                 successDialogFragment.getDialog().dismiss();
             }
         });

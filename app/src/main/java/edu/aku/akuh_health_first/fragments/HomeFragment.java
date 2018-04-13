@@ -257,7 +257,7 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener, 
             if (getBaseActivity().getSupportFragmentManager().getBackStackEntryCount() == 1) {
 
                 if (getCurrentUser().getMRNumber().equals(((UserDetailModel) object).getMRNumber())) {
-                    getBaseActivity().addDockableFragment(HomeDetailFragment.newInstance());
+                    getBaseActivity().addDockableFragment(HomeDetailFragment.newInstance(), true);
                     return;
                 }
 
@@ -271,7 +271,7 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener, 
                 new Handler().postDelayed(new Runnable() {
                     @Override
                     public void run() {
-                        getBaseActivity().addDockableFragment(HomeDetailFragment.newInstance());
+                        getBaseActivity().addDockableFragment(HomeDetailFragment.newInstance(), true);
                     }
                 }, 500);
 

@@ -33,7 +33,6 @@ import edu.aku.akuh_health_first.fragments.abstracts.BaseFragment;
 import edu.aku.akuh_health_first.fragments.dialogs.HealthSummaryDialogFragment;
 import edu.aku.akuh_health_first.helperclasses.StringHelper;
 import edu.aku.akuh_health_first.helperclasses.ui.helper.TitleBar;
-import edu.aku.akuh_health_first.helperclasses.ui.helper.UIHelper;
 import edu.aku.akuh_health_first.managers.retrofit.GsonFactory;
 import edu.aku.akuh_health_first.managers.retrofit.WebServices;
 import edu.aku.akuh_health_first.models.DetailHealthSummaryModel;
@@ -347,19 +346,19 @@ public class HealthSummaryFragment extends BaseFragment implements OnItemClickLi
 //                        UIHelper.showToast(getContext(), "No Redirection Available");
                         break;
                     case ClinicalLaboratory:
-                        getBaseActivity().addDockableFragment(ClinicalLaboratoryFragment.newInstance(false, -1));
+                        getBaseActivity().addDockableFragment(ClinicalLaboratoryFragment.newInstance(false, -1), false);
                         break;
                     case Radiology:
-                        getBaseActivity().addDockableFragment(RadiologyFragment.newInstance(false, -1));
+                        getBaseActivity().addDockableFragment(RadiologyFragment.newInstance(false, -1), false);
                         break;
                     case MedicationProfile:
-                        getBaseActivity().addDockableFragment(MedicationTabLayout.newInstance(false, -1));
+                        getBaseActivity().addDockableFragment(MedicationTabLayout.newInstance(false, -1), false);
                         break;
                     case ImmunizationProfile:
-                        getBaseActivity().addDockableFragment(ImmunizationProfileFragment.newInstance(false, -1));
+                        getBaseActivity().addDockableFragment(ImmunizationProfileFragment.newInstance(false, -1), false);
                         break;
                     case LastVisit:
-                        getBaseActivity().addDockableFragment(TimelineFragment.newInstance());
+                        getBaseActivity().addDockableFragment(TimelineFragment.newInstance(), false);
                         break;
                     case FutureAppointment:
 //                        UIHelper.showToast(getContext(), "No Redirection Available");

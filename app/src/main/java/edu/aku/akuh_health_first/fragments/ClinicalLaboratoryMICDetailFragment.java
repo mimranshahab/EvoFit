@@ -183,14 +183,14 @@ public class ClinicalLaboratoryMICDetailFragment extends BaseFragment implements
                 ClinicalLaboratoryMICQueryFragment clinicalLaboratoryMICQueryFragment = ClinicalLaboratoryMICQueryFragment.newInstance(((LstLaboratoryMicspecimenResults) object).getLstMicSpecQueryResult(),
                         ((LstLaboratoryMicspecimenResults) object).getProcedureName(), ((LstLaboratoryMicspecimenResults) object).getProcedureDescription());
 
-                getBaseActivity().addDockableFragment(clinicalLaboratoryMICQueryFragment);
+                getBaseActivity().addDockableFragment(clinicalLaboratoryMICQueryFragment, false);
             } else {
                 if (((LstLaboratoryMicspecimenResults) object).getLstMicSpecParaResult().isEmpty()) {
                     UIHelper.showToast(getContext(), "No Para Result Exists");
                 } else {
                     ClinicalParaResultFragment clinicalParaFragment = ClinicalParaResultFragment.newInstance(((LstLaboratoryMicspecimenResults) object).getLstMicSpecParaResult().get(0),
                             ((LstLaboratoryMicspecimenResults) object).getProcedureName(), ((LstLaboratoryMicspecimenResults) object).getProcedureDescription());
-                    getBaseActivity().addDockableFragment(clinicalParaFragment);
+                    getBaseActivity().addDockableFragment(clinicalParaFragment, false);
                 }
 
             }

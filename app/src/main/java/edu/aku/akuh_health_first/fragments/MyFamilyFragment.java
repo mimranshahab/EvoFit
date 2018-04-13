@@ -53,7 +53,7 @@ public class MyFamilyFragment extends BaseFragment {
         titleBar.setRightButton(R.drawable.plus, new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                getBaseActivity().addDockableFragment(AddFamilyMemberFragment.newInstance());
+                getBaseActivity().addDockableFragment(AddFamilyMemberFragment.newInstance(), false);
             }
         });
     }

@@ -39,7 +39,6 @@ import edu.aku.akuh_health_first.helperclasses.ui.helper.TitleBar;
 import edu.aku.akuh_health_first.helperclasses.ui.helper.UIHelper;
 import edu.aku.akuh_health_first.libraries.imageloader.ImageLoaderHelper;
 import edu.aku.akuh_health_first.managers.FileManager;
-import edu.aku.akuh_health_first.managers.SharedPreferenceManager;
 import edu.aku.akuh_health_first.managers.retrofit.GsonFactory;
 import edu.aku.akuh_health_first.managers.retrofit.WebServices;
 import edu.aku.akuh_health_first.models.RequestModel;
@@ -195,7 +194,7 @@ public class ProfileFragment extends BaseFragment implements OnNewPacketReceived
                 cropImagePicker();
                 break;
             case R.id.fab:
-                getBaseActivity().addDockableFragment(EditProfileFragment.newInstance());
+                getBaseActivity().addDockableFragment(EditProfileFragment.newInstance(), false);
                 break;
             case R.id.circleImageView:
                 getBaseActivity().openImagePreviewActivity(getCurrentUser().getProfileImage(), getCurrentUser().getName());

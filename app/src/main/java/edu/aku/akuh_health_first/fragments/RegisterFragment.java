@@ -327,7 +327,7 @@ public class RegisterFragment extends BaseFragment {
 //                    getBaseActivity().addDockableFragment(MyFamilyFragment.newInstance());
 //                }
 
-                getBaseActivity().addDockableFragment(MyFamilyFragment.newInstance());
+                getBaseActivity().addDockableFragment(MyFamilyFragment.newInstance(), false);
                 break;
 
             case R.id.txtGender:
@@ -413,7 +413,7 @@ public class RegisterFragment extends BaseFragment {
         successDialogFragment.setButton1(getString(R.string.Ok), new GenericClickableInterface() {
             @Override
             public void click() {
-                getBaseActivity().addDockableFragment(VerifyYourNumberFragment.newInstance());
+                getBaseActivity().addDockableFragment(VerifyYourNumberFragment.newInstance(), false);
                 successDialogFragment.getDialog().dismiss();
             }
         });

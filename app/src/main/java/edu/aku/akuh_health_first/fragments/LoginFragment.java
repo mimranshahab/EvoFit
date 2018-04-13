@@ -125,7 +125,7 @@ public class LoginFragment extends BaseFragment {
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.txtForgotPassword:
-                getBaseActivity().addDockableFragment(ForgotPassowrdFragment.newInstance());
+                getBaseActivity().addDockableFragment(ForgotPassowrdFragment.newInstance(), false);
                 break;
             case R.id.btnLogin:
 //                edtCardNumber.setText(WebServiceConstants.tempCardNumber);
@@ -137,7 +137,7 @@ public class LoginFragment extends BaseFragment {
                 break;
 
             case R.id.txtSignUp:
-                getBaseActivity().addDockableFragment(RegisterFragment.newInstance());
+                getBaseActivity().addDockableFragment(RegisterFragment.newInstance(), false);
         }
     }
 

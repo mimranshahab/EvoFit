@@ -1,9 +1,7 @@
 package edu.aku.akuh_health_first.activities;
 
-import android.app.FragmentManager;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.design.widget.NavigationView;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.widget.DrawerLayout;
@@ -19,13 +17,11 @@ import edu.aku.akuh_health_first.fragments.abstracts.BaseFragment;
 import edu.aku.akuh_health_first.fragments.abstracts.GenericClickableInterface;
 import edu.aku.akuh_health_first.fragments.abstracts.GenericDialogFragment;
 import edu.aku.akuh_health_first.helperclasses.ui.helper.TitleBar;
-import edu.aku.akuh_health_first.models.LaboratoryModel;
 
 
 import static edu.aku.akuh_health_first.constatnts.AppConstants.IMAGE_PREVIEW_TITLE;
 import static edu.aku.akuh_health_first.constatnts.AppConstants.IMAGE_PREVIEW_URL;
 import static edu.aku.akuh_health_first.constatnts.AppConstants.JSON_STRING_KEY;
-import static edu.aku.akuh_health_first.constatnts.AppConstants.LABORATORY_MODEL;
 
 
 public abstract class BaseActivity extends AppCompatActivity {
@@ -118,10 +114,12 @@ public abstract class BaseActivity extends AppCompatActivity {
         genericDialogFragment.show(getSupportFragmentManager(), null);
     }
 
-    public void addDockableFragment(Fragment fragment) {
+    public void addDockableFragment(Fragment fragment, boolean isTransition) {
         baseFragment = (BaseFragment) fragment;
         FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
+        if (isTransition) {
         fragmentTransaction.setCustomAnimations(R.anim.slide_in_right, R.anim.slide_out_left);
+        }
         fragmentTransaction.replace(getDockableFragmentId(), fragment).addToBackStack(fragment.getClass().getSimpleName())
                 .commit();
     }
@@ -183,7 +181,6 @@ public abstract class BaseActivity extends AppCompatActivity {
     }
 
 
-
     public void emptyBackStack() {
         android.support.v4.app.FragmentManager fm = getSupportFragmentManager();
         if (fm == null) return;
@@ -211,12 +208,6 @@ public abstract class BaseActivity extends AppCompatActivity {
     public void notifyToAll(int event, Object data) {
         BaseApplication.getPublishSubject().onNext(new Pair<>(event, data));
     }
-
-
-
-
-
-
 
 
     // RESIDE MENU ->

@@ -282,9 +282,9 @@ public class ClinicalLaboratoryFragment extends BaseFragment implements View.OnC
                                     webResponse1.result = laboratoryDetailModel.getExternalFile();
                                     saveAndOpenFile(webResponse1);
                                 } else if (laboratoryDetailModel.getSpecimenType().equals("LAB")) {
-                                    getBaseActivity().addDockableFragment(ClinicalLaboratoryDetailFragment.newInstance(laboratoryDetailModel));
+                                    getBaseActivity().addDockableFragment(ClinicalLaboratoryDetailFragment.newInstance(laboratoryDetailModel), false);
                                 } else if (laboratoryDetailModel.getSpecimenType().equals("MIC")) {
-                                    getBaseActivity().addDockableFragment(ClinicalLaboratoryMICDetailFragment.newInstance(laboratoryDetailModel));
+                                    getBaseActivity().addDockableFragment(ClinicalLaboratoryMICDetailFragment.newInstance(laboratoryDetailModel), false);
                                 } else {
                                     showEmptyView();
                                 }

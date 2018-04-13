@@ -200,7 +200,7 @@ public class TimelineFragment extends BaseFragment implements View.OnClickListen
     @Override
     public void onItemClick(int position, Object object) {
         if (object instanceof TimelineModel) {
-            getBaseActivity().addDockableFragment(HealthHistoryFragment.newInstance(true, ((TimelineModel) object).getPatientVisitAdmissionID(), (TimelineModel) object));
+            getBaseActivity().addDockableFragment(HealthHistoryFragment.newInstance(true, ((TimelineModel) object).getPatientVisitAdmissionID(), (TimelineModel) object), false);
         }
     }
 

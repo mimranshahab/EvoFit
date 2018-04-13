@@ -11,7 +11,6 @@ import android.widget.ImageView;
 import android.widget.ScrollView;
 
 import edu.aku.akuh_health_first.callbacks.OnNewPacketReceivedListener;
-import edu.aku.akuh_health_first.helperclasses.ui.helper.UIHelper;
 import edu.aku.akuh_health_first.widget.AnyTextView;
 
 import butterknife.BindView;
@@ -164,7 +163,7 @@ public class LeftSideMenuFragment extends BaseFragment implements OnNewPacketRec
                 break;
 
             case R.id.txtAbout:
-                getBaseActivity().addDockableFragment(GenericContentFragment.newInstance("About", AboutUs));
+                getBaseActivity().addDockableFragment(GenericContentFragment.newInstance("About", AboutUs), false);
                 break;
             case R.id.txtLogout:
                 logoutClick(this);
