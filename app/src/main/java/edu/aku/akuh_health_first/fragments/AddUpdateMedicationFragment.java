@@ -63,6 +63,8 @@ public class AddUpdateMedicationFragment extends BaseFragment {
     AnyTextView txtStopDateTime;
     @BindView(R.id.btnSave)
     Button btnSave;
+    @BindView(R.id.txtNote)
+    AnyTextView txtNote;
     @BindView(R.id.chkLifeTimeMedication)
     CheckBox chkLifeTimeMedication;
     Unbinder unbinder;
@@ -123,6 +125,7 @@ public class AddUpdateMedicationFragment extends BaseFragment {
             getFrequencyIds();
             getRouteIdsService();
         }
+        txtNote.setText("The medications entered would be recorded as being purchased from outside of AKUH pharmacy and AKUH does not take any responsibility for these recorded medications.");
     }
 
     @Override

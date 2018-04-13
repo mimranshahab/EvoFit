@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:orientation="vertical" >
+    android:orientation="vertical">
 
 
     <android.support.v7.widget.CardView
@@ -62,24 +62,24 @@
 
                 </LinearLayout>
 
-               <edu.aku.akuh_health_first.widget.AnyTextView
-                   android:layout_width="match_parent"
-                   android:layout_height="wrap_content"
-                   android:padding="@dimen/x5dp"
-                   android:textColor="@color/txt_aku_blue"
-                   android:textSize="14sp"
-                   app:typeface="@string/font_regular"
-                   android:text="The vaccinations entered would be recorded as being vaccinated from outside of AKUH and AKUH does not take any responsibility for these recorded vaccinations."
-                   />
+                <edu.aku.akuh_health_first.widget.AnyTextView
+                    android:id="@+id/txtNote"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="@dimen/x5dp"
+                    android:text=" The vaccinations entered would be recorded as being vaccinated from outside of AKUH and AKUH does not take any responsibility for these recorded vaccinations."
+                    android:textColor="@color/txt_aku_blue"
+                    android:textSize="14sp"
+                    app:typeface="@string/font_regular" />
 
 
             </LinearLayout>
 
             <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:alpha="0.1"
-            android:background="@color/base_green">
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:alpha="0.1"
+                android:background="@color/base_green">
 
             </LinearLayout>
 

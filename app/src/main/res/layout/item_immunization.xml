@@ -70,6 +70,7 @@
                             android:layout_marginRight="@dimen/x5dp"
                             android:scaleType="centerCrop"
                             android:visibility="gone"
+                            android:layout_marginTop="@dimen/x1dp"
 
                             android:src="@drawable/curve_edges_square_bullet"
                             android:tint="@color/base_amber" />
