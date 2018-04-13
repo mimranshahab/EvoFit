@@ -61,7 +61,7 @@
                                     android:ellipsize="end"
                                     android:maxLines="2"
                                     android:paddingLeft="@dimen/x4dp"
-                                    android:text="Test Name Test Name"
+                                    android:text="Test Name Test Name "
                                     android:textColor="@color/txt_aku_blue"
                                     android:textSize="@dimen/s16"
                                     app:typeface="@string/font_bold" />
@@ -71,7 +71,6 @@
 
                             <LinearLayout
                                 android:layout_width="wrap_content"
-
                                 android:layout_height="wrap_content"
                                 android:gravity="end"
                                 android:minWidth="@dimen/x80dp"
@@ -82,9 +81,8 @@
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:layout_marginRight="@dimen/x5dp"
-                                    android:gravity="end"
                                     android:paddingLeft="@dimen/x4dp"
-                                    android:text="Result"
+                                    android:text="Reactive (40.1)"
                                     android:textColor="@color/txt_aku_blue"
                                     android:textSize="@dimen/s16"
                                     app:typeface="@string/font_bold" />
@@ -93,11 +91,11 @@
                                     android:id="@+id/txtunit"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                     android:ellipsize="end"
-                                    android:gravity="top|end"
                                     android:layout_marginRight="@dimen/x5dp"
+                                    android:ellipsize="end"
+                                    android:gravity="top|end"
 
-                                     android:text="unit"
+                                    android:text="unit"
                                     android:textColor="@color/text_color_grey"
                                     android:textSize="@dimen/s9"
                                     app:typeface="@string/font_regular" />

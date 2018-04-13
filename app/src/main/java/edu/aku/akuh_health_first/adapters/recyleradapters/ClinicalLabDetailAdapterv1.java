@@ -106,9 +106,11 @@ public class ClinicalLabDetailAdapterv1 extends RecyclerView.Adapter<ClinicalLab
 
         if ((model.getComments() == null || model.getComments().isEmpty()) && (model.getResultComments() == null || model.getResultComments().isEmpty())) {
             holder.btnComment.setEnabled(false);
-            holder.btnComment.setAlpha(.2f);
+            holder.btnComment.setAlpha(.15f);
+            holder.btnComment.setBackground(activity.getResources().getDrawable(R.drawable.rounded_box_filled_base_grey));
 
         } else {
+            holder.btnComment.setBackground(activity.getResources().getDrawable(R.drawable.rounded_box_filled_btn_blue));
             holder.btnComment.setAlpha(1f);
             holder.btnComment.setVisibility(View.VISIBLE);
             holder.btnComment.setEnabled(true);
@@ -118,8 +120,10 @@ public class ClinicalLabDetailAdapterv1 extends RecyclerView.Adapter<ClinicalLab
         if ((model.getPrevResult1() == null || model.getPrevResult1().isEmpty())) {
 //            holder.btnHistory.setVisibility(View.GONE);
             holder.btnHistory.setEnabled(false);
-            holder.btnHistory.setAlpha(.2f);
+            holder.btnHistory.setAlpha(.15f);
+            holder.btnHistory.setBackground(activity.getResources().getDrawable(R.drawable.rounded_box_filled_base_grey));
         } else {
+            holder.btnHistory.setBackground(activity.getResources().getDrawable(R.drawable.rounded_box_filled_btn_amber));
             holder.btnHistory.setAlpha(1f);
             holder.btnHistory.setVisibility(View.VISIBLE);
             holder.btnHistory.setEnabled(true);

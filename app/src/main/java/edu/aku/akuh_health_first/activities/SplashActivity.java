@@ -1,6 +1,7 @@
 package edu.aku.akuh_health_first.activities;
 
 import android.animation.Animator;
+import android.animation.ObjectAnimator;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
@@ -30,6 +31,7 @@ public class SplashActivity extends Activity {
     private final int ANIMATIONS_DELAY = 200;
     private final int ANIMATIONS_TIME_OUT = 250;
     private final int FADING_TIME = 500;
+    private boolean hasAnimationStarted = false;
 
 //    private final int SPLASH_TIME_OUT = 200;
 //    private final int ANIMATIONS_DELAY = 50;
@@ -45,36 +47,21 @@ public class SplashActivity extends Activity {
         contParentLayout.setVisibility(View.INVISIBLE);
 
 
-        if (SharedPreferenceManager.getInstance(getApplicationContext()).getString(AppConstants.KEY_CARD_NUMBER) == null
-                || SharedPreferenceManager.getInstance(getApplicationContext()).getString(AppConstants.KEY_CARD_NUMBER).isEmpty()) {
-
-            new Handler().postDelayed(new Runnable() {
-                @Override
-                public void run() {
-                    animateSplashLayout(true);
-                }
-            }, ANIMATIONS_DELAY);
-
-        } else {
-            new Handler().postDelayed(new Runnable() {
-                @Override
-                public void run() {
-                    animateSplashLayout(false);
-                }
-            }, ANIMATIONS_DELAY);
-        }
-
-
     }
 
-    private void animateSplashLayout(final boolean isSplasAnimation) {
+    private void animateSplashLayout(final boolean isOnlySplasAnimation) {
+
+        DisplayMetrics metrics = getResources().getDisplayMetrics();
+        ObjectAnimator translationY = ObjectAnimator.ofFloat(contParentLayout, "y", metrics.heightPixels / 2 - contParentLayout.getHeight() / 2); // metrics.heightPixels or root.getHeight()
+        translationY.setDuration(1);
+        translationY.start();
 
 //        Animation anim = AnimationUtils.loadAnimation(this, R.anim.translate_to_mid);
 //        anim.setInterpolator((new AccelerateDecelerateInterpolator()));
 //        anim.setFillAfter(true);
 //        contParentLayout.setAnimation(anim);
-
-        contParentLayout.setTranslationY(500);
+//
+//        contParentLayout.setTranslationY(500);
 
         AnimationHelper.fade(contParentLayout, 0, VISIBLE, VISIBLE, 0.7f, FADING_TIME, new Animator.AnimatorListener() {
             @Override
@@ -84,7 +71,7 @@ public class SplashActivity extends Activity {
 
             @Override
             public void onAnimationEnd(Animator animator) {
-                if (isSplasAnimation) {
+                if (isOnlySplasAnimation) {
                     translateAnimation();
                 } else {
                     changeActivity(HomeActivity.class);
@@ -164,4 +151,33 @@ public class SplashActivity extends Activity {
         }, ANIMATIONS_TIME_OUT);
     }
 
+    @Override
+    public void onWindowFocusChanged(boolean hasFocus) {
+        super.onWindowFocusChanged(hasFocus);
+        if (hasFocus && !hasAnimationStarted) {
+            hasAnimationStarted = true;
+
+
+            if (SharedPreferenceManager.getInstance(getApplicationContext()).getString(AppConstants.KEY_CARD_NUMBER) == null
+                    || SharedPreferenceManager.getInstance(getApplicationContext()).getString(AppConstants.KEY_CARD_NUMBER).isEmpty()) {
+
+                new Handler().postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        animateSplashLayout(true);
+                    }
+                }, ANIMATIONS_DELAY);
+
+            } else {
+                new Handler().postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        animateSplashLayout(false);
+                    }
+                }, ANIMATIONS_DELAY);
+            }
+
+
+        }
+    }
 }
