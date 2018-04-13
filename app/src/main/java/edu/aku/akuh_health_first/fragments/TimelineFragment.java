@@ -3,7 +3,7 @@ package edu.aku.akuh_health_first.fragments;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.widget.DrawerLayout;
-import android.support.v4.widget.SwipeRefreshLayout;
+
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -15,6 +15,7 @@ import android.view.ViewGroup;
 import android.view.animation.AnimationUtils;
 import android.view.animation.LayoutAnimationController;
 import android.widget.AdapterView;
+import android.widget.ImageView;
 
 import com.google.gson.JsonObject;
 import com.google.gson.reflect.TypeToken;
@@ -24,6 +25,7 @@ import java.util.ArrayList;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 import butterknife.Unbinder;
 import edu.aku.akuh_health_first.R;
 import edu.aku.akuh_health_first.adapters.recyleradapters.TimelineAdapter;
@@ -49,15 +51,17 @@ public class TimelineFragment extends BaseFragment implements View.OnClickListen
 
     @BindView(R.id.recylerView)
     RecyclerView recyclerView;
-    @BindView(R.id.refreshLayout)
-    SwipeRefreshLayout refreshLayout;
+
     @BindView(R.id.empty_view)
     AnyTextView emptyView;
     Unbinder unbinder;
+    @BindView(R.id.imgSearch)
+    ImageView imgSearch;
     @BindView(R.id.edtSearchBar)
     AnyEditTextView edtSearchBar;
     private ArrayList<TimelineModel> arrData;
     private TimelineAdapter adapter;
+    private boolean isSearchBarEmpty = true;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -94,8 +98,54 @@ public class TimelineFragment extends BaseFragment implements View.OnClickListen
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         edtSearchBar.setVisibility(View.VISIBLE);
+        imgSearch.setVisibility(View.VISIBLE);
+
         bindView();
+
+        if (onCreated) {
+            return;
+        }
         serviceCall();
+
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        if (isSearchBarEmpty) {
+            imgSearch.setImageResource(R.drawable.search2);
+        } else {
+            imgSearch.setImageResource(R.drawable.ic_select_cross);
+        }
+    }
+
+    private void bindView() {
+        RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getBaseActivity());
+        recyclerView.setLayoutManager(mLayoutManager);
+        ((DefaultItemAnimator) recyclerView.getItemAnimator()).setSupportsChangeAnimations(false);
+        int resId = R.anim.layout_animation_fall_bottom;
+        LayoutAnimationController animation = AnimationUtils.loadLayoutAnimation(getContext(), resId);
+//        recyclerView.setLayoutAnimation(animation);
+        recyclerView.setAdapter(adapter);
+
+
+    }
+
+    private void searchImage() {
+
+        if (edtSearchBar.getStringTrimmed().equalsIgnoreCase("")) {
+            isSearchBarEmpty = true;
+            imgSearch.setImageResource(R.drawable.search2);
+
+        } else {
+            isSearchBarEmpty = false;
+            imgSearch.setImageResource(R.drawable.ic_select_cross);
+        }
+    }
+
+    @Override
+    public void setListeners() {
+
 
         edtSearchBar.addTextChangedListener(new TextWatcher() {
             @Override
@@ -106,6 +156,7 @@ public class TimelineFragment extends BaseFragment implements View.OnClickListen
             @Override
             public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
                 adapter.getFilter().filter(charSequence);
+                searchImage();
             }
 
             @Override
@@ -113,27 +164,7 @@ public class TimelineFragment extends BaseFragment implements View.OnClickListen
 
             }
         });
-    }
 
-    private void bindView() {
-        RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getBaseActivity());
-        recyclerView.setLayoutManager(mLayoutManager);
-        ((DefaultItemAnimator) recyclerView.getItemAnimator()).setSupportsChangeAnimations(false);
-        int resId = R.anim.layout_animation_fall_bottom;
-        LayoutAnimationController animation = AnimationUtils.loadLayoutAnimation(getContext(), resId);
-        recyclerView.setLayoutAnimation(animation);
-        recyclerView.setAdapter(adapter);
-    }
-
-    @Override
-    public void setListeners() {
-        refreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
-            @Override
-            public void onRefresh() {
-                serviceCall();
-                refreshLayout.setRefreshing(false);
-            }
-        });
     }
 
     @Override
@@ -214,6 +245,10 @@ public class TimelineFragment extends BaseFragment implements View.OnClickListen
 
     }
 
+    @OnClick(R.id.imgSearch)
+    public void onViewClicked() {
+        edtSearchBar.setText("");
+    }
 
     private void showEmptyView() {
         emptyView.setVisibility(View.VISIBLE);

@@ -109,8 +109,7 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener, 
         ((DefaultItemAnimator) recyclerHome.getItemAnimator()).setSupportsChangeAnimations(false);
         int resId = R.anim.layout_animation_fall_bottom;
         LayoutAnimationController animation = AnimationUtils.loadLayoutAnimation(getContext(), resId);
-        recyclerHome.setLayoutAnimation(animation);
-//        recyclerHome.setItemAnimator(new DefaultItemAnimator());
+//        recyclerHome.setLayoutAnimation(animation);
         recyclerHome.setAdapter(adaptHome);
         serviceCall();
     }
@@ -203,7 +202,7 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener, 
         titleBar.resetViews();
         titleBar.setVisibility(View.VISIBLE);
         titleBar.showSidebar(getBaseActivity());
-        titleBar.setTitle("AKUH Family Hifazat");
+        titleBar.setTitle("Family Hifazat");
         titleBar.setRightButton(R.drawable.logout_icon, new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -255,35 +254,34 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener, 
     @Override
     public void onItemClick(int position, Object object) {
         if (object instanceof UserDetailModel) {
+            if (getBaseActivity().getSupportFragmentManager().getBackStackEntryCount() == 1) {
 
-            if (getCurrentUser().getMRNumber().equals(((UserDetailModel) object).getMRNumber())) {
-                getBaseActivity().addDockableFragment(HomeDetailFragment.newInstance());
-                return;
-            }
-
-            for (UserDetailModel userDetailModel : arrUserLists) {
-                userDetailModel.setSelected(false);
-            }
-            arrUserLists.get(position).setSelected(true);
-            sharedPreferenceManager.putObject(AppConstants.KEY_CURRENT_USER_MODEL, object);
-            adaptHome.notifyDataSetChanged();
-
-            new Handler().postDelayed(new Runnable() {
-                @Override
-                public void run() {
+                if (getCurrentUser().getMRNumber().equals(((UserDetailModel) object).getMRNumber())) {
                     getBaseActivity().addDockableFragment(HomeDetailFragment.newInstance());
+                    return;
                 }
-            }, 800);
 
+                for (UserDetailModel userDetailModel : arrUserLists) {
+                    userDetailModel.setSelected(false);
+                }
+                arrUserLists.get(position).setSelected(true);
+                sharedPreferenceManager.putObject(AppConstants.KEY_CURRENT_USER_MODEL, object);
+                adaptHome.notifyDataSetChanged();
+
+                new Handler().postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        getBaseActivity().addDockableFragment(HomeDetailFragment.newInstance());
+                    }
+                }, 500);
+
+            }
         }
     }
-
     @OnClick(R.id.contListItem)
     public void onViewClicked() {
-        subscriber.setSelected(true);
-        sharedPreferenceManager.putObject(AppConstants.KEY_CURRENT_USER_MODEL, subscriber);
-        adaptHome.notifyDataSetChanged();
-        getBaseActivity().addDockableFragment(HomeDetailFragment.newInstance());
+
+
     }
 
     @Override
@@ -291,6 +289,9 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener, 
         switch (event) {
             case Events.ON_CARD_MODEL_UPDATE:
                 onGetCardSuccessfully((CardMemberDetail) data);
+                break;
+            case Events.ON_HOME_PRESSED:
+                setTitlebar((TitleBar) data);
                 break;
         }
     }

@@ -3,7 +3,7 @@ package edu.aku.akuh_health_first.fragments;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.widget.DrawerLayout;
-import android.support.v4.widget.SwipeRefreshLayout;
+
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -46,8 +46,7 @@ public class NeurophysiologyFragment extends BaseFragment implements View.OnClic
 
     @BindView(R.id.recylerView)
     RecyclerView recyclerNeurophysiology;
-    @BindView(R.id.refreshLayout)
-    SwipeRefreshLayout refreshLayout;
+
     Unbinder unbinder;
     @BindView(R.id.empty_view)
     AnyTextView emptyView;
@@ -63,7 +62,7 @@ public class NeurophysiologyFragment extends BaseFragment implements View.OnClic
         adaptNeuropysiology = new NeurophysiologyAdapter(getBaseActivity(), arrNeuropysiologyLists, this);
     }
 
-    public static NeurophysiologyFragment newInstance(boolean isFromTimeline,  int patientVisitAdmissionID) {
+    public static NeurophysiologyFragment newInstance(boolean isFromTimeline, int patientVisitAdmissionID) {
 
         Bundle args = new Bundle();
 
@@ -93,6 +92,9 @@ public class NeurophysiologyFragment extends BaseFragment implements View.OnClic
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         bindView();
+        if (onCreated) {
+            return;
+        }
         serviceCall();
     }
 
@@ -102,19 +104,13 @@ public class NeurophysiologyFragment extends BaseFragment implements View.OnClic
         ((DefaultItemAnimator) recyclerNeurophysiology.getItemAnimator()).setSupportsChangeAnimations(false);
         int resId = R.anim.layout_animation_fall_bottom;
         LayoutAnimationController animation = AnimationUtils.loadLayoutAnimation(getContext(), resId);
-        recyclerNeurophysiology.setLayoutAnimation(animation);
+//        recyclerNeurophysiology.setLayoutAnimation(animation);
         recyclerNeurophysiology.setAdapter(adaptNeuropysiology);
     }
 
     @Override
     public void setListeners() {
-        refreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
-            @Override
-            public void onRefresh() {
-                serviceCall();
-                refreshLayout.setRefreshing(false);
-            }
-        });
+
     }
 
     @Override
@@ -176,7 +172,6 @@ public class NeurophysiologyFragment extends BaseFragment implements View.OnClic
     }
 
 
-
     private void serviceCall() {
         SearchModel model = new SearchModel();
         model.setMRNumber(getCurrentUser().getMRNumber());
@@ -184,7 +179,8 @@ public class NeurophysiologyFragment extends BaseFragment implements View.OnClic
             model.setVisitID(String.valueOf(patientVisitAdmissionID));
         } else {
             model.setVisitID(null);
-        }        new WebServices(getBaseActivity(),
+        }
+        new WebServices(getBaseActivity(),
                 getToken(),
                 BaseURLTypes.AHFA_BASE_URL)
                 .webServiceRequestAPIForArray(WebServiceConstants.METHOD_NEUROPHIOLOGY,
@@ -219,13 +215,13 @@ public class NeurophysiologyFragment extends BaseFragment implements View.OnClic
     }
 
     private void showEmptyView() {
-        refreshLayout.setVisibility(View.GONE);
+
         emptyView.setVisibility(View.VISIBLE);
     }
 
     private void showView() {
         bindView();
         emptyView.setVisibility(View.GONE);
-        refreshLayout.setVisibility(View.VISIBLE);
+
     }
 }

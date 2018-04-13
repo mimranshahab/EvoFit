@@ -16,18 +16,20 @@
         android:layout_weight="1"
         android:animateLayoutChanges="true"
         app:cardCornerRadius="@dimen/x10dp"
-        app:cardBackgroundColor="@color/txt_aku_blue"
+        app:cardBackgroundColor="@color/summary_blue"
 
         >
 
-        <FrameLayout
+        <LinearLayout
             android:id="@+id/frameColorCode"
+            android:orientation="vertical"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
 
             >
 
             <LinearLayout
+                android:id="@+id/contDate"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
@@ -44,10 +46,10 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_alignParentLeft="true"
-                        android:text="Start Date: "
+                        android:text="Start Date"
                         android:textColor="@color/c_white"
                         android:textSize="@dimen/s13"
-                        app:typeface="@string/font_bold" />
+                        app:typeface="@string/font_regular" />
 
                     <edu.aku.akuh_health_first.widget.AnyTextView
                         android:id="@+id/txtStartDate"
@@ -70,10 +72,10 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_alignParentLeft="true"
-                        android:text="Stop Date: "
+                        android:text="Stop Date"
                         android:textColor="@color/c_white"
                         android:textSize="@dimen/s13"
-                        app:typeface="@string/font_bold" />
+                        app:typeface="@string/font_regular" />
 
                     <edu.aku.akuh_health_first.widget.AnyTextView
                         android:id="@+id/txtStopDate"
@@ -93,8 +95,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_gravity="center_horizontal"
-                android:layout_marginTop="@dimen/x50dp"
-                android:background="@drawable/round_edges_topview"
+                 android:background="@drawable/round_edges_topview"
                 android:gravity="center_vertical"
                 android:orientation="horizontal">
 
@@ -119,7 +120,7 @@
                             android:layout_margin="@dimen/x5dp"
                             android:scaleType="centerCrop"
                             android:src="@drawable/shape_circle"
-                            android:tint="@color/txt_aku_blue"
+                            android:tint="@color/medicine_green"
                             />
 
                         <ImageView
@@ -244,7 +245,7 @@
             <!--android:orientation="horizontal">-->
 
             <!--</LinearLayout>-->
-        </FrameLayout>
+        </LinearLayout>
     </android.support.v7.widget.CardView>
 
 

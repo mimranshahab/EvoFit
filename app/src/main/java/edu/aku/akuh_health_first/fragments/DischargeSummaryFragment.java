@@ -3,7 +3,7 @@ package edu.aku.akuh_health_first.fragments;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.widget.DrawerLayout;
-import android.support.v4.widget.SwipeRefreshLayout;
+
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -44,8 +44,7 @@ import edu.aku.akuh_health_first.widget.AnyTextView;
 public class DischargeSummaryFragment extends BaseFragment implements View.OnClickListener, OnItemClickListener {
     @BindView(R.id.recylerView)
     RecyclerView recylerViewDischageSummary;
-    @BindView(R.id.refreshLayout)
-    SwipeRefreshLayout refreshLayout;
+
     @BindView(R.id.empty_view)
     AnyTextView emptyView;
 
@@ -82,6 +81,9 @@ public class DischargeSummaryFragment extends BaseFragment implements View.OnCli
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         bindView();
+        if (onCreated) {
+            return;
+        }
         serviceCall();
     }
 
@@ -91,7 +93,7 @@ public class DischargeSummaryFragment extends BaseFragment implements View.OnCli
         ((DefaultItemAnimator) recylerViewDischageSummary.getItemAnimator()).setSupportsChangeAnimations(false);
         int resId = R.anim.layout_animation_fall_bottom;
         LayoutAnimationController animation = AnimationUtils.loadLayoutAnimation(getContext(), resId);
-        recylerViewDischageSummary.setLayoutAnimation(animation);
+//        recylerViewDischageSummary.setLayoutAnimation(animation);
         recylerViewDischageSummary.setAdapter(adapterDischargesummary);
     }
 
@@ -152,13 +154,7 @@ public class DischargeSummaryFragment extends BaseFragment implements View.OnCli
 
     @Override
     public void setListeners() {
-        refreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
-            @Override
-            public void onRefresh() {
-                serviceCall();
-                refreshLayout.setRefreshing(false);
-            }
-        });
+
     }
 
     @Override

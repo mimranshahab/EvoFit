@@ -11,5 +11,5 @@
         android:color="@color/base_reddish" />
 
 
-    <corners android:radius="@dimen/x8dp" />
+    <corners android:radius="@dimen/x6dp" />
 </shape>

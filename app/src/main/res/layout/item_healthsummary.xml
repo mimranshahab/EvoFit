@@ -29,7 +29,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:padding="@dimen/x2dp"
-                    android:src="@drawable/lab_report" />
+                    android:src="@drawable/lab_report"
+                    android:tint="@color/colorPrimaryDark" />
 
                 <edu.aku.akuh_health_first.widget.AnyTextView
                     android:id="@+id/txtTitle"
@@ -88,7 +89,7 @@
                                 android:layout_height="@dimen/x8dp"
                                 android:layout_marginRight="@dimen/x5dp"
                                 android:scaleType="centerCrop"
-                                android:src="@drawable/shape_circle"
+                                android:src="@drawable/curve_edges_square_bullet"
                                 android:tint="@color/base_amber"
                                 android:visibility="visible" />
 
@@ -125,9 +126,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
-                    android:padding="@dimen/x10dp"
-                    android:src="@drawable/img_go"
-                    android:tint="@color/base_reddish" />
+                    android:src="@drawable/ic_next_arrow"
+                    android:tint="@color/colorPrimaryDark" />
             </LinearLayout>
 
 

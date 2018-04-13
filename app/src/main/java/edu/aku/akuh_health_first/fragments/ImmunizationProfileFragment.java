@@ -3,7 +3,7 @@ package edu.aku.akuh_health_first.fragments;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.widget.DrawerLayout;
-import android.support.v4.widget.SwipeRefreshLayout;
+
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -49,8 +49,7 @@ public class ImmunizationProfileFragment extends BaseFragment implements View.On
     @BindView(R.id.recylerView)
     RecyclerView recyclerView;
     Unbinder unbinder;
-    @BindView(R.id.refreshLayout)
-    SwipeRefreshLayout refreshLayout;
+
     @BindView(R.id.fab)
     FloatingActionButton mFab;
     @BindView(R.id.empty_view)
@@ -60,6 +59,7 @@ public class ImmunizationProfileFragment extends BaseFragment implements View.On
     boolean isFromTimeline;
     int patientVisitAdmissionID;
     private ArrayList<SpinnerModel> arrUsedVaccineDes = new ArrayList<>();
+    String IMMUNIZATION_RECORD = "No Record Found";
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -107,19 +107,12 @@ public class ImmunizationProfileFragment extends BaseFragment implements View.On
         ((DefaultItemAnimator) recyclerView.getItemAnimator()).setSupportsChangeAnimations(false);
         int resId = R.anim.layout_animation_fall_bottom;
         LayoutAnimationController animation = AnimationUtils.loadLayoutAnimation(getContext(), resId);
-        recyclerView.setLayoutAnimation(animation);
+//        recyclerView.setLayoutAnimation(animation);
         recyclerView.setAdapter(adapterImmunization);
     }
 
     @Override
     public void setListeners() {
-        refreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
-            @Override
-            public void onRefresh() {
-                isImmunizationRecordExistServce();
-                refreshLayout.setRefreshing(false);
-            }
-        });
 
         mFab.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -201,14 +194,14 @@ public class ImmunizationProfileFragment extends BaseFragment implements View.On
                                 if (arrImmunization.size() > 0) {
                                     showView();
                                 } else {
-                                    showEmptyView();
+                                    showEmptyView(IMMUNIZATION_RECORD);
                                 }
                             }
 
                             @Override
                             public void onError() {
 //                                UIHelper.showShortToastInCenter(getContext(), "failure");
-                                showEmptyView();
+                                showEmptyView(IMMUNIZATION_RECORD);
                             }
                         });
 
@@ -238,34 +231,30 @@ public class ImmunizationProfileFragment extends BaseFragment implements View.On
                                     getVaccineScheduleService();
                                 } else {
                                     mFab.setVisibility(View.GONE);
-                                    showEmptyView("No Immunization Record Found");
+
+                                    showEmptyView(IMMUNIZATION_RECORD);
                                 }
                             }
 
                             @Override
                             public void onError() {
                                 mFab.setVisibility(View.GONE);
-                                showEmptyView("No Immunization Record Found");
+                                showEmptyView(IMMUNIZATION_RECORD);
                             }
                         });
 
     }
 
     private void showEmptyView(String text) {
-        refreshLayout.setVisibility(View.GONE);
+
         emptyView.setVisibility(View.VISIBLE);
         emptyView.setText(text);
     }
 
 
-    private void showEmptyView() {
-        refreshLayout.setVisibility(View.GONE);
-        emptyView.setVisibility(View.VISIBLE);
-    }
-
     private void showView() {
         bindView();
         emptyView.setVisibility(View.GONE);
-        refreshLayout.setVisibility(View.VISIBLE);
+
     }
 }

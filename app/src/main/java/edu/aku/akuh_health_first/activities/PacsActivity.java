@@ -1,6 +1,7 @@
 package edu.aku.akuh_health_first.activities;
 
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
@@ -46,6 +47,7 @@ public class PacsActivity extends AppCompatActivity {
     AnyTextView txtUserName;
 
     AnyTextView txtMRnumber;
+    AnyTextView txtStudyTitle;
     ProgressBar progressBar;
 
     private int pointer;
@@ -69,7 +71,6 @@ public class PacsActivity extends AppCompatActivity {
         settitlebar();
 
 
-
         SharedPreferenceManager sharedPreferenceManager = SharedPreferenceManager.getInstance(this);
         String fromJson = sharedPreferenceManager.getString("JSON_STRING_KEY");
 
@@ -80,6 +81,7 @@ public class PacsActivity extends AppCompatActivity {
         txttotalCount.setText("Total count " + pacsList.size() + "");
         txtUserName.setText(pacsModel.getPatient_Name());
         txtMRnumber.setText(pacsModel.getPatientMRN());
+        txtStudyTitle.setText(pacsModel.getStudyTitle());
 
         uriArrToTuple(pacsList.size());
         selectedTupleModel = arrTupleModel.get(0);
@@ -90,7 +92,27 @@ public class PacsActivity extends AppCompatActivity {
             updateData(arrTupleModel.get(0));
         }
         setListeners();
+
+
         indicatorSeekBar.setProgress(0);
+
+        if (arrTupleModel.size() <= 1) {
+            btnNextBatch.setEnabled(false);
+            btnPreviousBatch.setEnabled(false);
+            btnNextBatch.setAlpha(0.4f);
+            btnPreviousBatch.setAlpha(0.4f);
+        } else {
+            btnNextBatch.setEnabled(true);
+            btnPreviousBatch.setEnabled(false);
+            btnNextBatch.setAlpha(1f);
+            btnPreviousBatch.setAlpha(1f);
+        }
+
+        if (pacsList.size() <= 1) {
+            indicatorSeekBar.setVisibility(View.GONE);
+        } else {
+            indicatorSeekBar.setVisibility(View.VISIBLE);
+        }
 
 
     }
@@ -110,6 +132,7 @@ public class PacsActivity extends AppCompatActivity {
         progressbar = findViewById(R.id.progressBar);
         txtUserName = findViewById(R.id.txtNamePacs);
         txtMRnumber = findViewById(R.id.txtMRNPacs);
+        txtStudyTitle = findViewById(R.id.txtStudyTitle);
 
     }
 
@@ -138,7 +161,22 @@ public class PacsActivity extends AppCompatActivity {
         titlebar.setVisibility(View.VISIBLE);
         titlebar.showBackButton(this);
         titlebar.setTitle("Radiology Images");
+        titlebar.setRightButton2(this, R.drawable.b_home_icon, null, new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                clearAllActivitiesExceptThis(HomeActivity.class);
+            }
+        });
 
+    }
+
+    public void clearAllActivitiesExceptThis(Class<?> cls) {
+        Intent intents = new Intent(this, cls);
+        intents.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK
+                | Intent.FLAG_ACTIVITY_CLEAR_TOP
+                | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+        startActivity(intents);
+        finish();
     }
 
     private void uriArrToTuple(int size) {

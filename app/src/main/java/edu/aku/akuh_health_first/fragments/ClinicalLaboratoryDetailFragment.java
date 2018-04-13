@@ -49,7 +49,7 @@ public class ClinicalLaboratoryDetailFragment extends BaseFragment implements Vi
     AnyTextView txtSpecimenNumber;
     @BindView(R.id.txtReqDatetime)
     AnyTextView txtReqDatetime;
-//    @BindView(R.id.txtPhysicianName)
+    //    @BindView(R.id.txtPhysicianName)
 //    AnyTextView txtPhysicianName;
     @BindView(R.id.txtCollecDatetime)
     AnyTextView txtCollecDatetime;
@@ -109,8 +109,6 @@ public class ClinicalLaboratoryDetailFragment extends BaseFragment implements Vi
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         bindView();
-
-
         arrLabDetail.clear();
         arrLabDetail.addAll(laboratoryDetailModel.getLstLaboratorySpecimenResults());
         adapterClinicalLabDetail.notifyDataSetChanged();
@@ -124,7 +122,7 @@ public class ClinicalLaboratoryDetailFragment extends BaseFragment implements Vi
         ((DefaultItemAnimator) listClinicalLabResult.getItemAnimator()).setSupportsChangeAnimations(false);
         int resId = R.anim.layout_animation_fall_bottom;
         LayoutAnimationController animation = AnimationUtils.loadLayoutAnimation(getContext(), resId);
-        listClinicalLabResult.setLayoutAnimation(animation);
+//        listClinicalLabResult.setLayoutAnimation(animation);
         listClinicalLabResult.setAdapter(adapterClinicalLabDetail);
     }
 
@@ -192,7 +190,7 @@ public class ClinicalLaboratoryDetailFragment extends BaseFragment implements Vi
         historyDialogFrag.setResultPrevious1Date(model.getPrevResult1Dttm());
         historyDialogFrag.setResultPrevious2Date(model.getPrevResult2Dttm());
         historyDialogFrag.setCurrentResult(model.getResult());
-        historyDialogFrag.setCurrentDate(model.getResultVerifyDttm());
+        historyDialogFrag.setCurrentDate("Current Result");
 
 
         historyDialogFrag.show(getFragmentManager(), null);

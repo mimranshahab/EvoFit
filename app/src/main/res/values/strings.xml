@@ -4,13 +4,15 @@
     <string name="table_name">Table</string>
     <!--FONTS-->
 
-    <string name="font_regular">HelveticaNeue Light.ttf</string>
-    <string name="font_bold">HelveticaNeue Medium.ttf</string>
+    <!--<string name="font_regular">HelveticaNeue Light.ttf</string>-->
+    <!--<string name="font_bold">HelveticaNeue Medium.ttf</string>-->
+
+    <string name="font_regular">Roboto-Light_D.ttf</string>
+    <string name="font_bold">Roboto-Regular_1B.ttf</string>
+
     <string name="font_micross">micross.ttf</string>
     <string name="font_san_regular">911Fonts.com_MicrosoftSansSerifRegular__-_911fonts.com_fonts_oLOS.ttf</string>
 
-    <!--<string name="font_regular">Roboto-Light_D.ttf</string>-->
-    <!--<string name="font_bold">Roboto-Regular_1B.ttf</string>-->
     <string name="pick_image_intent_text">Choose an image</string>
 
     <!--Side Bar-->
@@ -71,8 +73,8 @@
     <string name="do_you_want_to_rate_your_last_nshopping_experience">Do you want to rate your last  shopping experience?</string>
     <string name="delivery_speed">Delivery Speed</string>
     <string name="product_accuracy">Product accuracy</string>
-    <string name="yes">YES</string>
-    <string name="no">NO</string>
+    <string name="yes">Yes</string>
+    <string name="no">No</string>
     <!--popup Rating-->
 
     <string name="generic">Lorem ipsum dolor sit amet, rutrum tempus nascetur parturient ipsum lobortis, vel iaculis posuere leo odio, cum velit amet at vestibulum non, ac eiusmod ornare dictum, in praesent sed. Tincidunt pellentesque. Tellus earum a, wisi tempus suspendisse quam dui adipiscing. Sapien morbi scelerisque vitae sit, molestie suscipit quis cras parturient ipsum, sodales turpis, fusce ultrices quam vestibulum nec sit malesuada. Nonummy ultricies placerat integer vel similique, eu vestibulum volutpat quisque eget, porttitor vulputate morbi quam eros augue, amet turpis, et elit mauris vehicula. Malesuada donec erat, ut penatibus rutrum, amet lectus arcu. Dis suspendisse itaque dis dolor semper, justo amet condimentum nunc nibh quis etiam, luctus diam in enim donec id nam, ante dolor ultrices nam consequat aliquam. Tincidunt aliquam metus nulla eu quam integer, at sem in pellentesque ipsum, libero diam eos iaculis aliquam libero, a per vestibulum felis arcu. Et eros nullam est hymenaeos, libero leo, consequat a vehicula, vitae massa dictumst.

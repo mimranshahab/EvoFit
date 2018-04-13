@@ -3,7 +3,7 @@ package edu.aku.akuh_health_first.fragments;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.widget.DrawerLayout;
-import android.support.v4.widget.SwipeRefreshLayout;
+
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -48,8 +48,7 @@ public class EndoscopyFragment extends BaseFragment implements View.OnClickListe
 
     @BindView(R.id.recylerView)
     RecyclerView recyclerView;
-    @BindView(R.id.refreshLayout)
-    SwipeRefreshLayout refreshLayout;
+
 
     Unbinder unbinder;
     @BindView(R.id.empty_view)
@@ -96,6 +95,9 @@ public class EndoscopyFragment extends BaseFragment implements View.OnClickListe
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         bindView();
+        if (onCreated) {
+            return;
+        }
         serviceCall();
     }
 
@@ -105,19 +107,13 @@ public class EndoscopyFragment extends BaseFragment implements View.OnClickListe
         ((DefaultItemAnimator) recyclerView.getItemAnimator()).setSupportsChangeAnimations(false);
         int resId = R.anim.layout_animation_fall_bottom;
         LayoutAnimationController animation = AnimationUtils.loadLayoutAnimation(getContext(), resId);
-        recyclerView.setLayoutAnimation(animation);
+//        recyclerView.setLayoutAnimation(animation);
         recyclerView.setAdapter(adapterEndoscopy);
     }
 
     @Override
     public void setListeners() {
-        refreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
-            @Override
-            public void onRefresh() {
-                serviceCall();
-                refreshLayout.setRefreshing(false);
-            }
-        });
+
     }
 
     @Override

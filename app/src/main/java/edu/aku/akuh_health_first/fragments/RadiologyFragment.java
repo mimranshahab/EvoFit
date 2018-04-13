@@ -3,7 +3,7 @@ package edu.aku.akuh_health_first.fragments;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.widget.DrawerLayout;
-import android.support.v4.widget.SwipeRefreshLayout;
+
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -46,8 +46,7 @@ public class RadiologyFragment extends BaseFragment implements View.OnClickListe
 
     @BindView(R.id.recylerView)
     RecyclerView recyclerView;
-    @BindView(R.id.refreshLayout)
-    SwipeRefreshLayout refreshLayout;
+
     Unbinder unbinder;
     @BindView(R.id.empty_view)
     AnyTextView emptyView;
@@ -63,7 +62,7 @@ public class RadiologyFragment extends BaseFragment implements View.OnClickListe
         adapterRadiology = new RadiologyAdapter(getBaseActivity(), arrData, this);
     }
 
-    public static RadiologyFragment newInstance(boolean isFromTimeline,  int patientVisitAdmissionID) {
+    public static RadiologyFragment newInstance(boolean isFromTimeline, int patientVisitAdmissionID) {
 
         Bundle args = new Bundle();
         RadiologyFragment fragment = new RadiologyFragment();
@@ -96,6 +95,10 @@ public class RadiologyFragment extends BaseFragment implements View.OnClickListe
 
         bearerTokenCall();
         bindView();
+
+        if (onCreated) {
+            return;
+        }
         serviceCall();
 
 
@@ -122,19 +125,13 @@ public class RadiologyFragment extends BaseFragment implements View.OnClickListe
         ((DefaultItemAnimator) recyclerView.getItemAnimator()).setSupportsChangeAnimations(false);
         int resId = R.anim.layout_animation_fall_bottom;
         LayoutAnimationController animation = AnimationUtils.loadLayoutAnimation(getContext(), resId);
-        recyclerView.setLayoutAnimation(animation);
+//        recyclerView.setLayoutAnimation(animation);
         recyclerView.setAdapter(adapterRadiology);
     }
 
     @Override
     public void setListeners() {
-        refreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
-            @Override
-            public void onRefresh() {
-                serviceCall();
-                refreshLayout.setRefreshing(false);
-            }
-        });
+
     }
 
     @Override
@@ -204,7 +201,7 @@ public class RadiologyFragment extends BaseFragment implements View.OnClickListe
         model.setMRNumber(getCurrentUser().getMRNumber());
         if (isFromTimeline) {
             model.setMRNumber(getCurrentUser().getMRNumber());
-            model.setVisitID(patientVisitAdmissionID+"");
+            model.setVisitID(patientVisitAdmissionID + "");
         } else {
             model.setVisitID(null);
         }
@@ -247,14 +244,14 @@ public class RadiologyFragment extends BaseFragment implements View.OnClickListe
     }
 
     private void showEmptyView() {
-        refreshLayout.setVisibility(View.GONE);
+
         emptyView.setVisibility(View.VISIBLE);
     }
 
     private void showView() {
         bindView();
         emptyView.setVisibility(View.GONE);
-        refreshLayout.setVisibility(View.VISIBLE);
+
     }
 
 }

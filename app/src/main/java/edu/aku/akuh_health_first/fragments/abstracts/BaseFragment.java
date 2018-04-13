@@ -51,11 +51,13 @@ public abstract class BaseFragment extends Fragment implements View.OnClickListe
     protected View view;
     public SharedPreferenceManager sharedPreferenceManager;
     public String TAG = "Logging Tag";
+    public boolean onCreated = false;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         sharedPreferenceManager = SharedPreferenceManager.getInstance(getContext());
+        onCreated = false;
     }
 
     @Override
@@ -120,17 +122,23 @@ public abstract class BaseFragment extends Fragment implements View.OnClickListe
 
     public void emptyBackStack() {
         FragmentManager fm = getFragmentManager();
+        if (fm == null) return;
         for (int i = 0; i < fm.getBackStackEntryCount(); i++) {
             fm.popBackStack();
         }
     }
 
     public void popBackStack() {
-        getFragmentManager().popBackStack();
+        if (getFragmentManager() == null) {
+            return;
+        } else {
+            getFragmentManager().popBackStack();
+        }
     }
 
     public void popStackTill(int stackNumber) {
         FragmentManager fm = getFragmentManager();
+        if (fm == null) return;
         for (int i = stackNumber; i < fm.getBackStackEntryCount(); i++) {
             fm.popBackStack();
         }
@@ -144,6 +152,7 @@ public abstract class BaseFragment extends Fragment implements View.OnClickListe
     @Override
     public void onResume() {
         super.onResume();
+        onCreated = true;
         setListeners();
 
         if (getBaseActivity() != null) {
@@ -188,7 +197,7 @@ public abstract class BaseFragment extends Fragment implements View.OnClickListe
 
     Disposable subscription;
 
-    protected void notifyToAll(int event, Object data) {
+    public void notifyToAll(int event, Object data) {
         BaseApplication.getPublishSubject().onNext(new Pair<>(event, data));
     }
 

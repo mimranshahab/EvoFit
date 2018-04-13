@@ -6,10 +6,8 @@
         <!--android:color="@color/colorPrimary" />-->
 
     <solid
-        android:color="@color/base_green"
-        
-        />
+        android:color="#4C667F" />
 
 
-    <corners android:radius="@dimen/x8dp" />
+    <corners android:radius="@dimen/x6dp" />
 </shape>

@@ -119,6 +119,9 @@ public class HealthSummaryFragment extends BaseFragment implements OnItemClickLi
 //        setSpannyText();
 
         bindView();
+        if (onCreated) {
+            return;
+        }
         serviceCallBasicHealthSummary();
         serviceCallDetailedHealthSummary();
 
@@ -130,7 +133,7 @@ public class HealthSummaryFragment extends BaseFragment implements OnItemClickLi
         ((DefaultItemAnimator) recyclerView.getItemAnimator()).setSupportsChangeAnimations(false);
         int resId = R.anim.layout_animation_fall_bottom;
         LayoutAnimationController animation = AnimationUtils.loadLayoutAnimation(getContext(), resId);
-        recyclerView.setLayoutAnimation(animation);
+//        recyclerView.setLayoutAnimation(animation);
         recyclerView.setAdapter(adapter);
     }
 
@@ -336,12 +339,12 @@ public class HealthSummaryFragment extends BaseFragment implements OnItemClickLi
                 HealthSummaryTypes state = HealthSummaryTypes.fromStringForm(model.getWebandMobileModel().getLink());
 
                 if (state == null) {
-                    UIHelper.showToast(getContext(), "No Redirection Available");
+//                    UIHelper.showToast(getContext(), "No Redirection Available");
                     return;
                 }
                 switch (state) {
                     case Allergies:
-                        UIHelper.showToast(getContext(), "No Redirection Available");
+//                        UIHelper.showToast(getContext(), "No Redirection Available");
                         break;
                     case ClinicalLaboratory:
                         getBaseActivity().addDockableFragment(ClinicalLaboratoryFragment.newInstance(false, -1));
@@ -359,12 +362,12 @@ public class HealthSummaryFragment extends BaseFragment implements OnItemClickLi
                         getBaseActivity().addDockableFragment(TimelineFragment.newInstance());
                         break;
                     case FutureAppointment:
-                        UIHelper.showToast(getContext(), "No Redirection Available");
+//                        UIHelper.showToast(getContext(), "No Redirection Available");
                         break;
                 }
             } else {
                 if (model.getDetailedMessageMobile().isEmpty()) {
-                    UIHelper.showToast(getContext(), "No Details available");
+//                    UIHelper.showToast(getContext(), "No Details available");
                 } else {
                     showDetailDialog(model.getDetailedMessageMobile(), model.getSummaryTitle());
                 }

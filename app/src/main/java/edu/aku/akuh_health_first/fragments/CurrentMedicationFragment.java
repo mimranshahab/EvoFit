@@ -3,7 +3,7 @@ package edu.aku.akuh_health_first.fragments;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.widget.DrawerLayout;
-import android.support.v4.widget.SwipeRefreshLayout;
+
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -39,6 +39,8 @@ import edu.aku.akuh_health_first.models.SearchModel;
 import edu.aku.akuh_health_first.models.wrappers.WebResponse;
 import edu.aku.akuh_health_first.widget.AnyTextView;
 
+import static edu.aku.akuh_health_first.constatnts.AppConstants.NO_RECORD_FOUND;
+
 
 /**
  * Created by aqsa.sarwar on 1/17/2018.
@@ -49,8 +51,7 @@ public class CurrentMedicationFragment extends BaseFragment implements View.OnCl
     @BindView(R.id.recylerView)
     RecyclerView recyclerView;
     Unbinder unbinder;
-    @BindView(R.id.refreshLayout)
-    SwipeRefreshLayout refreshLayout;
+
     @BindView(R.id.fab)
     FloatingActionButton mFab;
     @BindView(R.id.empty_view)
@@ -88,7 +89,7 @@ public class CurrentMedicationFragment extends BaseFragment implements View.OnCl
         titleBar.resetViews();
         titleBar.setTitle("Medicines");
         titleBar.showBackButton(getBaseActivity());
-        titleBar.setUserDisplay(sharedPreferenceManager.getCurrentUser(),getContext());
+        titleBar.setUserDisplay(sharedPreferenceManager.getCurrentUser(), getContext());
         titleBar.showHome(getBaseActivity());
     }
 
@@ -97,18 +98,17 @@ public class CurrentMedicationFragment extends BaseFragment implements View.OnCl
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         bindView();
-
         updateData();
 
     }
 
     private void updateData() {
-        if (!sharedPreferenceManager.getCurrentUser().getVisitDetail().getIsPatientExists()) {
-            serviceCall();
-            mFab.setVisibility(View.VISIBLE);
-        } else {
+        if (sharedPreferenceManager.getCurrentUser().getVisitDetail().getIsPatientExists()) {
             showEmptyView("No Current Medication since patient is onBoard");
             mFab.setVisibility(View.GONE);
+        } else {
+            mFab.setVisibility(View.VISIBLE);
+            serviceCall();
         }
     }
 
@@ -119,19 +119,12 @@ public class CurrentMedicationFragment extends BaseFragment implements View.OnCl
         ((DefaultItemAnimator) recyclerView.getItemAnimator()).setSupportsChangeAnimations(false);
         int resId = R.anim.layout_animation_fall_bottom;
         LayoutAnimationController animation = AnimationUtils.loadLayoutAnimation(getContext(), resId);
-        recyclerView.setLayoutAnimation(animation);
+//        recyclerView.setLayoutAnimation(animation);
         recyclerView.setAdapter(adapter);
     }
 
     @Override
     public void setListeners() {
-        refreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
-            @Override
-            public void onRefresh() {
-                updateData();
-                refreshLayout.setRefreshing(false);
-            }
-        });
 
         mFab.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -172,10 +165,6 @@ public class CurrentMedicationFragment extends BaseFragment implements View.OnCl
 
     @Override
     public void onItemClick(int position, Object object) {
-        if (object instanceof MedicationProfileModel) {
-//            getBaseActivity().addDockableFragment(AddUpdateVaccineFragment.newInstance(false, (MedicationProfileModel) object, arrUsedVaccineDes));
-
-        }
 
     }
 
@@ -206,17 +195,14 @@ public class CurrentMedicationFragment extends BaseFragment implements View.OnCl
 
                                 if (arrayList.size() > 0) {
                                     if (arrayList.get(0).getMedicineexceedlimit()) {
-                                        showView();
-
                                         mFab.setEnabled(false);
                                         UIHelper.showToast(getContext(), "Medication Limit Exceed.");
                                     } else {
-                                        showView();
                                         mFab.setEnabled(true);
                                     }
                                 } else {
-                                    showEmptyView();
-                                }
+                                    showEmptyView(NO_RECORD_FOUND);
+                                 }
 
                                 arrData.clear();
                                 arrData.addAll(arrayList);
@@ -226,26 +212,23 @@ public class CurrentMedicationFragment extends BaseFragment implements View.OnCl
 
                             @Override
                             public void onError() {
-                                showEmptyView();
+                                showEmptyView(NO_RECORD_FOUND);
                             }
                         });
 
     }
 
-    private void showEmptyView() {
-        refreshLayout.setVisibility(View.GONE);
-        emptyView.setVisibility(View.VISIBLE);
-    }
-
     private void showEmptyView(String text) {
-        refreshLayout.setVisibility(View.GONE);
+
         emptyView.setVisibility(View.VISIBLE);
         emptyView.setText(text);
+
+        switchTab();
     }
 
-    private void showView() {
-        bindView();
-        emptyView.setVisibility(View.GONE);
-        refreshLayout.setVisibility(View.VISIBLE);
+    private void switchTab() {
+        if (((MedicationTabLayout)getParentFragment()) != null) {
+            ((MedicationTabLayout)getParentFragment()).viewpager.setCurrentItem(1, true);
+        }
     }
 }

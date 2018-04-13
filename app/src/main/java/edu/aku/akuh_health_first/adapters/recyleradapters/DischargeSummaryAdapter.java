@@ -9,7 +9,6 @@ import android.view.ViewGroup;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
 
 import java.util.ArrayList;
 
@@ -28,7 +27,6 @@ public class DischargeSummaryAdapter extends RecyclerView.Adapter<DischargeSumma
     private final OnItemClickListener onItemClick;
 
 
-
     private Activity activity;
     private ArrayList<DischargeSummaryModel> arrdischargeSummaryModels;
 
@@ -43,7 +41,7 @@ public class DischargeSummaryAdapter extends RecyclerView.Adapter<DischargeSumma
 
         View itemView = null;
         itemView = LayoutInflater.from(activity)
-                .inflate(R.layout.item_cps_nps_endo_summary_, parent, false);
+                .inflate(R.layout.item_discharge_summary, parent, false);
         return new ViewHolder(itemView);
     }
 
@@ -52,27 +50,34 @@ public class DischargeSummaryAdapter extends RecyclerView.Adapter<DischargeSumma
 
         final DischargeSummaryModel DischargeSummaryModel = arrdischargeSummaryModels.get(holder.getAdapterPosition());
 
-        holder.txtName.setText(DischargeSummaryModel.getSummaryServiceID());
-        holder.txtDateTime.setText(DischargeSummaryModel.getLastFileDttm());
+        holder.txtReportName.setText(DischargeSummaryModel.getSummaryServiceID());
+        holder.txtAdmissionDate.setText(DischargeSummaryModel.getAdmissionDateTime());
         holder.txtDrName.setText(DischargeSummaryModel.getPhyName());
-        holder.txtStatusType.setVisibility(View.INVISIBLE);
+        holder.txtDischargeDate.setText(DischargeSummaryModel.getDischargeDateTime());
+        holder.txtDischargeDisposition.setText(DischargeSummaryModel.getDischargeDisposition());
         setListener(holder, DischargeSummaryModel);
-        holder.RlReport.setVisibility(View.VISIBLE);
-        setViews(holder, activity.getResources().getColor(R.color.base_dark_gray),R.drawable.rounded_box_filled_base_grey ,R.drawable.b_dischargesummary_transparent);
+
+        if (DischargeSummaryModel.getDischargeDateTime() == null || DischargeSummaryModel.getDischargeDateTime().isEmpty()) {
+            holder.contDischargeDate.setVisibility(View.GONE);
+        } else {
+            holder.contDischargeDate.setVisibility(View.VISIBLE);
+        }
+
+//        setViews(holder, activity.getResources().getColor(R.color.base_dark_gray), R.drawable.rounded_box_filled_base_grey, R.drawable.b_dischargesummary_transparent);
 
 
     }
 
-    private void setViews(ViewHolder holder, int color,int backgroundResource, int img_transparent) {
-        holder.cardView2.setCardBackgroundColor(color);
-        holder.txtStatusType.setBackgroundResource(backgroundResource);
-        holder.btnReportColorCode1.setBackgroundResource(backgroundResource);
-        holder.imgIcon.setColorFilter(color);
-        holder.imgTransparent.setImageResource(img_transparent);
+    private void setViews(ViewHolder holder, int color, int backgroundResource, int img_transparent) {
+//        holder.cardView2.setCardBackgroundColor(color);
+//        holder.txtStatusType.setBackgroundResource(backgroundResource);
+//        holder.btnReportColorCode1.setBackgroundResource(backgroundResource);
+//        holder.imgIcon.setColorFilter(color);
+//        holder.imgTransparent.setImageResource(img_transparent);
     }
 
     private void setListener(final ViewHolder holder, final DischargeSummaryModel DischargeSummaryModel) {
-        holder.RlReport.setOnClickListener(new View.OnClickListener() {
+        holder.btnSummary.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 onItemClick.onItemClick(holder.getAdapterPosition(), DischargeSummaryModel);
@@ -94,34 +99,30 @@ public class DischargeSummaryAdapter extends RecyclerView.Adapter<DischargeSumma
 
 
     static class ViewHolder extends RecyclerView.ViewHolder {
-        @BindView(R.id.txtDateTime)
-        AnyTextView txtDateTime;
-        @BindView(R.id.txtStatusType)
-        AnyTextView txtStatusType;
+        @BindView(R.id.txtAdmissionDate)
+        AnyTextView txtAdmissionDate;
+        @BindView(R.id.txtDischargeDate)
+        AnyTextView txtDischargeDate;
+        @BindView(R.id.contDischargeDate)
+        LinearLayout contDischargeDate;
         @BindView(R.id.imgIcon)
         ImageView imgIcon;
-        @BindView(R.id.imgTransparent)
-        ImageView imgTransparent;
-        @BindView(R.id.txtName)
-        AnyTextView txtName;
+        @BindView(R.id.txtReportName)
+        AnyTextView txtReportName;
         @BindView(R.id.txtDrName)
         AnyTextView txtDrName;
+        @BindView(R.id.txtDischargeDisposition)
+        AnyTextView txtDischargeDisposition;
         @BindView(R.id.contListItem)
         LinearLayout contListItem;
-        @BindView(R.id.btnReportColorCode1)
-        AnyTextView btnReportColorCode1;
-        @BindView(R.id.RlReport)
-        RelativeLayout RlReport;
-        @BindView(R.id.txtGraph)
-        AnyTextView txtGraph;
-        @BindView(R.id.btnGraphColorCode)
-        AnyTextView btnGraphColorCode;
-        @BindView(R.id.RlGraph)
-        RelativeLayout RlGraph;
+        @BindView(R.id.contProfile)
+        LinearLayout contProfile;
         @BindView(R.id.frameColorCode)
-        FrameLayout frameColorCode;
-        @BindView(R.id.cardView2)
-        CardView cardView2;
+        LinearLayout frameColorCode;
+        @BindView(R.id.cardView)
+        CardView cardView;
+        @BindView(R.id.btnSummary)
+        AnyTextView btnSummary;
 
         ViewHolder(View view) {
             super(view);

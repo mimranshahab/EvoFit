@@ -113,7 +113,7 @@ public class CurrentMedicationAdapter extends RecyclerView.Adapter<CurrentMedica
         @BindView(R.id.contProfile)
         LinearLayout contProfile;
         @BindView(R.id.frameColorCode)
-        FrameLayout frameColorCode;
+        LinearLayout frameColorCode;
         @BindView(R.id.cardView)
         CardView cardView;
 

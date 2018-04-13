@@ -21,6 +21,7 @@ import edu.aku.akuh_health_first.libraries.table.model.RichText;
 import edu.aku.akuh_health_first.libraries.table.model.style.CellStyle;
 import edu.aku.akuh_health_first.libraries.table.model.style.Font;
 import edu.aku.akuh_health_first.libraries.table.model.style.TableConst;
+import edu.aku.akuh_health_first.libraries.table.util.ConstVar;
 
 public class SheetTemplate1 {
 
@@ -46,14 +47,16 @@ public class SheetTemplate1 {
 //        sheet.setFreezedRowCount(1);
 
 
-        Font whiteFontColor = Font.createDefault(context);
-        whiteFontColor.setColor(context.getResources().getColor(R.color.c_white));
-        int whiteFontIndex = sheet.getFontManager().addFont(whiteFontColor);
+        Font whiteFont = Font.createDefault(context);
+        whiteFont.setColor(context.getResources().getColor(R.color.c_white));
+        whiteFont.setFontSize(ConstVar.DEFAULTTEXTSIZE);
+        int whiteFontIndex = sheet.getFontManager().addFont(whiteFont);
 
 
-        Font blackFontColor = Font.createDefault(context);
-        blackFontColor.setColor(context.getResources().getColor(R.color.c_black));
-        int blackFontIndex = sheet.getFontManager().addFont(blackFontColor);
+        Font blackFont = Font.createDefault(context);
+        blackFont.setColor(context.getResources().getColor(R.color.c_black));
+        whiteFont.setFontSize(ConstVar.DEFAULTTEXTSIZE);
+        int blackFontIndex = sheet.getFontManager().addFont(blackFont);
 
         CellStyle cellStyle = new CellStyle();
         cellStyle.setBgColor(context.getResources().getColor(R.color.c_white_smoke)); // odd cells color

@@ -57,7 +57,6 @@ public class MainActivity extends BaseActivity {
 
 
     private void initFragments() {
-
         if (SharedPreferenceManager.getInstance(getApplicationContext()).getString(AppConstants.KEY_CARD_NUMBER) == null
                 || SharedPreferenceManager.getInstance(getApplicationContext()).getString(AppConstants.KEY_CARD_NUMBER).isEmpty()) {
             replacePermanentFramgment(LoginFragment.newInstance(),false);
@@ -65,7 +64,6 @@ public class MainActivity extends BaseActivity {
             openActivity(HomeActivity.class);
             this.finish();
         }
-
     }
 
 
@@ -83,6 +81,5 @@ public class MainActivity extends BaseActivity {
             closeApp();
         }
     }
-
 
 }

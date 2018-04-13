@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center"
+    android:padding="@dimen/x20dp"
+    android:background="@color/transparent"
+    android:fitsSystemWindows="true"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/rounded_box_white"
+        android:minHeight="450dp"
+        android:minWidth="@dimen/x350dp"
+        android:orientation="vertical">
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:padding="3dp">
+
+
+            <edu.aku.akuh_health_first.widget.AnyTextView
+                android:id="@+id/txtTitle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ellipsize="end"
+                android:gravity="center"
+                android:padding="10dp"
+                android:singleLine="true"
+                android:text="@string/title"
+                android:textColor="@color/base_amber"
+                android:textSize="16sp"
+                app:typeface="@string/font_bold" />
+
+
+        </LinearLayout>
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_margin="@dimen/x5dp"
+            android:layout_weight="1"
+            android:scrollbars="none">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/x5dp"
+                android:orientation="vertical">
+
+                <edu.aku.akuh_health_first.widget.AnyTextView
+                    android:id="@+id/txtResultComments"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center_vertical"
+                    android:padding="@dimen/x10dp"
+                    android:text="txtResultComments"
+                    android:textColor="@color/txt_aku_blue"
+                    android:textSize="@dimen/s13"
+                    app:typeface="@string/font_san_regular" />
+
+                <ImageView
+                    android:id="@+id/separator"
+                    android:layout_width="match_parent"
+                    android:layout_height="1px"
+                    android:background="@color/base_amber" />
+
+
+                <edu.aku.akuh_health_first.widget.AnyTextView
+                    android:id="@+id/txtTestComments"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center_vertical"
+                    android:padding="@dimen/x10dp"
+
+                    android:text="txtTestComments"
+                    android:textColor="@color/txt_aku_blue"
+                    android:textSize="@dimen/s13"
+                    app:typeface="@string/font_san_regular" />
+
+
+            </LinearLayout>
+
+
+        </ScrollView>
+
+
+        <edu.aku.akuh_health_first.widget.AnyTextView
+            android:id="@+id/txtOK"
+            android:layout_width="@dimen/x90dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginBottom="10dp"
+            android:layout_marginLeft="60dp"
+            android:layout_marginRight="60dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/rounded_box_filled_base_amber"
+            android:gravity="center"
+            android:padding="10dp"
+            android:text="@string/Ok"
+            android:textColor="@color/c_white"
+            android:textSize="14sp" />
+
+    </LinearLayout>
+
+
+</LinearLayout>
+
+

@@ -9,25 +9,28 @@
 
     <include layout="@layout/title_clinical_lab" />
 
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
 
+        android:background="@color/background_gray" />
 
+    <edu.aku.akuh_health_first.widget.AnyTextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/txt_aku_blue"
+        android:gravity="center_horizontal"
+        android:padding="@dimen/x5dp"
+        android:text="Result"
+        android:textColor="@color/c_white"
+        android:textSize="@dimen/s14"
+        app:typeface="@string/font_bold" />
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/listClinicalLabResult"
         android:layout_width="match_parent"
-        android:layout_marginTop="@dimen/x5dp"
-        android:layout_height="match_parent" />
-    <!--<android.support.v4.widget.SwipeRefreshLayout-->
-        <!--android:id="@+id/refreshLayout"-->
-        <!--android:layout_width="match_parent"-->
-        <!--android:layout_height="wrap_content"-->
-        <!--android:layout_marginTop="@dimen/x5dp">-->
-
-        <!--<android.support.v7.widget.RecyclerView-->
-            <!--android:id="@+id/listClinicalLabResult"-->
-            <!--android:layout_width="match_parent"-->
-            <!--android:layout_height="match_parent" />-->
-    <!--</android.support.v4.widget.SwipeRefreshLayout>-->
+        android:layout_height="match_parent"
+        android:layout_marginTop="@dimen/x5dp" />
 
 
 </LinearLayout>

@@ -52,6 +52,8 @@ public class RadiologyAdapter extends RecyclerView.Adapter<RadiologyAdapter.View
         final RadiologyModel model = arrayList.get(holder.getAdapterPosition());
         holder.txtDateTime.setText(model.getExamdate());
         holder.txtDrName.setText(model.getVisitlocation());
+        holder.txtDrName.setCompoundDrawablesWithIntrinsicBounds(R.drawable.location_visittimeline, 0, 0, 0);
+
         holder.txtName.setText(model.getExam());
 
         holder.RlReport.setVisibility(View.VISIBLE);

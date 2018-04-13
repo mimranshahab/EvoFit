@@ -12,6 +12,7 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import edu.aku.akuh_health_first.R;
+import edu.aku.akuh_health_first.widget.AnyTextView;
 
 import static android.view.View.GONE;
 import static android.view.View.VISIBLE;
@@ -35,8 +36,8 @@ public class GenericDialogFragment extends DialogFragment implements View.OnClic
     private String title;
     private String message;
 
-    private Button btn1;
-    private Button btn2;
+    private AnyTextView btn1;
+    private AnyTextView btn2;
 
     String btn1Caption = "";
     String btn2Caption = "";
@@ -87,8 +88,8 @@ public class GenericDialogFragment extends DialogFragment implements View.OnClic
         txtViewMessage = (TextView) view.findViewById(R.id.txtMessage);
         txtViewTitle = (TextView) view.findViewById(R.id.txtTitle);
 
-        btn1 = (Button) view.findViewById(R.id.btnButton1);
-        btn2 = (Button) view.findViewById(R.id.btnButton2);
+        btn1 = (AnyTextView) view.findViewById(R.id.btnButton1);
+        btn2 = (AnyTextView) view.findViewById(R.id.btnButton2);
 
 
         bindData(title, message);

@@ -75,7 +75,7 @@
                     android:layout_height="wrap_content"
                     android:layout_alignParentEnd="true"
                     android:layout_centerVertical="true"
-                    android:src="@drawable/img_go" />
+                    android:src="@drawable/ic_next_arrow" />
 
             </RelativeLayout>
 
@@ -122,8 +122,6 @@
     <edu.aku.akuh_health_first.widget.AnyTextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="@dimen/x5dp"
-        android:layout_marginRight="@dimen/x5dp"
         android:layout_marginTop="@dimen/x7dp"
         android:drawableLeft="@drawable/family_icon"
         android:drawablePadding="@dimen/x5dp"

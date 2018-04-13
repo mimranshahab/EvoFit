@@ -3,7 +3,7 @@ package edu.aku.akuh_health_first.fragments;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.widget.DrawerLayout;
-import android.support.v4.widget.SwipeRefreshLayout;
+
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -27,6 +27,7 @@ import butterknife.Unbinder;
 import edu.aku.akuh_health_first.R;
 import edu.aku.akuh_health_first.adapters.recyleradapters.CurrentMedicationAdapter;
 import edu.aku.akuh_health_first.callbacks.OnItemClickListener;
+import edu.aku.akuh_health_first.constatnts.AppConstants;
 import edu.aku.akuh_health_first.constatnts.WebServiceConstants;
 import edu.aku.akuh_health_first.enums.BaseURLTypes;
 import edu.aku.akuh_health_first.fragments.abstracts.BaseFragment;
@@ -48,8 +49,7 @@ public class PreviousMedicationFragment extends BaseFragment implements View.OnC
     @BindView(R.id.recylerView)
     RecyclerView recyclerView;
     Unbinder unbinder;
-    @BindView(R.id.refreshLayout)
-    SwipeRefreshLayout refreshLayout;
+
     @BindView(R.id.fab)
     FloatingActionButton mFab;
     @BindView(R.id.empty_view)
@@ -96,8 +96,10 @@ public class PreviousMedicationFragment extends BaseFragment implements View.OnC
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         bindView();
+        if (onCreated) {
+            return;
+        }
         serviceCall();
-//        mFab.setVisibility(View.VISIBLE);
     }
 
 
@@ -107,19 +109,13 @@ public class PreviousMedicationFragment extends BaseFragment implements View.OnC
         ((DefaultItemAnimator) recyclerView.getItemAnimator()).setSupportsChangeAnimations(false);
         int resId = R.anim.layout_animation_fall_bottom;
         LayoutAnimationController animation = AnimationUtils.loadLayoutAnimation(getContext(), resId);
-        recyclerView.setLayoutAnimation(animation);
+//        recyclerView.setLayoutAnimation(animation);
         recyclerView.setAdapter(adapter);
     }
 
     @Override
     public void setListeners() {
-        refreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
-            @Override
-            public void onRefresh() {
-                serviceCall();
-                refreshLayout.setRefreshing(false);
-            }
-        });
+
 
         mFab.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -198,27 +194,27 @@ public class PreviousMedicationFragment extends BaseFragment implements View.OnC
                                 if (arrData.size() > 0) {
                                     showView();
                                 } else {
-                                    showEmptyView();
+                                    showEmptyView(AppConstants.NO_RECORD_FOUND);
                                 }
                             }
 
                             @Override
                             public void onError() {
 //                                UIHelper.showShortToastInCenter(getContext(), "failure");
-                                showEmptyView();
+                                showEmptyView(AppConstants.NO_RECORD_FOUND);
                             }
                         });
 
     }
 
-    private void showEmptyView() {
-        refreshLayout.setVisibility(View.GONE);
+    private void showEmptyView(String text) {
+        emptyView.setText(text);
         emptyView.setVisibility(View.VISIBLE);
     }
 
     private void showView() {
         bindView();
         emptyView.setVisibility(View.GONE);
-        refreshLayout.setVisibility(View.VISIBLE);
+
     }
 }

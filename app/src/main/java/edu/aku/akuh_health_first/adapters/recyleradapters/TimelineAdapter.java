@@ -69,6 +69,15 @@ public class TimelineAdapter extends RecyclerView.Adapter<TimelineAdapter.ViewHo
         } else {
             holder.txtService.setText(timelineModel.getPatientVisitServiceDescription());
         }
+
+        if (timelineModel.getPatientVisitDischargeDate() == null || timelineModel.getPatientVisitDischargeDate().isEmpty()) {
+            holder.contDischargeDate.setVisibility(View.GONE);
+        } else {
+            holder.contDischargeDate.setVisibility(View.VISIBLE);
+            holder.txtDischargeDateTime.setText(timelineModel.getPatientVisitDischargeDate());
+        }
+
+        holder.txtVisitType.setText(timelineModel.getPatientVisitType());
         /*
         set banner color
         In-Patient ---->Blue
@@ -123,19 +132,26 @@ public class TimelineAdapter extends RecyclerView.Adapter<TimelineAdapter.ViewHo
     }
 
     static class ViewHolder extends RecyclerView.ViewHolder {
-
-        @BindView(R.id.txtFacility)
-        AnyTextView txtFacility;
         @BindView(R.id.txtVisitDateTime)
         AnyTextView txtVisitDateTime;
+        @BindView(R.id.txtDischargeDateTime)
+        AnyTextView txtDischargeDateTime;
+        @BindView(R.id.contDischargeDate)
+        LinearLayout contDischargeDate;
         @BindView(R.id.txtDoctorName)
         AnyTextView txtDoctorName;
         @BindView(R.id.txtService)
         AnyTextView txtService;
-        @BindView(R.id.cardView)
-        CardView cardView;
+        @BindView(R.id.txtFacility)
+        AnyTextView txtFacility;
+        @BindView(R.id.txtVisitType)
+        AnyTextView txtVisitType;
+        @BindView(R.id.contProfile)
+        LinearLayout contProfile;
         @BindView(R.id.frameColorCode)
         FrameLayout frameColorCode;
+        @BindView(R.id.cardView)
+        CardView cardView;
         @BindView(R.id.llColorCode)
         LinearLayout llColorCode;
 

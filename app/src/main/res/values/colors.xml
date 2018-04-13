@@ -22,12 +22,20 @@
     <color name="txt_aku_blue">#4C667F</color>
     <!--<color name="medication_light_red">#E74C3C</color>-->
     <!--<color name="base_gray">#72777A</color>-->
+
+    <color name="query_grey">#f3f5f7</color>
     <color name="base_gray">#BDBDBD</color>
     <color name="red_resistant">#DF5138</color>
     <color name="yellow_sensitive">#FFCE55</color>
     <color name="green_intermediate">#8CC474</color>
+    <color name="medicine_blue">#44A6F1</color>
+    <color name="medicine_green">#82BE6B</color>
+    <color name="summary_blue">#3F97C1</color>
+    <color name="summary_green">#A4FFB8</color>
+    <color name="summary_orange">#FFCB9C</color>
 
-
+    <color name="button_color1">#40C4FF</color>
+    <color name="button_color2">#FFAB40</color>
 
 
     <color name="colorPrimaryHalfTransparent">#4419BBDE</color>
@@ -44,7 +52,7 @@
     <color name="transparent">#00000000</color>
 
     <color name="c_light_grey">#D3D3D3</color>
-     <color name="c_black">#000000</color>
+    <color name="c_black">#000000</color>
     <color name="c_gray">#808080</color>
     <color name="c_gray_x11gray">#BEBEBE</color>
     <color name="c_grayasparagus">#465945</color>

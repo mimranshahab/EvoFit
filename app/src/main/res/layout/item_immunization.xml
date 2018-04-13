@@ -71,7 +71,7 @@
                             android:scaleType="centerCrop"
                             android:visibility="gone"
 
-                            android:src="@drawable/shape_circle"
+                            android:src="@drawable/curve_edges_square_bullet"
                             android:tint="@color/base_amber" />
 
 
@@ -135,7 +135,6 @@
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center_vertical"
-                        android:layout_margin="@dimen/x5dp"
                         android:layout_weight="1"
                         android:orientation="vertical">
 
@@ -185,24 +184,13 @@
 
                 <RelativeLayout
                     android:id="@+id/RLUpdate"
-                    android:layout_width="match_parent"
+                    android:layout_width="@dimen/x100dp"
+                    android:layout_gravity="end"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="@dimen/x10dp"
-                    android:layout_marginRight="@dimen/x10dp"
-                    android:layout_marginTop="@dimen/x10dp"
-
+                    android:layout_margin="@dimen/x3dp"
 
                     >
 
-                    <!--<Button-->
-                    <!--android:layout_width="match_parent"-->
-                    <!--android:layout_height="wrap_content"-->
-                    <!--android:background="@color/c_white"-->
-                    <!--android:gravity="center"-->
-                    <!--android:text="Update"-->
-                    <!--android:textColor="@color/text_color_grey_dark"-->
-
-                    <!--/>     -->
 
                     <edu.aku.akuh_health_first.widget.AnyTextView
                         android:id="@+id/btnupdateColorCode"

@@ -72,6 +72,7 @@ public class WebServiceConstants {
 
     public static final String METHOD_GET_RADIOLOGY_EXAMS = "RadiologyManager.GetRadiologyExams";
     public static final String METHOD_GET_RADIOLOGY_GET_EXAM_DETAIL = "RadiologyManager.GetExamDetail";
+    public static final String METHOD_GET_RADIOLOGY_GET_REPORT = "RadiologyManager.ShowReport";
 
     public static final String METHOD_NEUROPHIOLOGY = "NeurophysiologyManager.GetNeurophysiologyExam";
     public static final String METHOD_NEUROPHIOLOGY_SHOW_REPORT = "NeurophysiologyManager.ShowReport";

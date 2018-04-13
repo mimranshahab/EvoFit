@@ -42,64 +42,173 @@
                     android:padding="@dimen/x5dp">
 
 
-                    <edu.aku.akuh_health_first.widget.AnyTextView
-                        android:id="@+id/txtDoctorName"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:drawableLeft="@drawable/cardiopulmonary_doctor"
-                        android:drawablePadding="@dimen/x5dp"
-                        android:ellipsize="end"
-                        android:maxLines="1"
-                        android:padding="@dimen/x5dp"
-                        android:text="Jan 22, 2018"
-                        android:textColor="@color/txt_aku_blue"
-                        android:textSize="@dimen/s15"
-                        app:typeface="@string/font_bold" />
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="@dimen/x3dp"
+                            android:layout_weight="1"
+                            android:orientation="vertical">
+
+                            <edu.aku.akuh_health_first.widget.AnyTextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:drawablePadding="@dimen/x5dp"
+                                android:ellipsize="end"
+                                android:maxLines="1"
+                                android:padding="@dimen/x2dp"
+                                android:text="Visit Date"
+                                android:textColor="@color/txt_aku_blue"
+                                android:textSize="@dimen/s13"
+                                app:typeface="@string/font_regular" />
+
+                            <edu.aku.akuh_health_first.widget.AnyTextView
+                                android:id="@+id/txtVisitDateTime"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:drawablePadding="@dimen/x5dp"
+                                android:ellipsize="end"
+                                android:maxLines="1"
+                                android:padding="@dimen/x2dp"
+                                android:text="Jan 22, 2018"
+                                android:textColor="@color/txt_aku_blue"
+                                android:textSize="@dimen/s13"
+                                app:typeface="@string/font_regular" />
 
 
-                    <edu.aku.akuh_health_first.widget.AnyTextView
-                        android:id="@+id/txtService"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:drawableLeft="@drawable/medkit"
-                        android:drawablePadding="@dimen/x5dp"
-                        android:ellipsize="end"
-                        android:maxLines="1"
-                        android:padding="@dimen/x5dp"
-                        android:text="Jan 22, 2018"
-                        android:textColor="@color/txt_aku_blue"
-                        android:textSize="@dimen/s13"
-                        app:typeface="@string/font_regular" />
+                        </LinearLayout>
 
-                    <edu.aku.akuh_health_first.widget.AnyTextView
-                        android:id="@+id/txtFacility"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:drawableLeft="@drawable/location_visittimeline"
-                        android:drawablePadding="@dimen/x5dp"
-                        android:ellipsize="end"
-                        android:maxLines="1"
-                        android:padding="@dimen/x5dp"
-                        android:text="Jan 22, 2018"
-                        android:textColor="@color/txt_aku_blue"
-                        android:textSize="@dimen/s13"
-                        app:typeface="@string/font_regular" />
+                        <LinearLayout
+                            android:id="@+id/contDischargeDate"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginRight="@dimen/x3dp"
+                            android:layout_weight="1"
+                            android:orientation="vertical">
+
+                            <edu.aku.akuh_health_first.widget.AnyTextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:drawablePadding="@dimen/x5dp"
+                                android:ellipsize="end"
+                                android:gravity="right"
+                                android:maxLines="1"
+                                android:padding="@dimen/x2dp"
+                                android:text="Discharge Date"
+                                android:textColor="@color/txt_aku_blue"
+                                android:textSize="@dimen/s13"
+                                app:typeface="@string/font_regular" />
+
+                            <edu.aku.akuh_health_first.widget.AnyTextView
+                                android:id="@+id/txtDischargeDateTime"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:ellipsize="end"
+                                android:gravity="right"
+                                android:maxLines="1"
+                                android:padding="@dimen/x2dp"
+                                android:text="Jan 22, 2018"
+                                android:textColor="@color/txt_aku_blue"
+                                android:textSize="@dimen/s13"
+                                app:typeface="@string/font_regular" />
 
 
-                    <edu.aku.akuh_health_first.widget.AnyTextView
-                        android:id="@+id/txtVisitDateTime"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:drawableLeft="@drawable/calendar_immunization"
-                        android:drawablePadding="@dimen/x5dp"
-                        android:drawableTint="@color/txt_aku_blue"
-                        android:ellipsize="end"
-                        android:maxLines="1"
-                        android:padding="@dimen/x5dp"
-                        android:text="Jan 22, 2018"
-                        android:textColor="@color/text_color_grey"
-                        android:textSize="@dimen/s13"
-                        app:typeface="@string/font_regular" />
+                        </LinearLayout>
+
+
+                    </LinearLayout>
+
+
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="1px"
+                        android:background="@color/c_light_grey" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:orientation="vertical">
+
+
+                            <edu.aku.akuh_health_first.widget.AnyTextView
+                                android:id="@+id/txtDoctorName"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:drawableLeft="@drawable/cardiopulmonary_doctor"
+                                android:drawablePadding="@dimen/x5dp"
+                                android:ellipsize="end"
+                                android:maxLines="1"
+                                android:padding="@dimen/x5dp"
+                                android:text="Jan 22, 2018"
+                                android:textColor="@color/txt_aku_blue"
+                                android:textSize="@dimen/s15"
+                                app:typeface="@string/font_bold" />
+
+
+                            <edu.aku.akuh_health_first.widget.AnyTextView
+                                android:id="@+id/txtService"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:drawableLeft="@drawable/medkit"
+                                android:drawablePadding="@dimen/x5dp"
+                                android:ellipsize="end"
+                                android:maxLines="1"
+                                android:padding="@dimen/x5dp"
+                                android:text="Jan 22, 2018"
+                                android:textColor="@color/txt_aku_blue"
+                                android:textSize="@dimen/s13"
+                                app:typeface="@string/font_regular" />
+
+                            <edu.aku.akuh_health_first.widget.AnyTextView
+                                android:id="@+id/txtFacility"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:drawableLeft="@drawable/location_visittimeline"
+                                android:drawablePadding="@dimen/x5dp"
+                                android:ellipsize="end"
+                                android:maxLines="1"
+                                android:padding="@dimen/x5dp"
+                                android:text="Jan 22, 2018"
+                                android:textColor="@color/txt_aku_blue"
+                                android:textSize="@dimen/s13"
+                                app:typeface="@string/font_regular" />
+
+                            <edu.aku.akuh_health_first.widget.AnyTextView
+                                android:id="@+id/txtVisitType"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:drawableLeft="@drawable/ic_visit_type"
+                                android:drawablePadding="@dimen/x5dp"
+                                android:ellipsize="end"
+                                android:maxLines="1"
+                                android:padding="@dimen/x5dp"
+                                android:text="Visit Type"
+                                android:textColor="@color/txt_aku_blue"
+                                android:textSize="@dimen/s13"
+                                app:typeface="@string/font_regular" />
+
+
+                        </LinearLayout>
+
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="bottom"
+                            android:layout_marginBottom="@dimen/x10dp"
+                            android:src="@drawable/ic_next_arrow"
+                            android:tint="@color/colorPrimaryDark" />
+
+
+                    </LinearLayout>
+
 
                 </LinearLayout>
 

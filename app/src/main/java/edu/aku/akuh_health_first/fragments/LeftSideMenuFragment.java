@@ -11,6 +11,7 @@ import android.widget.ImageView;
 import android.widget.ScrollView;
 
 import edu.aku.akuh_health_first.callbacks.OnNewPacketReceivedListener;
+import edu.aku.akuh_health_first.helperclasses.ui.helper.UIHelper;
 import edu.aku.akuh_health_first.widget.AnyTextView;
 
 import butterknife.BindView;
@@ -116,7 +117,7 @@ public class LeftSideMenuFragment extends BaseFragment implements OnNewPacketRec
         genericDialogFragment.setTitle(baseFragment.getString(R.string.logout));
         genericDialogFragment.setMessage(baseFragment.getString(R.string.areYouSureToLogout));
 
-        genericDialogFragment.setButton1(baseFragment.getString(R.string.yes), new GenericClickableInterface() {
+        genericDialogFragment.setButton1(baseFragment.getString(R.string.logout), new GenericClickableInterface() {
             @Override
             public void click() {
                 genericDialogFragment.getDialog().dismiss();
@@ -126,7 +127,7 @@ public class LeftSideMenuFragment extends BaseFragment implements OnNewPacketRec
             }
         });
 
-        genericDialogFragment.setButton2(baseFragment.getString(R.string.no), new GenericClickableInterface() {
+        genericDialogFragment.setButton2(baseFragment.getString(R.string.cancel), new GenericClickableInterface() {
             @Override
             public void click() {
                 genericDialogFragment.getDialog().dismiss();

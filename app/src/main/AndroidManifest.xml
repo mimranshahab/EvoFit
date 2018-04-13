@@ -11,7 +11,6 @@
         android:required="true" />
 
 
-    <!-- Include following permission if you load images from Internet -->
     <uses-permission android:name="android.permission.INTERNET" />
     <!-- Include following permission if you want to cache images on SD card -->
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
@@ -115,6 +114,7 @@
             android:name="edu.aku.akuh_health_first.activities.PacsActivity"
             android:label="@string/app_name"
             android:theme="@style/AppTheme"
+            android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustPan|stateHidden" />
 
 

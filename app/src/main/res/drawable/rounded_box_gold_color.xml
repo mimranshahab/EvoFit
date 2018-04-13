@@ -6,9 +6,7 @@
         <!--android:color="@color/colorPrimary" />-->
 
     <solid
-        android:color="#4D667F" />
+        android:color="#D7B142" />
 
-
-    <corners android:radius="@dimen/x6dp"
-        />
+    <corners android:radius="@dimen/x6dp" />
 </shape>
