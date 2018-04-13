@@ -51,7 +51,7 @@
 
                             <LinearLayout
                                 android:layout_width="0dp"
-                                android:layout_height="wrap_content"
+                                android:layout_height="match_parent"
                                 android:layout_weight="1">
 
                                 <edu.aku.akuh_health_first.widget.AnyTextView
@@ -61,9 +61,9 @@
                                     android:ellipsize="end"
                                     android:maxLines="2"
                                     android:paddingLeft="@dimen/x4dp"
-                                    android:text="Test Name"
+                                    android:text="Test Name Test Name "
                                     android:textColor="@color/txt_aku_blue"
-                                    android:textSize="@dimen/s15"
+                                    android:textSize="@dimen/s16"
                                     app:typeface="@string/font_bold" />
 
                             </LinearLayout>
@@ -99,11 +99,16 @@
                             <LinearLayout
                                 android:id="@+id/contButtonLayout"
                                 android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
+                                android:layout_height="match_parent"
                                 android:alpha="0.75"
-                                android:gravity="end"
+                                android:gravity="bottom"
                                 android:orientation="horizontal"
-                                android:padding="@dimen/x5dp">
+                                android:paddingTop="@dimen/x5dp"
+                                android:paddingLeft="@dimen/x5dp"
+                                android:paddingRight="@dimen/x5dp"
+                                android:paddingBottom="@dimen/x2dp"
+
+                                >
 
                                 <edu.aku.akuh_health_first.widget.AnyTextView
                                     android:id="@+id/btnHistory"
@@ -111,8 +116,8 @@
                                     android:layout_height="wrap_content"
                                     android:layout_marginRight="@dimen/x5dp"
                                     android:background="@drawable/rounded_box_filled_btn_blue"
-                                    android:minWidth="@dimen/x35dp"
-                                    android:padding="@dimen/x10dp"
+                                    android:minWidth="@dimen/x30dp"
+                                    android:padding="@dimen/x3dp"
                                     android:text="H"
                                     android:textAlignment="center"
                                     android:textColor="@color/c_white"
@@ -124,10 +129,10 @@
                                     android:id="@+id/txtComments"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:layout_marginLeft="@dimen/x5dp"
+                                    android:layout_marginLeft="@dimen/x3dp"
                                     android:background="@drawable/rounded_box_filled_btn_amber"
-                                    android:minWidth="@dimen/x35dp"
-                                    android:padding="@dimen/x10dp"
+                                    android:minWidth="@dimen/x30dp"
+                                    android:padding="@dimen/x3dp"
                                     android:text="C"
                                     android:textAlignment="center"
                                     android:textColor="@color/c_white"
@@ -144,18 +149,19 @@
                                 android:layout_height="match_parent"
                                 android:layout_weight="1"
                                 android:ellipsize="end"
-                                android:gravity="center_vertical"
+                                android:gravity="bottom"
                                 android:paddingLeft="@dimen/x4dp"
+                                android:paddingBottom="@dimen/x2dp"
                                 android:singleLine="true"
                                 android:text="Range"
-                                android:textColor="@color/base_dark_gray"
+                                android:textColor="@color/text_color_grey"
                                 android:textSize="@dimen/s12"
                                 app:typeface="@string/font_regular" />
 
 
                             <LinearLayout
                                 android:layout_width="wrap_content"
-                                android:layout_height="match_parent"
+                                android:layout_height="wrap_content"
                                 android:layout_gravity="end"
                                 android:gravity="end"
                                 android:orientation="horizontal">
@@ -166,8 +172,7 @@
                                     android:layout_height="wrap_content"
                                     android:layout_marginRight="@dimen/x1dp"
                                     android:gravity="right"
-                                    android:orientation="vertical"
-                                    android:paddingTop="@dimen/x3dp">
+                                    android:orientation="vertical">
 
 
                                     <edu.aku.akuh_health_first.widget.AnyTextView
@@ -181,8 +186,8 @@
                                         android:paddingBottom="@dimen/x3dp"
                                         android:paddingRight="@dimen/x5dp"
                                         android:text="unit"
-                                        android:textColor="@color/base_dark_gray"
-                                        android:textSize="@dimen/s11"
+                                        android:textColor="@color/text_color_grey"
+                                        android:textSize="@dimen/s9"
                                         app:typeface="@string/font_regular" />
 
                                     <edu.aku.akuh_health_first.widget.AnyTextView
@@ -192,12 +197,10 @@
                                         android:layout_marginLeft="@dimen/x3dp"
                                         android:layout_marginRight="@dimen/x3dp"
                                         android:background="@drawable/rounded_stroke_red"
-                                        android:gravity="center"
-                                        android:paddingBottom="@dimen/x2dp"
+                                         android:paddingBottom="@dimen/x2dp"
                                         android:paddingLeft="@dimen/x4dp"
                                         android:paddingRight="@dimen/x4dp"
-                                        android:paddingTop="@dimen/x2dp"
-                                        android:singleLine="true"
+                                         android:singleLine="true"
                                         android:text="High"
                                         android:textColor="@color/base_dark_gray"
                                         android:textSize="@dimen/s11"
