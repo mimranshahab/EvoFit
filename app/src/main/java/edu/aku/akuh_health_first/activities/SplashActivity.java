@@ -7,6 +7,10 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.util.DisplayMetrics;
 import android.view.View;
+import android.view.animation.AccelerateDecelerateInterpolator;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 
 import edu.aku.akuh_health_first.constatnts.AppConstants;
@@ -65,12 +69,11 @@ public class SplashActivity extends Activity {
 
     private void animateSplashLayout(final boolean isSplasAnimation) {
 
+//        Animation anim = AnimationUtils.loadAnimation(this, R.anim.translate_to_mid);
+//        anim.setInterpolator((new AccelerateDecelerateInterpolator()));
+//        anim.setFillAfter(true);
+//        contParentLayout.setAnimation(anim);
 
-        DisplayMetrics displayMetrics = new DisplayMetrics();
-        getWindowManager().getDefaultDisplay().getMetrics(displayMetrics);
-        int height = displayMetrics.heightPixels;
-
-//        contParentLayout.setTranslationY(height/2 - 100);
         contParentLayout.setTranslationY(500);
 
         AnimationHelper.fade(contParentLayout, 0, VISIBLE, VISIBLE, 0.7f, FADING_TIME, new Animator.AnimatorListener() {

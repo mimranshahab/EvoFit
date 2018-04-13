@@ -244,13 +244,16 @@ public class HealthHistoryFragment extends BaseFragment {
     }
 
     private void setCounts(int i) {
-        txtNeuroCount.setText(String.valueOf(arrData.get(i).getNotificationCount()));
-        txtClinicCount.setText(String.valueOf(arrData.get(i).getNotificationCount()));
-        txtRadiologyCount.setText(String.valueOf(arrData.get(i).getNotificationCount()));
-        txtImmunizationCount.setText(String.valueOf(arrData.get(i).getNotificationCount()));
-        txtMedicationCount.setText(String.valueOf(arrData.get(i).getNotificationCount()));
-        txtDischargeCount.setText(String.valueOf(arrData.get(i).getNotificationCount()));
-        txtCardioCount.setText(String.valueOf(arrData.get(i).getNotificationCount()));
+        if (txtNeuroCount == null) {
+            return;
+        }
+//        txtNeuroCount.setText(String.valueOf(arrData.get(i).getNotificationCount()));
+//        txtClinicCount.setText(String.valueOf(arrData.get(i).getNotificationCount()));
+//        txtRadiologyCount.setText(String.valueOf(arrData.get(i).getNotificationCount()));
+//        txtImmunizationCount.setText(String.valueOf(arrData.get(i).getNotificationCount()));
+//        txtMedicationCount.setText(String.valueOf(arrData.get(i).getNotificationCount()));
+//        txtDischargeCount.setText(String.valueOf(arrData.get(i).getNotificationCount()));
+//        txtCardioCount.setText(String.valueOf(arrData.get(i).getNotificationCount()));
     }
 
     private void tempArray() {
