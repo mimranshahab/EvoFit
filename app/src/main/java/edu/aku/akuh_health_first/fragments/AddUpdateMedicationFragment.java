@@ -139,6 +139,7 @@ public class AddUpdateMedicationFragment extends BaseFragment {
             titleBar.setTitle("Update Medicine");
         }
 
+        titleBar.showHome(getBaseActivity());
         titleBar.showBackButton(getBaseActivity());
     }
 

@@ -84,9 +84,9 @@ public class HealthSummaryAdapter extends RecyclerView.Adapter<HealthSummaryAdap
             holder.txtStatusType.setText(model.getStatus());
 
             if (model.getStatus().equalsIgnoreCase("Completed")) {
-                colorCodes(holder, activity.getResources().getColor(R.color.summary_green));
+                colorCodes(holder, activity.getResources().getColor(R.color.base_green));
             } else if (model.getStatus().equalsIgnoreCase("Pending")) {
-                colorCodes(holder, activity.getResources().getColor(R.color.summary_orange));
+                colorCodes(holder, activity.getResources().getColor(R.color.base_amber));
             } else {
                 colorCodes(holder, activity.getResources().getColor(R.color.summary_blue));
             }
