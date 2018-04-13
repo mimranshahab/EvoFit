@@ -132,7 +132,7 @@ public class AddUpdateVaccineFragment extends BaseFragment {
         } else {
             titleBar.setTitle("Update Vaccine");
         }
-
+        titleBar.showHome(getBaseActivity());
         titleBar.showBackButton(getBaseActivity());
     }
 
