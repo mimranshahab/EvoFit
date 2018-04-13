@@ -11,6 +11,7 @@ import android.widget.ImageView;
 import android.widget.ScrollView;
 
 import edu.aku.akuh_health_first.callbacks.OnNewPacketReceivedListener;
+import edu.aku.akuh_health_first.helperclasses.ui.helper.UIHelper;
 import edu.aku.akuh_health_first.widget.AnyTextView;
 
 import butterknife.BindView;
@@ -158,7 +159,8 @@ public class LeftSideMenuFragment extends BaseFragment implements OnNewPacketRec
                 break;
 
             case R.id.txtCardSubscription:
-                getBaseActivity().addDockableFragment(CardSubscriptionFragment.newInstance());
+//                getBaseActivity().addDockableFragment(CardSubscriptionFragment.newInstance());
+                showNextBuildToast();
                 break;
 
             case R.id.txtAbout:

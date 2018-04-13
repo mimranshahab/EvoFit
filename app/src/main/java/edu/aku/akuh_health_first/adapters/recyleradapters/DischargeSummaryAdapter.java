@@ -118,7 +118,7 @@ public class DischargeSummaryAdapter extends RecyclerView.Adapter<DischargeSumma
         @BindView(R.id.contProfile)
         LinearLayout contProfile;
         @BindView(R.id.frameColorCode)
-        FrameLayout frameColorCode;
+        LinearLayout frameColorCode;
         @BindView(R.id.cardView)
         CardView cardView;
         @BindView(R.id.btnSummary)
