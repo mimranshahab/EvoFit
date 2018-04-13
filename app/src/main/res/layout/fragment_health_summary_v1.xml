@@ -40,7 +40,7 @@
                         android:orientation="vertical"
                         android:padding="@dimen/x5dp">
 
-                        <edu.aku.akuh_health_first.widget.AnyTextView
+                        <edu.aku.family_hifazat.widget.AnyTextView
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:gravity="center"
@@ -71,7 +71,7 @@
                                 android:orientation="vertical"
                                  >
 
-                                <edu.aku.akuh_health_first.widget.AnyTextView
+                                <edu.aku.family_hifazat.widget.AnyTextView
                                     android:id="@+id/txtBloodType"
                                     android:layout_width="match_parent"
                                     android:layout_height="0dp"
@@ -83,7 +83,7 @@
                                     app:typeface="@string/font_bold" />
 
 
-                                <edu.aku.akuh_health_first.widget.AnyTextView
+                                <edu.aku.family_hifazat.widget.AnyTextView
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
                                     android:gravity="bottom|end"
@@ -129,7 +129,7 @@
                         android:padding="@dimen/x5dp">
 
 
-                        <edu.aku.akuh_health_first.widget.AnyTextView
+                        <edu.aku.family_hifazat.widget.AnyTextView
                             android:id="@+id/txtHeightDate"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
@@ -159,7 +159,7 @@
                                 android:layout_weight="0.65"
                                 android:orientation="vertical">
 
-                                <edu.aku.akuh_health_first.widget.AnyTextView
+                                <edu.aku.family_hifazat.widget.AnyTextView
                                     android:id="@+id/txtHeight"
                                     android:layout_width="match_parent"
                                     android:layout_height="0dp"
@@ -171,7 +171,7 @@
                                     app:typeface="@string/font_bold" />
 
 
-                                <edu.aku.akuh_health_first.widget.AnyTextView
+                                <edu.aku.family_hifazat.widget.AnyTextView
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
                                     android:gravity="bottom|end"
@@ -217,7 +217,7 @@
                         android:orientation="vertical"
                         android:padding="@dimen/x5dp">
 
-                        <edu.aku.akuh_health_first.widget.AnyTextView
+                        <edu.aku.family_hifazat.widget.AnyTextView
                             android:id="@+id/txtWeightDate"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
@@ -248,7 +248,7 @@
                                 android:orientation="vertical">
 
 
-                                <edu.aku.akuh_health_first.widget.AnyTextView
+                                <edu.aku.family_hifazat.widget.AnyTextView
                                     android:id="@+id/txtWeight"
                                     android:layout_width="match_parent"
                                     android:layout_height="0dp"
@@ -260,7 +260,7 @@
                                     app:typeface="@string/font_bold" />
 
 
-                                <edu.aku.akuh_health_first.widget.AnyTextView
+                                <edu.aku.family_hifazat.widget.AnyTextView
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
                                     android:gravity="bottom|end"

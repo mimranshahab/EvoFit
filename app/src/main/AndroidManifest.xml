@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="edu.aku.akuh_health_first">
+    package="edu.aku.family_hifazat">
 
 
     <uses-feature
@@ -31,7 +31,7 @@
 
 
     <application
-        android:name="edu.aku.akuh_health_first.BaseApplication"
+        android:name="edu.aku.family_hifazat.BaseApplication"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
@@ -49,13 +49,13 @@
             android:value="@integer/google_play_services_version" />
 
 
-        <service android:name=".firebase.MyFirebaseMessagingService">
+        <service android:name="edu.aku.family_hifazat.firebase.MyFirebaseMessagingService">
             <intent-filter>
                 <action android:name="com.google.firebase.MESSAGING_EVENT" />
             </intent-filter>
         </service>
 
-        <service android:name=".firebase.MyFirebaseInstanceIDService">
+        <service android:name="edu.aku.family_hifazat.firebase.MyFirebaseInstanceIDService">
             <intent-filter>
                 <action android:name="com.google.firebase.INSTANCE_ID_EVENT" />
             </intent-filter>
@@ -64,7 +64,7 @@
 
         <!-- Splash screen -->
         <activity
-            android:name="edu.aku.akuh_health_first.activities.SplashActivity"
+            android:name="edu.aku.family_hifazat.activities.SplashActivity"
             android:label="@string/app_name"
             android:screenOrientation="portrait"
             android:theme="@android:style/Theme.Black.NoTitleBar">
@@ -79,7 +79,7 @@
 
         <!-- Main Activity -->
         <activity
-            android:name="edu.aku.akuh_health_first.activities.MainActivity"
+            android:name="edu.aku.family_hifazat.activities.MainActivity"
             android:label="@string/app_name"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme"
@@ -88,14 +88,14 @@
 
         <!-- FullScreenRotated Activity -->
         <activity
-            android:name="edu.aku.akuh_health_first.activities.GraphActivity"
+            android:name="edu.aku.family_hifazat.activities.GraphActivity"
             android:label="@string/app_name"
             android:theme="@style/AppTheme"
             android:windowSoftInputMode="adjustPan|stateHidden" />
 
         <!-- ImagePreview Activity -->
         <activity
-            android:name="edu.aku.akuh_health_first.activities.ImagePreviewActivity"
+            android:name="edu.aku.family_hifazat.activities.ImagePreviewActivity"
             android:label="@string/app_name"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme"
@@ -103,7 +103,7 @@
 
         <!-- Home Activity -->
         <activity
-            android:name="edu.aku.akuh_health_first.activities.HomeActivity"
+            android:name="edu.aku.family_hifazat.activities.HomeActivity"
             android:label="@string/app_name"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme"
@@ -111,7 +111,7 @@
 
         <!-- Pacs Activity -->
         <activity
-            android:name="edu.aku.akuh_health_first.activities.PacsActivity"
+            android:name="edu.aku.family_hifazat.activities.PacsActivity"
             android:label="@string/app_name"
             android:theme="@style/AppTheme"
             android:screenOrientation="portrait"
@@ -120,7 +120,7 @@
 
         <!-- TableView Activity -->
         <activity
-            android:name="edu.aku.akuh_health_first.activities.TableViewActivity"
+            android:name="edu.aku.family_hifazat.activities.TableViewActivity"
             android:label="@string/app_name"
             android:screenOrientation="landscape"
             android:theme="@style/AppTheme"

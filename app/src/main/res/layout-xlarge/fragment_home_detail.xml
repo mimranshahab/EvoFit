@@ -48,7 +48,7 @@
                         android:scaleType="centerCrop"
                         android:src="@drawable/health_summary" />
 
-                    <edu.aku.akuh_health_first.widget.AnyTextView
+                    <edu.aku.family_hifazat.widget.AnyTextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
@@ -107,7 +107,7 @@
                         android:scaleType="centerCrop"
                         android:src="@drawable/health_history" />
 
-                    <edu.aku.akuh_health_first.widget.AnyTextView
+                    <edu.aku.family_hifazat.widget.AnyTextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
@@ -167,7 +167,7 @@
                         android:scaleType="centerCrop"
                         android:src="@drawable/visit_timeline" />
 
-                    <edu.aku.akuh_health_first.widget.AnyTextView
+                    <edu.aku.family_hifazat.widget.AnyTextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
@@ -222,7 +222,7 @@
                         android:scaleType="centerCrop"
                         android:src="@drawable/my_profile" />
 
-                    <edu.aku.akuh_health_first.widget.AnyTextView
+                    <edu.aku.family_hifazat.widget.AnyTextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"

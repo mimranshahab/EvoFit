@@ -9,7 +9,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
-        <edu.aku.akuh_health_first.widget.AnyTextView
+        <edu.aku.family_hifazat.widget.AnyTextView
             android:id="@+id/txtQueryString"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -26,7 +26,7 @@
             android:layout_height="match_parent"
             android:background="@color/text_color_grey" />
 
-        <edu.aku.akuh_health_first.widget.AnyTextView
+        <edu.aku.family_hifazat.widget.AnyTextView
             android:id="@+id/txtQueryResult"
             android:layout_width="0dp"
             android:layout_height="wrap_content"

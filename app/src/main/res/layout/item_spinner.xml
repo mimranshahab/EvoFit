@@ -12,7 +12,7 @@
 
 
 
-            <edu.aku.akuh_health_first.widget.AnyTextView
+            <edu.aku.family_hifazat.widget.AnyTextView
                 android:id="@+id/txtType"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"

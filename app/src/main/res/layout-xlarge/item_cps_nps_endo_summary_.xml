@@ -37,7 +37,7 @@
                     android:orientation="horizontal"
                     android:padding="@dimen/x5dp">
 
-                    <edu.aku.akuh_health_first.widget.AnyTextView
+                    <edu.aku.family_hifazat.widget.AnyTextView
                         android:id="@+id/txtDateTime"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
@@ -67,7 +67,7 @@
                             android:visibility="gone" />
 
 
-                        <edu.aku.akuh_health_first.widget.AnyTextView
+                        <edu.aku.family_hifazat.widget.AnyTextView
                             android:id="@+id/txtStatusType"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
@@ -131,7 +131,7 @@
                         android:orientation="vertical">
 
 
-                        <edu.aku.akuh_health_first.widget.AnyTextView
+                        <edu.aku.family_hifazat.widget.AnyTextView
                             android:id="@+id/txtName"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
@@ -144,7 +144,7 @@
                             app:typeface="@string/font_bold" />
 
 
-                        <edu.aku.akuh_health_first.widget.AnyTextView
+                        <edu.aku.family_hifazat.widget.AnyTextView
                             android:id="@+id/txtDrName"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
@@ -176,7 +176,7 @@
                         android:layout_margin="@dimen/x3dp"
                         android:visibility="gone">
 
-                        <edu.aku.akuh_health_first.widget.AnyTextView
+                        <edu.aku.family_hifazat.widget.AnyTextView
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_alignBottom="@id/btnReportColorCode1"
@@ -186,7 +186,7 @@
                             android:gravity="center"
                             android:padding="@dimen/x5dp" />
 
-                        <edu.aku.akuh_health_first.widget.AnyTextView
+                        <edu.aku.family_hifazat.widget.AnyTextView
                             android:id="@+id/btnReportColorCode1"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
@@ -211,7 +211,7 @@
                         android:visibility="gone">
 
 
-                        <edu.aku.akuh_health_first.widget.AnyTextView
+                        <edu.aku.family_hifazat.widget.AnyTextView
                             android:id="@+id/btnGraphColorCode"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
@@ -223,7 +223,7 @@
                             android:background="@drawable/rounded_box_filled_btn_amber"
                             />
 
-                        <edu.aku.akuh_health_first.widget.AnyTextView
+                        <edu.aku.family_hifazat.widget.AnyTextView
                             android:id="@+id/txtGraph"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"

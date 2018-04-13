@@ -33,7 +33,7 @@
                  android:clickable="false"
                 />
 
-            <edu.aku.akuh_health_first.widget.AnyTextView
+            <edu.aku.family_hifazat.widget.AnyTextView
                 android:id="@+id/txtChoice"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"

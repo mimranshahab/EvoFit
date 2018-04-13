@@ -48,7 +48,7 @@
                         android:src="@drawable/c_about_menu_icon"
                         android:tint="@color/base_green" />
 
-                    <edu.aku.akuh_health_first.widget.AnyTextView
+                    <edu.aku.family_hifazat.widget.AnyTextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
@@ -62,7 +62,7 @@
 
                 </LinearLayout>
 
-                <edu.aku.akuh_health_first.widget.AnyTextView
+                <edu.aku.family_hifazat.widget.AnyTextView
                     android:id="@+id/txtNote"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"

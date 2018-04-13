@@ -15,7 +15,7 @@
 
         android:background="@color/background_gray" />
 
-    <edu.aku.akuh_health_first.widget.AnyTextView
+    <edu.aku.family_hifazat.widget.AnyTextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/txt_aku_blue"

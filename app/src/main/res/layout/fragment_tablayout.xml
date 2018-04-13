@@ -20,7 +20,7 @@
         app:tabTextAppearance="@android:style/TextAppearance.Widget.TabWidget"
         app:tabTextColor="@color/c_white" />
 
-    <edu.aku.akuh_health_first.helperclasses.ui.helper.CustomViewPager
+    <edu.aku.family_hifazat.helperclasses.ui.helper.CustomViewPager
         android:id="@+id/viewpager"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />

@@ -55,7 +55,7 @@
                     android:orientation="vertical">
 
 
-                    <edu.aku.akuh_health_first.widget.AnyTextView
+                    <edu.aku.family_hifazat.widget.AnyTextView
                         android:id="@+id/txtUserName"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -68,7 +68,7 @@
                         android:textSize="@dimen/s17"
                         app:typeface="@string/font_bold" />
 
-                    <edu.aku.akuh_health_first.widget.AnyTextView
+                    <edu.aku.family_hifazat.widget.AnyTextView
                         android:id="@+id/txtMRN"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -81,7 +81,7 @@
                         app:typeface="@string/font_regular" />
 
 
-                    <edu.aku.akuh_health_first.widget.AnyTextView
+                    <edu.aku.family_hifazat.widget.AnyTextView
                         android:id="@+id/txtAge"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -94,7 +94,7 @@
                         app:typeface="@string/font_regular" />
 
 
-                    <edu.aku.akuh_health_first.widget.AnyTextView
+                    <edu.aku.family_hifazat.widget.AnyTextView
                         android:id="@+id/txtCincNumber"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -111,7 +111,7 @@
                         android:textSize="@dimen/s15"
                         app:typeface="@string/font_regular" />
 
-                    <edu.aku.akuh_health_first.widget.AnyTextView
+                    <edu.aku.family_hifazat.widget.AnyTextView
                         android:id="@+id/txtPhoneNum"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -128,7 +128,7 @@
                         android:textSize="@dimen/s15"
                         app:typeface="@string/font_regular" />
 
-                    <edu.aku.akuh_health_first.widget.AnyTextView
+                    <edu.aku.family_hifazat.widget.AnyTextView
                         android:id="@+id/txtAddress"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -145,7 +145,7 @@
                         android:textSize="@dimen/s15"
                         app:typeface="@string/font_regular" />
 
-                    <edu.aku.akuh_health_first.widget.AnyTextView
+                    <edu.aku.family_hifazat.widget.AnyTextView
                         android:id="@+id/txtEmailAddress"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"

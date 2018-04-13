@@ -20,7 +20,7 @@ android {
     compileSdkVersion 27
     buildToolsVersion "27.0.2"
     defaultConfig {
-        applicationId 'edu.aku.akuh_health_first'
+        applicationId 'edu.aku.family_hifazat'
         minSdkVersion 17
         targetSdkVersion 22
         versionCode 1
