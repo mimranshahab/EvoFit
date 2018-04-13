@@ -168,7 +168,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_margin="@dimen/x20dp"
-                    android:background="@drawable/rounded_box_filled_base_amber"
+                    android:background="@drawable/rounded_box_filled_btn_amber"
                     android:gravity="center"
                     android:text="Save"
                     android:textColor="@color/c_white"

@@ -54,6 +54,8 @@ public class AddUpdateVaccineFragment extends BaseFragment {
     AnyTextView txtRouteId;
     @BindView(R.id.txtVaccineLocation)
     AnyEditTextView txtVaccineLocation;
+    @BindView(R.id.txtNote)
+    AnyTextView txtNote;
     @BindView(R.id.btnSave)
     Button btnSave;
 
@@ -117,6 +119,7 @@ public class AddUpdateVaccineFragment extends BaseFragment {
             getVaccineIdsService();
             getRouteIdsService();
         }
+        txtNote.setText("The vaccinations entered would be recorded as being vaccinated from outside of AKUH and AKUH does not take any responsibility for these recorded vaccinations.");
     }
 
     @Override
