@@ -254,35 +254,34 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener, 
     @Override
     public void onItemClick(int position, Object object) {
         if (object instanceof UserDetailModel) {
+            if (getBaseActivity().getSupportFragmentManager().getBackStackEntryCount() == 1) {
 
-            if (getCurrentUser().getMRNumber().equals(((UserDetailModel) object).getMRNumber())) {
-                getBaseActivity().addDockableFragment(HomeDetailFragment.newInstance());
-                return;
-            }
-
-            for (UserDetailModel userDetailModel : arrUserLists) {
-                userDetailModel.setSelected(false);
-            }
-            arrUserLists.get(position).setSelected(true);
-            sharedPreferenceManager.putObject(AppConstants.KEY_CURRENT_USER_MODEL, object);
-            adaptHome.notifyDataSetChanged();
-
-            new Handler().postDelayed(new Runnable() {
-                @Override
-                public void run() {
+                if (getCurrentUser().getMRNumber().equals(((UserDetailModel) object).getMRNumber())) {
                     getBaseActivity().addDockableFragment(HomeDetailFragment.newInstance());
+                    return;
                 }
-            }, 500);
 
+                for (UserDetailModel userDetailModel : arrUserLists) {
+                    userDetailModel.setSelected(false);
+                }
+                arrUserLists.get(position).setSelected(true);
+                sharedPreferenceManager.putObject(AppConstants.KEY_CURRENT_USER_MODEL, object);
+                adaptHome.notifyDataSetChanged();
+
+                new Handler().postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        getBaseActivity().addDockableFragment(HomeDetailFragment.newInstance());
+                    }
+                }, 500);
+
+            }
         }
     }
-
     @OnClick(R.id.contListItem)
     public void onViewClicked() {
-        subscriber.setSelected(true);
-        sharedPreferenceManager.putObject(AppConstants.KEY_CURRENT_USER_MODEL, subscriber);
-        adaptHome.notifyDataSetChanged();
-        getBaseActivity().addDockableFragment(HomeDetailFragment.newInstance());
+
+
     }
 
     @Override
