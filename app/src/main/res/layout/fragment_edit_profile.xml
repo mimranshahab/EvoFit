@@ -244,7 +244,7 @@
             android:layout_marginLeft="@dimen/x7dp"
             android:layout_marginRight="@dimen/x7dp"
             android:layout_marginTop="@dimen/x35dp"
-            android:background="@drawable/rounded_box_filled_base_amber"
+            android:background="@drawable/rounded_box_filled_btn_amber"
             android:gravity="center"
             android:padding="@dimen/x10dp"
             android:text="Update"

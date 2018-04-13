@@ -131,7 +131,7 @@ public class WebServices {
 
             //for testing
 //            return true;
-            if (response.body().result != null && response.body().result.get(0) != null) {
+            if (response.body().result == null || response.body().result.isEmpty() || response.body().result.get(0) == null) {
                 return false;
             }
 
@@ -392,7 +392,11 @@ public class WebServices {
                         else {
                             if (response != null && response.body() != null) {
                                 if (response.body().isSuccess()) {
-                                    if (response.body().result.get(0).get("RecordMessage") == null) {
+
+                                    if (response.body().result == null || response.body().result.isEmpty() || response.body().result.get(0) == null) {
+                                        UIHelper.showToast(mContext, "Record Missing in API");
+                                        callBack.onError();
+                                    } else if (response.body().result.get(0).get("RecordMessage") == null) {
                                         errorToastForArray(response);
                                         callBack.onError();
                                     } else if (response.body().result.get(0).get("RecordMessage").isJsonNull()) {

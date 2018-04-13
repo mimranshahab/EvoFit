@@ -93,12 +93,11 @@
                                     android:id="@+id/txtunit"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:layout_marginBottom="@dimen/x3dp"
-                                    android:ellipsize="end"
+                                     android:ellipsize="end"
                                     android:gravity="top|end"
-                                    android:paddingBottom="@dimen/x3dp"
-                                    android:paddingRight="@dimen/x5dp"
-                                    android:text="unit"
+                                    android:layout_marginRight="@dimen/x5dp"
+
+                                     android:text="unit"
                                     android:textColor="@color/text_color_grey"
                                     android:textSize="@dimen/s9"
                                     app:typeface="@string/font_regular" />
@@ -118,13 +117,13 @@
                                 android:id="@+id/contButtonLayout"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:alpha="0.75"
+                                android:alpha="0.9"
                                 android:gravity="bottom"
                                 android:orientation="horizontal"
                                 android:paddingBottom="@dimen/x2dp"
                                 android:paddingLeft="@dimen/x5dp"
                                 android:paddingRight="@dimen/x5dp"
-                                android:paddingTop="@dimen/x5dp"
+                                android:paddingTop="@dimen/x2dp"
 
                                 >
 
