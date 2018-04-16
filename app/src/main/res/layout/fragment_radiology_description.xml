@@ -3,66 +3,67 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:background="@color/c_white">
+    android:background="@color/c_white"
+    android:orientation="vertical">
 
 
-            <LinearLayout
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#F0F6E7"
+        android:padding="@dimen/x5dp">
+
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <edu.aku.family_hifazat.widget.AnyTextView
+                android:id="@+id/txtExamName"
                 android:layout_width="match_parent"
-                android:background="#F0F6E7"
+                android:layout_height="wrap_content"
                 android:padding="@dimen/x5dp"
-                android:layout_height="wrap_content">
+                android:text="exam name"
+                android:textColor="@color/txt_aku_blue"
+                android:textSize="@dimen/s15"
+                app:typeface="@string/font_bold" />
+
+            <edu.aku.family_hifazat.widget.AnyTextView
+                android:id="@+id/txtExamDate"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:drawableLeft="@drawable/a_icons8_calendar_filled2"
+                android:drawablePadding="@dimen/x5dp"
+                android:gravity="center_vertical"
+                android:padding="@dimen/x5dp"
+                android:text="exam date"
+                android:textColor="@color/txt_aku_blue"
+                android:textSize="@dimen/s14"
+                app:typeface="@string/font_bold" />
 
 
-                <LinearLayout
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:orientation="vertical" >
+        </LinearLayout>
 
-                    <edu.aku.family_hifazat.widget.AnyTextView
-                        android:id="@+id/txtExamName"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:padding="@dimen/x5dp"
-                        android:text="exam name"
-                        android:textColor="@color/txt_aku_blue"
-                        android:textSize="@dimen/s15"
-                        app:typeface="@string/font_bold" />
+        <edu.aku.family_hifazat.widget.AnyTextView
+            android:id="@+id/btnDownload"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="top"
+            android:layout_margin="@dimen/x5dp"
+            android:background="@drawable/rounded_box_filled_base_green"
+            android:gravity="center"
+            android:padding="@dimen/x7dp"
+            android:text="View Report"
+            android:textColor="@color/c_white"
+            android:textSize="@dimen/s12"
+            app:typeface="@string/font_bold" />
+    </LinearLayout>
 
-                    <edu.aku.family_hifazat.widget.AnyTextView
-                        android:id="@+id/txtExamDate"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:drawableLeft="@drawable/a_icons8_calendar_filled2"
-                        android:drawablePadding="@dimen/x5dp"
-                        android:padding="@dimen/x5dp"
-                        android:gravity="center_vertical"
-                        android:text="exam date"
-                        android:textColor="@color/txt_aku_blue"
-                        android:textSize="@dimen/s14"
-                        app:typeface="@string/font_bold" />
-
-
-                </LinearLayout>
-
-                <edu.aku.family_hifazat.widget.AnyTextView
-                    android:id="@+id/btnDownload"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="top"
-                    android:background="@drawable/rounded_box_filled_base_green"
-                    android:gravity="center"
-                    android:layout_margin="@dimen/x5dp"
-                    android:padding="@dimen/x7dp"
-                    android:text="View Report"
-                    android:textColor="@color/c_white"
-                    android:textSize="@dimen/s12"
-                    app:typeface="@string/font_bold" />
-            </LinearLayout>
-<ScrollView
-    android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
         <edu.aku.family_hifazat.widget.AnyTextView
             android:id="@+id/txtDescription"
@@ -73,6 +74,6 @@
             android:textColor="@color/txt_aku_blue"
             android:textSize="@dimen/s16"
             app:typeface="@string/font_regular" />
-</ScrollView>
+    </ScrollView>
 
 </LinearLayout>
