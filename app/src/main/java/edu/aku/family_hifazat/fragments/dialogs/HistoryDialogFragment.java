@@ -65,6 +65,12 @@ public class HistoryDialogFragment extends DialogFragment {
 
         return frag;
     }
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setStyle(STYLE_NO_TITLE, R.style.DialogTheme);
+    }
+
 
 
     @Override
@@ -85,9 +91,8 @@ public class HistoryDialogFragment extends DialogFragment {
 
         bindData();
 
-        getDialog().getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
-//        getDialog().getWindow().setBackgroundDrawable(getResources().getDrawable(R.drawable.rounded_box_white));
-        getDialog().getWindow().requestFeature(Window.FEATURE_NO_TITLE);
+//        getDialog().getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+//        getDialog().getWindow().requestFeature(Window.FEATURE_NO_TITLE);
 
     }
 
@@ -102,7 +107,7 @@ public class HistoryDialogFragment extends DialogFragment {
         txtPrevDate1.setText(getResultPrevious1Date());
         txtPrevDate2.setText(getResultPrevious2Date());
         txtCurrentResult.setText(getCurrentResult());
-        txtCurrentDate.setText(getCurrentDate());
+//        txtCurrentDate.setText(getCurrentDate());
     }
 
     public String getTitle() {

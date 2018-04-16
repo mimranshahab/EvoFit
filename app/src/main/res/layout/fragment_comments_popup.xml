@@ -4,18 +4,20 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_gravity="center"
-    android:layout_margin="@dimen/x10dp"
+    android:orientation="vertical"
     android:background="@color/transparent"
-    android:fitsSystemWindows="true"
-    android:orientation="vertical">
+    android:padding="@dimen/x20dp"
+
+    >
 
     <LinearLayout
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:background="@drawable/rounded_box_white"
+        android:background="@drawable/popup_bg_match_parent"
         android:minHeight="@dimen/x350dp"
         android:minWidth="@dimen/x330dp"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:padding="@dimen/x5dp">
 
 
         <LinearLayout
@@ -45,20 +47,19 @@
         <ScrollView
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_margin="@dimen/x5dp"
             android:layout_weight="1"
             android:scrollbars="none">
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:padding="@dimen/x5dp"
                 android:orientation="vertical">
 
                 <edu.aku.family_hifazat.widget.AnyTextView
                     android:id="@+id/txtResultComments"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
+                    android:layout_marginBottom="@dimen/x5dp"
                     android:gravity="center_vertical"
                     android:padding="@dimen/x10dp"
                     android:text="txtResultComments"
@@ -79,7 +80,6 @@
                     android:layout_height="match_parent"
                     android:gravity="center_vertical"
                     android:padding="@dimen/x10dp"
-
                     android:text="txtTestComments"
                     android:textColor="@color/txt_aku_blue"
                     android:textSize="@dimen/s13"

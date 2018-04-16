@@ -4,18 +4,17 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_gravity="center"
-    android:layout_margin="@dimen/x10dp"
     android:background="@color/transparent"
+    android:padding="@dimen/x20dp"
     android:fitsSystemWindows="true"
     android:orientation="vertical">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@drawable/rounded_box_white"
-        android:minHeight="550dp"
-        android:minWidth="500dp"
-        android:orientation="vertical">
+        android:background="@drawable/popup_bg_match_parent"
+        android:orientation="vertical"
+        android:padding="@dimen/x15dp">
 
 
         <LinearLayout
@@ -45,15 +44,13 @@
         <ScrollView
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_margin="@dimen/x5dp"
-            android:layout_weight="1"
+             android:layout_weight="1"
             android:scrollbars="none">
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:padding="@dimen/x5dp"
-                android:orientation="vertical">
+                android:orientation="vertical" >
 
                 <edu.aku.family_hifazat.widget.AnyTextView
                     android:id="@+id/txtResultComments"
