@@ -81,7 +81,7 @@ public class HealthHistoryFragment extends BaseFragment {
     AnyTextView txtEndoscopyCount;
     @BindView(R.id.txtDischargeCount)
     AnyTextView txtDischargeCount;
-    private boolean isVisitTimeline;
+    boolean isVisitTimeline;
     private List<MenuModel> arrData;
     private ArrayList<String> tempArr;
     private int patientVisitAdmissionID;
@@ -94,16 +94,14 @@ public class HealthHistoryFragment extends BaseFragment {
         HealthHistoryFragment fragment = new HealthHistoryFragment();
         fragment.setArguments(args);
         fragment.timelineModel = timelineModel;
-        args.putBoolean(IS_FROM_VISIT_TIMELINE, isVisitTimeline);
-        args.putInt(VISIT_ID, patientVisitAdmissionID);
+        fragment.isVisitTimeline = isVisitTimeline;
+        fragment.patientVisitAdmissionID = patientVisitAdmissionID;
         return fragment;
     }
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        isVisitTimeline = getArguments().getBoolean(IS_FROM_VISIT_TIMELINE);
-        patientVisitAdmissionID = getArguments().getInt(VISIT_ID);
         arrData = new ArrayList<MenuModel>();
         tempArr = new ArrayList<String>();
     }
@@ -157,9 +155,9 @@ public class HealthHistoryFragment extends BaseFragment {
                                         .fromJson(GsonFactory.getSimpleGson().toJson(webResponse.result)
                                                 , type);
 
-                                for (int i = 0; i < arrData.size(); i++) {
-                                    setCounts(i);
-                                }
+//                                for (int i = 0; i < arrData.size(); i++) {
+//                                    setCounts(i);
+//                                }
                                 bindViewsVisitTimeline();
                             }
 
@@ -182,6 +180,10 @@ public class HealthHistoryFragment extends BaseFragment {
             contImmunization.setAlpha(.15f);
             for (int i = 0; i < arrData.size(); i++) {
 
+                if (arrData.get(i).getTitle().equals("Medicines")) {
+                    Log.d(TAG, "MEDICINES: " + arrData.get(i).getTotalCount());
+                }
+
                 if (arrData.get(i).getTotalCount() < 1) {
 
                     switch (arrData.get(i).getTitle()) {
@@ -193,7 +195,7 @@ public class HealthHistoryFragment extends BaseFragment {
                             txtDischargeCount.setVisibility(View.INVISIBLE);
 
                             break;
-                        case "Clinical Laboratory":
+                        case "Laboratory":
                             contLab.setEnabled(false);
                             contLab.setAlpha(.15f);
                             Log.d(TAG, "bindViewsVisitTimeline: CL ");
@@ -209,7 +211,7 @@ public class HealthHistoryFragment extends BaseFragment {
 
                             break;
 
-                        case "Medication Profile":
+                        case "Medicines":
                             contMedicalProfile.setEnabled(false);
                             contMedicalProfile.setAlpha(.15f);
                             txtMedicationCount.setVisibility(View.INVISIBLE);

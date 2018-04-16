@@ -8,40 +8,48 @@
     android:padding="@dimen/x10dp">
 
     <LinearLayout
-        android:id="@+id/contParentLayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:gravity="center_horizontal"
         android:orientation="vertical"
         android:padding="@dimen/x20dp">
 
-
-        <ImageView
-            android:layout_width="400dp"
-            android:layout_height="@dimen/x80dp"
-            android:layout_marginLeft="@dimen/x30dp"
-            android:layout_marginRight="@dimen/x30dp"
-            android:padding="@dimen/x5dp"
-            android:scaleType="fitCenter"
-            android:src="@drawable/akuh_logo" />
-
-
-        <ImageView
-            android:layout_width="400dp"
-            android:layout_height="@dimen/x80dp"
-            android:layout_marginBottom="@dimen/x20dp"
-            android:scaleType="fitCenter"
-            android:src="@drawable/family_hifazat_logo_no_padding" />
-
-        <edu.aku.family_hifazat.widget.AnyTextView
-            android:layout_width="match_parent"
+        <LinearLayout
+            android:id="@+id/contParentLayout"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="@dimen/x30dp"
-            android:gravity="center"
-            android:text="@string/tag_line"
-            android:textColor="@color/base_amber"
-            android:textSize="18sp"
-            app:typeface="@string/font_bold" />
+            android:orientation="vertical">
+
+
+            <ImageView
+                android:layout_width="400dp"
+                android:layout_height="@dimen/x80dp"
+                android:layout_marginLeft="@dimen/x30dp"
+                android:layout_marginRight="@dimen/x30dp"
+                android:padding="@dimen/x5dp"
+                android:scaleType="fitCenter"
+                android:src="@drawable/akuh_logo" />
+
+
+            <ImageView
+                android:layout_width="400dp"
+                android:layout_height="@dimen/x80dp"
+                android:layout_marginBottom="@dimen/x20dp"
+                android:scaleType="fitCenter"
+                android:src="@drawable/family_hifazat_logo_no_padding" />
+
+            <edu.aku.family_hifazat.widget.AnyTextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/x30dp"
+                android:gravity="center"
+                android:text="@string/tag_line"
+                android:textColor="@color/base_amber"
+                android:textSize="18sp"
+                app:typeface="@string/font_bold" />
+
+
+        </LinearLayout>
 
     </LinearLayout>
 
