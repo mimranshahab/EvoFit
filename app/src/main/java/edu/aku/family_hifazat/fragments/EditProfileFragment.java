@@ -55,15 +55,15 @@ public class EditProfileFragment extends BaseFragment {
     @BindView(R.id.txtCurrentCountry)
     AnyTextView txtCurrentCountry;
     @BindView(R.id.edtPermanentAddress)
-    AnyEditTextView edtPermanentAddress;
+    AnyTextView edtPermanentAddress;
     @BindView(R.id.edtPermanentCity)
-    AnyEditTextView edtPermanentCity;
+    AnyTextView edtPermanentCity;
     @BindView(R.id.txtPermanentCountry)
     AnyTextView txtPermanentCountry;
     @BindView(R.id.btnUpdate)
     AnyTextView btnUpdate;
-    private IntWrapper freqPosition = new IntWrapper(-1);
-    private IntWrapper routePosition = new IntWrapper(-1);
+    private IntWrapper currentCountry = new IntWrapper(-1);
+    private IntWrapper permanentCountry = new IntWrapper(-1);
 
     @Override
     protected int getFragmentLayout() {
@@ -168,17 +168,17 @@ public class EditProfileFragment extends BaseFragment {
     private ArrayList<SpinnerModel> arrPermanentCountry;
     private ArrayList<SpinnerModel> arrCurrentCountry;
 
-    @OnClick({R.id.txtCurrentCountry, R.id.txtPermanentCountry, R.id.btnUpdate})
+    @OnClick({R.id.txtCurrentCountry, /*R.id.txtPermanentCountry,*/ R.id.btnUpdate})
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.txtCurrentCountry:
-                UIHelper.showSpinnerDialog(this, arrCurrentCountry, "Select Current Country", txtCurrentCountry, null, routePosition);
+                UIHelper.showSpinnerDialog(this, arrCurrentCountry, "Select Current Country", txtCurrentCountry, null, currentCountry);
 
                 break;
-            case R.id.txtPermanentCountry:
-                UIHelper.showSpinnerDialog(this, arrPermanentCountry, "Select Permanent Country", txtPermanentCountry, null, routePosition);
-
-                break;
+//            case R.id.txtPermanentCountry:
+//                UIHelper.showSpinnerDialog(this, arrPermanentCountry, "Select Permanent Country", txtPermanentCountry, null, permanentCountry);
+//
+//                break;
             case R.id.btnUpdate:
                 webServiceCall(sharedPreferenceManager.getCurrentUser());
                 break;

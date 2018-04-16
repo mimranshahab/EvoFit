@@ -126,7 +126,7 @@ public class ProfileFragment extends BaseFragment implements OnNewPacketReceived
         txtEmailAddress.setText(currentUser.getEmailAddress());
         txtMRN.setText(currentUser.getMRNumber());
         txtCincNumber.setText(currentUser.getCNICNumber());
-        txtAddress.setText(currentUser.getCurrentAddress());
+        txtAddress.setText(currentUser.getCurrentAddress()+", "+currentUser.getCurrentCity()+", "+currentUser.getCurrentCountryDescription());
         txtPhoneNum.setText(currentUser.getCellPhoneNumber());
         if (currentUser.getProfileImage() == null || currentUser.getProfileImage().isEmpty()) {
             if (currentUser.getGender().equals("F")) {
