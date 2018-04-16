@@ -163,7 +163,7 @@
             android:textColor="@color/txt_aku_blue"
             android:textSize="@dimen/s14"
             app:typeface="@string/font_regular" />
-        <edu.aku.family_hifazat.widget.AnyEditTextView
+        <edu.aku.family_hifazat.widget.AnyTextView
             android:id="@+id/edtPermanentAddress"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -190,7 +190,7 @@
             android:textColor="@color/txt_aku_blue"
             android:textSize="@dimen/s14"
             app:typeface="@string/font_regular" />
-        <edu.aku.family_hifazat.widget.AnyEditTextView
+        <edu.aku.family_hifazat.widget.AnyTextView
             android:id="@+id/edtPermanentCity"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

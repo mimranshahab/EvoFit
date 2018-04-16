@@ -15,7 +15,8 @@
         android:layout_height="@dimen/x26dp"
         android:layout_margin="@dimen/x5dp"
         android:layout_marginLeft="@dimen/x3dp"
-
+        app:civ_border_color="@color/c_white"
+        app:civ_border_width="@dimen/x1dp"
         android:scaleType="centerCrop"
         android:src="@drawable/user_image"
         android:visibility="visible" />
