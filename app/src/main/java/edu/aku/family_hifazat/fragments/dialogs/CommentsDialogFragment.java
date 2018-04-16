@@ -61,6 +61,11 @@ public class CommentsDialogFragment extends DialogFragment {
         return frag;
     }
 
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setStyle(STYLE_NO_TITLE, R.style.DialogTheme);
+    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -82,9 +87,13 @@ public class CommentsDialogFragment extends DialogFragment {
 
         bindData();
 
-        getDialog().getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
 //        getDialog().getWindow().setBackgroundDrawable(getResources().getDrawable(R.drawable.rounded_box_white));
-        getDialog().getWindow().requestFeature(Window.FEATURE_NO_TITLE);
+
+
+//        getDialog().getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+//        getDialog().getWindow().requestFeature(Window.FEATURE_NO_TITLE);
+//        getDialog().getWindow().setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
+
 
     }
 

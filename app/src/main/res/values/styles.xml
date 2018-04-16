@@ -33,7 +33,8 @@
 
     <style name="DialogTheme" parent="@android:style/Theme.Dialog">
         <item name="android:windowBackground">@android:color/transparent</item>
-        <item name="android:windowCloseOnTouchOutside">false</item>
+        <item name="android:windowCloseOnTouchOutside">true</item>
+        <item name="windowMinWidthMajor">90%</item>
     </style>
 
 
