@@ -33,6 +33,7 @@ import edu.aku.family_hifazat.callbacks.OnItemClickListener;
 import edu.aku.family_hifazat.constatnts.WebServiceConstants;
 import edu.aku.family_hifazat.enums.BaseURLTypes;
 import edu.aku.family_hifazat.fragments.abstracts.BaseFragment;
+import edu.aku.family_hifazat.helperclasses.ui.helper.KeyboardHide;
 import edu.aku.family_hifazat.helperclasses.ui.helper.TitleBar;
 import edu.aku.family_hifazat.managers.retrofit.GsonFactory;
 import edu.aku.family_hifazat.managers.retrofit.WebServices;
@@ -248,6 +249,7 @@ public class TimelineFragment extends BaseFragment implements View.OnClickListen
     @OnClick(R.id.imgSearch)
     public void onViewClicked() {
         edtSearchBar.setText("");
+        KeyboardHide.hideSoftKeyboard(getContext(), edtSearchBar);
     }
 
     private void showEmptyView() {
