@@ -1,7 +1,5 @@
 package edu.aku.family_hifazat.fragments.dialogs;
 
-import android.graphics.Color;
-import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.DialogFragment;
@@ -11,11 +9,11 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.Window;
 import android.view.animation.AnimationUtils;
 import android.view.animation.LayoutAnimationController;
 import android.widget.ImageView;
 
+import edu.aku.family_hifazat.callbacks.OnItemSelectListner;
 import edu.aku.family_hifazat.widget.AnyTextView;
 
 import java.util.ArrayList;
@@ -38,8 +36,8 @@ public class SpinnerDialogFragment extends DialogFragment {
 
     String title;
     Unbinder unbinder;
-
     SpinnerDialogAdapter adapter;
+
     @BindView(R.id.txtTitle)
     AnyTextView txtTitle;
     @BindView(R.id.btnClose)
@@ -48,16 +46,17 @@ public class SpinnerDialogFragment extends DialogFragment {
     edu.aku.family_hifazat.widget.AnyTextView txtOK;
     @BindView(R.id.recyclerView)
     RecyclerView recyclerView;
-
     private ArrayList<SpinnerModel> arrData;
+
     private OnSpinnerItemClickListener onItemClickListener;
+    private OnItemSelectListner onItemSelectListner;
     private int scrollToPosition;
 
     public SpinnerDialogFragment() {
     }
 
     public static SpinnerDialogFragment newInstance(String title, ArrayList<SpinnerModel> arrData,
-                                                    OnSpinnerItemClickListener onItemClickListener, int scrollToPosition) {
+                                                    OnSpinnerItemClickListener onItemClickListener, OnItemSelectListner onItemSelectListner, int scrollToPosition) {
         SpinnerDialogFragment frag = new SpinnerDialogFragment();
 
         Bundle args = new Bundle();
@@ -65,6 +64,7 @@ public class SpinnerDialogFragment extends DialogFragment {
         frag.arrData = arrData;
         frag.onItemClickListener = onItemClickListener;
         frag.scrollToPosition = scrollToPosition;
+        frag.onItemSelectListner = onItemSelectListner;
         frag.setArguments(args);
 
         return frag;
@@ -140,6 +140,9 @@ public class SpinnerDialogFragment extends DialogFragment {
                 this.dismiss();
                 break;
             case R.id.txtOK:
+                if (onItemSelectListner != null) {
+                    onItemSelectListner.onItemSelect(null);
+                }
                 this.dismiss();
                 break;
         }

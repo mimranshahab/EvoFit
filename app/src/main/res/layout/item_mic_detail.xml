@@ -66,7 +66,7 @@
                         android:padding="@dimen/x5dp"
                         android:text="Glucose Random"
                         android:textColor="@color/txt_aku_blue"
-                        android:textSize="@dimen/s16"
+                        android:textSize="@dimen/s15"
                         app:typeface="@string/font_bold" />
 
                     <edu.aku.family_hifazat.widget.AnyTextView
@@ -76,7 +76,7 @@
                         android:padding="@dimen/x5dp"
                         android:text="Date"
                         android:textColor="@color/txt_aku_blue"
-                        android:textSize="15sp"
+                        android:textSize="@dimen/s14"
                         app:typeface="@string/font_regular" />
 
                 </LinearLayout>

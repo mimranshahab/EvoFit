@@ -11,12 +11,16 @@ import android.widget.AdapterView;
 import com.google.gson.JsonObject;
 
 import java.util.ArrayList;
+import java.util.Objects;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import butterknife.Unbinder;
 import edu.aku.family_hifazat.R;
+import edu.aku.family_hifazat.adapters.recyleradapters.SpinnerDialogAdapter;
+import edu.aku.family_hifazat.callbacks.OnItemSelectListner;
+import edu.aku.family_hifazat.callbacks.OnSpinnerItemClickListener;
 import edu.aku.family_hifazat.constatnts.AppConstants;
 import edu.aku.family_hifazat.constatnts.Events;
 import edu.aku.family_hifazat.constatnts.WebServiceConstants;
@@ -62,8 +66,9 @@ public class EditProfileFragment extends BaseFragment {
     AnyTextView txtPermanentCountry;
     @BindView(R.id.btnUpdate)
     AnyTextView btnUpdate;
-    private IntWrapper currentCountry = new IntWrapper(-1);
+    private IntWrapper currentCountryPosition = new IntWrapper(-1);
     private IntWrapper permanentCountry = new IntWrapper(-1);
+    private SpinnerModel tempSpinnerModel;
 
     @Override
     protected int getFragmentLayout() {
@@ -94,8 +99,6 @@ public class EditProfileFragment extends BaseFragment {
     }
 
 
-
-
     private void setData() {
         UserDetailModel user = sharedPreferenceManager.getCurrentUser();
 
@@ -112,7 +115,6 @@ public class EditProfileFragment extends BaseFragment {
 
 
     }
-
 
 
     @Override
@@ -163,8 +165,6 @@ public class EditProfileFragment extends BaseFragment {
     }
 
 
-
-
     private ArrayList<SpinnerModel> arrPermanentCountry;
     private ArrayList<SpinnerModel> arrCurrentCountry;
 
@@ -172,7 +172,29 @@ public class EditProfileFragment extends BaseFragment {
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.txtCurrentCountry:
-                UIHelper.showSpinnerDialog(this, arrCurrentCountry, "Select Current Country", txtCurrentCountry, null, currentCountry);
+                UIHelper.showSpinnerDialog(this, arrCurrentCountry, "Select Current Country", txtCurrentCountry, new OnSpinnerItemClickListener() {
+                    @Override
+                    public void onItemClick(int position, Object object, SpinnerDialogAdapter adapter) {
+                        tempSpinnerModel = (SpinnerModel) object;
+                        tempSpinnerModel.setPositionInList(position);
+
+                        for (SpinnerModel arrDatum : adapter.getArrData()) {
+                            arrDatum.setSelected(false);
+                        }
+                        adapter.getArrData().get(position).setSelected(true);
+                        adapter.notifyDataSetChanged();
+                    }
+                }, new OnItemSelectListner() {
+                    @Override
+                    public void onItemSelect(Object data) {
+                        txtCurrentCountry.setText(tempSpinnerModel.getText());
+                        for (SpinnerModel arrDatum : arrCurrentCountry) {
+                            arrDatum.setSelected(false);
+                        }
+                        arrCurrentCountry.get(tempSpinnerModel.getPositionInList()).setSelected(true);
+                        currentCountryPosition.value = tempSpinnerModel.getPositionInList();
+                    }
+                }, currentCountryPosition);
 
                 break;
 //            case R.id.txtPermanentCountry:
@@ -184,6 +206,7 @@ public class EditProfileFragment extends BaseFragment {
                 break;
         }
     }
+
     private void webServiceCall(final UserDetailModel user) {
 
         user.setCellPhoneNumber(edMobileNumber.getStringTrimmed());
@@ -197,13 +220,13 @@ public class EditProfileFragment extends BaseFragment {
         user.setPermanentCity(edtPermanentCity.getStringTrimmed());
         user.setPermanentCountryID(txtPermanentCountry.getStringTrimmed());
         user.setLastFileDateTime(null);
-        if (edMobileNumber.getStringTrimmed() != "" &&
-                edtCurrentAddress.getStringTrimmed() != "" &&
-                edtCurrentCity.getStringTrimmed() != "" &&
-                txtCurrentCountry.getStringTrimmed() != "" &&
-                edtPermanentAddress.getStringTrimmed() != "" &&
-                txtPermanentCountry.getStringTrimmed() != "" &&
-                edtPermanentCity.getStringTrimmed() != "") {
+        if (!Objects.equals(edMobileNumber.getStringTrimmed(), "") &&
+                !Objects.equals(edtCurrentAddress.getStringTrimmed(), "") &&
+                !Objects.equals(edtCurrentCity.getStringTrimmed(), "") &&
+                !Objects.equals(txtCurrentCountry.getStringTrimmed(), "") &&
+                !Objects.equals(edtPermanentAddress.getStringTrimmed(), "") &&
+                !Objects.equals(txtPermanentCountry.getStringTrimmed(), "") &&
+                !Objects.equals(edtPermanentCity.getStringTrimmed(), "")) {
             new WebServices(getBaseActivity(),
                     getToken(),
                     BaseURLTypes.AHFA_BASE_URL)
@@ -214,7 +237,6 @@ public class EditProfileFragment extends BaseFragment {
                                 public void requestDataResponse(WebResponse<JsonObject> webResponse) {
 //                                getBaseActivity().openActivity(HomeActivity.class);
                                     UIHelper.showToast(getContext(), webResponse.message);
-
                                     getCardDetailService(user);
                                 }
 
@@ -227,6 +249,7 @@ public class EditProfileFragment extends BaseFragment {
             UIHelper.showToast(getBaseActivity(), "Fields cannot be empty");
         }
     }
+
     private void getCardDetailService(final UserDetailModel user) {
         CardMemberDetail cardMemberDetail = new CardMemberDetail(sharedPreferenceManager.getString(AppConstants.KEY_CARD_NUMBER));
 
@@ -251,6 +274,7 @@ public class EditProfileFragment extends BaseFragment {
                 });
 
     }
+
     private void serviceCallGetMember() {
         EditCardModel editCardModel = new EditCardModel();
         editCardModel.setMrnNumber(getCurrentUser().getMRNumber());

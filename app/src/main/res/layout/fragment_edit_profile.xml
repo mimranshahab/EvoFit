@@ -45,12 +45,13 @@
         <edu.aku.family_hifazat.widget.AnyTextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/x7dp"
             android:layout_marginLeft="@dimen/x10dp"
+            android:layout_marginTop="@dimen/x7dp"
             android:text="@string/landline_number"
             android:textColor="@color/txt_aku_blue"
             android:textSize="@dimen/s14"
             app:typeface="@string/font_regular" />
+
         <edu.aku.family_hifazat.widget.AnyEditTextView
             android:id="@+id/edtLandlineNumber"
             android:layout_width="match_parent"
@@ -74,12 +75,13 @@
         <edu.aku.family_hifazat.widget.AnyTextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/x7dp"
             android:layout_marginLeft="@dimen/x10dp"
+            android:layout_marginTop="@dimen/x7dp"
             android:text="@string/current_address"
             android:textColor="@color/txt_aku_blue"
             android:textSize="@dimen/s14"
             app:typeface="@string/font_regular" />
+
         <edu.aku.family_hifazat.widget.AnyEditTextView
             android:id="@+id/edtCurrentAddress"
             android:layout_width="match_parent"
@@ -98,11 +100,12 @@
             android:textSize="@dimen/s15"
             app:testType="nocheck"
             app:typeface="@string/font_regular" />
+
         <edu.aku.family_hifazat.widget.AnyTextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/x7dp"
             android:layout_marginLeft="@dimen/x10dp"
+            android:layout_marginTop="@dimen/x7dp"
             android:text="@string/current_city"
             android:textColor="@color/txt_aku_blue"
             android:textSize="@dimen/s14"
@@ -131,12 +134,13 @@
         <edu.aku.family_hifazat.widget.AnyTextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/x7dp"
             android:layout_marginLeft="@dimen/x10dp"
+            android:layout_marginTop="@dimen/x7dp"
             android:text="@string/current_country"
             android:textColor="@color/txt_aku_blue"
             android:textSize="@dimen/s14"
             app:typeface="@string/font_regular" />
+
         <edu.aku.family_hifazat.widget.AnyTextView
             android:id="@+id/txtCurrentCountry"
             android:layout_width="match_parent"
@@ -157,12 +161,13 @@
         <edu.aku.family_hifazat.widget.AnyTextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/x7dp"
             android:layout_marginLeft="@dimen/x10dp"
+            android:layout_marginTop="@dimen/x7dp"
             android:text="@string/permanent_address"
             android:textColor="@color/txt_aku_blue"
             android:textSize="@dimen/s14"
             app:typeface="@string/font_regular" />
+
         <edu.aku.family_hifazat.widget.AnyTextView
             android:id="@+id/edtPermanentAddress"
             android:layout_width="match_parent"
@@ -184,12 +189,13 @@
         <edu.aku.family_hifazat.widget.AnyTextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/x7dp"
             android:layout_marginLeft="@dimen/x10dp"
+            android:layout_marginTop="@dimen/x7dp"
             android:text="@string/permanent_city"
             android:textColor="@color/txt_aku_blue"
             android:textSize="@dimen/s14"
             app:typeface="@string/font_regular" />
+
         <edu.aku.family_hifazat.widget.AnyTextView
             android:id="@+id/edtPermanentCity"
             android:layout_width="match_parent"
@@ -213,12 +219,13 @@
         <edu.aku.family_hifazat.widget.AnyTextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/x7dp"
             android:layout_marginLeft="@dimen/x10dp"
+            android:layout_marginTop="@dimen/x7dp"
             android:text="@string/permanent_country"
             android:textColor="@color/txt_aku_blue"
             android:textSize="@dimen/s14"
             app:typeface="@string/font_regular" />
+
         <edu.aku.family_hifazat.widget.AnyTextView
             android:id="@+id/txtPermanentCountry"
             android:layout_width="match_parent"
@@ -238,7 +245,7 @@
 
         <edu.aku.family_hifazat.widget.AnyTextView
             android:id="@+id/btnUpdate"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
             android:layout_marginLeft="@dimen/x7dp"
@@ -246,7 +253,10 @@
             android:layout_marginTop="@dimen/x35dp"
             android:background="@drawable/rounded_box_filled_btn_amber"
             android:gravity="center"
-            android:padding="@dimen/x10dp"
+            android:paddingBottom="@dimen/x10dp"
+            android:paddingLeft="@dimen/x20dp"
+            android:paddingRight="@dimen/x20dp"
+            android:paddingTop="@dimen/x10dp"
             android:text="Update"
 
             android:textColor="@color/c_white"

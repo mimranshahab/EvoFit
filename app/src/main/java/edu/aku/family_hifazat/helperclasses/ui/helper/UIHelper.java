@@ -33,6 +33,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.common.base.Strings;
+import com.google.gson.reflect.TypeToken;
 import com.theartofdev.edmodo.cropper.CropImage;
 import com.theartofdev.edmodo.cropper.CropImageView;
 
@@ -40,12 +41,18 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.lang.reflect.Array;
+import java.lang.reflect.Type;
 import java.util.ArrayList;
+import java.util.Arrays;
 
 import edu.aku.family_hifazat.adapters.recyleradapters.SpinnerDialogAdapter;
+import edu.aku.family_hifazat.callbacks.OnItemSelectListner;
 import edu.aku.family_hifazat.callbacks.OnSpinnerItemClickListener;
 import edu.aku.family_hifazat.fragments.abstracts.BaseFragment;
 import edu.aku.family_hifazat.fragments.dialogs.SpinnerDialogFragment;
+import edu.aku.family_hifazat.managers.retrofit.GsonFactory;
+import edu.aku.family_hifazat.models.EndoscopyModel;
 import edu.aku.family_hifazat.models.IntWrapper;
 import edu.aku.family_hifazat.models.SpinnerModel;
 
@@ -613,27 +620,37 @@ public class UIHelper {
 
 
     public static void showSpinnerDialog(BaseFragment fragment, final ArrayList<SpinnerModel> arrData, String title, final TextView textView,
-                                         OnSpinnerItemClickListener onItemClickListener, final IntWrapper positionToScroll) {
+                                         OnSpinnerItemClickListener onSpinnerItemClick, OnItemSelectListner onItemSelectListner, final IntWrapper positionToScroll) {
         final SpinnerDialogFragment dialogFragment;
 
+        String s = GsonFactory.getSimpleGson().toJson(arrData);
+        Type type = new TypeToken<ArrayList<SpinnerModel>>() {
+        }.getType();
+        final ArrayList<SpinnerModel> listCopy = GsonFactory.getSimpleGson().fromJson(s, type);
 
-        if (onItemClickListener == null) {
-            dialogFragment = SpinnerDialogFragment.newInstance(title, arrData, new OnSpinnerItemClickListener() {
+        if (onSpinnerItemClick == null) {
+            dialogFragment = SpinnerDialogFragment.newInstance(title, listCopy, new OnSpinnerItemClickListener() {
                 @Override
                 public void onItemClick(int position, Object object, SpinnerDialogAdapter adapter) {
                     if (object instanceof SpinnerModel) {
                         textView.setText(((SpinnerModel) object).getText());
+                        for (SpinnerModel arrDatum : listCopy) {
+                            arrDatum.setSelected(false);
+                        }
+                        listCopy.get(position).setSelected(true);
+
                         for (SpinnerModel arrDatum : arrData) {
                             arrDatum.setSelected(false);
                         }
                         arrData.get(position).setSelected(true);
+
                         adapter.notifyDataSetChanged();
                         positionToScroll.value = position;
                     }
                 }
-            }, positionToScroll.value);
+            }, onItemSelectListner, positionToScroll.value);
         } else {
-            dialogFragment = SpinnerDialogFragment.newInstance(title, arrData, onItemClickListener, positionToScroll.value);
+            dialogFragment = SpinnerDialogFragment.newInstance(title, listCopy, onSpinnerItemClick, onItemSelectListner, positionToScroll.value);
         }
         dialogFragment.show(fragment.getFragmentManager(), null);
     }

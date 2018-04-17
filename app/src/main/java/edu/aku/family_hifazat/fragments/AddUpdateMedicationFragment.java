@@ -26,6 +26,7 @@ import butterknife.OnClick;
 import butterknife.Unbinder;
 import edu.aku.family_hifazat.R;
 import edu.aku.family_hifazat.callbacks.OnCalendarUpdate;
+import edu.aku.family_hifazat.callbacks.OnItemSelectListner;
 import edu.aku.family_hifazat.constatnts.WebServiceConstants;
 import edu.aku.family_hifazat.enums.BaseURLTypes;
 import edu.aku.family_hifazat.fragments.abstracts.BaseFragment;
@@ -272,11 +273,19 @@ public class AddUpdateMedicationFragment extends BaseFragment {
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.txtFrequencyDesc:
-                UIHelper.showSpinnerDialog(this, arrFrequency, "Select Frequency", txtFrequencyDesc, null, freqPosition);
+                UIHelper.showSpinnerDialog(this, arrFrequency, "Select Frequency", txtFrequencyDesc, null, new OnItemSelectListner() {
+                    @Override
+                    public void onItemSelect(Object data) {
+                    }
+                }, freqPosition);
                 break;
 
             case R.id.txtRouteId:
-                UIHelper.showSpinnerDialog(this, arrRouteIDs, "Select Route", txtRouteId, null, routePosition);
+                UIHelper.showSpinnerDialog(this, arrRouteIDs, "Select Route", txtRouteId, null, new OnItemSelectListner() {
+                    @Override
+                    public void onItemSelect(Object data) {
+                    }
+                }, routePosition);
 
                 break;
             case R.id.txtStartDateTime:

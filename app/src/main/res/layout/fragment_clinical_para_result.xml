@@ -23,7 +23,7 @@
             android:singleLine="true"
             android:text="procedure desc"
             android:textColor="@color/txt_aku_blue"
-            android:textSize="15sp"
+            android:textSize="@dimen/s15"
             app:typeface="@string/font_bold" />
 
         <ScrollView

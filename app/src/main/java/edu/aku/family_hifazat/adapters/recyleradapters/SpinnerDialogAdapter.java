@@ -25,7 +25,6 @@ public class SpinnerDialogAdapter extends RecyclerView.Adapter<SpinnerDialogAdap
     private final OnSpinnerItemClickListener onItemClick;
 
 
-
     private Activity activity;
     private ArrayList<SpinnerModel> arrData;
 
@@ -70,6 +69,9 @@ public class SpinnerDialogAdapter extends RecyclerView.Adapter<SpinnerDialogAdap
         notifyDataSetChanged();
     }
 
+    public ArrayList<SpinnerModel> getArrData() {
+        return arrData;
+    }
 
     @Override
     public int getItemCount() {

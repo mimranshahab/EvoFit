@@ -17,7 +17,7 @@
         android:singleLine="true"
         android:text="Procedure Description"
         android:textColor="@color/base_amber"
-        android:textSize="16sp"
+        android:textSize="@dimen/s15"
         app:typeface="@string/font_bold" />
 
     <edu.aku.family_hifazat.widget.AnyTextView
@@ -31,7 +31,7 @@
         android:singleLine="true"
         android:text="Source: Name"
         android:textColor="@color/base_amber"
-        android:textSize="15sp"
+        android:textSize="@dimen/s14"
         app:typeface="@string/font_bold" />
 
 </LinearLayout>

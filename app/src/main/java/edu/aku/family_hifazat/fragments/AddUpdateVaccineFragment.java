@@ -23,6 +23,7 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 import butterknife.Unbinder;
 import edu.aku.family_hifazat.R;
+import edu.aku.family_hifazat.callbacks.OnItemSelectListner;
 import edu.aku.family_hifazat.constatnts.WebServiceConstants;
 import edu.aku.family_hifazat.enums.BaseURLTypes;
 import edu.aku.family_hifazat.fragments.abstracts.BaseFragment;
@@ -240,12 +241,20 @@ public class AddUpdateVaccineFragment extends BaseFragment {
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.txtVaccine:
-                UIHelper.showSpinnerDialog(this, arrVaccine, "Select Frequency", txtVaccine, null, vaccinePosition);
+                UIHelper.showSpinnerDialog(this, arrVaccine, "Select Frequency", txtVaccine, null, new OnItemSelectListner() {
+                    @Override
+                    public void onItemSelect(Object data) {
+                    }
+                }, vaccinePosition);
 
                 break;
 
             case R.id.txtRouteId:
-                UIHelper.showSpinnerDialog(this, arrRouteIDs, "Select Route", txtRouteId, null, routePosition);
+                UIHelper.showSpinnerDialog(this, arrRouteIDs, "Select Route", txtRouteId, null, new OnItemSelectListner() {
+                    @Override
+                    public void onItemSelect(Object data) {
+                    }
+                }, routePosition);
 
                 break;
             case R.id.txtVaccinatedDate:

@@ -64,7 +64,6 @@ public class WebServiceFactory {
                 }
             });
 
-
             // add logging as last interceptor
 //            httpClient.addNetworkInterceptor(interceptor).addInterceptor(interceptor);  // <-- this is the important line!
             httpClient.addInterceptor(interceptor);  // <-- this is the important line!
@@ -73,7 +72,6 @@ public class WebServiceFactory {
                     .addConverterFactory(GsonConverterFactory.create(GsonFactory.getSimpleGson()))
                     .client(httpClient.build())
                     .build();
-
         }
 
         return retrofitBase.create(WebServiceProxy.class);

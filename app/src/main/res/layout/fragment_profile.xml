@@ -75,8 +75,7 @@
                         android:gravity="center"
                         android:hint="MR #"
                         android:padding="@dimen/x5dp"
-
-                        android:textColor="@color/base_reddish"
+                        android:textColor="@color/txt_aku_blue"
                         android:textSize="@dimen/s16"
                         app:typeface="@string/font_regular" />
 

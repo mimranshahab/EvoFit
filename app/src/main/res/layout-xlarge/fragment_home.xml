@@ -128,7 +128,7 @@
         android:padding="@dimen/x5dp"
         android:text="Family Members"
         android:textColor="@color/colorPrimary"
-        android:textSize="16sp"
+        android:textSize="@dimen/s14"
         app:typeface="@string/font_bold"
 
         />

@@ -9,6 +9,16 @@ public class SpinnerModel {
 
     private String text;
     private boolean isSelected = false;
+    private int positionInList = 0;
+
+
+    public int getPositionInList() {
+        return positionInList;
+    }
+
+    public void setPositionInList(int positionInList) {
+        this.positionInList = positionInList;
+    }
 
     public SpinnerModel(String text) {
         this.text = text;

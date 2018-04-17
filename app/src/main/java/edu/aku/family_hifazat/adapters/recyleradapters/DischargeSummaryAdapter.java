@@ -51,7 +51,8 @@ public class DischargeSummaryAdapter extends RecyclerView.Adapter<DischargeSumma
 
         holder.txtReportName.setText(DischargeSummaryModel.getSummaryServiceID());
         holder.txtAdmissionDate.setText(DischargeSummaryModel.getAdmissionDateTime());
-        holder.txtDrName.setText(DischargeSummaryModel.getPhyName());
+        holder.txtDrName.setText("Dr." + DischargeSummaryModel.getPhyName());
+
         holder.txtDischargeDate.setText(DischargeSummaryModel.getDischargeDateTime());
         holder.txtDischargeDisposition.setText(DischargeSummaryModel.getDischargeDisposition());
         setListener(holder, DischargeSummaryModel);
