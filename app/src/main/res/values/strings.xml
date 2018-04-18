@@ -12,7 +12,7 @@
     <!--<string name="font_bold">Roboto-Regular_1B.ttf</string>-->
 
     <string name="font_micross">micross.ttf</string>
-    <string name="font_san_regular">ms_serif.ttf</string>
+    <string name="font_san_regular">cour.ttf</string>
 
     <string name="pick_image_intent_text">Choose an image</string>
 
