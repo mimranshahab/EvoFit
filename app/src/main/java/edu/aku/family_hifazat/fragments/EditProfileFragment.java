@@ -187,6 +187,9 @@ public class EditProfileFragment extends BaseFragment {
                 }, new OnItemSelectListner() {
                     @Override
                     public void onItemSelect(Object data) {
+                        if (tempSpinnerModel == null) {
+                            return;
+                        }
                         txtCurrentCountry.setText(tempSpinnerModel.getText());
                         for (SpinnerModel arrDatum : arrCurrentCountry) {
                             arrDatum.setSelected(false);
