@@ -109,7 +109,7 @@ public class ClinicalLabDetailAdapterv1 extends RecyclerView.Adapter<ClinicalLab
             holder.btnComment.setBackground(activity.getResources().getDrawable(R.drawable.rounded_box_filled_base_grey));
 
         } else {
-            holder.btnComment.setBackground(activity.getResources().getDrawable(R.drawable.rounded_box_filled_btn_blue));
+            holder.btnComment.setBackground(activity.getResources().getDrawable(R.drawable.rounded_box_filled_btn_amber));
             holder.btnComment.setAlpha(1f);
             holder.btnComment.setVisibility(View.VISIBLE);
             holder.btnComment.setEnabled(true);
@@ -122,7 +122,7 @@ public class ClinicalLabDetailAdapterv1 extends RecyclerView.Adapter<ClinicalLab
             holder.btnHistory.setAlpha(.15f);
             holder.btnHistory.setBackground(activity.getResources().getDrawable(R.drawable.rounded_box_filled_base_grey));
         } else {
-            holder.btnHistory.setBackground(activity.getResources().getDrawable(R.drawable.rounded_box_filled_btn_amber));
+            holder.btnHistory.setBackground(activity.getResources().getDrawable(R.drawable.rounded_box_filled_btn_blue));
             holder.btnHistory.setAlpha(1f);
             holder.btnHistory.setVisibility(View.VISIBLE);
             holder.btnHistory.setEnabled(true);
