@@ -18,7 +18,7 @@ import butterknife.ButterKnife;
 import butterknife.Unbinder;
 import edu.aku.family_hifazat.R;
 import edu.aku.family_hifazat.fragments.abstracts.BaseFragment;
-import edu.aku.family_hifazat.helperclasses.ui.helper.TitleBar;
+import edu.aku.family_hifazat.widget.TitleBar;
 import edu.aku.family_hifazat.libraries.table.model.BaseCellData;
 import edu.aku.family_hifazat.libraries.table.model.DefaultSheetData;
 import edu.aku.family_hifazat.libraries.table.model.ISheetData;

@@ -12,6 +12,7 @@ import android.view.View;
 import android.widget.TextView;
 
 import edu.aku.family_hifazat.activities.BaseActivity;
+import edu.aku.family_hifazat.callbacks.GenericClickableInterface;
 
 import static android.graphics.Typeface.BOLD;
 

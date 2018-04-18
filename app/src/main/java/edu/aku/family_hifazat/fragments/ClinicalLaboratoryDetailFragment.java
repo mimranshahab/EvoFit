@@ -21,14 +21,14 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 import butterknife.Unbinder;
 import edu.aku.family_hifazat.R;
-import edu.aku.family_hifazat.adapters.recyleradapters.ClinicalLabDetailAdapterv1;
+import edu.aku.family_hifazat.adapters.recyleradapters.ClinicalLabDetailAdapter;
 import edu.aku.family_hifazat.callbacks.OnItemClickListener;
 import edu.aku.family_hifazat.constatnts.WebServiceConstants;
 import edu.aku.family_hifazat.enums.BaseURLTypes;
 import edu.aku.family_hifazat.fragments.abstracts.BaseFragment;
 import edu.aku.family_hifazat.fragments.dialogs.CommentsDialogFragment;
 import edu.aku.family_hifazat.fragments.dialogs.HistoryDialogFragment;
-import edu.aku.family_hifazat.helperclasses.ui.helper.TitleBar;
+import edu.aku.family_hifazat.widget.TitleBar;
 import edu.aku.family_hifazat.managers.retrofit.WebServices;
 import edu.aku.family_hifazat.models.LaboratoryDetailModel;
 import edu.aku.family_hifazat.models.LstLaboratorySpecimenResults;
@@ -65,7 +65,7 @@ public class ClinicalLaboratoryDetailFragment extends BaseFragment implements Vi
     AnyTextView txtReportName;
     private ArrayList<LstLaboratorySpecimenResults> arrLabDetail;
     private LaboratoryDetailModel laboratoryDetailModel;
-    private ClinicalLabDetailAdapterv1 adapterClinicalLabDetail;
+    private ClinicalLabDetailAdapter adapterClinicalLabDetail;
 
 
     public static ClinicalLaboratoryDetailFragment newInstance(LaboratoryDetailModel laboratoryDetailModel) {
@@ -102,7 +102,7 @@ public class ClinicalLaboratoryDetailFragment extends BaseFragment implements Vi
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         arrLabDetail = new ArrayList<LstLaboratorySpecimenResults>();
-        adapterClinicalLabDetail = new ClinicalLabDetailAdapterv1(getBaseActivity(), arrLabDetail, this);
+        adapterClinicalLabDetail = new ClinicalLabDetailAdapter(getBaseActivity(), arrLabDetail, this);
     }
 
     @Override

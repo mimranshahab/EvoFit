@@ -20,7 +20,7 @@ import java.util.Date;
 
 import edu.aku.family_hifazat.R;
 import edu.aku.family_hifazat.constatnts.AppConstants;
-import edu.aku.family_hifazat.helperclasses.ui.helper.TitleBar;
+import edu.aku.family_hifazat.widget.TitleBar;
 import edu.aku.family_hifazat.helperclasses.ui.helper.UIHelper;
 import edu.aku.family_hifazat.managers.DateManager;
 import edu.aku.family_hifazat.models.LaboratoryModel;

@@ -13,7 +13,7 @@ import android.widget.TextView;
 import edu.aku.family_hifazat.widget.AnyTextView;
 
 import edu.aku.family_hifazat.R;
-import edu.aku.family_hifazat.fragments.abstracts.GenericClickableInterface;
+import edu.aku.family_hifazat.callbacks.GenericClickableInterface;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;

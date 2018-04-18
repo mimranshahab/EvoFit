@@ -9,7 +9,7 @@ import android.widget.AdapterView;
 import android.widget.TextView;
 
 import edu.aku.family_hifazat.R;
-import edu.aku.family_hifazat.helperclasses.ui.helper.TitleBar;
+import edu.aku.family_hifazat.widget.TitleBar;
 import edu.aku.family_hifazat.widget.AnyTextView;
 
 

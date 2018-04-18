@@ -41,18 +41,18 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
-import java.lang.reflect.Array;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
-import java.util.Arrays;
 
+import edu.aku.family_hifazat.activities.BaseActivity;
 import edu.aku.family_hifazat.adapters.recyleradapters.SpinnerDialogAdapter;
 import edu.aku.family_hifazat.callbacks.OnItemSelectListner;
 import edu.aku.family_hifazat.callbacks.OnSpinnerItemClickListener;
 import edu.aku.family_hifazat.fragments.abstracts.BaseFragment;
+import edu.aku.family_hifazat.callbacks.GenericClickableInterface;
+import edu.aku.family_hifazat.fragments.abstracts.GenericDialogFragment;
 import edu.aku.family_hifazat.fragments.dialogs.SpinnerDialogFragment;
 import edu.aku.family_hifazat.managers.retrofit.GsonFactory;
-import edu.aku.family_hifazat.models.EndoscopyModel;
 import edu.aku.family_hifazat.models.IntWrapper;
 import edu.aku.family_hifazat.models.SpinnerModel;
 
@@ -654,5 +654,15 @@ public class UIHelper {
         }
         dialogFragment.show(fragment.getFragmentManager(), null);
     }
+
+
+    public static void genericPopUp(BaseActivity activity, GenericDialogFragment genericDialogFragment, String title, String message, String btn1Text, String btn2Text, GenericClickableInterface btn1Interface, GenericClickableInterface btnbtn2Interface) {
+        genericDialogFragment.setTitle(title);
+        genericDialogFragment.setMessage(message);
+        genericDialogFragment.setButton1(btn1Text, btn1Interface);
+        genericDialogFragment.setButton2(btn2Text, btnbtn2Interface);
+        genericDialogFragment.show(activity.getSupportFragmentManager(), "generic_popup");
+    }
+
 
 }

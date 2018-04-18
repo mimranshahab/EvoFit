@@ -20,12 +20,11 @@ import edu.aku.family_hifazat.activities.BaseActivity;
 import edu.aku.family_hifazat.callbacks.OnNewPacketReceivedListener;
 import edu.aku.family_hifazat.constatnts.AppConstants;
 import edu.aku.family_hifazat.helperclasses.ui.helper.KeyboardHide;
-import edu.aku.family_hifazat.helperclasses.ui.helper.TitleBar;
+import edu.aku.family_hifazat.widget.TitleBar;
 import edu.aku.family_hifazat.helperclasses.ui.helper.UIHelper;
 import edu.aku.family_hifazat.BaseApplication;
 
 import java.io.File;
-import java.text.NumberFormat;
 
 import edu.aku.family_hifazat.managers.DateManager;
 import edu.aku.family_hifazat.managers.FileManager;
@@ -50,6 +49,12 @@ public abstract class BaseFragment extends Fragment implements View.OnClickListe
     public SharedPreferenceManager sharedPreferenceManager;
     public String TAG = "Logging Tag";
     public boolean onCreated = false;
+    Disposable subscription;
+
+
+    /**
+     * This is an abstract class, we should inherit our fragment from this class
+     */
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -86,6 +91,9 @@ public abstract class BaseFragment extends Fragment implements View.OnClickListe
 
     public abstract int getDrawerLockMode();
 
+
+    // Use  UIHelper.showSpinnerDialog
+    @Deprecated
     public void setSpinner(ArrayAdapter adaptSpinner, final TextView textView, final Spinner spinner) {
         if (adaptSpinner == null || spinner == null)
             return;
@@ -173,27 +181,7 @@ public abstract class BaseFragment extends Fragment implements View.OnClickListe
 
     }
 
-    public void genericPopUp(GenericDialogFragment genericDialogFragment, String title, String message, String btn1Text, String btn2Text, GenericClickableInterface btn1Interface, GenericClickableInterface btnbtn2Interface) {
-        genericDialogFragment.setTitle(title);
-        genericDialogFragment.setMessage(message);
-        genericDialogFragment.setButton1(btn1Text, btn1Interface);
-        genericDialogFragment.setButton2(btn2Text, btnbtn2Interface);
-        genericDialogFragment.show(getFragmentManager(), "abcd");
-    }
 
-
-    public String getFormattedNumber(double value, int factor) {
-
-//       DecimalFormat df2 = new DecimalFormat("#,###,###,##0.00");
-        NumberFormat format1 = NumberFormat.getInstance();
-        format1.setMaximumFractionDigits(factor);
-        format1.setMinimumFractionDigits(factor);
-
-        return format1.format(value);
-
-    }
-
-    Disposable subscription;
 
     public void notifyToAll(int event, Object data) {
         BaseApplication.getPublishSubject().onNext(new Pair<>(event, data));
@@ -221,8 +209,7 @@ public abstract class BaseFragment extends Fragment implements View.OnClickListe
 
 
     public void showNextBuildToast() {
-//        UIHelper.showToast(getContext(), "This feature will be implemented in next build");
-        UIHelper.showToast(getContext(), "This feature is in progress");
+         UIHelper.showToast(getContext(), "This feature is in progress");
     }
 
 
@@ -258,21 +245,4 @@ public abstract class BaseFragment extends Fragment implements View.OnClickListe
                 break;
         }
     }
-
-//    public ResideMenu getResideMenu() {
-//        return getBaseActivity().getResideMenu();
-//    }
-
-//
-//    public void setResideMenu() {
-////        getResideMenu().openMenu(ResideMenu.DIRECTION_LEFT);
-////        getResideMenu().closeMenu();
-//    }
-
-
-    // FOR RESIDE MENU
-//    public void closeMenu() {
-//        getBaseActivity().getResideMenu().closeMenu();
-//    }
-
 }

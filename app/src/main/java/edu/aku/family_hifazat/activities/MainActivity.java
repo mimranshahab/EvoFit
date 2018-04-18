@@ -69,6 +69,10 @@ public class MainActivity extends BaseActivity {
 
     @Override
     public void onBackPressed() {
+        /**
+         * Show Close app popup if no or single fragment is in stack. otherwise check if drawer is open. Close it..
+         */
+
         if (getSupportFragmentManager().getBackStackEntryCount() > 1) {
 
             if (drawerLayout.isDrawerOpen(Gravity.START)) {
