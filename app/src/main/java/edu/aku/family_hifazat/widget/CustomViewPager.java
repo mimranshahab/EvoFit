@@ -1,4 +1,4 @@
-package edu.aku.family_hifazat.helperclasses.ui.helper;
+package edu.aku.family_hifazat.widget;
 
 /**
  * Created by khanhamza on 01-Mar-17.

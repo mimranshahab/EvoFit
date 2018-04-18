@@ -1,4 +1,4 @@
-package edu.aku.family_hifazat.helperclasses.ui.helper;
+package edu.aku.family_hifazat.widget;
 
 import android.content.Context;
 import android.support.annotation.Nullable;

@@ -21,10 +21,10 @@ import edu.aku.family_hifazat.R;
 import edu.aku.family_hifazat.activities.HomeActivity;
 import edu.aku.family_hifazat.activities.MainActivity;
 import edu.aku.family_hifazat.fragments.abstracts.BaseFragment;
-import edu.aku.family_hifazat.fragments.abstracts.GenericClickableInterface;
+import edu.aku.family_hifazat.callbacks.GenericClickableInterface;
 import edu.aku.family_hifazat.fragments.abstracts.GenericContentFragment;
 import edu.aku.family_hifazat.fragments.abstracts.GenericDialogFragment;
-import edu.aku.family_hifazat.helperclasses.ui.helper.TitleBar;
+import edu.aku.family_hifazat.widget.TitleBar;
 
 import static edu.aku.family_hifazat.constatnts.AppConstants.AboutUs;
 

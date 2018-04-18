@@ -18,7 +18,7 @@ import java.util.ArrayList;
 
 import edu.aku.family_hifazat.R;
 import edu.aku.family_hifazat.helperclasses.Helper;
-import edu.aku.family_hifazat.helperclasses.ui.helper.TitleBar;
+import edu.aku.family_hifazat.widget.TitleBar;
 import edu.aku.family_hifazat.libraries.fileloader.FileLoader;
 import edu.aku.family_hifazat.libraries.fileloader.listener.FileRequestListener;
 import edu.aku.family_hifazat.libraries.fileloader.listener.MultiFileDownloadListener;

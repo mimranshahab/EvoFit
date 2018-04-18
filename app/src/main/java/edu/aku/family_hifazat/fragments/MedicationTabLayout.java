@@ -15,8 +15,8 @@ import butterknife.Unbinder;
 import edu.aku.family_hifazat.R;
 import edu.aku.family_hifazat.adapters.MedicationProfileTabPagerAdapter;
 import edu.aku.family_hifazat.fragments.abstracts.BaseFragment;
-import edu.aku.family_hifazat.helperclasses.ui.helper.CustomViewPager;
-import edu.aku.family_hifazat.helperclasses.ui.helper.TitleBar;
+import edu.aku.family_hifazat.widget.CustomViewPager;
+import edu.aku.family_hifazat.widget.TitleBar;
 
 /**
  * Created by hamza.ahmed on 3/6/2018.

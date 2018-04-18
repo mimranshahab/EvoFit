@@ -38,11 +38,6 @@
     </style>
 
 
-    <style name="MyTabLayoutTextAppearance" parent="@android:style/TextAppearance.Widget.TabWidget">
-        <item name="android:textSize">14sp</item>
-        <item name="android:textStyle">bold</item>
-    </style>
-
     <!--Rating Bar-->
 
     <!--<style name="RatingBar" parent="Theme.AppCompat">-->

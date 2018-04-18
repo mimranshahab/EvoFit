@@ -1,5 +1,6 @@
 package edu.aku.family_hifazat.helperclasses;
 
+import java.text.NumberFormat;
 import java.util.regex.Pattern;
 
 /**
@@ -364,6 +365,18 @@ public final class StringHelper {
             }
         }
         return true;
+    }
+
+
+    public static String getFormattedNumber(double value, int factor) {
+
+//       DecimalFormat df2 = new DecimalFormat("#,###,###,##0.00");
+        NumberFormat format1 = NumberFormat.getInstance();
+        format1.setMaximumFractionDigits(factor);
+        format1.setMinimumFractionDigits(factor);
+
+        return format1.format(value);
+
     }
 
 }

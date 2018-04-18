@@ -8,7 +8,7 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.Button;
 
-import edu.aku.family_hifazat.helperclasses.ui.helper.TitleBar;
+import edu.aku.family_hifazat.widget.TitleBar;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;

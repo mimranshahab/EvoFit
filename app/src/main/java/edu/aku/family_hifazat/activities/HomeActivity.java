@@ -81,10 +81,6 @@ public class HomeActivity extends BaseActivity {
                 super.onBackPressed();
                 List<Fragment> fragments = getSupportFragmentManager().getFragments();
                 BaseFragment fragment = (BaseFragment) fragments.get(fragments.size() - 1);
-
-//                FragmentManager.BackStackEntry backStackEntryAt = getSupportFragmentManager().getBackStackEntryAt(getSupportFragmentManager().getBackStackEntryCount() - 1);
-//                String fragmentName  = backStackEntryAt.getName();
-//                getSupportFragmentManager().getFragment()
                 fragment.setTitlebar(titleBar);
             }
         } else {

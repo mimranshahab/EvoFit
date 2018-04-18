@@ -22,7 +22,7 @@ import edu.aku.family_hifazat.widget.CustomTypefaceSpan;
 
 /**
  */
-public class ClinicalLabDetailAdapterv1 extends RecyclerView.Adapter<ClinicalLabDetailAdapterv1.ViewHolder> {
+public class ClinicalLabDetailAdapter extends RecyclerView.Adapter<ClinicalLabDetailAdapter.ViewHolder> {
 
 
     private final AdapterView.OnItemClickListener onItemClick;
@@ -34,7 +34,7 @@ public class ClinicalLabDetailAdapterv1 extends RecyclerView.Adapter<ClinicalLab
     private Activity activity;
     private ArrayList<LstLaboratorySpecimenResults> arrData;
 
-    public ClinicalLabDetailAdapterv1(Activity activity, ArrayList<LstLaboratorySpecimenResults> arrayList, AdapterView.OnItemClickListener onItemClickListener) {
+    public ClinicalLabDetailAdapter(Activity activity, ArrayList<LstLaboratorySpecimenResults> arrayList, AdapterView.OnItemClickListener onItemClickListener) {
         this.arrData = arrayList;
         this.activity = activity;
         this.onItemClick = onItemClickListener;

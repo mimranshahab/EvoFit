@@ -14,9 +14,9 @@ import edu.aku.family_hifazat.BaseApplication;
 import edu.aku.family_hifazat.R;
 import edu.aku.family_hifazat.fragments.LeftSideMenuFragment;
 import edu.aku.family_hifazat.fragments.abstracts.BaseFragment;
-import edu.aku.family_hifazat.fragments.abstracts.GenericClickableInterface;
+import edu.aku.family_hifazat.callbacks.GenericClickableInterface;
 import edu.aku.family_hifazat.fragments.abstracts.GenericDialogFragment;
-import edu.aku.family_hifazat.helperclasses.ui.helper.TitleBar;
+import edu.aku.family_hifazat.widget.TitleBar;
 
 
 import static edu.aku.family_hifazat.constatnts.AppConstants.IMAGE_PREVIEW_TITLE;
@@ -31,14 +31,6 @@ public abstract class BaseActivity extends AppCompatActivity {
     private LeftSideMenuFragment leftSideMenuFragment;
     public BaseFragment baseFragment;
 
-//    private ResideMenu resideMenu;
-
-//    //For Blurred Background
-//    private Bitmap mDownScaled;
-//    private String mBackgroundFilename;
-//    private Bitmap background;
-//    private ImageView imageBlur;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,19 +40,6 @@ public abstract class BaseActivity extends AppCompatActivity {
         drawerLayout = (DrawerLayout) findViewById(getDrawerLayoutId());
 
         addDrawerFragment();
-
-        //        SlidingMenu menu = new SlidingMenu(this);
-//        menu.setMode(SlidingMenu.LEFT);
-//        menu.setTouchModeAbove(SlidingMenu.TOUCHMODE_FULLSCREEN);
-////        menu.setShadowWidthRes(R.dimen.shadow_width);
-////        menu.setShadowDrawable(R.drawable.shadow);
-//        menu.setBehindOffsetRes(R.dimen.slidingmenu_offset);
-//        menu.setFadeDegree(0.35f);
-//        menu.attachToActivity(this, SlidingMenu.SLIDING_WINDOW);
-////        menu.setMenu(R.layout.fragment_sidebar);
-//        menu.setMenu(leftSideMenuFragment, getSupportFragmentManager());
-//        imageBlur = (ImageView) findViewById(R.id.imageBlur);
-        // check if user is registered or not
     }
 
     protected abstract int getViewId();
@@ -208,90 +187,5 @@ public abstract class BaseActivity extends AppCompatActivity {
     public void notifyToAll(int event, Object data) {
         BaseApplication.getPublishSubject().onNext(new Pair<>(event, data));
     }
-
-
-    // RESIDE MENU ->
-
-
-//    public void setSideMenu(int direction) {
-//        resideMenu = new ResideMenu(this);
-//        resideMenu.setSwipeDirectionDisable(ResideMenu.DIRECTION_RIGHT);
-//        resideMenu.setBackground(R.drawable.imgmainbg);
-//        resideMenu.attachToActivity(this);
-//        resideMenu.setScaleValue(0.56f);
-//        resideMenu.setShadowVisible(false);
-//        setMenuItemDirection(direction);
-//    }
-//
-//
-//    public void setMenuItemDirection(int direction) {
-//
-//        if (direction == ResideMenu.DIRECTION_LEFT) {
-//            leftSideMenuFragment = LeftSideMenuFragment.newInstance();
-//            resideMenu.addMenuItem(leftSideMenuFragment, "LeftSideMenuFragment", direction);
-//        }
-//    }
-//
-//    public LeftSideMenuFragment getLeftSideMenuFragment() {
-//        return leftSideMenuFragment;
-//    }
-//
-//
-//    public RelativeLayout getMainContentFrame() {
-////        return R.id.content_frame;
-//        return (RelativeLayout) findViewById(R.id.content_frame);
-//    }
-//
-////    public ImageView getBlurImage() {
-////        return imageBlur;
-////    }
-//
-////    public void setBlurBackground() {
-////
-////////        if (mBackgroundFilename == null) {
-//////
-//////        this.mDownScaled = Utils.drawViewToBitmap(this.getMainContentFrame(), Color.parseColor("#fff5f5f5"));
-//////
-//////        mBackgroundFilename = getBlurredBackgroundFilename();
-//////        if (!TextUtils.isEmpty(mBackgroundFilename)) {
-//////            //context.getMainContentFrame().setVisibility(View.VISIBLE);
-//////            background = Utils.loadBitmapFromFile(mBackgroundFilename);
-////////                if (background != null) {
-//////            getBlurImage().setVisibility(View.VISIBLE);
-//////            getBlurImage().setImageBitmap(background);
-//////            getBlurImage().animate().alpha(1);
-////////                }
-//////        }
-////////        } else {
-////////            getBlurImage().setVisibility(View.VISIBLE);
-////////            getBlurImage().setImageBitmap(background);
-////////            getBlurImage().animate().alpha(1);
-////////        }
-//////    }
-//////
-//////    public String getBlurredBackgroundFilename() {
-//////        Bitmap localBitmap = Blur.fastblur(this, this.mDownScaled, 20);
-//////        String str = Utils.saveBitmapToFile(this, localBitmap);
-//////        this.mDownScaled.recycle();
-//////        localBitmap.recycle();
-//////        return str;
-//////    }
-//////
-//////    public void removeBlurImage() {
-//////        getBlurImage().setVisibility(View.GONE);
-//////    }
-////
-//
-//
-////    @Override
-////    public boolean dispatchTouchEvent(MotionEvent ev) {
-////        return resideMenu.dispatchTouchEvent(ev);
-////    }
-//
-//
-//    public ResideMenu getResideMenu() {
-//        return resideMenu;
-//    }
-
 
 }

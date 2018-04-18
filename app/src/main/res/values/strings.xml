@@ -1,7 +1,6 @@
 <resources>
     <string name="app_name">Family Hifazat</string>
 
-    <string name="table_name">Table</string>
     <!--FONTS-->
 
     <!--<string name="font_regular">HelveticaNeue Light.ttf</string>-->
@@ -11,7 +10,6 @@
     <string name="font_bold">Roboto-Medium_2.ttf</string>
     <!--<string name="font_bold">Roboto-Regular_1B.ttf</string>-->
 
-    <string name="font_micross">micross.ttf</string>
     <string name="font_san_regular">ms_serif.ttf</string>
 
     <string name="pick_image_intent_text">Choose an image</string>
@@ -78,16 +76,6 @@
     <string name="no">No</string>
     <!--popup Rating-->
 
-    <string name="generic">Lorem ipsum dolor sit amet, rutrum tempus nascetur parturient ipsum lobortis, vel iaculis posuere leo odio, cum velit amet at vestibulum non, ac eiusmod ornare dictum, in praesent sed. Tincidunt pellentesque. Tellus earum a, wisi tempus suspendisse quam dui adipiscing. Sapien morbi scelerisque vitae sit, molestie suscipit quis cras parturient ipsum, sodales turpis, fusce ultrices quam vestibulum nec sit malesuada. Nonummy ultricies placerat integer vel similique, eu vestibulum volutpat quisque eget, porttitor vulputate morbi quam eros augue, amet turpis, et elit mauris vehicula. Malesuada donec erat, ut penatibus rutrum, amet lectus arcu. Dis suspendisse itaque dis dolor semper, justo amet condimentum nunc nibh quis etiam, luctus diam in enim donec id nam, ante dolor ultrices nam consequat aliquam. Tincidunt aliquam metus nulla eu quam integer, at sem in pellentesque ipsum, libero diam eos iaculis aliquam libero, a per vestibulum felis arcu. Et eros nullam est hymenaeos, libero leo, consequat a vehicula, vitae massa dictumst.
-Ut leo duis, lacus rerum integer in lobortis cursus, montes sodales amet nunc nec nunc justo. Pulvinar turpis lectus et nunc consectetuer, ultrices viverra. Elit adipiscing metus id wisi. Mi nibh sociosqu, odio dignissim fames nisl wisi. Aenean lectus, luctus sit ullamcorper tincidunt, sed pellentesque feugiat in. Fusce aliquam vitae justo risus, ullamcorper donec. Proin amet donec at tristique, diam et justo ipsum nascetur. Lacinia nisl faucibus tempus aliquam ante eu, sit id montes varius. Ligula non, pretium mauris, orci lacus ac fringilla. Sed at.
-Aliquam vitae, eu elit, in luctus nulla nunc ornare sodales tincidunt, libero laoreet accumsan netus, amet nec eros venenatis justo dis sit. Pede pulvinar leo dui eros, habitant erat nunc lectus. Suscipit ligula in cras et, etiam parturient accumsan erat orci neque, phasellus nullam mauris wisi convallis in. Lacinia dapibus sociis aspernatur nibh, sodales pretium arcu, consectetuer ornare metus eros, est accumsan et lorem duis adipiscing, vehicula fusce elementum. Natoque cursus ultricies semper nostra dignissim, eget duis viverra vestibulum, elit eros quis quisque elementum semper massa.
-Enim vitae euismod eu velit pede eu, sodales malesuada sit fermentum ut dictum dictum, justo dui sapien vitae. Justo quisque, commodo potenti nascetur ultrices tellus consequat ut, ligula tristique aliquam dapibus et in quis. Donec nibh arcu vel nonummy. Eget felis. In tellus orci donec, felis porta et dis nibh, tellus dictumst fermentum enim sit nulla praesent. Dolor sed tempor maecenas, vitae auctor tellus bibendum venenatis, mauris turpis blandit, pede risus a elit pulvinar eu proin, eleifend augue anim. Varius posuere pharetra tincidunt, aliquam aliquam luctus voluptatibus dignissim, eu quis. Suspendisse hac imperdiet donec cras id mauris, et sit tempor lobortis, etiam nec volutpat vel eu vitae eros, aliquam at suscipit molestie, platea in wisi feugiat egestas nulla.
-</string>
-
-    <string name="about_us"><b>Family Hifazat</b> is a product of Aga Khan University Hospital Karachi. It provides discounts on medical services as well as patients’ access to their personal health records through web portal and mobile applications.
-        The Family Hifazat <b>“Patient Portal”</b> is secure, confidential and easy to use web portal &amp; mobile apps to provide AKUH patients 24 hour access to their personal health records including diagnostic results, imaging, medications, vaccines and discharge summaries.
-</string>
-
 
     <string name="done">Done</string>
     <string name="feedback_and_suggestions">Feedback and Suggestions</string>
@@ -116,7 +104,6 @@ Enim vitae euismod eu velit pede eu, sodales malesuada sit fermentum ut dictum d
     <string name="no_search">No search</string>
     <!--<string name="next_build">This feature will be implemented in next build.</string>-->
 
-    <string name="user_id">User ID</string>
     <string name="date_of_birth">Date of Birth</string>
     <string name="gender">Gender</string>
     <string name="cnic_number">CNIC Number</string>

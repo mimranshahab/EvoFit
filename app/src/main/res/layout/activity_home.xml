@@ -32,7 +32,7 @@
                 android:layout_below="@id/titlebar"
                 android:layout_centerHorizontal="true" />
 
-            <edu.aku.family_hifazat.helperclasses.ui.helper.TitleBar
+            <edu.aku.family_hifazat.widget.TitleBar
                 android:id="@+id/titlebar"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />

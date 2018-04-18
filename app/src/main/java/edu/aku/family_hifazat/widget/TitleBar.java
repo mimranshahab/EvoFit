@@ -1,4 +1,4 @@
-package edu.aku.family_hifazat.helperclasses.ui.helper;
+package edu.aku.family_hifazat.widget;
 
 import android.animation.Animator;
 import android.app.Activity;
@@ -18,10 +18,10 @@ import de.hdodenhof.circleimageview.CircleImageView;
 import edu.aku.family_hifazat.R;
 import edu.aku.family_hifazat.activities.BaseActivity;
 import edu.aku.family_hifazat.activities.HomeActivity;
+import edu.aku.family_hifazat.helperclasses.ui.helper.UIHelper;
 import edu.aku.family_hifazat.libraries.imageloader.ImageLoaderHelper;
 import edu.aku.family_hifazat.models.TimelineModel;
 import edu.aku.family_hifazat.models.receiving_model.UserDetailModel;
-import edu.aku.family_hifazat.widget.AnyTextView;
 
 import static edu.aku.family_hifazat.constatnts.Events.ON_HOME_PRESSED;
 

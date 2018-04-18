@@ -29,35 +29,27 @@ public class SplashActivity extends Activity {
     private final int FADING_TIME = 500;
     private boolean hasAnimationStarted = false;
 
-//    private final int SPLASH_TIME_OUT = 200;
-//    private final int ANIMATIONS_DELAY = 50;
-//    private final int ANIMATIONS_TIME_OUT = 100;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash);
         ButterKnife.bind(this);
-
-
         contParentLayout.setVisibility(View.INVISIBLE);
-
-
     }
 
-    private void animateSplashLayout(final boolean isOnlySplasAnimation) {
+    private void animateSplashLayout(final boolean showLoginScreen) {
 
+
+        // Move Layout to center
+
+        //->
         DisplayMetrics metrics = getResources().getDisplayMetrics();
         ObjectAnimator translationY = ObjectAnimator.ofFloat(contParentLayout, "y", metrics.heightPixels / 2 - contParentLayout.getHeight() / 2); // metrics.heightPixels or root.getHeight()
         translationY.setDuration(1);
         translationY.start();
+        //<-
 
-//        Animation anim = AnimationUtils.loadAnimation(this, R.anim.translate_to_mid);
-//        anim.setInterpolator((new AccelerateDecelerateInterpolator()));
-//        anim.setFillAfter(true);
-//        contParentLayout.setAnimation(anim);
-//
-//        contParentLayout.setTranslationY(500);
+        // Fading in Layout
 
         AnimationHelper.fade(contParentLayout, 0, VISIBLE, VISIBLE, 0.7f, FADING_TIME, new Animator.AnimatorListener() {
             @Override
@@ -67,7 +59,9 @@ public class SplashActivity extends Activity {
 
             @Override
             public void onAnimationEnd(Animator animator) {
-                if (isOnlySplasAnimation) {
+
+                // If directly go Home or Login Screen.
+                if (showLoginScreen) {
                     translateAnimation();
                 } else {
                     changeActivity(HomeActivity.class);

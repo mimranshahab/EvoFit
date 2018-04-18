@@ -27,13 +27,13 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 import butterknife.Unbinder;
 import edu.aku.family_hifazat.R;
-import edu.aku.family_hifazat.adapters.recyleradapters.ClinicalLabAdapterV1;
+import edu.aku.family_hifazat.adapters.recyleradapters.ClinicalLabAdapter;
 import edu.aku.family_hifazat.callbacks.OnItemClickListener;
 import edu.aku.family_hifazat.constatnts.WebServiceConstants;
 import edu.aku.family_hifazat.enums.BaseURLTypes;
 import edu.aku.family_hifazat.fragments.abstracts.BaseFragment;
 import edu.aku.family_hifazat.helperclasses.ui.helper.KeyboardHide;
-import edu.aku.family_hifazat.helperclasses.ui.helper.TitleBar;
+import edu.aku.family_hifazat.widget.TitleBar;
 import edu.aku.family_hifazat.helperclasses.ui.helper.UIHelper;
 import edu.aku.family_hifazat.managers.retrofit.GsonFactory;
 import edu.aku.family_hifazat.managers.retrofit.WebServices;
@@ -62,7 +62,7 @@ public class ClinicalLaboratoryFragment extends BaseFragment implements View.OnC
     @BindView(R.id.imgSearch)
     ImageView imgSearch;
     private ArrayList<LaboratoryModel> arrClinicalLabLists;
-    private ClinicalLabAdapterV1 clinicalLabAdapterV1;
+    private ClinicalLabAdapter clinicalLabAdapter;
     boolean isFromTimeline;
     int patientVisitAdmissionID;
     private String testname;
@@ -71,7 +71,7 @@ public class ClinicalLaboratoryFragment extends BaseFragment implements View.OnC
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         arrClinicalLabLists = new ArrayList<LaboratoryModel>();
-        clinicalLabAdapterV1 = new ClinicalLabAdapterV1(getBaseActivity(), arrClinicalLabLists, this);
+        clinicalLabAdapter = new ClinicalLabAdapter(getBaseActivity(), arrClinicalLabLists, this);
     }
 
     public static ClinicalLaboratoryFragment newInstance(boolean isFromTimeline, int patientVisitAdmissionID) {
@@ -134,7 +134,7 @@ public class ClinicalLaboratoryFragment extends BaseFragment implements View.OnC
         int resId = R.anim.layout_animation_fall_bottom;
         LayoutAnimationController animation = AnimationUtils.loadLayoutAnimation(getContext(), resId);
 //        recyclerNeurophysiology.setLayoutAnimation(animation);
-        recyclerNeurophysiology.setAdapter(clinicalLabAdapterV1);
+        recyclerNeurophysiology.setAdapter(clinicalLabAdapter);
 
     }
 
@@ -148,7 +148,7 @@ public class ClinicalLaboratoryFragment extends BaseFragment implements View.OnC
 
             @Override
             public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-                clinicalLabAdapterV1.getFilter().filter(charSequence);
+                clinicalLabAdapter.getFilter().filter(charSequence);
                 if (edtSearchBar.getStringTrimmed().equalsIgnoreCase("")) {
                     isSearchBarEmpty = true;
                     imgSearch.setImageResource(R.drawable.search2);
@@ -235,7 +235,7 @@ public class ClinicalLaboratoryFragment extends BaseFragment implements View.OnC
 
                                 arrClinicalLabLists.clear();
                                 arrClinicalLabLists.addAll(arrayList);
-                                clinicalLabAdapterV1.notifyDataSetChanged();
+                                clinicalLabAdapter.notifyDataSetChanged();
 
                                 if (arrClinicalLabLists.size() > 0) {
                                     showView();

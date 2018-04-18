@@ -24,7 +24,7 @@ import edu.aku.family_hifazat.widget.AnyTextView;
 
 /**
  */
-public class ClinicalLabAdapterV1 extends RecyclerView.Adapter<ClinicalLabAdapterV1.ViewHolder> {
+public class ClinicalLabAdapter extends RecyclerView.Adapter<ClinicalLabAdapter.ViewHolder> {
 
 
     private final OnItemClickListener onItemClick;
@@ -35,7 +35,7 @@ public class ClinicalLabAdapterV1 extends RecyclerView.Adapter<ClinicalLabAdapte
     private ArrayList<LaboratoryModel> filteredData = new ArrayList<>();
     private Filter mFilter = new ItemFilter();
 
-    public ClinicalLabAdapterV1(Activity activity, ArrayList<LaboratoryModel> arrayList, OnItemClickListener onItemClickListener) {
+    public ClinicalLabAdapter(Activity activity, ArrayList<LaboratoryModel> arrayList, OnItemClickListener onItemClickListener) {
         this.arrData = arrayList;
         this.activity = activity;
         this.onItemClick = onItemClickListener;

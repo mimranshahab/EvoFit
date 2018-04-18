@@ -23,7 +23,7 @@ import edu.aku.family_hifazat.R;
 import edu.aku.family_hifazat.adapters.recyleradapters.NotificationsAdapter;
 import edu.aku.family_hifazat.callbacks.OnItemClickListener;
 import edu.aku.family_hifazat.fragments.abstracts.BaseFragment;
-import edu.aku.family_hifazat.helperclasses.ui.helper.TitleBar;
+import edu.aku.family_hifazat.widget.TitleBar;
 import edu.aku.family_hifazat.models.NotificationModel;
 
 /**
