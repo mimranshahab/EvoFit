@@ -11,6 +11,7 @@ import android.widget.AdapterView;
 import com.google.gson.JsonObject;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Objects;
 
 import butterknife.BindView;
@@ -69,6 +70,8 @@ public class EditProfileFragment extends BaseFragment {
     private IntWrapper currentCountryPosition = new IntWrapper(-1);
     private IntWrapper permanentCountry = new IntWrapper(-1);
     private SpinnerModel tempSpinnerModel;
+    HashMap<String, String> currentCountryIDandDesc = new HashMap<String, String>();
+
 
     @Override
     protected int getFragmentLayout() {
@@ -217,11 +220,12 @@ public class EditProfileFragment extends BaseFragment {
 
         user.setCurrentAddress(edtCurrentAddress.getStringTrimmed());
         user.setCurrentCity(edtCurrentCity.getStringTrimmed());
-        user.setCurrentCountryID(txtCurrentCountry.getStringTrimmed());
+        user.setCurrentCountryDescription(txtCurrentCountry.getStringTrimmed());
+        user.setCurrentCountryID(currentCountryIDandDesc.get(txtCurrentCountry.getStringTrimmed()));
 
-        user.setPermanentAddress(edtPermanentAddress.getStringTrimmed());
-        user.setPermanentCity(edtPermanentCity.getStringTrimmed());
-        user.setPermanentCountryID(txtPermanentCountry.getStringTrimmed());
+//        user.setPermanentAddress(edtPermanentAddress.getStringTrimmed());
+//        user.setPermanentCity(edtPermanentCity.getStringTrimmed());
+//        user.setPermanentCountryID(txtPermanentCountry.getStringTrimmed());
         user.setLastFileDateTime(null);
         if (!Objects.equals(edMobileNumber.getStringTrimmed(), "") &&
                 !Objects.equals(edtCurrentAddress.getStringTrimmed(), "") &&
@@ -238,6 +242,8 @@ public class EditProfileFragment extends BaseFragment {
                             new WebServices.IRequestJsonDataCallBack() {
                                 @Override
                                 public void requestDataResponse(WebResponse<JsonObject> webResponse) {
+
+                                    sharedPreferenceManager.putObject(AppConstants.KEY_CURRENT_USER_MODEL, user);
 //                                getBaseActivity().openActivity(HomeActivity.class);
                                     UIHelper.showToast(getContext(), webResponse.message);
                                     getCardDetailService(user);
@@ -295,10 +301,10 @@ public class EditProfileFragment extends BaseFragment {
 
 
                                 for (int i = 0; i < countryListModel.getCurrentCountryList().size(); i++) {
+                                    currentCountryIDandDesc.put(countryListModel.getCurrentCountryList().get(i).getText(), countryListModel.getCurrentCountryList().get(i).getValue());
                                     arrCurrentCountry.add(new SpinnerModel(countryListModel.getCurrentCountryList().get(i).getText()));
                                 }
                                 for (int i = 0; i < countryListModel.getPermanentCountryList().size(); i++) {
-
                                     arrPermanentCountry.add(new SpinnerModel(countryListModel.getPermanentCountryList().get(i).getText()));
                                 }
 
