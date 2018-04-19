@@ -217,11 +217,11 @@ public class EditProfileFragment extends BaseFragment {
 
         user.setCurrentAddress(edtCurrentAddress.getStringTrimmed());
         user.setCurrentCity(edtCurrentCity.getStringTrimmed());
-        user.setCurrentCountryID(txtCurrentCountry.getStringTrimmed());
+        user.setCurrentCountryDescription(txtCurrentCountry.getStringTrimmed());
 
         user.setPermanentAddress(edtPermanentAddress.getStringTrimmed());
         user.setPermanentCity(edtPermanentCity.getStringTrimmed());
-        user.setPermanentCountryID(txtPermanentCountry.getStringTrimmed());
+        user.setPermanentCountryDescription(txtPermanentCountry.getStringTrimmed());
         user.setLastFileDateTime(null);
         if (!Objects.equals(edMobileNumber.getStringTrimmed(), "") &&
                 !Objects.equals(edtCurrentAddress.getStringTrimmed(), "") &&
@@ -230,6 +230,7 @@ public class EditProfileFragment extends BaseFragment {
                 !Objects.equals(edtPermanentAddress.getStringTrimmed(), "") &&
                 !Objects.equals(txtPermanentCountry.getStringTrimmed(), "") &&
                 !Objects.equals(edtPermanentCity.getStringTrimmed(), "")) {
+
             new WebServices(getBaseActivity(),
                     getToken(),
                     BaseURLTypes.AHFA_BASE_URL)
