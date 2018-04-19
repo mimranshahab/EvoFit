@@ -22,6 +22,9 @@ public class WebServiceConstants {
     /**
      * URLs
      */
+
+    public static String APP_GOOGLE_URL = "https://play.google.com/store/apps/details?id=edu.aku.family_hifazat";
+
     public static String BASE_URL_LOCAL = "http://ahfapidev.aku.edu/api/";
     public static String BASE_URL_LIVE = "https://familyhifazatmobileapi.aku.edu/api/";
     public static String BASE_URL_UAT = "https://familyhifazatmobileapiuat.aku.edu/api/";

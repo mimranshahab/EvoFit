@@ -105,6 +105,7 @@ public class LoginFragment extends BaseFragment {
         edtCardNumber.addValidator(new CardNumberValidation());
         edtCardNumber.addTextChangedListener(new MaskFormatter(CARD_MASK, edtCardNumber, '-'));
 
+
     }
 
     @Override
@@ -126,9 +127,7 @@ public class LoginFragment extends BaseFragment {
                 getBaseActivity().addDockableFragment(ForgotPassowrdFragment.newInstance(), false);
                 break;
             case R.id.btnLogin:
-//                edtCardNumber.setText(WebServiceConstants.tempCardNumber);
-//                edtPassword.setText(WebServiceConstants.tempPassword);
-                if (edtCardNumber.testValidity() && edtPassword.testValidity()) {
+                 if (edtCardNumber.testValidity() && edtPassword.testValidity()) {
                     LoginApiModel loginApiModel = new LoginApiModel(edtCardNumber.getText().toString(), edtPassword.getText().toString());
                     loginCall(loginApiModel);
                 }
