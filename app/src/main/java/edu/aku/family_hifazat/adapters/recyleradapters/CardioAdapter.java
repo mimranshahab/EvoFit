@@ -65,9 +65,9 @@ public class CardioAdapter extends RecyclerView.Adapter<CardioAdapter.ViewHolder
         setEnability(holder, model);
         setListener(holder, model);
 
-        if (model.getStatus().equalsIgnoreCase("Signed")) {
-            holder.txtStatusType.setText("Finalized");
+        holder.txtStatusType.setText(model.getStatus());
 
+        if (model.getStatus().equalsIgnoreCase("Finalized")) {
             holder.RlReport.setVisibility(View.VISIBLE);
             holder.RlGraph.setVisibility(View.VISIBLE);
 
@@ -75,8 +75,6 @@ public class CardioAdapter extends RecyclerView.Adapter<CardioAdapter.ViewHolder
                     R.drawable.rounded_box_filled_base_green, R.drawable.cardiopulmonary_green, R.drawable.b_cardiopulmonary_transparent);
 
         } else {
-            holder.txtStatusType.setText("Pending");
-
             holder.RlReport.setVisibility(View.GONE);
             holder.RlGraph.setVisibility(View.GONE);
             setViews(holder, activity.getResources().getColor(R.color.base_amber),
@@ -150,7 +148,8 @@ public class CardioAdapter extends RecyclerView.Adapter<CardioAdapter.ViewHolder
         @BindView(R.id.txtStatusType)
         AnyTextView txtStatusType;
         @BindView(R.id.imgIcon)
-        ImageView imgIcon;  @BindView(R.id.imgStatus)
+        ImageView imgIcon;
+        @BindView(R.id.imgStatus)
         ImageView imgStatus;
         @BindView(R.id.imgTransparent)
         ImageView imgTransparent;

@@ -118,10 +118,11 @@ public class HealthSummaryFragment extends BaseFragment implements OnItemClickLi
 //        setSpannyText();
 
         bindView();
+        serviceCallBasicHealthSummary();
+
         if (onCreated) {
             return;
         }
-        serviceCallBasicHealthSummary();
         serviceCallDetailedHealthSummary();
 
     }
@@ -278,6 +279,13 @@ public class HealthSummaryFragment extends BaseFragment implements OnItemClickLi
                                 }
                                 txtHeightDate.setText(patientHealthSummaryModel.getHeightdate());
                                 txtWeightDate.setText(patientHealthSummaryModel.getWeightdate());
+
+
+//                               // Fake Data
+//                                txtHeight.setText("178" + "cm");
+//                                txtWeight.setText("70" + "kg");
+//                                txtBloodType.setText("A+");
+
 
                             }
 

@@ -17,6 +17,7 @@
         <LinearLayout
             android:id="@+id/contParentLayout"
             android:layout_width="wrap_content"
+            android:gravity="center_horizontal"
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
