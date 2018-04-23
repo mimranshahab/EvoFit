@@ -56,39 +56,12 @@ public class ForgotPassowrdFragment extends BaseFragment {
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        UIHelper.showToast(getContext(), "Payment gateway service for testing..");
+//        paymentModuleData();
 
-        PaymentModel paymentModel = new PaymentModel();
-        Parameters parameters = new Parameters();
-
-        parameters.setReferenceNumber(payRequestModel.getReferenceNo());
-        parameters.setTransactionType(payRequestModel.getTransactionType());
-        parameters.setCurrency(payRequestModel.getCurrency());
-        parameters.setAmount(payRequestModel.getAmount());
-        parameters.setLocale(payRequestModel.getLocale());
-        parameters.setAccessKey(payRequestModel.getAccessKey());
-        parameters.setProfileId(payRequestModel.getProfileID());
-        parameters.setTransactionUuid(payRequestModel.getTransactionUUID());
-        parameters.setSignedDateTime(payRequestModel.getSignedDateTimeString());
-        parameters.setSignedFieldNames(payRequestModel.getSignedFieldNames());
-        parameters.setUnsignedFieldNames(payRequestModel.getUnsignedFieldNames());
-        parameters.setPaymentMethod(payRequestModel.getPaymentMethod());
-        parameters.setCardType(payRequestModel.getCardType());
-        parameters.setCardExpiryDate(payRequestModel.getCardExpirydate());
-        parameters.setCardCvn(payRequestModel.getCVN());
-        parameters.setBillToForename(payRequestModel.getBillForeName());
-        parameters.setBillToSurname(payRequestModel.getBillSurName());
-        parameters.setBillToEmail(payRequestModel.getBillEmailAddress());
-        parameters.setBillToAddressLine1(payRequestModel.getBillAddressLine());
-        parameters.setBillToAddressCity(payRequestModel.getBillAddressCity());
-        parameters.setBillToAddressCountry(payRequestModel.getBillAddressCountry());
-        parameters.setBill_to_address_postal_code(payRequestModel.getBillPostalAddress());
-        parameters.setBill_to_address_state(payRequestModel.getBillState());
-
-        paymentModel.setParameters(parameters);
-
-        getCyberSignatureService(paymentModel);
+//        getCyberSignatureService(paymentModel);
     }
+
+
 
     @Override
     public int getDrawerLockMode() {
@@ -137,7 +110,38 @@ public class ForgotPassowrdFragment extends BaseFragment {
                         }
                         , payRequestModel);
     }
+    private void paymentModuleData() {
+        UIHelper.showToast(getContext(), "Payment gateway service for testing..");
 
+        PaymentModel paymentModel = new PaymentModel();
+        Parameters parameters = new Parameters();
+
+        parameters.setReferenceNumber(payRequestModel.getReferenceNo());
+        parameters.setTransactionType(payRequestModel.getTransactionType());
+        parameters.setCurrency(payRequestModel.getCurrency());
+        parameters.setAmount(payRequestModel.getAmount());
+        parameters.setLocale(payRequestModel.getLocale());
+        parameters.setAccessKey(payRequestModel.getAccessKey());
+        parameters.setProfileId(payRequestModel.getProfileID());
+        parameters.setTransactionUuid(payRequestModel.getTransactionUUID());
+        parameters.setSignedDateTime(payRequestModel.getSignedDateTimeString());
+        parameters.setSignedFieldNames(payRequestModel.getSignedFieldNames());
+        parameters.setUnsignedFieldNames(payRequestModel.getUnsignedFieldNames());
+        parameters.setPaymentMethod(payRequestModel.getPaymentMethod());
+        parameters.setCardType(payRequestModel.getCardType());
+        parameters.setCardExpiryDate(payRequestModel.getCardExpirydate());
+        parameters.setCardCvn(payRequestModel.getCVN());
+        parameters.setBillToForename(payRequestModel.getBillForeName());
+        parameters.setBillToSurname(payRequestModel.getBillSurName());
+        parameters.setBillToEmail(payRequestModel.getBillEmailAddress());
+        parameters.setBillToAddressLine1(payRequestModel.getBillAddressLine());
+        parameters.setBillToAddressCity(payRequestModel.getBillAddressCity());
+        parameters.setBillToAddressCountry(payRequestModel.getBillAddressCountry());
+        parameters.setBill_to_address_postal_code(payRequestModel.getBillPostalAddress());
+        parameters.setBill_to_address_state(payRequestModel.getBillState());
+
+        paymentModel.setParameters(parameters);
+    }
 
     private void getCyberSignatureService(final PaymentModel paymentModel) {
         new WebServices(getBaseActivity(), getToken(), BaseURLTypes.AHFA_BASE_URL)

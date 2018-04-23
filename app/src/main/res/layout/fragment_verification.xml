@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <LinearLayout
+        android:id="@+id/llVerificationCode"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginLeft="@dimen/x30dp"
+        android:layout_marginRight="@dimen/x30dp"
+        android:layout_marginTop="@dimen/x20dp"
+        android:orientation="vertical"
+        android:visibility="visible">
+
+        <edu.aku.family_hifazat.widget.AnyTextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:padding="@dimen/x5dp"
+            android:text="Change Password"
+            android:textColor="@color/base_blue"
+            android:textSize="@dimen/s20"
+            app:typeface="@string/font_bold" />
+
+        <edu.aku.family_hifazat.widget.AnyTextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:padding="@dimen/x5dp"
+            android:text="Verification"
+            android:textColor="@color/txt_aku_blue"
+            android:textSize="@dimen/s20"
+            app:typeface="@string/font_bold" />
+
+
+        <com.alimuzaffar.lib.pin.PinEntryEditText
+            android:id="@+id/txtPinForgotPass"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@null"
+            android:cursorVisible="false"
+            android:digits="1234567890"
+            android:inputType="number"
+            android:maxLength="4"
+            android:padding="@dimen/x50dp"
+            android:textIsSelectable="false"
+            android:textSize="@dimen/s20"
+            app:typeface="@string/font_bold"
+            android:visibility="visible"
+            app:pinLineColors="@color/txt_aku_blue" />
+
+
+
+        <Button
+            android:id="@+id/btnSubmit"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/x10dp"
+            android:background="@drawable/rounded_box_filled_btn_amber"
+            android:text="@string/submit"
+            android:textAllCaps="false"
+            android:textColor="@color/c_white"
+            android:textSize="@dimen/s18"
+         />
+
+    </LinearLayout>
+</LinearLayout>

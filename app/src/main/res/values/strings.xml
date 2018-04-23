@@ -134,5 +134,7 @@ Enim vitae euismod eu velit pede eu, sodales malesuada sit fermentum ut dictum d
     <string name="relationship">Relationship</string>
     <string name="cell_phone_number">Cell Phone Number</string>
     <string name="tag_line">Access to Personal Health Records</string>
+    <string name="save">Save</string>
+    <string name="verification">Verification Code</string>
 
 </resources>
