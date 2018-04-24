@@ -127,7 +127,7 @@ public class LoginFragment extends BaseFragment {
                 getBaseActivity().addDockableFragment(ForgotPassowrdFragment.newInstance(), false);
                 break;
             case R.id.btnLogin:
-                 if (edtCardNumber.testValidity() && edtPassword.testValidity()) {
+                if (edtCardNumber.testValidity() && edtPassword.testValidity()) {
                     LoginApiModel loginApiModel = new LoginApiModel(edtCardNumber.getText().toString(), edtPassword.getText().toString());
                     loginCall(loginApiModel);
                 }

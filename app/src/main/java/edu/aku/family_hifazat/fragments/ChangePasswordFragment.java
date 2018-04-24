@@ -33,6 +33,14 @@ public class ChangePasswordFragment extends BaseFragment {
     AnyTextView btnLogin;
     Unbinder unbinder;
 
+    public static ChangePasswordFragment newInstance() {
+        
+        Bundle args = new Bundle();
+        
+        ChangePasswordFragment fragment = new ChangePasswordFragment();
+        fragment.setArguments(args);
+        return fragment;
+    }
     @Override
     public int getDrawerLockMode() {
         return DrawerLayout.LOCK_MODE_LOCKED_CLOSED;
