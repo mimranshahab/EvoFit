@@ -61,11 +61,15 @@ public class ImmunizationAdapter extends RecyclerView.Adapter<ImmunizationAdapte
         if (model.getHospitalLocation() == null || model.getHospitalLocation().isEmpty()) {
             holder.txtLocation.setText("Not Available");
         } else {
-            holder.txtLocation.setText("External: " + model.getHospitalLocation());
+            holder.txtLocation.setText(model.getHospitalLocation());
 
         }
         holder.txtName.setText(model.getDescription());
-        holder.txtRoute.setText(model.getRouteDescription());
+        if (model.getRouteDescription() == null || model.getRouteDescription().isEmpty()) {
+            holder.txtRoute.setText(model.getRouteID());
+        } else {
+            holder.txtRoute.setText(model.getRouteDescription());
+        }
 
         switch (model.getVaccinationStatus()) {
             case AppConstants.schedule:

@@ -58,8 +58,8 @@ public class WebServiceConstants {
     public static final String tempMRN_immunization = "269-14-57";
     public static final String temp_Specimen_Num = "47556226";
     //    public static final String tempMRN_Cardio = "275-02-02";
-    public static final String tempMRN_Cardio = "289-49-15";
-//    public static final String tempMRN_Cardio = "200-47-97";
+//    public static final String tempMRN_Cardio = "289-49-15";
+     public static final String tempMRN_Cardio = "200-47-97";
 
     /**
      * REQUEST METHODS NAMES

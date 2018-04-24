@@ -162,6 +162,7 @@ public class ImmunizationProfileFragment extends BaseFragment implements View.On
     private void getVaccineScheduleService() {
         SearchModel model = new SearchModel();
         model.setMRNumber(getCurrentUser().getMRNumber());
+//        model.setMRNumber(WebServiceConstants.tempMRN_immunization);
         if (isFromTimeline) {
             model.setVisitID(String.valueOf(patientVisitAdmissionID));
         } else {
@@ -211,6 +212,7 @@ public class ImmunizationProfileFragment extends BaseFragment implements View.On
     private void isImmunizationRecordExistServce() {
         SearchModel model = new SearchModel();
         model.setMRNumber(getCurrentUser().getMRNumber());
+//        model.setMRNumber(WebServiceConstants.tempMRN_immunization);
         model.setVisitID(null);
 
         new WebServices(getBaseActivity(),
@@ -227,7 +229,9 @@ public class ImmunizationProfileFragment extends BaseFragment implements View.On
                                                 , ImmunizationModel.class);
 
                                 if (immunizationModel.isImmunizationRecordFound()) {
-                                    mFab.setVisibility(View.VISIBLE);
+                                    // FIXME: 4/20/2018 button Hard Coded GONE
+//                                    mFab.setVisibility(View.VISIBLE);
+                                    mFab.setVisibility(View.GONE);
                                     getVaccineScheduleService();
                                 } else {
                                     mFab.setVisibility(View.GONE);

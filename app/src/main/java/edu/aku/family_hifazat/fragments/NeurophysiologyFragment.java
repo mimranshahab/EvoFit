@@ -174,6 +174,7 @@ public class NeurophysiologyFragment extends BaseFragment implements View.OnClic
 
     private void serviceCall() {
         SearchModel model = new SearchModel();
+//        model.setMRNumber(WebServiceConstants.tempMRN_Neuro);
         model.setMRNumber(getCurrentUser().getMRNumber());
         if (isFromTimeline) {
             model.setVisitID(String.valueOf(patientVisitAdmissionID));
