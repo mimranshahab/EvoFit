@@ -40,6 +40,7 @@
         android:maxLines="4"
         android:minLines="2"
         android:text="Message"
+        android:textColor="@color/txt_aku_blue"
         android:textSize="@dimen/s14"
         app:typeface="@string/font_regular" />
 
@@ -55,10 +56,12 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="@dimen/x40dp"
             android:layout_marginRight="@dimen/x10dp"
+            android:gravity="center"
+
             android:layout_weight="1"
             android:background="@drawable/rounded_box_filled_btn_blue"
             android:padding="@dimen/x8dp"
-            android:textAlignment="center"
+             android:textAlignment="center"
             android:textColor="#fff"
             android:textSize="@dimen/s14"
             android:visibility="visible"
@@ -70,8 +73,10 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="@dimen/x10dp"
             android:layout_marginRight="@dimen/x40dp"
+            android:gravity="center"
+
             android:layout_weight="1"
-            android:background="@drawable/rounded_box_filled_btn_amber"
+             android:background="@drawable/rounded_box_filled_btn_amber"
             android:padding="@dimen/x8dp"
             android:textAlignment="center"
             android:textColor="#fff"

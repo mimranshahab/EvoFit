@@ -42,15 +42,14 @@
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:orientation="horizontal">
+                android:layout_height="wrap_content"
+                 android:orientation="horizontal">
 
 
                 <android.support.v7.widget.CardView
                     android:id="@+id/contLab"
                     android:layout_width="0dp"
-                    android:layout_height="match_parent"
+                    android:layout_height="wrap_content"
                     android:layout_margin="@dimen/x5dp"
                     android:layout_weight="1"
                     android:animateLayoutChanges="true"
@@ -61,7 +60,7 @@
 
                     <LinearLayout
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent"
+                        android:layout_height="wrap_content"
                         android:gravity="bottom"
                         android:orientation="vertical"
                         android:padding="@dimen/x5dp">
@@ -74,7 +73,7 @@
 
                             <ImageView
                                 android:layout_width="match_parent"
-                                android:layout_height="match_parent"
+                                android:layout_height="wrap_content"
                                 android:layout_gravity="center"
                                 android:layout_weight="1"
                                 android:padding="@dimen/x5dp"
@@ -147,7 +146,7 @@
 
                             <ImageView
                                 android:layout_width="match_parent"
-                                android:layout_height="match_parent"
+                                android:layout_height="wrap_content"
                                 android:layout_gravity="center"
                                 android:layout_weight="1"
                                 android:padding="@dimen/x5dp"
@@ -223,7 +222,7 @@
 
                             <ImageView
                                 android:layout_width="match_parent"
-                                android:layout_height="match_parent"
+                                android:layout_height="wrap_content"
                                 android:layout_gravity="center"
                                 android:layout_weight="1"
                                 android:padding="@dimen/x5dp"
@@ -266,18 +265,6 @@
 
                 </android.support.v7.widget.CardView>
 
-            </LinearLayout>
-
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-
-                android:orientation="horizontal"
-
-                >
-
 
                 <android.support.v7.widget.CardView
                     android:id="@+id/contImmunization"
@@ -310,7 +297,7 @@
 
                             <ImageView
                                 android:layout_width="match_parent"
-                                android:layout_height="match_parent"
+                                android:layout_height="wrap_content"
                                 android:layout_gravity="center"
                                 android:layout_weight="1"
                                 android:padding="@dimen/x5dp"
@@ -354,11 +341,23 @@
 
                 </android.support.v7.widget.CardView>
 
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+
+                >
+
+
+
                 <android.support.v7.widget.CardView
                     android:id="@+id/contCardio"
 
                     android:layout_width="0dp"
-                    android:layout_height="match_parent"
+                    android:layout_height="wrap_content"
                     android:layout_centerInParent="true"
                     android:layout_margin="@dimen/x5dp"
                     android:layout_weight="1"
@@ -370,7 +369,7 @@
 
                     <LinearLayout
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent"
+                        android:layout_height="wrap_content"
                         android:gravity="center_horizontal"
                         android:orientation="vertical"
                         android:padding="@dimen/x5dp">
@@ -383,7 +382,7 @@
 
                             <ImageView
                                 android:layout_width="match_parent"
-                                android:layout_height="match_parent"
+                                android:layout_height="wrap_content"
                                 android:layout_gravity="center"
                                 android:layout_weight="1"
                                 android:padding="@dimen/x5dp"
@@ -430,7 +429,7 @@
                 <android.support.v7.widget.CardView
                     android:id="@+id/contNeuroPhysiology"
                     android:layout_width="0dp"
-                    android:layout_height="match_parent"
+                    android:layout_height="wrap_content"
                     android:layout_centerInParent="true"
                     android:layout_margin="@dimen/x5dp"
                     android:layout_weight="1"
@@ -443,7 +442,7 @@
 
                     <LinearLayout
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent"
+                        android:layout_height="wrap_content"
                         android:gravity="center_horizontal"
                         android:orientation="vertical"
                         android:padding="@dimen/x5dp">
@@ -457,7 +456,7 @@
 
                             <ImageView
                                 android:layout_width="match_parent"
-                                android:layout_height="match_parent"
+                                android:layout_height="wrap_content"
                                 android:layout_gravity="center"
                                 android:layout_weight="1"
                                 android:padding="@dimen/x5dp"
@@ -500,18 +499,6 @@
 
                 </android.support.v7.widget.CardView>
 
-
-            </LinearLayout>
-
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-
-                android:orientation="horizontal">
-
-
                 <android.support.v7.widget.CardView
                     android:id="@+id/contEndo"
                     android:layout_width="0dp"
@@ -528,7 +515,7 @@
 
                     <LinearLayout
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent"
+                        android:layout_height="wrap_content"
                         android:gravity="center_horizontal"
                         android:orientation="vertical"
                         android:padding="@dimen/x5dp">
@@ -542,7 +529,7 @@
 
                             <ImageView
                                 android:layout_width="match_parent"
-                                android:layout_height="match_parent"
+                                android:layout_height="wrap_content"
                                 android:layout_gravity="center"
                                 android:layout_weight="1"
                                 android:padding="@dimen/x5dp"
@@ -588,7 +575,7 @@
                 <android.support.v7.widget.CardView
                     android:id="@+id/contSummary"
                     android:layout_width="0dp"
-                    android:layout_height="match_parent"
+                    android:layout_height="wrap_content"
                     android:layout_centerInParent="true"
                     android:layout_margin="@dimen/x5dp"
                     android:layout_weight="1"
@@ -600,7 +587,7 @@
 
                     <LinearLayout
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent"
+                        android:layout_height="wrap_content"
                         android:gravity="center_horizontal"
                         android:orientation="vertical"
                         android:padding="@dimen/x5dp">
@@ -613,7 +600,7 @@
 
                             <ImageView
                                 android:layout_width="match_parent"
-                                android:layout_height="match_parent"
+                                android:layout_height="wrap_content"
                                 android:layout_gravity="center"
                                 android:layout_weight="1"
                                 android:padding="@dimen/x5dp"
@@ -653,244 +640,6 @@
                     </LinearLayout>
                 </android.support.v7.widget.CardView>
 
-
-                <android.support.v7.widget.CardView
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_margin="@dimen/x5dp"
-                    android:layout_weight="1"
-                    android:animateLayoutChanges="true"
-                    android:padding="@dimen/x7dp"
-                    android:visibility="invisible"
-                    app:cardCornerRadius="@dimen/x10dp"
-
-                    >
-
-
-                </android.support.v7.widget.CardView>
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:orientation="horizontal"
-                android:visibility="invisible">
-
-
-                <android.support.v7.widget.CardView
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_margin="@dimen/x5dp"
-                    android:layout_weight="1"
-                    android:animateLayoutChanges="true"
-                    android:padding="@dimen/x7dp"
-                    app:cardCornerRadius="@dimen/x10dp"
-
-                    >
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:gravity="bottom"
-                        android:orientation="vertical"
-                        android:padding="@dimen/x5dp">
-
-                        <RelativeLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="0dp"
-                            android:layout_weight="1">
-
-
-                            <ImageView
-                                android:layout_width="match_parent"
-                                android:layout_height="match_parent"
-                                android:layout_gravity="center"
-                                android:layout_weight="1"
-                                android:padding="@dimen/x5dp"
-                                android:scaleType="fitCenter"
-                                android:src="@drawable/clinical_labortaory" />
-
-                            <edu.aku.family_hifazat.widget.AnyTextView
-                                android:layout_width="@dimen/x20dp"
-                                android:layout_height="@dimen/x20dp"
-                                android:layout_alignParentRight="true"
-                                android:layout_alignParentTop="true"
-                                android:layout_marginRight="@dimen/x10dp"
-                                android:layout_marginTop="@dimen/x5dp"
-                                android:background="@drawable/circle_green"
-                                android:gravity="center"
-                                android:maxLines="1"
-                                android:padding="@dimen/x2dp"
-                                android:text="99"
-                                android:textColor="@color/c_white"
-                                android:textSize="@dimen/s10" />
-
-
-                        </RelativeLayout>
-
-
-                        <edu.aku.family_hifazat.widget.AnyTextView
-
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:gravity="center_horizontal"
-                            android:lines="2"
-                            android:text="Laboratory"
-                            android:textColor="@color/c_black"
-                            android:textSize="@dimen/s11"
-                            app:typeface="@string/font_bold"
-
-
-                            />
-                    </LinearLayout>
-
-                </android.support.v7.widget.CardView>
-
-
-                <android.support.v7.widget.CardView
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_centerInParent="true"
-                    android:layout_margin="@dimen/x5dp"
-                    android:layout_weight="1"
-                    android:animateLayoutChanges="true"
-                    android:padding="@dimen/x7dp"
-                    app:cardCornerRadius="@dimen/x10dp"
-
-                    >
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:gravity="center_horizontal"
-                        android:orientation="vertical"
-                        android:padding="@dimen/x5dp">
-
-
-                        <RelativeLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="0dp"
-                            android:layout_weight="1">
-
-                            <ImageView
-                                android:layout_width="match_parent"
-                                android:layout_height="match_parent"
-                                android:layout_gravity="center"
-                                android:layout_weight="1"
-                                android:padding="@dimen/x5dp"
-                                android:scaleType="fitCenter"
-                                android:src="@drawable/radiology" />
-
-                            <edu.aku.family_hifazat.widget.AnyTextView
-                                android:layout_width="@dimen/x20dp"
-                                android:layout_height="@dimen/x20dp"
-                                android:layout_alignParentRight="true"
-                                android:layout_alignParentTop="true"
-                                android:layout_marginRight="@dimen/x10dp"
-                                android:layout_marginTop="@dimen/x5dp"
-                                android:background="@drawable/circle_green"
-                                android:gravity="center"
-                                android:maxLines="1"
-                                android:padding="@dimen/x2dp"
-                                android:text="99"
-                                android:textColor="@color/c_white"
-                                android:textSize="@dimen/s10" />
-
-
-                        </RelativeLayout>
-
-                        <edu.aku.family_hifazat.widget.AnyTextView
-
-                            android:layout_width="match_parent"
-
-
-                            android:layout_height="wrap_content"
-                            android:gravity="center_horizontal"
-                            android:lines="2"
-                            android:text="Radiology"
-                            android:textColor="@color/c_black"
-                            android:textSize="@dimen/s11"
-                            app:typeface="@string/font_bold"
-
-                            />
-
-                    </LinearLayout>
-
-                </android.support.v7.widget.CardView>
-
-
-                <android.support.v7.widget.CardView
-
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_centerInParent="true"
-                    android:layout_margin="@dimen/x5dp"
-                    android:layout_weight="1"
-                    android:animateLayoutChanges="true"
-                    android:padding="@dimen/x7dp"
-                    app:cardCornerRadius="@dimen/x10dp"
-
-                    >
-
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:gravity="center_horizontal"
-                        android:orientation="vertical"
-                        android:padding="@dimen/x5dp">
-
-                        <RelativeLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="0dp"
-                            android:layout_weight="1">
-
-
-                            <ImageView
-                                android:layout_width="match_parent"
-                                android:layout_height="match_parent"
-                                android:layout_gravity="center"
-                                android:layout_weight="1"
-                                android:padding="@dimen/x5dp"
-                                android:scaleType="fitCenter"
-                                android:src="@drawable/medication" />
-
-                            <edu.aku.family_hifazat.widget.AnyTextView
-                                android:layout_width="@dimen/x20dp"
-                                android:layout_height="@dimen/x20dp"
-                                android:layout_alignParentRight="true"
-                                android:layout_alignParentTop="true"
-                                android:layout_marginRight="@dimen/x10dp"
-                                android:layout_marginTop="@dimen/x5dp"
-                                android:background="@drawable/circle_green"
-                                android:gravity="center"
-                                android:maxLines="1"
-                                android:padding="@dimen/x2dp"
-                                android:text="99"
-                                android:textColor="@color/c_white"
-                                android:textSize="@dimen/s10" />
-
-                        </RelativeLayout>
-
-                        <edu.aku.family_hifazat.widget.AnyTextView
-
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:gravity="center_horizontal"
-                            android:lines="2"
-                            android:text="Medicines"
-                            android:textColor="@color/c_black"
-                            android:textSize="@dimen/s11"
-                            app:typeface="@string/font_bold"
-
-
-                            />
-
-                    </LinearLayout>
-
-                </android.support.v7.widget.CardView>
 
             </LinearLayout>
 

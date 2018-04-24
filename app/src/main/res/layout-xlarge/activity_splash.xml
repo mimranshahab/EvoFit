@@ -11,16 +11,15 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:gravity="center_horizontal"
-        android:orientation="vertical"
-        android:padding="@dimen/x20dp">
+        android:orientation="vertical">
 
         <LinearLayout
             android:id="@+id/contParentLayout"
-            android:layout_width="wrap_content"
-            android:gravity="center_horizontal"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
-
+            android:gravity="center_horizontal"
+            android:orientation="vertical"
+            android:padding="@dimen/x30dp">
 
             <ImageView
                 android:layout_width="400dp"
@@ -41,14 +40,13 @@
 
             <edu.aku.family_hifazat.widget.AnyTextView
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:layout_marginBottom="@dimen/x30dp"
                 android:gravity="center"
                 android:text="@string/tag_line"
                 android:textColor="@color/base_amber"
                 android:textSize="18sp"
                 app:typeface="@string/font_bold" />
-
 
         </LinearLayout>
 

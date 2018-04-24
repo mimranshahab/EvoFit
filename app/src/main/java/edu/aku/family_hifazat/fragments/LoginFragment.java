@@ -1,8 +1,10 @@
 package edu.aku.family_hifazat.fragments;
 
+import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.widget.DrawerLayout;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,6 +12,7 @@ import android.widget.AdapterView;
 
 import com.andreabaccega.widget.FormEditText;
 
+import edu.aku.family_hifazat.constatnts.AppConstants;
 import edu.aku.family_hifazat.widget.AnyTextView;
 
 import com.google.gson.JsonObject;
@@ -105,6 +108,11 @@ public class LoginFragment extends BaseFragment {
         edtCardNumber.addValidator(new CardNumberValidation());
         edtCardNumber.addTextChangedListener(new MaskFormatter(CARD_MASK, edtCardNumber, '-'));
 
+        Log.d(TAG, "onViewCreated: UNIQUE ID:  " +  AppConstants.getDeviceID(getContext()));
+        Log.d(TAG, "onViewCreated: UNIQUE ID:  " +  AppConstants.getDeviceID(getContext()));
+
+        Log.d(TAG, "onViewCreated: UNIQUE ID:  " +  AppConstants.getDeviceID(getContext()));
+
 
     }
 
@@ -129,6 +137,8 @@ public class LoginFragment extends BaseFragment {
             case R.id.btnLogin:
                  if (edtCardNumber.testValidity() && edtPassword.testValidity()) {
                     LoginApiModel loginApiModel = new LoginApiModel(edtCardNumber.getText().toString(), edtPassword.getText().toString());
+                    loginApiModel.setLoginDeviceType(AppConstants.DEVICE_TYPE);
+                    loginApiModel.setLoginDeviceID(Build.VERSION.RELEASE);
                     loginCall(loginApiModel);
                 }
                 break;

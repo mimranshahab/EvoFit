@@ -31,7 +31,6 @@ public class WebServiceConstants {
     public static String GETIMAGE_BASE_URL = "https://familyhifazatmobileapiuat.aku.edu/getimage?path=";
 
     public static String PACS_VIEWER_URL = "https://pacsviewer.aku.edu/api/PACSViewer/";
-    public static String PACS_URL_DOWNLOAD = "https://pacsviewer.aku.edu/";
     public static String PACS_URL = "https://pacsviewer.aku.edu/api/";
     //    public static String PAYMENT_GATEWAY_URL = "https://testsecureacceptance.cybersource.com/pay/";
     public static String PAYMENT_GATEWAY_URL = "https://testsecureacceptance.cybersource.com/token/create/";

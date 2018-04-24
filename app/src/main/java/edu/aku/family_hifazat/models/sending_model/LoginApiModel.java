@@ -15,6 +15,27 @@ public class LoginApiModel {
     private String cardNumber;
     @SerializedName("Password")
     private String password;
+    @SerializedName("LoginDeviceID")
+    private String loginDeviceID ;
+    @SerializedName("LoginDeviceType")
+    private String loginDeviceType ;
+
+
+    public String getLoginDeviceID() {
+        return loginDeviceID;
+    }
+
+    public void setLoginDeviceID(String loginDeviceID) {
+        this.loginDeviceID = loginDeviceID;
+    }
+
+    public String getLoginDeviceType() {
+        return loginDeviceType;
+    }
+
+    public void setLoginDeviceType(String loginDeviceType) {
+        this.loginDeviceType = loginDeviceType;
+    }
 
     public String getToken() {
         return token;

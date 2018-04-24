@@ -2,24 +2,28 @@ package edu.aku.family_hifazat.activities;
 
 import android.animation.Animator;
 import android.animation.ObjectAnimator;
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
+import android.support.v7.app.AppCompatActivity;
 import android.util.DisplayMetrics;
 import android.view.View;
 import android.widget.LinearLayout;
 
+import edu.aku.family_hifazat.BaseApplication;
+import edu.aku.family_hifazat.callbacks.GenericClickableInterface;
 import edu.aku.family_hifazat.constatnts.AppConstants;
+import edu.aku.family_hifazat.fragments.abstracts.GenericDialogFragment;
 import edu.aku.family_hifazat.helperclasses.ui.helper.AnimationHelper;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import edu.aku.family_hifazat.R;
+import edu.aku.family_hifazat.helperclasses.ui.helper.UIHelper;
 import edu.aku.family_hifazat.managers.SharedPreferenceManager;
 
 import static android.view.View.VISIBLE;
 
-public class SplashActivity extends Activity {
+public class SplashActivity extends AppCompatActivity {
 
     @BindView(R.id.contParentLayout)
     LinearLayout contParentLayout;
@@ -64,7 +68,7 @@ public class SplashActivity extends Activity {
                 if (showLoginScreen) {
                     translateAnimation();
                 } else {
-                    changeActivity(HomeActivity.class);
+                    updateAppOrChangeActivity(HomeActivity.class);
                 }
             }
 
@@ -97,7 +101,7 @@ public class SplashActivity extends Activity {
                     public void onAnimationEnd(Animator animator) {
                         contParentLayout.setTranslationY(0);
                         contParentLayout.setAlpha(1);
-                        changeActivity(MainActivity.class);
+                        updateAppOrChangeActivity(MainActivity.class);
                     }
 
                     @Override
@@ -114,6 +118,17 @@ public class SplashActivity extends Activity {
                 .translationY(0)
                 .setDuration(SPLASH_TIME_OUT)
                 .start();
+    }
+
+
+    private void updateAppOrChangeActivity(final Class activityClass) {
+        boolean isUpdateAvailable = false;
+        if (isUpdateAvailable) {
+            updateApp(activityClass);
+        } else {
+            changeActivity(activityClass);
+        }
+
     }
 
     private void changeActivity(final Class activityClass) {
@@ -134,12 +149,36 @@ public class SplashActivity extends Activity {
                 i = new Intent(SplashActivity.this, activityClass);
 
                 startActivity(i);
-                overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
+                overridePendingTransition(android.R.anim.fade_in, R.anim.fade_out);
                 // close this activity
                 finish();
             }
         }, ANIMATIONS_TIME_OUT);
     }
+
+    public void updateApp(final Class activityClass) {
+        final GenericDialogFragment genericDialogFragment = GenericDialogFragment.newInstance();
+
+        genericDialogFragment.setTitle("Update App");
+        genericDialogFragment.setMessage("New Update of Family Hifazat is available.");
+        genericDialogFragment.setButton1("Update", new GenericClickableInterface() {
+            @Override
+            public void click() {
+                genericDialogFragment.getDialog().dismiss();
+                UIHelper.showToast(BaseApplication.getContext(), "Update this app asap");
+            }
+        });
+
+        genericDialogFragment.setButton2("Later", new GenericClickableInterface() {
+            @Override
+            public void click() {
+                genericDialogFragment.getDialog().dismiss();
+                changeActivity(activityClass);
+            }
+        });
+        genericDialogFragment.show(getSupportFragmentManager(), null);
+    }
+
 
     @Override
     public void onWindowFocusChanged(boolean hasFocus) {
@@ -166,8 +205,6 @@ public class SplashActivity extends Activity {
                     }
                 }, ANIMATIONS_DELAY);
             }
-
-
         }
     }
 }
