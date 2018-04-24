@@ -33,9 +33,12 @@ import edu.aku.family_hifazat.enums.BaseURLTypes;
 import edu.aku.family_hifazat.enums.HealthSummaryTypes;
 import edu.aku.family_hifazat.fragments.abstracts.BaseFragment;
 import edu.aku.family_hifazat.fragments.dialogs.HealthSummaryDialogFragment;
+import edu.aku.family_hifazat.fragments.dialogs.HistoryDialogFragment;
+import edu.aku.family_hifazat.fragments.dialogs.MeasurementsBPDialogFragment;
 import edu.aku.family_hifazat.managers.retrofit.GsonFactory;
 import edu.aku.family_hifazat.managers.retrofit.WebServices;
 import edu.aku.family_hifazat.models.DetailHealthSummaryModel;
+import edu.aku.family_hifazat.models.LstLaboratorySpecimenResults;
 import edu.aku.family_hifazat.models.PatientHealthSummaryModel;
 import edu.aku.family_hifazat.models.SearchModel;
 import edu.aku.family_hifazat.models.ShortMessageMobile;
@@ -408,11 +411,22 @@ public class HealthSummaryV2Fragment extends BaseFragment implements OnItemClick
 
                 break;
             case R.id.cardMeasurement:
-                showNextBuildToast();
-                break;
+                historyDialog();                break;
             case R.id.cardBP:
-                showNextBuildToast();
-                break;
+                historyDialog();                break;
         }
+    }
+    private void historyDialog() {
+        final MeasurementsBPDialogFragment historyDialogFrag = MeasurementsBPDialogFragment.newInstance();
+//        historyDialogFrag.setTitle(model.getReportName());
+//        historyDialogFrag.setResultPrevious1(model.getPrevResult1());
+//        historyDialogFrag.setResultPrevious2(model.getPrevResult2());
+//        historyDialogFrag.setResultPrevious1Date(model.getPrevResult1Dttm());
+//        historyDialogFrag.setResultPrevious2Date(model.getPrevResult2Dttm());
+//        historyDialogFrag.setCurrentResult(model.getResult());
+//        historyDialogFrag.setCurrentDate("Current Result");
+
+
+        historyDialogFrag.show(getFragmentManager(), null);
     }
 }
