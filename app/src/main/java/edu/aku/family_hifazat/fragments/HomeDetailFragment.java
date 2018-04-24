@@ -93,7 +93,7 @@ public class HomeDetailFragment extends BaseFragment {
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.contSummary:
-                getBaseActivity().addDockableFragment(HealthSummaryFragment.newInstance(), true);
+                getBaseActivity().addDockableFragment(HealthSummaryV2Fragment.newInstance(), true);
                 break;
             case R.id.contHistory:
                 getBaseActivity().addDockableFragment(HealthHistoryFragment.newInstance(false, -1, null), true);
