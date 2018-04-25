@@ -46,7 +46,7 @@
             app:typeface="@string/font_bold" />
 
 
-        <com.alimuzaffar.lib.pin.PinEntryEditText
+        <edu.aku.family_hifazat.widget.PinEntryEditText
             android:id="@+id/txtPinForgotPass"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

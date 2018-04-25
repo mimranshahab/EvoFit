@@ -9,7 +9,6 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.LinearLayout;
 
-import com.alimuzaffar.lib.pin.PinEntryEditText;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -18,6 +17,7 @@ import butterknife.Unbinder;
 import edu.aku.family_hifazat.R;
 import edu.aku.family_hifazat.fragments.abstracts.BaseFragment;
 import edu.aku.family_hifazat.widget.AnyTextView;
+import edu.aku.family_hifazat.widget.PinEntryEditText;
 import edu.aku.family_hifazat.widget.TitleBar;
 
 /**
