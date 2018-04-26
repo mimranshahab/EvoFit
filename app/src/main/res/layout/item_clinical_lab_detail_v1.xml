@@ -134,7 +134,7 @@
                                     android:minWidth="@dimen/x30dp"
                                     android:padding="@dimen/x3dp"
                                     android:text="H"
-                                    android:textAlignment="center"
+                                    android:gravity="center"
                                     android:textColor="@color/c_white"
                                     android:textSize="@dimen/s12"
                                     android:visibility="visible"
@@ -149,8 +149,8 @@
                                     android:minWidth="@dimen/x30dp"
                                     android:padding="@dimen/x3dp"
                                     android:text="C"
-                                    android:textAlignment="center"
-                                    android:textColor="@color/c_white"
+                                    android:gravity="center"
+                                     android:textColor="@color/c_white"
                                     android:textSize="@dimen/s12"
                                     app:typeface="@string/font_bold" />
 

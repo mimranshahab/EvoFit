@@ -39,6 +39,19 @@ public interface WebServiceProxy {
             @Part(WebServiceConstants.PARAMS_REQUEST_DATA) RequestBody requestData
     );
 
+    @Multipart
+    @POST("./")
+    Call<WebResponse<String>> webServiceRequestAPIForWebResponseWithString(
+            @Part(WebServiceConstants.PARAMS_REQUEST_METHOD) RequestBody requestMethod,
+            @Part(WebServiceConstants.PARAMS_REQUEST_DATA) RequestBody requestData
+    );
+
+    @Multipart
+    @POST("./")
+    Call<WebResponse<Object>> webServiceRequestAPIForWebResponseAnyObject(
+            @Part(WebServiceConstants.PARAMS_REQUEST_METHOD) RequestBody requestMethod,
+            @Part(WebServiceConstants.PARAMS_REQUEST_DATA) RequestBody requestData
+    );
 
     @Multipart
     @POST("./")
@@ -50,18 +63,10 @@ public interface WebServiceProxy {
     );
 
 
-
     @Headers(WebServiceConstants.WS_KEY_GET_REQUESTOR)
     @GET(WebServiceConstants.WS_KEY_GET_TOKEN)
     Call<String> getToken();
 
-
-    @Multipart
-    @POST("./")
-    Call<WebResponse<String>> webServiceRequestAPIForWebResponseWithString(
-            @Part(WebServiceConstants.PARAMS_REQUEST_METHOD) RequestBody requestMethod,
-            @Part(WebServiceConstants.PARAMS_REQUEST_DATA) RequestBody requestData
-    );
 
     @FormUrlEncoded
     @POST("./")

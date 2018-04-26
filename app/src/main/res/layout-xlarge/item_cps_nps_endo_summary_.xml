@@ -46,7 +46,8 @@
                         android:drawablePadding="@dimen/x5dp"
                         android:drawableTint="@color/txt_aku_blue"
                         android:text="22 jan ,2018"
-                        android:textSize="@dimen/s12" />
+                        android:textSize="@dimen/s12"
+                        app:typeface="@string/font_regular" />
 
 
                     <LinearLayout
@@ -200,7 +201,6 @@
                             />
 
 
-
                     </RelativeLayout>
 
                     <RelativeLayout
@@ -218,10 +218,9 @@
                             android:layout_alignBottom="@id/txtGraph"
                             android:layout_alignTop="@id/txtGraph"
                             android:alpha=".8"
-                            android:gravity="center"
-                            android:padding="@dimen/x5dp"
                             android:background="@drawable/rounded_box_filled_btn_amber"
-                            />
+                            android:gravity="center"
+                            android:padding="@dimen/x5dp" />
 
                         <edu.aku.family_hifazat.widget.AnyTextView
                             android:id="@+id/txtGraph"

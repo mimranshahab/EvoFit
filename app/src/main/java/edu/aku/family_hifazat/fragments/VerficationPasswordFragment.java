@@ -9,7 +9,6 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.LinearLayout;
 
-
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
@@ -33,6 +32,8 @@ public class VerficationPasswordFragment extends BaseFragment {
     @BindView(R.id.llVerificationCode)
     LinearLayout llVerificationCode;
     Unbinder unbinder;
+    @BindView(R.id.txtTitle)
+    AnyTextView txtTitle;
 
     public static VerficationPasswordFragment newInstance() {
 
@@ -78,8 +79,7 @@ public class VerficationPasswordFragment extends BaseFragment {
 //                        }
 //                    }, 1000);
 //                }
-
-
+                txtTitle.setText("Pass Code Verification");
             }
         });
     }
@@ -113,8 +113,16 @@ public class VerficationPasswordFragment extends BaseFragment {
         unbinder.unbind();
     }
 
-    @OnClick(R.id.btnSumbit)
-    public void onViewClicked() {
-        getBaseActivity().addDockableFragment(ChangePasswordFragment.newInstance(), false);
+
+    @OnClick({R.id.btnBack, R.id.btnSumbit})
+    public void onViewClicked(View view) {
+        switch (view.getId()) {
+            case R.id.btnBack:
+                getBaseActivity().onBackPressed();
+                break;
+            case R.id.btnSumbit:
+//                getBaseActivity().addDockableFragment(ChangePasswordFragment.newInstance(ed), false);
+                break;
+        }
     }
 }

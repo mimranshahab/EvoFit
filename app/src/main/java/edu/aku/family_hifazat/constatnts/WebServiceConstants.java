@@ -19,11 +19,11 @@ public class WebServiceConstants {
         return headers;
     }
 
+    public static String tempToken = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJ3d3cuYWt1LmVkdSIsInN1YiI6Im1ubUBtbm0uY29tIiwiaXNzIjoiTW5NIn0.PRbF6RNmjYm7ai8jQNShBmyDLlZfIWv2Z6V2KosJgjE";
+
     /**
      * URLs
      */
-
-    public static String APP_GOOGLE_URL = "https://play.google.com/store/apps/details?id=edu.aku.family_hifazat";
 
     public static String BASE_URL_LOCAL = "http://ahfapidev.aku.edu/api/";
     public static String BASE_URL_LIVE = "https://familyhifazatmobileapi.aku.edu/api/";
@@ -58,7 +58,7 @@ public class WebServiceConstants {
     public static final String temp_Specimen_Num = "47556226";
     //    public static final String tempMRN_Cardio = "275-02-02";
 //    public static final String tempMRN_Cardio = "289-49-15";
-     public static final String tempMRN_Cardio = "200-47-97";
+    public static final String tempMRN_Cardio = "200-47-97";
 
     /**
      * REQUEST METHODS NAMES
@@ -71,6 +71,11 @@ public class WebServiceConstants {
     public static final String METHOD_USER_UPLOAD_REQUEST_FILE = "UserManager.UploadRequestFile";
     public static final String METHOD_USER_UPLOAD_PROFILE_PICTURE = "UserManager.UploadProfilePicture";
     public static final String METHOD_USER_GET_USER_IMAGE = "UserManager.GetUserImage";
+    public static final String METHOD_USER_INSERT_REGISTERED_DEVICE = "UserManager.InsertRegisteredDevice";
+    public static final String METHOD_USER_GENERATE_PASSWORD_CODE = "UserManager.GeneratePasswordResetCodeAndEmail";
+    public static final String METHOD_USER_VERIFY_PASSWORD_CODE_AND_UPDATE_PASSWORD = "UserManager.VerifyPasswordResetCodeAndUpdatePassword";
+    public static final String METHOD_USER_GET_APPLICATION_PARAMETER = "SharedManager.GetApplicationParameter";
+
 
     public static final String METHOD_GET_RADIOLOGY_EXAMS = "RadiologyManager.GetRadiologyExams";
     public static final String METHOD_GET_RADIOLOGY_GET_EXAM_DETAIL = "RadiologyManager.GetExamDetail";

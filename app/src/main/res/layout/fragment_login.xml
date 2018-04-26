@@ -89,7 +89,7 @@
                     android:singleLine="true"
                     android:textColor="@color/txt_aku_blue"
                     android:textColorHint="@color/text_hint"
-                    android:textSize="14sp"
+                    android:textSize="@dimen/s14"
                     app:testType="nocheck" />
 
 
@@ -111,7 +111,7 @@
                     android:singleLine="true"
                     android:textColor="@color/txt_aku_blue"
                     android:textColorHint="@color/text_hint"
-                    android:textSize="14sp"
+                    android:textSize="@dimen/s14"
                     app:testType="nocheck" />
 
 
@@ -120,13 +120,13 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal"
-                    android:layout_marginBottom="@dimen/x20dp"
+                    android:layout_marginBottom="@dimen/x10dp"
                     android:background="@drawable/rounded_box_filled_base_amber"
                     android:gravity="center"
                     android:padding="@dimen/x8dp"
                     android:text="@string/login"
                     android:textColor="@color/c_white"
-                    android:textSize="17sp"
+                    android:textSize="@dimen/s17"
                     app:typeface="@string/font_bold" />
 
                 <LinearLayout
@@ -204,6 +204,7 @@
                         android:gravity="end"
                         android:text="@string/forgot_password"
                         android:textColor="@color/c_white"
+                        android:padding="@dimen/x10dp"
                         android:textSize="@dimen/s15"
                         app:typeface="@string/font_bold" />
                 </LinearLayout>

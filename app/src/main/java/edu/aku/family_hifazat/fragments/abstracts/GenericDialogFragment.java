@@ -137,6 +137,15 @@ public class GenericDialogFragment extends DialogFragment implements View.OnClic
     }
 
 
+    public void setButton1Visibility(int VISIBILITY_BTN1) {
+        this.VISIBILITY_BTN1 = VISIBILITY_BTN1;
+    }
+
+    public void setButton2Visibility(int VISIBILITY_BTN2) {
+        this.VISIBILITY_BTN2 = VISIBILITY_BTN2;
+    }
+
+
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
@@ -150,8 +159,6 @@ public class GenericDialogFragment extends DialogFragment implements View.OnClic
                 break;
             }
         }
-
-
     }
 
 

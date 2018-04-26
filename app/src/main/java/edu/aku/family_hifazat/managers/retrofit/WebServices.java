@@ -228,7 +228,6 @@ public class WebServices {
         try {
             if (Helper.isNetworkConnected(mContext, true)) {
                 Call<WebResponse<JsonObject>> webResponseCall = apiService.webServiceRequestAPI(bodyRequestMethod, bodyRequestData);
-//                webResponseCall.request().newBuilder().addHeader("name", "hkhkhkhkhk").build();
                 webResponseCall.enqueue(new Callback<WebResponse<JsonObject>>() {
                     @Override
                     public void onResponse(Call<WebResponse<JsonObject>> call, Response<WebResponse<JsonObject>> response) {
@@ -361,6 +360,51 @@ public class WebServices {
 
     }
 
+    public void webServiceRequestAPIAnyObject(String requestMethod, String requestData, final IRequestWebResponseAnyObjectCallBack callBack) {
+        RequestBody bodyRequestMethod = getRequestBody(okhttp3.MultipartBody.FORM, requestMethod);
+        RequestBody bodyRequestData = getRequestBody(okhttp3.MultipartBody.FORM, requestData);
+
+        try {
+            if (Helper.isNetworkConnected(mContext, true)) {
+                Call<WebResponse<Object>> webResponseCall = apiService.webServiceRequestAPIForWebResponseAnyObject(bodyRequestMethod, bodyRequestData);
+//                webResponseCall.request().newBuilder().addHeader("name", "hkhkhkhkhk").build();
+                webResponseCall.enqueue(new Callback<WebResponse<Object>>() {
+                    @Override
+                    public void onResponse(Call<WebResponse<Object>> call, Response<WebResponse<Object>> response) {
+                        dismissDialog();
+
+                        if (response.body() == null) {
+                            callBack.onError("null response");
+                            return;
+                        }
+
+                        if (response.isSuccessful() && response.body().isSuccess()) {
+                            callBack.requestDataResponse(response.body());
+                        } else {
+                            String message = response.body().message != null ? response.body().message : response.errorBody().toString();
+                            callBack.onError(message);
+                        }
+                    }
+
+                    @Override
+                    public void onFailure(Call<WebResponse<Object>> call, Throwable t) {
+                        UIHelper.showShortToastInCenter(mContext, "Something went wrong, Please check your internet connection.");
+                        dismissDialog();
+                        callBack.onError("Failure");
+                    }
+                });
+            } else {
+                dismissDialog();
+                callBack.onError("Internet not connected");
+            }
+
+        } catch (Exception e) {
+            dismissDialog();
+            e.printStackTrace();
+
+        }
+
+    }
 
     public void webServiceRequestAPIForArray(String requestMethod, String requestData, final IRequestArrayDataCallBack callBack) {
 
@@ -661,6 +705,13 @@ public class WebServices {
 
         void onError();
     }
+
+    public interface IRequestWebResponseAnyObjectCallBack {
+        void requestDataResponse(WebResponse<Object> webResponse);
+
+        void onError(Object object);
+    }
+
 
     public interface IRequestStringCallBack {
         void requestDataResponse(String webResponse);

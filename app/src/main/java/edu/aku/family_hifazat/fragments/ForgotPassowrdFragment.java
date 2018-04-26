@@ -1,12 +1,14 @@
 package edu.aku.family_hifazat.fragments;
 
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.annotation.Nullable;
 import android.support.v4.widget.DrawerLayout;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
+import android.widget.ImageView;
 
 import com.google.gson.JsonObject;
 
@@ -16,6 +18,8 @@ import butterknife.OnClick;
 import butterknife.Unbinder;
 import edu.aku.family_hifazat.R;
 import edu.aku.family_hifazat.callbacks.GenericClickableInterface;
+import edu.aku.family_hifazat.constatnts.AppConstants;
+import edu.aku.family_hifazat.constatnts.WebServiceConstants;
 import edu.aku.family_hifazat.enums.BaseURLTypes;
 import edu.aku.family_hifazat.fragments.abstracts.BaseFragment;
 import edu.aku.family_hifazat.fragments.abstracts.GenericDialogFragment;
@@ -26,6 +30,8 @@ import edu.aku.family_hifazat.libraries.maskformatter.MaskFormatter;
 import edu.aku.family_hifazat.managers.retrofit.GsonFactory;
 import edu.aku.family_hifazat.managers.retrofit.WebServices;
 import edu.aku.family_hifazat.models.PaymentRequestModel;
+import edu.aku.family_hifazat.models.sending_model.LoginApiModel;
+import edu.aku.family_hifazat.models.sending_model.RegisteredDeviceModel;
 import edu.aku.family_hifazat.models.wrappers.Parameters;
 import edu.aku.family_hifazat.models.wrappers.PaymentModel;
 import edu.aku.family_hifazat.models.wrappers.WebResponse;
@@ -34,6 +40,8 @@ import edu.aku.family_hifazat.widget.AnyTextView;
 import edu.aku.family_hifazat.widget.TitleBar;
 
 import static edu.aku.family_hifazat.constatnts.AppConstants.CARD_MASK;
+import static edu.aku.family_hifazat.constatnts.AppConstants.KEY_CARD_NUMBER;
+import static edu.aku.family_hifazat.constatnts.AppConstants.KEY_TOKEN;
 
 /**
  * Created by aqsa.sarwar on 1/17/2018.
@@ -50,6 +58,10 @@ public class ForgotPassowrdFragment extends BaseFragment {
     Unbinder unbinder;
     @BindView(R.id.txtCode)
     AnyTextView txtCode;
+    @BindView(R.id.btnBack)
+    ImageView btnBack;
+    @BindView(R.id.txtTitle)
+    AnyTextView txtTitle;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -78,9 +90,7 @@ public class ForgotPassowrdFragment extends BaseFragment {
         super.onViewCreated(view, savedInstanceState);
         edCardNumber.addValidator(new CardNumberValidation());
         edCardNumber.addTextChangedListener(new MaskFormatter(CARD_MASK, edCardNumber, '-'));
-//        paymentModuleData();
-
-//        getCyberSignatureService(paymentModel);
+        txtTitle.setText("Forgot Password");
     }
 
 
@@ -197,8 +207,7 @@ public class ForgotPassowrdFragment extends BaseFragment {
     }
 
 
-
-    @OnClick({R.id.btnSumbit, R.id.txtCode})
+    @OnClick({R.id.btnSumbit, R.id.txtCode, R.id.btnBack})
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.btnSumbit:
@@ -211,7 +220,7 @@ public class ForgotPassowrdFragment extends BaseFragment {
                                 @Override
                                 public void click() {
                                     genericDialogFragment.dismiss();
-                                    getBaseActivity().addDockableFragment(VerficationPasswordFragment.newInstance(), false);
+                                    validateAndCallAPI();
 
                                 }
                             }, new GenericClickableInterface() {
@@ -220,12 +229,56 @@ public class ForgotPassowrdFragment extends BaseFragment {
                                     genericDialogFragment.dismiss();
                                 }
                             }
-                    );}
+                    );
+                }
                 break;
             case R.id.txtCode:
-                getBaseActivity().addDockableFragment(VerficationPasswordFragment.newInstance(), false);
+                if (edCardNumber.getText().length() == 14) {
+                    getBaseActivity().addDockableFragment(ChangePasswordFragment.newInstance(edCardNumber.getStringTrimmed()), false);
+                } else {
+                    UIHelper.showToast(getContext(), "Please enter valid Card Number");
+                }
+                break;
 
+            case R.id.btnBack:
+                getBaseActivity().onBackPressed();
                 break;
         }
+    }
+
+    private void validateAndCallAPI() {
+        if (edCardNumber.testValidity() && edCardNumber.getText().length() == 12) {
+            LoginApiModel loginApiModel = new LoginApiModel(edCardNumber.getStringTrimmed(), null);
+            generatePasswordResetCodeAndEmail(loginApiModel);
+        } else {
+            UIHelper.showToast(getContext(), "Please enter valid Card Number");
+        }
+    }
+
+
+    private void generatePasswordResetCodeAndEmail(final LoginApiModel loginApiModel) {
+        new WebServices(getBaseActivity(),
+                getToken(),
+                BaseURLTypes.AHFA_BASE_URL)
+                .webServiceRequestAPIForJsonObject(WebServiceConstants.METHOD_USER_GENERATE_PASSWORD_CODE,
+                        loginApiModel.toString(),
+                        new WebServices.IRequestJsonDataCallBack() {
+                            @Override
+                            public void requestDataResponse(WebResponse<JsonObject> webResponse) {
+                                String message = webResponse.result.get("RecordMessage").getAsString();
+                                UIHelper.showToast(getContext(), message);
+                                new Handler().postDelayed(new Runnable() {
+                                    @Override
+                                    public void run() {
+                                        getBaseActivity().addDockableFragment(ChangePasswordFragment.newInstance(loginApiModel.getCardNumber()), false);
+                                    }
+                                }, 500);
+                            }
+
+                            @Override
+                            public void onError() {
+
+                            }
+                        });
     }
 }

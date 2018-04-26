@@ -110,18 +110,19 @@ public class Helper {
     }
 
 
-    public static String feetToCentimeter(String feet){
+    public static String feetToCentimeter(String feet) {
         double dCentimeter = 0d;
-        if(!TextUtils.isEmpty(feet)){
-            if(feet.contains("'")){
+        if (!TextUtils.isEmpty(feet)) {
+            if (feet.contains("'")) {
                 String tempfeet = feet.substring(0, feet.indexOf("'"));
-                if(!TextUtils.isEmpty(tempfeet)){
-                    dCentimeter += ((Double.valueOf(tempfeet))*30.48);
+                if (!TextUtils.isEmpty(tempfeet)) {
+                    dCentimeter += ((Double.valueOf(tempfeet)) * 30.48);
                 }
-            }if(feet.contains("\"")){
-                String tempinch = feet.substring(feet.indexOf("'")+1, feet.indexOf("\""));
-                if(!TextUtils.isEmpty(tempinch)){
-                    dCentimeter += ((Double.valueOf(tempinch))*2.54);
+            }
+            if (feet.contains("\"")) {
+                String tempinch = feet.substring(feet.indexOf("'") + 1, feet.indexOf("\""));
+                if (!TextUtils.isEmpty(tempinch)) {
+                    dCentimeter += ((Double.valueOf(tempinch)) * 2.54);
                 }
             }
         }
@@ -132,7 +133,7 @@ public class Helper {
     public static String centimeterToFeet(String centemeter) {
         int feetPart = 0;
         int inchesPart = 0;
-        if(!TextUtils.isEmpty(centemeter)) {
+        if (!TextUtils.isEmpty(centemeter)) {
             double dCentimeter = Double.valueOf(centemeter);
             feetPart = (int) Math.floor((dCentimeter / 2.54) / 12);
             System.out.println((dCentimeter / 2.54) - (feetPart * 12));
@@ -343,7 +344,7 @@ public class Helper {
         shortcutintent.putExtra(Intent.EXTRA_SHORTCUT_NAME, shortcutname);
         Parcelable icon = Intent.ShortcutIconResource.fromContext(mContext, R.mipmap.ic_launcher);
         shortcutintent.putExtra(Intent.EXTRA_SHORTCUT_ICON_RESOURCE, icon);
-        shortcutintent.putExtra(Intent.EXTRA_SHORTCUT_INTENT, new Intent("com.whatsapp"));
+        shortcutintent.putExtra(Intent.EXTRA_SHORTCUT_INTENT, new Intent("edu.aku.family_hifazat"));
         mContext.sendBroadcast(shortcutintent);
     }
 
@@ -523,5 +524,14 @@ public class Helper {
     public static boolean validEmail(String email) {
         Pattern pattern = Patterns.EMAIL_ADDRESS;
         return pattern.matcher(email).matches();
+    }
+
+    public static void openPlayStore(Activity activity) {
+        final String appPackageName = activity.getPackageName(); // getPackageName() from Context or Activity object
+        try {
+            activity.startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("market://details?id=" + appPackageName)));
+        } catch (android.content.ActivityNotFoundException anfe) {
+            activity.startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("https://play.google.com/store/apps/details?id=" + appPackageName)));
+        }
     }
 }

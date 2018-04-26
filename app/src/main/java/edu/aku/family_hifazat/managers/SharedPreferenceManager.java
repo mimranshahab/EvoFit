@@ -10,6 +10,7 @@ import edu.aku.family_hifazat.constatnts.AppConstants;
 import edu.aku.family_hifazat.models.NotificationModel;
 import edu.aku.family_hifazat.models.receiving_model.CardMemberDetail;
 import edu.aku.family_hifazat.models.receiving_model.UserDetailModel;
+import edu.aku.family_hifazat.models.sending_model.RegisteredDeviceModel;
 
 import static edu.aku.family_hifazat.constatnts.AppConstants.*;
 
@@ -35,7 +36,15 @@ public class SharedPreferenceManager {
     }
 
     public void clearDB() {
-        pref.edit().clear().commit();
+        // Save Registered Device Data
+        RegisteredDeviceModel object = getObject(AppConstants.KEY_REGISTERED_DEVICE, RegisteredDeviceModel.class);
+        if (object == null) {
+            pref.edit().clear().commit();
+        } else {
+            object.setRegcardno(null);
+            pref.edit().clear().commit();
+            putObject(AppConstants.KEY_REGISTERED_DEVICE, object);
+        }
     }
 
     public void clearKey(String key) {
@@ -119,14 +128,6 @@ public class SharedPreferenceManager {
         return getObject(USER_NOTIFICATION_DATA, NotificationModel.class);
     }
 
-    public boolean isProfileRegistered() {
-        return getBoolean(PROFILE_REGISTRATION);
-    }
-
-    public void setProfileRegistered(boolean profileRegistered) {
-        putValue(PROFILE_REGISTRATION, profileRegistered);
-    }
-
     public boolean isForcedRestart() {
         return getBoolean(FORCED_RESTART);
     }
@@ -146,8 +147,4 @@ public class SharedPreferenceManager {
         editor.commit();
     }
 
-    public void putFirebaseToken(String token) {
-        putValue(AppConstants.KEY_FIREBASE_TOKEN, token);
-
-    }
 }

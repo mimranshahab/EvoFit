@@ -88,7 +88,7 @@ Enim vitae euismod eu velit pede eu, sodales malesuada sit fermentum ut dictum d
         The Family Hifazat <b>“Patient Portal”</b> is secure, confidential and easy to use web portal &amp; mobile apps to provide AKUH patients 24 hour access to their personal health records including diagnostic results, imaging, medications, vaccines and discharge summaries.
 </string>
 
-    <string name="verification_email">A verification code has been sent to your email.</string>
+    <string name="verification_email">Enter 6 digits verification code which has been sent to your email address.</string>
 
     <string name="done">Done</string>
     <string name="feedback_and_suggestions">Feedback and Suggestions</string>

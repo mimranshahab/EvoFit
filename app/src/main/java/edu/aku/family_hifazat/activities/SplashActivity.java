@@ -3,28 +3,48 @@ package edu.aku.family_hifazat.activities;
 import android.animation.Animator;
 import android.animation.ObjectAnimator;
 import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.util.DisplayMetrics;
+import android.util.Log;
 import android.view.View;
 import android.widget.LinearLayout;
+
+import com.google.gson.JsonObject;
 
 import edu.aku.family_hifazat.BaseApplication;
 import edu.aku.family_hifazat.callbacks.GenericClickableInterface;
 import edu.aku.family_hifazat.constatnts.AppConstants;
+import edu.aku.family_hifazat.constatnts.WebServiceConstants;
+import edu.aku.family_hifazat.enums.BaseURLTypes;
 import edu.aku.family_hifazat.fragments.abstracts.GenericDialogFragment;
+import edu.aku.family_hifazat.helperclasses.Helper;
 import edu.aku.family_hifazat.helperclasses.ui.helper.AnimationHelper;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import edu.aku.family_hifazat.R;
 import edu.aku.family_hifazat.helperclasses.ui.helper.UIHelper;
 import edu.aku.family_hifazat.managers.SharedPreferenceManager;
+import edu.aku.family_hifazat.managers.retrofit.GsonFactory;
+import edu.aku.family_hifazat.managers.retrofit.WebServices;
+import edu.aku.family_hifazat.models.receiving_model.CardMemberDetail;
+import edu.aku.family_hifazat.models.sending_model.AppVersionModel;
+import edu.aku.family_hifazat.models.sending_model.LoginApiModel;
+import edu.aku.family_hifazat.models.sending_model.RegisteredDeviceModel;
+import edu.aku.family_hifazat.models.wrappers.WebResponse;
 
+import static android.view.View.GONE;
+import static android.view.View.INVISIBLE;
 import static android.view.View.VISIBLE;
+import static edu.aku.family_hifazat.constatnts.AppConstants.KEY_CARD_NUMBER;
+import static edu.aku.family_hifazat.constatnts.AppConstants.KEY_TOKEN;
 
 public class SplashActivity extends AppCompatActivity {
 
+    private static final String TAG = "SPLASH SCREEN";
     @BindView(R.id.contParentLayout)
     LinearLayout contParentLayout;
     private final int SPLASH_TIME_OUT = 2000;
@@ -122,13 +142,23 @@ public class SplashActivity extends AppCompatActivity {
 
 
     private void updateAppOrChangeActivity(final Class activityClass) {
-        boolean isUpdateAvailable = false;
-        if (isUpdateAvailable) {
-            updateApp(activityClass);
-        } else {
-            changeActivity(activityClass);
-        }
 
+        AppVersionModel appVersionModel = new AppVersionModel();
+        PackageManager packageManager = getApplicationContext().getPackageManager();
+        String packageName = getApplicationContext().getPackageName();
+
+        String myVersionName = ""; // initialize String
+        int versionCode = 0; // initialize Integer
+
+        try {
+            myVersionName = packageManager.getPackageInfo(packageName, 0).versionName;
+            versionCode = packageManager.getPackageInfo(packageName, 0).versionCode;
+        } catch (PackageManager.NameNotFoundException e) {
+            Log.d(TAG, "updateAppOrChangeActivity: " + e.getLocalizedMessage());
+        }
+        appVersionModel.setAndappversioncode(versionCode);
+        appVersionModel.setAndappversionname(myVersionName);
+        isUpdateAvailable(appVersionModel, activityClass);
     }
 
     private void changeActivity(final Class activityClass) {
@@ -156,27 +186,40 @@ public class SplashActivity extends AppCompatActivity {
         }, ANIMATIONS_TIME_OUT);
     }
 
-    public void updateApp(final Class activityClass) {
+    public void updateApp(final Class activityClass, AppVersionModel appVersionModel) {
+
+
         final GenericDialogFragment genericDialogFragment = GenericDialogFragment.newInstance();
 
         genericDialogFragment.setTitle("Update App");
-        genericDialogFragment.setMessage("New Update of Family Hifazat is available.");
+        genericDialogFragment.setMessage("New Update of Family Hifazat (v" + appVersionModel.getAndappversionname() + ") is available.");
         genericDialogFragment.setButton1("Update", new GenericClickableInterface() {
             @Override
             public void click() {
                 genericDialogFragment.getDialog().dismiss();
-                UIHelper.showToast(BaseApplication.getContext(), "Update this app asap");
+
+                Helper.openPlayStore(SplashActivity.this);
             }
         });
 
-        genericDialogFragment.setButton2("Later", new GenericClickableInterface() {
+        genericDialogFragment.setButton2("Not Now", new GenericClickableInterface() {
             @Override
             public void click() {
                 genericDialogFragment.getDialog().dismiss();
                 changeActivity(activityClass);
             }
         });
+
+        if (appVersionModel.getAndallowoldversion().equals("Y")) {
+            genericDialogFragment.setButton2Visibility(VISIBLE);
+        } else {
+            genericDialogFragment.setButton2Visibility(GONE);
+        }
+
+        genericDialogFragment.setCancelable(false);
         genericDialogFragment.show(getSupportFragmentManager(), null);
+
+
     }
 
 
@@ -207,4 +250,32 @@ public class SplashActivity extends AppCompatActivity {
             }
         }
     }
+
+
+    private void isUpdateAvailable(final AppVersionModel appVersionModel, final Class activityClass) {
+        new WebServices(this,
+                WebServiceConstants.tempToken,
+                BaseURLTypes.AHFA_BASE_URL)
+                .webServiceRequestAPIForJsonObject(WebServiceConstants.METHOD_USER_GET_APPLICATION_PARAMETER,
+                        appVersionModel.toString(),
+                        new WebServices.IRequestJsonDataCallBack() {
+                            @Override
+                            public void requestDataResponse(WebResponse<JsonObject> webResponse) {
+
+                                AppVersionModel appVersionModelReceiving = GsonFactory.getSimpleGson().fromJson(webResponse.result, AppVersionModel.class);
+
+                                if (appVersionModel.getAndappversioncode() < appVersionModelReceiving.getAndappversioncode()) {
+                                    updateApp(activityClass, appVersionModelReceiving);
+                                } else {
+                                    changeActivity(activityClass);
+                                }
+                            }
+
+                            @Override
+                            public void onError() {
+
+                            }
+                        });
+    }
+
 }

@@ -23,8 +23,8 @@ android {
         applicationId 'edu.aku.family_hifazat'
         minSdkVersion 17
         targetSdkVersion 22
-        versionCode 4
-        versionName "2.0.1"
+        versionCode 5
+        versionName "2.0.5"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
         multiDexEnabled true
         vectorDrawables.useSupportLibrary = true
@@ -42,13 +42,13 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
 
-        debug {
-            debuggable true
-            minifyEnabled true
-            useProguard true
-            shrinkResources false
-            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
-        }
+//        debug {
+//            debuggable true
+//            minifyEnabled true
+//            useProguard true
+//            shrinkResources false
+//            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+//        }
 
     }
     productFlavors {

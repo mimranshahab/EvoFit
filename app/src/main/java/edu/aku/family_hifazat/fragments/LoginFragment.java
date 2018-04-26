@@ -4,7 +4,6 @@ import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.widget.DrawerLayout;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,6 +12,7 @@ import android.widget.AdapterView;
 import com.andreabaccega.widget.FormEditText;
 
 import edu.aku.family_hifazat.constatnts.AppConstants;
+import edu.aku.family_hifazat.models.sending_model.RegisteredDeviceModel;
 import edu.aku.family_hifazat.widget.AnyTextView;
 
 import com.google.gson.JsonObject;
@@ -107,13 +107,6 @@ public class LoginFragment extends BaseFragment {
         edtPassword.addValidator(new PasswordValidation());
         edtCardNumber.addValidator(new CardNumberValidation());
         edtCardNumber.addTextChangedListener(new MaskFormatter(CARD_MASK, edtCardNumber, '-'));
-
-        Log.d(TAG, "onViewCreated: UNIQUE ID:  " +  AppConstants.getDeviceID(getContext()));
-        Log.d(TAG, "onViewCreated: UNIQUE ID:  " +  AppConstants.getDeviceID(getContext()));
-
-        Log.d(TAG, "onViewCreated: UNIQUE ID:  " +  AppConstants.getDeviceID(getContext()));
-
-
     }
 
     @Override
@@ -137,7 +130,7 @@ public class LoginFragment extends BaseFragment {
             case R.id.btnLogin:
                 if (edtCardNumber.testValidity() && edtPassword.testValidity()) {
                     LoginApiModel loginApiModel = new LoginApiModel(edtCardNumber.getText().toString(), edtPassword.getText().toString());
-                    loginApiModel.setLoginDeviceType(AppConstants.DEVICE_TYPE);
+                    loginApiModel.setLoginDeviceType(AppConstants.DEVICE_OS_ANDROID);
                     loginApiModel.setLoginDeviceID(Build.VERSION.RELEASE);
                     loginCall(loginApiModel);
                 }
@@ -161,12 +154,42 @@ public class LoginFragment extends BaseFragment {
                                 String cardNumber = webResponse.result.get("CardNumber").getAsString();
                                 sharedPreferenceManager.putValue(KEY_TOKEN, token);
                                 sharedPreferenceManager.putValue(KEY_CARD_NUMBER, cardNumber);
-                                getBaseActivity().openActivity(HomeActivity.class);
-                                getBaseActivity().finish();
+
+                                RegisteredDeviceModel registeredDevice = AppConstants.getRegisteredDevice(getContext(), getBaseActivity());
+                                insertRegisteredDevice(registeredDevice);
+
                             }
 
                             @Override
                             public void onError() {
+
+                            }
+                        });
+    }
+
+
+    private void insertRegisteredDevice(RegisteredDeviceModel registeredDeviceModel) {
+        new WebServices(getBaseActivity(),
+                getToken(),
+                BaseURLTypes.AHFA_BASE_URL)
+                .webServiceRequestAPIAnyObject(WebServiceConstants.METHOD_USER_INSERT_REGISTERED_DEVICE,
+                        registeredDeviceModel.toString(),
+                        new WebServices.IRequestWebResponseAnyObjectCallBack() {
+                            @Override
+                            public void requestDataResponse(WebResponse<Object> webResponse) {
+                                boolean isDataInserted = false;
+                                if (webResponse.result instanceof Boolean) {
+                                    isDataInserted = (boolean) webResponse.result;
+                                }
+
+                                if (isDataInserted) {
+                                    getBaseActivity().openActivity(HomeActivity.class);
+                                    getBaseActivity().finish();
+                                }
+                            }
+
+                            @Override
+                            public void onError(Object object) {
 
                             }
                         });

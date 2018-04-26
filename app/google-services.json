@@ -8,20 +8,12 @@
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:309211542325:android:dbd0e44835a3b19c",
+        "mobilesdk_app_id": "1:309211542325:android:0008f6d375f3df20",
         "android_client_info": {
           "package_name": "edu.aku.family_hifazat"
         }
       },
       "oauth_client": [
-        {
-          "client_id": "309211542325-l9th2iu92e70oh0tnmbrhvrmesujjl1h.apps.googleusercontent.com",
-          "client_type": 1,
-          "android_info": {
-            "package_name": "edu.aku.family_hifazat",
-            "certificate_hash": "403a6a990d2f19110106938d778f12871be3ce03"
-          }
-        },
         {
           "client_id": "309211542325-0k2788tlm0o7n07b9gajp1n2baahuptt.apps.googleusercontent.com",
           "client_type": 3
@@ -37,13 +29,8 @@
           "status": 1
         },
         "appinvite_service": {
-          "status": 2,
-          "other_platform_oauth_client": [
-            {
-              "client_id": "309211542325-0k2788tlm0o7n07b9gajp1n2baahuptt.apps.googleusercontent.com",
-              "client_type": 3
-            }
-          ]
+          "status": 1,
+          "other_platform_oauth_client": []
         },
         "ads_service": {
           "status": 2
