@@ -247,7 +247,7 @@ public class ForgotPassowrdFragment extends BaseFragment {
     }
 
     private void validateAndCallAPI() {
-        if (edCardNumber.testValidity() && edCardNumber.getText().length() == 12) {
+        if (edCardNumber.testValidity() && edCardNumber.getText().length() == 14) {
             LoginApiModel loginApiModel = new LoginApiModel(edCardNumber.getStringTrimmed(), null);
             generatePasswordResetCodeAndEmail(loginApiModel);
         } else {

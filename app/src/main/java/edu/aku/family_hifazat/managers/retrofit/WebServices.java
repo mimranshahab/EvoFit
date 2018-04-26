@@ -267,8 +267,9 @@ public class WebServices {
                                     } else if (response.body().result.get("RecordMessage").isJsonNull()) {
                                         errorToastForObject(response);
                                     } else {
+                                        // Show Toast here
                                         String message = response.body().result.get("RecordMessage").toString();
-                                        if (requestMethod.equals(WebServiceConstants.METHOD_USER_LOGIN)) {
+                                        if (requestMethod.equals(WebServiceConstants.METHOD_USER_LOGIN) ||  requestMethod.equals(WebServiceConstants.METHOD_USER_VERIFY_PASSWORD_CODE_AND_UPDATE_PASSWORD)) {
                                             UIHelper.showShortToastInCenter(mContext, message);
                                         } else {
 //                                            UIHelper.showShortToastInCenter(mContext, message);
