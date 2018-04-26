@@ -126,14 +126,23 @@ public class GenericDialogFragment extends DialogFragment implements View.OnClic
     public void setButton1(String caption, GenericClickableInterface genericClickableInterface) {
         this.genericClickableInterfaceBtn1 = genericClickableInterface;
         btn1Caption = caption;
-        VISIBILITY_BTN1 = VISIBLE;
+        if (caption == null) {
+            VISIBILITY_BTN1 = GONE;
+        } else {
+            VISIBILITY_BTN1 = VISIBLE;
+        }
     }
 
 
     public void setButton2(String caption, GenericClickableInterface genericClickableInterface) {
         this.genericClickableInterfaceBtn2 = genericClickableInterface;
         btn2Caption = caption;
-        VISIBILITY_BTN2 = VISIBLE;
+        if (caption == null) {
+            VISIBILITY_BTN2 = GONE;
+        } else {
+            VISIBILITY_BTN2 = VISIBLE;
+
+        }
     }
 
 

@@ -72,7 +72,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="@dimen/x15dp"
                     android:background="@drawable/rounded_box"
-                    android:drawableLeft="@drawable/user_icon"
+                    android:drawableLeft="@drawable/card_icon_blue"
                     android:drawablePadding="@dimen/x5dp"
                     android:hint="Card Number"
                     android:inputType="text"
@@ -137,8 +137,8 @@
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="@dimen/x10dp"
                         android:alpha="0.5"
-                        android:visibility="gone"
-                        android:gravity="center">
+                        android:gravity="center"
+                        android:visibility="gone">
 
                         <ImageView
                             android:layout_width="0dp"

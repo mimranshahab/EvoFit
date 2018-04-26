@@ -58,10 +58,7 @@ public class ForgotPassowrdFragment extends BaseFragment {
     Unbinder unbinder;
     @BindView(R.id.txtCode)
     AnyTextView txtCode;
-    @BindView(R.id.btnBack)
-    ImageView btnBack;
-    @BindView(R.id.txtTitle)
-    AnyTextView txtTitle;
+
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -90,7 +87,7 @@ public class ForgotPassowrdFragment extends BaseFragment {
         super.onViewCreated(view, savedInstanceState);
         edCardNumber.addValidator(new CardNumberValidation());
         edCardNumber.addTextChangedListener(new MaskFormatter(CARD_MASK, edCardNumber, '-'));
-        txtTitle.setText("Forgot Password");
+//        txtTitle.setText("Forgot Password");
     }
 
 
@@ -103,7 +100,9 @@ public class ForgotPassowrdFragment extends BaseFragment {
     @Override
     public void setTitlebar(TitleBar titleBar) {
         titleBar.resetViews();
+        titleBar.setVisibility(View.VISIBLE);
         titleBar.setTitle("Forgot Password");
+        titleBar.showBackButton(getBaseActivity());
 
     }
 
@@ -207,30 +206,11 @@ public class ForgotPassowrdFragment extends BaseFragment {
     }
 
 
-    @OnClick({R.id.btnSumbit, R.id.txtCode, R.id.btnBack})
+    @OnClick({R.id.btnSumbit, R.id.txtCode})
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.btnSumbit:
-                if (edCardNumber.testValidity()) {
-                    final GenericDialogFragment genericDialogFragment = new GenericDialogFragment();
-                    UIHelper.genericPopUp(getBaseActivity(), genericDialogFragment, "Forgot Password",
-                            "Are you sure you want to reset your password?" +
-                                    " Pass Code will be sent to your email address.", "Yes", "Cancel",
-                            new GenericClickableInterface() {
-                                @Override
-                                public void click() {
-                                    genericDialogFragment.dismiss();
-                                    validateAndCallAPI();
-
-                                }
-                            }, new GenericClickableInterface() {
-                                @Override
-                                public void click() {
-                                    genericDialogFragment.dismiss();
-                                }
-                            }
-                    );
-                }
+                validateAndCallAPI();
                 break;
             case R.id.txtCode:
                 if (edCardNumber.getText().length() == 14) {
@@ -240,9 +220,6 @@ public class ForgotPassowrdFragment extends BaseFragment {
                 }
                 break;
 
-            case R.id.btnBack:
-                getBaseActivity().onBackPressed();
-                break;
         }
     }
 
@@ -265,14 +242,19 @@ public class ForgotPassowrdFragment extends BaseFragment {
                         new WebServices.IRequestJsonDataCallBack() {
                             @Override
                             public void requestDataResponse(WebResponse<JsonObject> webResponse) {
-                                String message = webResponse.result.get("RecordMessage").getAsString();
-                                UIHelper.showToast(getContext(), message);
-                                new Handler().postDelayed(new Runnable() {
-                                    @Override
-                                    public void run() {
-                                        getBaseActivity().addDockableFragment(ChangePasswordFragment.newInstance(loginApiModel.getCardNumber()), false);
-                                    }
-                                }, 500);
+//                                String message = webResponse.result.get("RecordMessage").getAsString();
+                                String message = "A passcode has been sent to subscriber’s registered email address.";
+
+                                final GenericDialogFragment genericDialogFragment = new GenericDialogFragment();
+                                genericDialogFragment.setCancelable(false);
+                                UIHelper.genericPopUp(getBaseActivity(), genericDialogFragment, "Verification Code", message
+                                        , "OK", null,
+                                        () -> {
+                                            genericDialogFragment.dismiss();
+                                            getBaseActivity().addDockableFragment(ChangePasswordFragment.newInstance(loginApiModel.getCardNumber()), false);
+                                        },
+                                        () -> {
+                                        });
                             }
 
                             @Override

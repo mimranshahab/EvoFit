@@ -116,22 +116,14 @@ public class LeftSideMenuFragment extends BaseFragment implements OnNewPacketRec
         genericDialogFragment.setTitle(baseFragment.getString(R.string.logout));
         genericDialogFragment.setMessage(baseFragment.getString(R.string.areYouSureToLogout));
 
-        genericDialogFragment.setButton1(baseFragment.getString(R.string.logout), new GenericClickableInterface() {
-            @Override
-            public void click() {
-                genericDialogFragment.getDialog().dismiss();
-                baseFragment.sharedPreferenceManager.clearDB();
-                baseFragment.getBaseActivity().clearAllActivitiesExceptThis(MainActivity.class);
+        genericDialogFragment.setButton1("Yes", () -> {
+            genericDialogFragment.getDialog().dismiss();
+            baseFragment.sharedPreferenceManager.clearDB();
+            baseFragment.getBaseActivity().clearAllActivitiesExceptThis(MainActivity.class);
 
-            }
         });
 
-        genericDialogFragment.setButton2(baseFragment.getString(R.string.cancel), new GenericClickableInterface() {
-            @Override
-            public void click() {
-                genericDialogFragment.getDialog().dismiss();
-            }
-        });
+        genericDialogFragment.setButton2("No", () -> genericDialogFragment.getDialog().dismiss());
         genericDialogFragment.show(baseFragment.getFragmentManager(), null);
     }
 
