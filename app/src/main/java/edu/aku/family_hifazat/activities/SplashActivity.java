@@ -273,7 +273,7 @@ public class SplashActivity extends AppCompatActivity {
 
                             @Override
                             public void onError() {
-
+                                changeActivity(activityClass);
                             }
                         });
     }

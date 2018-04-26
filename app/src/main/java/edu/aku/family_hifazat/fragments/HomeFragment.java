@@ -102,6 +102,9 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener, 
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+
+        getBaseActivity().addDockableFragment(Slider.newInstance(), false);
+
         subscribeToNewPacket(this);
 
         RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getBaseActivity());
@@ -278,6 +281,7 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener, 
             }
         }
     }
+
     @OnClick(R.id.contListItem)
     public void onViewClicked() {
 
