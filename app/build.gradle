@@ -23,8 +23,8 @@ android {
         applicationId 'edu.aku.family_hifazat'
         minSdkVersion 17
         targetSdkVersion 22
-        versionCode 5
-        versionName "2.0.5"
+        versionCode 6
+        versionName "2.0.6"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
         multiDexEnabled true
         vectorDrawables.useSupportLibrary = true

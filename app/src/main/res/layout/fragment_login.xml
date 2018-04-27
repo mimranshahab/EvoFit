@@ -77,7 +77,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="@dimen/x15dp"
                     android:background="@drawable/rounded_box"
-                    android:drawableLeft="@drawable/user_icon"
+                    android:drawableLeft="@drawable/card_icon_blue"
                     android:drawablePadding="@dimen/x5dp"
                     android:hint="Card Number"
                     android:inputType="number"

@@ -12,6 +12,8 @@ import android.widget.AdapterView;
 import com.andreabaccega.widget.FormEditText;
 
 import edu.aku.family_hifazat.constatnts.AppConstants;
+import edu.aku.family_hifazat.fragments.abstracts.GenericDialogFragment;
+import edu.aku.family_hifazat.helperclasses.ui.helper.UIHelper;
 import edu.aku.family_hifazat.models.sending_model.RegisteredDeviceModel;
 import edu.aku.family_hifazat.widget.AnyTextView;
 
@@ -125,7 +127,17 @@ public class LoginFragment extends BaseFragment {
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.txtForgotPassword:
-                getBaseActivity().addDockableFragment(ForgotPassowrdFragment.newInstance(), false);
+                final GenericDialogFragment genericDialogFragment = new GenericDialogFragment();
+                UIHelper.genericPopUp(getBaseActivity(), genericDialogFragment, "Forgot Password",
+                        "Are you sure you want to reset your password?\n" +
+                                "A verification code will be sent to the subscriber’s email address, if you proceed.", "Proceed", "No",
+                        () -> {
+                            genericDialogFragment.dismiss();
+                            getBaseActivity().addDockableFragment(ForgotPassowrdFragment.newInstance(), false);
+
+                        }, genericDialogFragment::dismiss
+                );
+
                 break;
             case R.id.btnLogin:
                 if (edtCardNumber.testValidity() && edtPassword.testValidity()) {

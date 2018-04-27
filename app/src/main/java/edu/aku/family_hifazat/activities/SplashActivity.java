@@ -189,33 +189,35 @@ public class SplashActivity extends AppCompatActivity {
     public void updateApp(final Class activityClass, AppVersionModel appVersionModel) {
 
 
+        int button2Visiblity;
+        String message;
+        String button1Text;
+
+        if (appVersionModel.getAndallowoldversion().equals("Y")) {
+            button2Visiblity = VISIBLE;
+            message = "An update of Family Hifazat App (v" + appVersionModel.getAndappversionname() + ") is available to download.\n" + "Do you want to update it now?";
+            button1Text = "Yes";
+        } else {
+            message = "An update of Family Hifazat App (v" + appVersionModel.getAndappversionname() + ") is available to download.";
+            button2Visiblity = GONE;
+            button1Text = "Update";
+        }
+
         final GenericDialogFragment genericDialogFragment = GenericDialogFragment.newInstance();
 
         genericDialogFragment.setTitle("Update App");
-        genericDialogFragment.setMessage("New Update of Family Hifazat (v" + appVersionModel.getAndappversionname() + ") is available.");
-        genericDialogFragment.setButton1("Update", new GenericClickableInterface() {
-            @Override
-            public void click() {
-                genericDialogFragment.getDialog().dismiss();
-
-                Helper.openPlayStore(SplashActivity.this);
-            }
+        genericDialogFragment.setMessage(message);
+        genericDialogFragment.setButton1(button1Text, () -> {
+            genericDialogFragment.getDialog().dismiss();
+            Helper.openPlayStore(SplashActivity.this);
         });
 
-        genericDialogFragment.setButton2("Not Now", new GenericClickableInterface() {
-            @Override
-            public void click() {
-                genericDialogFragment.getDialog().dismiss();
-                changeActivity(activityClass);
-            }
+        genericDialogFragment.setButton2("Not Now", () -> {
+            genericDialogFragment.getDialog().dismiss();
+            changeActivity(activityClass);
         });
 
-        if (appVersionModel.getAndallowoldversion().equals("Y")) {
-            genericDialogFragment.setButton2Visibility(VISIBLE);
-        } else {
-            genericDialogFragment.setButton2Visibility(GONE);
-        }
-
+        genericDialogFragment.setButton2Visibility(button2Visiblity);
         genericDialogFragment.setCancelable(false);
         genericDialogFragment.show(getSupportFragmentManager(), null);
 

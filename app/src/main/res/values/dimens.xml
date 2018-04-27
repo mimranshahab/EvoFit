@@ -43,6 +43,7 @@
     <dimen name="x200dp">200dp</dimen>
     <dimen name="x240dp">240dp</dimen>
     <dimen name="x250dp">250dp</dimen>
+    <dimen name="x260dp">260dp</dimen>
     <dimen name="x300dp">300dp</dimen>
     <dimen name="x350dp">350dp</dimen>
     <dimen name="x400dp">400dp</dimen>

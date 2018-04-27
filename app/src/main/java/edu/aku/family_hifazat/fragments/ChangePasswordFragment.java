@@ -8,6 +8,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
+import android.widget.LinearLayout;
 
 import com.andreabaccega.widget.FormEditText;
 import com.google.gson.JsonObject;
@@ -20,9 +21,9 @@ import edu.aku.family_hifazat.R;
 import edu.aku.family_hifazat.constatnts.WebServiceConstants;
 import edu.aku.family_hifazat.enums.BaseURLTypes;
 import edu.aku.family_hifazat.fragments.abstracts.BaseFragment;
+import edu.aku.family_hifazat.fragments.abstracts.GenericDialogFragment;
 import edu.aku.family_hifazat.helperclasses.ui.helper.UIHelper;
 import edu.aku.family_hifazat.managers.retrofit.WebServices;
-import edu.aku.family_hifazat.models.sending_model.LoginApiModel;
 import edu.aku.family_hifazat.models.sending_model.NewPasswordModel;
 import edu.aku.family_hifazat.models.wrappers.WebResponse;
 import edu.aku.family_hifazat.widget.AnyTextView;
@@ -34,6 +35,13 @@ import edu.aku.family_hifazat.widget.TitleBar;
  */
 
 public class ChangePasswordFragment extends BaseFragment {
+
+    @BindView(R.id.contLogos)
+    LinearLayout contLogos;
+    @BindView(R.id.txtPinForgotPass)
+    PinEntryEditText txtPinForgotPass;
+    @BindView(R.id.llVerificationCode)
+    LinearLayout llVerificationCode;
     @BindView(R.id.edtOldPassword)
     FormEditText edtOldPassword;
     @BindView(R.id.edtNewPassword)
@@ -42,12 +50,8 @@ public class ChangePasswordFragment extends BaseFragment {
     FormEditText edtConPassword;
     @BindView(R.id.btnLogin)
     AnyTextView btnLogin;
-    Unbinder unbinder;
-    @BindView(R.id.txtTitle)
-    AnyTextView txtTitle;
-    @BindView(R.id.txtPinForgotPass)
-    PinEntryEditText txtPinForgotPass;
     private String cardNumber;
+    private Unbinder unbinder;
 
     public static ChangePasswordFragment newInstance(String cardNumber) {
 
@@ -72,9 +76,13 @@ public class ChangePasswordFragment extends BaseFragment {
     @Override
     public void setTitlebar(TitleBar titleBar) {
         titleBar.resetViews();
+        titleBar.resetViews();
+        titleBar.setVisibility(View.VISIBLE);
         titleBar.setTitle("Change Password");
         titleBar.showBackButton(getBaseActivity());
-        titleBar.showHome(getBaseActivity());
+
+        titleBar.setTitle("Change Password");
+        titleBar.showBackButton(getBaseActivity());
     }
 
     @Override
@@ -103,7 +111,7 @@ public class ChangePasswordFragment extends BaseFragment {
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        txtTitle.setText("Change Password");
+//        txtTitle.setText("Change Password");
     }
 
     @Override
@@ -113,12 +121,9 @@ public class ChangePasswordFragment extends BaseFragment {
     }
 
 
-    @OnClick({R.id.btnBack, R.id.btnLogin})
+    @OnClick({R.id.btnLogin})
     public void onViewClicked(View view) {
         switch (view.getId()) {
-            case R.id.btnBack:
-                getBaseActivity().onBackPressed();
-                break;
             case R.id.btnLogin:
 
                 if (edtNewPassword.testValidity() && edtConPassword.testValidity() && txtPinForgotPass.getText().toString().length() == 6) {
@@ -157,14 +162,19 @@ public class ChangePasswordFragment extends BaseFragment {
                         new WebServices.IRequestJsonDataCallBack() {
                             @Override
                             public void requestDataResponse(WebResponse<JsonObject> webResponse) {
-                                String message = webResponse.result.get("RecordMessage").getAsString();
-                                UIHelper.showToast(getContext(), message);
-                                new Handler().postDelayed(new Runnable() {
-                                    @Override
-                                    public void run() {
-                                        getBaseActivity().reload();
-                                    }
-                                }, 500);
+//                                String message = webResponse.result.get("RecordMessage").getAsString();
+                                String message = "Your password has been updated.";
+
+                                final GenericDialogFragment genericDialogFragment = new GenericDialogFragment();
+                                genericDialogFragment.setCancelable(false);
+                                UIHelper.genericPopUp(getBaseActivity(), genericDialogFragment, "Password Updated", message
+                                        , "OK", null,
+                                        () -> {
+                                            genericDialogFragment.dismiss();
+                                            getBaseActivity().reload();
+                                        },
+                                        () -> {
+                                        });
                             }
 
                             @Override
