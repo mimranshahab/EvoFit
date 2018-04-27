@@ -86,12 +86,12 @@ public class TimelineAdapter extends RecyclerView.Adapter<TimelineAdapter.ViewHo
         Clinical ---->Green
 
          */
-        if (timelineModel.getPatientVisitType().equals("ER")) {
+        if (timelineModel.getPatientVisitType().contains("Emergency")) {
             setViews(holder, R.color.base_reddish, activity.getResources().getColor(R.color.base_reddish));
-        } else if (timelineModel.getPatientVisitType().equals("IN")) {
+        } else if (timelineModel.getPatientVisitType().contains("In-Patient")) {
             setViews(holder, R.color.base_blue, activity.getResources().getColor(R.color.base_blue));
 
-        } else if (timelineModel.getPatientVisitType().equals("CLI")) {
+        } else if (timelineModel.getPatientVisitType().contains("Clinic")) {
             setViews(holder, R.color.base_green, activity.getResources().getColor(R.color.base_green));
 
         } else {

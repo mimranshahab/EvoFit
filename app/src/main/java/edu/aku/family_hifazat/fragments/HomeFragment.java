@@ -103,7 +103,7 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener, 
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        getBaseActivity().addDockableFragment(Slider.newInstance(), false);
+//        getBaseActivity().addDockableFragment(Slider.newInstance(), false);
 
         subscribeToNewPacket(this);
 

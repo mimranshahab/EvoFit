@@ -1,0 +1,281 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/c_white"
+    android:orientation="vertical"
+
+    >
+
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:orientation="vertical">
+
+        <android.support.v7.widget.CardView
+            android:id="@+id/cardMeasurement"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/x10dp"
+            android:animateLayoutChanges="true"
+            app:cardBackgroundColor="@color/base_green"
+            app:cardCornerRadius="@dimen/x10dp"
+            app:cardElevation="@dimen/x5dp">
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="@dimen/x4dp"
+                    android:background="@drawable/round_edges_topview"
+                    android:gravity="center_vertical"
+                    android:orientation="vertical"
+                    android:padding="@dimen/x5dp">
+
+                    <edu.aku.family_hifazat.widget.AnyTextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Current Measurements"
+                        android:textColor="@color/txt_aku_blue"
+                        android:textSize="@dimen/s14"
+                        app:typeface="@string/font_bold" />
+
+                    <edu.aku.family_hifazat.widget.AnyTextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        android:padding="@dimen/x1dp"
+                        android:text="April 27, 2018 10:44"
+                        android:textColor="@color/txt_aku_blue"
+                        android:textSize="14sp" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+
+                            android:padding="@dimen/x3dp">
+
+                            <edu.aku.family_hifazat.widget.AnyTextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:gravity="center_vertical"
+                                android:text="BSA"
+                                android:textColor="@color/txt_aku_blue"
+                                android:textSize="@dimen/s12"
+                                app:typeface="@string/font_regular" />
+
+                            <edu.aku.family_hifazat.widget.AnyTextView
+                                android:id="@+id/txtBSA"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:ellipsize="end"
+                                android:gravity="end"
+                                android:maxLines="1"
+                                android:text="1.16 gm"
+                                android:textColor="@color/txt_aku_blue"
+                                android:textSize="@dimen/s14"
+                                app:typeface="@string/font_bold" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:padding="@dimen/x3dp">
+
+                            <edu.aku.family_hifazat.widget.AnyTextView
+                                android:id="@+id/txtHeight"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight=".5"
+                                android:ellipsize="end"
+                                android:gravity="start"
+                                android:maxLines="1"
+                                android:text="168cm"
+                                android:textColor="@color/txt_aku_blue"
+                                android:textSize="@dimen/s12"
+                                app:typeface="@string/font_bold" />
+
+                            <edu.aku.family_hifazat.widget.AnyTextView
+                                android:id="@+id/txtWeight"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight=".5"
+                                android:ellipsize="end"
+                                android:gravity="end"
+                                android:maxLines="1"
+                                android:text="61kg"
+                                android:textColor="@color/txt_aku_blue"
+                                android:textSize="@dimen/s14"
+                                app:typeface="@string/font_bold" />
+                        </LinearLayout>
+
+                        <edu.aku.family_hifazat.widget.AnyTextView
+                            android:id="@+id/txtMeasureDDTM"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="bottom|end"
+                            android:paddingRight="@dimen/x5dp"
+                            android:text="Apr 20, 2018 11:06"
+
+                            android:textColor="@color/text_color_grey"
+                            android:textSize="@dimen/s8"
+                            android:visibility="gone"
+                            app:typeface="@string/font_regular" />
+                    </LinearLayout>
+
+
+                </LinearLayout>
+
+
+            </FrameLayout>
+        </android.support.v7.widget.CardView>
+
+        <edu.aku.family_hifazat.widget.AnyTextView
+            android:id="@+id/btnRecordMenually"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:padding="10dp"
+            android:text="Record Manually"
+            android:textColor="@color/base_blue"
+            android:textSize="@dimen/s15"
+            app:typeface="@string/font_bold" />
+
+        <LinearLayout
+            android:id="@+id/contWeight"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/x10dp"
+            android:background="@drawable/rounded_box"
+            android:orientation="vertical">
+
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+
+                android:layout_margin="@dimen/x10dp">
+
+
+                <edu.aku.family_hifazat.widget.AnyTextView
+                    android:id="@+id/txtGLUF"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="@dimen/x10dp"
+                    android:layout_marginTop="@dimen/x10dp"
+                    android:text="Weight (kg)"
+                    android:textColor="@color/txt_aku_blue"
+                    android:textSize="@dimen/s14"
+                    app:typeface="@string/font_bold" />
+
+                <com.shawnlin.numberpicker.NumberPicker
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/txtGLUF"
+                    android:layout_centerInParent="true"
+                    app:np_dividerColor="@color/base_green"
+                    app:np_formatter=""
+                    app:np_height="@dimen/x60dp"
+                    app:np_max="200"
+                    app:np_min="50"
+                    app:np_orientation="horizontal"
+                    app:np_selectedTextColor="@color/base_green"
+                    app:np_selectedTextSize="@dimen/s15"
+                    app:np_textColor="@color/base_green"
+                    app:np_textSize="@dimen/s12"
+                    app:np_typeface="@string/font_regular"
+                    app:np_value="5"
+                    app:np_wheelItemCount="10"
+                    app:np_width="180dp" />
+
+            </RelativeLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/contHeight"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/x10dp"
+            android:background="@drawable/rounded_box"
+            android:orientation="vertical">
+
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+
+                android:layout_margin="@dimen/x10dp">
+
+
+                <edu.aku.family_hifazat.widget.AnyTextView
+                    android:id="@+id/txtGLUR"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="@dimen/x10dp"
+                    android:layout_marginTop="@dimen/x10dp"
+                    android:text="Height (cm)"
+                    android:textColor="@color/txt_aku_blue"
+                    android:textSize="@dimen/s14"
+                    app:typeface="@string/font_bold" />
+
+                <com.shawnlin.numberpicker.NumberPicker
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/txtGLUR"
+                    android:layout_centerInParent="true"
+                    app:np_dividerColor="@color/base_green"
+                    app:np_formatter=""
+                    app:np_height="@dimen/x60dp"
+                    app:np_max="200"
+                    app:np_min="50"
+                    app:np_orientation="horizontal"
+                    app:np_selectedTextColor="@color/base_green"
+                    app:np_selectedTextSize="@dimen/s15"
+                    app:np_textColor="@color/base_green"
+                    app:np_textSize="@dimen/s12"
+                    app:np_typeface="@string/font_regular"
+                    app:np_value="5"
+                    app:np_wheelItemCount="10"
+                    app:np_width="180dp" />
+
+            </RelativeLayout>
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+    <edu.aku.family_hifazat.widget.AnyTextView
+        android:id="@+id/btnSave"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/x100dp"
+        android:layout_marginRight="@dimen/x100dp"
+        android:layout_marginBottom="@dimen/x20dp"
+        android:background="@drawable/rounded_box_filled_btn_blue"
+        android:gravity="center"
+        android:padding="@dimen/x10dp"
+        android:text="Save"
+        android:textColor="@color/c_white"
+        android:textSize="@dimen/s14"
+        app:typeface="@string/font_bold" />
+</LinearLayout>
+
+
+
+
+

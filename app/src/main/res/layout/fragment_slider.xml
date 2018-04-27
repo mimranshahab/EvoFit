@@ -2,17 +2,20 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@color/background_gray"
+    android:layout_height="wrap_content"
+    android:background="@color/transparent"
     android:orientation="vertical">
 
     <com.ramotion.fluidslider.FluidSlider
         android:id="@+id/slider"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:bar_color="@color/colorPrimaryDark"
+        app:bar_color="@color/c_white_smoke"
+        app:bar_text_color="@color/txt_aku_blue"
         app:duration="2"
         app:size="small"
+        app:bubble_color="@color/base_amber"
+        app:bubble_text_color="@color/c_white"
         app:text_size="@dimen/s15" />
 
 
