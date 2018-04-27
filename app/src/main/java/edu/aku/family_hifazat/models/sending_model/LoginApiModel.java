@@ -19,7 +19,16 @@ public class LoginApiModel {
     private String loginDeviceID ;
     @SerializedName("LoginDeviceType")
     private String loginDeviceType ;
+    @SerializedName("MotherName")
+    private String motherName;
 
+    public String getMotherName() {
+        return motherName;
+    }
+
+    public void setMotherName(String motherName) {
+        this.motherName = motherName;
+    }
 
     public String getLoginDeviceID() {
         return loginDeviceID;

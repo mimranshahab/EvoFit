@@ -33,12 +33,10 @@ import edu.aku.family_hifazat.enums.BaseURLTypes;
 import edu.aku.family_hifazat.enums.HealthSummaryTypes;
 import edu.aku.family_hifazat.fragments.abstracts.BaseFragment;
 import edu.aku.family_hifazat.fragments.dialogs.HealthSummaryDialogFragment;
-import edu.aku.family_hifazat.fragments.dialogs.HistoryDialogFragment;
 import edu.aku.family_hifazat.fragments.dialogs.MeasurementsBPDialogFragment;
 import edu.aku.family_hifazat.managers.retrofit.GsonFactory;
 import edu.aku.family_hifazat.managers.retrofit.WebServices;
 import edu.aku.family_hifazat.models.DetailHealthSummaryModel;
-import edu.aku.family_hifazat.models.LstLaboratorySpecimenResults;
 import edu.aku.family_hifazat.models.PatientHealthSummaryModel;
 import edu.aku.family_hifazat.models.SearchModel;
 import edu.aku.family_hifazat.models.ShortMessageMobile;
@@ -62,32 +60,36 @@ public class HealthSummaryV2Fragment extends BaseFragment implements OnItemClick
     AnyTextView txtRandomGlucose;
     @BindView(R.id.txtFastingGlucose)
     AnyTextView txtFastingGlucose;
-    @BindView(R.id.txtBPDDTM)
-    AnyTextView txtBPDDTM;
-    @BindView(R.id.txtBSA)
-    AnyTextView txtBSA;
-    @BindView(R.id.txtHeight)
-    AnyTextView txtHeight;
-    @BindView(R.id.txtWeight)
-    AnyTextView txtWeight;
-    @BindView(R.id.txtMeasureDDTM)
-    AnyTextView txtMeasureDDTM;
-    @BindView(R.id.txtBPH)
-    AnyTextView txtBPH;
-    @BindView(R.id.txtBPL)
-    AnyTextView txtBPL;
+    @BindView(R.id.txtFastingGlucoseUnit)
+    AnyTextView txtFastingGlucoseUnit;
     @BindView(R.id.txtSugarDDTM)
     AnyTextView txtSugarDDTM;
+    @BindView(R.id.cardBloodGlucose)
+    CardView cardBloodGlucose;
+    @BindView(R.id.txtBSA)
+    AnyTextView txtBSA;
+    @BindView(R.id.txtBSAUnit)
+    AnyTextView txtBSAUnit;
+    @BindView(R.id.txtHeight)
+    AnyTextView txtHeight;
+    @BindView(R.id.txtHeightUnit)
+    AnyTextView txtHeightUnit;
+    @BindView(R.id.txtWeight)
+    AnyTextView txtWeight;
+    @BindView(R.id.txtWeightUnit)
+    AnyTextView txtWeightUnit;
+    @BindView(R.id.cardMeasurement)
+    CardView cardMeasurement;
+    @BindView(R.id.txtBP)
+    AnyTextView txtBP;
+    @BindView(R.id.txtBPUnit)
+    AnyTextView txtBPUnit;
+    @BindView(R.id.cardBP)
+    CardView cardBP;
     @BindView(R.id.recylerView)
     RecyclerView recylerView;
     @BindView(R.id.contLastLab)
     LinearLayout contLastLab;
-    @BindView(R.id.cardBloodGlucose)
-    CardView cardBloodGlucose;
-    @BindView(R.id.cardMeasurement)
-    CardView cardMeasurement;
-    @BindView(R.id.cardBP)
-    CardView cardBP;
 
 
     public static HealthSummaryV2Fragment newInstance() {
@@ -141,7 +143,7 @@ public class HealthSummaryV2Fragment extends BaseFragment implements OnItemClick
         if (onCreated) {
             return;
         }
-        serviceCallBasicHealthSummary();
+//        serviceCallBasicHealthSummary();
         serviceCallDetailedHealthSummary();
 
     }
@@ -411,11 +413,14 @@ public class HealthSummaryV2Fragment extends BaseFragment implements OnItemClick
 
                 break;
             case R.id.cardMeasurement:
-                historyDialog();                break;
+                historyDialog();
+                break;
             case R.id.cardBP:
-                historyDialog();                break;
+                historyDialog();
+                break;
         }
     }
+
     private void historyDialog() {
         final MeasurementsBPDialogFragment historyDialogFrag = MeasurementsBPDialogFragment.newInstance();
 //        historyDialogFrag.setTitle(model.getReportName());
