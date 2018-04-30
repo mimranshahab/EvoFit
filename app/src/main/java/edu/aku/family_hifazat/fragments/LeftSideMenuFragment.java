@@ -41,6 +41,8 @@ public class LeftSideMenuFragment extends BaseFragment implements OnNewPacketRec
     AnyTextView txtCardSubscription;
     @BindView(R.id.txtAbout)
     AnyTextView txtAbout;
+    @BindView(R.id.txtPreferences)
+    AnyTextView txtPreferences;
     @BindView(R.id.txtLogout)
     AnyTextView txtLogout;
     @BindView(R.id.scrollView)
@@ -137,7 +139,7 @@ public class LeftSideMenuFragment extends BaseFragment implements OnNewPacketRec
     }
 
 
-    @OnClick({R.id.txtHome, R.id.txtCardSubscription, R.id.txtAbout, R.id.txtLogout})
+    @OnClick({R.id.txtHome, R.id.txtCardSubscription, R.id.txtAbout, R.id.txtLogout, R.id.txtPreferences})
     public void onViewClicked(View view) {
         switch (view.getId()) {
 
@@ -159,6 +161,9 @@ public class LeftSideMenuFragment extends BaseFragment implements OnNewPacketRec
                 break;
             case R.id.txtLogout:
                 logoutClick(this);
+                break;
+            case R.id.txtPreferences:
+                getBaseActivity().addDockableFragment(ForgotPassowrdFragment.newInstance(), false);
                 break;
         }
     }

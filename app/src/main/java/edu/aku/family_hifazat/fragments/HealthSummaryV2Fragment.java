@@ -143,7 +143,7 @@ public class HealthSummaryV2Fragment extends BaseFragment implements OnItemClick
         if (onCreated) {
             return;
         }
-//        serviceCallBasicHealthSummary();
+        serviceCallBasicHealthSummary();
         serviceCallDetailedHealthSummary();
 
     }
@@ -409,18 +409,22 @@ public class HealthSummaryV2Fragment extends BaseFragment implements OnItemClick
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.cardBloodGlucose:
-                showNextBuildToast();
+                getBaseActivity().addDockableFragment(GlucoseFragment.newInstance(), false);
 
                 break;
             case R.id.cardMeasurement:
-                historyDialog();
+                getBaseActivity().addDockableFragment(MeasurementFragment.newInstance(), false);
+                getBaseActivity().addDockableFragment(SummaryTabLayout.newInstance(isFromGLUC,isFromMeasurements,isFromBP), false);
+
+
                 break;
             case R.id.cardBP:
-                historyDialog();
+                getBaseActivity().addDockableFragment(BPFragment.newInstance(), false);
+
                 break;
         }
     }
-
+    private boolean isFromGLUC,isFromMeasurements,isFromBP;
     private void historyDialog() {
         final MeasurementsBPDialogFragment historyDialogFrag = MeasurementsBPDialogFragment.newInstance();
 //        historyDialogFrag.setTitle(model.getReportName());

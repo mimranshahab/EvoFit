@@ -14,7 +14,6 @@
         app:tabIndicatorColor="@color/summary_blue"
         app:tabIndicatorHeight="5px"
         app:tabMode="fixed"
-
         app:tabBackground="@drawable/tab_color_selector"
         app:tabSelectedTextColor="@color/c_white"
         app:tabTextAppearance="@android:style/TextAppearance.Widget.TabWidget"
