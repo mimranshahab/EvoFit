@@ -7,20 +7,17 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import edu.aku.family_hifazat.fragments.BPFragment;
-import edu.aku.family_hifazat.fragments.CurrentMedicationFragment;
+import edu.aku.family_hifazat.fragments.GlucoseFragment;
 import edu.aku.family_hifazat.fragments.MeasurementFragment;
-import edu.aku.family_hifazat.fragments.PreviousMedicationFragment;
-import edu.aku.family_hifazat.fragments.SummaryTabLayout;
-import edu.aku.family_hifazat.fragments.abstracts.BaseFragment;
 
-public class SummaryTabAdapter extends FragmentStatePagerAdapter {
+public class BPTabAdapter extends FragmentStatePagerAdapter {
     private boolean isFromGLUC,isFromMeasurements,isFromBP;
 
 //
 //    private final int patientVisitAdmissionID;
 //    private final boolean isFromTimeline;
 
-    public SummaryTabAdapter(android.support.v4.app.FragmentManager fm/*, boolean isFromTimeline, int patientVisitAdmissionID*/) {
+    public BPTabAdapter(android.support.v4.app.FragmentManager fm/*, boolean isFromTimeline, int patientVisitAdmissionID*/) {
         super(fm);
 //        this.isFromTimeline = isFromTimeline;
 //        this.patientVisitAdmissionID = patientVisitAdmissionID;
@@ -54,11 +51,11 @@ public class SummaryTabAdapter extends FragmentStatePagerAdapter {
 //        return ForgotPasswordFragment.newInstance();
         switch (position) {
             case 0:
-                return MeasurementFragment.newInstance();
+                return BPFragment.newInstance();
             case 1:
                 return BPFragment.newInstance();
             default:
-                return MeasurementFragment.newInstance();
+                return BPFragment.newInstance();
         }
 
     }

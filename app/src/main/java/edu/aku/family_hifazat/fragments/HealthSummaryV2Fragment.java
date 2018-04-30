@@ -33,12 +33,10 @@ import edu.aku.family_hifazat.enums.BaseURLTypes;
 import edu.aku.family_hifazat.enums.HealthSummaryTypes;
 import edu.aku.family_hifazat.fragments.abstracts.BaseFragment;
 import edu.aku.family_hifazat.fragments.dialogs.HealthSummaryDialogFragment;
-import edu.aku.family_hifazat.fragments.dialogs.HistoryDialogFragment;
 import edu.aku.family_hifazat.fragments.dialogs.MeasurementsBPDialogFragment;
 import edu.aku.family_hifazat.managers.retrofit.GsonFactory;
 import edu.aku.family_hifazat.managers.retrofit.WebServices;
 import edu.aku.family_hifazat.models.DetailHealthSummaryModel;
-import edu.aku.family_hifazat.models.LstLaboratorySpecimenResults;
 import edu.aku.family_hifazat.models.PatientHealthSummaryModel;
 import edu.aku.family_hifazat.models.SearchModel;
 import edu.aku.family_hifazat.models.ShortMessageMobile;
@@ -407,17 +405,17 @@ public class HealthSummaryV2Fragment extends BaseFragment implements OnItemClick
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.cardBloodGlucose:
-                getBaseActivity().addDockableFragment(GlucoseFragment.newInstance(), false);
+                getBaseActivity().addDockableFragment(GlucoseTabLayout.newInstance(), false);
 
                 break;
             case R.id.cardMeasurement:
-                getBaseActivity().addDockableFragment(MeasurementFragment.newInstance(), false);
-                getBaseActivity().addDockableFragment(SummaryTabLayout.newInstance(isFromGLUC,isFromMeasurements,isFromBP), false);
+
+                getBaseActivity().addDockableFragment(MeasurementTabLayout.newInstance(isFromGLUC,isFromMeasurements,isFromBP), false);
 
 
                 break;
             case R.id.cardBP:
-                getBaseActivity().addDockableFragment(BPFragment.newInstance(), false);
+                getBaseActivity().addDockableFragment(BPTabLayout.newInstance(), false);
 
                 break;
         }
