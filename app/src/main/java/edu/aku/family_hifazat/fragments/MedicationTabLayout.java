@@ -97,6 +97,7 @@ public class MedicationTabLayout extends BaseFragment {
         viewpager.setOffscreenPageLimit(1);
         tabPagerAdapter = new MedicationProfileTabPagerAdapter(getChildFragmentManager(), isFromTimeline, patientVisitAdmissionID);
         viewpager.setAdapter(tabPagerAdapter);
+
         tabs.setupWithViewPager(viewpager);
         tabs.setTabMode(TabLayout.MODE_FIXED);
     }

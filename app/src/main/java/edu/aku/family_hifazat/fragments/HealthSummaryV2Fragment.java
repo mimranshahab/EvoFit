@@ -60,32 +60,36 @@ public class HealthSummaryV2Fragment extends BaseFragment implements OnItemClick
     AnyTextView txtRandomGlucose;
     @BindView(R.id.txtFastingGlucose)
     AnyTextView txtFastingGlucose;
-    @BindView(R.id.txtBPDDTM)
-    AnyTextView txtBPDDTM;
-    @BindView(R.id.txtBSA)
-    AnyTextView txtBSA;
-    @BindView(R.id.txtHeight)
-    AnyTextView txtHeight;
-    @BindView(R.id.txtWeight)
-    AnyTextView txtWeight;
-    @BindView(R.id.txtMeasureDDTM)
-    AnyTextView txtMeasureDDTM;
-    @BindView(R.id.txtBPH)
-    AnyTextView txtBPH;
-    @BindView(R.id.txtBPL)
-    AnyTextView txtBPL;
+    @BindView(R.id.txtFastingGlucoseUnit)
+    AnyTextView txtFastingGlucoseUnit;
     @BindView(R.id.txtSugarDDTM)
     AnyTextView txtSugarDDTM;
+    @BindView(R.id.cardBloodGlucose)
+    CardView cardBloodGlucose;
+    @BindView(R.id.txtBSA)
+    AnyTextView txtBSA;
+    @BindView(R.id.txtBSAUnit)
+    AnyTextView txtBSAUnit;
+    @BindView(R.id.txtHeight)
+    AnyTextView txtHeight;
+    @BindView(R.id.txtHeightUnit)
+    AnyTextView txtHeightUnit;
+    @BindView(R.id.txtWeight)
+    AnyTextView txtWeight;
+    @BindView(R.id.txtWeightUnit)
+    AnyTextView txtWeightUnit;
+    @BindView(R.id.cardMeasurement)
+    CardView cardMeasurement;
+    @BindView(R.id.txtBP)
+    AnyTextView txtBP;
+    @BindView(R.id.txtBPUnit)
+    AnyTextView txtBPUnit;
+    @BindView(R.id.cardBP)
+    CardView cardBP;
     @BindView(R.id.recylerView)
     RecyclerView recylerView;
     @BindView(R.id.contLastLab)
     LinearLayout contLastLab;
-    @BindView(R.id.cardBloodGlucose)
-    CardView cardBloodGlucose;
-    @BindView(R.id.cardMeasurement)
-    CardView cardMeasurement;
-    @BindView(R.id.cardBP)
-    CardView cardBP;
 
 
     public static HealthSummaryV2Fragment newInstance() {

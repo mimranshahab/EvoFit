@@ -32,7 +32,6 @@ import edu.aku.family_hifazat.enums.HealthSummaryTypes;
 import edu.aku.family_hifazat.fragments.abstracts.BaseFragment;
 import edu.aku.family_hifazat.fragments.dialogs.HealthSummaryDialogFragment;
 import edu.aku.family_hifazat.helperclasses.StringHelper;
-import edu.aku.family_hifazat.widget.TitleBar;
 import edu.aku.family_hifazat.managers.retrofit.GsonFactory;
 import edu.aku.family_hifazat.managers.retrofit.WebServices;
 import edu.aku.family_hifazat.models.DetailHealthSummaryModel;
@@ -41,6 +40,7 @@ import edu.aku.family_hifazat.models.SearchModel;
 import edu.aku.family_hifazat.models.ShortMessageMobile;
 import edu.aku.family_hifazat.models.wrappers.WebResponse;
 import edu.aku.family_hifazat.widget.AnyTextView;
+import edu.aku.family_hifazat.widget.TitleBar;
 import edu.aku.family_hifazat.widget.recyclerview_layout.CustomLayoutManager;
 
 /**

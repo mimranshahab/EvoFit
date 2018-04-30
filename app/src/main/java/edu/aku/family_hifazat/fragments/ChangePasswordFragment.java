@@ -1,7 +1,6 @@
 package edu.aku.family_hifazat.fragments;
 
 import android.os.Bundle;
-import android.os.Handler;
 import android.support.annotation.Nullable;
 import android.support.v4.widget.DrawerLayout;
 import android.view.LayoutInflater;
@@ -23,12 +22,17 @@ import edu.aku.family_hifazat.enums.BaseURLTypes;
 import edu.aku.family_hifazat.fragments.abstracts.BaseFragment;
 import edu.aku.family_hifazat.fragments.abstracts.GenericDialogFragment;
 import edu.aku.family_hifazat.helperclasses.ui.helper.UIHelper;
+import edu.aku.family_hifazat.helperclasses.validator.CardNumberValidation;
+import edu.aku.family_hifazat.libraries.maskformatter.MaskFormatter;
 import edu.aku.family_hifazat.managers.retrofit.WebServices;
 import edu.aku.family_hifazat.models.sending_model.NewPasswordModel;
 import edu.aku.family_hifazat.models.wrappers.WebResponse;
+import edu.aku.family_hifazat.widget.AnyEditTextView;
 import edu.aku.family_hifazat.widget.AnyTextView;
 import edu.aku.family_hifazat.widget.PinEntryEditText;
 import edu.aku.family_hifazat.widget.TitleBar;
+
+import static edu.aku.family_hifazat.constatnts.AppConstants.CARD_MASK;
 
 /**
  * Created by aqsa.sarwar on 4/20/2018.
@@ -50,6 +54,8 @@ public class ChangePasswordFragment extends BaseFragment {
     FormEditText edtConPassword;
     @BindView(R.id.btnLogin)
     AnyTextView btnLogin;
+    @BindView(R.id.edCardNumber)
+    AnyEditTextView edCardNumber;
     private String cardNumber;
     private Unbinder unbinder;
 
@@ -112,6 +118,12 @@ public class ChangePasswordFragment extends BaseFragment {
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 //        txtTitle.setText("Change Password");
+        if (cardNumber != null) {
+            edCardNumber.setText(cardNumber);
+        }
+
+        edCardNumber.addValidator(new CardNumberValidation());
+        edCardNumber.addTextChangedListener(new MaskFormatter(CARD_MASK, edCardNumber, '-'));
     }
 
     @Override
@@ -126,11 +138,11 @@ public class ChangePasswordFragment extends BaseFragment {
         switch (view.getId()) {
             case R.id.btnLogin:
 
-                if (edtNewPassword.testValidity() && edtConPassword.testValidity() && txtPinForgotPass.getText().toString().length() == 6) {
+                if (edCardNumber.testValidity() && edCardNumber.getStringTrimmed().length() == 14 && edtNewPassword.testValidity() && edtConPassword.testValidity() && txtPinForgotPass.getText().toString().length() == 6) {
                     if (edtNewPassword.getText().toString().length() >= 6 && edtConPassword.getText().toString().length() >= 6) {
                         if (edtNewPassword.getText().toString().equals(edtConPassword.getText().toString())) {
                             NewPasswordModel newPasswordModel = new NewPasswordModel();
-                            newPasswordModel.setCardnumber(cardNumber);
+                            newPasswordModel.setCardnumber(edCardNumber.getStringTrimmed());
                             newPasswordModel.setPasswordresetcode(txtPinForgotPass.getText().toString().trim());
                             newPasswordModel.setPassword(edtConPassword.getText().toString().trim());
 
