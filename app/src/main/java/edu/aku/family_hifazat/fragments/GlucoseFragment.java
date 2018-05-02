@@ -7,8 +7,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
-import android.widget.ImageView;
-import android.widget.ToggleButton;
+import android.widget.ImageButton;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -36,13 +35,19 @@ public class GlucoseFragment extends BaseFragment {
     AnyTextView btnRecordMenually;
     @BindView(R.id.txtGLUR)
     AnyTextView txtGLUR;
-    @BindView(R.id.btnGLUFasting)
-    ImageView btnGLUFasting;
+    @BindView(R.id.imgGLUFasting)
+    ImageButton imgGLUFasting;
     @BindView(R.id.btnGLURandom)
-    ToggleButton btnGLURandom;
+    ImageButton imgGLURandom;
     @BindView(R.id.btnUpdate)
     AnyTextView btnUpdate;
     Unbinder unbinder;
+    @BindView(R.id.txtFasting)
+    AnyTextView txtFasting;
+    @BindView(R.id.txtRandom)
+    AnyTextView txtRandom;
+    private boolean toggleButton;
+    private boolean toggleGLUFasting;
 
     @Override
     public int getDrawerLockMode() {
@@ -70,6 +75,7 @@ public class GlucoseFragment extends BaseFragment {
         titleBar.setTitle("Health Summary");
         titleBar.showHome(getBaseActivity());
         titleBar.showBackButton(getBaseActivity());
+        titleBar.setUserDisplay(sharedPreferenceManager.getCurrentUser(), getContext());
     }
 
     @Override
@@ -101,16 +107,57 @@ public class GlucoseFragment extends BaseFragment {
         unbinder.unbind();
     }
 
-    @OnClick({R.id.btnGLUFasting, R.id.btnGLURandom, R.id.btnUpdate})
+    @OnClick({R.id.imgGLUFasting, R.id.btnGLURandom, R.id.btnUpdate})
     public void onViewClicked(View view) {
         switch (view.getId()) {
-            case R.id.btnGLUFasting:
+            case R.id.imgGLUFasting:
+
+                if (getTogglefasting()) {
+                    setToggleFasting(false);
+                    imgGLUFasting.setImageResource(R.drawable.gluco_fast_unselected);
+                    txtFasting.setTextColor(getResources().getColor(R.color.c_light_grey));
+
+                } else {
+                    setToggleFasting(true);
+                    imgGLUFasting.setImageResource(R.drawable.gluco_fast_selected);
+                    txtFasting.setTextColor(getResources().getColor(R.color.base_reddish));
+                    imgGLURandom.setImageResource(R.drawable.gluco_random_unselected);
+                    txtRandom.setTextColor(getResources().getColor(R.color.c_light_grey));
+                    txtGLUR.setText("Glucose Fasting (mg/dl)");
+                }
+
+
+
+
                 break;
             case R.id.btnGLURandom:
-                btnGLURandom.setBackgroundDrawable(getResources().getDrawable(R.drawable.gluco_random_selected));
+
+
+                if (getTogglefasting()) {
+                    setToggleFasting(false);
+                    imgGLURandom.setImageResource(R.drawable.gluco_random_unselected);
+                    txtRandom.setTextColor(getResources().getColor(R.color.c_light_grey));
+
+                } else {
+                    setToggleFasting(true);
+                    imgGLURandom.setImageResource(R.drawable.gluco_random_selected);
+                    txtRandom.setTextColor(getResources().getColor(R.color.base_reddish));
+                    imgGLUFasting.setImageResource(R.drawable.gluco_fast_unselected);
+                    txtFasting.setTextColor(getResources().getColor(R.color.c_light_grey));
+                    txtGLUR.setText("Glucose Random (mg/dl)");
+                }
+
                 break;
             case R.id.btnUpdate:
                 break;
         }
+    }
+
+    public void setToggleFasting(boolean toggleButton) {
+        this.toggleButton = toggleButton;
+    }
+
+    public boolean getTogglefasting() {
+        return toggleGLUFasting;
     }
 }
