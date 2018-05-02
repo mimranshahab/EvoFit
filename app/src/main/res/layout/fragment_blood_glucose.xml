@@ -231,12 +231,14 @@
                     android:orientation="vertical">
 
                     <ImageView
+                        android:id="@+id/btnGLUFasting"
                         android:layout_width="@dimen/x100dp"
+
                         android:layout_height="@dimen/x100dp"
                         android:layout_margin="@dimen/x5dp"
-                        android:padding="@dimen/x10dp"
-                        android:src="@drawable/fasting_glu" />
-
+                        android:padding="@dimen/x1dp"
+                        android:src="@drawable/gluco_fast_selected" />
+                    <!--android:stateListAnimator="@drawable/gluco_fast_unselected"-->
                     <edu.aku.family_hifazat.widget.AnyTextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -255,12 +257,16 @@
                     android:gravity="center"
                     android:orientation="vertical">
 
-                    <ImageView
+                    <ToggleButton
+                        android:id="@+id/btnGLURandom"
                         android:layout_width="@dimen/x100dp"
                         android:layout_height="@dimen/x100dp"
                         android:layout_margin="@dimen/x5dp"
-                        android:padding="@dimen/x10dp"
-                        android:src="@drawable/fasting_glu" />
+                        android:background="@drawable/gluco_random_unselected"
+
+                        android:padding="@dimen/x1dp"
+                        android:textColor="@color/transparent" />
+                    <!--android:stateListAnimator="@drawable/gluco_random_selected"-->
 
                     <edu.aku.family_hifazat.widget.AnyTextView
                         android:layout_width="wrap_content"
