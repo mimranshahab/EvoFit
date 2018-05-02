@@ -72,7 +72,7 @@ public class MeasurementFragment extends BaseFragment {
         titleBar.setVisibility(View.VISIBLE);
         titleBar.setTitle("Health Summary");
         titleBar.showHome(getBaseActivity());
-        titleBar.showBackButton(getBaseActivity());
+        titleBar.showBackButton(getBaseActivity()); titleBar.setUserDisplay(sharedPreferenceManager.getCurrentUser(), getContext());
     }
 
     @Override

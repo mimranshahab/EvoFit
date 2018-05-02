@@ -37,7 +37,7 @@ public class BPFragment extends BaseFragment {
         titleBar.resetViews();
         titleBar.setVisibility(View.VISIBLE);
         titleBar.setTitle("Health Summary");
-        titleBar.showHome(getBaseActivity());
+        titleBar.showHome(getBaseActivity()); titleBar.setUserDisplay(sharedPreferenceManager.getCurrentUser(), getContext());
         titleBar.showBackButton(getBaseActivity());
     }
 

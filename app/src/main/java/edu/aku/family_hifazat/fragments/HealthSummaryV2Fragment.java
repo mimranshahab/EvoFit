@@ -403,34 +403,28 @@ public class HealthSummaryV2Fragment extends BaseFragment implements OnItemClick
         final HealthSummaryDialogFragment dialogFragment = HealthSummaryDialogFragment.newInstance(title);
         dialogFragment.setArrData(arrData);
         dialogFragment.show(getFragmentManager(), null);
-        showNextBuildToast();
     }
 
     @OnClick({R.id.cardBloodGlucose, R.id.cardMeasurement, R.id.cardBP})
     public void onViewClicked(View view) {
+        switch (view.getId()) {
+            case R.id.cardBloodGlucose:
+                getBaseActivity().addDockableFragment(GlucoseTabLayout.newInstance(), false);
 
-        showNextBuildToast();
+                break;
+            case R.id.cardMeasurement:
 
-//        switch (view.getId()) {
-//
-//            case R.id.cardBloodGlucose:
-//                getBaseActivity().addDockableFragment(GlucoseFragment.newInstance(), false);
-//
-//                break;
-//            case R.id.cardMeasurement:
-////                getBaseActivity().addDockableFragment(MeasurementFragment.newInstance(), false);
-//                getBaseActivity().addDockableFragment(SummaryTabLayout.newInstance(isFromGLUC,isFromMeasurements,isFromBP), false);
-//
-//
-//                break;
-//            case R.id.cardBP:
-//                getBaseActivity().addDockableFragment(BPFragment.newInstance(), false);
-//                break;
-//        }
+                getBaseActivity().addDockableFragment(MeasurementTabLayout.newInstance(isFromGLUC,isFromMeasurements,isFromBP), false);
+
+
+                break;
+            case R.id.cardBP:
+                getBaseActivity().addDockableFragment(BPTabLayout.newInstance(), false);
+
+                break;
+        }
     }
-
-    private boolean isFromGLUC, isFromMeasurements, isFromBP;
-
+    private boolean isFromGLUC,isFromMeasurements,isFromBP;
     private void historyDialog() {
         final MeasurementsBPDialogFragment historyDialogFrag = MeasurementsBPDialogFragment.newInstance();
 //        historyDialogFrag.setTitle(model.getReportName());

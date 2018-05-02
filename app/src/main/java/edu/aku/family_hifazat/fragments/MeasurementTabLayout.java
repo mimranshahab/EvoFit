@@ -13,7 +13,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
 import edu.aku.family_hifazat.R;
-import edu.aku.family_hifazat.adapters.SummaryTabAdapter;
+import edu.aku.family_hifazat.adapters.MeasurementTabAdapter;
 import edu.aku.family_hifazat.fragments.abstracts.BaseFragment;
 import edu.aku.family_hifazat.widget.CustomViewPager;
 import edu.aku.family_hifazat.widget.TitleBar;
@@ -22,21 +22,21 @@ import edu.aku.family_hifazat.widget.TitleBar;
  * Created by hamza.ahmed on 3/6/2018.
  */
 
-public class SummaryTabLayout extends BaseFragment {
+public class MeasurementTabLayout extends BaseFragment {
     @BindView(R.id.tabs)
     TabLayout tabs;
     @BindView(R.id.viewpager)
     public CustomViewPager viewpager;
     Unbinder unbinder;
-    SummaryTabAdapter tabPagerAdapter;
+    MeasurementTabAdapter tabPagerAdapter;
     private boolean isFromTimeline;
     private int patientVisitAdmissionID;
 
-    public static SummaryTabLayout newInstance(boolean isFromGLUC, boolean isFromMeasurements, boolean isFromBP) {
+    public static MeasurementTabLayout newInstance(boolean isFromGLUC, boolean isFromMeasurements, boolean isFromBP) {
 
         Bundle args = new Bundle();
 
-        SummaryTabLayout fragment = new SummaryTabLayout();
+        MeasurementTabLayout fragment = new MeasurementTabLayout();
 //        fragment.isFromGLUC = isFromGLUC;
 //        fragment.patientVisitAdmissionID = isFromBP;
         fragment.setArguments(args);
@@ -50,7 +50,7 @@ public class SummaryTabLayout extends BaseFragment {
 
     @Override
     protected int getFragmentLayout() {
-        return R.layout.fragment_tablayout;
+        return R.layout.fragment_tablayout_summary;
     }
 
     @Override
@@ -95,13 +95,13 @@ public class SummaryTabLayout extends BaseFragment {
     private void setViewPagerAdapter() {
         viewpager.setPagingEnabled(true);
         viewpager.setOffscreenPageLimit(1);
-        tabPagerAdapter = new SummaryTabAdapter(getChildFragmentManager());
+        tabPagerAdapter = new MeasurementTabAdapter(getChildFragmentManager());
         viewpager.setAdapter(tabPagerAdapter);
         tabs.setupWithViewPager(viewpager);
 //        tabs.setBackgroundColor(getResources().getColor(R.color.c_white));
         tabs.setBackground(getResources().getDrawable(R.drawable.tab_color_selector_summary));
         tabs.setTabMode(TabLayout.MODE_FIXED);
-        tabs.setSelectedTabIndicatorColor(getResources().getColor(R.color.base_blue));
+        tabs.setSelectedTabIndicatorColor(getResources().getColor(R.color.base_green));
         tabs.setTabTextColors(getResources().getColor(R.color.txt_aku_blue),getResources().getColor(R.color.base_green));
     }
 
