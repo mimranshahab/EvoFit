@@ -20,6 +20,7 @@ import edu.aku.family_hifazat.enums.BaseURLTypes;
 import edu.aku.family_hifazat.fragments.abstracts.BaseFragment;
 import edu.aku.family_hifazat.fragments.abstracts.GenericDialogFragment;
 import edu.aku.family_hifazat.helperclasses.CyberSoftSecurityHelper;
+import edu.aku.family_hifazat.helperclasses.ui.helper.KeyboardHide;
 import edu.aku.family_hifazat.helperclasses.ui.helper.UIHelper;
 import edu.aku.family_hifazat.helperclasses.validator.CardNumberValidation;
 import edu.aku.family_hifazat.libraries.maskformatter.MaskFormatter;
@@ -85,6 +86,14 @@ public class ForgotPassowrdFragment extends BaseFragment {
 //        txtTitle.setText("Forgot Password");
     }
 
+    @Override
+    public void onResume() {
+        super.onResume();
+
+
+        edCardNumber.requestFocus();
+        KeyboardHide.showSoftKeyboard(getContext(), edCardNumber);
+    }
 
     @Override
     public int getDrawerLockMode() {
@@ -235,7 +244,7 @@ public class ForgotPassowrdFragment extends BaseFragment {
                             @Override
                             public void requestDataResponse(WebResponse<JsonObject> webResponse) {
 //                                String message = webResponse.result.get("RecordMessage").getAsString();
-                                String message = "A passcode has been sent to subscriber’s registered email address.";
+                                String message = "A verification code has been sent to subscriber’s registered email address.";
 
                                 final GenericDialogFragment genericDialogFragment = new GenericDialogFragment();
                                 genericDialogFragment.setCancelable(false);

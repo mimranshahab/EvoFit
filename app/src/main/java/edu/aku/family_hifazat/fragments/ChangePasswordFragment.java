@@ -120,6 +120,9 @@ public class ChangePasswordFragment extends BaseFragment {
 //        txtTitle.setText("Change Password");
         if (cardNumber != null) {
             edCardNumber.setText(cardNumber);
+            edCardNumber.setClickable(false);
+            edCardNumber.setEnabled(false);
+            edCardNumber.setAlpha(0.5f);
         }
 
         edCardNumber.addValidator(new CardNumberValidation());

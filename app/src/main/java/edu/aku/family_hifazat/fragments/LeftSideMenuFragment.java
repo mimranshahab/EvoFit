@@ -163,7 +163,8 @@ public class LeftSideMenuFragment extends BaseFragment implements OnNewPacketRec
                 logoutClick(this);
                 break;
             case R.id.txtPreferences:
-                getBaseActivity().addDockableFragment(ForgotPassowrdFragment.newInstance(), false);
+                showNextBuildToast();
+//                getBaseActivity().addDockableFragment(ForgotPassowrdFragment.newInstance(), false);
                 break;
         }
     }

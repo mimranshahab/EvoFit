@@ -24,7 +24,7 @@
                 android:layout_margin="@dimen/x4dp"
                 android:layout_weight="1"
                 android:animateLayoutChanges="true"
-                app:cardBackgroundColor="@color/base_reddish"
+                app:cardBackgroundColor="@color/base_reddish_light"
                 app:cardCornerRadius="@dimen/x10dp"
                 app:cardElevation="@dimen/x5dp">
 
@@ -32,32 +32,27 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent">
 
-                    <ImageView
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_alignParentStart="true"
-                        android:layout_marginStart="55dp"
-                        android:layout_marginBottom="@dimen/x30dp"
-                        android:alpha="0.6"
-                        android:src="@drawable/blood_type"
-                        android:tint="@color/reddish_dark" />
-
 
                     <LinearLayout
+                        android:id="@+id/contGlucose"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:layout_marginTop="@dimen/x4dp"
-                        android:background="@null"
+                        android:layout_marginBottom="@dimen/x15dp"
+                        android:layout_marginLeft="@dimen/x1dp"
+                        android:layout_marginRight="@dimen/x1dp"
+                        android:layout_marginTop="@dimen/x5dp"
+                        android:background="@drawable/round_edges_bottom_view"
                         android:gravity="center_vertical"
                         android:orientation="vertical"
                         android:padding="@dimen/x5dp">
+
 
                         <edu.aku.family_hifazat.widget.AnyTextView
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:gravity="center"
                             android:text="Glucose"
-                            android:textColor="@color/c_white"
+                            android:textColor="@color/txt_aku_blue"
                             android:textSize="@dimen/s12"
                             app:typeface="@string/font_bold" />
 
@@ -69,7 +64,8 @@
 
                             <LinearLayout
                                 android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
+                                android:layout_height="0dp"
+                                android:layout_weight="1"
                                 android:orientation="horizontal">
 
                                 <LinearLayout
@@ -84,49 +80,8 @@
                                         android:layout_height="wrap_content"
                                         android:layout_marginTop="@dimen/x1dp"
                                         android:gravity="center_vertical"
-                                        android:text="Random"
-                                        android:textColor="@color/c_white"
-                                        android:textSize="@dimen/s10"
-                                        app:typeface="@string/font_bold" />
-
-
-                                    <LinearLayout
-                                        android:layout_width="wrap_content"
-                                        android:layout_height="wrap_content"
-                                        android:gravity="center"
-                                        android:orientation="vertical">
-
-                                        <edu.aku.family_hifazat.widget.AnyTextView
-                                            android:id="@+id/txtRandomGlucose"
-                                            android:layout_width="wrap_content"
-                                            android:layout_height="wrap_content"
-                                            android:ellipsize="end"
-                                            android:maxLines="1"
-                                            android:text="170"
-                                            android:textColor="@color/c_white"
-                                            android:textSize="@dimen/s14"
-                                            app:typeface="@string/font_bold" />
-
-
-                                    </LinearLayout>
-
-                                </LinearLayout>
-
-
-                                <LinearLayout
-                                    android:layout_width="0dp"
-                                    android:layout_height="wrap_content"
-                                    android:layout_weight="1"
-                                    android:gravity="center"
-                                    android:orientation="vertical">
-
-                                    <edu.aku.family_hifazat.widget.AnyTextView
-                                        android:layout_width="wrap_content"
-                                        android:layout_height="wrap_content"
-                                        android:layout_marginTop="@dimen/x1dp"
-                                        android:gravity="center_vertical"
                                         android:text="Fasting"
-                                        android:textColor="@color/c_white"
+                                        android:textColor="@color/txt_aku_blue"
                                         android:textSize="@dimen/s10"
                                         app:typeface="@string/font_bold" />
 
@@ -143,14 +98,54 @@
                                             android:layout_height="wrap_content"
                                             android:ellipsize="end"
                                             android:maxLines="1"
-                                            android:text="170"
-                                            android:textColor="@color/c_white"
+                                            android:text="167"
+                                            android:textColor="@color/txt_aku_blue"
                                             android:textSize="@dimen/s14"
                                             app:typeface="@string/font_bold" />
 
 
                                     </LinearLayout>
 
+
+                                </LinearLayout>
+
+                                <LinearLayout
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:gravity="center"
+                                    android:orientation="vertical">
+
+                                    <edu.aku.family_hifazat.widget.AnyTextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginTop="@dimen/x1dp"
+                                        android:gravity="center_vertical"
+                                        android:text="Random"
+                                        android:textColor="@color/txt_aku_blue"
+                                        android:textSize="@dimen/s10"
+                                        app:typeface="@string/font_bold" />
+
+
+                                    <LinearLayout
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:gravity="center"
+                                        android:orientation="vertical">
+
+                                        <edu.aku.family_hifazat.widget.AnyTextView
+                                            android:id="@+id/txtRandomGlucose"
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:ellipsize="end"
+                                            android:maxLines="1"
+                                            android:text="167"
+                                            android:textColor="@color/txt_aku_blue"
+                                            android:textSize="@dimen/s14"
+                                            app:typeface="@string/font_bold" />
+
+
+                                    </LinearLayout>
 
                                 </LinearLayout>
 
@@ -165,38 +160,9 @@
                                 android:gravity="end"
                                 android:maxLines="1"
                                 android:text=" mg/dl"
-                                android:textColor="@color/c_white"
+                                android:textColor="@color/txt_aku_blue"
                                 android:textSize="@dimen/s10"
                                 app:typeface="@string/font_regular" />
-
-                            <LinearLayout
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:background="@color/transparent_grey2"
-                                android:gravity="center">
-
-                                <edu.aku.family_hifazat.widget.AnyTextView
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:ellipsize="end"
-                                    android:gravity="center"
-                                    android:maxLines="1"
-                                    android:text="View"
-                                    android:textColor="@color/c_white"
-                                    android:textSize="@dimen/s10"
-                                    app:typeface="@string/font_bold" />
-
-                                <ImageView
-                                    android:layout_width="@dimen/x8dp"
-                                    android:layout_height="match_parent"
-                                    android:layout_gravity="center"
-                                    android:layout_marginLeft="@dimen/x4dp"
-                                    android:layout_marginTop="@dimen/x1dp"
-                                    android:src="@drawable/next"
-                                    />
-
-
-                            </LinearLayout>
 
 
                             <edu.aku.family_hifazat.widget.AnyTextView
@@ -215,6 +181,45 @@
 
                     </LinearLayout>
 
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_alignParentStart="true"
+                        android:layout_marginBottom="@dimen/x30dp"
+                        android:layout_marginStart="@dimen/x50dp"
+                        android:alpha="0.1"
+                        android:src="@drawable/blood_type"
+                        android:tint="@color/base_reddish_light" />
+
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/x15dp"
+                        android:layout_alignParentBottom="true"
+                        android:gravity="center">
+
+                        <edu.aku.family_hifazat.widget.AnyTextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:ellipsize="end"
+                            android:gravity="center"
+                            android:maxLines="1"
+                            android:text="Update"
+                            android:textColor="@color/c_white"
+                            android:textSize="@dimen/s10"
+                            app:typeface="@string/font_bold" />
+
+                        <ImageView
+                            android:layout_width="@dimen/x8dp"
+                            android:layout_height="match_parent"
+                            android:layout_gravity="center"
+                            android:layout_marginLeft="@dimen/x4dp"
+                            android:layout_marginTop="@dimen/x1dp"
+                            android:src="@drawable/next" />
+
+
+                    </LinearLayout>
+
 
                 </RelativeLayout>
             </android.support.v7.widget.CardView>
@@ -228,19 +233,22 @@
                 android:layout_margin="@dimen/x4dp"
                 android:layout_weight="1"
                 android:animateLayoutChanges="true"
-                app:cardBackgroundColor="@color/base_blue"
+                app:cardBackgroundColor="@color/base_blue_light"
                 app:cardCornerRadius="@dimen/x10dp"
                 app:cardElevation="@dimen/x5dp">
 
-                <FrameLayout
+                <RelativeLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent">
 
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:layout_marginTop="@dimen/x4dp"
-                         android:gravity="center_vertical"
+                        android:layout_marginBottom="@dimen/x15dp"
+                        android:layout_marginLeft="@dimen/x1dp"
+                        android:layout_marginRight="@dimen/x1dp"
+                        android:layout_marginTop="@dimen/x5dp"
+                        android:background="@drawable/round_edges_bottom_view"
                         android:orientation="vertical"
                         android:padding="@dimen/x5dp">
 
@@ -249,7 +257,7 @@
                             android:layout_height="wrap_content"
                             android:gravity="center"
                             android:text="Blood Pressure"
-                            android:textColor="@color/c_white"
+                            android:textColor="@color/txt_aku_blue"
                             android:textSize="@dimen/s12"
                             app:typeface="@string/font_bold" />
 
@@ -268,8 +276,8 @@
                                 android:gravity="center"
                                 android:maxLines="1"
                                 android:padding="@dimen/x5dp"
-                                android:text="120/80"
-                                android:textColor="@color/c_white"
+                                android:text="180/120"
+                                android:textColor="@color/txt_aku_blue"
                                 android:textSize="@dimen/s15"
                                 app:typeface="@string/font_bold" />
 
@@ -282,9 +290,10 @@
                                 android:gravity="end"
                                 android:maxLines="1"
                                 android:text="mmHg"
-                                android:textColor="@color/c_white"
+                                android:textColor="@color/txt_aku_blue"
                                 android:textSize="@dimen/s10"
                                 app:typeface="@string/font_regular" />
+
 
                         </LinearLayout>
 
@@ -292,9 +301,49 @@
                     </LinearLayout>
 
 
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_alignParentStart="true"
+                        android:layout_marginBottom="@dimen/x30dp"
+                        android:layout_marginStart="@dimen/x50dp"
+                        android:layout_marginTop="@dimen/x8dp"
+                        android:alpha="0.1"
+                        android:src="@drawable/blood_pressure"
+                        android:tint="@color/base_blue_light" />
+
+
                     <!--</LinearLayout>-->
 
-                </FrameLayout>
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/x15dp"
+                        android:layout_alignParentBottom="true"
+                        android:gravity="center">
+
+                        <edu.aku.family_hifazat.widget.AnyTextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:ellipsize="end"
+                            android:gravity="center"
+                            android:maxLines="1"
+                            android:text="Update"
+                            android:textColor="@color/c_white"
+                            android:textSize="@dimen/s10"
+                            app:typeface="@string/font_bold" />
+
+                        <ImageView
+                            android:layout_width="@dimen/x8dp"
+                            android:layout_height="match_parent"
+                            android:layout_gravity="center"
+                            android:layout_marginLeft="@dimen/x4dp"
+                            android:layout_marginTop="@dimen/x1dp"
+                            android:src="@drawable/next" />
+
+
+                    </LinearLayout>
+
+                </RelativeLayout>
             </android.support.v7.widget.CardView>
 
 
@@ -305,19 +354,24 @@
                 android:layout_margin="@dimen/x4dp"
                 android:layout_weight="1"
                 android:animateLayoutChanges="true"
-                app:cardBackgroundColor="@color/base_green"
+                app:cardBackgroundColor="@color/base_green_light"
                 app:cardCornerRadius="@dimen/x10dp"
                 app:cardElevation="@dimen/x5dp">
 
-                <FrameLayout
+                <RelativeLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent">
+
 
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:layout_marginTop="@dimen/x4dp"
-                         android:gravity="center_vertical"
+                        android:layout_marginBottom="@dimen/x15dp"
+                        android:layout_marginLeft="@dimen/x1dp"
+                        android:layout_marginRight="@dimen/x1dp"
+                        android:layout_marginTop="@dimen/x5dp"
+                        android:background="@drawable/round_edges_bottom_view"
+                        android:gravity="center_vertical"
                         android:orientation="vertical"
                         android:padding="@dimen/x5dp">
 
@@ -326,7 +380,7 @@
                             android:layout_height="wrap_content"
                             android:gravity="center"
                             android:text="Measurements"
-                            android:textColor="@color/c_white"
+                            android:textColor="@color/txt_aku_blue"
                             android:textSize="@dimen/s12"
                             app:typeface="@string/font_bold" />
 
@@ -339,7 +393,9 @@
 
                             <LinearLayout
                                 android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
+                                android:layout_height="0dp"
+                                android:layout_weight="1"
+                                android:gravity="center"
                                 android:orientation="horizontal">
 
                                 <LinearLayout
@@ -347,7 +403,8 @@
                                     android:layout_height="wrap_content"
                                     android:layout_weight="1"
                                     android:gravity="center"
-                                    android:orientation="vertical">
+                                    android:orientation="vertical"
+                                    android:visibility="gone">
 
                                     <edu.aku.family_hifazat.widget.AnyTextView
                                         android:layout_width="wrap_content"
@@ -355,9 +412,9 @@
                                         android:layout_marginTop="@dimen/x1dp"
                                         android:gravity="center_vertical"
                                         android:text="BSA"
-                                        android:textColor="@color/c_white"
+                                        android:textColor="@color/txt_aku_blue"
                                         android:textSize="@dimen/s9"
-                                        app:typeface="@string/font_regular" />
+                                        app:typeface="@string/font_bold" />
 
 
                                     <LinearLayout
@@ -372,20 +429,20 @@
                                             android:layout_height="wrap_content"
                                             android:ellipsize="end"
                                             android:maxLines="1"
-                                            android:text="1.16"
-                                            android:textColor="@color/c_white"
+                                            android:text="-"
+                                            android:textColor="@color/txt_aku_blue"
                                             android:textSize="@dimen/s12"
                                             app:typeface="@string/font_bold" />
 
                                         <edu.aku.family_hifazat.widget.AnyTextView
                                             android:id="@+id/txtBSAUnit"
-                                            android:layout_width="match_parent"
+                                            android:layout_width="wrap_content"
                                             android:layout_height="wrap_content"
                                             android:ellipsize="end"
                                             android:gravity="end|top"
                                             android:maxLines="1"
                                             android:text="gm"
-                                            android:textColor="@color/c_white"
+                                            android:textColor="@color/txt_aku_blue"
                                             android:textSize="@dimen/s10"
                                             app:typeface="@string/font_regular" />
 
@@ -408,9 +465,9 @@
                                         android:layout_marginTop="@dimen/x1dp"
                                         android:gravity="center_vertical"
                                         android:text="Height"
-                                        android:textColor="@color/c_white"
+                                        android:textColor="@color/txt_aku_blue"
                                         android:textSize="@dimen/s9"
-                                        app:typeface="@string/font_regular" />
+                                        app:typeface="@string/font_bold" />
 
 
                                     <LinearLayout
@@ -425,20 +482,20 @@
                                             android:layout_height="wrap_content"
                                             android:ellipsize="end"
                                             android:maxLines="1"
-                                            android:text="170"
-                                            android:textColor="@color/c_white"
-                                            android:textSize="@dimen/s12"
+                                            android:text="175"
+                                            android:textColor="@color/txt_aku_blue"
+                                            android:textSize="@dimen/s14"
                                             app:typeface="@string/font_bold" />
 
                                         <edu.aku.family_hifazat.widget.AnyTextView
                                             android:id="@+id/txtHeightUnit"
-                                            android:layout_width="match_parent"
+                                            android:layout_width="wrap_content"
                                             android:layout_height="wrap_content"
                                             android:ellipsize="end"
                                             android:gravity="end"
                                             android:maxLines="1"
                                             android:text="cm"
-                                            android:textColor="@color/c_white"
+                                            android:textColor="@color/txt_aku_blue"
                                             android:textSize="@dimen/s10"
                                             app:typeface="@string/font_regular" />
 
@@ -461,9 +518,9 @@
                                         android:layout_marginTop="@dimen/x1dp"
                                         android:gravity="center_vertical"
                                         android:text="Weight"
-                                        android:textColor="@color/c_white"
+                                        android:textColor="@color/txt_aku_blue"
                                         android:textSize="@dimen/s9"
-                                        app:typeface="@string/font_regular" />
+                                        app:typeface="@string/font_bold" />
 
 
                                     <LinearLayout
@@ -478,20 +535,20 @@
                                             android:layout_height="wrap_content"
                                             android:ellipsize="end"
                                             android:maxLines="1"
-                                            android:text="70"
-                                            android:textColor="@color/c_white"
-                                            android:textSize="@dimen/s12"
+                                            android:text="84"
+                                            android:textColor="@color/txt_aku_blue"
+                                            android:textSize="@dimen/s14"
                                             app:typeface="@string/font_bold" />
 
                                         <edu.aku.family_hifazat.widget.AnyTextView
                                             android:id="@+id/txtWeightUnit"
-                                            android:layout_width="match_parent"
+                                            android:layout_width="wrap_content"
                                             android:layout_height="wrap_content"
                                             android:ellipsize="end"
                                             android:gravity="end"
                                             android:maxLines="1"
                                             android:text="kg"
-                                            android:textColor="@color/c_white"
+                                            android:textColor="@color/txt_aku_blue"
                                             android:textSize="@dimen/s10"
                                             app:typeface="@string/font_regular" />
 
@@ -504,13 +561,54 @@
 
                             </LinearLayout>
 
+
                         </LinearLayout>
 
 
                     </LinearLayout>
 
 
-                </FrameLayout>
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_alignParentStart="true"
+                        android:layout_marginBottom="@dimen/x40dp"
+                        android:layout_marginStart="@dimen/x50dp"
+                        android:layout_marginTop="@dimen/x5dp"
+                        android:alpha="0.1"
+                        android:src="@drawable/weight"
+                        android:tint="@color/base_green_light" />
+
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/x15dp"
+                        android:layout_alignParentBottom="true"
+                        android:gravity="center">
+
+                        <edu.aku.family_hifazat.widget.AnyTextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:ellipsize="end"
+                            android:gravity="center"
+                            android:maxLines="1"
+                            android:text="Update"
+                            android:textColor="@color/c_white"
+                            android:textSize="@dimen/s10"
+                            app:typeface="@string/font_bold" />
+
+                        <ImageView
+                            android:layout_width="@dimen/x8dp"
+                            android:layout_height="match_parent"
+                            android:layout_gravity="center"
+                            android:layout_marginLeft="@dimen/x4dp"
+                            android:layout_marginTop="@dimen/x1dp"
+                            android:src="@drawable/next" />
+
+
+                    </LinearLayout>
+
+                </RelativeLayout>
             </android.support.v7.widget.CardView>
 
 

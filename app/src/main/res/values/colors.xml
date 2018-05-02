@@ -60,6 +60,9 @@
     <color name="pin_normal">#6B767E</color>
 
 
-    <color name="reddish_dark">#C11B15</color>
+    <color name="base_reddish_light">#dd5553</color>
+    <color name="base_green_light">#57B73A</color>
+    <color name="base_blue_light">#17ada2</color>
+
 
 </resources>

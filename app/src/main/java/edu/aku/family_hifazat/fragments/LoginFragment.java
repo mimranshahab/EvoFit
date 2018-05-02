@@ -13,6 +13,7 @@ import com.andreabaccega.widget.FormEditText;
 
 import edu.aku.family_hifazat.constatnts.AppConstants;
 import edu.aku.family_hifazat.fragments.abstracts.GenericDialogFragment;
+import edu.aku.family_hifazat.helperclasses.ui.helper.KeyboardHide;
 import edu.aku.family_hifazat.helperclasses.ui.helper.UIHelper;
 import edu.aku.family_hifazat.models.sending_model.RegisteredDeviceModel;
 import edu.aku.family_hifazat.widget.AnyTextView;
@@ -114,6 +115,13 @@ public class LoginFragment extends BaseFragment {
     @Override
     public int getDrawerLockMode() {
         return DrawerLayout.LOCK_MODE_LOCKED_CLOSED;
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+
+         KeyboardHide.showSoftKeyboard(getContext(), edtCardNumber);
     }
 
 

@@ -23,10 +23,23 @@ public class KeyboardHide {
     }
 
     public static void hideSoftKeyboard(Context context, EditText editText) {
-
+        if (context == null) {
+            return;
+        }
         InputMethodManager imm = (InputMethodManager) context
                 .getSystemService(Context.INPUT_METHOD_SERVICE);
         imm.hideSoftInputFromWindow(editText.getWindowToken(), 0);
+    }
+
+    public static void showSoftKeyboard(Context context, EditText editText) {
+
+        if (context == null) {
+            return;
+        }
+
+        InputMethodManager imm = (InputMethodManager) context.getSystemService(Context.INPUT_METHOD_SERVICE);
+        imm.showSoftInput(editText, InputMethodManager.SHOW_IMPLICIT);
+        editText.requestFocus();
     }
 
 }

@@ -80,6 +80,7 @@
                     android:drawableLeft="@drawable/card_icon_blue"
                     android:drawablePadding="@dimen/x5dp"
                     android:hint="Card Number"
+                    android:focusable="true"
                     android:inputType="number"
                     android:maxLength="15"
                     android:paddingBottom="@dimen/x8dp"
@@ -90,7 +91,9 @@
                     android:textColor="@color/txt_aku_blue"
                     android:textColorHint="@color/text_hint"
                     android:textSize="@dimen/s14"
-                    app:testType="nocheck" />
+                    app:testType="nocheck" >
+                    <requestFocus />
+                </edu.aku.family_hifazat.widget.AnyEditTextView>
 
 
                 <com.andreabaccega.widget.FormEditText

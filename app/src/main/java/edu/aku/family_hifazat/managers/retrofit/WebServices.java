@@ -47,7 +47,7 @@ public class WebServices {
         WebServices.bearerToken = bearerToken;
     }
 
-    public WebServices(Activity activity, String token, BaseURLTypes baseURLTypes) {
+    public WebServices(Context activity, String token, BaseURLTypes baseURLTypes) {
         switch (baseURLTypes) {
             case PACS_VIEWER:
                 apiService = WebServiceFactory.getInstancePACSURL(token, bearerToken);
@@ -274,7 +274,7 @@ public class WebServices {
                                                 ||  requestMethod.equals(WebServiceConstants.METHOD_USER_VERIFY_PASSWORD_CODE_AND_UPDATE_PASSWORD)) {
                                             UIHelper.showShortToastInCenter(mContext, message);
                                         } else {
-//                                            UIHelper.showShortToastInCenter(mContext, message);
+                                            UIHelper.showShortToastInCenter(mContext, message);
                                         }
                                         callBack.onError();
                                     }

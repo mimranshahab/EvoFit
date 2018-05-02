@@ -79,7 +79,7 @@ public class VerficationPasswordFragment extends BaseFragment {
 //                        }
 //                    }, 1000);
 //                }
-                txtTitle.setText("Pass Code Verification");
+                txtTitle.setText("Verification Code");
             }
         });
     }

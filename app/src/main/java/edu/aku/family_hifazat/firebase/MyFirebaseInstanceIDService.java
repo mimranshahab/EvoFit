@@ -5,9 +5,14 @@ import android.util.Log;
 import com.google.firebase.iid.FirebaseInstanceId;
 import com.google.firebase.iid.FirebaseInstanceIdService;
 
+import edu.aku.family_hifazat.activities.HomeActivity;
 import edu.aku.family_hifazat.constatnts.AppConstants;
+import edu.aku.family_hifazat.constatnts.WebServiceConstants;
+import edu.aku.family_hifazat.enums.BaseURLTypes;
 import edu.aku.family_hifazat.managers.SharedPreferenceManager;
+import edu.aku.family_hifazat.managers.retrofit.WebServices;
 import edu.aku.family_hifazat.models.sending_model.RegisteredDeviceModel;
+import edu.aku.family_hifazat.models.wrappers.WebResponse;
 
 
 public class MyFirebaseInstanceIDService extends FirebaseInstanceIdService {
@@ -51,7 +56,36 @@ public class MyFirebaseInstanceIDService extends FirebaseInstanceIdService {
             object = new RegisteredDeviceModel();
             object.setDevicetoken(token);
             prefHelper.putObject(AppConstants.KEY_REGISTERED_DEVICE, object);
+        } else {
+            object.setDevicetoken(token);
+            prefHelper.putObject(AppConstants.KEY_REGISTERED_DEVICE, object);
+            insertRegisteredDevice(object);
         }
+
+
         Log.d(TAG, "sendRegistrationToServer: " + "---------" + token);
+    }
+
+
+    private void insertRegisteredDevice(RegisteredDeviceModel registeredDeviceModel) {
+        new WebServices(getApplicationContext(),
+                SharedPreferenceManager.getInstance(getApplicationContext()).getString(AppConstants.KEY_TOKEN),
+                BaseURLTypes.AHFA_BASE_URL)
+                .webServiceRequestAPIAnyObject(WebServiceConstants.METHOD_USER_INSERT_REGISTERED_DEVICE,
+                        registeredDeviceModel.toString(),
+                        new WebServices.IRequestWebResponseAnyObjectCallBack() {
+                            @Override
+                            public void requestDataResponse(WebResponse<Object> webResponse) {
+                                boolean isDataInserted = false;
+                                if (webResponse.result instanceof Boolean) {
+                                    isDataInserted = (boolean) webResponse.result;
+                                }
+                            }
+
+                            @Override
+                            public void onError(Object object) {
+
+                            }
+                        });
     }
 }
