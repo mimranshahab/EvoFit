@@ -10,6 +10,7 @@ import edu.aku.family_hifazat.constatnts.AppConstants;
 import edu.aku.family_hifazat.models.NotificationModel;
 import edu.aku.family_hifazat.models.receiving_model.CardMemberDetail;
 import edu.aku.family_hifazat.models.receiving_model.UserDetailModel;
+import edu.aku.family_hifazat.models.sending_model.InsertRegisteredDeviceModel;
 import edu.aku.family_hifazat.models.sending_model.RegisteredDeviceModel;
 
 import static edu.aku.family_hifazat.constatnts.AppConstants.*;
@@ -37,13 +38,16 @@ public class SharedPreferenceManager {
 
     public void clearDB() {
         // Save Registered Device Data
-        RegisteredDeviceModel object = getObject(AppConstants.KEY_REGISTERED_DEVICE, RegisteredDeviceModel.class);
+        InsertRegisteredDeviceModel object = getObject(AppConstants.KEY_INSERT_REGISTERED_DEVICE, InsertRegisteredDeviceModel.class);
+        RegisteredDeviceModel object2 = getObject(AppConstants.KEY_REGISTERED_DEVICE, RegisteredDeviceModel.class);
         if (object == null) {
             pref.edit().clear().commit();
         } else {
             object.setRegcardno(null);
+            object2.setRegcardno(null);
             pref.edit().clear().commit();
-            putObject(AppConstants.KEY_REGISTERED_DEVICE, object);
+            putObject(AppConstants.KEY_INSERT_REGISTERED_DEVICE, object);
+            putObject(AppConstants.KEY_REGISTERED_DEVICE, object2);
         }
     }
 

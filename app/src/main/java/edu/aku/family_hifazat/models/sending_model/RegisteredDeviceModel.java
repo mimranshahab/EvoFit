@@ -12,32 +12,35 @@ import edu.aku.family_hifazat.managers.retrofit.GsonFactory;
 public class RegisteredDeviceModel {
 
     @Expose
-    @SerializedName("DEVICEMODEL")
+    @SerializedName("DeviceModel")
     private String devicemodel;
     @Expose
-    @SerializedName("DEVICEMANUFACTURER")
+    @SerializedName("DeviceManufacturer")
     private String devicemanufacturer;
     @Expose
-    @SerializedName("DEVICETOKEN")
+    @SerializedName("DeviceToken")
     private String devicetoken;
     @Expose
-    @SerializedName("DEVICESCREENSIZE")
+    @SerializedName("DeviceScreenSize")
     private String devicescreensize;
     @Expose
-    @SerializedName("DEVICEOSVERSION")
+    @SerializedName("DeviceOSVersion")
     private String deviceosversion;
     @Expose
-    @SerializedName("DEVICEOS")
+    @SerializedName("DeviceOS")
     private String deviceos;
     @Expose
-    @SerializedName("DEVICETYPE")
+    @SerializedName("DeviceType")
     private String devicetype;
     @Expose
-    @SerializedName("DEVICEID")
+    @SerializedName("DeviceID")
     private String deviceid;
     @Expose
-    @SerializedName("REGCARDNO")
+    @SerializedName("RegCardNo")
     private String regcardno;
+    @Expose
+    @SerializedName("LoginCode")
+    private String loginCode;
 
     public RegisteredDeviceModel() {
     }
@@ -52,6 +55,15 @@ public class RegisteredDeviceModel {
         this.devicetype = devicetype;
         this.deviceid = deviceid;
         this.regcardno = regcardno;
+    }
+
+
+    public String getLoginCode() {
+        return loginCode;
+    }
+
+    public void setLoginCode(String loginCode) {
+        this.loginCode = loginCode;
     }
 
     public String getDevicemodel() {

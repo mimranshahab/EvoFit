@@ -2,6 +2,7 @@ package edu.aku.family_hifazat.firebase;
 
 import android.util.Log;
 
+import com.crashlytics.android.Crashlytics;
 import com.google.firebase.iid.FirebaseInstanceId;
 import com.google.firebase.iid.FirebaseInstanceIdService;
 
@@ -11,6 +12,7 @@ import edu.aku.family_hifazat.constatnts.WebServiceConstants;
 import edu.aku.family_hifazat.enums.BaseURLTypes;
 import edu.aku.family_hifazat.managers.SharedPreferenceManager;
 import edu.aku.family_hifazat.managers.retrofit.WebServices;
+import edu.aku.family_hifazat.models.sending_model.InsertRegisteredDeviceModel;
 import edu.aku.family_hifazat.models.sending_model.RegisteredDeviceModel;
 import edu.aku.family_hifazat.models.wrappers.WebResponse;
 
@@ -51,15 +53,34 @@ public class MyFirebaseInstanceIDService extends FirebaseInstanceIdService {
      */
     private void sendRegistrationToServer(String token) {
         // TODO: Implement this method to send token to your app server.
-        RegisteredDeviceModel object = prefHelper.getObject(AppConstants.KEY_REGISTERED_DEVICE, RegisteredDeviceModel.class);
+        InsertRegisteredDeviceModel object = prefHelper.getObject(AppConstants.KEY_INSERT_REGISTERED_DEVICE, InsertRegisteredDeviceModel.class);
+        RegisteredDeviceModel object2 = prefHelper.getObject(AppConstants.KEY_REGISTERED_DEVICE, RegisteredDeviceModel.class);
+
+
         if (object == null) {
-            object = new RegisteredDeviceModel();
+            object = new InsertRegisteredDeviceModel();
             object.setDevicetoken(token);
-            prefHelper.putObject(AppConstants.KEY_REGISTERED_DEVICE, object);
+            prefHelper.putObject(AppConstants.KEY_INSERT_REGISTERED_DEVICE, object);
         } else {
             object.setDevicetoken(token);
+            prefHelper.putObject(AppConstants.KEY_INSERT_REGISTERED_DEVICE, object);
+            try {
+                insertRegisteredDevice(object);
+            } catch (Exception e) {
+                Log.d(TAG, "sendRegistrationToServer: " + e.getLocalizedMessage());
+                Crashlytics.logException(e.getCause());
+
+            }
+        }
+
+
+        if (object2 == null) {
+            object2 = new RegisteredDeviceModel();
+            object2.setDevicetoken(token);
+            prefHelper.putObject(AppConstants.KEY_REGISTERED_DEVICE, object2);
+        } else {
+            object2.setDevicetoken(token);
             prefHelper.putObject(AppConstants.KEY_REGISTERED_DEVICE, object);
-            insertRegisteredDevice(object);
         }
 
 
@@ -67,12 +88,12 @@ public class MyFirebaseInstanceIDService extends FirebaseInstanceIdService {
     }
 
 
-    private void insertRegisteredDevice(RegisteredDeviceModel registeredDeviceModel) {
+    private void insertRegisteredDevice(InsertRegisteredDeviceModel insertRegisteredDeviceModel) {
         new WebServices(getApplicationContext(),
                 SharedPreferenceManager.getInstance(getApplicationContext()).getString(AppConstants.KEY_TOKEN),
                 BaseURLTypes.AHFA_BASE_URL)
                 .webServiceRequestAPIAnyObject(WebServiceConstants.METHOD_USER_INSERT_REGISTERED_DEVICE,
-                        registeredDeviceModel.toString(),
+                        insertRegisteredDeviceModel.toString(),
                         new WebServices.IRequestWebResponseAnyObjectCallBack() {
                             @Override
                             public void requestDataResponse(WebResponse<Object> webResponse) {

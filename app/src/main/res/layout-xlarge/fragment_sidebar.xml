@@ -95,6 +95,28 @@
 
 
                 <edu.aku.family_hifazat.widget.AnyTextView
+                    android:id="@+id/txtPreferences"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:drawablePadding="@dimen/x5dp"
+                    android:drawableStart="@android:drawable/ic_menu_preferences"
+                    android:gravity="center_vertical"
+                    android:padding="@dimen/x15dp"
+                    android:singleLine="true"
+                    android:text="Preferences"
+                    android:textColor="@color/c_white"
+                    android:textSize="16sp"
+                    android:visibility="gone"
+                    app:typeface="@string/font_bold" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="2px"
+                    android:background="@color/c_white" />
+
+
+                <edu.aku.family_hifazat.widget.AnyTextView
                     android:id="@+id/txtAbout"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"

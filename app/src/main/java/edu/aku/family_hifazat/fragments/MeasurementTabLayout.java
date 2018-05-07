@@ -15,6 +15,7 @@ import butterknife.Unbinder;
 import edu.aku.family_hifazat.R;
 import edu.aku.family_hifazat.adapters.MeasurementTabAdapter;
 import edu.aku.family_hifazat.fragments.abstracts.BaseFragment;
+import edu.aku.family_hifazat.models.PatientHealthSummaryModel;
 import edu.aku.family_hifazat.widget.CustomViewPager;
 import edu.aku.family_hifazat.widget.TitleBar;
 
@@ -29,16 +30,17 @@ public class MeasurementTabLayout extends BaseFragment {
     public CustomViewPager viewpager;
     Unbinder unbinder;
     MeasurementTabAdapter tabPagerAdapter;
-    private boolean isFromTimeline;
-    private int patientVisitAdmissionID;
+    private PatientHealthSummaryModel modelWEIGHT;
+    private PatientHealthSummaryModel modelHEIGHT;
 
-    public static MeasurementTabLayout newInstance(boolean isFromGLUC, boolean isFromMeasurements, boolean isFromBP) {
+
+    public static MeasurementTabLayout newInstance(PatientHealthSummaryModel modelHEIGHT, PatientHealthSummaryModel modelWEIGHT) {
 
         Bundle args = new Bundle();
 
         MeasurementTabLayout fragment = new MeasurementTabLayout();
-//        fragment.isFromGLUC = isFromGLUC;
-//        fragment.patientVisitAdmissionID = isFromBP;
+        fragment.modelHEIGHT = modelHEIGHT;
+        fragment.modelWEIGHT = modelWEIGHT;
         fragment.setArguments(args);
         return fragment;
     }
@@ -50,14 +52,14 @@ public class MeasurementTabLayout extends BaseFragment {
 
     @Override
     protected int getFragmentLayout() {
-        return R.layout.fragment_tablayout_summary;
+        return R.layout.fragment_tablayout_measurment;
     }
 
     @Override
     public void setTitlebar(TitleBar titleBar) {
         titleBar.resetViews();
         titleBar.setVisibility(View.VISIBLE);
-        titleBar.setTitle("Health Summary");
+        titleBar.setTitle("Measurement");
         titleBar.showHome(getBaseActivity());
         titleBar.showBackButton(getBaseActivity());
         titleBar.setUserDisplay(sharedPreferenceManager.getCurrentUser(), getContext());
@@ -95,14 +97,14 @@ public class MeasurementTabLayout extends BaseFragment {
     private void setViewPagerAdapter() {
         viewpager.setPagingEnabled(true);
         viewpager.setOffscreenPageLimit(1);
-        tabPagerAdapter = new MeasurementTabAdapter(getChildFragmentManager());
+        tabPagerAdapter = new MeasurementTabAdapter(getChildFragmentManager(), modelHEIGHT, modelWEIGHT);
         viewpager.setAdapter(tabPagerAdapter);
         tabs.setupWithViewPager(viewpager);
 //        tabs.setBackgroundColor(getResources().getColor(R.color.c_white));
-        tabs.setBackground(getResources().getDrawable(R.drawable.tab_color_selector_summary));
-        tabs.setTabMode(TabLayout.MODE_FIXED);
-        tabs.setSelectedTabIndicatorColor(getResources().getColor(R.color.base_green));
-        tabs.setTabTextColors(getResources().getColor(R.color.txt_aku_blue),getResources().getColor(R.color.base_green));
+//        tabs.setBackground(getResources().getDrawable(R.drawable.tab_color_selector_measurment));
+//        tabs.setTabMode(TabLayout.MODE_FIXED);
+//        tabs.setSelectedTabIndicatorColor(getResources().getColor(R.color.base_green));
+//        tabs.setTabTextColors(getResources().getColor(R.color.txt_aku_blue), getResources().getColor(R.color.base_green));
     }
 
     @Override

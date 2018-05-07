@@ -109,7 +109,7 @@ public class WebServices {
                     } else if (response.body().result.get("StrStatus").isJsonNull()) {
                         return false;
                     } else {
-                        return response.body().result.get("StrStatus").getAsString().toLowerCase().equals("true");
+                        return !response.body().result.get("StrStatus").getAsString().isEmpty();
                     }
                 } else if (response.body().result.get("RecordFound").isJsonNull()) {
                     return false;
@@ -126,11 +126,15 @@ public class WebServices {
     }
 
     private boolean hasValidStatusForArray(Response<WebResponse<ArrayList<JsonObject>>> response) {
+
+
         if (response != null && response.body() != null && response.body().isSuccess()) {
 
 
-            //for testing
+            // FIXME: 5/2/2018   //for testing
 //            return true;
+//
+
             if (response.body().result == null || response.body().result.isEmpty() || response.body().result.get(0) == null) {
                 return false;
             }
@@ -270,8 +274,10 @@ public class WebServices {
                                         // Show Toast here
                                         String message = response.body().result.get("RecordMessage").toString();
                                         if (requestMethod.equals(WebServiceConstants.METHOD_USER_LOGIN)
-                                                ||  requestMethod.equals(WebServiceConstants.METHOD_USER_GENERATE_PASSWORD_CODE)
-                                                ||  requestMethod.equals(WebServiceConstants.METHOD_USER_VERIFY_PASSWORD_CODE_AND_UPDATE_PASSWORD)) {
+                                                || requestMethod.equals(WebServiceConstants.METHOD_USER_GENERATE_PASSWORD_CODE)
+                                                || requestMethod.equals(WebServiceConstants.METHOD_USER_VERIFY_PASSWORD_CODE_AND_UPDATE_PASSWORD)
+
+                                                ) {
                                             UIHelper.showShortToastInCenter(mContext, message);
                                         } else {
                                             UIHelper.showShortToastInCenter(mContext, message);
@@ -304,6 +310,93 @@ public class WebServices {
                 Exception e)
 
         {
+            dismissDialog();
+            e.printStackTrace();
+
+        }
+
+    }
+
+    public void webServiceRequestAPIForArray(String requestMethod, String requestData, final IRequestArrayDataCallBack callBack) {
+
+        RequestBody bodyRequestMethod = getRequestBody(okhttp3.MultipartBody.FORM, requestMethod);
+        RequestBody bodyRequestData = getRequestBody(okhttp3.MultipartBody.FORM, requestData);
+
+        try {
+            if (Helper.isNetworkConnected(mContext, true)) {
+                Call<WebResponse<ArrayList<JsonObject>>> webResponseCall =
+                        apiService.webServiceRequestAPIForArray(bodyRequestMethod, bodyRequestData);
+                webResponseCall.enqueue(new Callback<WebResponse<ArrayList<JsonObject>>>() {
+                    @Override
+                    public void onResponse(Call<WebResponse<ArrayList<JsonObject>>> call, Response<WebResponse<ArrayList<JsonObject>>> response) {
+                        dismissDialog();
+                        if (!IsResponseErrorForArray(response)) {
+                            String errorBody;
+                            try {
+                                errorBody = response.errorBody().string();
+                                UIHelper.showShortToastInCenter(mContext, errorBody);
+                                callBack.onError();
+                            } catch (IOException e) {
+                                e.printStackTrace();
+                            }
+                            return;
+                        }
+
+                        if (hasValidStatusForArray(response))
+                            callBack.requestDataResponse(response.body());
+                        else {
+                            if (response != null && response.body() != null) {
+                                if (response.body().isSuccess()) {
+
+                                    if (response.body().result == null || response.body().result.isEmpty() || response.body().result.get(0) == null) {
+                                        UIHelper.showToast(mContext, "Record Missing in API");
+                                        callBack.onError();
+                                    } else if (response.body().result.get(0).get("RecordMessage") == null) {
+                                        errorToastForArray(response);
+                                        callBack.onError();
+                                    } else if (response.body().result.get(0).get("RecordMessage").isJsonNull()) {
+                                        errorToastForArray(response);
+                                        callBack.onError();
+                                    } else {
+
+                                        // FIXME: 5/2/2018 Show Toast here
+
+                                        String message = response.body().result.get(0).get("RecordMessage").toString();
+
+                                        if (requestMethod.equals(WebServiceConstants.METHOD_PATIENT_HEALTH_SUMMARY)
+//                                            || requestMethod.equals(WebServiceConstants.METHOD_USER_GENERATE_PASSWORD_CODE)
+//                                            || requestMethod.equals(WebServiceConstants.METHOD_USER_VERIFY_PASSWORD_CODE_AND_UPDATE_PASSWORD)
+                                                ) {
+                                            UIHelper.showShortToastInCenter(mContext, message);
+                                        } else {
+//                                        UIHelper.showShortToastInCenter(mContext, message);
+                                        }
+                                        callBack.onError();
+                                    }
+
+                                } else {
+                                    String message = response.body().message != null ? response.body().message : response.errorBody().toString();
+//                                    UIHelper.showShortToastInCenter(mContext, message);
+                                    callBack.onError();
+                                }
+                            }
+
+                        }
+                    }
+
+                    @Override
+                    public void onFailure(Call<WebResponse<ArrayList<JsonObject>>> call, Throwable t) {
+                        UIHelper.showShortToastInCenter(mContext, "Something went wrong, Please check your internet connection.");
+                        dismissDialog();
+                        callBack.onError();
+                    }
+                });
+            } else {
+                dismissDialog();
+                callBack.onError();
+            }
+
+        } catch (Exception e) {
             dismissDialog();
             e.printStackTrace();
 
@@ -399,81 +492,6 @@ public class WebServices {
             } else {
                 dismissDialog();
                 callBack.onError("Internet not connected");
-            }
-
-        } catch (Exception e) {
-            dismissDialog();
-            e.printStackTrace();
-
-        }
-
-    }
-
-    public void webServiceRequestAPIForArray(String requestMethod, String requestData, final IRequestArrayDataCallBack callBack) {
-
-        RequestBody bodyRequestMethod = getRequestBody(okhttp3.MultipartBody.FORM, requestMethod);
-        RequestBody bodyRequestData = getRequestBody(okhttp3.MultipartBody.FORM, requestData);
-
-        try {
-            if (Helper.isNetworkConnected(mContext, true)) {
-                Call<WebResponse<ArrayList<JsonObject>>> webResponseCall =
-                        apiService.webServiceRequestAPIForArray(bodyRequestMethod, bodyRequestData);
-                webResponseCall.enqueue(new Callback<WebResponse<ArrayList<JsonObject>>>() {
-                    @Override
-                    public void onResponse(Call<WebResponse<ArrayList<JsonObject>>> call, Response<WebResponse<ArrayList<JsonObject>>> response) {
-                        dismissDialog();
-                        if (!IsResponseErrorForArray(response)) {
-                            String errorBody;
-                            try {
-                                errorBody = response.errorBody().string();
-                                UIHelper.showShortToastInCenter(mContext, errorBody);
-                                callBack.onError();
-                            } catch (IOException e) {
-                                e.printStackTrace();
-                            }
-                            return;
-                        }
-
-                        if (hasValidStatusForArray(response))
-                            callBack.requestDataResponse(response.body());
-                        else {
-                            if (response != null && response.body() != null) {
-                                if (response.body().isSuccess()) {
-
-                                    if (response.body().result == null || response.body().result.isEmpty() || response.body().result.get(0) == null) {
-                                        UIHelper.showToast(mContext, "Record Missing in API");
-                                        callBack.onError();
-                                    } else if (response.body().result.get(0).get("RecordMessage") == null) {
-                                        errorToastForArray(response);
-                                        callBack.onError();
-                                    } else if (response.body().result.get(0).get("RecordMessage").isJsonNull()) {
-                                        errorToastForArray(response);
-                                        callBack.onError();
-                                    } else {
-                                        String message = response.body().result.get(0).get("RecordMessage").toString();
-//                                        UIHelper.showShortToastInCenter(mContext, message);
-                                        callBack.onError();
-                                    }
-
-                                } else {
-                                    String message = response.body().message != null ? response.body().message : response.errorBody().toString();
-//                                    UIHelper.showToast(mContext, message);
-                                }
-                            }
-
-                        }
-                    }
-
-                    @Override
-                    public void onFailure(Call<WebResponse<ArrayList<JsonObject>>> call, Throwable t) {
-                        UIHelper.showShortToastInCenter(mContext, "Something went wrong, Please check your internet connection.");
-                        dismissDialog();
-                        callBack.onError();
-                    }
-                });
-            } else {
-                dismissDialog();
-                callBack.onError();
             }
 
         } catch (Exception e) {

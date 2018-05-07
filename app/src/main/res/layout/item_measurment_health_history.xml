@@ -1,0 +1,245 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/c_white">
+
+
+    <android.support.v7.widget.CardView
+        android:id="@+id/cardMeasurement"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/x10dp"
+        android:animateLayoutChanges="true"
+        app:cardBackgroundColor="@color/base_green_light"
+        app:cardCornerRadius="@dimen/x10dp"
+        app:cardElevation="@dimen/x2dp">
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="@dimen/x4dp"
+                android:background="@drawable/round_edges_topview_light_green"
+                android:gravity="center_vertical"
+                android:orientation="vertical"
+                android:paddingLeft="@dimen/x5dp"
+                android:paddingRight="@dimen/x5dp">
+
+                <edu.aku.family_hifazat.widget.AnyTextView
+                    android:id="@+id/txtDttm"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:padding="@dimen/x5dp"
+                    android:text="Date"
+                    android:textColor="@color/txt_aku_blue"
+                    android:textSize="@dimen/s14"
+                    app:typeface="@string/font_bold" />
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:weightSum="3">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:orientation="vertical"
+                        android:padding="@dimen/x3dp">
+
+                        <edu.aku.family_hifazat.widget.AnyTextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Height"
+                            android:textColor="@color/txt_aku_blue"
+                            android:textSize="@dimen/s12"
+                            app:typeface="@string/font_regular" />
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content">
+
+
+                            <edu.aku.family_hifazat.widget.AnyTextView
+                                android:id="@+id/txtHeight"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:ellipsize="end"
+                                android:gravity="start"
+                                android:maxLines="1"
+                                android:padding="@dimen/x5dp"
+                                android:text="-"
+                                android:textColor="@color/txt_aku_blue"
+                                android:textSize="@dimen/s18"
+                                app:typeface="@string/font_bold"
+
+                                />
+
+
+                            <edu.aku.family_hifazat.widget.AnyTextView
+                                android:id="@+id/txtHeightUnit"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:ellipsize="end"
+                                android:maxLines="1"
+                                android:text="cm"
+                                android:textColor="@color/txt_aku_blue"
+                                android:textSize="@dimen/s14"
+                                app:typeface="@string/font_regular" />
+                        </LinearLayout>
+
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:orientation="vertical"
+                        android:padding="@dimen/x3dp">
+
+                        <edu.aku.family_hifazat.widget.AnyTextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:gravity="center_vertical"
+                            android:text="Weight"
+                            android:textColor="@color/txt_aku_blue"
+                            android:textSize="@dimen/s12"
+                            app:typeface="@string/font_regular" />
+
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content">
+
+
+                            <edu.aku.family_hifazat.widget.AnyTextView
+                                android:id="@+id/txtWeight"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:ellipsize="end"
+                                android:gravity="end"
+                                android:maxLines="1"
+                                android:padding="@dimen/x5dp"
+                                android:text="-"
+                                android:textColor="@color/txt_aku_blue"
+                                android:textSize="@dimen/s18"
+                                app:typeface="@string/font_bold" />
+
+                            <edu.aku.family_hifazat.widget.AnyTextView
+                                android:id="@+id/txtWeightUnit"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:ellipsize="end"
+                                android:maxLines="1"
+                                android:text="kg"
+                                android:textColor="@color/txt_aku_blue"
+                                android:textSize="@dimen/s14"
+                                app:typeface="@string/font_regular" />
+
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:orientation="vertical"
+
+                        android:padding="@dimen/x3dp">
+
+                        <edu.aku.family_hifazat.widget.AnyTextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:gravity="center_vertical"
+                            android:text="BSA"
+                            android:textColor="@color/txt_aku_blue"
+                            android:textSize="@dimen/s12"
+                            app:typeface="@string/font_regular" />
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content">
+
+                            <edu.aku.family_hifazat.widget.AnyTextView
+                                android:id="@+id/txtBSA"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:ellipsize="end"
+                                android:maxLines="1"
+                                android:padding="@dimen/x5dp"
+                                android:text="-"
+                                android:textColor="@color/txt_aku_blue"
+                                android:textSize="@dimen/s18"
+                                app:typeface="@string/font_bold" />
+
+                            <LinearLayout
+                                android:id="@+id/txtBSAUnit"
+                                android:layout_width="wrap_content"
+                                android:layout_height="match_parent">
+
+                                <edu.aku.family_hifazat.widget.AnyTextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="match_parent"
+                                    android:ellipsize="end"
+                                    android:gravity="center"
+                                    android:maxLines="1"
+                                    android:text="m"
+                                    android:textColor="@color/txt_aku_blue"
+                                    android:textSize="@dimen/s14"
+                                    app:typeface="@string/font_regular" />
+
+
+                                <edu.aku.family_hifazat.widget.AnyTextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="match_parent"
+                                    android:ellipsize="end"
+                                    android:gravity="center"
+                                    android:maxLines="1"
+                                    android:paddingBottom="@dimen/x8dp"
+                                    android:text="2"
+                                    android:textColor="@color/txt_aku_blue"
+                                    android:textSize="@dimen/s10"
+                                    app:typeface="@string/font_regular" />
+
+                            </LinearLayout>
+
+
+                        </LinearLayout>
+
+
+                    </LinearLayout>
+
+
+                </LinearLayout>
+
+                <edu.aku.family_hifazat.widget.AnyTextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="end"
+                    android:padding="@dimen/x5dp"
+                    android:text=""
+                    android:textColor="@color/text_color_grey"
+                    android:textSize="@dimen/s12"
+                    android:visibility="gone" />
+
+            </LinearLayout>
+
+
+        </FrameLayout>
+    </android.support.v7.widget.CardView>
+
+
+</LinearLayout>

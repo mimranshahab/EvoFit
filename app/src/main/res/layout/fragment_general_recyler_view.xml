@@ -9,7 +9,8 @@
     <RelativeLayout
         android:id="@+id/contParent"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="0dp"
+        android:layout_weight="1">
 
 
         <android.support.v7.widget.RecyclerView
@@ -54,11 +55,11 @@
             android:layout_height="@dimen/x30dp"
             android:layout_alignParentRight="true"
             android:layout_gravity="center"
-            android:visibility="gone"
             android:layout_margin="@dimen/x7dp"
             android:padding="@dimen/x7dp"
+            android:src="@drawable/search2"
             android:tint="@color/txt_aku_blue"
-            android:src="@drawable/search2" />
+            android:visibility="gone" />
 
 
         <com.github.clans.fab.FloatingActionButton
@@ -75,7 +76,63 @@
             app:fab_colorNormal="@color/colorPrimaryDark"
             app:fab_colorPressed="@color/base_amber"
             app:fab_colorRipple="@color/base_reddish" />
+
+
     </RelativeLayout>
+
+
+    <LinearLayout
+        android:id="@+id/glucoTabs"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="@dimen/x8dp"
+        android:background="@color/c_white"
+        android:visibility="gone">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="end"
+            android:orientation="vertical">
+
+            <edu.aku.family_hifazat.widget.AnyTextView
+                android:id="@+id/txtFasting"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/gluco_button_left_selected"
+                android:gravity="center"
+                android:padding="@dimen/x10dp"
+                android:text="Fasting"
+                android:textColor="@color/c_white"
+                android:textSize="@dimen/s12"
+                app:typeface="@string/font_bold" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="start"
+            android:orientation="vertical">
+
+
+            <edu.aku.family_hifazat.widget.AnyTextView
+                android:id="@+id/txtRandom"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/gluco_button_right_unselected"
+                android:gravity="center"
+                android:padding="@dimen/x10dp"
+                android:text="Random"
+                android:textColor="@color/text_color_grey"
+                android:textSize="@dimen/s12"
+                app:typeface="@string/font_bold" />
+        </LinearLayout>
+
+    </LinearLayout>
+
 
 </LinearLayout>
 

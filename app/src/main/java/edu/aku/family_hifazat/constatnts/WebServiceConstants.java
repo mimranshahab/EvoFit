@@ -75,6 +75,7 @@ public class WebServiceConstants {
     public static final String METHOD_USER_GENERATE_PASSWORD_CODE = "UserManager.GeneratePasswordResetCodeAndEmail";
     public static final String METHOD_USER_VERIFY_PASSWORD_CODE_AND_UPDATE_PASSWORD = "UserManager.VerifyPasswordResetCodeAndUpdatePassword";
     public static final String METHOD_USER_GET_APPLICATION_PARAMETER = "SharedManager.GetApplicationParameter";
+    public static final String METHOD_USER_SAVE_ACCESS_LOG = "UserManager.SaveAccessLogAuto";
 
 
     public static final String METHOD_GET_RADIOLOGY_EXAMS = "RadiologyManager.GetRadiologyExams";
@@ -113,6 +114,7 @@ public class WebServiceConstants {
 
     public static final String METHOD_PATIENT_HEALTH_SUMMARY = "SharedManager.GetPatientHealthSummary";
     public static final String METHOD_DETAIL_HEALTH_SUMMARY = "SharedManager.GetHealthSummary";
+    public static final String METHOD_SAVE_HEALTH_SUMMARY_DETAILS = "SharedManager.SaveHealthIndicatorDetails";
 
     public static final String METHOD_PACS_MANAGER = "PACSManager.GetPacs";
     public static final String METHOD_PACS_ACCESSIONS = "{\"PACS_Accessions\":[";

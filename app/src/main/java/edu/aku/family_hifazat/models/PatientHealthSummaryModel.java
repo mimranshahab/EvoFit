@@ -3,6 +3,9 @@ package edu.aku.family_hifazat.models;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * Created by hamza.ahmed on 3/9/2018.
  */
@@ -11,58 +14,69 @@ public class PatientHealthSummaryModel {
 
 
     @Expose
-    @SerializedName("HeightDate")
-    private String heightdate;
+    @SerializedName("RecordMessage")
+    private String recordmessage;
     @Expose
-    @SerializedName("WeightDate")
-    private String weightdate;
+    @SerializedName("RecordFound")
+    private String recordfound;
     @Expose
-    @SerializedName("Height")
-    private String height;
+    @SerializedName("HealthIndicatorList")
+    private ArrayList<Subhealthindicator> healthindicatorlist;
     @Expose
-    @SerializedName("Weight")
-    private String weight;
+    @SerializedName("SubHealthIndicator")
+    private Subhealthindicator subhealthindicator;
     @Expose
-    @SerializedName("BloodType")
-    private String bloodtype;
+    @SerializedName("HealthIndicator")
+    private Healthindicator healthindicator;
+    @Expose
+    @SerializedName("MRN")
+    private String mrn;
 
-    public String getHeightdate() {
-        return heightdate;
+    public String getRecordmessage() {
+        return recordmessage;
     }
 
-    public void setHeightdate(String heightdate) {
-        this.heightdate = heightdate;
+    public void setRecordmessage(String recordmessage) {
+        this.recordmessage = recordmessage;
     }
 
-    public String getWeightdate() {
-        return weightdate;
+    public String getRecordfound() {
+        return recordfound;
     }
 
-    public void setWeightdate(String weightdate) {
-        this.weightdate = weightdate;
+    public void setRecordfound(String recordfound) {
+        this.recordfound = recordfound;
     }
 
-    public String getHeight() {
-        return height;
+    public ArrayList<Subhealthindicator> getHealthindicatorlist() {
+        return healthindicatorlist;
     }
 
-    public void setHeight(String height) {
-        this.height = height;
+    public void setHealthindicatorlist(ArrayList<Subhealthindicator> healthindicatorlist) {
+        this.healthindicatorlist = healthindicatorlist;
     }
 
-    public String getWeight() {
-        return weight;
+    public Subhealthindicator getSubhealthindicator() {
+        return subhealthindicator;
     }
 
-    public void setWeight(String weight) {
-        this.weight = weight;
+    public void setSubhealthindicator(Subhealthindicator subhealthindicator) {
+        this.subhealthindicator = subhealthindicator;
     }
 
-    public String getBloodtype() {
-        return bloodtype;
+    public Healthindicator getHealthindicator() {
+        return healthindicator;
     }
 
-    public void setBloodtype(String bloodtype) {
-        this.bloodtype = bloodtype;
+    public void setHealthindicator(Healthindicator healthindicator) {
+        this.healthindicator = healthindicator;
+    }
+
+    public String getMrn() {
+        return mrn;
+    }
+
+    public void setMrn(String mrn) {
+        this.mrn = mrn;
     }
 }

@@ -30,6 +30,7 @@ import edu.aku.family_hifazat.adapters.recyleradapters.HealthSummaryAdapter;
 import edu.aku.family_hifazat.callbacks.OnItemClickListener;
 import edu.aku.family_hifazat.constatnts.WebServiceConstants;
 import edu.aku.family_hifazat.enums.BaseURLTypes;
+import edu.aku.family_hifazat.enums.HealthSummaryIndicatorTypes;
 import edu.aku.family_hifazat.enums.HealthSummaryTypes;
 import edu.aku.family_hifazat.fragments.abstracts.BaseFragment;
 import edu.aku.family_hifazat.fragments.dialogs.HealthSummaryDialogFragment;
@@ -56,16 +57,22 @@ public class HealthSummaryV2Fragment extends BaseFragment implements OnItemClick
 
     HealthSummaryAdapter adapter;
     ArrayList<DetailHealthSummaryModel> arrData;
-    @BindView(R.id.txtRandomGlucose)
-    AnyTextView txtRandomGlucose;
     @BindView(R.id.txtFastingGlucose)
     AnyTextView txtFastingGlucose;
+    @BindView(R.id.txtRandomGlucose)
+    AnyTextView txtRandomGlucose;
     @BindView(R.id.txtFastingGlucoseUnit)
     AnyTextView txtFastingGlucoseUnit;
     @BindView(R.id.txtSugarDDTM)
     AnyTextView txtSugarDDTM;
+    @BindView(R.id.contGlucose)
+    LinearLayout contGlucose;
     @BindView(R.id.cardBloodGlucose)
     CardView cardBloodGlucose;
+    @BindView(R.id.txtBPUnit)
+    AnyTextView txtBPUnit;
+    @BindView(R.id.cardBP)
+    CardView cardBP;
     @BindView(R.id.txtBSA)
     AnyTextView txtBSA;
     @BindView(R.id.txtBSAUnit)
@@ -80,16 +87,22 @@ public class HealthSummaryV2Fragment extends BaseFragment implements OnItemClick
     AnyTextView txtWeightUnit;
     @BindView(R.id.cardMeasurement)
     CardView cardMeasurement;
-    @BindView(R.id.txtBP)
-    AnyTextView txtBP;
-    @BindView(R.id.txtBPUnit)
-    AnyTextView txtBPUnit;
-    @BindView(R.id.cardBP)
-    CardView cardBP;
     @BindView(R.id.recylerView)
     RecyclerView recylerView;
     @BindView(R.id.contLastLab)
     LinearLayout contLastLab;
+
+    PatientHealthSummaryModel ModelGLUF;
+    PatientHealthSummaryModel ModelGLUR;
+    PatientHealthSummaryModel ModelHEIGHT;
+    PatientHealthSummaryModel ModelWEIGHT;
+    PatientHealthSummaryModel ModelBPSYSTOLIC;
+    PatientHealthSummaryModel ModelBPDIASTOLIC;
+    PatientHealthSummaryModel ModelBLOODGROUP;
+    @BindView(R.id.txtBPsystolic)
+    AnyTextView txtBPsystolic;
+    @BindView(R.id.txtBPdiastolic)
+    AnyTextView txtBPdiastolic;
 
 
     public static HealthSummaryV2Fragment newInstance() {
@@ -140,10 +153,10 @@ public class HealthSummaryV2Fragment extends BaseFragment implements OnItemClick
 //        setSpannyText();
 
         bindView();
+        serviceCallBasicHealthSummary();
         if (onCreated) {
             return;
         }
-//        serviceCallBasicHealthSummary();
         serviceCallDetailedHealthSummary();
 
     }
@@ -275,32 +288,76 @@ public class HealthSummaryV2Fragment extends BaseFragment implements OnItemClick
         new WebServices(getBaseActivity(),
                 getToken(),
                 BaseURLTypes.AHFA_BASE_URL)
-                .webServiceRequestAPIForJsonObject(WebServiceConstants.METHOD_PATIENT_HEALTH_SUMMARY,
+                .webServiceRequestAPIForArray(WebServiceConstants.METHOD_PATIENT_HEALTH_SUMMARY,
                         model.toString(),
-                        new WebServices.IRequestJsonDataCallBack() {
+                        new WebServices.IRequestArrayDataCallBack() {
                             @Override
-                            public void requestDataResponse(WebResponse<JsonObject> webResponse) {
+                            public void requestDataResponse(WebResponse<ArrayList<JsonObject>> webResponse) {
 
-                                PatientHealthSummaryModel patientHealthSummaryModel = GsonFactory.getSimpleGson()
+
+                                Type type = new TypeToken<ArrayList<PatientHealthSummaryModel>>() {
+                                }.getType();
+                                ArrayList<PatientHealthSummaryModel> arrayList = GsonFactory.getSimpleGson()
                                         .fromJson(GsonFactory.getSimpleGson().toJson(webResponse.result)
-                                                , PatientHealthSummaryModel.class);
+                                                , type);
 
-//                                txtBloodType.setText(patientHealthSummaryModel.getBloodtype());
-//
-//                                if (StringHelper.IsInt_ByJonas(patientHealthSummaryModel.getWeight()) || StringHelper.IsDecimal_ByCompiledRegex(patientHealthSummaryModel.getWeight())) {
-//                                    txtWeight.setText(patientHealthSummaryModel.getWeight() + "kg");
-//                                } else {
-//                                    txtWeight.setText(patientHealthSummaryModel.getWeight());
-//                                }
-//
-//                                if (StringHelper.IsInt_ByJonas(patientHealthSummaryModel.getHeight()) || StringHelper.IsDecimal_ByCompiledRegex(patientHealthSummaryModel.getHeight())) {
-//                                    txtHeight.setText(patientHealthSummaryModel.getHeight() + "cm");
-//                                } else {
-//                                    txtHeight.setText(patientHealthSummaryModel.getHeight());
-//                                }
-//                                txtHeightDate.setText(patientHealthSummaryModel.getHeightdate());
-//                                txtWeightDate.setText(patientHealthSummaryModel.getWeightdate());
+                                for (PatientHealthSummaryModel patientHealthSummaryModel : arrayList) {
+                                    HealthSummaryIndicatorTypes state = HealthSummaryIndicatorTypes.fromStringForm(patientHealthSummaryModel.getHealthindicator().getHealthindicatorid());
 
+                                    if (state != null) {
+                                        switch (state) {
+                                            case GLUF:
+                                                ModelGLUF = patientHealthSummaryModel;
+                                                if (ModelGLUF.getHealthindicatorlist() != null && !ModelGLUF.getHealthindicatorlist().isEmpty()) {
+                                                    txtFastingGlucose.setText(ModelGLUF.getHealthindicatorlist().get(0).getHealthindicatorvalue());
+                                                    txtFastingGlucoseUnit.setText(ModelGLUF.getHealthindicator().getUnit());
+                                                }
+                                                break;
+                                            case GLUR:
+                                                ModelGLUR = patientHealthSummaryModel;
+                                                if (ModelGLUR.getHealthindicatorlist() != null && !ModelGLUR.getHealthindicatorlist().isEmpty()) {
+                                                    txtRandomGlucose.setText(ModelGLUR.getHealthindicatorlist().get(0).getHealthindicatorvalue());
+                                                    txtFastingGlucoseUnit.setText(ModelGLUR.getHealthindicator().getUnit());
+                                                }
+                                                break;
+                                            case HEIGHT:
+                                                ModelHEIGHT = patientHealthSummaryModel;
+                                                if (ModelHEIGHT.getHealthindicatorlist() != null && !ModelHEIGHT.getHealthindicatorlist().isEmpty()) {
+                                                    txtHeight.setText(ModelHEIGHT.getHealthindicatorlist().get(0).getHealthindicatorvalue());
+                                                    txtHeightUnit.setText(ModelHEIGHT.getHealthindicator().getUnit());
+                                                }
+                                                break;
+                                            case WEIGHT:
+                                                ModelWEIGHT = patientHealthSummaryModel;
+                                                if (ModelWEIGHT.getHealthindicatorlist() != null && !ModelWEIGHT.getHealthindicatorlist().isEmpty()) {
+                                                    txtWeight.setText(ModelWEIGHT.getHealthindicatorlist().get(0).getHealthindicatorvalue());
+                                                    txtWeightUnit.setText(ModelWEIGHT.getHealthindicator().getUnit());
+                                                }
+                                                break;
+                                            case BPSYSTOLIC:
+                                                ModelBPSYSTOLIC = patientHealthSummaryModel;
+                                                if (ModelBPSYSTOLIC.getHealthindicatorlist() != null && !ModelBPSYSTOLIC.getHealthindicatorlist().isEmpty()) {
+                                                    txtBPsystolic.setText(ModelBPSYSTOLIC.getHealthindicatorlist().get(0).getHealthindicatorvalue());
+                                                    txtBPUnit.setText(ModelBPSYSTOLIC.getHealthindicator().getUnit());
+                                                }
+                                                break;
+                                            case BPDIASTOLIC:
+                                                ModelBPDIASTOLIC = patientHealthSummaryModel;
+                                                if (ModelBPDIASTOLIC.getHealthindicatorlist() != null && !ModelBPDIASTOLIC.getHealthindicatorlist().isEmpty()) {
+                                                    txtBPdiastolic.setText(ModelBPDIASTOLIC.getHealthindicatorlist().get(0).getHealthindicatorvalue());
+                                                    txtBPUnit.setText(ModelBPDIASTOLIC.getHealthindicator().getUnit());
+                                                }
+                                                break;
+                                            case BLOODGROUP:
+                                                ModelBLOODGROUP = patientHealthSummaryModel;
+//                                                if (ModelBLOODGROUP.getHealthindicatorlist() != null && !ModelBLOODGROUP.getHealthindicatorlist().isEmpty()) {
+//                                                    txtFastingGlucose.setText(ModelBLOODGROUP.getHealthindicatorlist().get(0).getHealthindicatorvalue());
+//                                                    txtFastingGlucose.setText(ModelBLOODGROUP.getHealthindicator().getUnit());
+//                                                }
+                                                break;
+                                        }
+                                    }
+                                }
                             }
 
                             @Override
@@ -409,33 +466,17 @@ public class HealthSummaryV2Fragment extends BaseFragment implements OnItemClick
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.cardBloodGlucose:
-                getBaseActivity().addDockableFragment(GlucoseTabLayout.newInstance(), false);
-
+                getBaseActivity().addDockableFragment(GlucoseTabLayout.newInstance(ModelGLUF, ModelGLUR), false);
                 break;
+
             case R.id.cardMeasurement:
-
-                getBaseActivity().addDockableFragment(MeasurementTabLayout.newInstance(isFromGLUC,isFromMeasurements,isFromBP), false);
-
-
+                getBaseActivity().addDockableFragment(MeasurementTabLayout.newInstance(ModelHEIGHT, ModelWEIGHT), false);
                 break;
-            case R.id.cardBP:
-                getBaseActivity().addDockableFragment(BPTabLayout.newInstance(), false);
 
+            case R.id.cardBP:
+                getBaseActivity().addDockableFragment(BPTabLayout.newInstance(ModelBPSYSTOLIC, ModelBPDIASTOLIC), false);
                 break;
         }
     }
-    private boolean isFromGLUC,isFromMeasurements,isFromBP;
-    private void historyDialog() {
-        final MeasurementsBPDialogFragment historyDialogFrag = MeasurementsBPDialogFragment.newInstance();
-//        historyDialogFrag.setTitle(model.getReportName());
-//        historyDialogFrag.setResultPrevious1(model.getPrevResult1());
-//        historyDialogFrag.setResultPrevious2(model.getPrevResult2());
-//        historyDialogFrag.setResultPrevious1Date(model.getPrevResult1Dttm());
-//        historyDialogFrag.setResultPrevious2Date(model.getPrevResult2Dttm());
-//        historyDialogFrag.setCurrentResult(model.getResult());
-//        historyDialogFrag.setCurrentDate("Current Result");
 
-
-        historyDialogFrag.show(getFragmentManager(), null);
-    }
 }

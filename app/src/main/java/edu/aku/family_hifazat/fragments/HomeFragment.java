@@ -34,6 +34,8 @@ import edu.aku.family_hifazat.constatnts.Events;
 import edu.aku.family_hifazat.constatnts.WebServiceConstants;
 import edu.aku.family_hifazat.enums.BaseURLTypes;
 import edu.aku.family_hifazat.fragments.abstracts.BaseFragment;
+import edu.aku.family_hifazat.models.receiving_model.AddUpdateModel;
+import edu.aku.family_hifazat.models.sending_model.RegisteredDeviceModel;
 import edu.aku.family_hifazat.widget.TitleBar;
 import edu.aku.family_hifazat.helperclasses.ui.helper.UIHelper;
 import edu.aku.family_hifazat.libraries.imageloader.ImageLoaderHelper;
@@ -43,6 +45,8 @@ import edu.aku.family_hifazat.models.receiving_model.CardMemberDetail;
 import edu.aku.family_hifazat.models.receiving_model.UserDetailModel;
 import edu.aku.family_hifazat.models.wrappers.WebResponse;
 import edu.aku.family_hifazat.widget.AnyTextView;
+
+import static edu.aku.family_hifazat.constatnts.AppConstants.KEY_CODE;
 
 /**
  * Created by aqsa.sarwar on 1/16/2018.
@@ -114,7 +118,13 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener, 
         LayoutAnimationController animation = AnimationUtils.loadLayoutAnimation(getContext(), resId);
 //        recyclerHome.setLayoutAnimation(animation);
         recyclerHome.setAdapter(adaptHome);
-        serviceCall();
+
+        RegisteredDeviceModel registeredDevice = AppConstants.getRegisteredDevice(getContext(), getBaseActivity());
+        registeredDevice.setLoginCode(sharedPreferenceManager.getString(KEY_CODE));
+
+        saveAccessLogCall(registeredDevice);
+
+
     }
 
     private void setData() {
@@ -137,7 +147,7 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener, 
         txtMRN.setText(subscriber.getMRNumber());
     }
 
-    private void serviceCall() {
+    private void getCardDetailServiceCall() {
         final CardMemberDetail cardMemberDetail = new CardMemberDetail(sharedPreferenceManager.getString(AppConstants.KEY_CARD_NUMBER));
 
         new WebServices(getBaseActivity(),
@@ -162,6 +172,35 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener, 
                 });
 
     }
+
+
+    private void saveAccessLogCall(RegisteredDeviceModel registeredDeviceModel) {
+        new WebServices(getBaseActivity(),
+                getToken(),
+                BaseURLTypes.AHFA_BASE_URL)
+                .webServiceRequestAPIForJsonObject(WebServiceConstants.METHOD_USER_SAVE_ACCESS_LOG,
+                        registeredDeviceModel.toString(),
+                        new WebServices.IRequestJsonDataCallBack() {
+                            @Override
+                            public void requestDataResponse(WebResponse<JsonObject> webResponse) {
+                                AddUpdateModel addUpdateModel = GsonFactory.getSimpleGson().fromJson(webResponse.result, AddUpdateModel.class);
+                                if (addUpdateModel.getStatus()) {
+                                    getCardDetailServiceCall();
+                                } else {
+                                    LeftSideMenuFragment.logoutClick(HomeFragment.this);
+                                }
+                            }
+
+                            @Override
+                            public void onError() {
+                                // FIXME: 5/7/2018 Remove this toast if necessary
+                                UIHelper.showToast(getContext(), "Check your connectivity");
+                                getCardDetailServiceCall();
+
+                            }
+                        });
+    }
+
 
     private void onGetCardSuccessfully(CardMemberDetail cardMemberDetail) {
 

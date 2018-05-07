@@ -16,6 +16,7 @@ import java.security.NoSuchAlgorithmException;
 
 import edu.aku.family_hifazat.BaseApplication;
 import edu.aku.family_hifazat.managers.SharedPreferenceManager;
+import edu.aku.family_hifazat.models.sending_model.InsertRegisteredDeviceModel;
 import edu.aku.family_hifazat.models.sending_model.RegisteredDeviceModel;
 
 import static android.provider.Settings.Secure.getString;
@@ -83,12 +84,14 @@ public class AppConstants {
     public static final String KEY_CURRENT_USER_MODEL = "userModel";
     public static final String KEY_CARD_MEMBER_DETAIL = "cardMemberDetail";
     public static final String KEY_CARD_NUMBER = "card_number";
+    public static final String KEY_CODE = "code";
     public static final String USER_NOTIFICATION_DATA = "USER_NOTIFICATION_DATA";
     public static String FORCED_RESTART = "forced_restart";
     public static final String KEY_REGISTER_VM = "register_vm";
-     public static final String KEY_TOKEN = "getToken";
+    public static final String KEY_TOKEN = "getToken";
     public static final String KEY_CROSS_TAB_DATA = "cross_tab";
     public static final String KEY_REGISTERED_DEVICE = "registered_device";
+    public static final String KEY_INSERT_REGISTERED_DEVICE = "registered_device";
 
 
     /**
@@ -111,6 +114,7 @@ public class AppConstants {
 
 
     public static String DEVICE_OS_ANDROID = "ANDROID";
+    public static String ENTRY_SOURCE = "MANUAL";
 
 
     private static String getDeviceID(Context context) {
@@ -230,6 +234,31 @@ return Return_DeviceID;*/
 
         SharedPreferenceManager.getInstance(context).putObject(KEY_REGISTERED_DEVICE, registeredDeviceModel);
         return registeredDeviceModel;
+    }
+
+
+    public static InsertRegisteredDeviceModel getInsertRegisteredDevice(Context context, Activity activity) {
+        SharedPreferenceManager sharedPreferenceManager = SharedPreferenceManager.getInstance(context);
+        InsertRegisteredDeviceModel insertRegisteredDeviceModel = sharedPreferenceManager.getObject(KEY_INSERT_REGISTERED_DEVICE, InsertRegisteredDeviceModel.class);
+        if (insertRegisteredDeviceModel == null) {
+            insertRegisteredDeviceModel = new InsertRegisteredDeviceModel();
+        }
+
+
+        // Set Device ID
+        if (insertRegisteredDeviceModel.getDeviceid() == null || insertRegisteredDeviceModel.getDeviceid().isEmpty()) {
+            insertRegisteredDeviceModel.setDeviceid(getDeviceID(context));
+        }
+
+        // Set Registered Card Number Everytime
+        if (sharedPreferenceManager.getString(KEY_CARD_NUMBER) != null) {
+            insertRegisteredDeviceModel.setRegcardno(sharedPreferenceManager.getString(KEY_CARD_NUMBER));
+        }
+
+        insertRegisteredDeviceModel.setDeviceos(DEVICE_OS_ANDROID);
+
+        SharedPreferenceManager.getInstance(context).putObject(KEY_REGISTERED_DEVICE, insertRegisteredDeviceModel);
+        return insertRegisteredDeviceModel;
     }
 
 

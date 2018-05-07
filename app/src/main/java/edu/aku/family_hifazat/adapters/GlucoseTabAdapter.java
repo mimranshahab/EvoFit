@@ -1,26 +1,27 @@
 package edu.aku.family_hifazat.adapters;
 
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
 import android.util.SparseArray;
 import android.view.View;
 import android.view.ViewGroup;
 
-import edu.aku.family_hifazat.fragments.BPFragment;
+import edu.aku.family_hifazat.adapters.recyleradapters.GlucoseHistoryAdapter;
 import edu.aku.family_hifazat.fragments.GlucoseFragment;
-import edu.aku.family_hifazat.fragments.MeasurementFragment;
+import edu.aku.family_hifazat.fragments.GlucoseHistoryFragment;
+import edu.aku.family_hifazat.models.PatientHealthSummaryModel;
 
 public class GlucoseTabAdapter extends FragmentStatePagerAdapter {
-    private boolean isFromGLUC,isFromMeasurements,isFromBP;
 
-//
-//    private final int patientVisitAdmissionID;
-//    private final boolean isFromTimeline;
 
-    public GlucoseTabAdapter(android.support.v4.app.FragmentManager fm/*, boolean isFromTimeline, int patientVisitAdmissionID*/) {
+    private PatientHealthSummaryModel modelGLUF;
+    private PatientHealthSummaryModel modelGLUR;
+
+    public GlucoseTabAdapter(FragmentManager fm, PatientHealthSummaryModel modelGLUF, PatientHealthSummaryModel modelGLUR) {
         super(fm);
-//        this.isFromTimeline = isFromTimeline;
-//        this.patientVisitAdmissionID = patientVisitAdmissionID;
+        this.modelGLUF = modelGLUF;
+        this.modelGLUR = modelGLUR;
     }
 
     // CURRENT FRAGMENT
@@ -51,11 +52,11 @@ public class GlucoseTabAdapter extends FragmentStatePagerAdapter {
 //        return ForgotPasswordFragment.newInstance();
         switch (position) {
             case 0:
-                return GlucoseFragment.newInstance();
+                return GlucoseFragment.newInstance(modelGLUF, modelGLUR);
             case 1:
-                return GlucoseFragment.newInstance();
+                return GlucoseHistoryFragment.newInstance(modelGLUF, modelGLUR);
             default:
-                return GlucoseFragment.newInstance();
+                return GlucoseFragment.newInstance(modelGLUF, modelGLUR);
         }
 
     }
@@ -70,7 +71,7 @@ public class GlucoseTabAdapter extends FragmentStatePagerAdapter {
     public CharSequence getPageTitle(int position) {
         // Generate title based on item position
         if (position == 0) {
-            return "Current";
+            return "Latest";
         } else {
             return "History";
         }

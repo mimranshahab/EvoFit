@@ -1,25 +1,26 @@
 package edu.aku.family_hifazat.adapters;
 
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
 import android.util.SparseArray;
 import android.view.View;
 import android.view.ViewGroup;
 
-import edu.aku.family_hifazat.fragments.BPFragment;
 import edu.aku.family_hifazat.fragments.MeasurementFragment;
+import edu.aku.family_hifazat.fragments.MeasurementHistoryFragment;
+import edu.aku.family_hifazat.models.PatientHealthSummaryModel;
 
 public class MeasurementTabAdapter extends FragmentStatePagerAdapter {
-    private boolean isFromGLUC,isFromMeasurements,isFromBP;
+    private boolean isFromGLUC, isFromMeasurements, isFromBP;
+    private PatientHealthSummaryModel modelHEIGHT;
+    private PatientHealthSummaryModel modelWEIGHT;
 
-//
-//    private final int patientVisitAdmissionID;
-//    private final boolean isFromTimeline;
 
-    public MeasurementTabAdapter(android.support.v4.app.FragmentManager fm/*, boolean isFromTimeline, int patientVisitAdmissionID*/) {
+    public MeasurementTabAdapter(FragmentManager fm, PatientHealthSummaryModel modelHEIGHT, PatientHealthSummaryModel modelWEIGHT) {
         super(fm);
-//        this.isFromTimeline = isFromTimeline;
-//        this.patientVisitAdmissionID = patientVisitAdmissionID;
+        this.modelHEIGHT = modelHEIGHT;
+        this.modelWEIGHT = modelWEIGHT;
     }
 
     // CURRENT FRAGMENT
@@ -50,11 +51,11 @@ public class MeasurementTabAdapter extends FragmentStatePagerAdapter {
 //        return ForgotPasswordFragment.newInstance();
         switch (position) {
             case 0:
-                return MeasurementFragment.newInstance();
+                return MeasurementFragment.newInstance(modelHEIGHT, modelWEIGHT);
             case 1:
-                return MeasurementFragment.newInstance();
+                return MeasurementHistoryFragment.newInstance(modelHEIGHT, modelWEIGHT);
             default:
-                return MeasurementFragment.newInstance();
+                return MeasurementFragment.newInstance(modelHEIGHT, modelWEIGHT);
         }
 
     }
@@ -69,7 +70,7 @@ public class MeasurementTabAdapter extends FragmentStatePagerAdapter {
     public CharSequence getPageTitle(int position) {
         // Generate title based on item position
         if (position == 0) {
-            return "Current";
+            return "Latest";
         } else {
             return "History";
         }

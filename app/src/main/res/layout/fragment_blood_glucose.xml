@@ -9,8 +9,6 @@
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="@dimen/x10dp"
-        android:layout_marginRight="@dimen/x10dp"
         android:layout_weight="1"
         android:fillViewport="true"
 
@@ -28,132 +26,207 @@
                 android:id="@+id/cardBloodGlucose"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="@dimen/x5dp"
+                android:layout_margin="@dimen/x10dp"
                 android:animateLayoutChanges="true"
-                app:cardBackgroundColor="@color/base_reddish"
+                app:cardBackgroundColor="@color/base_reddish_light"
                 app:cardCornerRadius="@dimen/x10dp"
                 app:cardElevation="@dimen/x5dp">
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent">
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="@dimen/x4dp"
+                    android:background="@drawable/round_edges_topview_light_red">
 
-                    <LinearLayout
+                    <RelativeLayout
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="@dimen/x4dp"
-                        android:background="@drawable/round_edges_topview"
-                        android:gravity="center_vertical"
-                        android:orientation="vertical"
-                        android:paddingLeft="@dimen/x5dp"
-                        android:paddingRight="@dimen/x5dp">
+                        android:layout_height="match_parent">
 
-                        <edu.aku.family_hifazat.widget.AnyTextView
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:gravity="center_vertical"
-                            android:padding="@dimen/x5dp"
-                            android:text="Last Recorded Values"
-                            android:textColor="@color/txt_aku_blue"
-                            android:textSize="@dimen/s14"
-                            app:typeface="@string/font_bold" />
+                        <ImageView
+                            android:layout_width="@dimen/x100dp"
+                            android:layout_height="@dimen/x100dp"
+                            android:layout_alignParentEnd="true"
+                            android:layout_marginStart="@dimen/x50dp"
+                            android:layout_marginTop="@dimen/x10dp"
+                            android:alpha="0.1"
+                            android:src="@drawable/blood_type"
+                            android:tint="@color/base_reddish_light"
+                            android:visibility="gone" />
 
 
                         <LinearLayout
-                            android:layout_width="wrap_content"
-                            android:layout_height="match_parent"
-                            android:layout_gravity="center"
-                            android:orientation="horizontal">
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center_vertical"
+                            android:orientation="vertical"
+                            android:paddingLeft="@dimen/x5dp"
+                            android:paddingRight="@dimen/x5dp">
+
+                            <edu.aku.family_hifazat.widget.AnyTextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:gravity="center_vertical"
+                                android:padding="@dimen/x5dp"
+                                android:text="Blood Glucose"
+                                android:textColor="@color/txt_aku_blue"
+                                android:textSize="@dimen/s14"
+                                android:visibility="gone"
+                                app:typeface="@string/font_bold" />
 
 
                             <LinearLayout
                                 android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_marginRight="@dimen/x30dp"
-                                android:gravity="center"
-                                android:orientation="vertical"
+                                android:layout_height="match_parent"
+                                android:layout_gravity="center"
+                                android:orientation="horizontal">
 
-                                android:padding="@dimen/x3dp">
+
+                                <LinearLayout
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:gravity="center"
+                                    android:orientation="vertical"
+                                    android:padding="@dimen/x3dp">
+
+
+                                    <edu.aku.family_hifazat.widget.AnyTextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_gravity="center"
+                                        android:text="Fasting"
+                                        android:textColor="@color/txt_aku_blue"
+                                        android:textSize="@dimen/s14"
+                                        app:typeface="@string/font_regular" />
+
+                                    <edu.aku.family_hifazat.widget.AnyTextView
+                                        android:id="@+id/txtFastingGlucose"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:ellipsize="end"
+                                        android:gravity="end"
+                                        android:maxLines="1"
+                                        android:padding="@dimen/x5dp"
+                                        android:text="-"
+                                        android:textColor="@color/txt_aku_blue"
+                                        android:textSize="@dimen/s20"
+                                        app:typeface="@string/font_bold" />
+
+                                    <edu.aku.family_hifazat.widget.AnyTextView
+                                        android:id="@+id/txtFastingGlucoseDate"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_gravity="center"
+                                        android:padding="@dimen/x5dp"
+                                        android:text=""
+                                        android:textColor="@color/text_color_grey"
+                                        android:textSize="@dimen/s12"
+                                        app:typeface="@string/font_regular" />
+
+
+                                    <edu.aku.family_hifazat.widget.AnyTextView
+                                        android:id="@+id/txtFastingGlucoseStatus"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_gravity="center"
+                                        android:drawableLeft="@drawable/medicine_source"
+                                        android:text=""
+                                        android:textColor="@color/text_color_grey"
+                                        android:textSize="@dimen/s12"
+                                        app:typeface="@string/font_regular" />
+
+
+                                </LinearLayout>
+
+                                <LinearLayout
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:gravity="center"
+                                    android:orientation="vertical"
+                                    android:padding="@dimen/x3dp">
+
+
+                                    <edu.aku.family_hifazat.widget.AnyTextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_gravity="center"
+                                        android:text="Random"
+
+                                        android:textColor="@color/txt_aku_blue"
+                                        android:textSize="@dimen/s14"
+                                        app:typeface="@string/font_regular" />
+
+                                    <edu.aku.family_hifazat.widget.AnyTextView
+                                        android:id="@+id/txtRandomGlucose"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:ellipsize="end"
+                                        android:maxLines="1"
+                                        android:padding="@dimen/x5dp"
+                                        android:text="-"
+                                        android:textColor="@color/txt_aku_blue"
+                                        android:textSize="@dimen/s20"
+                                        app:typeface="@string/font_bold" />
+
+                                    <edu.aku.family_hifazat.widget.AnyTextView
+                                        android:id="@+id/txtRandomGlucoseDate"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_gravity="center"
+                                        android:padding="@dimen/x5dp"
+                                        android:text=""
+                                        android:textColor="@color/text_color_grey"
+
+                                        android:textSize="@dimen/s12"
+                                        app:typeface="@string/font_regular" />
+
+                                    <edu.aku.family_hifazat.widget.AnyTextView
+                                        android:id="@+id/txtRandomGlucoseStatus"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_gravity="center"
+                                        android:drawableLeft="@drawable/medicine_source"
+                                        android:text=""
+                                        android:textColor="@color/text_color_grey"
+                                        android:textSize="@dimen/s12"
+                                        app:typeface="@string/font_regular" />
+
+
+                                </LinearLayout>
+
 
                                 <edu.aku.family_hifazat.widget.AnyTextView
-                                    android:layout_width="wrap_content"
+                                    android:id="@+id/txtSugarDDTM"
+                                    android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
-                                    android:gravity="center_vertical"
-                                    android:text="Fasting"
-                                    android:textColor="@color/txt_aku_blue"
-                                    android:textSize="@dimen/s12"
+                                    android:gravity="bottom|end"
+                                    android:paddingRight="@dimen/x5dp"
+                                    android:text="Apr 20, 2018 11:06"
+                                    android:textColor="@color/text_color_grey"
+                                    android:textSize="@dimen/s8"
+                                    android:visibility="gone"
                                     app:typeface="@string/font_regular" />
-
-                                <edu.aku.family_hifazat.widget.AnyTextView
-                                    android:id="@+id/txtFastingGlucose"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:ellipsize="end"
-                                    android:gravity="end"
-                                    android:maxLines="1"
-                                    android:padding="@dimen/x5dp"
-                                    android:text="90 mg/dl"
-
-                                    android:textColor="@color/txt_aku_blue"
-                                    android:textSize="@dimen/s18"
-                                    app:typeface="@string/font_bold" />
-                            </LinearLayout>
-
-                            <LinearLayout
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_marginLeft="@dimen/x30dp"
-                                android:gravity="center"
-                                android:orientation="vertical"
-                                android:padding="@dimen/x3dp">
-
-                                <edu.aku.family_hifazat.widget.AnyTextView
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:gravity="center_vertical"
-                                    android:text="Random"
-
-                                    android:textColor="@color/txt_aku_blue"
-                                    android:textSize="@dimen/s12"
-                                    app:typeface="@string/font_regular" />
-
-                                <edu.aku.family_hifazat.widget.AnyTextView
-                                    android:id="@+id/txtRandomGlucose"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:ellipsize="end"
-                                    android:maxLines="1"
-                                    android:padding="@dimen/x5dp"
-                                    android:text="170 mg/dl"
-                                    android:textColor="@color/txt_aku_blue"
-                                    android:textSize="@dimen/s18"
-                                    app:typeface="@string/font_bold" />
                             </LinearLayout>
 
 
                             <edu.aku.family_hifazat.widget.AnyTextView
-                                android:id="@+id/txtSugarDDTM"
-                                android:layout_width="match_parent"
+                                android:id="@+id/txtGlucoUnit"
+                                android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:gravity="bottom|end"
-                                android:paddingRight="@dimen/x5dp"
-                                android:text="Apr 20, 2018 11:06"
+                                android:layout_gravity="end"
+                                android:paddingBottom="@dimen/x3dp"
+                                android:paddingRight="@dimen/x3dp"
+                                android:text="mg/dL"
                                 android:textColor="@color/text_color_grey"
-                                android:textSize="@dimen/s8"
-                                android:visibility="gone"
+                                android:textSize="@dimen/s12"
                                 app:typeface="@string/font_regular" />
+
+
                         </LinearLayout>
 
-                        <edu.aku.family_hifazat.widget.AnyTextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="end"
-                            android:padding="@dimen/x5dp"
-                            android:text="April 27, 2018 10:44"
-                            android:textColor="@color/text_color_grey"
-                            android:textSize="@dimen/s12" />
 
-                    </LinearLayout>
+                    </RelativeLayout>
 
 
                 </LinearLayout>
@@ -168,7 +241,7 @@
                 android:paddingLeft="@dimen/x10dp"
                 android:paddingTop="@dimen/x5dp"
                 android:text="Record Manually"
-                android:textColor="@color/base_reddish"
+                android:textColor="@color/base_reddish_light"
                 android:textSize="@dimen/s14"
                 app:typeface="@string/font_bold" />
 
@@ -176,7 +249,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="@dimen/x10dp"
-                android:background="@drawable/rounded_box"
+                android:background="@drawable/rounded_box_light_grey"
                 android:orientation="vertical"
                 android:padding="@dimen/x5dp">
 
@@ -199,20 +272,20 @@
                         app:typeface="@string/font_bold" />
 
                     <com.shawnlin.numberpicker.NumberPicker
+                        android:id="@+id/number_picker"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_below="@id/txtGLUR"
                         android:layout_centerInParent="true"
-                        app:np_dividerColor="@color/base_reddish"
+                        app:np_dividerColor="@color/base_reddish_light"
                         app:np_formatter=""
-                        app:np_height="@dimen/x60dp"
                         app:np_max="500"
                         app:np_min="0"
                         app:np_orientation="horizontal"
-                        app:np_selectedTextColor="@color/base_reddish"
-                        app:np_selectedTextSize="@dimen/s15"
-                        app:np_textColor="@color/base_reddish"
-                        app:np_textSize="@dimen/s12"
+                        app:np_selectedTextColor="@color/base_reddish_light"
+                        app:np_selectedTextSize="@dimen/s17"
+                        app:np_textColor="@color/base_reddish_light"
+                        app:np_textSize="@dimen/s14"
                         app:np_typeface="@string/font_regular"
                         app:np_value="0"
                         app:np_wheelItemCount="10"
@@ -224,6 +297,7 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/x10dp"
                 android:gravity="center_horizontal"
                 android:orientation="horizontal">
 
@@ -231,28 +305,18 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:gravity="center"
+                    android:gravity="end"
                     android:orientation="vertical">
 
-                    <ImageButton
-                        android:id="@+id/imgGLUFasting"
-                        android:layout_width="@dimen/x100dp"
-                        android:background="@color/transparent"
-                        android:src="@drawable/gluco_fast_selected"
-                        android:scaleType="centerCrop"
-                        android:layout_height="@dimen/x100dp"
-                        android:layout_margin="@dimen/x5dp"
-                        android:padding="@dimen/x1dp"
-                 />
-                    <!--android:stateListAnimator="@drawable/gluco_fast_unselected"-->
                     <edu.aku.family_hifazat.widget.AnyTextView
                         android:id="@+id/txtFasting"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:gravity="center_vertical"
-                        android:padding="@dimen/x5dp"
-                        android:text="Glucose Fasting"
-                        android:textColor="@color/base_reddish"
+                        android:background="@drawable/gluco_button_left_selected"
+                        android:gravity="center"
+                        android:padding="@dimen/x10dp"
+                        android:text="Fasting"
+                        android:textColor="@color/c_white"
                         android:textSize="@dimen/s12"
                         app:typeface="@string/font_bold" />
                 </LinearLayout>
@@ -261,30 +325,19 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:gravity="center"
+                    android:gravity="start"
                     android:orientation="vertical">
 
-                    <ImageButton
-                        android:id="@+id/btnGLURandom"
-                        android:layout_width="@dimen/x100dp"
-                        android:layout_height="@dimen/x100dp"
-                        android:layout_margin="@dimen/x5dp"
-                        android:scaleType="centerCrop"
-                        android:background="@color/transparent"
-                        android:src="@drawable/gluco_random_unselected"
-                        android:padding="@dimen/x1dp"
-                        android:textColor="@color/transparent" />
-                    <!--android:stateListAnimator="@drawable/gluco_random_selected"-->
 
                     <edu.aku.family_hifazat.widget.AnyTextView
                         android:id="@+id/txtRandom"
-
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:gravity="center_vertical"
-                        android:padding="@dimen/x5dp"
-                        android:text="Glucose Random"
-                        android:textColor="@color/c_light_grey"
+                        android:background="@drawable/gluco_button_right_unselected"
+                        android:gravity="center"
+                        android:padding="@dimen/x10dp"
+                        android:text="Random"
+                        android:textColor="@color/text_color_grey"
                         android:textSize="@dimen/s12"
                         app:typeface="@string/font_bold" />
                 </LinearLayout>
@@ -297,15 +350,19 @@
 
     <edu.aku.family_hifazat.widget.AnyTextView
         android:id="@+id/btnUpdate"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
         android:layout_marginBottom="@dimen/x10dp"
-        android:layout_marginLeft="@dimen/x80dp"
-        android:layout_marginRight="@dimen/x80dp"
-        android:background="@drawable/rounded_box_filled_btn_blue"
+        android:layout_marginTop="@dimen/x10dp"
+        android:alpha="0.2"
+        android:background="@drawable/rounded_box_filled_btn_amber"
+        android:enabled="false"
         android:gravity="center"
-        android:padding="@dimen/x10dp"
-
+        android:paddingBottom="@dimen/x10dp"
+        android:paddingLeft="@dimen/x40dp"
+        android:paddingRight="@dimen/x40dp"
+        android:paddingTop="@dimen/x10dp"
         android:text="Save"
         android:textColor="@color/c_white"
         android:textSize="@dimen/s14"

@@ -1,26 +1,26 @@
 package edu.aku.family_hifazat.adapters;
 
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
 import android.util.SparseArray;
 import android.view.View;
 import android.view.ViewGroup;
 
 import edu.aku.family_hifazat.fragments.BPFragment;
-import edu.aku.family_hifazat.fragments.GlucoseFragment;
-import edu.aku.family_hifazat.fragments.MeasurementFragment;
+import edu.aku.family_hifazat.fragments.BPHistoryFragment;
+import edu.aku.family_hifazat.models.PatientHealthSummaryModel;
 
 public class BPTabAdapter extends FragmentStatePagerAdapter {
-    private boolean isFromGLUC,isFromMeasurements,isFromBP;
 
-//
-//    private final int patientVisitAdmissionID;
-//    private final boolean isFromTimeline;
 
-    public BPTabAdapter(android.support.v4.app.FragmentManager fm/*, boolean isFromTimeline, int patientVisitAdmissionID*/) {
+    private PatientHealthSummaryModel modelBPDIASTOLIC;
+    private PatientHealthSummaryModel modelBPSYSTOLIC;
+
+    public BPTabAdapter(FragmentManager fm, PatientHealthSummaryModel modelBPDIASTOLIC, PatientHealthSummaryModel modelBPSYSTOLIC) {
         super(fm);
-//        this.isFromTimeline = isFromTimeline;
-//        this.patientVisitAdmissionID = patientVisitAdmissionID;
+        this.modelBPDIASTOLIC = modelBPDIASTOLIC;
+        this.modelBPSYSTOLIC = modelBPSYSTOLIC;
     }
 
     // CURRENT FRAGMENT
@@ -51,11 +51,11 @@ public class BPTabAdapter extends FragmentStatePagerAdapter {
 //        return ForgotPasswordFragment.newInstance();
         switch (position) {
             case 0:
-                return BPFragment.newInstance();
+                return BPFragment.newInstance(modelBPDIASTOLIC, modelBPSYSTOLIC);
             case 1:
-                return BPFragment.newInstance();
+                return BPHistoryFragment.newInstance(modelBPDIASTOLIC, modelBPSYSTOLIC);
             default:
-                return BPFragment.newInstance();
+                return BPFragment.newInstance(modelBPDIASTOLIC, modelBPSYSTOLIC);
         }
 
     }
@@ -70,7 +70,7 @@ public class BPTabAdapter extends FragmentStatePagerAdapter {
     public CharSequence getPageTitle(int position) {
         // Generate title based on item position
         if (position == 0) {
-            return "Current";
+            return "Latest";
         } else {
             return "History";
         }

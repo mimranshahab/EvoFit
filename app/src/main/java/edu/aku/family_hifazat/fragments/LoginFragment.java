@@ -15,6 +15,7 @@ import edu.aku.family_hifazat.constatnts.AppConstants;
 import edu.aku.family_hifazat.fragments.abstracts.GenericDialogFragment;
 import edu.aku.family_hifazat.helperclasses.ui.helper.KeyboardHide;
 import edu.aku.family_hifazat.helperclasses.ui.helper.UIHelper;
+import edu.aku.family_hifazat.models.sending_model.InsertRegisteredDeviceModel;
 import edu.aku.family_hifazat.models.sending_model.RegisteredDeviceModel;
 import edu.aku.family_hifazat.widget.AnyTextView;
 
@@ -40,6 +41,7 @@ import edu.aku.family_hifazat.models.wrappers.WebResponse;
 
 import static edu.aku.family_hifazat.constatnts.AppConstants.CARD_MASK;
 import static edu.aku.family_hifazat.constatnts.AppConstants.KEY_CARD_NUMBER;
+import static edu.aku.family_hifazat.constatnts.AppConstants.KEY_CODE;
 import static edu.aku.family_hifazat.constatnts.AppConstants.KEY_TOKEN;
 
 /**
@@ -121,7 +123,7 @@ public class LoginFragment extends BaseFragment {
     public void onResume() {
         super.onResume();
 
-         KeyboardHide.showSoftKeyboard(getContext(), edtCardNumber);
+        KeyboardHide.showSoftKeyboard(getContext(), edtCardNumber);
     }
 
 
@@ -150,8 +152,13 @@ public class LoginFragment extends BaseFragment {
             case R.id.btnLogin:
                 if (edtCardNumber.testValidity() && edtPassword.testValidity()) {
                     LoginApiModel loginApiModel = new LoginApiModel(edtCardNumber.getText().toString(), edtPassword.getText().toString());
-                    loginApiModel.setLoginDeviceType(AppConstants.DEVICE_OS_ANDROID);
-                    loginApiModel.setLoginDeviceID(Build.VERSION.RELEASE);
+                    RegisteredDeviceModel registeredDevice = AppConstants.getRegisteredDevice(getContext(), getBaseActivity());
+                    registeredDevice.setRegcardno(loginApiModel.getCardNumber());
+                    loginApiModel.setAccessLog(registeredDevice);
+                    loginApiModel.setDevice(registeredDevice);
+                    loginApiModel.setRegisteredDevice(registeredDevice);
+
+
                     loginCall(loginApiModel);
                 }
                 break;
@@ -172,12 +179,14 @@ public class LoginFragment extends BaseFragment {
                             public void requestDataResponse(WebResponse<JsonObject> webResponse) {
                                 String token = webResponse.result.get("_token").getAsString();
                                 String cardNumber = webResponse.result.get("CardNumber").getAsString();
+                                String code = webResponse.result.get("Password").getAsString();
+
                                 sharedPreferenceManager.putValue(KEY_TOKEN, token);
                                 sharedPreferenceManager.putValue(KEY_CARD_NUMBER, cardNumber);
+                                sharedPreferenceManager.putValue(KEY_CODE, code);
 
-                                RegisteredDeviceModel registeredDevice = AppConstants.getRegisteredDevice(getContext(), getBaseActivity());
-                                insertRegisteredDevice(registeredDevice);
-
+                                getBaseActivity().openActivity(HomeActivity.class);
+                                getBaseActivity().finish();
                             }
 
                             @Override
@@ -188,12 +197,12 @@ public class LoginFragment extends BaseFragment {
     }
 
 
-    private void insertRegisteredDevice(RegisteredDeviceModel registeredDeviceModel) {
+    private void insertRegisteredDevice(InsertRegisteredDeviceModel insertRegisteredDeviceModel) {
         new WebServices(getBaseActivity(),
                 getToken(),
                 BaseURLTypes.AHFA_BASE_URL)
                 .webServiceRequestAPIAnyObject(WebServiceConstants.METHOD_USER_INSERT_REGISTERED_DEVICE,
-                        registeredDeviceModel.toString(),
+                        insertRegisteredDeviceModel.toString(),
                         new WebServices.IRequestWebResponseAnyObjectCallBack() {
                             @Override
                             public void requestDataResponse(WebResponse<Object> webResponse) {

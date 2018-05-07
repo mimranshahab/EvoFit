@@ -16,6 +16,7 @@ import edu.aku.family_hifazat.R;
 import edu.aku.family_hifazat.adapters.BPTabAdapter;
 import edu.aku.family_hifazat.adapters.MeasurementTabAdapter;
 import edu.aku.family_hifazat.fragments.abstracts.BaseFragment;
+import edu.aku.family_hifazat.models.PatientHealthSummaryModel;
 import edu.aku.family_hifazat.widget.CustomViewPager;
 import edu.aku.family_hifazat.widget.TitleBar;
 
@@ -30,16 +31,17 @@ public class BPTabLayout extends BaseFragment {
     public CustomViewPager viewpager;
     Unbinder unbinder;
     BPTabAdapter tabPagerAdapter;
-    private boolean isFromTimeline;
-    private int patientVisitAdmissionID;
+    private PatientHealthSummaryModel modelBPSYSTOLIC;
+    private PatientHealthSummaryModel modelBPDIASTOLIC;
 
-    public static BPTabLayout newInstance() {
+    public static BPTabLayout newInstance(PatientHealthSummaryModel modelBPSYSTOLIC, PatientHealthSummaryModel modelBPDIASTOLIC) {
 
         Bundle args = new Bundle();
 
         BPTabLayout fragment = new BPTabLayout();
-//        fragment.isFromGLUC = isFromGLUC;
-//        fragment.patientVisitAdmissionID = isFromBP;
+
+        fragment.modelBPSYSTOLIC = modelBPSYSTOLIC;
+        fragment.modelBPDIASTOLIC = modelBPDIASTOLIC;
         fragment.setArguments(args);
         return fragment;
     }
@@ -51,14 +53,14 @@ public class BPTabLayout extends BaseFragment {
 
     @Override
     protected int getFragmentLayout() {
-        return R.layout.fragment_tablayout_summary;
+        return R.layout.fragment_tablayout_bp;
     }
 
     @Override
     public void setTitlebar(TitleBar titleBar) {
         titleBar.resetViews();
         titleBar.setVisibility(View.VISIBLE);
-        titleBar.setTitle("Health Summary");
+        titleBar.setTitle("Blood Pressure");
         titleBar.showHome(getBaseActivity());
         titleBar.showBackButton(getBaseActivity());
         titleBar.setUserDisplay(sharedPreferenceManager.getCurrentUser(), getContext());
@@ -96,14 +98,14 @@ public class BPTabLayout extends BaseFragment {
     private void setViewPagerAdapter() {
         viewpager.setPagingEnabled(true);
         viewpager.setOffscreenPageLimit(1);
-        tabPagerAdapter = new BPTabAdapter(getChildFragmentManager());
+        tabPagerAdapter = new BPTabAdapter(getChildFragmentManager(), modelBPDIASTOLIC, modelBPSYSTOLIC);
         viewpager.setAdapter(tabPagerAdapter);
         tabs.setupWithViewPager(viewpager);
 //        tabs.setBackgroundColor(getResources().getColor(R.color.c_white));
-        tabs.setBackground(getResources().getDrawable(R.drawable.tab_color_selector_summary));
-        tabs.setTabMode(TabLayout.MODE_FIXED);
-        tabs.setSelectedTabIndicatorColor(getResources().getColor(R.color.base_blue));
-        tabs.setTabTextColors(getResources().getColor(R.color.txt_aku_blue),getResources().getColor(R.color.base_blue));
+//        tabs.setBackground(getResources().getDrawable(R.drawable.tab_color_selector_bp));
+//        tabs.setTabMode(TabLayout.MODE_FIXED);
+//        tabs.setSelectedTabIndicatorColor(getResources().getColor(R.color.base_blue));
+//        tabs.setTabTextColors(getResources().getColor(R.color.txt_aku_blue), getResources().getColor(R.color.base_blue));
     }
 
     @Override

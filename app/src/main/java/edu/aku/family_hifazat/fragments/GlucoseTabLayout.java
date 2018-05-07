@@ -16,6 +16,7 @@ import edu.aku.family_hifazat.R;
 import edu.aku.family_hifazat.adapters.GlucoseTabAdapter;
 import edu.aku.family_hifazat.adapters.MeasurementTabAdapter;
 import edu.aku.family_hifazat.fragments.abstracts.BaseFragment;
+import edu.aku.family_hifazat.models.PatientHealthSummaryModel;
 import edu.aku.family_hifazat.widget.CustomViewPager;
 import edu.aku.family_hifazat.widget.TitleBar;
 
@@ -30,16 +31,17 @@ public class GlucoseTabLayout extends BaseFragment {
     public CustomViewPager viewpager;
     Unbinder unbinder;
     GlucoseTabAdapter tabPagerAdapter;
-    private boolean isFromTimeline;
-    private int patientVisitAdmissionID;
+    private PatientHealthSummaryModel modelGLUF;
+    private PatientHealthSummaryModel modelGLUR;
 
-    public static GlucoseTabLayout newInstance() {
+    public static GlucoseTabLayout newInstance(PatientHealthSummaryModel modelGLUF, PatientHealthSummaryModel modelGLUR) {
 
         Bundle args = new Bundle();
 
         GlucoseTabLayout fragment = new GlucoseTabLayout();
-//        fragment.isFromGLUC = isFromGLUC;
-//        fragment.patientVisitAdmissionID = isFromBP;
+        fragment.modelGLUF = modelGLUF;
+        fragment.modelGLUR = modelGLUR;
+
         fragment.setArguments(args);
         return fragment;
     }
@@ -51,14 +53,14 @@ public class GlucoseTabLayout extends BaseFragment {
 
     @Override
     protected int getFragmentLayout() {
-        return R.layout.fragment_tablayout_summary;
+        return R.layout.fragment_tablayout_glucose;
     }
 
     @Override
     public void setTitlebar(TitleBar titleBar) {
         titleBar.resetViews();
         titleBar.setVisibility(View.VISIBLE);
-        titleBar.setTitle("Health Summary");
+        titleBar.setTitle("Blood Glucose");
         titleBar.showHome(getBaseActivity());
         titleBar.showBackButton(getBaseActivity());
         titleBar.setUserDisplay(sharedPreferenceManager.getCurrentUser(), getContext());
@@ -96,14 +98,14 @@ public class GlucoseTabLayout extends BaseFragment {
     private void setViewPagerAdapter() {
         viewpager.setPagingEnabled(true);
         viewpager.setOffscreenPageLimit(1);
-        tabPagerAdapter = new GlucoseTabAdapter(getChildFragmentManager());
+        tabPagerAdapter = new GlucoseTabAdapter(getChildFragmentManager(), modelGLUF, modelGLUR);
         viewpager.setAdapter(tabPagerAdapter);
         tabs.setupWithViewPager(viewpager);
-//        tabs.setBackgroundColor(getResources().getColor(R.color.c_white));
-        tabs.setBackground(getResources().getDrawable(R.drawable.tab_color_selector_summary));
-        tabs.setTabMode(TabLayout.MODE_FIXED);
-        tabs.setSelectedTabIndicatorColor(getResources().getColor(R.color.base_reddish));
-        tabs.setTabTextColors(getResources().getColor(R.color.txt_aku_blue), getResources().getColor(R.color.base_reddish));
+
+//         tabs.setBackground(getResources().getDrawable(R.drawable.tab_color_selector_gluco));
+//        tabs.setTabMode(TabLayout.MODE_FIXED);
+//        tabs.setSelectedTabIndicatorColor(getResources().getColor(R.color.base_reddish));
+//        tabs.setTabTextColors(getResources().getColor(R.color.txt_aku_blue), getResources().getColor(R.color.c_white));
     }
 
     @Override

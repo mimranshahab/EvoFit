@@ -15,46 +15,18 @@ public class LoginApiModel {
     private String cardNumber;
     @SerializedName("Password")
     private String password;
-    @SerializedName("LoginDeviceID")
-    private String loginDeviceID ;
-    @SerializedName("LoginDeviceType")
-    private String loginDeviceType ;
+
+    @SerializedName("AccessLog")
+    private RegisteredDeviceModel accessLog;
+
+    @SerializedName("Device")
+    private RegisteredDeviceModel device;
+
+    @SerializedName("RegisteredDevice")
+    private RegisteredDeviceModel registeredDevice;
+
     @SerializedName("MotherName")
     private String motherName;
-
-    public String getMotherName() {
-        return motherName;
-    }
-
-    public void setMotherName(String motherName) {
-        this.motherName = motherName;
-    }
-
-    public String getLoginDeviceID() {
-        return loginDeviceID;
-    }
-
-    public void setLoginDeviceID(String loginDeviceID) {
-        this.loginDeviceID = loginDeviceID;
-    }
-
-    public String getLoginDeviceType() {
-        return loginDeviceType;
-    }
-
-    public void setLoginDeviceType(String loginDeviceType) {
-        this.loginDeviceType = loginDeviceType;
-    }
-
-    public String getToken() {
-        return token;
-    }
-
-    public void setToken(String token) {
-        this.token = token;
-    }
-
-    private String token;
 
 
     public LoginApiModel(String userid, String password) {
@@ -78,8 +50,40 @@ public class LoginApiModel {
         this.password = password;
     }
 
+    public RegisteredDeviceModel getAccessLog() {
+        return accessLog;
+    }
+
+    public void setAccessLog(RegisteredDeviceModel accessLog) {
+        this.accessLog = accessLog;
+    }
+
+    public RegisteredDeviceModel getDevice() {
+        return device;
+    }
+
+    public void setDevice(RegisteredDeviceModel device) {
+        this.device = device;
+    }
+
+    public RegisteredDeviceModel getRegisteredDevice() {
+        return registeredDevice;
+    }
+
+    public void setRegisteredDevice(RegisteredDeviceModel registeredDevice) {
+        this.registeredDevice = registeredDevice;
+    }
+
+    public String getMotherName() {
+        return motherName;
+    }
+
+    public void setMotherName(String motherName) {
+        this.motherName = motherName;
+    }
+
     @Override
     public String toString() {
-       return GsonFactory.getConfiguredGson().toJson(this);
-     }
+        return GsonFactory.getConfiguredGson().toJson(this);
+    }
 }
