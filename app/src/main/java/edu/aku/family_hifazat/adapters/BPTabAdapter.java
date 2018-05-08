@@ -53,7 +53,7 @@ public class BPTabAdapter extends FragmentStatePagerAdapter {
             case 0:
                 return BPFragment.newInstance(modelBPDIASTOLIC, modelBPSYSTOLIC);
             case 1:
-                return BPHistoryFragment.newInstance(modelBPDIASTOLIC, modelBPSYSTOLIC);
+                return BPHistoryFragment.newInstance(modelBPSYSTOLIC, modelBPDIASTOLIC);
             default:
                 return BPFragment.newInstance(modelBPDIASTOLIC, modelBPSYSTOLIC);
         }

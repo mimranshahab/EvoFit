@@ -50,7 +50,7 @@ public class GlucoseHistoryAdapter extends RecyclerView.Adapter<GlucoseHistoryAd
         final Subhealthindicator model = arrData.get(holder.getAdapterPosition());
 
 
-        holder.txtGlucoType.setText(getStatus());
+        holder.txtGlucoType.setText("Glucose (" + getStatus() + ")");
         holder.txtFastingGlucoseStatus.setText(model.getSource());
         holder.txtGlucoseDate.setText(model.getDatetimestr());
         holder.txtGlucose.setText(model.getHealthindicatorvalue());

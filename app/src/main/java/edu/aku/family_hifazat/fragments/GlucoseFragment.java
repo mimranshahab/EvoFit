@@ -15,6 +15,7 @@ import com.shawnlin.numberpicker.NumberPicker;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;
+import java.util.Formatter;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -29,7 +30,6 @@ import edu.aku.family_hifazat.helperclasses.StringHelper;
 import edu.aku.family_hifazat.helperclasses.ui.helper.UIHelper;
 import edu.aku.family_hifazat.managers.retrofit.GsonFactory;
 import edu.aku.family_hifazat.managers.retrofit.WebServices;
-import edu.aku.family_hifazat.models.EndoscopyModel;
 import edu.aku.family_hifazat.models.PatientHealthSummaryModel;
 import edu.aku.family_hifazat.models.receiving_model.AddUpdateModel;
 import edu.aku.family_hifazat.models.wrappers.WebResponse;
@@ -65,19 +65,23 @@ public class GlucoseFragment extends BaseFragment {
     @BindView(R.id.btnRecordMenually)
     AnyTextView btnRecordMenually;
     @BindView(R.id.txtGLUR)
-    AnyTextView txtGLUR;
+    AnyTextView txtDescription;
     @BindView(R.id.number_picker)
     NumberPicker numberPicker;
     @BindView(R.id.txtFasting)
     AnyTextView txtFasting;
     @BindView(R.id.txtRandom)
     AnyTextView txtRandom;
-    @BindView(R.id.btnUpdate)
-    AnyTextView btnUpdate;
+    @BindView(R.id.btnSave)
+    AnyTextView btnSave;
     @BindView(R.id.txtFastingGlucoseStatus)
     AnyTextView txtFastingGlucoseStatus;
     @BindView(R.id.txtRandomGlucoseStatus)
     AnyTextView txtRandomGlucoseStatus;
+    @BindView(R.id.txtGlucoUnit2)
+    AnyTextView txtGlucoUnit2;
+    @BindView(R.id.btnCancel)
+    AnyTextView btnCancel;
 
     private PatientHealthSummaryModel modelGLUF;
     private PatientHealthSummaryModel modelGLUR;
@@ -120,9 +124,9 @@ public class GlucoseFragment extends BaseFragment {
         numberPicker.setOnValueChangedListener(new NumberPicker.OnValueChangeListener() {
             @Override
             public void onValueChange(NumberPicker picker, int oldVal, int newVal) {
-                if (!btnUpdate.isEnabled()) {
-                    btnUpdate.setEnabled(true);
-                    btnUpdate.setAlpha(1);
+                if (!btnSave.isEnabled()) {
+                    btnSave.setEnabled(true);
+                    btnSave.setAlpha(1);
                 }
             }
         });
@@ -163,7 +167,7 @@ public class GlucoseFragment extends BaseFragment {
                 txtRandomGlucose.setText(modelGLUR.getHealthindicatorlist().get(0).getHealthindicatorvalue());
                 txtRandomGlucoseDate.setText(modelGLUR.getHealthindicatorlist().get(0).getDatetimestr());
                 txtRandomGlucoseStatus.setText(modelGLUR.getHealthindicatorlist().get(0).getSource());
-                txtGlucoUnit.setText(modelGLUR.getHealthindicator().getUnit());
+                txtGlucoUnit2.setText(modelGLUR.getHealthindicator().getUnit());
             }
 
 
@@ -174,9 +178,13 @@ public class GlucoseFragment extends BaseFragment {
                 txtFastingGlucoseDate.setVisibility(VISIBLE);
                 txtFastingGlucoseStatus.setVisibility(VISIBLE);
                 txtFastingGlucose.setText(modelGLUF.getHealthindicatorlist().get(0).getHealthindicatorvalue());
+                numberPicker.setValue(Integer.valueOf(modelGLUF.getHealthindicatorlist().get(0).getHealthindicatorvalue()));
+
                 txtFastingGlucoseDate.setText(modelGLUF.getHealthindicatorlist().get(0).getDatetimestr());
-                txtFastingGlucoseStatus.setText(modelGLUR.getHealthindicatorlist().get(0).getSource());
+                txtFastingGlucoseStatus.setText(modelGLUF.getHealthindicatorlist().get(0).getSource());
                 txtGlucoUnit.setText(modelGLUF.getHealthindicator().getUnit());
+
+                txtDescription.setText(modelGLUF.getHealthindicator().getHealthindicatordescription() + " (" + modelGLUF.getHealthindicator().getUnit() + ")");
             }
 
             if (StringHelper.IsInt_ByJonas(modelGLUF.getHealthindicator().getMinvalue())) {
@@ -191,6 +199,9 @@ public class GlucoseFragment extends BaseFragment {
             }
 
 
+            numberPicker.setWrapSelectorWheel(false);
+
+
         }
     }
 
@@ -200,7 +211,7 @@ public class GlucoseFragment extends BaseFragment {
         unbinder.unbind();
     }
 
-    @OnClick({R.id.txtFasting, R.id.txtRandom, R.id.btnUpdate})
+    @OnClick({R.id.txtFasting, R.id.txtRandom, R.id.btnSave, R.id.btnCancel})
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.txtFasting:
@@ -211,7 +222,8 @@ public class GlucoseFragment extends BaseFragment {
                     txtFasting.setTextColor(getResources().getColor(R.color.c_white));
                     txtRandom.setBackgroundResource(R.drawable.gluco_button_right_unselected);
                     txtRandom.setTextColor(getResources().getColor(R.color.text_color_grey));
-                    txtGLUR.setText("Glucose Fasting (mg/dl)");
+//                    txtDescription.setText("Glucose Fasting (mg/dl)");
+                    txtDescription.setText(modelGLUF.getHealthindicator().getHealthindicatordescription() + " (" + modelGLUF.getHealthindicator().getUnit() + ")");
                 }
 
 
@@ -224,14 +236,19 @@ public class GlucoseFragment extends BaseFragment {
                     txtRandom.setTextColor(getResources().getColor(R.color.c_white));
                     txtFasting.setBackgroundResource(R.drawable.gluco_button_left_unselected);
                     txtFasting.setTextColor(getResources().getColor(R.color.text_color_grey));
-                    txtGLUR.setText("Glucose Random (mg/dl)");
+//                    txtDescription.setText("Glucose Random (mg/dl)");
+                    txtDescription.setText(modelGLUR.getHealthindicator().getHealthindicatordescription() + " (" + modelGLUR.getHealthindicator().getUnit() + ")");
                 }
 
                 break;
-            case R.id.btnUpdate:
+            case R.id.btnSave:
                 String toJson = getSaveRecordData();
                 saveRecord(toJson);
 
+                break;
+
+            case R.id.btnCancel:
+                getBaseActivity().onBackPressed();
                 break;
         }
     }

@@ -23,138 +23,141 @@
             android:layout_marginTop="@dimen/x5dp"
             android:orientation="vertical">
 
-            <android.support.v7.widget.CardView
-                android:id="@+id/cardBP"
+            <!--<android.support.v7.widget.CardView-->
+            <!--android:id="@+id/cardBP"-->
 
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="@dimen/x10dp"
-                android:animateLayoutChanges="true"
-                app:cardBackgroundColor="@color/base_blue_light"
-                app:cardCornerRadius="@dimen/x10dp"
-                app:cardElevation="@dimen/x5dp">
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_margin="@dimen/x10dp"-->
+            <!--android:animateLayoutChanges="true"-->
+            <!--app:cardBackgroundColor="@color/base_blue_light"-->
+            <!--app:cardCornerRadius="@dimen/x10dp"-->
+            <!--app:cardElevation="@dimen/x5dp">-->
 
-                <FrameLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent">
+            <!--<FrameLayout-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="match_parent">-->
 
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_marginTop="@dimen/x4dp"
-                        android:background="@drawable/round_edges_topview_light_blue"
-                        android:gravity="center_vertical"
-                        android:orientation="vertical"
-                        android:paddingLeft="@dimen/x5dp"
-                        android:paddingRight="@dimen/x5dp">
+            <!--<LinearLayout-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="match_parent"-->
+            <!--android:layout_marginTop="@dimen/x4dp"-->
+            <!--android:background="@drawable/round_edges_topview_light_blue"-->
+            <!--android:gravity="center_vertical"-->
+            <!--android:orientation="vertical"-->
+            <!--android:paddingLeft="@dimen/x5dp"-->
+            <!--android:paddingRight="@dimen/x5dp">-->
 
-                        <edu.aku.family_hifazat.widget.AnyTextView
-                            android:id="@+id/txtBPDDTM"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:gravity="center_vertical"
-                            android:padding="@dimen/x5dp"
+            <!--<edu.aku.family_hifazat.widget.AnyTextView-->
+            <!--android:id="@+id/txtBPDDTM"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:gravity="center_vertical"-->
+            <!--android:padding="@dimen/x5dp"-->
 
-                            android:text="Date"
-                            android:textColor="@color/txt_aku_blue"
-                            android:textSize="@dimen/s13"
-                            app:typeface="@string/font_bold" />
-
-
-                        <RelativeLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:padding="@dimen/x5dp">
+            <!--android:text="Date"-->
+            <!--android:textColor="@color/txt_aku_blue"-->
+            <!--android:textSize="@dimen/s13"-->
+            <!--app:typeface="@string/font_bold" />-->
 
 
-                            <LinearLayout
-                                android:id="@+id/contBPResult"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_centerInParent="true"
-                                android:layout_gravity="center"
-                                android:orientation="horizontal">
-
-                                <!--<LinearLayout-->
-                                <!--android:layout_width="match_parent"-->
-                                <!--android:layout_height="wrap_content"-->
-                                <!--android:layout_marginRight="@dimen/x30dp"-->
-                                <!--android:gravity="center"-->
-                                <!--android:orientation="vertical"-->
-                                <!--android:padding="@dimen/x3dp">-->
-
-                                <!--<edu.aku.family_hifazat.widget.AnyTextView-->
-                                <!--android:layout_width="wrap_content"-->
-                                <!--android:layout_height="wrap_content"-->
-                                <!--android:gravity="center_vertical"-->
-                                <!--android:text="BP Systolic"-->
-                                <!--android:textColor="@color/txt_aku_blue"-->
-                                <!--android:textSize="@dimen/s12"-->
-                                <!--app:typeface="@string/font_regular" />-->
-
-                                <edu.aku.family_hifazat.widget.AnyTextView
-                                    android:id="@+id/txtBPsystolic"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:ellipsize="end"
-                                    android:gravity="end"
-                                    android:maxLines="1"
-                                    android:padding="@dimen/x5dp"
-                                    android:text="-"
-                                    android:textColor="@color/txt_aku_blue"
-                                    android:textSize="@dimen/s22"
-                                    app:typeface="@string/font_bold" />
-
-                                <edu.aku.family_hifazat.widget.AnyTextView
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:padding="@dimen/x5dp"
-                                    android:text="/"
-                                    android:textColor="@color/txt_aku_blue"
-                                    android:textSize="@dimen/s22"
-                                    app:typeface="@string/font_bold" />
-
-                                <edu.aku.family_hifazat.widget.AnyTextView
-                                    android:id="@+id/txtBPdiastolic"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:ellipsize="end"
-                                    android:gravity="end"
-                                    android:maxLines="1"
-                                    android:padding="@dimen/x5dp"
-                                    android:text="-"
-                                    android:textColor="@color/txt_aku_blue"
-                                    android:textSize="@dimen/s22"
-                                    app:typeface="@string/font_bold" />
-                                <!--</LinearLayout>-->
+            <!--<RelativeLayout-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:padding="@dimen/x5dp">-->
 
 
-                            </LinearLayout>
+            <!--<LinearLayout-->
+            <!--android:id="@+id/contBPResult"-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_centerInParent="true"-->
+            <!--android:layout_gravity="center"-->
+            <!--android:orientation="horizontal">-->
+
+            <!--&lt;!&ndash;<LinearLayout&ndash;&gt;-->
+            <!--&lt;!&ndash;android:layout_width="match_parent"&ndash;&gt;-->
+            <!--&lt;!&ndash;android:layout_height="wrap_content"&ndash;&gt;-->
+            <!--&lt;!&ndash;android:layout_marginRight="@dimen/x30dp"&ndash;&gt;-->
+            <!--&lt;!&ndash;android:gravity="center"&ndash;&gt;-->
+            <!--&lt;!&ndash;android:orientation="vertical"&ndash;&gt;-->
+            <!--&lt;!&ndash;android:padding="@dimen/x3dp">&ndash;&gt;-->
+
+            <!--&lt;!&ndash;<edu.aku.family_hifazat.widget.AnyTextView&ndash;&gt;-->
+            <!--&lt;!&ndash;android:layout_width="wrap_content"&ndash;&gt;-->
+            <!--&lt;!&ndash;android:layout_height="wrap_content"&ndash;&gt;-->
+            <!--&lt;!&ndash;android:gravity="center_vertical"&ndash;&gt;-->
+            <!--&lt;!&ndash;android:text="BP Systolic"&ndash;&gt;-->
+            <!--&lt;!&ndash;android:textColor="@color/txt_aku_blue"&ndash;&gt;-->
+            <!--&lt;!&ndash;android:textSize="@dimen/s12"&ndash;&gt;-->
+            <!--&lt;!&ndash;app:typeface="@string/font_regular" />&ndash;&gt;-->
+
+            <!--<edu.aku.family_hifazat.widget.AnyTextView-->
+            <!--android:id="@+id/txtBPsystolic"-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:ellipsize="end"-->
+            <!--android:gravity="end"-->
+            <!--android:maxLines="1"-->
+            <!--android:padding="@dimen/x5dp"-->
+            <!--android:text="-"-->
+            <!--android:textColor="@color/txt_aku_blue"-->
+            <!--android:textSize="@dimen/s22"-->
+            <!--app:typeface="@string/font_bold" />-->
+
+            <!--<edu.aku.family_hifazat.widget.AnyTextView-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:padding="@dimen/x5dp"-->
+            <!--android:text="/"-->
+            <!--android:textColor="@color/txt_aku_blue"-->
+            <!--android:textSize="@dimen/s22"-->
+            <!--app:typeface="@string/font_bold" />-->
+
+            <!--<edu.aku.family_hifazat.widget.AnyTextView-->
+            <!--android:id="@+id/txtBPdiastolic"-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:ellipsize="end"-->
+            <!--android:gravity="end"-->
+            <!--android:maxLines="1"-->
+            <!--android:padding="@dimen/x5dp"-->
+            <!--android:text="-"-->
+            <!--android:textColor="@color/txt_aku_blue"-->
+            <!--android:textSize="@dimen/s22"-->
+            <!--app:typeface="@string/font_bold" />-->
+            <!--&lt;!&ndash;</LinearLayout>&ndash;&gt;-->
 
 
-                            <edu.aku.family_hifazat.widget.AnyTextView
-                                android:id="@+id/txtBPUnit"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_alignBottom="@id/contBPResult"
-                                android:layout_marginBottom="@dimen/x3dp"
-                                android:layout_marginLeft="@dimen/x5dp"
-                                android:layout_toRightOf="@id/contBPResult"
-                                android:gravity="end|bottom"
-                                android:text=" mmHg"
-                                android:textColor="@color/txt_aku_blue"
-                                android:textSize="@dimen/s12"
-                                app:typeface="@string/font_regular" />
-                        </RelativeLayout>
+            <!--</LinearLayout>-->
 
 
-                    </LinearLayout>
+            <!--<edu.aku.family_hifazat.widget.AnyTextView-->
+            <!--android:id="@+id/txtBPUnit"-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_alignBottom="@id/contBPResult"-->
+            <!--android:layout_marginBottom="@dimen/x3dp"-->
+            <!--android:layout_marginLeft="@dimen/x5dp"-->
+            <!--android:layout_toRightOf="@id/contBPResult"-->
+            <!--android:gravity="end|bottom"-->
+            <!--android:text=" mmHg"-->
+            <!--android:textColor="@color/txt_aku_blue"-->
+            <!--android:textSize="@dimen/s12"-->
+            <!--app:typeface="@string/font_regular" />-->
+            <!--</RelativeLayout>-->
 
 
-                    <!--</LinearLayout>-->
+            <!--</LinearLayout>-->
 
-                </FrameLayout>
-            </android.support.v7.widget.CardView>
+
+            <!--&lt;!&ndash;</LinearLayout>&ndash;&gt;-->
+
+            <!--</FrameLayout>-->
+            <!--</android.support.v7.widget.CardView>-->
+
+
+            <include layout="@layout/item_bp_health_history" />
 
             <edu.aku.family_hifazat.widget.AnyTextView
                 android:id="@+id/btnRecordMenually"
@@ -185,15 +188,13 @@
 
 
                     <edu.aku.family_hifazat.widget.AnyTextView
-                        android:id="@+id/txtGLUF"
+                        android:id="@+id/txtBPsystolicDes"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="@dimen/x5dp"
                         android:layout_marginLeft="@dimen/x5dp"
                         android:layout_marginTop="@dimen/x5dp"
-                        android:text="Blood Pressure Systolic  (mmHg)"
-
-
+                        android:text="-"
                         android:textColor="@color/txt_aku_blue"
                         android:textSize="@dimen/s14"
                         app:typeface="@string/font_bold" />
@@ -202,11 +203,11 @@
                         android:id="@+id/pickerSystolic"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_below="@id/txtGLUF"
+                        android:layout_below="@id/txtBPsystolicDes"
                         android:layout_centerInParent="true"
                         app:np_dividerColor="@color/base_blue_light"
                         app:np_formatter=""
-                         app:np_max="200"
+                        app:np_max="200"
                         app:np_min="0"
                         app:np_orientation="horizontal"
                         app:np_selectedTextColor="@color/base_blue_light"
@@ -216,7 +217,8 @@
                         app:np_typeface="@string/font_regular"
                         app:np_value="0"
                         app:np_wheelItemCount="10"
-                        app:np_width="180dp" />
+                        app:np_width="180dp"
+                        app:np_wrapSelectorWheel="false" />
 
                 </RelativeLayout>
             </LinearLayout>
@@ -236,13 +238,13 @@
 
 
                     <edu.aku.family_hifazat.widget.AnyTextView
-                        android:id="@+id/txtGLUR"
+                        android:id="@+id/txtBPDiastolicDes"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="@dimen/x5dp"
                         android:layout_marginLeft="@dimen/x5dp"
                         android:layout_marginTop="@dimen/x5dp"
-                        android:text="Blood Pressure Diastolic (mmHg)"
+                        android:text="-"
 
                         android:textColor="@color/txt_aku_blue"
                         android:textSize="@dimen/s14"
@@ -252,21 +254,22 @@
                         android:id="@+id/pickerDiastolic"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_below="@id/txtGLUR"
+                        android:layout_below="@id/txtBPDiastolicDes"
                         android:layout_centerInParent="true"
                         app:np_dividerColor="@color/base_blue_light"
                         app:np_formatter=""
-                         app:np_max="200"
+                        app:np_max="200"
                         app:np_min="0"
                         app:np_orientation="horizontal"
                         app:np_selectedTextColor="@color/base_blue_light"
-                        app:np_selectedTextSize="@dimen/s15"
+                        app:np_selectedTextSize="@dimen/s17"
                         app:np_textColor="@color/base_blue_light"
-                        app:np_textSize="@dimen/s12"
+                        app:np_textSize="@dimen/s14"
                         app:np_typeface="@string/font_regular"
                         app:np_value="0"
                         app:np_wheelItemCount="10"
-                        app:np_width="180dp" />
+                        app:np_width="180dp"
+                        app:np_wrapSelectorWheel="false" />
 
                 </RelativeLayout>
             </LinearLayout>
@@ -274,25 +277,48 @@
         </LinearLayout>
     </ScrollView>
 
-    <edu.aku.family_hifazat.widget.AnyTextView
-        android:id="@+id/btnSave"
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:layout_marginBottom="@dimen/x10dp"
-        android:layout_marginTop="@dimen/x10dp"
-        android:alpha="0.2"
-        android:background="@drawable/rounded_box_filled_btn_amber"
-        android:enabled="false"
         android:gravity="center"
-        android:paddingBottom="@dimen/x10dp"
-        android:paddingLeft="@dimen/x40dp"
-        android:paddingRight="@dimen/x40dp"
-        android:paddingTop="@dimen/x10dp"
-        android:text="Save"
-        android:textColor="@color/c_white"
-        android:textSize="@dimen/s14"
-        app:typeface="@string/font_bold" />
+        android:paddingTop="@dimen/x10dp">
+
+        <edu.aku.family_hifazat.widget.AnyTextView
+            android:id="@+id/btnSave"
+            android:layout_width="@dimen/x100dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginBottom="@dimen/x10dp"
+            android:layout_marginRight="@dimen/x5dp"
+            android:layout_marginTop="@dimen/x10dp"
+            android:alpha="0.2"
+            android:background="@drawable/rounded_box_filled_btn_blue"
+            android:enabled="false"
+            android:gravity="center"
+            android:padding="@dimen/x10dp"
+            android:text="Save"
+            android:textColor="@color/c_white"
+            android:textSize="@dimen/s14"
+            app:typeface="@string/font_bold" />
+
+        <edu.aku.family_hifazat.widget.AnyTextView
+            android:id="@+id/btnCancel"
+            android:layout_width="@dimen/x100dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginBottom="@dimen/x10dp"
+            android:layout_marginLeft="@dimen/x5dp"
+            android:layout_marginTop="@dimen/x10dp"
+            android:background="@drawable/rounded_box_filled_btn_amber"
+            android:gravity="center"
+            android:padding="@dimen/x10dp"
+            android:text="Cancel"
+            android:textColor="@color/c_white"
+            android:textSize="@dimen/s14"
+            app:typeface="@string/font_bold" />
+
+
+    </LinearLayout>
 
 </LinearLayout>
 

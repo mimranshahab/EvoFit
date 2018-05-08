@@ -30,7 +30,6 @@ import edu.aku.family_hifazat.helperclasses.ui.helper.UIHelper;
 import edu.aku.family_hifazat.managers.retrofit.GsonFactory;
 import edu.aku.family_hifazat.managers.retrofit.WebServices;
 import edu.aku.family_hifazat.models.PatientHealthSummaryModel;
-import edu.aku.family_hifazat.models.Subhealthindicator;
 import edu.aku.family_hifazat.models.receiving_model.AddUpdateModel;
 import edu.aku.family_hifazat.models.wrappers.WebResponse;
 import edu.aku.family_hifazat.widget.AnyTextView;
@@ -51,23 +50,23 @@ public class BPFragment extends BaseFragment {
     CardView cardBP;
     @BindView(R.id.btnRecordMenually)
     AnyTextView btnRecordMenually;
-    @BindView(R.id.txtGLUF)
-    AnyTextView txtGLUF;
+    @BindView(R.id.txtBPDiastolicDes)
+    AnyTextView txtBPDiastolicDes;
     @BindView(R.id.pickerSystolic)
     NumberPicker pickerSystolic;
-    @BindView(R.id.txtGLUR)
-    AnyTextView txtGLUR;
+    @BindView(R.id.txtBPsystolicDes)
+    AnyTextView txtBPsystolicDes;
     @BindView(R.id.pickerDiastolic)
     NumberPicker pickerDiastolic;
     @BindView(R.id.btnSave)
     AnyTextView btnSave;
-    Unbinder unbinder;
     @BindView(R.id.txtBPUnit)
     AnyTextView txtBPUnit;
     @BindView(R.id.txtBPsystolic)
     AnyTextView txtBPsystolic;
     @BindView(R.id.txtBPdiastolic)
     AnyTextView txtBPdiastolic;
+    Unbinder unbinder;
     private PatientHealthSummaryModel modelBPDIASTOLIC;
     private PatientHealthSummaryModel modelBPSYSTOLIC;
 
@@ -141,6 +140,7 @@ public class BPFragment extends BaseFragment {
     @Override
     public void onClick(View v) {
 
+
     }
 
     @Override
@@ -168,8 +168,11 @@ public class BPFragment extends BaseFragment {
                 txtBPDDTM.setVisibility(View.VISIBLE);
 
                 txtBPdiastolic.setText(modelBPDIASTOLIC.getHealthindicatorlist().get(0).getHealthindicatorvalue());
+                pickerDiastolic.setValue(Integer.valueOf(modelBPDIASTOLIC.getHealthindicatorlist().get(0).getHealthindicatorvalue()));
                 txtBPDDTM.setText(modelBPDIASTOLIC.getHealthindicatorlist().get(0).getDatetimestr());
                 txtBPUnit.setText(modelBPDIASTOLIC.getHealthindicator().getUnit());
+                txtBPDiastolicDes.setText(modelBPDIASTOLIC.getHealthindicator().getHealthindicatordescription() + " (" + modelBPDIASTOLIC.getHealthindicator().getUnit() + ")");
+
             }
 
 
@@ -178,8 +181,11 @@ public class BPFragment extends BaseFragment {
             } else {
                 txtBPDDTM.setVisibility(View.VISIBLE);
                 txtBPsystolic.setText(modelBPSYSTOLIC.getHealthindicatorlist().get(0).getHealthindicatorvalue());
+                pickerSystolic.setValue(Integer.valueOf(modelBPSYSTOLIC.getHealthindicatorlist().get(0).getHealthindicatorvalue()));
                 txtBPDDTM.setText(modelBPSYSTOLIC.getHealthindicatorlist().get(0).getDatetimestr());
                 txtBPUnit.setText(modelBPSYSTOLIC.getHealthindicator().getUnit());
+                txtBPsystolicDes.setText(modelBPSYSTOLIC.getHealthindicator().getHealthindicatordescription() + " (" + modelBPSYSTOLIC.getHealthindicator().getUnit() + ")");
+
             }
 
             if (StringHelper.IsInt_ByJonas(modelBPDIASTOLIC.getHealthindicator().getMinvalue())) {
@@ -205,6 +211,10 @@ public class BPFragment extends BaseFragment {
                 UIHelper.showToast(getContext(), "Maximum value cannot be converted into Integer");
             }
         }
+
+        pickerSystolic.setWrapSelectorWheel(false);
+        pickerDiastolic.setWrapSelectorWheel(false);
+
     }
 
 
@@ -232,7 +242,6 @@ public class BPFragment extends BaseFragment {
 
 
         //Systolic data set
-
         systolicModel.setHealthindicatorlist(null);
         systolicModel.getSubhealthindicator().setHealthindicatorvalue(String.valueOf(pickerSystolic.getValue()));
 
@@ -276,8 +285,16 @@ public class BPFragment extends BaseFragment {
                         });
     }
 
-    @OnClick(R.id.btnSave)
-    public void onViewClicked() {
-        saveRecord(getSaveRecordData());
+    @OnClick({R.id.btnSave, R.id.btnCancel})
+    public void onViewClicked(View view) {
+        switch (view.getId()) {
+            case R.id.btnSave:
+                saveRecord(getSaveRecordData());
+                break;
+
+            case R.id.btnCancel:
+                getBaseActivity().onBackPressed();
+                break;
+        }
     }
 }

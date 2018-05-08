@@ -114,7 +114,7 @@ public class AppConstants {
 
 
     public static String DEVICE_OS_ANDROID = "ANDROID";
-    public static String ENTRY_SOURCE = "MANUAL";
+    public static String ENTRY_SOURCE = "Manual";
 
 
     private static String getDeviceID(Context context) {

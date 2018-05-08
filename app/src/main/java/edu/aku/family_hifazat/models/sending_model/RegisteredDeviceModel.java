@@ -39,6 +39,9 @@ public class RegisteredDeviceModel {
     @SerializedName("RegCardNo")
     private String regcardno;
     @Expose
+    @SerializedName("RegCardNumber")
+    private String regcardnumber;
+    @Expose
     @SerializedName("LoginCode")
     private String loginCode;
 
@@ -136,6 +139,7 @@ public class RegisteredDeviceModel {
 
     public void setRegcardno(String regcardno) {
         this.regcardno = regcardno;
+        this.regcardnumber = regcardno;
     }
 
     @Override

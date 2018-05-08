@@ -280,8 +280,7 @@
                                     android:ellipsize="end"
                                     android:gravity="center_vertical|end"
                                     android:maxLines="1"
-                                    android:padding="@dimen/x5dp"
-                                    android:text="-"
+                                     android:text="-"
                                     android:textColor="@color/txt_aku_blue"
                                     android:textSize="@dimen/s15"
                                     app:typeface="@string/font_bold" />
@@ -292,8 +291,7 @@
                                     android:ellipsize="end"
                                     android:gravity="center"
                                     android:maxLines="1"
-                                    android:padding="@dimen/x5dp"
-                                    android:text="/"
+                                     android:text="/"
                                     android:textColor="@color/txt_aku_blue"
                                     android:textSize="@dimen/s15"
                                     app:typeface="@string/font_bold" />
@@ -306,8 +304,7 @@
                                     android:ellipsize="end"
                                     android:gravity="center_vertical"
                                     android:maxLines="1"
-                                    android:padding="@dimen/x5dp"
-                                    android:text="-"
+                                     android:text="-"
                                     android:textColor="@color/txt_aku_blue"
                                     android:textSize="@dimen/s15"
                                     app:typeface="@string/font_bold" />

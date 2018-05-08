@@ -65,14 +65,14 @@ public class MeasurementFragment extends BaseFragment {
     CardView cardMeasurement;
     @BindView(R.id.btnRecordMenually)
     AnyTextView btnRecordMenually;
-    @BindView(R.id.txtGLUF)
-    AnyTextView txtGLUF;
+    @BindView(R.id.txtWeightDesc)
+    AnyTextView txtWeightDesc;
     @BindView(R.id.pickerWeight)
     NumberPicker pickerWeight;
     @BindView(R.id.contWeight)
     LinearLayout contWeight;
-    @BindView(R.id.txtGLUR)
-    AnyTextView txtGLUR;
+    @BindView(R.id.txtHeightDesc)
+    AnyTextView txtHeightDesc;
     @BindView(R.id.pickerHeight)
     NumberPicker pickerHeight;
     @BindView(R.id.contHeight)
@@ -178,8 +178,10 @@ public class MeasurementFragment extends BaseFragment {
                 txtDttm.setVisibility(View.VISIBLE);
                 txtHeightUnit.setVisibility(View.VISIBLE);
                 txtHeight.setText(modelHEIGHT.getHealthindicatorlist().get(0).getHealthindicatorvalue());
+                pickerHeight.setValue(Integer.valueOf(modelHEIGHT.getHealthindicatorlist().get(0).getHealthindicatorvalue()));
                 txtDttm.setText(modelHEIGHT.getHealthindicatorlist().get(0).getDatetimestr());
                 txtHeightUnit.setText(modelHEIGHT.getHealthindicator().getUnit());
+                txtHeightDesc.setText(modelHEIGHT.getHealthindicator().getHealthindicatordescription() + " (" + modelHEIGHT.getHealthindicator().getUnit() + ")");
             }
 
 
@@ -191,8 +193,11 @@ public class MeasurementFragment extends BaseFragment {
                 txtDttm.setVisibility(View.VISIBLE);
                 txtWeightUnit.setVisibility(View.VISIBLE);
                 txtWeight.setText(modelWEIGHT.getHealthindicatorlist().get(0).getHealthindicatorvalue());
+                pickerWeight.setValue(Integer.valueOf(modelWEIGHT.getHealthindicatorlist().get(0).getHealthindicatorvalue()));
                 txtDttm.setText(modelWEIGHT.getHealthindicatorlist().get(0).getDatetimestr());
                 txtWeightUnit.setText(modelWEIGHT.getHealthindicator().getUnit());
+                txtWeightDesc.setText(modelWEIGHT.getHealthindicator().getHealthindicatordescription() + " (" + modelWEIGHT.getHealthindicator().getUnit() + ")");
+
             }
 
 
@@ -230,6 +235,10 @@ public class MeasurementFragment extends BaseFragment {
                 txtBSAUnit.setVisibility(GONE);
             }
         }
+
+        pickerWeight.setWrapSelectorWheel(false);
+        pickerHeight.setWrapSelectorWheel(false);
+
     }
 
     @Override
@@ -264,7 +273,7 @@ public class MeasurementFragment extends BaseFragment {
         // Weight data set
         weightModel.setHealthindicatorlist(null);
         weightModel.getSubhealthindicator().setHealthindicatorvalue(String.valueOf(pickerWeight.getValue()));
- 
+
 
         // adding data to array
         ArrayList<PatientHealthSummaryModel> arrayList = new ArrayList<PatientHealthSummaryModel>();
@@ -301,8 +310,15 @@ public class MeasurementFragment extends BaseFragment {
     }
 
 
-    @OnClick(R.id.btnSave)
-    public void onViewClicked() {
-        saveRecord(getSaveRecordData());
+    @OnClick({R.id.btnSave, R.id.btnCancel})
+    public void onViewClicked(View view) {
+        switch (view.getId()) {
+            case R.id.btnSave:
+                saveRecord(getSaveRecordData());
+                break;
+            case R.id.btnCancel:
+                getBaseActivity().onBackPressed();
+                break;
+        }
     }
 }
