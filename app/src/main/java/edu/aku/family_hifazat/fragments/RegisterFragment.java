@@ -33,7 +33,6 @@ import edu.aku.family_hifazat.constatnts.AppConstants;
 import edu.aku.family_hifazat.constatnts.WebServiceConstants;
 import edu.aku.family_hifazat.enums.BaseURLTypes;
 import edu.aku.family_hifazat.enums.FileType;
-import edu.aku.family_hifazat.fragments.dialogs.SuccessDialogFragment;
 import edu.aku.family_hifazat.helperclasses.RunTimePermissions;
 import edu.aku.family_hifazat.helperclasses.ui.helper.KeyboardHide;
 import edu.aku.family_hifazat.widget.SquareImageView;
@@ -404,22 +403,6 @@ public class RegisterFragment extends BaseFragment {
                 .setOutputCompressQuality(80)
                 .start(getContext(), this);
     }
-
-    private void showSignUpSuccessDialog() {
-
-        final SuccessDialogFragment successDialogFragment = SuccessDialogFragment.newInstance();
-        successDialogFragment.setTitle(getString(R.string.sign_up));
-        successDialogFragment.setMessage(edFullName.getText().toString());
-        successDialogFragment.setButton1(getString(R.string.Ok), new GenericClickableInterface() {
-            @Override
-            public void click() {
-                getBaseActivity().addDockableFragment(VerifyYourNumberFragment.newInstance(), false);
-                successDialogFragment.getDialog().dismiss();
-            }
-        });
-        successDialogFragment.show(getFragmentManager(), null);
-    }
-
 
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {

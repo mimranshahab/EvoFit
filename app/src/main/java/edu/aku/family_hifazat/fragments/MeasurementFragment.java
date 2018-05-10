@@ -181,7 +181,7 @@ public class MeasurementFragment extends BaseFragment {
                 pickerHeight.setValue(Integer.valueOf(modelHEIGHT.getHealthindicatorlist().get(0).getHealthindicatorvalue()));
                 txtDttm.setText(modelHEIGHT.getHealthindicatorlist().get(0).getDatetimestr());
                 txtHeightUnit.setText(modelHEIGHT.getHealthindicator().getUnit());
-                txtHeightDesc.setText(modelHEIGHT.getHealthindicator().getHealthindicatordescription() + " (" + modelHEIGHT.getHealthindicator().getUnit() + ")");
+
             }
 
 
@@ -196,7 +196,6 @@ public class MeasurementFragment extends BaseFragment {
                 pickerWeight.setValue(Integer.valueOf(modelWEIGHT.getHealthindicatorlist().get(0).getHealthindicatorvalue()));
                 txtDttm.setText(modelWEIGHT.getHealthindicatorlist().get(0).getDatetimestr());
                 txtWeightUnit.setText(modelWEIGHT.getHealthindicator().getUnit());
-                txtWeightDesc.setText(modelWEIGHT.getHealthindicator().getHealthindicatordescription() + " (" + modelWEIGHT.getHealthindicator().getUnit() + ")");
 
             }
 
@@ -238,6 +237,8 @@ public class MeasurementFragment extends BaseFragment {
 
         pickerWeight.setWrapSelectorWheel(false);
         pickerHeight.setWrapSelectorWheel(false);
+        txtHeightDesc.setText(modelHEIGHT.getHealthindicator().getHealthindicatordescription() + " (" + modelHEIGHT.getHealthindicator().getUnit() + ")");
+        txtWeightDesc.setText(modelWEIGHT.getHealthindicator().getHealthindicatordescription() + " (" + modelWEIGHT.getHealthindicator().getUnit() + ")");
 
     }
 

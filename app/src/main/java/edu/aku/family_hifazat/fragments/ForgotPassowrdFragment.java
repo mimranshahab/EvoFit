@@ -54,6 +54,7 @@ public class ForgotPassowrdFragment extends BaseFragment {
     AnyTextView txtCode;
     @BindView(R.id.edtMotherName)
     AnyEditTextView edtMotherName;
+    private boolean isChangePassword = false;
 
 
     @Override
@@ -69,11 +70,12 @@ public class ForgotPassowrdFragment extends BaseFragment {
         return R.layout.fragment_forgot_password;
     }
 
-    public static ForgotPassowrdFragment newInstance() {
+    public static ForgotPassowrdFragment newInstance(boolean isChangePassword) {
 
         Bundle args = new Bundle();
 
         ForgotPassowrdFragment fragment = new ForgotPassowrdFragment();
+        fragment.isChangePassword = isChangePassword;
         fragment.setArguments(args);
         return fragment;
     }
@@ -83,16 +85,29 @@ public class ForgotPassowrdFragment extends BaseFragment {
         super.onViewCreated(view, savedInstanceState);
         edCardNumber.addValidator(new CardNumberValidation());
         edCardNumber.addTextChangedListener(new MaskFormatter(CARD_MASK, edCardNumber, '-'));
+
+        if (isChangePassword) {
+            edCardNumber.setText(sharedPreferenceManager.getCardMemberDetail().getCardNumber());
+            edCardNumber.setClickable(false);
+            edCardNumber.setEnabled(false);
+            edCardNumber.setAlpha(0.5f);
+
+
+        }
+
 //        txtTitle.setText("Forgot Password");
     }
 
     @Override
     public void onResume() {
         super.onResume();
-
-
-        edCardNumber.requestFocus();
-        KeyboardHide.showSoftKeyboard(getContext(), edCardNumber);
+        if (!isChangePassword) {
+            edCardNumber.requestFocus();
+            KeyboardHide.showSoftKeyboard(getContext(), edCardNumber);
+        } else {
+            edtMotherName.performClick();
+            KeyboardHide.showSoftKeyboard(getContext(), edtMotherName);
+        }
     }
 
     @Override
@@ -105,7 +120,11 @@ public class ForgotPassowrdFragment extends BaseFragment {
     public void setTitlebar(TitleBar titleBar) {
         titleBar.resetViews();
         titleBar.setVisibility(View.VISIBLE);
-        titleBar.setTitle("Forgot Password");
+        if (isChangePassword) {
+            titleBar.setTitle("Change Password");
+        } else {
+            titleBar.setTitle("Forgot Password");
+        }
         titleBar.showBackButton(getBaseActivity());
 
     }

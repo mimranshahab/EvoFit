@@ -59,6 +59,8 @@ public class GlucoseHistoryFragment extends BaseFragment implements OnItemClickL
     AnyTextView txtRandom;
     @BindView(R.id.glucoTabs)
     LinearLayout glucoTabs;
+    @BindView(R.id.contParentLayout)
+    LinearLayout contParentLayout;
 
     private PatientHealthSummaryModel modelRandomGlucose;
     private PatientHealthSummaryModel modelFastingGlucose;
@@ -151,6 +153,7 @@ public class GlucoseHistoryFragment extends BaseFragment implements OnItemClickL
         LayoutAnimationController animation = AnimationUtils.loadLayoutAnimation(getContext(), resId);
 //        recyclerView.setLayoutAnimation(animation);
         recylerView.setAdapter(adapter);
+        contParentLayout.setBackgroundColor(getResources().getColor(R.color.c_white));
 
         glucoTabs.setVisibility(View.VISIBLE);
     }
@@ -164,6 +167,7 @@ public class GlucoseHistoryFragment extends BaseFragment implements OnItemClickL
                     emptyView.setVisibility(View.VISIBLE);
                     emptyView.setText("No Fasting Glucose Record Found");
                 } else {
+                    emptyView.setVisibility(View.GONE);
                     arrData.clear();
                     adapter.setStatus(glucoseType);
                     arrData.addAll(modelFastingGlucose.getHealthindicatorlist());
@@ -177,6 +181,7 @@ public class GlucoseHistoryFragment extends BaseFragment implements OnItemClickL
                     emptyView.setVisibility(View.VISIBLE);
                     emptyView.setText("No Random Glucose Record Found");
                 } else {
+                    emptyView.setVisibility(View.GONE);
                     arrData.clear();
                     adapter.setStatus(glucoseType);
                     arrData.addAll(modelRandomGlucose.getHealthindicatorlist());

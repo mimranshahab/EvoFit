@@ -171,6 +171,7 @@ public class CurrentMedicationFragment extends BaseFragment implements View.OnCl
 
     private void serviceCall() {
         SearchModel model = new SearchModel();
+//        model.setMRNumber(WebServiceConstants.tempMRN_immunization);
         model.setMRNumber(getCurrentUser().getMRNumber());
         if (isFromTimeline) {
             model.setVisitID(String.valueOf(patientVisitAdmissionID));
@@ -202,7 +203,7 @@ public class CurrentMedicationFragment extends BaseFragment implements View.OnCl
                                     }
                                 } else {
                                     showEmptyView(NO_RECORD_FOUND);
-                                 }
+                                }
 
                                 arrData.clear();
                                 arrData.addAll(arrayList);
@@ -227,8 +228,8 @@ public class CurrentMedicationFragment extends BaseFragment implements View.OnCl
     }
 
     private void switchTab() {
-        if (((MedicationTabLayout)getParentFragment()) != null) {
-            ((MedicationTabLayout)getParentFragment()).viewpager.setCurrentItem(1, true);
+        if (((MedicationTabLayout) getParentFragment()) != null) {
+            ((MedicationTabLayout) getParentFragment()).viewpager.setCurrentItem(1, true);
         }
     }
 }

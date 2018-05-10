@@ -6,6 +6,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 
 import java.util.ArrayList;
@@ -69,6 +70,22 @@ public class CurrentMedicationAdapter extends RecyclerView.Adapter<CurrentMedica
             }
         }
 
+        if (model.getIdentifyMedicationLocation() != null) {
+            if (model.getIdentifyMedicationLocation().equals("SELF")) {
+                holder.txtEntryStatus.setText("Self Entered");
+                holder.imgIcon.setColorFilter(activity.getResources().getColor(R.color.medicine_green));
+                holder.cardView.setCardBackgroundColor(activity.getResources().getColor(R.color.medicine_green));
+            } else if (model.getIdentifyMedicationLocation().equals("AKU")) {
+                holder.txtEntryStatus.setText("AKUH");
+                holder.cardView.setCardBackgroundColor(activity.getResources().getColor(R.color.summary_blue));
+                holder.imgIcon.setColorFilter(activity.getResources().getColor(R.color.summary_blue));
+            } else {
+                holder.txtEntryStatus.setText("");
+                holder.cardView.setCardBackgroundColor(activity.getResources().getColor(R.color.summary_blue));
+                holder.imgIcon.setColorFilter(activity.getResources().getColor(R.color.summary_blue));
+            }
+        }
+
 
 //        setListener(holder, timelineModel);
     }
@@ -115,6 +132,10 @@ public class CurrentMedicationAdapter extends RecyclerView.Adapter<CurrentMedica
         LinearLayout frameColorCode;
         @BindView(R.id.cardView)
         CardView cardView;
+        @BindView(R.id.txtEntryStatus)
+        AnyTextView txtEntryStatus;
+        @BindView(R.id.imgIcon)
+        ImageView imgIcon;
 
         ViewHolder(View view) {
             super(view);

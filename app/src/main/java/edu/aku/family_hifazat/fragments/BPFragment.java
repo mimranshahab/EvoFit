@@ -171,7 +171,6 @@ public class BPFragment extends BaseFragment {
                 pickerDiastolic.setValue(Integer.valueOf(modelBPDIASTOLIC.getHealthindicatorlist().get(0).getHealthindicatorvalue()));
                 txtBPDDTM.setText(modelBPDIASTOLIC.getHealthindicatorlist().get(0).getDatetimestr());
                 txtBPUnit.setText(modelBPDIASTOLIC.getHealthindicator().getUnit());
-                txtBPDiastolicDes.setText(modelBPDIASTOLIC.getHealthindicator().getHealthindicatordescription() + " (" + modelBPDIASTOLIC.getHealthindicator().getUnit() + ")");
 
             }
 
@@ -184,7 +183,6 @@ public class BPFragment extends BaseFragment {
                 pickerSystolic.setValue(Integer.valueOf(modelBPSYSTOLIC.getHealthindicatorlist().get(0).getHealthindicatorvalue()));
                 txtBPDDTM.setText(modelBPSYSTOLIC.getHealthindicatorlist().get(0).getDatetimestr());
                 txtBPUnit.setText(modelBPSYSTOLIC.getHealthindicator().getUnit());
-                txtBPsystolicDes.setText(modelBPSYSTOLIC.getHealthindicator().getHealthindicatordescription() + " (" + modelBPSYSTOLIC.getHealthindicator().getUnit() + ")");
 
             }
 
@@ -214,6 +212,9 @@ public class BPFragment extends BaseFragment {
 
         pickerSystolic.setWrapSelectorWheel(false);
         pickerDiastolic.setWrapSelectorWheel(false);
+        txtBPDiastolicDes.setText(modelBPDIASTOLIC.getHealthindicator().getHealthindicatordescription() + " (" + modelBPDIASTOLIC.getHealthindicator().getUnit() + ")");
+        txtBPsystolicDes.setText(modelBPSYSTOLIC.getHealthindicator().getHealthindicatordescription() + " (" + modelBPSYSTOLIC.getHealthindicator().getUnit() + ")");
+
 
     }
 

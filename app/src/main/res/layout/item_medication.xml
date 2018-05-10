@@ -15,16 +15,16 @@
         android:layout_margin="@dimen/x5dp"
         android:layout_weight="1"
         android:animateLayoutChanges="true"
-        app:cardCornerRadius="@dimen/x10dp"
         app:cardBackgroundColor="@color/summary_blue"
+        app:cardCornerRadius="@dimen/x10dp"
 
         >
 
         <LinearLayout
             android:id="@+id/frameColorCode"
-            android:orientation="vertical"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:orientation="vertical"
 
             >
 
@@ -95,7 +95,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_gravity="center_horizontal"
-                 android:background="@drawable/round_edges_topview"
+                android:background="@drawable/round_edges_topview"
                 android:gravity="center_vertical"
                 android:orientation="horizontal">
 
@@ -104,9 +104,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:background="@color/c_white"
-                    android:padding="@dimen/x5dp"
                     android:orientation="horizontal"
-                 >
+                    android:padding="@dimen/x5dp">
 
                     <RelativeLayout
                         android:layout_width="wrap_content"
@@ -120,8 +119,7 @@
                             android:layout_margin="@dimen/x5dp"
                             android:scaleType="centerCrop"
                             android:src="@drawable/shape_circle"
-                            android:tint="@color/summary_blue"
-                            />
+                            android:tint="@color/summary_blue" />
 
                         <ImageView
                             android:layout_width="@dimen/x45dp"
@@ -192,7 +190,6 @@
                                 android:padding="@dimen/x3dp"
                                 android:text="Frequency"
                                 android:textColor="@color/txt_aku_blue"
-
                                 android:textSize="@dimen/s12"
                                 app:typeface="@string/font_regular" />
                         </LinearLayout>
@@ -203,31 +200,51 @@
                             android:layout_height="wrap_content"
                             android:orientation="horizontal">
 
+                            <LinearLayout
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:orientation="vertical">
+
+                                <edu.aku.family_hifazat.widget.AnyTextView
+                                    android:id="@+id/txtRoute"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:ellipsize="end"
+                                    android:padding="@dimen/x3dp"
+                                    android:singleLine="true"
+                                    android:text="Route"
+                                    android:textColor="@color/txt_aku_blue"
+                                    android:textSize="@dimen/s12"
+                                    app:typeface="@string/font_regular" />
+
+                                <edu.aku.family_hifazat.widget.AnyTextView
+                                    android:id="@+id/txtNextDose"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:ellipsize="end"
+                                    android:padding="@dimen/x3dp"
+                                    android:singleLine="true"
+                                    android:text="Next Dose"
+                                    android:textColor="@color/txt_aku_blue"
+                                    android:textSize="@dimen/s12"
+                                    android:visibility="gone"
+                                    app:typeface="@string/font_regular" />
+                            </LinearLayout>
+
 
                             <edu.aku.family_hifazat.widget.AnyTextView
-                                android:id="@+id/txtRoute"
+                                android:id="@+id/txtEntryStatus"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
+                                android:layout_gravity="bottom|end"
                                 android:padding="@dimen/x3dp"
-                                android:text="Route"
-                                android:textColor="@color/text_color_grey"
-
-                                android:textSize="@dimen/s12"
-                                app:typeface="@string/font_regular" />
+                                android:text=""
+                                android:textColor="@color/txt_aku_blue"
+                                android:textSize="@dimen/s14"
+                                app:typeface="@string/font_bold" />
 
                         </LinearLayout>
-
-
-                        <edu.aku.family_hifazat.widget.AnyTextView
-                            android:id="@+id/txtNextDose"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:padding="@dimen/x3dp"
-                            android:text="Next Dose"
-                            android:textColor="@color/txt_aku_blue"
-                            android:textSize="@dimen/s12"
-                            android:visibility="gone"
-                            app:typeface="@string/font_regular" />
 
 
                     </LinearLayout>
@@ -235,16 +252,6 @@
                 </LinearLayout>
             </LinearLayout>
 
-
-            <!--<LinearLayout-->
-            <!--android:id="@+id/llColorCode"-->
-            <!--android:layout_width="match_parent"-->
-            <!--android:layout_height="match_parent"-->
-            <!--android:alpha="0.1"-->
-            <!--android:background="@color/base_green"-->
-            <!--android:orientation="horizontal">-->
-
-            <!--</LinearLayout>-->
         </LinearLayout>
     </android.support.v7.widget.CardView>
 

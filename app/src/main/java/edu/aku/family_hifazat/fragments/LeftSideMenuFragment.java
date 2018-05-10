@@ -21,7 +21,6 @@ import edu.aku.family_hifazat.R;
 import edu.aku.family_hifazat.activities.HomeActivity;
 import edu.aku.family_hifazat.activities.MainActivity;
 import edu.aku.family_hifazat.fragments.abstracts.BaseFragment;
-import edu.aku.family_hifazat.callbacks.GenericClickableInterface;
 import edu.aku.family_hifazat.fragments.abstracts.GenericContentFragment;
 import edu.aku.family_hifazat.fragments.abstracts.GenericDialogFragment;
 import edu.aku.family_hifazat.widget.TitleBar;
@@ -163,8 +162,7 @@ public class LeftSideMenuFragment extends BaseFragment implements OnNewPacketRec
                 logoutClick(this);
                 break;
             case R.id.txtPreferences:
-                showNextBuildToast();
-//                getBaseActivity().addDockableFragment(ForgotPassowrdFragment.newInstance(), false);
+                getBaseActivity().addDockableFragment(SettingsFragment.newInstance(), false);
                 break;
         }
     }

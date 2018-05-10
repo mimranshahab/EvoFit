@@ -4,7 +4,6 @@ import android.animation.Animator;
 import android.animation.ObjectAnimator;
 import android.content.Intent;
 import android.content.pm.PackageManager;
-import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
@@ -15,32 +14,25 @@ import android.widget.LinearLayout;
 
 import com.google.gson.JsonObject;
 
-import edu.aku.family_hifazat.BaseApplication;
-import edu.aku.family_hifazat.callbacks.GenericClickableInterface;
 import edu.aku.family_hifazat.constatnts.AppConstants;
 import edu.aku.family_hifazat.constatnts.WebServiceConstants;
 import edu.aku.family_hifazat.enums.BaseURLTypes;
 import edu.aku.family_hifazat.fragments.abstracts.GenericDialogFragment;
+import edu.aku.family_hifazat.fragments.dialogs.PinEntryDialogFragment;
 import edu.aku.family_hifazat.helperclasses.Helper;
 import edu.aku.family_hifazat.helperclasses.ui.helper.AnimationHelper;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import edu.aku.family_hifazat.R;
-import edu.aku.family_hifazat.helperclasses.ui.helper.UIHelper;
 import edu.aku.family_hifazat.managers.SharedPreferenceManager;
 import edu.aku.family_hifazat.managers.retrofit.GsonFactory;
 import edu.aku.family_hifazat.managers.retrofit.WebServices;
-import edu.aku.family_hifazat.models.receiving_model.CardMemberDetail;
 import edu.aku.family_hifazat.models.sending_model.AppVersionModel;
-import edu.aku.family_hifazat.models.sending_model.LoginApiModel;
-import edu.aku.family_hifazat.models.sending_model.RegisteredDeviceModel;
 import edu.aku.family_hifazat.models.wrappers.WebResponse;
 
 import static android.view.View.GONE;
-import static android.view.View.INVISIBLE;
 import static android.view.View.VISIBLE;
-import static edu.aku.family_hifazat.constatnts.AppConstants.KEY_CARD_NUMBER;
-import static edu.aku.family_hifazat.constatnts.AppConstants.KEY_TOKEN;
+import static edu.aku.family_hifazat.constatnts.AppConstants.KEY_PIN_CODE;
 
 public class SplashActivity extends AppCompatActivity {
 
@@ -52,6 +44,7 @@ public class SplashActivity extends AppCompatActivity {
     private final int ANIMATIONS_TIME_OUT = 250;
     private final int FADING_TIME = 500;
     private boolean hasAnimationStarted = false;
+    private boolean isUpdateCallBackRecieved = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -159,9 +152,39 @@ public class SplashActivity extends AppCompatActivity {
         appVersionModel.setAndappversioncode(versionCode);
         appVersionModel.setAndappversionname(myVersionName);
         isUpdateAvailable(appVersionModel, activityClass);
+
+
+        try {
+            new Handler().postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                    if (!isUpdateCallBackRecieved) {
+                        pinVerification(activityClass);
+                    }
+                }
+            }, 10000);
+        } catch (Exception e) {
+            Log.d(TAG, "updateAppOrChangeActivity: " + e.getLocalizedMessage());
+        }
     }
 
-    private void changeActivity(final Class activityClass) {
+    private void pinVerification(final Class activityClass) {
+
+        if (activityClass == MainActivity.class) {
+            changeActivity(activityClass);
+        } else {
+            boolean isPinEnabled = SharedPreferenceManager.getInstance(getApplicationContext()).getBoolean(AppConstants.KEY_IS_PIN_ENABLE);
+            if (isPinEnabled) {
+                showPinVerificationDialog(activityClass);
+            } else {
+                changeActivity(activityClass);
+            }
+        }
+
+
+    }
+
+    private void changeActivity(Class activityClass) {
         new Handler().postDelayed(new Runnable() {
 
     /*
@@ -184,6 +207,20 @@ public class SplashActivity extends AppCompatActivity {
                 finish();
             }
         }, ANIMATIONS_TIME_OUT);
+    }
+
+    private void showPinVerificationDialog(final Class activityClass) {
+        final PinEntryDialogFragment pinEntryDialogFragment = PinEntryDialogFragment.newInstance(view -> {
+            //Success
+            changeActivity(activityClass);
+        }, view -> {
+            //Logout
+            SharedPreferenceManager.getInstance(this).clearDB();
+            changeActivity(MainActivity.class);
+        });
+        pinEntryDialogFragment.setTitle("Pin Verification");
+        pinEntryDialogFragment.setCancelable(false);
+        pinEntryDialogFragment.show(getSupportFragmentManager(), null);
     }
 
     public void updateApp(final Class activityClass, AppVersionModel appVersionModel) {
@@ -214,7 +251,7 @@ public class SplashActivity extends AppCompatActivity {
 
         genericDialogFragment.setButton2("Not Now", () -> {
             genericDialogFragment.getDialog().dismiss();
-            changeActivity(activityClass);
+            pinVerification(activityClass);
         });
 
         genericDialogFragment.setButton2Visibility(button2Visiblity);
@@ -256,26 +293,27 @@ public class SplashActivity extends AppCompatActivity {
 
     private void isUpdateAvailable(final AppVersionModel appVersionModel, final Class activityClass) {
         new WebServices(this,
-                WebServiceConstants.tempToken,
-                BaseURLTypes.AHFA_BASE_URL)
+                "",
+                BaseURLTypes.AHFA_BASE_URL, false)
                 .webServiceRequestAPIForJsonObject(WebServiceConstants.METHOD_USER_GET_APPLICATION_PARAMETER,
                         appVersionModel.toString(),
                         new WebServices.IRequestJsonDataCallBack() {
                             @Override
                             public void requestDataResponse(WebResponse<JsonObject> webResponse) {
-
+                                isUpdateCallBackRecieved = true;
                                 AppVersionModel appVersionModelReceiving = GsonFactory.getSimpleGson().fromJson(webResponse.result, AppVersionModel.class);
 
                                 if (appVersionModel.getAndappversioncode() < appVersionModelReceiving.getAndappversioncode()) {
                                     updateApp(activityClass, appVersionModelReceiving);
                                 } else {
-                                    changeActivity(activityClass);
+                                    pinVerification(activityClass);
                                 }
                             }
 
                             @Override
                             public void onError() {
-                                changeActivity(activityClass);
+                                isUpdateCallBackRecieved = true;
+                                pinVerification(activityClass);
                             }
                         });
     }

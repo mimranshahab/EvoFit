@@ -13,6 +13,9 @@ import edu.aku.family_hifazat.R;
 import edu.aku.family_hifazat.fragments.HomeFragment;
 import edu.aku.family_hifazat.fragments.abstracts.BaseFragment;
 
+import static edu.aku.family_hifazat.constatnts.AppConstants.ACCESS_LOGIN_DONE;
+import static edu.aku.family_hifazat.constatnts.AppConstants.JSON_STRING_KEY;
+
 
 public class HomeActivity extends BaseActivity {
 
@@ -24,12 +27,14 @@ public class HomeActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
 //        setContentView(R.layout.activity_main);
 
+
     }
 
     @Override
     protected void onPostCreate(@Nullable Bundle savedInstanceState) {
         super.onPostCreate(savedInstanceState);
-        initFragments();
+        String intentData = getIntent().getStringExtra(JSON_STRING_KEY);
+        initFragments(intentData);
         navigationView = findViewById(R.id.nav_view);
         navigationView.getBackground().setColorFilter(0x80000000, PorterDuff.Mode.MULTIPLY);
     }
@@ -66,8 +71,8 @@ public class HomeActivity extends BaseActivity {
         return R.id.contPermanent;
     }
 
-    private void initFragments() {
-        replacePermanentFramgment(HomeFragment.newInstance(), true);
+    private void initFragments(String intentData) {
+        replacePermanentFramgment(HomeFragment.newInstance(intentData), false);
     }
 
 

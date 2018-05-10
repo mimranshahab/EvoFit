@@ -13,6 +13,7 @@ import android.view.animation.AnimationUtils;
 import android.view.animation.LayoutAnimationController;
 import android.widget.AdapterView;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 
 import com.github.clans.fab.FloatingActionButton;
@@ -51,6 +52,8 @@ public class BPHistoryFragment extends BaseFragment implements OnItemClickListen
     FloatingActionButton fab;
     @BindView(R.id.contParent)
     RelativeLayout contParent;
+    @BindView(R.id.contParentLayout)
+    LinearLayout contParentLayout;
 
     private PatientHealthSummaryModel modelDiastolic;
     private PatientHealthSummaryModel modelSystolic;
@@ -139,6 +142,8 @@ public class BPHistoryFragment extends BaseFragment implements OnItemClickListen
         LayoutAnimationController animation = AnimationUtils.loadLayoutAnimation(getContext(), resId);
 //        recyclerView.setLayoutAnimation(animation);
         recylerView.setAdapter(adapter);
+        contParentLayout.setBackgroundColor(getResources().getColor(R.color.c_white));
+
     }
 
     private void setData() {

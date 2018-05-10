@@ -107,6 +107,17 @@ public class MedicationProfileModel {
     @Expose
     @SerializedName("NextDoseDttm")
     private String nextDoseDttm;
+    @Expose
+    @SerializedName("IdentifyMedicationLocation")
+    private String identifyMedicationLocation;
+
+    public String getIdentifyMedicationLocation() {
+        return identifyMedicationLocation;
+    }
+
+    public void setIdentifyMedicationLocation(String identifyMedicationLocation) {
+        this.identifyMedicationLocation = identifyMedicationLocation;
+    }
 
     public boolean isLifeTimeMedicin() {
         return lifeTimeMedicin;

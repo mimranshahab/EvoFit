@@ -154,6 +154,7 @@ public class GlucoseFragment extends BaseFragment {
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+
         if (modelGLUF != null && modelGLUR != null) {
 
             if (modelGLUR.getHealthindicatorlist() == null || modelGLUR.getHealthindicatorlist().isEmpty()) {
@@ -184,7 +185,6 @@ public class GlucoseFragment extends BaseFragment {
                 txtFastingGlucoseStatus.setText(modelGLUF.getHealthindicatorlist().get(0).getSource());
                 txtGlucoUnit.setText(modelGLUF.getHealthindicator().getUnit());
 
-                txtDescription.setText(modelGLUF.getHealthindicator().getHealthindicatordescription() + " (" + modelGLUF.getHealthindicator().getUnit() + ")");
             }
 
             if (StringHelper.IsInt_ByJonas(modelGLUF.getHealthindicator().getMinvalue())) {
@@ -198,7 +198,7 @@ public class GlucoseFragment extends BaseFragment {
                 UIHelper.showToast(getContext(), "Maximum value cannot be converted into Integer");
             }
 
-
+            txtDescription.setText(modelGLUF.getHealthindicator().getHealthindicatordescription() + " (" + modelGLUF.getHealthindicator().getUnit() + ")");
             numberPicker.setWrapSelectorWheel(false);
 
 

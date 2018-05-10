@@ -99,15 +99,15 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
                     android:drawablePadding="@dimen/x5dp"
-                    android:drawableStart="@android:drawable/ic_menu_preferences"
+                    android:drawableStart="@drawable/ic_settings"
                     android:gravity="center_vertical"
                     android:padding="@dimen/x15dp"
                     android:singleLine="true"
-                    android:text="Preferences"
+                    android:text="Settings"
                     android:textColor="@color/c_white"
                     android:textSize="16sp"
 
-                    android:visibility="gone"
+                    android:visibility="visible"
                     app:typeface="@string/font_bold" />
 
                 <View

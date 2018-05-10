@@ -39,6 +39,7 @@ import edu.aku.family_hifazat.managers.retrofit.WebServices;
 import edu.aku.family_hifazat.models.sending_model.LoginApiModel;
 import edu.aku.family_hifazat.models.wrappers.WebResponse;
 
+import static edu.aku.family_hifazat.constatnts.AppConstants.ACCESS_LOGIN_DONE;
 import static edu.aku.family_hifazat.constatnts.AppConstants.CARD_MASK;
 import static edu.aku.family_hifazat.constatnts.AppConstants.KEY_CARD_NUMBER;
 import static edu.aku.family_hifazat.constatnts.AppConstants.KEY_CODE;
@@ -137,19 +138,11 @@ public class LoginFragment extends BaseFragment {
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.txtForgotPassword:
-                final GenericDialogFragment genericDialogFragment = new GenericDialogFragment();
-                UIHelper.genericPopUp(getBaseActivity(), genericDialogFragment, "Forgot Password",
-                        "Are you sure you want to reset your password?\n" +
-                                "A verification code will be sent to the subscriber’s email address, if you proceed.", "Proceed", "No",
-                        () -> {
-                            genericDialogFragment.dismiss();
-                            getBaseActivity().addDockableFragment(ForgotPassowrdFragment.newInstance(), false);
-
-                        }, genericDialogFragment::dismiss
-                );
+                forgotPasswordPopup();
 
                 break;
             case R.id.btnLogin:
+
                 if (edtCardNumber.testValidity() && edtPassword.testValidity()) {
                     LoginApiModel loginApiModel = new LoginApiModel(edtCardNumber.getText().toString(), edtPassword.getText().toString());
                     RegisteredDeviceModel registeredDevice = AppConstants.getRegisteredDevice(getContext(), getBaseActivity());
@@ -166,6 +159,19 @@ public class LoginFragment extends BaseFragment {
             case R.id.txtSignUp:
                 getBaseActivity().addDockableFragment(RegisterFragment.newInstance(), false);
         }
+    }
+
+    private void forgotPasswordPopup() {
+        final GenericDialogFragment genericDialogFragment = new GenericDialogFragment();
+        UIHelper.genericPopUp(getBaseActivity(), genericDialogFragment, "Forgot Password",
+                "Are you sure you want to reset your password?\n" +
+                        "A verification code will be sent to the subscriber’s email address, if you proceed.", "Proceed", "No",
+                () -> {
+                    genericDialogFragment.dismiss();
+                    getBaseActivity().addDockableFragment(ForgotPassowrdFragment.newInstance(false), false);
+
+                }, genericDialogFragment::dismiss
+        );
     }
 
     private void loginCall(LoginApiModel loginApiModel) {
@@ -185,7 +191,7 @@ public class LoginFragment extends BaseFragment {
                                 sharedPreferenceManager.putValue(KEY_CARD_NUMBER, cardNumber);
                                 sharedPreferenceManager.putValue(KEY_CODE, code);
 
-                                getBaseActivity().openActivity(HomeActivity.class);
+                                getBaseActivity().openActivity(HomeActivity.class, ACCESS_LOGIN_DONE);
                                 getBaseActivity().finish();
                             }
 
@@ -196,32 +202,5 @@ public class LoginFragment extends BaseFragment {
                         });
     }
 
-
-    private void insertRegisteredDevice(InsertRegisteredDeviceModel insertRegisteredDeviceModel) {
-        new WebServices(getBaseActivity(),
-                getToken(),
-                BaseURLTypes.AHFA_BASE_URL)
-                .webServiceRequestAPIAnyObject(WebServiceConstants.METHOD_USER_INSERT_REGISTERED_DEVICE,
-                        insertRegisteredDeviceModel.toString(),
-                        new WebServices.IRequestWebResponseAnyObjectCallBack() {
-                            @Override
-                            public void requestDataResponse(WebResponse<Object> webResponse) {
-                                boolean isDataInserted = false;
-                                if (webResponse.result instanceof Boolean) {
-                                    isDataInserted = (boolean) webResponse.result;
-                                }
-
-                                if (isDataInserted) {
-                                    getBaseActivity().openActivity(HomeActivity.class);
-                                    getBaseActivity().finish();
-                                }
-                            }
-
-                            @Override
-                            public void onError(Object object) {
-
-                            }
-                        });
-    }
 
 }

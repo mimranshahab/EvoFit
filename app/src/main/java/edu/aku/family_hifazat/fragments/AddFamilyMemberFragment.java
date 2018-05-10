@@ -46,7 +46,6 @@ import butterknife.Unbinder;
 import edu.aku.family_hifazat.R;
 import edu.aku.family_hifazat.fragments.abstracts.BaseFragment;
 import edu.aku.family_hifazat.callbacks.GenericClickableInterface;
-import edu.aku.family_hifazat.fragments.dialogs.SuccessDialogFragment;
 import edu.aku.family_hifazat.helperclasses.validator.MRValidation;
 import edu.aku.family_hifazat.helperclasses.validator.PassportValidation;
 import edu.aku.family_hifazat.managers.FileManager;
@@ -339,20 +338,6 @@ public class AddFamilyMemberFragment extends BaseFragment {
                 .start(getContext(), this);
     }
 
-    private void showSignUpSuccessDialog() {
-
-        final SuccessDialogFragment successDialogFragment = SuccessDialogFragment.newInstance();
-        successDialogFragment.setTitle(getString(R.string.sign_up));
-        successDialogFragment.setMessage(edFullName.getText().toString());
-        successDialogFragment.setButton1(getString(R.string.Ok), new GenericClickableInterface() {
-            @Override
-            public void click() {
-                getBaseActivity().addDockableFragment(VerifyYourNumberFragment.newInstance(), false);
-                successDialogFragment.getDialog().dismiss();
-            }
-        });
-        successDialogFragment.show(getFragmentManager(), null);
-    }
 
 
     @Override

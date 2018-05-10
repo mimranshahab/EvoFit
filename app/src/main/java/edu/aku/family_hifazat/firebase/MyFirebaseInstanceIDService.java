@@ -1,10 +1,15 @@
 package edu.aku.family_hifazat.firebase;
 
+import android.os.CountDownTimer;
+import android.os.Looper;
 import android.util.Log;
 
 import com.crashlytics.android.Crashlytics;
 import com.google.firebase.iid.FirebaseInstanceId;
 import com.google.firebase.iid.FirebaseInstanceIdService;
+
+import java.util.logging.Handler;
+import java.util.logging.LogRecord;
 
 import edu.aku.family_hifazat.activities.HomeActivity;
 import edu.aku.family_hifazat.constatnts.AppConstants;
@@ -15,6 +20,8 @@ import edu.aku.family_hifazat.managers.retrofit.WebServices;
 import edu.aku.family_hifazat.models.sending_model.InsertRegisteredDeviceModel;
 import edu.aku.family_hifazat.models.sending_model.RegisteredDeviceModel;
 import edu.aku.family_hifazat.models.wrappers.WebResponse;
+
+import static edu.aku.family_hifazat.constatnts.AppConstants.KEY_FIREBASE_TOKEN_UPDATED;
 
 
 public class MyFirebaseInstanceIDService extends FirebaseInstanceIdService {
@@ -64,13 +71,7 @@ public class MyFirebaseInstanceIDService extends FirebaseInstanceIdService {
         } else {
             object.setDevicetoken(token);
             prefHelper.putObject(AppConstants.KEY_INSERT_REGISTERED_DEVICE, object);
-            try {
-                insertRegisteredDevice(object);
-            } catch (Exception e) {
-                Log.d(TAG, "sendRegistrationToServer: " + e.getLocalizedMessage());
-                Crashlytics.logException(e.getCause());
-
-            }
+            prefHelper.putValue(KEY_FIREBASE_TOKEN_UPDATED, true);
         }
 
 
@@ -88,25 +89,5 @@ public class MyFirebaseInstanceIDService extends FirebaseInstanceIdService {
     }
 
 
-    private void insertRegisteredDevice(InsertRegisteredDeviceModel insertRegisteredDeviceModel) {
-        new WebServices(getApplicationContext(),
-                SharedPreferenceManager.getInstance(getApplicationContext()).getString(AppConstants.KEY_TOKEN),
-                BaseURLTypes.AHFA_BASE_URL)
-                .webServiceRequestAPIAnyObject(WebServiceConstants.METHOD_USER_INSERT_REGISTERED_DEVICE,
-                        insertRegisteredDeviceModel.toString(),
-                        new WebServices.IRequestWebResponseAnyObjectCallBack() {
-                            @Override
-                            public void requestDataResponse(WebResponse<Object> webResponse) {
-                                boolean isDataInserted = false;
-                                if (webResponse.result instanceof Boolean) {
-                                    isDataInserted = (boolean) webResponse.result;
-                                }
-                            }
 
-                            @Override
-                            public void onError(Object object) {
-
-                            }
-                        });
-    }
 }

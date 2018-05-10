@@ -9,6 +9,7 @@ import com.google.gson.JsonObject;
 
 import java.lang.String;
 
+import edu.aku.family_hifazat.R;
 import edu.aku.family_hifazat.constatnts.WebServiceConstants;
 import edu.aku.family_hifazat.enums.BaseURLTypes;
 import edu.aku.family_hifazat.enums.FileType;
@@ -67,10 +68,43 @@ public class WebServices {
         mDialog = new ProgressDialog(mContext);
         mDialog.setMessage("Processing your request ...");
         mDialog.setTitle("Please Wait");
+        mDialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
+
         mDialog.setCancelable(false);
+
 
         if (!((Activity) mContext).isFinishing())
             mDialog.show();
+    }
+
+    public WebServices(Context activity, String token, BaseURLTypes baseURLTypes, boolean isShowLoader) {
+        switch (baseURLTypes) {
+            case PACS_VIEWER:
+                apiService = WebServiceFactory.getInstancePACSURL(token, bearerToken);
+                break;
+            case AHFA_BASE_URL:
+                apiService = WebServiceFactory.getInstanceBaseURL(token);
+                break;
+            case PACS_IMAGE_DOWNLOAD:
+                apiService = WebServiceFactory.getInstancePACSURL(token, bearerToken);
+                break;
+            case PAYMENT_GATEWAY_URL:
+                apiService = WebServiceFactory.getInstancePaymentGateway("");
+        }
+
+
+        mContext = activity;
+
+        if (isShowLoader) {
+            mDialog = new ProgressDialog(mContext);
+            mDialog.setMessage("Processing your request ...");
+            mDialog.setTitle("Please Wait");
+            mDialog.setCancelable(false);
+
+            if (!((Activity) mContext).isFinishing())
+                mDialog.show();
+        }
+
     }
 
     public WebServices(Context mContext) {
@@ -197,9 +231,10 @@ public class WebServices {
                                     return;
                                 }
 
-                                if (hasValidStatus(response))
-                                    callBack.requestDataResponse(response.body());
-                                else {
+                                if (hasValidStatus(response)) {
+                                    if (callBack != null)
+                                        callBack.requestDataResponse(response.body());
+                                } else {
                                     String message = response.body().message != null ? response.body().message : response.errorBody().toString();
 //                                    UIHelper.showShortToastInCenter(mContext, message);
                                 }
@@ -248,9 +283,10 @@ public class WebServices {
                             return;
                         }
 
-                        if (hasValidStatus(response))
-                            callBack.requestDataResponse(response.body());
-                        else {
+                        if (hasValidStatus(response)) {
+                            if (callBack != null)
+                                callBack.requestDataResponse(response.body());
+                        } else {
                             if (response.body() != null) {
                                 if (response.body().isSuccess()) {
                                     if (response.body().result.get("RecordMessage") == null) {
@@ -282,7 +318,9 @@ public class WebServices {
                                         } else {
                                             UIHelper.showShortToastInCenter(mContext, message);
                                         }
-                                        callBack.onError();
+                                        if (callBack != null) {
+                                            callBack.onError();
+                                        }
                                     }
 
                                 } else {
@@ -298,12 +336,16 @@ public class WebServices {
                     public void onFailure(Call<WebResponse<JsonObject>> call, Throwable t) {
                         UIHelper.showShortToastInCenter(mContext, "Something went wrong, Please check your internet connection.");
                         dismissDialog();
-                        callBack.onError();
+                        if (callBack != null) {
+                            callBack.onError();
+                        }
                     }
                 });
             } else {
                 dismissDialog();
-                callBack.onError();
+                if (callBack != null) {
+                    callBack.onError();
+                }
             }
 
         } catch (
@@ -335,28 +377,37 @@ public class WebServices {
                             try {
                                 errorBody = response.errorBody().string();
                                 UIHelper.showShortToastInCenter(mContext, errorBody);
-                                callBack.onError();
+                                if (callBack != null) {
+                                    callBack.onError();
+                                }
                             } catch (IOException e) {
                                 e.printStackTrace();
                             }
                             return;
                         }
 
-                        if (hasValidStatusForArray(response))
-                            callBack.requestDataResponse(response.body());
-                        else {
+                        if (hasValidStatusForArray(response)) {
+                            if (callBack != null)
+                                callBack.requestDataResponse(response.body());
+                        } else {
                             if (response != null && response.body() != null) {
                                 if (response.body().isSuccess()) {
 
                                     if (response.body().result == null || response.body().result.isEmpty() || response.body().result.get(0) == null) {
                                         UIHelper.showToast(mContext, "Record Missing in API");
-                                        callBack.onError();
+                                        if (callBack != null) {
+                                            callBack.onError();
+                                        }
                                     } else if (response.body().result.get(0).get("RecordMessage") == null) {
                                         errorToastForArray(response);
-                                        callBack.onError();
+                                        if (callBack != null) {
+                                            callBack.onError();
+                                        }
                                     } else if (response.body().result.get(0).get("RecordMessage").isJsonNull()) {
                                         errorToastForArray(response);
-                                        callBack.onError();
+                                        if (callBack != null) {
+                                            callBack.onError();
+                                        }
                                     } else {
 
                                         // FIXME: 5/2/2018 Show Toast here
@@ -371,13 +422,17 @@ public class WebServices {
                                         } else {
 //                                        UIHelper.showShortToastInCenter(mContext, message);
                                         }
-                                        callBack.onError();
+                                        if (callBack != null) {
+                                            callBack.onError();
+                                        }
                                     }
 
                                 } else {
                                     String message = response.body().message != null ? response.body().message : response.errorBody().toString();
 //                                    UIHelper.showShortToastInCenter(mContext, message);
-                                    callBack.onError();
+                                    if (callBack != null) {
+                                        callBack.onError();
+                                    }
                                 }
                             }
 
@@ -388,12 +443,16 @@ public class WebServices {
                     public void onFailure(Call<WebResponse<ArrayList<JsonObject>>> call, Throwable t) {
                         UIHelper.showShortToastInCenter(mContext, "Something went wrong, Please check your internet connection.");
                         dismissDialog();
-                        callBack.onError();
+                        if (callBack != null) {
+                            callBack.onError();
+                        }
                     }
                 });
             } else {
                 dismissDialog();
-                callBack.onError();
+                if (callBack != null) {
+                    callBack.onError();
+                }
             }
 
         } catch (Exception e) {
@@ -421,16 +480,19 @@ public class WebServices {
                             try {
                                 errorBody = response.errorBody().string();
                                 UIHelper.showShortToastInCenter(mContext, errorBody);
-                                callBack.onError();
+                                if (callBack != null) {
+                                    callBack.onError();
+                                }
                             } catch (IOException e) {
                                 e.printStackTrace();
                             }
                             return;
                         }
 
-                        if (hasValidStatusForStringResult(response))
-                            callBack.requestDataResponse(response.body());
-                        else {
+                        if (hasValidStatusForStringResult(response)) {
+                            if (callBack != null)
+                                callBack.requestDataResponse(response.body());
+                        } else {
                             String message = response.body().message != null ? response.body().message : response.errorBody().toString();
                             UIHelper.showShortToastInCenter(mContext, message);
                         }
@@ -440,12 +502,16 @@ public class WebServices {
                     public void onFailure(Call<WebResponse<String>> call, Throwable t) {
                         UIHelper.showShortToastInCenter(mContext, "Something went wrong, Please check your internet connection.");
                         dismissDialog();
-                        callBack.onError();
+                        if (callBack != null) {
+                            callBack.onError();
+                        }
                     }
                 });
             } else {
                 dismissDialog();
-                callBack.onError();
+                if (callBack != null) {
+                    callBack.onError();
+                }
             }
 
         } catch (Exception e) {
@@ -475,7 +541,8 @@ public class WebServices {
                         }
 
                         if (response.isSuccessful() && response.body().isSuccess()) {
-                            callBack.requestDataResponse(response.body());
+                            if (callBack != null)
+                                callBack.requestDataResponse(response.body());
                         } else {
                             String message = response.body().message != null ? response.body().message : response.errorBody().toString();
                             callBack.onError(message);
@@ -523,7 +590,8 @@ public class WebServices {
                         dismissDialog();
                         if (response != null && response.body() != null) {
                             if (!response.body().isEmpty()) {
-                                callBack.requestDataResponse(response.body());
+                                if (callBack != null)
+                                    callBack.requestDataResponse(response.body());
                             }
 
                         } else {
@@ -535,12 +603,16 @@ public class WebServices {
                     public void onFailure(Call<String> call, Throwable t) {
                         UIHelper.showShortToastInCenter(mContext, "Something went wrong, Please check your internet connection.");
                         dismissDialog();
-                        callBack.onError();
+                        if (callBack != null) {
+                            callBack.onError();
+                        }
                     }
                 });
             } else {
                 dismissDialog();
-                callBack.onError();
+                if (callBack != null) {
+                    callBack.onError();
+                }
             }
 
         } catch (Exception e) {
@@ -589,7 +661,8 @@ public class WebServices {
                         dismissDialog();
                         if (response.body() != null) {
 //                            if (!response.body()) {
-//                                callBack.requestDataResponse(response.body());
+// if (callBack!=null)
+// callBack.requestDataResponse(response.body());
 //                            }
                             UIHelper.showToast(mContext, response.body().toString());
 
@@ -602,12 +675,16 @@ public class WebServices {
                     public void onFailure(Call<Object> call, Throwable t) {
                         UIHelper.showShortToastInCenter(mContext, "Something went wrong, Please check your internet connection.");
                         dismissDialog();
-                        callBack.onError();
+                        if (callBack != null) {
+                            callBack.onError();
+                        }
                     }
                 });
             } else {
                 dismissDialog();
-                callBack.onError();
+                if (callBack != null) {
+                    callBack.onError();
+                }
             }
 
         } catch (Exception e) {
@@ -636,7 +713,9 @@ public class WebServices {
                             try {
                                 errorBody = response.errorBody().string();
                                 UIHelper.showShortToastInCenter(mContext, errorBody);
-                                callBack.onError();
+                                if (callBack != null) {
+                                    callBack.onError();
+                                }
                             } catch (IOException e) {
                                 e.printStackTrace();
                             }
@@ -645,7 +724,8 @@ public class WebServices {
 
 
                         if (response.body() != null && response.body().isSuccess()) {
-                            callBack.requestDataResponse(response.body());
+                            if (callBack != null)
+                                callBack.requestDataResponse(response.body());
                         } else {
                             if (response.body() != null) {
                                 if (response.body().isSuccess()) {
@@ -680,12 +760,16 @@ public class WebServices {
                     public void onFailure(Call<WebResponse<JsonObject>> call, Throwable t) {
                         UIHelper.showShortToastInCenter(mContext, "Something went wrong, Please check your internet connection.");
                         dismissDialog();
-                        callBack.onError();
+                        if (callBack != null) {
+                            callBack.onError();
+                        }
                     }
                 });
             } else {
                 dismissDialog();
-                callBack.onError();
+                if (callBack != null) {
+                    callBack.onError();
+                }
             }
 
         } catch (Exception e) {
@@ -705,7 +789,9 @@ public class WebServices {
 
 
     private void dismissDialog() {
-        mDialog.dismiss();
+        if (mDialog != null) {
+            mDialog.dismiss();
+        }
     }
 
 
@@ -760,7 +846,8 @@ public class WebServices {
 //                            try {
 //                                errorBody = response.errorBody().string();
 //                                UIHelper.showShortToastInCenter(mContext, errorBody);
-//                                callBack.onError();
+//                                if (callBack != null)
+                                    callBack.onError();
 //                            } catch (IOException e) {
 //                                e.printStackTrace();
 //                            }
@@ -768,7 +855,8 @@ public class WebServices {
 //                        }
 
 //                        if (hasValidStatusForStringResult(response))
-//                            callBack.requestDataResponse(response.body());
+// if (callBack!=null)
+// callBack.requestDataResponse(response.body());
 //                        else {
 //                            String message = response.body().message != null ? response.body().message : response.errorBody().toString();
 //                            UIHelper.showShortToastInCenter(mContext, message);
@@ -779,12 +867,16 @@ public class WebServices {
                             public void onFailure(Call<WebResponse<JsonObject>> call, Throwable t) {
                                 UIHelper.showShortToastInCenter(mContext, "Something went wrong, Please check your internet connection.");
                                 dismissDialog();
-                                callBack.onError();
+                                if (callBack != null) {
+                                    callBack.onError();
+                                }
                             }
                         });
             } else {
                 dismissDialog();
-                callBack.onError();
+                if (callBack != null) {
+                    callBack.onError();
+                }
             }
 
         } catch (Exception e) {

@@ -75,8 +75,13 @@ public class CardioAdapter extends RecyclerView.Adapter<CardioAdapter.ViewHolder
                     R.drawable.rounded_box_filled_base_green, R.drawable.cardiopulmonary_green, R.drawable.b_cardiopulmonary_transparent);
 
         } else {
-            holder.RlReport.setVisibility(View.GONE);
-            holder.RlGraph.setVisibility(View.GONE);
+//            holder.RlReport.setVisibility(View.GONE);
+//            holder.RlGraph.setVisibility(View.GONE);
+            holder.RlGraph.setEnabled(false);
+            holder.RlGraph.setAlpha(.15f);
+            holder.RlReport.setEnabled(false);
+            holder.RlReport.setAlpha(.15f);
+
             setViews(holder, activity.getResources().getColor(R.color.base_amber),
                     R.drawable.rounded_box_filled_base_amber, R.drawable.cardiopulmonary_amber, R.drawable.b_cardiopulmonary_transparent);
         }

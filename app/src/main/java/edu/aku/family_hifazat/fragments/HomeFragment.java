@@ -26,6 +26,7 @@ import butterknife.OnClick;
 import butterknife.Unbinder;
 import de.hdodenhof.circleimageview.CircleImageView;
 import edu.aku.family_hifazat.R;
+import edu.aku.family_hifazat.activities.MainActivity;
 import edu.aku.family_hifazat.adapters.recyleradapters.HomeAdapter;
 import edu.aku.family_hifazat.callbacks.OnItemClickListener;
 import edu.aku.family_hifazat.callbacks.OnNewPacketReceivedListener;
@@ -34,7 +35,9 @@ import edu.aku.family_hifazat.constatnts.Events;
 import edu.aku.family_hifazat.constatnts.WebServiceConstants;
 import edu.aku.family_hifazat.enums.BaseURLTypes;
 import edu.aku.family_hifazat.fragments.abstracts.BaseFragment;
+import edu.aku.family_hifazat.managers.SharedPreferenceManager;
 import edu.aku.family_hifazat.models.receiving_model.AddUpdateModel;
+import edu.aku.family_hifazat.models.sending_model.InsertRegisteredDeviceModel;
 import edu.aku.family_hifazat.models.sending_model.RegisteredDeviceModel;
 import edu.aku.family_hifazat.widget.TitleBar;
 import edu.aku.family_hifazat.helperclasses.ui.helper.UIHelper;
@@ -47,6 +50,7 @@ import edu.aku.family_hifazat.models.wrappers.WebResponse;
 import edu.aku.family_hifazat.widget.AnyTextView;
 
 import static edu.aku.family_hifazat.constatnts.AppConstants.KEY_CODE;
+import static edu.aku.family_hifazat.constatnts.AppConstants.KEY_FIREBASE_TOKEN_UPDATED;
 
 /**
  * Created by aqsa.sarwar on 1/16/2018.
@@ -77,6 +81,7 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener, 
     private HomeAdapter adaptHome;
     private ArrayList<UserDetailModel> arrUserLists;
     UserDetailModel subscriber;
+    private String intentData;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -93,11 +98,12 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener, 
         return R.layout.fragment_home;
     }
 
-    public static HomeFragment newInstance() {
+    public static HomeFragment newInstance(String intentData) {
 
         Bundle args = new Bundle();
 
         HomeFragment fragment = new HomeFragment();
+        fragment.intentData = intentData;
         fragment.setArguments(args);
         return fragment;
     }
@@ -122,29 +128,18 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener, 
         RegisteredDeviceModel registeredDevice = AppConstants.getRegisteredDevice(getContext(), getBaseActivity());
         registeredDevice.setLoginCode(sharedPreferenceManager.getString(KEY_CODE));
 
-        saveAccessLogCall(registeredDevice);
-
-
-    }
-
-    private void setData() {
-        if (imgUser == null || txtName == null || txtGenderAge == null || txtMRN == null) {
-            return;
-        }
-
-        if (subscriber.getProfileImage() == null || subscriber.getProfileImage().isEmpty()) {
-            if (subscriber.getGender().equals("F")) {
-                imgUser.setImageResource(R.drawable.female_icon_filled);
-            } else {
-                imgUser.setImageResource(R.drawable.male_icon_filled);
-            }
+        if (intentData != null && intentData.equals(AppConstants.ACCESS_LOGIN_DONE)) {
+            getCardDetailServiceCall();
         } else {
-            ImageLoaderHelper.loadImageWithConstantHeaders(getContext(), imgUser, subscriber.getProfileImage());
+            saveAccessLogCall(registeredDevice);
         }
 
-        txtName.setText(subscriber.getName());
-        txtGenderAge.setText(subscriber.getGenderDescription() + "/" + subscriber.getAge());
-        txtMRN.setText(subscriber.getMRNumber());
+        if (sharedPreferenceManager.getBoolean(KEY_FIREBASE_TOKEN_UPDATED)) {
+            InsertRegisteredDeviceModel insertRegisteredDeviceModel = sharedPreferenceManager.getObject(AppConstants.KEY_INSERT_REGISTERED_DEVICE, InsertRegisteredDeviceModel.class);
+            insertRegisteredDevice(insertRegisteredDeviceModel);
+        }
+
+
     }
 
     private void getCardDetailServiceCall() {
@@ -177,7 +172,7 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener, 
     private void saveAccessLogCall(RegisteredDeviceModel registeredDeviceModel) {
         new WebServices(getBaseActivity(),
                 getToken(),
-                BaseURLTypes.AHFA_BASE_URL)
+                BaseURLTypes.AHFA_BASE_URL, false)
                 .webServiceRequestAPIForJsonObject(WebServiceConstants.METHOD_USER_SAVE_ACCESS_LOG,
                         registeredDeviceModel.toString(),
                         new WebServices.IRequestJsonDataCallBack() {
@@ -187,14 +182,14 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener, 
                                 if (addUpdateModel.getStatus()) {
                                     getCardDetailServiceCall();
                                 } else {
-                                    LeftSideMenuFragment.logoutClick(HomeFragment.this);
+                                    UIHelper.showToast(getContext(), "Session Logout");
+                                    sharedPreferenceManager.clearDB();
+                                    getBaseActivity().clearAllActivitiesExceptThis(MainActivity.class);
                                 }
                             }
 
                             @Override
                             public void onError() {
-                                // FIXME: 5/7/2018 Remove this toast if necessary
-                                UIHelper.showToast(getContext(), "Check your connectivity");
                                 getCardDetailServiceCall();
 
                             }
@@ -326,6 +321,30 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener, 
 
 
     }
+
+    private void insertRegisteredDevice(InsertRegisteredDeviceModel insertRegisteredDeviceModel) {
+        new WebServices(getContext(),
+                SharedPreferenceManager.getInstance(getContext()).getString(AppConstants.KEY_TOKEN),
+                BaseURLTypes.AHFA_BASE_URL)
+                .webServiceRequestAPIAnyObject(WebServiceConstants.METHOD_USER_INSERT_REGISTERED_DEVICE,
+                        insertRegisteredDeviceModel.toString(),
+                        new WebServices.IRequestWebResponseAnyObjectCallBack() {
+                            @Override
+                            public void requestDataResponse(WebResponse<Object> webResponse) {
+                                boolean isDataInserted = false;
+                                if (webResponse.result instanceof Boolean) {
+                                    isDataInserted = (boolean) webResponse.result;
+                                    sharedPreferenceManager.putValue(KEY_FIREBASE_TOKEN_UPDATED, false);
+                                }
+                            }
+
+                            @Override
+                            public void onError(Object object) {
+
+                            }
+                        });
+    }
+
 
     @Override
     public void onNewPacket(int event, Object data) {

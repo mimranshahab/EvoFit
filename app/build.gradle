@@ -4,7 +4,7 @@ buildscript {
     }
 
     dependencies {
-        classpath 'io.fabric.tools:gradle:1.+'
+        classpath 'io.fabric.tools:gradle:1.25.3'
     }
 }
 apply plugin: 'com.android.application'
@@ -23,8 +23,8 @@ android {
         applicationId 'edu.aku.family_hifazat'
         minSdkVersion 17
         targetSdkVersion 22
-        versionCode 9
-        versionName "2.0.9"
+        versionCode 10
+        versionName "2.0.10"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
         multiDexEnabled true
         vectorDrawables.useSupportLibrary = true
@@ -108,12 +108,10 @@ dependencies {
     compile 'com.github.warkiz.widget:indicatorseekbar:1.2.9'
     compile 'com.jsibbold:zoomage:1.1.0'
     compile 'com.shawnlin:number-picker:2.4.6'
-    implementation 'com.ramotion.fluidslider:fluid-slider:0.2.0'
 
-    compile('com.crashlytics.sdk.android:crashlytics:2.9.1@aar') {
-        transitive = true;
+    compile('com.crashlytics.sdk.android:crashlytics:2.9.2@aar') {
+        transitive = true
     }
-
 }
 
 apply plugin: 'com.google.gms.google-services'

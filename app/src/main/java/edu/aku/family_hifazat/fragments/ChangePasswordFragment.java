@@ -23,6 +23,7 @@ import edu.aku.family_hifazat.fragments.abstracts.BaseFragment;
 import edu.aku.family_hifazat.fragments.abstracts.GenericDialogFragment;
 import edu.aku.family_hifazat.helperclasses.ui.helper.UIHelper;
 import edu.aku.family_hifazat.helperclasses.validator.CardNumberValidation;
+import edu.aku.family_hifazat.helperclasses.validator.PasswordValidation;
 import edu.aku.family_hifazat.libraries.maskformatter.MaskFormatter;
 import edu.aku.family_hifazat.managers.retrofit.WebServices;
 import edu.aku.family_hifazat.models.sending_model.NewPasswordModel;
@@ -94,6 +95,15 @@ public class ChangePasswordFragment extends BaseFragment {
     @Override
     public void setListeners() {
 
+        if (cardNumber != null) {
+            txtPinForgotPass.setOnPinEnteredListener(new PinEntryEditText.OnPinEnteredListener() {
+                @Override
+                public void onPinEntered(CharSequence str) {
+                    edtNewPassword.requestFocus();
+                    edtNewPassword.performClick();
+                }
+            });
+        }
     }
 
     @Override
@@ -125,6 +135,9 @@ public class ChangePasswordFragment extends BaseFragment {
             edCardNumber.setAlpha(0.5f);
         }
 
+        edtNewPassword.addValidator(new PasswordValidation());
+        edtConPassword.addValidator(new PasswordValidation(edtNewPassword));
+
         edCardNumber.addValidator(new CardNumberValidation());
         edCardNumber.addTextChangedListener(new MaskFormatter(CARD_MASK, edCardNumber, '-'));
     }
@@ -142,7 +155,7 @@ public class ChangePasswordFragment extends BaseFragment {
             case R.id.btnLogin:
 
                 if (edCardNumber.testValidity() && edCardNumber.getStringTrimmed().length() == 14 && edtNewPassword.testValidity() && edtConPassword.testValidity() && txtPinForgotPass.getText().toString().length() == 6) {
-                    if (edtNewPassword.getText().toString().length() >= 6 && edtConPassword.getText().toString().length() >= 6) {
+                    if (edtNewPassword.getText().toString().length() >= 8 && edtConPassword.getText().toString().length() >= 8) {
                         if (edtNewPassword.getText().toString().equals(edtConPassword.getText().toString())) {
                             NewPasswordModel newPasswordModel = new NewPasswordModel();
                             newPasswordModel.setCardnumber(edCardNumber.getStringTrimmed());

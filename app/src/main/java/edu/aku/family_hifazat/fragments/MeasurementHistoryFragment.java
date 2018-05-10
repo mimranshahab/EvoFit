@@ -13,42 +13,25 @@ import android.view.animation.AnimationUtils;
 import android.view.animation.LayoutAnimationController;
 import android.widget.AdapterView;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 
 import com.github.clans.fab.FloatingActionButton;
-import com.google.gson.JsonObject;
-import com.google.gson.reflect.TypeToken;
-import com.shawnlin.numberpicker.NumberPicker;
 
-import java.lang.reflect.Type;
 import java.util.ArrayList;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
-import butterknife.OnClick;
 import butterknife.Unbinder;
 import edu.aku.family_hifazat.R;
-import edu.aku.family_hifazat.adapters.recyleradapters.EndoscopyAdapter;
 import edu.aku.family_hifazat.adapters.recyleradapters.MeasurmentHistoryAdapter;
 import edu.aku.family_hifazat.callbacks.OnItemClickListener;
-import edu.aku.family_hifazat.constatnts.AppConstants;
-import edu.aku.family_hifazat.constatnts.WebServiceConstants;
-import edu.aku.family_hifazat.enums.BaseURLTypes;
 import edu.aku.family_hifazat.fragments.abstracts.BaseFragment;
-import edu.aku.family_hifazat.helperclasses.StringHelper;
-import edu.aku.family_hifazat.helperclasses.ui.helper.UIHelper;
-import edu.aku.family_hifazat.managers.retrofit.GsonFactory;
-import edu.aku.family_hifazat.managers.retrofit.WebServices;
 import edu.aku.family_hifazat.models.HealthSummaryHistoryModel;
 import edu.aku.family_hifazat.models.PatientHealthSummaryModel;
-import edu.aku.family_hifazat.models.receiving_model.AddUpdateModel;
-import edu.aku.family_hifazat.models.wrappers.WebResponse;
 import edu.aku.family_hifazat.widget.AnyEditTextView;
 import edu.aku.family_hifazat.widget.AnyTextView;
 import edu.aku.family_hifazat.widget.TitleBar;
-
-import static android.view.View.GONE;
-import static edu.aku.family_hifazat.constatnts.AppConstants.ENTRY_SOURCE;
 
 /**
  * Created by aqsa.sarwar on 4/26/2018.
@@ -69,6 +52,8 @@ public class MeasurementHistoryFragment extends BaseFragment implements OnItemCl
     FloatingActionButton fab;
     @BindView(R.id.contParent)
     RelativeLayout contParent;
+    @BindView(R.id.contParentLayout)
+    LinearLayout contParentLayout;
 
     private PatientHealthSummaryModel modelWEIGHT;
     private PatientHealthSummaryModel modelHEIGHT;
@@ -157,6 +142,7 @@ public class MeasurementHistoryFragment extends BaseFragment implements OnItemCl
         LayoutAnimationController animation = AnimationUtils.loadLayoutAnimation(getContext(), resId);
 //        recyclerView.setLayoutAnimation(animation);
         recylerView.setAdapter(adapter);
+        contParentLayout.setBackgroundColor(getResources().getColor(R.color.c_white));
     }
 
     private void setData() {

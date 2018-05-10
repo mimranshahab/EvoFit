@@ -92,6 +92,9 @@ public class AppConstants {
     public static final String KEY_CROSS_TAB_DATA = "cross_tab";
     public static final String KEY_REGISTERED_DEVICE = "registered_device";
     public static final String KEY_INSERT_REGISTERED_DEVICE = "registered_device";
+    public static final String KEY_FIREBASE_TOKEN_UPDATED = "FIREBASE_TOKEN_UPDATED";
+    public static final String KEY_PIN_CODE = "pin_code";
+    public static final String KEY_IS_PIN_ENABLE = "is_pin_enable";
 
 
     /**
@@ -107,6 +110,11 @@ public class AppConstants {
      */
     public static String FILE_NAME = "AKUH-PatientReport";
 
+
+    /**
+     * Data Static Strings
+     */
+
     public static String AboutUs = "<B>Family Hifazat</B> is a product of Aga Khan University Hospital Karachi. It provides discounts on medical services as well as patients’ access to their personal health records through web portal and mobile applications." + "<BR><BR>" +
             "The <B>Family Hifazat</B> “Patient Portal” is secure, confidential and easy to use web portal &amp; mobile apps to provide AKUH patients 24 hour access to their personal health records including diagnostic results, imaging, medications, vaccines and discharge summaries.";
 
@@ -115,6 +123,7 @@ public class AppConstants {
 
     public static String DEVICE_OS_ANDROID = "ANDROID";
     public static String ENTRY_SOURCE = "Manual";
+    public static String ACCESS_LOGIN_DONE = "Access_Login_Done";
 
 
     private static String getDeviceID(Context context) {

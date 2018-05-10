@@ -78,7 +78,7 @@
                                 android:gravity="start"
 
                                 android:maxLines="1"
-                                android:padding="@dimen/x5dp"
+                                android:padding="@dimen/x2dp"
                                 android:text="-"
                                 android:textColor="@color/txt_aku_blue"
                                 android:textSize="@dimen/s18"
@@ -134,7 +134,7 @@
                                 android:ellipsize="end"
                                 android:gravity="end"
                                 android:maxLines="1"
-                                android:padding="@dimen/x5dp"
+                                android:padding="@dimen/x2dp"
                                 android:text="-"
                                 android:textColor="@color/txt_aku_blue"
                                 android:textSize="@dimen/s18"
@@ -186,7 +186,7 @@
                                 android:ellipsize="end"
 
                                 android:maxLines="1"
-                                android:padding="@dimen/x5dp"
+                                android:padding="@dimen/x2dp"
                                 android:text="-"
                                 android:textColor="@color/txt_aku_blue"
                                 android:textSize="@dimen/s18"

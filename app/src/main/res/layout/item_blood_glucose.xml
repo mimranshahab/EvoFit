@@ -93,7 +93,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_gravity="bottom"
-                                android:drawableLeft="@drawable/medicine_source"
+                                android:drawableLeft="@drawable/record"
                                 android:paddingTop="@dimen/x1dp"
                                 android:text=""
                                 android:textColor="@color/text_color_grey"
