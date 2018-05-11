@@ -28,7 +28,7 @@
                 android:padding="@dimen/x5dp"
                 android:text="Displaying result for Visit ID: "
                 android:textColor="@color/txt_aku_blue"
-                android:textSize="@dimen/s16"
+                android:textSize="@dimen/s12"
                 app:typeface="@string/font_regular" />
 
         </LinearLayout>

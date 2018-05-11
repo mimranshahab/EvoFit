@@ -222,7 +222,7 @@ public class CardiolopulmonaryFragment extends BaseFragment implements View.OnCl
 
     private void serviceCall() {
          SearchModel model = new SearchModel();
-//        model.setMRNumber(WebServiceConstants.tempMRN_Cardio);
+//        model.setMRNumber("200-47-97");
         model.setMRNumber(getCurrentUser().getMRNumber());
         if (isFromTimeline) {
             model.setVisitID(String.valueOf(patientVisitAdmissionID));

@@ -27,7 +27,6 @@ import edu.aku.family_hifazat.constatnts.Events;
 import edu.aku.family_hifazat.constatnts.WebServiceConstants;
 import edu.aku.family_hifazat.enums.BaseURLTypes;
 import edu.aku.family_hifazat.fragments.abstracts.BaseFragment;
-import edu.aku.family_hifazat.widget.TitleBar;
 import edu.aku.family_hifazat.helperclasses.ui.helper.UIHelper;
 import edu.aku.family_hifazat.managers.retrofit.GsonFactory;
 import edu.aku.family_hifazat.managers.retrofit.WebServices;
@@ -40,6 +39,7 @@ import edu.aku.family_hifazat.models.sending_model.EditCardModel;
 import edu.aku.family_hifazat.models.wrappers.WebResponse;
 import edu.aku.family_hifazat.widget.AnyEditTextView;
 import edu.aku.family_hifazat.widget.AnyTextView;
+import edu.aku.family_hifazat.widget.TitleBar;
 
 
 /**
@@ -59,14 +59,9 @@ public class EditProfileFragment extends BaseFragment {
     AnyEditTextView edtCurrentCity;
     @BindView(R.id.txtCurrentCountry)
     AnyTextView txtCurrentCountry;
-    @BindView(R.id.edtPermanentAddress)
-    AnyTextView edtPermanentAddress;
-    @BindView(R.id.edtPermanentCity)
-    AnyTextView edtPermanentCity;
-    @BindView(R.id.txtPermanentCountry)
-    AnyTextView txtPermanentCountry;
     @BindView(R.id.btnUpdate)
     AnyTextView btnUpdate;
+
     private IntWrapper currentCountryPosition = new IntWrapper(-1);
     private IntWrapper permanentCountry = new IntWrapper(-1);
     private SpinnerModel tempSpinnerModel;
@@ -112,9 +107,6 @@ public class EditProfileFragment extends BaseFragment {
         edtCurrentCity.setText(user.getCurrentCity());
         txtCurrentCountry.setText(user.getCurrentCountryDescription());
 
-        edtPermanentCity.setText(user.getPermanentCity());
-        edtPermanentAddress.setText(user.getPermanentAddress());
-        txtPermanentCountry.setText(user.getPermanentCountryDescription());
 
 
     }
@@ -230,10 +222,7 @@ public class EditProfileFragment extends BaseFragment {
         if (!Objects.equals(edMobileNumber.getStringTrimmed(), "") &&
                 !Objects.equals(edtCurrentAddress.getStringTrimmed(), "") &&
                 !Objects.equals(edtCurrentCity.getStringTrimmed(), "") &&
-                !Objects.equals(txtCurrentCountry.getStringTrimmed(), "") &&
-                !Objects.equals(edtPermanentAddress.getStringTrimmed(), "") &&
-                !Objects.equals(txtPermanentCountry.getStringTrimmed(), "") &&
-                !Objects.equals(edtPermanentCity.getStringTrimmed(), "")) {
+                !Objects.equals(txtCurrentCountry.getStringTrimmed(), "")) {
             new WebServices(getBaseActivity(),
                     getToken(),
                     BaseURLTypes.AHFA_BASE_URL)

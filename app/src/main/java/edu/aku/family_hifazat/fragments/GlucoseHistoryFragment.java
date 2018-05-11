@@ -202,21 +202,20 @@ public class GlucoseHistoryFragment extends BaseFragment implements OnItemClickL
                     txtFasting.setBackgroundResource(R.drawable.gluco_button_left_selected);
                     txtFasting.setTextColor(getResources().getColor(R.color.c_white));
                     txtRandom.setBackgroundResource(R.drawable.gluco_button_right_unselected);
-                    txtRandom.setTextColor(getResources().getColor(R.color.text_color_grey));
+                    txtRandom.setTextColor(getResources().getColor(R.color.base_reddish_light));
 
                     setData(typeFasting);
                 }
 
 
-                break;
-            case R.id.txtRandom:
+                break;case R.id.txtRandom:
 
                 if (isGlucoseFasting) {
                     isGlucoseFasting = false;
                     txtRandom.setBackgroundResource(R.drawable.gluco_button_right_selected);
                     txtRandom.setTextColor(getResources().getColor(R.color.c_white));
                     txtFasting.setBackgroundResource(R.drawable.gluco_button_left_unselected);
-                    txtFasting.setTextColor(getResources().getColor(R.color.text_color_grey));
+                    txtFasting.setTextColor(getResources().getColor(R.color.base_reddish_light));
                     setData(typeRandom);
                 }
 

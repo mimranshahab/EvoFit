@@ -19,7 +19,7 @@
         app:tabMode="fixed"
         app:tabSelectedTextColor="@color/c_white"
         app:tabTextAppearance="@android:style/TextAppearance.Widget.TabWidget"
-        app:tabTextColor="@color/txt_aku_blue" />
+        app:tabTextColor="@color/c_white" />
 
     <edu.aku.family_hifazat.widget.CustomViewPager
         android:id="@+id/viewpager"

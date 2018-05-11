@@ -81,6 +81,8 @@
                     android:drawableStart="@drawable/c_cardsubscription_menu_icon"
                     android:gravity="center_vertical"
                     android:padding="@dimen/x15dp"
+                    android:visibility="gone"
+
                     android:singleLine="true"
                     android:text="Card Subscription"
                     android:textColor="@color/c_white"

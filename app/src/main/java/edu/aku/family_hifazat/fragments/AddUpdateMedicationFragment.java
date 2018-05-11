@@ -138,7 +138,7 @@ public class AddUpdateMedicationFragment extends BaseFragment {
     public void setTitlebar(TitleBar titleBar) {
         titleBar.resetViews();
         if (isFromAdd) {
-            titleBar.setTitle("Add New Medicine");
+            titleBar.setTitle("Add Medicine");
         } else {
             titleBar.setTitle("Update Medicine");
         }

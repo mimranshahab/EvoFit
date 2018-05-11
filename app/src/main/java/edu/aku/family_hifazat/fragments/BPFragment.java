@@ -116,6 +116,7 @@ public class BPFragment extends BaseFragment {
                 if (isDiastolicValuieChanged) {
                     if (!btnSave.isEnabled()) {
                         btnSave.setEnabled(true);
+                        btnSave.setBackground(getResources().getDrawable(R.drawable.rounded_box_filled_btn_blue));
                         btnSave.setAlpha(1);
                     }
                 }
@@ -129,6 +130,8 @@ public class BPFragment extends BaseFragment {
                 if (isSystolicValueChanged) {
                     if (!btnSave.isEnabled()) {
                         btnSave.setEnabled(true);
+                        btnSave.setBackground(getResources().getDrawable(R.drawable.rounded_box_filled_btn_blue));
+
                         btnSave.setAlpha(1);
                     }
                 }

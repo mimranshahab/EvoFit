@@ -116,15 +116,21 @@
 
 
     </RelativeLayout>
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:layout_marginTop="@dimen/x7dp"
+        android:orientation="horizontal">
 
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:src="@drawable/family_icon" />
     <edu.aku.family_hifazat.widget.AnyTextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="@dimen/x5dp"
-        android:layout_marginRight="@dimen/x5dp"
-        android:layout_marginTop="@dimen/x7dp"
-        android:drawableLeft="@drawable/family_icon"
-        android:drawablePadding="@dimen/x5dp"
+
         android:padding="@dimen/x5dp"
         android:text="Family Members"
         android:textColor="@color/colorPrimary"
@@ -132,7 +138,7 @@
         app:typeface="@string/font_bold"
 
         />
-
+    </LinearLayout>
     <android.support.v7.widget.RecyclerView
         android:id="@+id/listFamilyMembers"
         android:layout_width="match_parent"

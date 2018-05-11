@@ -51,15 +51,11 @@ public class CardioAdapter extends RecyclerView.Adapter<CardioAdapter.ViewHolder
 
         final CardioModel model = arrListCardioModel.get(holder.getAdapterPosition());
         holder.txtDateTime.setText(model.getRequestServiceDateTime());
-
         holder.txtName.setText(model.getService());
-
-
         holder.RlReport.setVisibility(View.VISIBLE);
         holder.RlGraph.setVisibility(View.VISIBLE);
         holder.txtStatusType.setVisibility(View.VISIBLE);
         holder.imgStatus.setVisibility(View.VISIBLE);
-
         holder.txtDrName.setText(model.getLastFileUser());
 
         setEnability(holder, model);
@@ -72,7 +68,8 @@ public class CardioAdapter extends RecyclerView.Adapter<CardioAdapter.ViewHolder
             holder.RlGraph.setVisibility(View.VISIBLE);
 
             setViews(holder, activity.getResources().getColor(R.color.base_green),
-                    R.drawable.rounded_box_filled_base_green, R.drawable.cardiopulmonary_green, R.drawable.b_cardiopulmonary_transparent);
+                    R.drawable.rounded_box_filled_base_green, R.drawable.cardiopulmonary_green,
+                    R.drawable.b_cardiopulmonary_transparent);
 
         } else {
 //            holder.RlReport.setVisibility(View.GONE);
@@ -83,7 +80,8 @@ public class CardioAdapter extends RecyclerView.Adapter<CardioAdapter.ViewHolder
             holder.RlReport.setAlpha(.15f);
 
             setViews(holder, activity.getResources().getColor(R.color.base_amber),
-                    R.drawable.rounded_box_filled_base_amber, R.drawable.cardiopulmonary_amber, R.drawable.b_cardiopulmonary_transparent);
+                    R.drawable.rounded_box_filled_base_amber, R.drawable.cardiopulmonary_amber,
+                    R.drawable.b_cardiopulmonary_transparent);
         }
 
 

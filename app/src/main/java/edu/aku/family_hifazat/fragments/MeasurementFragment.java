@@ -125,6 +125,7 @@ public class MeasurementFragment extends BaseFragment {
                 if (isWeightValuieChanged) {
                     if (!btnSave.isEnabled()) {
                         btnSave.setEnabled(true);
+                        btnSave.setBackground(getResources().getDrawable(R.drawable.rounded_box_filled_btn_blue));
                         btnSave.setAlpha(1);
                     }
                 }
@@ -138,6 +139,7 @@ public class MeasurementFragment extends BaseFragment {
                 if (isHeightValueChanged) {
                     if (!btnSave.isEnabled()) {
                         btnSave.setEnabled(true);
+                        btnSave.setBackground(getResources().getDrawable(R.drawable.rounded_box_filled_btn_blue));
                         btnSave.setAlpha(1);
                     }
                 }

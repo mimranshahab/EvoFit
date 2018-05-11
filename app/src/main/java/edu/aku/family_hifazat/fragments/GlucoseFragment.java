@@ -126,6 +126,8 @@ public class GlucoseFragment extends BaseFragment {
             public void onValueChange(NumberPicker picker, int oldVal, int newVal) {
                 if (!btnSave.isEnabled()) {
                     btnSave.setEnabled(true);
+                    btnSave.setBackground(getResources().getDrawable(R.drawable.rounded_box_filled_btn_blue));
+
                     btnSave.setAlpha(1);
                 }
             }
@@ -221,7 +223,7 @@ public class GlucoseFragment extends BaseFragment {
                     txtFasting.setBackgroundResource(R.drawable.gluco_button_left_selected);
                     txtFasting.setTextColor(getResources().getColor(R.color.c_white));
                     txtRandom.setBackgroundResource(R.drawable.gluco_button_right_unselected);
-                    txtRandom.setTextColor(getResources().getColor(R.color.text_color_grey));
+                    txtRandom.setTextColor(getResources().getColor(R.color.base_reddish_light));
 //                    txtDescription.setText("Glucose Fasting (mg/dl)");
                     txtDescription.setText(modelGLUF.getHealthindicator().getHealthindicatordescription() + " (" + modelGLUF.getHealthindicator().getUnit() + ")");
                 }
@@ -235,7 +237,7 @@ public class GlucoseFragment extends BaseFragment {
                     txtRandom.setBackgroundResource(R.drawable.gluco_button_right_selected);
                     txtRandom.setTextColor(getResources().getColor(R.color.c_white));
                     txtFasting.setBackgroundResource(R.drawable.gluco_button_left_unselected);
-                    txtFasting.setTextColor(getResources().getColor(R.color.text_color_grey));
+                    txtFasting.setTextColor(getResources().getColor(R.color.base_reddish_light));
 //                    txtDescription.setText("Glucose Random (mg/dl)");
                     txtDescription.setText(modelGLUR.getHealthindicator().getHealthindicatordescription() + " (" + modelGLUR.getHealthindicator().getUnit() + ")");
                 }

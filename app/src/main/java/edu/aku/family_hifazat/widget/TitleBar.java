@@ -4,6 +4,8 @@ import android.animation.Animator;
 import android.app.Activity;
 import android.content.Context;
 import android.support.v4.view.GravityCompat;
+import android.text.style.AbsoluteSizeSpan;
+import android.text.style.TextAppearanceSpan;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -18,6 +20,7 @@ import de.hdodenhof.circleimageview.CircleImageView;
 import edu.aku.family_hifazat.R;
 import edu.aku.family_hifazat.activities.BaseActivity;
 import edu.aku.family_hifazat.activities.HomeActivity;
+import edu.aku.family_hifazat.helperclasses.Spanny;
 import edu.aku.family_hifazat.helperclasses.ui.helper.UIHelper;
 import edu.aku.family_hifazat.libraries.imageloader.ImageLoaderHelper;
 import edu.aku.family_hifazat.models.TimelineModel;
@@ -225,10 +228,13 @@ public class TitleBar extends RelativeLayout {
             ImageLoaderHelper.loadImageWithConstantHeadersWithoutAnimation(context, circleImageView, currentUser.getProfileImage());
         }
 
-        txtUserName.setText(currentUser.getName() + " (" + currentUser.getMRNumber() + ") " + "visited " + "Dr." + timelineModel.getPatientVisitDoctorName() +
+        Spanny visitiTimeLineTag = new Spanny(currentUser.getName() + " (" + currentUser.getMRNumber() + ") " + "visited " + "Dr." + timelineModel.getPatientVisitDoctorName() +
                 " on " + timelineModel.getPatientVisitDateTime() + " at " + timelineModel.getPatientVisitHospitalLocation()
-                + " (" + timelineModel.getPatientVisitLocation() + ")");
-
+                + " (" + timelineModel.getPatientVisitLocation() + ")", new AbsoluteSizeSpan(context.getResources().getDimensionPixelSize(R.dimen.s12)));
+//        txtUserName.setText(currentUser.getName() + " (" + currentUser.getMRNumber() + ") " + "visited " + "Dr." + timelineModel.getPatientVisitDoctorName() +
+//                " on " + timelineModel.getPatientVisitDateTime() + " at " + timelineModel.getPatientVisitHospitalLocation()
+//                + " (" + timelineModel.getPatientVisitLocation() + ")");
+        txtUserName.setText(visitiTimeLineTag);
         txtMRN.setVisibility(GONE);
         contDropDown.setVisibility(VISIBLE);
 
@@ -296,7 +302,6 @@ public class TitleBar extends RelativeLayout {
             }
         });
     }
-
 
 
     public void showAndHideDropDown() {

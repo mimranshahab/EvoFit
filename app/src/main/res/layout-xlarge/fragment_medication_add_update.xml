@@ -127,7 +127,7 @@
                         android:drawableEnd="@drawable/calendar_input_icon"
 
                         android:gravity="center_vertical"
-                        android:hint="tap to choose start date time"
+                        android:hint="Select Start Date and Time"
                         android:maxLines="1"
                         android:padding="@dimen/x5dp"
                         android:textColor="@color/txt_aku_blue"
@@ -154,7 +154,7 @@
                         android:background="@drawable/rounded_box"
                         android:drawableEnd="@drawable/calendar_input_icon"
                         android:gravity="center_vertical"
-                        android:hint="tap to choose stop date time"
+                        android:hint="Select Stop Date and Time"
                         android:maxLines="1"
                         android:padding="@dimen/x5dp"
                         android:textColor="@color/txt_aku_blue"

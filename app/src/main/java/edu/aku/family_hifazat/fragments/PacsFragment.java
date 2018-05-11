@@ -155,6 +155,7 @@ public class PacsFragment extends BaseFragment implements View.OnClickListener, 
             loader.dismiss();
             getBaseActivity().openActivity(PacsActivity.class);
 
+
         }
     }
 

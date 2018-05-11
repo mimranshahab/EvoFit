@@ -77,9 +77,10 @@ public class PacsActivity extends AppCompatActivity {
 
 
         txttotalCount.setText("Total count " + pacsList.size() + "");
-        txtUserName.setText(pacsModel.getPatient_Name());
+//        txtUserName.setText(pacsModel.getPatient_Name());
+        txtUserName.setText(sharedPreferenceManager.getCurrentUser().getName());
         txtMRnumber.setText(pacsModel.getPatientMRN());
-        txtStudyTitle.setText(pacsModel.getStudyTitle());
+        txtStudyTitle.setText("Study: "+pacsModel.getStudyTitle());
 
         uriArrToTuple(pacsList.size());
         selectedTupleModel = arrTupleModel.get(0);

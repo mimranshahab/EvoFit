@@ -28,6 +28,7 @@
                 android:gravity="center_vertical"
                 android:orientation="vertical"
                 android:paddingLeft="@dimen/x5dp"
+                android:paddingBottom="@dimen/x8dp"
                 android:paddingRight="@dimen/x5dp">
 
                 <edu.aku.family_hifazat.widget.AnyTextView
@@ -38,7 +39,7 @@
                     android:padding="@dimen/x5dp"
                     android:text="Date"
                     android:textColor="@color/txt_aku_blue"
-                    android:textSize="@dimen/s14"
+                    android:textSize="@dimen/s12"
                     app:typeface="@string/font_bold" />
 
 
