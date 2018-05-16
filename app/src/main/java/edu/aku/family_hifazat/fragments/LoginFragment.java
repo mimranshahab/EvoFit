@@ -1,6 +1,5 @@
 package edu.aku.family_hifazat.fragments;
 
-import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.widget.DrawerLayout;
@@ -13,9 +12,10 @@ import com.andreabaccega.widget.FormEditText;
 
 import edu.aku.family_hifazat.constatnts.AppConstants;
 import edu.aku.family_hifazat.fragments.abstracts.GenericDialogFragment;
-import edu.aku.family_hifazat.helperclasses.ui.helper.KeyboardHide;
+import edu.aku.family_hifazat.helperclasses.GooglePlaceHelper;
+import edu.aku.family_hifazat.helperclasses.ui.helper.KeyboardHelper;
 import edu.aku.family_hifazat.helperclasses.ui.helper.UIHelper;
-import edu.aku.family_hifazat.models.sending_model.InsertRegisteredDeviceModel;
+import edu.aku.family_hifazat.libraries.countrypicker.Country;
 import edu.aku.family_hifazat.models.sending_model.RegisteredDeviceModel;
 import edu.aku.family_hifazat.widget.AnyTextView;
 
@@ -62,6 +62,7 @@ public class LoginFragment extends BaseFragment {
     @BindView(R.id.txtSignUp)
     AnyTextView txtSignUp;
     Unbinder unbinder;
+    private GooglePlaceHelper.GoogleAddressModel currentLocation;
 
 
     public static LoginFragment newInstance() {
@@ -113,6 +114,12 @@ public class LoginFragment extends BaseFragment {
         edtPassword.addValidator(new PasswordValidation());
         edtCardNumber.addValidator(new CardNumberValidation());
         edtCardNumber.addTextChangedListener(new MaskFormatter(CARD_MASK, edtCardNumber, '-'));
+
+        currentLocation = GooglePlaceHelper.getCurrentLocation(getContext(), true);
+
+        if (currentLocation != null) {
+            UIHelper.showToast(getContext(), currentLocation.getAddress());
+        }
     }
 
     @Override
@@ -124,7 +131,7 @@ public class LoginFragment extends BaseFragment {
     public void onResume() {
         super.onResume();
 
-        KeyboardHide.showSoftKeyboard(getContext(), edtCardNumber);
+        KeyboardHelper.showSoftKeyboard(getContext(), edtCardNumber);
     }
 
 
@@ -146,6 +153,19 @@ public class LoginFragment extends BaseFragment {
                 if (edtCardNumber.testValidity() && edtPassword.testValidity()) {
                     LoginApiModel loginApiModel = new LoginApiModel(edtCardNumber.getText().toString(), edtPassword.getText().toString());
                     RegisteredDeviceModel registeredDevice = AppConstants.getRegisteredDevice(getContext(), getBaseActivity());
+
+                    if (currentLocation == null) {
+                        currentLocation = GooglePlaceHelper.getCurrentLocation(getContext(), false);
+                        if (currentLocation == null) {
+                            registeredDevice.setDeviceLocation("");
+                        } else {
+                            registeredDevice.setDeviceLocation(currentLocation.getCountry());
+                        }
+                    } else {
+                        registeredDevice.setDeviceLocation(currentLocation.getCountry());
+                    }
+
+
                     registeredDevice.setRegcardno(loginApiModel.getCardNumber());
                     loginApiModel.setAccessLog(registeredDevice);
                     loginApiModel.setDevice(registeredDevice);

@@ -9,7 +9,7 @@ import android.widget.EditText;
  * Created by khanhamza on 06-Mar-17.
  */
 
-public class KeyboardHide {
+public class KeyboardHelper {
 
     public static void hideSoftKeyboard(Context context, View view) {
         if (context == null) {
@@ -41,5 +41,19 @@ public class KeyboardHide {
         imm.showSoftInput(editText, InputMethodManager.SHOW_IMPLICIT);
         editText.requestFocus();
     }
+
+    public static void showSoftKeyboardForcefully(Context context, EditText editText) {
+
+        if (context == null) {
+            return;
+        }
+
+        InputMethodManager imm = (InputMethodManager) context.getSystemService(Context.INPUT_METHOD_SERVICE);
+        imm.showSoftInput(editText, InputMethodManager.SHOW_FORCED);
+        editText.requestFocus();
+    }
+
+
+
 
 }

@@ -278,5 +278,20 @@ public class GooglePlaceHelper {
     }
 
 
+    public static GooglePlaceHelper.GoogleAddressModel getCurrentLocation(Context context, boolean showSettingAlert) {
+        GPSTracker2 gpsTracker = new GPSTracker2(context);
+
+        if (gpsTracker.isGPSEnabled()) {
+            gpsTracker.getLocation();
+            double lat = gpsTracker.getLatitude();
+            double longitude = gpsTracker.getLongitude();
+            return getAddress(context, lat, longitude);
+        } else {
+            if (showSettingAlert) {
+                gpsTracker.showSettingsAlert();
+            }
+            return null;
+        }
+    }
 }
 

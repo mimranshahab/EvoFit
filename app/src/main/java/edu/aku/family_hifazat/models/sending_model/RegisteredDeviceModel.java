@@ -44,6 +44,9 @@ public class RegisteredDeviceModel {
     @Expose
     @SerializedName("LoginCode")
     private String loginCode;
+    @Expose
+    @SerializedName("DeviceLocation:")
+    private String deviceLocation;
 
     public RegisteredDeviceModel() {
     }
@@ -60,6 +63,13 @@ public class RegisteredDeviceModel {
         this.regcardno = regcardno;
     }
 
+    public String getDeviceLocation() {
+        return deviceLocation;
+    }
+
+    public void setDeviceLocation(String deviceLocation) {
+        this.deviceLocation = deviceLocation;
+    }
 
     public String getLoginCode() {
         return loginCode;

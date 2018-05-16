@@ -63,7 +63,7 @@ public class CardioAdapter extends RecyclerView.Adapter<CardioAdapter.ViewHolder
 
         holder.txtStatusType.setText(model.getStatus());
 
-        if (model.getStatus().equalsIgnoreCase("Finalized")) {
+        if (model.getStatus().equalsIgnoreCase("Finalized") || model.getStatus().equalsIgnoreCase("Completed")) {
             holder.RlReport.setVisibility(View.VISIBLE);
             holder.RlGraph.setVisibility(View.VISIBLE);
 
@@ -72,8 +72,6 @@ public class CardioAdapter extends RecyclerView.Adapter<CardioAdapter.ViewHolder
                     R.drawable.b_cardiopulmonary_transparent);
 
         } else {
-//            holder.RlReport.setVisibility(View.GONE);
-//            holder.RlGraph.setVisibility(View.GONE);
             holder.RlGraph.setEnabled(false);
             holder.RlGraph.setAlpha(.15f);
             holder.RlReport.setEnabled(false);
@@ -102,12 +100,19 @@ public class CardioAdapter extends RecyclerView.Adapter<CardioAdapter.ViewHolder
             holder.RlGraph.setEnabled(false);
 
             holder.RlGraph.setAlpha(.15f);
+        } else {
+            holder.RlGraph.setEnabled(true);
+
+            holder.RlGraph.setAlpha(1f);
         }
 
         if (cardioModel.getReportable().equalsIgnoreCase("false")) {
             holder.RlReport.setEnabled(false);
             holder.RlReport.setAlpha(.15f);
 
+        } else {
+            holder.RlReport.setEnabled(true);
+            holder.RlReport.setAlpha(1f);
         }
     }
 
@@ -126,7 +131,6 @@ public class CardioAdapter extends RecyclerView.Adapter<CardioAdapter.ViewHolder
             }
         });
 
-//        holder.btnShowReport.setOnClickListener(clickListener);
     }
 
     public CardioModel getItem(int position) {

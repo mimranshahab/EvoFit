@@ -7,14 +7,14 @@ import android.support.v4.app.DialogFragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.WindowManager;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import butterknife.Unbinder;
 import edu.aku.family_hifazat.R;
-import edu.aku.family_hifazat.helperclasses.ui.helper.KeyboardHide;
-import edu.aku.family_hifazat.helperclasses.ui.helper.UIHelper;
+import edu.aku.family_hifazat.helperclasses.ui.helper.KeyboardHelper;
 import edu.aku.family_hifazat.managers.SharedPreferenceManager;
 import edu.aku.family_hifazat.widget.AnyTextView;
 import edu.aku.family_hifazat.widget.PinEntryEditText;
@@ -63,6 +63,12 @@ public class PinEntryDialogFragment extends DialogFragment {
         setStyle(STYLE_NO_TITLE, R.style.DialogTheme);
     }
 
+    @Override
+    public void onActivityCreated(Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
+
+        getDialog().getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_VISIBLE);
+    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -88,16 +94,22 @@ public class PinEntryDialogFragment extends DialogFragment {
             String pinCode = SharedPreferenceManager.getInstance(getContext()).getString(KEY_PIN_CODE);
             if (txtPinCode.getText().toString().equals(pinCode)) {
                 onNextButtonClick.onClick(view);
-                KeyboardHide.hideSoftKeyboard(getContext(), txtPinCode);
+                KeyboardHelper.hideSoftKeyboard(getContext(), txtPinCode);
             } else {
                 txtWrongPinNumber.setVisibility(View.VISIBLE);
             }
         });
+
+        KeyboardHelper.showSoftKeyboard(getContext(), txtPinCode);
 //        getDialog().getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
 //        getDialog().getWindow().requestFeature(Window.FEATURE_NO_TITLE);
 
     }
 
+    @Override
+    public void onResume() {
+        super.onResume();
+    }
 
     private void bindData() {
 

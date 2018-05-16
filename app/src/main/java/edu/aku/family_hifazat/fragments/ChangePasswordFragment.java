@@ -155,7 +155,7 @@ public class ChangePasswordFragment extends BaseFragment {
             case R.id.btnLogin:
 
                 if (edCardNumber.testValidity() && edCardNumber.getStringTrimmed().length() == 14 && edtNewPassword.testValidity() && edtConPassword.testValidity() && txtPinForgotPass.getText().toString().length() == 6) {
-                    if (edtNewPassword.getText().toString().length() >= 8 && edtConPassword.getText().toString().length() >= 8) {
+                    if (edtNewPassword.getText().toString().length() >= 7 && edtConPassword.getText().toString().length() >= 7) {
                         if (edtNewPassword.getText().toString().equals(edtConPassword.getText().toString())) {
                             NewPasswordModel newPasswordModel = new NewPasswordModel();
                             newPasswordModel.setCardnumber(edCardNumber.getStringTrimmed());
@@ -168,7 +168,7 @@ public class ChangePasswordFragment extends BaseFragment {
                         }
 
                     } else {
-                        UIHelper.showToast(getContext(), "Password should be greater than 5 digits");
+                        UIHelper.showToast(getContext(), "Password should be greater than 6 digits");
                     }
 
 

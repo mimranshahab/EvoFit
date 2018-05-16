@@ -39,7 +39,7 @@ import edu.aku.family_hifazat.models.SearchModel;
 import edu.aku.family_hifazat.models.wrappers.WebResponse;
 import edu.aku.family_hifazat.widget.AnyTextView;
 
-import static edu.aku.family_hifazat.constatnts.AppConstants.NO_RECORD_FOUND;
+import static edu.aku.family_hifazat.constatnts.AppConstants.NO_CURRENT_MEDICATION_MESSAGE;
 
 
 /**
@@ -202,7 +202,7 @@ public class CurrentMedicationFragment extends BaseFragment implements View.OnCl
                                         mFab.setEnabled(true);
                                     }
                                 } else {
-                                    showEmptyView(NO_RECORD_FOUND);
+                                    showEmptyView(NO_CURRENT_MEDICATION_MESSAGE);
                                 }
 
                                 arrData.clear();
@@ -213,7 +213,7 @@ public class CurrentMedicationFragment extends BaseFragment implements View.OnCl
 
                             @Override
                             public void onError() {
-                                showEmptyView(NO_RECORD_FOUND);
+                                showEmptyView(NO_CURRENT_MEDICATION_MESSAGE);
                             }
                         });
 

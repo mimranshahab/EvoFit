@@ -58,6 +58,10 @@ public class RadiologyAdapter extends RecyclerView.Adapter<RadiologyAdapter.View
 
         holder.RlReport.setVisibility(View.VISIBLE);
         holder.RlGraph.setVisibility(View.VISIBLE);
+
+
+
+
         holder.txtStatusType.setVisibility(View.VISIBLE);
         holder.imgStatus.setVisibility(View.VISIBLE);
         holder.txtGraph.setText("Image");
@@ -66,11 +70,21 @@ public class RadiologyAdapter extends RecyclerView.Adapter<RadiologyAdapter.View
             holder.txtStatusType.setText("Finalized");
             setViews(holder, activity.getResources().getColor(R.color.base_green), R.drawable.rounded_box_filled_base_green, R.drawable.radiology_transparent);
 
+            holder.RlGraph.setAlpha(1f);
+            holder.RlReport.setAlpha(1f);
+
+            holder.RlGraph.setEnabled(true);
+            holder.RlReport.setEnabled(true);
+
         } else {
             holder.txtStatusType.setText("Pending");
             setViews(holder, activity.getResources().getColor(R.color.base_amber), R.drawable.rounded_box_filled_base_amber, R.drawable.radiology_transparent);
-            holder.RlReport.setVisibility(View.GONE);
-            holder.RlGraph.setVisibility(View.GONE);
+
+            holder.RlGraph.setAlpha(0.15f);
+            holder.RlReport.setAlpha(0.15f);
+
+            holder.RlGraph.setEnabled(false);
+            holder.RlReport.setEnabled(false);
         }
 
         setListener(holder, model);

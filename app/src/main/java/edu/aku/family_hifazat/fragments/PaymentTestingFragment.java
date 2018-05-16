@@ -20,7 +20,7 @@ import edu.aku.family_hifazat.enums.BaseURLTypes;
 import edu.aku.family_hifazat.fragments.abstracts.BaseFragment;
 import edu.aku.family_hifazat.fragments.abstracts.GenericDialogFragment;
 import edu.aku.family_hifazat.helperclasses.CyberSoftSecurityHelper;
-import edu.aku.family_hifazat.helperclasses.ui.helper.KeyboardHide;
+import edu.aku.family_hifazat.helperclasses.ui.helper.KeyboardHelper;
 import edu.aku.family_hifazat.helperclasses.ui.helper.UIHelper;
 import edu.aku.family_hifazat.helperclasses.validator.CardNumberValidation;
 import edu.aku.family_hifazat.libraries.maskformatter.MaskFormatter;
@@ -94,7 +94,7 @@ public class PaymentTestingFragment extends BaseFragment {
 
 
         edCardNumber.requestFocus();
-        KeyboardHide.showSoftKeyboard(getContext(), edCardNumber);
+        KeyboardHelper.showSoftKeyboard(getContext(), edCardNumber);
     }
 
     @Override

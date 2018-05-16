@@ -27,6 +27,7 @@ import butterknife.Unbinder;
 import edu.aku.family_hifazat.R;
 import edu.aku.family_hifazat.adapters.recyleradapters.ImmunizationAdapter;
 import edu.aku.family_hifazat.callbacks.OnItemClickListener;
+import edu.aku.family_hifazat.constatnts.AppConstants;
 import edu.aku.family_hifazat.constatnts.WebServiceConstants;
 import edu.aku.family_hifazat.enums.BaseURLTypes;
 import edu.aku.family_hifazat.fragments.abstracts.BaseFragment;
@@ -59,7 +60,6 @@ public class ImmunizationProfileFragment extends BaseFragment implements View.On
     boolean isFromTimeline;
     int patientVisitAdmissionID;
     private ArrayList<SpinnerModel> arrUsedVaccineDes = new ArrayList<>();
-    String IMMUNIZATION_RECORD = "No Record Found";
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -195,14 +195,14 @@ public class ImmunizationProfileFragment extends BaseFragment implements View.On
                                 if (arrImmunization.size() > 0) {
                                     showView();
                                 } else {
-                                    showEmptyView(IMMUNIZATION_RECORD);
+                                    showEmptyView(AppConstants.NO_VACCINATION_MESSAGE);
                                 }
                             }
 
                             @Override
                             public void onError() {
 //                                UIHelper.showShortToastInCenter(getContext(), "failure");
-                                showEmptyView(IMMUNIZATION_RECORD);
+                                showEmptyView(AppConstants.NO_VACCINATION_MESSAGE);
                             }
                         });
 
@@ -236,14 +236,14 @@ public class ImmunizationProfileFragment extends BaseFragment implements View.On
                                 } else {
                                     mFab.setVisibility(View.GONE);
 
-                                    showEmptyView(IMMUNIZATION_RECORD);
+                                    showEmptyView(AppConstants.NO_VACCINATION_MESSAGE);
                                 }
                             }
 
                             @Override
                             public void onError() {
                                 mFab.setVisibility(View.GONE);
-                                showEmptyView(IMMUNIZATION_RECORD);
+                                showEmptyView(AppConstants.NO_VACCINATION_MESSAGE);
                             }
                         });
 

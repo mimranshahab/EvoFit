@@ -19,7 +19,7 @@ import android.widget.TextView;
 import edu.aku.family_hifazat.activities.BaseActivity;
 import edu.aku.family_hifazat.callbacks.OnNewPacketReceivedListener;
 import edu.aku.family_hifazat.constatnts.AppConstants;
-import edu.aku.family_hifazat.helperclasses.ui.helper.KeyboardHide;
+import edu.aku.family_hifazat.helperclasses.ui.helper.KeyboardHelper;
 import edu.aku.family_hifazat.widget.TitleBar;
 import edu.aku.family_hifazat.helperclasses.ui.helper.UIHelper;
 import edu.aku.family_hifazat.BaseApplication;
@@ -166,7 +166,7 @@ public abstract class BaseFragment extends Fragment implements View.OnClickListe
         }
 
         if (getBaseActivity() != null && getBaseActivity().getWindow().getDecorView() != null) {
-            KeyboardHide.hideSoftKeyboard(getBaseActivity(), getBaseActivity().getWindow().getDecorView());
+            KeyboardHelper.hideSoftKeyboard(getBaseActivity(), getBaseActivity().getWindow().getDecorView());
         }
     }
 
@@ -174,13 +174,12 @@ public abstract class BaseFragment extends Fragment implements View.OnClickListe
     public void onPause() {
 
         if (getBaseActivity() != null && getBaseActivity().getWindow().getDecorView() != null) {
-            KeyboardHide.hideSoftKeyboard(getBaseActivity(), getBaseActivity().getWindow().getDecorView());
+            KeyboardHelper.hideSoftKeyboard(getBaseActivity(), getBaseActivity().getWindow().getDecorView());
         }
 
         super.onPause();
 
     }
-
 
 
     public void notifyToAll(int event, Object data) {
@@ -209,7 +208,7 @@ public abstract class BaseFragment extends Fragment implements View.OnClickListe
 
 
     public void showNextBuildToast() {
-         UIHelper.showToast(getContext(), "This feature is in progress");
+        UIHelper.showToast(getContext(), "This feature is in progress");
     }
 
 
@@ -245,4 +244,5 @@ public abstract class BaseFragment extends Fragment implements View.OnClickListe
                 break;
         }
     }
+
 }

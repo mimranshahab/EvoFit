@@ -26,6 +26,7 @@ import butterknife.Unbinder;
 import edu.aku.family_hifazat.R;
 import edu.aku.family_hifazat.adapters.recyleradapters.DischargeSummaryAdapter;
 import edu.aku.family_hifazat.callbacks.OnItemClickListener;
+import edu.aku.family_hifazat.constatnts.AppConstants;
 import edu.aku.family_hifazat.constatnts.WebServiceConstants;
 import edu.aku.family_hifazat.enums.BaseURLTypes;
 import edu.aku.family_hifazat.fragments.abstracts.BaseFragment;
@@ -210,10 +211,12 @@ public class DischargeSummaryFragment extends BaseFragment implements View.OnCli
     }
 
     private void showEmptyView() {
-         emptyView.setVisibility(View.VISIBLE);
+
+        emptyView.setText(AppConstants.NO_DISCHARGE_SUMMARY_MESSAGE);
+        emptyView.setVisibility(View.VISIBLE);
     }
 
     private void showView() {
-         emptyView.setVisibility(View.GONE);
-     }
+        emptyView.setVisibility(View.GONE);
+    }
 }

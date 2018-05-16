@@ -1,5 +1,7 @@
 package edu.aku.family_hifazat.fragments;
 
+import android.app.Activity;
+import android.app.ProgressDialog;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.annotation.Nullable;
@@ -35,6 +37,7 @@ import edu.aku.family_hifazat.constatnts.Events;
 import edu.aku.family_hifazat.constatnts.WebServiceConstants;
 import edu.aku.family_hifazat.enums.BaseURLTypes;
 import edu.aku.family_hifazat.fragments.abstracts.BaseFragment;
+import edu.aku.family_hifazat.helperclasses.Helper;
 import edu.aku.family_hifazat.managers.SharedPreferenceManager;
 import edu.aku.family_hifazat.models.receiving_model.AddUpdateModel;
 import edu.aku.family_hifazat.models.sending_model.InsertRegisteredDeviceModel;
@@ -82,6 +85,7 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener, 
     private ArrayList<UserDetailModel> arrUserLists;
     UserDetailModel subscriber;
     private String intentData;
+    private ProgressDialog mDialog;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -112,8 +116,10 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener, 
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+        mDialog = Helper.getLoader(getContext());
+        mDialog.setMessage("Processing your request ...");
+        mDialog.setTitle("Please Wait");
 
-//        getBaseActivity().addDockableFragment(Slider.newInstance(), false);
 
         subscribeToNewPacket(this);
 
@@ -131,6 +137,9 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener, 
         if (intentData != null && intentData.equals(AppConstants.ACCESS_LOGIN_DONE)) {
             getCardDetailServiceCall();
         } else {
+            if (!(getBaseActivity()).isFinishing()) {
+                mDialog.show();
+            }
             saveAccessLogCall(registeredDevice);
         }
 
@@ -154,10 +163,12 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener, 
                     public void requestDataResponse(WebResponse<JsonObject> webResponse) {
                         CardMemberDetail cardMemberDetail = GsonFactory.getSimpleGson().fromJson(webResponse.result, CardMemberDetail.class);
                         onGetCardSuccessfully(cardMemberDetail);
+                        mDialog.dismiss();
                     }
 
                     @Override
                     public void onError() {
+                        mDialog.dismiss();
                         if (sharedPreferenceManager.getCardMemberDetail() == null) {
                             UIHelper.showShortToastInCenter(getContext(), "Something went wrong!");
                         } else {
@@ -191,7 +202,7 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener, 
                             @Override
                             public void onError() {
                                 getCardDetailServiceCall();
-
+                                mDialog.dismiss();
                             }
                         });
     }

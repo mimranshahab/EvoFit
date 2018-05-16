@@ -98,7 +98,7 @@ public abstract class BaseActivity extends AppCompatActivity {
         baseFragment = (BaseFragment) fragment;
         FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
         if (isTransition) {
-        fragmentTransaction.setCustomAnimations(R.anim.slide_in_right, R.anim.slide_out_left);
+            fragmentTransaction.setCustomAnimations(R.anim.slide_in_right, R.anim.slide_out_left);
         }
         fragmentTransaction.replace(getDockableFragmentId(), fragment).addToBackStack(fragment.getClass().getSimpleName())
                 .commit();
@@ -188,5 +188,12 @@ public abstract class BaseActivity extends AppCompatActivity {
     public void notifyToAll(int event, Object data) {
         BaseApplication.getPublishSubject().onNext(new Pair<>(event, data));
     }
+
+    public void refreshFragment(BaseFragment fragment) {
+        popBackStack();
+        addDockableFragment(fragment, false);
+
+    }
+
 
 }

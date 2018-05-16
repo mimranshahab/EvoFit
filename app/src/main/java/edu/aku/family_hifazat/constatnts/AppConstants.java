@@ -95,6 +95,7 @@ public class AppConstants {
     public static final String KEY_FIREBASE_TOKEN_UPDATED = "FIREBASE_TOKEN_UPDATED";
     public static final String KEY_PIN_CODE = "pin_code";
     public static final String KEY_IS_PIN_ENABLE = "is_pin_enable";
+    public static final String KEY_CURRENT_LOCATION = "current_location";
 
 
     /**
@@ -118,7 +119,10 @@ public class AppConstants {
     public static String AboutUs = "<B>Family Hifazat</B> is a product of Aga Khan University Hospital Karachi. It provides discounts on medical services as well as patients’ access to their personal health records through web portal and mobile applications." + "<BR><BR>" +
             "The <B>Family Hifazat</B> “Patient Portal” is secure, confidential and easy to use web portal &amp; mobile apps to provide AKUH patients 24 hour access to their personal health records including diagnostic results, imaging, medications, vaccines and discharge summaries.";
 
-    public static String NO_RECORD_FOUND = "No Record Found";
+    public static String NO_CURRENT_MEDICATION_MESSAGE = "No Current Medication Exists";
+    public static String NO_MEDICATION_HISTORY_MESSAGE = "No Current Medication Exists";
+    public static String NO_DISCHARGE_SUMMARY_MESSAGE = "No Discharge Summary Exists";
+    public static String NO_VACCINATION_MESSAGE = "No Vaccination Record Exists";
 
 
     public static String DEVICE_OS_ANDROID = "ANDROID";

@@ -28,7 +28,7 @@ public class WebServiceConstants {
     public static String BASE_URL_LOCAL = "http://ahfapidev.aku.edu/api/";
     public static String BASE_URL_LIVE = "https://familyhifazatmobileapi.aku.edu/api/";
     public static String BASE_URL_UAT = "https://familyhifazatmobileapiuat.aku.edu/api/";
-    public static String GETIMAGE_BASE_URL = "https://familyhifazatmobileapiuat.aku.edu/getimage?path=";
+    public static String GETIMAGE_BASE_URL = "https://familyhifazatmobileapi.aku.edu/getimage?path=";
 
     public static String PACS_VIEWER_URL = "https://pacsviewer.aku.edu/api/PACSViewer/";
     public static String PACS_URL = "https://pacsviewer.aku.edu/api/";

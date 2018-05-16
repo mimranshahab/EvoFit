@@ -15,7 +15,7 @@ import edu.aku.family_hifazat.widget.AnyTextView;
 
 import edu.aku.family_hifazat.fragments.abstracts.BaseFragment;
 import edu.aku.family_hifazat.helperclasses.CountDownTimerHelper;
-import edu.aku.family_hifazat.helperclasses.ui.helper.KeyboardHide;
+import edu.aku.family_hifazat.helperclasses.ui.helper.KeyboardHelper;
 import edu.aku.family_hifazat.widget.TitleBar;
 import edu.aku.family_hifazat.models.CardModel;
 import edu.aku.family_hifazat.models.wrappers.WebResponse;
@@ -151,7 +151,7 @@ public class VerifyNumberCodeFragment extends BaseFragment {
     @Override
     public void onResume() {
         super.onResume();
-        KeyboardHide.hideSoftKeyboard(getBaseActivity(), getView());
+        KeyboardHelper.hideSoftKeyboard(getBaseActivity(), getView());
 
     }
 

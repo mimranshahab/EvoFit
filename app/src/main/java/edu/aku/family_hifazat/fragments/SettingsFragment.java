@@ -15,9 +15,12 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 import butterknife.Unbinder;
 import edu.aku.family_hifazat.R;
+import edu.aku.family_hifazat.callbacks.GenericClickableInterface;
 import edu.aku.family_hifazat.constatnts.AppConstants;
 import edu.aku.family_hifazat.fragments.abstracts.BaseFragment;
 import edu.aku.family_hifazat.fragments.abstracts.GenericDialogFragment;
+import edu.aku.family_hifazat.fragments.dialogs.EnterNewPinDialogFragment;
+import edu.aku.family_hifazat.helperclasses.ui.helper.KeyboardHelper;
 import edu.aku.family_hifazat.helperclasses.ui.helper.UIHelper;
 import edu.aku.family_hifazat.widget.AnyTextView;
 import edu.aku.family_hifazat.widget.TitleBar;
@@ -34,6 +37,8 @@ public class SettingsFragment extends BaseFragment {
     @BindView(R.id.txtChangePassword)
     AnyTextView txtChangePassword;
     Unbinder unbinder;
+
+    EnterNewPinDialogFragment enterNewPinDialogFragment;
 
 
     public static SettingsFragment newInstance() {
@@ -67,11 +72,49 @@ public class SettingsFragment extends BaseFragment {
     @Override
     public void setListeners() {
 
+
+        enterNewPinDialogFragment = EnterNewPinDialogFragment.newInstance(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                //Cancel
+
+                sharedPreferenceManager.putValue(AppConstants.KEY_IS_PIN_ENABLE, false);
+                getBaseActivity().refreshFragment(SettingsFragment.newInstance());
+            }
+        }, new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                //Success
+
+            }
+        });
+
+
+        switchPinCode.setOnCheckedChangeListener((CompoundButton compoundButton, boolean b) -> {
+            if (b) {
+                enterNewPinDialogFragment.setTitle("Enter Your Pin");
+                enterNewPinDialogFragment.setCancelable(false);
+                enterNewPinDialogFragment.clearField();
+                enterNewPinDialogFragment.show(getFragmentManager(), null);
+            } else {
+                GenericDialogFragment genericDialogFragment = GenericDialogFragment.newInstance();
+                UIHelper.genericPopUp(getBaseActivity(), genericDialogFragment, "Remove Pin", "Are you sure you want to remove Pin?",
+                        "Yes", "No", () -> {
+                            sharedPreferenceManager.putValue(AppConstants.KEY_IS_PIN_ENABLE, false);
+                            genericDialogFragment.dismiss();
+                        }, () -> {
+                            sharedPreferenceManager.putValue(AppConstants.KEY_IS_PIN_ENABLE, true);
+                            genericDialogFragment.dismiss();
+                            getBaseActivity().refreshFragment(SettingsFragment.newInstance());
+                        });
+            }
+        });
     }
 
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+        switchPinCode.setOnCheckedChangeListener(null);
         switchPinCode.setChecked(sharedPreferenceManager.getBoolean(AppConstants.KEY_IS_PIN_ENABLE));
 
     }
@@ -79,22 +122,7 @@ public class SettingsFragment extends BaseFragment {
     @Override
     public void onResume() {
         super.onResume();
-        switchPinCode.setChecked(sharedPreferenceManager.getBoolean(AppConstants.KEY_IS_PIN_ENABLE));
-
-        switchPinCode.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
-                if (b) {
-                    getBaseActivity().addDockableFragment(EnterNewPinFragment.newInstance(new View.OnClickListener() {
-                        @Override
-                        public void onClick(View view) {
-                        }
-                    }), false);
-                } else {
-                    sharedPreferenceManager.putValue(AppConstants.KEY_IS_PIN_ENABLE, false);
-                }
-            }
-        });
+//        switchPinCode.setChecked(sharedPreferenceManager.getBoolean(AppConstants.KEY_IS_PIN_ENABLE));
     }
 
     @Override
@@ -146,5 +174,6 @@ public class SettingsFragment extends BaseFragment {
                 }, genericDialogFragment::dismiss
         );
     }
+
 
 }

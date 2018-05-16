@@ -661,6 +661,7 @@ public class UIHelper {
         genericDialogFragment.setMessage(message);
         genericDialogFragment.setButton1(btn1Text, btn1Interface);
         genericDialogFragment.setButton2(btn2Text, btnbtn2Interface);
+        genericDialogFragment.setCancelable(false);
         genericDialogFragment.show(activity.getSupportFragmentManager(), "generic_popup");
     }
 

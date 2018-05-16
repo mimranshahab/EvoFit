@@ -13,7 +13,7 @@ public class PasswordValidation extends Validator {
     private EditText edtConfirmPassword;
 
     public PasswordValidation() {
-        super("Password must be greater than 5 digits");
+        super("Password must be greater than 6 digits");
     }
 
     public PasswordValidation(EditText edtConfirmPassword) {
@@ -26,7 +26,7 @@ public class PasswordValidation extends Validator {
         if (edtConfirmPassword != null) {
             return et.getText().toString().equals(edtConfirmPassword.getText().toString());
         } else {
-            return et.getText().toString().length() >= 8;
+            return et.getText().toString().length() >= 7;
         }
     }
 

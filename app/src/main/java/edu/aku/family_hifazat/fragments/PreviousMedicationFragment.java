@@ -194,14 +194,14 @@ public class PreviousMedicationFragment extends BaseFragment implements View.OnC
                                 if (arrData.size() > 0) {
                                     showView();
                                 } else {
-                                    showEmptyView(AppConstants.NO_RECORD_FOUND);
+                                    showEmptyView(AppConstants.NO_MEDICATION_HISTORY_MESSAGE);
                                 }
                             }
 
                             @Override
                             public void onError() {
 //                                UIHelper.showShortToastInCenter(getContext(), "failure");
-                                showEmptyView(AppConstants.NO_RECORD_FOUND);
+                                showEmptyView(AppConstants.NO_MEDICATION_HISTORY_MESSAGE);
                             }
                         });
 
