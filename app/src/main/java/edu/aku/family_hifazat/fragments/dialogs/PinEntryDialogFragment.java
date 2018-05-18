@@ -4,10 +4,13 @@ package edu.aku.family_hifazat.fragments.dialogs;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.DialogFragment;
+import android.text.InputType;
+import android.text.method.PasswordTransformationMethod;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.WindowManager;
+import android.widget.LinearLayout;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -37,6 +40,14 @@ public class PinEntryDialogFragment extends DialogFragment {
     AnyTextView txtWrongPinNumber;
     @BindView(R.id.txtLogout)
     AnyTextView txtLogout;
+    @BindView(R.id.contLogout)
+    LinearLayout contLogout;
+    @BindView(R.id.txtSave)
+    AnyTextView txtSave;
+    @BindView(R.id.txtCancel)
+    AnyTextView txtCancel;
+    @BindView(R.id.contButton)
+    LinearLayout contButton;
     private String Title;
     private View.OnClickListener onNextButtonClick;
     private View.OnClickListener onLogoutButtonClick;
@@ -73,8 +84,6 @@ public class PinEntryDialogFragment extends DialogFragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-
-
         View view = inflater.inflate(R.layout.fragment_pincode_popup, container);
         unbinder = ButterKnife.bind(this, view);
         return view;
@@ -85,10 +94,7 @@ public class PinEntryDialogFragment extends DialogFragment {
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-
-        txtWrongPinNumber.setVisibility(View.GONE);
         bindData();
-
 
         txtPinCode.setOnPinEnteredListener(str -> {
             String pinCode = SharedPreferenceManager.getInstance(getContext()).getString(KEY_PIN_CODE);
@@ -97,6 +103,7 @@ public class PinEntryDialogFragment extends DialogFragment {
                 KeyboardHelper.hideSoftKeyboard(getContext(), txtPinCode);
             } else {
                 txtWrongPinNumber.setVisibility(View.VISIBLE);
+                txtPinCode.setText("");
             }
         });
 
@@ -109,13 +116,12 @@ public class PinEntryDialogFragment extends DialogFragment {
     @Override
     public void onResume() {
         super.onResume();
-    }
+     }
 
     private void bindData() {
-
-
         txtTitle.setText(getTitle());
-
+        contButton.setVisibility(View.GONE);
+        txtWrongPinNumber.setVisibility(View.GONE);
     }
 
     public String getTitle() {

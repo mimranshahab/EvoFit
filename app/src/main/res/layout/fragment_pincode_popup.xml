@@ -6,14 +6,13 @@
     android:layout_gravity="center"
     android:background="@color/transparent"
     android:gravity="center"
-    android:orientation="vertical"
-    android:padding="@dimen/x20dp">
+    android:orientation="vertical">
 
     <LinearLayout
-        android:layout_width="match_parent"
+        android:layout_width="@dimen/x300dp"
         android:layout_height="wrap_content"
-        android:background="@drawable/popup_bg_wrap_height"
-        android:gravity="center_horizontal"
+        android:background="@drawable/rounded_box_white_more_rounded"
+        android:gravity="center"
         android:orientation="vertical"
         android:padding="@dimen/x10dp">
 
@@ -22,8 +21,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center_vertical"
-            android:orientation="horizontal"
-            android:padding="3dp">
+            android:orientation="horizontal">
 
 
             <edu.aku.family_hifazat.widget.AnyTextView
@@ -34,31 +32,45 @@
                 android:gravity="center"
                 android:padding="10dp"
                 android:singleLine="true"
-                android:text="@string/title"
+                android:text="Enter PIN"
                 android:textColor="@color/base_amber"
-                android:textSize="16sp"
+                android:textSize="@dimen/s16"
                 app:typeface="@string/font_bold" />
         </LinearLayout>
 
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1"
+            android:layout_height="wrap_content"
             android:gravity="center"
             android:orientation="vertical">
 
 
+            <edu.aku.family_hifazat.widget.AnyTextView
+                android:id="@+id/txtWrongPinNumber"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ellipsize="end"
+                android:gravity="center"
+                android:padding="@dimen/x10dp"
+                android:singleLine="true"
+                android:text="Invalid PIN"
+                android:textColor="@color/base_reddish"
+                android:textSize="@dimen/s14"
+                app:typeface="@string/font_regular" />
+
+
             <edu.aku.family_hifazat.widget.PinEntryEditText
                 android:id="@+id/txtPinCode"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:background="@null"
                 android:cursorVisible="false"
                 android:digits="1234567890"
-                android:inputType="number"
+                android:inputType="numberPassword"
                 android:maxLength="4"
-                android:padding="@dimen/x50dp"
+                android:minWidth="@dimen/x180dp"
+                android:padding="@dimen/x20dp"
                 android:textColor="@color/txt_aku_blue"
                 android:textIsSelectable="false"
                 android:textSize="@dimen/s20"
@@ -66,38 +78,71 @@
                 app:pinLineColors="@color/txt_aku_blue"
                 app:typeface="@string/font_bold" />
 
-            <edu.aku.family_hifazat.widget.AnyTextView
-                android:id="@+id/txtWrongPinNumber"
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:ellipsize="end"
-                android:gravity="center"
-                android:padding="10dp"
-                android:singleLine="true"
-                android:text="Wrong Pin Number, Try Again!"
-                android:textColor="@color/base_reddish"
-                android:textSize="16sp"
-                app:typeface="@string/font_regular" />
-
 
         </LinearLayout>
 
         <LinearLayout
+            android:id="@+id/contLogout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+
+            android:layout_marginBottom="@dimen/x10dp"
+            android:layout_marginTop="@dimen/x10dp"
+            android:gravity="center">
+
+            <edu.aku.family_hifazat.widget.AnyTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="Forgot Pin? "
+                android:textColor="@color/base_amber"
+                android:textSize="@dimen/s14" />
+
+            <edu.aku.family_hifazat.widget.AnyTextView
+                android:id="@+id/txtLogout"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="@string/logout_underline"
+                android:padding="@dimen/x5dp"
+                android:textColor="@color/base_amber"
+                android:textSize="@dimen/s14" />
+
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:id="@+id/contButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center">
 
-
             <edu.aku.family_hifazat.widget.AnyTextView
-                android:id="@+id/txtLogout"
+                android:id="@+id/txtSave"
                 android:layout_width="@dimen/x90dp"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="10dp"
+                android:layout_marginRight="@dimen/x10dp"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/rounded_box_filled_btn_blue"
+                android:gravity="center"
+                android:padding="10dp"
+                android:text="Save"
+                android:textColor="@color/c_white"
+                android:textSize="14sp" />
+
+            <edu.aku.family_hifazat.widget.AnyTextView
+                android:id="@+id/txtCancel"
+                android:layout_width="@dimen/x90dp"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:layout_marginLeft="@dimen/x10dp"
                 android:layout_marginTop="10dp"
                 android:background="@drawable/rounded_box_filled_btn_amber"
                 android:gravity="center"
                 android:padding="10dp"
-                android:text="@string/logout"
+                android:text="Cancel"
                 android:textColor="@color/c_white"
                 android:textSize="14sp" />
 

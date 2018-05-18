@@ -238,9 +238,11 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_gravity="bottom|end"
-                                android:padding="@dimen/x3dp"
-                                android:text=""
-                                android:textColor="@color/txt_aku_blue"
+                                android:background="@drawable/rounded_stroke_blue"
+                                android:paddingLeft="@dimen/x5dp"
+                                android:paddingRight="@dimen/x5dp"
+                                android:text="Unknown"
+                                android:textColor="@color/summary_blue"
                                 android:textSize="@dimen/s14"
                                 app:typeface="@string/font_bold" />
 

@@ -73,14 +73,20 @@ public class CurrentMedicationAdapter extends RecyclerView.Adapter<CurrentMedica
         if (model.getIdentifyMedicationLocation() != null) {
             holder.txtEntryStatus.setText(model.getIdentifyMedicationLocation());
             if (model.getIdentifyMedicationLocation().equalsIgnoreCase("SELF") || model.getIdentifyMedicationLocation().equalsIgnoreCase("SELF-ENTERED")) {
-                holder.imgIcon.setColorFilter(activity.getResources().getColor(R.color.medicine_green));
-                holder.cardView.setCardBackgroundColor(activity.getResources().getColor(R.color.medicine_green));
+                holder.imgIcon.setColorFilter(activity.getResources().getColor(R.color.medicine_orange));
+                holder.cardView.setCardBackgroundColor(activity.getResources().getColor(R.color.medicine_orange));
+                holder.txtEntryStatus.setBackgroundResource(R.drawable.rounded_stroke_med_orange);
+                holder.txtEntryStatus.setTextColor(activity.getResources().getColor(R.color.medicine_orange));
             } else if (model.getIdentifyMedicationLocation().equalsIgnoreCase("AKU") || model.getIdentifyMedicationLocation().equalsIgnoreCase("AKUH")) {
                 holder.cardView.setCardBackgroundColor(activity.getResources().getColor(R.color.summary_blue));
                 holder.imgIcon.setColorFilter(activity.getResources().getColor(R.color.summary_blue));
+                holder.txtEntryStatus.setBackgroundResource(R.drawable.rounded_stroke_summary_blue);
+                holder.txtEntryStatus.setTextColor(activity.getResources().getColor(R.color.summary_blue));
             } else {
                 holder.cardView.setCardBackgroundColor(activity.getResources().getColor(R.color.summary_blue));
                 holder.imgIcon.setColorFilter(activity.getResources().getColor(R.color.summary_blue));
+                holder.txtEntryStatus.setBackgroundResource(R.drawable.rounded_stroke_summary_blue);
+                holder.txtEntryStatus.setTextColor(activity.getResources().getColor(R.color.summary_blue));
             }
         }
 

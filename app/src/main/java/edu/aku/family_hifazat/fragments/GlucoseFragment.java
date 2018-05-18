@@ -127,7 +127,6 @@ public class GlucoseFragment extends BaseFragment {
                 if (!btnSave.isEnabled()) {
                     btnSave.setEnabled(true);
                     btnSave.setBackground(getResources().getDrawable(R.drawable.rounded_box_filled_btn_blue));
-
                     btnSave.setAlpha(1);
                 }
             }

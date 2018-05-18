@@ -4,10 +4,12 @@ package edu.aku.family_hifazat.fragments.dialogs;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.DialogFragment;
+import android.text.InputType;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.WindowManager;
+import android.widget.LinearLayout;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -28,16 +30,22 @@ public class EnterNewPinDialogFragment extends DialogFragment {
 
 
     Unbinder unbinder;
+    @BindView(R.id.txtTitle)
+    AnyTextView txtTitle;
     @BindView(R.id.txtWrongPinNumber)
     AnyTextView txtWrongPinNumber;
     @BindView(R.id.txtPinCode)
     PinEntryEditText txtPinCode;
+    @BindView(R.id.txtLogout)
+    AnyTextView txtLogout;
+    @BindView(R.id.contLogout)
+    LinearLayout contLogout;
     @BindView(R.id.txtSave)
     AnyTextView txtSave;
     @BindView(R.id.txtCancel)
     AnyTextView txtCancel;
-    @BindView(R.id.txtTitle)
-    AnyTextView txtTitle;
+    @BindView(R.id.contButton)
+    LinearLayout contButton;
 
 
     private String Title;
@@ -103,6 +111,8 @@ public class EnterNewPinDialogFragment extends DialogFragment {
 
     private void bindData() {
         txtTitle.setText(getTitle());
+        contLogout.setVisibility(View.GONE);
+        txtWrongPinNumber.setVisibility(View.GONE);
     }
 
     public String getTitle() {
@@ -132,9 +142,8 @@ public class EnterNewPinDialogFragment extends DialogFragment {
                     dismiss();
                 } else {
 
-                    txtWrongPinNumber.setText("Incorrect Pin");
+//                    txtWrongPinNumber.setText("Incorrect PIN");
                     txtWrongPinNumber.setVisibility(View.VISIBLE);
-//                    UIHelper.showToast(getContext(), "Incorrect Pin");
                 }
 
                 break;

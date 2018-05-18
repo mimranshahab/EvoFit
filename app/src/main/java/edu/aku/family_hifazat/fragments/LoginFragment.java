@@ -117,9 +117,9 @@ public class LoginFragment extends BaseFragment {
 
         currentLocation = GooglePlaceHelper.getCurrentLocation(getContext(), true);
 
-        if (currentLocation != null) {
-            UIHelper.showToast(getContext(), currentLocation.getAddress());
-        }
+//        if (currentLocation != null) {
+//            UIHelper.showToast(getContext(), currentLocation.getAddress());
+//        }
     }
 
     @Override

@@ -34,7 +34,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="@dimen/x5dp"
-                        android:text="Vaccine*"
+                        android:text="Vaccine *"
                         android:textColor="@color/txt_aku_blue"
                         android:textSize="@dimen/s10"
                         app:typeface="@string/font_bold" />
@@ -59,7 +59,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="@dimen/x5dp"
-                        android:text="Route ID*"
+                        android:text="Route ID *"
                         android:textColor="@color/txt_aku_blue"
                         android:textSize="@dimen/s10"
                         app:typeface="@string/font_bold" />
@@ -85,7 +85,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="@dimen/x5dp"
-                        android:text="Schedule Date*"
+                        android:text="Schedule Date *"
                         android:textColor="@color/txt_aku_blue"
                         android:textSize="@dimen/s10"
                         app:typeface="@string/font_bold" />

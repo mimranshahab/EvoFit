@@ -122,12 +122,19 @@ public class MeasurementFragment extends BaseFragment {
             @Override
             public void onValueChange(NumberPicker picker, int oldVal, int newVal) {
                 isHeightValueChanged = true;
-                if (isWeightValuieChanged) {
-                    if (!btnSave.isEnabled()) {
-                        btnSave.setEnabled(true);
-                        btnSave.setBackground(getResources().getDrawable(R.drawable.rounded_box_filled_btn_blue));
-                        btnSave.setAlpha(1);
-                    }
+//                if (isWeightValuieChanged) {
+//                    if (!btnSave.isEnabled()) {
+//                        btnSave.setEnabled(true);
+//                        btnSave.setBackground(getResources().getDrawable(R.drawable.rounded_box_filled_btn_blue));
+//                        btnSave.setAlpha(1);
+//                    }
+//                }
+
+
+                if (!btnSave.isEnabled()) {
+                    btnSave.setEnabled(true);
+                    btnSave.setBackground(getResources().getDrawable(R.drawable.rounded_box_filled_btn_blue));
+                    btnSave.setAlpha(1);
                 }
             }
         });
@@ -136,12 +143,18 @@ public class MeasurementFragment extends BaseFragment {
             @Override
             public void onValueChange(NumberPicker picker, int oldVal, int newVal) {
                 isWeightValuieChanged = true;
-                if (isHeightValueChanged) {
-                    if (!btnSave.isEnabled()) {
-                        btnSave.setEnabled(true);
-                        btnSave.setBackground(getResources().getDrawable(R.drawable.rounded_box_filled_btn_blue));
-                        btnSave.setAlpha(1);
-                    }
+//                if (isHeightValueChanged) {
+//                    if (!btnSave.isEnabled()) {
+//                        btnSave.setEnabled(true);
+//                        btnSave.setBackground(getResources().getDrawable(R.drawable.rounded_box_filled_btn_blue));
+//                        btnSave.setAlpha(1);
+//                    }
+//                }
+
+                if (!btnSave.isEnabled()) {
+                    btnSave.setEnabled(true);
+                    btnSave.setBackground(getResources().getDrawable(R.drawable.rounded_box_filled_btn_blue));
+                    btnSave.setAlpha(1);
                 }
             }
         });

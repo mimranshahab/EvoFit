@@ -218,7 +218,7 @@ public class SplashActivity extends AppCompatActivity {
             SharedPreferenceManager.getInstance(this).clearDB();
             changeActivity(MainActivity.class);
         });
-        pinEntryDialogFragment.setTitle("Enter Your Pin");
+        pinEntryDialogFragment.setTitle("Enter PIN");
         pinEntryDialogFragment.setCancelable(false);
         pinEntryDialogFragment.show(getSupportFragmentManager(), null);
     }

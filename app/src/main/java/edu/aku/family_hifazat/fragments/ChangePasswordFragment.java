@@ -34,6 +34,7 @@ import edu.aku.family_hifazat.widget.PinEntryEditText;
 import edu.aku.family_hifazat.widget.TitleBar;
 
 import static edu.aku.family_hifazat.constatnts.AppConstants.CARD_MASK;
+import static edu.aku.family_hifazat.constatnts.AppConstants.KEY_CODE;
 
 /**
  * Created by aqsa.sarwar on 4/20/2018.
@@ -192,6 +193,13 @@ public class ChangePasswordFragment extends BaseFragment {
                             public void requestDataResponse(WebResponse<JsonObject> webResponse) {
 //                                String message = webResponse.result.get("RecordMessage").getAsString();
                                 String message = "Your password has been updated.";
+
+                                String password = webResponse.result.get("Password").getAsString();
+
+                                if (sharedPreferenceManager.getString(KEY_CODE) != null && !sharedPreferenceManager.getString(KEY_CODE).isEmpty()) {
+                                    sharedPreferenceManager.putValue(KEY_CODE, password);
+                                }
+
 
                                 final GenericDialogFragment genericDialogFragment = new GenericDialogFragment();
                                 genericDialogFragment.setCancelable(false);

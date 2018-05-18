@@ -29,8 +29,9 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:padding="@dimen/x15dp"
-            android:text="Secure Your App With Pin"
+            android:text="Secure Your App With PIN"
             android:textColor="@color/txt_aku_blue"
+            android:textSize="@dimen/s14"
             app:typeface="@string/font_bold" />
 
 
@@ -70,6 +71,7 @@
             android:layout_weight="1"
             android:padding="@dimen/x15dp"
             android:text="Change Password"
+            android:textSize="@dimen/s14"
             android:textColor="@color/txt_aku_blue"
             app:typeface="@string/font_bold" />
 

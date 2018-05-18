@@ -139,5 +139,6 @@ Enim vitae euismod eu velit pede eu, sodales malesuada sit fermentum ut dictum d
     <string name="save">Save</string>
     <string name="verification">Verification Code</string>
     <string name="card_number">Card Number</string>
+    <string name="logout_underline"><u>Logout</u></string>
 
 </resources>

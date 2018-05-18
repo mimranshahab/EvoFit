@@ -35,7 +35,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="@dimen/x5dp"
-                        android:text="Medicine Name*"
+                        android:text="Medicine Name *"
                         android:textColor="@color/txt_aku_blue"
                         android:textSize="@dimen/s12"
                         app:typeface="@string/font_bold" />
@@ -60,7 +60,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="@dimen/x5dp"
-                        android:text="Frequency*"
+                        android:text="Frequency *"
                         android:textColor="@color/txt_aku_blue"
                         android:textSize="@dimen/s12"
                         app:typeface="@string/font_bold" />
@@ -86,7 +86,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="@dimen/x5dp"
-                        android:text="Route*"
+                        android:text="Route *"
                         android:textColor="@color/txt_aku_blue"
                         android:textSize="@dimen/s12"
                         app:typeface="@string/font_bold" />
@@ -112,7 +112,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="@dimen/x5dp"
-                        android:text="Start Date Time*"
+                        android:text="Start Date Time *"
                         android:textColor="@color/txt_aku_blue"
                         android:textSize="@dimen/s12"
                         app:typeface="@string/font_bold" />
@@ -140,7 +140,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="@dimen/x5dp"
-                        android:text="Stop Date Time*"
+                        android:text="Stop Date Time *"
                         android:textColor="@color/txt_aku_blue"
                         android:textSize="@dimen/s12"
                         app:typeface="@string/font_bold" />

@@ -92,13 +92,13 @@ public class SettingsFragment extends BaseFragment {
 
         switchPinCode.setOnCheckedChangeListener((CompoundButton compoundButton, boolean b) -> {
             if (b) {
-                enterNewPinDialogFragment.setTitle("Enter Your Pin");
+                enterNewPinDialogFragment.setTitle("Enter Pin");
                 enterNewPinDialogFragment.setCancelable(false);
                 enterNewPinDialogFragment.clearField();
                 enterNewPinDialogFragment.show(getFragmentManager(), null);
             } else {
                 GenericDialogFragment genericDialogFragment = GenericDialogFragment.newInstance();
-                UIHelper.genericPopUp(getBaseActivity(), genericDialogFragment, "Remove Pin", "Are you sure you want to remove Pin?",
+                UIHelper.genericPopUp(getBaseActivity(), genericDialogFragment, "Remove PIN", "Are you sure you want to remove previous PIN?",
                         "Yes", "No", () -> {
                             sharedPreferenceManager.putValue(AppConstants.KEY_IS_PIN_ENABLE, false);
                             genericDialogFragment.dismiss();

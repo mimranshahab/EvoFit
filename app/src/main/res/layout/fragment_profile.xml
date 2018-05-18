@@ -61,8 +61,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="@dimen/x5dp"
                         android:gravity="center"
-                        android:hint="User name"
-
+                        android:text="User Name"
                         android:padding="@dimen/x5dp"
                         android:textColor="@color/txt_aku_blue"
                         android:textSize="@dimen/s17"
@@ -73,7 +72,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:gravity="center"
-                        android:hint="MR #"
+                        android:text="MR #"
                         android:padding="@dimen/x5dp"
                         android:textColor="@color/txt_aku_blue"
                         android:textSize="@dimen/s16"
@@ -86,7 +85,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="@dimen/x15dp"
                         android:gravity="center"
-                        android:hint="Age and Gender"
+                        android:text="Age and Gender"
                         android:padding="@dimen/x5dp"
                         android:textColor="@color/c_gray"
                         android:textSize="@dimen/s16"
@@ -103,10 +102,10 @@
                         android:drawablePadding="@dimen/x5dp"
                         android:ellipsize="end"
                         android:gravity="center_vertical"
-                        android:hint="Cinic Number"
+                        android:text="Cinic Number"
                         android:padding="@dimen/x10dp"
                         android:singleLine="true"
-                        android:textColor="@color/text_color_grey"
+                        android:textColor="@color/text_color_grey_mid_dark"
                         android:textSize="@dimen/s15"
                         app:typeface="@string/font_regular" />
 
@@ -120,10 +119,10 @@
                         android:drawablePadding="@dimen/x5dp"
                         android:ellipsize="end"
                         android:gravity="center_vertical"
-                        android:hint="Contact number...."
+                        android:text="Contact number"
                         android:padding="@dimen/x10dp"
                         android:singleLine="true"
-                        android:textColor="@color/text_color_grey"
+                        android:textColor="@color/text_color_grey_mid_dark"
                         android:textSize="@dimen/s15"
                         app:typeface="@string/font_regular" />
 
@@ -137,10 +136,10 @@
                         android:drawablePadding="@dimen/x5dp"
                         android:ellipsize="end"
                         android:gravity="center_vertical"
-                        android:hint=" address.... "
+                        android:text="Address"
                         android:maxLines="2"
                         android:padding="@dimen/x10dp"
-                        android:textColor="@color/text_color_grey"
+                        android:textColor="@color/text_color_grey_mid_dark"
                         android:textSize="@dimen/s15"
                         app:typeface="@string/font_regular" />
 
@@ -154,10 +153,10 @@
                         android:drawablePadding="@dimen/x5dp"
                         android:ellipsize="end"
                         android:gravity="center_vertical"
-                        android:hint=" email address..."
+                        android:text="Email Address"
                         android:padding="@dimen/x10dp"
                         android:singleLine="true"
-                        android:textColor="@color/text_color_grey"
+                        android:textColor="@color/text_color_grey_mid_dark"
                         android:textSize="@dimen/s15"
                         app:typeface="@string/font_regular" />
                 </LinearLayout>

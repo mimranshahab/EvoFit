@@ -77,9 +77,9 @@
                             <LinearLayout
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent"
-                                android:padding="@dimen/x5dp"
                                 android:layout_gravity="center"
-                                android:orientation="horizontal">
+                                android:orientation="horizontal"
+                                android:padding="@dimen/x5dp">
 
 
                                 <LinearLayout
@@ -89,6 +89,16 @@
                                     android:gravity="center"
                                     android:orientation="vertical"
                                     android:padding="@dimen/x3dp">
+
+
+                                    <edu.aku.family_hifazat.widget.AnyTextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_gravity="center"
+                                        android:text="Fasting"
+                                        android:textColor="@color/txt_aku_blue"
+                                        android:textSize="@dimen/s12"
+                                        app:typeface="@string/font_bold" />
 
 
                                     <edu.aku.family_hifazat.widget.AnyTextView
@@ -118,6 +128,7 @@
                                             android:text="Fasting"
                                             android:textColor="@color/txt_aku_blue"
                                             android:textSize="@dimen/s12"
+                                            android:visibility="invisible"
                                             app:typeface="@string/font_regular" />
 
                                         <edu.aku.family_hifazat.widget.AnyTextView
@@ -152,7 +163,6 @@
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
                                         android:layout_gravity="center"
-                                        android:drawableLeft="@drawable/record"
                                         android:text=""
                                         android:textColor="@color/txt_aku_blue"
                                         android:textSize="@dimen/s12"
@@ -168,6 +178,15 @@
                                     android:gravity="center"
                                     android:orientation="vertical"
                                     android:padding="@dimen/x3dp">
+
+                                    <edu.aku.family_hifazat.widget.AnyTextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_gravity="center"
+                                        android:text="Random"
+                                        android:textColor="@color/txt_aku_blue"
+                                        android:textSize="@dimen/s12"
+                                        app:typeface="@string/font_bold" />
 
 
                                     <edu.aku.family_hifazat.widget.AnyTextView
@@ -198,6 +217,7 @@
                                             android:text="Random"
                                             android:textColor="@color/txt_aku_blue"
                                             android:textSize="@dimen/s12"
+                                            android:visibility="invisible"
                                             app:typeface="@string/font_regular" />
 
                                         <edu.aku.family_hifazat.widget.AnyTextView
@@ -232,7 +252,6 @@
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
                                         android:layout_gravity="center"
-                                        android:drawableLeft="@drawable/record"
                                         android:text=""
                                         android:textColor="@color/txt_aku_blue"
                                         android:textSize="@dimen/s12"
@@ -284,8 +303,7 @@
                 android:layout_margin="@dimen/x10dp"
                 android:background="@drawable/rounded_box_filled_base_red"
                 android:orientation="vertical"
-                android:padding="@dimen/x1dp"
-               >
+                android:padding="@dimen/x1dp">
 
                 <FrameLayout
                     android:layout_width="match_parent"
@@ -296,8 +314,8 @@
 
                     <RelativeLayout
                         android:layout_width="match_parent"
-                        android:padding="@dimen/x5dp"
-                        android:layout_height="wrap_content">
+                        android:layout_height="wrap_content"
+                        android:padding="@dimen/x5dp">
 
 
                         <edu.aku.family_hifazat.widget.AnyTextView
@@ -319,8 +337,8 @@
                             android:layout_below="@id/txtGLUR"
                             android:layout_centerInParent="true"
                             app:np_dividerColor="@color/base_gray"
-                            app:np_orientation="horizontal"
                             app:np_dividerThickness="@dimen/x1dp"
+                            app:np_orientation="horizontal"
 
                             app:np_scrollerEnabled="true"
                             app:np_selectedTextColor="@color/base_reddish_light"
