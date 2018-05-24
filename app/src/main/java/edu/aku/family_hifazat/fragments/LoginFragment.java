@@ -7,37 +7,37 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
+import android.widget.LinearLayout;
 
 import com.andreabaccega.widget.FormEditText;
-
-import edu.aku.family_hifazat.constatnts.AppConstants;
-import edu.aku.family_hifazat.fragments.abstracts.GenericDialogFragment;
-import edu.aku.family_hifazat.helperclasses.GooglePlaceHelper;
-import edu.aku.family_hifazat.helperclasses.ui.helper.KeyboardHelper;
-import edu.aku.family_hifazat.helperclasses.ui.helper.UIHelper;
-import edu.aku.family_hifazat.libraries.countrypicker.Country;
-import edu.aku.family_hifazat.models.sending_model.RegisteredDeviceModel;
-import edu.aku.family_hifazat.widget.AnyTextView;
-
 import com.google.gson.JsonObject;
-
-import edu.aku.family_hifazat.R;
-import edu.aku.family_hifazat.activities.HomeActivity;
-import edu.aku.family_hifazat.constatnts.WebServiceConstants;
-import edu.aku.family_hifazat.enums.BaseURLTypes;
-import edu.aku.family_hifazat.fragments.abstracts.BaseFragment;
-import edu.aku.family_hifazat.helperclasses.validator.CardNumberValidation;
-import edu.aku.family_hifazat.helperclasses.validator.PasswordValidation;
-import edu.aku.family_hifazat.widget.TitleBar;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import butterknife.Unbinder;
+import edu.aku.family_hifazat.R;
+import edu.aku.family_hifazat.activities.HomeActivity;
+import edu.aku.family_hifazat.constatnts.AppConstants;
+import edu.aku.family_hifazat.constatnts.WebServiceConstants;
+import edu.aku.family_hifazat.enums.BaseURLTypes;
+import edu.aku.family_hifazat.fragments.abstracts.BaseFragment;
+import edu.aku.family_hifazat.fragments.abstracts.GenericDialogFragment;
+import edu.aku.family_hifazat.helperclasses.GooglePlaceHelper;
+import edu.aku.family_hifazat.helperclasses.ui.helper.KeyboardHelper;
+import edu.aku.family_hifazat.helperclasses.ui.helper.UIHelper;
+import edu.aku.family_hifazat.helperclasses.validator.CardNumberValidation;
+import edu.aku.family_hifazat.helperclasses.validator.PasswordValidation;
 import edu.aku.family_hifazat.libraries.maskformatter.MaskFormatter;
+import edu.aku.family_hifazat.managers.retrofit.GsonFactory;
 import edu.aku.family_hifazat.managers.retrofit.WebServices;
+import edu.aku.family_hifazat.models.receiving_model.AddUpdateModel;
 import edu.aku.family_hifazat.models.sending_model.LoginApiModel;
+import edu.aku.family_hifazat.models.sending_model.RegisteredDeviceModel;
 import edu.aku.family_hifazat.models.wrappers.WebResponse;
+import edu.aku.family_hifazat.widget.AnyEditTextView;
+import edu.aku.family_hifazat.widget.AnyTextView;
+import edu.aku.family_hifazat.widget.TitleBar;
 
 import static edu.aku.family_hifazat.constatnts.AppConstants.ACCESS_LOGIN_DONE;
 import static edu.aku.family_hifazat.constatnts.AppConstants.CARD_MASK;
@@ -51,17 +51,22 @@ import static edu.aku.family_hifazat.constatnts.AppConstants.KEY_TOKEN;
 
 public class LoginFragment extends BaseFragment {
 
+
+    Unbinder unbinder;
+    @BindView(R.id.contLogos)
+    LinearLayout contLogos;
     @BindView(R.id.edtUserName)
-    FormEditText edtCardNumber;
+    AnyEditTextView edtCardNumber;
     @BindView(R.id.edtPassword)
     FormEditText edtPassword;
-    @BindView(R.id.txtForgotPassword)
-    AnyTextView txtForgotPassword;
     @BindView(R.id.btnLogin)
     AnyTextView btnLogin;
     @BindView(R.id.txtSignUp)
     AnyTextView txtSignUp;
-    Unbinder unbinder;
+    @BindView(R.id.txtForgotPassword)
+    AnyTextView txtForgotPassword;
+    @BindView(R.id.contContent)
+    LinearLayout contContent;
     private GooglePlaceHelper.GoogleAddressModel currentLocation;
 
 
@@ -111,11 +116,12 @@ public class LoginFragment extends BaseFragment {
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+        getOneTimeTokenService();
         edtPassword.addValidator(new PasswordValidation());
         edtCardNumber.addValidator(new CardNumberValidation());
         edtCardNumber.addTextChangedListener(new MaskFormatter(CARD_MASK, edtCardNumber, '-'));
 
-        currentLocation = GooglePlaceHelper.getCurrentLocation(getContext(), true);
+        currentLocation = GooglePlaceHelper.getCurrentLocation(getContext(), false);
 
 //        if (currentLocation != null) {
 //            UIHelper.showToast(getContext(), currentLocation.getAddress());
@@ -196,7 +202,7 @@ public class LoginFragment extends BaseFragment {
 
     private void loginCall(LoginApiModel loginApiModel) {
         new WebServices(getBaseActivity(),
-                getToken(),
+                getOneTimeToken(),
                 BaseURLTypes.AHFA_BASE_URL)
                 .webServiceRequestAPIForJsonObject(WebServiceConstants.METHOD_USER_LOGIN,
                         loginApiModel.toString(),
@@ -222,5 +228,24 @@ public class LoginFragment extends BaseFragment {
                         });
     }
 
+    private void getOneTimeTokenService() {
+        new WebServices(getBaseActivity(), getToken(), BaseURLTypes.AHFA_BASE_URL, false)
+                .webServiceRequestAPIForJsonObject(WebServiceConstants.METHOD_GET_ONE_TIME_TOKEN,
+                        "",
+                        new WebServices.IRequestJsonDataCallBack() {
+                            @Override
+                            public void requestDataResponse(WebResponse<JsonObject> webResponse) {
+                                AddUpdateModel addUpdateModel = GsonFactory.getSimpleGson().fromJson(webResponse.result, AddUpdateModel.class);
+                                if (addUpdateModel.getStatus()) {
+                                    putOneTimeToken(addUpdateModel.getRecordid());
+                                }
+                            }
+
+                            @Override
+                            public void onError() {
+                                UIHelper.showToast(getContext(), "Unable to save record.");
+                            }
+                        });
+    }
 
 }

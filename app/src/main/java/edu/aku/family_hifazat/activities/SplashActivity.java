@@ -24,14 +24,18 @@ import edu.aku.family_hifazat.helperclasses.ui.helper.AnimationHelper;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import edu.aku.family_hifazat.R;
+import edu.aku.family_hifazat.helperclasses.ui.helper.UIHelper;
 import edu.aku.family_hifazat.managers.SharedPreferenceManager;
 import edu.aku.family_hifazat.managers.retrofit.GsonFactory;
 import edu.aku.family_hifazat.managers.retrofit.WebServices;
+import edu.aku.family_hifazat.models.receiving_model.AddUpdateModel;
 import edu.aku.family_hifazat.models.sending_model.AppVersionModel;
 import edu.aku.family_hifazat.models.wrappers.WebResponse;
+import retrofit2.Call;
 
 import static android.view.View.GONE;
 import static android.view.View.VISIBLE;
+import static edu.aku.family_hifazat.BaseApplication.getContext;
 import static edu.aku.family_hifazat.constatnts.AppConstants.KEY_PIN_CODE;
 
 public class SplashActivity extends AppCompatActivity {
@@ -45,6 +49,9 @@ public class SplashActivity extends AppCompatActivity {
     private final int FADING_TIME = 500;
     private boolean hasAnimationStarted = false;
     private boolean isUpdateCallBackRecieved = false;
+
+    Call<WebResponse<JsonObject>> isUpdateAvailableCall = null;
+    Call<WebResponse<JsonObject>> getOneTimeTokenService = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -151,8 +158,7 @@ public class SplashActivity extends AppCompatActivity {
         }
         appVersionModel.setAndappversioncode(versionCode);
         appVersionModel.setAndappversionname(myVersionName);
-        isUpdateAvailable(appVersionModel, activityClass);
-
+        getOneTimeTokenService(appVersionModel, activityClass);
 
         try {
             new Handler().postDelayed(new Runnable() {
@@ -291,9 +297,30 @@ public class SplashActivity extends AppCompatActivity {
     }
 
 
-    private void isUpdateAvailable(final AppVersionModel appVersionModel, final Class activityClass) {
-        new WebServices(this,
-                "",
+    private void getOneTimeTokenService(final AppVersionModel appVersionModel, final Class activityClass) {
+        getOneTimeTokenService = new WebServices(this, "", BaseURLTypes.AHFA_BASE_URL, false)
+                .webServiceRequestAPIForJsonObject(WebServiceConstants.METHOD_GET_ONE_TIME_TOKEN,
+                        "",
+                        new WebServices.IRequestJsonDataCallBack() {
+                            @Override
+                            public void requestDataResponse(WebResponse<JsonObject> webResponse) {
+                                AddUpdateModel addUpdateModel = GsonFactory.getSimpleGson().fromJson(webResponse.result, AddUpdateModel.class);
+                                if (addUpdateModel.getStatus()) {
+                                    SharedPreferenceManager.getInstance(getContext()).putValue(AppConstants.KEY_ONE_TIME_TOKEN, addUpdateModel.getRecordid());
+                                    isUpdateAvailable(appVersionModel, activityClass, addUpdateModel.getRecordid());
+                                }
+                            }
+
+                            @Override
+                            public void onError() {
+                            }
+                        });
+    }
+
+
+    private void isUpdateAvailable(final AppVersionModel appVersionModel, final Class activityClass, String token) {
+        isUpdateAvailableCall = new WebServices(this,
+                token,
                 BaseURLTypes.AHFA_BASE_URL, false)
                 .webServiceRequestAPIForJsonObject(WebServiceConstants.METHOD_USER_GET_APPLICATION_PARAMETER,
                         appVersionModel.toString(),
@@ -318,4 +345,17 @@ public class SplashActivity extends AppCompatActivity {
                         });
     }
 
+    @Override
+    protected void onDestroy() {
+        if (getOneTimeTokenService != null && !getOneTimeTokenService.isCanceled()) {
+            getOneTimeTokenService.cancel();
+        }
+
+        if (isUpdateAvailableCall != null && !isUpdateAvailableCall.isCanceled()) {
+            isUpdateAvailableCall.cancel();
+        }
+
+        super.onDestroy();
+
+    }
 }

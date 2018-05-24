@@ -259,14 +259,15 @@ public class WebServices {
         }
     }
 
-    public void webServiceRequestAPIForJsonObject(final String requestMethod, String requestData, final IRequestJsonDataCallBack callBack) {
+    public  Call<WebResponse<JsonObject>> webServiceRequestAPIForJsonObject(final String requestMethod, String requestData, final IRequestJsonDataCallBack callBack) {
 
         RequestBody bodyRequestMethod = getRequestBody(okhttp3.MultipartBody.FORM, requestMethod);
         RequestBody bodyRequestData = getRequestBody(okhttp3.MultipartBody.FORM, requestData);
+        Call<WebResponse<JsonObject>> webResponseCall = apiService.webServiceRequestAPI(bodyRequestMethod, bodyRequestData);
 
         try {
             if (Helper.isNetworkConnected(mContext, true)) {
-                Call<WebResponse<JsonObject>> webResponseCall = apiService.webServiceRequestAPI(bodyRequestMethod, bodyRequestData);
+
                 webResponseCall.enqueue(new Callback<WebResponse<JsonObject>>() {
                     @Override
                     public void onResponse(Call<WebResponse<JsonObject>> call, Response<WebResponse<JsonObject>> response) {
@@ -357,6 +358,8 @@ public class WebServices {
 
         }
 
+
+        return webResponseCall;
     }
 
     public void webServiceRequestAPIForArray(String requestMethod, String requestData, final IRequestArrayDataCallBack callBack) {

@@ -89,6 +89,7 @@ public class AppConstants {
     public static String FORCED_RESTART = "forced_restart";
     public static final String KEY_REGISTER_VM = "register_vm";
     public static final String KEY_TOKEN = "getToken";
+    public static final String KEY_ONE_TIME_TOKEN = "one_time_token";
     public static final String KEY_CROSS_TAB_DATA = "cross_tab";
     public static final String KEY_REGISTERED_DEVICE = "registered_device";
     public static final String KEY_INSERT_REGISTERED_DEVICE = "registered_device";

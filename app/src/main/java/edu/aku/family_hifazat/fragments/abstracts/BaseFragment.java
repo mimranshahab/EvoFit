@@ -89,6 +89,14 @@ public abstract class BaseFragment extends Fragment implements View.OnClickListe
         return sharedPreferenceManager.getString(AppConstants.KEY_TOKEN);
     }
 
+    public String getOneTimeToken() {
+        return sharedPreferenceManager.getString(AppConstants.KEY_ONE_TIME_TOKEN);
+    }
+
+    public void putOneTimeToken(String token) {
+        sharedPreferenceManager.putValue(AppConstants.KEY_ONE_TIME_TOKEN, token);
+    }
+
     public abstract int getDrawerLockMode();
 
 

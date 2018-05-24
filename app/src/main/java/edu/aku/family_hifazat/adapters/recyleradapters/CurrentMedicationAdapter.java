@@ -57,6 +57,7 @@ public class CurrentMedicationAdapter extends RecyclerView.Adapter<CurrentMedica
         holder.txtRoute.setText(model.getRxmedroutedescription()); // Null in History
         holder.txtStartDate.setText(model.getRxmedstartdatetime());
         holder.txtStopDate.setText(model.getRxmedstopdatetime());
+        holder.txtEntryStatus.setText(model.getIdentifyMedicationLocation());
 
         if (model.isLifeTimeMedicin()) {
             holder.txtNextDose.setText("Next Dose: Life Long");
@@ -71,7 +72,6 @@ public class CurrentMedicationAdapter extends RecyclerView.Adapter<CurrentMedica
         }
 
         if (model.getIdentifyMedicationLocation() != null) {
-            holder.txtEntryStatus.setText(model.getIdentifyMedicationLocation());
             if (model.getIdentifyMedicationLocation().equalsIgnoreCase("SELF") || model.getIdentifyMedicationLocation().equalsIgnoreCase("SELF-ENTERED")) {
                 holder.imgIcon.setColorFilter(activity.getResources().getColor(R.color.medicine_orange));
                 holder.cardView.setCardBackgroundColor(activity.getResources().getColor(R.color.medicine_orange));

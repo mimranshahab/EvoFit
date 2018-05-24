@@ -43,7 +43,13 @@ public abstract class BaseActivity extends AppCompatActivity {
         addDrawerFragment();
     }
 
+    /**
+     * Give Resource id of the view you want to inflate
+     * @return
+     */
     protected abstract int getViewId();
+
+
 
     protected abstract int getTitlebarLayoutId();
 

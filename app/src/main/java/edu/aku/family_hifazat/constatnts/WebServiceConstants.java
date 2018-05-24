@@ -124,4 +124,6 @@ public class WebServiceConstants {
     public static final String METHOD_UPDATE_PROFILE = "UserManager.UpdateCardMemberVM";
     public static final String METHOD_GET_EDIT_CARD = "UserManager.GetEditCardMemberVM";
 
+    public static final String METHOD_GET_ONE_TIME_TOKEN = "SharedManager.GetOneTimeCode";
+
 }
