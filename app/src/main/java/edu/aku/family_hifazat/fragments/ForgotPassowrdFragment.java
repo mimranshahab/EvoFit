@@ -1,5 +1,6 @@
 package edu.aku.family_hifazat.fragments;
 
+import android.app.ProgressDialog;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.widget.DrawerLayout;
@@ -20,6 +21,7 @@ import edu.aku.family_hifazat.enums.BaseURLTypes;
 import edu.aku.family_hifazat.fragments.abstracts.BaseFragment;
 import edu.aku.family_hifazat.fragments.abstracts.GenericDialogFragment;
 import edu.aku.family_hifazat.helperclasses.CyberSoftSecurityHelper;
+import edu.aku.family_hifazat.helperclasses.Helper;
 import edu.aku.family_hifazat.helperclasses.ui.helper.KeyboardHelper;
 import edu.aku.family_hifazat.helperclasses.ui.helper.UIHelper;
 import edu.aku.family_hifazat.helperclasses.validator.CardNumberValidation;
@@ -27,6 +29,7 @@ import edu.aku.family_hifazat.libraries.maskformatter.MaskFormatter;
 import edu.aku.family_hifazat.managers.retrofit.GsonFactory;
 import edu.aku.family_hifazat.managers.retrofit.WebServices;
 import edu.aku.family_hifazat.models.PaymentRequestModel;
+import edu.aku.family_hifazat.models.receiving_model.AddUpdateModel;
 import edu.aku.family_hifazat.models.sending_model.LoginApiModel;
 import edu.aku.family_hifazat.models.wrappers.Parameters;
 import edu.aku.family_hifazat.models.wrappers.PaymentModel;
@@ -55,6 +58,7 @@ public class ForgotPassowrdFragment extends BaseFragment {
     @BindView(R.id.edtMotherName)
     AnyEditTextView edtMotherName;
     private boolean isChangePassword = false;
+    private ProgressDialog mDialog;
 
 
     @Override
@@ -91,10 +95,11 @@ public class ForgotPassowrdFragment extends BaseFragment {
             edCardNumber.setClickable(false);
             edCardNumber.setEnabled(false);
             edCardNumber.setAlpha(0.5f);
-
-
         }
 
+        mDialog = Helper.getLoader(getContext());
+        mDialog.setMessage("Processing your request ...");
+        mDialog.setTitle("Please Wait");
 //        txtTitle.setText("Forgot Password");
     }
 
@@ -246,16 +251,18 @@ public class ForgotPassowrdFragment extends BaseFragment {
         if (edCardNumber.testValidity() && edCardNumber.getText().length() == 14 && edtMotherName.testValidity()) {
             LoginApiModel loginApiModel = new LoginApiModel(edCardNumber.getStringTrimmed(), null);
             loginApiModel.setMotherName(edtMotherName.getText().toString());
-            generatePasswordResetCodeAndEmail(loginApiModel);
+            mDialog.show();
+            getOneTimeTokenService(loginApiModel);
+
         } else {
             UIHelper.showToast(getContext(), "Please enter valid Card Number and Mother Name");
         }
     }
 
 
-    private void generatePasswordResetCodeAndEmail(final LoginApiModel loginApiModel) {
+    private void generatePasswordResetCodeAndEmail(final LoginApiModel loginApiModel, String token) {
         new WebServices(getBaseActivity(),
-                getToken(),
+                token,
                 BaseURLTypes.AHFA_BASE_URL)
                 .webServiceRequestAPIForJsonObject(WebServiceConstants.METHOD_USER_GENERATE_PASSWORD_CODE,
                         loginApiModel.toString(),
@@ -275,11 +282,36 @@ public class ForgotPassowrdFragment extends BaseFragment {
                                         },
                                         () -> {
                                         });
+
+                                mDialog.dismiss();
                             }
 
                             @Override
                             public void onError() {
+                                mDialog.dismiss();
+                            }
+                        });
+    }
 
+    private void getOneTimeTokenService(LoginApiModel loginApiModel) {
+        new WebServices(getBaseActivity(), getToken(), BaseURLTypes.AHFA_BASE_URL, false)
+                .webServiceRequestAPIForJsonObject(WebServiceConstants.METHOD_GET_ONE_TIME_TOKEN,
+                        "",
+                        new WebServices.IRequestJsonDataCallBack() {
+                            @Override
+                            public void requestDataResponse(WebResponse<JsonObject> webResponse) {
+                                AddUpdateModel addUpdateModel = GsonFactory.getSimpleGson().fromJson(webResponse.result, AddUpdateModel.class);
+                                if (addUpdateModel.getStatus()) {
+                                    putOneTimeToken(addUpdateModel.getRecordid());
+                                    generatePasswordResetCodeAndEmail(loginApiModel, addUpdateModel.getRecordid());
+                                }
+
+                            }
+
+                            @Override
+                            public void onError() {
+                                mDialog.dismiss();
+                                UIHelper.showToast(getContext(), "Something went wrong, Please try again");
                             }
                         });
     }

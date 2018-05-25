@@ -313,6 +313,7 @@ public class SplashActivity extends AppCompatActivity {
 
                             @Override
                             public void onError() {
+                                isUpdateAvailable(appVersionModel, activityClass, "");
                             }
                         });
     }

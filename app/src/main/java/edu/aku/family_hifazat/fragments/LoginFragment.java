@@ -1,5 +1,6 @@
 package edu.aku.family_hifazat.fragments;
 
+import android.app.ProgressDialog;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.widget.DrawerLayout;
@@ -24,6 +25,7 @@ import edu.aku.family_hifazat.enums.BaseURLTypes;
 import edu.aku.family_hifazat.fragments.abstracts.BaseFragment;
 import edu.aku.family_hifazat.fragments.abstracts.GenericDialogFragment;
 import edu.aku.family_hifazat.helperclasses.GooglePlaceHelper;
+import edu.aku.family_hifazat.helperclasses.Helper;
 import edu.aku.family_hifazat.helperclasses.ui.helper.KeyboardHelper;
 import edu.aku.family_hifazat.helperclasses.ui.helper.UIHelper;
 import edu.aku.family_hifazat.helperclasses.validator.CardNumberValidation;
@@ -68,7 +70,7 @@ public class LoginFragment extends BaseFragment {
     @BindView(R.id.contContent)
     LinearLayout contContent;
     private GooglePlaceHelper.GoogleAddressModel currentLocation;
-
+    ProgressDialog mDialog;
 
     public static LoginFragment newInstance() {
         Bundle args = new Bundle();
@@ -116,12 +118,16 @@ public class LoginFragment extends BaseFragment {
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        getOneTimeTokenService();
-        edtPassword.addValidator(new PasswordValidation());
+//        edtPassword.addValidator(new PasswordValidation());
         edtCardNumber.addValidator(new CardNumberValidation());
         edtCardNumber.addTextChangedListener(new MaskFormatter(CARD_MASK, edtCardNumber, '-'));
 
         currentLocation = GooglePlaceHelper.getCurrentLocation(getContext(), false);
+
+
+        mDialog = Helper.getLoader(getContext());
+        mDialog.setMessage("Processing your request ...");
+        mDialog.setTitle("Please Wait");
 
 //        if (currentLocation != null) {
 //            UIHelper.showToast(getContext(), currentLocation.getAddress());
@@ -177,8 +183,8 @@ public class LoginFragment extends BaseFragment {
                     loginApiModel.setDevice(registeredDevice);
                     loginApiModel.setRegisteredDevice(registeredDevice);
 
-
-                    loginCall(loginApiModel);
+                    mDialog.show();
+                    getOneTimeTokenService(loginApiModel);
                 }
                 break;
 
@@ -209,6 +215,7 @@ public class LoginFragment extends BaseFragment {
                         new WebServices.IRequestJsonDataCallBack() {
                             @Override
                             public void requestDataResponse(WebResponse<JsonObject> webResponse) {
+                                mDialog.dismiss();
                                 String token = webResponse.result.get("_token").getAsString();
                                 String cardNumber = webResponse.result.get("CardNumber").getAsString();
                                 String code = webResponse.result.get("Password").getAsString();
@@ -223,12 +230,12 @@ public class LoginFragment extends BaseFragment {
 
                             @Override
                             public void onError() {
-
+                                mDialog.dismiss();
                             }
                         });
     }
 
-    private void getOneTimeTokenService() {
+    private void getOneTimeTokenService(LoginApiModel loginApiModel) {
         new WebServices(getBaseActivity(), getToken(), BaseURLTypes.AHFA_BASE_URL, false)
                 .webServiceRequestAPIForJsonObject(WebServiceConstants.METHOD_GET_ONE_TIME_TOKEN,
                         "",
@@ -238,12 +245,15 @@ public class LoginFragment extends BaseFragment {
                                 AddUpdateModel addUpdateModel = GsonFactory.getSimpleGson().fromJson(webResponse.result, AddUpdateModel.class);
                                 if (addUpdateModel.getStatus()) {
                                     putOneTimeToken(addUpdateModel.getRecordid());
+                                    loginCall(loginApiModel);
                                 }
+
                             }
 
                             @Override
                             public void onError() {
-                                UIHelper.showToast(getContext(), "Unable to save record.");
+                                mDialog.dismiss();
+                                UIHelper.showToast(getContext(), "Something went wrong, Please try again");
                             }
                         });
     }

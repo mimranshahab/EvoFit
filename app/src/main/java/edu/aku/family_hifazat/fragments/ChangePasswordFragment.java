@@ -1,5 +1,7 @@
 package edu.aku.family_hifazat.fragments;
 
+import android.app.Dialog;
+import android.app.ProgressDialog;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.widget.DrawerLayout;
@@ -21,11 +23,15 @@ import edu.aku.family_hifazat.constatnts.WebServiceConstants;
 import edu.aku.family_hifazat.enums.BaseURLTypes;
 import edu.aku.family_hifazat.fragments.abstracts.BaseFragment;
 import edu.aku.family_hifazat.fragments.abstracts.GenericDialogFragment;
+import edu.aku.family_hifazat.helperclasses.Helper;
 import edu.aku.family_hifazat.helperclasses.ui.helper.UIHelper;
 import edu.aku.family_hifazat.helperclasses.validator.CardNumberValidation;
 import edu.aku.family_hifazat.helperclasses.validator.PasswordValidation;
 import edu.aku.family_hifazat.libraries.maskformatter.MaskFormatter;
+import edu.aku.family_hifazat.managers.retrofit.GsonFactory;
 import edu.aku.family_hifazat.managers.retrofit.WebServices;
+import edu.aku.family_hifazat.models.receiving_model.AddUpdateModel;
+import edu.aku.family_hifazat.models.sending_model.LoginApiModel;
 import edu.aku.family_hifazat.models.sending_model.NewPasswordModel;
 import edu.aku.family_hifazat.models.wrappers.WebResponse;
 import edu.aku.family_hifazat.widget.AnyEditTextView;
@@ -60,6 +66,7 @@ public class ChangePasswordFragment extends BaseFragment {
     AnyEditTextView edCardNumber;
     private String cardNumber;
     private Unbinder unbinder;
+    private ProgressDialog mDialog;
 
     public static ChangePasswordFragment newInstance(String cardNumber) {
 
@@ -141,6 +148,10 @@ public class ChangePasswordFragment extends BaseFragment {
 
         edCardNumber.addValidator(new CardNumberValidation());
         edCardNumber.addTextChangedListener(new MaskFormatter(CARD_MASK, edCardNumber, '-'));
+
+        mDialog = Helper.getLoader(getContext());
+        mDialog.setMessage("Processing your request ...");
+        mDialog.setTitle("Please Wait");
     }
 
     @Override
@@ -163,7 +174,8 @@ public class ChangePasswordFragment extends BaseFragment {
                             newPasswordModel.setPasswordresetcode(txtPinForgotPass.getText().toString().trim());
                             newPasswordModel.setPassword(edtConPassword.getText().toString().trim());
 
-                            newPasswordRequest(newPasswordModel);
+                            mDialog.show();
+                            getOneTimeTokenService(newPasswordModel);
                         } else {
                             UIHelper.showToast(getContext(), "Password not match");
                         }
@@ -182,9 +194,9 @@ public class ChangePasswordFragment extends BaseFragment {
         }
     }
 
-    private void newPasswordRequest(NewPasswordModel newPasswordModel) {
+    private void newPasswordRequest(NewPasswordModel newPasswordModel, String token) {
         new WebServices(getBaseActivity(),
-                getToken(),
+                token,
                 BaseURLTypes.AHFA_BASE_URL)
                 .webServiceRequestAPIForJsonObject(WebServiceConstants.METHOD_USER_VERIFY_PASSWORD_CODE_AND_UPDATE_PASSWORD,
                         newPasswordModel.toString(),
@@ -211,11 +223,36 @@ public class ChangePasswordFragment extends BaseFragment {
                                         },
                                         () -> {
                                         });
+                                mDialog.dismiss();
                             }
 
                             @Override
                             public void onError() {
+                                mDialog.dismiss();
+                            }
+                        });
+    }
 
+
+    private void getOneTimeTokenService(NewPasswordModel newPasswordModel) {
+        new WebServices(getBaseActivity(), getToken(), BaseURLTypes.AHFA_BASE_URL, false)
+                .webServiceRequestAPIForJsonObject(WebServiceConstants.METHOD_GET_ONE_TIME_TOKEN,
+                        "",
+                        new WebServices.IRequestJsonDataCallBack() {
+                            @Override
+                            public void requestDataResponse(WebResponse<JsonObject> webResponse) {
+                                AddUpdateModel addUpdateModel = GsonFactory.getSimpleGson().fromJson(webResponse.result, AddUpdateModel.class);
+                                if (addUpdateModel.getStatus()) {
+                                    putOneTimeToken(addUpdateModel.getRecordid());
+                                    newPasswordRequest(newPasswordModel, addUpdateModel.getRecordid());
+                                }
+
+                            }
+
+                            @Override
+                            public void onError() {
+                                mDialog.dismiss();
+                                UIHelper.showToast(getContext(), "Something went wrong, Please try again");
                             }
                         });
     }
