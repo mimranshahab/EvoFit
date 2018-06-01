@@ -103,6 +103,33 @@ public class CardioModel
 
     private final static long serialVersionUID = 2241373079708123524L;
 
+
+
+    @Expose
+    @SerializedName("BalanceAmount")
+    private String BalanceAmount;
+
+    @Expose
+    @SerializedName("BalanceMessage")
+    private String BalanceMessage;
+
+    public String getBalanceAmount() {
+        return BalanceAmount;
+    }
+
+    public void setBalanceAmount(String balanceAmount) {
+        BalanceAmount = balanceAmount;
+    }
+
+    public String getBalanceMessage() {
+        return BalanceMessage;
+    }
+
+    public void setBalanceMessage(String balanceMessage) {
+        BalanceMessage = balanceMessage;
+    }
+
+
     public String getHospitalLocation() {
         return hospitalLocation;
     }

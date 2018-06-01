@@ -1,6 +1,5 @@
 package edu.aku.family_hifazat.fragments;
 
-import android.app.Dialog;
 import android.app.ProgressDialog;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -31,7 +30,6 @@ import edu.aku.family_hifazat.libraries.maskformatter.MaskFormatter;
 import edu.aku.family_hifazat.managers.retrofit.GsonFactory;
 import edu.aku.family_hifazat.managers.retrofit.WebServices;
 import edu.aku.family_hifazat.models.receiving_model.AddUpdateModel;
-import edu.aku.family_hifazat.models.sending_model.LoginApiModel;
 import edu.aku.family_hifazat.models.sending_model.NewPasswordModel;
 import edu.aku.family_hifazat.models.wrappers.WebResponse;
 import edu.aku.family_hifazat.widget.AnyEditTextView;
@@ -198,7 +196,7 @@ public class ChangePasswordFragment extends BaseFragment {
         new WebServices(getBaseActivity(),
                 token,
                 BaseURLTypes.AHFA_BASE_URL)
-                .webServiceRequestAPIForJsonObject(WebServiceConstants.METHOD_USER_VERIFY_PASSWORD_CODE_AND_UPDATE_PASSWORD,
+                .webServiceRequestAPIForJsonObject(WebServiceConstants.METHOD_USER_VERIFY_AND_UPDATE,
                         newPasswordModel.toString(),
                         new WebServices.IRequestJsonDataCallBack() {
                             @Override

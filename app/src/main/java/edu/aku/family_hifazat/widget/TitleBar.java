@@ -207,7 +207,7 @@ public class TitleBar extends RelativeLayout {
 //            public void onClick(View view) {
 //                txtMRN.setText(currentUser.getMRNumber());
 //                txtUserName.setText(currentUser.getName());
-//                showAndHideDropDown();
+//                hideAndShowBottomBar();
 //            }
 //        });
     }
@@ -243,7 +243,7 @@ public class TitleBar extends RelativeLayout {
 //            public void onClick(View view) {
 //                txtMRN.setText(currentUser.getMRNumber());
 //                txtUserName.setText(currentUser.getName());
-//                showAndHideDropDown();
+//                hideAndShowBottomBar();
 //            }
 //        });
     }

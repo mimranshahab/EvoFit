@@ -5,7 +5,7 @@ import com.google.gson.annotations.SerializedName;
 
 import edu.aku.family_hifazat.managers.retrofit.GsonFactory;
 
-public class Neurophysiology implements IsRecordFound {
+public class NeurophysiologyModel implements IsRecordFound {
 
     @Expose
     @SerializedName("RecordMessage")
@@ -95,7 +95,33 @@ public class Neurophysiology implements IsRecordFound {
     private Object active;
     private final static long serialVersionUID = 3310356648763487153L;
 
-    public Neurophysiology(String tempMRN) {
+
+    @Expose
+    @SerializedName("BalanceAmount")
+    private String BalanceAmount;
+
+    @Expose
+    @SerializedName("BalanceMessage")
+    private String BalanceMessage;
+
+    public String getBalanceAmount() {
+        return BalanceAmount;
+    }
+
+    public void setBalanceAmount(String balanceAmount) {
+        BalanceAmount = balanceAmount;
+    }
+
+    public String getBalanceMessage() {
+        return BalanceMessage;
+    }
+
+    public void setBalanceMessage(String balanceMessage) {
+        BalanceMessage = balanceMessage;
+    }
+
+
+    public NeurophysiologyModel(String tempMRN) {
         this.tempMRN = tempMRN;
     }
 

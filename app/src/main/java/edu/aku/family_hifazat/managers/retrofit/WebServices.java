@@ -9,7 +9,6 @@ import com.google.gson.JsonObject;
 
 import java.lang.String;
 
-import edu.aku.family_hifazat.R;
 import edu.aku.family_hifazat.constatnts.WebServiceConstants;
 import edu.aku.family_hifazat.enums.BaseURLTypes;
 import edu.aku.family_hifazat.enums.FileType;
@@ -311,8 +310,8 @@ public class WebServices {
                                         // Show Toast here
                                         String message = response.body().result.get("RecordMessage").toString();
                                         if (requestMethod.equals(WebServiceConstants.METHOD_USER_LOGIN)
-                                                || requestMethod.equals(WebServiceConstants.METHOD_USER_GENERATE_PASSWORD_CODE)
-                                                || requestMethod.equals(WebServiceConstants.METHOD_USER_VERIFY_PASSWORD_CODE_AND_UPDATE_PASSWORD)
+                                                || requestMethod.equals(WebServiceConstants.METHOD_USER_GENERATE_RESET)
+                                                || requestMethod.equals(WebServiceConstants.METHOD_USER_VERIFY_AND_UPDATE)
 
                                                 ) {
                                             UIHelper.showShortToastInCenter(mContext, message);
@@ -418,8 +417,8 @@ public class WebServices {
                                         String message = response.body().result.get(0).get("RecordMessage").toString();
 
                                         if (requestMethod.equals(WebServiceConstants.METHOD_PATIENT_HEALTH_SUMMARY)
-//                                            || requestMethod.equals(WebServiceConstants.METHOD_USER_GENERATE_PASSWORD_CODE)
-//                                            || requestMethod.equals(WebServiceConstants.METHOD_USER_VERIFY_PASSWORD_CODE_AND_UPDATE_PASSWORD)
+//                                            || requestMethod.equals(WebServiceConstants.METHOD_USER_GENERATE_RESET)
+//                                            || requestMethod.equals(WebServiceConstants.METHOD_USER_VERIFY_AND_UPDATE)
                                                 ) {
                                             UIHelper.showShortToastInCenter(mContext, message);
                                         } else {

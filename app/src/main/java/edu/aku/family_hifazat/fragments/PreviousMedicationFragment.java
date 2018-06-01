@@ -64,6 +64,7 @@ public class PreviousMedicationFragment extends BaseFragment implements View.OnC
         super.onCreate(savedInstanceState);
         arrData = new ArrayList<MedicationProfileModel>();
         adapter = new CurrentMedicationAdapter(getBaseActivity(), arrData, this);
+
     }
 
     public static PreviousMedicationFragment newInstance(boolean isFromTimeline, int patientVisitAdmissionID) {
@@ -96,6 +97,7 @@ public class PreviousMedicationFragment extends BaseFragment implements View.OnC
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         bindView();
+        adapter.isHistory = true;
         if (onCreated) {
             return;
         }

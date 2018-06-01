@@ -223,6 +223,46 @@ public class AnimationHelper {
             bottomFrame.startAnimation(animationslideFromBottomtoT);
         }
 
+    }
+
+
+    public void hideAndShowBottomBar(final View container) {
+        int height = container.getHeight();
+        if (container.getVisibility() == View.VISIBLE) {
+
+            container.animate()
+                    .translationY(height)
+                    .setDuration(300)
+                    .setListener(new Animator.AnimatorListener() {
+                        @Override
+                        public void onAnimationStart(Animator animation) {
+
+                        }
+
+                        @Override
+                        public void onAnimationEnd(Animator animation) {
+                            container.setVisibility(View.GONE);
+                        }
+
+                        @Override
+                        public void onAnimationCancel(Animator animation) {
+
+                        }
+
+                        @Override
+                        public void onAnimationRepeat(Animator animation) {
+
+                        }
+                    })
+                    .start();
+        } else {
+            container.setVisibility(View.VISIBLE);
+            container.animate()
+                    .translationY(0)
+                    .setDuration(300)
+                    .setListener(null)
+                    .start();
+        }
 
     }
 

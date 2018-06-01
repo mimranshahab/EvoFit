@@ -242,7 +242,7 @@ public class PaymentTestingFragment extends BaseFragment {
         new WebServices(getBaseActivity(),
                 getToken(),
                 BaseURLTypes.AHFA_BASE_URL)
-                .webServiceRequestAPIForJsonObject(WebServiceConstants.METHOD_USER_GENERATE_PASSWORD_CODE,
+                .webServiceRequestAPIForJsonObject(WebServiceConstants.METHOD_USER_GENERATE_RESET,
                         loginApiModel.toString(),
                         new WebServices.IRequestJsonDataCallBack() {
                             @Override

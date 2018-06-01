@@ -28,6 +28,7 @@ public class CurrentMedicationAdapter extends RecyclerView.Adapter<CurrentMedica
 
     private Activity activity;
     private ArrayList<MedicationProfileModel> arrData;
+    public boolean isHistory = false;
 
 
     public CurrentMedicationAdapter(Activity activity, ArrayList<MedicationProfileModel> arrData, OnItemClickListener onItemClickListener) {
@@ -64,7 +65,12 @@ public class CurrentMedicationAdapter extends RecyclerView.Adapter<CurrentMedica
             holder.txtNextDose.setVisibility(View.VISIBLE);
         } else {
             if (model.getNextDoseDttm() == null || model.getNextDoseDttm().isEmpty()) {
-                holder.txtNextDose.setVisibility(View.GONE);
+                holder.txtNextDose.setText("");
+                if (isHistory) {
+                    holder.txtNextDose.setVisibility(View.GONE);
+                } else {
+                    holder.txtNextDose.setVisibility(View.VISIBLE);
+                }
             } else {
                 holder.txtNextDose.setVisibility(View.VISIBLE);
                 holder.txtNextDose.setText("Next Dose: " + model.getNextDoseDttm());

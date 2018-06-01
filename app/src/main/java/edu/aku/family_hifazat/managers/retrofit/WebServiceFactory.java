@@ -13,6 +13,8 @@ import okhttp3.logging.HttpLoggingInterceptor;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
+import static edu.aku.family_hifazat.constatnts.WebServiceConstants.BASE_URL_UAT;
+
 /**
  * Created by khanhamza on 09-Mar-17.
  */
@@ -28,7 +30,7 @@ public class WebServiceFactory {
     /***
      *      SINGLETON Design Pattern
      */
-    public static WebServiceProxy getInstanceBaseURL(final String _token) {
+    static WebServiceProxy getInstanceBaseURL(final String _token) {
 
         if (retrofitBase == null || staticToken.isEmpty() || !staticToken.equals(_token)) {
             staticToken = _token;
@@ -69,7 +71,7 @@ public class WebServiceFactory {
             httpClient.addInterceptor(interceptor);  // <-- this is the important line!
             retrofitBase = new Retrofit.Builder()
 //                    .baseUrl(WebServiceConstants.BASE_URL_LIVE)
-                    .baseUrl(WebServiceConstants.BASE_URL_UAT)
+                    .baseUrl(BASE_URL_UAT)
                     .addConverterFactory(GsonConverterFactory.create(GsonFactory.getSimpleGson()))
                     .client(httpClient.build())
                     .build();

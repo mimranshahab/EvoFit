@@ -89,6 +89,30 @@ public class RadiologyModel implements IsRecordFound {
     @SerializedName("ExamOrderNumber")
     private String examordernumber;
 
+    @Expose
+    @SerializedName("BalanceAmount")
+    private String BalanceAmount;
+
+    @Expose
+    @SerializedName("BalanceMessage")
+    private String BalanceMessage;
+
+    public String getBalanceAmount() {
+        return BalanceAmount;
+    }
+
+    public void setBalanceAmount(String balanceAmount) {
+        BalanceAmount = balanceAmount;
+    }
+
+    public String getBalanceMessage() {
+        return BalanceMessage;
+    }
+
+    public void setBalanceMessage(String balanceMessage) {
+        BalanceMessage = balanceMessage;
+    }
+
     public String getVisitlocation() {
         return visitlocation;
     }

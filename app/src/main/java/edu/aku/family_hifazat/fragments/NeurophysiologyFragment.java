@@ -25,14 +25,17 @@ import butterknife.ButterKnife;
 import butterknife.Unbinder;
 import edu.aku.family_hifazat.R;
 import edu.aku.family_hifazat.adapters.recyleradapters.NeurophysiologyAdapter;
+import edu.aku.family_hifazat.callbacks.GenericClickableInterface;
 import edu.aku.family_hifazat.callbacks.OnItemClickListener;
 import edu.aku.family_hifazat.constatnts.WebServiceConstants;
 import edu.aku.family_hifazat.enums.BaseURLTypes;
 import edu.aku.family_hifazat.fragments.abstracts.BaseFragment;
+import edu.aku.family_hifazat.fragments.abstracts.GenericDialogFragment;
+import edu.aku.family_hifazat.helperclasses.ui.helper.UIHelper;
+import edu.aku.family_hifazat.models.NeurophysiologyModel;
 import edu.aku.family_hifazat.widget.TitleBar;
 import edu.aku.family_hifazat.managers.retrofit.GsonFactory;
 import edu.aku.family_hifazat.managers.retrofit.WebServices;
-import edu.aku.family_hifazat.models.Neurophysiology;
 import edu.aku.family_hifazat.models.SearchModel;
 import edu.aku.family_hifazat.models.wrappers.WebResponse;
 import edu.aku.family_hifazat.widget.AnyTextView;
@@ -50,7 +53,7 @@ public class NeurophysiologyFragment extends BaseFragment implements View.OnClic
     Unbinder unbinder;
     @BindView(R.id.empty_view)
     AnyTextView emptyView;
-    private ArrayList<Neurophysiology> arrNeuropysiologyLists;
+    private ArrayList<NeurophysiologyModel> arrData;
     private NeurophysiologyAdapter adaptNeuropysiology;
     boolean isFromTimeline;
     int patientVisitAdmissionID;
@@ -58,8 +61,8 @@ public class NeurophysiologyFragment extends BaseFragment implements View.OnClic
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        arrNeuropysiologyLists = new ArrayList<Neurophysiology>();
-        adaptNeuropysiology = new NeurophysiologyAdapter(getBaseActivity(), arrNeuropysiologyLists, this);
+        arrData = new ArrayList<NeurophysiologyModel>();
+        adaptNeuropysiology = new NeurophysiologyAdapter(getBaseActivity(), arrData, this);
     }
 
     public static NeurophysiologyFragment newInstance(boolean isFromTimeline, int patientVisitAdmissionID) {
@@ -145,20 +148,26 @@ public class NeurophysiologyFragment extends BaseFragment implements View.OnClic
 
     @Override
     public void onItemClick(int position, Object object) {
-        if (object instanceof Neurophysiology) {
-            final Neurophysiology neurophysiology = (Neurophysiology) object;
-            showReportAPI(neurophysiology);
+        if (object instanceof NeurophysiologyModel) {
+            final NeurophysiologyModel model = (NeurophysiologyModel) object;
+
+            if (model.getBalanceMessage() == null || model.getBalanceMessage().isEmpty()) {
+                showReportAPI(model);
+            } else {
+                showSelfPayeePopup(model);
+            }
+
         }
 
     }
 
-    private void showReportAPI(final Neurophysiology neurophysiology) {
+    private void showReportAPI(final NeurophysiologyModel neurophysiologyModel) {
         new WebServices(getBaseActivity(), getToken(), BaseURLTypes.AHFA_BASE_URL)
                 .webServiceRequestAPIForWebResponseWithString(WebServiceConstants.METHOD_NEUROPHIOLOGY_SHOW_REPORT,
-                        neurophysiology.toString(), new WebServices.IRequestWebResponseWithStringDataCallBack() {
+                        neurophysiologyModel.toString(), new WebServices.IRequestWebResponseWithStringDataCallBack() {
                             @Override
                             public void requestDataResponse(WebResponse<String> webResponse) {
-//                                String fileName = neurophysiology.getDetailReportID();
+//                                String fileName = neurophysiologyModel.getDetailReportID();
                                 saveAndOpenFile(webResponse);
                             }
 
@@ -191,16 +200,17 @@ public class NeurophysiologyFragment extends BaseFragment implements View.OnClic
                             @Override
                             public void requestDataResponse(WebResponse<ArrayList<JsonObject>> webResponse) {
 
-                                Type type = new TypeToken<ArrayList<Neurophysiology>>() {
+                                Type type = new TypeToken<ArrayList<NeurophysiologyModel>>() {
                                 }.getType();
-                                ArrayList<Neurophysiology> arrayList = GsonFactory.getSimpleGson()
+                                ArrayList<NeurophysiologyModel> arrayList = GsonFactory.getSimpleGson()
                                         .fromJson(GsonFactory.getSimpleGson().toJson(webResponse.result)
                                                 , type);
 
-                                arrNeuropysiologyLists.clear();
-                                arrNeuropysiologyLists.addAll(arrayList);
+                                arrData.clear();
+                                arrData.addAll(arrayList);
+
                                 adaptNeuropysiology.notifyDataSetChanged();
-                                if (arrNeuropysiologyLists.size() > 0) {
+                                if (arrData.size() > 0) {
                                     showView();
 
                                 } else {
@@ -225,5 +235,16 @@ public class NeurophysiologyFragment extends BaseFragment implements View.OnClic
         bindView();
         emptyView.setVisibility(View.GONE);
 
+    }
+
+    private void showSelfPayeePopup(NeurophysiologyModel model) {
+        GenericDialogFragment genericDialogFragment = GenericDialogFragment.newInstance();
+        UIHelper.genericPopUp(getBaseActivity(), genericDialogFragment, "Alert", model.getBalanceMessage(),
+                "OK", null, new GenericClickableInterface() {
+                    @Override
+                    public void click() {
+                        genericDialogFragment.dismiss();
+                    }
+                }, null);
     }
 }

@@ -80,7 +80,6 @@
                     android:drawableLeft="@drawable/card_icon_blue"
                     android:drawablePadding="@dimen/x5dp"
                     android:hint="Card Number"
-                    android:focusable="true"
                     android:inputType="number"
                     android:maxLength="15"
                     android:paddingBottom="@dimen/x8dp"

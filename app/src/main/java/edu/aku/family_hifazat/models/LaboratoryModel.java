@@ -142,6 +142,18 @@ public class LaboratoryModel implements Serializable, IsRecordFound {
     @SerializedName("SelfPayeeReceivable")
     @Expose
     private String selfPayeeReceivable;
+
+    public String getSelfPayeeReceivableMsg() {
+        return selfPayeeReceivableMsg;
+    }
+
+    public void setSelfPayeeReceivableMsg(String selfPayeeReceivableMsg) {
+        this.selfPayeeReceivableMsg = selfPayeeReceivableMsg;
+    }
+
+    @SerializedName("SelfPayeeReceivableMsg")
+    @Expose
+    private String selfPayeeReceivableMsg;
     @SerializedName("Ordered")
     @Expose
     private String ordered;

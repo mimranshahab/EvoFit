@@ -13,6 +13,7 @@ import android.util.Log;
 
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
+import java.util.UUID;
 
 import edu.aku.family_hifazat.BaseApplication;
 import edu.aku.family_hifazat.managers.SharedPreferenceManager;
@@ -161,29 +162,49 @@ return Return_DeviceID;*/
         }
 // 4 wifi manager, read MAC address - requires
 // android.permission.ACCESS_WIFI_STATE or comes as null
-        WifiManager wm = (WifiManager) context.getApplicationContext().getSystemService(Context.WIFI_SERVICE);
-        String m_szWLANMAC = "";
-        if (wm != null) {
-            m_szWLANMAC = wm.getConnectionInfo().getMacAddress();
-        }
+//        WifiManager wm = (WifiManager) context.getApplicationContext().getSystemService(Context.WIFI_SERVICE);
+//        String m_szWLANMAC = "";
+//        if (wm != null) {
+//            m_szWLANMAC = wm.getConnectionInfo().getMacAddress();
+//        }
 // 5 Bluetooth MAC address android.permission.BLUETOOTH required
-        BluetoothAdapter m_BluetoothAdapter = null; // Local Bluetooth adapter
-        m_BluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        String m_szBTMAC = "";
-        if (m_BluetoothAdapter != null) {
-            m_szBTMAC = m_BluetoothAdapter.getAddress();
-        }
-        System.out.println("m_szBTMAC " + m_szBTMAC);
+//        BluetoothAdapter m_BluetoothAdapter = null; // Local Bluetooth adapter
+//        m_BluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
+//        String m_szBTMAC = "";
+//        if (m_BluetoothAdapter != null) {
+//            m_szBTMAC = m_BluetoothAdapter.getAddress();
+//        }
+//        System.out.println("m_szBTMAC " + m_szBTMAC);
 
 // 6 SUM THE IDs
-        String m_szLongID = m_szImei + m_szDevIDShort + m_szAndroidID + m_szWLANMAC + m_szBTMAC;
+//        String m_szLongID = m_szImei + m_szDevIDShort + m_szAndroidID + m_szWLANMAC + m_szBTMAC;
+        String m_szLongID = m_szImei + m_szDevIDShort + m_szAndroidID;
         System.out.println("m_szLongID " + m_szLongID);
         MessageDigest m = null;
-        try {
-            m = MessageDigest.getInstance("MD5");
-        } catch (NoSuchAlgorithmException e) {
-            e.printStackTrace();
-        }
+
+        // FIXME: 5/28/2018 commenting algo, 30 character value
+
+//        try {
+////            m = MessageDigest.getInstance("MD5");
+//            m = MessageDigest.getInstance("SHA-256");
+//        } catch (NoSuchAlgorithmException e) {
+//            e.printStackTrace();
+//        }
+
+        // If SHA-256
+        if (m == null) {
+            if (!m_szLongID.isEmpty()) {
+                if (m_szLongID.length() > 30) {
+                    return m_szLongID.substring(0, 30);
+                } else {
+                    return m_szLongID;
+                }
+            } else {
+                return getDeviceID2(context);
+            }
+         }
+
+
         m.update(m_szLongID.getBytes(), 0, m_szLongID.length());
         byte p_md5Data[] = m.digest();
 
@@ -276,16 +297,23 @@ return Return_DeviceID;*/
     }
 
 
-//    public static String getDeviceID(Context context) {
-//        final TelephonyManager tm = (TelephonyManager) context.getSystemService(Context.TELEPHONY_SERVICE);
-//
-//        final String tmDevice, tmSerial, androidId;
-//        tmDevice = "" + tm.getDeviceId();
-//        tmSerial = "" + tm.getSimSerialNumber();
-//        androidId = "" + android.provider.Settings.Secure.getString(context.getContentResolver(), android.provider.Settings.Secure.ANDROID_ID);
-//
-//        UUID deviceUuid = new UUID(androidId.hashCode(), ((long) tmDevice.hashCode() << 32) | tmSerial.hashCode());
-//        return deviceUuid.toString();
-//
-//    }
+    public static String getDeviceID2(Context context) {
+        final TelephonyManager tm = (TelephonyManager) context.getSystemService(Context.TELEPHONY_SERVICE);
+
+        String tmDevice = "", tmSerial = "", androidId = "";
+        UUID deviceUuid;
+
+        if (tm != null) {
+            tmDevice = "" + tm.getDeviceId();
+            tmSerial = "" + tm.getSimSerialNumber();
+            androidId = "" + android.provider.Settings.Secure.getString(context.getContentResolver(), android.provider.Settings.Secure.ANDROID_ID);
+            deviceUuid = new UUID(androidId.hashCode(), ((long) tmDevice.hashCode() << 32) | tmSerial.hashCode());
+        } else {
+            androidId = "" + android.provider.Settings.Secure.getString(context.getContentResolver(), android.provider.Settings.Secure.ANDROID_ID);
+            deviceUuid = new UUID(androidId.hashCode(), ((long) tmDevice.hashCode() << 32) | tmSerial.hashCode());
+        }
+
+        return deviceUuid.toString();
+
+    }
 }

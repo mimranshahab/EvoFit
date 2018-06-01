@@ -28,10 +28,12 @@ import butterknife.OnClick;
 import butterknife.Unbinder;
 import edu.aku.family_hifazat.R;
 import edu.aku.family_hifazat.adapters.recyleradapters.ClinicalLabAdapter;
+import edu.aku.family_hifazat.callbacks.GenericClickableInterface;
 import edu.aku.family_hifazat.callbacks.OnItemClickListener;
 import edu.aku.family_hifazat.constatnts.WebServiceConstants;
 import edu.aku.family_hifazat.enums.BaseURLTypes;
 import edu.aku.family_hifazat.fragments.abstracts.BaseFragment;
+import edu.aku.family_hifazat.fragments.abstracts.GenericDialogFragment;
 import edu.aku.family_hifazat.helperclasses.ui.helper.KeyboardHelper;
 import edu.aku.family_hifazat.widget.TitleBar;
 import edu.aku.family_hifazat.helperclasses.ui.helper.UIHelper;
@@ -67,6 +69,7 @@ public class ClinicalLaboratoryFragment extends BaseFragment implements View.OnC
     int patientVisitAdmissionID;
     private String testname;
     private boolean isSearchBarEmpty = true;
+
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -84,6 +87,7 @@ public class ClinicalLaboratoryFragment extends BaseFragment implements View.OnC
         fragment.setArguments(args);
         return fragment;
     }
+
     @Override
     public void onResume() {
         super.onResume();
@@ -202,10 +206,25 @@ public class ClinicalLaboratoryFragment extends BaseFragment implements View.OnC
         if (object instanceof LaboratoryModel) {
             LaboratoryModel model = (LaboratoryModel) object;
             if (model.getStatusID().equalsIgnoreCase("Completed") || model.getStatusID().equalsIgnoreCase("Partially Completed")) {
-                testname = (model.getOrdered());
-                labDetailService(model.getSpecimenNumber());
+                if (model.getSelfPayeeReceivableMsg() == null || model.getSelfPayeeReceivableMsg().isEmpty()) {
+                    testname = (model.getOrdered());
+                    labDetailService(model.getSpecimenNumber());
+                } else {
+                    showSelfPayeePopup(model);
+                }
             }
         }
+    }
+
+    private void showSelfPayeePopup(LaboratoryModel model) {
+        GenericDialogFragment genericDialogFragment = GenericDialogFragment.newInstance();
+        UIHelper.genericPopUp(getBaseActivity(), genericDialogFragment, "Alert", model.getSelfPayeeReceivableMsg(),
+                "OK", null, new GenericClickableInterface() {
+                    @Override
+                    public void click() {
+                        genericDialogFragment.dismiss();
+                    }
+                }, null);
     }
 
 

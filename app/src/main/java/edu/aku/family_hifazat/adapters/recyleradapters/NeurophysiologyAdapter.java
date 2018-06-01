@@ -18,7 +18,7 @@ import butterknife.ButterKnife;
 
 import edu.aku.family_hifazat.R;
 import edu.aku.family_hifazat.callbacks.OnItemClickListener;
-import edu.aku.family_hifazat.models.Neurophysiology;
+import edu.aku.family_hifazat.models.NeurophysiologyModel;
 import edu.aku.family_hifazat.widget.AnyTextView;
 
 /**
@@ -29,10 +29,10 @@ public class NeurophysiologyAdapter extends RecyclerView.Adapter<Neurophysiology
     private final OnItemClickListener onItemClick;
 
     private Activity activity;
-    private ArrayList<Neurophysiology> neurophysiologyArrayList;
+    private ArrayList<NeurophysiologyModel> neurophysiologyModelArrayList;
 
-    public NeurophysiologyAdapter(Activity activity, ArrayList<Neurophysiology> userList, OnItemClickListener onItemClickListener) {
-        this.neurophysiologyArrayList = userList;
+    public NeurophysiologyAdapter(Activity activity, ArrayList<NeurophysiologyModel> userList, OnItemClickListener onItemClickListener) {
+        this.neurophysiologyModelArrayList = userList;
         this.activity = activity;
         this.onItemClick = onItemClickListener;
     }
@@ -49,7 +49,7 @@ public class NeurophysiologyAdapter extends RecyclerView.Adapter<Neurophysiology
     @Override
     public void onBindViewHolder(final ViewHolder holder, int i) {
 
-        final Neurophysiology model = neurophysiologyArrayList.get(holder.getAdapterPosition());
+        final NeurophysiologyModel model = neurophysiologyModelArrayList.get(holder.getAdapterPosition());
         holder.txtDateTime.setText(model.getRequestServiceDateTime());
 
         holder.txtName.setText(model.getService());
@@ -87,25 +87,25 @@ public class NeurophysiologyAdapter extends RecyclerView.Adapter<Neurophysiology
         holder.imgStatus.setColorFilter(color);
     }
 
-    private void setListener(final ViewHolder holder, final Neurophysiology neurophysiology) {
+    private void setListener(final ViewHolder holder, final NeurophysiologyModel neurophysiologyModel) {
         holder.RlReport.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                onItemClick.onItemClick(holder.getAdapterPosition(), neurophysiology);
+                onItemClick.onItemClick(holder.getAdapterPosition(), neurophysiologyModel);
             }
         });
     }
 
 
-    public void addItem(ArrayList<Neurophysiology> homeCategories) {
-        this.neurophysiologyArrayList = homeCategories;
+    public void addItem(ArrayList<NeurophysiologyModel> homeCategories) {
+        this.neurophysiologyModelArrayList = homeCategories;
         notifyDataSetChanged();
     }
 
 
     @Override
     public int getItemCount() {
-        return neurophysiologyArrayList.size();
+        return neurophysiologyModelArrayList.size();
     }
 
 

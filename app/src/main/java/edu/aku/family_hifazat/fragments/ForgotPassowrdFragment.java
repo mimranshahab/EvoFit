@@ -264,7 +264,7 @@ public class ForgotPassowrdFragment extends BaseFragment {
         new WebServices(getBaseActivity(),
                 token,
                 BaseURLTypes.AHFA_BASE_URL)
-                .webServiceRequestAPIForJsonObject(WebServiceConstants.METHOD_USER_GENERATE_PASSWORD_CODE,
+                .webServiceRequestAPIForJsonObject(WebServiceConstants.METHOD_USER_GENERATE_RESET,
                         loginApiModel.toString(),
                         new WebServices.IRequestJsonDataCallBack() {
                             @Override

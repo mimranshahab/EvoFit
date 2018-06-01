@@ -16,8 +16,8 @@ import edu.aku.family_hifazat.constatnts.WebServiceConstants;
 
 
 public class CyberSoftSecurityHelper {
-    private static final String HMAC_SHA256 = "HmacSHA256";
-    private static final String SECRET_KEY = WebServiceConstants.Secret_token_paymentGatway;
+    private final String HMAC_SHA256 = "HmacSHA256";
+    private final String SECRET_KEY = "96643d5010c848c6a0e7c6f2e2b342eb94c04052923d4d4697972e60a2b208439aed1efae87e4be8b4a1ed8232cc68f0e78dd08e030a4613bd86f01daeebd6996bb7eed245b1461a8a52bec74704e15aa11aba065ff4412bbd1ef9127b5d4e956c32a5b78b3d4a738cbcba64ae3ef13c7d09132df3474e209c4404e5a3c328c9";
 
     public String sign(HashMap params) throws InvalidKeyException, NoSuchAlgorithmException, UnsupportedEncodingException {
         return sign(buildDataToSign(params), SECRET_KEY);

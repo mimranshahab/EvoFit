@@ -158,7 +158,7 @@ public class SplashActivity extends AppCompatActivity {
         }
         appVersionModel.setAndappversioncode(versionCode);
         appVersionModel.setAndappversionname(myVersionName);
-        getOneTimeTokenService(appVersionModel, activityClass);
+        isUpdateAvailable(appVersionModel, activityClass, "");
 
         try {
             new Handler().postDelayed(new Runnable() {
@@ -297,26 +297,26 @@ public class SplashActivity extends AppCompatActivity {
     }
 
 
-    private void getOneTimeTokenService(final AppVersionModel appVersionModel, final Class activityClass) {
-        getOneTimeTokenService = new WebServices(this, "", BaseURLTypes.AHFA_BASE_URL, false)
-                .webServiceRequestAPIForJsonObject(WebServiceConstants.METHOD_GET_ONE_TIME_TOKEN,
-                        "",
-                        new WebServices.IRequestJsonDataCallBack() {
-                            @Override
-                            public void requestDataResponse(WebResponse<JsonObject> webResponse) {
-                                AddUpdateModel addUpdateModel = GsonFactory.getSimpleGson().fromJson(webResponse.result, AddUpdateModel.class);
-                                if (addUpdateModel.getStatus()) {
-                                    SharedPreferenceManager.getInstance(getContext()).putValue(AppConstants.KEY_ONE_TIME_TOKEN, addUpdateModel.getRecordid());
-                                    isUpdateAvailable(appVersionModel, activityClass, addUpdateModel.getRecordid());
-                                }
-                            }
-
-                            @Override
-                            public void onError() {
-                                isUpdateAvailable(appVersionModel, activityClass, "");
-                            }
-                        });
-    }
+//    private void getOneTimeTokenService(final AppVersionModel appVersionModel, final Class activityClass) {
+//        getOneTimeTokenService = new WebServices(this, "", BaseURLTypes.AHFA_BASE_URL, false)
+//                .webServiceRequestAPIForJsonObject(WebServiceConstants.METHOD_GET_ONE_TIME_TOKEN,
+//                        "",
+//                        new WebServices.IRequestJsonDataCallBack() {
+//                            @Override
+//                            public void requestDataResponse(WebResponse<JsonObject> webResponse) {
+//                                AddUpdateModel addUpdateModel = GsonFactory.getSimpleGson().fromJson(webResponse.result, AddUpdateModel.class);
+//                                if (addUpdateModel.getStatus()) {
+//                                    SharedPreferenceManager.getInstance(getContext()).putValue(AppConstants.KEY_ONE_TIME_TOKEN, addUpdateModel.getRecordid());
+//                                    isUpdateAvailable(appVersionModel, activityClass, "");
+//                                }
+//                            }
+//
+//                            @Override
+//                            public void onError() {
+//                                isUpdateAvailable(appVersionModel, activityClass, "");
+//                            }
+//                        });
+//    }
 
 
     private void isUpdateAvailable(final AppVersionModel appVersionModel, final Class activityClass, String token) {
@@ -340,7 +340,7 @@ public class SplashActivity extends AppCompatActivity {
 
                             @Override
                             public void onError() {
-                                isUpdateCallBackRecieved = true;
+                                 isUpdateCallBackRecieved = true;
                                 pinVerification(activityClass);
                             }
                         });

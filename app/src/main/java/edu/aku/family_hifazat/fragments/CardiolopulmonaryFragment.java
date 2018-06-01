@@ -25,10 +25,14 @@ import butterknife.ButterKnife;
 import butterknife.Unbinder;
 import edu.aku.family_hifazat.R;
 import edu.aku.family_hifazat.adapters.recyleradapters.CardioAdapter;
+import edu.aku.family_hifazat.callbacks.GenericClickableInterface;
 import edu.aku.family_hifazat.callbacks.OnItemClickListener;
 import edu.aku.family_hifazat.constatnts.WebServiceConstants;
 import edu.aku.family_hifazat.enums.BaseURLTypes;
 import edu.aku.family_hifazat.fragments.abstracts.BaseFragment;
+import edu.aku.family_hifazat.fragments.abstracts.GenericDialogFragment;
+import edu.aku.family_hifazat.helperclasses.ui.helper.UIHelper;
+import edu.aku.family_hifazat.models.LaboratoryModel;
 import edu.aku.family_hifazat.widget.TitleBar;
 import edu.aku.family_hifazat.managers.retrofit.GsonFactory;
 import edu.aku.family_hifazat.managers.retrofit.WebServices;
@@ -49,7 +53,7 @@ public class CardiolopulmonaryFragment extends BaseFragment implements View.OnCl
 
     @BindView(R.id.empty_view)
     AnyTextView emptyView;
-    private ArrayList<CardioModel> arrCardioModelLists;
+    private ArrayList<CardioModel> arrData;
     private CardioAdapter adapterCardio;
     boolean isFromTimeline;
     int patientVisitAdmissionID;
@@ -57,8 +61,8 @@ public class CardiolopulmonaryFragment extends BaseFragment implements View.OnCl
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        arrCardioModelLists = new ArrayList<CardioModel>();
-        adapterCardio = new CardioAdapter(getBaseActivity(), arrCardioModelLists, this);
+        arrData = new ArrayList<CardioModel>();
+        adapterCardio = new CardioAdapter(getBaseActivity(), arrData, this);
     }
 
     public static CardiolopulmonaryFragment newInstance(boolean isFromTimeline, int patientVisitAdmissionID) {
@@ -135,15 +139,24 @@ public class CardiolopulmonaryFragment extends BaseFragment implements View.OnCl
 
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-
+        CardioModel model = adapterCardio.getItem(position);
 
         switch (view.getId()) {
             case R.id.RlGraph:
+                if (model.getBalanceMessage() == null || model.getBalanceMessage().isEmpty()) {
+                    showGraphAPI(model);
+                } else {
+                    showSelfPayeePopup(model);
+                }
 
-                showGraphAPI(adapterCardio.getItem(position));
                 break;
             case R.id.RlReport:
-                showReportAPI(adapterCardio.getItem(position));
+
+                if (model.getBalanceMessage() == null || model.getBalanceMessage().isEmpty()) {
+                    showReportAPI(model);
+                } else {
+                    showSelfPayeePopup(model);
+                }
                 break;
         }
 
@@ -221,7 +234,7 @@ public class CardiolopulmonaryFragment extends BaseFragment implements View.OnCl
     }
 
     private void serviceCall() {
-         SearchModel model = new SearchModel();
+        SearchModel model = new SearchModel();
 //        model.setMRNumber("200-47-97");
 //        model.setMRNumber("074-18-91");
         model.setMRNumber(getCurrentUser().getMRNumber());
@@ -245,11 +258,12 @@ public class CardiolopulmonaryFragment extends BaseFragment implements View.OnCl
                                         .fromJson(GsonFactory.getSimpleGson().toJson(webResponse.result)
                                                 , type);
 
-                                arrCardioModelLists.clear();
-                                arrCardioModelLists.addAll(arrayList);
+                                arrData.clear();
+                                arrData.addAll(arrayList);
+
                                 adapterCardio.notifyDataSetChanged();
 
-                                if (arrCardioModelLists.size() > 0) {
+                                if (arrData.size() > 0) {
                                     showView();
 
                                 } else {
@@ -267,6 +281,18 @@ public class CardiolopulmonaryFragment extends BaseFragment implements View.OnCl
                             }
                         });
 
+    }
+
+
+    private void showSelfPayeePopup(CardioModel model) {
+        GenericDialogFragment genericDialogFragment = GenericDialogFragment.newInstance();
+        UIHelper.genericPopUp(getBaseActivity(), genericDialogFragment, "Alert", model.getBalanceMessage(),
+                "OK", null, new GenericClickableInterface() {
+                    @Override
+                    public void click() {
+                        genericDialogFragment.dismiss();
+                    }
+                }, null);
     }
 
 

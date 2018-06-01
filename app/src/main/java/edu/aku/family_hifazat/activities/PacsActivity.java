@@ -8,6 +8,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 
 import com.jsibbold.zoomage.ZoomageView;
@@ -18,6 +19,7 @@ import java.util.ArrayList;
 
 import edu.aku.family_hifazat.R;
 import edu.aku.family_hifazat.helperclasses.Helper;
+import edu.aku.family_hifazat.helperclasses.ui.helper.AnimationHelper;
 import edu.aku.family_hifazat.widget.TitleBar;
 import edu.aku.family_hifazat.libraries.fileloader.FileLoader;
 import edu.aku.family_hifazat.libraries.fileloader.listener.FileRequestListener;
@@ -47,6 +49,9 @@ public class PacsActivity extends AppCompatActivity {
     AnyTextView txtMRnumber;
     AnyTextView txtStudyTitle;
     ProgressBar progressBar;
+    ImageView imgFullScreen;
+    LinearLayout contOptions;
+
 
     private int pointer;
     private ArrayList<String> pacsList;
@@ -56,6 +61,7 @@ public class PacsActivity extends AppCompatActivity {
     private ArrayList<TupleModel> arrTupleModel;
     TupleModel selectedTupleModel;
     int selectedTupleIndex;
+    boolean isInFullScreenMode;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -64,7 +70,6 @@ public class PacsActivity extends AppCompatActivity {
         arrTupleModel = new ArrayList<>();
         loader = Helper.getLoader(this);
         bindViews();
-
 
         settitlebar();
 
@@ -80,7 +85,7 @@ public class PacsActivity extends AppCompatActivity {
 //        txtUserName.setText(pacsModel.getPatient_Name());
         txtUserName.setText(sharedPreferenceManager.getCurrentUser().getName());
         txtMRnumber.setText(pacsModel.getPatientMRN());
-        txtStudyTitle.setText("Study: "+pacsModel.getStudyTitle());
+        txtStudyTitle.setText("Study: " + pacsModel.getStudyTitle());
 
         uriArrToTuple(pacsList.size());
         selectedTupleModel = arrTupleModel.get(0);
@@ -132,7 +137,8 @@ public class PacsActivity extends AppCompatActivity {
         txtUserName = findViewById(R.id.txtNamePacs);
         txtMRnumber = findViewById(R.id.txtMRNPacs);
         txtStudyTitle = findViewById(R.id.txtStudyTitle);
-
+        imgFullScreen = findViewById(R.id.imgFullScreen);
+        contOptions = findViewById(R.id.contOptions);
     }
 
 
@@ -345,6 +351,23 @@ public class PacsActivity extends AppCompatActivity {
             @Override
             public void onStopTrackingTouch(IndicatorSeekBar seekBar) {
 
+            }
+        });
+
+
+        imgFullScreen.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (isInFullScreenMode) {
+                    isInFullScreenMode = false;
+                    imgFullScreen.setImageResource(R.drawable.ic_full_screen);
+                    //                    contOptions.setVisibility(View.VISIBLE);
+                    AnimationHelper.getInstance(getApplicationContext()).hideAndShowBottomBar(contOptions);
+                } else {
+                    imgFullScreen.setImageResource(R.drawable.ic_fullscreen_exit);
+                    isInFullScreenMode = true;
+                    AnimationHelper.getInstance(getApplicationContext()).hideAndShowBottomBar(contOptions);
+                }
             }
         });
 

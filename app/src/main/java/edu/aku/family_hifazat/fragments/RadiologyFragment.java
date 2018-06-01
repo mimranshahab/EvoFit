@@ -25,10 +25,14 @@ import butterknife.ButterKnife;
 import butterknife.Unbinder;
 import edu.aku.family_hifazat.R;
 import edu.aku.family_hifazat.adapters.recyleradapters.RadiologyAdapter;
+import edu.aku.family_hifazat.callbacks.GenericClickableInterface;
 import edu.aku.family_hifazat.callbacks.OnItemClickListener;
 import edu.aku.family_hifazat.constatnts.WebServiceConstants;
 import edu.aku.family_hifazat.enums.BaseURLTypes;
 import edu.aku.family_hifazat.fragments.abstracts.BaseFragment;
+import edu.aku.family_hifazat.fragments.abstracts.GenericDialogFragment;
+import edu.aku.family_hifazat.helperclasses.ui.helper.UIHelper;
+import edu.aku.family_hifazat.models.CardioModel;
 import edu.aku.family_hifazat.widget.TitleBar;
 import edu.aku.family_hifazat.managers.retrofit.GsonFactory;
 import edu.aku.family_hifazat.managers.retrofit.WebServices;
@@ -147,33 +151,27 @@ public class RadiologyFragment extends BaseFragment implements View.OnClickListe
 
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+        RadiologyModel model = adapterRadiology.getItem(position);
         switch (view.getId()) {
             case R.id.RlGraph:
-
-                showPacsImages(adapterRadiology.getItem(position));
+                if (model.getBalanceMessage() == null || model.getBalanceMessage().isEmpty()) {
+                    showPacsImages(model);
+                } else {
+                    showSelfPayeePopup(model);
+                }
                 break;
             case R.id.RlReport:
-                RadiologyModel object = adapterRadiology.getItem(position);
-                if (object != null) {
-                    RadiologyModel radiologyModel = (RadiologyModel) object;
-//                    radiologyModel.setExamordernumber("4416119");
-//                    radiologyModel.setExamorderexamnumber("1");
-//                    radiologyModel.setVisitlocation("Stadium Road");
-//                    radiologyModel.setReportid("15779861");
-                    getBaseActivity().addDockableFragment(RadiologyDescriptionFragment.newInstance(radiologyModel.toString()), false);
+                if (model.getBalanceMessage() == null || model.getBalanceMessage().isEmpty()) {
+                    getBaseActivity().addDockableFragment(RadiologyDescriptionFragment.newInstance(model.toString()), false);
+                } else {
+                    showSelfPayeePopup(model);
                 }
-
-
                 break;
         }
     }
 
     private void showPacsImages(final RadiologyModel item) {
-
-
         getBaseActivity().addDockableFragment(PacsFragment.newInstance(item), false);
-
-
     }
 
     @Override
@@ -222,10 +220,12 @@ public class RadiologyFragment extends BaseFragment implements View.OnClickListe
 
                                 arrData.clear();
                                 arrData.addAll(arrayList);
+
                                 adapterRadiology.notifyDataSetChanged();
 
 
                                 if (arrData.size() > 0) {
+
                                     showView();
 
                                 } else {
@@ -252,6 +252,17 @@ public class RadiologyFragment extends BaseFragment implements View.OnClickListe
         bindView();
         emptyView.setVisibility(View.GONE);
 
+    }
+
+    private void showSelfPayeePopup(RadiologyModel model) {
+        GenericDialogFragment genericDialogFragment = GenericDialogFragment.newInstance();
+        UIHelper.genericPopUp(getBaseActivity(), genericDialogFragment, "Alert", model.getBalanceMessage(),
+                "OK", null, new GenericClickableInterface() {
+                    @Override
+                    public void click() {
+                        genericDialogFragment.dismiss();
+                    }
+                }, null);
     }
 
 }

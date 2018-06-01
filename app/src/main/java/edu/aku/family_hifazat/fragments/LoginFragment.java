@@ -206,9 +206,9 @@ public class LoginFragment extends BaseFragment {
         );
     }
 
-    private void loginCall(LoginApiModel loginApiModel) {
+    private void loginCall(LoginApiModel loginApiModel, String token) {
         new WebServices(getBaseActivity(),
-                getOneTimeToken(),
+                token,
                 BaseURLTypes.AHFA_BASE_URL)
                 .webServiceRequestAPIForJsonObject(WebServiceConstants.METHOD_USER_LOGIN,
                         loginApiModel.toString(),
@@ -245,7 +245,7 @@ public class LoginFragment extends BaseFragment {
                                 AddUpdateModel addUpdateModel = GsonFactory.getSimpleGson().fromJson(webResponse.result, AddUpdateModel.class);
                                 if (addUpdateModel.getStatus()) {
                                     putOneTimeToken(addUpdateModel.getRecordid());
-                                    loginCall(loginApiModel);
+                                    loginCall(loginApiModel, addUpdateModel.getRecordid());
                                 }
 
                             }

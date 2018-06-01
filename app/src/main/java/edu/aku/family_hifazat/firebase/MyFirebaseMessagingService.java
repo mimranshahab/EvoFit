@@ -86,7 +86,9 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
         NotificationManager notificationManager =
                 (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
 
-        notificationManager.notify(0 /* ID of notification */, notificationBuilder.build());
+        if (notificationManager != null) {
+            notificationManager.notify(0 /* ID of notification */, notificationBuilder.build());
+        }
     }
 
 //    private void sendNotification(boolean isAdded, RemoteMessage extras) {
