@@ -3,6 +3,7 @@ package edu.aku.family_hifazat.constatnts;
 import android.app.Activity;
 import android.bluetooth.BluetoothAdapter;
 import android.content.Context;
+import android.content.pm.PackageManager;
 import android.net.wifi.WifiManager;
 import android.os.Build;
 import android.os.Environment;
@@ -202,7 +203,7 @@ return Return_DeviceID;*/
             } else {
                 return getDeviceID2(context);
             }
-         }
+        }
 
 
         m.update(m_szLongID.getBytes(), 0, m_szLongID.length());
@@ -260,11 +261,18 @@ return Return_DeviceID;*/
                 registeredDeviceModel.setDevicetype("Phone");
             }
             registeredDeviceModel.setDeviceos(DEVICE_OS_ANDROID);
-            registeredDeviceModel.setDeviceosversion(Build.VERSION.RELEASE);
             registeredDeviceModel.setDevicescreensize(metrics.heightPixels + "x" + metrics.widthPixels);
             registeredDeviceModel.setDevicemanufacturer(Build.MANUFACTURER);
             registeredDeviceModel.setDevicemodel(Build.MODEL);
 
+        }
+
+        registeredDeviceModel.setDeviceosversion(Build.VERSION.RELEASE);
+
+        try {
+            registeredDeviceModel.setAppVersion(context.getPackageManager().getPackageInfo(context.getPackageName(), 0).versionName);
+        } catch (PackageManager.NameNotFoundException e) {
+            Log.d("App Constants:", "Get App Version: " + e.getLocalizedMessage());
         }
 
         SharedPreferenceManager.getInstance(context).putObject(KEY_REGISTERED_DEVICE, registeredDeviceModel);

@@ -47,6 +47,9 @@ public class RegisteredDeviceModel {
     @Expose
     @SerializedName("DeviceLocation:")
     private String deviceLocation;
+    @Expose
+    @SerializedName("AppVersion")
+    private String appVersion;
 
     public RegisteredDeviceModel() {
     }
@@ -150,6 +153,14 @@ public class RegisteredDeviceModel {
     public void setRegcardno(String regcardno) {
         this.regcardno = regcardno;
         this.regcardnumber = regcardno;
+    }
+
+    public String getAppVersion() {
+        return appVersion;
+    }
+
+    public void setAppVersion(String appVersion) {
+        this.appVersion = appVersion;
     }
 
     @Override

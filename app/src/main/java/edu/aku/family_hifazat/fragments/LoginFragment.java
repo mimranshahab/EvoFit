@@ -183,6 +183,7 @@ public class LoginFragment extends BaseFragment {
                     loginApiModel.setDevice(registeredDevice);
                     loginApiModel.setRegisteredDevice(registeredDevice);
 
+
                     mDialog.show();
                     getOneTimeTokenService(loginApiModel);
                 }
