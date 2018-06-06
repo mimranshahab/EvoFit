@@ -218,7 +218,7 @@ public class ClinicalLaboratoryFragment extends BaseFragment implements View.OnC
 
     private void showSelfPayeePopup(LaboratoryModel model) {
         GenericDialogFragment genericDialogFragment = GenericDialogFragment.newInstance();
-        UIHelper.genericPopUp(getBaseActivity(), genericDialogFragment, "Alert", model.getSelfPayeeReceivableMsg(),
+        UIHelper.genericPopUp(getBaseActivity(), genericDialogFragment, "", model.getSelfPayeeReceivableMsg(),
                 "OK", null, new GenericClickableInterface() {
                     @Override
                     public void click() {

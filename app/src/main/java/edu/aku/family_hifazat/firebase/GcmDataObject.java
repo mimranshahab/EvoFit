@@ -1,86 +1,39 @@
 package edu.aku.family_hifazat.firebase;
 
-public class GcmDataObject {
+import android.os.Parcel;
+import android.os.Parcelable;
 
-    String alert = "";
-    String senderName = "";
-    String msg = "";
-    String url = "";
-    String objectType = "";
-    String driverId;
-    String ObjectId = "";
-    private String push_type = "";
-    private String booking_id = "";
+import java.io.Serializable;
 
-    public String getAlert() {
-        return alert;
+public class GcmDataObject implements Serializable {
+
+    String message = "";
+    String screenToRedirect = "";
+    boolean isUserExist;
+
+    public boolean isUserExist() {
+        return isUserExist;
     }
 
-    public void setAlert(String alert) {
-        this.alert = alert;
+    public void setUserExist(boolean userExist) {
+        isUserExist = userExist;
     }
 
-    public String getSenderName() {
-        return senderName;
+    public String getMessage() {
+        return message;
     }
 
-    public void setSenderName(String senderName) {
-        this.senderName = senderName;
+    public void setMessage(String message) {
+        this.message = message;
     }
 
-    public String getMsg() {
-        return msg;
+    public String getScreenToRedirect() {
+        return screenToRedirect;
     }
 
-    public void setMsg(String msg) {
-        this.msg = msg;
+    public void setScreenToRedirect(String screenToRedirect) {
+        this.screenToRedirect = screenToRedirect;
     }
 
-    public String getUrl() {
-        return url;
-    }
 
-    public void setUrl(String url) {
-        this.url = url;
-    }
-
-    public String getObjectType() {
-        return objectType;
-    }
-
-    public void setObjectType(String objectType) {
-        this.objectType = objectType;
-    }
-
-    public String getDriverId() {
-        return driverId;
-    }
-
-    public void setDriverId(String driverId) {
-        this.driverId = driverId;
-    }
-
-    public String getObjectId() {
-        return ObjectId;
-    }
-
-    public void setObjectId(String objectId) {
-        ObjectId = objectId;
-    }
-
-    public String getPush_type() {
-        return push_type;
-    }
-
-    public void setPush_type(String push_type) {
-        this.push_type = push_type;
-    }
-
-    public String getBooking_id() {
-        return booking_id;
-    }
-
-    public void setBooking_id(String booking_id) {
-        this.booking_id = booking_id;
-    }
 }

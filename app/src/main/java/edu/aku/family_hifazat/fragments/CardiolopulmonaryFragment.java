@@ -286,7 +286,7 @@ public class CardiolopulmonaryFragment extends BaseFragment implements View.OnCl
 
     private void showSelfPayeePopup(CardioModel model) {
         GenericDialogFragment genericDialogFragment = GenericDialogFragment.newInstance();
-        UIHelper.genericPopUp(getBaseActivity(), genericDialogFragment, "Alert", model.getBalanceMessage(),
+        UIHelper.genericPopUp(getBaseActivity(), genericDialogFragment, "", model.getBalanceMessage(),
                 "OK", null, new GenericClickableInterface() {
                     @Override
                     public void click() {

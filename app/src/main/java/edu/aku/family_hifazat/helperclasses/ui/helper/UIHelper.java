@@ -54,6 +54,7 @@ import edu.aku.family_hifazat.fragments.abstracts.GenericDialogFragment;
 import edu.aku.family_hifazat.fragments.dialogs.SpinnerDialogFragment;
 import edu.aku.family_hifazat.managers.retrofit.GsonFactory;
 import edu.aku.family_hifazat.models.IntWrapper;
+import edu.aku.family_hifazat.models.RadiologyModel;
 import edu.aku.family_hifazat.models.SpinnerModel;
 
 /**
@@ -664,6 +665,17 @@ public class UIHelper {
         genericDialogFragment.setCancelable(false);
         genericDialogFragment.show(activity.getSupportFragmentManager(), "generic_popup");
     }
+
+    public static void showOnlyTextPopup(BaseActivity baseActivity, String text) {
+        GenericDialogFragment genericDialogFragment = GenericDialogFragment.newInstance();
+        UIHelper.genericPopUp(baseActivity, genericDialogFragment, "", text,
+                "OK", null, new GenericClickableInterface() {
+                    @Override
+                    public void click() {
+                        genericDialogFragment.dismiss();
+                    }
+                }, null);
+     }
 
 
 }

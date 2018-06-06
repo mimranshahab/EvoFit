@@ -13,8 +13,15 @@ import android.util.Log;
 import com.google.firebase.messaging.FirebaseMessagingService;
 import com.google.firebase.messaging.RemoteMessage;
 
+import java.util.Random;
+
 import edu.aku.family_hifazat.R;
+import edu.aku.family_hifazat.activities.HomeActivity;
 import edu.aku.family_hifazat.activities.MainActivity;
+import edu.aku.family_hifazat.enums.HealthSummaryTypes;
+import edu.aku.family_hifazat.managers.SharedPreferenceManager;
+
+import static edu.aku.family_hifazat.constatnts.AppConstants.GCM_DATA_OBJECT;
 
 public class MyFirebaseMessagingService extends FirebaseMessagingService {
 
@@ -22,6 +29,7 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
     public static int NOTIFICATION_ID = 1;
     NotificationCompat.Builder builder;
     private NotificationManager mNotificationManager;
+
     /**
      * Called when message is received.
      *
@@ -68,12 +76,30 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
      * @param messageBody FCM message body received.
      */
     private void sendNotification(RemoteMessage messageBody) {
-        Intent intent = new Intent(this, MainActivity.class);
-        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-        PendingIntent pendingIntent = PendingIntent.getActivity(this, 0 /* Request code */, intent,
-                PendingIntent.FLAG_ONE_SHOT);
 
-        Uri defaultSoundUri= RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
+        Intent intent;
+        GcmDataObject gcmDataObject = new GcmDataObject();
+        if (SharedPreferenceManager.getInstance(this).getCurrentUser() == null) {
+            intent = new Intent(this, MainActivity.class);
+            gcmDataObject.setUserExist(false);
+            intent.putExtra(GCM_DATA_OBJECT, gcmDataObject);
+        } else {
+            intent = new Intent(this, HomeActivity.class);
+            gcmDataObject.setMessage(messageBody.getData().get("message"));
+            gcmDataObject.setScreenToRedirect(messageBody.getData().get("screenToRedirect"));
+            gcmDataObject.setUserExist(true);
+            intent.putExtra(GCM_DATA_OBJECT, gcmDataObject);
+        }
+
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+
+        Random random = new Random();
+        int id = random.nextInt(9999);
+
+        PendingIntent pendingIntent = PendingIntent.getActivity(this, id /* Request code */, intent,
+                PendingIntent.FLAG_UPDATE_CURRENT);
+
+        Uri defaultSoundUri = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
         NotificationCompat.Builder notificationBuilder = new NotificationCompat.Builder(this)
                 .setSmallIcon(R.mipmap.ic_launcher)
                 .setContentTitle(getString(R.string.app_name))
@@ -87,7 +113,7 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
                 (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
 
         if (notificationManager != null) {
-            notificationManager.notify(0 /* ID of notification */, notificationBuilder.build());
+            notificationManager.notify(id /* ID of notification */, notificationBuilder.build());
         }
     }
 

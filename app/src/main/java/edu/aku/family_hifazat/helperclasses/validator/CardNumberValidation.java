@@ -13,7 +13,7 @@ public class CardNumberValidation extends Validator {
     private EditText edtConfirmPassword;
 
     public CardNumberValidation() {
-        super("CNIC number should contain 12 digits");
+        super("Card Number number should contain 12 digits");
     }
 
 

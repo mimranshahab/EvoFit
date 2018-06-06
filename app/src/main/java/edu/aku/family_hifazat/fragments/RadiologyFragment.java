@@ -256,7 +256,7 @@ public class RadiologyFragment extends BaseFragment implements View.OnClickListe
 
     private void showSelfPayeePopup(RadiologyModel model) {
         GenericDialogFragment genericDialogFragment = GenericDialogFragment.newInstance();
-        UIHelper.genericPopUp(getBaseActivity(), genericDialogFragment, "Alert", model.getBalanceMessage(),
+        UIHelper.genericPopUp(getBaseActivity(), genericDialogFragment, "", model.getBalanceMessage(),
                 "OK", null, new GenericClickableInterface() {
                     @Override
                     public void click() {

@@ -23,6 +23,7 @@
 
 
     <ImageView
+        android:id="@+id/imgSeperatorLine"
         android:layout_width="match_parent"
         android:layout_height="2px"
         android:layout_marginBottom="@dimen/x15dp"

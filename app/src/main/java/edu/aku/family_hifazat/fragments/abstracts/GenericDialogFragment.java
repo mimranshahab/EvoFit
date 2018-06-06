@@ -8,6 +8,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import edu.aku.family_hifazat.R;
@@ -45,6 +46,7 @@ public class GenericDialogFragment extends DialogFragment implements View.OnClic
 
     public TextView txtViewMessage;
     TextView txtViewTitle;
+    ImageView imgSeperatorLine;
 
 
     public GenericDialogFragment() {
@@ -87,6 +89,7 @@ public class GenericDialogFragment extends DialogFragment implements View.OnClic
 
         txtViewMessage = (TextView) view.findViewById(R.id.txtMessage);
         txtViewTitle = (TextView) view.findViewById(R.id.txtTitle);
+        imgSeperatorLine = (ImageView) view.findViewById(R.id.imgSeperatorLine);
 
         btn1 = (AnyTextView) view.findViewById(R.id.btnButton1);
         btn2 = (AnyTextView) view.findViewById(R.id.btnButton2);
@@ -113,7 +116,15 @@ public class GenericDialogFragment extends DialogFragment implements View.OnClic
 
 
     private void bindData(String title, String message) {
-        txtViewTitle.setText(title);
+
+        if (title == null || title.isEmpty()) {
+            txtViewTitle.setVisibility(GONE);
+            imgSeperatorLine.setVisibility(GONE);
+        } else {
+            imgSeperatorLine.setVisibility(VISIBLE);
+            txtViewTitle.setVisibility(VISIBLE);
+            txtViewTitle.setText(title);
+        }
         txtViewMessage.setText(message);
 
         btn1.setText(btn1Caption);

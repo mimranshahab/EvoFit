@@ -21,6 +21,11 @@ import edu.aku.family_hifazat.utils.DeviceUtils;
 public class MainActivity extends BaseActivity {
 
     @Override
+    protected void onNewIntent(Intent intent) {
+        super.onNewIntent(intent);
+    }
+
+    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 //        setContentView(R.layout.activity_main);
