@@ -89,6 +89,7 @@ public class WebServiceConstants {
     public static final String METHOD_CLINICAL_LAB = "LaboratoryManager.GetLabSpecimenList";
     public static final String METHOD_CLINICAL_LAB_DETAILS = "LaboratoryManager.GetLabSpecimenDetails";
     public static final String METHOD_CLINICAL_LAB_REPORT = "LaboratoryManager.GetLabSpecimenReport";
+    public static final String METHOD_CLINICAL_LAB_RESULT_HISTORY = "LaboratoryManager.GetLabResultHistory";
 
     public static final String METHOD_SHOW_REPORT_DS = "PatientManager.ShowReport";
     public static final String METHOD_GET_PATIENT_VISIT = "PatientManager.GetPatientVisit";

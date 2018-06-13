@@ -14,6 +14,8 @@ import android.view.animation.AnimationUtils;
 import android.view.animation.LayoutAnimationController;
 import android.widget.AdapterView;
 
+import com.google.gson.JsonObject;
+
 import java.util.ArrayList;
 
 import butterknife.BindView;
@@ -163,24 +165,6 @@ public class ClinicalLaboratoryDetailFragment extends BaseFragment implements Vi
 
     }
 
-    @Override
-    public void onItemClick(int position, Object object) {
-        if (object instanceof LstLaboratorySpecimenResults) {
-            LstLaboratorySpecimenResults model = (LstLaboratorySpecimenResults) object;
-            switch (view.getId()) {
-                case R.id.txtComments:
-                    commentsDialog(model);
-
-                    break;
-                case R.id.btnHistory:
-                    historyDialog(model);
-                    break;
-            }
-
-
-        }
-
-    }
 
     private void historyDialog(LstLaboratorySpecimenResults model) {
         final HistoryDialogFragment historyDialogFrag = HistoryDialogFragment.newInstance();
@@ -237,9 +221,50 @@ public class ClinicalLaboratoryDetailFragment extends BaseFragment implements Vi
 
                 break;
             case R.id.btnHistory:
-                historyDialog(model);
+//                historyDialog(model);
+                SearchModel searchModel = new SearchModel();
+                searchModel.setRecordID(laboratoryDetailModel.getSpecimenNumber());
+                searchModel.setVisitID(adapterClinicalLabDetail.getItem(position).getPerformedTestID());
+                searchModel.setMRNumber(getCurrentUser().getMRNumber());
+                webServiceLabHistory(searchModel);
                 break;
         }
 
+    }
+
+
+    @Override
+    public void onItemClick(int position, Object object) {
+//        if (object instanceof LstLaboratorySpecimenResults) {
+//            LstLaboratorySpecimenResults model = (LstLaboratorySpecimenResults) object;
+//            switch (view.getId()) {
+//                case R.id.txtComments:
+//                    commentsDialog(model);
+//
+//                    break;
+//                case R.id.btnHistory:
+//                    historyDialog(model);
+//                    break;
+//            }
+//
+//
+//        }
+
+    }
+
+    private void webServiceLabHistory(SearchModel searchModel) {
+        new WebServices(getContext(), getToken(), BaseURLTypes.AHFA_BASE_URL)
+                .webServiceRequestAPIForJsonObject(WebServiceConstants.METHOD_CLINICAL_LAB_RESULT_HISTORY,
+                        searchModel.toString(), new WebServices.IRequestJsonDataCallBack() {
+                            @Override
+                            public void requestDataResponse(WebResponse<JsonObject> webResponse) {
+
+                            }
+
+                            @Override
+                            public void onError() {
+
+                            }
+                        });
     }
 }

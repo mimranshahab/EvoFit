@@ -4,6 +4,7 @@
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:layout_gravity="center"
+    android:layout_margin="@dimen/x10dp"
     android:background="@drawable/rounded_box_white"
     android:orientation="vertical"
     android:padding="@dimen/x10dp">
@@ -30,18 +31,27 @@
         android:background="#E2E2E2" />
 
 
-    <edu.aku.family_hifazat.widget.AnyTextView
-        android:id="@+id/txtMessage"
-        android:layout_width="@dimen/x260dp"
-        android:layout_height="match_parent"
+    <ScrollView
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
         android:layout_marginBottom="@dimen/x15dp"
-        android:ellipsize="end"
-        android:gravity="center"
-        android:minLines="2"
-        android:text="Message"
-        android:textColor="@color/txt_aku_blue"
-        android:textSize="@dimen/s14"
-        app:typeface="@string/font_regular" />
+
+        android:layout_weight="1">
+
+        <edu.aku.family_hifazat.widget.AnyTextView
+            android:id="@+id/txtMessage"
+            android:layout_width="@dimen/x260dp"
+            android:layout_height="wrap_content"
+            android:ellipsize="end"
+            android:gravity="center"
+            android:minLines="2"
+            android:text="message"
+            android:textColor="@color/txt_aku_blue"
+            android:textSize="@dimen/s14"
+            app:typeface="@string/font_regular" />
+
+    </ScrollView>
+
 
     <LinearLayout
         android:layout_width="match_parent"

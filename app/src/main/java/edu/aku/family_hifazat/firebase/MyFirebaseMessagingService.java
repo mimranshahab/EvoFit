@@ -106,6 +106,8 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
                 .setContentText(messageBody.getData().get("message"))
                 .setAutoCancel(true)
                 .setSound(defaultSoundUri)
+                .setStyle(new NotificationCompat.BigTextStyle()
+                        .bigText(messageBody.getData().get("message")))
                 .setContentIntent(pendingIntent);
 
 
