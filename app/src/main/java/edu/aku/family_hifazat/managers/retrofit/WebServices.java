@@ -133,8 +133,9 @@ public class WebServices {
         if (response != null && response.body() != null) {
             if (response.body().isSuccess()) {
 
-//                for testing
-//                return true;
+                if (WebServiceConstants.record_found_bypass) {
+                    return true;
+                }
 
                 if (response.body().result.get("RecordFound") == null) {
                     if (response.body().result.get("StrStatus") == null) {
@@ -164,9 +165,10 @@ public class WebServices {
         if (response != null && response.body() != null && response.body().isSuccess()) {
 
 
-            // FIXME: 5/2/2018   //for testing
-//            return true;
-//
+            if (WebServiceConstants.record_found_bypass) {
+                return true;
+            }
+
 
             if (response.body().result == null || response.body().result.isEmpty() || response.body().result.get(0) == null) {
                 return false;
@@ -258,7 +260,7 @@ public class WebServices {
         }
     }
 
-    public  Call<WebResponse<JsonObject>> webServiceRequestAPIForJsonObject(final String requestMethod, String requestData, final IRequestJsonDataCallBack callBack) {
+    public Call<WebResponse<JsonObject>> webServiceRequestAPIForJsonObject(final String requestMethod, String requestData, final IRequestJsonDataCallBack callBack) {
 
         RequestBody bodyRequestMethod = getRequestBody(okhttp3.MultipartBody.FORM, requestMethod);
         RequestBody bodyRequestData = getRequestBody(okhttp3.MultipartBody.FORM, requestData);
@@ -418,7 +420,7 @@ public class WebServices {
 
                                         if (requestMethod.equals(WebServiceConstants.METHOD_PATIENT_HEALTH_SUMMARY)
 //                                            || requestMethod.equals(WebServiceConstants.METHOD_USER_GENERATE_RESET)
-//                                            || requestMethod.equals(WebServiceConstants.METHOD_USER_VERIFY_AND_UPDATE)
+//                                            || requestMethod.equals(WebServiceConstants.METHOD_USER_VERIFY_AND_UPDATE
                                                 ) {
                                             UIHelper.showShortToastInCenter(mContext, message);
                                         } else {

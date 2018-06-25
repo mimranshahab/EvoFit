@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:card_view="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+
+    <LinearLayout
+        android:id="@+id/contParent"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="@dimen/x5dp"
+        android:background="@drawable/rounded_box_timeline_born"
+        android:orientation="vertical">
+
+        <edu.aku.family_hifazat.widget.AnyTextView
+            android:id="@+id/txtDate"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginLeft="@dimen/x5dp"
+            android:layout_weight="1"
+            android:padding="@dimen/x3dp"
+            android:text="Date"
+            android:textColor="@color/c_black"
+            android:textSize="@dimen/s14"
+            app:typeface="@string/font_regular" />
+
+        <edu.aku.family_hifazat.widget.AnyTextView
+            android:id="@+id/txtEvent"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:background="@color/timeline_born_dark"
+            android:gravity="center"
+            android:padding="@dimen/x3dp"
+            android:text="Born at AKUH"
+            android:textColor="@color/c_white"
+            android:textSize="@dimen/s16"
+            app:typeface="@string/font_bold" />
+
+        <edu.aku.family_hifazat.widget.AnyTextView
+            android:id="@+id/txtGenderMessage"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginRight="@dimen/x5dp"
+            android:layout_weight="1"
+            android:gravity="center_vertical|right"
+            android:padding="@dimen/x3dp"
+            android:text="Baby boy of Mother Name"
+            android:textColor="@color/c_black"
+            android:textSize="@dimen/s14"
+            app:typeface="@string/font_regular" />
+    </LinearLayout>
+
+</LinearLayout>

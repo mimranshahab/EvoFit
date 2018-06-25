@@ -181,7 +181,11 @@ public class SplashActivity extends AppCompatActivity {
         } else {
             boolean isPinEnabled = SharedPreferenceManager.getInstance(getApplicationContext()).getBoolean(AppConstants.KEY_IS_PIN_ENABLE);
             if (isPinEnabled) {
-                showPinVerificationDialog(activityClass);
+                try {
+                    showPinVerificationDialog(activityClass);
+                } catch (IllegalStateException e) {
+                    changeActivity(activityClass);
+                }
             } else {
                 changeActivity(activityClass);
             }
@@ -200,7 +204,6 @@ public class SplashActivity extends AppCompatActivity {
 
             @Override
             public void run() {
-
 
                 Intent i;
                 // This method will be executed once the timer is over
@@ -230,8 +233,6 @@ public class SplashActivity extends AppCompatActivity {
     }
 
     public void updateApp(final Class activityClass, AppVersionModel appVersionModel) {
-
-
         int button2Visiblity;
         String message;
         String button1Text;

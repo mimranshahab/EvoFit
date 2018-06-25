@@ -9,6 +9,8 @@ import java.util.Map;
  */
 
 public class WebServiceConstants {
+
+
     private static Map<String, String> headers;
 
     public static Map<String, String> getHeaders(String token) {
@@ -18,6 +20,10 @@ public class WebServiceConstants {
         }
         return headers;
     }
+
+
+    // FIXME: 6/25/2018 If TRUE, for testing purpose only
+    public static boolean record_found_bypass = true;
 
     /**
      * URLs

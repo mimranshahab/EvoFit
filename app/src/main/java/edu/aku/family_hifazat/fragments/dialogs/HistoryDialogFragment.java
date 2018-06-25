@@ -1,22 +1,27 @@
 package edu.aku.family_hifazat.fragments.dialogs;
 
 
-import android.graphics.Color;
-import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.DialogFragment;
+import android.support.v7.widget.DefaultItemAnimator;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.Window;
-import android.widget.ImageView;
+import android.view.animation.AnimationUtils;
+import android.view.animation.LayoutAnimationController;
+
+import java.util.ArrayList;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import butterknife.Unbinder;
 import edu.aku.family_hifazat.R;
+import edu.aku.family_hifazat.adapters.recyleradapters.ClinicalLabHistoryAdapter;
+import edu.aku.family_hifazat.models.LabHistoryModel;
 import edu.aku.family_hifazat.widget.AnyTextView;
 
 /**
@@ -27,32 +32,16 @@ public class HistoryDialogFragment extends DialogFragment {
 
 
     Unbinder unbinder;
-    String Title,
-            ResultPrevious1,
-            ResultPrevious1Date,
-            ResultPrevious2,
-            ResultPrevious2Date,
-            CurrentResult,
-            CurrentDate;
-
+    String Title;
     @BindView(R.id.txtTitle)
     AnyTextView txtTitle;
-    @BindView(R.id.separator)
-    ImageView separator;
-    @BindView(R.id.txtCurrentDate)
-    AnyTextView txtCurrentDate;
-    @BindView(R.id.txtCurrentResult)
-    AnyTextView txtCurrentResult;
-    @BindView(R.id.txtPrevDate1)
-    AnyTextView txtPrevDate1;
-    @BindView(R.id.txtPrevResult1)
-    AnyTextView txtPrevResult1;
-    @BindView(R.id.txtPrevDate2)
-    AnyTextView txtPrevDate2;
-    @BindView(R.id.txtPrevResult2)
-    AnyTextView txtPrevResult2;
+    @BindView(R.id.recyclerView)
+    RecyclerView recyclerView;
     @BindView(R.id.txtOK)
     AnyTextView txtOK;
+    private ArrayList<LabHistoryModel> arrData;
+    private ClinicalLabHistoryAdapter clinicalLabHistoryAdapter;
+
 
     public HistoryDialogFragment() {
     }
@@ -65,6 +54,7 @@ public class HistoryDialogFragment extends DialogFragment {
 
         return frag;
     }
+
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -72,13 +62,12 @@ public class HistoryDialogFragment extends DialogFragment {
     }
 
 
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
 
-        View view = inflater.inflate(R.layout.fragment_history_popup, container);
+        View view = inflater.inflate(R.layout.fragment_history_popup_list, container);
         unbinder = ButterKnife.bind(this, view);
         return view;
     }
@@ -88,6 +77,7 @@ public class HistoryDialogFragment extends DialogFragment {
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
+        clinicalLabHistoryAdapter = new ClinicalLabHistoryAdapter(getActivity(), arrData, null);
 
         bindData();
 
@@ -98,16 +88,16 @@ public class HistoryDialogFragment extends DialogFragment {
 
 
     private void bindData() {
-
-
         txtTitle.setText(getTitle());
 
-        txtPrevResult1.setText(getResultPrevious1());
-        txtPrevResult2.setText(getResultPrevious2());
-        txtPrevDate1.setText(getResultPrevious1Date());
-        txtPrevDate2.setText(getResultPrevious2Date());
-        txtCurrentResult.setText(getCurrentResult());
-//        txtCurrentDate.setText(getCurrentDate());
+        RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getActivity());
+        recyclerView.setLayoutManager(mLayoutManager);
+        ((DefaultItemAnimator) recyclerView.getItemAnimator()).setSupportsChangeAnimations(false);
+        int resId = R.anim.layout_animation_fall_bottom;
+        LayoutAnimationController animation = AnimationUtils.loadLayoutAnimation(getContext(), resId);
+//        recyclerView.setLayoutAnimation(animation);
+        recyclerView.setAdapter(clinicalLabHistoryAdapter);
+        clinicalLabHistoryAdapter.notifyDataSetChanged();
     }
 
     public String getTitle() {
@@ -118,54 +108,10 @@ public class HistoryDialogFragment extends DialogFragment {
         Title = title;
     }
 
-
-    public String getResultPrevious1() {
-        return ResultPrevious1;
+    public void setData(ArrayList<LabHistoryModel> arrData) {
+        this.arrData = arrData;
     }
 
-    public void setResultPrevious1(String resultPrevious1) {
-        ResultPrevious1 = resultPrevious1;
-    }
-
-    public String getResultPrevious1Date() {
-        return ResultPrevious1Date;
-    }
-
-    public void setResultPrevious1Date(String resultPrevious1Date) {
-        ResultPrevious1Date = resultPrevious1Date;
-    }
-
-    public String getResultPrevious2() {
-        return ResultPrevious2;
-    }
-
-    public void setResultPrevious2(String resultPrevious2) {
-        ResultPrevious2 = resultPrevious2;
-    }
-
-    public String getResultPrevious2Date() {
-        return ResultPrevious2Date;
-    }
-
-    public void setResultPrevious2Date(String resultPrevious2Date) {
-        ResultPrevious2Date = resultPrevious2Date;
-    }
-
-    public String getCurrentResult() {
-        return CurrentResult;
-    }
-
-    public void setCurrentResult(String currentResult) {
-        CurrentResult = currentResult;
-    }
-
-    public String getCurrentDate() {
-        return CurrentDate;
-    }
-
-    public void setCurrentDate(String currentDAte) {
-        CurrentDate = currentDAte;
-    }
 
     @Override
     public void onDestroyView() {

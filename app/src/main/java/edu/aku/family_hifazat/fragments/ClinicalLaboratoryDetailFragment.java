@@ -14,8 +14,11 @@ import android.view.animation.AnimationUtils;
 import android.view.animation.LayoutAnimationController;
 import android.widget.AdapterView;
 
+import com.google.gson.Gson;
 import com.google.gson.JsonObject;
+import com.google.gson.reflect.TypeToken;
 
+import java.lang.reflect.Type;
 import java.util.ArrayList;
 
 import butterknife.BindView;
@@ -30,6 +33,10 @@ import edu.aku.family_hifazat.enums.BaseURLTypes;
 import edu.aku.family_hifazat.fragments.abstracts.BaseFragment;
 import edu.aku.family_hifazat.fragments.dialogs.CommentsDialogFragment;
 import edu.aku.family_hifazat.fragments.dialogs.HistoryDialogFragment;
+import edu.aku.family_hifazat.helperclasses.ui.helper.UIHelper;
+import edu.aku.family_hifazat.managers.retrofit.GsonFactory;
+import edu.aku.family_hifazat.models.EndoscopyModel;
+import edu.aku.family_hifazat.models.LabHistoryModel;
 import edu.aku.family_hifazat.widget.TitleBar;
 import edu.aku.family_hifazat.managers.retrofit.WebServices;
 import edu.aku.family_hifazat.models.LaboratoryDetailModel;
@@ -166,18 +173,15 @@ public class ClinicalLaboratoryDetailFragment extends BaseFragment implements Vi
     }
 
 
-    private void historyDialog(LstLaboratorySpecimenResults model) {
+    private void historyDialog(ArrayList<LabHistoryModel> arrLabHistoryModel) {
         final HistoryDialogFragment historyDialogFrag = HistoryDialogFragment.newInstance();
-        historyDialogFrag.setTitle(model.getReportName());
-        historyDialogFrag.setResultPrevious1(model.getPrevResult1());
-        historyDialogFrag.setResultPrevious2(model.getPrevResult2());
-        historyDialogFrag.setResultPrevious1Date(model.getPrevResult1Dttm());
-        historyDialogFrag.setResultPrevious2Date(model.getPrevResult2Dttm());
-        historyDialogFrag.setCurrentResult(model.getResult());
-        historyDialogFrag.setCurrentDate("Current Result");
-
-
-        historyDialogFrag.show(getFragmentManager(), null);
+        if (arrLabHistoryModel != null && !arrLabHistoryModel.isEmpty()) {
+            historyDialogFrag.setTitle(arrLabHistoryModel.get(0).getMnemonic());
+            historyDialogFrag.setData(arrLabHistoryModel);
+            historyDialogFrag.show(getFragmentManager(), null);
+        } else {
+            UIHelper.showToast(getContext(), "No previous history found");
+        }
     }
 
     private void commentsDialog(LstLaboratorySpecimenResults model) {
@@ -213,15 +217,14 @@ public class ClinicalLaboratoryDetailFragment extends BaseFragment implements Vi
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
-        LstLaboratorySpecimenResults model = adapterClinicalLabDetail.getItem(position);
+        LstLaboratorySpecimenResults lstLaboratorySpecimenResults = adapterClinicalLabDetail.getItem(position);
         switch (view.getId()) {
             case R.id.txtComments:
 
-                commentsDialog(model);
+                commentsDialog(lstLaboratorySpecimenResults);
 
                 break;
             case R.id.btnHistory:
-//                historyDialog(model);
                 SearchModel searchModel = new SearchModel();
                 searchModel.setRecordID(laboratoryDetailModel.getSpecimenNumber());
                 searchModel.setVisitID(adapterClinicalLabDetail.getItem(position).getPerformedTestID());
@@ -254,10 +257,18 @@ public class ClinicalLaboratoryDetailFragment extends BaseFragment implements Vi
 
     private void webServiceLabHistory(SearchModel searchModel) {
         new WebServices(getContext(), getToken(), BaseURLTypes.AHFA_BASE_URL)
-                .webServiceRequestAPIForJsonObject(WebServiceConstants.METHOD_CLINICAL_LAB_RESULT_HISTORY,
-                        searchModel.toString(), new WebServices.IRequestJsonDataCallBack() {
+                .webServiceRequestAPIForArray(WebServiceConstants.METHOD_CLINICAL_LAB_RESULT_HISTORY, searchModel.toString(),
+                        new WebServices.IRequestArrayDataCallBack() {
                             @Override
-                            public void requestDataResponse(WebResponse<JsonObject> webResponse) {
+                            public void requestDataResponse(WebResponse<ArrayList<JsonObject>> webResponse) {
+
+                                Type type = new TypeToken<ArrayList<LabHistoryModel>>() {
+                                }.getType();
+                                ArrayList<LabHistoryModel> arrayList = GsonFactory.getSimpleGson()
+                                        .fromJson(GsonFactory.getSimpleGson().toJson(webResponse.result)
+                                                , type);
+
+                                historyDialog(arrayList);
 
                             }
 
