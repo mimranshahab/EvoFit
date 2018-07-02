@@ -30,6 +30,11 @@ import static android.provider.Settings.Secure.getString;
 
 public class AppConstants {
 
+    /**
+     * Static Booleans
+     */
+
+    public static boolean isForcedResetFragment;
 
     /**
      * Date Formats

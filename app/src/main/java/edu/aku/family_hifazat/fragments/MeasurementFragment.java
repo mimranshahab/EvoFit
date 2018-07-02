@@ -314,6 +314,7 @@ public class MeasurementFragment extends BaseFragment {
 
                                 UIHelper.showToast(getContext(), addUpdateModel.getMessage());
                                 if (addUpdateModel.getStatus()) {
+                                    AppConstants.isForcedResetFragment = true;
                                     getBaseActivity().popBackStack();
                                 }
                             }

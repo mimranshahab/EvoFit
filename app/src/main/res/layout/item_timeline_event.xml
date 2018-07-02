@@ -10,9 +10,10 @@
     <LinearLayout
         android:id="@+id/contParent"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="@dimen/x110dp"
         android:layout_margin="@dimen/x5dp"
         android:background="@drawable/rounded_box_timeline_born"
+        android:gravity="center"
         android:orientation="vertical">
 
         <edu.aku.family_hifazat.widget.AnyTextView
@@ -21,11 +22,12 @@
             android:layout_height="0dp"
             android:layout_marginLeft="@dimen/x5dp"
             android:layout_weight="1"
+            android:gravity="center_vertical"
             android:padding="@dimen/x3dp"
             android:text="Date"
             android:textColor="@color/c_black"
             android:textSize="@dimen/s14"
-            app:typeface="@string/font_regular" />
+            app:typeface="@string/font_bold" />
 
         <edu.aku.family_hifazat.widget.AnyTextView
             android:id="@+id/txtEvent"
@@ -33,8 +35,10 @@
             android:layout_height="0dp"
             android:layout_weight="1"
             android:background="@color/timeline_born_dark"
+            android:ellipsize="end"
             android:gravity="center"
             android:padding="@dimen/x3dp"
+            android:singleLine="true"
             android:text="Born at AKUH"
             android:textColor="@color/c_white"
             android:textSize="@dimen/s16"
@@ -46,12 +50,14 @@
             android:layout_height="0dp"
             android:layout_marginRight="@dimen/x5dp"
             android:layout_weight="1"
+            android:ellipsize="end"
             android:gravity="center_vertical|right"
             android:padding="@dimen/x3dp"
+            android:singleLine="true"
             android:text="Baby boy of Mother Name"
             android:textColor="@color/c_black"
             android:textSize="@dimen/s14"
-            app:typeface="@string/font_regular" />
+            app:typeface="@string/font_bold" />
     </LinearLayout>
 
 </LinearLayout>

@@ -291,6 +291,7 @@ public class BPFragment extends BaseFragment {
 
                                 UIHelper.showToast(getContext(), addUpdateModel.getMessage());
                                 if (addUpdateModel.getStatus()) {
+                                    AppConstants.isForcedResetFragment = true;
                                     getBaseActivity().popBackStack();
                                 }
                             }

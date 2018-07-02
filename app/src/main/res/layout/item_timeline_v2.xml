@@ -10,64 +10,120 @@
     <LinearLayout
         android:id="@+id/contParent"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="@dimen/x110dp"
         android:layout_margin="@dimen/x5dp"
-        android:background="@drawable/rounded_box_timeline_born"
-        android:orientation="vertical">
+        android:gravity="center"
+        android:background="@drawable/rounded_box_timeline_inp"
+        android:orientation="vertical"
+        android:padding="@dimen/x8dp">
 
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+             android:gravity="center_vertical">
 
             <LinearLayout
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_weight="1">
+                android:layout_weight="1"
+                android:orientation="vertical">
 
                 <edu.aku.family_hifazat.widget.AnyTextView
+                    android:id="@+id/txtDate"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="@dimen/x5dp"
-                    android:layout_weight="1"
-                    android:padding="@dimen/x3dp"
+                    android:ellipsize="end"
+                    android:singleLine="true"
                     android:text="Date"
                     android:textColor="@color/c_black"
                     android:textSize="@dimen/s14"
+                    app:typeface="@string/font_bold" />
+
+                <edu.aku.family_hifazat.widget.AnyTextView
+                    android:id="@+id/txtVisitDetail"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:ellipsize="end"
+                    android:gravity="right"
+                    android:singleLine="true"
+                    android:text="4 Days | Sent Home"
+                    android:textColor="@color/c_black"
+                    android:textSize="@dimen/s10"
                     app:typeface="@string/font_regular" />
 
 
             </LinearLayout>
 
 
+            <edu.aku.family_hifazat.widget.AnyTextView
+                android:id="@+id/txtVisitType"
+                android:layout_width="@dimen/x50dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/x20dp"
+                android:background="@drawable/rounded_box_timeline_inp_status"
+                android:gravity="center"
+                android:maxLength="3"
+                android:paddingBottom="@dimen/x3dp"
+                android:paddingLeft="@dimen/x8dp"
+                android:paddingRight="@dimen/x8dp"
+                android:paddingTop="@dimen/x3dp"
+                android:text=""
+                android:textColor="@color/c_white"
+                android:textSize="@dimen/s16"
+                app:typeface="@string/font_bold" />
+
+
         </LinearLayout>
 
 
         <edu.aku.family_hifazat.widget.AnyTextView
-            android:id="@+id/txtEvent"
+            android:id="@+id/txtDoctorName"
             android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1"
-            android:background="@color/timeline_born_dark"
-            android:gravity="center"
-            android:padding="@dimen/x3dp"
-            android:text="Born at AKUH"
-            android:textColor="@color/c_white"
+            android:layout_height="wrap_content"
+             android:ellipsize="end"
+            android:singleLine="true"
+            android:text="Dr Name"
+            android:textColor="@color/timeline_inp_dark"
             android:textSize="@dimen/s16"
             app:typeface="@string/font_bold" />
 
-        <edu.aku.family_hifazat.widget.AnyTextView
-            android:id="@+id/txtGenderMessage"
+
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_marginRight="@dimen/x5dp"
-            android:layout_weight="1"
-            android:gravity="center_vertical|right"
-            android:padding="@dimen/x3dp"
-            android:text="Baby boy of Mother Name"
-            android:textColor="@color/c_black"
-            android:textSize="@dimen/s14"
-            app:typeface="@string/font_regular" />
+            android:layout_height="wrap_content"
+             android:gravity="right"
+            android:orientation="vertical">
+
+            <edu.aku.family_hifazat.widget.AnyTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="right"
+                android:ellipsize="end"
+                android:gravity="right"
+                android:singleLine="true"
+                android:text="test"
+                android:textColor="@color/c_black"
+                android:textSize="@dimen/s10"
+                android:visibility="invisible"
+                app:typeface="@string/font_regular" />
+
+            <edu.aku.family_hifazat.widget.AnyTextView
+                android:id="@+id/txtServiceDetails"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/x5dp"
+                android:ellipsize="end"
+                android:singleLine="true"
+                android:text="Visit Details"
+                android:textColor="@color/c_black"
+                android:textSize="@dimen/s14"
+                app:typeface="@string/font_bold" />
+
+        </LinearLayout>
+
+
     </LinearLayout>
 
 </LinearLayout>

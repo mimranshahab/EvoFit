@@ -23,7 +23,7 @@ public class WebServiceConstants {
 
 
     // FIXME: 6/25/2018 If TRUE, for testing purpose only
-    public static boolean record_found_bypass = true;
+    public static boolean record_found_bypass = false;
 
     /**
      * URLs

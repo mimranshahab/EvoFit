@@ -28,7 +28,7 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 import butterknife.Unbinder;
 import edu.aku.family_hifazat.R;
-import edu.aku.family_hifazat.adapters.recyleradapters.TimelineAdapter;
+import edu.aku.family_hifazat.adapters.recyleradapters.TimelineAdapter_V2;
 import edu.aku.family_hifazat.callbacks.OnItemClickListener;
 import edu.aku.family_hifazat.constatnts.WebServiceConstants;
 import edu.aku.family_hifazat.enums.BaseURLTypes;
@@ -61,14 +61,14 @@ public class TimelineFragment extends BaseFragment implements View.OnClickListen
     @BindView(R.id.edtSearchBar)
     AnyEditTextView edtSearchBar;
     private ArrayList<TimelineModel> arrData;
-    private TimelineAdapter adapter;
+    private TimelineAdapter_V2 adapter;
     private boolean isSearchBarEmpty = true;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         arrData = new ArrayList<TimelineModel>();
-        adapter = new TimelineAdapter(getBaseActivity(), arrData, this);
+        adapter = new TimelineAdapter_V2(getBaseActivity(), arrData, this);
     }
 
     public static TimelineFragment newInstance() {
@@ -82,7 +82,7 @@ public class TimelineFragment extends BaseFragment implements View.OnClickListen
 
     @Override
     protected int getFragmentLayout() {
-        return R.layout.fragment_general_recyler_view;
+        return R.layout.fragment_general_recyler_view_white_background;
     }
 
     @Override
