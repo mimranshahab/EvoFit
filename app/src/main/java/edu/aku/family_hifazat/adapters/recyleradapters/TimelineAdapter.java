@@ -96,7 +96,6 @@ public class TimelineAdapter extends RecyclerView.Adapter<TimelineAdapter.ViewHo
 
         } else {
             setViews(holder, R.color.base_amber, activity.getResources().getColor(R.color.base_amber));
-
         }
 
 

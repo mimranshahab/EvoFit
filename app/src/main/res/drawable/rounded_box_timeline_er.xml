@@ -3,7 +3,7 @@
     android:shape="rectangle">
     <stroke
         android:width="3px"
-        android:color="@color/panic_blue" />
+        android:color="@color/timeline_er_dark" />
     <solid
         android:color="@color/timeline_er_light" />
     <corners android:radius="@dimen/x12dp" />

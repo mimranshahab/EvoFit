@@ -45,10 +45,16 @@ public class TimelineAdapter_V2 extends RecyclerView.Adapter<RecyclerView.ViewHo
 
     @Override
     public int getItemViewType(int position) {
-        if (position == 0 || position == arrData.size() - 1)
-            return TYPE_EVENT;
-        else
+        String patientVisitDischargeDisposition = arrData.get(position).getPatientVisitDischargeDisposition();
+        if (patientVisitDischargeDisposition != null && !patientVisitDischargeDisposition.isEmpty()) {
+            if (patientVisitDischargeDisposition.equals("B") || patientVisitDischargeDisposition.equals("D")) {
+                return TYPE_EVENT;
+            } else {
+                return TYPE_VISIT;
+            }
+        } else {
             return TYPE_VISIT;
+        }
     }
 
 
@@ -69,54 +75,64 @@ public class TimelineAdapter_V2 extends RecyclerView.Adapter<RecyclerView.ViewHo
 
     @Override
     public void onBindViewHolder(final RecyclerView.ViewHolder holder, int i) {
+        final TimelineModel timelineModel = filteredData.get(holder.getAdapterPosition());
 
         if (holder instanceof ViewHolderEvent) {
             ViewHolderEvent holderEvent = (ViewHolderEvent) holder;
-            if (holder.getAdapterPosition() == 0) {
-                holderEvent.txtEvent.setText("Expired");
-                holderEvent.txtGenderMessage.setText("");
+
+            holderEvent.txtDate.setText(timelineModel.getPatientVisitDateTime());
+            holderEvent.txtEvent.setText(timelineModel.getPatientVisitServiceDescription());
+
+            if (timelineModel.getPatientVisitDischargeDisposition().equals("D")) {
                 holderEvent.txtEvent.setBackgroundColor(activity.getResources().getColor(R.color.timeline_expire_dark));
                 holderEvent.contParent.setBackgroundResource(R.drawable.rounded_box_timeline_expire);
             } else {
-                holderEvent.txtEvent.setText("Born at AKUH");
                 holderEvent.txtEvent.setBackgroundColor(activity.getResources().getColor(R.color.timeline_born_dark));
-                holderEvent.txtGenderMessage.setText("Baby boy of (Mother Name)");
                 holderEvent.contParent.setBackgroundResource(R.drawable.rounded_box_timeline_born);
             }
+
         } else {
 
             ViewHolderVisit holderVisit = (ViewHolderVisit) holder;
-            final TimelineModel timelineModel = filteredData.get(holder.getAdapterPosition());
             VisitTypes visitTypes;
 
-        /*
-        Dr name PatientVisitDoctorName
-        Service PatientVisitService
-        loc, facility  PatientVisitLocation,PatientVisitHospitalLocation
-        date PatientVisitDateTime
-         */
 
-            if (timelineModel.getPatientVisitType().contains("Emergency")) {
+            // Visit Type
+
+            if (timelineModel.getPatientVisitType().toUpperCase().contains("ER")) {
                 visitTypes = VisitTypes.ER;
-                holderVisit.txtVisitType.setText("ER");
-            } else if (timelineModel.getPatientVisitType().contains("In-Patient")) {
-                holderVisit.txtVisitType.setText("INP");
+            } else if (timelineModel.getPatientVisitType().toUpperCase().contains("IN") || timelineModel.getPatientVisitType().toUpperCase().contains("INP")) {
                 visitTypes = VisitTypes.INP;
-            } else if (timelineModel.getPatientVisitType().contains("Clinic")) {
-                holderVisit.txtVisitType.setText("SDC");
+            } else if (timelineModel.getPatientVisitType().toUpperCase().contains("SDC")) {
                 visitTypes = VisitTypes.SDC;
             } else {
-                holderVisit.txtVisitType.setText("OUT");
                 visitTypes = VisitTypes.OUT;
             }
-// FIXME: 6/28/2018 Visit type will come from service
-//            holderVisit.txtVisitType.setText(timelineModel.getPatientVisitType());
-//            holderVisit.txtVisitDetail.setText(timelineModel.getPatientVisitType());
-            holderVisit.txtDoctorName.setText("Dr." + timelineModel.getPatientVisitDoctorName());
+
+            holderVisit.txtVisitType.setText(timelineModel.getPatientVisitType());
+
+
+            // Visit Details
+
+            if (timelineModel.getPatientVisitDischargeDispositionDesc() != null && !timelineModel.getPatientVisitDischargeDispositionDesc().isEmpty()) {
+                if (timelineModel.getPatientLengthofStay() == null || timelineModel.getPatientLengthofStay().isEmpty()) {
+                    holderVisit.txtVisitDetail.setText(timelineModel.getPatientVisitDischargeDispositionDesc());
+                } else {
+                    holderVisit.txtVisitDetail.setText(timelineModel.getPatientLengthofStay()
+                            + " | " + timelineModel.getPatientVisitDischargeDispositionDesc());
+                }
+            } else {
+                holderVisit.txtVisitDetail.setText(timelineModel.getPatientLengthofStay());
+            }
+
+            //Visit and Discharge date
             setDate(holderVisit, timelineModel, visitTypes);
-            holderVisit.txtServiceDetails.setText(timelineModel.getPatientVisitLocation() + " | " + timelineModel.getPatientVisitHospitalLocation());
 
 
+            // Doctor Name
+            holderVisit.txtDoctorName.setText(timelineModel.getPatientVisitDoctorName());
+
+            // Set Service Details
             setServiceDetail(holderVisit, timelineModel);
 
 
@@ -152,44 +168,82 @@ public class TimelineAdapter_V2 extends RecyclerView.Adapter<RecyclerView.ViewHo
     private void setServiceDetail(ViewHolderVisit holderVisit, TimelineModel timelineModel) {
 
         String serviceDetails = "";
+        String serviceDetails2 = "";
+        String visitService = "";
 
-        if (timelineModel.getPatientVisitServiceDescription() == null || timelineModel.getPatientVisitServiceDescription().isEmpty()) {
-            if (timelineModel.getPatientVisitService() != null && !timelineModel.getPatientVisitService().isEmpty()) {
-                serviceDetails = serviceDetails + timelineModel.getPatientVisitService() + " | ";
-            }
+
+        // Visit service logic
+        if (timelineModel.getPatientVisitServiceDescription() != null && !timelineModel.getPatientVisitServiceDescription().isEmpty()) {
+            visitService = timelineModel.getPatientVisitServiceDescription();
         } else {
-            serviceDetails = serviceDetails + timelineModel.getPatientVisitServiceDescription() + " | ";
+            visitService = timelineModel.getPatientVisitService();
         }
 
-        serviceDetails = serviceDetails + timelineModel.getPatientVisitLocation() + " | ";
-        serviceDetails = serviceDetails + timelineModel.getPatientVisitHospitalLocation();
+        // Service Details 1 logic
 
-        holderVisit.txtServiceDetails.setText(serviceDetails);
+        if (timelineModel.getPatientVisitLocation() != null && !timelineModel.getPatientVisitLocation().isEmpty()) {
+            if (visitService == null || visitService.isEmpty()) {
+                serviceDetails = timelineModel.getPatientVisitLocation();
+            } else {
+                serviceDetails = timelineModel.getPatientVisitLocation()
+                        + " | " + visitService;
+            }
+        } else {
+            serviceDetails = visitService;
+        }
+
+
+        // Service Details 2 logic
+        if (timelineModel.getPatientVisitVisitRoom() != null && !timelineModel.getPatientVisitVisitRoom().isEmpty()) {
+            if (timelineModel.getPatientVisitHospitalLocation() == null || timelineModel.getPatientVisitHospitalLocation().isEmpty()) {
+                serviceDetails2 = timelineModel.getPatientVisitVisitRoom();
+            } else {
+                serviceDetails2 = timelineModel.getPatientVisitVisitRoom()
+                        + " | " + timelineModel.getPatientVisitHospitalLocation();
+            }
+        } else {
+            serviceDetails2 = timelineModel.getPatientVisitHospitalLocation();
+        }
+
+        if (serviceDetails.isEmpty() || serviceDetails2.isEmpty()) {
+            holderVisit.txtServiceDetails.setText(serviceDetails + serviceDetails2);
+
+        } else {
+            holderVisit.txtServiceDetails.setText(serviceDetails + " | " + serviceDetails2);
+
+        }
+
+//        holderVisit.txtServiceDetails2.setText(serviceDetails2);
 
     }
 
     private void setDate(ViewHolderVisit holderVisit, TimelineModel timelineModel, VisitTypes visitTypes) {
-
-        if (timelineModel.getPatientVisitDischargeDate() == null || timelineModel.getPatientVisitDischargeDate().isEmpty()) {
-            holderVisit.txtDate.setText(timelineModel.getPatientVisitDateTime());
-        } else {
-            switch (visitTypes) {
-                case ER:
-                    holderVisit.txtDate.setText(timelineModel.getPatientVisitDateTime() + " to " + timelineModel.getPatientVisitDischargeDate());
-                    break;
-                case SDC:
-                    holderVisit.txtDate.setText(timelineModel.getPatientVisitDateTime() + " till " + timelineModel.getPatientVisitDischargeDate());
-                    break;
-                case OUT:
+        switch (visitTypes) {
+            case ER:
+                if (timelineModel.getPatientVisitDischargeDate() == null || timelineModel.getPatientVisitDischargeDate().isEmpty()) {
                     holderVisit.txtDate.setText(timelineModel.getPatientVisitDateTime());
-                    break;
-                case INP:
+                } else {
                     holderVisit.txtDate.setText(timelineModel.getPatientVisitDateTime() + " to " + timelineModel.getPatientVisitDischargeDate());
-                    break;
-            }
+                }
+                break;
+            case SDC:
+                holderVisit.txtDate.setText(timelineModel.getPatientVisitDateTime());
+                break;
+            case OUT:
+                if (timelineModel.getPatientClinicApptNatureDesc() == null || timelineModel.getPatientClinicApptNatureDesc().isEmpty()) {
+                    holderVisit.txtDate.setText(timelineModel.getPatientVisitDateTime());
+                } else {
+                    holderVisit.txtDate.setText(timelineModel.getPatientVisitDateTime() + " - " + timelineModel.getPatientClinicApptNatureDesc());
+                }
+                break;
+            case INP:
+                if (timelineModel.getPatientVisitDischargeDate() == null || timelineModel.getPatientVisitDischargeDate().isEmpty()) {
+                    holderVisit.txtDate.setText(timelineModel.getPatientVisitDateTime());
+                } else {
+                    holderVisit.txtDate.setText(timelineModel.getPatientVisitDateTime() + " to " + timelineModel.getPatientVisitDischargeDate());
+                }
+                break;
         }
-
-
     }
 
     private void setViews(ViewHolderVisit holderVisit, int resourceIDContainer, int resourceIDStatus, int doctorNameColor) {

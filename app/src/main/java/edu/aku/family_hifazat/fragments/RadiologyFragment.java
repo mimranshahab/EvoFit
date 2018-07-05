@@ -97,7 +97,7 @@ public class RadiologyFragment extends BaseFragment implements View.OnClickListe
         super.onViewCreated(view, savedInstanceState);
 
 
-        bearerTokenCall();
+
         bindView();
 
         if (onCreated) {
@@ -109,11 +109,12 @@ public class RadiologyFragment extends BaseFragment implements View.OnClickListe
     }
 
 
-    private void bearerTokenCall() {
+    private void bearerTokenCall(RadiologyModel model) {
         new WebServices(getContext()).webServicegetToken(new WebServices.IRequestStringCallBack() {
             @Override
             public void requestDataResponse(String webResponse) {
                 WebServices.setBearerToken(webResponse);
+                showPacsImages(model);
             }
 
             @Override
@@ -155,7 +156,7 @@ public class RadiologyFragment extends BaseFragment implements View.OnClickListe
         switch (view.getId()) {
             case R.id.RlGraph:
                 if (model.getBalanceMessage() == null || model.getBalanceMessage().isEmpty()) {
-                    showPacsImages(model);
+                    bearerTokenCall(model);
                 } else {
                     showSelfPayeePopup(model);
                 }

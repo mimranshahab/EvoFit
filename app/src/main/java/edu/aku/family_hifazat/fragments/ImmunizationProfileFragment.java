@@ -1,5 +1,6 @@
 package edu.aku.family_hifazat.fragments;
 
+import android.app.ProgressDialog;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.widget.DrawerLayout;
@@ -31,6 +32,7 @@ import edu.aku.family_hifazat.constatnts.AppConstants;
 import edu.aku.family_hifazat.constatnts.WebServiceConstants;
 import edu.aku.family_hifazat.enums.BaseURLTypes;
 import edu.aku.family_hifazat.fragments.abstracts.BaseFragment;
+import edu.aku.family_hifazat.helperclasses.Helper;
 import edu.aku.family_hifazat.widget.TitleBar;
 import edu.aku.family_hifazat.managers.retrofit.GsonFactory;
 import edu.aku.family_hifazat.managers.retrofit.WebServices;
@@ -60,6 +62,8 @@ public class ImmunizationProfileFragment extends BaseFragment implements View.On
     boolean isFromTimeline;
     int patientVisitAdmissionID;
     private ArrayList<SpinnerModel> arrUsedVaccineDes = new ArrayList<>();
+    private ProgressDialog mDialog;
+
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -97,7 +101,13 @@ public class ImmunizationProfileFragment extends BaseFragment implements View.On
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+        mDialog = Helper.getLoader(getContext());
+        mDialog.setMessage("Processing your request ...");
+        mDialog.setTitle("Please Wait");
         bindView();
+        if (!(getBaseActivity()).isFinishing()) {
+            mDialog.show();
+        }
         isImmunizationRecordExistServce();
     }
 
@@ -170,7 +180,7 @@ public class ImmunizationProfileFragment extends BaseFragment implements View.On
         }
         new WebServices(getBaseActivity(),
                 getToken(),
-                BaseURLTypes.AHFA_BASE_URL)
+                BaseURLTypes.AHFA_BASE_URL, false)
                 .webServiceRequestAPIForArray(WebServiceConstants.METHOD_IMMUNIZATION_VACCINE_SCHEDULE,
                         model.toString(),
                         new WebServices.IRequestArrayDataCallBack() {
@@ -197,11 +207,13 @@ public class ImmunizationProfileFragment extends BaseFragment implements View.On
                                 } else {
                                     showEmptyView(AppConstants.NO_VACCINATION_MESSAGE);
                                 }
+                                mDialog.dismiss();
                             }
 
                             @Override
                             public void onError() {
 //                                UIHelper.showShortToastInCenter(getContext(), "failure");
+                                mDialog.dismiss();
                                 showEmptyView(AppConstants.NO_VACCINATION_MESSAGE);
                             }
                         });
@@ -217,7 +229,7 @@ public class ImmunizationProfileFragment extends BaseFragment implements View.On
 
         new WebServices(getBaseActivity(),
                 getToken(),
-                BaseURLTypes.AHFA_BASE_URL)
+                BaseURLTypes.AHFA_BASE_URL, false)
                 .webServiceRequestAPIForJsonObject(WebServiceConstants.METHOD_IMMUNIZATION_RECORD_EXIST,
                         model.toString(),
                         new WebServices.IRequestJsonDataCallBack() {
@@ -234,8 +246,8 @@ public class ImmunizationProfileFragment extends BaseFragment implements View.On
                                     mFab.setVisibility(View.GONE);
                                     getVaccineScheduleService();
                                 } else {
+                                    mDialog.dismiss();
                                     mFab.setVisibility(View.GONE);
-
                                     showEmptyView(AppConstants.NO_VACCINATION_MESSAGE);
                                 }
                             }
@@ -244,6 +256,7 @@ public class ImmunizationProfileFragment extends BaseFragment implements View.On
                             public void onError() {
                                 mFab.setVisibility(View.GONE);
                                 showEmptyView(AppConstants.NO_VACCINATION_MESSAGE);
+                                mDialog.dismiss();
                             }
                         });
 

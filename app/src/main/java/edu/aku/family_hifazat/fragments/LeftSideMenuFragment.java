@@ -1,5 +1,6 @@
 package edu.aku.family_hifazat.fragments;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.widget.DrawerLayout;
@@ -9,6 +10,11 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ImageView;
 import android.widget.ScrollView;
+import android.widget.Toast;
+
+import com.gdacciaro.iOSDialog.iOSDialog;
+import com.gdacciaro.iOSDialog.iOSDialogBuilder;
+import com.gdacciaro.iOSDialog.iOSDialogClickListener;
 
 import edu.aku.family_hifazat.callbacks.OnNewPacketReceivedListener;
 import edu.aku.family_hifazat.widget.AnyTextView;
@@ -109,23 +115,41 @@ public class LeftSideMenuFragment extends BaseFragment implements OnNewPacketRec
     public void onDestroyView() {
         super.onDestroyView();
         unbinder.unbind();
+
     }
 
     public static void logoutClick(final BaseFragment baseFragment) {
-        final GenericDialogFragment genericDialogFragment = GenericDialogFragment.newInstance();
+//        final GenericDialogFragment genericDialogFragment = GenericDialogFragment.newInstance();
+//
+//        genericDialogFragment.setTitle(baseFragment.getString(R.string.logout));
+//        genericDialogFragment.setMessage(baseFragment.getString(R.string.areYouSureToLogout));
+//
+//        genericDialogFragment.setButton1("Yes", () -> {
+//            genericDialogFragment.getDialog().dismiss();
+//            baseFragment.sharedPreferenceManager.clearDB();
+//            baseFragment.getBaseActivity().clearAllActivitiesExceptThis(MainActivity.class);
+//
+//        });
+//
+//        genericDialogFragment.setButton2("No", () -> genericDialogFragment.getDialog().dismiss());
+//        genericDialogFragment.show(baseFragment.getFragmentManager(), null);
 
-        genericDialogFragment.setTitle(baseFragment.getString(R.string.logout));
-        genericDialogFragment.setMessage(baseFragment.getString(R.string.areYouSureToLogout));
+        Context context = baseFragment.getContext();
 
-        genericDialogFragment.setButton1("Yes", () -> {
-            genericDialogFragment.getDialog().dismiss();
-            baseFragment.sharedPreferenceManager.clearDB();
-            baseFragment.getBaseActivity().clearAllActivitiesExceptThis(MainActivity.class);
+        new iOSDialogBuilder(context)
+                .setTitle(context.getString(R.string.logout))
+                .setSubtitle(context.getString(R.string.areYouSureToLogout))
+                .setBoldPositiveLabel(false)
+                .setCancelable(false)
+                .setPositiveListener(context.getString(R.string.yes), dialog -> {
+                    dialog.dismiss();
+                    baseFragment.sharedPreferenceManager.clearDB();
+                    baseFragment.getBaseActivity().clearAllActivitiesExceptThis(MainActivity.class);
+                })
+                .setNegativeListener(context.getString(R.string.no), dialog -> dialog.dismiss())
+                .build().show();
 
-        });
 
-        genericDialogFragment.setButton2("No", () -> genericDialogFragment.getDialog().dismiss());
-        genericDialogFragment.show(baseFragment.getFragmentManager(), null);
     }
 
     public void scrollToTop() {

@@ -41,13 +41,17 @@
     <color name="timeline_expire_light">#D9D9D9</color>
     <color name="timeline_born_dark">#548235</color>
     <color name="timeline_born_light">#A9D18E</color>
-    <color name="timeline_out_dark">#5B9BD5</color>
+    <color name="timeline_out_dark">#2F5597</color>
+    <color name="timeline_out_med">#5B9BD5</color>
     <color name="timeline_out_light">#DAE3F3</color>
-    <color name="timeline_inp_dark">#BF9000</color>
+    <color name="timeline_inp_dark">#7F6000</color>
+    <color name="timeline_inp_med">#BF9000</color>
     <color name="timeline_inp_light">#FFE699</color>
-    <color name="timeline_sdc_dark">#548235</color>
+    <color name="timeline_sdc_dark">#385723</color>
+    <color name="timeline_sdc_med">#548235</color>
     <color name="timeline_sdc_light">#E2F0D9</color>
-    <color name="timeline_er_dark">#C55A11</color>
+    <color name="timeline_er_dark">#843C0C</color>
+    <color name="timeline_er_med">#C55A11</color>
     <color name="timeline_er_light">#FBE5D6</color>
 
 

@@ -210,7 +210,7 @@ public class LoginFragment extends BaseFragment {
     private void loginCall(LoginApiModel loginApiModel, String token) {
         new WebServices(getBaseActivity(),
                 token,
-                BaseURLTypes.AHFA_BASE_URL)
+                BaseURLTypes.AHFA_BASE_URL, false)
                 .webServiceRequestAPIForJsonObject(WebServiceConstants.METHOD_USER_LOGIN,
                         loginApiModel.toString(),
                         new WebServices.IRequestJsonDataCallBack() {

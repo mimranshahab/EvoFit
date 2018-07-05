@@ -101,7 +101,7 @@ Enim vitae euismod eu velit pede eu, sodales malesuada sit fermentum ut dictum d
     <string name="Ok">OK</string>
     <string name="verificationCode">Verification Code</string>
     <string name="verifyYourNumber">Verify Your Number</string>
-    <string name="areYouSureToLogout">Are you sure to Logout?</string>
+    <string name="areYouSureToLogout">Are you sure you want to Logout?</string>
     <string name="get_code">Didn\'t receive a code yet?</string>
 
 

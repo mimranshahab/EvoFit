@@ -7,238 +7,272 @@ import com.google.gson.annotations.SerializedName;
  * Created by User on 1/19/2018.
  */
 
-public class TimelineModel implements IsRecordFound {
+public class TimelineModel {
+
 
     @Expose
     @SerializedName("RecordMessage")
-    private String recordmessage;
+    private String recordMessage;
     @Expose
     @SerializedName("RecordFound")
-    private String recordfound;
-
-    @Override
-    public boolean isRecordFound() {
-        return getRecordfound().equals("true");
-    }
-
-    public String getRecordmessage() {
-        return recordmessage;
-    }
-
-    public void setRecordmessage(String recordmessage) {
-        this.recordmessage = recordmessage;
-    }
-
-    public String getRecordfound() {
-        return recordfound;
-    }
-
-    public void setRecordfound(String recordfound) {
-        this.recordfound = recordfound;
-    }
-
-    @SerializedName("PatientVisitDateTime")
+    private String recordFound;
     @Expose
-    private String patientVisitDateTime;
-    @SerializedName("PatientVisitLocation")
+    @SerializedName("PatientVisitDischargeDispositionDesc")
+    private String PatientVisitDischargeDispositionDesc;
     @Expose
-    private String patientVisitLocation;
-    @SerializedName("PatientVisitDoctor")
+    @SerializedName("PatientClinicApptNatureID")
+    private String PatientClinicApptNatureID;
     @Expose
-    private String patientVisitDoctor;
-    @SerializedName("PatientVisitAdmissionID")
+    @SerializedName("PatientClinicApptNatureDesc")
+    private String PatientClinicApptNatureDesc;
     @Expose
-    private Integer patientVisitAdmissionID;
-    @SerializedName("PatientVisitType")
+    @SerializedName("PatientLengthofStay")
+    private String PatientLengthofStay;
     @Expose
-    private String patientVisitType;
-    @SerializedName("PatientVisitDoctorName")
-    @Expose
-    private String patientVisitDoctorName;
-    @SerializedName("PatientVisitFinancialClass")
-    @Expose
-    private String patientVisitFinancialClass;
-    @SerializedName("PatientVisitStatus")
-    @Expose
-    private String patientVisitStatus;
-    @SerializedName("PatientVisitService")
-    @Expose
-    private String patientVisitService;
-    @SerializedName("PatientVisitDischargeDisposition")
-    @Expose
-    private String patientVisitDischargeDisposition;
-    @SerializedName("PatientVisitVisitRoom")
-    @Expose
-    private String patientVisitVisitRoom;
-    @SerializedName("PatientVisitDischargeDate")
-    @Expose
-    private String patientVisitDischargeDate;
-    @SerializedName("PatientVisitBed")
-    @Expose
-    private String patientVisitBed;
-    @SerializedName("PatientVisitAccommodation")
-    @Expose
-    private String patientVisitAccommodation;
-    @SerializedName("PatientVisitHospitalLocation")
-    @Expose
-    private String patientVisitHospitalLocation;
-    @SerializedName("PatientName")
-    @Expose
-    private String patientName;
-    @SerializedName("PatientUnitNumber")
-    @Expose
-    private String patientUnitNumber;
     @SerializedName("PatientVisitServiceDescription")
+    private String PatientVisitServiceDescription;
     @Expose
-    private String patientVisitServiceDescription;
+    @SerializedName("PatientUnitNumber")
+    private String PatientUnitNumber;
+    @Expose
+    @SerializedName("PatientName")
+    private String PatientName;
+    @Expose
+    @SerializedName("PatientVisitHospitalLocation")
+    private String PatientVisitHospitalLocation;
+    @Expose
+    @SerializedName("PatientVisitAccommodation")
+    private String PatientVisitAccommodation;
+    @Expose
+    @SerializedName("PatientVisitBed")
+    private String PatientVisitBed;
+    @Expose
+    @SerializedName("PatientVisitDischargeDate")
+    private String PatientVisitDischargeDate;
+    @Expose
+    @SerializedName("PatientVisitVisitRoom")
+    private String PatientVisitVisitRoom;
+    @Expose
+    @SerializedName("PatientVisitDischargeDisposition")
+    private String PatientVisitDischargeDisposition;
+    @Expose
+    @SerializedName("PatientVisitService")
+    private String PatientVisitService;
+    @Expose
+    @SerializedName("PatientVisitStatus")
+    private String PatientVisitStatus;
+    @Expose
+    @SerializedName("PatientVisitFinancialClass")
+    private String PatientVisitFinancialClass;
+    @Expose
+    @SerializedName("PatientVisitDoctorName")
+    private String PatientVisitDoctorName;
+    @Expose
+    @SerializedName("PatientVisitType")
+    private String PatientVisitType;
+    @Expose
+    @SerializedName("PatientVisitAdmissionID")
+    private int PatientVisitAdmissionID;
+    @Expose
+    @SerializedName("PatientVisitDoctor")
+    private String PatientVisitDoctor;
+    @Expose
+    @SerializedName("PatientVisitLocation")
+    private String PatientVisitLocation;
+    @Expose
+    @SerializedName("PatientVisitDateTime")
+    private String PatientVisitDateTime;
 
 
-    private final static long serialVersionUID = 8893062797223876305L;
-
-    public String getPatientVisitDateTime() {
-        return patientVisitDateTime;
+    public String getRecordMessage() {
+        return recordMessage;
     }
 
-    public void setPatientVisitDateTime(String patientVisitDateTime) {
-        this.patientVisitDateTime = patientVisitDateTime;
+    public void setRecordMessage(String recordMessage) {
+        this.recordMessage = recordMessage;
     }
 
-    public String getPatientVisitLocation() {
-        return patientVisitLocation;
+    public String getRecordFound() {
+        return recordFound;
     }
 
-    public void setPatientVisitLocation(String patientVisitLocation) {
-        this.patientVisitLocation = patientVisitLocation;
+    public void setRecordFound(String recordFound) {
+        this.recordFound = recordFound;
     }
 
-    public String getPatientVisitDoctor() {
-        return patientVisitDoctor;
+    public String getPatientVisitDischargeDispositionDesc() {
+        return PatientVisitDischargeDispositionDesc;
     }
 
-    public void setPatientVisitDoctor(String patientVisitDoctor) {
-        this.patientVisitDoctor = patientVisitDoctor;
+    public void setPatientVisitDischargeDispositionDesc(String patientVisitDischargeDispositionDesc) {
+        PatientVisitDischargeDispositionDesc = patientVisitDischargeDispositionDesc;
     }
 
-    public Integer getPatientVisitAdmissionID() {
-        return patientVisitAdmissionID;
+    public String getPatientClinicApptNatureID() {
+        return PatientClinicApptNatureID;
     }
 
-    public void setPatientVisitAdmissionID(Integer patientVisitAdmissionID) {
-        this.patientVisitAdmissionID = patientVisitAdmissionID;
+    public void setPatientClinicApptNatureID(String patientClinicApptNatureID) {
+        PatientClinicApptNatureID = patientClinicApptNatureID;
     }
 
-    public String getPatientVisitType() {
-        return patientVisitType;
+    public String getPatientClinicApptNatureDesc() {
+        return PatientClinicApptNatureDesc;
     }
 
-    public void setPatientVisitType(String patientVisitType) {
-        this.patientVisitType = patientVisitType;
+    public void setPatientClinicApptNatureDesc(String patientClinicApptNatureDesc) {
+        PatientClinicApptNatureDesc = patientClinicApptNatureDesc;
     }
 
-    public String getPatientVisitDoctorName() {
-        return patientVisitDoctorName;
+    public String getPatientLengthofStay() {
+        return PatientLengthofStay;
     }
 
-    public void setPatientVisitDoctorName(String patientVisitDoctorName) {
-        this.patientVisitDoctorName = patientVisitDoctorName;
-    }
-
-    public String getPatientVisitFinancialClass() {
-        return patientVisitFinancialClass;
-    }
-
-    public void setPatientVisitFinancialClass(String patientVisitFinancialClass) {
-        this.patientVisitFinancialClass = patientVisitFinancialClass;
-    }
-
-    public String getPatientVisitStatus() {
-        return patientVisitStatus;
-    }
-
-    public void setPatientVisitStatus(String patientVisitStatus) {
-        this.patientVisitStatus = patientVisitStatus;
-    }
-
-    public String getPatientVisitService() {
-        return patientVisitService;
-    }
-
-    public void setPatientVisitService(String patientVisitService) {
-        this.patientVisitService = patientVisitService;
-    }
-
-    public String getPatientVisitDischargeDisposition() {
-        return patientVisitDischargeDisposition;
-    }
-
-    public void setPatientVisitDischargeDisposition(String patientVisitDischargeDisposition) {
-        this.patientVisitDischargeDisposition = patientVisitDischargeDisposition;
-    }
-
-    public String getPatientVisitVisitRoom() {
-        return patientVisitVisitRoom;
-    }
-
-    public void setPatientVisitVisitRoom(String patientVisitVisitRoom) {
-        this.patientVisitVisitRoom = patientVisitVisitRoom;
-    }
-
-    public String getPatientVisitDischargeDate() {
-        return patientVisitDischargeDate;
-    }
-
-    public void setPatientVisitDischargeDate(String patientVisitDischargeDate) {
-        this.patientVisitDischargeDate = patientVisitDischargeDate;
-    }
-
-    public String getPatientVisitBed() {
-        return patientVisitBed;
-    }
-
-    public void setPatientVisitBed(String patientVisitBed) {
-        this.patientVisitBed = patientVisitBed;
-    }
-
-    public String getPatientVisitAccommodation() {
-        return patientVisitAccommodation;
-    }
-
-    public void setPatientVisitAccommodation(String patientVisitAccommodation) {
-        this.patientVisitAccommodation = patientVisitAccommodation;
-    }
-
-    public String getPatientVisitHospitalLocation() {
-        return patientVisitHospitalLocation;
-    }
-
-    public void setPatientVisitHospitalLocation(String patientVisitHospitalLocation) {
-        this.patientVisitHospitalLocation = patientVisitHospitalLocation;
-    }
-
-    public String getPatientName() {
-        return patientName;
-    }
-
-    public void setPatientName(String patientName) {
-        this.patientName = patientName;
-    }
-
-    public String getPatientUnitNumber() {
-        return patientUnitNumber;
-    }
-
-    public void setPatientUnitNumber(String patientUnitNumber) {
-        this.patientUnitNumber = patientUnitNumber;
+    public void setPatientLengthofStay(String patientLengthofStay) {
+        PatientLengthofStay = patientLengthofStay;
     }
 
     public String getPatientVisitServiceDescription() {
-        return patientVisitServiceDescription;
+        return PatientVisitServiceDescription;
     }
 
     public void setPatientVisitServiceDescription(String patientVisitServiceDescription) {
-        this.patientVisitServiceDescription = patientVisitServiceDescription;
+        PatientVisitServiceDescription = patientVisitServiceDescription;
     }
 
+    public String getPatientUnitNumber() {
+        return PatientUnitNumber;
+    }
 
+    public void setPatientUnitNumber(String patientUnitNumber) {
+        PatientUnitNumber = patientUnitNumber;
+    }
 
+    public String getPatientName() {
+        return PatientName;
+    }
+
+    public void setPatientName(String patientName) {
+        PatientName = patientName;
+    }
+
+    public String getPatientVisitHospitalLocation() {
+        return PatientVisitHospitalLocation;
+    }
+
+    public void setPatientVisitHospitalLocation(String patientVisitHospitalLocation) {
+        PatientVisitHospitalLocation = patientVisitHospitalLocation;
+    }
+
+    public String getPatientVisitAccommodation() {
+        return PatientVisitAccommodation;
+    }
+
+    public void setPatientVisitAccommodation(String patientVisitAccommodation) {
+        PatientVisitAccommodation = patientVisitAccommodation;
+    }
+
+    public String getPatientVisitBed() {
+        return PatientVisitBed;
+    }
+
+    public void setPatientVisitBed(String patientVisitBed) {
+        PatientVisitBed = patientVisitBed;
+    }
+
+    public String getPatientVisitDischargeDate() {
+        return PatientVisitDischargeDate;
+    }
+
+    public void setPatientVisitDischargeDate(String patientVisitDischargeDate) {
+        PatientVisitDischargeDate = patientVisitDischargeDate;
+    }
+
+    public String getPatientVisitVisitRoom() {
+        return PatientVisitVisitRoom;
+    }
+
+    public void setPatientVisitVisitRoom(String patientVisitVisitRoom) {
+        PatientVisitVisitRoom = patientVisitVisitRoom;
+    }
+
+    public String getPatientVisitDischargeDisposition() {
+        return PatientVisitDischargeDisposition;
+    }
+
+    public void setPatientVisitDischargeDisposition(String patientVisitDischargeDisposition) {
+        PatientVisitDischargeDisposition = patientVisitDischargeDisposition;
+    }
+
+    public String getPatientVisitService() {
+        return PatientVisitService;
+    }
+
+    public void setPatientVisitService(String patientVisitService) {
+        PatientVisitService = patientVisitService;
+    }
+
+    public String getPatientVisitStatus() {
+        return PatientVisitStatus;
+    }
+
+    public void setPatientVisitStatus(String patientVisitStatus) {
+        PatientVisitStatus = patientVisitStatus;
+    }
+
+    public String getPatientVisitFinancialClass() {
+        return PatientVisitFinancialClass;
+    }
+
+    public void setPatientVisitFinancialClass(String patientVisitFinancialClass) {
+        PatientVisitFinancialClass = patientVisitFinancialClass;
+    }
+
+    public String getPatientVisitDoctorName() {
+        return PatientVisitDoctorName;
+    }
+
+    public void setPatientVisitDoctorName(String patientVisitDoctorName) {
+        PatientVisitDoctorName = patientVisitDoctorName;
+    }
+
+    public String getPatientVisitType() {
+        return PatientVisitType;
+    }
+
+    public void setPatientVisitType(String patientVisitType) {
+        PatientVisitType = patientVisitType;
+    }
+
+    public int getPatientVisitAdmissionID() {
+        return PatientVisitAdmissionID;
+    }
+
+    public void setPatientVisitAdmissionID(int patientVisitAdmissionID) {
+        PatientVisitAdmissionID = patientVisitAdmissionID;
+    }
+
+    public String getPatientVisitDoctor() {
+        return PatientVisitDoctor;
+    }
+
+    public void setPatientVisitDoctor(String patientVisitDoctor) {
+        PatientVisitDoctor = patientVisitDoctor;
+    }
+
+    public String getPatientVisitLocation() {
+        return PatientVisitLocation;
+    }
+
+    public void setPatientVisitLocation(String patientVisitLocation) {
+        PatientVisitLocation = patientVisitLocation;
+    }
+
+    public String getPatientVisitDateTime() {
+        return PatientVisitDateTime;
+    }
+
+    public void setPatientVisitDateTime(String patientVisitDateTime) {
+        PatientVisitDateTime = patientVisitDateTime;
+    }
 }

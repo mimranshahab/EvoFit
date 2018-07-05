@@ -1,5 +1,6 @@
 package edu.aku.family_hifazat.activities;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
@@ -10,6 +11,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.util.Pair;
 import android.view.View;
 
+
+import com.gdacciaro.iOSDialog.iOSDialogBuilder;
 
 import edu.aku.family_hifazat.BaseApplication;
 import edu.aku.family_hifazat.R;
@@ -45,10 +48,10 @@ public abstract class BaseActivity extends AppCompatActivity {
 
     /**
      * Give Resource id of the view you want to inflate
+     *
      * @return
      */
     protected abstract int getViewId();
-
 
 
     protected abstract int getTitlebarLayoutId();
@@ -79,25 +82,36 @@ public abstract class BaseActivity extends AppCompatActivity {
     }
 
     public void closeApp() {
-        final GenericDialogFragment genericDialogFragment = GenericDialogFragment.newInstance();
-
-        genericDialogFragment.setTitle("Quit");
-        genericDialogFragment.setMessage("Do you want to close this application?");
-        genericDialogFragment.setButton1("Yes", new GenericClickableInterface() {
-            @Override
-            public void click() {
-                genericDialogFragment.getDialog().dismiss();
-                finish();
-            }
-        });
-
-        genericDialogFragment.setButton2("No", new GenericClickableInterface() {
-            @Override
-            public void click() {
-                genericDialogFragment.getDialog().dismiss();
-            }
-        });
-        genericDialogFragment.show(getSupportFragmentManager(), null);
+//        final GenericDialogFragment genericDialogFragment = GenericDialogFragment.newInstance();
+//
+//        genericDialogFragment.setTitle("Quit");
+//        genericDialogFragment.setMessage("Do you want to close this application?");
+//        genericDialogFragment.setButton1("Yes", new GenericClickableInterface() {
+//            @Override
+//            public void click() {
+//                genericDialogFragment.getDialog().dismiss();
+//                finish();
+//            }
+//        });
+//
+//        genericDialogFragment.setButton2("No", new GenericClickableInterface() {
+//            @Override
+//            public void click() {
+//                genericDialogFragment.getDialog().dismiss();
+//            }
+//        });
+//        genericDialogFragment.show(getSupportFragmentManager(), null);
+        new iOSDialogBuilder(this)
+                .setTitle("Quit")
+                .setSubtitle("Do you want to close this application?")
+                .setBoldPositiveLabel(false)
+                .setCancelable(false)
+                .setPositiveListener("Yes", dialog -> {
+                    dialog.dismiss();
+                    finish();
+                })
+                .setNegativeListener("No", dialog -> dialog.dismiss())
+                .build().show();
     }
 
     public void addDockableFragment(Fragment fragment, boolean isTransition) {

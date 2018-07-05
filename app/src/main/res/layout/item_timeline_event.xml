@@ -27,7 +27,7 @@
             android:text="Date"
             android:textColor="@color/c_black"
             android:textSize="@dimen/s14"
-            app:typeface="@string/font_bold" />
+            app:typeface="@string/font_regular" />
 
         <edu.aku.family_hifazat.widget.AnyTextView
             android:id="@+id/txtEvent"
@@ -54,10 +54,10 @@
             android:gravity="center_vertical|right"
             android:padding="@dimen/x3dp"
             android:singleLine="true"
-            android:text="Baby boy of Mother Name"
+            android:text=""
             android:textColor="@color/c_black"
             android:textSize="@dimen/s14"
-            app:typeface="@string/font_bold" />
+             app:typeface="@string/font_bold" />
     </LinearLayout>
 
 </LinearLayout>

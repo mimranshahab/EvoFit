@@ -28,6 +28,7 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 import butterknife.Unbinder;
 import edu.aku.family_hifazat.R;
+import edu.aku.family_hifazat.adapters.recyleradapters.TimelineAdapter;
 import edu.aku.family_hifazat.adapters.recyleradapters.TimelineAdapter_V2;
 import edu.aku.family_hifazat.callbacks.OnItemClickListener;
 import edu.aku.family_hifazat.constatnts.WebServiceConstants;

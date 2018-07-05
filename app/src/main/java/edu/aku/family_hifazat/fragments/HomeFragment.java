@@ -134,12 +134,13 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener, 
         RegisteredDeviceModel registeredDevice = AppConstants.getRegisteredDevice(getContext(), getBaseActivity());
         registeredDevice.setLoginCode(sharedPreferenceManager.getString(KEY_CODE));
 
+        if (!(getBaseActivity()).isFinishing()) {
+            mDialog.show();
+        }
+
         if (intentData != null && intentData.equals(AppConstants.ACCESS_LOGIN_DONE)) {
             getCardDetailServiceCall();
         } else {
-            if (!(getBaseActivity()).isFinishing()) {
-                mDialog.show();
-            }
             saveAccessLogCall(registeredDevice);
         }
 
@@ -156,7 +157,7 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener, 
 
         new WebServices(getBaseActivity(),
                 getToken(),
-                BaseURLTypes.AHFA_BASE_URL).webServiceRequestAPIForJsonObject(WebServiceConstants.METHOD_CARD_MEMBER,
+                BaseURLTypes.AHFA_BASE_URL, false).webServiceRequestAPIForJsonObject(WebServiceConstants.METHOD_CARD_MEMBER,
                 cardMemberDetail.toString(),
                 new WebServices.IRequestJsonDataCallBack() {
                     @Override
@@ -193,6 +194,7 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener, 
                                 if (addUpdateModel.getStatus()) {
                                     getCardDetailServiceCall();
                                 } else {
+                                    mDialog.dismiss();
                                     UIHelper.showToast(getContext(), "Session Logout");
                                     sharedPreferenceManager.clearDB();
                                     getBaseActivity().clearAllActivitiesExceptThis(MainActivity.class);
@@ -202,7 +204,6 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener, 
                             @Override
                             public void onError() {
                                 getCardDetailServiceCall();
-                                mDialog.dismiss();
                             }
                         });
     }

@@ -109,6 +109,7 @@ dependencies {
     compile 'com.github.warkiz.widget:indicatorseekbar:1.2.9'
     compile 'com.jsibbold:zoomage:1.1.0'
     compile 'com.shawnlin:number-picker:2.4.6'
+    compile 'com.gdacciaro:iosdialog:1.0.3'
 
     compile('com.crashlytics.sdk.android:crashlytics:2.9.3@aar') {
         transitive = true;
