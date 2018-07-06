@@ -29,10 +29,23 @@ public class WebServiceConstants {
      * URLs
      */
 
+
+    /**
+     * BEFORE LIVE DEPLOYMENT
+     * Change URL Live/ UAT
+     * Change Image URL
+     * Check Version Code
+     * BaseApplication Fabric enable
+     */
+
     public static final String BASE_URL_LOCAL = "http://ahfapidev.aku.edu/api/";
     public static final String BASE_URL_LIVE = "https://familyhifazatmobileapi.aku.edu/api/";
     public static final String BASE_URL_UAT = "https://familyhifazatmobileapiuat.aku.edu/api/";
-    public static final String GETIMAGE_BASE_URL = "https://familyhifazatmobileapi.aku.edu/getimage?path=";
+
+    // UAT
+    public static final String GETIMAGE_BASE_URL = "https://familyhifazatmobileapiuat.aku.edu/getimage?path=";
+    // LIVE
+//    public static final String GETIMAGE_BASE_URL = "https://familyhifazatmobileapi.aku.edu/getimage?path=";
 
     public static String PACS_VIEWER_URL = "https://pacsviewer.aku.edu/api/PACSViewer/";
     public static String PACS_URL = "https://pacsviewer.aku.edu/api/";

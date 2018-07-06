@@ -134,7 +134,7 @@ public class TimelineAdapter_V2 extends RecyclerView.Adapter<RecyclerView.ViewHo
             holderVisit.txtDoctorName.setText(timelineModel.getPatientVisitDoctorName());
 
             // Set Service Details
-            setServiceDetail(holderVisit, timelineModel);
+            setServiceDetail(holderVisit, timelineModel, visitTypes);
 
 
          /*
@@ -179,7 +179,7 @@ public class TimelineAdapter_V2 extends RecyclerView.Adapter<RecyclerView.ViewHo
         }
     }
 
-    private void setServiceDetail(ViewHolderVisit holderVisit, TimelineModel timelineModel) {
+    private void setServiceDetail(ViewHolderVisit holderVisit, TimelineModel timelineModel, VisitTypes visitTypes) {
 
         String serviceDetails = "";
         String serviceDetails2 = "";
@@ -193,7 +193,88 @@ public class TimelineAdapter_V2 extends RecyclerView.Adapter<RecyclerView.ViewHo
             visitService = timelineModel.getPatientVisitService();
         }
 
-        // Service Details 1 logic
+
+
+        switch (visitTypes) {
+            case ER:
+                erPatientLogic(holderVisit, timelineModel, visitService);
+                break;
+            case SDC:
+                sdcPatientLogic(holderVisit, timelineModel, visitService);
+                break;
+            case OUT:
+                outPatientLogic(holderVisit, timelineModel, visitService);
+                break;
+            case INP:
+                inpatientLogic(holderVisit, timelineModel, visitService);
+                break;
+        }
+    }
+
+
+
+    private void sdcPatientLogic(ViewHolderVisit holderVisit, TimelineModel timelineModel, String visitService) {
+        String serviceDetails;
+
+        if (timelineModel.getPatientVisitHospitalLocation() != null && !timelineModel.getPatientVisitHospitalLocation().isEmpty()) {
+            if (visitService == null || visitService.isEmpty()) {
+                serviceDetails = timelineModel.getPatientVisitHospitalLocation();
+            } else {
+                serviceDetails = visitService
+                        + " | " + timelineModel.getPatientVisitHospitalLocation();
+            }
+        } else {
+            serviceDetails = visitService;
+        }
+
+
+        holderVisit.txtServiceDetails.setText(serviceDetails);
+    }
+
+
+    private void erPatientLogic(ViewHolderVisit holderVisit, TimelineModel timelineModel, String visitService) {
+        String serviceDetails;
+
+        if (timelineModel.getPatientVisitHospitalLocation() != null && !timelineModel.getPatientVisitHospitalLocation().isEmpty()) {
+            if (visitService == null || visitService.isEmpty()) {
+                serviceDetails = timelineModel.getPatientVisitHospitalLocation();
+            } else {
+                serviceDetails = visitService
+                        + " | " + timelineModel.getPatientVisitHospitalLocation();
+            }
+        } else {
+            serviceDetails = visitService;
+        }
+
+
+        holderVisit.txtServiceDetails.setText(serviceDetails);
+    }
+
+
+
+
+    private void outPatientLogic(ViewHolderVisit holderVisit, TimelineModel timelineModel, String visitService) {
+        String serviceDetails;
+
+        if (timelineModel.getPatientVisitLocation() != null && !timelineModel.getPatientVisitLocation().isEmpty()) {
+            if (visitService == null || visitService.isEmpty()) {
+                serviceDetails = timelineModel.getPatientVisitLocation();
+            } else {
+                serviceDetails = visitService
+                        + " | " + timelineModel.getPatientVisitLocation();
+            }
+        } else {
+            serviceDetails = visitService;
+        }
+
+
+        holderVisit.txtServiceDetails.setText(serviceDetails);
+    }
+
+
+    private void inpatientLogic(ViewHolderVisit holderVisit, TimelineModel timelineModel, String visitService) {
+        String serviceDetails;
+        String serviceDetails2;// Service Details 1 logic
 
         if (timelineModel.getPatientVisitLocation() != null && !timelineModel.getPatientVisitLocation().isEmpty()) {
             if (visitService == null || visitService.isEmpty()) {
@@ -226,9 +307,6 @@ public class TimelineAdapter_V2 extends RecyclerView.Adapter<RecyclerView.ViewHo
             holderVisit.txtServiceDetails.setText(serviceDetails + " | " + serviceDetails2);
 
         }
-
-//        holderVisit.txtServiceDetails2.setText(serviceDetails2);
-
     }
 
     private void setDate(ViewHolderVisit holderVisit, TimelineModel timelineModel, VisitTypes visitTypes) {
