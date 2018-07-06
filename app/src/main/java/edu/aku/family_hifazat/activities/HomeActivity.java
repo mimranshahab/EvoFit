@@ -8,6 +8,9 @@ import android.support.design.widget.NavigationView;
 import android.support.v4.app.Fragment;
 import android.util.Log;
 import android.view.Gravity;
+import android.view.View;
+import android.widget.FrameLayout;
+import android.widget.RelativeLayout;
 
 import java.util.List;
 
@@ -29,6 +32,7 @@ public class HomeActivity extends BaseActivity {
 
 
     NavigationView navigationView;
+    FrameLayout contMain;
 
     @Override
     protected void onNewIntent(Intent intent) {
@@ -45,7 +49,6 @@ public class HomeActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
 //        setContentView(R.layout.activity_main);
 
-
     }
 
     @Override
@@ -60,6 +63,8 @@ public class HomeActivity extends BaseActivity {
         initFragments(intentData);
         navigationView = findViewById(R.id.nav_view);
         navigationView.getBackground().setColorFilter(0x80000000, PorterDuff.Mode.MULTIPLY);
+        contMain = findViewById(R.id.contMain);
+
     }
 
 
@@ -98,6 +103,9 @@ public class HomeActivity extends BaseActivity {
         replacePermanentFramgment(HomeFragment.newInstance(intentData), false);
     }
 
+    public FrameLayout getContMain() {
+        return contMain;
+    }
 
     @Override
     public void onBackPressed() {

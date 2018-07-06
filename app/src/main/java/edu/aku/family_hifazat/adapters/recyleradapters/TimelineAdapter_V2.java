@@ -114,16 +114,17 @@ public class TimelineAdapter_V2 extends RecyclerView.Adapter<RecyclerView.ViewHo
 
             // Visit Details
 
-            if (timelineModel.getPatientVisitDischargeDispositionDesc() != null && !timelineModel.getPatientVisitDischargeDispositionDesc().isEmpty()) {
-                if (timelineModel.getPatientLengthofStay() == null || timelineModel.getPatientLengthofStay().isEmpty()) {
-                    holderVisit.txtVisitDetail.setText(timelineModel.getPatientVisitDischargeDispositionDesc());
-                } else {
-                    holderVisit.txtVisitDetail.setText(timelineModel.getPatientLengthofStay()
-                            + " | " + timelineModel.getPatientVisitDischargeDispositionDesc());
-                }
-            } else {
-                holderVisit.txtVisitDetail.setText(timelineModel.getPatientLengthofStay());
+            switch (visitTypes) {
+                case ER:
+                case INP:
+                    setVisitDetails(timelineModel, holderVisit);
+                    break;
+                default:
+                    holderVisit.txtVisitDetail.setText("");
+                    break;
+
             }
+
 
             //Visit and Discharge date
             setDate(holderVisit, timelineModel, visitTypes);
@@ -165,6 +166,19 @@ public class TimelineAdapter_V2 extends RecyclerView.Adapter<RecyclerView.ViewHo
 
     }
 
+    private void setVisitDetails(TimelineModel timelineModel, ViewHolderVisit holderVisit) {
+        if (timelineModel.getPatientVisitDischargeDispositionDesc() != null && !timelineModel.getPatientVisitDischargeDispositionDesc().isEmpty()) {
+            if (timelineModel.getPatientLengthofStay() == null || timelineModel.getPatientLengthofStay().isEmpty()) {
+                holderVisit.txtVisitDetail.setText(timelineModel.getPatientVisitDischargeDispositionDesc());
+            } else {
+                holderVisit.txtVisitDetail.setText(timelineModel.getPatientLengthofStay()
+                        + " | " + timelineModel.getPatientVisitDischargeDispositionDesc());
+            }
+        } else {
+            holderVisit.txtVisitDetail.setText(timelineModel.getPatientLengthofStay());
+        }
+    }
+
     private void setServiceDetail(ViewHolderVisit holderVisit, TimelineModel timelineModel) {
 
         String serviceDetails = "";
@@ -185,8 +199,8 @@ public class TimelineAdapter_V2 extends RecyclerView.Adapter<RecyclerView.ViewHo
             if (visitService == null || visitService.isEmpty()) {
                 serviceDetails = timelineModel.getPatientVisitLocation();
             } else {
-                serviceDetails = timelineModel.getPatientVisitLocation()
-                        + " | " + visitService;
+                serviceDetails = visitService
+                        + " | " + timelineModel.getPatientVisitLocation();
             }
         } else {
             serviceDetails = visitService;
@@ -352,16 +366,31 @@ public class TimelineAdapter_V2 extends RecyclerView.Adapter<RecyclerView.ViewHo
             String filterableString2;
             String filterableString3;
             String filterableString4;
+            String filterableString5;
+            String filterableString6;
+            String filterableString7;
+            String filterableString8;
 
             for (int i = 0; i < count; i++) {
                 filterableString1 = list.get(i).getPatientVisitDoctorName();
-                filterableString2 = list.get(i).getPatientVisitService();
-                filterableString3 = list.get(i).getPatientVisitHospitalLocation();
-                filterableString4 = list.get(i).getPatientVisitLocation();
+                filterableString2 = list.get(i).getPatientVisitType();
+                filterableString3 = list.get(i).getPatientVisitDateTime();
+                filterableString4 = list.get(i).getPatientVisitHospitalLocation();
+                filterableString5 = list.get(i).getPatientVisitVisitRoom();
+                filterableString6 = list.get(i).getPatientVisitServiceDescription();
+                filterableString7 = list.get(i).getPatientVisitService();
+                filterableString8 = list.get(i).getPatientVisitDischargeDate();
+
+
                 if (filterableString1.toLowerCase().contains(filterString)
                         || filterableString2.toLowerCase().contains(filterString)
                         || filterableString3.toLowerCase().contains(filterString)
-                        || filterableString4.toLowerCase().contains(filterString)) {
+                        || filterableString4.toLowerCase().contains(filterString)
+                        || filterableString5.toLowerCase().contains(filterString)
+                        || filterableString6.toLowerCase().contains(filterString)
+                        || filterableString7.toLowerCase().contains(filterString)
+                        || filterableString8.toLowerCase().contains(filterString)
+                        ) {
 //                    nlist.add(filterableString);
                     filterData.add(list.get(i));
                 }

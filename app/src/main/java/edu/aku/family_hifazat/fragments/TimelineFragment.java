@@ -1,5 +1,6 @@
 package edu.aku.family_hifazat.fragments;
 
+import android.app.Service;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.widget.DrawerLayout;
@@ -9,11 +10,14 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.ViewTreeObserver;
 import android.view.animation.AnimationUtils;
 import android.view.animation.LayoutAnimationController;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.AdapterView;
 import android.widget.ImageView;
 
@@ -28,6 +32,7 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 import butterknife.Unbinder;
 import edu.aku.family_hifazat.R;
+import edu.aku.family_hifazat.activities.HomeActivity;
 import edu.aku.family_hifazat.adapters.recyleradapters.TimelineAdapter;
 import edu.aku.family_hifazat.adapters.recyleradapters.TimelineAdapter_V2;
 import edu.aku.family_hifazat.callbacks.OnItemClickListener;
@@ -35,6 +40,8 @@ import edu.aku.family_hifazat.constatnts.WebServiceConstants;
 import edu.aku.family_hifazat.enums.BaseURLTypes;
 import edu.aku.family_hifazat.fragments.abstracts.BaseFragment;
 import edu.aku.family_hifazat.helperclasses.ui.helper.KeyboardHelper;
+import edu.aku.family_hifazat.helperclasses.ui.helper.SoftKeyboard;
+import edu.aku.family_hifazat.helperclasses.ui.helper.UIHelper;
 import edu.aku.family_hifazat.widget.TitleBar;
 import edu.aku.family_hifazat.managers.retrofit.GsonFactory;
 import edu.aku.family_hifazat.managers.retrofit.WebServices;
@@ -53,7 +60,6 @@ public class TimelineFragment extends BaseFragment implements View.OnClickListen
 
     @BindView(R.id.recylerView)
     RecyclerView recyclerView;
-
     @BindView(R.id.empty_view)
     AnyTextView emptyView;
     Unbinder unbinder;
@@ -167,6 +173,7 @@ public class TimelineFragment extends BaseFragment implements View.OnClickListen
             }
         });
 
+
     }
 
     @Override
@@ -197,6 +204,7 @@ public class TimelineFragment extends BaseFragment implements View.OnClickListen
     public void onDestroyView() {
         super.onDestroyView();
         unbinder.unbind();
+
     }
 
     @Override
@@ -260,4 +268,6 @@ public class TimelineFragment extends BaseFragment implements View.OnClickListen
     private void showView() {
         emptyView.setVisibility(View.GONE);
     }
+
+
 }
