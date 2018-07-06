@@ -13,7 +13,8 @@ import okhttp3.logging.HttpLoggingInterceptor;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
-import static edu.aku.family_hifazat.constatnts.WebServiceConstants.BASE_URL_UAT;
+import static edu.aku.family_hifazat.constatnts.WebServiceConstants.BASE_URL;
+
 
 /**
  * Created by khanhamza on 09-Mar-17.
@@ -71,7 +72,7 @@ public class WebServiceFactory {
             httpClient.addInterceptor(interceptor);  // <-- this is the important line!
             retrofitBase = new Retrofit.Builder()
 //                    .baseUrl(WebServiceConstants.BASE_URL_LIVE)
-                    .baseUrl(BASE_URL_UAT)
+                    .baseUrl(BASE_URL)
                     .addConverterFactory(GsonConverterFactory.create(GsonFactory.getSimpleGson()))
                     .client(httpClient.build())
                     .build();

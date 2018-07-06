@@ -10,7 +10,7 @@
     <LinearLayout
         android:id="@+id/contParent"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/x110dp"
+        android:layout_height="@dimen/x90dp"
         android:layout_margin="@dimen/x5dp"
         android:background="@drawable/rounded_box_timeline_born"
         android:gravity="center"
@@ -26,8 +26,8 @@
             android:padding="@dimen/x3dp"
             android:text="Date"
             android:textColor="@color/c_black"
-            android:textSize="@dimen/s14"
-            app:typeface="@string/font_regular" />
+            android:textSize="@dimen/s13"
+            app:typeface="@string/font_medium" />
 
         <edu.aku.family_hifazat.widget.AnyTextView
             android:id="@+id/txtEvent"
