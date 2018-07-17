@@ -32,7 +32,7 @@
                     android:orientation="vertical"
                     android:padding="@dimen/x5dp">
 
-                    <edu.aku.family_hifazat.widget.AnyTextView
+                    <edu.aku.ehs.widget.AnyTextView
                         android:id="@+id/txtReportName"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
@@ -48,7 +48,7 @@
 
 
 
-                        <edu.aku.family_hifazat.widget.AnyTextView
+                        <edu.aku.ehs.widget.AnyTextView
                             android:id="@+id/txtSpecimenNumber"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
@@ -64,7 +64,7 @@
 
 
 
-                        <edu.aku.family_hifazat.widget.AnyTextView
+                        <edu.aku.ehs.widget.AnyTextView
                             android:id="@+id/txtLocation"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
@@ -83,7 +83,7 @@
 
                 </LinearLayout>
 
-                <edu.aku.family_hifazat.widget.AnyTextView
+                <edu.aku.ehs.widget.AnyTextView
                     android:id="@+id/btnDownload"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -120,7 +120,7 @@
                     android:layout_weight="1"
                     android:orientation="vertical">
 
-                    <edu.aku.family_hifazat.widget.AnyTextView
+                    <edu.aku.ehs.widget.AnyTextView
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:text="Requested on"
@@ -128,7 +128,7 @@
                         android:textSize="@dimen/s12"
                         app:typeface="@string/font_bold" />
 
-                    <edu.aku.family_hifazat.widget.AnyTextView
+                    <edu.aku.ehs.widget.AnyTextView
                         android:id="@+id/txtReqDatetime"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
@@ -147,7 +147,7 @@
 
                     android:orientation="vertical">
 
-                    <edu.aku.family_hifazat.widget.AnyTextView
+                    <edu.aku.ehs.widget.AnyTextView
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:gravity="center"
@@ -156,7 +156,7 @@
                         android:textSize="@dimen/s12"
                         app:typeface="@string/font_bold" />
 
-                    <edu.aku.family_hifazat.widget.AnyTextView
+                    <edu.aku.ehs.widget.AnyTextView
                         android:id="@+id/txtCollecDatetime"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
@@ -176,7 +176,7 @@
                     android:layout_weight="1"
                     android:orientation="vertical">
 
-                    <edu.aku.family_hifazat.widget.AnyTextView
+                    <edu.aku.ehs.widget.AnyTextView
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:gravity="right"
@@ -185,7 +185,7 @@
                         android:textSize="@dimen/s12"
                         app:typeface="@string/font_bold" />
 
-                    <edu.aku.family_hifazat.widget.AnyTextView
+                    <edu.aku.ehs.widget.AnyTextView
                         android:id="@+id/txtReportDatetime"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"

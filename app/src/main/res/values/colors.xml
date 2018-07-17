@@ -70,6 +70,7 @@
     <color name="transparent_grey">#44847D6E</color>
     <color name="transparent_grey2">#33847D6E</color>
     <color name="transparent">#00000000</color>
+    <color name="white_transparent">#99FFFFFF</color>
 
     <color name="c_light_grey">#D3D3D3</color>
     <color name="c_black">#000000</color>

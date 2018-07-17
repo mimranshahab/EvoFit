@@ -31,7 +31,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginRight="@dimen/x5dp"
-                android:padding="@dimen/x3dp"
+                 android:padding="@dimen/x3dp"
                 android:background="@drawable/selected_user_transition"
                 android:gravity="center_vertical"
                 android:orientation="horizontal">
@@ -62,7 +62,7 @@
                         android:gravity="center_vertical"
                         android:orientation="horizontal">
 
-                        <edu.aku.family_hifazat.widget.AnyTextView
+                        <edu.aku.ehs.widget.AnyTextView
                             android:id="@+id/txtName"
                             android:layout_width="@dimen/x0dp"
                             android:layout_height="wrap_content"
@@ -87,7 +87,7 @@
                         android:padding="@dimen/x1dp">
 
 
-                        <edu.aku.family_hifazat.widget.AnyTextView
+                        <edu.aku.ehs.widget.AnyTextView
                             android:id="@+id/txtMRN"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
@@ -97,7 +97,7 @@
                             app:typeface="@string/font_bold" />
 
 
-                        <edu.aku.family_hifazat.widget.AnyTextView
+                        <edu.aku.ehs.widget.AnyTextView
                             android:id="@+id/txtRelation"
                             android:layout_width="0dp"
                             android:layout_height="match_parent"
@@ -115,7 +115,7 @@
                     </LinearLayout>
 
 
-                    <edu.aku.family_hifazat.widget.AnyTextView
+                    <edu.aku.ehs.widget.AnyTextView
                         android:id="@+id/txtGender_age"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"

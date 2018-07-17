@@ -20,7 +20,7 @@
             android:background="@color/colorPrimaryHalfTransparent"
             android:visibility="gone">
 
-            <edu.aku.family_hifazat.widget.AnyTextView
+            <edu.aku.ehs.widget.AnyTextView
                 android:id="@+id/txtTimelineView"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -83,7 +83,7 @@
                                 android:scaleType="fitCenter"
                                 android:src="@drawable/clinical_labortaory" />
 
-                            <edu.aku.family_hifazat.widget.AnyTextView
+                            <edu.aku.ehs.widget.AnyTextView
                                 android:id="@+id/txtClinicCount"
                                 android:layout_width="@dimen/x25dp"
                                 android:layout_height="@dimen/x25dp"
@@ -104,7 +104,7 @@
                         </RelativeLayout>
 
 
-                        <edu.aku.family_hifazat.widget.AnyTextView
+                        <edu.aku.ehs.widget.AnyTextView
 
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
@@ -157,7 +157,7 @@
                                 android:scaleType="fitCenter"
                                 android:src="@drawable/radiology" />
 
-                            <edu.aku.family_hifazat.widget.AnyTextView
+                            <edu.aku.ehs.widget.AnyTextView
                                 android:id="@+id/txtRadiologyCount"
                                 android:layout_width="@dimen/x25dp"
                                 android:layout_height="@dimen/x25dp"
@@ -177,7 +177,7 @@
 
                         </RelativeLayout>
 
-                        <edu.aku.family_hifazat.widget.AnyTextView
+                        <edu.aku.ehs.widget.AnyTextView
 
                             android:layout_width="match_parent"
 
@@ -242,7 +242,7 @@
                                 android:scaleType="fitCenter"
                                 android:src="@drawable/medication" />
 
-                            <edu.aku.family_hifazat.widget.AnyTextView
+                            <edu.aku.ehs.widget.AnyTextView
                                 android:id="@+id/txtMedicationCount"
                                 android:layout_width="@dimen/x25dp"
                                 android:layout_height="@dimen/x25dp"
@@ -261,7 +261,7 @@
 
                         </RelativeLayout>
 
-                        <edu.aku.family_hifazat.widget.AnyTextView
+                        <edu.aku.ehs.widget.AnyTextView
 
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
@@ -317,7 +317,7 @@
                                 android:scaleType="fitCenter"
                                 android:src="@drawable/immunization" />
 
-                            <edu.aku.family_hifazat.widget.AnyTextView
+                            <edu.aku.ehs.widget.AnyTextView
                                 android:id="@+id/txtImmunizationCount"
                                 android:layout_width="@dimen/x25dp"
                                 android:layout_height="@dimen/x25dp"
@@ -336,7 +336,7 @@
 
                         </RelativeLayout>
 
-                        <edu.aku.family_hifazat.widget.AnyTextView
+                        <edu.aku.ehs.widget.AnyTextView
 
                             android:layout_width="match_parent"
 
@@ -399,7 +399,7 @@
                                 android:scaleType="fitCenter"
                                 android:src="@drawable/cardiopulmonary" />
 
-                            <edu.aku.family_hifazat.widget.AnyTextView
+                            <edu.aku.ehs.widget.AnyTextView
                                 android:id="@+id/txtCardioCount"
                                 android:layout_width="@dimen/x25dp"
                                 android:layout_height="@dimen/x25dp"
@@ -418,7 +418,7 @@
 
                         </RelativeLayout>
 
-                        <edu.aku.family_hifazat.widget.AnyTextView
+                        <edu.aku.ehs.widget.AnyTextView
 
                             android:layout_width="match_parent"
 
@@ -474,7 +474,7 @@
                                 android:scaleType="fitCenter"
                                 android:src="@drawable/neurophysiology" />
 
-                            <edu.aku.family_hifazat.widget.AnyTextView
+                            <edu.aku.ehs.widget.AnyTextView
                                 android:id="@+id/txtNeuroCount"
                                 android:layout_width="@dimen/x25dp"
                                 android:layout_height="@dimen/x25dp"
@@ -493,7 +493,7 @@
 
                         </RelativeLayout>
 
-                        <edu.aku.family_hifazat.widget.AnyTextView
+                        <edu.aku.ehs.widget.AnyTextView
 
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
@@ -557,7 +557,7 @@
                                 android:scaleType="fitCenter"
                                 android:src="@drawable/endoscopy" />
 
-                            <edu.aku.family_hifazat.widget.AnyTextView
+                            <edu.aku.ehs.widget.AnyTextView
                                 android:id="@+id/txtEndoscopyCount"
                                 android:layout_width="@dimen/x25dp"
                                 android:layout_height="@dimen/x25dp"
@@ -576,7 +576,7 @@
 
                         </RelativeLayout>
 
-                        <edu.aku.family_hifazat.widget.AnyTextView
+                        <edu.aku.ehs.widget.AnyTextView
 
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
@@ -629,7 +629,7 @@
                                 android:scaleType="fitCenter"
                                 android:src="@drawable/discharge_summary" />
 
-                            <edu.aku.family_hifazat.widget.AnyTextView
+                            <edu.aku.ehs.widget.AnyTextView
                                 android:id="@+id/txtDischargeCount"
                                 android:layout_width="@dimen/x25dp"
                                 android:layout_height="@dimen/x25dp"
@@ -648,7 +648,7 @@
 
                         </RelativeLayout>
 
-                        <edu.aku.family_hifazat.widget.AnyTextView
+                        <edu.aku.ehs.widget.AnyTextView
 
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"

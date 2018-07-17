@@ -16,7 +16,7 @@
         android:gravity="center"
         android:orientation="vertical">
 
-        <edu.aku.family_hifazat.widget.AnyTextView
+        <edu.aku.ehs.widget.AnyTextView
             android:id="@+id/txtDate"
             android:layout_width="match_parent"
             android:layout_height="0dp"
@@ -29,7 +29,7 @@
             android:textSize="@dimen/s13"
             app:typeface="@string/font_medium" />
 
-        <edu.aku.family_hifazat.widget.AnyTextView
+        <edu.aku.ehs.widget.AnyTextView
             android:id="@+id/txtEvent"
             android:layout_width="match_parent"
             android:layout_height="0dp"
@@ -44,7 +44,7 @@
             android:textSize="@dimen/s16"
             app:typeface="@string/font_bold" />
 
-        <edu.aku.family_hifazat.widget.AnyTextView
+        <edu.aku.ehs.widget.AnyTextView
             android:id="@+id/txtGenderMessage"
             android:layout_width="match_parent"
             android:layout_height="0dp"

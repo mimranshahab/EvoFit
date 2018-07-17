@@ -47,7 +47,7 @@
                         android:padding="@dimen/x5dp">
 
 
-                        <edu.aku.family_hifazat.widget.AnyTextView
+                        <edu.aku.ehs.widget.AnyTextView
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:gravity="center"
@@ -75,7 +75,7 @@
                                     android:gravity="center"
                                     android:orientation="vertical">
 
-                                    <edu.aku.family_hifazat.widget.AnyTextView
+                                    <edu.aku.ehs.widget.AnyTextView
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
                                         android:layout_marginTop="@dimen/x1dp"
@@ -92,7 +92,7 @@
                                         android:gravity="center"
                                         android:orientation="vertical">
 
-                                        <edu.aku.family_hifazat.widget.AnyTextView
+                                        <edu.aku.ehs.widget.AnyTextView
                                             android:id="@+id/txtFastingGlucose"
                                             android:layout_width="wrap_content"
                                             android:layout_height="wrap_content"
@@ -116,7 +116,7 @@
                                     android:gravity="center"
                                     android:orientation="vertical">
 
-                                    <edu.aku.family_hifazat.widget.AnyTextView
+                                    <edu.aku.ehs.widget.AnyTextView
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
                                         android:layout_marginTop="@dimen/x1dp"
@@ -133,7 +133,7 @@
                                         android:gravity="center"
                                         android:orientation="vertical">
 
-                                        <edu.aku.family_hifazat.widget.AnyTextView
+                                        <edu.aku.ehs.widget.AnyTextView
                                             android:id="@+id/txtRandomGlucose"
                                             android:layout_width="wrap_content"
                                             android:layout_height="wrap_content"
@@ -152,7 +152,7 @@
 
                             </LinearLayout>
 
-                            <edu.aku.family_hifazat.widget.AnyTextView
+                            <edu.aku.ehs.widget.AnyTextView
                                 android:id="@+id/txtFastingGlucoseUnit"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
@@ -165,7 +165,7 @@
                                 app:typeface="@string/font_regular" />
 
 
-                            <edu.aku.family_hifazat.widget.AnyTextView
+                            <edu.aku.ehs.widget.AnyTextView
                                 android:id="@+id/txtSugarDDTM"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
@@ -198,7 +198,7 @@
                         android:layout_alignParentBottom="true"
                         android:gravity="center">
 
-                        <edu.aku.family_hifazat.widget.AnyTextView
+                        <edu.aku.ehs.widget.AnyTextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:ellipsize="end"
@@ -252,7 +252,7 @@
                         android:orientation="vertical"
                         android:padding="@dimen/x5dp">
 
-                        <edu.aku.family_hifazat.widget.AnyTextView
+                        <edu.aku.ehs.widget.AnyTextView
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:gravity="center"
@@ -272,7 +272,7 @@
                                 android:layout_height="0dp"
                                 android:layout_weight="1">
 
-                                <edu.aku.family_hifazat.widget.AnyTextView
+                                <edu.aku.ehs.widget.AnyTextView
                                     android:id="@+id/txtBPsystolic"
                                     android:layout_width="match_parent"
                                     android:layout_height="match_parent"
@@ -285,7 +285,7 @@
                                     android:textSize="@dimen/s15"
                                     app:typeface="@string/font_bold" />
 
-                                <edu.aku.family_hifazat.widget.AnyTextView
+                                <edu.aku.ehs.widget.AnyTextView
                                     android:layout_width="wrap_content"
                                     android:layout_height="match_parent"
                                     android:ellipsize="end"
@@ -296,7 +296,7 @@
                                     android:textSize="@dimen/s15"
                                     app:typeface="@string/font_bold" />
 
-                                <edu.aku.family_hifazat.widget.AnyTextView
+                                <edu.aku.ehs.widget.AnyTextView
                                     android:id="@+id/txtBPdiastolic"
                                     android:layout_width="match_parent"
                                     android:layout_height="match_parent"
@@ -312,7 +312,7 @@
                             </LinearLayout>
 
 
-                            <edu.aku.family_hifazat.widget.AnyTextView
+                            <edu.aku.ehs.widget.AnyTextView
                                 android:id="@+id/txtBPUnit"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
@@ -351,7 +351,7 @@
                         android:layout_alignParentBottom="true"
                         android:gravity="center">
 
-                        <edu.aku.family_hifazat.widget.AnyTextView
+                        <edu.aku.ehs.widget.AnyTextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:ellipsize="end"
@@ -405,7 +405,7 @@
                         android:orientation="vertical"
                         android:padding="@dimen/x5dp">
 
-                        <edu.aku.family_hifazat.widget.AnyTextView
+                        <edu.aku.ehs.widget.AnyTextView
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:gravity="center"
@@ -436,7 +436,7 @@
                                     android:orientation="vertical"
                                     android:visibility="gone">
 
-                                    <edu.aku.family_hifazat.widget.AnyTextView
+                                    <edu.aku.ehs.widget.AnyTextView
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
                                         android:layout_marginTop="@dimen/x1dp"
@@ -453,7 +453,7 @@
                                         android:gravity="center"
                                         android:orientation="vertical">
 
-                                        <edu.aku.family_hifazat.widget.AnyTextView
+                                        <edu.aku.ehs.widget.AnyTextView
                                             android:id="@+id/txtBSA"
                                             android:layout_width="wrap_content"
                                             android:layout_height="wrap_content"
@@ -464,7 +464,7 @@
                                             android:textSize="@dimen/s12"
                                             app:typeface="@string/font_bold" />
 
-                                        <edu.aku.family_hifazat.widget.AnyTextView
+                                        <edu.aku.ehs.widget.AnyTextView
                                             android:id="@+id/txtBSAUnit"
                                             android:layout_width="wrap_content"
                                             android:layout_height="wrap_content"
@@ -489,7 +489,7 @@
                                     android:gravity="center"
                                     android:orientation="vertical">
 
-                                    <edu.aku.family_hifazat.widget.AnyTextView
+                                    <edu.aku.ehs.widget.AnyTextView
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
                                         android:layout_marginTop="@dimen/x1dp"
@@ -506,7 +506,7 @@
                                         android:gravity="center"
                                         android:orientation="vertical">
 
-                                        <edu.aku.family_hifazat.widget.AnyTextView
+                                        <edu.aku.ehs.widget.AnyTextView
                                             android:id="@+id/txtHeight"
                                             android:layout_width="wrap_content"
                                             android:layout_height="wrap_content"
@@ -517,7 +517,7 @@
                                             android:textSize="@dimen/s14"
                                             app:typeface="@string/font_bold" />
 
-                                        <edu.aku.family_hifazat.widget.AnyTextView
+                                        <edu.aku.ehs.widget.AnyTextView
                                             android:id="@+id/txtHeightUnit"
                                             android:layout_width="wrap_content"
                                             android:layout_height="wrap_content"
@@ -542,7 +542,7 @@
                                     android:gravity="center"
                                     android:orientation="vertical">
 
-                                    <edu.aku.family_hifazat.widget.AnyTextView
+                                    <edu.aku.ehs.widget.AnyTextView
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
                                         android:layout_marginTop="@dimen/x1dp"
@@ -559,7 +559,7 @@
                                         android:gravity="center"
                                         android:orientation="vertical">
 
-                                        <edu.aku.family_hifazat.widget.AnyTextView
+                                        <edu.aku.ehs.widget.AnyTextView
                                             android:id="@+id/txtWeight"
                                             android:layout_width="wrap_content"
                                             android:layout_height="wrap_content"
@@ -570,7 +570,7 @@
                                             android:textSize="@dimen/s14"
                                             app:typeface="@string/font_bold" />
 
-                                        <edu.aku.family_hifazat.widget.AnyTextView
+                                        <edu.aku.ehs.widget.AnyTextView
                                             android:id="@+id/txtWeightUnit"
                                             android:layout_width="wrap_content"
                                             android:layout_height="wrap_content"
@@ -616,7 +616,7 @@
                         android:layout_alignParentBottom="true"
                         android:gravity="center">
 
-                        <edu.aku.family_hifazat.widget.AnyTextView
+                        <edu.aku.ehs.widget.AnyTextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:ellipsize="end"

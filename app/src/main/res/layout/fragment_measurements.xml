@@ -254,7 +254,7 @@
 
             <include layout="@layout/item_measurment_health_history" />
 
-            <edu.aku.family_hifazat.widget.AnyTextView
+            <edu.aku.ehs.widget.AnyTextView
                 android:id="@+id/btnRecordMenually"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -294,7 +294,7 @@
                     >
 
 
-                    <edu.aku.family_hifazat.widget.AnyTextView
+                    <edu.aku.ehs.widget.AnyTextView
                         android:id="@+id/txtHeightDesc"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -355,7 +355,7 @@
                     android:padding="@dimen/x5dp">
 
 
-                    <edu.aku.family_hifazat.widget.AnyTextView
+                    <edu.aku.ehs.widget.AnyTextView
                         android:id="@+id/txtWeightDesc"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -402,7 +402,7 @@
         android:gravity="center"
         android:paddingTop="@dimen/x10dp">
 
-        <edu.aku.family_hifazat.widget.AnyTextView
+        <edu.aku.ehs.widget.AnyTextView
             android:id="@+id/btnSave"
             android:layout_width="@dimen/x100dp"
             android:layout_height="wrap_content"
@@ -420,7 +420,7 @@
             android:textSize="@dimen/s14"
             app:typeface="@string/font_bold" />
 
-        <edu.aku.family_hifazat.widget.AnyTextView
+        <edu.aku.ehs.widget.AnyTextView
             android:id="@+id/btnCancel"
             android:layout_width="@dimen/x100dp"
             android:layout_height="wrap_content"

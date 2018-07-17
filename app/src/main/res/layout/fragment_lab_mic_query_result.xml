@@ -28,7 +28,7 @@
 
         <!--/>-->
 
-        <edu.aku.family_hifazat.widget.AnyTextView
+        <edu.aku.ehs.widget.AnyTextView
             android:id="@+id/txtProcedureDesc"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -53,7 +53,7 @@
             android:background="#d0d3d7"
             android:layout_height="wrap_content">
 
-            <edu.aku.family_hifazat.widget.AnyTextView
+            <edu.aku.ehs.widget.AnyTextView
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -74,7 +74,7 @@
                 android:background="@color/text_color_grey" />
 
 
-            <edu.aku.family_hifazat.widget.AnyTextView
+            <edu.aku.ehs.widget.AnyTextView
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"

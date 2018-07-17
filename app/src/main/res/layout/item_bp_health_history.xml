@@ -38,7 +38,7 @@
                     android:layout_weight="1"
                     android:orientation="vertical">
 
-                    <edu.aku.family_hifazat.widget.AnyTextView
+                    <edu.aku.ehs.widget.AnyTextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:gravity="center_vertical"
@@ -49,7 +49,7 @@
                         app:typeface="@string/font_bold" />
 
 
-                    <edu.aku.family_hifazat.widget.AnyTextView
+                    <edu.aku.ehs.widget.AnyTextView
                         android:id="@+id/txtBPDDTM"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -94,7 +94,7 @@
                         <!--android:textSize="@dimen/s12"-->
                         <!--app:typeface="@string/font_regular" />-->
 
-                        <edu.aku.family_hifazat.widget.AnyTextView
+                        <edu.aku.ehs.widget.AnyTextView
                             android:id="@+id/txtBPsystolic"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
@@ -106,7 +106,7 @@
                             android:textSize="@dimen/s20"
                             app:typeface="@string/font_bold" />
 
-                        <edu.aku.family_hifazat.widget.AnyTextView
+                        <edu.aku.ehs.widget.AnyTextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="/"
@@ -115,7 +115,7 @@
                             android:textSize="@dimen/s20"
                             app:typeface="@string/font_bold" />
 
-                        <edu.aku.family_hifazat.widget.AnyTextView
+                        <edu.aku.ehs.widget.AnyTextView
                             android:id="@+id/txtBPdiastolic"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
@@ -132,7 +132,7 @@
                     </LinearLayout>
 
 
-                    <edu.aku.family_hifazat.widget.AnyTextView
+                    <edu.aku.ehs.widget.AnyTextView
                         android:id="@+id/txtBPUnit"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"

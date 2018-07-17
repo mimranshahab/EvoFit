@@ -7,7 +7,7 @@
     android:padding="@dimen/x5dp">
 
 
-    <edu.aku.family_hifazat.widget.AnyTextView
+    <edu.aku.ehs.widget.AnyTextView
         android:id="@+id/txtProcedureDesc"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -20,7 +20,7 @@
         android:textSize="@dimen/s15"
         app:typeface="@string/font_bold" />
 
-    <edu.aku.family_hifazat.widget.AnyTextView
+    <edu.aku.ehs.widget.AnyTextView
         android:id="@+id/txtSource"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

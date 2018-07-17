@@ -19,20 +19,13 @@
 
 
             <FrameLayout
-                android:id="@+id/contPermanent"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_below="@id/titlebar"
-                android:layout_centerHorizontal="true" />
-
-            <FrameLayout
                 android:id="@+id/contMain"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_below="@id/titlebar"
                 android:layout_centerHorizontal="true" />
 
-            <edu.aku.family_hifazat.widget.TitleBar
+            <edu.aku.ehs.widget.TitleBar
                 android:id="@+id/titlebar"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
@@ -46,7 +39,8 @@
                 android:layout_centerHorizontal="true"
                 android:layout_centerVertical="true"
                 android:indeterminate="true"
-                android:visibility="invisible" />
+                android:indeterminateTint="@color/summary_blue"
+                android:visibility="gone" />
         </RelativeLayout>
 
 

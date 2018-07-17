@@ -13,7 +13,7 @@
         android:padding="@dimen/x15dp">
 
 
-        <edu.aku.family_hifazat.widget.AnyTextView
+        <edu.aku.ehs.widget.AnyTextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="@dimen/x10dp"
@@ -22,7 +22,7 @@
             android:textSize="@dimen/s14"
             app:typeface="@string/font_regular" />
 
-        <edu.aku.family_hifazat.widget.AnyEditTextView
+        <edu.aku.ehs.widget.AnyEditTextView
             android:id="@+id/edMobileNumber"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -42,7 +42,7 @@
             app:testType="phone"
             app:typeface="@string/font_regular" />
 
-        <edu.aku.family_hifazat.widget.AnyTextView
+        <edu.aku.ehs.widget.AnyTextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="@dimen/x10dp"
@@ -52,7 +52,7 @@
             android:textSize="@dimen/s14"
             app:typeface="@string/font_regular" />
 
-        <edu.aku.family_hifazat.widget.AnyEditTextView
+        <edu.aku.ehs.widget.AnyEditTextView
             android:id="@+id/edtLandlineNumber"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -72,7 +72,7 @@
             app:testType="phone"
             app:typeface="@string/font_regular" />
 
-        <edu.aku.family_hifazat.widget.AnyTextView
+        <edu.aku.ehs.widget.AnyTextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="@dimen/x10dp"
@@ -82,7 +82,7 @@
             android:textSize="@dimen/s14"
             app:typeface="@string/font_regular" />
 
-        <edu.aku.family_hifazat.widget.AnyEditTextView
+        <edu.aku.ehs.widget.AnyEditTextView
             android:id="@+id/edtCurrentAddress"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -101,7 +101,7 @@
             app:testType="nocheck"
             app:typeface="@string/font_regular" />
 
-        <edu.aku.family_hifazat.widget.AnyTextView
+        <edu.aku.ehs.widget.AnyTextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="@dimen/x10dp"
@@ -111,7 +111,7 @@
             android:textSize="@dimen/s14"
             app:typeface="@string/font_regular" />
 
-        <edu.aku.family_hifazat.widget.AnyEditTextView
+        <edu.aku.ehs.widget.AnyEditTextView
             android:id="@+id/edtCurrentCity"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -131,7 +131,7 @@
             app:testType="nocheck"
             app:typeface="@string/font_regular" />
 
-        <edu.aku.family_hifazat.widget.AnyTextView
+        <edu.aku.ehs.widget.AnyTextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="@dimen/x10dp"
@@ -141,7 +141,7 @@
             android:textSize="@dimen/s14"
             app:typeface="@string/font_regular" />
 
-        <edu.aku.family_hifazat.widget.AnyTextView
+        <edu.aku.ehs.widget.AnyTextView
             android:id="@+id/txtCurrentCountry"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -160,7 +160,7 @@
 
 
 
-        <edu.aku.family_hifazat.widget.AnyTextView
+        <edu.aku.ehs.widget.AnyTextView
             android:id="@+id/btnUpdate"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

@@ -23,7 +23,7 @@
 
         </android.support.v7.widget.RecyclerView>
 
-        <edu.aku.family_hifazat.widget.AnyTextView
+        <edu.aku.ehs.widget.AnyTextView
             android:id="@+id/empty_view"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -36,7 +36,7 @@
             android:visibility="gone"
             app:typeface="@string/font_bold" />
 
-        <edu.aku.family_hifazat.widget.AnyEditTextView
+        <edu.aku.ehs.widget.AnyEditTextView
             android:id="@+id/edtSearchBar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -98,7 +98,7 @@
             android:gravity="end"
             android:orientation="vertical">
 
-            <edu.aku.family_hifazat.widget.AnyTextView
+            <edu.aku.ehs.widget.AnyTextView
                 android:id="@+id/txtFasting"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -119,7 +119,7 @@
             android:orientation="vertical">
 
 
-            <edu.aku.family_hifazat.widget.AnyTextView
+            <edu.aku.ehs.widget.AnyTextView
                 android:id="@+id/txtRandom"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"

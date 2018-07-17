@@ -31,7 +31,7 @@
                     android:orientation="vertical"
                     android:padding="@dimen/x15dp">
 
-                    <edu.aku.family_hifazat.widget.AnyTextView
+                    <edu.aku.ehs.widget.AnyTextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="@dimen/x5dp"
@@ -40,7 +40,7 @@
                         android:textSize="@dimen/s12"
                         app:typeface="@string/font_bold" />
 
-                    <edu.aku.family_hifazat.widget.AnyEditTextView
+                    <edu.aku.ehs.widget.AnyEditTextView
                         android:id="@+id/edtMedicineName"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -56,7 +56,7 @@
                         android:textColorHint="@color/text_hint"
                         android:textSize="@dimen/s14" />
 
-                    <edu.aku.family_hifazat.widget.AnyTextView
+                    <edu.aku.ehs.widget.AnyTextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="@dimen/x5dp"
@@ -65,7 +65,7 @@
                         android:textSize="@dimen/s12"
                         app:typeface="@string/font_bold" />
 
-                    <edu.aku.family_hifazat.widget.AnyTextView
+                    <edu.aku.ehs.widget.AnyTextView
                         android:id="@+id/txtFrequencyDesc"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -82,7 +82,7 @@
                         android:textSize="@dimen/s14" />
 
 
-                    <edu.aku.family_hifazat.widget.AnyTextView
+                    <edu.aku.ehs.widget.AnyTextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="@dimen/x5dp"
@@ -91,7 +91,7 @@
                         android:textSize="@dimen/s12"
                         app:typeface="@string/font_bold" />
 
-                    <edu.aku.family_hifazat.widget.AnyTextView
+                    <edu.aku.ehs.widget.AnyTextView
                         android:id="@+id/txtRouteId"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -108,7 +108,7 @@
                         android:textSize="@dimen/s14" />
 
 
-                    <edu.aku.family_hifazat.widget.AnyTextView
+                    <edu.aku.ehs.widget.AnyTextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="@dimen/x5dp"
@@ -118,7 +118,7 @@
                         app:typeface="@string/font_bold" />
 
 
-                    <edu.aku.family_hifazat.widget.AnyTextView
+                    <edu.aku.ehs.widget.AnyTextView
                         android:id="@+id/txtStartDateTime"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -136,7 +136,7 @@
                         android:textSize="@dimen/s14" />
 
 
-                    <edu.aku.family_hifazat.widget.AnyTextView
+                    <edu.aku.ehs.widget.AnyTextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="@dimen/x5dp"
@@ -146,7 +146,7 @@
                         app:typeface="@string/font_bold" />
 
 
-                    <edu.aku.family_hifazat.widget.AnyTextView
+                    <edu.aku.ehs.widget.AnyTextView
                         android:id="@+id/txtStopDateTime"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"

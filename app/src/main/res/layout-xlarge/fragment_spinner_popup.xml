@@ -28,7 +28,7 @@
             android:padding="3dp">
 
 
-            <edu.aku.family_hifazat.widget.AnyTextView
+            <edu.aku.ehs.widget.AnyTextView
                 android:id="@+id/txtTitle"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
@@ -66,7 +66,7 @@
 
         </android.support.v7.widget.RecyclerView>
 
-        <edu.aku.family_hifazat.widget.AnyTextView
+        <edu.aku.ehs.widget.AnyTextView
             android:id="@+id/txtOK"
             android:layout_width="@dimen/x120dp"
             android:layout_height="wrap_content"

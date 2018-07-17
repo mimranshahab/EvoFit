@@ -38,7 +38,7 @@
                     android:orientation="horizontal"
                     android:padding="@dimen/x5dp">
 
-                    <edu.aku.family_hifazat.widget.AnyTextView
+                    <edu.aku.ehs.widget.AnyTextView
                         android:id="@+id/txtDateTime"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
@@ -76,7 +76,7 @@
                             android:tint="@color/base_amber" />
 
 
-                        <edu.aku.family_hifazat.widget.AnyTextView
+                        <edu.aku.ehs.widget.AnyTextView
                             android:id="@+id/txtStatusType"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
@@ -140,7 +140,7 @@
                         android:orientation="vertical">
 
 
-                        <edu.aku.family_hifazat.widget.AnyTextView
+                        <edu.aku.ehs.widget.AnyTextView
                             android:id="@+id/txtName"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
@@ -153,7 +153,7 @@
                             app:typeface="@string/font_bold" />
 
 
-                        <edu.aku.family_hifazat.widget.AnyTextView
+                        <edu.aku.ehs.widget.AnyTextView
                             android:id="@+id/txtRoute"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
@@ -167,7 +167,7 @@
                             android:textSize="@dimen/s14"
                             app:typeface="@string/font_regular" />
 
-                        <edu.aku.family_hifazat.widget.AnyTextView
+                        <edu.aku.ehs.widget.AnyTextView
                             android:id="@+id/txtLocation"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
@@ -193,7 +193,7 @@
                     >
 
 
-                    <edu.aku.family_hifazat.widget.AnyTextView
+                    <edu.aku.ehs.widget.AnyTextView
                         android:id="@+id/btnupdateColorCode"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -202,7 +202,7 @@
                         android:alpha=".25"
                         android:background="@drawable/rounded_box_filled_base_amber" />
 
-                    <edu.aku.family_hifazat.widget.AnyTextView
+                    <edu.aku.ehs.widget.AnyTextView
                         android:id="@+id/txtBtnColor"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"

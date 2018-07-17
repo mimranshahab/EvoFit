@@ -21,10 +21,10 @@ android {
     buildToolsVersion "27.0.2"
     defaultConfig {
         applicationId 'edu.aku.family_hifazat'
-        minSdkVersion 17
-        targetSdkVersion 22
-        versionCode 15
-        versionName "2.0.15"
+        minSdkVersion 19
+        targetSdkVersion 27
+        versionCode 17
+        versionName "2.0.17"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
         multiDexEnabled true
         vectorDrawables.useSupportLibrary = true
@@ -110,6 +110,7 @@ dependencies {
     compile 'com.jsibbold:zoomage:1.1.0'
     compile 'com.shawnlin:number-picker:2.4.6'
     compile 'com.gdacciaro:iosdialog:1.0.3'
+    compile 'com.kaopiz:kprogresshud:1.1.0'
 
     compile('com.crashlytics.sdk.android:crashlytics:2.9.3@aar') {
         transitive = true;

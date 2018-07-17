@@ -18,7 +18,7 @@
             android:orientation="vertical"
             android:padding="@dimen/x25dp">
 
-            <edu.aku.family_hifazat.widget.AnyTextView
+            <edu.aku.ehs.widget.AnyTextView
                 android:id="@+id/txtVerificationCode"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -27,7 +27,7 @@
                 android:text="@string/enter_verification_code"
                 android:textColor="@color/colorPrimary" />
 
-            <edu.aku.family_hifazat.widget.AnyTextView
+            <edu.aku.ehs.widget.AnyTextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/x5dp"
@@ -53,7 +53,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/x10dp">
 
-                <edu.aku.family_hifazat.widget.AnyTextView
+                <edu.aku.ehs.widget.AnyTextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/didn_t_get_a_code_yet_wait_for_3_43_seconds"
@@ -61,7 +61,7 @@
                     app:typeface="@string/needed_to_reach_minimum_order"
                     />
 
-                <edu.aku.family_hifazat.widget.AnyTextView
+                <edu.aku.ehs.widget.AnyTextView
                     android:id="@+id/txtCountDownTimer"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -71,7 +71,7 @@
                     android:textColor="@color/txt_aku_blue"
                     app:typeface="@string/font_bold"/>
 
-                <edu.aku.family_hifazat.widget.AnyTextView
+                <edu.aku.ehs.widget.AnyTextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="seconds"
@@ -93,7 +93,7 @@
             android:gravity="center_horizontal"
             android:orientation="horizontal">
 
-            <edu.aku.family_hifazat.widget.AnyTextView
+            <edu.aku.ehs.widget.AnyTextView
                 android:id="@+id/btnCancel"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -107,7 +107,7 @@
                 app:typeface="@string/font_regular" />
 
 
-            <edu.aku.family_hifazat.widget.AnyTextView
+            <edu.aku.ehs.widget.AnyTextView
                 android:id="@+id/btnConfirm"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -122,7 +122,7 @@
 
         </LinearLayout>
 
-        <edu.aku.family_hifazat.widget.AnyTextView
+        <edu.aku.ehs.widget.AnyTextView
             android:id="@+id/tvResendCode"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

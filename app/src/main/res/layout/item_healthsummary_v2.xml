@@ -47,7 +47,7 @@
                         android:src="@drawable/lab_report"
                         android:tint="@color/c_white" />
 
-                    <edu.aku.family_hifazat.widget.AnyTextView
+                    <edu.aku.ehs.widget.AnyTextView
                         android:id="@+id/txtTitle"
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
@@ -82,7 +82,7 @@
                             android:layout_height="wrap_content"
                             android:orientation="horizontal">
 
-                            <edu.aku.family_hifazat.widget.AnyTextView
+                            <edu.aku.ehs.widget.AnyTextView
                                 android:id="@+id/txtShortMessage"
                                 android:layout_width="0dp"
                                 android:layout_height="match_parent"
@@ -116,7 +116,7 @@
                                     android:visibility="visible" />
 
 
-                                <edu.aku.family_hifazat.widget.AnyTextView
+                                <edu.aku.ehs.widget.AnyTextView
                                     android:id="@+id/txtStatusType"
                                     android:layout_width="wrap_content"
                                     android:layout_height="match_parent"
@@ -135,7 +135,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content">
 
-                            <edu.aku.family_hifazat.widget.AnyTextView
+                            <edu.aku.ehs.widget.AnyTextView
                                 android:id="@+id/txtDate"
                                 android:layout_width="0dp"
                                 android:layout_height="match_parent"

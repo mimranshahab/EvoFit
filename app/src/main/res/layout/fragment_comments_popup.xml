@@ -26,7 +26,7 @@
             android:orientation="horizontal">
 
 
-            <edu.aku.family_hifazat.widget.AnyTextView
+            <edu.aku.ehs.widget.AnyTextView
                 android:id="@+id/txtTitle"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
@@ -54,7 +54,7 @@
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
 
-                <edu.aku.family_hifazat.widget.AnyTextView
+                <edu.aku.ehs.widget.AnyTextView
                     android:id="@+id/txtResultComments"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
@@ -73,7 +73,7 @@
                     android:background="@color/base_amber" />
 
 
-                <edu.aku.family_hifazat.widget.AnyTextView
+                <edu.aku.ehs.widget.AnyTextView
                     android:id="@+id/txtTestComments"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
@@ -91,7 +91,7 @@
         </ScrollView>
 
 
-        <edu.aku.family_hifazat.widget.AnyTextView
+        <edu.aku.ehs.widget.AnyTextView
             android:id="@+id/txtOK"
             android:layout_width="@dimen/x90dp"
             android:layout_height="wrap_content"

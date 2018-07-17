@@ -30,7 +30,7 @@
                 android:layout_weight="1"
                 android:orientation="vertical">
 
-                <edu.aku.family_hifazat.widget.AnyTextView
+                <edu.aku.ehs.widget.AnyTextView
                     android:id="@+id/txtDate"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -47,7 +47,7 @@
             </LinearLayout>
 
 
-            <edu.aku.family_hifazat.widget.AnyTextView
+            <edu.aku.ehs.widget.AnyTextView
                 android:id="@+id/txtVisitType"
                 android:layout_width="@dimen/x50dp"
                 android:layout_height="wrap_content"
@@ -73,7 +73,7 @@
             android:layout_height="wrap_content"
             android:gravity="center_vertical">
 
-            <edu.aku.family_hifazat.widget.AnyTextView
+            <edu.aku.ehs.widget.AnyTextView
                 android:id="@+id/txtDoctorName"
                 android:layout_width="0dp"
                 android:layout_weight="1"
@@ -85,7 +85,7 @@
                 android:textSize="@dimen/s16"
                 app:typeface="@string/font_bold" />
 
-            <edu.aku.family_hifazat.widget.AnyTextView
+            <edu.aku.ehs.widget.AnyTextView
                 android:id="@+id/txtVisitDetail"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -109,7 +109,7 @@
             android:orientation="vertical">
 
 
-            <edu.aku.family_hifazat.widget.AnyTextView
+            <edu.aku.ehs.widget.AnyTextView
                 android:id="@+id/txtServiceDetails"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"

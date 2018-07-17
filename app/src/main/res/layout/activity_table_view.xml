@@ -6,12 +6,12 @@
     android:fitsSystemWindows="true"
     android:orientation="vertical">
 
-    <edu.aku.family_hifazat.widget.TitleBar
+    <edu.aku.ehs.widget.TitleBar
         android:id="@+id/titlebar_tableview"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
 
-    <edu.aku.family_hifazat.libraries.table.view.TableView
+    <edu.aku.ehs.libraries.table.view.TableView
         android:id="@+id/table_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />

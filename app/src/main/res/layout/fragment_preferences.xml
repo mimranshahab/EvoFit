@@ -23,7 +23,7 @@
             android:src="@drawable/key_icon" />
 
 
-        <edu.aku.family_hifazat.widget.AnyTextView
+        <edu.aku.ehs.widget.AnyTextView
             android:id="@+id/txtPinCode"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -64,7 +64,7 @@
             android:padding="@dimen/x5dp"
             android:src="@drawable/lock_icon" />
 
-        <edu.aku.family_hifazat.widget.AnyTextView
+        <edu.aku.ehs.widget.AnyTextView
             android:id="@+id/txtChangePassword"
             android:layout_width="0dp"
             android:layout_height="wrap_content"

@@ -38,7 +38,7 @@
                 android:scaleType="fitCenter"
                 android:src="@drawable/family_hifazat_logo_no_padding" />
 
-            <edu.aku.family_hifazat.widget.AnyTextView
+            <edu.aku.ehs.widget.AnyTextView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_marginBottom="@dimen/x30dp"

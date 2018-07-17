@@ -26,7 +26,7 @@
                 android:layout_height="@dimen/recycler_seperator_height"
                 android:background="@color/dialog_seperator" />
 
-            <edu.aku.family_hifazat.widget.AnyTextView
+            <edu.aku.ehs.widget.AnyTextView
                 android:id="@+id/txtShortMessage"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -38,7 +38,7 @@
                 android:textSize="16sp"
                 app:typeface="@string/font_bold" />
 
-            <edu.aku.family_hifazat.widget.AnyTextView
+            <edu.aku.ehs.widget.AnyTextView
                 android:id="@+id/txtDate"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"

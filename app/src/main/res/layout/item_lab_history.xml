@@ -5,7 +5,7 @@
     android:layout_height="wrap_content"
      android:orientation="horizontal">
 
-    <edu.aku.family_hifazat.widget.AnyTextView
+    <edu.aku.ehs.widget.AnyTextView
         android:id="@+id/txtDate"
         android:layout_width="0dp"
         android:layout_height="match_parent"
@@ -19,7 +19,7 @@
         android:textSize="@dimen/s13"
         app:typeface="@string/font_bold" />
 
-    <edu.aku.family_hifazat.widget.AnyTextView
+    <edu.aku.ehs.widget.AnyTextView
         android:id="@+id/txtResult"
         android:layout_width="0dp"
         android:layout_height="match_parent"

@@ -28,7 +28,7 @@
             android:src="@drawable/sheild"
             android:tint="@color/base_amber" />
 
-        <edu.aku.family_hifazat.widget.AnyTextView
+        <edu.aku.ehs.widget.AnyTextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center"
@@ -38,7 +38,7 @@
             android:textSize="@dimen/s20"
             app:typeface="@string/font_bold" />
 
-        <edu.aku.family_hifazat.widget.AnyTextView
+        <edu.aku.ehs.widget.AnyTextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center"
@@ -49,7 +49,7 @@
             app:typeface="@string/font_bold" />
 
 
-        <edu.aku.family_hifazat.widget.PinEntryEditText
+        <edu.aku.ehs.widget.PinEntryEditText
             android:id="@+id/txtPinForgotPass"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -67,7 +67,7 @@
             app:typeface="@string/font_bold" />
 
 
-        <edu.aku.family_hifazat.widget.AnyTextView
+        <edu.aku.ehs.widget.AnyTextView
             android:id="@+id/btnSumbit"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
