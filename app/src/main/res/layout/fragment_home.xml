@@ -1,147 +1,118 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/contParentLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_gravity="center_horizontal"
-    android:background="@color/background_gray"
-    android:orientation="vertical"
-    android:padding="@dimen/x5dp">
+    android:gravity="center_horizontal"
+    android:orientation="vertical">
 
 
-    <RelativeLayout
-        android:id="@+id/contListItem"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="@dimen/x5dp"
-        android:layout_marginRight="@dimen/x5dp"
-        android:padding="@dimen/x3dp"
-        android:visibility="gone">
+        android:background="@drawable/img_banner"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:paddingBottom="@dimen/x10dp"
+        android:paddingTop="@dimen/x10dp">
 
-        <LinearLayout
-            android:id="@+id/linearLayout"
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/imgNursePic"
+            android:layout_width="@dimen/x100dp"
+            android:layout_height="@dimen/x100dp"
+            android:src="@drawable/user_image"
+            app:civ_border_color="@color/c_white"
+            app:civ_border_width="@dimen/x2dp" />
+
+
+        <edu.aku.ehs.widget.AnyTextView
+            android:id="@+id/txtNurseName"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/x50dp"
-            android:background="@drawable/rounded_box_filled_columbia_blue"
+            android:ellipsize="end"
+            android:gravity="center"
+            android:padding="@dimen/x3dp"
+            android:singleLine="true"
+            android:text="Nurse Name"
+            android:textColor="@color/c_white"
+            android:textSize="@dimen/s17"
+            app:typeface="@string/font_bold"/>
+
+        <edu.aku.ehs.widget.AnyTextView
+            android:id="@+id/txtNurseDesignation"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ellipsize="end"
+            android:gravity="center"
+            android:padding="@dimen/x3dp"
+            android:singleLine="true"
+            android:text="Nurse Department/ Designation"
+            android:textColor="@color/c_white"
+            android:textSize="@dimen/s16"
+            app:typeface="@string/font_regular"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center_horizontal"
+        android:paddingTop="@dimen/x50dp">
+
+        <LinearLayout
+            android:id="@+id/contSession"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/x10dp"
+            android:background="@drawable/shadow_box_avg"
             android:gravity="center"
             android:orientation="vertical"
-            android:padding="@dimen/x15dp">
+            android:padding="@dimen/x5dp">
 
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_marginTop="@dimen/x40dp"
-                android:orientation="horizontal">
-
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_centerInParent="true"
-                    android:padding="@dimen/x3dp">
-
-
-                    <edu.aku.ehs.widget.AnyTextView
-                        android:id="@+id/txtName"
-                        android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:layout_marginRight="@dimen/x5dp"
-                        android:gravity="center_vertical"
-                        android:text="Name"
-                        android:textColor="@color/c_white"
-                        android:textSize="@dimen/s16"
-                        app:typeface="@string/font_bold" />
-
-
-                    <edu.aku.ehs.widget.AnyTextView
-                        android:id="@+id/txtRelation"
-                        android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:layout_gravity="center"
-                        android:gravity="center_vertical"
-                        android:text="(SUBSCRIBER)"
-                        android:textColor="@color/c_white"
-                        android:textSize="@dimen/s16"
-                        app:typeface="@string/font_regular" />
-
-
-                </LinearLayout>
-
-
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentEnd="true"
-                    android:layout_centerVertical="true"
-                    android:src="@drawable/ic_next_arrow" />
-
-            </RelativeLayout>
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/img_session" />
 
             <edu.aku.ehs.widget.AnyTextView
-                android:id="@+id/txtMRN"
-
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:padding="@dimen/x3dp"
-                android:text="178-88-90"
-                android:textColor="@color/c_white"
-                android:textSize="@dimen/s14"
-                app:typeface="@string/font_regular" />
-
-            <edu.aku.ehs.widget.AnyTextView
-                android:id="@+id/txtGender_age"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Female / 40"
-                android:textColor="@color/c_white"
-                android:textSize="@dimen/s14"
-                app:typeface="@string/font_regular" />
-
+                android:text="Session"
+                android:textColor="@color/colorAccent"
+                android:textSize="@dimen/s15"
+                app:typeface="@string/font_bold" />
 
         </LinearLayout>
 
-        <de.hdodenhof.circleimageview.CircleImageView
-            android:id="@+id/imgIcon"
-            android:layout_width="@dimen/x100dp"
-            android:layout_height="@dimen/x100dp"
-            android:layout_centerHorizontal="true"
-            android:layout_gravity="center"
-            android:scaleType="centerCrop"
-            android:src="@drawable/female_icon_filled"
-            app:civ_border_color="@color/c_white"
-            app:civ_border_width="@dimen/x3dp" />
-
-
-    </RelativeLayout>
-
-    <!--</android.support.v7.widget.CardView>-->
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:gravity="center_vertical"
-        android:layout_marginTop="@dimen/x7dp"
-        android:orientation="horizontal">
-
-        <ImageView
-            android:layout_width="@dimen/x22dp"
-            android:layout_height="match_parent"
-            android:src="@drawable/family_icon" />
-
-        <edu.aku.ehs.widget.AnyTextView
-            android:layout_width="match_parent"
+        <LinearLayout
+            android:id="@+id/contStats"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:padding="@dimen/x5dp"
-            android:text="Family Members"
-            android:textColor="@color/colorPrimary"
-            android:textSize="@dimen/s16"
-            app:typeface="@string/font_bold" />
-    </LinearLayout>
+            android:layout_margin="@dimen/x10dp"
+            android:background="@drawable/shadow_box_avg"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:padding="@dimen/x5dp">
 
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/listFamilyMembers"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"></android.support.v7.widget.RecyclerView>
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/img_statistics" />
+
+            <edu.aku.ehs.widget.AnyTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/x3dp"
+                android:text="Stats"
+                android:textColor="@color/colorAccent"
+                android:textSize="@dimen/s15"
+                app:typeface="@string/font_bold" />
+
+        </LinearLayout>
+
+
+    </LinearLayout>
 
 
 </LinearLayout>

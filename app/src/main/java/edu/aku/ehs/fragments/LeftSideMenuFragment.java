@@ -50,7 +50,6 @@ public class LeftSideMenuFragment extends BaseFragment implements OnNewPacketRec
     ScrollView scrollView;
     @BindView(R.id.imgBackground)
     ImageView imgBackground;
-    String b = " \"<H2>Milk</H2><Br /><P>Jul 26, 2017 11:49</P>\",";
 
     public static LeftSideMenuFragment newInstance() {
 
@@ -111,40 +110,6 @@ public class LeftSideMenuFragment extends BaseFragment implements OnNewPacketRec
     public void onDestroyView() {
         super.onDestroyView();
         unbinder.unbind();
-
-    }
-
-    public static void logoutClick(final BaseFragment baseFragment) {
-//        final GenericDialogFragment genericDialogFragment = GenericDialogFragment.newInstance();
-//
-//        genericDialogFragment.setTitle(baseFragment.getString(R.string.logout));
-//        genericDialogFragment.setMessage(baseFragment.getString(R.string.areYouSureToLogout));
-//
-//        genericDialogFragment.setButton1("Yes", () -> {
-//            genericDialogFragment.getDialog().dismiss();
-//            baseFragment.sharedPreferenceManager.clearDB();
-//            baseFragment.getBaseActivity().clearAllActivitiesExceptThis(MainActivity.class);
-//
-//        });
-//
-//        genericDialogFragment.setButton2("No", () -> genericDialogFragment.getDialog().dismiss());
-//        genericDialogFragment.show(baseFragment.getFragmentManager(), null);
-
-        Context context = baseFragment.getContext();
-
-        new iOSDialogBuilder(context)
-                .setTitle(context.getString(R.string.logout))
-                .setSubtitle(context.getString(R.string.areYouSureToLogout))
-                .setBoldPositiveLabel(false)
-                .setCancelable(false)
-                .setPositiveListener(context.getString(R.string.yes), dialog -> {
-                    dialog.dismiss();
-                    baseFragment.sharedPreferenceManager.clearDB();
-                    baseFragment.getBaseActivity().clearAllActivitiesExceptThis(MainActivity.class);
-                })
-                .setNegativeListener(context.getString(R.string.no), dialog -> dialog.dismiss())
-                .build().show();
-
 
     }
 

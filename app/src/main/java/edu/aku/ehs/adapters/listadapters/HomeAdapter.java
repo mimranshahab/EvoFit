@@ -21,10 +21,10 @@
 // * Created by khanhamza on 23-Feb-17.
 // */
 //
-//public class HomeAdapter extends ArrayAdapter<Category> {
+//public class SessionAdapter extends ArrayAdapter<Category> {
 //    public ArrayList<Category> arrData = new ArrayList<>();
 //
-//    public HomeAdapter(Activity context, ArrayList<Category> arrCategory) {
+//    public SessionAdapter(Activity context, ArrayList<Category> arrCategory) {
 //        super(context, 0, arrCategory);
 //        arrData.addAll(arrCategory);
 //    }

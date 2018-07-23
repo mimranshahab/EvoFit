@@ -1,27 +1,26 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/contParentLayout"
+    xmlns:fab="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/background_gray"
     android:orientation="vertical">
 
+    <!--android:background="@drawable/test2"-->
     <RelativeLayout
         android:id="@+id/contParent"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1">
+        android:layout_height="match_parent">
 
-
-        <android.support.v7.widget.RecyclerView
-            android:id="@+id/recylerView"
+        <ImageView
+            android:id="@+id/imgBanner"
             android:layout_width="match_parent"
+            android:layout_height="@dimen/x50dp"
+            android:scaleType="centerCrop"
+            android:src="@drawable/img_banner"
+            android:visibility="gone" />
 
-            android:layout_height="wrap_content"
-            android:layout_below="@id/edtSearchBar">
-
-        </android.support.v7.widget.RecyclerView>
 
         <edu.aku.ehs.widget.AnyTextView
             android:id="@+id/empty_view"
@@ -30,38 +29,62 @@
             android:background="@color/background_gray"
             android:gravity="center"
             android:padding="@dimen/x10dp"
-            android:text="No Report Found"
-            android:textColor="@color/txt_aku_blue"
-            android:textSize="@dimen/s18"
+            android:text="No Item Found"
+            android:textColor="@color/txt_blue"
+            android:textSize="@dimen/s15"
             android:visibility="gone"
             app:typeface="@string/font_bold" />
 
-        <edu.aku.ehs.widget.AnyEditTextView
-            android:id="@+id/edtSearchBar"
+        <com.jcminarro.roundkornerlayout.RoundKornerLinearLayout
+            android:id="@+id/contSearch"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/x30dp"
+            android:layout_alignParentTop="true"
+            android:layout_below="@+id/imgBanner"
+            android:layout_marginLeft="@dimen/x40dp"
+            android:layout_marginRight="@dimen/x40dp"
+            android:layout_marginTop="@dimen/x35dp"
+            android:elevation="@dimen/x10dp"
+            android:background="@color/c_white"
+            android:visibility="gone"
+            app:corner_radius="@dimen/x15dp">
+
+            <ImageView
+                android:id="@+id/imgSearch"
+                android:layout_width="@dimen/x25dp"
+                android:layout_height="@dimen/x25dp"
+                android:layout_gravity="center"
+                android:layout_margin="@dimen/x4dp"
+                android:padding="@dimen/x5dp"
+                android:src="@drawable/search2"
+                android:tint="@color/txt_blue" />
+
+            <edu.aku.ehs.widget.AnyEditTextView
+                android:id="@+id/edtSearchBar"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="@dimen/x5dp"
+                android:layout_weight="1"
+                android:backgroundTint="@color/transparent"
+                android:hint="@string/search"
+                android:maxLength="30"
+                android:maxLines="1"
+                android:padding="@dimen/x5dp"
+                android:textSize="@dimen/s12" />
+
+
+        </com.jcminarro.roundkornerlayout.RoundKornerLinearLayout>
+
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/recylerView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_alignParentTop="true"
-            android:layout_margin="@dimen/x5dp"
-            android:background="@drawable/searchbar"
-            android:drawablePadding="@dimen/x5dp"
-            android:hint="@string/search"
-            android:maxLines="1"
-            android:padding="@dimen/x10dp"
-            android:textSize="@dimen/s14"
-            android:visibility="gone" />
+            android:layout_marginTop="@dimen/x5dp"
+            android:layout_alignParentStart="true"
+            android:layout_below="@+id/contSearch">
 
-        <ImageView
-            android:id="@+id/imgSearch"
-            android:layout_width="@dimen/x30dp"
-            android:layout_height="@dimen/x30dp"
-            android:layout_alignParentRight="true"
-            android:layout_gravity="center"
-            android:layout_margin="@dimen/x7dp"
-            android:padding="@dimen/x7dp"
-            android:src="@drawable/search2"
-            android:tint="@color/txt_aku_blue"
-            android:visibility="gone" />
-
+        </android.support.v7.widget.RecyclerView>
 
         <com.github.clans.fab.FloatingActionButton
             android:id="@+id/fab"
@@ -74,66 +97,13 @@
             android:padding="@dimen/x8dp"
             android:src="@drawable/plus"
             android:visibility="gone"
+            app:fab_size="normal"
             app:fab_colorNormal="@color/colorPrimaryDark"
-            app:fab_colorPressed="@color/base_amber"
-            app:fab_colorRipple="@color/base_reddish" />
+            app:fab_colorPressed="@color/colorAccent"
+            app:fab_colorRipple="@color/colorPrimary" />
 
 
     </RelativeLayout>
-
-
-    <LinearLayout
-        android:id="@+id/glucoTabs"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:padding="@dimen/x8dp"
-        android:background="@color/c_white"
-        android:visibility="gone">
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:gravity="end"
-            android:orientation="vertical">
-
-            <edu.aku.ehs.widget.AnyTextView
-                android:id="@+id/txtFasting"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:background="@drawable/gluco_button_left_selected"
-                android:gravity="center"
-                android:padding="@dimen/x10dp"
-                android:text="Fasting"
-                android:textColor="@color/c_white"
-                android:textSize="@dimen/s12"
-                app:typeface="@string/font_bold" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:gravity="start"
-            android:orientation="vertical">
-
-
-            <edu.aku.ehs.widget.AnyTextView
-                android:id="@+id/txtRandom"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:background="@drawable/gluco_button_right_unselected"
-                android:gravity="center"
-                android:padding="@dimen/x10dp"
-                android:text="Random"
-                android:textColor="@color/base_reddish_light"
-                android:textSize="@dimen/s12"
-                app:typeface="@string/font_bold" />
-        </LinearLayout>
-
-    </LinearLayout>
-
 
 </LinearLayout>
 

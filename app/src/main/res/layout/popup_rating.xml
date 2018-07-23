@@ -17,7 +17,7 @@
         android:minLines="2"
         android:padding="@dimen/x5dp"
         android:text="@string/do_you_want_to_rate_your_last_nshopping_experience"
-        android:textColor="@color/txt_aku_blue"
+        android:textColor="@color/txt_blue"
         android:textSize="18sp"
         app:typeface="@string/font_bold" />
 

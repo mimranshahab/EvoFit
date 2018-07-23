@@ -7,7 +7,6 @@ import android.content.SharedPreferences;
 import com.google.gson.Gson;
 
 import edu.aku.ehs.constatnts.AppConstants;
-import edu.aku.ehs.models.NotificationModel;
 import edu.aku.ehs.models.receiving_model.CardMemberDetail;
 import edu.aku.ehs.models.receiving_model.UserDetailModel;
 import edu.aku.ehs.models.sending_model.InsertRegisteredDeviceModel;
@@ -126,10 +125,6 @@ public class SharedPreferenceManager {
 //        }.getType();
 //        return GsonFactory.getSimpleGson().fromJson(getString(KEY_CARD_MEMBER_DETAIL), CardMemberDetail.class);
         return getObject(KEY_CARD_MEMBER_DETAIL, CardMemberDetail.class);
-    }
-
-    public NotificationModel getNotificationModel() {
-        return getObject(USER_NOTIFICATION_DATA, NotificationModel.class);
     }
 
     public boolean isForcedRestart() {

@@ -13,6 +13,7 @@ import android.widget.RelativeLayout;
 import java.util.List;
 
 import edu.aku.ehs.R;
+import edu.aku.ehs.fragments.HomeFragment;
 import edu.aku.ehs.fragments.abstracts.BaseFragment;
 
 import static edu.aku.ehs.constatnts.AppConstants.JSON_STRING_KEY;
@@ -79,7 +80,7 @@ public class HomeActivity extends BaseActivity {
     }
 
     private void initFragments(String intentData) {
-
+        addDockableFragment(HomeFragment.newInstance(), false);
     }
 
     public FrameLayout getContMain() {

@@ -1,5 +1,6 @@
 package edu.aku.ehs.fragments.abstracts;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.annotation.Nullable;
@@ -16,7 +17,11 @@ import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 import android.widget.TextView;
 
+import com.gdacciaro.iOSDialog.iOSDialogBuilder;
+
+import edu.aku.ehs.R;
 import edu.aku.ehs.activities.BaseActivity;
+import edu.aku.ehs.activities.MainActivity;
 import edu.aku.ehs.callbacks.OnNewPacketReceivedListener;
 import edu.aku.ehs.constatnts.AppConstants;
 import edu.aku.ehs.helperclasses.ui.helper.KeyboardHelper;
@@ -241,17 +246,28 @@ public abstract class BaseFragment extends Fragment implements View.OnClickListe
     @Override
     public void onNewPacket(int event, Object data) {
         switch (event) {
-            case ON_SELECTED_USER_UPDATE:
-                if (data instanceof UserDetailModel) {
-                    UserDetailModel userDetailModel = (UserDetailModel) data;
-                    if (getBaseActivity().getTitleBar() != null
-                            && getBaseActivity().getTitleBar().circleImageView != null
-                            && getBaseActivity().getTitleBar().circleImageView.getVisibility() == View.VISIBLE) {
-                        getBaseActivity().getTitleBar().setUserDisplay(userDetailModel, getContext());
-                    }
-                }
-                break;
+
         }
     }
 
+
+
+    public static void logoutClick(final BaseFragment baseFragment) {
+        Context context = baseFragment.getContext();
+
+        new iOSDialogBuilder(context)
+                .setTitle(context.getString(R.string.logout))
+                .setSubtitle(context.getString(R.string.areYouSureToLogout))
+                .setBoldPositiveLabel(false)
+                .setCancelable(false)
+                .setPositiveListener(context.getString(R.string.yes), dialog -> {
+                    dialog.dismiss();
+                    baseFragment.sharedPreferenceManager.clearDB();
+                    baseFragment.getBaseActivity().clearAllActivitiesExceptThis(MainActivity.class);
+                })
+                .setNegativeListener(context.getString(R.string.no), dialog -> dialog.dismiss())
+                .build().show();
+
+
+    }
 }
