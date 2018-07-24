@@ -21,32 +21,32 @@
     <LinearLayout
         android:id="@+id/containerTitlebar1"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/x45dp"
+        android:layout_height="@dimen/x40dp"
         android:layout_alignParentTop="true"
-        android:background="@color/colorPrimary"
+        android:background="@drawable/title_bar_gradient"
         android:gravity="center_vertical"
         android:paddingLeft="@dimen/x8dp"
         android:paddingRight="@dimen/x8dp">
         <!--<ImageButton-->
-            <!--android:id="@+id/btnLeft1"-->
-            <!--android:layout_width="wrap_content"-->
-            <!--android:layout_height="match_parent"-->
-            <!--android:background="@color/colorPrimary"-->
-            <!--android:padding="@dimen/x10dp"-->
-            <!--android:src="@drawable/ic_back" />-->
+        <!--android:id="@+id/btnLeft1"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="match_parent"-->
+        <!--android:background="@color/colorPrimary"-->
+        <!--android:padding="@dimen/x10dp"-->
+        <!--android:src="@drawable/ic_back" />-->
 
 
         <TextView
             android:id="@+id/btnLeft1"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:background="@color/colorPrimary"
-            android:gravity="center"
-            android:textColor="@color/c_white"
-            android:text="Back"
             android:drawablePadding="@dimen/x5dp"
+            android:drawableStart="@drawable/ic_back"
+            android:gravity="center"
+            android:scaleX="1.5"
+            android:scaleY="1.5"
             android:padding="@dimen/x5dp"
-            android:drawableStart="@drawable/ic_back" />
+            android:textColor="@color/c_white" />
 
 
         <edu.aku.ehs.widget.AnyTextView
@@ -59,7 +59,7 @@
             android:singleLine="true"
             android:text="Family Hifazat"
             android:textColor="#fff"
-            android:textSize="@dimen/s17"
+            android:textSize="@dimen/s15"
             app:typeface="@string/font_bold" />
 
 
@@ -93,7 +93,6 @@
             android:layout_centerVertical="true"
             android:layout_marginLeft="@dimen/x10dp"
             android:layout_toLeftOf="@id/btnRight1"
-            android:background="@color/colorPrimary"
             android:padding="@dimen/x5dp"
             android:src="@drawable/b_home_icon"
             android:visibility="gone" />
@@ -106,23 +105,21 @@
             android:layout_centerVertical="true"
             android:layout_marginLeft="@dimen/x10dp"
             android:layout_toLeftOf="@id/btnRight2"
-            android:background="@color/colorPrimary"
             android:padding="@dimen/x5dp"
-            android:visibility="gone"
-            android:src="@drawable/imgsearch" />
+            android:src="@drawable/imgsearch"
+            android:visibility="gone" />
 
         <TextView
             android:id="@+id/btnRight2"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_marginLeft="@dimen/x8dp"
-            android:background="@color/colorPrimary"
-            android:padding="@dimen/x5dp"
-            android:text="Home"
-            android:gravity="center"
-            android:textColor="@color/c_white"
-            android:drawablePadding="@dimen/x5dp"
             android:drawableEnd="@drawable/b_home_icon"
+            android:drawablePadding="@dimen/x5dp"
+            android:gravity="center"
+            android:background="@color/transparent"
+            android:padding="@dimen/x5dp"
+            android:textColor="@color/c_white"
             android:visibility="visible" />
 
 

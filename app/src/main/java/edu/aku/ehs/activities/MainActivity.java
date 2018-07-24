@@ -12,6 +12,7 @@ import java.util.List;
 
 import edu.aku.ehs.R;
 import edu.aku.ehs.constatnts.AppConstants;
+import edu.aku.ehs.fragments.LoginFragment;
 import edu.aku.ehs.fragments.abstracts.BaseFragment;
 import edu.aku.ehs.helperclasses.RunTimePermissions;
 import edu.aku.ehs.managers.SharedPreferenceManager;
@@ -66,7 +67,7 @@ public class MainActivity extends BaseActivity {
     private void initFragments() {
         if (SharedPreferenceManager.getInstance(getApplicationContext()).getString(AppConstants.KEY_CARD_NUMBER) == null
                 || SharedPreferenceManager.getInstance(getApplicationContext()).getString(AppConstants.KEY_CARD_NUMBER).isEmpty()) {
-//            replacePermanentFramgment(LoginFragment.newInstance(), false);
+            addDockableFragment(LoginFragment.newInstance(), false);
         } else {
             openActivity(HomeActivity.class);
             this.finish();

@@ -71,11 +71,11 @@
                 android:maxLength="4"
                 android:minWidth="@dimen/x180dp"
                 android:padding="@dimen/x20dp"
-                android:textColor="@color/txt_aku_blue"
+                android:textColor="@color/txt_blue"
                 android:textIsSelectable="false"
                 android:textSize="@dimen/s20"
                 android:visibility="visible"
-                app:pinLineColors="@color/txt_aku_blue"
+                app:pinLineColors="@color/txt_blue"
                 app:typeface="@string/font_bold" />
 
 

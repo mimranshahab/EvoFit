@@ -23,7 +23,7 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 import butterknife.Unbinder;
 import edu.aku.ehs.R;
-import edu.aku.ehs.adapters.recyleradapters.SpinnerDialogAdapter;
+import edu.aku.ehs.adapters.SpinnerDialogAdapter;
 import edu.aku.ehs.callbacks.OnSpinnerItemClickListener;
 import edu.aku.ehs.models.SpinnerModel;
 import edu.aku.ehs.widget.recyclerview_layout.CustomLayoutManager;

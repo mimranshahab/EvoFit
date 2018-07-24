@@ -50,7 +50,7 @@ import java.util.ArrayList;
 
 import edu.aku.ehs.R;
 import edu.aku.ehs.activities.BaseActivity;
-import edu.aku.ehs.adapters.recyleradapters.SpinnerDialogAdapter;
+import edu.aku.ehs.adapters.SpinnerDialogAdapter;
 import edu.aku.ehs.callbacks.OnItemSelectListner;
 import edu.aku.ehs.callbacks.OnSpinnerItemClickListener;
 import edu.aku.ehs.fragments.abstracts.BaseFragment;

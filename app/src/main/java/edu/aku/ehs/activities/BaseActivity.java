@@ -38,7 +38,7 @@ public abstract class BaseActivity extends AppCompatActivity {
         setContentView(getViewId());
         setAndBindTitleBar();
         drawerLayout = (DrawerLayout) findViewById(getDrawerLayoutId());
-
+        drawerLayout.setDrawerLockMode(DrawerLayout.LOCK_MODE_LOCKED_CLOSED);
         addDrawerFragment();
     }
 
