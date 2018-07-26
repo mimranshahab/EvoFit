@@ -20,19 +20,38 @@
         app:corner_radius="@dimen/x10dp">
 
 
-        <edu.aku.ehs.widget.AnyTextView
-            android:id="@+id/txtSessionName"
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:drawableRight="@drawable/ic_next_arrow"
-            android:ellipsize="end"
-            android:gravity="center_horizontal"
-            android:padding="@dimen/x3dp"
-            android:singleLine="true"
-            android:text="Session 1"
-            android:textColor="@color/c_white"
-            android:textSize="@dimen/s18"
-            app:typeface="@string/font_bold" />
+            android:layout_height="wrap_content">
+
+
+            <edu.aku.ehs.widget.AnyTextView
+                android:id="@+id/txtSessionName"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:ellipsize="end"
+                android:padding="@dimen/x3dp"
+                android:singleLine="true"
+                android:text="Session 1"
+                android:textColor="@color/c_white"
+                android:textSize="@dimen/s20"
+                app:typeface="@string/font_bold" />
+
+            <edu.aku.ehs.widget.AnyTextView
+                android:id="@+id/txtNoOfEmployee"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:ellipsize="end"
+                android:gravity="center"
+                android:padding="@dimen/x3dp"
+                android:singleLine="true"
+                android:text="No. of Employee: 50"
+                android:textColor="@color/c_white"
+                android:textSize="@dimen/s15"
+                app:typeface="@string/font_bold" />
+        </LinearLayout>
+
 
         <com.jcminarro.roundkornerlayout.RoundKornerLinearLayout
             android:layout_width="match_parent"
@@ -45,7 +64,6 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:ellipsize="end"
-                android:gravity="center"
                 android:padding="@dimen/x3dp"
                 android:singleLine="true"
                 android:text="Start Date: 10 July, 2018"
@@ -56,6 +74,7 @@
             <ImageView
                 android:layout_width="@dimen/x1dp"
                 android:layout_height="match_parent"
+                android:layout_margin="@dimen/x5dp"
                 android:background="@color/c_white" />
 
 
@@ -65,7 +84,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:ellipsize="end"
-                android:gravity="center"
+                android:gravity="end"
                 android:padding="@dimen/x3dp"
                 android:singleLine="true"
                 android:text="End Date: 20 July, 2018"
@@ -75,6 +94,127 @@
 
 
         </com.jcminarro.roundkornerlayout.RoundKornerLinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:weightSum="3">
+
+            <com.jcminarro.roundkornerlayout.RoundKornerLinearLayout
+                android:layout_width="@dimen/x0dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/x5dp"
+                android:layout_weight="1"
+                android:background="@color/white_transparent"
+                android:gravity="center"
+                android:orientation="vertical"
+                android:padding="@dimen/x5dp"
+                app:corner_radius="@dimen/x10dp">
+
+
+                <edu.aku.ehs.widget.AnyTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:ellipsize="end"
+                    android:padding="@dimen/x3dp"
+                    android:singleLine="true"
+                    android:text="No. of Enrolled"
+                    android:textColor="@color/txt_blue"
+                    android:textSize="@dimen/s14"
+                    app:typeface="@string/font_bold" />
+
+                <edu.aku.ehs.widget.AnyTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:ellipsize="end"
+                    android:padding="@dimen/x3dp"
+                    android:singleLine="true"
+                    android:text="20"
+                    android:textColor="@color/txt_blue"
+                    android:textSize="@dimen/s15"
+                    app:typeface="@string/font_bold" />
+
+
+            </com.jcminarro.roundkornerlayout.RoundKornerLinearLayout>
+
+            <com.jcminarro.roundkornerlayout.RoundKornerLinearLayout
+                android:layout_width="@dimen/x0dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/x5dp"
+                android:layout_weight="1"
+                android:background="@color/white_transparent"
+                android:gravity="center"
+                android:orientation="vertical"
+                android:padding="@dimen/x5dp"
+                app:corner_radius="@dimen/x10dp">
+
+
+                <edu.aku.ehs.widget.AnyTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:ellipsize="end"
+                    android:padding="@dimen/x3dp"
+                    android:singleLine="true"
+                    android:text="No. of In-Progress"
+                    android:textColor="@color/txt_blue"
+                    android:textSize="@dimen/s14"
+                    app:typeface="@string/font_bold" />
+
+                <edu.aku.ehs.widget.AnyTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:ellipsize="end"
+                    android:padding="@dimen/x3dp"
+                    android:singleLine="true"
+                    android:text="20"
+                    android:textColor="@color/txt_blue"
+                    android:textSize="@dimen/s15"
+                    app:typeface="@string/font_bold" />
+
+
+            </com.jcminarro.roundkornerlayout.RoundKornerLinearLayout>
+
+            <com.jcminarro.roundkornerlayout.RoundKornerLinearLayout
+                android:layout_width="@dimen/x0dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/x5dp"
+                android:layout_weight="1"
+                android:background="@color/white_transparent"
+                android:gravity="center"
+                android:orientation="vertical"
+                android:padding="@dimen/x5dp"
+                app:corner_radius="@dimen/x10dp">
+
+
+                <edu.aku.ehs.widget.AnyTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:ellipsize="end"
+                    android:padding="@dimen/x3dp"
+                    android:singleLine="true"
+                    android:text="No. of Assessed"
+                    android:textColor="@color/txt_blue"
+                    android:textSize="@dimen/s14"
+                    app:typeface="@string/font_bold" />
+
+                <edu.aku.ehs.widget.AnyTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:ellipsize="end"
+                    android:padding="@dimen/x3dp"
+                    android:singleLine="true"
+                    android:text="10"
+                    android:textColor="@color/txt_blue"
+                    android:textSize="@dimen/s15"
+                    app:typeface="@string/font_bold" />
+
+
+            </com.jcminarro.roundkornerlayout.RoundKornerLinearLayout>
+
+
+        </LinearLayout>
 
 
     </com.jcminarro.roundkornerlayout.RoundKornerLinearLayout>

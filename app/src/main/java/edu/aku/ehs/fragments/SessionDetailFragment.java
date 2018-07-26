@@ -25,9 +25,11 @@ import butterknife.OnClick;
 import butterknife.Unbinder;
 import edu.aku.ehs.R;
 import edu.aku.ehs.adapters.recyleradapters.SessionAdapter;
+import edu.aku.ehs.adapters.recyleradapters.SessionDetailAdapter;
 import edu.aku.ehs.callbacks.OnItemClickListener;
 import edu.aku.ehs.fragments.abstracts.BaseFragment;
 import edu.aku.ehs.helperclasses.ui.helper.UIHelper;
+import edu.aku.ehs.models.SessionDetailModel;
 import edu.aku.ehs.models.SessionModel;
 import edu.aku.ehs.widget.AnyEditTextView;
 import edu.aku.ehs.widget.AnyTextView;
@@ -37,7 +39,7 @@ import edu.aku.ehs.widget.TitleBar;
  * Created by hamza.ahmed on 7/23/2018.
  */
 
-public class SessionListFragment extends BaseFragment implements OnItemClickListener {
+public class SessionDetailFragment extends BaseFragment implements OnItemClickListener {
 
     Unbinder unbinder;
     @BindView(R.id.imgBanner)
@@ -58,15 +60,15 @@ public class SessionListFragment extends BaseFragment implements OnItemClickList
     RelativeLayout contParent;
 
 
-    private ArrayList<SessionModel> arrData;
-    private SessionAdapter adapter;
+    private ArrayList<SessionDetailModel> arrData;
+    private SessionDetailAdapter adapter;
 
 
-    public static SessionListFragment newInstance() {
+    public static SessionDetailFragment newInstance() {
 
         Bundle args = new Bundle();
 
-        SessionListFragment fragment = new SessionListFragment();
+        SessionDetailFragment fragment = new SessionDetailFragment();
         fragment.setArguments(args);
         return fragment;
     }
@@ -110,8 +112,8 @@ public class SessionListFragment extends BaseFragment implements OnItemClickList
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        arrData = new ArrayList<SessionModel>();
-        adapter = new SessionAdapter(getBaseActivity(), arrData, this);
+        arrData = new ArrayList<SessionDetailModel>();
+        adapter = new SessionDetailAdapter(getBaseActivity(), arrData, this);
     }
 
     @Override
@@ -136,9 +138,23 @@ public class SessionListFragment extends BaseFragment implements OnItemClickList
 
     private void bindData() {
         arrData.clear();
+        SessionDetailModel sessionDetailModel;
+
         for (int i = 0; i < 10; i++) {
-            SessionModel sessionModel = new SessionModel("Session " + i, "", "");
-            arrData.add(sessionModel);
+            if (i < 2) {
+                sessionDetailModel = new SessionDetailModel("Employee " + i, "Enrolled");
+
+            } else if (i >= 2 && i < 4) {
+                sessionDetailModel = new SessionDetailModel("Employee " + i, "Scheduled");
+            }else if (i >= 4 && i < 6) {
+                sessionDetailModel = new SessionDetailModel("Employee " + i, "In Progree");
+            }else if (i >= 6 && i < 8) {
+                sessionDetailModel = new SessionDetailModel("Employee " + i, "Closed");
+            } else {
+                sessionDetailModel = new SessionDetailModel("Employee " + i, "Cancelled");
+
+            }
+            arrData.add(sessionDetailModel);
         }
         adapter.notifyDataSetChanged();
     }
@@ -163,7 +179,7 @@ public class SessionListFragment extends BaseFragment implements OnItemClickList
 
     @Override
     public void onItemClick(int position, Object object) {
-        getBaseActivity().addDockableFragment(SessionDetailFragment.newInstance(), false);
+        UIHelper.showToast(getContext(), "Clicked on: " + position);
     }
 
     @OnClick(R.id.fab)

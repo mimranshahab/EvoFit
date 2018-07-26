@@ -16,6 +16,8 @@ public class SessionModel {
         this.stopDate = stopDate;
     }
 
+
+
     public String getSessionName() {
         return sessionName;
     }
