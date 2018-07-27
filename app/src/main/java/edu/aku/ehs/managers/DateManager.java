@@ -8,6 +8,7 @@ import android.widget.TextView;
 import android.widget.TimePicker;
 
 import edu.aku.ehs.callbacks.OnCalendarUpdate;
+import edu.aku.ehs.callbacks.OnDatePicked;
 import edu.aku.ehs.constatnts.AppConstants;
 import edu.aku.ehs.helperclasses.ui.helper.UIHelper;
 
@@ -413,6 +414,37 @@ public class DateManager {
         } else {
             UIHelper.showLongToastInCenter(context, "Unable to show Date picker");
         }
+    }
+
+    public static void showDatePicker(final Context context, final OnDatePicked onDatePicked, boolean isCurrentDateMaxiumum, boolean isCurrentDateMinimum) {
+
+        final Calendar myCalendar = Calendar.getInstance();
+        DatePickerDialog.OnDateSetListener date = new DatePickerDialog.OnDateSetListener() {
+            @Override
+            public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
+                // TODO Auto-generated method stub
+                myCalendar.set(Calendar.YEAR, year);
+                myCalendar.set(Calendar.MONTH, monthOfYear);
+                myCalendar.set(Calendar.DAY_OF_MONTH, dayOfMonth);
+                String myFormat = "MMMM dd, yyyy"; // In which you need put here
+                SimpleDateFormat sdf = new SimpleDateFormat(myFormat, Locale.US);
+                //UIHelper.showLongToastInCenter(context, sdf.format(myCalendar.getTime()));
+                if (onDatePicked != null) {
+                    onDatePicked.onDatePicked(sdf.format(myCalendar.getTime()));
+
+                }
+
+            }
+
+        };
+        DatePickerDialog datePickerDialog = new DatePickerDialog(context, date, myCalendar.get(Calendar.YEAR), myCalendar.get(Calendar.MONTH), myCalendar.get(Calendar.DAY_OF_MONTH));
+        if (isCurrentDateMaxiumum) {
+            datePickerDialog.getDatePicker().setMaxDate(myCalendar.getTimeInMillis());
+        }
+        if (isCurrentDateMinimum) {
+            datePickerDialog.getDatePicker().setMinDate(myCalendar.getTimeInMillis());
+        }
+        datePickerDialog.show();
     }
 
 

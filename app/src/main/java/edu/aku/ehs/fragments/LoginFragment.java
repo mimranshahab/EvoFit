@@ -79,6 +79,7 @@ public class LoginFragment extends BaseFragment {
 
     @OnClick(R.id.btnLogin)
     public void onViewClicked() {
+        getBaseActivity().finish();
         getBaseActivity().openActivity(HomeActivity.class);
     }
 }

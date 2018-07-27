@@ -49,12 +49,32 @@ public class SessionDetailAdapter extends RecyclerView.Adapter<SessionDetailAdap
     public void onBindViewHolder(final ViewHolder holder, int i) {
         SessionDetailModel model = arrData.get(i);
         holder.txtEmployeeName.setText(model.getEmployeeName());
-        holder.txtStatus.setText(model.getStatus());
+        holder.txtStatus.setText(model.getStatus().canonicalForm());
+
+        holder.btnSchedule.setVisibility(View.VISIBLE);
+        switch (model.getStatus()) {
+            case ENROLLED:
+                holder.btnSchedule.setText("Set Schedule");
+                break;
+            case SCHEDULED:
+                holder.btnSchedule.setText("Update Schedule");
+                break;
+            case INPROGRESS:
+                holder.btnSchedule.setText("Cancel Schedule");
+                break;
+            case CLOSED:
+            case CANCELLED:
+                holder.btnSchedule.setVisibility(View.GONE);
+                break;
+        }
+
+
+
         setListener(holder, model);
     }
 
     private void setListener(final ViewHolder holder, final SessionDetailModel model) {
-        holder.contListItem.setOnClickListener(new View.OnClickListener() {
+        holder.btnSchedule.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 onItemClick.onItemClick(holder.getAdapterPosition(), model);

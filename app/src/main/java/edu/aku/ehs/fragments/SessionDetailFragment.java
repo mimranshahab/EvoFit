@@ -12,8 +12,11 @@ import android.view.animation.AnimationUtils;
 import android.view.animation.LayoutAnimationController;
 import android.widget.AdapterView;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 
+import com.gdacciaro.iOSDialog.iOSDialog;
+import com.gdacciaro.iOSDialog.iOSDialogClickListener;
 import com.github.clans.fab.FloatingActionButton;
 import com.jcminarro.roundkornerlayout.RoundKornerLinearLayout;
 
@@ -26,9 +29,14 @@ import butterknife.Unbinder;
 import edu.aku.ehs.R;
 import edu.aku.ehs.adapters.recyleradapters.SessionAdapter;
 import edu.aku.ehs.adapters.recyleradapters.SessionDetailAdapter;
+import edu.aku.ehs.callbacks.OnDatePicked;
 import edu.aku.ehs.callbacks.OnItemClickListener;
+import edu.aku.ehs.enums.EmployeeSessionState;
 import edu.aku.ehs.fragments.abstracts.BaseFragment;
+import edu.aku.ehs.helperclasses.DateHelper;
+import edu.aku.ehs.helperclasses.Helper;
 import edu.aku.ehs.helperclasses.ui.helper.UIHelper;
+import edu.aku.ehs.managers.DateManager;
 import edu.aku.ehs.models.SessionDetailModel;
 import edu.aku.ehs.models.SessionModel;
 import edu.aku.ehs.widget.AnyEditTextView;
@@ -58,7 +66,8 @@ public class SessionDetailFragment extends BaseFragment implements OnItemClickLi
     FloatingActionButton fab;
     @BindView(R.id.contParent)
     RelativeLayout contParent;
-
+    @BindView(R.id.contOptionButtons)
+    LinearLayout contOptionButtons;
 
     private ArrayList<SessionDetailModel> arrData;
     private SessionDetailAdapter adapter;
@@ -127,10 +136,9 @@ public class SessionDetailFragment extends BaseFragment implements OnItemClickLi
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        fab.setVisibility(View.VISIBLE);
         contSearch.setVisibility(View.VISIBLE);
         imgBanner.setVisibility(View.VISIBLE);
-
+        contOptionButtons.setVisibility(View.VISIBLE);
         bindView();
 
         bindData();
@@ -142,16 +150,16 @@ public class SessionDetailFragment extends BaseFragment implements OnItemClickLi
 
         for (int i = 0; i < 10; i++) {
             if (i < 2) {
-                sessionDetailModel = new SessionDetailModel("Employee " + i, "Enrolled");
+                sessionDetailModel = new SessionDetailModel("Employee " + i, EmployeeSessionState.ENROLLED);
 
             } else if (i >= 2 && i < 4) {
-                sessionDetailModel = new SessionDetailModel("Employee " + i, "Scheduled");
-            }else if (i >= 4 && i < 6) {
-                sessionDetailModel = new SessionDetailModel("Employee " + i, "In Progree");
-            }else if (i >= 6 && i < 8) {
-                sessionDetailModel = new SessionDetailModel("Employee " + i, "Closed");
+                sessionDetailModel = new SessionDetailModel("Employee " + i, EmployeeSessionState.SCHEDULED);
+            } else if (i >= 4 && i < 6) {
+                sessionDetailModel = new SessionDetailModel("Employee " + i, EmployeeSessionState.INPROGRESS);
+            } else if (i >= 6 && i < 8) {
+                sessionDetailModel = new SessionDetailModel("Employee " + i, EmployeeSessionState.CANCELLED);
             } else {
-                sessionDetailModel = new SessionDetailModel("Employee " + i, "Cancelled");
+                sessionDetailModel = new SessionDetailModel("Employee " + i, EmployeeSessionState.CLOSED);
 
             }
             arrData.add(sessionDetailModel);
@@ -179,11 +187,24 @@ public class SessionDetailFragment extends BaseFragment implements OnItemClickLi
 
     @Override
     public void onItemClick(int position, Object object) {
-        UIHelper.showToast(getContext(), "Clicked on: " + position);
+        SessionDetailModel sessionDetailModel = (SessionDetailModel) object;
+        switch (sessionDetailModel.getStatus()) {
+            case ENROLLED:
+                DateManager.showDatePicker(getContext(), date -> UIHelper.showToast(getContext(), date), false, true);
+                break;
+            case SCHEDULED:
+                DateManager.showDatePicker(getContext(), date -> UIHelper.showToast(getContext(), date), false, true);
+                break;
+            case INPROGRESS:
+                UIHelper.showIOSPopup(getContext(), "Cancel Schedule", "Do you really want to cancel this schedule",
+                        "Yes", "No", dialog -> {
+                        }, dialog -> {
+                        });
+                break;
+            case CLOSED:
+            case CANCELLED:
+                break;
+        }
     }
 
-    @OnClick(R.id.fab)
-    public void onViewClicked() {
-        getBaseActivity().addDockableFragment(AddSessionFragment.newInstance(), false);
-    }
 }

@@ -35,6 +35,9 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.gdacciaro.iOSDialog.iOSDialog;
+import com.gdacciaro.iOSDialog.iOSDialogBuilder;
+import com.gdacciaro.iOSDialog.iOSDialogClickListener;
 import com.google.common.base.Strings;
 import com.google.gson.reflect.TypeToken;
 import com.kaopiz.kprogresshud.KProgressHUD;
@@ -50,6 +53,7 @@ import java.util.ArrayList;
 
 import edu.aku.ehs.R;
 import edu.aku.ehs.activities.BaseActivity;
+import edu.aku.ehs.activities.MainActivity;
 import edu.aku.ehs.adapters.SpinnerDialogAdapter;
 import edu.aku.ehs.callbacks.OnItemSelectListner;
 import edu.aku.ehs.callbacks.OnSpinnerItemClickListener;
@@ -704,6 +708,28 @@ public class UIHelper {
 //                .setGraceTime(500)
 
         return progressHUD;
+
+    }
+
+
+    public static void showIOSPopup(Context context, String title, String subTitle, String positiveLabel, String negativeLabel, iOSDialogClickListener positiveListener, iOSDialogClickListener negativeListener) {
+
+        new iOSDialogBuilder(context)
+                .setTitle(title)
+                .setSubtitle(subTitle)
+                .setBoldPositiveLabel(false)
+                .setCancelable(false)
+                .setPositiveListener(positiveLabel, dialog -> {
+                    positiveListener.onClick(dialog);
+                    dialog.dismiss();
+
+                })
+                .setNegativeListener(negativeLabel, dialog -> {
+                    negativeListener.onClick(dialog);
+                    dialog.dismiss();
+                })
+                .build().show();
+
 
     }
 

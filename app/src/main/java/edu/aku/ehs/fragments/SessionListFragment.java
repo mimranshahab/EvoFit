@@ -12,6 +12,7 @@ import android.view.animation.AnimationUtils;
 import android.view.animation.LayoutAnimationController;
 import android.widget.AdapterView;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 
 import com.github.clans.fab.FloatingActionButton;
@@ -56,6 +57,8 @@ public class SessionListFragment extends BaseFragment implements OnItemClickList
     FloatingActionButton fab;
     @BindView(R.id.contParent)
     RelativeLayout contParent;
+    @BindView(R.id.contOptionButtons)
+    LinearLayout contOptionButtons;
 
 
     private ArrayList<SessionModel> arrData;

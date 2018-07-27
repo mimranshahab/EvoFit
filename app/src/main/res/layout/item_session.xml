@@ -35,7 +35,7 @@
                 android:singleLine="true"
                 android:text="Session 1"
                 android:textColor="@color/c_white"
-                android:textSize="@dimen/s20"
+                android:textSize="@dimen/s16"
                 app:typeface="@string/font_bold" />
 
             <edu.aku.ehs.widget.AnyTextView
@@ -48,7 +48,7 @@
                 android:singleLine="true"
                 android:text="No. of Employee: 50"
                 android:textColor="@color/c_white"
-                android:textSize="@dimen/s15"
+                android:textSize="@dimen/s14"
                 app:typeface="@string/font_bold" />
         </LinearLayout>
 
@@ -68,7 +68,7 @@
                 android:singleLine="true"
                 android:text="Start Date: 10 July, 2018"
                 android:textColor="@color/c_white"
-                android:textSize="@dimen/s15"
+                android:textSize="@dimen/s14"
                 app:typeface="@string/font_bold" />
 
             <ImageView
@@ -89,7 +89,7 @@
                 android:singleLine="true"
                 android:text="End Date: 20 July, 2018"
                 android:textColor="@color/c_white"
-                android:textSize="@dimen/s15"
+                android:textSize="@dimen/s14"
                 app:typeface="@string/font_bold" />
 
 
@@ -107,10 +107,10 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="@dimen/x5dp"
                 android:layout_weight="1"
-                android:background="@color/white_transparent"
+                android:background="@color/c_white"
                 android:gravity="center"
                 android:orientation="vertical"
-                android:padding="@dimen/x5dp"
+                android:padding="@dimen/x3dp"
                 app:corner_radius="@dimen/x10dp">
 
 
@@ -122,7 +122,7 @@
                     android:singleLine="true"
                     android:text="No. of Enrolled"
                     android:textColor="@color/txt_blue"
-                    android:textSize="@dimen/s14"
+                    android:textSize="@dimen/s13"
                     app:typeface="@string/font_bold" />
 
                 <edu.aku.ehs.widget.AnyTextView
@@ -133,7 +133,7 @@
                     android:singleLine="true"
                     android:text="20"
                     android:textColor="@color/txt_blue"
-                    android:textSize="@dimen/s15"
+                    android:textSize="@dimen/s14"
                     app:typeface="@string/font_bold" />
 
 
@@ -144,10 +144,10 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="@dimen/x5dp"
                 android:layout_weight="1"
-                android:background="@color/white_transparent"
+                android:background="@color/c_white"
                 android:gravity="center"
                 android:orientation="vertical"
-                android:padding="@dimen/x5dp"
+                android:padding="@dimen/x3dp"
                 app:corner_radius="@dimen/x10dp">
 
 
@@ -159,7 +159,7 @@
                     android:singleLine="true"
                     android:text="No. of In-Progress"
                     android:textColor="@color/txt_blue"
-                    android:textSize="@dimen/s14"
+                    android:textSize="@dimen/s13"
                     app:typeface="@string/font_bold" />
 
                 <edu.aku.ehs.widget.AnyTextView
@@ -170,7 +170,7 @@
                     android:singleLine="true"
                     android:text="20"
                     android:textColor="@color/txt_blue"
-                    android:textSize="@dimen/s15"
+                    android:textSize="@dimen/s14"
                     app:typeface="@string/font_bold" />
 
 
@@ -181,10 +181,10 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="@dimen/x5dp"
                 android:layout_weight="1"
-                android:background="@color/white_transparent"
+                android:background="@color/c_white"
                 android:gravity="center"
                 android:orientation="vertical"
-                android:padding="@dimen/x5dp"
+                android:padding="@dimen/x3dp"
                 app:corner_radius="@dimen/x10dp">
 
 
@@ -196,7 +196,7 @@
                     android:singleLine="true"
                     android:text="No. of Assessed"
                     android:textColor="@color/txt_blue"
-                    android:textSize="@dimen/s14"
+                    android:textSize="@dimen/s13"
                     app:typeface="@string/font_bold" />
 
                 <edu.aku.ehs.widget.AnyTextView
@@ -207,7 +207,7 @@
                     android:singleLine="true"
                     android:text="10"
                     android:textColor="@color/txt_blue"
-                    android:textSize="@dimen/s15"
+                    android:textSize="@dimen/s14"
                     app:typeface="@string/font_bold" />
 
 
