@@ -101,17 +101,12 @@ dependencies {
     compile 'com.google.firebase:firebase-core:11.8.0'
     compile 'com.google.firebase:firebase-core:11.8.0'
 //    compile 'com.github.apache:commons-io:2.5'
-    compile 'commons-io:commons-io:2.4'
-
-    compile 'com.jjoe64:graphview:4.2.1'
-    compile 'me.tankery.lib:circularSeekBar:1.1.4'
-    compile 'com.github.santalu:emptyview:1.0.4'
-    compile 'com.github.warkiz.widget:indicatorseekbar:1.2.9'
     compile 'com.jsibbold:zoomage:1.1.0'
-    compile 'com.shawnlin:number-picker:2.4.6'
+    compile 'commons-io:commons-io:2.4'
     compile 'com.gdacciaro:iosdialog:1.0.3'
     compile 'com.kaopiz:kprogresshud:1.1.0'
     compile 'com.jcminarro:RoundKornerLayouts:0.3.1'
+    compile 'com.github.HITGIF:TextFieldBoxes:1.4.4'
 
     compile('com.crashlytics.sdk.android:crashlytics:2.9.3@aar') {
         transitive = true;

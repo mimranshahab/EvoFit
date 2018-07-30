@@ -3,9 +3,9 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/c_white"
     android:gravity="center_horizontal"
     android:orientation="vertical">
-
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -16,13 +16,13 @@
         android:paddingBottom="@dimen/x10dp"
         android:paddingTop="@dimen/x10dp">
 
-        <de.hdodenhof.circleimageview.CircleImageView
-            android:id="@+id/imgNursePic"
-            android:layout_width="@dimen/x100dp"
-            android:layout_height="@dimen/x100dp"
-            android:src="@drawable/user_image"
-            app:civ_border_color="@color/c_white"
-            app:civ_border_width="@dimen/x2dp" />
+        <!--<de.hdodenhof.circleimageview.CircleImageView-->
+        <!--android:id="@+id/imgNursePic"-->
+        <!--android:layout_width="@dimen/x100dp"-->
+        <!--android:layout_height="@dimen/x100dp"-->
+        <!--android:src="@drawable/img_placeholder_nurse"-->
+        <!--app:civ_border_color="@color/c_white"-->
+        <!--app:civ_border_width="@dimen/x2dp" />-->
 
 
         <edu.aku.ehs.widget.AnyTextView
@@ -33,10 +33,10 @@
             android:gravity="center"
             android:padding="@dimen/x3dp"
             android:singleLine="true"
-            android:text="Nurse Name"
+            android:text="Maryam Ahmed"
             android:textColor="@color/c_white"
             android:textSize="@dimen/s17"
-            app:typeface="@string/font_bold"/>
+            app:typeface="@string/font_bold" />
 
         <edu.aku.ehs.widget.AnyTextView
             android:id="@+id/txtNurseDesignation"
@@ -46,28 +46,29 @@
             android:gravity="center"
             android:padding="@dimen/x3dp"
             android:singleLine="true"
-            android:text="Nurse Department/ Designation"
+            android:text="CIME / Nurse"
             android:textColor="@color/c_white"
             android:textSize="@dimen/s16"
-            app:typeface="@string/font_regular"/>
+            app:typeface="@string/font_regular" />
 
     </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:gravity="center_horizontal"
-        android:paddingTop="@dimen/x50dp">
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:padding="@dimen/x20dp">
 
         <LinearLayout
             android:id="@+id/contSession"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="@dimen/x120dp"
+            android:layout_height="@dimen/x120dp"
             android:layout_margin="@dimen/x10dp"
-            android:background="@drawable/shadow_box_avg"
+            android:background="@drawable/shape_circle"
             android:gravity="center"
-            android:orientation="vertical"
-            android:padding="@dimen/x5dp">
+            android:elevation="@dimen/x10dp"
+            android:orientation="vertical">
 
             <ImageView
                 android:layout_width="wrap_content"
@@ -77,23 +78,59 @@
             <edu.aku.ehs.widget.AnyTextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:gravity="center"
                 android:padding="@dimen/x3dp"
-                android:text="Session"
+                android:text="Sessions"
                 android:textColor="@color/colorAccent"
-                android:textSize="@dimen/s15"
+                android:textSize="@dimen/s16"
                 app:typeface="@string/font_bold" />
 
         </LinearLayout>
 
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:gravity="center_horizontal"
+            android:orientation="vertical">
+
+
+            <ImageView
+                android:layout_width="@dimen/x1dp"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:background="@color/c_navy_blue" />
+
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:layout_width="@dimen/x150dp"
+                android:layout_height="@dimen/x150dp"
+                android:layout_marginLeft="@dimen/x10dp"
+                android:layout_marginRight="@dimen/x10dp"
+                android:src="@drawable/img_placeholder_nurse"
+                app:civ_border_color="@color/c_navy_blue"
+                app:civ_border_width="@dimen/x2dp" />
+
+
+            <ImageView
+                android:layout_width="@dimen/x1dp"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:background="@color/c_navy_blue" />
+
+
+        </LinearLayout>
+
+
         <LinearLayout
             android:id="@+id/contStats"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="@dimen/x120dp"
+            android:layout_height="@dimen/x120dp"
             android:layout_margin="@dimen/x10dp"
-            android:background="@drawable/shadow_box_avg"
+            android:background="@drawable/shape_circle"
             android:gravity="center"
-            android:orientation="vertical"
-            android:padding="@dimen/x5dp">
+            android:elevation="@dimen/x10dp"
+            android:orientation="vertical">
 
             <ImageView
                 android:layout_width="wrap_content"
@@ -103,16 +140,15 @@
             <edu.aku.ehs.widget.AnyTextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:gravity="center"
                 android:padding="@dimen/x3dp"
                 android:text="Stats"
                 android:textColor="@color/colorAccent"
-                android:textSize="@dimen/s15"
+                android:textSize="@dimen/s18"
                 app:typeface="@string/font_bold" />
 
         </LinearLayout>
 
-
     </LinearLayout>
-
 
 </LinearLayout>
