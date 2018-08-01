@@ -33,10 +33,12 @@
                 android:ellipsize="end"
                 android:padding="@dimen/x3dp"
                 android:singleLine="true"
-                android:text="Employee Name"
-                android:textColor="@color/txt_blue"
-                android:textSize="@dimen/s16"
-                app:typeface="@string/font_bold" />
+                android:text="Haris Maaz"
+                android:textColor="@color/txtBlue"
+                android:textSize="@dimen/s14"
+                app:typeface="@string/font_medium" />
+
+
 
             <com.jcminarro.roundkornerlayout.RoundKornerRelativeLayout
                 android:layout_width="wrap_content"
@@ -60,9 +62,9 @@
                         android:gravity="center"
                         android:singleLine="true"
                         android:text="Enrolled"
-                        android:textColor="@color/txt_blue"
+                        android:textColor="@color/txtBlue"
                         android:textSize="@dimen/s12"
-                        app:typeface="@string/font_bold" />
+                        app:typeface="@string/font_medium" />
                 </com.jcminarro.roundkornerlayout.RoundKornerLinearLayout>
 
 
@@ -86,8 +88,8 @@
                 android:padding="@dimen/x3dp"
                 android:singleLine="true"
                 android:text="20 July 2099"
-                android:textColor="@color/txt_blue"
-                android:textSize="@dimen/s14"
+                android:textColor="@color/txtBlue"
+                android:textSize="@dimen/s10"
                 app:typeface="@string/font_regular" />
 
 
@@ -102,7 +104,7 @@
 
             <Button
                 android:id="@+id/btnSchedule"
-                android:layout_width="@dimen/x120dp"
+                android:layout_width="@dimen/x100dp"
                 android:layout_height="@dimen/x30dp"
                 android:background="@drawable/img_button_clr"
                 android:ellipsize="end"
@@ -110,7 +112,7 @@
                 android:text="Update Schedule"
                 android:textAllCaps="false"
                 android:textColor="@color/c_white"
-                android:textSize="@dimen/s12" />
+                android:textSize="@dimen/s10" />
 
 
         </LinearLayout>

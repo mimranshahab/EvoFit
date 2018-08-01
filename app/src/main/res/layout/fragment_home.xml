@@ -35,7 +35,7 @@
             android:singleLine="true"
             android:text="Maryam Ahmed"
             android:textColor="@color/c_white"
-            android:textSize="@dimen/s17"
+            android:textSize="@dimen/s20"
             app:typeface="@string/font_bold" />
 
         <edu.aku.ehs.widget.AnyTextView
@@ -48,7 +48,7 @@
             android:singleLine="true"
             android:text="CIME / Nurse"
             android:textColor="@color/c_white"
-            android:textSize="@dimen/s16"
+            android:textSize="@dimen/s18"
             app:typeface="@string/font_regular" />
 
     </LinearLayout>
@@ -96,10 +96,10 @@
 
 
             <ImageView
-                android:layout_width="@dimen/x1dp"
+                android:layout_width="@dimen/x2dp"
                 android:layout_height="0dp"
                 android:layout_weight="1"
-                android:background="@color/c_navy_blue" />
+                android:background="@color/colorPrimaryDark" />
 
 
             <de.hdodenhof.circleimageview.CircleImageView
@@ -108,15 +108,15 @@
                 android:layout_marginLeft="@dimen/x10dp"
                 android:layout_marginRight="@dimen/x10dp"
                 android:src="@drawable/img_placeholder_nurse"
-                app:civ_border_color="@color/c_navy_blue"
+                app:civ_border_color="@color/colorPrimaryDark"
                 app:civ_border_width="@dimen/x2dp" />
 
 
             <ImageView
-                android:layout_width="@dimen/x1dp"
+                android:layout_width="@dimen/x2dp"
                 android:layout_height="0dp"
                 android:layout_weight="1"
-                android:background="@color/c_navy_blue" />
+                android:background="@color/colorPrimaryDark" />
 
 
         </LinearLayout>

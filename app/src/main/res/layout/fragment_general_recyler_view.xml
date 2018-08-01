@@ -22,7 +22,7 @@
             android:gravity="center"
             android:padding="@dimen/x10dp"
             android:text="No Item Found"
-            android:textColor="@color/txt_blue"
+            android:textColor="@color/txtBlue"
             android:textSize="@dimen/s15"
             android:visibility="gone"
             app:typeface="@string/font_bold" />
@@ -62,7 +62,7 @@
                 android:text="Add Schedule"
                 android:elevation="@dimen/x10dp"
 
-                android:textColor="@color/txt_blue" />
+                android:textColor="@color/txtBlue" />
 
 
             <Button
@@ -101,7 +101,7 @@
                 android:layout_margin="@dimen/x4dp"
                 android:padding="@dimen/x5dp"
                 android:src="@drawable/search2"
-                android:tint="@color/txt_blue" />
+                android:tint="@color/txtBlue" />
 
             <edu.aku.ehs.widget.AnyEditTextView
                 android:id="@+id/edtSearchBar"
@@ -141,7 +141,7 @@
             android:padding="@dimen/x8dp"
             android:src="@drawable/plus"
             android:visibility="gone"
-            app:fab_colorNormal="@color/colorPrimaryDark"
+            app:fab_colorNormal="@color/base_amber"
             app:fab_colorPressed="@color/colorAccent"
             app:fab_colorRipple="@color/colorPrimary"
             app:fab_size="normal" />

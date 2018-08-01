@@ -15,8 +15,6 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 
-import com.gdacciaro.iOSDialog.iOSDialog;
-import com.gdacciaro.iOSDialog.iOSDialogClickListener;
 import com.github.clans.fab.FloatingActionButton;
 import com.jcminarro.roundkornerlayout.RoundKornerLinearLayout;
 
@@ -24,21 +22,15 @@ import java.util.ArrayList;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
-import butterknife.OnClick;
 import butterknife.Unbinder;
 import edu.aku.ehs.R;
-import edu.aku.ehs.adapters.recyleradapters.SessionAdapter;
 import edu.aku.ehs.adapters.recyleradapters.SessionDetailAdapter;
-import edu.aku.ehs.callbacks.OnDatePicked;
 import edu.aku.ehs.callbacks.OnItemClickListener;
 import edu.aku.ehs.enums.EmployeeSessionState;
 import edu.aku.ehs.fragments.abstracts.BaseFragment;
-import edu.aku.ehs.helperclasses.DateHelper;
-import edu.aku.ehs.helperclasses.Helper;
 import edu.aku.ehs.helperclasses.ui.helper.UIHelper;
 import edu.aku.ehs.managers.DateManager;
 import edu.aku.ehs.models.SessionDetailModel;
-import edu.aku.ehs.models.SessionModel;
 import edu.aku.ehs.widget.AnyEditTextView;
 import edu.aku.ehs.widget.AnyTextView;
 import edu.aku.ehs.widget.TitleBar;
@@ -148,18 +140,15 @@ public class SessionDetailFragment extends BaseFragment implements OnItemClickLi
         arrData.clear();
         SessionDetailModel sessionDetailModel;
 
-        for (int i = 0; i < 10; i++) {
+        for (int i = 0; i < 8; i++) {
             if (i < 2) {
-                sessionDetailModel = new SessionDetailModel("Employee " + i, EmployeeSessionState.ENROLLED);
-
+                sessionDetailModel = new SessionDetailModel("Hamza Ahmed Khan", EmployeeSessionState.ENROLLED);
             } else if (i >= 2 && i < 4) {
-                sessionDetailModel = new SessionDetailModel("Employee " + i, EmployeeSessionState.SCHEDULED);
+                sessionDetailModel = new SessionDetailModel("Haris Maaz ", EmployeeSessionState.SCHEDULED);
             } else if (i >= 4 && i < 6) {
-                sessionDetailModel = new SessionDetailModel("Employee " + i, EmployeeSessionState.INPROGRESS);
-            } else if (i >= 6 && i < 8) {
-                sessionDetailModel = new SessionDetailModel("Employee " + i, EmployeeSessionState.CANCELLED);
+                sessionDetailModel = new SessionDetailModel("Aqsa Sarwar ", EmployeeSessionState.INPROGRESS);
             } else {
-                sessionDetailModel = new SessionDetailModel("Employee " + i, EmployeeSessionState.CLOSED);
+                sessionDetailModel = new SessionDetailModel("Mahrukh Mehmood ", EmployeeSessionState.CLOSED);
 
             }
             arrData.add(sessionDetailModel);
@@ -200,9 +189,6 @@ public class SessionDetailFragment extends BaseFragment implements OnItemClickLi
                         "Yes", "No", dialog -> {
                         }, dialog -> {
                         });
-                break;
-            case CLOSED:
-            case CANCELLED:
                 break;
         }
     }

@@ -61,9 +61,9 @@ public class SessionDetailAdapter extends RecyclerView.Adapter<SessionDetailAdap
                 break;
             case INPROGRESS:
                 holder.btnSchedule.setText("Cancel Schedule");
+                holder.btnSchedule.setVisibility(View.GONE);
                 break;
             case CLOSED:
-            case CANCELLED:
                 holder.btnSchedule.setVisibility(View.GONE);
                 break;
         }

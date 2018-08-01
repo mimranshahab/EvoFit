@@ -140,7 +140,7 @@ public class SessionListFragment extends BaseFragment implements OnItemClickList
     private void bindData() {
         arrData.clear();
         for (int i = 0; i < 10; i++) {
-            SessionModel sessionModel = new SessionModel("Session " + i, "", "");
+            SessionModel sessionModel = new SessionModel("Session - IT Department " + i, "", "");
             arrData.add(sessionModel);
         }
         adapter.notifyDataSetChanged();

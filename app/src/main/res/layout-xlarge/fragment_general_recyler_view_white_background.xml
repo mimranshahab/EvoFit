@@ -32,7 +32,7 @@
             android:gravity="center"
             android:padding="@dimen/x10dp"
             android:text="No Report Found"
-            android:textColor="@color/txt_blue"
+            android:textColor="@color/txtBlue"
             android:textSize="@dimen/s15"
             android:visibility="gone"
             app:typeface="@string/font_bold" />
@@ -59,7 +59,7 @@
             android:layout_margin="@dimen/x4dp"
             android:padding="@dimen/x7dp"
             android:src="@drawable/search2"
-            android:tint="@color/txt_blue"
+            android:tint="@color/txtBlue"
             android:visibility="gone" />
 
         <com.github.clans.fab.FloatingActionButton
