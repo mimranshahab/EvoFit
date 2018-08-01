@@ -38,16 +38,16 @@
 
             </com.jcminarro.roundkornerlayout.RoundKornerRelativeLayout>
 
-            <edu.aku.ehs.widget.AnyTextView
-                android:layout_width="@dimen/x25dp"
-                android:layout_height="@dimen/x25dp"
-                android:layout_alignRight="@id/contLogo"
-                android:background="@drawable/circle_green"
-                android:backgroundTint="@color/timeline_out_dark"
-                android:gravity="center"
-                android:text="+"
-                android:textColor="@color/c_white"
-                android:textSize="@dimen/s18" />
+            <!--<edu.aku.ehs.widget.AnyTextView-->
+            <!--android:layout_width="@dimen/x25dp"-->
+            <!--android:layout_height="@dimen/x25dp"-->
+            <!--android:layout_alignRight="@id/contLogo"-->
+            <!--android:background="@drawable/circle_green"-->
+            <!--android:backgroundTint="@color/timeline_out_dark"-->
+            <!--android:gravity="center"-->
+            <!--android:text="+"-->
+            <!--android:textColor="@color/c_white"-->
+            <!--android:textSize="@dimen/s18" />-->
 
 
         </RelativeLayout>
@@ -57,123 +57,84 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1"
+        android:layout_height="wrap_content"
         android:gravity="center_horizontal"
         android:orientation="vertical"
         android:padding="@dimen/x10dp">
 
 
-        <com.jcminarro.roundkornerlayout.RoundKornerLinearLayout
+        <studio.carbonylgroup.textfieldboxes.TextFieldBoxes
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="@dimen/x10dp"
-            android:background="@color/background_gray"
-            android:padding="@dimen/x10dp"
-            app:corner_radius="@dimen/x10dp">
+            app:labelText="Session Name"
+            app:maxCharacters="30"
+            app:primaryColor="@color/c_navy_blue"
+            app:secondaryColor="@color/colorAccent">
 
-            <edu.aku.ehs.widget.AnyTextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginRight="@dimen/x5dp"
-                android:text="Session Name"
-                android:textColor="@color/base_dark_gray"
-                android:textSize="@dimen/s14"
-                app:typeface="@string/font_regular" />
 
-            <edu.aku.ehs.widget.AnyEditTextView
+            <studio.carbonylgroup.textfieldboxes.ExtendedEditText
                 android:id="@+id/edtSessionName"
-                android:layout_width="0dp"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:background="@color/transparent"
-                android:backgroundTint="@color/transparent"
-                android:ellipsize="start"
-                android:gravity="right"
-                android:hint="Type Here"
-                android:maxLength="30"
+                android:imeOptions="actionNext"
+                android:maxLength="31"
                 android:singleLine="true"
-                android:textColor="@color/txt_blue"
-                android:textColorHint="@color/txt_blue"
-                android:textSize="@dimen/s15" />
+                android:textColor="@color/txtBlack" />
 
 
-        </com.jcminarro.roundkornerlayout.RoundKornerLinearLayout>
+        </studio.carbonylgroup.textfieldboxes.TextFieldBoxes>
 
 
-        <com.jcminarro.roundkornerlayout.RoundKornerLinearLayout
+
+
+
+        <studio.carbonylgroup.textfieldboxes.TextFieldBoxes
+            android:id="@+id/tfStartDate"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="@dimen/x10dp"
-            android:background="@color/background_gray"
-            android:padding="@dimen/x10dp"
-            app:corner_radius="@dimen/x10dp">
+            app:labelText="Start Date"
+            app:primaryColor="@color/c_navy_blue"
+            app:secondaryColor="@color/colorAccent">
 
-            <edu.aku.ehs.widget.AnyTextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginRight="@dimen/x5dp"
-                android:text="Start Date"
-                android:textColor="@color/base_dark_gray"
-                android:textSize="@dimen/s14"
-                app:typeface="@string/font_regular" />
 
-            <edu.aku.ehs.widget.AnyTextView
+            <studio.carbonylgroup.textfieldboxes.ExtendedEditText
                 android:id="@+id/txtStartDate"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:background="@color/transparent"
-                android:backgroundTint="@color/transparent"
-                android:ellipsize="start"
-                android:gravity="right"
-                android:hint="Tap here to select Date"
-                android:maxLength="30"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:imeOptions="actionNext"
+                android:editable="false"
+                android:clickable="false"
                 android:singleLine="true"
-                android:textColor="@color/txt_blue"
-                android:textColorHint="@color/txt_blue"
-                android:textSize="@dimen/s15" />
+                android:textColor="@color/txtBlack" />
 
 
-        </com.jcminarro.roundkornerlayout.RoundKornerLinearLayout>
+        </studio.carbonylgroup.textfieldboxes.TextFieldBoxes>
 
 
-        <com.jcminarro.roundkornerlayout.RoundKornerLinearLayout
+        <studio.carbonylgroup.textfieldboxes.TextFieldBoxes
+            android:id="@+id/tfEndDate"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="@dimen/x10dp"
-            android:background="@color/background_gray"
-            android:padding="@dimen/x10dp"
-            app:corner_radius="@dimen/x10dp">
+            app:labelText="End Date"
+            app:primaryColor="@color/c_navy_blue"
+            app:secondaryColor="@color/colorAccent">
 
-            <edu.aku.ehs.widget.AnyTextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginRight="@dimen/x5dp"
-                android:text="End Date"
-                android:textColor="@color/base_dark_gray"
-                android:textSize="@dimen/s14"
-                app:typeface="@string/font_regular" />
 
-            <edu.aku.ehs.widget.AnyTextView
+            <studio.carbonylgroup.textfieldboxes.ExtendedEditText
                 android:id="@+id/txtEndDate"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:background="@color/transparent"
-                android:backgroundTint="@color/transparent"
-                android:ellipsize="start"
-                android:gravity="right"
-                android:hint="Tap here to select Date"
-                android:maxLength="30"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:imeOptions="actionNext"
+                android:editable="false"
+                android:clickable="false"
                 android:singleLine="true"
-                android:textColor="@color/txt_blue"
-                android:textColorHint="@color/txt_blue"
-                android:textSize="@dimen/s15" />
+                android:textColor="@color/txtBlack" />
 
 
-        </com.jcminarro.roundkornerlayout.RoundKornerLinearLayout>
-
+        </studio.carbonylgroup.textfieldboxes.TextFieldBoxes>
 
 
     </LinearLayout>
@@ -183,7 +144,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="@dimen/x10dp"
-        android:text="Done"
+        android:text="Add"
         android:textSize="@dimen/s16"
         android:textColor="@color/c_white"
         android:background="@drawable/img_button_clr"/>

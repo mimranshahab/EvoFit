@@ -89,10 +89,10 @@ public class HomeFragment extends BaseFragment {
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.contSession:
-                getBaseActivity().addDockableFragment(SessionListFragment.newInstance(), false);
+                getBaseActivity().addDockableFragment(SessionListFragment.newInstance(), true);
                 break;
             case R.id.contStats:
-                getBaseActivity().addDockableFragment(StatsFragment.newInstance(), false);
+                getBaseActivity().addDockableFragment(StatsFragment.newInstance(), true);
                 break;
         }
     }

@@ -3,6 +3,7 @@
     <color name="colorPrimary">#2CD0FE</color>
     <color name="colorPrimaryDark">#2FACFF</color>
     <color name="colorAccent">#38BD70</color>
+    <color name="colorAccentDark">#336633</color>
 
     <color name="text_hint">#8C8C8B</color>
     <color name="star_grey">#A3A3A3</color>
@@ -55,17 +56,27 @@
 
 
 
+    <color name="pastel_blue">#00a4e0</color>
+    <color name="pastel_cyan">#8ddac1</color>
+    <color name="pastel_pink">#ff8ec1</color>
+    <color name="pastel_red">#ff4863</color>
+    <color name="pastel_peach">#ffc06b</color>
+
+
+
     <color name="colorPrimaryHalfTransparent">#4419BBDE</color>
-
-
-    <color name="text_color_grey">#72777A</color>
     <color name="text_color_grey_mid_dark">#555555</color>
-    <color name="txt_blue">#27405E</color>
+
+
+    <color name="txtGrey">#92999A</color>
+    <color name="txtDarkGrey">#555555</color>
+    <color name="txtBlue">#27405E</color>
+    <color name="txtBlack">#000</color>
 
 
 
     <color name="dialog_seperator">#eeeeee</color>
-    <color name="seperator_light_gray">#F2F0F6</color>
+    <color name="seperator_light_gray">#dddddd</color>
 
 
     <color name="transparent_grey">#44847D6E</color>
@@ -80,6 +91,7 @@
     <color name="c_grayasparagus">#465945</color>
     <color name="c_white">#FFFFFF</color>
     <color name="c_white_smoke">#E5E5E5</color>
+    <color name="c_navy_blue">#000080</color>
     <color name="torqouis">#41BBAC</color>
     <color name="pin_normal">#6B767E</color>
 

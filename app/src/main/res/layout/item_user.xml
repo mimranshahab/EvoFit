@@ -92,7 +92,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="MR Number"
-                            android:textColor="@color/txt_blue"
+                            android:textColor="@color/txtBlue"
                             android:textSize="@dimen/s12"
                             app:typeface="@string/font_bold" />
 
@@ -122,7 +122,7 @@
                         android:gravity="center"
                         android:padding="@dimen/x1dp"
                         android:text="Gender and Age"
-                        android:textColor="@color/txt_blue"
+                        android:textColor="@color/txtBlue"
                         android:textSize="@dimen/s12"
                         app:typeface="@string/font_bold" />
 

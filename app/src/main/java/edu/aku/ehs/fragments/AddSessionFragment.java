@@ -5,7 +5,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
-import android.widget.Button;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -13,13 +12,11 @@ import butterknife.OnClick;
 import butterknife.Unbinder;
 import edu.aku.ehs.R;
 import edu.aku.ehs.fragments.abstracts.BaseFragment;
-import edu.aku.ehs.helperclasses.DateHelper;
-import edu.aku.ehs.helperclasses.Helper;
 import edu.aku.ehs.helperclasses.ui.helper.UIHelper;
 import edu.aku.ehs.managers.DateManager;
-import edu.aku.ehs.widget.AnyEditTextView;
-import edu.aku.ehs.widget.AnyTextView;
 import edu.aku.ehs.widget.TitleBar;
+import studio.carbonylgroup.textfieldboxes.ExtendedEditText;
+import studio.carbonylgroup.textfieldboxes.TextFieldBoxes;
 
 /**
  * Created by hamza.ahmed on 7/19/2018.
@@ -28,20 +25,21 @@ import edu.aku.ehs.widget.TitleBar;
 public class AddSessionFragment extends BaseFragment {
 
 
-    @BindView(R.id.edtSessionName)
-    AnyEditTextView edtSessionName;
-    @BindView(R.id.txtStartDate)
-    AnyTextView txtStartDate;
-    @BindView(R.id.txtEndDate)
-    AnyTextView txtEndDate;
-    @BindView(R.id.btnDone)
-    Button btnDone;
     Unbinder unbinder;
+    @BindView(R.id.edtSessionName)
+    ExtendedEditText edtSessionName;
+    @BindView(R.id.txtStartDate)
+    ExtendedEditText txtStartDate;
+    @BindView(R.id.tfStartDate)
+    TextFieldBoxes tfStartDate;
+    @BindView(R.id.txtEndDate)
+    ExtendedEditText txtEndDate;
+    @BindView(R.id.tfEndDate)
+    TextFieldBoxes tfEndDate;
 
     public static AddSessionFragment newInstance() {
 
         Bundle args = new Bundle();
-
         AddSessionFragment fragment = new AddSessionFragment();
         fragment.setArguments(args);
         return fragment;
@@ -70,6 +68,11 @@ public class AddSessionFragment extends BaseFragment {
     @Override
     public void setListeners() {
 
+        txtStartDate.setOnFocusChangeListener((view, b) ->
+        { if (b) tfStartDate.performClick(); });
+
+        txtEndDate.setOnFocusChangeListener((view, b) -> {
+            if (b) tfEndDate.performClick(); });
     }
 
     @Override
@@ -96,15 +99,19 @@ public class AddSessionFragment extends BaseFragment {
         unbinder.unbind();
     }
 
-    @OnClick({R.id.txtStartDate, R.id.txtEndDate, R.id.btnDone})
+    @OnClick({R.id.tfStartDate, R.id.txtStartDate, R.id.txtEndDate, R.id.tfEndDate, R.id.btnDone})
     public void onViewClicked(View view) {
         switch (view.getId()) {
+            case R.id.tfStartDate:
             case R.id.txtStartDate:
-                 DateManager.showDatePicker(getContext(), txtStartDate, null, false );
+                DateManager.showDatePicker(getContext(), txtStartDate, null, false);
                 break;
+
+            case R.id.tfEndDate:
             case R.id.txtEndDate:
-                DateManager.showDatePicker(getContext(), txtEndDate, null, false );
+                DateManager.showDatePicker(getContext(), txtEndDate, null, false);
                 break;
+
             case R.id.btnDone:
                 UIHelper.showToast(getContext(), "Done button pressed");
                 break;
