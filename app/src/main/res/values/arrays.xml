@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <array name="session_employee_steps">
+        <item>Enrolled</item>
+        <item>Lab Test</item>
+        <item>Scheduled</item>
+        <item>Referred</item>
+    </array>
+</resources>

@@ -12,6 +12,7 @@ import android.view.animation.AnimationUtils;
 import android.view.animation.LayoutAnimationController;
 import android.widget.AdapterView;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
@@ -26,14 +27,11 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 import butterknife.Unbinder;
 import edu.aku.ehs.R;
-import edu.aku.ehs.adapters.recyleradapters.SessionDetailAdapter;
+import edu.aku.ehs.adapters.recyleradapters.SelectEmployeesAdapter;
 import edu.aku.ehs.callbacks.OnItemClickListener;
-import edu.aku.ehs.enums.EmployeeSessionState;
 import edu.aku.ehs.fragments.abstracts.BaseFragment;
 import edu.aku.ehs.fragments.abstracts.GenericDialogFragment;
-import edu.aku.ehs.helperclasses.ui.helper.UIHelper;
-import edu.aku.ehs.managers.DateManager;
-import edu.aku.ehs.models.SessionDetailModel;
+import edu.aku.ehs.models.EmployeeModel;
 import edu.aku.ehs.widget.AnyEditTextView;
 import edu.aku.ehs.widget.AnyTextView;
 import edu.aku.ehs.widget.TitleBar;
@@ -42,11 +40,13 @@ import edu.aku.ehs.widget.TitleBar;
  * Created by hamza.ahmed on 7/23/2018.
  */
 
-public class SessionDetailFragment extends BaseFragment implements OnItemClickListener {
+public class SelectEmployeeFragment extends BaseFragment implements OnItemClickListener {
 
     Unbinder unbinder;
     @BindView(R.id.imgBanner)
     ImageView imgBanner;
+    @BindView(R.id.cbSelectAll)
+    CheckBox cbSelectAll;
     @BindView(R.id.empty_view)
     AnyTextView emptyView;
     @BindView(R.id.imgSearch)
@@ -72,17 +72,16 @@ public class SessionDetailFragment extends BaseFragment implements OnItemClickLi
     @BindView(R.id.contSelection)
     LinearLayout contSelection;
 
-    private ArrayList<SessionDetailModel> arrData;
-    private SessionDetailAdapter adapter;
+    private ArrayList<EmployeeModel> arrData;
+    private SelectEmployeesAdapter adapter;
 
     GenericDialogFragment genericDialogFragment = GenericDialogFragment.newInstance();
 
 
-    public static SessionDetailFragment newInstance() {
-
+    public static SelectEmployeeFragment newInstance() {
         Bundle args = new Bundle();
 
-        SessionDetailFragment fragment = new SessionDetailFragment();
+        SelectEmployeeFragment fragment = new SelectEmployeeFragment();
         fragment.setArguments(args);
         return fragment;
     }
@@ -101,13 +100,31 @@ public class SessionDetailFragment extends BaseFragment implements OnItemClickLi
     public void setTitlebar(TitleBar titleBar) {
         titleBar.resetViews();
         titleBar.setVisibility(View.VISIBLE);
-        titleBar.setTitle("Sessions");
+        titleBar.setTitle("Add Employees");
         titleBar.showBackButton(getBaseActivity());
         titleBar.showHome(getBaseActivity());
     }
 
     @Override
     public void setListeners() {
+
+        cbSelectAll.setOnCheckedChangeListener((compoundButton, b) -> {
+
+                    if (b) {
+                        for (int i = 0; i < arrData.size(); i++) {
+                            arrData.get(i).setSelected(true);
+                        }
+                    } else {
+                        for (int i = 0; i < arrData.size(); i++) {
+                            arrData.get(i).setSelected(false);
+                        }
+                    }
+
+                    adapter.notifyDataSetChanged();
+                }
+
+        );
+
 
     }
 
@@ -126,8 +143,8 @@ public class SessionDetailFragment extends BaseFragment implements OnItemClickLi
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        arrData = new ArrayList<SessionDetailModel>();
-        adapter = new SessionDetailAdapter(getBaseActivity(), arrData, this);
+        arrData = new ArrayList<EmployeeModel>();
+        adapter = new SelectEmployeesAdapter(getBaseActivity(), arrData, this);
     }
 
     @Override
@@ -143,7 +160,10 @@ public class SessionDetailFragment extends BaseFragment implements OnItemClickLi
         super.onViewCreated(view, savedInstanceState);
         contSearch.setVisibility(View.VISIBLE);
         imgBanner.setVisibility(View.VISIBLE);
-        contOptionButtons.setVisibility(View.VISIBLE);
+        contSelection.setVisibility(View.VISIBLE);
+        fab.setVisibility(View.VISIBLE);
+        fab.setImageResource(R.drawable.ic_done_white_18dp);
+
         bindView();
 
         bindData();
@@ -151,17 +171,17 @@ public class SessionDetailFragment extends BaseFragment implements OnItemClickLi
 
     private void bindData() {
         arrData.clear();
-        SessionDetailModel sessionDetailModel;
+        EmployeeModel sessionDetailModel;
 
         for (int i = 0; i < 8; i++) {
             if (i < 2) {
-                sessionDetailModel = new SessionDetailModel("Hamza Ahmed Khan", EmployeeSessionState.ENROLLED);
+                sessionDetailModel = new EmployeeModel("Hamza Ahmed Khan");
             } else if (i >= 2 && i < 4) {
-                sessionDetailModel = new SessionDetailModel("Haris Maaz ", EmployeeSessionState.SCHEDULED);
+                sessionDetailModel = new EmployeeModel("Haris Maaz");
             } else if (i >= 4 && i < 6) {
-                sessionDetailModel = new SessionDetailModel("Aqsa Sarwar ", EmployeeSessionState.INPROGRESS);
+                sessionDetailModel = new EmployeeModel("Aqsa Sarwar");
             } else {
-                sessionDetailModel = new SessionDetailModel("Mahrukh Mehmood ", EmployeeSessionState.CLOSED);
+                sessionDetailModel = new EmployeeModel("Mahrukh Mehmood");
 
             }
             arrData.add(sessionDetailModel);
@@ -189,78 +209,19 @@ public class SessionDetailFragment extends BaseFragment implements OnItemClickLi
 
     @Override
     public void onItemClick(int position, Object object, View view) {
-        SessionDetailModel sessionDetailModel = (SessionDetailModel) object;
 
         switch (view.getId()) {
-            case R.id.btnSchedule:
-                editSchedule(sessionDetailModel);
-                break;
-
-            case R.id.btnDelete:
-                deleteEmployee(sessionDetailModel, position);
-                break;
-
             case R.id.contListItem:
-
+                arrData.get(position).setSelected(!arrData.get(position).isSelected());
+                adapter.notifyItemChanged(position);
                 break;
         }
 
     }
 
-    private void deleteEmployee(SessionDetailModel sessionDetailModel, int position) {
-        UIHelper.genericPopUp(getBaseActivity(), genericDialogFragment, "Remove", "Do you want to remove " + sessionDetailModel.getEmployeeName() + " ?", "Remove", "Cancel",
-                () -> {
-                    genericDialogFragment.dismiss();
-                    arrData.remove(position);
-                    adapter.notifyDataSetChanged();
-                }, () -> {
-                    genericDialogFragment.dismiss();
-                }, false, true);
-    }
 
-    private void editSchedule(SessionDetailModel sessionDetailModel) {
-
-
-        switch (sessionDetailModel.getStatus()) {
-            case ENROLLED:
-                UIHelper.genericPopUp(getBaseActivity(), genericDialogFragment, "Schedule", "Do you want to add Schedule?", "Add", "Cancel",
-                        () -> {
-                            genericDialogFragment.dismiss();
-                            DateManager.showDatePicker(getContext(), date -> UIHelper.showToast(getContext(), date), false, true);
-                        }, () -> {
-                            genericDialogFragment.dismiss();
-                        }, false, true);
-                break;
-            case SCHEDULED:
-                UIHelper.genericPopUp(getBaseActivity(), genericDialogFragment, "Schedule", "Do you want to update Schedule?", "Update", "Cancel",
-                        () -> {
-                            genericDialogFragment.dismiss();
-                            DateManager.showDatePicker(getContext(), date -> UIHelper.showToast(getContext(), date), false, true);
-                        }, () -> {
-                            genericDialogFragment.dismiss();
-                        }, false, true);
-
-                break;
-            case INPROGRESS:
-                UIHelper.showIOSPopup(getContext(), "Cancel Schedule", "Do you really want to cancel this schedule",
-                        "Yes", "No", dialog -> {
-                        }, dialog -> {
-                        });
-                break;
-        }
-    }
-
-    @OnClick({R.id.btnAddEmail, R.id.btnAddSchedule, R.id.btnAddEmployees})
-    public void onViewClicked(View view) {
-        switch (view.getId()) {
-            case R.id.btnAddEmail:
-                break;
-            case R.id.btnAddSchedule:
-                break;
-            case R.id.btnAddEmployees:
-                getBaseActivity().addDockableFragment(SelectEmployeeFragment.newInstance(), false);
-
-                break;
-        }
+    @OnClick(R.id.contSelection)
+    public void onViewClicked() {
+        cbSelectAll.performClick();
     }
 }

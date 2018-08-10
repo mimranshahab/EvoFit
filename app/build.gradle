@@ -21,7 +21,7 @@ android {
     buildToolsVersion "27.0.3"
     defaultConfig {
         applicationId 'edu.aku.ehs'
-        minSdkVersion 19
+        minSdkVersion 22
         targetSdkVersion 27
         versionCode 17
         versionName "2.0.17"
@@ -107,6 +107,7 @@ dependencies {
     compile 'com.kaopiz:kprogresshud:1.1.0'
     compile 'com.jcminarro:RoundKornerLayouts:0.3.1'
     compile 'com.github.HITGIF:TextFieldBoxes:1.4.4'
+    compile 'com.github.badoualy:stepper-indicator:1.0.7'
 
     compile('com.crashlytics.sdk.android:crashlytics:2.9.3@aar') {
         transitive = true;

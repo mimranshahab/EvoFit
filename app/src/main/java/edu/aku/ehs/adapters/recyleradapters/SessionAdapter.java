@@ -15,7 +15,6 @@ import edu.aku.ehs.R;
 import edu.aku.ehs.activities.BaseActivity;
 import edu.aku.ehs.callbacks.OnItemClickListener;
 import edu.aku.ehs.models.SessionModel;
-import edu.aku.ehs.models.receiving_model.UserDetailModel;
 import edu.aku.ehs.widget.AnyTextView;
 
 /**
@@ -55,7 +54,7 @@ public class SessionAdapter extends RecyclerView.Adapter<SessionAdapter.ViewHold
         holder.contListItem.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                onItemClick.onItemClick(holder.getAdapterPosition(), model);
+                onItemClick.onItemClick(holder.getAdapterPosition(), model, v);
             }
         });
     }

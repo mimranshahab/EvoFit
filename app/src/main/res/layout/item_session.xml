@@ -8,8 +8,8 @@
     android:layout_marginRight="@dimen/x20dp"
     android:layout_marginTop="@dimen/x10dp"
     android:background="@color/timeline_out_dark"
-    android:orientation="vertical"
     android:elevation="@dimen/x5dp"
+    android:orientation="vertical"
     android:paddingTop="@dimen/x4dp"
     app:corner_radius="@dimen/x10dp">
 
@@ -26,15 +26,14 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:gravity="center_vertical"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical">
 
             <ImageView
-                android:layout_width="@dimen/x17dp"
-                android:layout_height="@dimen/x17dp"
+                android:layout_width="@dimen/x25dp"
+                android:layout_height="@dimen/x25dp"
                 android:padding="@dimen/x5dp"
-                android:src="@drawable/img_session"
-                 />
+                android:src="@drawable/img_session" />
 
 
             <edu.aku.ehs.widget.AnyTextView
@@ -62,7 +61,7 @@
                     android:layout_marginRight="@dimen/x3dp"
                     android:layout_marginTop="@dimen/x1dp"
                     android:src="@drawable/curve_edges_square_bullet"
-                    android:tint="@color/timeline_out_dark"  />
+                    android:tint="@color/timeline_out_dark" />
 
                 <edu.aku.ehs.widget.AnyTextView
                     android:id="@+id/txtStatus"
@@ -278,6 +277,68 @@
                         android:ellipsize="end"
                         android:padding="@dimen/x3dp"
                         android:singleLine="true"
+                        android:text="Lab Test"
+                        android:textColor="@color/txtGrey"
+                        android:textSize="@dimen/s10"
+                        app:typeface="@string/font_medium" />
+
+                    <com.jcminarro.roundkornerlayout.RoundKornerFrameLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@color/pastel_cyan"
+                        app:corner_radius="@dimen/x5dp">
+
+                        <com.jcminarro.roundkornerlayout.RoundKornerFrameLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:background="@color/pastel_pink"
+                            app:corner_radius="@dimen/x5dp">
+
+                            <edu.aku.ehs.widget.AnyTextView
+                                android:layout_width="@dimen/x40dp"
+                                android:layout_height="wrap_content"
+                                android:ellipsize="end"
+                                android:gravity="center"
+                                android:padding="@dimen/x3dp"
+                                android:singleLine="true"
+                                android:text="50"
+                                android:textColor="@color/c_white"
+                                android:textSize="@dimen/s10"
+                                app:typeface="@string/font_bold" />
+
+                        </com.jcminarro.roundkornerlayout.RoundKornerFrameLayout>
+                    </com.jcminarro.roundkornerlayout.RoundKornerFrameLayout>
+
+
+                </com.jcminarro.roundkornerlayout.RoundKornerLinearLayout>
+
+
+            </com.jcminarro.roundkornerlayout.RoundKornerFrameLayout>
+
+
+            <com.jcminarro.roundkornerlayout.RoundKornerFrameLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/x3dp"
+                android:layout_weight="1"
+                app:corner_radius="@dimen/x10dp">
+
+                <com.jcminarro.roundkornerlayout.RoundKornerLinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/c_white"
+                    android:gravity="center"
+                    android:orientation="vertical"
+                    android:padding="@dimen/x1dp"
+                    app:corner_radius="@dimen/x10dp">
+
+
+                    <edu.aku.ehs.widget.AnyTextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:ellipsize="end"
+                        android:padding="@dimen/x3dp"
+                        android:singleLine="true"
                         android:text="In-Progress"
                         android:textColor="@color/txtGrey"
                         android:textSize="@dimen/s10"
@@ -379,6 +440,14 @@
 
 
             </com.jcminarro.roundkornerlayout.RoundKornerFrameLayout>
+
+
+            <ImageView
+                android:layout_width="@dimen/x25dp"
+                android:layout_height="@dimen/x25dp"
+                android:layout_gravity="bottom"
+                android:src="@drawable/ic_next_arrow"
+                android:tint="@color/colorPrimaryDark" />
 
         </LinearLayout>
 

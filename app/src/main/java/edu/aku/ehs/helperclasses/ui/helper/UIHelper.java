@@ -35,7 +35,6 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.gdacciaro.iOSDialog.iOSDialog;
 import com.gdacciaro.iOSDialog.iOSDialogBuilder;
 import com.gdacciaro.iOSDialog.iOSDialogClickListener;
 import com.google.common.base.Strings;
@@ -53,12 +52,11 @@ import java.util.ArrayList;
 
 import edu.aku.ehs.R;
 import edu.aku.ehs.activities.BaseActivity;
-import edu.aku.ehs.activities.MainActivity;
 import edu.aku.ehs.adapters.SpinnerDialogAdapter;
+import edu.aku.ehs.callbacks.GenericClickableInterface;
 import edu.aku.ehs.callbacks.OnItemSelectListner;
 import edu.aku.ehs.callbacks.OnSpinnerItemClickListener;
 import edu.aku.ehs.fragments.abstracts.BaseFragment;
-import edu.aku.ehs.callbacks.GenericClickableInterface;
 import edu.aku.ehs.fragments.abstracts.GenericDialogFragment;
 import edu.aku.ehs.fragments.dialogs.SpinnerDialogFragment;
 import edu.aku.ehs.managers.retrofit.GsonFactory;
@@ -665,13 +663,16 @@ public class UIHelper {
     }
 
 
-    public static void genericPopUp(BaseActivity activity, GenericDialogFragment genericDialogFragment, String title, String message, String btn1Text, String btn2Text, GenericClickableInterface btn1Interface, GenericClickableInterface btnbtn2Interface) {
+    public static GenericDialogFragment genericPopUp(BaseActivity activity, GenericDialogFragment genericDialogFragment, String title, String message, String btn1Text, String btn2Text, GenericClickableInterface btn1Interface, GenericClickableInterface btnbtn2Interface, boolean isCancelable, boolean isShow) {
         genericDialogFragment.setTitle(title);
         genericDialogFragment.setMessage(message);
         genericDialogFragment.setButton1(btn1Text, btn1Interface);
         genericDialogFragment.setButton2(btn2Text, btnbtn2Interface);
-        genericDialogFragment.setCancelable(false);
-        genericDialogFragment.show(activity.getSupportFragmentManager(), "generic_popup");
+        genericDialogFragment.setCancelable(isCancelable);
+        if (isShow) {
+            genericDialogFragment.show(activity.getSupportFragmentManager(), "generic_popup");
+        }
+        return genericDialogFragment;
     }
 
     public static void showOnlyTextPopup(BaseActivity baseActivity, String text) {
@@ -682,7 +683,7 @@ public class UIHelper {
                     public void click() {
                         genericDialogFragment.dismiss();
                     }
-                }, null);
+                }, null, false, true);
     }
 
     /**

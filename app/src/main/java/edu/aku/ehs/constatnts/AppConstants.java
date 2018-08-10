@@ -11,6 +11,8 @@ import android.util.DisplayMetrics;
 import android.util.Log;
 
 import java.security.MessageDigest;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.UUID;
 
 import edu.aku.ehs.BaseApplication;
@@ -327,4 +329,19 @@ return Return_DeviceID;*/
         return deviceUuid.toString();
 
     }
+
+
+    public static List<String> getLstSessionEmployeeState() {
+        if (lstSessionEmployeeState == null) {
+            lstSessionEmployeeState = new ArrayList<>();
+            lstSessionEmployeeState.add("Enrolled");
+            lstSessionEmployeeState.add("Lab Test");
+            lstSessionEmployeeState.add("Scheduled");
+            lstSessionEmployeeState.add("Referred");
+        }
+        return lstSessionEmployeeState;
+    }
+
+    private static List<String> lstSessionEmployeeState;
+
 }

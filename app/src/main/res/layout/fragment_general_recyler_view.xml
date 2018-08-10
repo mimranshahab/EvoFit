@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:fab="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/c_white"
@@ -40,16 +39,16 @@
             android:id="@+id/contOptionButtons"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:visibility="gone"
-            android:gravity="center">
+            android:gravity="center"
+            android:visibility="gone">
 
 
             <Button
                 android:id="@+id/btnAddEmail"
                 android:layout_width="@dimen/x100dp"
                 android:layout_height="@dimen/x25dp"
-                android:background="@drawable/img_button_white"
                 android:layout_margin="@dimen/x10dp"
+                android:background="@drawable/img_button_white"
                 android:elevation="@dimen/x10dp"
                 android:text="Send Email" />
 
@@ -57,10 +56,10 @@
                 android:id="@+id/btnAddSchedule"
                 android:layout_width="@dimen/x100dp"
                 android:layout_height="@dimen/x25dp"
-                android:background="@drawable/img_button_white"
                 android:layout_margin="@dimen/x10dp"
-                android:text="Add Schedule"
+                android:background="@drawable/img_button_white"
                 android:elevation="@dimen/x10dp"
+                android:text="Add Schedule"
 
                 android:textColor="@color/txtBlue" />
 
@@ -72,8 +71,37 @@
                 android:layout_margin="@dimen/x10dp"
                 android:background="@drawable/img_button_white"
                 android:elevation="@dimen/x10dp"
-
                 android:text="Add Employees" />
+
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:id="@+id/contSelection"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_marginRight="@dimen/x10dp"
+            android:layout_marginTop="@dimen/x10dp"
+            android:gravity="right|center_vertical"
+            android:visibility="gone">
+
+
+            <edu.aku.ehs.widget.AnyTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:elevation="@dimen/x10dp"
+                android:gravity="center"
+                android:text="Select All"
+                android:textColor="@color/c_white"
+                android:textSize="@dimen/s14" />
+
+            <CheckBox
+                android:id="@+id/cbSelectAll"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:buttonTint="@color/c_white" />
 
 
         </LinearLayout>

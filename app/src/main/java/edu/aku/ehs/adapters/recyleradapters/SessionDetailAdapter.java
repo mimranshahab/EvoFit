@@ -4,8 +4,9 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
+import android.widget.ImageView;
 
+import com.badoualy.stepperindicator.StepperIndicator;
 import com.jcminarro.roundkornerlayout.RoundKornerLinearLayout;
 
 import java.util.ArrayList;
@@ -16,7 +17,6 @@ import edu.aku.ehs.R;
 import edu.aku.ehs.activities.BaseActivity;
 import edu.aku.ehs.callbacks.OnItemClickListener;
 import edu.aku.ehs.models.SessionDetailModel;
-import edu.aku.ehs.models.SessionModel;
 import edu.aku.ehs.widget.AnyTextView;
 
 /**
@@ -52,34 +52,35 @@ public class SessionDetailAdapter extends RecyclerView.Adapter<SessionDetailAdap
         holder.txtStatus.setText(model.getStatus().canonicalForm());
 
         holder.btnSchedule.setVisibility(View.VISIBLE);
+        holder.btnDelete.setVisibility(View.VISIBLE);
         switch (model.getStatus()) {
             case ENROLLED:
-                holder.btnSchedule.setText("Set Schedule");
+//                holder.btnSchedule.setText("Set Schedule");
                 break;
             case SCHEDULED:
-                holder.btnSchedule.setText("Update Schedule");
+//                holder.btnSchedule.setText("Update Schedule");
                 break;
             case INPROGRESS:
-                holder.btnSchedule.setText("Cancel Schedule");
+//                holder.btnSchedule.setText("Cancel Schedule");
                 holder.btnSchedule.setVisibility(View.GONE);
+                holder.btnDelete.setVisibility(View.GONE);
                 break;
             case CLOSED:
                 holder.btnSchedule.setVisibility(View.GONE);
+                holder.btnDelete.setVisibility(View.GONE);
                 break;
         }
 
+        holder.stepView.setCurrentStep(2);
 
 
         setListener(holder, model);
     }
 
     private void setListener(final ViewHolder holder, final SessionDetailModel model) {
-        holder.btnSchedule.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                onItemClick.onItemClick(holder.getAdapterPosition(), model);
-            }
-        });
+        holder.btnSchedule.setOnClickListener(view -> onItemClick.onItemClick(holder.getAdapterPosition(), model, view));
+        holder.btnDelete.setOnClickListener(view -> onItemClick.onItemClick(holder.getAdapterPosition(), model, view));
+        holder.contListItem.setOnClickListener(view -> onItemClick.onItemClick(holder.getAdapterPosition(), model, view));
     }
 
 
@@ -92,12 +93,18 @@ public class SessionDetailAdapter extends RecyclerView.Adapter<SessionDetailAdap
     static class ViewHolder extends RecyclerView.ViewHolder {
         @BindView(R.id.txtEmployeeName)
         AnyTextView txtEmployeeName;
-        @BindView(R.id.txtStatus)
-        AnyTextView txtStatus;
+        @BindView(R.id.txtEmployeeGender)
+        AnyTextView txtEmployeeGender;
         @BindView(R.id.txDate)
         AnyTextView txDate;
+        @BindView(R.id.txtStatus)
+        AnyTextView txtStatus;
+        @BindView(R.id.stepView)
+        StepperIndicator stepView;
         @BindView(R.id.btnSchedule)
-        Button btnSchedule;
+        ImageView btnSchedule;
+        @BindView(R.id.btnDelete)
+        ImageView btnDelete;
         @BindView(R.id.contListItem)
         RoundKornerLinearLayout contListItem;
 

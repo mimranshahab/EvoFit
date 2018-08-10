@@ -28,7 +28,6 @@ import edu.aku.ehs.R;
 import edu.aku.ehs.adapters.recyleradapters.SessionAdapter;
 import edu.aku.ehs.callbacks.OnItemClickListener;
 import edu.aku.ehs.fragments.abstracts.BaseFragment;
-import edu.aku.ehs.helperclasses.ui.helper.UIHelper;
 import edu.aku.ehs.models.SessionModel;
 import edu.aku.ehs.widget.AnyEditTextView;
 import edu.aku.ehs.widget.AnyTextView;
@@ -165,7 +164,7 @@ public class SessionListFragment extends BaseFragment implements OnItemClickList
 
 
     @Override
-    public void onItemClick(int position, Object object) {
+    public void onItemClick(int position, Object object, View view) {
         getBaseActivity().addDockableFragment(SessionDetailFragment.newInstance(), false);
     }
 

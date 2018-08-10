@@ -1,6 +1,8 @@
 package edu.aku.ehs.fragments.abstracts;
 
 import android.app.Dialog;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.DialogFragment;
@@ -98,6 +100,7 @@ public class GenericDialogFragment extends DialogFragment implements View.OnClic
         bindData(title, message);
         setListeners();
 
+
     }
 
     @Override
@@ -105,6 +108,7 @@ public class GenericDialogFragment extends DialogFragment implements View.OnClic
         Dialog dialog = super.onCreateDialog(savedInstanceState);
 
         // request a window without the title
+        dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
         dialog.getWindow().requestFeature(Window.FEATURE_NO_TITLE);
         return dialog;
     }
