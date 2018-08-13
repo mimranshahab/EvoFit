@@ -11,8 +11,10 @@ import android.content.Intent;
 import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.PorterDuff;
 import android.graphics.Rect;
 import android.graphics.drawable.GradientDrawable;
+import android.graphics.drawable.TransitionDrawable;
 import android.media.AudioManager;
 import android.media.MediaMetadataRetriever;
 import android.media.RingtoneManager;
@@ -36,8 +38,6 @@ import android.widget.Toast;
 
 import com.google.gson.Gson;
 
-import edu.aku.ehs.R;
-
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -46,6 +46,7 @@ import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.util.regex.Pattern;
 
+import edu.aku.ehs.R;
 import io.realm.RealmList;
 import io.realm.RealmModel;
 
@@ -79,6 +80,10 @@ public class Helper {
     public static void changeStrokeColor(View view, int color) {
         GradientDrawable gd = (GradientDrawable) view.getBackground();
         gd.setStroke(2, color);
+    }
+
+    public static void changeTransitionDrawableColor(TransitionDrawable td, int color, int index) {
+         td.getDrawable(index).setColorFilter(color, PorterDuff.Mode.SRC_ATOP);
     }
 
     public static ProgressDialog getLoader(Context context) {

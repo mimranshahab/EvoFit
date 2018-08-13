@@ -19,23 +19,23 @@ import edu.aku.ehs.activities.BaseActivity;
 import edu.aku.ehs.callbacks.OnItemClickListener;
 import edu.aku.ehs.helperclasses.Helper;
 import edu.aku.ehs.helperclasses.ui.helper.AnimationHelper;
-import edu.aku.ehs.models.EmployeeModel;
+import edu.aku.ehs.models.DepartmentModel;
 import edu.aku.ehs.widget.AnyTextView;
 
 import static android.view.View.VISIBLE;
 
 /**
  */
-public class SelectEmployeesAdapter extends RecyclerView.Adapter<SelectEmployeesAdapter.ViewHolder> {
+public class DepartmentAdapter extends RecyclerView.Adapter<DepartmentAdapter.ViewHolder> {
 
 
     private final OnItemClickListener onItemClick;
 
 
     private BaseActivity activity;
-    private ArrayList<EmployeeModel> arrData;
+    private ArrayList<DepartmentModel> arrData;
 
-    public SelectEmployeesAdapter(BaseActivity activity, ArrayList<EmployeeModel> arrData, OnItemClickListener onItemClickListener) {
+    public DepartmentAdapter(BaseActivity activity, ArrayList<DepartmentModel> arrData, OnItemClickListener onItemClickListener) {
         this.arrData = arrData;
         this.activity = activity;
         this.onItemClick = onItemClickListener;
@@ -52,8 +52,8 @@ public class SelectEmployeesAdapter extends RecyclerView.Adapter<SelectEmployees
 
     @Override
     public void onBindViewHolder(final ViewHolder holder, int i) {
-        EmployeeModel model = arrData.get(i);
-        holder.txtEmployeeName.setText(model.getEmployeeName());
+        DepartmentModel model = arrData.get(i);
+        holder.txtEmployeeName.setText(model.getDeptName());
 
         TransitionDrawable td = (TransitionDrawable) holder.contListItem.getBackground();
 
@@ -70,7 +70,7 @@ public class SelectEmployeesAdapter extends RecyclerView.Adapter<SelectEmployees
         setListener(holder, model);
     }
 
-    private void setListener(final ViewHolder holder, final EmployeeModel model) {
+    private void setListener(final ViewHolder holder, final DepartmentModel model) {
         holder.contListItem.setOnClickListener(view -> onItemClick.onItemClick(holder.getAdapterPosition(), model, view));
     }
 

@@ -11,13 +11,9 @@ import android.view.ViewGroup;
 import android.view.animation.AnimationUtils;
 import android.view.animation.LayoutAnimationController;
 import android.widget.AdapterView;
-import android.widget.Button;
-import android.widget.CheckBox;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 
-import com.github.clans.fab.FloatingActionButton;
 import com.jcminarro.roundkornerlayout.RoundKornerLinearLayout;
 
 import java.util.ArrayList;
@@ -27,11 +23,11 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 import butterknife.Unbinder;
 import edu.aku.ehs.R;
-import edu.aku.ehs.adapters.recyleradapters.SelectEmployeesAdapter;
+import edu.aku.ehs.adapters.recyleradapters.DepartmentAdapter;
 import edu.aku.ehs.callbacks.OnItemClickListener;
 import edu.aku.ehs.fragments.abstracts.BaseFragment;
 import edu.aku.ehs.fragments.abstracts.GenericDialogFragment;
-import edu.aku.ehs.models.EmployeeModel;
+import edu.aku.ehs.models.DepartmentModel;
 import edu.aku.ehs.widget.AnyEditTextView;
 import edu.aku.ehs.widget.AnyTextView;
 import edu.aku.ehs.widget.TitleBar;
@@ -40,15 +36,23 @@ import edu.aku.ehs.widget.TitleBar;
  * Created by hamza.ahmed on 7/23/2018.
  */
 
-public class SelectEmployeeFragment extends BaseFragment implements OnItemClickListener {
+public class SearchFragment extends BaseFragment implements OnItemClickListener {
 
     Unbinder unbinder;
-    @BindView(R.id.imgBanner)
-    ImageView imgBanner;
-    @BindView(R.id.cbSelectAll)
-    CheckBox cbSelectAll;
     @BindView(R.id.empty_view)
     AnyTextView emptyView;
+    @BindView(R.id.imgBanner)
+    ImageView imgBanner;
+    @BindView(R.id.edtSearchEmployee)
+    AnyEditTextView edtSearchEmployee;
+    @BindView(R.id.imgSearchEmployee)
+    ImageView imgSearchEmployee;
+    @BindView(R.id.contSearchByName)
+    RoundKornerLinearLayout contSearchByName;
+    @BindView(R.id.txtSelectDivision)
+    AnyTextView txtSelectDivision;
+    @BindView(R.id.contSelectDivision)
+    RoundKornerLinearLayout contSelectDivision;
     @BindView(R.id.imgSearch)
     ImageView imgSearch;
     @BindView(R.id.edtSearchBar)
@@ -57,33 +61,21 @@ public class SelectEmployeeFragment extends BaseFragment implements OnItemClickL
     RoundKornerLinearLayout contSearch;
     @BindView(R.id.recylerView)
     RecyclerView recylerView;
-    @BindView(R.id.fab)
-    FloatingActionButton fab;
     @BindView(R.id.contParent)
     RelativeLayout contParent;
-    @BindView(R.id.contOptionButtons)
-    LinearLayout contOptionButtons;
-    @BindView(R.id.btnAddEmail)
-    Button btnAddEmail;
-    @BindView(R.id.btnAddSchedule)
-    Button btnAddSchedule;
-    @BindView(R.id.btnAddEmployees)
-    Button btnAddEmployees;
-    @BindView(R.id.contSelection)
-    LinearLayout contSelection;
 
-    private ArrayList<EmployeeModel> arrData;
-    private SelectEmployeesAdapter adapter;
+
+    private ArrayList<DepartmentModel> arrData;
+    private DepartmentAdapter adapter;
     private String searchKeyword = "";
 
     GenericDialogFragment genericDialogFragment = GenericDialogFragment.newInstance();
 
 
-    public static SelectEmployeeFragment newInstance(String searchKeyword) {
+    public static SearchFragment newInstance() {
         Bundle args = new Bundle();
 
-        SelectEmployeeFragment fragment = new SelectEmployeeFragment();
-        fragment.searchKeyword = searchKeyword;
+        SearchFragment fragment = new SearchFragment();
         fragment.setArguments(args);
         return fragment;
     }
@@ -95,7 +87,7 @@ public class SelectEmployeeFragment extends BaseFragment implements OnItemClickL
 
     @Override
     protected int getFragmentLayout() {
-        return R.layout.fragment_general_recyler_view;
+        return R.layout.fragment_search_department_employee;
     }
 
     @Override
@@ -109,24 +101,6 @@ public class SelectEmployeeFragment extends BaseFragment implements OnItemClickL
 
     @Override
     public void setListeners() {
-
-        cbSelectAll.setOnCheckedChangeListener((compoundButton, b) -> {
-
-                    if (b) {
-                        for (int i = 0; i < arrData.size(); i++) {
-                            arrData.get(i).setSelected(true);
-                        }
-                    } else {
-                        for (int i = 0; i < arrData.size(); i++) {
-                            arrData.get(i).setSelected(false);
-                        }
-                    }
-
-                    adapter.notifyDataSetChanged();
-                }
-
-        );
-
 
     }
 
@@ -145,8 +119,8 @@ public class SelectEmployeeFragment extends BaseFragment implements OnItemClickL
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        arrData = new ArrayList<EmployeeModel>();
-        adapter = new SelectEmployeesAdapter(getBaseActivity(), arrData, this);
+        arrData = new ArrayList<DepartmentModel>();
+        adapter = new DepartmentAdapter(getBaseActivity(), arrData, this);
     }
 
     @Override
@@ -162,9 +136,7 @@ public class SelectEmployeeFragment extends BaseFragment implements OnItemClickL
         super.onViewCreated(view, savedInstanceState);
         contSearch.setVisibility(View.VISIBLE);
         imgBanner.setVisibility(View.VISIBLE);
-        contSelection.setVisibility(View.VISIBLE);
-        fab.setVisibility(View.VISIBLE);
-        fab.setImageResource(R.drawable.ic_done_white_18dp);
+
 
         bindView();
 
@@ -173,17 +145,17 @@ public class SelectEmployeeFragment extends BaseFragment implements OnItemClickL
 
     private void bindData() {
         arrData.clear();
-        EmployeeModel sessionDetailModel;
+        DepartmentModel sessionDetailModel;
 
         for (int i = 0; i < 8; i++) {
             if (i < 2) {
-                sessionDetailModel = new EmployeeModel("Hamza Ahmed Khan");
+                sessionDetailModel = new DepartmentModel("IT HIS");
             } else if (i >= 2 && i < 4) {
-                sessionDetailModel = new EmployeeModel("Haris Maaz");
+                sessionDetailModel = new DepartmentModel("NICU");
             } else if (i >= 4 && i < 6) {
-                sessionDetailModel = new EmployeeModel("Aqsa Sarwar");
+                sessionDetailModel = new DepartmentModel("Administration");
             } else {
-                sessionDetailModel = new EmployeeModel("Mahrukh Mehmood");
+                sessionDetailModel = new DepartmentModel("HR department");
 
             }
             arrData.add(sessionDetailModel);
@@ -210,17 +182,17 @@ public class SelectEmployeeFragment extends BaseFragment implements OnItemClickL
 
     @Override
     public void onItemClick(int position, Object object, View view) {
+        DepartmentModel model = (DepartmentModel) object;
+
         switch (view.getId()) {
             case R.id.contListItem:
-                arrData.get(position).setSelected(!arrData.get(position).isSelected());
-                adapter.notifyItemChanged(position);
+                getBaseActivity().addDockableFragment(SelectEmployeeFragment.newInstance(model.getDeptName()), false);
                 break;
         }
     }
 
-
-    @OnClick(R.id.contSelection)
+    @OnClick(R.id.imgSearchEmployee)
     public void onViewClicked() {
-        cbSelectAll.performClick();
+        getBaseActivity().addDockableFragment(SelectEmployeeFragment.newInstance(edtSearchEmployee.getStringTrimmed()), false);
     }
 }

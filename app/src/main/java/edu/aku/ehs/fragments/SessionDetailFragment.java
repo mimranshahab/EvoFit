@@ -258,8 +258,7 @@ public class SessionDetailFragment extends BaseFragment implements OnItemClickLi
             case R.id.btnAddSchedule:
                 break;
             case R.id.btnAddEmployees:
-                getBaseActivity().addDockableFragment(SelectEmployeeFragment.newInstance(), false);
-
+                getBaseActivity().addDockableFragment(SearchFragment.newInstance(), false);
                 break;
         }
     }

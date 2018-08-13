@@ -96,7 +96,7 @@
 
 
             <ImageView
-                android:layout_width="@dimen/x2dp"
+                android:layout_width="@dimen/x1dp"
                 android:layout_height="0dp"
                 android:layout_weight="1"
                 android:background="@color/colorPrimaryDark" />
@@ -113,7 +113,7 @@
 
 
             <ImageView
-                android:layout_width="@dimen/x2dp"
+                android:layout_width="@dimen/x1dp"
                 android:layout_height="0dp"
                 android:layout_weight="1"
                 android:background="@color/colorPrimaryDark" />
