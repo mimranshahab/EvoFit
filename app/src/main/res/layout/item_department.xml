@@ -15,7 +15,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="@dimen/x20dp"
-            android:background="@color/panic_blue"
+            android:background="@color/pastel_peach"
             android:padding="@dimen/x2dp"
             app:corner_radius="@dimen/x10dp">
 
@@ -24,7 +24,8 @@
                 android:id="@+id/contListItem"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@drawable/selected_user_transition"
+                android:background="#eee"
+                android:layout_marginRight="@dimen/x5dp"
                 android:orientation="horizontal"
                 android:padding="@dimen/x5dp"
                 app:corner_radius="@dimen/x10dp">
@@ -33,60 +34,23 @@
                 <LinearLayout
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:gravity="center"
+                    android:layout_weight="2"
+                    android:gravity="center_vertical"
                     android:orientation="vertical">
 
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content">
-
-                        <ImageView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center_vertical"
-                            android:src="@drawable/user_icon" />
-
-
-                        <edu.aku.ehs.widget.AnyTextView
-                            android:id="@+id/txtEmployeeName"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:ellipsize="end"
-                            android:gravity="center"
-                            android:maxLines="2"
-                            android:padding="@dimen/x3dp"
-                            android:text="Employee Name"
-                            android:textColor="@color/txtBlue"
-                            android:textSize="@dimen/s14"
-                            app:typeface="@string/font_medium" />
-
-                    </LinearLayout>
-
                     <edu.aku.ehs.widget.AnyTextView
-                        android:id="@+id/txtEmployeeGender"
+                        android:id="@+id/txtDepartmentName"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:ellipsize="end"
+                        android:maxLines="2"
                         android:padding="@dimen/x3dp"
-                        android:singleLine="true"
-                        android:text="Male | 25y"
-                        android:textColor="@color/txtDarkGrey"
-                        android:textSize="@dimen/s12"
+                        android:text="Department Name"
+                        android:textColor="@color/txtBlue"
+                        android:textSize="@dimen/s14"
                         app:typeface="@string/font_medium" />
 
 
-                    <edu.aku.ehs.widget.AnyTextView
-                        android:id="@+id/txtMRN"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:ellipsize="end"
-                        android:padding="@dimen/x3dp"
-                        android:singleLine="true"
-                        android:text="510-20-10"
-                        android:textColor="@color/txtDarkGrey"
-                        android:textSize="@dimen/s12"
-                        app:typeface="@string/font_medium" />
 
 
                 </LinearLayout>
@@ -102,30 +66,16 @@
                 <LinearLayout
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
-                    android:layout_weight="2"
-                    android:gravity="center_vertical"
+                    android:layout_weight="1"
+                     android:gravity="center_vertical"
                     android:orientation="vertical">
 
 
                     <LinearLayout
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:gravity="center_vertical">
+                         android:layout_height="wrap_content"
+                        android:gravity="right">
 
-
-                        <edu.aku.ehs.widget.AnyTextView
-                            android:id="@+id/txtDesignationAndGrade"
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_marginRight="@dimen/x3dp"
-                            android:layout_weight="1"
-                            android:ellipsize="end"
-                            android:padding="@dimen/x3dp"
-                            android:singleLine="true"
-                            android:text="Programmer Analyst  |  AD4"
-                            android:textColor="@color/txtDarkGrey"
-                            android:textSize="@dimen/s12"
-                            app:typeface="@string/font_regular" />
 
 
                         <edu.aku.ehs.widget.AnyTextView
@@ -134,13 +84,13 @@
                             android:ellipsize="end"
                             android:gravity="center"
                             android:singleLine="true"
-                            android:text="Emp ID: "
+                            android:text="Department ID: "
                             android:textColor="@color/txtDarkGrey"
                             android:textSize="@dimen/s12"
                             app:typeface="@string/font_regular" />
 
                         <edu.aku.ehs.widget.AnyTextView
-                            android:id="@+id/txtEmployeeID"
+                            android:id="@+id/txtDepartmentID"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginRight="@dimen/x3dp"
@@ -148,53 +98,49 @@
                             android:gravity="center"
                             android:padding="@dimen/x3dp"
                             android:singleLine="true"
-                            android:text="238038"
+                            android:text="99"
                             android:textColor="@color/txtBlue"
                             android:textSize="@dimen/s12"
                             app:typeface="@string/font_medium" />
                     </LinearLayout>
 
 
-                    <ImageView
-                        android:layout_width="match_parent"
-                        android:layout_height="1px"
-                        android:layout_margin="@dimen/x3dp"
-                        android:background="@color/c_light_grey" />
 
 
                     <LinearLayout
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content">
+                        android:layout_height="wrap_content"
+                        android:gravity="right">
+
+
 
                         <edu.aku.ehs.widget.AnyTextView
-                            android:id="@+id/txtEmailAddress"
-                            android:layout_width="0dp"
+                            android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginRight="@dimen/x3dp"
-                            android:layout_weight="1"
                             android:ellipsize="end"
-                            android:padding="@dimen/x3dp"
+                            android:gravity="center"
                             android:singleLine="true"
-                            android:text="farzana.tajuddin@aku.edu"
+                            android:text="No of Employyes: "
                             android:textColor="@color/txtDarkGrey"
                             android:textSize="@dimen/s12"
                             app:typeface="@string/font_regular" />
 
                         <edu.aku.ehs.widget.AnyTextView
-                            android:id="@+id/txtDeptID"
+                            android:id="@+id/txtNoOfEMployees"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginRight="@dimen/x3dp"
                             android:ellipsize="end"
+                            android:gravity="center"
                             android:padding="@dimen/x3dp"
                             android:singleLine="true"
-                            android:text="Dept ID: 12077"
-                            android:textColor="@color/txtDarkGrey"
+                            android:text="434"
+                            android:textColor="@color/txtBlue"
                             android:textSize="@dimen/s12"
-                            app:typeface="@string/font_regular" />
-
-
+                            app:typeface="@string/font_medium" />
                     </LinearLayout>
+
+
 
 
                 </LinearLayout>

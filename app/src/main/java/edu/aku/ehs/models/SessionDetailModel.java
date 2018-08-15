@@ -11,6 +11,25 @@ public class SessionDetailModel {
     private String employeeName;
     private String date;
     private EmployeeSessionState status;
+    private boolean isSelected = false;
+    private boolean inSelectionMode = false;
+
+
+    public boolean isInSelectionMode() {
+        return inSelectionMode;
+    }
+
+    public void setInSelectionMode(boolean inSelectionMode) {
+        this.inSelectionMode = inSelectionMode;
+    }
+
+    public boolean isSelected() {
+        return isSelected;
+    }
+
+    public void setSelected(boolean selected) {
+        isSelected = selected;
+    }
 
     public SessionDetailModel(String sessionName, EmployeeSessionState status) {
         this.employeeName = sessionName;

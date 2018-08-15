@@ -14,6 +14,7 @@ import com.gdacciaro.iOSDialog.iOSDialogBuilder;
 
 import edu.aku.ehs.BaseApplication;
 import edu.aku.ehs.R;
+import edu.aku.ehs.callbacks.GenericClickableInterface;
 import edu.aku.ehs.fragments.LeftSideMenuFragment;
 import edu.aku.ehs.fragments.abstracts.BaseFragment;
 import edu.aku.ehs.widget.TitleBar;
@@ -30,7 +31,7 @@ public abstract class BaseActivity extends AppCompatActivity {
     protected TitleBar titleBar;
     private LeftSideMenuFragment leftSideMenuFragment;
     public BaseFragment baseFragment;
-
+    public GenericClickableInterface genericClickableInterface;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -197,6 +198,10 @@ public abstract class BaseActivity extends AppCompatActivity {
         popBackStack();
         addDockableFragment(fragment, false);
 
+    }
+
+    public void setGenericClickableInterface(GenericClickableInterface genericClickableInterface) {
+        this.genericClickableInterface = genericClickableInterface;
     }
 
 

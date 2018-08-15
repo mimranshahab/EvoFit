@@ -94,7 +94,7 @@ public class SearchFragment extends BaseFragment implements OnItemClickListener 
     public void setTitlebar(TitleBar titleBar) {
         titleBar.resetViews();
         titleBar.setVisibility(View.VISIBLE);
-        titleBar.setTitle("Add Employees");
+        titleBar.setTitle("Search");
         titleBar.showBackButton(getBaseActivity());
         titleBar.showHome(getBaseActivity());
     }

@@ -46,26 +46,14 @@ public class DepartmentAdapter extends RecyclerView.Adapter<DepartmentAdapter.Vi
 
         View itemView = null;
         itemView = LayoutInflater.from(activity)
-                .inflate(R.layout.item_employee, parent, false);
+                .inflate(R.layout.item_department, parent, false);
         return new ViewHolder(itemView);
     }
 
     @Override
     public void onBindViewHolder(final ViewHolder holder, int i) {
         DepartmentModel model = arrData.get(i);
-        holder.txtEmployeeName.setText(model.getDeptName());
-
-        TransitionDrawable td = (TransitionDrawable) holder.contListItem.getBackground();
-
-        if (model.isSelected()) {
-            Helper.changeTransitionDrawableColor(td, activity.getColor(R.color.selected_item), 1);
-            td.startTransition(400);
-            AnimationHelper.fade(holder.imgSelected, 0, View.VISIBLE, VISIBLE, 1, 800);
-        } else {
-            Helper.changeTransitionDrawableColor(td, activity.getColor(R.color.c_white), 0);
-            td.resetTransition();
-            holder.imgSelected.setVisibility(View.GONE);
-        }
+        holder.txtDepartmentName.setText(model.getDeptName());
 
         setListener(holder, model);
     }
@@ -82,20 +70,12 @@ public class DepartmentAdapter extends RecyclerView.Adapter<DepartmentAdapter.Vi
 
 
     static class ViewHolder extends RecyclerView.ViewHolder {
-        @BindView(R.id.txtEmployeeName)
-        AnyTextView txtEmployeeName;
-        @BindView(R.id.txtEmployeeGender)
-        AnyTextView txtEmployeeGender;
-        @BindView(R.id.txtMRN)
-        AnyTextView txtMRN;
-        @BindView(R.id.txtDesignationAndGrade)
-        AnyTextView txtDesignationAndGrade;
-        @BindView(R.id.txtEmployeeID)
-        AnyTextView txtEmployeeID;
-        @BindView(R.id.txtEmailAddress)
-        AnyTextView txtEmailAddress;
-        @BindView(R.id.txtDeptID)
-        AnyTextView txtDeptID;
+        @BindView(R.id.txtDepartmentName)
+        AnyTextView txtDepartmentName;
+        @BindView(R.id.txtDepartmentID)
+        AnyTextView txtDepartmentID;
+        @BindView(R.id.txtNoOfEMployees)
+        AnyTextView txtNoOfEMployees;
         @BindView(R.id.contListItem)
         RoundKornerLinearLayout contListItem;
         @BindView(R.id.imgSelected)

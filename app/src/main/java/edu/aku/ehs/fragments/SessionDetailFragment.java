@@ -2,6 +2,7 @@ package edu.aku.ehs.fragments;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v4.widget.DrawerLayout;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -27,6 +28,7 @@ import butterknife.OnClick;
 import butterknife.Unbinder;
 import edu.aku.ehs.R;
 import edu.aku.ehs.adapters.recyleradapters.SessionDetailAdapter;
+import edu.aku.ehs.callbacks.GenericClickableInterface;
 import edu.aku.ehs.callbacks.OnItemClickListener;
 import edu.aku.ehs.enums.EmployeeSessionState;
 import edu.aku.ehs.fragments.abstracts.BaseFragment;
@@ -34,6 +36,7 @@ import edu.aku.ehs.fragments.abstracts.GenericDialogFragment;
 import edu.aku.ehs.helperclasses.ui.helper.UIHelper;
 import edu.aku.ehs.managers.DateManager;
 import edu.aku.ehs.models.SessionDetailModel;
+import edu.aku.ehs.models.SessionModel;
 import edu.aku.ehs.widget.AnyEditTextView;
 import edu.aku.ehs.widget.AnyTextView;
 import edu.aku.ehs.widget.TitleBar;
@@ -76,20 +79,23 @@ public class SessionDetailFragment extends BaseFragment implements OnItemClickLi
     private SessionDetailAdapter adapter;
 
     GenericDialogFragment genericDialogFragment = GenericDialogFragment.newInstance();
+    private SessionModel sessionModel;
+    public static boolean isSelectingEmployeesForSchedule = false;
 
 
-    public static SessionDetailFragment newInstance() {
+    public static SessionDetailFragment newInstance(SessionModel sessionModel) {
 
         Bundle args = new Bundle();
 
         SessionDetailFragment fragment = new SessionDetailFragment();
+        fragment.sessionModel = sessionModel;
         fragment.setArguments(args);
         return fragment;
     }
 
     @Override
     public int getDrawerLockMode() {
-        return 0;
+        return DrawerLayout.LOCK_MODE_LOCKED_CLOSED;
     }
 
     @Override
@@ -99,9 +105,13 @@ public class SessionDetailFragment extends BaseFragment implements OnItemClickLi
 
     @Override
     public void setTitlebar(TitleBar titleBar) {
+        resetTitlebar(titleBar);
+    }
+
+    private void resetTitlebar(TitleBar titleBar) {
         titleBar.resetViews();
         titleBar.setVisibility(View.VISIBLE);
-        titleBar.setTitle("Sessions");
+        titleBar.setTitle(sessionModel.getSessionName());
         titleBar.showBackButton(getBaseActivity());
         titleBar.showHome(getBaseActivity());
     }
@@ -109,6 +119,22 @@ public class SessionDetailFragment extends BaseFragment implements OnItemClickLi
     @Override
     public void setListeners() {
 
+        getBaseActivity().setGenericClickableInterface(new GenericClickableInterface() {
+            @Override
+            public void click() {
+                onBackPressed();
+            }
+        });
+
+    }
+
+    private void onBackPressed() {
+        isSelectingEmployeesForSchedule = false;
+        resetTitlebar(getBaseActivity().getTitleBar());
+        fab.setVisibility(View.GONE);
+        contOptionButtons.setVisibility(View.VISIBLE);
+        bindData();
+        contSelection.setVisibility(View.GONE);
     }
 
     @Override
@@ -128,6 +154,7 @@ public class SessionDetailFragment extends BaseFragment implements OnItemClickLi
 
         arrData = new ArrayList<SessionDetailModel>();
         adapter = new SessionDetailAdapter(getBaseActivity(), arrData, this);
+        isSelectingEmployeesForSchedule = false;
     }
 
     @Override
@@ -169,6 +196,19 @@ public class SessionDetailFragment extends BaseFragment implements OnItemClickLi
         adapter.notifyDataSetChanged();
     }
 
+    private void bindOnlyEnrolledData() {
+        arrData.clear();
+        SessionDetailModel sessionDetailModel;
+
+        for (int i = 0; i < 4; i++) {
+            sessionDetailModel = new SessionDetailModel("Hamza Ahmed Khan", EmployeeSessionState.ENROLLED);
+            sessionDetailModel.setInSelectionMode(true);
+            arrData.add(sessionDetailModel);
+        }
+        adapter.notifyDataSetChanged();
+    }
+
+
 
     private void bindView() {
         RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getBaseActivity());
@@ -201,6 +241,11 @@ public class SessionDetailFragment extends BaseFragment implements OnItemClickLi
                 break;
 
             case R.id.contListItem:
+
+                if (isSelectingEmployeesForSchedule) {
+                    arrData.get(position).setSelected(!arrData.get(position).isSelected());
+                    adapter.notifyItemChanged(position);
+                }
 
                 break;
         }
@@ -250,15 +295,37 @@ public class SessionDetailFragment extends BaseFragment implements OnItemClickLi
         }
     }
 
-    @OnClick({R.id.btnAddEmail, R.id.btnAddSchedule, R.id.btnAddEmployees})
+    @OnClick({R.id.btnAddEmail, R.id.btnAddSchedule, R.id.btnAddEmployees, R.id.fab})
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.btnAddEmail:
                 break;
             case R.id.btnAddSchedule:
+                fab.setVisibility(View.VISIBLE);
+                isSelectingEmployeesForSchedule = true;
+                getBaseActivity().getTitleBar().setTitle("Select Employees");
+                contOptionButtons.setVisibility(View.GONE);
+                bindOnlyEnrolledData();
+                contSelection.setVisibility(View.VISIBLE);
+
+
                 break;
             case R.id.btnAddEmployees:
                 getBaseActivity().addDockableFragment(SearchFragment.newInstance(), false);
+                break;
+
+
+            case R.id.fab:
+
+                UIHelper.genericPopUp(getBaseActivity(), genericDialogFragment, "Schedule", "Do you want to Add Schedule?", "Add", "Cancel",
+                        () -> {
+                            genericDialogFragment.dismiss();
+                            DateManager.showDatePicker(getContext(), date -> onBackPressed(), false, true);
+                        }, () -> {
+                            genericDialogFragment.dismiss();
+                        }, false, true);
+
+
                 break;
         }
     }

@@ -165,7 +165,7 @@ public class SessionListFragment extends BaseFragment implements OnItemClickList
 
     @Override
     public void onItemClick(int position, Object object, View view) {
-        getBaseActivity().addDockableFragment(SessionDetailFragment.newInstance(), false);
+        getBaseActivity().addDockableFragment(SessionDetailFragment.newInstance((SessionModel) object), false);
     }
 
     @OnClick(R.id.fab)

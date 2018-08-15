@@ -29,7 +29,7 @@
         <ImageView
             android:id="@+id/imgBanner"
             android:layout_width="match_parent"
-            android:layout_height="@dimen/x200dp"
+            android:layout_height="@dimen/x180dp"
             android:scaleType="centerCrop"
             android:src="@drawable/img_banner"
             android:visibility="visible" />
@@ -40,13 +40,10 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="@dimen/x40dp"
             android:layout_marginRight="@dimen/x40dp"
-            android:layout_marginTop="@dimen/x70dp"
-            android:elevation="@dimen/x3dp"
+            android:layout_marginTop="@dimen/x50dp"
             android:gravity="center"
             android:orientation="vertical"
-            android:visibility="visible"
-            app:corner_radius="@dimen/x15dp">
-
+            android:visibility="visible">
 
             <com.jcminarro.roundkornerlayout.RoundKornerLinearLayout
                 android:id="@+id/contSearchByName"
@@ -137,7 +134,7 @@
             android:layout_below="@+id/imgBanner"
             android:layout_marginLeft="@dimen/x40dp"
             android:layout_marginRight="@dimen/x40dp"
-            android:layout_marginTop="@dimen/x185dp"
+            android:layout_marginTop="@dimen/x165dp"
             android:background="@color/c_white"
             android:elevation="@dimen/x10dp"
             android:visibility="visible"

@@ -76,6 +76,7 @@ public class SelectEmployeeFragment extends BaseFragment implements OnItemClickL
     private SelectEmployeesAdapter adapter;
     private String searchKeyword = "";
 
+
     GenericDialogFragment genericDialogFragment = GenericDialogFragment.newInstance();
 
 
@@ -102,7 +103,7 @@ public class SelectEmployeeFragment extends BaseFragment implements OnItemClickL
     public void setTitlebar(TitleBar titleBar) {
         titleBar.resetViews();
         titleBar.setVisibility(View.VISIBLE);
-        titleBar.setTitle("Add Employees");
+        titleBar.setTitle(searchKeyword);
         titleBar.showBackButton(getBaseActivity());
         titleBar.showHome(getBaseActivity());
     }

@@ -1,5 +1,6 @@
 package edu.aku.ehs.adapters.recyleradapters;
 
+import android.graphics.drawable.TransitionDrawable;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -16,8 +17,12 @@ import butterknife.ButterKnife;
 import edu.aku.ehs.R;
 import edu.aku.ehs.activities.BaseActivity;
 import edu.aku.ehs.callbacks.OnItemClickListener;
+import edu.aku.ehs.helperclasses.Helper;
+import edu.aku.ehs.helperclasses.ui.helper.AnimationHelper;
 import edu.aku.ehs.models.SessionDetailModel;
 import edu.aku.ehs.widget.AnyTextView;
+
+import static android.view.View.VISIBLE;
 
 /**
  */
@@ -71,6 +76,31 @@ public class SessionDetailAdapter extends RecyclerView.Adapter<SessionDetailAdap
                 break;
         }
 
+
+        TransitionDrawable td = (TransitionDrawable) holder.contListItem.getBackground();
+
+
+        if (model.isSelected()) {
+            Helper.changeTransitionDrawableColor(td, activity.getColor(R.color.selected_item), 1);
+            td.startTransition(400);
+            AnimationHelper.fade(holder.imgSelected, 0, View.VISIBLE, VISIBLE, 1, 800);
+
+
+        } else {
+            Helper.changeTransitionDrawableColor(td, activity.getColor(R.color.c_white), 0);
+            td.resetTransition();
+            holder.imgSelected.setVisibility(View.GONE);
+
+        }
+
+        if (model.isInSelectionMode()) {
+            holder.btnDelete.setVisibility(View.GONE);
+            holder.btnSchedule.setVisibility(View.GONE);
+        } else {
+            holder.btnDelete.setVisibility(View.VISIBLE);
+            holder.btnSchedule.setVisibility(View.VISIBLE);
+        }
+
         holder.stepView.setCurrentStep(2);
 
 
@@ -95,18 +125,23 @@ public class SessionDetailAdapter extends RecyclerView.Adapter<SessionDetailAdap
         AnyTextView txtEmployeeName;
         @BindView(R.id.txtEmployeeGender)
         AnyTextView txtEmployeeGender;
+        @BindView(R.id.txtMRN)
+        AnyTextView txtMRN;
         @BindView(R.id.txDate)
         AnyTextView txDate;
         @BindView(R.id.txtStatus)
         AnyTextView txtStatus;
         @BindView(R.id.stepView)
         StepperIndicator stepView;
-        @BindView(R.id.btnSchedule)
-        ImageView btnSchedule;
         @BindView(R.id.btnDelete)
         ImageView btnDelete;
+        @BindView(R.id.btnSchedule)
+        ImageView btnSchedule;
         @BindView(R.id.contListItem)
         RoundKornerLinearLayout contListItem;
+        @BindView(R.id.imgSelected)
+        ImageView imgSelected;
+
 
         ViewHolder(View view) {
             super(view);
