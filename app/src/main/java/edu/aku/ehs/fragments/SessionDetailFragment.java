@@ -31,6 +31,7 @@ import edu.aku.ehs.adapters.recyleradapters.SessionDetailAdapter;
 import edu.aku.ehs.callbacks.GenericClickableInterface;
 import edu.aku.ehs.callbacks.OnItemClickListener;
 import edu.aku.ehs.enums.EmployeeSessionState;
+import edu.aku.ehs.enums.SelectEmployeeActionType;
 import edu.aku.ehs.fragments.abstracts.BaseFragment;
 import edu.aku.ehs.fragments.abstracts.GenericDialogFragment;
 import edu.aku.ehs.helperclasses.ui.helper.UIHelper;
@@ -299,6 +300,8 @@ public class SessionDetailFragment extends BaseFragment implements OnItemClickLi
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.btnAddEmail:
+                getBaseActivity().addDockableFragment(EmailFragment.newInstance(), false);
+
                 break;
             case R.id.btnAddSchedule:
                 fab.setVisibility(View.VISIBLE);
@@ -311,7 +314,7 @@ public class SessionDetailFragment extends BaseFragment implements OnItemClickLi
 
                 break;
             case R.id.btnAddEmployees:
-                getBaseActivity().addDockableFragment(SearchFragment.newInstance(), false);
+                getBaseActivity().addDockableFragment(SearchFragment.newInstance(SelectEmployeeActionType.ADDEMPLOYEE), false);
                 break;
 
 

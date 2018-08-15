@@ -64,7 +64,8 @@
                     android:layout_marginRight="@dimen/x5dp"
                     android:layout_weight="1"
                     android:backgroundTint="@color/transparent"
-                    android:hint="Enter Name to Search Employee"
+                    android:hint="Enter Employee's MR Number"
+                    android:inputType="number"
                     android:maxLength="30"
                     android:maxLines="1"
                     android:padding="@dimen/x8dp"
@@ -109,7 +110,8 @@
                     android:maxLength="30"
                     android:maxLines="1"
                     android:padding="@dimen/x8dp"
-                    android:textSize="@dimen/s12" />
+                    android:textSize="@dimen/s12"
+                    app:typeface="@string/font_regular" />
 
                 <ImageView
                     android:layout_width="wrap_content"

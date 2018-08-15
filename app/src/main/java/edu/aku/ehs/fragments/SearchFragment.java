@@ -2,6 +2,7 @@ package edu.aku.ehs.fragments;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v4.widget.DrawerLayout;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -25,6 +26,7 @@ import butterknife.Unbinder;
 import edu.aku.ehs.R;
 import edu.aku.ehs.adapters.recyleradapters.DepartmentAdapter;
 import edu.aku.ehs.callbacks.OnItemClickListener;
+import edu.aku.ehs.enums.SelectEmployeeActionType;
 import edu.aku.ehs.fragments.abstracts.BaseFragment;
 import edu.aku.ehs.fragments.abstracts.GenericDialogFragment;
 import edu.aku.ehs.models.DepartmentModel;
@@ -67,22 +69,22 @@ public class SearchFragment extends BaseFragment implements OnItemClickListener 
 
     private ArrayList<DepartmentModel> arrData;
     private DepartmentAdapter adapter;
-    private String searchKeyword = "";
+    private SelectEmployeeActionType selectEmployeeActionType;
 
     GenericDialogFragment genericDialogFragment = GenericDialogFragment.newInstance();
 
 
-    public static SearchFragment newInstance() {
+    public static SearchFragment newInstance(SelectEmployeeActionType selectEmployeeActionType) {
         Bundle args = new Bundle();
-
         SearchFragment fragment = new SearchFragment();
+        fragment.selectEmployeeActionType = selectEmployeeActionType;
         fragment.setArguments(args);
         return fragment;
     }
 
     @Override
     public int getDrawerLockMode() {
-        return 0;
+        return DrawerLayout.LOCK_MODE_LOCKED_CLOSED;
     }
 
     @Override
@@ -186,13 +188,13 @@ public class SearchFragment extends BaseFragment implements OnItemClickListener 
 
         switch (view.getId()) {
             case R.id.contListItem:
-                getBaseActivity().addDockableFragment(SelectEmployeeFragment.newInstance(model.getDeptName()), false);
+                getBaseActivity().addDockableFragment(SelectEmployeeFragment.newInstance(model.getDeptName(), selectEmployeeActionType), false);
                 break;
         }
     }
 
     @OnClick(R.id.imgSearchEmployee)
     public void onViewClicked() {
-        getBaseActivity().addDockableFragment(SelectEmployeeFragment.newInstance(edtSearchEmployee.getStringTrimmed()), false);
+        getBaseActivity().addDockableFragment(SelectEmployeeFragment.newInstance(edtSearchEmployee.getStringTrimmed(), selectEmployeeActionType), false);
     }
 }

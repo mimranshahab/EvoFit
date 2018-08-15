@@ -29,6 +29,7 @@ import butterknife.Unbinder;
 import edu.aku.ehs.R;
 import edu.aku.ehs.adapters.recyleradapters.SelectEmployeesAdapter;
 import edu.aku.ehs.callbacks.OnItemClickListener;
+import edu.aku.ehs.enums.SelectEmployeeActionType;
 import edu.aku.ehs.fragments.abstracts.BaseFragment;
 import edu.aku.ehs.fragments.abstracts.GenericDialogFragment;
 import edu.aku.ehs.models.EmployeeModel;
@@ -78,13 +79,15 @@ public class SelectEmployeeFragment extends BaseFragment implements OnItemClickL
 
 
     GenericDialogFragment genericDialogFragment = GenericDialogFragment.newInstance();
+    private SelectEmployeeActionType selectEmployeeActionType;
 
 
-    public static SelectEmployeeFragment newInstance(String searchKeyword) {
+    public static SelectEmployeeFragment newInstance(String searchKeyword, SelectEmployeeActionType selectEmployeeActionType) {
         Bundle args = new Bundle();
 
         SelectEmployeeFragment fragment = new SelectEmployeeFragment();
         fragment.searchKeyword = searchKeyword;
+        fragment.selectEmployeeActionType = selectEmployeeActionType;
         fragment.setArguments(args);
         return fragment;
     }
