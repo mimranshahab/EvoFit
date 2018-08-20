@@ -1,12 +1,15 @@
 package edu.aku.ehs.fragments;
 
 import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.support.v4.widget.DrawerLayout;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.Button;
+
+import java.util.Collection;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -17,6 +20,7 @@ import edu.aku.ehs.fragments.abstracts.BaseFragment;
 import edu.aku.ehs.helperclasses.ui.helper.UIHelper;
 import edu.aku.ehs.widget.AnyEditTextView;
 import edu.aku.ehs.widget.TitleBar;
+import mabbas007.tagsedittext.TagsEditText;
 
 /**
  * Created by hamza.ahmed on 7/19/2018.
@@ -27,7 +31,7 @@ public class EmailFragment extends BaseFragment {
 
     Unbinder unbinder;
     @BindView(R.id.edtEmailAddress)
-    AnyEditTextView edtEmailAddress;
+    TagsEditText edtEmailAddress;
     @BindView(R.id.edtEmailSubject)
     AnyEditTextView edtEmailSubject;
     @BindView(R.id.edtEmailBody)
@@ -66,10 +70,22 @@ public class EmailFragment extends BaseFragment {
         titleBar.showBackButton(getBaseActivity());
     }
 
+
+    @Override
+    public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+     }
+
     @Override
     public void setListeners() {
 
-    }
+        edtEmailAddress.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                UIHelper.showToast(getContext(), "Clicked");
+            }
+        });
+     }
 
     @Override
     public void onClick(View view) {
