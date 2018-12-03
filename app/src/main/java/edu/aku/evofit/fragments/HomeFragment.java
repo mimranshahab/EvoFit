@@ -1,47 +1,32 @@
 package edu.aku.ehs.fragments;
 
 import android.os.Bundle;
-import android.support.v4.widget.DrawerLayout;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
-import android.widget.Button;
 
-import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import butterknife.Unbinder;
 import edu.aku.ehs.R;
 import edu.aku.ehs.fragments.abstracts.BaseFragment;
-import edu.aku.ehs.helperclasses.ui.helper.UIHelper;
-import edu.aku.ehs.widget.AnyEditTextView;
 import edu.aku.ehs.widget.TitleBar;
 
 /**
  * Created by hamza.ahmed on 7/19/2018.
  */
 
-public class EmailFragment extends BaseFragment {
+public class HomeFragment extends BaseFragment {
 
 
     Unbinder unbinder;
-    @BindView(R.id.edtEmailAddress)
-    AnyEditTextView edtEmailAddress;
-    @BindView(R.id.edtEmailSubject)
-    AnyEditTextView edtEmailSubject;
-    @BindView(R.id.edtEmailBody)
-    AnyEditTextView edtEmailBody;
-    @BindView(R.id.btnCancel)
-    Button btnCancel;
-    @BindView(R.id.btnSend)
-    Button btnSend;
 
-    public static EmailFragment newInstance() {
+    public static HomeFragment newInstance() {
 
         Bundle args = new Bundle();
 
-        EmailFragment fragment = new EmailFragment();
+        HomeFragment fragment = new HomeFragment();
         fragment.setArguments(args);
         return fragment;
     }
@@ -49,21 +34,26 @@ public class EmailFragment extends BaseFragment {
 
     @Override
     public int getDrawerLockMode() {
-        return DrawerLayout.LOCK_MODE_LOCKED_CLOSED;
+        return 0;
     }
 
     @Override
     protected int getFragmentLayout() {
-        return R.layout.fragment_email;
+        return R.layout.fragment_home;
     }
 
     @Override
     public void setTitlebar(TitleBar titleBar) {
         titleBar.resetViews();
         titleBar.setVisibility(View.VISIBLE);
-        titleBar.setTitle("Email");
-        titleBar.showHome(getBaseActivity());
-        titleBar.showBackButton(getBaseActivity());
+        titleBar.setTitle("Home");
+        titleBar.setRightButton2(getBaseActivity(), R.drawable.logout_icon, "", new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                logoutClick(HomeFragment.this);
+            }
+        });
+        titleBar.showBackButtonInvisible();
     }
 
     @Override
@@ -95,15 +85,14 @@ public class EmailFragment extends BaseFragment {
         unbinder.unbind();
     }
 
-    @OnClick({R.id.btnSend, R.id.btnCancel})
+    @OnClick({R.id.contSession, R.id.contStats})
     public void onViewClicked(View view) {
         switch (view.getId()) {
-            case R.id.btnSend:
-                UIHelper.showToast(getContext(), "Email Sent!!!");
-                popBackStack();
+            case R.id.contSession:
+//                getBaseActivity().addDockableFragment(SessionListFragment.newInstance(), true);
                 break;
-            case R.id.btnCancel:
-                popBackStack();
+            case R.id.contStats:
+//                getBaseActivity().addDockableFragment(StatsFragment.newInstance(), true);
                 break;
         }
     }
