@@ -84,6 +84,7 @@
                         android:background="@drawable/rounded_box"
                         android:drawableLeft="@drawable/password_icon"
                         android:drawablePadding="@dimen/x5dp"
+                        android:inputType="textPassword"
                         android:drawableTint="@color/colorPrimary"
                         android:hint="Password"
                         android:padding="@dimen/x8dp"

@@ -31,24 +31,13 @@
                 android:orientation="vertical">
 
 
-                <ImageView
-                    android:layout_width="match_parent"
-                    android:layout_height="@dimen/x60dp"
-                    android:layout_marginLeft="@dimen/x40dp"
-                    android:layout_marginRight="@dimen/x40dp"
-                    android:layout_marginTop="@dimen/x20dp"
-                    android:scaleType="fitCenter"
-                    android:src="@drawable/akuh_logo" />
-
 
                 <ImageView
                     android:layout_width="match_parent"
-                    android:layout_height="@dimen/x60dp"
-                    android:layout_marginBottom="@dimen/x20dp"
-                    android:layout_marginLeft="@dimen/x40dp"
-                    android:layout_marginRight="@dimen/x40dp"
+                    android:layout_height="@dimen/x140dp"
+                   android:layout_margin="@dimen/x40dp"
                     android:scaleType="centerInside"
-                    android:src="@drawable/family_hifazat_logo_no_padding" />
+                    android:src="@drawable/img_logo" />
 
 
                 <edu.aku.evofit.widget.AnyTextView

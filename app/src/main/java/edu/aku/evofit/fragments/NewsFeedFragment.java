@@ -12,11 +12,6 @@ import android.view.ViewGroup;
 import android.view.animation.AnimationUtils;
 import android.view.animation.LayoutAnimationController;
 import android.widget.AdapterView;
-import android.widget.ImageView;
-import android.widget.RelativeLayout;
-
-import com.github.clans.fab.FloatingActionButton;
-import com.jcminarro.roundkornerlayout.RoundKornerLinearLayout;
 
 import java.util.ArrayList;
 
@@ -25,45 +20,35 @@ import butterknife.ButterKnife;
 import butterknife.Unbinder;
 import edu.aku.evofit.R;
 import edu.aku.evofit.adapters.recyleradapters.DashboardAdapter;
+import edu.aku.evofit.adapters.recyleradapters.NewsFeedAdapter;
 import edu.aku.evofit.callbacks.OnItemClickListener;
 import edu.aku.evofit.constatnts.AppConstants;
 import edu.aku.evofit.fragments.abstracts.BaseFragment;
 import edu.aku.evofit.fragments.abstracts.GenericContentFragment;
 import edu.aku.evofit.models.DepartmentModel;
-import edu.aku.evofit.widget.AnyEditTextView;
+import edu.aku.evofit.models.NewsFeedModel;
 import edu.aku.evofit.widget.TitleBar;
-
-import static edu.aku.evofit.constatnts.AppConstants.AboutUs;
 
 /**
  * Created by hamza.ahmed on 7/19/2018.
  */
 
-public class HomeFragment extends BaseFragment implements OnItemClickListener {
+public class NewsFeedFragment extends BaseFragment implements OnItemClickListener {
 
 
     Unbinder unbinder;
-    @BindView(R.id.imgSearch)
-    ImageView imgSearch;
-    @BindView(R.id.edtSearchBar)
-    AnyEditTextView edtSearchBar;
-    @BindView(R.id.contSearch)
-    RoundKornerLinearLayout contSearch;
     @BindView(R.id.recylerView)
     RecyclerView recylerView;
-    @BindView(R.id.fab)
-    FloatingActionButton fab;
-    @BindView(R.id.contParent)
-    RelativeLayout contParent;
-    private ArrayList<DepartmentModel> arrData;
-    private DashboardAdapter adapterEndoscopy;
+
+    private ArrayList<NewsFeedModel> arrData;
+    private NewsFeedAdapter adapter;
 
 
-    public static HomeFragment newInstance() {
+    public static NewsFeedFragment newInstance() {
 
         Bundle args = new Bundle();
 
-        HomeFragment fragment = new HomeFragment();
+        NewsFeedFragment fragment = new NewsFeedFragment();
         fragment.setArguments(args);
         return fragment;
     }
@@ -78,8 +63,8 @@ public class HomeFragment extends BaseFragment implements OnItemClickListener {
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        arrData = new ArrayList<DepartmentModel>();
-        adapterEndoscopy = new DashboardAdapter(getBaseActivity(), arrData, this);
+        arrData = new ArrayList<NewsFeedModel>();
+        adapter = new NewsFeedAdapter(getBaseActivity(), arrData, this);
     }
 
 
@@ -88,51 +73,44 @@ public class HomeFragment extends BaseFragment implements OnItemClickListener {
         super.onViewCreated(view, savedInstanceState);
 
 
-
-
-
         arrData.clear();
-        arrData.add(new DepartmentModel("What Is", R.color.material_blue900));
-        arrData.add(new DepartmentModel("Prediabetes", R.color.material_blue800));
-        arrData.add(new DepartmentModel("Guide", R.color.material_blue700));
-        arrData.add(new DepartmentModel("Blood Glucose", R.color.material_blue600));
-        arrData.add(new DepartmentModel("Treatment", R.color.material_blue500));
-        arrData.add(new DepartmentModel("Exercise", R.color.material_blue400));
-        arrData.add(new DepartmentModel("Diabetic Diet Plan", R.color.material_blue300));
-        arrData.add(new DepartmentModel("Forum", R.color.material_blue200));
-        arrData.add(new DepartmentModel("All Records", R.color.material_blue100));
-        arrData.add(new DepartmentModel("Disclaimer", R.color.material_blue100));
-        arrData.add(new DepartmentModel("About", R.color.material_blue100));
+
+
+        arrData.add(new NewsFeedModel("Haris Maaz", "Do you drink beer?" , "Haris maaz to charsi hai", "https://www.brandsynario.com/wp-content/uploads/2017/12/abid-shaka.jpg"));
+        arrData.add(new NewsFeedModel("Haris Maaz", "Do you drink beer?" , "Haris maaz to charsi hai", "https://www.brandsynario.com/wp-content/uploads/2017/12/abid-shaka.jpg"));
+        arrData.add(new NewsFeedModel("Haris Maaz", "Do you drink beer?" , "Haris maaz to charsi hai", "https://www.brandsynario.com/wp-content/uploads/2017/12/abid-shaka.jpg"));
+        arrData.add(new NewsFeedModel("Haris Maaz", "Do you drink beer?" , "Haris maaz to charsi hai", "https://www.brandsynario.com/wp-content/uploads/2017/12/abid-shaka.jpg"));
+        arrData.add(new NewsFeedModel("Haris Maaz", "Do you drink beer?" , "Haris maaz to charsi hai", "https://www.brandsynario.com/wp-content/uploads/2017/12/abid-shaka.jpg"));
 
         bindView();
     }
 
 
     private void bindView() {
-        RecyclerView.LayoutManager mLayoutManager = new GridLayoutManager(getBaseActivity(),2);
+        RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getBaseActivity());
         recylerView.setLayoutManager(mLayoutManager);
         ((DefaultItemAnimator) recylerView.getItemAnimator()).setSupportsChangeAnimations(false);
         int resId = R.anim.layout_animation_fall_bottom;
         LayoutAnimationController animation = AnimationUtils.loadLayoutAnimation(getContext(), resId);
 //        recyclerView.setLayoutAnimation(animation);
-        recylerView.setAdapter(adapterEndoscopy);
-        adapterEndoscopy.notifyDataSetChanged();
+        recylerView.setAdapter(adapter);
+        adapter.notifyDataSetChanged();
     }
 
     @Override
     protected int getFragmentLayout() {
-        return R.layout.fragment_general_recyler_view;
+        return R.layout.fragment_newsfeed;
     }
 
     @Override
     public void setTitlebar(TitleBar titleBar) {
         titleBar.resetViews();
         titleBar.setVisibility(View.VISIBLE);
-        titleBar.setTitle("Home");
+        titleBar.setTitle("News Feed");
         titleBar.setRightButton2(getBaseActivity(), R.drawable.logout_icon, "", new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                logoutClick(HomeFragment.this);
+                logoutClick(NewsFeedFragment.this);
             }
         });
         titleBar.showBackButtonInvisible();
@@ -170,12 +148,6 @@ public class HomeFragment extends BaseFragment implements OnItemClickListener {
 
     @Override
     public void onItemClick(int position, Object object, View view) {
-        if (position == 0) {
-            getBaseActivity().addDockableFragment(GenericContentFragment.newInstance("What is Diabetes", AppConstants.WhatIS), true);
-        } else if (position == 7) {
-            getBaseActivity().addDockableFragment(NewsFeedFragment.newInstance(), true);
-
-        }
 
 
 

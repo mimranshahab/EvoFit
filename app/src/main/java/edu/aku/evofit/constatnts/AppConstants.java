@@ -124,8 +124,25 @@ public class AppConstants {
      * Data Static Strings
      */
 
-    public static String AboutUs = "<B>Family Hifazat</B> is a product of Aga Khan University Hospital Karachi. It provides discounts on medical services as well as patients’ access to their personal health records through web portal and mobile applications." + "<BR><BR>" +
-            "The <B>Family Hifazat</B> “Patient Portal” is secure, confidential and easy to use web portal &amp; mobile apps to provide AKUH patients 24 hour access to their personal health records including diagnostic results, imaging, medications, vaccines and discharge summaries.";
+    public static String AboutUs = "PharmEvo (Pvt.) limited, incorporated on October 7th, 1999, is a healthcare company, which is engaged in the creation, development, manufacture and marketing of pharmaceutical products, including over-the-counter (OTC) medicines, medical equipments and infant formulas.";
+
+
+    public static String WhatIS = "Diabetes melltus is a serious chronic hormonal condition in which the body is unable to properly use the nergy from food, in other words diabetes mellitus is the medical term for the disease associated with the body's inability to naturally produce or use insulin. There are two major types , one is considered an autoimmine disease (type-1), and the otheris a disorder of the body processes food for engery (type-2). In general, diabetes occurs when the pancreas either produces little or no isnulin, or when that is produced. Because appropiately to the insulin that is purchased, because of either of these conditions, glucose(sugar) builds up in the bloodstream (causing hogh blood glucose levels) and overflows into the urine."  + "<BR><BR>" +
+            "Daibetes has a massive effect at both the individual health level and the greater health care system level. Having diabetes put an individua; at a 50 percent higer risk of death in adulthood. People with diabetes are at increased risk of developing a number of health-related side effects, including: \n"  + "<BR><BR>" +
+            "•\tBlindness \n" + "<BR>" +
+            "•\tKidney failure heart disease \n"  + "<BR>" +
+            "•\tStrokes \n"  + "<BR>" +
+            "•\tLoss of toes, feet or legs (amputation)  \n"  + "<BR><BR>" +
+            "Type 1 diabetes:\n"  + "<BR><BR>" +
+            "Characterized by an almost complete deficiency of insulin due to the immune system erroneously attacking and destroying the insulin-producing cells in the pancreas\n"  + "<BR><BR>" +
+            "Type 2 diabetes: \n"  + "<BR><BR>" +
+            "Caused by a combination of body tissues becoming resistant to the action of insulin and the inability of the pancreas to make enough extra insuin to overcome it. \n"  + "<BR><BR>" +
+            "What is insulin? \n"  + "<BR><BR>" +
+            "Insulin resistance is a condition most associated with type 2 diabetes. It occurs when the body's natural hormone insulin is less effective in reducing a person's blood glucose levels. This is caused by the body's cell being resistant to insuin's action and/or not enough insulin is made in the pancreas. Either situation makes the glucose levels rise and, if severe enough, can lead to type 2 diabetes and other health problems.\n"  + "<BR><BR>" +
+            "Glucose:\n"  + "<BR><BR>" +
+            "A basic sugar used to fuel body cells. \n";
+
+
 
     public static String NO_CURRENT_MEDICATION_MESSAGE = "No Current Medication Exists";
     public static String NO_MEDICATION_HISTORY_MESSAGE = "No Current Medication Exists";

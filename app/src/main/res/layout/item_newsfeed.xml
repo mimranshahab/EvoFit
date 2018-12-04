@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+
+    android:layout_marginLeft="@dimen/x10dp"
+    android:layout_marginRight="@dimen/x10dp"
+    android:layout_marginBottom="@dimen/x5dp"
+    android:layout_marginTop="@dimen/x5dp"
+    android:orientation="vertical">
+
+
+    <com.jcminarro.roundkornerlayout.RoundKornerLinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/c_white"
+        android:elevation="@dimen/x3dp"
+        android:padding="@dimen/x10dp"
+        app:corner_radius="@dimen/x10dp">
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/x10dp"
+                android:gravity="center_vertical">
+
+
+                <de.hdodenhof.circleimageview.CircleImageView
+                    android:id="@+id/imgUser"
+                    android:layout_width="@dimen/x70dp"
+                    android:layout_height="@dimen/x70dp"
+                    android:scaleType="centerCrop"
+                    android:layout_marginRight="@dimen/x5dp"
+                    android:src="@drawable/profile_placeholder" />
+
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+
+                    <edu.aku.evofit.widget.AnyTextView
+                        android:id="@+id/txtUserName"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Haris Maaz"
+                        android:textColor="@color/txtBlue"
+                        android:textSize="@dimen/s16"
+                        app:typeface="@string/font_medium" />
+
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center_vertical">
+
+
+                        <edu.aku.evofit.widget.AnyTextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="40m"
+                            android:textColor="@color/txtGrey"
+                            android:textSize="@dimen/s11"
+                            app:typeface="@string/font_medium" />
+
+                        <ImageView
+                            android:layout_width="@dimen/x10dp"
+                            android:layout_height="@dimen/x10dp"
+                            android:layout_marginLeft="@dimen/x5dp"
+                            android:layout_marginRight="@dimen/x5dp"
+                            android:src="@drawable/ic_eye" />
+
+
+                        <edu.aku.evofit.widget.AnyTextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="495"
+                            android:textColor="@color/txtGrey"
+                            android:textSize="@dimen/s11"
+                            app:typeface="@string/font_medium" />
+
+
+                        <ImageView
+                            android:layout_width="@dimen/x10dp"
+                            android:layout_height="@dimen/x10dp"
+                            android:layout_marginLeft="@dimen/x5dp"
+                            android:layout_marginRight="@dimen/x5dp"
+                            android:src="@drawable/ic_reply" />
+
+                        <edu.aku.evofit.widget.AnyTextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="26"
+                            android:textColor="@color/txtGrey"
+                            android:textSize="@dimen/s11"
+                            app:typeface="@string/font_medium" />
+
+                    </LinearLayout>
+
+
+                    <edu.aku.evofit.widget.AnyTextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Ask A Question"
+                        android:textColor="@color/txtGrey"
+                        android:textSize="@dimen/s14"
+                        app:typeface="@string/font_medium" />
+
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+
+            <edu.aku.evofit.widget.AnyTextView
+                android:id="@+id/txtTitle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ellipsize="end"
+                android:singleLine="true"
+                android:text="Consultation Appoinment"
+                android:textSize="@dimen/s18"
+                app:typeface="@string/font_bold" />
+
+
+            <edu.aku.evofit.widget.AnyTextView
+                android:id="@+id/txtDesc"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ellipsize="end"
+                android:lines="3"
+                android:maxLines="3"
+                android:text="Consultation Appoinment"
+                android:textSize="@dimen/s12"
+                app:typeface="@string/font_regular" />
+
+
+        </LinearLayout>
+
+
+    </com.jcminarro.roundkornerlayout.RoundKornerLinearLayout>
+
+
+</LinearLayout>

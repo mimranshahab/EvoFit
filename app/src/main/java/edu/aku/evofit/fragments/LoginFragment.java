@@ -131,7 +131,6 @@ public class LoginFragment extends BaseFragment {
         query.get().addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
             @Override
             public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
-                UIHelper.showToast(getContext(), queryDocumentSnapshots.toString());
 
                 if (queryDocumentSnapshots.getDocuments().isEmpty()) {
                     UIHelper.showToast(getContext(), "INVALID EMAIL OR PASSWORD");
