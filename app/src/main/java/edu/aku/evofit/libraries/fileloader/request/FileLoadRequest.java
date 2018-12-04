@@ -1,9 +1,9 @@
-package edu.aku.ehs.libraries.fileloader.request;
+package edu.aku.evofit.libraries.fileloader.request;
 
 import android.support.annotation.IntDef;
 
-import edu.aku.ehs.libraries.fileloader.listener.FileRequestListener;
-import edu.aku.ehs.libraries.fileloader.utility.FileExtension;
+import edu.aku.evofit.libraries.fileloader.listener.FileRequestListener;
+import edu.aku.evofit.libraries.fileloader.utility.FileExtension;
 
 /**
  * Created by krishna on 12/10/17.

@@ -1,4 +1,4 @@
-package edu.aku.ehs.models;
+package edu.aku.evofit.models;
 
 import com.google.gson.annotations.SerializedName;
 

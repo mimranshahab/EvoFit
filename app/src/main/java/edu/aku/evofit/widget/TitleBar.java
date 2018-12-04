@@ -1,4 +1,4 @@
-package edu.aku.ehs.widget;
+package edu.aku.evofit.widget;
 
 import android.animation.Animator;
 import android.app.Activity;
@@ -16,15 +16,15 @@ import android.widget.TextView;
 
 
 import de.hdodenhof.circleimageview.CircleImageView;
-import edu.aku.ehs.R;
-import edu.aku.ehs.activities.BaseActivity;
-import edu.aku.ehs.activities.HomeActivity;
-import edu.aku.ehs.helperclasses.Spanny;
-import edu.aku.ehs.helperclasses.ui.helper.UIHelper;
-import edu.aku.ehs.libraries.imageloader.ImageLoaderHelper;
-import edu.aku.ehs.models.receiving_model.UserDetailModel;
+import edu.aku.evofit.R;
+import edu.aku.evofit.activities.BaseActivity;
+import edu.aku.evofit.activities.HomeActivity;
+import edu.aku.evofit.helperclasses.Spanny;
+import edu.aku.evofit.helperclasses.ui.helper.UIHelper;
+import edu.aku.evofit.libraries.imageloader.ImageLoaderHelper;
+import edu.aku.evofit.models.receiving_model.UserDetailModel;
 
-import static edu.aku.ehs.constatnts.Events.ON_HOME_PRESSED;
+import static edu.aku.evofit.constatnts.Events.ON_HOME_PRESSED;
 
 /**
  * Created by khanhamza on 02-Mar-17.
@@ -188,36 +188,36 @@ public class TitleBar extends RelativeLayout {
         this.btnRight1.setOnClickListener(onClickListener);
     }
 
-    public void setUserDisplay(final UserDetailModel currentUser, Context context) {
-        this.circleImageView.setVisibility(VISIBLE);
-        this.txtMRN.setVisibility(VISIBLE);
-
-        if (currentUser == null) {
-            contDropDown.setVisibility(GONE);
-            UIHelper.showToast(context, "No user selected.");
-            return;
-        }
-
-        if (currentUser.getProfileImage() == null || currentUser.getProfileImage().isEmpty()) {
-            circleImageView.setImageResource(R.drawable.male_icon);
-        } else {
-            ImageLoaderHelper.loadImageWithConstantHeadersWithoutAnimation(context, circleImageView, currentUser.getProfileImage());
-        }
-
-        txtUserName.setText(currentUser.getName());
-
-        txtMRN.setText(currentUser.getMRNumber());
-        contDropDown.setVisibility(VISIBLE);
-
-//        this.circleImageView.setOnClickListener(new OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                txtMRN.setText(currentUser.getMRNumber());
-//                txtUserName.setText(currentUser.getName());
-//                hideAndShowBottomBar();
-//            }
-//        });
-    }
+//    public void setUserDisplay(final UserDetailModel currentUser, Context context) {
+//        this.circleImageView.setVisibility(VISIBLE);
+//        this.txtMRN.setVisibility(VISIBLE);
+//
+//        if (currentUser == null) {
+//            contDropDown.setVisibility(GONE);
+//            UIHelper.showToast(context, "No user selected.");
+//            return;
+//        }
+//
+//        if (currentUser.getProfileImage() == null || currentUser.getProfileImage().isEmpty()) {
+//            circleImageView.setImageResource(R.drawable.male_icon);
+//        } else {
+//            ImageLoaderHelper.loadImageWithConstantHeadersWithoutAnimation(context, circleImageView, currentUser.getProfileImage());
+//        }
+//
+//        txtUserName.setText(currentUser.getName());
+//
+//        txtMRN.setText(currentUser.getMRNumber());
+//        contDropDown.setVisibility(VISIBLE);
+//
+////        this.circleImageView.setOnClickListener(new OnClickListener() {
+////            @Override
+////            public void onClick(View view) {
+////                txtMRN.setText(currentUser.getMRNumber());
+////                txtUserName.setText(currentUser.getName());
+////                hideAndShowBottomBar();
+////            }
+////        });
+//    }
 
 
 //    public void setUserTimeLineDisplay(final UserDetailModel currentUser, Context context, TimelineModel timelineModel) {

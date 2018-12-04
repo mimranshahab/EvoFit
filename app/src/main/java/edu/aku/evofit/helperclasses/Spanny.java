@@ -1,4 +1,4 @@
-package edu.aku.ehs.helperclasses;/*
+package edu.aku.evofit.helperclasses;/*
  * Copyright 2015 Pavlovsky Ivan
  *
  * Licensed under the Apache License, Version 2.0 (the "License");

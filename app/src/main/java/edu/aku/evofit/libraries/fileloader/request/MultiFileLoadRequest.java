@@ -1,4 +1,4 @@
-package edu.aku.ehs.libraries.fileloader.request;
+package edu.aku.evofit.libraries.fileloader.request;
 
 /**
  * Created by krishna on 12/10/17.

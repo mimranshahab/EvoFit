@@ -1,4 +1,4 @@
-package edu.aku.ehs.adapters;
+package edu.aku.evofit.adapters;
 
 import android.app.Activity;
 import android.support.v7.widget.RecyclerView;
@@ -12,10 +12,10 @@ import java.util.ArrayList;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
-import edu.aku.ehs.R;
-import edu.aku.ehs.callbacks.OnSpinnerItemClickListener;
-import edu.aku.ehs.models.SpinnerModel;
-import edu.aku.ehs.widget.AnyTextView;
+import edu.aku.evofit.R;
+import edu.aku.evofit.callbacks.OnSpinnerItemClickListener;
+import edu.aku.evofit.models.SpinnerModel;
+import edu.aku.evofit.widget.AnyTextView;
 
 /**
  */

@@ -1,7 +1,7 @@
-package edu.aku.ehs.libraries.fileloader.listener;
+package edu.aku.evofit.libraries.fileloader.listener;
 
-import edu.aku.ehs.libraries.fileloader.pojo.FileResponse;
-import edu.aku.ehs.libraries.fileloader.request.FileLoadRequest;
+import edu.aku.evofit.libraries.fileloader.pojo.FileResponse;
+import edu.aku.evofit.libraries.fileloader.request.FileLoadRequest;
 
 /**
  * Created by krishna on 12/10/17.

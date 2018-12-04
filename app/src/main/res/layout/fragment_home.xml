@@ -1,154 +1,210 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/c_white"
+    android:background="@drawable/img_background_evo"
     android:gravity="center_horizontal"
+    android:fillViewport="true"
     android:orientation="vertical">
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@drawable/img_banner"
-        android:gravity="center"
-        android:orientation="vertical"
-        android:paddingBottom="@dimen/x10dp"
-        android:paddingTop="@dimen/x10dp">
-
-        <!--<de.hdodenhof.circleimageview.CircleImageView-->
-        <!--android:id="@+id/imgNursePic"-->
-        <!--android:layout_width="@dimen/x100dp"-->
-        <!--android:layout_height="@dimen/x100dp"-->
-        <!--android:src="@drawable/img_placeholder_nurse"-->
-        <!--app:civ_border_color="@color/c_white"-->
-        <!--app:civ_border_width="@dimen/x2dp" />-->
-
-
-        <edu.aku.ehs.widget.AnyTextView
-            android:id="@+id/txtNurseName"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:ellipsize="end"
-            android:gravity="center"
-            android:padding="@dimen/x3dp"
-            android:singleLine="true"
-            android:text="Maryam Ahmed"
-            android:textColor="@color/c_white"
-            android:textSize="@dimen/s20"
-            app:typeface="@string/font_bold" />
-
-        <edu.aku.ehs.widget.AnyTextView
-            android:id="@+id/txtNurseDesignation"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:ellipsize="end"
-            android:gravity="center"
-            android:padding="@dimen/x3dp"
-            android:singleLine="true"
-            android:text="CIME / Nurse"
-            android:textColor="@color/c_white"
-            android:textSize="@dimen/s18"
-            app:typeface="@string/font_regular" />
-
-    </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:gravity="center"
-        android:orientation="horizontal"
-        android:padding="@dimen/x20dp">
+        android:orientation="vertical"
+        android:background="@color/background_gray">
 
-        <LinearLayout
-            android:id="@+id/contSession"
-            android:layout_width="@dimen/x120dp"
-            android:layout_height="@dimen/x120dp"
-            android:layout_margin="@dimen/x10dp"
-            android:background="@drawable/shape_circle"
-            android:gravity="center"
+
+        <com.jcminarro.roundkornerlayout.RoundKornerLinearLayout
+            android:layout_width="match_parent"
+
+            android:layout_height="wrap_content"
+            android:background="#db9a33"
             android:elevation="@dimen/x10dp"
-            android:orientation="vertical">
+            android:padding="@dimen/x10dp"
+            >
 
-            <ImageView
-                android:layout_width="wrap_content"
+            <edu.aku.evofit.widget.AnyTextView
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:src="@drawable/img_session" />
-
-            <edu.aku.ehs.widget.AnyTextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:gravity="center"
-                android:padding="@dimen/x3dp"
-                android:text="Sessions"
-                android:textColor="@color/colorAccent"
-                android:textSize="@dimen/s16"
-                app:typeface="@string/font_bold" />
-
-        </LinearLayout>
+                android:text="What Is"
+                android:textColor="@color/c_white"
+                android:textSize="@dimen/s20"
+                app:typeface="@string/font_medium" />
 
 
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:gravity="center_horizontal"
-            android:orientation="vertical">
+        </com.jcminarro.roundkornerlayout.RoundKornerLinearLayout>
 
 
-            <ImageView
-                android:layout_width="@dimen/x1dp"
-                android:layout_height="0dp"
-                android:layout_weight="1"
-                android:background="@color/colorPrimaryDark" />
+        <com.jcminarro.roundkornerlayout.RoundKornerLinearLayout
+            android:layout_width="match_parent"
 
-
-            <de.hdodenhof.circleimageview.CircleImageView
-                android:layout_width="@dimen/x150dp"
-                android:layout_height="@dimen/x150dp"
-                android:layout_marginLeft="@dimen/x10dp"
-                android:layout_marginRight="@dimen/x10dp"
-                android:src="@drawable/img_placeholder_nurse"
-                app:civ_border_color="@color/colorPrimaryDark"
-                app:civ_border_width="@dimen/x2dp" />
-
-
-            <ImageView
-                android:layout_width="@dimen/x1dp"
-                android:layout_height="0dp"
-                android:layout_weight="1"
-                android:background="@color/colorPrimaryDark" />
-
-
-        </LinearLayout>
-
-
-        <LinearLayout
-            android:id="@+id/contStats"
-            android:layout_width="@dimen/x120dp"
-            android:layout_height="@dimen/x120dp"
-            android:layout_margin="@dimen/x10dp"
-            android:background="@drawable/shape_circle"
-            android:gravity="center"
+            android:layout_height="wrap_content"
+            android:background="@color/material_green700"
             android:elevation="@dimen/x10dp"
-            android:orientation="vertical">
+            android:padding="@dimen/x10dp"
+            >
 
-            <ImageView
-                android:layout_width="wrap_content"
+            <edu.aku.evofit.widget.AnyTextView
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:src="@drawable/img_statistics" />
+                android:text="Prediabetes"
+                android:textColor="@color/c_white"
+                android:textSize="@dimen/s20"
+                app:typeface="@string/font_medium" />
 
-            <edu.aku.ehs.widget.AnyTextView
-                android:layout_width="wrap_content"
+
+        </com.jcminarro.roundkornerlayout.RoundKornerLinearLayout>
+
+        <com.jcminarro.roundkornerlayout.RoundKornerLinearLayout
+            android:layout_width="match_parent"
+
+            android:layout_height="wrap_content"
+            android:elevation="@dimen/x10dp"
+            android:background="@color/summary_blue"
+            android:padding="@dimen/x10dp"
+            >
+
+            <edu.aku.evofit.widget.AnyTextView
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:gravity="center"
-                android:padding="@dimen/x3dp"
-                android:text="Stats"
-                android:textColor="@color/colorAccent"
-                android:textSize="@dimen/s18"
-                app:typeface="@string/font_bold" />
+                android:text="Guide"
+                android:textColor="@color/c_white"
+                android:textSize="@dimen/s20"
+                app:typeface="@string/font_medium" />
 
-        </LinearLayout>
+
+        </com.jcminarro.roundkornerlayout.RoundKornerLinearLayout>
+
+
+        <com.jcminarro.roundkornerlayout.RoundKornerLinearLayout
+            android:layout_width="match_parent"
+
+            android:layout_height="wrap_content"
+            android:elevation="@dimen/x10dp"
+            android:background="@color/md_deeporange800"
+            android:padding="@dimen/x10dp"
+            >
+
+            <edu.aku.evofit.widget.AnyTextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Blood Glucose"
+                android:textColor="@color/c_white"
+                android:textSize="@dimen/s20"
+                app:typeface="@string/font_medium" />
+
+
+        </com.jcminarro.roundkornerlayout.RoundKornerLinearLayout>
+
+
+        <com.jcminarro.roundkornerlayout.RoundKornerLinearLayout
+            android:layout_width="match_parent"
+
+            android:layout_height="wrap_content"
+            android:background="@color/material_lime700"
+            android:elevation="@dimen/x10dp"
+            android:padding="@dimen/x10dp"
+            >
+
+            <edu.aku.evofit.widget.AnyTextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Treatment"
+                android:textColor="@color/c_white"
+                android:textSize="@dimen/s20"
+                app:typeface="@string/font_medium" />
+
+
+        </com.jcminarro.roundkornerlayout.RoundKornerLinearLayout>
+
+
+        <com.jcminarro.roundkornerlayout.RoundKornerLinearLayout
+            android:layout_width="match_parent"
+
+            android:layout_height="wrap_content"
+            android:background="@color/md_brown700"
+            android:elevation="@dimen/x10dp"
+            android:padding="@dimen/x10dp"
+            >
+
+            <edu.aku.evofit.widget.AnyTextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Exercise"
+                android:textColor="@color/c_white"
+                android:textSize="@dimen/s20"
+                app:typeface="@string/font_medium" />
+
+
+        </com.jcminarro.roundkornerlayout.RoundKornerLinearLayout>
+
+
+        <com.jcminarro.roundkornerlayout.RoundKornerLinearLayout
+            android:layout_width="match_parent"
+
+            android:layout_height="wrap_content"
+            android:background="@color/material_purple700"
+            android:elevation="@dimen/x10dp"
+            android:padding="@dimen/x10dp"
+            >
+
+            <edu.aku.evofit.widget.AnyTextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Diabetic Diet Plan"
+                android:textColor="@color/c_white"
+                android:textSize="@dimen/s20"
+                app:typeface="@string/font_medium" />
+
+
+        </com.jcminarro.roundkornerlayout.RoundKornerLinearLayout>
+
+
+        <com.jcminarro.roundkornerlayout.RoundKornerLinearLayout
+            android:layout_width="match_parent"
+
+            android:layout_height="wrap_content"
+            android:background="@color/material_bluegrey600"
+            android:elevation="@dimen/x10dp"
+            android:padding="@dimen/x10dp"
+            >
+
+            <edu.aku.evofit.widget.AnyTextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Forum"
+                android:textColor="@color/c_white"
+                android:textSize="@dimen/s20"
+                app:typeface="@string/font_medium" />
+
+
+        </com.jcminarro.roundkornerlayout.RoundKornerLinearLayout>
+
+
+        <com.jcminarro.roundkornerlayout.RoundKornerLinearLayout
+            android:layout_width="match_parent"
+
+            android:layout_height="wrap_content"
+            android:background="@color/material_indigo700"
+            android:elevation="@dimen/x10dp"
+            android:padding="@dimen/x10dp"
+            >
+
+            <edu.aku.evofit.widget.AnyTextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="All Records"
+                android:textColor="@color/c_white"
+                android:textSize="@dimen/s20"
+                app:typeface="@string/font_medium" />
+
+
+        </com.jcminarro.roundkornerlayout.RoundKornerLinearLayout>
+
 
     </LinearLayout>
 
-</LinearLayout>
+
+</ScrollView>

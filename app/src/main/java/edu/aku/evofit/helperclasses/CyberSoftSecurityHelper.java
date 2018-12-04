@@ -1,4 +1,4 @@
-package edu.aku.ehs.helperclasses;
+package edu.aku.evofit.helperclasses;
 
 import org.apache.commons.codec.binary.Hex;
 

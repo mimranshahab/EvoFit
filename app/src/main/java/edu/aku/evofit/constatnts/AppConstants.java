@@ -1,4 +1,4 @@
-package edu.aku.ehs.constatnts;
+package edu.aku.evofit.constatnts;
 
 import android.app.Activity;
 import android.content.Context;
@@ -15,10 +15,10 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
-import edu.aku.ehs.BaseApplication;
-import edu.aku.ehs.managers.SharedPreferenceManager;
-import edu.aku.ehs.models.sending_model.InsertRegisteredDeviceModel;
-import edu.aku.ehs.models.sending_model.RegisteredDeviceModel;
+import edu.aku.evofit.BaseApplication;
+import edu.aku.evofit.managers.SharedPreferenceManager;
+import edu.aku.evofit.models.sending_model.InsertRegisteredDeviceModel;
+import edu.aku.evofit.models.sending_model.RegisteredDeviceModel;
 
 import static android.provider.Settings.Secure.getString;
 
@@ -62,7 +62,7 @@ public class AppConstants {
     public static final String DOC_PATH = ROOT_PATH + "/Docs";
 
     public static String getUserFolderPath(Context context) {
-        return DOC_PATH + "/" + SharedPreferenceManager.getInstance(context).getCurrentUser().getMRNumber();
+        return DOC_PATH + "/" + SharedPreferenceManager.getInstance(context).getCurrentUser().getFull_name();
     }
 
 

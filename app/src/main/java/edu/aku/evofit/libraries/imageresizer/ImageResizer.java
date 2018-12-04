@@ -1,14 +1,14 @@
-package edu.aku.ehs.libraries.imageresizer;
+package edu.aku.evofit.libraries.imageresizer;
 
 import android.content.res.Resources;
 import android.graphics.Bitmap;
 
-import edu.aku.ehs.libraries.imageresizer.operations.ImageCrop;
-import edu.aku.ehs.libraries.imageresizer.operations.ImageResize;
-import edu.aku.ehs.libraries.imageresizer.operations.ImageRotate;
-import edu.aku.ehs.libraries.imageresizer.operations.ImageRotation;
-import edu.aku.ehs.libraries.imageresizer.operations.ResizeMode;
-import edu.aku.ehs.libraries.imageresizer.utils.ImageWriter;
+import edu.aku.evofit.libraries.imageresizer.operations.ImageCrop;
+import edu.aku.evofit.libraries.imageresizer.operations.ImageResize;
+import edu.aku.evofit.libraries.imageresizer.operations.ImageRotate;
+import edu.aku.evofit.libraries.imageresizer.operations.ImageRotation;
+import edu.aku.evofit.libraries.imageresizer.operations.ResizeMode;
+import edu.aku.evofit.libraries.imageresizer.utils.ImageWriter;
 
 import java.io.File;
 

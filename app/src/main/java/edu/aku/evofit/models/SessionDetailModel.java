@@ -1,6 +1,6 @@
-package edu.aku.ehs.models;
+package edu.aku.evofit.models;
 
-import edu.aku.ehs.enums.EmployeeSessionState;
+import edu.aku.evofit.enums.EmployeeSessionState;
 
 /**
  * Created by hamza.ahmed on 7/23/2018.

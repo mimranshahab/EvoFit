@@ -1,4 +1,4 @@
-package edu.aku.ehs.fragments.abstracts;
+package edu.aku.evofit.fragments.abstracts;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -8,9 +8,9 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.TextView;
 
-import edu.aku.ehs.R;
-import edu.aku.ehs.widget.TitleBar;
-import edu.aku.ehs.widget.AnyTextView;
+import edu.aku.evofit.R;
+import edu.aku.evofit.widget.TitleBar;
+import edu.aku.evofit.widget.AnyTextView;
 
 
 /**

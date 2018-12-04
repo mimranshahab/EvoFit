@@ -1,4 +1,4 @@
-package edu.aku.ehs.adapters;
+package edu.aku.evofit.adapters;
 
 import android.content.Context;
 import android.support.annotation.NonNull;
@@ -10,8 +10,8 @@ import android.widget.TextView;
 
 import java.util.List;
 
-import edu.aku.ehs.models.receiving_model.RegisterOptionsModel;
-import edu.aku.ehs.R;
+import edu.aku.evofit.models.receiving_model.RegisterOptionsModel;
+import edu.aku.evofit.R;
 
 public class MySpinnerAdapter extends ArrayAdapter<RegisterOptionsModel> {
 

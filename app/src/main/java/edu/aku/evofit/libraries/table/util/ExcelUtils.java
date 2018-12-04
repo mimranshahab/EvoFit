@@ -1,4 +1,4 @@
-package edu.aku.ehs.libraries.table.util;
+package edu.aku.evofit.libraries.table.util;
 
 public class ExcelUtils {
     public final static String TAG = "ExcelUtils";

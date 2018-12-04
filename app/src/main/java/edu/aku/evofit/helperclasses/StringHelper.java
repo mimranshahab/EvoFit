@@ -1,4 +1,4 @@
-package edu.aku.ehs.helperclasses;
+package edu.aku.evofit.helperclasses;
 
 import java.text.NumberFormat;
 import java.util.regex.Pattern;

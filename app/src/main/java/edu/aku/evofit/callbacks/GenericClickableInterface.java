@@ -1,4 +1,4 @@
-package edu.aku.ehs.callbacks;
+package edu.aku.evofit.callbacks;
 
 /**
  * Created by khanhamza on 18-Feb-17.

@@ -1,14 +1,11 @@
 package edu.aku.evofit.adapters.recyleradapters;
 
-import android.graphics.drawable.TransitionDrawable;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
-
-import com.jcminarro.roundkornerlayout.RoundKornerLinearLayout;
-import com.jcminarro.roundkornerlayout.RoundKornerRelativeLayout;
+import android.widget.RelativeLayout;
 
 import java.util.ArrayList;
 
@@ -17,16 +14,12 @@ import butterknife.ButterKnife;
 import edu.aku.evofit.R;
 import edu.aku.evofit.activities.BaseActivity;
 import edu.aku.evofit.callbacks.OnItemClickListener;
-import edu.aku.evofit.helperclasses.Helper;
-import edu.aku.evofit.helperclasses.ui.helper.AnimationHelper;
 import edu.aku.evofit.models.DepartmentModel;
 import edu.aku.evofit.widget.AnyTextView;
 
-import static android.view.View.VISIBLE;
-
 /**
  */
-public class DepartmentAdapter extends RecyclerView.Adapter<DepartmentAdapter.ViewHolder> {
+public class DashboardAdapter extends RecyclerView.Adapter<DashboardAdapter.ViewHolder> {
 
 
     private final OnItemClickListener onItemClick;
@@ -35,7 +28,7 @@ public class DepartmentAdapter extends RecyclerView.Adapter<DepartmentAdapter.Vi
     private BaseActivity activity;
     private ArrayList<DepartmentModel> arrData;
 
-    public DepartmentAdapter(BaseActivity activity, ArrayList<DepartmentModel> arrData, OnItemClickListener onItemClickListener) {
+    public DashboardAdapter(BaseActivity activity, ArrayList<DepartmentModel> arrData, OnItemClickListener onItemClickListener) {
         this.arrData = arrData;
         this.activity = activity;
         this.onItemClick = onItemClickListener;
@@ -46,20 +39,15 @@ public class DepartmentAdapter extends RecyclerView.Adapter<DepartmentAdapter.Vi
 
         View itemView = null;
         itemView = LayoutInflater.from(activity)
-                .inflate(R.layout.item_department, parent, false);
+                .inflate(R.layout.item_dashboard, parent, false);
         return new ViewHolder(itemView);
     }
 
     @Override
     public void onBindViewHolder(final ViewHolder holder, int i) {
         DepartmentModel model = arrData.get(i);
-        holder.txtDepartmentName.setText(model.getDeptName());
-
-        setListener(holder, model);
-    }
-
-    private void setListener(final ViewHolder holder, final DepartmentModel model) {
-        holder.contListItem.setOnClickListener(view -> onItemClick.onItemClick(holder.getAdapterPosition(), model, view));
+        holder.txtDesc.setText(model.getDeptName());
+        holder.imgBackground.setBackgroundColor(activity.getResources().getColor(model.getColor()));
     }
 
 
@@ -70,20 +58,12 @@ public class DepartmentAdapter extends RecyclerView.Adapter<DepartmentAdapter.Vi
 
 
     static class ViewHolder extends RecyclerView.ViewHolder {
-        @BindView(R.id.txtDepartmentName)
-        AnyTextView txtDepartmentName;
-        @BindView(R.id.txtDepartmentID)
-        AnyTextView txtDepartmentID;
-        @BindView(R.id.txtNoOfEMployees)
-        AnyTextView txtNoOfEMployees;
-        @BindView(R.id.contListItem)
-        RoundKornerLinearLayout contListItem;
-        @BindView(R.id.imgSelected)
-        ImageView imgSelected;
+        @BindView(R.id.txtDesc)
+        AnyTextView txtDesc;
         @BindView(R.id.contParent)
-        RoundKornerRelativeLayout contParent;
-        @BindView(R.id.imgHighlight)
-        ImageView imgHighlight;
+        RelativeLayout contParent;
+        @BindView(R.id.imgBackground)
+        ImageView imgBackground;
 
         ViewHolder(View view) {
             super(view);

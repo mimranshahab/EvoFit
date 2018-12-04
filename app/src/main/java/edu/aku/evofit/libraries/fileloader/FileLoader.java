@@ -1,4 +1,4 @@
-package edu.aku.ehs.libraries.fileloader;
+package edu.aku.evofit.libraries.fileloader;
 
 import android.content.Context;
 import android.os.AsyncTask;
@@ -16,17 +16,17 @@ import java.util.Map;
 import java.util.Set;
 import java.util.WeakHashMap;
 
-import edu.aku.ehs.libraries.fileloader.builder.FileDeleteBuilder;
-import edu.aku.ehs.libraries.fileloader.builder.FileLoaderBuilder;
-import edu.aku.ehs.libraries.fileloader.builder.MultiFileDownloader;
-import edu.aku.ehs.libraries.fileloader.listener.FileRequestListener;
-import edu.aku.ehs.libraries.fileloader.network.FileDownloader;
-import edu.aku.ehs.libraries.fileloader.pojo.DownloadResponse;
-import edu.aku.ehs.libraries.fileloader.pojo.FileResponse;
-import edu.aku.ehs.libraries.fileloader.request.FileDeleteRequest;
-import edu.aku.ehs.libraries.fileloader.request.FileLoadRequest;
-import edu.aku.ehs.libraries.fileloader.utility.AndroidFileManager;
-import edu.aku.ehs.libraries.fileloader.utility.Utils;
+import edu.aku.evofit.libraries.fileloader.builder.FileDeleteBuilder;
+import edu.aku.evofit.libraries.fileloader.builder.FileLoaderBuilder;
+import edu.aku.evofit.libraries.fileloader.builder.MultiFileDownloader;
+import edu.aku.evofit.libraries.fileloader.listener.FileRequestListener;
+import edu.aku.evofit.libraries.fileloader.network.FileDownloader;
+import edu.aku.evofit.libraries.fileloader.pojo.DownloadResponse;
+import edu.aku.evofit.libraries.fileloader.pojo.FileResponse;
+import edu.aku.evofit.libraries.fileloader.request.FileDeleteRequest;
+import edu.aku.evofit.libraries.fileloader.request.FileLoadRequest;
+import edu.aku.evofit.libraries.fileloader.utility.AndroidFileManager;
+import edu.aku.evofit.libraries.fileloader.utility.Utils;
 
 
 /**

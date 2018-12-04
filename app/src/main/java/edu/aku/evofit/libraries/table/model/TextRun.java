@@ -1,7 +1,7 @@
-package edu.aku.ehs.libraries.table.model;
+package edu.aku.evofit.libraries.table.model;
 
 
-import edu.aku.ehs.libraries.table.model.action.Action;
+import edu.aku.evofit.libraries.table.model.action.Action;
 
 public class TextRun implements ITextRun{
     private int index;

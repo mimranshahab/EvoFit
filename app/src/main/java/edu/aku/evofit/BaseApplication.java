@@ -1,4 +1,4 @@
-package edu.aku.ehs;
+package edu.aku.evofit;
 
 import android.app.Activity;
 import android.app.AlarmManager;
@@ -14,6 +14,9 @@ import android.util.Log;
 import android.util.Pair;
 
 import com.crashlytics.android.Crashlytics;
+import com.google.firebase.FirebaseApp;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.FirebaseFirestoreSettings;
 import com.nostra13.universalimageloader.cache.memory.impl.WeakMemoryCache;
 import com.nostra13.universalimageloader.core.DisplayImageOptions;
 import com.nostra13.universalimageloader.core.ImageLoader;
@@ -21,9 +24,9 @@ import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
 import com.nostra13.universalimageloader.core.assist.ImageScaleType;
 import com.nostra13.universalimageloader.core.display.FadeInBitmapDisplayer;
 
-import edu.aku.ehs.activities.MainActivity;
+import edu.aku.evofit.activities.MainActivity;
 
-import edu.aku.ehs.libraries.imageloader.CustomImageDownaloder;
+import edu.aku.evofit.libraries.imageloader.CustomImageDownaloder;
 import io.fabric.sdk.android.Fabric;
 import io.reactivex.subjects.PublishSubject;
 import io.realm.Realm;
@@ -54,6 +57,21 @@ public class BaseApplication extends MultiDexApplication implements Application.
         // TODO: 11/1/2017 Enable Crash Lytics and Never Crash feature before releasing the app
 //        Fabric.with(this, new Crashlytics());
 //        neverCrash();
+
+
+        FirebaseFirestore firestore = FirebaseFirestore.getInstance();
+        FirebaseFirestoreSettings settings = new FirebaseFirestoreSettings.Builder()
+                .setTimestampsInSnapshotsEnabled(true)
+                .build();
+        firestore.setFirestoreSettings(settings);
+
+        FirebaseApp.initializeApp(getApplicationContext());
+     }
+
+    public static FirebaseFirestoreSettings getFirebaseSetting() {
+        return new FirebaseFirestoreSettings.Builder()
+                .setTimestampsInSnapshotsEnabled(true)
+                .build();
     }
 
     public static Context getContext() {

@@ -1,4 +1,4 @@
-package edu.aku.ehs.libraries.fileloader.builder;
+package edu.aku.evofit.libraries.fileloader.builder;
 
 import android.content.Context;
 import android.support.annotation.NonNull;
@@ -7,8 +7,8 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-import edu.aku.ehs.libraries.fileloader.FileLoader;
-import edu.aku.ehs.libraries.fileloader.request.FileDeleteRequest;
+import edu.aku.evofit.libraries.fileloader.FileLoader;
+import edu.aku.evofit.libraries.fileloader.request.FileDeleteRequest;
 
 /**
  * Created by krishna on 15/10/17.

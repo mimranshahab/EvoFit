@@ -1,4 +1,4 @@
-package edu.aku.ehs.widget;
+package edu.aku.evofit.widget;
 
 import android.content.Context;
 import android.support.annotation.Nullable;

@@ -1,4 +1,4 @@
-package edu.aku.ehs.fragments;
+package edu.aku.evofit.fragments;
 
 import android.content.Context;
 import android.os.Bundle;
@@ -13,21 +13,21 @@ import android.widget.ScrollView;
 
 import com.gdacciaro.iOSDialog.iOSDialogBuilder;
 
-import edu.aku.ehs.callbacks.OnNewPacketReceivedListener;
-import edu.aku.ehs.widget.AnyTextView;
+import edu.aku.evofit.callbacks.OnNewPacketReceivedListener;
+import edu.aku.evofit.widget.AnyTextView;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import butterknife.Unbinder;
-import edu.aku.ehs.R;
-import edu.aku.ehs.activities.HomeActivity;
-import edu.aku.ehs.activities.MainActivity;
-import edu.aku.ehs.fragments.abstracts.BaseFragment;
-import edu.aku.ehs.fragments.abstracts.GenericContentFragment;
-import edu.aku.ehs.widget.TitleBar;
+import edu.aku.evofit.R;
+import edu.aku.evofit.activities.HomeActivity;
+import edu.aku.evofit.activities.MainActivity;
+import edu.aku.evofit.fragments.abstracts.BaseFragment;
+import edu.aku.evofit.fragments.abstracts.GenericContentFragment;
+import edu.aku.evofit.widget.TitleBar;
 
-import static edu.aku.ehs.constatnts.AppConstants.AboutUs;
+import static edu.aku.evofit.constatnts.AppConstants.AboutUs;
 
 /**
  * Created by khanhamza on 09-May-17.

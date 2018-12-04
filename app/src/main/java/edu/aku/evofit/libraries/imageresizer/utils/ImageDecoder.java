@@ -1,4 +1,4 @@
-package edu.aku.ehs.libraries.imageresizer.utils;
+package edu.aku.evofit.libraries.imageresizer.utils;
 
 import android.content.res.Resources;
 import android.graphics.Bitmap;

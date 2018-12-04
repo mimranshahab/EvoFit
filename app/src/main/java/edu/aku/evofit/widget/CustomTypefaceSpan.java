@@ -1,5 +1,5 @@
 
-package edu.aku.ehs.widget;
+package edu.aku.evofit.widget;
 
 import android.graphics.Paint;
 import android.graphics.Typeface;

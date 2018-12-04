@@ -1,4 +1,4 @@
-package edu.aku.ehs.activities;
+package edu.aku.evofit.activities;
 
 import android.app.AlertDialog;
 import android.content.DialogInterface;
@@ -10,12 +10,12 @@ import android.view.Gravity;
 
 import java.util.List;
 
-import edu.aku.ehs.R;
-import edu.aku.ehs.constatnts.AppConstants;
-import edu.aku.ehs.fragments.LoginFragment;
-import edu.aku.ehs.fragments.abstracts.BaseFragment;
-import edu.aku.ehs.helperclasses.RunTimePermissions;
-import edu.aku.ehs.managers.SharedPreferenceManager;
+import edu.aku.evofit.R;
+import edu.aku.evofit.constatnts.AppConstants;
+import edu.aku.evofit.fragments.LoginFragment;
+import edu.aku.evofit.fragments.abstracts.BaseFragment;
+import edu.aku.evofit.helperclasses.RunTimePermissions;
+import edu.aku.evofit.managers.SharedPreferenceManager;
 
 
 public class MainActivity extends BaseActivity {
@@ -65,13 +65,16 @@ public class MainActivity extends BaseActivity {
     }
 
     private void initFragments() {
-        if (SharedPreferenceManager.getInstance(getApplicationContext()).getString(AppConstants.KEY_CARD_NUMBER) == null
-                || SharedPreferenceManager.getInstance(getApplicationContext()).getString(AppConstants.KEY_CARD_NUMBER).isEmpty()) {
-            addDockableFragment(LoginFragment.newInstance(), false);
-        } else {
-            openActivity(HomeActivity.class);
-            this.finish();
-        }
+//        if (SharedPreferenceManager.getInstance(getApplicationContext()).getString(AppConstants.KEY_CARD_NUMBER) == null
+//                || SharedPreferenceManager.getInstance(getApplicationContext()).getString(AppConstants.KEY_CARD_NUMBER).isEmpty()) {
+//            addDockableFragment(LoginFragment.newInstance(), false);
+//        } else {
+//            openActivity(HomeActivity.class);
+//            this.finish();
+//        }
+
+
+        addDockableFragment(LoginFragment.newInstance(), false);
     }
 
     @Override

@@ -1,4 +1,4 @@
-package edu.aku.ehs;
+package edu.aku.evofit;
 
 import android.content.Context;
 import android.support.test.InstrumentationRegistry;

@@ -1,4 +1,4 @@
-package edu.aku.ehs.fragments.abstracts;
+package edu.aku.evofit.fragments.abstracts;
 
 import android.app.Dialog;
 import android.graphics.Color;
@@ -13,9 +13,9 @@ import android.view.Window;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import edu.aku.ehs.R;
-import edu.aku.ehs.callbacks.GenericClickableInterface;
-import edu.aku.ehs.widget.AnyTextView;
+import edu.aku.evofit.R;
+import edu.aku.evofit.callbacks.GenericClickableInterface;
+import edu.aku.evofit.widget.AnyTextView;
 
 import static android.view.View.GONE;
 import static android.view.View.VISIBLE;

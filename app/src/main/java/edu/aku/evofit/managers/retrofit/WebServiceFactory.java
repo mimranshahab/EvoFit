@@ -1,6 +1,6 @@
-package edu.aku.ehs.managers.retrofit;
+package edu.aku.evofit.managers.retrofit;
 
-import edu.aku.ehs.constatnts.WebServiceConstants;
+import edu.aku.evofit.constatnts.WebServiceConstants;
 
 import java.io.IOException;
 import java.util.concurrent.TimeUnit;
@@ -13,7 +13,7 @@ import okhttp3.logging.HttpLoggingInterceptor;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
-import static edu.aku.ehs.constatnts.WebServiceConstants.BASE_URL;
+import static edu.aku.evofit.constatnts.WebServiceConstants.BASE_URL;
 
 
 /**

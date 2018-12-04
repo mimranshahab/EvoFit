@@ -1,4 +1,4 @@
-package edu.aku.ehs;
+package edu.aku.evofit;
 
 import org.junit.Test;
 

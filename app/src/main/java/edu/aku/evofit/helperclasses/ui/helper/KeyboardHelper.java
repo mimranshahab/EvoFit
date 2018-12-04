@@ -1,4 +1,4 @@
-package edu.aku.ehs.helperclasses.ui.helper;
+package edu.aku.evofit.helperclasses.ui.helper;
 
 import android.content.Context;
 import android.view.View;

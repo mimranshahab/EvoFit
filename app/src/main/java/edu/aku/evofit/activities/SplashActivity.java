@@ -1,4 +1,4 @@
-package edu.aku.ehs.activities;
+package edu.aku.evofit.activities;
 
 import android.animation.Animator;
 import android.animation.ObjectAnimator;
@@ -14,21 +14,21 @@ import android.widget.LinearLayout;
 
 import com.google.gson.JsonObject;
 
-import edu.aku.ehs.constatnts.AppConstants;
-import edu.aku.ehs.constatnts.WebServiceConstants;
-import edu.aku.ehs.enums.BaseURLTypes;
-import edu.aku.ehs.fragments.abstracts.GenericDialogFragment;
-import edu.aku.ehs.fragments.dialogs.PinEntryDialogFragment;
-import edu.aku.ehs.helperclasses.Helper;
-import edu.aku.ehs.helperclasses.ui.helper.AnimationHelper;
+import edu.aku.evofit.constatnts.AppConstants;
+import edu.aku.evofit.constatnts.WebServiceConstants;
+import edu.aku.evofit.enums.BaseURLTypes;
+import edu.aku.evofit.fragments.abstracts.GenericDialogFragment;
+import edu.aku.evofit.fragments.dialogs.PinEntryDialogFragment;
+import edu.aku.evofit.helperclasses.Helper;
+import edu.aku.evofit.helperclasses.ui.helper.AnimationHelper;
 import butterknife.BindView;
 import butterknife.ButterKnife;
-import edu.aku.ehs.R;
-import edu.aku.ehs.managers.SharedPreferenceManager;
-import edu.aku.ehs.managers.retrofit.GsonFactory;
-import edu.aku.ehs.managers.retrofit.WebServices;
-import edu.aku.ehs.models.sending_model.AppVersionModel;
-import edu.aku.ehs.models.wrappers.WebResponse;
+import edu.aku.evofit.R;
+import edu.aku.evofit.managers.SharedPreferenceManager;
+import edu.aku.evofit.managers.retrofit.GsonFactory;
+import edu.aku.evofit.managers.retrofit.WebServices;
+import edu.aku.evofit.models.sending_model.AppVersionModel;
+import edu.aku.evofit.models.wrappers.WebResponse;
 import retrofit2.Call;
 
 import static android.view.View.GONE;
@@ -43,11 +43,6 @@ public class SplashActivity extends AppCompatActivity {
     private final int ANIMATIONS_DELAY = 200;
     private final int ANIMATIONS_TIME_OUT = 250;
     private final int FADING_TIME = 500;
-    private boolean hasAnimationStarted = false;
-    private boolean isUpdateCallBackRecieved = false;
-
-    Call<WebResponse<JsonObject>> isUpdateAvailableCall = null;
-    Call<WebResponse<JsonObject>> getOneTimeTokenService = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,11 +50,11 @@ public class SplashActivity extends AppCompatActivity {
         setContentView(R.layout.activity_splash);
         ButterKnife.bind(this);
         contParentLayout.setVisibility(View.INVISIBLE);
+
+        animateSplashLayout();
     }
 
-    private void animateSplashLayout(final boolean showLoginScreen) {
-
-
+    private void animateSplashLayout() {
         // Move Layout to center
 
         //->
@@ -79,13 +74,7 @@ public class SplashActivity extends AppCompatActivity {
 
             @Override
             public void onAnimationEnd(Animator animator) {
-
-                // If directly go Home or Login Screen.
-                if (showLoginScreen) {
                     translateAnimation();
-                } else {
-                    updateAppOrChangeActivity(HomeActivity.class);
-                }
             }
 
             @Override
@@ -117,7 +106,7 @@ public class SplashActivity extends AppCompatActivity {
                     public void onAnimationEnd(Animator animator) {
                         contParentLayout.setTranslationY(0);
                         contParentLayout.setAlpha(1);
-                        updateAppOrChangeActivity(MainActivity.class);
+                        changeActivity(MainActivity.class);
                     }
 
                     @Override
@@ -137,58 +126,7 @@ public class SplashActivity extends AppCompatActivity {
     }
 
 
-    private void updateAppOrChangeActivity(final Class activityClass) {
 
-        AppVersionModel appVersionModel = new AppVersionModel();
-        PackageManager packageManager = getApplicationContext().getPackageManager();
-        String packageName = getApplicationContext().getPackageName();
-
-        String myVersionName = ""; // initialize String
-        int versionCode = 0; // initialize Integer
-
-        try {
-            myVersionName = packageManager.getPackageInfo(packageName, 0).versionName;
-            versionCode = packageManager.getPackageInfo(packageName, 0).versionCode;
-        } catch (PackageManager.NameNotFoundException e) {
-            Log.d(TAG, "updateAppOrChangeActivity: " + e.getLocalizedMessage());
-        }
-        appVersionModel.setAndappversioncode(versionCode);
-        appVersionModel.setAndappversionname(myVersionName);
-        isUpdateAvailable(appVersionModel, activityClass, "");
-
-        try {
-            new Handler().postDelayed(new Runnable() {
-                @Override
-                public void run() {
-                    if (!isUpdateCallBackRecieved) {
-                        pinVerification(activityClass);
-                    }
-                }
-            }, 10000);
-        } catch (Exception e) {
-            Log.d(TAG, "updateAppOrChangeActivity: " + e.getLocalizedMessage());
-        }
-    }
-
-    private void pinVerification(final Class activityClass) {
-
-        if (activityClass == MainActivity.class) {
-            changeActivity(activityClass);
-        } else {
-            boolean isPinEnabled = SharedPreferenceManager.getInstance(getApplicationContext()).getBoolean(AppConstants.KEY_IS_PIN_ENABLE);
-            if (isPinEnabled) {
-                try {
-                    showPinVerificationDialog(activityClass);
-                } catch (IllegalStateException e) {
-                    changeActivity(activityClass);
-                }
-            } else {
-                changeActivity(activityClass);
-            }
-        }
-
-
-    }
 
     private void changeActivity(Class activityClass) {
         new Handler().postDelayed(new Runnable() {
@@ -214,146 +152,5 @@ public class SplashActivity extends AppCompatActivity {
         }, ANIMATIONS_TIME_OUT);
     }
 
-    private void showPinVerificationDialog(final Class activityClass) {
-        final PinEntryDialogFragment pinEntryDialogFragment = PinEntryDialogFragment.newInstance(view -> {
-            //Success
-            changeActivity(activityClass);
-        }, view -> {
-            //Logout
-            SharedPreferenceManager.getInstance(this).clearDB();
-            changeActivity(MainActivity.class);
-        });
-        pinEntryDialogFragment.setTitle("Enter PIN");
-        pinEntryDialogFragment.setCancelable(false);
-        pinEntryDialogFragment.show(getSupportFragmentManager(), null);
-    }
 
-    public void updateApp(final Class activityClass, AppVersionModel appVersionModel) {
-        int button2Visiblity;
-        String message;
-        String button1Text;
-
-        if (appVersionModel.getAndallowoldversion().equals("Y")) {
-            button2Visiblity = VISIBLE;
-            message = "An update of Family Hifazat App (v" + appVersionModel.getAndappversionname() + ") is available to download.\n" + "Do you want to update it now?";
-            button1Text = "Yes";
-        } else {
-            message = "An update of Family Hifazat App (v" + appVersionModel.getAndappversionname() + ") is available to download.";
-            button2Visiblity = GONE;
-            button1Text = "Update";
-        }
-
-        final GenericDialogFragment genericDialogFragment = GenericDialogFragment.newInstance();
-
-        genericDialogFragment.setTitle("Update App");
-        genericDialogFragment.setMessage(message);
-        genericDialogFragment.setButton1(button1Text, () -> {
-            genericDialogFragment.getDialog().dismiss();
-            Helper.openPlayStore(SplashActivity.this);
-        });
-
-        genericDialogFragment.setButton2("Not Now", () -> {
-            genericDialogFragment.getDialog().dismiss();
-            pinVerification(activityClass);
-        });
-
-        genericDialogFragment.setButton2Visibility(button2Visiblity);
-        genericDialogFragment.setCancelable(false);
-        genericDialogFragment.show(getSupportFragmentManager(), null);
-
-
-    }
-
-
-    @Override
-    public void onWindowFocusChanged(boolean hasFocus) {
-        super.onWindowFocusChanged(hasFocus);
-        if (hasFocus && !hasAnimationStarted) {
-            hasAnimationStarted = true;
-
-
-            if (SharedPreferenceManager.getInstance(getApplicationContext()).getString(AppConstants.KEY_CARD_NUMBER) == null
-                    || SharedPreferenceManager.getInstance(getApplicationContext()).getString(AppConstants.KEY_CARD_NUMBER).isEmpty()) {
-
-                new Handler().postDelayed(new Runnable() {
-                    @Override
-                    public void run() {
-                        animateSplashLayout(true);
-                    }
-                }, ANIMATIONS_DELAY);
-
-            } else {
-                new Handler().postDelayed(new Runnable() {
-                    @Override
-                    public void run() {
-                        animateSplashLayout(false);
-                    }
-                }, ANIMATIONS_DELAY);
-            }
-        }
-    }
-
-
-//    private void getOneTimeTokenService(final AppVersionModel appVersionModel, final Class activityClass) {
-//        getOneTimeTokenService = new WebServices(this, "", BaseURLTypes.AHFA_BASE_URL, false)
-//                .webServiceRequestAPIForJsonObject(WebServiceConstants.METHOD_GET_ONE_TIME_TOKEN,
-//                        "",
-//                        new WebServices.IRequestJsonDataCallBack() {
-//                            @Override
-//                            public void requestDataResponse(WebResponse<JsonObject> webResponse) {
-//                                AddUpdateModel addUpdateModel = GsonFactory.getSimpleGson().fromJson(webResponse.result, AddUpdateModel.class);
-//                                if (addUpdateModel.getStatus()) {
-//                                    SharedPreferenceManager.getInstance(getContext()).putValue(AppConstants.KEY_ONE_TIME_TOKEN, addUpdateModel.getRecordid());
-//                                    isUpdateAvailable(appVersionModel, activityClass, "");
-//                                }
-//                            }
-//
-//                            @Override
-//                            public void onError() {
-//                                isUpdateAvailable(appVersionModel, activityClass, "");
-//                            }
-//                        });
-//    }
-
-
-    private void isUpdateAvailable(final AppVersionModel appVersionModel, final Class activityClass, String token) {
-        isUpdateAvailableCall = new WebServices(this,
-                token,
-                BaseURLTypes.AHFA_BASE_URL, false)
-                .webServiceRequestAPIForJsonObject(WebServiceConstants.METHOD_USER_GET_APPLICATION_PARAMETER,
-                        appVersionModel.toString(),
-                        new WebServices.IRequestJsonDataCallBack() {
-                            @Override
-                            public void requestDataResponse(WebResponse<JsonObject> webResponse) {
-                                isUpdateCallBackRecieved = true;
-                                AppVersionModel appVersionModelReceiving = GsonFactory.getSimpleGson().fromJson(webResponse.result, AppVersionModel.class);
-
-                                if (appVersionModel.getAndappversioncode() < appVersionModelReceiving.getAndappversioncode()) {
-                                    updateApp(activityClass, appVersionModelReceiving);
-                                } else {
-                                    pinVerification(activityClass);
-                                }
-                            }
-
-                            @Override
-                            public void onError() {
-                                 isUpdateCallBackRecieved = true;
-                                pinVerification(activityClass);
-                            }
-                        });
-    }
-
-    @Override
-    protected void onDestroy() {
-        if (getOneTimeTokenService != null && !getOneTimeTokenService.isCanceled()) {
-            getOneTimeTokenService.cancel();
-        }
-
-        if (isUpdateAvailableCall != null && !isUpdateAvailableCall.isCanceled()) {
-            isUpdateAvailableCall.cancel();
-        }
-
-        super.onDestroy();
-
-    }
 }

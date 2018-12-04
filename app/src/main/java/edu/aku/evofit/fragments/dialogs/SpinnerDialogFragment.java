@@ -1,4 +1,4 @@
-package edu.aku.ehs.fragments.dialogs;
+package edu.aku.evofit.fragments.dialogs;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -13,8 +13,8 @@ import android.view.animation.AnimationUtils;
 import android.view.animation.LayoutAnimationController;
 import android.widget.ImageView;
 
-import edu.aku.ehs.callbacks.OnItemSelectListner;
-import edu.aku.ehs.widget.AnyTextView;
+import edu.aku.evofit.callbacks.OnItemSelectListner;
+import edu.aku.evofit.widget.AnyTextView;
 
 import java.util.ArrayList;
 
@@ -22,11 +22,11 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import butterknife.Unbinder;
-import edu.aku.ehs.R;
-import edu.aku.ehs.adapters.SpinnerDialogAdapter;
-import edu.aku.ehs.callbacks.OnSpinnerItemClickListener;
-import edu.aku.ehs.models.SpinnerModel;
-import edu.aku.ehs.widget.recyclerview_layout.CustomLayoutManager;
+import edu.aku.evofit.R;
+import edu.aku.evofit.adapters.SpinnerDialogAdapter;
+import edu.aku.evofit.callbacks.OnSpinnerItemClickListener;
+import edu.aku.evofit.models.SpinnerModel;
+import edu.aku.evofit.widget.recyclerview_layout.CustomLayoutManager;
 
 /**
  * Created by khanhamza on 21-Feb-17.
@@ -43,7 +43,7 @@ public class SpinnerDialogFragment extends DialogFragment {
     @BindView(R.id.btnClose)
     ImageView btnClose;
     @BindView(R.id.txtOK)
-    edu.aku.ehs.widget.AnyTextView txtOK;
+    edu.aku.evofit.widget.AnyTextView txtOK;
     @BindView(R.id.recyclerView)
     RecyclerView recyclerView;
     private ArrayList<SpinnerModel> arrData;

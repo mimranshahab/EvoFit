@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package edu.aku.ehs.libraries.table.util;
+package edu.aku.evofit.libraries.table.util;
 
 import java.util.Arrays;
 import java.util.Comparator;

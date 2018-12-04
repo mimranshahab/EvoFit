@@ -1,18 +1,18 @@
-package edu.aku.ehs.models;
+package edu.aku.evofit.models;
 
 
 import android.content.Context;
 
-import edu.aku.ehs.R;
-import edu.aku.ehs.libraries.table.model.DefaultCellData;
-import edu.aku.ehs.libraries.table.model.DefaultSheetData;
-import edu.aku.ehs.libraries.table.model.ISheetData;
-import edu.aku.ehs.libraries.table.model.Range;
-import edu.aku.ehs.libraries.table.model.RichText;
-import edu.aku.ehs.libraries.table.model.style.CellStyle;
-import edu.aku.ehs.libraries.table.model.style.Font;
-import edu.aku.ehs.libraries.table.model.style.TableConst;
-import edu.aku.ehs.libraries.table.util.ConstVar;
+import edu.aku.evofit.R;
+import edu.aku.evofit.libraries.table.model.DefaultCellData;
+import edu.aku.evofit.libraries.table.model.DefaultSheetData;
+import edu.aku.evofit.libraries.table.model.ISheetData;
+import edu.aku.evofit.libraries.table.model.Range;
+import edu.aku.evofit.libraries.table.model.RichText;
+import edu.aku.evofit.libraries.table.model.style.CellStyle;
+import edu.aku.evofit.libraries.table.model.style.Font;
+import edu.aku.evofit.libraries.table.model.style.TableConst;
+import edu.aku.evofit.libraries.table.util.ConstVar;
 
 public class SheetTemplate1 {
 

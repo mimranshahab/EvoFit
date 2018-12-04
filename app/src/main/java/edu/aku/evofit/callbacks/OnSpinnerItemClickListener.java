@@ -1,6 +1,6 @@
-package edu.aku.ehs.callbacks;
+package edu.aku.evofit.callbacks;
 
-import edu.aku.ehs.adapters.SpinnerDialogAdapter;
+import edu.aku.evofit.adapters.SpinnerDialogAdapter;
 
 public interface OnSpinnerItemClickListener {
     void onItemClick(int position, Object object, SpinnerDialogAdapter adapter);

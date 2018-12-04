@@ -1,6 +1,6 @@
-package edu.aku.ehs.libraries.table.model.action;
+package edu.aku.evofit.libraries.table.model.action;
 
-import edu.aku.ehs.libraries.table.model.ICellData;
+import edu.aku.evofit.libraries.table.model.ICellData;
 
 public interface Action {
     boolean onAction(ICellData cell);

@@ -1,4 +1,4 @@
-package edu.aku.ehs.libraries.table.util;
+package edu.aku.evofit.libraries.table.util;
 
 
 import android.graphics.Typeface;
@@ -15,10 +15,10 @@ import android.text.style.SuperscriptSpan;
 import android.text.style.TypefaceSpan;
 import android.text.style.UnderlineSpan;
 
-import edu.aku.ehs.libraries.table.model.ICellData;
-import edu.aku.ehs.libraries.table.model.action.Action;
-import edu.aku.ehs.libraries.table.model.action.ActionSpan;
-import edu.aku.ehs.libraries.table.model.style.Font;
+import edu.aku.evofit.libraries.table.model.ICellData;
+import edu.aku.evofit.libraries.table.model.action.Action;
+import edu.aku.evofit.libraries.table.model.action.ActionSpan;
+import edu.aku.evofit.libraries.table.model.style.Font;
 
 public class SpannableUtils {
 

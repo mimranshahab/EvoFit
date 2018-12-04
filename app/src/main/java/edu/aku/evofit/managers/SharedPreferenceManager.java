@@ -1,4 +1,4 @@
-package edu.aku.ehs.managers;
+package edu.aku.evofit.managers;
 
 import android.app.Activity;
 import android.content.Context;
@@ -6,13 +6,13 @@ import android.content.SharedPreferences;
 
 import com.google.gson.Gson;
 
-import edu.aku.ehs.constatnts.AppConstants;
-import edu.aku.ehs.models.receiving_model.CardMemberDetail;
-import edu.aku.ehs.models.receiving_model.UserDetailModel;
-import edu.aku.ehs.models.sending_model.InsertRegisteredDeviceModel;
-import edu.aku.ehs.models.sending_model.RegisteredDeviceModel;
+import edu.aku.evofit.constatnts.AppConstants;
+import edu.aku.evofit.models.receiving_model.CardMemberDetail;
+import edu.aku.evofit.models.receiving_model.UserDetailModel;
+import edu.aku.evofit.models.sending_model.InsertRegisteredDeviceModel;
+import edu.aku.evofit.models.sending_model.RegisteredDeviceModel;
 
-import static edu.aku.ehs.constatnts.AppConstants.*;
+import static edu.aku.evofit.constatnts.AppConstants.*;
 
 /**
  * Class that can be extended to make available simple preference

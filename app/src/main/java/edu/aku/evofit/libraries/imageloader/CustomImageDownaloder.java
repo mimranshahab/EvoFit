@@ -1,4 +1,4 @@
-package edu.aku.ehs.libraries.imageloader;
+package edu.aku.evofit.libraries.imageloader;
 
 import android.content.Context;
 

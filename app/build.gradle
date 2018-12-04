@@ -20,7 +20,7 @@ android {
     compileSdkVersion 27
     buildToolsVersion "27.0.3"
     defaultConfig {
-        applicationId 'edu.aku.ehs'
+        applicationId 'edu.aku.evofit'
         minSdkVersion 22
         targetSdkVersion 27
         versionCode 17
@@ -96,10 +96,8 @@ dependencies {
     compile 'com.theartofdev.edmodo:android-image-cropper:2.4.+'
     testCompile 'junit:junit:4.12'
     annotationProcessor 'com.jakewharton:butterknife-compiler:8.5.1'
-    compile 'com.google.android.gms:play-services-places:11.8.0'
-    compile 'com.google.firebase:firebase-messaging:11.8.0'
-    compile 'com.google.firebase:firebase-core:11.8.0'
-    compile 'com.google.firebase:firebase-core:11.8.0'
+    compile 'com.google.firebase:firebase-messaging:17.3.4'
+    compile 'com.google.firebase:firebase-core:16.0.5'
 //    compile 'com.github.apache:commons-io:2.5'
     compile 'com.jsibbold:zoomage:1.1.0'
     compile 'commons-io:commons-io:2.4'
@@ -108,6 +106,10 @@ dependencies {
     compile 'com.jcminarro:RoundKornerLayouts:0.3.1'
     compile 'com.github.HITGIF:TextFieldBoxes:1.4.4'
     compile 'com.github.badoualy:stepper-indicator:1.0.7'
+
+    implementation 'com.google.firebase:firebase-firestore:17.1.2'
+    implementation 'com.google.android.gms:play-services-places:16.0.0'
+
 
     compile('com.crashlytics.sdk.android:crashlytics:2.9.3@aar') {
         transitive = true;

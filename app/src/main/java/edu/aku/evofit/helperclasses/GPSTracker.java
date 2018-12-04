@@ -1,4 +1,4 @@
-package edu.aku.ehs.helperclasses;
+package edu.aku.evofit.helperclasses;
 
 import android.Manifest;
 import android.app.AlertDialog;

@@ -1,4 +1,4 @@
-package edu.aku.ehs.libraries.fileloader;
+package edu.aku.evofit.libraries.fileloader;
 
 import android.content.Context;
 import android.os.AsyncTask;
@@ -7,10 +7,10 @@ import java.io.InterruptedIOException;
 import java.util.ArrayList;
 import java.util.List;
 
-import edu.aku.ehs.libraries.fileloader.listener.MultiFileDownloadListener;
-import edu.aku.ehs.libraries.fileloader.network.FileDownloader;
-import edu.aku.ehs.libraries.fileloader.request.MultiFileLoadRequest;
-import edu.aku.ehs.libraries.fileloader.utility.AndroidFileManager;
+import edu.aku.evofit.libraries.fileloader.listener.MultiFileDownloadListener;
+import edu.aku.evofit.libraries.fileloader.network.FileDownloader;
+import edu.aku.evofit.libraries.fileloader.request.MultiFileLoadRequest;
+import edu.aku.evofit.libraries.fileloader.utility.AndroidFileManager;
 
 /**
  * Created by krishna on 17/10/17.

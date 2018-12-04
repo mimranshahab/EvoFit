@@ -1,7 +1,7 @@
-package edu.aku.ehs.libraries.table.util;
+package edu.aku.evofit.libraries.table.util;
 
-import edu.aku.ehs.BaseApplication;
-import edu.aku.ehs.R;
+import edu.aku.evofit.BaseApplication;
+import edu.aku.evofit.R;
 
 public class ConstVar {
 

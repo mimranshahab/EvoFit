@@ -1,4 +1,4 @@
-package edu.aku.ehs.activities;
+package edu.aku.evofit.activities;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -10,12 +10,12 @@ import com.jsibbold.zoomage.ZoomageView;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
-import edu.aku.ehs.R;
-import edu.aku.ehs.libraries.imageloader.ImageLoaderHelper;
-import edu.aku.ehs.widget.AnyTextView;
+import edu.aku.evofit.R;
+import edu.aku.evofit.libraries.imageloader.ImageLoaderHelper;
+import edu.aku.evofit.widget.AnyTextView;
 
-import static edu.aku.ehs.constatnts.AppConstants.IMAGE_PREVIEW_TITLE;
-import static edu.aku.ehs.constatnts.AppConstants.IMAGE_PREVIEW_URL;
+import static edu.aku.evofit.constatnts.AppConstants.IMAGE_PREVIEW_TITLE;
+import static edu.aku.evofit.constatnts.AppConstants.IMAGE_PREVIEW_URL;
 
 public class ImagePreviewActivity extends AppCompatActivity {
 

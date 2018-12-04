@@ -1,11 +1,11 @@
-package edu.aku.ehs.libraries.table.util;
+package edu.aku.evofit.libraries.table.util;
 
 import android.graphics.DashPathEffect;
 import android.graphics.Paint;
 import android.graphics.Paint.Style;
 import android.graphics.PathEffect;
 
-import edu.aku.ehs.libraries.table.model.style.BorderLineStyle;
+import edu.aku.evofit.libraries.table.model.style.BorderLineStyle;
 
 public class BorderLineUtil {
     public static void setBorderlinePaint(BorderLineStyle borderlineStyle, Paint paint) {

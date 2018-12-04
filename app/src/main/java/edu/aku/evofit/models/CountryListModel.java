@@ -1,11 +1,11 @@
-package edu.aku.ehs.models;
+package edu.aku.evofit.models;
 
 import java.io.Serializable;
 import java.util.List;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-import edu.aku.ehs.models.receiving_model.RegisterOptionsModel;
+import edu.aku.evofit.models.receiving_model.RegisterOptionsModel;
 
 public class CountryListModel implements Serializable
 {

@@ -1,4 +1,4 @@
-package edu.aku.ehs.libraries.imageresizer.operations;
+package edu.aku.evofit.libraries.imageresizer.operations;
 
 public enum ImageRotation {
 

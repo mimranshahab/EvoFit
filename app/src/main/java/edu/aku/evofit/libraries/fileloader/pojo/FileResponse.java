@@ -1,4 +1,4 @@
-package edu.aku.ehs.libraries.fileloader.pojo;
+package edu.aku.evofit.libraries.fileloader.pojo;
 
 import java.io.File;
 

@@ -1,4 +1,4 @@
-package edu.aku.ehs.libraries.maskformatter;
+package edu.aku.evofit.libraries.maskformatter;
 
 import android.os.Build;
 import android.text.Editable;

@@ -1,4 +1,4 @@
-package edu.aku.ehs.managers;
+package edu.aku.evofit.managers;
 
 import java.util.Collection;
 

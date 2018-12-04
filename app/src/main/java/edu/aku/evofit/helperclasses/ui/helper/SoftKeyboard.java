@@ -1,4 +1,4 @@
-package edu.aku.ehs.helperclasses.ui.helper;
+package edu.aku.evofit.helperclasses.ui.helper;
 
 import android.os.Handler;
 import android.os.Message;

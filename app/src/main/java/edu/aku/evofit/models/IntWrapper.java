@@ -1,4 +1,4 @@
-package edu.aku.ehs.models;
+package edu.aku.evofit.models;
 
 /**
  * Created by hamza.ahmed on 3/16/2018.

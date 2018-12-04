@@ -1,4 +1,4 @@
-package edu.aku.ehs.libraries.table.model.object;
+package edu.aku.evofit.libraries.table.model.object;
 
 
 import android.graphics.Canvas;
@@ -6,8 +6,8 @@ import android.text.Layout;
 import android.text.StaticLayout;
 import android.text.TextPaint;
 
-import edu.aku.ehs.libraries.table.model.ICellData;
-import edu.aku.ehs.libraries.table.model.style.Font;
+import edu.aku.evofit.libraries.table.model.ICellData;
+import edu.aku.evofit.libraries.table.model.style.Font;
 
 public class TextObject extends CellObject{
     private CharSequence text;

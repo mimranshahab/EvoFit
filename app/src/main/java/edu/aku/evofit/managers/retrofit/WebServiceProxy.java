@@ -1,9 +1,9 @@
-package edu.aku.ehs.managers.retrofit;
+package edu.aku.evofit.managers.retrofit;
 
 import com.google.gson.JsonObject;
 
-import edu.aku.ehs.constatnts.WebServiceConstants;
-import edu.aku.ehs.models.wrappers.WebResponse;
+import edu.aku.evofit.constatnts.WebServiceConstants;
+import edu.aku.evofit.models.wrappers.WebResponse;
 
 import java.util.ArrayList;
 

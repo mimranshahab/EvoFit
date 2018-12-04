@@ -1,4 +1,4 @@
-package edu.aku.ehs.managers.retrofit;
+package edu.aku.evofit.managers.retrofit;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -10,9 +10,9 @@ import com.google.gson.JsonPrimitive;
 import com.google.gson.JsonSerializationContext;
 import com.google.gson.JsonSerializer;
 
-import edu.aku.ehs.managers.retrofit.entities.ServiceDate;
-import edu.aku.ehs.managers.retrofit.entities.ServiceDateTime;
-import edu.aku.ehs.managers.retrofit.entities.ServiceTime;
+import edu.aku.evofit.managers.retrofit.entities.ServiceDate;
+import edu.aku.evofit.managers.retrofit.entities.ServiceDateTime;
+import edu.aku.evofit.managers.retrofit.entities.ServiceTime;
 
 import java.lang.reflect.Type;
 import java.text.ParseException;

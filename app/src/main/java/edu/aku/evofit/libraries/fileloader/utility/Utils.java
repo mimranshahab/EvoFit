@@ -1,4 +1,4 @@
-package edu.aku.ehs.libraries.fileloader.utility;
+package edu.aku.evofit.libraries.fileloader.utility;
 
 import com.google.gson.Gson;
 

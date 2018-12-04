@@ -1,4 +1,4 @@
-package edu.aku.ehs.utils;
+package edu.aku.evofit.utils;
 
 import android.content.Context;
 import android.content.pm.PackageManager;

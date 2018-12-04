@@ -1,11 +1,11 @@
-package edu.aku.ehs.libraries.table.model.style;
+package edu.aku.evofit.libraries.table.model.style;
 
 
 import android.content.Context;
 import android.graphics.Typeface;
 import android.text.TextUtils;
 
-import edu.aku.ehs.libraries.table.util.TextHelper;
+import edu.aku.evofit.libraries.table.util.TextHelper;
 
 public class Font {
     public final static int FONTSIZE_INVALIDE = -1;

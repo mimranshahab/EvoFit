@@ -1,11 +1,11 @@
-package edu.aku.ehs.widget;
+package edu.aku.evofit.widget;
 
 import android.content.Context;
 import android.support.v7.widget.AppCompatTextView;
 import android.util.AttributeSet;
 
 
-import edu.aku.ehs.utils.utility.Utils;
+import edu.aku.evofit.utils.utility.Utils;
 
 public class AnyTextView extends AppCompatTextView {
 

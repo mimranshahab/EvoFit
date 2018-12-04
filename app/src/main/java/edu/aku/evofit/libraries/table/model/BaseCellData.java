@@ -1,4 +1,4 @@
-package edu.aku.ehs.libraries.table.model;
+package edu.aku.evofit.libraries.table.model;
 
 import android.graphics.Canvas;
 import android.graphics.DashPathEffect;
@@ -14,17 +14,17 @@ import android.text.StaticLayout;
 import android.text.TextPaint;
 import android.util.Log;
 
-import edu.aku.ehs.libraries.table.model.action.Action;
-import edu.aku.ehs.libraries.table.model.object.CellObject;
-import edu.aku.ehs.libraries.table.model.style.BorderLineStyle;
-import edu.aku.ehs.libraries.table.model.style.CellStyle;
-import edu.aku.ehs.libraries.table.model.style.Font;
-import edu.aku.ehs.libraries.table.model.style.TableConst;
-import edu.aku.ehs.libraries.table.util.AligmentUtils;
-import edu.aku.ehs.libraries.table.util.Colors;
-import edu.aku.ehs.libraries.table.util.ConstVar;
-import edu.aku.ehs.libraries.table.util.SpannableUtils;
-import edu.aku.ehs.libraries.table.util.UnitsConverter;
+import edu.aku.evofit.libraries.table.model.action.Action;
+import edu.aku.evofit.libraries.table.model.object.CellObject;
+import edu.aku.evofit.libraries.table.model.style.BorderLineStyle;
+import edu.aku.evofit.libraries.table.model.style.CellStyle;
+import edu.aku.evofit.libraries.table.model.style.Font;
+import edu.aku.evofit.libraries.table.model.style.TableConst;
+import edu.aku.evofit.libraries.table.util.AligmentUtils;
+import edu.aku.evofit.libraries.table.util.Colors;
+import edu.aku.evofit.libraries.table.util.ConstVar;
+import edu.aku.evofit.libraries.table.util.SpannableUtils;
+import edu.aku.evofit.libraries.table.util.UnitsConverter;
 
 import java.util.ArrayList;
 import java.util.List;

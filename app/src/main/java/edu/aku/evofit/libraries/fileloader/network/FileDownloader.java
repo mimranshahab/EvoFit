@@ -1,4 +1,4 @@
-package edu.aku.ehs.libraries.fileloader.network;
+package edu.aku.evofit.libraries.fileloader.network;
 
 import android.content.Context;
 import android.support.annotation.WorkerThread;
@@ -7,9 +7,9 @@ import java.io.File;
 import java.io.IOException;
 import java.util.concurrent.TimeUnit;
 
-import edu.aku.ehs.BuildConfig;
-import edu.aku.ehs.libraries.fileloader.utility.AndroidFileManager;
-import edu.aku.ehs.managers.retrofit.WebServices;
+import edu.aku.evofit.BuildConfig;
+import edu.aku.evofit.libraries.fileloader.utility.AndroidFileManager;
+import edu.aku.evofit.managers.retrofit.WebServices;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.Response;

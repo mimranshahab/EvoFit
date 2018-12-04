@@ -1,4 +1,4 @@
-package edu.aku.ehs.managers;
+package edu.aku.evofit.managers;
 
 import android.app.PendingIntent;
 import android.content.Context;

@@ -1,4 +1,4 @@
-package edu.aku.ehs.widget;
+package edu.aku.evofit.widget;
 
 import android.content.Context;
 import android.util.AttributeSet;
@@ -6,7 +6,7 @@ import android.view.KeyEvent;
 
 import com.andreabaccega.widget.FormEditText;
 
-import edu.aku.ehs.utils.utility.Utils;
+import edu.aku.evofit.utils.utility.Utils;
 
 public class AnyEditTextView extends FormEditText {
 

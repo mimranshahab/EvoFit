@@ -1,4 +1,4 @@
-package edu.aku.ehs.utils;
+package edu.aku.evofit.utils;
 
 import android.Manifest;
 import android.app.Activity;
@@ -17,7 +17,7 @@ import android.support.v4.app.Fragment;
 import android.support.v4.content.ContextCompat;
 import android.util.Log;
 
-import edu.aku.ehs.R;
+import edu.aku.evofit.R;
 
 import java.io.File;
 import java.io.FileNotFoundException;

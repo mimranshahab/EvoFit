@@ -1,4 +1,4 @@
-package edu.aku.ehs.activities;
+package edu.aku.evofit.activities;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -12,17 +12,17 @@ import android.view.View;
 
 import com.gdacciaro.iOSDialog.iOSDialogBuilder;
 
-import edu.aku.ehs.BaseApplication;
-import edu.aku.ehs.R;
-import edu.aku.ehs.callbacks.GenericClickableInterface;
-import edu.aku.ehs.fragments.LeftSideMenuFragment;
-import edu.aku.ehs.fragments.abstracts.BaseFragment;
-import edu.aku.ehs.widget.TitleBar;
+import edu.aku.evofit.BaseApplication;
+import edu.aku.evofit.R;
+import edu.aku.evofit.callbacks.GenericClickableInterface;
+import edu.aku.evofit.fragments.LeftSideMenuFragment;
+import edu.aku.evofit.fragments.abstracts.BaseFragment;
+import edu.aku.evofit.widget.TitleBar;
 
 
-import static edu.aku.ehs.constatnts.AppConstants.IMAGE_PREVIEW_TITLE;
-import static edu.aku.ehs.constatnts.AppConstants.IMAGE_PREVIEW_URL;
-import static edu.aku.ehs.constatnts.AppConstants.JSON_STRING_KEY;
+import static edu.aku.evofit.constatnts.AppConstants.IMAGE_PREVIEW_TITLE;
+import static edu.aku.evofit.constatnts.AppConstants.IMAGE_PREVIEW_URL;
+import static edu.aku.evofit.constatnts.AppConstants.JSON_STRING_KEY;
 
 
 public abstract class BaseActivity extends AppCompatActivity {

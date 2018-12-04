@@ -1,4 +1,4 @@
-package edu.aku.ehs.libraries.table.model.style;
+package edu.aku.evofit.libraries.table.model.style;
 
 /**
  * The border line style

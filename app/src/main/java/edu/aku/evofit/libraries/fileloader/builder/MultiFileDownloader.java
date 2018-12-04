@@ -1,14 +1,14 @@
-package edu.aku.ehs.libraries.fileloader.builder;
+package edu.aku.evofit.libraries.fileloader.builder;
 
 import android.content.Context;
 
 import java.util.List;
 
-import edu.aku.ehs.libraries.fileloader.FileLoader;
-import edu.aku.ehs.libraries.fileloader.MultiFileDownloadTask;
-import edu.aku.ehs.libraries.fileloader.listener.MultiFileDownloadListener;
-import edu.aku.ehs.libraries.fileloader.request.MultiFileLoadRequest;
-import edu.aku.ehs.libraries.fileloader.utility.Utils;
+import edu.aku.evofit.libraries.fileloader.FileLoader;
+import edu.aku.evofit.libraries.fileloader.MultiFileDownloadTask;
+import edu.aku.evofit.libraries.fileloader.listener.MultiFileDownloadListener;
+import edu.aku.evofit.libraries.fileloader.request.MultiFileLoadRequest;
+import edu.aku.evofit.libraries.fileloader.utility.Utils;
 
 /**
  * Created by krishna on 15/10/17.

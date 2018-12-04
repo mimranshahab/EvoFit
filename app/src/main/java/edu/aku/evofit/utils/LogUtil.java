@@ -1,8 +1,8 @@
-package edu.aku.ehs.utils;
+package edu.aku.evofit.utils;
 
 import android.util.Log;
 
-import edu.aku.ehs.BaseApplication;
+import edu.aku.evofit.BaseApplication;
 
 
 public class LogUtil {

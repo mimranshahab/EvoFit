@@ -33,7 +33,7 @@
                  android:clickable="false"
                 />
 
-            <edu.aku.ehs.widget.AnyTextView
+            <edu.aku.evofit.widget.AnyTextView
                 android:id="@+id/txtChoice"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"

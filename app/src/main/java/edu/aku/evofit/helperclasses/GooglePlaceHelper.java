@@ -1,4 +1,4 @@
-package edu.aku.ehs.helperclasses;
+package edu.aku.evofit.helperclasses;
 
 import android.app.Activity;
 import android.content.Context;
@@ -17,7 +17,7 @@ import com.google.android.gms.location.places.Place;
 import com.google.android.gms.location.places.ui.PlaceAutocomplete;
 import com.google.android.gms.location.places.ui.PlacePicker;
 
-import edu.aku.ehs.helperclasses.ui.helper.UIHelper;
+import edu.aku.evofit.helperclasses.ui.helper.UIHelper;
 
 import java.io.IOException;
 import java.util.List;

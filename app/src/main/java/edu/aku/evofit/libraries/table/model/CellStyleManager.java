@@ -1,7 +1,7 @@
-package edu.aku.ehs.libraries.table.model;
+package edu.aku.evofit.libraries.table.model;
 
 
-import edu.aku.ehs.libraries.table.model.style.CellStyle;
+import edu.aku.evofit.libraries.table.model.style.CellStyle;
 
 import java.util.ArrayList;
 import java.util.List;

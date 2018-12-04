@@ -1,181 +1,43 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
+android:layout_margin="@dimen/x5dp"
+    android:elevation="@dimen/x5dp"
     android:layout_height="wrap_content">
 
-
-    <com.jcminarro.roundkornerlayout.RoundKornerRelativeLayout
+    <RelativeLayout
         android:id="@+id/contParent"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        >
+        android:gravity="center"
+         android:layout_width="match_parent"
+        android:layout_height="@dimen/x120dp">
 
-        <com.jcminarro.roundkornerlayout.RoundKornerRelativeLayout
+
+        <ImageView
+            android:id="@+id/imgBackground"
             android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/summary_blue"
+            android:alpha="0.3"
+            />
+
+        <edu.aku.evofit.widget.AnyTextView
+            android:id="@+id/txtDesc"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_margin="@dimen/x20dp"
-            android:background="@color/pastel_peach"
-            android:padding="@dimen/x2dp"
-            >
+            android:text="What Is"
+            android:layout_centerInParent="true"
+            android:singleLine="true"
+            android:textColor="@color/c_white"
+            android:textSize="@dimen/s16"
+            app:typeface="@string/font_medium" />
 
 
-            <com.jcminarro.roundkornerlayout.RoundKornerLinearLayout
-                android:id="@+id/contListItem"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="#eee"
-                android:layout_marginRight="@dimen/x5dp"
-                android:orientation="horizontal"
-                android:padding="@dimen/x5dp"
-                >
-
-
-                <LinearLayout
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="2"
-                    android:gravity="center_vertical"
-                    android:orientation="vertical">
-
-                    <edu.aku.evofit.widget.AnyTextView
-                        android:id="@+id/txtDepartmentName"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:ellipsize="end"
-                        android:maxLines="2"
-                        android:padding="@dimen/x3dp"
-                        android:text="Department Name"
-                        android:textColor="@color/txtBlue"
-                        android:textSize="@dimen/s14"
-                        app:typeface="@string/font_medium" />
+    </RelativeLayout>
 
 
 
-
-                </LinearLayout>
-
-
-                <ImageView
-                    android:layout_width="1px"
-                    android:layout_height="match_parent"
-                    android:layout_margin="@dimen/x3dp"
-                    android:background="@color/c_light_grey" />
-
-
-                <LinearLayout
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                     android:gravity="center_vertical"
-                    android:orientation="vertical">
-
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                         android:layout_height="wrap_content"
-                        android:gravity="right">
-
-
-
-                        <edu.aku.evofit.widget.AnyTextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:ellipsize="end"
-                            android:gravity="center"
-                            android:singleLine="true"
-                            android:text="Department ID: "
-                            android:textColor="@color/txtDarkGrey"
-                            android:textSize="@dimen/s12"
-                            app:typeface="@string/font_regular" />
-
-                        <edu.aku.evofit.widget.AnyTextView
-                            android:id="@+id/txtDepartmentID"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginRight="@dimen/x3dp"
-                            android:ellipsize="end"
-                            android:gravity="center"
-                            android:padding="@dimen/x3dp"
-                            android:singleLine="true"
-                            android:text="99"
-                            android:textColor="@color/txtBlue"
-                            android:textSize="@dimen/s12"
-                            app:typeface="@string/font_medium" />
-                    </LinearLayout>
-
-
-
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:gravity="right">
-
-
-
-                        <edu.aku.evofit.widget.AnyTextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:ellipsize="end"
-                            android:gravity="center"
-                            android:singleLine="true"
-                            android:text="No of Employyes: "
-                            android:textColor="@color/txtDarkGrey"
-                            android:textSize="@dimen/s12"
-                            app:typeface="@string/font_regular" />
-
-                        <edu.aku.evofit.widget.AnyTextView
-                            android:id="@+id/txtNoOfEMployees"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginRight="@dimen/x3dp"
-                            android:ellipsize="end"
-                            android:gravity="center"
-                            android:padding="@dimen/x3dp"
-                            android:singleLine="true"
-                            android:text="434"
-                            android:textColor="@color/txtBlue"
-                            android:textSize="@dimen/s12"
-                            app:typeface="@string/font_medium" />
-                    </LinearLayout>
-
-
-
-
-                </LinearLayout>
-
-
-            </com.jcminarro.roundkornerlayout.RoundKornerLinearLayout>
-
-            <ImageView
-                android:id="@+id/imgSelected"
-                android:layout_width="@dimen/x23dp"
-                android:layout_height="@dimen/x23dp"
-                android:layout_alignParentStart="true"
-                android:layout_centerVertical="true"
-                android:layout_marginStart="@dimen/x10dp"
-                android:background="@drawable/shape_circle"
-                android:backgroundTint="@color/colorAccent"
-                android:padding="@dimen/x3dp"
-                android:src="@drawable/ic_done_white_18dp"
-                android:visibility="gone" />
-
-        </com.jcminarro.roundkornerlayout.RoundKornerRelativeLayout>
-
-
-    </com.jcminarro.roundkornerlayout.RoundKornerRelativeLayout>
-
-
-    <ImageView
-        android:id="@+id/imgHighlight"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignBottom="@id/contParent"
-        android:layout_alignParentTop="true"
-        android:alpha="0.2"
-        android:src="@color/colorPrimary"
-        android:visibility="gone" />
 
 
 </RelativeLayout>

@@ -1,4 +1,4 @@
-package edu.aku.ehs.widget;
+package edu.aku.evofit.widget;
 
 import android.animation.Animator;
 import android.animation.AnimatorSet;
@@ -29,7 +29,7 @@ import android.view.inputmethod.InputMethodManager;
 
 import java.util.Locale;
 
-import edu.aku.ehs.R;
+import edu.aku.evofit.R;
 
 public class PinEntryEditText extends android.support.v7.widget.AppCompatEditText {
     private static final String XML_NAMESPACE_ANDROID = "http://schemas.android.com/apk/res/android";

@@ -1,14 +1,14 @@
-package edu.aku.ehs.libraries.fileloader.builder;
+package edu.aku.evofit.libraries.fileloader.builder;
 
 import android.content.Context;
 import android.graphics.Bitmap;
 import java.io.File;
 
-import edu.aku.ehs.libraries.fileloader.FileLoader;
-import edu.aku.ehs.libraries.fileloader.listener.FileRequestListener;
-import edu.aku.ehs.libraries.fileloader.pojo.FileResponse;
-import edu.aku.ehs.libraries.fileloader.request.FileLoadRequest;
-import edu.aku.ehs.libraries.fileloader.utility.FileExtension;
+import edu.aku.evofit.libraries.fileloader.FileLoader;
+import edu.aku.evofit.libraries.fileloader.listener.FileRequestListener;
+import edu.aku.evofit.libraries.fileloader.pojo.FileResponse;
+import edu.aku.evofit.libraries.fileloader.request.FileLoadRequest;
+import edu.aku.evofit.libraries.fileloader.utility.FileExtension;
 
 /**
  * Created by krishna on 15/10/17.

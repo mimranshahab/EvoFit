@@ -1,4 +1,4 @@
-package edu.aku.ehs.fragments.abstracts;
+package edu.aku.evofit.fragments.abstracts;
 
 import android.text.Spannable;
 import android.text.SpannableString;
@@ -11,8 +11,8 @@ import android.text.style.StyleSpan;
 import android.view.View;
 import android.widget.TextView;
 
-import edu.aku.ehs.activities.BaseActivity;
-import edu.aku.ehs.callbacks.GenericClickableInterface;
+import edu.aku.evofit.activities.BaseActivity;
+import edu.aku.evofit.callbacks.GenericClickableInterface;
 
 import static android.graphics.Typeface.BOLD;
 

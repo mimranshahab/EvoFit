@@ -1,4 +1,4 @@
-package edu.aku.ehs.fragments.dialogs;
+package edu.aku.evofit.fragments.dialogs;
 
 import android.graphics.PorterDuff;
 import android.graphics.drawable.LayerDrawable;
@@ -12,9 +12,9 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.RatingBar;
 
-import edu.aku.ehs.R;
+import edu.aku.evofit.R;
 
-import edu.aku.ehs.callbacks.RatingBarDataInterface;
+import edu.aku.evofit.callbacks.RatingBarDataInterface;
 
 
 import butterknife.BindView;

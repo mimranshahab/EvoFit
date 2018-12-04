@@ -1,4 +1,4 @@
-package edu.aku.ehs.widget;
+package edu.aku.evofit.widget;
 
 /**
  * Created by khanhamza on 01-Mar-17.

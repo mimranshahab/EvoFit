@@ -1,4 +1,4 @@
-package edu.aku.ehs.utils;
+package edu.aku.evofit.utils;
 
 import java.util.concurrent.TimeUnit;
 

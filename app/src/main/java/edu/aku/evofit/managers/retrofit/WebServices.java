@@ -1,4 +1,4 @@
-package edu.aku.ehs.managers.retrofit;
+package edu.aku.evofit.managers.retrofit;
 
 import android.app.Activity;
 import android.content.Context;
@@ -9,13 +9,13 @@ import com.kaopiz.kprogresshud.KProgressHUD;
 
 import java.lang.String;
 
-import edu.aku.ehs.constatnts.WebServiceConstants;
-import edu.aku.ehs.enums.BaseURLTypes;
-import edu.aku.ehs.enums.FileType;
-import edu.aku.ehs.helperclasses.Helper;
-import edu.aku.ehs.helperclasses.ui.helper.UIHelper;
-import edu.aku.ehs.managers.FileManager;
-import edu.aku.ehs.models.wrappers.WebResponse;
+import edu.aku.evofit.constatnts.WebServiceConstants;
+import edu.aku.evofit.enums.BaseURLTypes;
+import edu.aku.evofit.enums.FileType;
+import edu.aku.evofit.helperclasses.Helper;
+import edu.aku.evofit.helperclasses.ui.helper.UIHelper;
+import edu.aku.evofit.managers.FileManager;
+import edu.aku.evofit.models.wrappers.WebResponse;
 
 import java.io.File;
 import java.io.IOException;

@@ -1,4 +1,4 @@
-package edu.aku.ehs.callbacks;
+package edu.aku.evofit.callbacks;
 
 import android.view.View;
 

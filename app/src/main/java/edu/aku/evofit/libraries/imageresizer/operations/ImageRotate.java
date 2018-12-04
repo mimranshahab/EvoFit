@@ -1,10 +1,10 @@
-package edu.aku.ehs.libraries.imageresizer.operations;
+package edu.aku.evofit.libraries.imageresizer.operations;
 
 import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.Matrix;
 
-import edu.aku.ehs.libraries.imageresizer.utils.ImageDecoder;
+import edu.aku.evofit.libraries.imageresizer.utils.ImageDecoder;
 
 import java.io.File;
 

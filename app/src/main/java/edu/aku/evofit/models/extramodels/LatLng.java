@@ -1,4 +1,4 @@
-package edu.aku.ehs.models.extramodels;
+package edu.aku.evofit.models.extramodels;
 
 public class LatLng {
 

@@ -1,4 +1,4 @@
-package edu.aku.ehs.helperclasses.ui.helper;
+package edu.aku.evofit.helperclasses.ui.helper;
 
 import android.app.Activity;
 import android.app.AlertDialog;
@@ -50,18 +50,18 @@ import java.io.IOException;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
 
-import edu.aku.ehs.R;
-import edu.aku.ehs.activities.BaseActivity;
-import edu.aku.ehs.adapters.SpinnerDialogAdapter;
-import edu.aku.ehs.callbacks.GenericClickableInterface;
-import edu.aku.ehs.callbacks.OnItemSelectListner;
-import edu.aku.ehs.callbacks.OnSpinnerItemClickListener;
-import edu.aku.ehs.fragments.abstracts.BaseFragment;
-import edu.aku.ehs.fragments.abstracts.GenericDialogFragment;
-import edu.aku.ehs.fragments.dialogs.SpinnerDialogFragment;
-import edu.aku.ehs.managers.retrofit.GsonFactory;
-import edu.aku.ehs.models.IntWrapper;
-import edu.aku.ehs.models.SpinnerModel;
+import edu.aku.evofit.R;
+import edu.aku.evofit.activities.BaseActivity;
+import edu.aku.evofit.adapters.SpinnerDialogAdapter;
+import edu.aku.evofit.callbacks.GenericClickableInterface;
+import edu.aku.evofit.callbacks.OnItemSelectListner;
+import edu.aku.evofit.callbacks.OnSpinnerItemClickListener;
+import edu.aku.evofit.fragments.abstracts.BaseFragment;
+import edu.aku.evofit.fragments.abstracts.GenericDialogFragment;
+import edu.aku.evofit.fragments.dialogs.SpinnerDialogFragment;
+import edu.aku.evofit.managers.retrofit.GsonFactory;
+import edu.aku.evofit.models.IntWrapper;
+import edu.aku.evofit.models.SpinnerModel;
 
 /**
  * Created by khanhamza on 09-Mar-17.

@@ -1,4 +1,4 @@
-package edu.aku.ehs.adapters.recyleradapters;
+package edu.aku.evofit.adapters.recyleradapters;
 
 import android.graphics.drawable.TransitionDrawable;
 import android.support.v7.widget.RecyclerView;
@@ -14,13 +14,13 @@ import java.util.ArrayList;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
-import edu.aku.ehs.R;
-import edu.aku.ehs.activities.BaseActivity;
-import edu.aku.ehs.callbacks.OnItemClickListener;
-import edu.aku.ehs.helperclasses.Helper;
-import edu.aku.ehs.helperclasses.ui.helper.AnimationHelper;
-import edu.aku.ehs.models.DepartmentModel;
-import edu.aku.ehs.widget.AnyTextView;
+import edu.aku.evofit.R;
+import edu.aku.evofit.activities.BaseActivity;
+import edu.aku.evofit.callbacks.OnItemClickListener;
+import edu.aku.evofit.helperclasses.Helper;
+import edu.aku.evofit.helperclasses.ui.helper.AnimationHelper;
+import edu.aku.evofit.models.DepartmentModel;
+import edu.aku.evofit.widget.AnyTextView;
 
 import static android.view.View.VISIBLE;
 

@@ -1,4 +1,4 @@
-package edu.aku.ehs.helperclasses;
+package edu.aku.evofit.helperclasses;
 
 import android.annotation.TargetApi;
 import android.app.Activity;
@@ -46,7 +46,7 @@ import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.util.regex.Pattern;
 
-import edu.aku.ehs.R;
+import edu.aku.evofit.R;
 import io.realm.RealmList;
 import io.realm.RealmModel;
 

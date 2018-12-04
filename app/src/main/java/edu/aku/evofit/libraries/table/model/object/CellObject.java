@@ -1,13 +1,13 @@
-package edu.aku.ehs.libraries.table.model.object;
+package edu.aku.evofit.libraries.table.model.object;
 
 
 import android.graphics.Canvas;
 import android.graphics.Point;
 import android.graphics.drawable.Drawable;
 
-import edu.aku.ehs.libraries.table.model.ICellData;
-import edu.aku.ehs.libraries.table.model.style.TableConst;
-import edu.aku.ehs.libraries.table.util.DrawableStateWrapper;
+import edu.aku.evofit.libraries.table.model.ICellData;
+import edu.aku.evofit.libraries.table.model.style.TableConst;
+import edu.aku.evofit.libraries.table.util.DrawableStateWrapper;
 
 public abstract class CellObject {
     private ICellData cell;

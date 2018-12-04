@@ -1,4 +1,4 @@
-package edu.aku.ehs.constatnts;
+package edu.aku.evofit.constatnts;
 
 import java.util.HashMap;
 import java.util.Map;

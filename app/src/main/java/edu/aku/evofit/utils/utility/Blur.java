@@ -1,4 +1,4 @@
-package edu.aku.ehs.utils.utility;
+package edu.aku.evofit.utils.utility;
 
 import android.annotation.SuppressLint;
 import android.content.Context;

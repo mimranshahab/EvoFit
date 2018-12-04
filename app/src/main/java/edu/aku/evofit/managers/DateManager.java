@@ -1,4 +1,4 @@
-package edu.aku.ehs.managers;
+package edu.aku.evofit.managers;
 
 import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
@@ -7,10 +7,10 @@ import android.widget.DatePicker;
 import android.widget.TextView;
 import android.widget.TimePicker;
 
-import edu.aku.ehs.callbacks.OnCalendarUpdate;
-import edu.aku.ehs.callbacks.OnDatePicked;
-import edu.aku.ehs.constatnts.AppConstants;
-import edu.aku.ehs.helperclasses.ui.helper.UIHelper;
+import edu.aku.evofit.callbacks.OnCalendarUpdate;
+import edu.aku.evofit.callbacks.OnDatePicked;
+import edu.aku.evofit.constatnts.AppConstants;
+import edu.aku.evofit.helperclasses.ui.helper.UIHelper;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;

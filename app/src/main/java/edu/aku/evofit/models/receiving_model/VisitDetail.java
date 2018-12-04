@@ -1,4 +1,4 @@
-package edu.aku.ehs.models.receiving_model;
+package edu.aku.evofit.models.receiving_model;
 
 import java.io.Serializable;
 import com.google.gson.annotations.Expose;

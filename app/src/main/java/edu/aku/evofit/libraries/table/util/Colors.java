@@ -1,4 +1,4 @@
-package edu.aku.ehs.libraries.table.util;
+package edu.aku.evofit.libraries.table.util;
 
 public class Colors {
     public final static int SELCTION_COLOR = 0x88CCCCCC;

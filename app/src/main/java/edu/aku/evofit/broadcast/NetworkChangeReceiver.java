@@ -1,4 +1,4 @@
-package edu.aku.ehs.broadcast;
+package edu.aku.evofit.broadcast;
 
 import android.content.BroadcastReceiver;
 import android.content.Context;

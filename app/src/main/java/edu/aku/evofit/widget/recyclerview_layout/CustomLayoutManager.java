@@ -1,4 +1,4 @@
-package edu.aku.ehs.widget.recyclerview_layout;
+package edu.aku.evofit.widget.recyclerview_layout;
 
 import android.content.Context;
 import android.support.v7.widget.LinearLayoutManager;

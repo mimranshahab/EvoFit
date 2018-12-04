@@ -1,4 +1,4 @@
-package edu.aku.ehs.enums;
+package edu.aku.evofit.enums;
 
 public enum SelectEmployeeActionType {
     SENDEMAIL,

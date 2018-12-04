@@ -1,4 +1,4 @@
-package edu.aku.ehs.fragments.dialogs;
+package edu.aku.evofit.fragments.dialogs;
 
 
 import android.os.Bundle;
@@ -14,13 +14,13 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import butterknife.Unbinder;
-import edu.aku.ehs.R;
-import edu.aku.ehs.helperclasses.ui.helper.KeyboardHelper;
-import edu.aku.ehs.managers.SharedPreferenceManager;
-import edu.aku.ehs.widget.AnyTextView;
-import edu.aku.ehs.widget.PinEntryEditText;
+import edu.aku.evofit.R;
+import edu.aku.evofit.helperclasses.ui.helper.KeyboardHelper;
+import edu.aku.evofit.managers.SharedPreferenceManager;
+import edu.aku.evofit.widget.AnyTextView;
+import edu.aku.evofit.widget.PinEntryEditText;
 
-import static edu.aku.ehs.constatnts.AppConstants.KEY_PIN_CODE;
+import static edu.aku.evofit.constatnts.AppConstants.KEY_PIN_CODE;
 
 /**
  * Created by khanhamza on 21-Feb-17.

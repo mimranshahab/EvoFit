@@ -1,4 +1,4 @@
-package edu.aku.ehs.managers.retrofit.entities;
+package edu.aku.evofit.managers.retrofit.entities;
 
 public class ResponseMessage {
 

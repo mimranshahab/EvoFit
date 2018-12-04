@@ -1,4 +1,4 @@
-package edu.aku.ehs.constatnts;
+package edu.aku.evofit.constatnts;
 
 /**
  * Created by User on 1/18/2018.

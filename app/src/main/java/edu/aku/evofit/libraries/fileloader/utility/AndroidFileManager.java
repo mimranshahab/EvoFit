@@ -1,4 +1,4 @@
-package edu.aku.ehs.libraries.fileloader.utility;
+package edu.aku.evofit.libraries.fileloader.utility;
 
 import android.content.Context;
 import android.graphics.Bitmap;
@@ -14,7 +14,7 @@ import java.io.InputStreamReader;
 import java.net.MalformedURLException;
 import java.net.URL;
 
-import edu.aku.ehs.libraries.fileloader.FileLoader;
+import edu.aku.evofit.libraries.fileloader.FileLoader;
 
 /**
  * Created by krishna on 12/10/17.

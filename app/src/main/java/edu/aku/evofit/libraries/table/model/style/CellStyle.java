@@ -1,6 +1,6 @@
-package edu.aku.ehs.libraries.table.model.style;
+package edu.aku.evofit.libraries.table.model.style;
 
-import edu.aku.ehs.libraries.table.util.Objects;
+import edu.aku.evofit.libraries.table.util.Objects;
 
 public class CellStyle {
     private int bgColor;

@@ -1,4 +1,4 @@
-package edu.aku.ehs.widget.recyclerviewenhanced;
+package edu.aku.evofit.widget.recyclerviewenhanced;
 
 import android.view.MotionEvent;
 

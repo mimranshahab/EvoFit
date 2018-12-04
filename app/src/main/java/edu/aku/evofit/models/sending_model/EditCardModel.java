@@ -1,8 +1,8 @@
-package edu.aku.ehs.models.sending_model;
+package edu.aku.evofit.models.sending_model;
 
 import com.google.gson.annotations.SerializedName;
 
-import edu.aku.ehs.managers.retrofit.GsonFactory;
+import edu.aku.evofit.managers.retrofit.GsonFactory;
 
 /**
  * Created by aqsa.sarwar on 1/2/2018.

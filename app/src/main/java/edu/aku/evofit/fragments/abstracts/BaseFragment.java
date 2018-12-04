@@ -1,4 +1,4 @@
-package edu.aku.ehs.fragments.abstracts;
+package edu.aku.evofit.fragments.abstracts;
 
 import android.content.Context;
 import android.os.Bundle;
@@ -19,29 +19,29 @@ import android.widget.TextView;
 
 import com.gdacciaro.iOSDialog.iOSDialogBuilder;
 
-import edu.aku.ehs.R;
-import edu.aku.ehs.activities.BaseActivity;
-import edu.aku.ehs.activities.MainActivity;
-import edu.aku.ehs.callbacks.OnNewPacketReceivedListener;
-import edu.aku.ehs.constatnts.AppConstants;
-import edu.aku.ehs.helperclasses.ui.helper.KeyboardHelper;
-import edu.aku.ehs.widget.TitleBar;
-import edu.aku.ehs.helperclasses.ui.helper.UIHelper;
-import edu.aku.ehs.BaseApplication;
+import edu.aku.evofit.R;
+import edu.aku.evofit.activities.BaseActivity;
+import edu.aku.evofit.activities.MainActivity;
+import edu.aku.evofit.callbacks.OnNewPacketReceivedListener;
+import edu.aku.evofit.constatnts.AppConstants;
+import edu.aku.evofit.helperclasses.ui.helper.KeyboardHelper;
+import edu.aku.evofit.widget.TitleBar;
+import edu.aku.evofit.helperclasses.ui.helper.UIHelper;
+import edu.aku.evofit.BaseApplication;
 
 import java.io.File;
 
-import edu.aku.ehs.managers.DateManager;
-import edu.aku.ehs.managers.FileManager;
-import edu.aku.ehs.managers.SharedPreferenceManager;
-import edu.aku.ehs.models.receiving_model.UserDetailModel;
-import edu.aku.ehs.models.wrappers.WebResponse;
+import edu.aku.evofit.managers.DateManager;
+import edu.aku.evofit.managers.FileManager;
+import edu.aku.evofit.managers.SharedPreferenceManager;
+import edu.aku.evofit.models.receiving_model.UserDetailModel;
+import edu.aku.evofit.models.wrappers.WebResponse;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.annotations.NonNull;
 import io.reactivex.disposables.Disposable;
 import io.reactivex.functions.Consumer;
 
-import static edu.aku.ehs.constatnts.Events.ON_SELECTED_USER_UPDATE;
+import static edu.aku.evofit.constatnts.Events.ON_SELECTED_USER_UPDATE;
 
 
 /**

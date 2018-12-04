@@ -1,10 +1,10 @@
-package edu.aku.ehs.libraries.table.util;
+package edu.aku.evofit.libraries.table.util;
 
 
 import android.text.Layout;
 import android.text.Layout.Alignment;
 
-import edu.aku.ehs.libraries.table.model.style.TableConst;
+import edu.aku.evofit.libraries.table.model.style.TableConst;
 
 public class AligmentUtils {
 

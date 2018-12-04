@@ -1,4 +1,4 @@
-package edu.aku.ehs.libraries.imageloader;
+package edu.aku.evofit.libraries.imageloader;
 
 import android.content.Context;
 import android.widget.ImageView;
@@ -10,13 +10,13 @@ import com.nostra13.universalimageloader.core.display.FadeInBitmapDisplayer;
 
 import java.util.Map;
 
-import edu.aku.ehs.R;
-import edu.aku.ehs.constatnts.AppConstants;
-import edu.aku.ehs.constatnts.WebServiceConstants;
-import edu.aku.ehs.managers.SharedPreferenceManager;
+import edu.aku.evofit.R;
+import edu.aku.evofit.constatnts.AppConstants;
+import edu.aku.evofit.constatnts.WebServiceConstants;
+import edu.aku.evofit.managers.SharedPreferenceManager;
 
-import static edu.aku.ehs.constatnts.WebServiceConstants.GETIMAGE_BASE_URL;
-import static edu.aku.ehs.constatnts.WebServiceConstants.METHOD_USER_GET_USER_IMAGE;
+import static edu.aku.evofit.constatnts.WebServiceConstants.GETIMAGE_BASE_URL;
+import static edu.aku.evofit.constatnts.WebServiceConstants.METHOD_USER_GET_USER_IMAGE;
 
 /**
  * Created by khanhamza on 08-Mar-17.

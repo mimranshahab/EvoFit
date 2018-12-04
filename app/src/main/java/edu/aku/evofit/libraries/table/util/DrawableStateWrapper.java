@@ -1,4 +1,4 @@
-package edu.aku.ehs.libraries.table.util;
+package edu.aku.evofit.libraries.table.util;
 
 
 import android.content.Context;

@@ -1,13 +1,13 @@
-package edu.aku.ehs.libraries.table.model;
+package edu.aku.evofit.libraries.table.model;
 
 import android.content.Context;
 import android.graphics.Color;
 import android.util.SparseBooleanArray;
 import android.util.SparseIntArray;
 
-import edu.aku.ehs.libraries.table.model.style.CellStyle;
-import edu.aku.ehs.libraries.table.model.style.Font;
-import edu.aku.ehs.libraries.table.model.style.TableConst;
+import edu.aku.evofit.libraries.table.model.style.CellStyle;
+import edu.aku.evofit.libraries.table.model.style.Font;
+import edu.aku.evofit.libraries.table.model.style.TableConst;
 
 import java.util.ArrayList;
 import java.util.HashMap;

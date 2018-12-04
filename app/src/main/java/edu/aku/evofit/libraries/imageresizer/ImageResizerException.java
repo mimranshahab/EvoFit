@@ -1,4 +1,4 @@
-package edu.aku.ehs.libraries.imageresizer;
+package edu.aku.evofit.libraries.imageresizer;
 
 public class ImageResizerException extends Exception {
 

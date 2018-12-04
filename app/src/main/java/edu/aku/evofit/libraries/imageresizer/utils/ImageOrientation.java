@@ -1,4 +1,4 @@
-package edu.aku.ehs.libraries.imageresizer.utils;
+package edu.aku.evofit.libraries.imageresizer.utils;
 
 
 public enum ImageOrientation {

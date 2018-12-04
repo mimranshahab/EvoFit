@@ -1,4 +1,4 @@
-package edu.aku.ehs.models.wrappers;
+package edu.aku.evofit.models.wrappers;
 
 import com.google.gson.annotations.SerializedName;
 

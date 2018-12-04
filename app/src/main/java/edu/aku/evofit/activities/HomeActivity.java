@@ -1,4 +1,4 @@
-package edu.aku.ehs.activities;
+package edu.aku.evofit.activities;
 
 import android.content.Intent;
 import android.graphics.PorterDuff;
@@ -12,11 +12,11 @@ import android.widget.RelativeLayout;
 
 import java.util.List;
 
-import edu.aku.ehs.R;
-import edu.aku.ehs.fragments.HomeFragment;
-import edu.aku.ehs.fragments.abstracts.BaseFragment;
+import edu.aku.evofit.R;
+import edu.aku.evofit.fragments.HomeFragment;
+import edu.aku.evofit.fragments.abstracts.BaseFragment;
 
-import static edu.aku.ehs.constatnts.AppConstants.JSON_STRING_KEY;
+import static edu.aku.evofit.constatnts.AppConstants.JSON_STRING_KEY;
 
 
 public class HomeActivity extends BaseActivity {

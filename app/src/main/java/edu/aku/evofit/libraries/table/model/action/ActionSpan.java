@@ -1,11 +1,11 @@
-package edu.aku.ehs.libraries.table.model.action;
+package edu.aku.evofit.libraries.table.model.action;
 
 
 import android.text.TextPaint;
 import android.text.style.ClickableSpan;
 import android.view.View;
 
-import edu.aku.ehs.libraries.table.model.ICellData;
+import edu.aku.evofit.libraries.table.model.ICellData;
 
 public class ActionSpan extends ClickableSpan {
     private Action action;

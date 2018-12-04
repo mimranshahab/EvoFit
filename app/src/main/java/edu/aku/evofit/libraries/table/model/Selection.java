@@ -1,4 +1,4 @@
-package edu.aku.ehs.libraries.table.model;
+package edu.aku.evofit.libraries.table.model;
 
 public class Selection {
     private int mArea;

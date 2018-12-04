@@ -1,4 +1,4 @@
-package edu.aku.ehs.utils.utility;
+package edu.aku.evofit.utils.utility;
 
 import android.app.Activity;
 import android.content.Context;
@@ -21,7 +21,7 @@ import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
-import edu.aku.ehs.R;
+import edu.aku.evofit.R;
 
 public class Utils {
 

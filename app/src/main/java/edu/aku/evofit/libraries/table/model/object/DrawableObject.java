@@ -1,10 +1,10 @@
-package edu.aku.ehs.libraries.table.model.object;
+package edu.aku.evofit.libraries.table.model.object;
 
 
 import android.graphics.Canvas;
 import android.graphics.drawable.Drawable;
 
-import edu.aku.ehs.libraries.table.model.ICellData;
+import edu.aku.evofit.libraries.table.model.ICellData;
 
 public class DrawableObject extends CellObject {
     private Drawable drawable;

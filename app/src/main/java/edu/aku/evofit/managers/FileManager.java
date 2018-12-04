@@ -1,4 +1,4 @@
-package edu.aku.ehs.managers;
+package edu.aku.evofit.managers;
 
 import android.content.ActivityNotFoundException;
 import android.content.Context;
@@ -10,9 +10,9 @@ import android.webkit.MimeTypeMap;
 import android.widget.Toast;
 
 
-import edu.aku.ehs.constatnts.AppConstants;
-import edu.aku.ehs.helperclasses.ui.helper.UIHelper;
-import edu.aku.ehs.utils.LogUtil;
+import edu.aku.evofit.constatnts.AppConstants;
+import edu.aku.evofit.helperclasses.ui.helper.UIHelper;
+import edu.aku.evofit.utils.LogUtil;
 
 import java.io.File;
 import java.io.FileInputStream;
